@@ -1,0 +1,10 @@
+package org.open.erp.services.proman.impl;
+
+/**
+ * 
+ * @BusinessObject(Service)
+ * 
+ */
+public class ProcesorProiecte {
+
+}

@@ -1,0 +1,58 @@
+package org.open.erp.services.proman.teste;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.open.erp.services.proman.Proiect;
+import org.open.erp.services.proman.ProjectManagementSrv;
+
+public class TestProjectManagementImpl {
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestProjectManagementImpl.class.getName());
+	ProjectManagementSrv promanInstance;
+	
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		promanInstance= ProjectManagementDummyFactory.getProjectManagementSrv();
+		logger.info("initTest");		
+	}
+
+	@Test
+	public void testCreareProiect() {
+		logger.info("Begin test: creareProiect");
+		
+		Double valoareBugetata = 0.0;
+		Proiect proiect = promanInstance.creareProiect("Test", null, null, null, valoareBugetata);
+		assertNotNull("Nu exista proiect nou!", proiect);
+		//assertNotNull("Proiectul nu are buget alocat!", proiect.getBuget());
+		//assertEquals("Valoarea bugetata nu concorda cu bugetul alocat!", valoareBugetata, proiect.getBuget().getValoareBuget());
+		
+		logger.info("End test: creareProiect");
+	}
+
+	@Test
+	public void testCreareActivitate() {
+		logger.info("Begin test: creareActivitate");
+		Proiect proiect = promanInstance.creareProiect("Test", null, null, null, valoareBugetata);
+		
+		Activitate activitate = promanInstance.creareActivitate(proiect, responsabil, titulatura, dataStart, dataSfarsit, valoareBugetata)
+		
+		logger.info("End test: creareActivitate");
+	}
+
+	@Test
+	public void testStartProiect() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testProgresActivitate() {
+		fail("Not yet implemented");
+	}
+
+}

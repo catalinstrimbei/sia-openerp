@@ -1,0 +1,14 @@
+package org.open.erp.services.nomgen;
+
+/*
+ * 
+ * @BusinessObject(DummyEntity)
+ * 
+ */
+public class Persoana {
+	private Integer idPersoana;
+	private String nume;
+	private String prenume;
+	
+	
+}

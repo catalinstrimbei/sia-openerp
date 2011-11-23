@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+<fullyQualifiedTypeName name="org.open.erp.services.nomgen.NomenclatoareGeneraleSrv"/>
+<fullyQualifiedTypeName name="org.open.erp.services.nomgen.impl.NomenclatoareImpl"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="org.open.erp.services.buget.LinieBugetare"/>
+<fullyQualifiedTypeName name="org.open.erp.services.buget.LinieBugetara"/>
+<fullyQualifiedTypeName name="org.open.erp.services.nomgen.NomenclatoareSrv"/>
+<fullyQualifiedTypeName name="org.open.erp.services.nomgen.Persoana"/>
+<fullyQualifiedTypeName name="org.open.erp.services.proman.Activitate"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="org.open.erp.services.proman.Proiect"/>
+<fullyQualifiedTypeName name="org.open.erp.services.proman.impl.RegistruProiect"/>
+<fullyQualifiedTypeName name="org.open.erp.services.proman.impl.ProcesorProiecte"/>
+</qualifiedTypeNameHistroy>

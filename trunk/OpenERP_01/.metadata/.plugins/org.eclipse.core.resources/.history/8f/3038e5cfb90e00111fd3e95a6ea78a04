@@ -1,0 +1,45 @@
+package org.open.erp.services.proman;
+
+import java.util.Date;
+
+import org.open.erp.services.nomgen.Persoana;
+/**
+ * 
+ * @author catalin.strimbei
+ * 
+ * @BusinessFacade(ServiceAPI)
+ * 
+ * @Dependente: BugetareSrv, NomGenSrv
+ * 
+ * @EntitatiNomGen: Persoana
+ * 
+ * @EntitatiAlteSrv: Buget
+ * 
+ * @EntitatiLocale: Proiect, Task
+ * 
+ * @UseCase("initiere proiect"):
+ * 1. Creaza instanta proiect
+ * 2. Cerere buget
+ * *. Returneata proiect initializat in IN_ASTEPTARE
+ *  
+ * @UseCase("initiere proiect"):
+ *  
+ */
+public interface ProjectManagementSrv {
+	/**
+	 * Returneaza un proiect templetizat.
+	 * 
+	 * @param nume 			Titulatura proiectului nou creat
+	 * @param responsabil 	Numele persoanei responsabil general
+	 * @param dataStart 	Data estimata start 
+	 * @param dataSfarsit 	Data estimata sfarsit
+	 * @param valoareBuget 	Valoare buget estimat
+	 * 
+	 * @return instanta Proiect nou creata. 
+	 * 
+	 */
+	Proiect creareProiect(String nume, Persoana responsabil, Date dataStart, Date dataSfarsit, Double valoareBuget);
+	Activitate createActivitate(Proiect proiect, Persoana responsabil, String titulatura, Date dataStart, Date dataSfarsit, Double valoareBugetata);
+	void startProiect(Proiect proiect);
+	void progresActivitate(Activitate activitate, Double procent, Double cost, Date dataActualizata);
+}

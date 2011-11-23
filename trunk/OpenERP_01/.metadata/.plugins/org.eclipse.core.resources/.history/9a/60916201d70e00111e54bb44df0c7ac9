@@ -1,0 +1,10 @@
+package org.open.erp.services.buget;
+
+public class LinieBugetara {
+	private Integer idLinieBugetara;
+	private Buget buget;
+	private Double valoareBugetata;
+	private Double valoareCost;
+	
+	
+}

@@ -1,0 +1,44 @@
+package org.open.erp.services.proman.teste;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.open.erp.services.proman.ProjectManagementSrv;
+
+public class ProjectManagementImplTest {
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestProjectManagementSrv_.class.getName());
+	ProjectManagementSrv promanInstance;
+	
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		promanInstance= ProjectManagementDummyFactory.getProjectManagementSrv();
+		logger.info("initTest");		
+	}
+
+	@Test
+	public void testCreareProiect() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCreareActivitate() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testStartProiect() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testProgresActivitate() {
+		fail("Not yet implemented");
+	}
+
+}

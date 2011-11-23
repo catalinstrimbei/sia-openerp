@@ -1,0 +1,7 @@
+package org.open.erp.services.proman;
+
+import org.open.erp.services.nomgen.Persoana;
+
+public class Responsabil extends Persoana {
+
+}

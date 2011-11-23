@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;OpenERP_BUGET&apos; to &apos;DummyERP_BUGET&apos;" description="Rename resource &apos;OpenERP_BUGET&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/OpenERP_BUGET" name="DummyERP_BUGET" stamp="1320926306919" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;OpenERP&apos; to &apos;DummyERP_NOMGEN&apos;" description="Rename resource &apos;OpenERP&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/OpenERP" name="DummyERP_NOMGEN" stamp="1320926384682" updateReferences="true"/>
+</session>

@@ -1,0 +1,12 @@
+package org.open.erp.services.buget;
+
+/**
+ * 
+ * @author catalin.strimbei
+ * 
+ * @ApplicationServiceFacade(ServiceDummyAPI)
+ */
+public interface BugetareSrv {
+	public Buget creareBuget(Double valoareBuget);
+	public void actualizareBuget(Buget buget, LinieBugetare linie, Double consum);
+}

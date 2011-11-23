@@ -1,0 +1,9 @@
+package org.open.erp.services.proman.impl;
+/*
+ * 
+ *  @ApplicationServiceFacade(ServiceAPI)
+ * 
+ */
+public class RegistruProiect {
+
+}

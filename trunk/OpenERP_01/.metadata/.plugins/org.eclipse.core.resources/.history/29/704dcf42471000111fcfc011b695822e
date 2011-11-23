@@ -1,0 +1,9 @@
+package org.open.erp.services.proman.impl;
+/**
+ * 
+ * @BusinessObject(Register)
+ * 
+ */
+public class RegistruProiect {
+
+}

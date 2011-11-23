@@ -1,0 +1,60 @@
+package org.open.erp.services.proman.impl;
+
+import java.util.Date;
+
+import org.open.erp.services.buget.Buget;
+import org.open.erp.services.buget.BugetareSrv;
+import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.proman.Activitate;
+import org.open.erp.services.proman.Proiect;
+import org.open.erp.services.proman.ProjectManagementSrv;
+
+public class ProjectManagementImpl implements ProjectManagementSrv{
+	
+	private BugetareSrv bugetareSrv;
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProjectManagementImpl.class.getName());
+
+	public void setBugetareSrv(BugetareSrv bugetareSrv) {
+		this.bugetareSrv = bugetareSrv;
+	}
+
+	@Override
+	public Proiect creareProiect(String nume, Persoana responsabil,
+			Date dataStart, Date dataSfarsit, Double valoareBuget) {
+		
+		logger.debug("Creare proiect");
+		
+		Proiect proiectNou = new Proiect(1, nume, dataStart, dataSfarsit, valoareBuget, responsabil);
+		Buget buget = bugetareSrv.creareBuget(valoareBuget);
+		proiectNou.setBuget(buget);
+		
+		logger.debug("Buget proiect: " + buget.getValoareBuget());
+		
+		return proiectNou;
+	}
+
+	public ProjectManagementImpl() {
+	}
+	//
+	@Override
+	public Activitate createActivitate(Proiect proiect, Persoana responsabil,
+			String titulatura, Date dataStart, Date dataSfarsit,
+			Double valoareBugetata) {
+		return null;
+	}
+
+	@Override
+	public void startProiect(Proiect proiect) {
+		// Schimba status proiect in started, schimba status prima activitate in started
+		
+	}
+
+	@Override
+	public void progresActivitate(Activitate activitate, Double procent,
+			Double cost, Date dataActualizata) {
+		// Schimba status proiect in progress, actualizeaza activitate, actualizeaza linii de bugetare proiect
+		
+	}
+
+	
+}

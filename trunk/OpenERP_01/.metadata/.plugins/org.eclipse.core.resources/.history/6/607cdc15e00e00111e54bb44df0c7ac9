@@ -1,0 +1,39 @@
+package org.open.erp.services.proman.impl;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class ProjectManagementImplTest {
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void testCreareProiect() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCreareActivitate() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testStartProiect() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testProgresActivitate() {
+		fail("Not yet implemented");
+	}
+
+}
