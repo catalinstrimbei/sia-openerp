@@ -1,9 +1,0 @@
-package org.open.erp.services.proman.impl;
-/**
- * 
- * @ApplicationServiceImplementation(ServiceAPI)
- * 
- */
-public class RegistruProiect {
-
-}
