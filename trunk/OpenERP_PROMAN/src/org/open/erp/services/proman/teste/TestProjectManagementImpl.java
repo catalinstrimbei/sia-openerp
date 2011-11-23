@@ -20,6 +20,7 @@ public class TestProjectManagementImpl {
 	ProjectManagementSrv promanInstance;
 	NomenclatoareSrv nomenclatorInstance;
 	
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
