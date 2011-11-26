@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/log4j"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DummyERP_BUGET"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/DummyERP_NOMGEN"/>
+	<classpathentry exported="true" kind="lib" path="D:/School/Master SIA An 2/ACS/eclipse/apache-log4j-1.2.16/log4j-1.2.16.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

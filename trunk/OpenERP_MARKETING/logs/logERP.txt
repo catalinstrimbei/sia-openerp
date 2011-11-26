@@ -1,0 +1,2 @@
+(A2) 2011-11-14 13:45:02,301 [main] INFO  org.open.erp.services.proman.impl.ProjectManagementImpl - Creare proiect
+(A2) 2011-11-14 13:45:02,302 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - Buget proiect: 0.0
