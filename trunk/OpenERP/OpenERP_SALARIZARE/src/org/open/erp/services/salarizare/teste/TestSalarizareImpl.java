@@ -6,13 +6,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.personal.*;
-import org.open.erp.services.proman.teste.TestProjectManagementImpl;
 import org.open.erp.services.salarizare.*;
 import org.open.erp.services.salarizare.impl.RegistruSalarizare;
 
 public class TestSalarizareImpl {
 
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestProjectManagementImpl.class.getName());
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestSalarizareImpl.class.getName());
 	SalarizareSrv salarizareSrvInstance;
 	PersonalSrv personalSrvInstance;
 	RegistruSalarizare registruSalarizare;
