@@ -16,16 +16,9 @@ import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.achizitii.LinieComanda;
 import org.open.erp.services.achizitii.PlanAprovizionare;
-import org.open.erp.services.ctbgen.ContabilizareSrv;
-import org.open.erp.services.finplati.FinplatiSrv;
+
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.stocuri.ArticolStoc;
-import org.open.erp.services.stocuri.CerereAprovizionare;
-import org.open.erp.services.stocuri.Depozit;
-import org.open.erp.services.stocuri.Gestiune;
-import org.open.erp.services.stocuri.StocuriSrv;
-
 
 public class TestAprovizionareImpl {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestAprovizionareImpl.class.getName());
@@ -41,11 +34,11 @@ public class TestAprovizionareImpl {
 
 	@Before
 	public void setUp() throws Exception {		
-		aprovizionareInstance= AprovizionareDummyFactory.getAprovizionareSrv();
-		nomenclatorInstance=AprovizionareDummyFactory.getNomenclatoareSrv();
-		contabgenInstance=AprovizionareDummyFactory.getContabGenSrv();
-		stocuriInstance=AprovizionareDummyFactory.getStocuriSrv();
-		finplatiInstance=AprovizionareDummyFactory.getFinPlatiSrv();
+		aprovizionareInstance= AprovizionareFactory.getAprovizionareSrv();
+		nomenclatorInstance=AprovizionareFactory.getNomenclatoareSrv();
+		contabgenInstance=AprovizionareFactory.getContabGenSrv();
+		stocuriInstance=AprovizionareFactory.getStocuriSrv();
+		finplatiInstance=AprovizionareFactory.getFinPlatiSrv();
 		logger.info("initTest");	
 	}
 

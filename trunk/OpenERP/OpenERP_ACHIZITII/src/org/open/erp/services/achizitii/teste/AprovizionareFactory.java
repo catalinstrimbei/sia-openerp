@@ -4,20 +4,21 @@ import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.impl.AprovizionareImpl;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
-import org.open.erp.services.finplati.FinplatiSrv;
-import org.open.erp.services.finplati.impl.FinPlatiDummyImpl;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
+import org.open.erp.services.plati.FinPlatiSrv;
+import org.open.erp.services.plati.impl.FinPlatiImpl;
 import org.open.erp.services.stocuri.StocuriSrv;
-import org.open.erp.services.stocuri.impl.StocuriDummyImpl;
+import org.open.erp.services.stocuri.impl.StocuriImpl;
 
-public class AprovizionareDummyFactory {
+
+public class AprovizionareFactory {
 	public static AprovizionareSrv getAprovizionareSrv(){
 		return new AprovizionareImpl();
 	}
 	
-	public static FinplatiSrv getFinPlatiSrv(){
-		return new FinPlatiDummyImpl();
+	public static FinPlatiSrv getFinPlatiSrv(){
+		return new FinPlatiImpl();
 	}
 	
 	public static NomenclatoareSrv getNomenclatoareSrv(){
@@ -27,7 +28,7 @@ public class AprovizionareDummyFactory {
 		return new ContabilizareSrvImpl();
 	}
 	public static StocuriSrv getStocuriSrv(){
-		return new StocuriDummyImpl();
+		return new StocuriImpl();
 	}
 
 }
