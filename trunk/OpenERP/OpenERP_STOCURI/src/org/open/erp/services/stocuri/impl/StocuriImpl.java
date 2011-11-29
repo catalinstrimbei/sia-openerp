@@ -22,6 +22,10 @@ public class StocuriImpl implements StocuriSrv {
 	private Procesare procesare;
 	private AplicarePret applicarepret;
 
+	public StocuriImpl() {
+		super();
+	}
+
 	public StocuriImpl(Procesare procesareComandaMateriale,
 			AplicarePret applicarepret) {
 		super();
