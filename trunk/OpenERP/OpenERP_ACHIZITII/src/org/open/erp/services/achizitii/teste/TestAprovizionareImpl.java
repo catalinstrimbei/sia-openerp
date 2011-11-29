@@ -16,9 +16,15 @@ import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.achizitii.LinieComanda;
 import org.open.erp.services.achizitii.PlanAprovizionare;
-
+import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.plati.FinPlatiSrv;
+import org.open.erp.services.stocuri.ArticolStoc;
+import org.open.erp.services.stocuri.CerereAprovizionare;
+import org.open.erp.services.stocuri.Depozit;
+import org.open.erp.services.stocuri.Gestiune;
+import org.open.erp.services.stocuri.StocuriSrv;
 
 public class TestAprovizionareImpl {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestAprovizionareImpl.class.getName());
@@ -26,7 +32,7 @@ public class TestAprovizionareImpl {
 	AprovizionareSrv aprovizionareInstance;
 	NomenclatoareSrv nomenclatorInstance;
 	ContabilizareSrv contabgenInstance;
-	FinplatiSrv finplatiInstance;
+	FinPlatiSrv finplatiInstance;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -46,7 +52,7 @@ public class TestAprovizionareImpl {
 	public void testInregistrareCerereAprovizionare() {
 		logger.info("Begin test: Inregistrare Cerere Aprovizionare");
 		Calendar calendar = Calendar.getInstance();
-		CerereAprovizionare cerere = new CerereAprovizionare(121,calendar.getTime(),"test",0);
+		CerereAprovizionare cerere = new CerereAprovizionare(121,calendar.getTime(),"test","0");
 		PlanAprovizionare plan1 = PlanAprovizionare.getPlanAprovizionare();
 		PlanAprovizionare plan2;
 		plan2 = aprovizionareInstance.inregistrareCerereAprovizionare(cerere);	

@@ -3,11 +3,9 @@ package org.open.erp.services.achizitii;
 import java.util.Date;
 import java.util.List;
 
-
 import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.stocuri.CerereAprovizionare;
-import org.open.erp.services.stocuri.LinieCerereAprovizionare;
 
 /**
  * 
@@ -49,7 +47,7 @@ public interface AprovizionareSrv {
 	 * 
 	 */
 	
-	public PlanAprovizionare inregistrareCerereAprovizionare(CerereAprovizionare cerereAprovizionare);
+	public PlanAprovizionare inregistrareCerereAprovizionare(Document cerereAprovizionare);
 	
 	/**
 	 *Scop Crearea unei instante unice a planului de aprovizionare
@@ -72,7 +70,7 @@ public interface AprovizionareSrv {
 	 * 
 	 */
 	
-    void updatePlanAprovizionare(PlanAprovizionare plan,LinieCerereAprovizionare linieCerereAprovizionare );
+    void updatePlanAprovizionare(PlanAprovizionare plan,LinieDocument linieCerereAprovizionare );
     
     /**
 	 * Scop Crearea unei cerere de oferta
