@@ -13,7 +13,7 @@ import org.open.erp.services.nomenclatoare.Material;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.BonConsum;
-import org.open.erp.services.stocuri.ComandaMateriale;
+import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.ComandaProduse;
 import org.open.erp.services.stocuri.Document;
 import org.open.erp.services.stocuri.Gestiune;
@@ -48,7 +48,7 @@ public class Procesare {
 	}
 
 	public Document preoceseazaComandaMateriale(
-			ComandaMateriale comandaMateriale) {
+			CerereAprovizionare comandaMateriale) {
 		logger.loggeazaDEBUG("Inceput Procesare comanda Materiale.-----");
 		try {
 			List<Linie> produseInSuficiente = new ArrayList<Linie>();

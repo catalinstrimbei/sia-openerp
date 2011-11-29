@@ -4,7 +4,7 @@ import org.open.erp.services.nomenclatoare.Material;
 import org.open.erp.services.nomenclatoare.Produs;
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.BonConsum;
-import org.open.erp.services.stocuri.ComandaMateriale;
+import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.ComandaProduse;
 import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.LoturiIntrari;
@@ -58,7 +58,7 @@ public class StocuriImpl implements StocuriSrv {
 	}
 
 	@Override
-	public BonConsum consumProductie(ComandaMateriale comMateriale) {
+	public BonConsum consumProductie(CerereAprovizionare comMateriale) {
 		return (BonConsum) procesare.preoceseazaComandaMateriale(comMateriale);
 
 	}

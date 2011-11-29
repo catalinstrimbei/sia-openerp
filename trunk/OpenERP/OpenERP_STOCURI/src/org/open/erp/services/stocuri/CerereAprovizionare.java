@@ -8,18 +8,18 @@ import java.util.Date;
  * @BusinessObject(Entity)
  * 
  */
-public class ComandaMateriale extends Document  {
+public class CerereAprovizionare extends Document  {
 	private String livrarePartiala;
 
 
-	public ComandaMateriale(Integer idDoc, Date dataDoc, String solicitant,
+	public CerereAprovizionare(Integer idDoc, Date dataDoc, String solicitant,
 			String livrarePartiala) {
 		super(idDoc, dataDoc, solicitant);
 		this.livrarePartiala = livrarePartiala;
 	}
 
 
-	public ComandaMateriale(Integer idDoc, Date dataDoc, String solicitant) {
+	public CerereAprovizionare(Integer idDoc, Date dataDoc, String solicitant) {
 		super(idDoc, dataDoc, solicitant);
 	}
 

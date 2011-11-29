@@ -53,7 +53,7 @@ public interface StocuriSrv {
 	 * 
 	 */
 	void transfer(Gestiune gestOut, Gestiune gestIn, Material material, Integer cantitate);
-	BonConsum consumProductie(ComandaMateriale comMateriale);
+	BonConsum consumProductie(CerereAprovizionare comMateriale);
 	/**
 	 * Returneaza void
 	 * 

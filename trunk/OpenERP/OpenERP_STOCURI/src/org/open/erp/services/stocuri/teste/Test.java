@@ -9,7 +9,7 @@ import java.util.List;
 import org.open.erp.services.nomenclatoare.MaterialPrim;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.stocuri.ArticolStoc;
-import org.open.erp.services.stocuri.ComandaMateriale;
+import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.Depozit;
 import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.Linie;
@@ -109,7 +109,7 @@ public class Test {
 		
 		// ceare comanda materiale
 		logger.loggeazaINFO("START creare comanda materiale ");
-		ComandaMateriale comMat = new ComandaMateriale(1, new Date(), "tant", "yes");
+		CerereAprovizionare comMat = new CerereAprovizionare(1, new Date(), "tant", "yes");
 		comMat.addLinie(new Linie(1, m1, comMat, 0.0, 2));
 		comMat.addLinie(new Linie(2, m2, comMat, 0.0, 4));
 		logger.loggeazaINFO("END creare articole ");
