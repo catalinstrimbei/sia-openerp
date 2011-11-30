@@ -1,0 +1,7 @@
+#sidebar TableOfContents
+  * Generalitati
+    * Business Use Case
+    * Java Platform
+  * Module
+    * [NOMGEN]
+    * [CONTABGEN]
