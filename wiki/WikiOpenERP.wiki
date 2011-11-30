@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+OpenERP
+SIA 2011
+FEAA
+
+= Details =
+
+Prima incercare de ERP
