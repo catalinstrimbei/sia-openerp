@@ -12,7 +12,7 @@ FEAA
 
 Modul-[NOMGEN]
 
-Modul-CONTABGEN     
+Modul-[CONTABGEN]
 
 Modul-CONTABGEST    
 
