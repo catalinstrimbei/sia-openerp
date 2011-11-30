@@ -9,15 +9,27 @@ FEAA
 = Details =
 
 Module ERP propuse
+
 Modul-NOMGEN        
+
 Modul-CONTABGEN     
+
 Modul-CONTABGEST    
+
 Modul-ACHIZITII     
+
 Modul-VANZARI       
+
 Modul-PRODUCTIE     
+
 Modul-STOCURI       
+
 Modul-PERSONAL      
+
 Modul-SALARIZARE    
+
 Modul-MARKETING     
+
 Modul-FINPLATI      
+
 Modul-FININCASARI   
