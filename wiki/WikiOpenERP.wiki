@@ -10,7 +10,7 @@ FEAA
 
 *Module ERP propuse*
 
-Modul-NOMGEN        
+Modul-[NOMGEN]
 
 Modul-CONTABGEN     
 
