@@ -58,6 +58,6 @@ public CerereOferta(Integer idCerereOferta, Date dataCerere, String categorie,
 }
 
 
-
+  
 
 }
