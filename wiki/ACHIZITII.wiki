@@ -8,3 +8,14 @@ Modul Achizitii
 = Details =
 
 Vizeaza procesul de APROVIZIONARE
+
+ - Serviciu AprovizionareSrv
+ * 1. Creeaza instanta cerere aprovizionare
+ * 2. Gestioneaza plan de aprovizionare
+ * 3. Gestioneaza cereri de oferta
+ * 4. Gestioneaza Furnizori
+ * 5. Analiza Oferte Furnizori
+ * 6. Inregistrare comanda achizitie
+ * 7. Inregistrare Receptie materiale
+ * 8. Inregistrare Facturi furnizor
+ * 9. Inregistrare NIR
