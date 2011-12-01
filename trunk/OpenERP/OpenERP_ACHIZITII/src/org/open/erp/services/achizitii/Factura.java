@@ -10,10 +10,16 @@ public class Factura extends Document {
 	public String nrFact;
 	public Double valFact;
 	public Double TVATotal;
-	public List<LinieFacturaAchizitie> liniiFactura=new LinkedList<LinieFacturaAchizitie>();
+	public String stare;
+	public String getStare() {
+		return stare;
+	}
+	public void setStare(String stare) {
+		this.stare = stare;
+	}
 	public Double getValFact() {
 		return valFact;
-	}
+	}	
 	public void setValFact(Double valFact) {
 		this.valFact = valFact;
 	}

@@ -66,7 +66,7 @@ public class TestAprovizionareImpl {
 		
 		Double valfact= 0.0;
 		Double TVATotal= 0.0;
-		Persoana persoana= nomenclatorInstance.creazaPersona(101, "Popescu", "Adela");		
+		Persoana persoana= nomenclatorInstance.creazaPersoana(101, "Popescu", 1);		
 		Furnizor furnizor =aprovizionareInstance.creareFurnizor(persoana, 111);			
 		Factura factura=aprovizionareInstance.creareFactura(furnizor,"111", valfact, TVATotal);
 		assertNotNull("Nu exista factura!", factura);	

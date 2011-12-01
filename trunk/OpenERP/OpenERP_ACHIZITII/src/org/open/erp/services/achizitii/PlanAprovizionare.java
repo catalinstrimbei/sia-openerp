@@ -28,6 +28,7 @@ public class PlanAprovizionare {
 		this.luna = luna;
 		this.an = an;
 	}
+	//Va exista cate un singur plan de aprovizionare de-a lungul unei saptamani.
 	public static synchronized PlanAprovizionare getPlanAprovizionare() {
         if ((planAprovizionare==null)||(Calendar.getInstance().get(Calendar.WEEK_OF_MONTH) != planAprovizionare.getSaptLuna())||
            (Calendar.getInstance().get(Calendar.MONTH) != planAprovizionare.getLuna())||

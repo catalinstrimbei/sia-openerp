@@ -157,7 +157,7 @@ public interface AprovizionareSrv {
     Factura creareFactura(Furnizor furnizor, String nrfact, Double valfact, Double TVATotal );
     
     
-    int inregistrareFactura(Factura factura); 
+    public int inregistrareFactura(Document factura);
     /**
    	 * Creare nota de intrare receptie
    	 * 
@@ -213,6 +213,8 @@ public interface AprovizionareSrv {
    	 * 
    	 */ 
     void progresComanda(Comanda comanda);
+
+	
     
     }
     

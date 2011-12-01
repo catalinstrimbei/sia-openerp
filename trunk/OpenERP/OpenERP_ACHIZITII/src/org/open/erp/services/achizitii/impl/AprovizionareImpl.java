@@ -1,7 +1,6 @@
 package org.open.erp.services.achizitii.impl;
 
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.open.erp.services.achizitii.AprovizionareSrv;
@@ -17,11 +16,12 @@ import org.open.erp.services.achizitii.LinieFacturaRetur;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
-import org.open.erp.services.ctbgen.ListaContMatVal;
+import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
+import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.stocuri.CerereAprovizionare;
-import org.open.erp.services.stocuri.LinieCerereAprovizionare;
+
 
 public class AprovizionareImpl implements AprovizionareSrv{
 	public ContabilizareSrv contabilizareSrv = new ContabilizareSrvImpl();
@@ -46,7 +46,7 @@ public class AprovizionareImpl implements AprovizionareSrv{
 
 	@Override
 	public PlanAprovizionare inregistrareCerereAprovizionare(
-			CerereAprovizionare cerereAprovizionare) {
+			Document cerereAprovizionare) {
 		return PlanAprovizionare.getPlanAprovizionare();
 		
 	}
@@ -60,7 +60,7 @@ public class AprovizionareImpl implements AprovizionareSrv{
 
 	@Override
 	public void updatePlanAprovizionare(PlanAprovizionare plan,
-			LinieCerereAprovizionare linieCerereAprovizionare) {
+			LinieDocument linieCerereAprovizionare) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -112,10 +112,9 @@ public class AprovizionareImpl implements AprovizionareSrv{
 	}
 
 	@Override
-	public int inregistrareFactura(Factura factura) {
-		List<ListaContMatVal> lista = new LinkedList<ListaContMatVal>();
-		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDocument(), factura.getValFact(), 
-				factura.getNrFact(), factura.getFurnizor().getIdPartener(), lista, (Integer)1, (Integer)1);
+	public int inregistrareFactura(Document factura) {		
+		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc(), ((Factura) factura).getValFact(), 
+				  factura.getNrDoc(),  ((Factura) factura).getFurnizor().getId(),  factura.getLiniiDocument(),StareDocument.NOU, (Integer)1);
 		
 	}
 
