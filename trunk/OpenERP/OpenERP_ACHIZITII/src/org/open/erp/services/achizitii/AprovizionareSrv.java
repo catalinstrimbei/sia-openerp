@@ -92,6 +92,7 @@ public interface AprovizionareSrv {
   	 * @return Cerere de oferta actualizata
   	 * 
   	 */
+    
     void updateCerereOferta(LinieCerereOferta linieCerereOferta);
     
     /**
