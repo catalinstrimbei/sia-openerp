@@ -3,16 +3,17 @@ package org.open.erp.services.nomgen;
 public class LinieDocument {
 public Integer linieDoc;
 public Document document;
-public Produs Produs;
+public Material material;
 public Double cantitate;
 public Double pret;
 public Double TVA;
-public LinieDocument(Integer linieDoc, Document document, Produs Produs,
+
+public LinieDocument(Integer linieDoc, Document document, Material material,
 		Double cantitate, Double pret, Double tVA) {
 	super();
 	this.linieDoc = linieDoc;
 	this.document = document;
-	this.Produs = Produs;
+	this.material = material;
 	this.cantitate = cantitate;
 	this.pret = pret;
 	TVA = tVA;
@@ -31,11 +32,12 @@ public Document getDocument() {
 public void setDocument(Document document) {
 	this.document = document;
 }
-public Produs getProdus() {
-	return Produs;
+
+public Material getMaterial() {
+	return material;
 }
-public void setProdus(Produs Produs) {
-	this.Produs = Produs;
+public void setMaterial(Material material) {
+	this.material = material;
 }
 public Double getCantitate() {
 	return cantitate;
@@ -54,5 +56,11 @@ public Double getTVA() {
 }
 public void setTVA(Double tVA) {
 	TVA = tVA;
+}
+
+public void incementeazaPret(Double pretNou) {
+	pretNou = (pret == null) ? 0.0 : pretNou;
+
+	this.pret += pretNou;
 }
 }

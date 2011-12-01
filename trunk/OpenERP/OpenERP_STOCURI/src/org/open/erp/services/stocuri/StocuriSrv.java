@@ -1,7 +1,11 @@
 package org.open.erp.services.stocuri;
 
-import org.open.erp.services.nomenclatoare.Material;
-import org.open.erp.services.nomenclatoare.Produs;
+import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.nomgen.Produs;
+
+
+
 /**
  * 
  * @author echipa.stocuri
@@ -40,6 +44,8 @@ public interface StocuriSrv {
 	 * 
 	 */
 	void intrareInStoc(Material material, LoturiIntrari lot, Gestiune gestiune);
+	//pt costel!!!
+	void intrareStoc(Document doc);
 	/**
 	 * Returneaza void
 	 * 
@@ -63,7 +69,7 @@ public interface StocuriSrv {
 	 * @return instanta iesire nou creata
 	 * 
 	 */
-    void iesireVanzare(ComandaProduse comProd);
+    void iesireStoc(Document doc);
     /**
 	 * Scop					Returneaza stocul unui produs dintr-o anumita gestiune
 	 * 
@@ -73,7 +79,7 @@ public interface StocuriSrv {
 	 * @return				Valoare reprezentand stocul produsului 
 	 * 
 	 */	
-	Integer getStocProdusByGestiune(Produs produs, Gestiune gestiune);
+	Integer getStocMaterialByGestiune(Material produs, Gestiune gestiune);
 	/**
 	 * Scop					Returneaza pretul unui articol dupa aplicarea metodei de calcul
 	 * 

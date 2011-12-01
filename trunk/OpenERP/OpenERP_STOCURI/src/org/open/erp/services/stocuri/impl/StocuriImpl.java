@@ -1,7 +1,8 @@
 package org.open.erp.services.stocuri.impl;
 
-import org.open.erp.services.nomenclatoare.Material;
-import org.open.erp.services.nomenclatoare.Produs;
+
+import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.BonConsum;
 import org.open.erp.services.stocuri.CerereAprovizionare;
@@ -11,7 +12,6 @@ import org.open.erp.services.stocuri.LoturiIntrari;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.exceptions.IntrariStocExceptions;
 import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
-import org.open.erp.services.stocuri.exceptions.TransferStocExceptions;
 
 /**
  * 
@@ -64,7 +64,7 @@ public class StocuriImpl implements StocuriSrv {
 	}
 
 	@Override
-	public Integer getStocProdusByGestiune(Produs produs, Gestiune gestiune) {
+	public Integer getStocMaterialByGestiune(Material produs, Gestiune gestiune) {
 		return procesare.getArticolByMijlocAndGestiune(produs, gestiune)
 				.getCatitateStocPeGestiune();
 
@@ -84,7 +84,7 @@ public class StocuriImpl implements StocuriSrv {
 	@Override
 	public Integer verificareStocMaterial(Material material) {
 		try{
-		return procesare.verificareStocMaterial(material);
+		return procesare.verificareStocMaterial(material).intValue();
 		}catch (StocuriExceptions e) {
 			e.printStackTrace();
 			e.logger.loggeazaERROR(e.getMessage(), e);
@@ -93,13 +93,19 @@ public class StocuriImpl implements StocuriSrv {
 	}
 
 	@Override
-	public void iesireVanzare(ComandaProduse comProd) {
+	public void iesireStoc(Document doc) {
 		try{
-			procesare.procesareComandaProduseVanzare(comProd);
+			procesare.procesareComandaIesire(doc);
 		}catch (StocuriExceptions e) {
 			e.printStackTrace();
 			e.logger.loggeazaERROR(e.getMessage(), e);
 		}
+		
+	}
+
+	@Override
+	public void intrareStoc(Document doc) {
+		// TODO Auto-generated method stub
 		
 	}
 

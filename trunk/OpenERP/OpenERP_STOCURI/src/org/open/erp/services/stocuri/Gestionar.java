@@ -2,6 +2,8 @@ package org.open.erp.services.stocuri;
 
 import org.open.erp.services.personal.Angajat;
 
+
+
 /**
  * 
  * @author echipa.stocuri
@@ -16,9 +18,9 @@ public class Gestionar extends Angajat {
 		super();
 	}
 
-	public Gestionar(Integer marcaAng, String nume, String adresa,
-			String telefon, Gestiune gestiune) {
-		super(marcaAng, nume, adresa, telefon);
+	public Gestionar(Integer idPersoana, String nume, String prenume,
+			Integer idCandidat, String tipCandidat, Gestiune gestiune) {
+		super(idPersoana, nume, prenume, idCandidat, tipCandidat);
 		this.gestiune = gestiune;
 	}
 

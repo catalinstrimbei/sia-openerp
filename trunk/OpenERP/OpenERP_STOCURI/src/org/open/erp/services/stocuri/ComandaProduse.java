@@ -1,5 +1,7 @@
 package org.open.erp.services.stocuri;
 
+import org.open.erp.services.nomgen.Document;
+
 /**
  * 
  * @author echipa.stocuri

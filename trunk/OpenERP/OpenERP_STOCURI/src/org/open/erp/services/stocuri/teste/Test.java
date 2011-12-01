@@ -6,7 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.open.erp.services.nomenclatoare.MaterialPrim;
+
+import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.CerereAprovizionare;
@@ -43,11 +46,11 @@ public class Test {
 		logger.loggeazaINFO("START creare date de test------ ");
 		logger.loggeazaINFO("START creare materiale ");
 		//creare materiale
-		MaterialPrim m1 = new MaterialPrim(1, "den mat 1", "uM", null, "30 zile");
-		MaterialPrim m2 = new MaterialPrim(2, "den mat 2", "uM", null, "30 zile");
-		MaterialPrim m3 = new MaterialPrim(3, "den mat 3", "uM", null, "30 zile");
-		MaterialPrim m4 = new MaterialPrim(4, "den mat 3", "uM", null, "30 zile");
-		MaterialPrim m5 = new MaterialPrim(5, "den mat 3", "uM", null, "30 zile");
+		MateriePrima m1 = new MateriePrima(1, "den mat 1", "uM",  "30 zile");
+		MateriePrima m2 = new MateriePrima(2, "den mat 2", "uM",  "30 zile");
+		MateriePrima m3 = new MateriePrima(3, "den mat 3", "uM",  "30 zile");
+		MateriePrima m4 = new MateriePrima(4, "den mat 3", "uM",  "30 zile");
+		MateriePrima m5 = new MateriePrima(5, "den mat 3", "uM",  "30 zile");
 		logger.loggeazaINFO("END creare materiale ");
 		logger.loggeazaINFO("START creare gestiuni ");
 		//creare gestiune
@@ -110,8 +113,8 @@ public class Test {
 		// ceare comanda materiale
 		logger.loggeazaINFO("START creare comanda materiale ");
 		CerereAprovizionare comMat = new CerereAprovizionare(1, new Date(), "tant", "yes");
-		comMat.addLinie(new Linie(1, m1, comMat, 0.0, 2));
-		comMat.addLinie(new Linie(2, m2, comMat, 0.0, 4));
+		comMat.addLinie(new LinieDocument(1, comMat, m1, 0.0, 2.0, 0.0));
+		comMat.addLinie(new LinieDocument(2, comMat, m2, 0.0, 4.0, 0.0));
 		logger.loggeazaINFO("END creare articole ");
 		// procesare comanda materiale
 		Procesare proc = new Procesare(gestiuni, new Angajat(), apPret);

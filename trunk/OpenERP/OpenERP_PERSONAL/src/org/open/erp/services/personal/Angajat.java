@@ -8,9 +8,12 @@ package org.open.erp.services.personal;
 public class Angajat extends Candidat{	
 	private Integer			marca;	
 	private Boolean			activ;
+	
 	public Integer getMarca() {
 		return marca;
 	}
+	
+	
 	public void setMarca(Integer marca) {
 		this.marca = marca;
 	}

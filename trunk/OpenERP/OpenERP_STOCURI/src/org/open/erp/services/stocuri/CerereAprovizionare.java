@@ -1,6 +1,8 @@
 package org.open.erp.services.stocuri;
 
 import java.util.Date;
+
+import org.open.erp.services.nomgen.Document;
 /**
  * 
  * @author echipa.stocuri
@@ -14,15 +16,11 @@ public class CerereAprovizionare extends Document  {
 
 	public CerereAprovizionare(Integer idDoc, Date dataDoc, String solicitant,
 			String livrarePartiala) {
-		super(idDoc, dataDoc, solicitant);
+		super(idDoc, dataDoc);
 		this.livrarePartiala = livrarePartiala;
 	}
 
-
-	public CerereAprovizionare(Integer idDoc, Date dataDoc, String solicitant) {
-		super(idDoc, dataDoc, solicitant);
-	}
-
+	
 
 	public String getLivrarePartiala() {
 		return livrarePartiala;

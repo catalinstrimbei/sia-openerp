@@ -1,10 +1,10 @@
 package org.open.erp.services.stocuri.teste;
 
 
-import org.open.erp.services.achizitii.AchizitionareSrv;
-import org.open.erp.services.achizitii.impl.AchizitionareImpl;
-import org.open.erp.services.nomenclatoare.NomenclatoareSrv;
-import org.open.erp.services.nomenclatoare.impl.NomenclatoareImpl;
+import org.open.erp.services.achizitii.AprovizionareSrv;
+import org.open.erp.services.achizitii.impl.AprovizionareImpl;
+import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.impl.PersonalImpl;
 import org.open.erp.services.stocuri.util.StocuriLogger;
@@ -19,15 +19,15 @@ import org.open.erp.services.stocuri.util.StocuriLogger;
 public class ProjectDummyFactory {
 	private static StocuriLogger logger= new StocuriLogger(); 
 	
-	public static AchizitionareSrv  getAchizitionareSrv( ){
+	public static AprovizionareSrv  getAprovizionareSrv( ){
 		logger.loggeazaINFO("Creaza Dummy ACHIZITIONARE SRV----");
-		return new AchizitionareImpl();
+		return new AprovizionareImpl();
 		
 	}
 	
 	public static NomenclatoareSrv  getNomenclatoareSrv( ){
 		logger.loggeazaINFO("Creaza Dummy NOMENCLATOARE SRV----");
-		return new NomenclatoareImpl();
+		return new NomenclatoareDummyImpl();
 		
 	}
 	

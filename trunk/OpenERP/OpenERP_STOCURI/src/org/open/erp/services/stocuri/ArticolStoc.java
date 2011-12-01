@@ -5,7 +5,8 @@ package org.open.erp.services.stocuri;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.open.erp.services.nomenclatoare.Material;
+import org.open.erp.services.nomgen.Material;
+
 
 
 /**
@@ -33,6 +34,7 @@ public class ArticolStoc  {
 	public void addLotIntrare(LoturiIntrari lot){
 		this.loturiIntrariArt.add(lot);
 		catitateStocPeGestiune+=lot.getCantitate();
+		lot.setArticol(this);
 	}
 
 	public void removeLotIntrare(LoturiIntrari lot){
