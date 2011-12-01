@@ -64,11 +64,12 @@ public interface ProductieSrv {
 	
 	/**
 	 * Contorizeaza consumul de resurse
+	 * @param faza 		Faza in care se consuma resursele cerute
 	 * @param produs	Produsul pentru care se consuma resursele
 	 * 
 	 * @return 	Lista de resurse (utilaje,materiale,angajati)
 	 */
-	public ArrayList<Object> consumResursa(Produs produs);
+	public ArrayList<Object> consumResursa(FazaProductie faza, Produs produs);
 	
 	/**
 	 * Realizeaza controlul calitatii pentru fiecare unitate de produs
@@ -92,7 +93,7 @@ public interface ProductieSrv {
 	 * 
 	 * @return 	Lista de resurse consumate
 	 */
-	public ArrayList<Object> inregistrareGestiuneConsum(Produs produs);
+	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza, Produs produs);
 	
 	/**
 	 * Gestioneaza cantitatea de produse obtinute

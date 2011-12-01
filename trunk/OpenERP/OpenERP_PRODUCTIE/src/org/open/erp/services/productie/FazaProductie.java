@@ -3,7 +3,8 @@ package org.open.erp.services.productie;
 
 import java.util.ArrayList;
 
-import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.nomgen.Divizie;
+import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.*;
 
@@ -21,13 +22,13 @@ public class FazaProductie {
 	Double timpFolosire;
 	ArrayList <FunctieNecesara> functiiNecesare;
 	ArrayList <Angajat> angajati;
-	ArrayList <Material> materialeReteta;
+	ArrayList <MateriePrima> materialeReteta;
 	Semifabricat semifabricatReteta;
 	Semifabricat semifabricatDorit;
 	Produs produsDorit;
 	Semifabricat semifabricatObtinut;
 	Produs produsObtinut;
-	SectieProductie sectie;
+	Divizie sectie;
 
 	
 	
@@ -54,9 +55,9 @@ public class FazaProductie {
 
 	public FazaProductie(String faza, Utilaj utilaj, Double timpFolosire,
 			ArrayList<FunctieNecesara> functiiNecesare, ArrayList<Angajat> angajati,
-			ArrayList<Material> materialeReteta,
+			ArrayList<MateriePrima> materialeReteta,
 			Semifabricat semifabricatReteta, Semifabricat semifabricatDorit,
-			Produs produsDorit, SectieProductie sectie) {
+			Produs produsDorit, Divizie sectie) {
 		super();
 		this.faza = faza;
 		this.utilaj = utilaj;
@@ -104,11 +105,11 @@ public class FazaProductie {
 		this.angajati = angajati;
 	}
 
-	public ArrayList<Material> getMaterialeReteta() {
+	public ArrayList<MateriePrima> getMaterialeReteta() {
 		return materialeReteta;
 	}
 
-	public void setMaterialeReteta(ArrayList<Material> materialeReteta) {
+	public void setMaterialeReteta(ArrayList<MateriePrima> materialeReteta) {
 		this.materialeReteta = materialeReteta;
 	}
 
@@ -138,11 +139,11 @@ public class FazaProductie {
 
 	
 
-	public SectieProductie getSectie() {
+	public Divizie getSectie() {
 		return sectie;
 	}
 
-	public void setSectie(SectieProductie sectie) {
+	public void setSectie(Divizie sectie) {
 		this.sectie = sectie;
 	}
 

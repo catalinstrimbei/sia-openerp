@@ -2,7 +2,7 @@ package org.open.erp.services.productie;
 
 import java.util.*;
 
-import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.nomgen.Produs;
 
 /**
@@ -16,11 +16,11 @@ public class Semifabricat extends Produs{
 
 	
 	String semifabricat;
-	ArrayList <Material> listaMateriale;
+	ArrayList <MateriePrima> listaMateriale;
 	Semifabricat semifabricatContinut;
 	
 	public Semifabricat(String semifabricat,
-			ArrayList<Material> listaMateriale,
+			ArrayList<MateriePrima> listaMateriale,
 			Semifabricat semifabricatContinut) {
 		super();
 		this.semifabricat = semifabricat;
@@ -36,10 +36,10 @@ public class Semifabricat extends Produs{
 	public void setSemifabricat(String semifabricat) {
 		this.semifabricat = semifabricat;
 	}
-	public ArrayList<Material> getListaMateriale() {
+	public ArrayList<MateriePrima> getListaMateriale() {
 		return listaMateriale;
 	}
-	public void setListaMateriale(ArrayList<Material> listaMateriale) {
+	public void setListaMateriale(ArrayList<MateriePrima> listaMateriale) {
 		this.listaMateriale = listaMateriale;
 	}
 	public Semifabricat getSemifabricatContinut() {

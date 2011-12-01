@@ -2,7 +2,8 @@ package org.open.erp.services.productie.impl;
 
 import java.util.ArrayList;
 
-import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.nomgen.Divizie;
+import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.Angajat;
@@ -10,7 +11,6 @@ import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.CriteriuCalitate;
 import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FunctieNecesara;
-import org.open.erp.services.productie.SectieProductie;
 import org.open.erp.services.productie.Utilaj;
 
 import org.open.erp.services.productie.ProductieSrv;
@@ -26,7 +26,7 @@ public class ProductieImpl implements ProductieSrv {
 	ArrayList<FazaProductie> fazeFlux;
 	Integer cantitateProdusFinal = 0;
 	Integer cantitateDeseu =0 ;
-	ArrayList<Material> listaMateriale;
+	ArrayList<MateriePrima> listaMateriale;
 	ArrayList<Angajat> listaAngajati;
 	ArrayList<Utilaj> listaUtilaje;
 	ArrayList<Integer> cantitati;
@@ -43,8 +43,8 @@ public class ProductieImpl implements ProductieSrv {
 		Double timp;
 		ArrayList<FunctieNecesara> functiiNecesare;
 		ArrayList<Angajat> angajati;
-		ArrayList <Material> materialeReteta;
-		ArrayList <Material> materialeSemifabricat;
+		ArrayList <MateriePrima> materialeReteta;
+		ArrayList <MateriePrima> materialeSemifabricat;
 		Semifabricat semifabricatContinut;
 		Semifabricat semifabricatReteta;
 		Produs pDorit;
@@ -76,24 +76,34 @@ public class ProductieImpl implements ProductieSrv {
 			fz.setTimpFolosire(timp);
 			
 			
-			//setez sectia in care se desfasoara faza curenta
-			SectieProductie sectie= new SectieProductie();
-			sectie.setId(1);
-			sectie.setDenumire("Departament");
-			sectie.setDenSectie("Sectie");
+			//selectez sectia in care se desfasoara faza curenta
+			Divizie sectie= new Divizie();
+			sectie.getDenumire();
+			sectie.getIdDepartament();
+			
+		
+			//sectie.setId(1);
+			
+			//sectie.setDenumire("Departament");
+			//sectie.setDenSectie("Sectie");
 			
 			fz.setSectie(sectie);
 			
 			//adaugarea functiilor necesare pentru angajati	
 			FunctieNecesara f1=new FunctieNecesara();
-			f1.setId(1);
-			f1.setDenumire("functie1");
+			f1.getNumeFunctie();
 			f1.setNrAngajatiFunctie(2);
+			
+			//f1.setId(1);
+			//f1.setDenumire("functie1");
+			
 			FunctieNecesara f2=new FunctieNecesara();
-			f2.setId(2);
-			f2.setDenumire("functie2");
+			f2.getNumeFunctie();
 			f2.setNrAngajatiFunctie(3);
-		
+			
+			//f2.setId(2);
+			//f2.setDenumire("functie2");
+			
 			functiiNecesare =new ArrayList<FunctieNecesara>();
 			functiiNecesare.add(f1);
 			functiiNecesare.add(f2);
@@ -104,9 +114,11 @@ public class ProductieImpl implements ProductieSrv {
 		
 			for (int f=0;f<functiiNecesare.size();f++){
 				int nrAngajati=functiiNecesare.get(f).getNrAngajatiFunctie();
+				
+			
 				for(int a=1;a<=nrAngajati;a++){
 					Angajat angajat =new Angajat();
-					//ar trebui cautati angajatii care au functia curenta
+					//ar trebui cautati angajatii care au functia curenta setata in contractul de munca
 					//si introdusi intr-o lista de angajati
 					angajati.add(angajat);
 				}
@@ -137,13 +149,16 @@ public class ProductieImpl implements ProductieSrv {
 	
 		
 		//lista materialelor din reteta
-			materialeReteta = new ArrayList<Material>();
-			Material m3=new Material();
-			Material m4=new Material();
-			m3.setId(1);
-			m3.setDenumire("material1");
-			m4.setId(2);
-			m4.setDenumire("material2");
+			materialeReteta = new ArrayList<MateriePrima>();
+			MateriePrima m3=new MateriePrima();
+			MateriePrima m4=new MateriePrima();
+			m3.getDenumire();
+			m4.getDenumire();
+
+			//m3.setId(1);
+			//m3.setDenumire("material1");
+			//m4.setId(2);
+			//m4.setDenumire("material2");
 		
 			materialeReteta.add(m3);
 			materialeReteta.add(m4);
@@ -157,13 +172,18 @@ public class ProductieImpl implements ProductieSrv {
 				
 				//construirea semifabricatului din reteta
 				String denSemifabricat = "semifabricat";
-				materialeSemifabricat = new ArrayList<Material>();
-				Material m5=new Material();
-				Material m6=new Material();
-				m3.setId(1);
+				materialeSemifabricat = new ArrayList<MateriePrima>();
+				MateriePrima m5=new MateriePrima();
+				MateriePrima m6=new MateriePrima();
+				m5.getDenumire();
+				m6.getDenumire();
+				
+				
+				/*m3.setId(1);
 				m3.setDenumire("material3");
 				m4.setId(2);
-				m4.setDenumire("material4");
+				m4.setDenumire("material4");*/
+				
 				materialeSemifabricat.add(m5);
 				materialeSemifabricat.add(m6);
 				semifabricatContinut=fazeFlux.get(i-1).getSemifabricatDorit();
@@ -177,8 +197,7 @@ public class ProductieImpl implements ProductieSrv {
 			
 			if(i==nrFaze){
 				pDorit=new Produs();
-				pDorit.setDenumire("paine"+i);
-				pDorit.setId(111);
+				pDorit.getDenumire();
 				fz.setProdusDorit(pDorit);
 			}
 			else{
@@ -214,11 +233,12 @@ public class ProductieImpl implements ProductieSrv {
 		 }
 
 	@Override
-	public ArrayList<Object> consumResursa(Produs produs) {
+	public ArrayList<Object> consumResursa(FazaProductie faza,Produs produs) {
 		/*parcurgem din baza de date din fiecare si preluam
 		 * listele cu resursele consumate
 		 * se va face atunci cand va exista persistenta cu baza de date*/
-		listaMateriale = new ArrayList<Material>();
+		
+		listaMateriale = new ArrayList<MateriePrima>();
 		listaUtilaje = new ArrayList<Utilaj>();
 		listaAngajati = new ArrayList<Angajat>();
 		 ArrayList<Object> resurse = new ArrayList<Object>();
@@ -262,11 +282,11 @@ public class ProductieImpl implements ProductieSrv {
 	
 	@Override
 	public Integer livrareProdus(Integer cantitateProdus, Produs produs) {
-		  ArticolStoc stocProduse = null;
-		    
+		  ArticolStoc stocProduse;
+		  stocProduse=new ArticolStoc();
 		  cantitateProdus=cantitati.get(0);
-		  stocProduse = new ArticolStoc(1, produs.getDenumire(), 5);
-		  if (stocProduse.getDenumire() == produs.getDenumire()){
+		  stocProduse.getCatitateStocPeGestiune();
+		  if (stocProduse.getIdArticolStoc() == produs.getId()){
 		   return cantitateProdus;
 		  }
 		  
@@ -279,13 +299,12 @@ public class ProductieImpl implements ProductieSrv {
 		 }
 
 	@Override
-	public ArrayList<Object> inregistrareGestiuneConsum(Produs produs) {
-		consumResursa(produs);
+	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza,Produs produs) {
+		consumResursa(faza,produs);
 		return resurse;
 		
 	}
 	public ArrayList<Integer> inregistrareGestiuneProductie(Produs produs){
-		
 		controlCalitate(produs);
 		return cantitati;
 	}
