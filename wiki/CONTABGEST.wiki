@@ -1,0 +1,12 @@
+   Introduction
+Modul ContabGest
+
+Details
+Contabilitate de Gestiune
+
+- Serviciu CentruCostSrv?
+1. Creaza instanta Activitate 
+2. Creeaza activitate si o asociaza centrului de cost.
+3. Creaza instanta centru de cost
+4. Gestioneaza stadiul in care se afla activitatea
+5. Inregistreaza soldul pentru un Centru de Cost
