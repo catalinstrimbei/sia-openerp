@@ -1,8 +1,13 @@
 package org.open.erp.services.stocuri.impl;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+
+import mydomain.Person;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -38,6 +43,8 @@ public class Procesare {
 	private Angajat responsabil;
 	private AplicarePret aplicarepret;
 	private StocuriLogger logger = new StocuriLogger();
+	//Cei care vor astepta <CerereAprovizionare>. In cazul nostru AprovizionareImpl
+	private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
 
 	public Procesare(List<Gestiune> gestiuni, Angajat responsabil,
 			AplicarePret aplicarepret) {
@@ -192,8 +199,21 @@ public class Procesare {
 			List<LinieDocument> produseInSuficiente) {
 		for (LinieDocument l : produseInSuficiente) {
 			comAprov.addLinie(new LinieDocument(1, comAprov,
-					 l.getMaterial(), l.getCantitate(), 0.0, 0.0));
+					 l.getMaterial(), l.getCantitate(), 0.0, 0.0));			
 		}
+		//Se notifica listener-ii, in cazul acesta AprovizionareImpl, de crearea unei Cereri de Aprovizionare
+		notifyListeners(this, comAprov);
+	}
+	private void notifyListeners(Object sursa,CerereAprovizionare cerere) {
+		for (Iterator iterator = listener.iterator(); iterator.hasNext();) {
+			PropertyChangeListener name = (PropertyChangeListener) iterator.next();
+			PropertyChangeEvent evt = new PropertyChangeEvent(sursa,null,null,cerere);
+            name.propertyChange( evt );
+
+		}
+	}
+	public void addChangeListener(PropertyChangeListener newListener) {
+		listener.add(newListener);
 	}
 
 	public Double verificareStocMaterial(Material material) throws StocuriExceptions {
