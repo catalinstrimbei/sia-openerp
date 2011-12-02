@@ -1,12 +1,495 @@
-   Introduction
-Modul ContabGest
 
-Details
-Contabilitate de Gestiune
 
-- Serviciu CentruCostSrv?
-1. Creaza instanta Activitate 
-2. Creeaza activitate si o asociaza centrului de cost.
-3. Creaza instanta centru de cost
-4. Gestioneaza stadiul in care se afla activitatea
-5. Inregistreaza soldul pentru un Centru de Cost
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/sia-openerp/wiki/ACHIZITII" />
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = "JYJmVLUn2NJKddLq_U8pxaFHPvw:1322841717953";
+ 
+ 
+ var CS_env = {"profileUrl":["/u/113514604381087310567/"],"token":"JYJmVLUn2NJKddLq_U8pxaFHPvw:1322841717953","assetHostPath":"http://www.gstatic.com/codesite/ph","domainName":null,"assetVersionPath":"http://www.gstatic.com/codesite/ph/12684539022547559253","projectHomeUrl":"/p/sia-openerp","relativeBaseUrl":"","projectName":"sia-openerp","loggedInUserEmail":"anca.zavate@gmail.com"};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ 
+ </script>
+ 
+ 
+ <title>ACHIZITII - 
+ sia-openerp -
+ 
+ One-sentence summary of this page. - 
+ Open ERP - Google Project Hosting
+ </title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/12684539022547559253/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/12684539022547559253/css/ph_detail.css" >
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="/feeds/p/sia-openerp/svnchanges/basic?path=/wiki/ACHIZITII.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/12684539022547559253/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+</head>
+<body class="t6">
+<script type="text/javascript">
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ <b>anca.zavate@gmail.com</b>
+ 
+ 
+ | <a href="/u/113514604381087310567/" id="projects-dropdown" onclick="return false;"
+ ><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="/u/113514604381087310567/" onclick="_CS_click('/gb/ph/profile');"
+ title="Profile, Updates, and Settings"
+ ><u>Profile</u></a>
+ | <a href="https://www.google.com/accounts/Logout?continue=http%3A%2F%2Fcode.google.com%2Fp%2Fsia-openerp%2Fwiki%2FACHIZITII" 
+ onclick="_CS_click('/gb/ph/signout');"
+ ><u>Sign out</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/sia-openerp">
+ <a href="/p/sia-openerp/">
+ 
+ <img src="http://www.gstatic.com/codesite/ph/images/defaultlogo.png" alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/sia-openerp/"><span itemprop="name">sia-openerp</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/sia-openerp/"><span itemprop="description">Open ERP</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/sia-openerp/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="/p/sia-openerp/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/sia-openerp/w/list" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/sia-openerp/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/sia-openerp/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ 
+ 
+ <span class="inIssueEntry"> 
+ <a class="buttonify" href="/p/sia-openerp/w/edit">New page</a>
+ </span> &nbsp;
+ 
+ 
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/sia-openerp/w/list" method="GET" style="display:inline">
+ <select id="can" name="can" >
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1" >&nbsp;All wiki pages</option>
+ <option value="3" >&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="5" >&nbsp;My starred pages</option>
+ 
+ <option value="4" >&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input type="text" size="38" id="searchq" name="q" value=""
+ autocomplete="off" ></span>
+ 
+ 
+ 
+ <input type="submit" value="Search" >
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ &nbsp;
+  &nbsp; <a class="buttonify" href="/p/sia-openerp/w/edit/ACHIZITII">Edit</a>
+  &nbsp; <a class="buttonify" href="/p/sia-openerp/w/delete/ACHIZITII">Delete</a>
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+ 
+ style="padding:0 3px 3px 0; margin:0"
+ 
+ 
+>
+
+ 
+<!-- IE -->
+
+
+
+
+
+
+ 
+<style type="text/css">
+ #wikimaincol { padding-top: 6px; padding-left:1em}
+ #sidebarcontainer {
+ padding: 1.5em 2px 2px 2px;
+ min-width: 15em;
+ max-width: 20em;
+ overflow:hidden;
+}
+ .sidebartop ul { margin:0 0 0 .5em; padding-left:0 !important; list-style:none}
+ .sidebartop ul ul { margin-left:1em; padding-left:0; list-style:none; display:none}
+ .sidebartop li { margin:0 0 2px 0; padding:1px; padding-left:14px; cursor:pointer}
+ .sidebartop li a { padding:2px}
+ .sidebartop li { background: url(http://www.gstatic.com/codesite/ph/images/plus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeopen { background: url(http://www.gstatic.com/codesite/ph/images/minus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeleaf { background:none}
+ .currentpagelink { 
+ font-weight: bold;
+ text-decoration: none;
+ color: black !important; 
+ background: #c3d9ff;
+ }
+ .sidebartop ul.treeleafcontainer { display:block;}
+ .sidebarcontent { 
+ vertical-align:top;
+ padding-right: 3px;
+ border-right: 2px solid #ccc;
+ }
+</style>
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tr>
+ 
+ 
+ <td class="sidebarcontent">
+ <div class="vt expand" id="wikisidebar">
+ <div>
+ 
+ <div style="float:right;">
+ <a class="ifExpand" style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar('', 'sia-openerp', this, 'JYJmVLUn2NJKddLq_U8pxaFHPvw:1322841717953'); return false;"
+ title="Hide sidebar"><b>&lsaquo;&lsaquo;</b></a>
+ </div>
+ <div class="ifCollapse" style="padding:0 2px">
+ <a style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar('', 'sia-openerp', this, 'JYJmVLUn2NJKddLq_U8pxaFHPvw:1322841717953'); return false;"
+ title="Show sidebar"><b>&rsaquo;&rsaquo;</b></a>
+ </div>
+ 
+ 
+ <div class="ifExpand" style="float:right; padding-right: 3px;">
+ <a href="/p/sia-openerp/w/edit/WikiOpenERPSideBar">Edit</a>
+ </div>
+ 
+ <div id="sidebarcontainer" class="sidebartop ifExpand">
+ <ul><li>Generalitati </li><ul><li>Business Use Case </li><li>Java Platform </li></ul><li>Module </li><ul><li><a href="/p/sia-openerp/wiki/NOMGEN">NOMGEN</a> </li><li><a href="/p/sia-openerp/wiki/CONTABGEN">CONTABGEN</a> </li><li><a href="/p/sia-openerp/wiki/ACHIZITII">ACHIZITII</a> </li><li><a href="/p/sia-openerp/wiki/INCASARI">INCASARI</a> </li></ul></ul>
+ </div>
+ </div>
+</div>
+
+ </td>
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <img width="15" height="15" id="star_img"
+ src="http://www.gstatic.com/codesite/ph/images/star_off.gif"
+ style="cursor:pointer"
+ onclick="_CS_toggleStar(this,
+ {'scope': 'wiki',
+ 'user': '_CURRENT_USER',
+ 'item': 'sia-openerp:ACHIZITII'
+ });"/>
+ 
+ <span style="font-size:120%;font-weight:bold">ACHIZITII</span>
+ &nbsp;
+ <div> 
+ 
+ <i>One-sentence summary of this page.</i>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Thu Dec  1 11:56:09 2011">
+ Yesterday (20 hours ago)</span>
+ 
+ by <a style="white-space: nowrap" href="/u/111899053838615687411/">cristina.macuc</a>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <h1><a name="Introduction"></a>Introduction<a href="#Introduction" class="section_anchor"></a></h1><p>Modul Achizitii </p><h1><a name="Details"></a>Details<a href="#Details" class="section_anchor"></a></h1><p>Vizeaza procesul de APROVIZIONARE </p><blockquote>- Serviciu AprovizionareSrv<a href="/p/sia-openerp/w/edit/AprovizionareSrv">?</a> 
+</blockquote><ul><li>1. Creeaza instanta cerere aprovizionare </li><li>2. Gestioneaza plan de aprovizionare </li><li>3. Gestioneaza cereri de oferta </li><li>4. Gestioneaza Furnizori </li><li>5. Analiza Oferte Furnizori </li><li>6. Inregistrare comanda achizitie </li><li>7. Inregistrare Receptie materiale </li><li>8. Inregistrare Facturi furnizor </li><li>9. Inregistrare NIR </li></ul>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+
+
+ 
+ 
+ 
+ 
+ 
+ <div id="commentform">
+ <form action="../w/detail.do" method="post">
+ <table>
+ <tr><td class="vt">
+ <input type="hidden" name="pagename" value="ACHIZITII" >
+ <input type="hidden" name="token" value="JYJmVLUn2NJKddLq_U8pxaFHPvw:1322841717953" >
+ <div class="graytext" style="float: right;">
+ Hint: You can use <a href="http://code.google.com/p/support/wiki/WikiSyntax">Wiki Syntax.</a>
+ </div>
+ <div>Enter a comment:</div>
+ <textarea name="content" rows="6" cols="100"></textarea><br><br>
+ <input type="submit" name="submit" value="Submit" >
+ </td>
+ </table>
+ </form>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input type="hidden" name="sequence_num" value="" >
+ <input type="hidden" name="create_time" value="" >
+ <input type="hidden" name="mode" value="" >
+ <input type="hidden" name="pagename" value="ACHIZITII" >
+ <input type="hidden" name="token" value="JYJmVLUn2NJKddLq_U8pxaFHPvw:1322841717953" >
+ </form>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/12684539022547559253/js/dwiki_scripts_20081003.js"></script>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/12684539022547559253/js/prettify/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/12684539022547559253/js/dit_scripts.js"></script>
+
+
+ <script type="text/javascript">
+ _fetchOptions(
+ "", "sia-openerp", "wikiOptions",
+ codesite_token, 1322665258);
+ _onload();
+ </script>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+</script>
+
+  
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/12684539022547559253/js/ph_core.js"></script>
+ 
+ 
+ 
+ 
+ <script type="text/javascript" src="/js/codesite_product_dictionary_ph.pack.04102009.js"></script>
+</div> 
+<div id="footer" dir="ltr">
+ <div class="text">
+ &copy;2011 Google -
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+ 
+ 
+
+
+ 
+ </body>
+</html>
