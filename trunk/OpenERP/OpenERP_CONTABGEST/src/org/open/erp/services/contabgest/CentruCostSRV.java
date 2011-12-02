@@ -2,7 +2,8 @@ package org.open.erp.services.contabgest;
 
 import java.util.Date;
 
-import org.open.erp.services.personal.Persoana;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.productie.FazaProductie;
 
 
 /**
@@ -13,7 +14,7 @@ import org.open.erp.services.personal.Persoana;
  * 
  * @Dependente: CosturiPrimareSrv, PersonalSrv
  * 
- * @EntitatiNomGen: Persoana
+ * @EntitatiNomGen: Angajat
  * 
  * @EntitatiAlteSrv: 
  * 
@@ -42,11 +43,12 @@ public interface CentruCostSRV {
 	 * @return instanta Activitate nou creat. 
 	 * 
 	 */
-	CentruCost creareCentruCost(String denumireCentruCost,Persoana responsabil, Date dataStart,Date dataSfarsit,Double sumaCentruCost);
+	CentruCost creareCentruCost(String denumireCentruCost, FazaProductie faza, Angajat responsabil, Date dataStart,Date dataSfarsit,Double sumaCentruCost);
 	/**
 	 * Scop					Creeaza activitate si o asociaza centrului de cost.
 	 * 
 	 * @param centru cost		Centrul de cost caruia i se va asocia o activitate nou creata
+	 * @param faza
 	 * @param responsabil
 	 * @param denumireActivitate
 	 * @param dataStart
@@ -58,7 +60,7 @@ public interface CentruCostSRV {
 	 */
 	
 	
-	Activitate creareActivitate(CentruCost centruCost, Persoana responsabil, String denumireCentru, Date dataStart, Date dataSfarsit, Double valoareAprovizionareExterna);
+	Activitate creareActivitate(CentruCost centruCost,FazaProductie faza, Angajat responsabil, String denumireCentru, Date dataStart, Date dataSfarsit, Double valoareAprovizionareExterna);
 	/**
 	 * Scop					Schimba status centrului de cost in started, schimba status primei activitati in started.
 	 * 

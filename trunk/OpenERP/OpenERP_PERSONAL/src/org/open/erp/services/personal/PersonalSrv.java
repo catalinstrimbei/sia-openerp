@@ -154,6 +154,8 @@ public interface PersonalSrv {
 	
 	
 	void concediere(ContractMunca contractMunca_);
+
+	Angajat getAngajatCuId(int i);
 	
 	/**
 	 * Scop   

@@ -1,7 +1,8 @@
 package org.open.erp.services.contabgest;
 
 import java.util.Date;
-import org.open.erp.services.personal.Persoana;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.productie.FazaProductie;
 
 /**
  * 
@@ -24,7 +25,7 @@ public class Activitate {
 	private Date dataStop;
 	private Double costActivitate;
 	private Integer status = NE_PORNITA;
-	private Persoana responsabil;
+	private Angajat responsabil;
 	private CentruCost centruCost;
 	private Date dataActualizare;
 	private Double procentRealizare = 0.0;
@@ -34,9 +35,9 @@ public class Activitate {
 	
 
 
-	public Activitate(Integer idActivitate, String denumireActivitate,
+	public Activitate(Integer idActivitate, FazaProductie faza, String denumireActivitate,
 			Date dataStart, Date dataStop, Double costActivitate,
-			Persoana responsabil) {
+			Angajat responsabil) {
 		super();
 		this.idActivitate = idActivitate;
 		this.denumireActivitate = denumireActivitate;
@@ -51,7 +52,7 @@ public class Activitate {
 
 	public Activitate(Integer idActivitate, String denumireActivitate,
 			Date dataStart, Date dataStop, Double costActivitate,
-			Integer status, Persoana responsabil, CentruCost centruCost,
+			Integer status, Angajat responsabil, CentruCost centruCost,
 			Date dataActualizare, Double procentRealizare) {
 		super();
 		this.idActivitate = idActivitate;
@@ -87,7 +88,7 @@ public class Activitate {
 	public Integer getStatus() {
 		return status;
 	}
-	public Persoana getResponsabil() {
+	public Angajat getResponsabil() {
 		return responsabil;
 	}
 	public CentruCost getCentruCost() {
@@ -141,7 +142,7 @@ public class Activitate {
 	}
 
 
-	public void setResponsabil(Persoana responsabil) {
+	public void setResponsabil(Angajat responsabil) {
 		this.responsabil = responsabil;
 	}
 
@@ -163,21 +164,6 @@ public class Activitate {
 
 	public static Integer getTerminata() {
 		return TERMINATA;
-	}
-
-
-
-
-
-
-
-
-	
-
-
-	
-	
-	
-	
+	}	
 
 }

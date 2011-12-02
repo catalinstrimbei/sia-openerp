@@ -4,8 +4,10 @@ import org.open.erp.services.contabgest.CentruCostSRV;
 import org.open.erp.services.contabgest.CostPrimarSRV;
 import org.open.erp.services.contabgest.impl.CentruCostImpl;
 import org.open.erp.services.contabgest.impl.CostPrimarImpl;
-import org.open.erp.services.personal.PersonalSRV;
-import org.open.erp.services.personal.impl.PersonalDummyImpl;
+
+import org.open.erp.services.personal.PersonalSrv;
+
+import org.open.erp.services.personal.impl.PersonalImpl;
 
 
 public class CentruCostDummyFactory {
@@ -23,7 +25,7 @@ public class CentruCostDummyFactory {
 	
 	// ASA?!?!
 	
-	public static PersonalSRV getPersonalSrv(){
-		return new PersonalDummyImpl();
+	public static PersonalSrv getPersonalSrv(){
+		return new PersonalImpl();
 	}
 }

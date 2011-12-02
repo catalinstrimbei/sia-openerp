@@ -1,6 +1,6 @@
 package org.open.erp.services.contabgest;
 
-import org.open.erp.services.personal.Persoana;
+import org.open.erp.services.nomgen.Persoana;
 
 /**
  * 

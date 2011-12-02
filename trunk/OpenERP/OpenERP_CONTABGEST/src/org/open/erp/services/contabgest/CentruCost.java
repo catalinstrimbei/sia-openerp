@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.open.erp.services.personal.Persoana;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.productie.FazaProductie;
 
 /**
  * 
@@ -25,11 +26,12 @@ public class CentruCost {
 	//
 	Integer idCentruCost;
 	String denumireCentruCost;
+	private FazaProductie faza;
 	Date dataStart = new Date();
 	Date dataSfarsit;
 	Double sumaCentruCost;
 	Integer status = CentruCost.IN_ALOCARE;
-	Persoana responsabil;
+	Angajat responsabil;
 	//Costuri primare
 	CosturiPrimare costuriPrimare;
 	Map<Activitate, LinieCost> activitati = new HashMap<Activitate, LinieCost>();
@@ -40,13 +42,14 @@ public class CentruCost {
 	public CentruCost() {
 		super();
 	}
-	public CentruCost(Integer idCentruCost, String denumireCentruCost,
+	public CentruCost(Integer idCentruCost, String denumireCentruCost, FazaProductie faza,
 			Date dataStart, Date dataSfarsit, Double sumaCentruCost,
-			Integer status, Persoana responsabil,
+			Integer status, Angajat responsabil,
 			CosturiPrimare costuriPrimare, Map<Activitate, LinieCost> activitati) {
 		super();
 		this.idCentruCost = idCentruCost;
 		this.denumireCentruCost = denumireCentruCost;
+		this.faza = faza;
 		this.dataStart = dataStart;
 		this.dataSfarsit = dataSfarsit;
 		this.sumaCentruCost = sumaCentruCost;
@@ -91,10 +94,10 @@ public class CentruCost {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	public Persoana getResponsabil() {
+	public Angajat getResponsabil() {
 		return responsabil;
 	}
-	public void setResponsabil(Persoana responsabil) {
+	public void setResponsabil(Angajat responsabil) {
 		this.responsabil = responsabil;
 	}
 	public CosturiPrimare getCosturiPrimare() {
@@ -108,6 +111,12 @@ public class CentruCost {
 	}
 	
 
+	public FazaProductie getFaza() {
+		return faza;
+	}
+	public void setFaza(FazaProductie faza) {
+		this.faza = faza;
+	}
 	public void setActivitati(Map<Activitate, LinieCost> activitati) {
 		this.activitati = activitati;
 	}

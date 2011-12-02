@@ -8,7 +8,8 @@ import org.open.erp.services.contabgest.CentruCostSRV;
 import org.open.erp.services.contabgest.CostPrimarSRV;
 import org.open.erp.services.contabgest.CosturiPrimare;
 import org.open.erp.services.contabgest.LinieCost;
-import org.open.erp.services.personal.Persoana;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.productie.FazaProductie;
 
 /**
  * 
@@ -45,12 +46,12 @@ public class CentruCostImpl implements CentruCostSRV{
 	
 	//implementare actiuni serviciu CentruCostSRV
 	@Override
-	public CentruCost creareCentruCost(String denumireCentruCost, Persoana responsabil,
+	public CentruCost creareCentruCost(String denumireCentruCost, FazaProductie faza, Angajat responsabil,
 			Date dataStart, Date dataSfarsit, Double valoareCost) {
 		
 		logger.debug("Creare CentruCost");
 		
-		CentruCost centruCostNou = new CentruCost (1, denumireCentruCost, dataStart, dataSfarsit, valoareCost, null, responsabil, null, null);
+		CentruCost centruCostNou = new CentruCost (1, denumireCentruCost, faza, dataStart, dataSfarsit, valoareCost, null, responsabil, null, null);
 		CosturiPrimare costuriPrimare = costPrimarSRV.creareCosturiPrimare(valoareCost);
 		centruCostNou.setCosturiPrimare(costuriPrimare);
 		
@@ -63,9 +64,9 @@ public class CentruCostImpl implements CentruCostSRV{
 	
 	
 	@Override
-	public Activitate creareActivitate(CentruCost centruCost, Persoana responsabil, String denumireActivitate, 
+	public Activitate creareActivitate(CentruCost centruCost, FazaProductie faza, Angajat responsabil, String denumireActivitate, 
 			Date dataStart, Date dataSfarsit, Double costActivitate) {
-		Activitate activitate = new Activitate(1, denumireActivitate, dataStart, dataSfarsit, 
+		Activitate activitate = new Activitate(1, faza, denumireActivitate, dataStart, dataSfarsit, 
 				costActivitate, responsabil);
 		
 		LinieCost linieCost = costPrimarSRV.creareLinieCosturiPrimareInCosturiPrimare(centruCost.getCosturiPrimare(), 
@@ -89,7 +90,7 @@ public class CentruCostImpl implements CentruCostSRV{
 			Double costActivitate, Date dataActualizata) {
 		// Schimba status centru cost in progress, actualizeaza activitate, actualizeaza linii de costuri primare in centru cost
 		if (activitate.getStatus().equals(Activitate.NE_PORNITA))
-			activitate.setStatus(activitate.IN_CURS);
+			activitate.setStatus(Activitate.IN_CURS);
 		activitate.setDataActualizare(dataActualizata);
 		activitate.setProcentRealizare(activitate.getProcentRealizare() + procentRealizare);
 		// Actualizare costuri primare
