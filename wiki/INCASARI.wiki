@@ -1,0 +1,22 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Modul FININCASARI
+
+
+= Details =
+
+ 1.Implementeaza procesul de Incasare
+
+ 2.Gestioneaza incasarea sumelor in numerar 
+
+ 3. Gestioneaza incasarea Facturilor emise in urma vanzarii, inclusiv incasarea partiala a acestora 
+
+ 4. Gestioneaza incasarea cecurilor si a biletelor la ordin
+
+ 5. Gestioneaza incasarile in lei si in valuta 
+
+ 6. Actualizeaza Sold client si sold Cont bancar
+
+ 7. Inregistrarea platilor efectuate de clienti. 
