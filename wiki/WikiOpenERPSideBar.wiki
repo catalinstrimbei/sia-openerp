@@ -6,4 +6,4 @@
     * [NOMGEN]
     * [CONTABGEN]
     * [ACHIZITII]
-    * [FIINCASARI]
+    * [INCASARI]
