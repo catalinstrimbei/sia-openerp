@@ -2,7 +2,7 @@
  <div class="vt" id="wikimaincol">
  <h1><a name="Introduction"></a>Introduction<a href="#Introduction" class="section_anchor"></a></h1>
  <p>Modul ContabGest </p><h1><a name="Details"></a>Details<a href="#Details" class="section_anchor"></a></h1>
- <p>Contabilitate de Gestiune </p><blockquote>- Serviciu CentruCostSrv<a href="/p/sia-openerp/w/edit/CentruCostSrv">?</a> 
+ <p>Contabilitate de Gestiune </p><blockquote>- Serviciu CentruCostSrv<a href="/p/sia-openerp/w/edit/CentruCostSrv"></a> 
 </blockquote>
 <ul><li>1. Creaza instanta Activitate  </li>
 <li>2. Creeaza activitate si o asociaza centrului de cost </li>
