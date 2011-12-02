@@ -7,9 +7,10 @@ Modul ContabGest
 
 = Details =
 
-Contabilitate de Gestiune
+         Contabilitate de Gestiune
 
- - Serviciu CentruCostSrv
+  Serviciu CentruCostSrv
+
  * 1. Creaza instanta Activitate 
  * 2. Creeaza activitate si o asociaza centrului de cost.
  * 3. Creaza instanta centru de cost
