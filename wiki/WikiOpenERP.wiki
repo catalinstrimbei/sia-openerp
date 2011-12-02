@@ -14,7 +14,7 @@ Modul-[NOMGEN]
 
 Modul-[CONTABGEN]
 
-Modul-CONTABGEST    
+Modul-[CONTABGEST]    
 
 Modul-ACHIZITII     
 
