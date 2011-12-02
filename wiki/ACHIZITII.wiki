@@ -10,7 +10,7 @@ Modul Achizitii
 Vizeaza procesul de APROVIZIONARE
 
  - Serviciu AprovizionareSrv
- * 1. Creeaza instanta cerere aprovizionare
+ * 1. Primeste Cererile de aprovizionare
  * 2. Gestioneaza plan de aprovizionare
  * 3. Gestioneaza cereri de oferta
  * 4. Gestioneaza Furnizori
