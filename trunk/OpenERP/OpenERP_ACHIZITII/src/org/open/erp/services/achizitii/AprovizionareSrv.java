@@ -52,27 +52,16 @@ public interface AprovizionareSrv {
 	
     
     /**
-	 * Scop Crearea unei cerere de oferta
+	 * Scop Adaugare linii intr-o cerere de oferta, linii care provin din Planul de aprovizionare
 	 * 
-	 * @param furnizori  furnizorii carora le va fi trimisa cererea de oferta
-	 * @param data data cerere oferta
-	 * @return Cerere de oferta noua
+	 * @param cerere  cererea de aprovizionare careia i se adauga linii
+	 * @param liniiPlan liniile din planul de aprovizionare care se adauga in Cererea de oferta
+	 * @return Cerere de oferta actualizata
 	 * 
 	 */
     
-    Furnizor creareFurnizor(Persoana persoana, Integer cont);
-    
-    void creareCerereOferta(List<Furnizor> furnizori, Date data);  
-    
-    /**
-  	 * Scop Actualizare cerere oferta
-  	 * 
-  	 * @param linieCerereOferta  Linia din cererea de oferta ce urmeaza a fi adaugata 
-  	 * @return Cerere de oferta actualizata
-  	 * 
-  	 */
-    
-    void updateCerereOferta(LinieCerereOferta linieCerereOferta);
+    void adaugareLiniiCerereOferta(CerereOferta cerere, List<LiniePlanAprovizionare> liniiPlan);      
+   
     
     /**
   	 * Trimiterea cerererii de oferta la furnizori
@@ -146,8 +135,7 @@ public interface AprovizionareSrv {
    	 * 
    	 */     
     
-    Factura creareFactura(Furnizor furnizor, String nrfact, Double valfact, Double TVATotal );
-    
+        
     void creareNIR(Factura factura,Date data);
     /**
    	 * Inregistrare receptie materiale

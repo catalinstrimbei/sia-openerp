@@ -1,9 +1,7 @@
 package org.open.erp.services.achizitii;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.LinieDocument;
 
 public class Factura extends Document {
 	public Furnizor furnizor;
@@ -49,5 +47,13 @@ public class Factura extends Document {
 		this.nrFact = nrFact;
 		this.furnizor = furnizor;
 	}
+	public void addLinieFactura(LinieDocument li) {
+        this.getLiniiDocument().add(li);
+        li.setDocument(this);
+    }
 
+	public void removeLinieFactura(LinieDocument li) {
+        this.getLiniiDocument().remove(li);
+        li.setDocument(this);
+    }
 }

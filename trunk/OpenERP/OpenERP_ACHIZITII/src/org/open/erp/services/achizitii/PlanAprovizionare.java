@@ -37,7 +37,8 @@ public class PlanAprovizionare {
 	public static  PlanAprovizionare getPlanAprovizionare() {
         if ((planAprovizionare==null)||(Calendar.getInstance().get(Calendar.WEEK_OF_YEAR) != planAprovizionare.getSaptAn())||           
            (Calendar.getInstance().get(Calendar.YEAR) != planAprovizionare.getAn()))
-          {        	
+          { 
+        	planAprovizionare.setStatusPlan(FINALIZAT);
         	Calendar c = Calendar.getInstance();
      	    Date date = new Date();
      	    c.setTime(date);
@@ -46,6 +47,7 @@ public class PlanAprovizionare {
 					,Calendar.getInstance().get(Calendar.YEAR)
 					,Calendar.getInstance().getTime()
 					,c.getTime());
+			planAprovizionare.setStatusPlan(IN_CURS);
         }
         return planAprovizionare;
 }

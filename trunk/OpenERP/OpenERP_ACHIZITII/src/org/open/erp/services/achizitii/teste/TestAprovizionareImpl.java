@@ -60,7 +60,7 @@ public class TestAprovizionareImpl {
 		logger.info("End test: Plan unic de aprovizionare creat");
 	}
 	
-	@Test
+	/*@Test
 	public void testcreareFactura() {
 		logger.info("Begin test: Creare Factura");
 		
@@ -120,6 +120,6 @@ public class TestAprovizionareImpl {
 			int i = finplatiInstance.acceptaPlataFurnizor(furnizor, fact.getValFact(), new Date());
 			assertEquals("Nu putem plati la acest furnizor ",i,1);
 			logger.info("End test: plata factura acceptata");
-	}
+	}*/
 
 }

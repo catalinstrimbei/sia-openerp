@@ -24,6 +24,7 @@ import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.impl.Procesare;
@@ -35,20 +36,6 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 	public AprovizionareImpl() {
 	}	
 
-	@Override
-	public Furnizor creareFurnizor(Persoana persoana, Integer cont) {
-		
-		return new Furnizor("string","string","string","string",persoana,cont);
-	}
-
-
-
-	@Override
-	public Factura creareFactura(Furnizor furnizor,
-			String nrfact, Double valfact, Double TVATotal) {
-		// TODO Auto-generated method stub
-		return new Factura(valfact,TVATotal,nrfact,furnizor);
-	}
 
 	@Override
 	public PlanAprovizionare inregistrareCerereAprovizionare(
@@ -85,19 +72,17 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		this.inregistrareCerereAprovizionare((CerereAprovizionare)evenimentCuCerereAprovizionare.getNewValue());
 	}
 
-	
-
 	@Override
-	public void creareCerereOferta(List<Furnizor> furnizori, Date data) {
-		// TODO Auto-generated method stub
-		
+	public void adaugareLiniiCerereOferta(CerereOferta cerere, List<LiniePlanAprovizionare> liniiPlan)  {
+		Integer linie=cerere.getLinii().size();
+		for (LiniePlanAprovizionare liniePlan :liniiPlan){
+			Material articol = liniePlan.getArticol();
+			Double cantitate = liniePlan.getCantitate();
+			LinieCerereOferta linieCerereOferta = new LinieCerereOferta(linie+1,cerere,(Articol)articol,cantitate);
+			cerere.addLinieCerere(linieCerereOferta);
+		}		
 	}
 
-	@Override
-	public void updateCerereOferta(LinieCerereOferta linieCerereOferta) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void trimitereCerereOferta(CerereOferta cerereOferta,

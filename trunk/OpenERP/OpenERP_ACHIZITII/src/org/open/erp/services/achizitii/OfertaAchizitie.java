@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.open.erp.services.nomgen.LinieDocument;
+
 public class OfertaAchizitie {
 	public static final Integer APROBATA = 1;
 	public static final Integer RESPINSA = -1;
@@ -12,16 +14,15 @@ public class OfertaAchizitie {
 	public Date dataOferta;	
 	public Integer statusOferta;
 	public Furnizor furnizor;
-	public List<LinieCerereOferta> liniiCerereOferta = new LinkedList<LinieCerereOferta>();
-	public OfertaAchizitie(Integer idOferta, Date dataOferta,
-			Integer statusOferta, Furnizor furnizor,
-			List<LinieCerereOferta> liniiCerereOferta) {
+	public List<LinieOfertaAchizitie> liniiOferta = new LinkedList<LinieOfertaAchizitie>();
+	
+	public OfertaAchizitie(Date dataOferta, Integer statusOferta,
+			Furnizor furnizor, List<LinieOfertaAchizitie> liniiOferta) {
 		super();
-		this.idOferta = idOferta;
 		this.dataOferta = dataOferta;
 		this.statusOferta = statusOferta;
 		this.furnizor = furnizor;
-		this.liniiCerereOferta = liniiCerereOferta;
+		this.liniiOferta = liniiOferta;
 	}
 	public Integer getIdOferta() {
 		return idOferta;
@@ -47,11 +48,21 @@ public class OfertaAchizitie {
 	public void setFurnizor(Furnizor furnizor) {
 		this.furnizor = furnizor;
 	}
-	public List<LinieCerereOferta> getLiniiCerereOferta() {
-		return liniiCerereOferta;
+	
+	public List<LinieOfertaAchizitie> getLiniiOferta() {
+		return liniiOferta;
 	}
-	public void setLiniiCerereOferta(List<LinieCerereOferta> liniiCerereOferta) {
-		this.liniiCerereOferta = liniiCerereOferta;
+	public void setLiniiOferta(List<LinieOfertaAchizitie> liniiOferta) {
+		this.liniiOferta = liniiOferta;
 	}
+	public void addLinieOfertaAchizitie(LinieOfertaAchizitie li) {
+        this.getLiniiOferta().add(li);
+        li.setOferta(this);
+    }
+
+	public void removeLinieOfertaAchizitie(LinieOfertaAchizitie li) {
+        this.getLiniiOferta().remove(li);
+        li.setOferta(this);
+    }
 	
 }

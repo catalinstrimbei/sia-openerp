@@ -5,7 +5,7 @@ public class LinieCerereOferta {
 public Integer nrLinie;
 public CerereOferta cerereOferta;
 public Articol articol;
-public Integer cantitate;
+public Double cantitate;
 
 public Integer getNrLinie() {
 	return nrLinie;
@@ -25,14 +25,15 @@ public Articol getArticol() {
 public void setArticol(Articol articol) {
 	this.articol = articol;
 }
-public Integer getCantitate() {
+
+public Double getCantitate() {
 	return cantitate;
 }
-public void setCantitate(Integer cantitate) {
+public void setCantitate(Double cantitate) {
 	this.cantitate = cantitate;
 }
 public LinieCerereOferta(Integer nrLinie, CerereOferta cerereOferta,
-		Articol articol, Integer cantitate) {
+		Articol articol, Double cantitate) {
 	super();
 	this.nrLinie = nrLinie;
 	this.cerereOferta = cerereOferta;

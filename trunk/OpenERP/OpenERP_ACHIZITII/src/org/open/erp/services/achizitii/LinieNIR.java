@@ -5,14 +5,24 @@ import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 
 public class LinieNIR extends LinieDocument {
-	public Integer cantitateConstatata;
-	public Integer diferentaCantitate;
+	private Integer cantitateConstatata;
+	private Integer diferentaCantitate;
+	private Double pret;
+	public Double getPret() {
+		return pret;
+	}
+	public void setPret(Double pret) {
+		this.pret = pret;
+	}
+	
 	public LinieNIR(Integer linieDoc, Document document, Material material,
 			Double cantitate, Double pret, Double tVA,
-			Integer cantitateConstatata, Integer diferentaCantitate) {
+			Integer cantitateConstatata, Integer diferentaCantitate,
+			Double pret2) {
 		super(linieDoc, document, material, cantitate, pret, tVA);
 		this.cantitateConstatata = cantitateConstatata;
 		this.diferentaCantitate = diferentaCantitate;
+		pret = pret2;
 	}
 	public Integer getCantitateConstatata() {
 		return cantitateConstatata;
