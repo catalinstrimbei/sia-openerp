@@ -12,7 +12,7 @@ Modul ContabGest
   Serviciu CentruCostSrv
 
  * 1. Creaza instanta Activitate 
- * 2. Creeaza activitate si o asociaza centrului de cost.
- * 3. Creaza instanta centru de cost
- * 4. Gestioneaza stadiul in care se afla activitatea
+ * 2. Creeaza Activitate si o asociaza Centrului de Cost.
+ * 3. Creaza instanta Centru de Cost
+ * 4. Gestioneaza stadiul in care se afla Activitatea
  * 5. Inregistreaza soldul pentru un Centru de Cost
