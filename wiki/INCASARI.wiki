@@ -7,7 +7,7 @@ Modul FININCASARI
 
 = Details =
 
- 1.Implementeaza procesul de Incasare
+  1.Implementeaza procesul de Incasare
 
  2.Gestioneaza incasarea sumelor in numerar 
 
