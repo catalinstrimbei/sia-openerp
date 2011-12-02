@@ -1,7 +1,8 @@
 <div id="wikicontent">
  <div class="vt" id="wikimaincol">
- <h1><a name="Introduction"></a>Introduction<a href="#Introduction" class="section_anchor"></a></h1><p>Modul Achizitii </p><h1><a name="Details"></a>Details<a href="#Details" class="section_anchor"></a></h1><p>Vizeaza procesul de APROVIZIONARE </p><blockquote>- Serviciu AprovizionareSrv<a href="/p/sia-openerp/w/edit/AprovizionareSrv">?</a> 
-</blockquote><ul><li>1. Creeaza instanta cerere aprovizionare </li><li>2. Gestioneaza plan de aprovizionare </li><li>3. Gestioneaza cereri de oferta </li><li>4. Gestioneaza Furnizori </li><li>5. Analiza Oferte Furnizori </li><li>6. Inregistrare comanda achizitie </li><li>7. Inregistrare Receptie materiale </li><li>8. Inregistrare Facturi furnizor </li><li>9. Inregistrare NIR </li></ul>
+ <h1><a name="Introduction"></a>Introduction<a href="#Introduction" class="section_anchor"></a></h1><p>Modul ContabGest </p><h1><a name="Details"></a>Details<a href="#Details" class="section_anchor"></a></h1><p>Contabilitate de Gestiune </p><blockquote>- Serviciu CentruCostSrv<a href="/p/sia-openerp/w/edit/AprovizionareSrv">?</a> 
+</blockquote><ul><li>1. Creaza instanta Activitate  </li><li>2. Creeaza activitate si o asociaza centrului de cost </li><li>3. Creaza instanta centru de cost </li><li>4. Gestioneaza stadiul in care se afla activitatea </li><li>5. Inregistreaza soldul pentru un Centru de Cost </li>
+</ul>
  </div>
  </div>
  </td><tr>
