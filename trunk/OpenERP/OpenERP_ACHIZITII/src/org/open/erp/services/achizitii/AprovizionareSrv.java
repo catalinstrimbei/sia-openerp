@@ -49,28 +49,7 @@ public interface AprovizionareSrv {
 	
 	public PlanAprovizionare inregistrareCerereAprovizionare(Document cerereAprovizionare);
 	
-	/**
-	 *Scop Crearea unei instante unice a planului de aprovizionare
-	 * 
-	 * @param dataInceput  data de inceput a planului
-	 * @param dataSfarsit data de sfarsit a planului
-	 * @param persoana persoana responsabila
-	 * @return O instanta unica a planului de aprovizionare
-	 * 
-	 */
 	
-	//void crearePlanAprovizionare(Date dataInceput, Date dataSfarsit, Persoana persoana);
-	
-	/**
-	 * Scop Actualizare plan de aprovizionare
-	 * 
-	 * @param plan Planul de aprovizionare care urmeaza a fi actualizat
-	 * @param linieCerereAprovizionare linia din cererea de aprovizionare care va fi inserata in plan
-	 * @return Plan de aprovizionare actualizat 
-	 * 
-	 */
-	
-    void updatePlanAprovizionare(PlanAprovizionare plan,LinieDocument linieCerereAprovizionare );
     
     /**
 	 * Scop Crearea unei cerere de oferta

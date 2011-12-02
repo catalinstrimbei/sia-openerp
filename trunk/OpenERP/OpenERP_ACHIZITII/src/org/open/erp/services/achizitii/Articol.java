@@ -16,5 +16,13 @@ public class Articol extends Material {
 		this.furnizori = furnizori;
 	}
 	
+	public List<Furnizor> getFurnizori() {
+		return furnizori;
+	}
+
+	public void setFurnizori(List<Furnizor> furnizori) {
+		this.furnizori = furnizori;
+	}
+	
 
 }

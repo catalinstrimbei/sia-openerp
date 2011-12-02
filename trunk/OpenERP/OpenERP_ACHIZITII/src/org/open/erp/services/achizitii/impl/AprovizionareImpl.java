@@ -1,9 +1,12 @@
 package org.open.erp.services.achizitii.impl;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Date;
 import java.util.List;
 
 import org.open.erp.services.achizitii.AprovizionareSrv;
+import org.open.erp.services.achizitii.Articol;
 import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.Comanda;
 import org.open.erp.services.achizitii.Contract;
@@ -13,6 +16,7 @@ import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.achizitii.LinieCerereOferta;
 import org.open.erp.services.achizitii.LinieComanda;
 import org.open.erp.services.achizitii.LinieFacturaRetur;
+import org.open.erp.services.achizitii.LiniePlanAprovizionare;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
@@ -21,9 +25,11 @@ import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.stocuri.CerereAprovizionare;
+import org.open.erp.services.stocuri.impl.Procesare;
 
 
-public class AprovizionareImpl implements AprovizionareSrv{
+public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListener{
 	public ContabilizareSrv contabilizareSrv = new ContabilizareSrvImpl();
 	
 	public AprovizionareImpl() {
@@ -46,24 +52,40 @@ public class AprovizionareImpl implements AprovizionareSrv{
 
 	@Override
 	public PlanAprovizionare inregistrareCerereAprovizionare(
-			Document cerereAprovizionare) {
-		return PlanAprovizionare.getPlanAprovizionare();
-		
+			Document cerereApr) {
+		//Vom crea un plan de aprovizionare nou daca suntem intr-o saptamana noua,
+		//altfel vom return planul de aprovizionare existent
+		PlanAprovizionare plan = PlanAprovizionare.getPlanAprovizionare();
+		CerereAprovizionare cerere = (CerereAprovizionare)cerereApr;		
+		//Vom adauga in plan liniile din cerere. In cazul in care in plan nu exista produsele din liniile cererii vom 
+		//crea o linie noua in plan
+		  for (LinieDocument linieCerere : cerere.getLiniiDocument()) {
+	            LiniePlanAprovizionare liniePlan=plan.existaArticolInLiniiPlan(linieCerere.getMaterial());
+	            int linii = plan.getLiniiPlan().size();
+	            if (liniePlan==null){
+	            	liniePlan=new LiniePlanAprovizionare((Articol) linieCerere.getMaterial(),
+                                                                  linieCerere.getCantitate(),
+                                                                  linii+1);
+	            	liniePlan.setPlanAprovizionare(plan);
+	            	plan.addLiniePlan(liniePlan);	            	
+	            }else{
+	            	liniePlan.setCantitate(liniePlan.getCantitate()+linieCerere.getCantitate()); 
+	            }
+	        }	
+		return plan;
+	}	
+	public void ascultaFurnizoriCerereriAprovizionare( Procesare procesare) {
+		procesare.addChangeListener(this);
 	}
-
-	/*@Override
-	public void crearePlanAprovizionare(Date dataInceput, Date datasSarsit,
-			Persoana persoana) {
-		 TODO Auto-generated method stub
-		
-	}*/
 
 	@Override
-	public void updatePlanAprovizionare(PlanAprovizionare plan,
-			LinieDocument linieCerereAprovizionare) {
-		// TODO Auto-generated method stub
-		
+	public void propertyChange(PropertyChangeEvent evenimentCuCerereAprovizionare) {	
+		//Se extrage cererea de aprovizionare din evenimentul generat de crearea unei noi Cereri de Aprovizionare in clasa
+		//Procesare apartinand modulului de Stocuri
+		this.inregistrareCerereAprovizionare((CerereAprovizionare)evenimentCuCerereAprovizionare.getNewValue());
 	}
+
+	
 
 	@Override
 	public void creareCerereOferta(List<Furnizor> furnizori, Date data) {

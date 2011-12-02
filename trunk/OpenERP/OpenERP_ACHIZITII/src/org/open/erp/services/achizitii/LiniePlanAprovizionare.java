@@ -5,8 +5,7 @@ public class LiniePlanAprovizionare {
 	public Articol articol;
 	public Double cantitate;
 	public Integer linie;
-	public LiniePlanAprovizionare(PlanAprovizionare planAprovizionare,
-			Articol articol, Double cantitate, Integer linie) {
+	public LiniePlanAprovizionare(Articol articol, Double cantitate, Integer linie) {
 		super();
 		this.planAprovizionare = planAprovizionare;
 		this.articol = articol;
