@@ -4,6 +4,8 @@ Modul FININCASARI
 
 Add your content here.
 
+Add your content here.  Format your content with:
+
  1.Implementeaza procesul de Incasare
 
  2.Gestioneaza incasarea sumelor in numerar 
@@ -17,8 +19,3 @@ Add your content here.
  6. Actualizeaza Sold client si sold Cont bancar
 
  7. Inregistrarea platilor efectuate de clienti. 
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
