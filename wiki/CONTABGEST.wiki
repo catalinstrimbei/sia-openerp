@@ -1,4 +1,3 @@
-#labels Featured,Phase-Requirements,Phase-Design
 <div id="wikicontent">
  <div class="vt" id="wikimaincol">
  <h1><a name="Introduction"></a>Introduction<a href="#Introduction" class="section_anchor"></a></h1>
