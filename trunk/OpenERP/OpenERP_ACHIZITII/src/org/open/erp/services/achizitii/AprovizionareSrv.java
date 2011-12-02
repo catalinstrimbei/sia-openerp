@@ -154,10 +154,10 @@ public interface AprovizionareSrv {
    	 * 
    	 */  
     
-    Factura creareFactura(Furnizor furnizor, String nrfact, Double valfact, Double TVATotal );
+   
     
     
-    public int inregistrareFactura(Document factura);
+    public int inregistrareFactura(Factura factura);
     /**
    	 * Creare nota de intrare receptie
    	 * 
@@ -165,7 +165,10 @@ public interface AprovizionareSrv {
    	 * @param data data creare NIR
    	 * @return Inregistrare factura furnizor
    	 * 
-   	 */      
+   	 */     
+    
+    Factura creareFactura(Furnizor furnizor, String nrfact, Double valfact, Double TVATotal );
+    
     void creareNIR(Factura factura,Date data);
     /**
    	 * Inregistrare receptie materiale
@@ -212,9 +215,7 @@ public interface AprovizionareSrv {
    	 * @return  Inregistrare progres comanda
    	 * 
    	 */ 
-    void progresComanda(Comanda comanda);
-
-	
+    void progresComanda(Comanda comanda);	
     
     }
     

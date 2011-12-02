@@ -112,9 +112,9 @@ public class AprovizionareImpl implements AprovizionareSrv{
 	}
 
 	@Override
-	public int inregistrareFactura(Document factura) {		
-		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc(), ((Factura) factura).getValFact(), 
-				  factura.getNrDoc(),  ((Factura) factura).getFurnizor().getId(),  factura.getLiniiDocument(),StareDocument.NOU, (Integer)1);
+	public int inregistrareFactura(Factura factura) {		
+		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc(), ((Factura) factura).getValFact(),factura.getTVATotal(), 
+				  factura.getNrDoc(),  ((Factura) factura).getFurnizor().getId(),  factura.getLiniiDocument(),StareDocument.NOU, null);
 		
 	}
 
