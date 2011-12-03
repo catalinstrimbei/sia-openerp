@@ -12,18 +12,21 @@ import org.open.erp.services.ctbgen.Cont;
 import org.open.erp.services.ctbgen.Cont.StatusSintetic;
 import org.open.erp.services.ctbgen.Cont.TipCont;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
-import org.open.erp.services.ctbgen.LinieMaterialValoare;
+//import org.open.erp.services.ctbgen.LinieMaterialValoare;
 import org.open.erp.services.ctbgen.LunaLucru;
 import org.open.erp.services.ctbgen.RegConturi;
 import org.open.erp.services.ctbgen.RegLuniLucru;
 import org.open.erp.services.ctbgen.RegSablonNC;
 import org.open.erp.services.ctbgen.RegTipMaterial;
+//import org.open.erp.services.ctbgen.RegTipuriContabile;
 import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.StareDocument;
-import org.open.erp.services.ctbgen.TipContabil;
+//import org.open.erp.services.ctbgen.TipContabil;
 import org.open.erp.services.ctbgen.TipIncasare;
 import org.open.erp.services.ctbgen.TipPlata;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
+import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 
 public class TestContabilizareSrvImpl {
@@ -148,30 +151,35 @@ public class TestContabilizareSrvImpl {
 	}
  
    
-	
-	public void declanseaza(){
-		TestJurnalizareVanzare();
-		TestJurnalizareAchizitie();
-		TestJurnalizareIncasare();
-		TestJurnalizarePlata();
-		TestJurnalizareConsum();
-		TestJurnalizareProductie();
-		TestJurnalizareSalarii();
-		TestInchideLuna();
-	}		
+// asta era o metoda care centraliza testele, iar testele erau simple metode
+//	@Test
+//	public void declanseaza(){
+//		TestJurnalizareVanzare();
+//		TestJurnalizareAchizitie();
+//		TestJurnalizareIncasare();
+//		TestJurnalizarePlata();
+//		TestJurnalizareConsum();
+//		TestJurnalizareProductie();
+//		TestJurnalizareSalarii();
+//		TestInchideLuna();
+//	}		
 	
 	//-------------------------------------------------
 	@Test
 	public void TestJurnalizareVanzare(){
 		logger.info("Begin test: TestjurnalizareVanzare");
 		
-		TipContabil tipMaterial = new TipContabil(0, "materii prime", regConturi.getContDupaId(301), 
-				                                                      regConturi.getContDupaId(401), 
-				                                                      regConturi.getContDupaId(601));	
+		//TipContabil tipMaterial = new TipContabil(0, "materii prime", regConturi.getContDupaId(301), 
+		//		                                                      regConturi.getContDupaId(401), 
+		//		                                                      regConturi.getContDupaId(601));	
 		
 		//creare matrice listMatVal
-		LinieMaterialValoare lmv1=new LinieMaterialValoare(tipMaterial,100.0,1.0);
-		List<LinieMaterialValoare> listaMat = new ArrayList <LinieMaterialValoare>();
+		
+		//transmite sa faca o metoda publica in NomSrv, nu este,
+		 Material mat1= new Material();
+		 mat1.setTipContabil("Marfuri");
+		LinieDocument lmv1=new LinieDocument(1,null,mat1,10.0,5.0,0.0);
+		List<LinieDocument> listaMat = new ArrayList <LinieDocument>();
 		listaMat.add(lmv1);
 		
 		//-------------------------------------	
@@ -192,19 +200,22 @@ public class TestContabilizareSrvImpl {
 		logger.info("Begin test: TestJurnalizareAchizitie");
 		
 	
-		TipContabil tipMaterial = new TipContabil(0, "materii prime", regConturi.getContDupaId(301), 
-													                  regConturi.getContDupaId(401), 
-													                  regConturi.getContDupaId(601));
-		TipContabil tipMaterial2 = new TipContabil(1, "cheltuieli cu terti", regConturi.getContDupaId(628), 
-                													         regConturi.getContDupaId(401), 
-                													         regConturi.getContDupaId(628));
+		//TipContabil tipMaterial = new TipContabil(0, "Materii prime", regConturi.getContDupaId(301), 
+		//											                  regConturi.getContDupaId(401), 
+		//											                  regConturi.getContDupaId(601));
+		//TipContabil tipMaterial2 = new TipContabil(1, "Cheltuieli cu terti", regConturi.getContDupaId(628), 
+        //        													         regConturi.getContDupaId(401), 
+         //       													         regConturi.getContDupaId(628));
 		
 
 		//creare matrice listMatVal
-		LinieMaterialValoare lmv1=new LinieMaterialValoare(tipMaterial,100.0,1.0);
-		LinieMaterialValoare lmv2=new LinieMaterialValoare(tipMaterial2,350.0,1.0);
-		
-		List<LinieMaterialValoare> listaMat = new ArrayList <LinieMaterialValoare>();
+		 Material mat1= new Material();
+		 mat1.setTipContabil("Materii prime");
+		LinieDocument lmv1=new LinieDocument(1,null,mat1,10.0,5.0,0.0);
+		Material mat2= new Material();
+		 mat1.setTipContabil("Cheltuieli cu terti");
+		LinieDocument lmv2=new LinieDocument(1,null,mat2,20.0,10.0,0.0);
+		List<LinieDocument> listaMat = new ArrayList <LinieDocument>();
 		listaMat.add(lmv1);
 		listaMat.add(lmv2);
 	
@@ -230,7 +241,7 @@ public class TestContabilizareSrvImpl {
 		Calendar cal = Calendar.getInstance();
 		 Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizareIncasare(data,1200.0, 501, TipIncasare.BANCA, 50, 401, StareDocument.NOU, null);
+			instantaCtbGen.jurnalizareIncasare(data,1200.0, 501, TipIncasare.EXTRAS, 50, 401, StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare incasare nu s-a efectuat "+ e.getLocalizedMessage());
 		}
@@ -238,7 +249,9 @@ public class TestContabilizareSrvImpl {
 		logger.info("End test: TestJurnalizareIncasare");
 	}
 	
-	private void TestJurnalizarePlata() {
+	
+	@Test
+	public void TestJurnalizarePlata() {
 		logger.info("Begin test: TestJurnalizarePlata");
 		
 	//-------------------------------------------------			
@@ -259,13 +272,15 @@ public class TestContabilizareSrvImpl {
 	public void TestJurnalizareConsum(){
 		logger.info("Begin test: TestJurnalizareConsum");
 	
-		TipContabil tipMaterial = new TipContabil(0, "materii prime", regConturi.getContDupaId(301), 
-				                                                      regConturi.getContDupaId(401), 
-				                                                      regConturi.getContDupaId(601));	
+		//TipContabil tipMaterial = new TipContabil(0, "materii prime", regConturi.getContDupaId(301), 
+		//		                                                      regConturi.getContDupaId(401), 
+		//		                                                      regConturi.getContDupaId(601));	
 		
 		//creare matrice listMatVal
-		LinieMaterialValoare lmv1=new LinieMaterialValoare(tipMaterial,100.0,1.0);
-		List<LinieMaterialValoare> listaMat = new ArrayList <LinieMaterialValoare>();
+		Material mat1= new Material();
+		 mat1.setTipContabil("Marfuri");
+		LinieDocument lmv1=new LinieDocument(1,null,mat1,10.0,5.0,0.0);
+		List<LinieDocument> listaMat = new ArrayList <LinieDocument>();
 		listaMat.add(lmv1);
 		
 		//-------------------------------------	
@@ -287,13 +302,15 @@ public class TestContabilizareSrvImpl {
 	public void TestJurnalizareProductie(){
 		logger.info("Begin test: TestJurnalizareProductie");
 	
-		TipContabil tipMaterial = new TipContabil(1, "materii prime", regConturi.getContDupaId(345), 
-				                                                      regConturi.getContDupaId(711), 
-				                                                      regConturi.getContDupaId(711));	
+		//TipContabil tipMaterial = new TipContabil(1, "materii prime", regConturi.getContDupaId(345), 
+		//		                                                      regConturi.getContDupaId(711), 
+		//		                                                      regConturi.getContDupaId(711));	
 		
 		//creare matrice listMatVal
-		LinieMaterialValoare lmv1=new LinieMaterialValoare(tipMaterial,250.0,1.0);
-		List<LinieMaterialValoare> listaMat = new ArrayList <LinieMaterialValoare>();
+		Material mat1= new Material();
+		 mat1.setTipContabil("Produse finite");
+		LinieDocument lmv1=new LinieDocument(1,null,mat1,10.0,5.0,0.0);
+		List<LinieDocument> listaMat = new ArrayList <LinieDocument>();
 		listaMat.add(lmv1);
 			
 		

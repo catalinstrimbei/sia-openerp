@@ -37,8 +37,12 @@ public class RegLuniLucru {
 		if(lunaGasita!=null){
 			return lunaGasita; //luna lucru exista
 		}else {
-			int an = data.getYear()+1900;
-			int luna = data.getMonth();
+			//int an = data.getYear()+1900;
+			//int luna = data.getMonth();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(data);
+			int an = cal.get(Calendar.YEAR);
+			int luna =cal.get(Calendar.MONTH);
 			
 			if(lunaGasita==null && listaLuni.isEmpty()==false){ //consecutive
 				LunaLucru ultimaLuna = getUltimaLuna();	
@@ -62,9 +66,13 @@ public class RegLuniLucru {
 	
 	//set metode care doar cauta - prima generalizat, interna
 	private LunaLucru getLunaLucruDupa(Date data, Integer idLuna){
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(data);
+		int an = cal.get(Calendar.YEAR);
+		int luna =cal.get(Calendar.MONTH);
 		if(idLuna == null){
 			for (LunaLucru l : this.listaLuni) {
-				if (l.getAn() == data.getYear()+1900 && l.getLuna() == data.getMonth())
+				if (l.getAn() == an && l.getLuna() == luna)
 						return l;
 			}
 		} else{ 

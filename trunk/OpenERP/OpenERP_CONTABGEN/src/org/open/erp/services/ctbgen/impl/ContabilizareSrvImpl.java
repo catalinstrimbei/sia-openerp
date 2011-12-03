@@ -15,6 +15,7 @@ import org.open.erp.services.ctbgen.LunaLucru;
 import org.open.erp.services.ctbgen.RegBalanta;
 import org.open.erp.services.ctbgen.RegInregistrareRJ;
 import org.open.erp.services.ctbgen.RegTipMaterial;
+import org.open.erp.services.ctbgen.RegTipuriContabile;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.TipContabil;
 import org.open.erp.services.ctbgen.TipIncasare;
@@ -27,9 +28,10 @@ import org.open.erp.services.ctbgen.RegLuniLucru;
 import org.open.erp.services.ctbgen.RegConturi;
 import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.RegSablonNC;
+import org.open.erp.services.nomgen.LinieDocument;
 /**
  * 
- *@author Echipa9 Irimia, Iftimie, Sarbu, Ricea, Chiriac
+ *@author Echipa9 Irimia, Iftimii, Sarbu, Ricea, Chiriac
  * 
  *@ApplicationServiceImplementation(ServiceAPI)
  * 
@@ -42,7 +44,14 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
 	
 	@Override
 	public Integer jurnalizareVanzare(Date data, Double valFact, Integer nrDoc,
-			Integer idPartener, List<LinieMaterialValoare> listaContMat,  StareDocument stareDocument,	Integer idInreg) throws CtbException {
+			Integer idPartener, List<LinieDocument> listaLinMat,  StareDocument stareDocument,	Integer idInreg) throws CtbException {
+		
+		//construire linieMatVal
+		List<LinieMaterialValoare> listaContMat= new ArrayList<LinieMaterialValoare>();
+		RegTipuriContabile regTip =RegTipuriContabile.instantiaza();
+		for (LinieDocument ld: listaLinMat){
+			listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.material.getTipContabil()),ld.cantitate*ld.pret));
+		}
 
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
@@ -55,8 +64,8 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
 		if (stareDocument==StareDocument.NOU) {
 			logger.debug("Creare inregistrare vanzare noua");
 				
-			final Integer nrSabVanzare=4;
-			final Integer nrSabConsum=5;
+			 Integer nrSabVanzare=4;
+			 Integer nrSabConsum=5;
 			int nrlin=1;
 			
 			InregistrareRJ inregVanzare = new InregistrareRJ(data, nrDoc,regLuniLucru.getOrCreateLunaLucru(data),idPartener);
@@ -117,9 +126,14 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
    //------------------------------------------------------------------------------
 	@Override
 	public Integer jurnalizareAchizitie(Date data, Double valFact, Integer nrDoc,
-			Integer idPartener, List<LinieMaterialValoare> listaContMat, StareDocument stareDocument,
+			Integer idPartener, List<LinieDocument> listaLinMat, StareDocument stareDocument,
 			Integer idInreg) throws CtbException {
-		
+		//construire linieMatVal
+				List<LinieMaterialValoare> listaContMat= new ArrayList<LinieMaterialValoare>();
+				RegTipuriContabile regTip =RegTipuriContabile.instantiaza();
+				for (LinieDocument ld: listaLinMat){
+					listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.material.getTipContabil()),ld.cantitate*ld.pret));
+				}
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
 		RegConturi regConturi = RegConturi.instantiaza();
@@ -394,8 +408,13 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
   //-----------------------------------------------------
 	@Override
 	public Integer jurnalizareConsum(Date data, Integer nrDoc,
-			List<LinieMaterialValoare> listaContMat, StareDocument stareDocument,Integer idInreg) throws CtbException{
-
+			List<LinieDocument> listaLinMat, StareDocument stareDocument,Integer idInreg) throws CtbException{
+		//construire linieMatVal
+				List<LinieMaterialValoare> listaContMat= new ArrayList<LinieMaterialValoare>();
+				RegTipuriContabile regTip =RegTipuriContabile.instantiaza();
+				for (LinieDocument ld: listaLinMat){
+					listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.material.getTipContabil()),ld.cantitate*ld.pret));
+				}
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
 		RegConturi regConturi = RegConturi.instantiaza();
@@ -460,9 +479,14 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
 //-------------------------------------------------------
 	@Override
 	public Integer jurnalizareProductie(Date data, Integer nrDoc,
-			List<LinieMaterialValoare> listaContMat, StareDocument stareDocument,Integer idInreg) throws CtbException{
+			List<LinieDocument> listaLinMat, StareDocument stareDocument,Integer idInreg) throws CtbException{
 		// TODO Auto-generated method stub
-		
+		//construire linieMatVal
+				List<LinieMaterialValoare> listaContMat= new ArrayList<LinieMaterialValoare>();
+				RegTipuriContabile regTip =RegTipuriContabile.instantiaza();
+				for (LinieDocument ld: listaLinMat){
+					listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.material.getTipContabil()),ld.cantitate*ld.pret));
+				}
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
 		RegConturi regConturi = RegConturi.instantiaza();
@@ -531,8 +555,8 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
 	public void jurnalizareNcDiversa( Date data, Integer nrInreg, Cont contd, Cont contc, Double suma, StareDocument stareDocument) throws CtbException{
 		
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
-		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
-		RegConturi regConturi = RegConturi.instantiaza();
+		//RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
+		//RegConturi regConturi = RegConturi.instantiaza();
 		
 		LunaLucru lunaLucru = regLuniLucru.getOrCreateLunaLucru(data);
 		if(lunaLucru.getStatus().equals(StatusLuna.INCHISA.toString()))
@@ -541,7 +565,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
 		if (stareDocument==StareDocument.NOU) {
 			logger.debug("Creare inregistrare diversa noua");
 						 
-			Integer nrSabProductie=3;
+			//Integer nrSabProductie=3;
 			int nrlin=1;
 			
 			InregistrareRJ inregDiversa = new InregistrareRJ(data, nrInreg,regLuniLucru.getOrCreateLunaLucru(data),null);
@@ -618,14 +642,15 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
 	@Override
 	public void inchideLuna(LunaLucru luna) throws CtbException {
 		LunaLucru lunaAnterioara = RegLuniLucru.instantiaza().getLunaAnterioara(luna);
-		boolean notAnterioara;
+		//boolean notAnterioara;
 		
 		if(lunaAnterioara!=null){
 			if(lunaAnterioara.getStatus().equals(StatusLuna.DESCHISA.toString()))
 					throw new CtbException("Luna anterioara este deschisa! Nu puteti inchide luna ceruta");
-		}else{
-			notAnterioara=true;
 		}
+		//else{
+		//	notAnterioara=true;
+		//}
 
 		List<Balanta> balLunaAnt = RegBalanta.instantiaza().getBalantaLunaAnterioare(luna);
 		List<Balanta> balDeInchis = RegBalanta.instantiaza().getBalantaLunaDeInchis(luna);
@@ -744,8 +769,8 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
 		//tipul sintetic  parinte nu permite inregistrari
 	}
 //----------------------------------------------------------------
-	public LinieMaterialValoare creareLinieMaterialValoare(TipContabil tipMaterial, Double valoare, Double cantitate){
-		return new LinieMaterialValoare(tipMaterial, valoare, cantitate);
+	public LinieMaterialValoare creareLinieMaterialValoare(TipContabil tipMaterial, Double valoare) {
+		return new LinieMaterialValoare(tipMaterial, valoare);
 	}
 	public TipContabil creareTipMaterial(Integer idTip, String denumireTip, Cont contProprietar, Cont contIntrare, Cont contIesire){
 		return new TipContabil(idTip, denumireTip, contProprietar, contIntrare, contIesire);

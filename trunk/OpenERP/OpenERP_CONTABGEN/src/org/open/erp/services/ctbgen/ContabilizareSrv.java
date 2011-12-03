@@ -6,6 +6,7 @@ import java.util.List;
 import org.open.erp.services.ctbgen.Cont.StatusSintetic;
 import org.open.erp.services.ctbgen.Cont.TipCont;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
+import org.open.erp.services.nomgen.LinieDocument;
 
 
 /**
@@ -58,7 +59,7 @@ public interface ContabilizareSrv {
 	 * @return Returneaza idInregistrarii  necesar pentru update sau delete document ulterior.
 	 * 
 	 */
-	public Integer jurnalizareVanzare(Date data, Double valFact, Integer nrDoc,Integer idPartener, List<LinieMaterialValoare> listaContMat, 
+	public Integer jurnalizareVanzare(Date data, Double valFact, Integer nrDoc,Integer idPartener, List<LinieDocument> listaContMat, 
 			StareDocument stareDocument,Integer idInreg) throws CtbException;
 	
 	/**
@@ -75,7 +76,7 @@ public interface ContabilizareSrv {
 	 * @return Returneaza idInregistrarii  necesar pentru update sau delete document ulterior.
 	 * 
 	 */
-	public Integer jurnalizareAchizitie(Date data, Double valFact, Integer nrDoc,Integer idPartener,  List<LinieMaterialValoare> listaContMat, 
+	public Integer jurnalizareAchizitie(Date data, Double valFact, Integer nrDoc,Integer idPartener,  List<LinieDocument> listaContMat, 
 			StareDocument stareDocument,Integer idInreg) throws CtbException;
 	
 	
@@ -153,7 +154,7 @@ public interface ContabilizareSrv {
 	 * 
 	 */
 	
-	public Integer jurnalizareConsum(Date data, Integer nrDoc, List<LinieMaterialValoare> listaContMat, StareDocument stareDocument,
+	public Integer jurnalizareConsum(Date data, Integer nrDoc, List<LinieDocument> listaContMat, StareDocument stareDocument,
 			Integer idInreg) throws CtbException;
 	
 	
@@ -169,7 +170,7 @@ public interface ContabilizareSrv {
 	 * @return Returneaza   idInregistrarii  necesar pentru update sau delete document ulterior.
 	 * 
 	 */
-	public Integer jurnalizareProductie(Date data, Integer nrDoc, List<LinieMaterialValoare> listaContMat, 
+	public Integer jurnalizareProductie(Date data, Integer nrDoc, List<LinieDocument> listaContMat, 
 			StareDocument stareDocument,Integer idInreg) throws CtbException;
 	
 	/**
@@ -202,7 +203,7 @@ public interface ContabilizareSrv {
 	public Cont  crearePlanCont(String denCont, String simbolCont, String clasaCont, StatusSintetic tipSintetic,  Cont contParinte, TipCont tipCont);
 	public SablonNC creareSablonNC(Integer nrSablon, Cont contDebit, Cont contCredit);
 	public RegSablonNC getRegSablonNC();
-	public LinieMaterialValoare creareLinieMaterialValoare(TipContabil tipMaterial, Double valoare, Double cantitate);
+	public LinieMaterialValoare creareLinieMaterialValoare(TipContabil tipMaterial, Double valoare);
 	public TipContabil creareTipMaterial(Integer idTip, String denumireTip, Cont contProprietar, Cont contIntrare, Cont contIesire);
 	
 	public void inchideLuna(LunaLucru luna) throws CtbException ;

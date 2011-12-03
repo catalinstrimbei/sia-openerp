@@ -1,5 +1,5 @@
 package org.open.erp.services.ctbgen;
 
 public enum TipPlata {
-	CASA, BANCA
+	CASA, BANCA, AVANSB, AVANSC
 }

@@ -1,5 +1,5 @@
 package org.open.erp.services.ctbgen;
 
 public enum TipIncasare {
-	CASA, BANCA
+	CASA, EXTRAS, CEC, BO, AVANSB, AVANSC
 }

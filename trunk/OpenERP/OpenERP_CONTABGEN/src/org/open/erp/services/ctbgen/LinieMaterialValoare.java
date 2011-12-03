@@ -11,13 +11,13 @@ package org.open.erp.services.ctbgen;
 public class LinieMaterialValoare {
 	public TipContabil tipMaterial;
 	public Double valoare;
-	public Double cantitate;
+	//public Double cantitate;
 
-	public LinieMaterialValoare(TipContabil tipMaterial, Double valoare, Double cantitate) {
+	public LinieMaterialValoare(TipContabil tipMaterial, Double valoare){//,Double cantitate) {
 		super();
 		this.tipMaterial = tipMaterial;
 		this.valoare = valoare;
-		this.cantitate = cantitate;
+		//this.cantitate = cantitate;
 	}
 	
 }
