@@ -159,7 +159,7 @@ public class TestMarketingManagementImpl {
 			j++;
 			produs = null;
 			discount = null;
-			produs = new Produs(1000+j,"Produs" + j, "buc", dataStart, dataFinal,generator.nextFloat() * 100);
+			produs = new Produs(1000+j,"Produs" + j, "buc", dataStart,generator.nextInt() * 100);
 			discount = new Discount(1000+j,"Discount" + j,1,generator.nextFloat()*20);
 			listaDiscount.put(produs, discount);
 		}
@@ -189,7 +189,7 @@ public class TestMarketingManagementImpl {
 			j++;
 			produs = null;
 			discount = null;
-			produs = new Produs(1000+j,"Produs" + j, "buc", dataStart, dataFinal,generator.nextFloat() * 100);
+			produs = new Produs(1000+j,"Produs" + j, "buc", dataStart, generator.nextInt()*100);
 			discount = new Discount(1000+j,"Discount" + j,1,generator.nextFloat()*20);
 			listaDiscount.put(produs, discount);
 		}
@@ -198,6 +198,7 @@ public class TestMarketingManagementImpl {
 		listaDiscount = null;
 		listaDiscount = promotie.getListaProduse();
 		iterator = listaDiscount.keySet().iterator();
+		float pretInitial = generator.nextFloat()*100;
 		logger.info("Preturile produselor dupa aplicarea discount-urilor");
 		logger.info("Produs         Pret Initial        PretFinal");
 
@@ -205,7 +206,7 @@ public class TestMarketingManagementImpl {
 		{
 			produs = (Produs)iterator.next();
 			discount = promotie.getListaProduse().get(produs);
-			logger.info(produs.getDenumire() + "  " + produs.getPretProdus() + "   " + marketingInstance.getPretFinalByPromotie(produs, promotie));
+			logger.info(produs.getDenumire() + "  " + pretInitial + "   " + marketingInstance.getPretFinalByPromotie(produs, promotie, pretInitial));
 		}
 	}
 

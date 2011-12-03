@@ -148,7 +148,7 @@ public class MarketingManagementImpl implements MarketingManagementSrv{
 				for (int p = 1; p < produseAditionale.size(); p++)
 				{
 					
-					logger.debug(produseAditionale.get(p).getIdProdus() + "       " + produseAditionale.get(p).getDenumire());
+					logger.debug(produseAditionale.get(p).getId() + "       " + produseAditionale.get(p).getDenumire());
 				}
 			}
 			
