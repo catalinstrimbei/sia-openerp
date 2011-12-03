@@ -1,6 +1,7 @@
 package org.open.erp.services.marketing;
 
-import org.open.erp.services.nomgen.Persoana;
+//import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.personal.Angajat;
 /**
  * 
  * @author echipa.marketing
@@ -8,7 +9,7 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
-public class Responsabil extends Persoana {
+public class Responsabil extends Angajat {
 	public Responsabil() {
 		super();
 	}
