@@ -15,7 +15,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.marketing.Campanie;
+import org.open.erp.services.marketing.Chestionar;
 import org.open.erp.services.marketing.Discount;
+import org.open.erp.services.marketing.Intrebare;
 import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.PersoanaTinta;
 import org.open.erp.services.marketing.Promotie;
@@ -130,7 +132,32 @@ public class TestMarketingManagementImpl {
 
 	@Test
 	public final void testInitiereChestionar() {
-		fail("Not yet implemented"); // TODO
+		Chestionar			chestionarNou;
+		Intrebare			intrebare;
+		List<Intrebare>		listaIntrebari = new ArrayList<Intrebare>();
+		Responsabil			responsabil;
+		
+		intrebare = new Intrebare();
+		intrebare.setIdIntrebare(1);
+		intrebare.setTipIntrebare("Un singur raspuns posibil");
+		intrebare.setTextIntrebare("V-ar interesa noul nostru produs?");
+		intrebare.adaugaRaspuns(1, "Da");
+		intrebare.adaugaRaspuns(2, "Nu");
+		listaIntrebari.add(intrebare);
+		
+		intrebare = null;
+		intrebare = new Intrebare();
+		intrebare.setIdIntrebare(2);
+		intrebare.setTextIntrebare("Cat ati fi dispus sa cheltuiti pentru produsul noul nostru produs");
+		intrebare.setTipIntrebare("Un singur raspuns posibil");
+		intrebare.adaugaRaspuns(1, "Sub 400 ron");
+		intrebare.adaugaRaspuns(2, "Intre 400 - 500 ron");
+		intrebare.adaugaRaspuns(3, "Peste 500 ron");
+		listaIntrebari.add(intrebare);
+		
+		responsabil = new Responsabil();
+		chestionarNou = marketingInstance.initiereChestionar("Primul chestionar", responsabil, listaIntrebari.size(), "Parere despre un nou produs", listaIntrebari);
+		
 	}
 
 	@Test

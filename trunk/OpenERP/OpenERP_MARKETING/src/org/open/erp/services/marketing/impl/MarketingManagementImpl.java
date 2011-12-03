@@ -76,7 +76,7 @@ public class MarketingManagementImpl implements MarketingManagementSrv{
 			Responsabil responsabil, Integer nrIntrebari, String scop,
 			List<Intrebare> listaIntrebari) {
 		Intrebare 		iteratorIntrebari;
-		logger.debug("Chestionar " + denumire + "creat.");
+		logger.debug("Chestionar " + denumire + " creat.");
 		
 		Chestionar chestionarNou = new Chestionar(1, denumire,  responsabil,scop,nrIntrebari,listaIntrebari);
 		
@@ -84,9 +84,9 @@ public class MarketingManagementImpl implements MarketingManagementSrv{
 		for (int i=0 ; i < listaIntrebari.size() ; i++)
 		{
 			iteratorIntrebari = listaIntrebari.get(i);
-			logger.debug(iteratorIntrebari.getIdIntrebare() + ")" + "    " + iteratorIntrebari.getTextIntrebare());
-			for (int j=0 ; j < iteratorIntrebari.getRaspunsuri().size() ; j++){
-				logger.debug(j+1 + ")" + iteratorIntrebari.getRaspuns(j));
+			logger.debug(iteratorIntrebari.getIdIntrebare() + ") "  + iteratorIntrebari.getTextIntrebare());
+			for (int j=1 ; j <= iteratorIntrebari.getRaspunsuri().size() ; j++){
+				logger.debug("   "+j + ")" + iteratorIntrebari.getRaspuns(j));
 			}
 		}
 		

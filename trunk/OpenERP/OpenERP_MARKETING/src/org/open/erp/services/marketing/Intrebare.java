@@ -44,6 +44,8 @@ public class Intrebare {
 	}
 	
 	public void adaugaRaspuns(Integer nrRaspuns, String textRaspuns){
+		if(optiuniRaspuns == null)
+			optiuniRaspuns = new HashMap<Integer,String>();
 		optiuniRaspuns.put(nrRaspuns, textRaspuns);
 	}
 	public String getRaspuns(Integer nrRaspuns){
