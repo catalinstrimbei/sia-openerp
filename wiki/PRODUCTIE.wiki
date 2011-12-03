@@ -1,14 +1,14 @@
 #summary One-sentence summary of this page.
 
 = Introduction =
-
+<br />
 Modulul Productie
-
+<br />
 
 = Details =
-
-- Serviciul ProductieSrv
-
+<br />
+Vizeaza procesul de productie - Serviciul ProductieSrv <br />
+<br />
 1.Creaza un flux de productie pentru produs.<br />
 2.Apeleaza fluxul de productie si creaza produsul pentru care s-a facut comanda.<br />
 3.Contorizeaza consumul de resurse.<br />
