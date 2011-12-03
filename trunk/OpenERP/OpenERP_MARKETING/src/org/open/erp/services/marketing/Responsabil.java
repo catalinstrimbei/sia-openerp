@@ -1,7 +1,7 @@
 package org.open.erp.services.marketing;
 
-//import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.nomgen.Persoana;
+//import org.open.erp.services.personal.Angajat;
 /**
  * 
  * @author echipa.marketing
@@ -9,7 +9,7 @@ import org.open.erp.services.personal.Angajat;
  * @BusinessObject(Entity)
  * 
  */
-public class Responsabil extends Angajat {
+public class Responsabil extends Persoana {
 	public Responsabil() {
 		super();
 	}
@@ -20,7 +20,8 @@ public class Responsabil extends Angajat {
 	 * @param prenume
 	 */
 	public Responsabil(Integer idPersoana, String nume, String prenume) {
-		super(idPersoana, nume, prenume);
+		super();
+		this.setId(idPersoana);
 		// TODO Auto-generated constructor stub
 	}
 	
