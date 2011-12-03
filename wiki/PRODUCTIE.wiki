@@ -2,12 +2,17 @@
 
 = Introduction =
 
-Add your content here.
+Modulul Productie
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+- Serviciul ProductieSrv
+
+1.Creaza un flux de productie pentru produs.
+2.Apeleaza fluxul de productie si creaza produsul pentru care s-a facut comanda.
+3.Contorizeaza consumul de resurse.
+4.Realizeaza controlul calitatii pentru fiecare unitate de produs.
+5.Trimite cantitatea de produs final obtinut catre modulul de stocuri.
+6.Gestioneaza consumul de resurse pentru a fi preluat de contabilitatea de gestiune.
+7.Gestioneaza cantitatea de produse obtinute.
