@@ -2,8 +2,12 @@
 
 = Introduction =
 
-Add your content here.
+Aceasta pagina isi propune sa ofere informatiile necesare unei utilizari corecte a modulului de Marketing pentru aceasta aplicatie. 
 
+     Modulul de marketing ofera urmatoarele facilitati:
+# Crearea si gestionarea campaniilor de promovare
+# Crearea si gestionarea promotiilor
+# Crearea si derularea de chestionare, precum si procesarea raspunsurilor obtinute.
 
 = Details =
 
