@@ -9,10 +9,10 @@ Modulul Productie
 
 - Serviciul ProductieSrv
 
-1.Creaza un flux de productie pentru produs.
-2.Apeleaza fluxul de productie si creaza produsul pentru care s-a facut comanda.
-3.Contorizeaza consumul de resurse.
-4.Realizeaza controlul calitatii pentru fiecare unitate de produs.
-5.Trimite cantitatea de produs final obtinut catre modulul de stocuri.
-6.Gestioneaza consumul de resurse pentru a fi preluat de contabilitatea de gestiune.
-7.Gestioneaza cantitatea de produse obtinute.
+1.Creaza un flux de productie pentru produs.<br />
+2.Apeleaza fluxul de productie si creaza produsul pentru care s-a facut comanda.<br />
+3.Contorizeaza consumul de resurse.<br />
+4.Realizeaza controlul calitatii pentru fiecare unitate de produs.<br />
+5.Trimite cantitatea de produs final obtinut catre modulul de stocuri.<br />
+6.Gestioneaza consumul de resurse pentru a fi preluat de contabilitatea de gestiune.<br />
+7.Gestioneaza cantitatea de produse obtinute.<br />
