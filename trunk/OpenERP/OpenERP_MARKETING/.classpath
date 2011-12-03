@@ -6,6 +6,6 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry exported="true" kind="lib" path="D:/School/Master SIA An 2/ACS/eclipse/apache-log4j-1.2.16/log4j-1.2.16.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/OpenERP_PERSONAL"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
