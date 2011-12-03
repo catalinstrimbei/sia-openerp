@@ -65,7 +65,7 @@ public interface ProductieSrv {
 	/**
 	 * Contorizeaza consumul de resurse
 	 * @param faza 		Faza in care se consuma resursele cerute
-	 * @param produs	Produsul pentru care se consuma resursele
+	 * @param produs    Produsul pentru care se consuma resursele
 	 * 
 	 * @return 	Lista de resurse (utilaje,materiale,angajati)
 	 */

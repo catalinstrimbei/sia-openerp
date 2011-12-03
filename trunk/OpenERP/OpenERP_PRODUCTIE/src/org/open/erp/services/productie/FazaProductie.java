@@ -81,14 +81,6 @@ public class FazaProductie {
 		this.faza = faza;
 	}
 
-	public Utilaj getUtilaje() {
-		return utilaj;
-	}
-
-	public void setUtilaje(Utilaj utilaj) {
-		this.utilaj = utilaj;
-	}
-
 	public Double getTimpFolosire() {
 		return timpFolosire;
 	}
