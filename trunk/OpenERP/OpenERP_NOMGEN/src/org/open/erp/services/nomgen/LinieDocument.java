@@ -60,7 +60,6 @@ public void setTVA(Double tVA) {
 
 public void incementeazaPret(Double pretNou) {
 	pretNou = (pret == null) ? 0.0 : pretNou;
-
 	this.pret += pretNou;
 }
 }

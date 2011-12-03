@@ -12,9 +12,15 @@ public class Document {
 	protected Integer nrDoc;
 	protected Date dataDoc;
 	protected List<LinieDocument> liniiDocument;
+	protected String DocDetaliu;
 	
 	
-	
+	public String getDocDetaliu() {
+		return DocDetaliu;
+	}
+	public void setDocDetaliu(String docDetaliu) {
+		DocDetaliu = docDetaliu;
+	}
 	public Integer getNrDoc() {
 		return nrDoc;
 	}

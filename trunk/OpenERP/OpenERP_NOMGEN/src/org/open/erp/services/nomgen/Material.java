@@ -1,7 +1,7 @@
 package org.open.erp.services.nomgen;
 
 import java.util.Date;
-
+import java.util.*;
 public class Material  {
 
 	private Integer id;
@@ -9,9 +9,15 @@ public class Material  {
 	private String  unitateMasura;
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
+	private String tipContabil;
 	
 	
-	
+	public String getTipContabil() {
+		return  tipContabil;
+	}
+	public void setTipContabil(String tipContabil) {
+		this.tipContabil = tipContabil;
+	}
 	public Material(Integer id, String denumire, String unitateMasura,
 			Date dataFabricatiei, Integer termenValabilitate) {
 		super();

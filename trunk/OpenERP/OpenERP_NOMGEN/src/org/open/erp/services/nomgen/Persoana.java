@@ -65,6 +65,13 @@ public class Persoana {
 	}
 	
 	
+	 public void afiseazaInformatii(String p) {
+		 
+	      System.out.println("- Date despre persoana - "+p);
+	      System.out.println("Id persoana: " + getId());
+	      System.out.println("Adresa: " + adresa);
+	      System.out.println("Id contact: " + idContact);
+	   }
 
 	
 	public Persoana() {

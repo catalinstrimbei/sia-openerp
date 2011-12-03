@@ -1,14 +1,17 @@
 package org.open.erp.services.nomgen.teste;
 
 import static org.junit.Assert.*;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.open.erp.services.nomgen.Persoana;
 
 public class TestNomenclatoareDummyImpl {
-
+	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -24,6 +27,8 @@ public class TestNomenclatoareDummyImpl {
 	@Test
 	public void testCreazaPersoana() {
 		fail("Not yet implemented");
+		
+		
 	}
 
 	@Test
