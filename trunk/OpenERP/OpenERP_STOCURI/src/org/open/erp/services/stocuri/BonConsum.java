@@ -4,7 +4,7 @@ package org.open.erp.services.stocuri;
 import java.util.Date;
 
 import org.open.erp.services.nomgen.Document;
-import org.open.erp.services.personal.Angajat;
+
 
 /**
  * 
@@ -14,23 +14,23 @@ import org.open.erp.services.personal.Angajat;
  * 
  */
 public class BonConsum extends Document {
-	private Angajat persoanaPredare;
+	private Gestionar persoanaPredare;
 
 	public BonConsum() {
 		super();
 	}
 
 	public BonConsum(Integer idDoc, Date dataDoc, String solicitant,
-			Angajat persoanaPredare) {
-		super(idDoc, dataDoc);
+			Gestionar persoanaPredare) {
+		//super(idDoc, dataDoc);
 		this.persoanaPredare = persoanaPredare;
 	}
 
-	public Angajat getPersoanaPredare() {
+	public Gestionar getPersoanaPredare() {
 		return persoanaPredare;
 	}
 
-	public void setPersoanaPredare(Angajat persoanaPredare) {
+	public void setPersoanaPredare(Gestionar persoanaPredare) {
 		this.persoanaPredare = persoanaPredare;
 	}
 

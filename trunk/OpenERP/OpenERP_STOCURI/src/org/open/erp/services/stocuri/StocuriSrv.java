@@ -44,8 +44,19 @@ public interface StocuriSrv {
 	 * 
 	 */
 	void intrareInStoc(Material material, LoturiIntrari lot, Gestiune gestiune);
-	//pt costel!!!
-	void intrareStoc(Document doc);
+	
+	/**
+	 * Returneaza boolean
+	 * 
+	 * @param document(NIR)
+	 
+	 * 
+	 * @return true-reusit/ fals=esuat
+	 * 
+	 */
+	
+	
+	Boolean intrareStoc(Document doc);
 	/**
 	 * Returneaza void
 	 * 
@@ -98,4 +109,6 @@ public interface StocuriSrv {
 	 * 
 	 */	
 	Integer verificareStocMaterial(Material material);
+	
+	Boolean iesireDinStoc(Material material, Integer cantitate);
 }

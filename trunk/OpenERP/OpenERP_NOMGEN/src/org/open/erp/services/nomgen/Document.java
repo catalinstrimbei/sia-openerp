@@ -3,6 +3,7 @@ package org.open.erp.services.nomgen;
 
 
 //import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class Document {
 	protected Integer nrDoc;
 	protected Date dataDoc;
-	protected List<LinieDocument> liniiDocument;
+	protected List<LinieDocument> liniiDocument= new ArrayList<LinieDocument>();
 	protected String DocDetaliu;
 	
 	

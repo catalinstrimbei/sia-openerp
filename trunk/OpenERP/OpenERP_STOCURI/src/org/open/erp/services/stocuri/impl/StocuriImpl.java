@@ -104,9 +104,21 @@ public class StocuriImpl implements StocuriSrv {
 	}
 
 	@Override
-	public void intrareStoc(Document doc) {
-		// TODO Auto-generated method stub
-		
+	public Boolean intrareStoc(Document doc) {
+		return procesare.intrareInStoc(doc);
+			
+	}
+
+	@Override
+	public Boolean iesireDinStoc(Material material, Integer cantitate) {
+		try{
+			return procesare.iesireDinStoc(material, cantitate);
+			
+		}catch (StocuriExceptions e) {
+			e.printStackTrace();
+			e.logger.loggeazaERROR(e.getMessage(), e);
+			return false;
+		}
 	}
 
 	

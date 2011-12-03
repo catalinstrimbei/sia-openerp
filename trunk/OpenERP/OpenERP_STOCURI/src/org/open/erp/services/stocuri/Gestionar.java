@@ -1,6 +1,6 @@
 package org.open.erp.services.stocuri;
 
-import org.open.erp.services.personal.Angajat;
+
 
 
 
@@ -11,16 +11,16 @@ import org.open.erp.services.personal.Angajat;
  * @BusinessObject(Entity)
  * 
  */
-public class Gestionar extends Angajat {
+public class Gestionar  {
 	private Gestiune gestiune;
 
 	public Gestionar() {
-		super();
+		//super();
 	}
 
 	public Gestionar(Integer idPersoana, String nume, String prenume,
 			Integer idCandidat, String tipCandidat, Gestiune gestiune) {
-		super(idPersoana, nume, prenume, idCandidat, tipCandidat);
+		//super(idPersoana, nume, prenume, idCandidat, tipCandidat);
 		this.gestiune = gestiune;
 	}
 

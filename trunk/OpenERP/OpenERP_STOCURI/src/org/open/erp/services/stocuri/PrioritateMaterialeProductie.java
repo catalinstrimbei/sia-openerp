@@ -2,6 +2,8 @@ package org.open.erp.services.stocuri;
 
 import java.util.Date;
 
+import org.open.erp.services.nomgen.Document;
+
 
 /**
  * 
@@ -17,12 +19,12 @@ public class PrioritateMaterialeProductie extends Document  {
 	private String inchisa;
 	public PrioritateMaterialeProductie(Integer idDoc, Date dataDoc,
 			String solicitant) {
-		super(idDoc, dataDoc, solicitant);
+		super(idDoc, dataDoc);
 	}
 	public PrioritateMaterialeProductie(Integer idDoc, Date dataDoc,
-			String solicitant, org.open.erp.services.stocuri.Document comanda,
+			String solicitant, Document comanda,
 			String inchisa) {
-		super(idDoc, dataDoc, solicitant);
+		super(idDoc, dataDoc);
 		this.comMatariale = comanda;
 		this.inchisa = inchisa;
 	}

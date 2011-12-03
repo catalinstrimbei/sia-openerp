@@ -14,7 +14,6 @@ import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.MateriePrima;
-import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.BonConsum;
 import org.open.erp.services.stocuri.CerereAprovizionare;
@@ -38,17 +37,16 @@ import org.open.erp.services.stocuri.util.StocuriLogger;
 
 public class Procesare {
 	private List<Gestiune> gestiuni = new ArrayList<Gestiune>();
-	private Angajat responsabil;
+
 	private AplicarePret aplicarepret;
 	private StocuriLogger logger = new StocuriLogger();
 	//Cei care vor astepta <CerereAprovizionare>. In cazul nostru AprovizionareImpl
 	private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
 
-	public Procesare(List<Gestiune> gestiuni, Angajat responsabil,
+	public Procesare(List<Gestiune> gestiuni, 
 			AplicarePret aplicarepret) {
 		super();
 		this.gestiuni = gestiuni;
-		this.responsabil = responsabil;
 		this.aplicarepret = aplicarepret;
 		logger.loggeazaDEBUG("Creare obiect Procesare.-----");
 	}
@@ -81,14 +79,13 @@ public class Procesare {
 					&& comandaMateriale.getLivrarePartiala().equalsIgnoreCase(
 							"yes")) {
 
-				bonConsum = new BonConsum(1, new Date(), "solicitant",
-						responsabil);
+				bonConsum = new BonConsum(1, new Date(), "solicitant",	null);
 				bonConsum.getLiniiDocument().addAll(produseSuficiente);
 
 				comAprov = new CerereAprovizionare(1,  new Date(), null, "observatie");
 				addLiniiCerereAprovizionare(comAprov, produseInSuficiente);
 				// apelem metoda din modului achizitii
-				ProjectDummyFactory.getAprovizionareSrv().inregistrareCerereAprovizionare(comAprov);
+				//ProjectDummyFactory.getAprovizionareSrv().inregistrareCerereAprovizionare(comAprov);
 				// TODO de adaugat in lista cu prioritati
 			} else if (!produseInSuficiente.isEmpty()
 					&& comandaMateriale.getLivrarePartiala().equalsIgnoreCase(
@@ -100,11 +97,10 @@ public class Procesare {
 				comAprov = new CerereAprovizionare(1, new Date(), null, "observatie");
 				addLiniiCerereAprovizionare(comAprov, produseInSuficiente);
 				// apelem metoda din modului achizitii
-				ProjectDummyFactory.getAprovizionareSrv().inregistrareCerereAprovizionare(comAprov);
+				//ProjectDummyFactory.getAprovizionareSrv().inregistrareCerereAprovizionare(comAprov);
 				// TODO de adaugat in lista cu prioritati
 			} else {
-				bonConsum = new BonConsum(1, new Date(), "solicitant",
-						responsabil);
+				bonConsum = new BonConsum(1, new Date(), "solicitant",	null);
 				bonConsum.getLiniiDocument().addAll(produseSuficiente);
 
 			}
@@ -202,6 +198,7 @@ public class Procesare {
 		//Se notifica listener-ii, in cazul acesta AprovizionareImpl, de crearea unei Cereri de Aprovizionare
 		notifyListeners(this, comAprov);
 	}
+	
 	private void notifyListeners(Object sursa,CerereAprovizionare cerere) {
 		for (Iterator iterator = listener.iterator(); iterator.hasNext();) {
 			PropertyChangeListener name = (PropertyChangeListener) iterator.next();
@@ -236,15 +233,17 @@ public class Procesare {
 	}
 
 	
-	public void intrareInStoc(Document doc){
+	public Boolean intrareInStoc(Document doc){
 		try{
 		for(LinieDocument l : doc.getLiniiDocument()){
 			//id va fi autogenerat
 			intrareInStoc(l.material, new LoturiIntrari(1, l.getCantitate().intValue(), l.getPret(), new Date(), null), gestiuni.get(0));
 		}
+		return true;
 		}catch (IntrariStocExceptions e) {
 			e.printStackTrace();
 			e.logger.loggeazaERROR("eroare !!!");
+			return false;
 		}
 		
 	}
@@ -254,7 +253,7 @@ public class Procesare {
 	
 	public void intrareInStoc(Material material,
 			LoturiIntrari lot, Gestiune gestiune) throws IntrariStocExceptions {
-		  logger.loggeazaDEBUG("Intrare in Stoc pt mijlocul "+material
+		  logger.loggeazaDEBUG("Intrare in Stoc pt mijlocul "+material.getDenumire()
 				  +" cu lotul "+ lot.getIdLot()+ "in gestiunea "+ gestiune.getDenumire()+" -----");
 		if (material == null){
 			throw new IntrariStocExceptions("Mijlocul Circulant nu trebuie sa fie null la intrarea in stoc!!");
@@ -344,9 +343,10 @@ public class Procesare {
 		return loturiOut;
 	}
 	
-	public void iesireDinStoc(Material material, Integer cantitate)throws StocuriExceptions {
+	public boolean iesireDinStoc(Material material, Integer cantitate)throws StocuriExceptions {
 		//verific daca cantitatea ceruta nu e mai mare decat cantitatea
 		//totala din stocuri(pe toate loturile, din toate gestiunile)
+		try{
 		if(cantitate > verificareStocMaterial(material)){
 			throw new IesiriStocExceptions("Produse/materiale insuficiete in stoc!!!");
 		}
@@ -356,14 +356,20 @@ public class Procesare {
 			ArticolStoc a = getArticolByMijlocAndGestiune(material, g);
 			cantTemp = a.getCatitateStocPeGestiune();
 			
-			if( cantitate > 0 && cantitate > cantTemp){
+			if( cantitate > cantTemp){
 				cantitate-=cantTemp;
 				iesireDinStocPeGestiune(g, material, cantTemp);
 			}else{
-				iesireDinStocPeGestiune(g, material, cantitate.intValue());
+				iesireDinStocPeGestiune(g, material, cantitate);
 				cantitate=0;
+				break;
 			}
 			
+		}
+		return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 		
 	}

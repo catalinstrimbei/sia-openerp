@@ -4,7 +4,7 @@ package org.open.erp.services.stocuri;
 import java.util.Date;
 
 import org.open.erp.services.nomgen.Document;
-import org.open.erp.services.personal.Angajat;
+
 /**
  * 
  * @author echipa.stocuri
@@ -16,13 +16,13 @@ public class BonTransfer extends Document {
 	private Gestiune gestiuneOUT;
 	private Gestiune gestiuneIN;
 	private Date dataTransfer;
-	private Angajat responsabil;
+	private Gestionar responsabil;
 	public BonTransfer(Integer idDoc, Date dataDoc, String solicitant) {
 		super(idDoc, dataDoc);
 	}
 	public BonTransfer(Integer idDoc, Date dataDoc, String solicitant,
 			Gestiune gestiuneOUT, Gestiune gestiuneIN, Date dataTransfer,
-			Angajat responsabil) {
+			Gestionar responsabil) {
 		super(idDoc, dataDoc);
 		this.gestiuneOUT = gestiuneOUT;
 		this.gestiuneIN = gestiuneIN;
@@ -47,10 +47,10 @@ public class BonTransfer extends Document {
 	public void setDataTransfer(Date dataTransfer) {
 		this.dataTransfer = dataTransfer;
 	}
-	public Angajat getResponsabil() {
+	public Gestionar getResponsabil() {
 		return responsabil;
 	}
-	public void setResponsabil(Angajat responsabil) {
+	public void setResponsabil(Gestionar responsabil) {
 		this.responsabil = responsabil;
 	}
 	
