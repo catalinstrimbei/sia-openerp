@@ -1,12 +1,8 @@
 package org.open.erp.services.marketing;
 
-import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.nomgen.PersoanaFizica;
 
-public class PersoanaTinta extends Persoana {
-
-	/**
-	 * 
-	 */
+public class PersoanaTinta extends PersoanaFizica{
 	public PersoanaTinta() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -18,7 +14,10 @@ public class PersoanaTinta extends Persoana {
 	 * @param prenume
 	 */
 	public PersoanaTinta(Integer idPersoana, String nume, String prenume) {
-		super(idPersoana, nume, prenume);
+		super();
+		this.setId(idPersoana);
+		this.setNume(nume);
+		this.setPrenume(prenume);
 		// TODO Auto-generated constructor stub
 	}
 
