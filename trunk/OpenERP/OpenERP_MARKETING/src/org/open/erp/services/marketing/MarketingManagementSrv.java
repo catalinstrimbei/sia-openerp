@@ -129,5 +129,5 @@ Promotie definirePromotie(String denumire,String mesajPromotional, Date dataInce
  * 
  * @return pretul final dupa aplicarea discounturilor;
  */
-float getPretFinalByPromotie(Produs produs,Promotie promotie);
+float getPretFinalByPromotie(Produs produs,Promotie promotie, float pretInitial);
 }

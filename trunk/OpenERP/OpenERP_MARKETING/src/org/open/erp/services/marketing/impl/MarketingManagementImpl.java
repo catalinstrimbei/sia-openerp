@@ -157,7 +157,7 @@ public class MarketingManagementImpl implements MarketingManagementSrv{
 	}
 	
 	@Override
-	public float getPretFinalByPromotie(Produs produs, Promotie promotie) {
-		return promotie.getPretByPromotie(produs);
+	public float getPretFinalByPromotie(Produs produs, Promotie promotie,float pretInitial) {
+		return promotie.getPretByPretInitial(produs, pretInitial);
 	}
 }

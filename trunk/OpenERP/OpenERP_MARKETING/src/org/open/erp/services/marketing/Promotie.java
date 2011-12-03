@@ -156,18 +156,18 @@ public class Promotie {
 		this.listProduseAditionale.remove(produs);
 	}
 	
-	public float getPretByPromotie(Produs produs)
+	public float getPretByPretInitial(Produs produs, float pretInitial)
 	{
 		Discount   discount;
 		if (this.tipPromotie == Promotie.DISCOUNT)
 		{
 			discount = this.listaProduse.get(produs);
 			if (discount.getTipDiscount() == Discount.PROCENT)
-				return produs.getPretProdus() - (produs.getPretProdus() * discount.getValoare()) / 100;
+				return pretInitial - (pretInitial * discount.getValoare()) / 100;
 			else
-				return produs.getPretProdus() - discount.getValoare();
+				return pretInitial - discount.getValoare();
 		}
 		else
-			return produs.getPretProdus();
+			return pretInitial;
 	}
 }
