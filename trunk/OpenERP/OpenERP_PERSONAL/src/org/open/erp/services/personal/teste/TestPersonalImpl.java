@@ -16,6 +16,7 @@ import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.CerereDemisie;
 import org.open.erp.services.personal.ContractMunca;
+import org.open.erp.services.personal.DosarAngajat;
 import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.Interviu;
 import org.open.erp.services.personal.InterviuCandidat;
@@ -31,7 +32,7 @@ public class TestPersonalImpl {
 	
 	List<AnuntLocMunca> listaAnunturi = new ArrayList<AnuntLocMunca>();
 	List<AnuntLocMunca> listaAnunturi2 = new ArrayList<AnuntLocMunca>();
-	List<CV> listaCandidati = new ArrayList<CV>();
+	public List<CV> listaCandidati = new ArrayList<CV>();
 	List<Candidat> listaCandidati2 = new ArrayList<Candidat>();
 	List<Candidat> listaCandidati3 = new ArrayList<Candidat>();
 
@@ -43,6 +44,8 @@ public class TestPersonalImpl {
 	List<ProbaEvaluare> probeEvaluare = new ArrayList<ProbaEvaluare>();
 	public List<Angajat> angajati = new ArrayList<Angajat>();
 	public List<ContractMunca> contracteMunca	= new ArrayList<ContractMunca>();
+	public List<DosarAngajat>  dosareAngajati = new ArrayList<DosarAngajat>();
+	
 	
 	Functie functie1 = new Functie(1001, "Functie1");
 	Functie functie2 = new Functie(1002, "Functie2");
@@ -80,8 +83,6 @@ public class TestPersonalImpl {
 	
 	AnuntLocMunca anunt1 = new AnuntLocMunca(1, new String[] { "Internet"}, "Anunt1", functie1, new Date("01/08/2011"), new Date("11/09/2011"));
 	AnuntLocMunca anunt3 = new AnuntLocMunca(3, new String[] { "Internet"}, "Anunt3", functie2, new Date("01/08/2011"), new Date("11/09/2011"));
-
-	
 	AnuntLocMunca anunt2 = new AnuntLocMunca(1, new String[] { "Internet"}, "Anunt2", functie1, new Date("12/09/2011"), new Date("10/12/2011"));
 	
 	Departament departament1 = new Departament(1, "Departament1", null, persoana1);
@@ -102,11 +103,18 @@ public class TestPersonalImpl {
 	Angajat 		angajat2 = new Angajat(persoana2.getId(), persoana2.getNume(), persoana2.getPrenume(), candidat2.getIdCandidat(),candidat2.getTipCandidat(), 10002, true);
 	//Angajat 		angajat1 = new Angajat(persoana1.getIdPersoana(), "Nume1", "Prenume1");
 	//ContractMunca	contract1 = new ContractMunca("ContractNr0002", angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,null);
+	
 	ContractMunca	contract1 = new ContractMunca("ContractNr0002", 1000.00, 10.00, angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+	ContractMunca	contract2 = new ContractMunca("ContractNr0001", 1000.00, 10.00, angajat2, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+
+	DosarAngajat dosar1 = new DosarAngajat(1, angajat1, null, null, null);
+	DosarAngajat dosar2 = new DosarAngajat(2, angajat2, null, null, null);
+	
+
 	
 	CerereDemisie	cerereDemisie1 = new CerereDemisie("CerereDem001", contract1, new Date("11/08/2011"), null, null,null);
 	
-	void generareAnunturi() {
+	public void generareAnunturi() {
 		listaCandidati.add(cv1);
 		listaCandidati.add(cv2);
 		listaCandidati.add(cv3);
@@ -152,6 +160,13 @@ public class TestPersonalImpl {
 	public void listaContracte(){
 		contracteMunca.add(contract1);
 	}
+	
+	public void listaDosare(){
+		dosareAngajati.add(dosar1);
+		dosareAngajati.add(dosar2);
+
+	}
+	
 	/*
 	 * 
 	public void vizualizareRecrutare() {

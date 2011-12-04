@@ -87,6 +87,18 @@ public class Angajat extends Candidat{
 		this.activ = activ;
 		this.numarCopii = 0;
 	}
+
+
+	public Angajat(Integer id, String adresa, Integer idContact, String nume,
+			String prenume, String formaAdresare, char gen, String cnp,
+			Integer idCandidat, String tipCandidat, Integer marca,
+			Boolean activ, Integer numarCopii) {
+		super(id, adresa, idContact, nume, prenume, formaAdresare, gen, cnp,
+				idCandidat, tipCandidat);
+		this.marca = marca;
+		this.activ = activ;
+		this.numarCopii = numarCopii;
+	}
 	
 	
 }
