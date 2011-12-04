@@ -1,5 +1,5 @@
 #sidebar TableOfContents
-  * Generalitati
+  * Generalitati [WikiOpenERP]
     * Business Use Case
     * Java Platform
   * Module
