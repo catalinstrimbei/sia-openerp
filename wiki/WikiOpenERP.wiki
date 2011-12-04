@@ -16,7 +16,7 @@ Modul-[CONTABGEN]
 
 Modul-[CONTABGEST]    
 
-Modul-ACHIZITII     
+Modul-[ACHIZITII]     
 
 Modul-VANZARI       
 
