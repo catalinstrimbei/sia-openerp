@@ -11,7 +11,7 @@ Vizeaza procesul de APROVIZIONARE
 
 - Serviciu Aprovizionare
 
-  1. Primeste Cererile de aprovizionare
+   1. Primeste Cererile de aprovizionare
 
   2. Gestioneaza plan de aprovizionare
 
