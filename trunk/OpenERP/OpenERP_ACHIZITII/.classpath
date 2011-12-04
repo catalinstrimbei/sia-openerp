@@ -6,7 +6,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry kind="lib" path="log4j-1.2.16.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_CONTABGEN"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_FINPLATI"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_STOCURI"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

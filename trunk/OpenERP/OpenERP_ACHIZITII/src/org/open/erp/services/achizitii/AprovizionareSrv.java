@@ -117,28 +117,16 @@ public interface AprovizionareSrv {
    
     
     
-    public int inregistrareFactura(Factura factura) throws CtbException;
-    /**
-   	 * Creare nota de intrare receptie
-   	 * 
-   	 * @param factura furnizor furnizor
-   	 * @param data data creare NIR
-   	 * @return Inregistrare factura furnizor
-   	 * 
-   	 */     
-    
-        
-    void creareNIR(Factura factura,Date data);
+    public int inregistrareFactura(Factura factura) throws CtbException;    
     /**
    	 * Inregistrare receptie materiale
    	 * 
-   	 * @param data data receptie
-   	 * @param comanda comanda achizitie aferenta
+   	 * @param nir Document pe baza caruia se va realiza actualizarea stocurilor 
    	 * @return Receptie materiale - actualizare stocuri; creare documente contabile
    	 * 
    	 */    
     
-    void receptieMateriale(Date data,Comanda comanda);
+    void receptieMateriale(Document nir);
     /**
    	 *Creare cerere retur materiale
    	 * 
@@ -146,35 +134,11 @@ public interface AprovizionareSrv {
    	 * @param data data
    	 * @return Creare cerere retur materiale
    	 * 
-   	 */        
-    public void creareFacturaRetur(Factura factura, Date data);
-    /**
-   	 *Actualizare cerere retur
-   	 * 
-   	 * @param cerereRetur cerere de retur  
-   	 * @param linieCerereRetur linie cerere retur
-   	 * @return Actualizare cerere retur
-   	 * 
-   	 */ 
-     public void updateFacturaRetur(FacturaRetur facturaRetur,
-			LinieFacturaRetur linieFacturaRetur);
-    /**
-   	 * Efectuare retur materiale
-   	 * 
-   	 * @param cerereRetur cerere de retur  
-   	 * @return Inregistrare retur materiale- actualizare stocuri; inregistrea contabilitate
-   	 * 
-   	 */ 
+   	 */       
+   
     
-    void returMateriale(FacturaRetur facturaRetur);
-    /**
-   	 * Inregistrare progres comanda
-   	 *    	 
-   	 * @param comanda comanda achizitie 
-   	 * @return  Inregistrare progres comanda
-   	 * 
-   	 */ 
-    void progresComanda(Comanda comanda);	
+    public void returMateriale(Document facturaRetur);
+  	
     
     }
     

@@ -9,15 +9,13 @@ import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.Articol;
 import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.Comanda;
-import org.open.erp.services.achizitii.Contract;
 import org.open.erp.services.achizitii.Factura;
-import org.open.erp.services.achizitii.FacturaRetur;
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.achizitii.LinieCerereOferta;
 import org.open.erp.services.achizitii.LinieComanda;
-import org.open.erp.services.achizitii.LinieFacturaRetur;
 import org.open.erp.services.achizitii.LinieOfertaAchizitie;
 import org.open.erp.services.achizitii.LiniePlanAprovizionare;
+import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
@@ -27,13 +25,15 @@ import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
-import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.stocuri.CerereAprovizionare;
+import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.Procesare;
+import org.open.erp.services.stocuri.impl.StocuriImpl;
 
 
 public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListener{
 	public ContabilizareSrv contabilizareSrv = new ContabilizareSrvImpl();
+	public StocuriSrv stocuriSrv = new StocuriImpl();
 	
 	public AprovizionareImpl() {
 	}	
@@ -155,11 +155,18 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		return comanda;
 	}
 	
-
+    public NIR adaugareLiniiNir(NIR nir,List<LinieDocument> liniiNIR) throws CtbException{
+    	NIR nirFact=nir;
+    	nir.setLiniiDocument(liniiNIR);
+    	this.inregistrareFactura(nir.getFactura());
+    	this.receptieMateriale(nir);
+		return nirFact;    	
+    }
 	@Override
 	public int inregistrareFactura(Factura factura) throws CtbException {		
 		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc()
-				                                    , ((Factura) factura).getValFact()				                                   
+				                                    , ((Factura) factura).getValFact()
+				                                    ,((Factura)factura).getTVATotal()				                                    
 				                                    , factura.getNrDoc()
 				                                    , ((Factura) factura).getFurnizor().getId()
 				                                    ,factura.getLiniiDocument()
@@ -167,43 +174,28 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 				                                    ,1);
 		
 	}
-
-	@Override
-	public void creareNIR(Factura factura, Date data) {
-		// TODO Auto-generated method stub
-		
+	public int procesareFactRetur(Factura facturaRetur) throws CtbException{
+		this.returMateriale(facturaRetur);
+		return contabilizareSrv.jurnalizareAchizitie(facturaRetur.getDataDoc()
+                , ((Factura) facturaRetur).getValFact()
+                ,((Factura)facturaRetur).getTVATotal()				                                    
+                , facturaRetur.getNrDoc()
+                , ((Factura) facturaRetur).getFurnizor().getId()
+                ,facturaRetur.getLiniiDocument()
+                ,StareDocument.NOU
+                ,1);
 	}
 
 	@Override
-	public void receptieMateriale(Date data, Comanda comanda) {
-		// TODO Auto-generated method stub
-		
+	public void receptieMateriale(Document nir ) {
+		stocuriSrv.intrareInStoc(nir);
 	}
 
 	@Override
-	public void creareFacturaRetur(Factura factura, Date data) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void returMateriale(Document facturaRetur) {
+		stocuriSrv.iesireStoc(facturaRetur);
+			}
 
-	@Override
-	public void updateFacturaRetur(FacturaRetur facturaRetur,
-			LinieFacturaRetur linieFacturaRetur) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void returMateriale(FacturaRetur facturaRetur) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void progresComanda(Comanda comanda) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public int hashCode() {
@@ -216,5 +208,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
+
+	
 
 }

@@ -1,29 +1,17 @@
 package org.open.erp.services.achizitii.teste;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.achizitii.AprovizionareSrv;
-import org.open.erp.services.achizitii.Comanda;
-import org.open.erp.services.achizitii.Factura;
-import org.open.erp.services.achizitii.Furnizor;
-import org.open.erp.services.achizitii.LinieComanda;
 import org.open.erp.services.achizitii.PlanAprovizionare;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
-import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.plati.FinPlatiSrv;
-import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.CerereAprovizionare;
-import org.open.erp.services.stocuri.Depozit;
-import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.StocuriSrv;
 
 public class TestAprovizionareImpl {
@@ -32,7 +20,6 @@ public class TestAprovizionareImpl {
 	AprovizionareSrv aprovizionareInstance;
 	NomenclatoareSrv nomenclatorInstance;
 	ContabilizareSrv contabgenInstance;
-	FinPlatiSrv finplatiInstance;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -43,8 +30,7 @@ public class TestAprovizionareImpl {
 		aprovizionareInstance= AprovizionareFactory.getAprovizionareSrv();
 		nomenclatorInstance=AprovizionareFactory.getNomenclatoareSrv();
 		contabgenInstance=AprovizionareFactory.getContabGenSrv();
-		stocuriInstance=AprovizionareFactory.getStocuriSrv();
-		finplatiInstance=AprovizionareFactory.getFinPlatiSrv();
+		stocuriInstance=AprovizionareFactory.getStocuriSrv();		
 		logger.info("initTest");	
 	}
 

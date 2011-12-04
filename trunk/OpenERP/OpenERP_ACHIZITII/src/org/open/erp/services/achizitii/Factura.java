@@ -4,16 +4,29 @@ import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 
 public class Factura extends Document {
-	public Furnizor furnizor;
-	public String nrFact;
-	public Double valFact;
-	public Double TVATotal;
-	public String stare;
-	public String getStare() {
-		return stare;
+	public static final Integer STORNATA = -1;
+	public static final Integer INREGISTRATA = 1;
+	public static final Integer FACTURA_RETUR = 2;
+	public static final Integer FACTURA_ACHIZITIE = 3;
+	private Furnizor furnizor;
+	private String nrFact;
+	private Double valFact;
+	private Double TVATotal;
+	private Integer status;
+	private Comanda comanda;
+	private Integer tipFact;
+	public Comanda getComanda() {
+		return comanda;
 	}
-	public void setStare(String stare) {
-		this.stare = stare;
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
+		comanda.setStatusComanda(Comanda.FINALIZATA);
+	}	
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 	public Double getValFact() {
 		return valFact;
