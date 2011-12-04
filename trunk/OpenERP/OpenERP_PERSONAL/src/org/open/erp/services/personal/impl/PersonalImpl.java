@@ -23,6 +23,7 @@ import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.CerereDemisie;
 import org.open.erp.services.personal.ContractMunca;
+import org.open.erp.services.personal.DosarAngajat;
 import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.PersonalSrv;
@@ -255,5 +256,94 @@ public class PersonalImpl implements PersonalSrv{
 		}
 		return listaContractelor;
 	}
+	
+	@Override
+	public CV getCVByCandidat (Candidat candidat_) {
+		// TODO Auto-generated method stub
+		TestPersonalImpl test = new TestPersonalImpl();
+	
+		test.generareAnunturi();
+		Iterator <CV> iteratorCV = test.listaCandidati.iterator();
+		while (iteratorCV.hasNext()){
+			if (iteratorCV.next().getCandidat() == candidat_ )
+			{
+				return iteratorCV.next();
+			}
+		}
+		return null;
+	}
+	
+
+	@Override
+	public void angajare(Candidat candidat_) {
+		// TODO Auto-generated method stub
+		Angajat angajat;
+		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getIdContact(), candidat_.getNume(), candidat_.getPrenume(),
+				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
+				3// va fi modificat odata cu baza de date
+				, null, 0);
+		
+		CV cv = getCVByCandidat(candidat_);
+		
+		ContractMunca contract;
+		contract = new ContractMunca("C1", 1000.00, 10.00, angajat, cv.getFunctieVizata(), new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+		
+		DosarAngajat dosar;
+		dosar = new DosarAngajat(10, angajat, false, false, false);	
+		
+	}
+
+	
+	@Override
+	public DosarAngajat getDosarByAngajat(Angajat angajat_) {
+		TestPersonalImpl test = new TestPersonalImpl();
+		test.listaDosare();
+		Iterator <DosarAngajat> iteratorDosar = test.dosareAngajati.iterator();
+		List <ContractMunca> listaContractelor = new ArrayList<ContractMunca>();
+		while (iteratorDosar.hasNext()){
+			if (iteratorDosar.next().getAngajat() == angajat_ )
+			{
+				return iteratorDosar.next();
+			}
+		}
+		return null;
+	}
+	
+	
+	
+	@Override
+	public void activareAngajati(List<Angajat> listaAngajati) {
+		// TODO Auto-generated method stub
+		Iterator<Angajat> iterator = listaAngajati.iterator();
+		List<ContractMunca> contracte = new ArrayList<ContractMunca>();
+		
+		while (iterator.hasNext()) {
+			
+			DosarAngajat dosar;   
+			dosar = getDosarByAngajat (iterator.next());
+		
+			
+			if(iterator.next().getActiv() == false &&
+				dosar.getAdeverintaStudii() ==true && dosar.getAdeverintaStudii() == true && dosar.getFisaMedicala() == true)
+				
+			{
+				contracte = getListaContracteByAngajat(iterator.next());
+				
+				if (contracte.size()>0){
+					
+					iterator.next().setActiv(true);	
+				}
+				
+				contracte.clear();
+			}
+		}		
+		
+	}
+
+	
+	
+
+	
+	
 		
 }

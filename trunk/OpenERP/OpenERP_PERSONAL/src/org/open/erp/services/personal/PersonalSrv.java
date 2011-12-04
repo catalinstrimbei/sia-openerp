@@ -141,6 +141,10 @@ public interface PersonalSrv {
 	 * 
 	 */
 	
+	CV getCVByCandidat(Candidat candidat_);
+
+	void angajare(Candidat candidat_);
+	
 	void demisionare(CerereDemisie cerereDemisie_);
 	
 	/**
@@ -156,28 +160,14 @@ public interface PersonalSrv {
 
 	Angajat getAngajatById(Integer marca_);
 	
+	
 	List<Angajat> getListaAngajati();
+	
 	List<ContractMunca> getListaContracteByAngajat(Angajat angajat_);
 	
-	/**
-	 * Scop   
-	 * 
-	 * @param cerereDemisie_ 
-	 * 
-	 * @return 
-	 * 
-	 */
+	DosarAngajat getDosarByAngajat(Angajat angajat_);
+
+	void activareAngajati(List<Angajat> listaAngajati);
 	
-	///Angajat relocalizare(Angajat angajat_, Functie functie_);	
-	//List<Candidat> recrutare();
-	/*
-	concediere();	
-	promovare();	
-	evaluareAngajat();	
-	organizareTraining();	
-	adaugareFunctie();	
-	organizareTeamBuilding();
-	*/
-		
 
 }
