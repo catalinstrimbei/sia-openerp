@@ -12,6 +12,8 @@ public class ContractMunca {
 	public static final Integer durataNelimitata = 0;
 	
 	private String  nrContract;
+	private Double	salarBaza;
+	private Double 	tarifOrar;
 	private Angajat angajat;
 	private Functie	functie;
 	private Date    dataSemnare;
@@ -72,23 +74,35 @@ public class ContractMunca {
 	public static Integer getDuratanelimitata() {
 		return durataNelimitata;
 	}
-	public ContractMunca(String nrContract, Angajat angajat, Functie functie,
-			Date dataSemnare, Date dataInceput, Date dataTerminare,
-			Integer durataContract) {
+	public Double getSalarBaza() {
+		return salarBaza;
+	}
+	public void setSalarBaza(Double salarBaza) {
+		this.salarBaza = salarBaza;
+	}
+	public Double getTarifOrar() {
+		return tarifOrar;
+	}
+	public void setTarifOrar(Double tarifOrar) {
+		this.tarifOrar = tarifOrar;
+	}
+	public ContractMunca(String nrContract, Double salarBaza, Double tarifOrar,
+			Angajat angajat, Functie functie, Date dataSemnare,
+			Date dataInceput, Date dataTerminare, Integer durataContract,
+			String motivIncheiere) {
 		super();
 		this.nrContract = nrContract;
+		this.salarBaza = salarBaza;
+		this.tarifOrar = tarifOrar;
 		this.angajat = angajat;
 		this.functie = functie;
 		this.dataSemnare = dataSemnare;
 		this.dataInceput = dataInceput;
 		this.dataTerminare = dataTerminare;
 		this.durataContract = durataContract;
-		this.motivIncheiere = null;
+		this.motivIncheiere = motivIncheiere;
 	}
-	public ContractMunca() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	
 	

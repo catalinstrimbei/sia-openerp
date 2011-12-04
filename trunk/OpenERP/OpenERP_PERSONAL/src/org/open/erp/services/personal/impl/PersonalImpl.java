@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.TreeMap;
 
-import org.open.erp.services.buget.Buget;
-import org.open.erp.services.buget.BugetareSrv;
-import org.open.erp.services.buget.LinieBugetara;
+//import org.open.erp.services.buget.Buget;
+//import org.open.erp.services.buget.BugetareSrv;
+//import org.open.erp.services.buget.LinieBugetara;
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Persoana;
 //import org.open.erp.services.personal.Activitate;
@@ -27,6 +27,7 @@ import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.ProbaEvaluare;
+import org.open.erp.services.personal.teste.TestPersonalImpl;
 
 /**
  * 
@@ -208,6 +209,51 @@ public class PersonalImpl implements PersonalSrv{
 			}
 		}
 		return tMap;
+	}
+
+	@Override
+	public Angajat getAngajatCuId(Integer marca_) {
+		// TODO Auto-generated method stub
+		TestPersonalImpl test = new TestPersonalImpl();
+		test.listaAngajati();
+		Iterator <Angajat> iteratorAngajati = test.angajati.iterator();
+		while(iteratorAngajati.hasNext())
+		{
+			if(iteratorAngajati.next().getMarca() == marca_)
+			{
+				return iteratorAngajati.next();
+			}
+			
+		}
+		System.out.println("Nu a fost gasit niciun angajat cu marca " + marca_.toString());
+		return null;
+	}
+
+	@Override
+	public List<Angajat> getListaAngajati() {
+		// TODO Auto-generated method stub
+		TestPersonalImpl test = new TestPersonalImpl();
+		test.listaAngajati();
+		return test.angajati;
+	}
+
+	@Override
+	public List<ContractMunca> getListaContracteByAngajat(Angajat angajat_) {
+		TestPersonalImpl test = new TestPersonalImpl();
+		test.listaContracte();
+		Iterator <ContractMunca> iteratorMunca = test.contracteMunca.iterator();
+		List <ContractMunca> listaContractelor = new ArrayList<ContractMunca>();
+		while (iteratorMunca.hasNext()){
+			if (iteratorMunca.next().getAngajat() == angajat_ 
+					&&
+					iteratorMunca.next().getDataInceput().compareTo(Calendar.getInstance().getTime()) <= 0 
+					&&
+					iteratorMunca.next().getDataTerminare().compareTo(Calendar.getInstance().getTime()) >= 0)
+			{
+				listaContractelor.add(iteratorMunca.next());
+			}
+		}
+		return listaContractelor;
 	}
 		
 }

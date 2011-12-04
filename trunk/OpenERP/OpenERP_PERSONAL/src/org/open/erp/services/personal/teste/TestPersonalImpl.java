@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.open.erp.services.nomgen.Departament;
-import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.CV;
@@ -41,7 +41,8 @@ public class TestPersonalImpl {
 	
 	List<Departament> listaDepartamente = new ArrayList<Departament>();
 	List<ProbaEvaluare> probeEvaluare = new ArrayList<ProbaEvaluare>();
-	List<Angajat> angajati = new ArrayList<Angajat>();
+	public List<Angajat> angajati = new ArrayList<Angajat>();
+	public List<ContractMunca> contracteMunca	= new ArrayList<ContractMunca>();
 	
 	Functie functie1 = new Functie(1001, "Functie1");
 	Functie functie2 = new Functie(1002, "Functie2");
@@ -61,7 +62,8 @@ public class TestPersonalImpl {
 	CV cv7 = new CV("CV7", candidat6, functie2, new Date("10/08/2011"), new Date("20/11/2011"));
 	
 	
-	Persoana persoana1 = new Persoana(1, "Nume1", "Prenume1");
+	PersoanaFizica persoana1 = new PersoanaFizica(1,null, null, "Nume1", "Prenume1", null, 'M', null);
+	PersoanaFizica persoana2 = new PersoanaFizica(2,null, null, "Nume2", "Prenume2", null, 'F', null);
 	
 	
 	Interviu interviu1 = new Interviu(1, "Final");
@@ -82,9 +84,9 @@ public class TestPersonalImpl {
 	
 	AnuntLocMunca anunt2 = new AnuntLocMunca(1, new String[] { "Internet"}, "Anunt2", functie1, new Date("12/09/2011"), new Date("10/12/2011"));
 	
-	Departament departament1 = new Departament("Dep1", "Departament1", 20);
-	Departament departament2 = new Departament("Dep2", "Departament2", 10);
-	Departament departament3 = new Departament("Dep3", "Departament3", 10);
+	Departament departament1 = new Departament(1, "Departament1", null, persoana1);
+	Departament departament2 = new Departament(2, "Departament2", null, persoana1);
+	Departament departament3 = new Departament(3, "Departament3", null, persoana1);
 	
 	ProbaEvaluare	probaEvaluare1 = new ProbaEvaluare("Oral", "EvaluarePeriodica", departament1);
 	ProbaEvaluare	probaEvaluare2 = new ProbaEvaluare("Practic", "EvaluarePeriodica", departament1);
@@ -96,9 +98,12 @@ public class TestPersonalImpl {
 	//Angajat	angajat2 = new Angajat ()
 	
 	
-	Angajat 		angajat1 = new Angajat(persoana1.getIdPersoana(), "Nume1", "Prenume1", candidat1.getIdCandidat(),candidat1.getTipCandidat(), 10001, true);
+	Angajat 		angajat1 = new Angajat(persoana1.getId(), persoana1.getNume(), persoana1.getPrenume(), candidat1.getIdCandidat(),candidat1.getTipCandidat(), 10001, true);
+	Angajat 		angajat2 = new Angajat(persoana2.getId(), persoana2.getNume(), persoana2.getPrenume(), candidat2.getIdCandidat(),candidat2.getTipCandidat(), 10002, true);
 	//Angajat 		angajat1 = new Angajat(persoana1.getIdPersoana(), "Nume1", "Prenume1");
-	ContractMunca	contract1 = new ContractMunca("ContractNr0002", angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,null);
+	//ContractMunca	contract1 = new ContractMunca("ContractNr0002", angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,null);
+	ContractMunca	contract1 = new ContractMunca("ContractNr0002", 1000.00, 10.00, angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+	
 	CerereDemisie	cerereDemisie1 = new CerereDemisie("CerereDem001", contract1, new Date("11/08/2011"), null, null,null);
 	
 	void generareAnunturi() {
@@ -140,9 +145,15 @@ public class TestPersonalImpl {
 		probeEvaluare.add(probaEvaluare6);
 	}
 	
-	
-	
+	public void listaAngajati(){
+		angajati.add(angajat1);
+		angajati.add(angajat2);
+	}
+	public void listaContracte(){
+		contracteMunca.add(contract1);
+	}
 	/*
+	 * 
 	public void vizualizareRecrutare() {
 		this.generareAnunturi();
 		this.generareCandidati();

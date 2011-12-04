@@ -152,10 +152,12 @@ public interface PersonalSrv {
 	 * 
 	 */
 	
-	
 	void concediere(ContractMunca contractMunca_);
 
-	Angajat getAngajatCuId(int i);
+	Angajat getAngajatCuId(Integer marca_);
+	
+	List<Angajat> getListaAngajati();
+	List<ContractMunca> getListaContracteByAngajat(Angajat angajat_);
 	
 	/**
 	 * Scop   
