@@ -65,15 +65,13 @@ public class Document {
 
 
 	public Document(Integer nrDoc, Date dataDoc,
-			List<LinieDocument> liniiDocument) {
+			List<LinieDocument> liniiDocument, String DocDetaliu) {
 		super();
 		this.nrDoc = nrDoc;
 		this.dataDoc = dataDoc;
 		this.liniiDocument = liniiDocument;
+		this.DocDetaliu = DocDetaliu;
 	}
 
-	
-	
-	
 	
 }
