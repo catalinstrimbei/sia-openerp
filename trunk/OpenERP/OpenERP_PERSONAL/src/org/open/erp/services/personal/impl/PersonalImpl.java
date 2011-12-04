@@ -212,7 +212,7 @@ public class PersonalImpl implements PersonalSrv{
 	}
 
 	@Override
-	public Angajat getAngajatCuId(Integer marca_) {
+	public Angajat getAngajatById(Integer marca_) {
 		// TODO Auto-generated method stub
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.listaAngajati();
