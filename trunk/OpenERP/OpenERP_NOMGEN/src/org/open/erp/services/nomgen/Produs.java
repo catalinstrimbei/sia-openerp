@@ -14,6 +14,35 @@ public class Produs extends Material{
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
 	private Float procentTVA;
+	private Float greutate;
+	private String descriere;
+	private Double pretVanzare;
+	
+	public Double getPretVanzare() {
+		return pretVanzare;
+	}
+
+	public void setPretVanzare(Double pretVanzare) {
+		this.pretVanzare = pretVanzare;
+	}
+
+	public String getDescriere() {
+		return descriere;
+	}
+
+	public void setDescriere(String descriere) {
+		this.descriere = descriere;
+	}
+
+	public Float getGreutate() {
+		return greutate;
+	}
+
+	public void setGreutate(Float greutate) {
+		this.greutate = greutate;
+	}
+
+
 	
 	
 	public Float getProcentTVA() {
@@ -99,7 +128,10 @@ public class Produs extends Material{
 	}
 
 	
-	public Produs(Integer id, String denumire, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate, Float procentTVA) {
+	public Produs(Integer id, String denumire, String unitateMasura, 
+			Date dataFabricatiei, Integer termenValabilitate,
+			Float procentTVA, Float greutate, String descriere, 
+			Double pretVanzare) {
 		super();
 		
 		this.id = id;
@@ -108,6 +140,9 @@ public class Produs extends Material{
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;
 		this.procentTVA = procentTVA;
+		this.greutate = greutate;
+		this.descriere = descriere;
+		this.pretVanzare = pretVanzare;
 	}
 	
 	public Produs() {
