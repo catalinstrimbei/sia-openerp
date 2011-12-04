@@ -3,14 +3,28 @@ package org.open.erp.services.nomgen;
 import java.util.*;
 public class Material  {
 
-	private Integer id;
-	private String  denumire;
-	private String  unitateMasura;
-	private Date    dataFabricatiei;
-	private Integer termenValabilitate;
-	private String tipContabil;
+	protected Integer id;
+	protected String  denumire;
+	protected String  unitateMasura;
+	protected Date    dataFabricatiei;
+	protected Integer termenValabilitate;
+	protected String tipContabil;
+	protected Float greutate;
+	protected String descriere;
 	
 	
+	public String getDescriere() {
+		return descriere;
+	}
+	public void setDescriere(String descriere) {
+		this.descriere = descriere;
+	}
+	public Float getGreutate() {
+		return greutate;
+	}
+	public void setGreutate(Float greutate) {
+		this.greutate = greutate;
+	}
 	public String getTipContabil() {
 		return  tipContabil;
 	}
@@ -18,13 +32,15 @@ public class Material  {
 		this.tipContabil = tipContabil;
 	}
 	public Material(Integer id, String denumire, String unitateMasura,
-			Date dataFabricatiei, Integer termenValabilitate) {
+			Date dataFabricatiei, Integer termenValabilitate, Float greutate, String descriere) {
 		super();
 		this.id = id;
 		this.denumire = denumire;
 		this.unitateMasura = unitateMasura;
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;
+		this.greutate=greutate;
+		this.descriere=descriere;
 	}
 	public Material() {
 		super();

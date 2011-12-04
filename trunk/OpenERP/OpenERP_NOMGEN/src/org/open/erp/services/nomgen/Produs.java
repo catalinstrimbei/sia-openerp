@@ -13,8 +13,17 @@ public class Produs extends Material{
 	private String  unitateMasura;
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
+	private Float procentTVA;
 	
 	
+	public Float getProcentTVA() {
+		return procentTVA;
+	}
+
+	public void setProcentTVA(Float procentTVA) {
+		this.procentTVA = procentTVA;
+	}
+
 	/**
 	 * @return the id
 	 */
@@ -90,7 +99,7 @@ public class Produs extends Material{
 	}
 
 	
-	public Produs(Integer id, String denumire, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate) {
+	public Produs(Integer id, String denumire, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate, Float procentTVA) {
 		super();
 		
 		this.id = id;
@@ -98,6 +107,7 @@ public class Produs extends Material{
 		this.unitateMasura = unitateMasura;
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;
+		this.procentTVA = procentTVA;
 	}
 	
 	public Produs() {
