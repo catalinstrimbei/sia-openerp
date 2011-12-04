@@ -2,6 +2,7 @@ package org.open.erp.services.personal;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -117,7 +118,7 @@ public interface PersonalSrv {
 	
 	
 	
-	TreeMap <Departament, ProbaEvaluare> getProbeEvaluareDepartament (List<ProbaEvaluare> probeEvaluareInit_, List<Departament> departamenteInit_);
+	HashMap <Departament, List<ProbaEvaluare>> getProbeEvaluareDepartament (List<ProbaEvaluare> probeEvaluareInit_, List<Departament> departamenteInit_);
 	
 	/**
 	 * Scop    Returneaza o lista a probelor grupate pe fiecare departament 
@@ -129,10 +130,13 @@ public interface PersonalSrv {
 	 * 
 	 */
 	
-	TreeMap<ProbaEvaluare, AngajatProbaEvaluare> evaluarePeriodica(List <AngajatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_ );
+	//TreeMap<ProbaEvaluare, AngajatProbaEvaluare> evaluarePeriodica(List <AngajatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_ );
 	
+	//HashMap<Departament, List<HashMap<ProbaEvaluare, List<HashMap<Angajat, Integer>>>>> evaluarePeriodica(List<Departament> departamente_init, List <AngajatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_ );;
+	
+	HashMap <Angajat, List<HashMap<ProbaEvaluare, Integer>>> getNoteAngajatByProba (List <AngajatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_);
 	/**
-	 * Scop    Returneaza lista rezultatelor angajatilor la probe grupate pe fiecare departament 
+	 * Scop    Returneaza lista rezultatelor angajatilor la fiecare proba grupate pe fiecare departament 
 	 *         
 	 * @param  angajatProbaInit_ 	    Lista cu toate rezultatele la toate probele de evaluare
 	 * @param  probeEvaluareInit_ 	    Lista cu toate probele de evaluare

@@ -4,7 +4,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeMap;
@@ -173,24 +175,34 @@ public class PersonalImpl implements PersonalSrv{
 	//evaluareAngajat - Andreea
 
 	@Override
-	public TreeMap <Departament, ProbaEvaluare> getProbeEvaluareDepartament(
-			List<ProbaEvaluare> probeEvaluareInit_, List<Departament> departamenteInit) {
-		Iterator <ProbaEvaluare> iteratorProbe = probeEvaluareInit_.iterator();
+	public HashMap <Departament, List<ProbaEvaluare>> getProbeEvaluareDepartament(
+			List<ProbaEvaluare> probeEvaluareInit_, List<Departament> departamenteInit) 
+	{
+		Departament 	departamentCurent;
+		ProbaEvaluare	probaEvaluare;
+		
 		Iterator <Departament>	iteratorDepartament = departamenteInit.iterator();
-		TreeMap <Departament, ProbaEvaluare> tMap = new TreeMap<Departament, ProbaEvaluare>();
+		HashMap <Departament, List<ProbaEvaluare>> tMap = new HashMap<Departament, List<ProbaEvaluare>>();
+		List<ProbaEvaluare> probeEvaluarePeDepartament = new ArrayList<ProbaEvaluare>();
 		while (iteratorDepartament.hasNext()) {
+			departamentCurent = iteratorDepartament.next();
+			probeEvaluarePeDepartament.clear();
+			Iterator <ProbaEvaluare> iteratorProbe = probeEvaluareInit_.iterator();
 			while (iteratorProbe.hasNext())
 			{
-				if (iteratorProbe.next().getDepartament() == iteratorDepartament.next()
-						&& iteratorProbe.next().getScop() == "EvaluarePeriodica")
+				probaEvaluare = iteratorProbe.next();
+				if (probaEvaluare.getDepartament() == departamentCurent
+						&& probaEvaluare.getScop() == "EvaluarePeriodica")
 				{
-					tMap.put(iteratorDepartament.next(), iteratorProbe.next());
+					probeEvaluarePeDepartament.add(probaEvaluare);
 				}
-			}
+			}			
+			tMap.put(departamentCurent, new ArrayList<ProbaEvaluare>(probeEvaluarePeDepartament));			
 		}
+		
 		return tMap;
 	}
-
+/*
 	@Override
 	public TreeMap<ProbaEvaluare, AngajatProbaEvaluare> evaluarePeriodica(
 			List<AngajatProbaEvaluare> angajatProbaInit_,
@@ -211,7 +223,7 @@ public class PersonalImpl implements PersonalSrv{
 		}
 		return tMap;
 	}
-
+*/
 	@Override
 	public Angajat getAngajatById(Integer marca_) {
 		// TODO Auto-generated method stub
@@ -336,14 +348,38 @@ public class PersonalImpl implements PersonalSrv{
 				
 				contracte.clear();
 			}
-		}		
+		}				
+	}
+
+	@Override
+	public HashMap<Angajat, List<HashMap<ProbaEvaluare, Integer>>> getNoteAngajatByProba(
+			List<AngajatProbaEvaluare> angajatProbaInit_,
+			List<ProbaEvaluare> probeEvaluareInit_) {
+		List<Angajat> listaAngajatilorCareAuDatProbe = new ArrayList<Angajat>();
+		List<ProbaEvaluare> listaProbelorEvaluate = new ArrayList<ProbaEvaluare>();
+		HashMap<Angajat, List<HashMap<ProbaEvaluare, Integer>>> rezultat = new HashMap<Angajat, List<HashMap<ProbaEvaluare, Integer>>>();
+		Iterator<AngajatProbaEvaluare> iteratorRezultate = angajatProbaInit_.iterator();
+		AngajatProbaEvaluare rezultatCurent;
+		Angajat angajatCurent;
+		ProbaEvaluare probaCurenta;
+		while (iteratorRezultate.hasNext()) {
+			rezultatCurent = iteratorRezultate.next();
+			angajatCurent = rezultatCurent.getAngajat();
+			probaCurenta = rezultatCurent.getProbaEvaluare();
+			if (!listaAngajatilorCareAuDatProbe.contains(angajatCurent)){
+				listaAngajatilorCareAuDatProbe.add(angajatCurent);
+			}
+			if (!listaProbelorEvaluate.contains(probaCurenta)){
+				listaProbelorEvaluate.add(probaCurenta);
+			}
+		}
 		
+		Iterator<Angajat> iteratorAngajatiCareAuDatProbe = listaAngajatilorCareAuDatProbe.iterator();
+		while (iteratorAngajatiCareAuDatProbe.hasNext()){
+			angajatCurent = iteratorAngajatiCareAuDatProbe.next();
+		}
+		return rezultat;
 	}
 
 	
-	
-
-	
-	
-		
 }

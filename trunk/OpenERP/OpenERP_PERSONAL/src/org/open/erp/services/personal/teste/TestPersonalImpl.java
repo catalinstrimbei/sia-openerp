@@ -89,12 +89,12 @@ public class TestPersonalImpl {
 	Departament departament2 = new Departament(2, "Departament2", null, persoana1);
 	Departament departament3 = new Departament(3, "Departament3", null, persoana1);
 	
-	ProbaEvaluare	probaEvaluare1 = new ProbaEvaluare("Oral", "EvaluarePeriodica", departament1);
-	ProbaEvaluare	probaEvaluare2 = new ProbaEvaluare("Practic", "EvaluarePeriodica", departament1);
-	ProbaEvaluare	probaEvaluare3 = new ProbaEvaluare("Scris", "EvaluarePeriodica", departament2);
-	ProbaEvaluare	probaEvaluare4 = new ProbaEvaluare("Oral", "EvaluarePeriodica", departament2);
-	ProbaEvaluare	probaEvaluare5 = new ProbaEvaluare("Scris", "EvaluarePeriodica", departament3);
-	ProbaEvaluare	probaEvaluare6 = new ProbaEvaluare("Practic", "Test", departament1);
+	ProbaEvaluare	probaEvaluare1 = new ProbaEvaluare("Proba1", "Oral", "EvaluarePeriodica", departament1);
+	ProbaEvaluare	probaEvaluare2 = new ProbaEvaluare("Proba2", "Practic", "EvaluarePeriodica", departament1);
+	ProbaEvaluare	probaEvaluare3 = new ProbaEvaluare("Proba3", "Scris", "EvaluarePeriodica", departament2);
+	ProbaEvaluare	probaEvaluare4 = new ProbaEvaluare("Proba4", "Oral", "EvaluarePeriodica", departament2);
+	ProbaEvaluare	probaEvaluare5 = new ProbaEvaluare("Proba5", "Scris", "EvaluarePeriodica", departament3);
+	ProbaEvaluare	probaEvaluare6 = new ProbaEvaluare("Proba6", "Practic", "Test", departament1);
 	
 	//Angajat	angajat2 = new Angajat ()
 	

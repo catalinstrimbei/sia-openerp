@@ -5,15 +5,21 @@ package org.open.erp.services.personal.teste;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.TreeMap;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.Candidat;
+import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.impl.PersonalImpl;
 
 /**
@@ -82,6 +88,33 @@ public class TestPersonal {
 		}	
 		
 	}
+	void vizualizareProbeEvaluarePeDepartament(TestPersonalImpl test)
+	{
+		test.generareDepartamente();
+		test.generareProbeEvaluare();
+		HashMap <Departament, List<ProbaEvaluare>> mapFinal = new HashMap <Departament, List<ProbaEvaluare>>(); 
+		mapFinal = personalService.getProbeEvaluareDepartament(test.probeEvaluare, test.listaDepartamente);
+		List<Departament> keysDepartamente = new ArrayList<Departament>(mapFinal.keySet());
+		Iterator<Departament> iteratorDepartamente = keysDepartamente.iterator();
+		List<ProbaEvaluare> valuesProbeEvaluare = new ArrayList<ProbaEvaluare>();
+		Departament depCurent;
+		ProbaEvaluare probaEvaluare;
+		while (iteratorDepartamente.hasNext()){
+			depCurent = iteratorDepartamente.next();
+			System.out.println(depCurent.getDenumire());
+			valuesProbeEvaluare = mapFinal.get(depCurent);
+			if (valuesProbeEvaluare.size() > 0) {
+				Iterator <ProbaEvaluare> iteratorProbaEvaluare = valuesProbeEvaluare.iterator();
+				while (iteratorProbaEvaluare.hasNext()){
+					probaEvaluare = iteratorProbaEvaluare.next();
+					System.out.println("---" + probaEvaluare.getIdProba().toString());
+				}
+			}
+			else{
+				System.out.println("Nu exista nicio proba pt departamentul curent");
+			}
+		}
+	}
 	
 	@Test
 	public void testRecrutare() {
@@ -105,9 +138,20 @@ public class TestPersonal {
 		personalService.concediere(test.contract1);
 		//fail("Not yet implemented");
 	}
+	/*
+	@Test
+	public void testAngajare(){
+		TestPersonalImpl test = new TestPersonalImpl();
+		personalService.angajare(test.candidat1);
+		System.out.println("Candidatul" + test.candidat1.getNume() + " " + test.candidat1.getPrenume() + " a fost angajat");
+	}
 	
-	
-	
+	*/
+	@Test
+	public void testProbeEvaluarePeDepartament(){
+		TestPersonalImpl test = new TestPersonalImpl();
+		vizualizareProbeEvaluarePeDepartament(test);
+	}
 	
 	/**
 	 * @throws java.lang.Exception

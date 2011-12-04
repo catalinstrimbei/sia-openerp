@@ -13,6 +13,7 @@ import org.open.erp.services.nomgen.Persoana;
  */
 public class ProbaEvaluare {
 	
+	private String 			idProba;
 	private String 			tipEvaluare;
 	private Integer			durataMinute;
 	private List<String> 	intrebari;
@@ -49,26 +50,31 @@ public class ProbaEvaluare {
 	public void setDepartament(Departament departament) {
 		this.departament = departament;
 	}
-	public ProbaEvaluare(String tipEvaluare, Integer durataMinute,
-			List<String> intrebari, String scop, Departament departament) {
+	public String getIdProba() {
+		return idProba;
+	}
+	public void setIdProba(String idProba) {
+		this.idProba = idProba;
+	}
+	public ProbaEvaluare(String idProba, String tipEvaluare,
+			Integer durataMinute, List<String> intrebari, String scop,
+			Departament departament) {
 		super();
+		this.idProba = idProba;
 		this.tipEvaluare = tipEvaluare;
 		this.durataMinute = durataMinute;
 		this.intrebari = intrebari;
 		this.scop = scop;
 		this.departament = departament;
 	}
-	public ProbaEvaluare() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public ProbaEvaluare(String tipEvaluare, String scop,
+	public ProbaEvaluare(String idProba, String tipEvaluare, String scop,
 			Departament departament) {
 		super();
+		this.idProba = idProba;
 		this.tipEvaluare = tipEvaluare;
 		this.scop = scop;
 		this.departament = departament;
 	}
-	
+
 	
 }
