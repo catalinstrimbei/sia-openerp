@@ -9,7 +9,8 @@ Modul Achizitii
 
 Vizeaza procesul de APROVIZIONARE
 
- - Serviciu Aprovizionare
+- Serviciu Aprovizionare
+
   1. Primeste Cererile de aprovizionare
 
   2. Gestioneaza plan de aprovizionare
