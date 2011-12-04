@@ -10,3 +10,4 @@
     * [CONTABGEST]
     * [PRODUCTIE]
     * [MARKETING]
+    * [PERSONAL]
