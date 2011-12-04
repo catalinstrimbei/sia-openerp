@@ -1,0 +1,20 @@
+Modul OpenERP_PERSONAL
+
+= Introduction =
+
+Se ocupa cu gestionarea Resurselor Umane
+
+
+= Details =
+
+== Cuprinde urmatoarele procese: ==
+=== 1. Procesul de recrutare ce include: === 
+ * alcatuirea anunturilor pentru locurile de munca;
+ * organizarea interviurilor;
+ * selectia candidatilor pentru angajare.
+
+=== 2. Procesul de angajare ===
+=== 3. Procesul de demitere ===
+=== 4. Procesul de relocalizare ===
+=== 5. Procesul de evaluare anuala a angajatilor ===
+=== 6. Procesul de organizare a evenimentelor din cadrul companiei. ===
