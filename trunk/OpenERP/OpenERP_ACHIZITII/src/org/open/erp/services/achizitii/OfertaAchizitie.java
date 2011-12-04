@@ -7,15 +7,36 @@ import java.util.List;
 import org.open.erp.services.nomgen.LinieDocument;
 
 public class OfertaAchizitie {
-	public static final Integer APROBATA = 1;
+	public static final Integer TRANSFORMATA = 1;
 	public static final Integer RESPINSA = -1;
 	public static final Integer IN_CURS = 0;
-	public Integer idOferta;
-	public Date dataOferta;	
-	public Integer statusOferta;
-	public Furnizor furnizor;
-	public List<LinieOfertaAchizitie> liniiOferta = new LinkedList<LinieOfertaAchizitie>();
+	private Integer idOferta;
+	private Date dataOferta;	
+	private Integer statusOferta;
+	private Furnizor furnizor;
+	private Double valTotal;
+	private Integer nrZile;
+	private CerereOferta cerereOferta;
+	private List<LinieOfertaAchizitie> liniiOferta = new LinkedList<LinieOfertaAchizitie>();
 	
+	public Double getValTotal() {
+		return valTotal;
+	}
+	public void setValTotal(Double valTotal) {
+		this.valTotal = valTotal;
+	}
+	public Integer getNrZile() {
+		return nrZile;
+	}
+	public void setNrZile(Integer nrZile) {
+		this.nrZile = nrZile;
+	}
+	public CerereOferta getCerereOferta() {
+		return cerereOferta;
+	}
+	public void setCerereOferta(CerereOferta cerereOferta) {
+		this.cerereOferta = cerereOferta;
+	}
 	public OfertaAchizitie(Date dataOferta, Integer statusOferta,
 			Furnizor furnizor, List<LinieOfertaAchizitie> liniiOferta) {
 		super();

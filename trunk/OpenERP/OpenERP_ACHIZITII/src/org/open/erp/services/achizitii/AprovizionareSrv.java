@@ -3,6 +3,7 @@ package org.open.erp.services.achizitii;
 import java.util.Date;
 import java.util.List;
 
+import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Persoana;
@@ -60,18 +61,8 @@ public interface AprovizionareSrv {
 	 * 
 	 */
     
-    void adaugareLiniiCerereOferta(CerereOferta cerere, List<LiniePlanAprovizionare> liniiPlan);      
-   
-    
-    /**
-  	 * Trimiterea cerererii de oferta la furnizori
-  	 * 
-  	 * @param cerereOferta  cererea de oferta trimisa la furnizori
-  	 * @param furnizori furnizorii carora le va fi trimisa cererea de oferta
-  	 * @return Cerere de oferta trimisa la furnizori
-  	 * 
-  	 */    
-    void trimitereCerereOferta(CerereOferta cerereOferta,List<Furnizor> furnizori);
+    CerereOferta adaugareLiniiCerereOferta(CerereOferta cerere, List<LiniePlanAprovizionare> liniiPlan);      
+      
     
     /**
   	 * Creare oferta de achizitie
@@ -81,7 +72,7 @@ public interface AprovizionareSrv {
   	 * @return Oferta de achizitie noua
   	 * 
   	 */ 
-    OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,Furnizor furnizor);
+    OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,Date data,Furnizor furnizor,List<LinieOfertaAchizitie> linii);
     
     /**
   	 * Analiza oferte de achizitie
@@ -92,7 +83,7 @@ public interface AprovizionareSrv {
   	 * 
   	 */   
     
-    void analizaOferteAchizitie(List<OfertaAchizitie> oferteAchizitie,CerereOferta cerereOferta );    
+    void analizaOferteAchizitie(List<OfertaAchizitie> oferteAchizitie );    
     /**
   	 * Creare comanda de achizitie
   	 * 
@@ -103,29 +94,30 @@ public interface AprovizionareSrv {
   	 * @return Creare comanda de achizitie
   	 * 
   	 */     
-    Comanda creareComanda(Furnizor furnizor, Date data, Contract contract, Persoana persona);    
+    public Comanda adaugaLiniiComanda(Comanda comanda, List<LiniePlanAprovizionare> liniiPlan) ;
     /**
-   	 * Actualizare comanda achizitie
-   	 * 
-   	 * @param linieComanda linie comanda achizitie 
-   	 * @return Actualizare comanda achizitie
-   	 * 
-   	 */       
-    void UpdatedComanda(LinieComanda linieComanda);
-    /**
+  	 * Creare comanda de achizitie din Oferta achizitie
+  	 * 
+  	 * @param oferta Oferta din achizitie din care va fi creata comanda de achizitie
+  	 * @return Comanda achizitie
+  	 * 
+  	 */  
+    public Comanda creareComandaDinOferta(OfertaAchizitie oferta);
+        /**
    	 * Inregistrare factura furnizor
    	 * 
    	 * @param  furnizor
    	 * @param data data factura
    	 * @param valFact valoare totala factura
    	 * @return Inregistrare factura furnizor
+     * @throws CtbException 
    	 * 
    	 */  
     
    
     
     
-    public int inregistrareFactura(Factura factura);
+    public int inregistrareFactura(Factura factura) throws CtbException;
     /**
    	 * Creare nota de intrare receptie
    	 * 

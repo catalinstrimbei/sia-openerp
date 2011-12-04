@@ -7,9 +7,9 @@ import java.util.List;
 import org.open.erp.services.nomgen.Persoana;
 
 public class CerereOferta {
-private static final Integer TRIMISA = 1;
-private static final Integer RESPINSA = -1;
-private static final Integer IN_CURS = 0;
+public static final Integer TRIMISA = 0;
+public static final Integer PRIMITA = 1;
+public static final Integer ANULATA =-1;
 private Integer idCerereOferta;
 private Date dataCerere;
 private Integer statusCerereOferta;

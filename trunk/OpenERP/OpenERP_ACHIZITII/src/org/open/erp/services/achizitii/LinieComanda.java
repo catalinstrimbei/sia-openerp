@@ -6,7 +6,7 @@ import org.open.erp.services.stocuri.ArticolStoc;
 public class LinieComanda   {
 	public Integer linieComanda;
 	public Comanda comanda;
-	public ArticolStoc articol;	
+	public Articol articol;	
 	public Double cantitate;
 	public Double pret;
 	public Integer getLinieComanda() {
@@ -20,11 +20,11 @@ public class LinieComanda   {
 	}
 	public void setComanda(Comanda comanda) {
 		this.comanda = comanda;
-	}
-	public ArticolStoc getArticol() {
+	}	
+	public Articol getArticol() {
 		return articol;
 	}
-	public void setArticol(ArticolStoc articol) {
+	public void setArticol(Articol articol) {
 		this.articol = articol;
 	}
 	public Double getCantitate() {
@@ -39,7 +39,7 @@ public class LinieComanda   {
 	public void setPret(Double pret) {
 		this.pret = pret;
 	}
-	public LinieComanda(Integer linieComanda, Comanda comanda, ArticolStoc articol,
+	public LinieComanda(Integer linieComanda, Comanda comanda, Articol articol,
 			Double cantitate, Double pret) {
 		super();
 		this.linieComanda = linieComanda;

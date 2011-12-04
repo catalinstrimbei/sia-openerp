@@ -5,20 +5,20 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Comanda {
-	public static final Integer APROBATA = 1;
-	public static final Integer RESPINSA = -1;
+	public static final Integer FINALIZATA = 1;
+	public static final Integer ANULATA = -1;
 	public static final Integer IN_CURS = 0;
 	public Integer idComanda;
 	public Furnizor furnizor;
 	public Date dataComanda;
 	public Integer statusComanda;
 	public List<LinieComanda> liniiComanda=new LinkedList<LinieComanda>();
+	
 	public Integer getIdComanda() {
 		return idComanda;
 	}
 	 public void addLinii(LinieComanda li) {
-	        this.getLiniiComanda().add(li);
-	        //li.setInchirieri(this);
+	        this.getLiniiComanda().add(li);	       
 	    }
 	public void setIdComanda(Integer idComanda) {
 		this.idComanda = idComanda;
@@ -47,14 +47,21 @@ public class Comanda {
 	public void setLiniiComanda(List<LinieComanda> liniiComanda) {
 		this.liniiComanda = liniiComanda;
 	}
-	public Comanda(Integer idComanda, Furnizor furnizor, Date dataComanda,
-			Integer statusComanda) {
+	public Comanda(Furnizor furnizor, Date dataComanda, Integer statusComanda,
+			List<LinieComanda> liniiComanda) {
 		super();
-		this.idComanda = idComanda;
+		this.furnizor = furnizor;
+		this.dataComanda = dataComanda;
+		this.statusComanda = statusComanda;
+		this.liniiComanda = liniiComanda;
+	}
+	public Comanda(Furnizor furnizor, Date dataComanda, Integer statusComanda) {
+		super();
 		this.furnizor = furnizor;
 		this.dataComanda = dataComanda;
 		this.statusComanda = statusComanda;
 	}
+	
 	
 	
 	

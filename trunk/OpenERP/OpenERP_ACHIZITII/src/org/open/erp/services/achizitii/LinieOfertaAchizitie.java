@@ -1,11 +1,18 @@
 package org.open.erp.services.achizitii;
 
 public class LinieOfertaAchizitie {
-	public OfertaAchizitie oferta;
-	public Articol articol;
-	public Double cantitate;
-	public Integer linie;
+	private OfertaAchizitie oferta;
+	private Articol articol;
+	private Double cantitate;
+	private Integer linie;
+	private Double pret;
 	
+	public Double getPret() {
+		return pret;
+	}
+	public void setPret(Double pret) {
+		this.pret = pret;
+	}
 	public OfertaAchizitie getOferta() {
 		return oferta;
 	}
@@ -37,6 +44,15 @@ public class LinieOfertaAchizitie {
 	}
 	public void setLinie(Integer linie) {
 		this.linie = linie;
+	}
+	public LinieOfertaAchizitie(OfertaAchizitie oferta, Articol articol,
+			Double cantitate, Integer linie, Double pret) {
+		super();
+		this.oferta = oferta;
+		this.articol = articol;
+		this.cantitate = cantitate;
+		this.linie = linie;
+		this.pret = pret;
 	}	
 	
 

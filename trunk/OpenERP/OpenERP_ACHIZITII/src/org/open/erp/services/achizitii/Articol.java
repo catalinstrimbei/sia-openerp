@@ -2,27 +2,36 @@ package org.open.erp.services.achizitii;
 
 
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 import org.open.erp.services.nomgen.Material;
 
-public class Articol extends Material {
-	public List<Furnizor> furnizori =new LinkedList<Furnizor>();
+public class Articol extends Material {	
+    private Categorie categorieArticol;
+    private Double pretAchizitie;
 
-	public Articol(Integer idMaterial, String denumire, String categorie,
-			String uM, Integer stocCurent, List<Furnizor> furnizori) {
-		super(idMaterial,denumire,"UM",new Date(),2);		
-		this.furnizori = furnizori;
-	}
 	
-	public List<Furnizor> getFurnizori() {
-		return furnizori;
+	public Double getPretAchizitie() {
+		return pretAchizitie;
 	}
 
-	public void setFurnizori(List<Furnizor> furnizori) {
-		this.furnizori = furnizori;
+	public void setPretAchizitie(Double pretAchizitie) {
+		this.pretAchizitie = pretAchizitie;
 	}
+
+	public Articol(Integer id, String denumire, String unitateMasura,			
+			Categorie categorieArticol) {
+		super(id, denumire, unitateMasura);
+		this.categorieArticol = categorieArticol;
+	}
+
+	public Categorie getCategorieArticol() {
+		return categorieArticol;
+	}
+
+	public void setCategorieArticol(Categorie categorieArticol) {
+		this.categorieArticol = categorieArticol;
+	}
+		
 	
 
 }

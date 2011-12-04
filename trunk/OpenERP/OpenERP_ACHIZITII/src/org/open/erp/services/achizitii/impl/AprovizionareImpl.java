@@ -16,11 +16,13 @@ import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.achizitii.LinieCerereOferta;
 import org.open.erp.services.achizitii.LinieComanda;
 import org.open.erp.services.achizitii.LinieFacturaRetur;
+import org.open.erp.services.achizitii.LinieOfertaAchizitie;
 import org.open.erp.services.achizitii.LiniePlanAprovizionare;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
+import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
@@ -54,6 +56,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
                                                                   linieCerere.getCantitate(),
                                                                   linii+1);
 	            	liniePlan.setPlanAprovizionare(plan);
+	            	liniePlan.setStatus(LiniePlanAprovizionare.IN_ASTEPTARE);
 	            	plan.addLiniePlan(liniePlan);	            	
 	            }else{
 	            	liniePlan.setCantitate(liniePlan.getCantitate()+linieCerere.getCantitate()); 
@@ -73,55 +76,90 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 	}
 
 	@Override
-	public void adaugareLiniiCerereOferta(CerereOferta cerere, List<LiniePlanAprovizionare> liniiPlan)  {
+	public CerereOferta adaugareLiniiCerereOferta(CerereOferta cerere, List<LiniePlanAprovizionare> liniiPlan)  {
+		CerereOferta cerereOferta=cerere;
 		Integer linie=cerere.getLinii().size();
 		for (LiniePlanAprovizionare liniePlan :liniiPlan){
 			Material articol = liniePlan.getArticol();
 			Double cantitate = liniePlan.getCantitate();
 			LinieCerereOferta linieCerereOferta = new LinieCerereOferta(linie+1,cerere,(Articol)articol,cantitate);
+			liniePlan.setStatus(LiniePlanAprovizionare.EXISTA_CERERE_OFERTA);
 			cerere.addLinieCerere(linieCerereOferta);
-		}		
+		}	
+		return cerereOferta;
 	}
 
 
 	@Override
-	public void trimitereCerereOferta(CerereOferta cerereOferta,
-			List<Furnizor> furnizori) {
-		// TODO Auto-generated method stub
-		
+	public OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,Date data,
+			Furnizor furnizor,List<LinieOfertaAchizitie> linii) {
+	    cerereOferta.setStatusCerereOferta(CerereOferta.PRIMITA);	    
+		return new OfertaAchizitie(data,OfertaAchizitie.IN_CURS,furnizor,linii);
 	}
 
 	@Override
-	public OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,
-			Furnizor furnizor) {
-		// TODO Auto-generated method stub
-		return null;
+	public void analizaOferteAchizitie(List<OfertaAchizitie> oferteAchizitie){
+		Double prag = (double) 9999999;
+		OfertaAchizitie ofertaPrag=null;
+		for (OfertaAchizitie oferta :oferteAchizitie){
+			 double pragOferta=0;
+			 double valTotal=0;
+			 for (LinieOfertaAchizitie linie :oferta.getLiniiOferta()){
+				valTotal+=linie.getPret()*linie.getCantitate(); 
+			 }
+			 oferta.setValTotal(valTotal);
+			 pragOferta=0.8*valTotal+0.2*oferta.getNrZile();
+			 if (pragOferta<=prag){
+				 prag=pragOferta;
+				 ofertaPrag=oferta;
+			 } 
+		}
+		this.creareComandaDinOferta(ofertaPrag) ;		
 	}
 
 	@Override
-	public void analizaOferteAchizitie(List<OfertaAchizitie> oferteAchizitie,
-			CerereOferta cerereOferta) {
-		// TODO Auto-generated method stub
-		
+	public Comanda adaugaLiniiComanda(Comanda comanda, List<LiniePlanAprovizionare> liniiPlan){
+		Comanda comandaAchizitie=comanda;
+		Integer linie=comandaAchizitie.getLiniiComanda().size();
+	for (LiniePlanAprovizionare liniePlan :liniiPlan){
+		Material articol = liniePlan.getArticol();
+		Double cantitate = liniePlan.getCantitate();
+		LinieComanda linieComanda =  new LinieComanda(linie+1
+                                                     ,comandaAchizitie
+                                                     ,liniePlan.getArticol()
+                                                     ,liniePlan.getCantitate()
+                                                     ,liniePlan.getArticol().getPretAchizitie());
+		comandaAchizitie.addLinii(linieComanda);
+		liniePlan.setStatus(LiniePlanAprovizionare.CREAT_COMANDA);
+		comandaAchizitie.addLinii(linieComanda);
+	}	
+		return comandaAchizitie;
 	}
+	@Override
+	public Comanda creareComandaDinOferta(OfertaAchizitie oferta) {			
+		Comanda comanda = new Comanda(oferta.getFurnizor(),oferta.getDataOferta(),Comanda.IN_CURS);
+		Integer linie=comanda.getLiniiComanda().size();
+		for (LinieOfertaAchizitie linieOferta:oferta.getLiniiOferta()){
+			LinieComanda linieComanda = new LinieComanda(linie+1
+					                                    ,comanda
+					                                    ,linieOferta.getArticol()
+					                                    ,linieOferta.getCantitate()
+					                                    ,linieOferta.getPret());
+			comanda.addLinii(linieComanda);
+		}
+		return comanda;
+	}
+	
 
 	@Override
-	public Comanda creareComanda(Furnizor furnizor, Date data,
-			Contract contract, Persoana persona) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void UpdatedComanda(LinieComanda linieComanda) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int inregistrareFactura(Factura factura) {		
-		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc(), ((Factura) factura).getValFact(),factura.getTVATotal(), 
-				  factura.getNrDoc(),  ((Factura) factura).getFurnizor().getId(),  factura.getLiniiDocument(),StareDocument.NOU, null);
+	public int inregistrareFactura(Factura factura) throws CtbException {		
+		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc()
+				                                    , ((Factura) factura).getValFact()				                                   
+				                                    , factura.getNrDoc()
+				                                    , ((Factura) factura).getFurnizor().getId()
+				                                    ,factura.getLiniiDocument()
+				                                    ,StareDocument.NOU
+				                                    ,1);
 		
 	}
 
