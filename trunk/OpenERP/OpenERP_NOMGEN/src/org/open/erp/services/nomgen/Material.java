@@ -1,6 +1,5 @@
 package org.open.erp.services.nomgen;
 
-import java.util.Date;
 import java.util.*;
 public class Material  {
 
@@ -82,5 +81,12 @@ public class Material  {
 		} else if (!id.equals(other.getId()))
 			return false;
 		return true;
+	}
+	public Material(Integer id, String denumire, String unitateMasura) {
+		super();
+		this.id = id;
+		this.denumire = denumire;
+		this.unitateMasura = unitateMasura;
 	}	
+	
 }
