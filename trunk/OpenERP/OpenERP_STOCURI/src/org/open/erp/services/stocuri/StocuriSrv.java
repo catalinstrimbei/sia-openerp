@@ -2,7 +2,7 @@ package org.open.erp.services.stocuri;
 
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.Material;
-import org.open.erp.services.nomgen.Produs;
+
 
 
 
@@ -56,7 +56,7 @@ public interface StocuriSrv {
 	 */
 	
 	
-	Boolean intrareStoc(Document doc);
+	Boolean intrareInStoc(Document doc);
 	/**
 	 * Returneaza void
 	 * 
@@ -70,11 +70,22 @@ public interface StocuriSrv {
 	 * 
 	 */
 	void transfer(Gestiune gestOut, Gestiune gestIn, Material material, Integer cantitate);
+	/**
+	 * Returneaza un bon de consum
+	 * 
+	 * @param comMateriale 	comanda de materiale prime pt productie
+	 
+	 * 
+	 * @return instanta iesire nou creata
+	 * 
+	 */
+	
+	
 	BonConsum consumProductie(CerereAprovizionare comMateriale);
 	/**
 	 * Returneaza void
 	 * 
-	 * @param comProd 	comanda pe baza careia se realizeaza iesirea
+	 * @param doc 	comanda pe baza careia se realizeaza iesirea
 	 
 	 * 
 	 * @return instanta iesire nou creata
@@ -90,7 +101,7 @@ public interface StocuriSrv {
 	 * @return				Valoare reprezentand stocul produsului 
 	 * 
 	 */	
-	Integer getStocMaterialByGestiune(Material produs, Gestiune gestiune);
+	Double getStocMaterialByGestiune(Material produs, Gestiune gestiune);
 	/**
 	 * Scop					Returneaza pretul unui articol dupa aplicarea metodei de calcul
 	 * 
@@ -108,7 +119,16 @@ public interface StocuriSrv {
 	 * @return				Valoare reprezentand stocul produsului 
 	 * 
 	 */	
-	Integer verificareStocMaterial(Material material);
-	
+	Double verificareStocMaterial(Material material);
+	/**
+	 * Scop					Returneaza true/false  
+	 * 
+	 * @param material 		Materialul de iesit
+	 * 
+	 * @param cantitate		Cantitatea de iesit
+	 * 	
+	 * @return				Valoare reprezentand stocul produsului 
+	 * 
+	 */	
 	Boolean iesireDinStoc(Material material, Integer cantitate);
 }

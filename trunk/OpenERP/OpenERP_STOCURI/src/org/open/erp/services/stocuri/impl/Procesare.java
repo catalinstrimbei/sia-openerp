@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
@@ -17,16 +13,11 @@ import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.BonConsum;
 import org.open.erp.services.stocuri.CerereAprovizionare;
-import org.open.erp.services.stocuri.ComandaProduse;
-
 import org.open.erp.services.stocuri.Gestiune;
-
 import org.open.erp.services.stocuri.LoturiIntrari;
 import org.open.erp.services.stocuri.exceptions.IesiriStocExceptions;
 import org.open.erp.services.stocuri.exceptions.IntrariStocExceptions;
 import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
-import org.open.erp.services.stocuri.exceptions.TransferStocExceptions;
-import org.open.erp.services.stocuri.teste.ProjectDummyFactory;
 import org.open.erp.services.stocuri.util.StocuriLogger;
 
 /**
@@ -110,7 +101,7 @@ public class Procesare {
 			
 		} catch (StocuriExceptions x) {
 			x.printStackTrace();
-			x.logger.loggeazaERROR(x.getMessage(), x);
+			StocuriExceptions.logger.loggeazaERROR(x.getMessage(), x);
 			return null;
 		}
 	}
@@ -200,8 +191,8 @@ public class Procesare {
 	}
 	
 	private void notifyListeners(Object sursa,CerereAprovizionare cerere) {
-		for (Iterator iterator = listener.iterator(); iterator.hasNext();) {
-			PropertyChangeListener name = (PropertyChangeListener) iterator.next();
+		for (Iterator<PropertyChangeListener> iterator = listener.iterator(); iterator.hasNext();) {
+			PropertyChangeListener name =  iterator.next();
 			PropertyChangeEvent evt = new PropertyChangeEvent(sursa,null,null,cerere);
             name.propertyChange( evt );
 
@@ -242,7 +233,7 @@ public class Procesare {
 		return true;
 		}catch (IntrariStocExceptions e) {
 			e.printStackTrace();
-			e.logger.loggeazaERROR("eroare !!!");
+			IntrariStocExceptions.logger.loggeazaERROR("eroare !!!");
 			return false;
 		}
 		
@@ -253,12 +244,15 @@ public class Procesare {
 	
 	public void intrareInStoc(Material material,
 			LoturiIntrari lot, Gestiune gestiune) throws IntrariStocExceptions {
+		
 		  logger.loggeazaDEBUG("Intrare in Stoc pt mijlocul "+material.getDenumire()
 				  +" cu lotul "+ lot.getIdLot()+ "in gestiunea "+ gestiune.getDenumire()+" -----");
-		if (material == null){
+		if (material == null)
+		{
 			throw new IntrariStocExceptions("Mijlocul Circulant nu trebuie sa fie null la intrarea in stoc!!");
 		}
-		if (gestiune == null){
+		if (gestiune == null)
+		{
 			throw new IntrariStocExceptions("Gestiunea in  nu trebuie sa fie nula !!");
 		}
 		boolean exista = false;
@@ -278,13 +272,15 @@ public class Procesare {
 			gestiune.addArticole(artNou);
 		}
 		  logger.loggeazaDEBUG("END Adaugat in Stoc  -----");
+		
 	}
 
 	public  List<LoturiIntrari> iesireDinStocPeGestiune(Gestiune gestOut,
 			Material material, Integer cantitate )throws StocuriExceptions{
 		  logger.loggeazaDEBUG("Iesire din stoc a mijlocului "+material.getDenumire()
 				  +"in cantitate de "+ cantitate+" -----");
-		if (material == null){
+		if (material == null)
+		{
 			throw new IesiriStocExceptions("Mijlocul Circulant nu trebuie sa fie null la intrarea in stoc!!");
 		}
 		if (gestOut == null){

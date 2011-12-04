@@ -10,12 +10,11 @@ import java.util.List;
 import org.junit.Before;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
-import org.open.erp.services.nomgen.Material;
 
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.Depozit;
-import org.open.erp.services.stocuri.Gestionar;
+
 import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.StocuriSrv;
 
@@ -186,6 +185,7 @@ public class Test {
 			e.printStackTrace();
 		}
 	}
+	
 	@org.junit.Test
 	public void metodaTestServiciuStocuri( ){
 		try{
@@ -205,7 +205,7 @@ public class Test {
 				gst1.getArticole().size());
 
 		// 5)--- verificare stoc mijloc circulant
-		assertEquals("Stoc incorect", new Integer(60),
+		assertEquals("Stoc incorect", new Double(60.0),
 				stocuriSRV.verificareStocMaterial(m1));
 				//proc.verificareStocMaterial(m1));
 

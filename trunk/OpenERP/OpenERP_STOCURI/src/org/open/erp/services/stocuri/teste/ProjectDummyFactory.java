@@ -22,7 +22,8 @@ public class ProjectDummyFactory {
 	private static StocuriLogger logger= new StocuriLogger(); 
 	private static NomenclatoareDummyImpl nomenclatoareDummyImpl;
 	private static StocuriImpl stocuriImpl;
-	/*
+	
+	/* eliminat depententa prin observer pattern
 	public static AprovizionareSrv  getAprovizionareSrv( ){
 		logger.loggeazaINFO("Creaza Dummy ACHIZITIONARE SRV----");
 		return new AprovizionareImpl();

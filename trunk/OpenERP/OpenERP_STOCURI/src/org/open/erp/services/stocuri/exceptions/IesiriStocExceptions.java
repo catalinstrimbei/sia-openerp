@@ -1,8 +1,13 @@
 package org.open.erp.services.stocuri.exceptions;
 
-import org.apache.log4j.Level;
+
 
 public class IesiriStocExceptions extends StocuriExceptions {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public IesiriStocExceptions(String message, Throwable cause) {
 		super(message, cause);

@@ -6,7 +6,6 @@ import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.BonConsum;
 import org.open.erp.services.stocuri.CerereAprovizionare;
-import org.open.erp.services.stocuri.ComandaProduse;
 import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.LoturiIntrari;
 import org.open.erp.services.stocuri.StocuriSrv;
@@ -40,7 +39,7 @@ public class StocuriImpl implements StocuriSrv {
 			procesare.intrareInStoc(mijlocCirculant, lot, gestiune);
 		} catch (IntrariStocExceptions e) {
 			e.printStackTrace();
-			e.logger.loggeazaERROR(e.getMessage(), e);
+			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
 		}
 
 	}
@@ -52,7 +51,7 @@ public class StocuriImpl implements StocuriSrv {
 			procesare.transfer(gestOut, gestIn, mijlocCirculant, cantitate);
 		} catch (StocuriExceptions e) {
 			e.printStackTrace();
-			e.logger.loggeazaERROR(e.getMessage(), e);
+			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
 		}
 
 	}
@@ -64,9 +63,9 @@ public class StocuriImpl implements StocuriSrv {
 	}
 
 	@Override
-	public Integer getStocMaterialByGestiune(Material produs, Gestiune gestiune) {
+	public Double getStocMaterialByGestiune(Material produs, Gestiune gestiune) {
 		return procesare.getArticolByMijlocAndGestiune(produs, gestiune)
-				.getCatitateStocPeGestiune();
+				.getCatitateStocPeGestiune().doubleValue();
 
 	}
 
@@ -76,18 +75,18 @@ public class StocuriImpl implements StocuriSrv {
 			return applicarepret.getPretProdLot(articol);
 		} catch (StocuriExceptions e) {
 			e.printStackTrace();
-			e.logger.loggeazaERROR(e.getMessage(), e);
+			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
 			return null;
 		}
 	}
 
 	@Override
-	public Integer verificareStocMaterial(Material material) {
+	public Double verificareStocMaterial(Material material) {
 		try{
-		return procesare.verificareStocMaterial(material).intValue();
+		return procesare.verificareStocMaterial(material);
 		}catch (StocuriExceptions e) {
 			e.printStackTrace();
-			e.logger.loggeazaERROR(e.getMessage(), e);
+			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -98,13 +97,13 @@ public class StocuriImpl implements StocuriSrv {
 			procesare.procesareComandaIesire(doc);
 		}catch (StocuriExceptions e) {
 			e.printStackTrace();
-			e.logger.loggeazaERROR(e.getMessage(), e);
+			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
 		}
 		
 	}
 
 	@Override
-	public Boolean intrareStoc(Document doc) {
+	public Boolean intrareInStoc(Document doc) {
 		return procesare.intrareInStoc(doc);
 			
 	}
@@ -116,7 +115,7 @@ public class StocuriImpl implements StocuriSrv {
 			
 		}catch (StocuriExceptions e) {
 			e.printStackTrace();
-			e.logger.loggeazaERROR(e.getMessage(), e);
+			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
 			return false;
 		}
 	}

@@ -63,7 +63,7 @@ public class AplicarePret {
 	}
 
 	public void setMetodaCurenta(METODE metodaCurenta) {
-		this.metodaCurenta = metodaCurenta;
+		AplicarePret.metodaCurenta = metodaCurenta;
 	}
 
 }
