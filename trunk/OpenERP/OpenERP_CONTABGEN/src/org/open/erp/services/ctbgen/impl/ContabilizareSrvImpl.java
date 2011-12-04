@@ -37,13 +37,13 @@ import org.open.erp.services.nomgen.LinieDocument;
  * 
  */
 
-public class ContabilizareSrvImpl implements ContabilizareSrv {//V
+public class ContabilizareSrvImpl implements ContabilizareSrv {
 		
 	//--------------------
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ContabilizareSrvImpl.class.getName());
 	
 	@Override
-	public Integer jurnalizareVanzare(Date data, Double valFact, Integer nrDoc,
+	public Integer jurnalizareVanzare(Date data, Double valFact,Double tvaFact, Integer nrDoc,
 			Integer idPartener, List<LinieDocument> listaLinMat,  StareDocument stareDocument,	Integer idInreg) throws CtbException {
 		
 		//construire linieMatVal
@@ -125,7 +125,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {//V
 	}
    //------------------------------------------------------------------------------
 	@Override
-	public Integer jurnalizareAchizitie(Date data, Double valFact, Integer nrDoc,
+	public Integer jurnalizareAchizitie(Date data, Double valFact, Double tvaFact, Integer nrDoc,
 			Integer idPartener, List<LinieDocument> listaLinMat, StareDocument stareDocument,
 			Integer idInreg) throws CtbException {
 		//construire linieMatVal

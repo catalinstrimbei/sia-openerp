@@ -59,7 +59,7 @@ public interface ContabilizareSrv {
 	 * @return Returneaza idInregistrarii  necesar pentru update sau delete document ulterior.
 	 * 
 	 */
-	public Integer jurnalizareVanzare(Date data, Double valFact, Integer nrDoc,Integer idPartener, List<LinieDocument> listaContMat, 
+	public Integer jurnalizareVanzare(Date data, Double valFact,Double tvaFact, Integer nrDoc,Integer idPartener, List<LinieDocument> listaContMat, 
 			StareDocument stareDocument,Integer idInreg) throws CtbException;
 	
 	/**
@@ -76,7 +76,7 @@ public interface ContabilizareSrv {
 	 * @return Returneaza idInregistrarii  necesar pentru update sau delete document ulterior.
 	 * 
 	 */
-	public Integer jurnalizareAchizitie(Date data, Double valFact, Integer nrDoc,Integer idPartener,  List<LinieDocument> listaContMat, 
+	public Integer jurnalizareAchizitie(Date data, Double valFact,Double tvaFact, Integer nrDoc,Integer idPartener,  List<LinieDocument> listaContMat, 
 			StareDocument stareDocument,Integer idInreg) throws CtbException;
 	
 	
