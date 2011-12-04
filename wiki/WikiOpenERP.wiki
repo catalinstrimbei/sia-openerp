@@ -24,7 +24,7 @@ Modul-PRODUCTIE
 
 Modul-STOCURI       
 
-Modul-PERSONAL      
+Modul-[PERSONAL]      
 
 Modul-SALARIZARE    
 
