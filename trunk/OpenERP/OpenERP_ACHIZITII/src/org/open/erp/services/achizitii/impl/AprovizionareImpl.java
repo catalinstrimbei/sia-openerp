@@ -76,6 +76,8 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 	}
 
 	@Override
+	//fiecare linie a Planului de Aprovizionare devine o Cerere de Oferta pentru furnizori
+	//schimbam statusul pentru fiecare linie pentru a sti care care sunt articolele pentru care s-a facut cererea de oferta
 	public CerereOferta adaugareLiniiCerereOferta(CerereOferta cerere, List<LiniePlanAprovizionare> liniiPlan)  {
 		CerereOferta cerereOferta=cerere;
 		Integer linie=cerere.getLinii().size();
@@ -91,6 +93,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 
 
 	@Override
+	//se inregistreaza Oferta de Achizitie primita de la furnizor
 	public OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,Date data,
 			Furnizor furnizor,List<LinieOfertaAchizitie> linii) {
 	    cerereOferta.setStatusCerereOferta(CerereOferta.PRIMITA);	    
@@ -118,6 +121,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 	}
 
 	@Override
+	//Comanda se realizeaza pe baza liniilor de Aprovizionare - in cazul comenzilor regulate
 	public Comanda adaugaLiniiComanda(Comanda comanda, List<LiniePlanAprovizionare> liniiPlan){
 		Comanda comandaAchizitie=comanda;
 		Integer linie=comandaAchizitie.getLiniiComanda().size();
@@ -136,6 +140,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		return comandaAchizitie;
 	}
 	@Override
+	//Comanda se realizeaza pe baza Ofertei de Achizitie primita
 	public Comanda creareComandaDinOferta(OfertaAchizitie oferta) {			
 		Comanda comanda = new Comanda(oferta.getFurnizor(),oferta.getDataOferta(),Comanda.IN_CURS);
 		Integer linie=comanda.getLiniiComanda().size();
