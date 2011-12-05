@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-
+#summary Pagina modulului CONTABGEN
 = Introduction =
 
 Modul CONTABGEN
