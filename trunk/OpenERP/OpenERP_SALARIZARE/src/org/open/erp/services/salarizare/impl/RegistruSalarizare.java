@@ -41,6 +41,8 @@ public class RegistruSalarizare {
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
 		contract.setAngajat(a);
+		contract.setSalarBaza(100.0);
+		contract.setTarifOrar(10.0);
 		return contract;
 	}
 }
