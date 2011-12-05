@@ -8,7 +8,7 @@
 == Details ==
 
 ===Serviciul de Contabilitate Generala===
-asigura urmatoarele metode de jurnalizare:
+  * Asigura urmatoarele metode de jurnalizare si transfer informatii:
 
   # Creaza instanta inregistrare in registru jurnal pentru vanzari
   # Creaza instanta inregistrare in registru jurnal pentru achizitii
@@ -17,12 +17,12 @@ asigura urmatoarele metode de jurnalizare:
   # Creaza instanta inregistrare in registru jurnal pentru salarii
   # Creaza instanta inregistrare in registru jurnal pentru consum
   # Creaza instanta inregistrare in registru jurnal pentru productia obtinuta
-  # Inregistreaza sabloane contabile specifice operatiilor de jurnalizare frecvente
+  # Creaza sabloane contabile specifice operatiilor de jurnalizare frecvente
   # Creaza planul de conturi utilizat in tratarea cheltuielilor si a clasificarii materialelor gestionate
   # Jurnalizarea si inchiderea TVA
   # Inchiderea lunilor contabile si calcularea soldurilor balantei de verificare
   # Realizarea de fise de cont pentru parteneri sau pentru conturi contabile
-Pentru celelate module pune la dispozitie:
+  * Pentru celelate module pune la dispozitie:
  # Planul de conturi
  # Tipurile Contabile de utilizat la definirea materialor
  # Metoda de verificare a statusului lunii in care se introduce un document
