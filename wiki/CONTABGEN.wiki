@@ -2,6 +2,7 @@
 = Introduction =
 
 Modul CONTABGEN
+
 Scop: Inregistrarea in contabilitate a notelor contabile aferente documentelor contabilizabile si a pune la dispozitie informatii sintetizate.
 
 = Details =
