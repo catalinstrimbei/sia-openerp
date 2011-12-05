@@ -4,7 +4,7 @@ import org.open.erp.services.nomgen.PersoanaFizica;
 
 public class ContBancaPF {
 
-	private PersoanaJuridica banca;
+	  private PersoanaJuridica banca;
     
     private PersoanaFizica titularCont;
 
@@ -12,7 +12,7 @@ public class ContBancaPF {
 
     private String moneda;
 
-    private Double soldCurent;
+    private Double sold;
 
     public PersoanaJuridica getBanca() {
             return banca;
@@ -24,9 +24,9 @@ public class ContBancaPF {
 
     public PersoanaFizica getTitularCont() {
         return titularCont;
-}
+    }
 
-public void setTitularCont(PersoanaFizica titularCont) {
+    public void setTitularCont(PersoanaFizica titularCont) {
         this.titularCont = titularCont;
     }
 
@@ -46,12 +46,12 @@ public void setTitularCont(PersoanaFizica titularCont) {
             this.moneda = moneda;
     }
 
-    public Double getSoldCurent() {
-            return soldCurent;
+    public Double getSold() {
+            return sold;
     }
 
-    public void setSoldCurent(Double soldCurent) {
-            this.soldCurent = soldCurent;
+    public void setSold(Double sold) {
+            this.sold = sold;
     }
 
 }
