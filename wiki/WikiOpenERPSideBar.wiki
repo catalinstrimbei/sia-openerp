@@ -11,4 +11,3 @@
     * [PRODUCTIE]
     * [MARKETING]
     * [PERSONAL]
-    * [SALARIZARE]
