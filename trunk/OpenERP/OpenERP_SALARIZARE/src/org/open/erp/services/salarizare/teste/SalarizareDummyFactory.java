@@ -1,7 +1,7 @@
 package org.open.erp.services.salarizare.teste;
 
 import org.open.erp.services.personal.PersonalSrv;
-import org.open.erp.services.personal.impl.PersonalDummyImpl;
+import org.open.erp.services.personal.impl.PersonalImpl;
 import org.open.erp.services.salarizare.SalarizareSrv;
 import org.open.erp.services.salarizare.impl.RegistruSalarizare;
 import org.open.erp.services.salarizare.impl.SalarizareImpl;
@@ -25,7 +25,7 @@ public class SalarizareDummyFactory {
 	}
 	
 	public static PersonalSrv getPersonalSrv(){
-		return new PersonalDummyImpl();
+		return new PersonalImpl();
 	}
 	
 	public static RegistruSalarizare getRegistruSalarizare(){
