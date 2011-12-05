@@ -10,10 +10,10 @@ Scop: Inregistrarea in contabilitate a notelor contabile aferente documentelor c
 Serviciul de Contabilitate Generala
 asigura urmatoarele metode de jurnalizare:
 
-# Creaza instanta inregistrare in registru jurnal pentru vanzari
-# Creaza instanta inregistrare in registru jurnal pentru achizitii
-# Creaza instanta inregistrare in registru jurnal pentru incasari
-# Creaza instanta inregistrare in registru jurnal pentru plati
+  # Creaza instanta inregistrare in registru jurnal pentru vanzari
+  # Creaza instanta inregistrare in registru jurnal pentru achizitii
+  # Creaza instanta inregistrare in registru jurnal pentru incasari
+  # Creaza instanta inregistrare in registru jurnal pentru plati
 # Creaza instanta inregistrare in registru jurnal pentru salarii
 # Creaza instanta inregistrare in registru jurnal pentru consum
 # Creaza instanta inregistrare in registru jurnal pentru productia obtinuta
