@@ -1,16 +1,17 @@
-Pagina modulului salarizare
+#summary Pagina modulului salarizare
 
 = Introducere =
+<br />
 Descrie functionalitatea modulului SALARIZARE din aplicatia SIA-OPENERP
-
+<br />
 
 = Detalii =
+<br />
+Principalele functionalitati ale modulului sunt;<br />
 
-Principalele functionalitati ale modulului sunt;
-
-- inregistrare si generare automata/manuala pontaj
-- calcul sporuri
-- calcul retineri angajat/angajator
-- calcul venit brut
-- calcul impozit angajat/angajator
-- generare stat plata
+- inregistrare si generare automata/manuala pontaj<br />
+- calcul sporuri<br />
+- calcul retineri angajat/angajator<br />
+- calcul venit brut<br />
+- calcul impozit angajat/angajator<br />
+- generare stat plata<br />
