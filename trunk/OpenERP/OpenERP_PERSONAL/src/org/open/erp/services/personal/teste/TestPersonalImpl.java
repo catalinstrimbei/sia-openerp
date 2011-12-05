@@ -11,6 +11,7 @@ import java.util.List;
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.AngajatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
@@ -42,10 +43,11 @@ public class TestPersonalImpl {
 	
 	List<Departament> listaDepartamente = new ArrayList<Departament>();
 	List<ProbaEvaluare> probeEvaluare = new ArrayList<ProbaEvaluare>();
+	
 	public List<Angajat> angajati = new ArrayList<Angajat>();
 	public List<ContractMunca> contracteMunca	= new ArrayList<ContractMunca>();
 	public List<DosarAngajat>  dosareAngajati = new ArrayList<DosarAngajat>();
-	
+	List<AngajatProbaEvaluare> listaRezultateProbe = new ArrayList<AngajatProbaEvaluare>();
 	
 	Functie functie1 = new Functie(1001, "Functie1");
 	Functie functie2 = new Functie(1002, "Functie2");
@@ -110,7 +112,14 @@ public class TestPersonalImpl {
 	DosarAngajat dosar1 = new DosarAngajat(1, angajat1, null, null, null);
 	DosarAngajat dosar2 = new DosarAngajat(2, angajat2, null, null, null);
 	
-
+	AngajatProbaEvaluare angajatProbaEvaluare1 = new AngajatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare1);
+	AngajatProbaEvaluare angajatProbaEvaluare2 = new AngajatProbaEvaluare(angajat1, "Bine", null, probaEvaluare2);
+	AngajatProbaEvaluare angajatProbaEvaluare3 = new AngajatProbaEvaluare(angajat2, "Bine", null, probaEvaluare3);
+	AngajatProbaEvaluare angajatProbaEvaluare4 = new AngajatProbaEvaluare(angajat1, "Satisfacator", null, probaEvaluare3);
+	AngajatProbaEvaluare angajatProbaEvaluare5 = new AngajatProbaEvaluare(angajat2, "Foarte Bine", null, probaEvaluare4);
+	AngajatProbaEvaluare angajatProbaEvaluare6 = new AngajatProbaEvaluare(angajat2, "Satisfacator", null, probaEvaluare1);
+	AngajatProbaEvaluare angajatProbaEvaluare7 = new AngajatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare4);
+	AngajatProbaEvaluare angajatProbaEvaluare8 = new AngajatProbaEvaluare(angajat2, "Bine", null, probaEvaluare5);
 	
 	CerereDemisie	cerereDemisie1 = new CerereDemisie("CerereDem001", contract1, new Date("11/08/2011"), null, null,null);
 	
@@ -167,54 +176,15 @@ public class TestPersonalImpl {
 
 	}
 	
-	/*
-	 * 
-	public void vizualizareRecrutare() {
-		this.generareAnunturi();
-		this.generareCandidati();
-		Iterator<AnuntLocMunca> iterator = listaAnunturi2.iterator();
-		System.out.println("VIZUALIZARE RECRUTARE");
-		System.out.println("Anunturi valide " + listaAnunturi2.size());
-		
-		//System.out.println("Interviuri " + listaInterviuri.size());
-
-		
-		while (iterator.hasNext()) {
-			//System.out.println("AM AJUNS AICI2");
-			AnuntLocMunca anunt = iterator.next();
-			System.out.println(anunt.getFunctie().getNumeFunctie());
-			listaCandidati2 = personalService.getCandidatipeFunctie(anunt, listaCandidati);			
-			Iterator<Candidat> iterator2 = listaCandidati2.iterator();
-			System.out.println("Numar candidati: " + listaCandidati2.size());
-			while (iterator2.hasNext()) {		
-			   //System.out.println("--" + iterator2.next().getNume());
-				//System.out.println("Candidati " + listaCandidati2.size());
-			   Candidat candidat = iterator2.next();
-			   listaCandidati3 = personalService.recrutare(candidat, listaInterviuri);
-			  // System.out.println("Interviuri " + listaInterviuri.size());
-				Iterator<Candidat> iterator3 = listaCandidati3.iterator();
-
-				//System.out.println("Pentru angajare " + listaCandidati3.size());
-				while (iterator3.hasNext()) {
-					//System.out.println("AM AJUNS AICI");
-					System.out.println("--Numele candidatului pentru angajare: " + iterator3.next().getNume());
-
-				if (listaCandidati3.size() > 0)
-				{
-					System.out.println("Numar candidati pentru angajare: " + listaCandidati3.size());
-					while (iterator3.hasNext()) {
-						//System.out.println("AM AJUNS AICI");
-						System.out.println("--" + iterator3.next().getNume());
-					}
-
-				}
-			
-			}
-		}	
+	void generareListaRezultate(){
+		listaRezultateProbe.add(angajatProbaEvaluare1);
+		listaRezultateProbe.add(angajatProbaEvaluare2);
+		listaRezultateProbe.add(angajatProbaEvaluare3);
+		listaRezultateProbe.add(angajatProbaEvaluare4);
+		listaRezultateProbe.add(angajatProbaEvaluare5);
+		listaRezultateProbe.add(angajatProbaEvaluare6);
+		listaRezultateProbe.add(angajatProbaEvaluare7);
+		listaRezultateProbe.add(angajatProbaEvaluare8);
 	}
-		
-	}
-	
-	*/
 	
 }

@@ -131,13 +131,10 @@ public interface PersonalSrv {
 	 * 
 	 */
 	
-	//TreeMap<ProbaEvaluare, AngajatProbaEvaluare> evaluarePeriodica(List <AngajatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_ );
-	
-	//HashMap<Departament, List<HashMap<ProbaEvaluare, List<HashMap<Angajat, Integer>>>>> evaluarePeriodica(List<Departament> departamente_init, List <AngajatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_ );;
-	
-	HashMap <Angajat, List<HashMap<ProbaEvaluare, Integer>>> getNoteAngajatByProba (List <AngajatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_);
+
+	HashMap<ProbaEvaluare, List<AngajatProbaEvaluare>> getRezultateEvaluareByProba (List <AngajatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_);
 	/**
-	 * Scop    Returneaza lista rezultatelor angajatilor la fiecare proba grupate pe fiecare departament 
+	 * Scop    Returneaza lista rezultatelor angajatilor la fiecare proba  
 	 *         
 	 * @param  angajatProbaInit_ 	    Lista cu toate rezultatele la toate probele de evaluare
 	 * @param  probeEvaluareInit_ 	    Lista cu toate probele de evaluare
@@ -262,6 +259,21 @@ public interface PersonalSrv {
 	 * @return           
 	 * 
 	 */
-	
-
+	Functie adaugareFunctie(String	numeFunctie_, Integer pozitiaInCOR_, List<String> obiective_, 
+							List<String>	responsabilitati_, List<String>	cunostinte_, 
+							List<String>	deprinderi_, List<String>	aptitudini_, Departament departament);
+	/**
+	 * Scop                   Permite adaugarea unei noi functii cu anumite atribute
+	 * 
+	 * @param  numeFunctie_  		numele Functiei
+	 * @param  pozitiaInCOR_  		Pozitia in clasificarea ocupatiilor din Romania
+	 * @param  obiective_  			Lista obiectivelor urmartie de aceasta functie
+	 * @param  responsabilitati_  	Lista responsabilitatilor ascoCiate cu aceasta functie
+	 * @param  cunostinte_  		Lista cunostintelor ascociate cu aceasta functie
+	 * @param  aptitudini_  		Lista aptitudinilor ascociate cu aceasta functie
+	 * @param  cunostinte_  		Lista cunostintelor necesare pt aceasta functie
+	 * 
+	 * @return    Functia nou creata       
+	 * 
+	 */
 }

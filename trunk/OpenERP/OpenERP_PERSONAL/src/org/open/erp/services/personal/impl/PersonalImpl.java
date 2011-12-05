@@ -4,18 +4,17 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.TreeMap;
+
 
 //import org.open.erp.services.buget.Buget;
 //import org.open.erp.services.buget.BugetareSrv;
 //import org.open.erp.services.buget.LinieBugetara;
 import org.open.erp.services.nomgen.Departament;
-import org.open.erp.services.nomgen.Persoana;
 //import org.open.erp.services.personal.Activitate;
 //import org.open.erp.services.personal.Proiect;
 import org.open.erp.services.personal.Angajat;
@@ -114,7 +113,7 @@ public class PersonalImpl implements PersonalSrv{
 		System.out.println("Prenume--------- " + angajat.getPrenume().toString());
 	}
 
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(PersonalImpl.class.getName());
+	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(PersonalImpl.class.getName());
 
 	@Override
 	public  List<AnuntLocMunca> getPosturiVacante(Date dataVizata_, List<AnuntLocMunca> listaInit_) {
@@ -202,28 +201,7 @@ public class PersonalImpl implements PersonalSrv{
 		
 		return tMap;
 	}
-/*
-	@Override
-	public TreeMap<ProbaEvaluare, AngajatProbaEvaluare> evaluarePeriodica(
-			List<AngajatProbaEvaluare> angajatProbaInit_,
-			List<ProbaEvaluare> probeEvaluareInit_) {
-				
-		Iterator <ProbaEvaluare> iteratorProbe = probeEvaluareInit_.iterator();
-		Iterator <AngajatProbaEvaluare>	iteratorAngajatProba = angajatProbaInit_.iterator();
-		TreeMap<ProbaEvaluare, AngajatProbaEvaluare> tMap = new TreeMap<ProbaEvaluare, AngajatProbaEvaluare>();
-		while (iteratorProbe.hasNext()) {
-			while (iteratorAngajatProba.hasNext())
-			{
-				if (iteratorProbe.next().getScop() == "EvaluarePeriodica" 
-						&& iteratorProbe.next() == iteratorAngajatProba.next().getProbaEvaluare())
-				{
-					tMap.put(iteratorProbe.next(), iteratorAngajatProba.next());
-				}
-			}
-		}
-		return tMap;
-	}
-*/
+
 	@Override
 	public Angajat getAngajatById(Integer marca_) {
 		// TODO Auto-generated method stub
@@ -258,13 +236,15 @@ public class PersonalImpl implements PersonalSrv{
 		Iterator <ContractMunca> iteratorMunca = test.contracteMunca.iterator();
 		List <ContractMunca> listaContractelor = new ArrayList<ContractMunca>();
 		while (iteratorMunca.hasNext()){
-			if (iteratorMunca.next().getAngajat() == angajat_ 
+			ContractMunca contractCurent;
+			contractCurent = iteratorMunca.next();
+			if (contractCurent.getAngajat() == angajat_ 
 					&&
-					iteratorMunca.next().getDataInceput().compareTo(Calendar.getInstance().getTime()) <= 0 
+					contractCurent.getDataInceput().compareTo(Calendar.getInstance().getTime()) <= 0 
 					&&
-					iteratorMunca.next().getDataTerminare().compareTo(Calendar.getInstance().getTime()) >= 0)
+					contractCurent.getDataTerminare().compareTo(Calendar.getInstance().getTime()) >= 0)
 			{
-				listaContractelor.add(iteratorMunca.next());
+				listaContractelor.add(contractCurent);
 			}
 		}
 		return listaContractelor;
@@ -278,9 +258,10 @@ public class PersonalImpl implements PersonalSrv{
 		test.generareAnunturi();
 		Iterator <CV> iteratorCV = test.listaCandidati.iterator();
 		while (iteratorCV.hasNext()){
-			if (iteratorCV.next().getCandidat() == candidat_ )
+			CV cvCurent = iteratorCV.next();
+			if (cvCurent.getCandidat().equals(candidat_ ))
 			{
-				return iteratorCV.next();
+				return cvCurent;
 			}
 		}
 		return null;
@@ -312,11 +293,11 @@ public class PersonalImpl implements PersonalSrv{
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.listaDosare();
 		Iterator <DosarAngajat> iteratorDosar = test.dosareAngajati.iterator();
-		List <ContractMunca> listaContractelor = new ArrayList<ContractMunca>();
 		while (iteratorDosar.hasNext()){
-			if (iteratorDosar.next().getAngajat() == angajat_ )
+			DosarAngajat dosarCurent = iteratorDosar.next();
+			if (dosarCurent.getAngajat() == angajat_ )
 			{
-				return iteratorDosar.next();
+				return dosarCurent;
 			}
 		}
 		return null;
@@ -353,31 +334,28 @@ public class PersonalImpl implements PersonalSrv{
 	}
 
 	@Override
-	public HashMap<Angajat, List<HashMap<ProbaEvaluare, Integer>>> getNoteAngajatByProba(
+	public HashMap<ProbaEvaluare, List<AngajatProbaEvaluare>> getRezultateEvaluareByProba(
 			List<AngajatProbaEvaluare> angajatProbaInit_,
 			List<ProbaEvaluare> probeEvaluareInit_) {
-		List<Angajat> listaAngajatilorCareAuDatProbe = new ArrayList<Angajat>();
-		List<ProbaEvaluare> listaProbelorEvaluate = new ArrayList<ProbaEvaluare>();
-		HashMap<Angajat, List<HashMap<ProbaEvaluare, Integer>>> rezultat = new HashMap<Angajat, List<HashMap<ProbaEvaluare, Integer>>>();
-		Iterator<AngajatProbaEvaluare> iteratorRezultate = angajatProbaInit_.iterator();
+		//List<ProbaEvaluare> listaProbelorEvaluate = new ArrayList<ProbaEvaluare>();
+		HashMap<ProbaEvaluare, List<AngajatProbaEvaluare>> rezultat = new HashMap<ProbaEvaluare, List<AngajatProbaEvaluare>>();
+		List<AngajatProbaEvaluare> angajatiRezultate = new ArrayList<AngajatProbaEvaluare>();
+		Iterator<ProbaEvaluare> iteratorProbe = probeEvaluareInit_.iterator();
 		AngajatProbaEvaluare rezultatCurent;
-		Angajat angajatCurent;
 		ProbaEvaluare probaCurenta;
-		while (iteratorRezultate.hasNext()) {
-			rezultatCurent = iteratorRezultate.next();
-			angajatCurent = rezultatCurent.getAngajat();
-			probaCurenta = rezultatCurent.getProbaEvaluare();
-			if (!listaAngajatilorCareAuDatProbe.contains(angajatCurent)){
-				listaAngajatilorCareAuDatProbe.add(angajatCurent);
+		while (iteratorProbe.hasNext()) {
+			probaCurenta = iteratorProbe.next();
+			Iterator<AngajatProbaEvaluare> iteratorRezultate = angajatProbaInit_.iterator();
+			while (iteratorRezultate.hasNext()){
+				rezultatCurent = iteratorRezultate.next();
+				//probaE = rezultatCurent.getProbaEvaluare();
+				if (rezultatCurent.getProbaEvaluare() == probaCurenta)
+				{
+					angajatiRezultate.add(rezultatCurent);
+				}
 			}
-			if (!listaProbelorEvaluate.contains(probaCurenta)){
-				listaProbelorEvaluate.add(probaCurenta);
-			}
-		}
-		
-		Iterator<Angajat> iteratorAngajatiCareAuDatProbe = listaAngajatilorCareAuDatProbe.iterator();
-		while (iteratorAngajatiCareAuDatProbe.hasNext()){
-			angajatCurent = iteratorAngajatiCareAuDatProbe.next();
+			rezultat.put(probaCurenta, new ArrayList<AngajatProbaEvaluare>(angajatiRezultate));
+			angajatiRezultate.clear();
 		}
 		return rezultat;
 	}
@@ -426,6 +404,16 @@ public class PersonalImpl implements PersonalSrv{
 		return contractNou;
 		
 		
+	}
+
+	@Override
+	public Functie adaugareFunctie(String numeFunctie_, Integer pozitiaInCOR_,
+			List<String> obiective_, List<String> responsabilitati_,
+			List<String> cunostinte_, List<String> deprinderi_,
+			List<String> aptitudini_, Departament departament) {
+		Functie functieNoua = new Functie (1,//va fi modificat cu BD
+				numeFunctie_, pozitiaInCOR_, obiective_, responsabilitati_, cunostinte_, deprinderi_, aptitudini_, departament);
+		return functieNoua;
 	}
 
 	

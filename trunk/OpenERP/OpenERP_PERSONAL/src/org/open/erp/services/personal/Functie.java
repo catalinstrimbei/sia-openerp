@@ -78,6 +78,21 @@ public class Functie {
 		this.idFunctie = idFunctie;
 		this.numeFunctie = numeFunctie;
 	}
+	public Functie(Integer idFunctie, String numeFunctie, Integer pozitiaInCOR,
+			List<String> obiective, List<String> responsabilitati,
+			List<String> cunostinte, List<String> deprinderi,
+			List<String> aptitudini, Departament departament) {
+		super();
+		this.idFunctie = idFunctie;
+		this.numeFunctie = numeFunctie;
+		this.pozitiaInCOR = pozitiaInCOR;
+		this.obiective = obiective;
+		this.responsabilitati = responsabilitati;
+		this.cunostinte = cunostinte;
+		this.deprinderi = deprinderi;
+		this.aptitudini = aptitudini;
+		this.departament = departament;
+	}
 	
 	
 }

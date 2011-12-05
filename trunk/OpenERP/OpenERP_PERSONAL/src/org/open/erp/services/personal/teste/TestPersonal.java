@@ -17,6 +17,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.nomgen.Departament;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.AngajatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.ProbaEvaluare;
@@ -116,6 +118,36 @@ public class TestPersonal {
 		}
 	}
 	
+	void vizualizareRezultateProbeEvaluare(TestPersonalImpl test)
+	{
+		test.generareProbeEvaluare();
+		test.generareListaRezultate();
+		HashMap <ProbaEvaluare, List<AngajatProbaEvaluare>> mapFinal = new HashMap <ProbaEvaluare, List<AngajatProbaEvaluare>>(); 
+		mapFinal = personalService.getRezultateEvaluareByProba(test.listaRezultateProbe, test.probeEvaluare);
+		List<ProbaEvaluare> keysProbe = new ArrayList<ProbaEvaluare>(mapFinal.keySet());
+		Iterator<ProbaEvaluare> iteratorProbe = keysProbe.iterator();
+		List<AngajatProbaEvaluare> valuesRezultateProbeEvaluare = new ArrayList<AngajatProbaEvaluare>();
+		//Departament depCurent;
+		ProbaEvaluare probaEvaluareCurenta;
+		AngajatProbaEvaluare rezultatCurent;
+		while (iteratorProbe.hasNext()){
+			probaEvaluareCurenta = iteratorProbe.next();
+			System.out.println("La proba " + probaEvaluareCurenta.getIdProba() + " s-au obtinut urmatoarele rezultate:");
+			valuesRezultateProbeEvaluare = mapFinal.get(probaEvaluareCurenta);
+			if (valuesRezultateProbeEvaluare.size() > 0) {
+				Iterator <AngajatProbaEvaluare> iteratorRezultateProbaEvaluare = valuesRezultateProbeEvaluare.iterator();
+				while (iteratorRezultateProbaEvaluare.hasNext()){
+					rezultatCurent = iteratorRezultateProbaEvaluare.next();
+					Angajat angajatCurent =  rezultatCurent.getAngajat();
+					System.out.println(" -- Angajatul: " + angajatCurent.getNume() + " a avut urmatorul rezultat: " + rezultatCurent.getRezultat());
+				}
+			}
+			else{
+				System.out.println("Nu exista niciun rezultat pt proba curenta");
+			}
+		}
+	}
+	
 	@Test
 	public void testRecrutare() {
 		TestPersonalImpl test = new TestPersonalImpl();
@@ -138,19 +170,19 @@ public class TestPersonal {
 		personalService.concediere(test.contract1);
 		//fail("Not yet implemented");
 	}
-	/*
+	
 	@Test
 	public void testAngajare(){
 		TestPersonalImpl test = new TestPersonalImpl();
-		personalService.angajare(test.candidat1);
+		personalService.angajare(test.candidat2);
 		System.out.println("Candidatul" + test.candidat1.getNume() + " " + test.candidat1.getPrenume() + " a fost angajat");
 	}
 	
-	*/
 	@Test
-	public void testProbeEvaluarePeDepartament(){
+	public void testEvaluare(){
 		TestPersonalImpl test = new TestPersonalImpl();
 		vizualizareProbeEvaluarePeDepartament(test);
+		vizualizareRezultateProbeEvaluare(test);
 	}
 	@Test
 	public void testRelocalizare_promovare(){
@@ -158,6 +190,12 @@ public class TestPersonal {
 		personalService.relocalizare_promovare(10001, test.functie2, null, true, 1200.00, 8.00);
 	}
 	
+	@Test
+	public void testAdaugareFunctie(){
+		TestPersonalImpl test = new TestPersonalImpl();
+		personalService.adaugareFunctie("Functie1", 1,null, null, null, null, null, test.departament1);
+		System.out.println("Functia a fost creta");
+	}
 	/**
 	 * @throws java.lang.Exception
 	 */
