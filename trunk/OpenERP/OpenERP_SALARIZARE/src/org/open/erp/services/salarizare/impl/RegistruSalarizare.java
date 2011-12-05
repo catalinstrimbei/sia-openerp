@@ -3,6 +3,7 @@ package org.open.erp.services.salarizare.impl;
 import java.util.ArrayList;
 
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.Retinere;
 import org.open.erp.services.salarizare.Spor;
@@ -37,5 +38,9 @@ public class RegistruSalarizare {
 		return retineri;
 	}
 	
-
+	public ContractMunca getContractActivAngajat(Angajat a){
+		ContractMunca contract = new ContractMunca();
+		contract.setAngajat(a);
+		return contract;
+	}
 }
