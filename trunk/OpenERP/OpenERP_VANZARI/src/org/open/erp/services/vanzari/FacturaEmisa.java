@@ -35,6 +35,8 @@ public class FacturaEmisa extends Document {
 	Double costLivrare;
 	String adresaLivrare;
 	
+	Double sumaIncasata;
+	
 	public FacturaEmisa(){
 		this.valoareTotalaFactura = 0.0;
 		this.valoareTva = 0.0;
@@ -216,6 +218,14 @@ public class FacturaEmisa extends Document {
 
 	public void setPlatita(Boolean platita) {
 		this.platita = platita;
+	}
+
+	public Double getSumaIncasata() {
+		return sumaIncasata;
+	}
+
+	public void setSumaIncasata(Double sumaIncasata) {
+		this.sumaIncasata = sumaIncasata;
 	}
 			
 }
