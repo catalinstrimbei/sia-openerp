@@ -4,7 +4,7 @@ package org.open.erp.services.incasari.teste;
 import org.open.erp.services.incasari.IncasariSrv;
 import org.open.erp.services.incasari.impl.IncasariImpl;
 import org.open.erp.services.vanzari.VanzariSrv;
-import org.open.erp.services.vanzari.impl.VanzariDummyImpl;
+import org.open.erp.services.vanzari.impl.VanzariImpl;
 
 /*
  * 
@@ -23,7 +23,7 @@ public class IncasariDummyFactory {
 	}
 	
 	public static VanzariSrv getVanzariSrv(){
-		return new VanzariDummyImpl();
+		return new VanzariImpl();
 	}
 	
 //	public static NomenclatoareSrv getNomenclatoareSrv(){

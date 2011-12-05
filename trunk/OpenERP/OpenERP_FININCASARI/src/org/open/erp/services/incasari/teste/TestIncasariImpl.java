@@ -12,12 +12,12 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.incasari.Casa;
 import org.open.erp.services.incasari.Chitanta;
 import org.open.erp.services.incasari.IncasariSrv;
+import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.vanzari.Client;
-import org.open.erp.services.vanzari.FacturaVanzare;
+import org.open.erp.services.vanzari.FacturaEmisa;
 import org.open.erp.services.vanzari.VanzariSrv;
 
 public class TestIncasariImpl {
@@ -50,12 +50,19 @@ public class TestIncasariImpl {
 		}
 		Angajat casier = new Angajat();
 		Client client = new Client();
-		ArrayList<FacturaVanzare> facturi = new ArrayList<FacturaVanzare>();
-		FacturaVanzare fact1 = new FacturaVanzare("fact1",
-				dfm.parse("2010-01-01"), 40.00, 10.00);
+		ArrayList<FacturaEmisa> facturi = new ArrayList<FacturaEmisa>();
+		FacturaEmisa fact1 = new FacturaEmisa();
+		fact1.setIdFactura(1);
+		((Document) fact1).setDataDoc(dfm.parse("2010-01-01"));
+		fact1.setValoareTotalaFactura(40.00);
+		fact1.setSumaIncasata(10.00);
 		facturi.add(fact1);
-		FacturaVanzare fact2 = new FacturaVanzare("fact2",
-				dfm.parse("2007-01-01"), 40.00, 30.00);
+		FacturaEmisa fact2 = new FacturaEmisa();
+		fact2.setIdFactura(2);
+		fact2.setDataDoc(dfm.parse("2007-01-01"));
+		fact2.setValoareTotalaFactura(40.00);
+		fact2.setSumaIncasata(30.00);
+	
 		facturi.add(fact2);
 
 		Chitanta chitanta = incasariSrvInstance.inregistrareChitanta(casier,
@@ -81,25 +88,6 @@ public class TestIncasariImpl {
 	}
 
 	@Test
-	public void testActualizeazaSoldCasa() {
-
-		Casa casa = incasariSrvInstance.actualizeazaSoldCasa(20.00);
-
-		logger.info(casa.getSoldCurent());
-		assertEquals("Soldul nu s-a actualizat corect",
-				Double.doubleToLongBits(20.00),
-				Double.doubleToLongBits(casa.getSoldCurent()));
-
-		Casa casa2 = incasariSrvInstance.actualizeazaSoldCasa(30.00);
-
-		logger.info(casa.getSoldCurent());
-		assertEquals("Soldul nu s-a actualizat corect",
-				Double.doubleToLongBits(50.00),
-				Double.doubleToLongBits(casa2.getSoldCurent().doubleValue()));
-
-	}
-
-	@Test
 	public void testGetSumaRON() {
 
 		Double suma = incasariSrvInstance.getSumaRON("EURO", 10.00, 4.00);
@@ -109,15 +97,5 @@ public class TestIncasariImpl {
 				Double.doubleToLongBits(40.00), Double.doubleToLongBits(suma));
 	}
 
-	@Test
-	public void testActualizeazaSoldClient() {
 
-		Client client = incasariSrvInstance.actualizeazaSoldClient(30.00, "1");
-
-		logger.info(client.getSoldCurent());
-		assertEquals("Soldul nu s-a actualizat corect",
-				Double.doubleToLongBits(30.00),
-				Double.doubleToLongBits(client.getSoldCurent()));
-
-	}
 }

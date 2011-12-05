@@ -1,10 +1,20 @@
 package org.open.erp.services.incasari;
 
+/**
+ * 
+ * @author Echipa FININCASARI
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.vanzari.FacturaVanzare;
+import org.open.erp.services.vanzari.FacturaEmisa;
+
 
 public abstract class Incasare {
 	
@@ -96,7 +106,7 @@ public abstract class Incasare {
 		this.locatie = locatie;
 	}
 
-	private List<FacturaVanzare> facturi = new ArrayList<FacturaVanzare>();
+	private List<FacturaEmisa> facturi = new ArrayList<FacturaEmisa>();
 
 	public Incasare(Date dataEmiterii, Boolean avans,
 			Date dataInregistrarii, Double suma, String sumaInLitere,
@@ -113,11 +123,11 @@ public abstract class Incasare {
 		
 	}
 
-	public List<FacturaVanzare> getFacturi() {
+	public List<FacturaEmisa> getFacturi() {
 		return facturi;
 	}
 
-	public void setFacturi(List<FacturaVanzare> facturi) {
+	public void setFacturi(List<FacturaEmisa> facturi) {
 		this.facturi = facturi;
 	}
 

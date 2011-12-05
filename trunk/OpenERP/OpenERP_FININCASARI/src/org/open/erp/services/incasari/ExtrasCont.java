@@ -1,5 +1,14 @@
 package org.open.erp.services.incasari;
 
+
+/**
+ * 
+ * @author Echipa FININCASARI
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 import java.util.Date;
 
 public class ExtrasCont extends Incasare {

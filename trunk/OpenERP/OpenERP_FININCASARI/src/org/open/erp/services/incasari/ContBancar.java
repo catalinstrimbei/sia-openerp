@@ -1,5 +1,14 @@
 package org.open.erp.services.incasari;
 
+
+/**
+ * 
+ * @author Echipa FININCASARI
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
 public class ContBancar {

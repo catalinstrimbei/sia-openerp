@@ -1,5 +1,13 @@
 package org.open.erp.services.incasari;
 
+/**
+ * 
+ * @author Echipa FININCASARI
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 import java.util.Date;
 
 import org.open.erp.services.personal.Angajat;

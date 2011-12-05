@@ -1,8 +1,18 @@
+
+
 package org.open.erp.services.incasari;
 
 import java.util.Date;
 
 import org.open.erp.services.nomgen.Persoana;
+
+/**
+ * 
+ * @author Echipa FININCASARI
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
 
 public class BiletLaOrdin extends Incasare {
 
