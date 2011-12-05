@@ -122,7 +122,7 @@ public class SalarizareImpl implements SalarizareSrv {
 	public Double calculRetineriAngajat(Integer an, Integer luna,
 			Angajat angajat) {
 		// pentru fiecare angajat calculam retinerile (pot fi mai multe) si insumam
-		//toti angajatii
+		ContractMunca contract = registru.getContractActivAngajat(angajat);
 		logger.debug("Calcul retineri angajat");
 		Double valoareTotala=0.0;
 		ArrayList<Retinere> retineri= new ArrayList<Retinere>();
@@ -136,7 +136,7 @@ public class SalarizareImpl implements SalarizareSrv {
 			}
 			else{
 				//valoare
-				valoareTotala = valoareTotala + retinere.getValoare()*retinere.getAngajat().getSalarBaza();
+				valoareTotala = valoareTotala + retinere.getValoare()*contract.getSalarBaza();
 			}
 		}
 		return valoareTotala;
