@@ -17,6 +17,7 @@ import java.util.List;
 import org.open.erp.services.nomgen.Departament;
 //import org.open.erp.services.personal.Activitate;
 //import org.open.erp.services.personal.Proiect;
+import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.AngajatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
@@ -25,6 +26,7 @@ import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.CerereDemisie;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.DosarAngajat;
+import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.PersonalSrv;
@@ -415,6 +417,34 @@ public class PersonalImpl implements PersonalSrv{
 				numeFunctie_, pozitiaInCOR_, obiective_, responsabilitati_, cunostinte_, deprinderi_, aptitudini_, departament);
 		return functieNoua;
 	}
+	@Override
+	public List<Eveniment> getEvenimenteAnuale(Integer _year) {
+		List<Eveniment> evenimente = new ArrayList<Eveniment>();
+		// TODO Auto-generated method stub
+		if(_year ==0)
+		{
+			return Eveniment.getEvenimente();
+		}		
+		return evenimente;
+	}
 
+	
+	
+	@Override
+	public void aprobareEveniment(Eveniment _eveniment) {
+		// TODO Auto-generated method stub
+		Iterator <Activitate> activitatiEveniment =_eveniment.getActivitati().iterator();
+		Double sumaActivitati = 0.00;
+		while (activitatiEveniment.hasNext())
+		{
+			Activitate activitateCurenta = activitatiEveniment.next();
+			sumaActivitati += activitateCurenta.getSumaEstimata();				
+		}
+		if(sumaActivitati<= _eveniment.getSumaAlocata())
+		{
+			_eveniment.setStatusEveniment("Eveniment Aprobat");
+		}		
+		System.out.println(_eveniment.getStatusEveniment());
+	}
 	
 }

@@ -276,4 +276,18 @@ public interface PersonalSrv {
 	 * @return    Functia nou creata       
 	 * 
 	 */
+	
+	
+	List<Eveniment> getEvenimenteAnuale(Integer _year);//NMV>>metoda pentru evenimentele anuale
+	/**
+	 * @param _year anul pentru care trebuie returnata lista de evenimente.
+	 * Daca year = 0 va returna toate evenimentele din toti anii
+	 * @return list evenimente pentru anul primit ca parametru
+	 */	
+	
+	void aprobareEveniment(Eveniment _eveniment);
+	/**
+	 * @param _activitate //metoda ce determina daca un eveniment este aprobat sau nu in functie de suma alocata si estimata
+	 * 
+	 */
 }
