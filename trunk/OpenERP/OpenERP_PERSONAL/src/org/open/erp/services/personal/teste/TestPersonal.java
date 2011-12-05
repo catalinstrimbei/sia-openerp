@@ -17,10 +17,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.nomgen.Departament;
+import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.AngajatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.Candidat;
+import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.impl.PersonalImpl;
 
