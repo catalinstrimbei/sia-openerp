@@ -3,11 +3,11 @@
 
 Modul CONTABGEN
 
-Scop: Inregistrarea in contabilitate a notelor contabile aferente documentelor contabilizabile si a pune la dispozitie informatii sintetizate.
+*Scop:* Inregistrarea in contabilitate a notelor contabile aferente documentelor contabilizabile si a pune la dispozitie informatii sintetizate.
 
 = Details =
 
-Serviciul de Contabilitate Generala
+===Serviciul de Contabilitate Generala===
 asigura urmatoarele metode de jurnalizare:
 
   # Creaza instanta inregistrare in registru jurnal pentru vanzari
