@@ -42,12 +42,11 @@ public class RegLuniLucru {
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(data);
 			int an = cal.get(Calendar.YEAR);
-			int luna =cal.get(Calendar.MONTH);
-			
+			int luna =cal.get(Calendar.MONTH)+1;
 			if(lunaGasita==null && listaLuni.isEmpty()==false){ //consecutive
 				LunaLucru ultimaLuna = getUltimaLuna();	
 				if ((ultimaLuna.getLuna() + 1 == luna && ultimaLuna.getAn() == an) || (luna == 1 && ultimaLuna.getAn() == an + 1 && ultimaLuna.getLuna() == 12)) {
-					LunaLucru lunaNoua = new LunaLucru(0, luna+1, an);
+					LunaLucru lunaNoua = new LunaLucru(0, luna, an);
 					addLuna(lunaNoua);
 					return lunaNoua;
 				} else {
@@ -56,6 +55,7 @@ public class RegLuniLucru {
 			} else if(listaLuni.isEmpty()==true){ //e prima luna
 				LunaLucru lunaNoua = new LunaLucru(1, luna, an);
 				addLuna(lunaNoua);
+				//System.out.println(luna+ " - " +an);
 				return lunaNoua;
 			} else {
 				//TODO: 
@@ -69,7 +69,7 @@ public class RegLuniLucru {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(data);
 		int an = cal.get(Calendar.YEAR);
-		int luna =cal.get(Calendar.MONTH);
+		int luna =cal.get(Calendar.MONTH)+1;
 		if(idLuna == null){
 			for (LunaLucru l : this.listaLuni) {
 				if (l.getAn() == an && l.getLuna() == luna)
@@ -122,7 +122,7 @@ public class RegLuniLucru {
 	public LunaLucru getLunaAnterioara(LunaLucru luna){
 		Calendar c = Calendar.getInstance();
 		c.set(luna.getAn(), luna.getLuna(), 15);
-		c.add(Calendar.MONTH, -1);
+		c.add(Calendar.MONTH,0);
 		Date lunaAnterioara_date = c.getTime();
 		
 		LunaLucru lunaAnterioara = RegLuniLucru.instantiaza().getLunaLucruDupa(lunaAnterioara_date);

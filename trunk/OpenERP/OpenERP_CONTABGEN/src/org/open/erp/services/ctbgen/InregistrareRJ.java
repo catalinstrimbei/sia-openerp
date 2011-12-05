@@ -1,5 +1,6 @@
 package org.open.erp.services.ctbgen;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class InregistrareRJ implements Comparable<InregistrareRJ>{
 		this.nrDocLeg = nrDocLeg;
 		this.lunaCurs = lunaCurs;
 		this.idPartener = idPartener;
+		this.articoleRJ=new ArrayList<ArticolCtb>();
 	}
 	
 	public InregistrareRJ(Integer idInregRJ, Date dataInregRJ, List<ArticolCtb> articoleRJ, Integer nrDocLeg,
@@ -61,6 +63,11 @@ public class InregistrareRJ implements Comparable<InregistrareRJ>{
 	public void setArticoleRJ(List<ArticolCtb> articoleRJ) {
 		//aici ceva nu e bine
 		this.articoleRJ = articoleRJ;
+	}
+	
+	public void adaugaArticol(ArticolCtb articoleRJ) {
+		
+		this.articoleRJ.add(articoleRJ); 
 	}
 	public Integer getNrDocLeg() {
 		return nrDocLeg;

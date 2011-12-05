@@ -51,6 +51,10 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 		RegTipuriContabile regTip =RegTipuriContabile.instantiaza();
 		for (LinieDocument ld: listaLinMat){
 			listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.material.getTipContabil()),ld.cantitate*ld.pret));
+			
+			//aici facem exceptia de string  if regTip.getTipDupaDen(ld.material.getTipContabil()) is null{
+			//throw new CtbException("Materialul nu are un tipContabil valid!");
+			//}
 		}
 
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
@@ -364,11 +368,12 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 
 			InregistrareRJ inregPlata = new InregistrareRJ(data, nrDoc,	regLuniLucru.getOrCreateLunaLucru(data), null);
 			List<ArticolCtb> listaArtRJ = new ArrayList<ArticolCtb>();
-			ArticolCtb articolIncasare = new ArticolCtb();
+			//ArticolCtb articolIncasare = new ArticolCtb();
 
 			logger.debug("Avem obiecte");
 			
 			for ( int i=0;i<10; i++ ){
+				ArticolCtb articolIncasare = new ArticolCtb();
 				articolIncasare.setContDebit(regSabloanNC.getSablonIncasare(nrSabSalarii).getContDebit());
 				articolIncasare.setContCredit(regSabloanNC.getSablonIncasare(nrSabSalarii).getContCredit());
 				articolIncasare.setNrLinArt(nrlin);
@@ -381,10 +386,10 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 				listaArtRJ.add(articolIncasare);
 				logger.info("Articol rezolvat: "+ articolIncasare.getContDebit().getSimbolCont() + " | "
 					+ articolIncasare.getContCredit().getSimbolCont()+" | "+articolIncasare.getSumaDC());
+				inregPlata.adaugaArticol(articolIncasare);
 			}
 			
-			
-			inregPlata.setArticoleRJ(listaArtRJ);
+			//inregPlata.setArticoleRJ(listaArtRJ);
 			
 			inregPlata.setLunaCurs(regLuniLucru.getOrCreateLunaLucru(data));
 			logger.debug("Avem articole salarii ");

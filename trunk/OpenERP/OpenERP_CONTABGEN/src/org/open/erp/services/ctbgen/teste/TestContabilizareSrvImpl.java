@@ -184,6 +184,7 @@ public class TestContabilizareSrvImpl {
 //	}		
 	
 	//-------------------------------------------------
+	
 	@Test
 	public void TestJurnalizareVanzare(){
 		logger.info("Begin test: TestjurnalizareVanzare");

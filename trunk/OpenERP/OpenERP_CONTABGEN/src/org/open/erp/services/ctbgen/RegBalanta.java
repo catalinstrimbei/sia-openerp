@@ -86,6 +86,18 @@ public class RegBalanta {
 		return rez;
 	}
 	
+	public List<Balanta> getBalantaContParinte(Cont cont){
+		List<Balanta> rez = new ArrayList<Balanta>();
+		
+		for(int i=0;i<balante.size();i++){
+			if(balante.get(i).getContB().equals(cont))
+				rez.add(balante.get(i));
+		}
+		
+		Collections.sort(rez);//TODO: sortare dupa conturi
+		return rez;
+	}
+	
 	public void updateRegistru(List<Balanta> balanteModificate) {
 		for (int i = 0; i < balante.size(); i++) {
 			for (int j = 0; j < balanteModificate.size(); j++)
