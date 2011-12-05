@@ -20,4 +20,5 @@ public class Activitate {
 	private Date		dataStart;
 	private Date		dataSfarsit;
 	private String 		locatie;
+	private Double		sumaEstimata;
 }
