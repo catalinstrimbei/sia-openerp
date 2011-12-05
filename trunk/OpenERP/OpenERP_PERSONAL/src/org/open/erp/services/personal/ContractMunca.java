@@ -15,6 +15,7 @@ public class ContractMunca {
 	private Double	salarBaza;
 	private Double 	tarifOrar;
 	private Angajat angajat;
+
 	private Functie	functie;
 	private Date    dataSemnare;
 	private Date    dataInceput;
@@ -104,7 +105,9 @@ public class ContractMunca {
 	}
 	
 	
-	
+	public ContractMunca() {
+		super();
+	}	
 	
 	
 }
