@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
-import org.open.erp.services.exceptions.ValoareNegativa;
-import org.open.erp.services.stocuri.ArticolStoc;
-//import org.open.erp.services.vanzari.LinieComanda;
+import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
 public class Comanda {
 	public static final char PENDING = 'P';
@@ -21,7 +19,7 @@ public class Comanda {
 	
 	Integer nrComanda;
 	Date dataComanada;
-	Integer idClient;
+	Client client;
 	//Double valoareComanda;
 	//Double tvaComanada;
 	//Double discountTotal;
@@ -41,6 +39,13 @@ public class Comanda {
 	public Comanda(Integer _nrComanda){
 		this.nrComanda = _nrComanda;
 		this.produseComandate = new ArrayList<LinieComanda>();
+	}
+	
+	public Comanda(Integer _nrComanda, Date _dataComanda, Client _client, char _stareComanda){
+		this.nrComanda = _nrComanda;
+		this.dataComanada = _dataComanda;
+		this.client = _client;
+		this.stareComanda = _stareComanda;
 	}
 	
 	public static Comanda gasesteComanda(Integer nrComanda){
@@ -64,7 +69,7 @@ public class Comanda {
 		Double suma = 0.0;
 		while(iterator.hasNext()){
 			LinieComanda produs = iterator.next();
-			suma += produs.getValoareLinie(); 
+			suma += produs.getValoareLinieFaraTVA(); 
 		}
 		return suma;
 	}
@@ -79,7 +84,7 @@ public class Comanda {
 		return reducere;
 	}
 	
-	public Double calculDiscountComanda() throws ValoareNegativa{
+	/*public Double calculDiscountComanda() throws ValoareNegativa{
 		Double discount = 0.0;
 		//Comanda comanda = Comanda.gasesteComanda(nrComanda);
 		// preluare discount din BD
@@ -90,63 +95,8 @@ public class Comanda {
 	
 	public Double calculeazaValoareCuDiscount() throws ValoareNegativa{
 		return (this.calculeazaValoareFaraDiscount() - this.calculDiscountComanda());
-	}
-	
-	// Adauga produs nou sau incrementeaza cantitatea daca deja exista
-	public boolean addProdusInComanda(String idProd, String idCateg, Float cant){
-		LinieComanda produsComandat = this.gasesteProdusComandat(idProd);
-		if( produsComandat == null){
-			ArticolStoc articol = ArticolStoc.cautaProdusDupaId(idProd);
-			if( articol != null){
-				LinieComanda produs = new LinieComanda(idProd, idCateg, cant);
-				//produs.preluareProprietati();
-				produs.numeProdus = articol.getNumeProdus();
-				produs.pretUnitar = articol.getPretUnitar();
-				produs.procentTva =articol.getProcentTva();
-				produs.preluareReducere();
-				return this.produseComandate.add(produs);
-			} else
-				return false;
-		}
-		else{
-			System.out.println("cantitate modif");
-			float cant_ = produsComandat.getCantitate() + cant;
-			System.out.println(cant_);
-			return produsComandat.setCantitate(cant_);
-		}
-		
-	}
-	
-	public LinieComanda gasesteProdusComandat(String idProd){
-		LinieComanda produsComandat = null;
-		if( !this.produseComandate.isEmpty()){
-			Iterator<LinieComanda> iterator = this.produseComandate.iterator();
-			while(produsComandat == null && iterator.hasNext()){
-				LinieComanda linie = iterator.next();
-				if( linie.getIdProdus().equalsIgnoreCase(idProd)){
-					produsComandat = linie;
-					//System.out.println("gasesteProdusComandat " + produsComandat.getNumeProdus());
-				}
-			}
-		}
-		//System.out.println(produsComandat.toString());
-		return produsComandat;
-	}
-	
-	public boolean removeProdusDinComanda(String idProd){
-		LinieComanda produsComandat = this.gasesteProdusComandat(idProd);
-		if( produsComandat == null)
-			return false;
-		else
-			return this.produseComandate.remove(produsComandat);
-	}
-	
-	// update produs din comanda
-	 public boolean updateProdusDinComanda(String idProd, float cant){
-		 // de rezolvat
-		 return true;
-	}
-			
+	}*/
+				
 	public Integer getNrComanda() {
 		return nrComanda;
 	}
@@ -160,12 +110,13 @@ public class Comanda {
 		this.dataComanada = data;
 	}
 	
-	public Integer getIdClient() {
-		return idClient;
+
+	public Client getClient() {
+		return client;
 	}
 
-	public void setIdClient(Integer idClient) {
-		this.idClient = idClient;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public char getStareComanda() {
@@ -214,4 +165,14 @@ public class Comanda {
 	public void setAdresaLivrare(String adresaLivrare) {
 		this.adresaLivrare = adresaLivrare;
 	}
+
+	public ArrayList<LinieComanda> getProduseComandate() {
+		return produseComandate;
+	}
+
+	public void setProduseComandate(ArrayList<LinieComanda> produseComandate) {
+		this.produseComandate = produseComandate;
+	}
+	
+	
 }

@@ -6,22 +6,19 @@ package org.open.erp.services.vanzari;
  * @BusinessObject(DummyEntity)
  */
 
-import java.util.Date;
+import org.open.erp.services.nomgen.Partener;
 
-public class Client {
-	Integer idClient;
+public class Client extends Partener {
+	//Integer idClient;
 	String nume;
-	String prenume;
-	String adresa;
+	//String adresa;
 	String adresaEmail;
-	Date dataNastere;
+	String telefon;
+	String cod; // BI/CI/CUI
+	Double soldClient;
 	
 	public Client(){}
-	
-	public Client(Integer _idClient){
-		this.idClient = _idClient;
-	}
-	
+
 	public boolean addClient(){
 		// set client data in DB
 		return true;
@@ -47,36 +44,12 @@ public class Client {
 		return new Client();
 	}
 
-	public Integer getIdClient() {
-		return idClient;
-	}
-
-	public void setIdClient(Integer idClient) {
-		this.idClient = idClient;
-	}
-
 	public String getNume() {
 		return nume;
 	}
 
 	public void setNume(String nume) {
 		this.nume = nume;
-	}
-
-	public String getPrenume() {
-		return prenume;
-	}
-
-	public void setPrenume(String prenume) {
-		this.prenume = prenume;
-	}
-
-	public String getAdresa() {
-		return adresa;
-	}
-
-	public void setAdresa(String adresa) {
-		this.adresa = adresa;
 	}
 
 	public String getAdresaEmail() {
@@ -87,13 +60,28 @@ public class Client {
 		this.adresaEmail = adresaEmail;
 	}
 
-	public Date getDataNastere() {
-		return dataNastere;
+	public String getTelefon() {
+		return telefon;
 	}
 
-	public void setDataNastere(Date dataNastere) {
-		this.dataNastere = dataNastere;
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
 	}
-	
+
+	public String getCod() {
+		return cod;
+	}
+
+	public void setCod(String cod) {
+		this.cod = cod;
+	}
+
+	public Double getSoldClient() {
+		return soldClient;
+	}
+
+	public void setSoldClient(Double soldClient) {
+		this.soldClient = soldClient;
+	}	
 	
 }

@@ -3,6 +3,7 @@ package org.open.erp.services.vanzari;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import org.open.erp.services.nomgen.Document;
 
 /*
  * @author Irina Bogdan
@@ -10,61 +11,72 @@ import java.util.Iterator;
  * @BusinessObject(DummyEntity)
  */
 
-public class FacturaVanzare {
+public class FacturaEmisa extends Document {
 	public static final Boolean PLATITA = true;
 	public static final Boolean NEPLATITA = false;
 	
 	public static final Integer ZILE_RETUR = 20;
 	
 	Integer idFactura;
-	Date dataFacturare;		
+	//Date dataFacturare;		
 	Double valoareTotalaFactura;
 	Double valoareTva;
-	Boolean valida; /* factura platita sau nu */
+	Boolean platita; /* factura platita sau nu */
 	String adresaFacturare;
 	Date dataLivrare;
 	
 	Integer nrComanda;
-	Integer idClient;
-	ArrayList<LinieFacturaVanzare> produseFacturate;
+	Client client;
+	ArrayList<LinieFacturaEmisa> produseFacturate;
+	Vanzator vanzator;
 	
 	Integer idMetodaPlata;
 	Integer idModalitateLivrare;
 	Double costLivrare;
 	String adresaLivrare;
 	
-	public FacturaVanzare(){
+	public FacturaEmisa(){
 		this.valoareTotalaFactura = 0.0;
 		this.valoareTva = 0.0;
 	}
 	
-	public FacturaVanzare(Integer _idFactura){
+	FacturaEmisa(Integer _idFactura){
+		this.valoareTotalaFactura = 0.0;
+		this.valoareTva = 0.0;
+		this.idFactura = _idFactura;
+	}
+	
+	public FacturaEmisa(Integer _idFactura, Client _client, Vanzator _vanzator, Boolean _platita){
 		this.idFactura = _idFactura;
 		this.valoareTotalaFactura = 0.0;
 		this.valoareTva = 0.0;
+		this.client = _client;
+		this.vanzator = _vanzator;
+		this.platita = _platita;
+		
 	}
 	
-	public static FacturaVanzare gasesteFactura(Integer idFactura){
+	public static FacturaEmisa gasesteFactura(Integer idFactura){
 		// find in DB invoice with a specified orderNo
-		return new FacturaVanzare(idFactura);
+		return new FacturaEmisa(idFactura);
 		//return null; <- if invoice not found 
 	}
 	
 	public void calculeazaTvaFactura(){
-		Iterator<LinieFacturaVanzare> iterator = this.produseFacturate.iterator();
+		Iterator<LinieFacturaEmisa> iterator = this.produseFacturate.iterator();
 		Double tva = 0.0; 
 		while(iterator.hasNext()){
-			LinieFacturaVanzare produs = iterator.next();
+			LinieFacturaEmisa produs = iterator.next();
 			tva += produs.getTvaLinie();
 		}
 		this.valoareTva = tva;
 	}
 	
-	public void calculeazaValoareFactura(){
-		Iterator<LinieFacturaVanzare> iterator = this.produseFacturate.iterator();
+	public void calculeazaValoareFactura(){ // fara TVA
+		Iterator<LinieFacturaEmisa> iterator = this.produseFacturate.iterator();
 		Double valoare = 0.0;
 		while(iterator.hasNext()){
-			LinieFacturaVanzare produs = iterator.next();
+			LinieFacturaEmisa produs = iterator.next();
 			valoare += produs.getPretLinie();
 		}
 		this.valoareTotalaFactura = valoare;
@@ -73,7 +85,7 @@ public class FacturaVanzare {
 	public boolean isReturnable(){
 		boolean platit = this.facturaPlatita();
 		boolean livrat = this.facturaLivrata();
-		if( platit && livrat && (this.nrZileDeLaLivrare() <= FacturaVanzare.ZILE_RETUR))
+		if( platit && livrat && (this.nrZileDeLaLivrare() <= FacturaEmisa.ZILE_RETUR))
 			return true;
 		else
 			return false;
@@ -92,22 +104,6 @@ public class FacturaVanzare {
 	public Integer nrZileDeLaLivrare(){
 		// get from db ...
 		return 10;
-	}
-
-	public Date getDataFacturare() {
-		return dataFacturare;
-	}
-
-	public void setDataFacturare(Date dataFacturare) {
-		this.dataFacturare = dataFacturare;
-	}
-
-	public Boolean getValida() {
-		return valida;
-	}
-
-	public void setValida(Boolean valida) {
-		this.valida = valida;
 	}
 
 	public Integer getIdFactura() {
@@ -158,19 +154,19 @@ public class FacturaVanzare {
 		this.nrComanda = nrComanda;
 	}
 
-	public Integer getIdClient() {
-		return idClient;
+	public Client getClient() {
+		return client;
 	}
 
-	public void setIdClient(Integer idClient) {
-		this.idClient = idClient;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
-	public ArrayList<LinieFacturaVanzare> getProduseFacturate() {
+	public ArrayList<LinieFacturaEmisa> getProduseFacturate() {
 		return produseFacturate;
 	}
 
-	public void setProduseFacturate(ArrayList<LinieFacturaVanzare> produseFacturate) {
+	public void setProduseFacturate(ArrayList<LinieFacturaEmisa> produseFacturate) {
 		this.produseFacturate = produseFacturate;
 	}
 
@@ -204,6 +200,22 @@ public class FacturaVanzare {
 
 	public void setAdresaLivrare(String adresaLivrare) {
 		this.adresaLivrare = adresaLivrare;
+	}
+
+	public Vanzator getVanzator() {
+		return vanzator;
+	}
+
+	public void setVanzator(Vanzator vanzator) {
+		this.vanzator = vanzator;
+	}
+
+	public Boolean getPlatita() {
+		return platita;
+	}
+
+	public void setPlatita(Boolean platita) {
+		this.platita = platita;
 	}
 			
 }

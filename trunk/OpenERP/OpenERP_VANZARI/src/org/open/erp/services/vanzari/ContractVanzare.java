@@ -1,16 +1,18 @@
 package org.open.erp.services.vanzari;
 import java.util.Date;
 
+import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.vanzari.Client;
 
-/*
+/**
  * @author Irina Bogdan
  */
 
-public class ContractVanzare {
+public class ContractVanzare extends Document {
 	Integer idContract;
 	Client client;
-	Date dataContract;
+	Date dataInceputContract;
+	Date dataIncheireContract;
 	
 	public Integer getIdContract() {
 		return idContract;
@@ -24,11 +26,18 @@ public class ContractVanzare {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	public Date getDataContract() {
-		return dataContract;
+	public Date getDataInceputContract() {
+		return dataInceputContract;
 	}
-	public void setDataContract(Date dataContract) {
-		this.dataContract = dataContract;
+	public void setDataInceputContract(Date dataInceputContract) {
+		this.dataInceputContract = dataInceputContract;
 	}
+	public Date getDataIncheireContract() {
+		return dataIncheireContract;
+	}
+	public void setDataIncheireContract(Date dataIncheireContract) {
+		this.dataIncheireContract = dataIncheireContract;
+	}
+
 	
 }

@@ -1,0 +1,81 @@
+package org.open.erp.services.vanzari.impl;
+
+/**
+ * @author Irina Bogdan
+ */
+
+import org.open.erp.services.nomgen.Produs;
+import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.impl.StocuriImpl;
+import org.open.erp.services.vanzari.LinieFacturaEmisa;
+import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
+
+public class ProcesareFacturaEmisa {
+
+	private StocuriSrv stocuriSrv = new StocuriImpl();
+
+	private LinieFacturaEmisa linie;
+	
+	public Double stabilirePret() throws ValoareNegativa{
+		Double pret = 0.0;
+		Double pretUnitar = 0.0; 
+		
+		// preluare de la Mk
+		Float valoareReducere = (float)0.0;
+		Float procentReducere = (float)10;
+		
+		pretUnitar = linie.getProdus().getPretVanzare();
+		
+		if( procentReducere != 0){
+			pret = pretUnitar * (1 - 0.01 * procentReducere); 
+		} else if(valoareReducere != 0){
+			pret = pretUnitar - valoareReducere;
+		} else
+			pret = pretUnitar;
+		// Exceptie: pret negativa 
+		if( pret < 0)
+			throw new ValoareNegativa("Valoare pret negativa");
+		//this.pretUnitar = pret;
+		return pret;
+	}
+	
+	public void calculeazaPretLinie() throws ValoareNegativa{ // fara TVA
+		//Double pretLinie = linie.getProdus().getPretVanzare() * linie.getCantitateFacturata();
+		Double pretLinie = this.stabilirePret() * linie.getCantitateFacturata();  
+		linie.setPretLinie(pretLinie);		
+	}
+	
+	public void calculeazaTvaLinie() throws ValoareNegativa{
+		//Double tva = linie.getProdus().getPretVanzare() * linie.getCantitateFacturata() * linie.getProdus().getProcentTVA();
+		Double tva = this.stabilirePret() * linie.getCantitateFacturata() * linie.getProdus().getProcentTVA();
+		linie.setTvaLinie(tva);
+	}
+	
+	/*public boolean addProdusInFactura(Produs produs, Double cantitate){
+		if( !this.checkDisponibilitateProdus(produs, cantitate))
+			return false;
+		else {
+			LinieFacturaEmisa linie = new LinieFacturaEmisa(produs, cantitate);
+			return factura.getProduseFacturate().add(linie);
+		}
+	}*/
+	
+	// produsul se afla sau nu in stoc
+	public boolean checkDisponibilitateProdus(Produs produs, Double cantitate){
+		// conversie Produs catre Material
+		Double cantDisponibila = stocuriSrv.verificareStocMaterial(produs);
+		if( cantDisponibila <= cantitate)
+			return true;
+		else
+			return false;
+	}
+
+	public LinieFacturaEmisa getLinie() {
+		return linie;
+	}
+
+	public void setLinie(LinieFacturaEmisa linie) {
+		this.linie = linie;
+	}	
+	
+}

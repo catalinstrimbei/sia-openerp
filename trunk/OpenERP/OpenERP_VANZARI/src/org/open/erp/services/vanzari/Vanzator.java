@@ -1,6 +1,6 @@
 package org.open.erp.services.vanzari;
 
-/*
+/**
  * @author Irina Bogdan
  */
 

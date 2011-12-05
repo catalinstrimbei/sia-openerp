@@ -1,20 +1,20 @@
-package org.open.erp.services.teste;
+package org.open.erp.services.vanzari.teste;
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.open.erp.services.impl.VanzariDummyImpl;
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.vanzari.*;
+import org.open.erp.services.vanzari.impl.VanzariImpl;
 
 /*
  * @author Irina Bogdan
  */
 
 public class TestVanzari {
-	VanzariDummyImpl vanzariInstance;
+	VanzariImpl vanzariInstance;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -36,7 +36,7 @@ public class TestVanzari {
 	
 	@Test
 	public void testfacturareProduse(){
-		FacturaVanzare fact = vanzariInstance.facturareProduse(1, null);
+		FacturaEmisa fact = vanzariInstance.facturareProduse(1, null);
 		assertNotNull("Nu exista factura!", fact);
 	}
 

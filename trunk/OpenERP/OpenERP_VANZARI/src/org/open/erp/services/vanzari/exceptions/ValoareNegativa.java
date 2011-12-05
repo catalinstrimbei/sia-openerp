@@ -1,4 +1,4 @@
-package org.open.erp.services.exceptions;
+package org.open.erp.services.vanzari.exceptions;
 
 /*
  * @author Irina Bogdan
