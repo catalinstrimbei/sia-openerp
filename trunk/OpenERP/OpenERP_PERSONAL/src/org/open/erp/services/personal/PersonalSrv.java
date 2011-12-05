@@ -36,12 +36,13 @@ import org.open.erp.services.nomgen.Persoana;
  * *. Returneaza candidatii propusi pentru angajare
  * * * *
  *  
- *  *  @UseCase("angajare"): ---- DE IMPLEMENTAT
+ *  *  @UseCase("angajare"):
 * 1. Creare instanta angajat
-* 2. Initializarea atributului statusului in privinta activitatii cu "true"
-* 3. Creare instanta dosar angajat pentru fiecare angajat
-* 4. Creare instanta contract de munca pentru fiecare angajat daca dosarul este complet, completarea functiei si 
+* 2. Creare instanta dosar angajat pentru fiecare angajat
+* 3. Creare instanta contract de munca pentru fiecare angajat, completarea functiei si 
 *       necompletarea datei de terminare a contractului 
+* 4. Initializarea atributului statusului in privinta activitatii cu "true" dupa completarea dosarului
+* 
 * 
 * *. 
  *  
@@ -71,7 +72,7 @@ import org.open.erp.services.nomgen.Persoana;
  * 3. Afisarea rezultatelor pe fiecare proba
  * *. Returneaza rezultatele pe fiecare departament/ proba/ angajati (in vederea creari de ierarhizari de exemplu)
  *  
- * @UseCase("recrutare"):
+ *
  *  
  */
 public interface PersonalSrv {
@@ -146,9 +147,26 @@ public interface PersonalSrv {
 	 */
 	
 	CV getCVByCandidat(Candidat candidat_);
+	
+	/**
+	 * Scop    Returneaza cv-ul pentru fiecare candidat
+	 *         
+	 * @param  candidat_ 	    Candidatul pentru care se cauta cv-ul
+	 * 
+	 * @return date Cv pentru candidatul precizat
+	 * 	
+	 */
+	
 
 	void angajare(Candidat candidat_);
-	
+	/**
+	 * Scop    Creeaza un nou angajat cu dosarul acestuia si a contractului de munca prin precizarea candidatului
+	 *         
+	 * @param  candidat_ 	    Candidatul care va fi angajat
+	 * 
+	 * @return 
+	 * 	
+	 */
 	void demisionare(CerereDemisie cerereDemisie_);
 	
 	/**
@@ -161,6 +179,19 @@ public interface PersonalSrv {
 	 */
 	
 	void concediere(ContractMunca contractMunca_);
+	
+	/**
+	 * Scop   
+	 * 
+	 * @param contractMunca_ 
+	 * 
+	 * @return 
+	 * 
+	 */
+	
+	
+	ContractMunca relocalizare_promovare(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_);
+	
 	/**
 	 * Scop						Relocalizarea unui angajat ca urmare a resturcturarii firmei sau ca urmare a promovarii angajatului 
 	 * 
@@ -174,19 +205,63 @@ public interface PersonalSrv {
 	 * @return					Contractul nou incheiat sau contractul modificat in urma promovarii.
 	 */
 	
-	ContractMunca relocalizare_promovare(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_);
-	
 	
 	Angajat getAngajatById(Integer marca_);
+	
+	/**
+	 * Scop  Returneaza datele despre un angajat dupa precizarea marcii 
+	 * 
+	 * @param marca_  Marca angajatului, element unic de identificare pentru angajat, dupa care se face cautarea
+	 * 
+	 * @return date angajat 
+	 * 
+	 */
 	
 	
 	List<Angajat> getListaAngajati();
 	
+	/**
+	 * Scop  Returneaza o lista cu toti angajatii
+	 * 
+	 * 
+	 * @return 
+	 * 
+	 */
+	
+	
 	List<ContractMunca> getListaContracteByAngajat(Angajat angajat_);
 	
+	/**
+	 * Scop  			 Returneaza o lista a contractelor de munca pentru un angajat precizat
+	 * 
+	 * @param  angajat_  Angajatul dupa care se face cautarea
+	 * 
+	 * @return           lista contracte curente pentru un angajat
+	 * 
+	 */
+	
+	
 	DosarAngajat getDosarByAngajat(Angajat angajat_);
+	
+	/**
+	 * Scop  			 Returneaza dosarul de angajare pentru un angajat precizat
+	 * 
+	 * @param  angajat_  Angajatul dupa care se face cautarea
+	 * 
+	 * @return           dosarul curent pentru un angajat
+	 * 
+	 */
 
 	void activareAngajati(List<Angajat> listaAngajati);
+	
+	/**
+	 * Scop                   Seteaza activ statusul unui angajat daca dosarul acestuia este complet
+	 * 
+	 * @param  listaAngajati  Lista tuturor angajatilor pentru care se realizeaza operatiunea
+	 * 
+	 * @return           
+	 * 
+	 */
 	
 
 }
