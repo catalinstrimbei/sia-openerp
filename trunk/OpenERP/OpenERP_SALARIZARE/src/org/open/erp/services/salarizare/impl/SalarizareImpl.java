@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 //import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.salarizare.CentralizatorStatSalarii;
 import org.open.erp.services.salarizare.Configurare;
@@ -35,7 +36,7 @@ public class SalarizareImpl implements SalarizareSrv {
 		
 		//toti angajatii
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
-		angajati.addAll(this.personalSrv.getAngajati());
+		angajati.addAll(this.personalSrv.getListaAngajati());
 		
 		logger.debug("Creare pontaj pentru toti angajatii");
 		
@@ -73,7 +74,10 @@ public class SalarizareImpl implements SalarizareSrv {
 	@Override
 	public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) {
 		// pentru fiecare angajat calculam sporurile (pot fi mai multe) si insumam
-		//toti angajatii
+		ContractMunca contract = registru.getContractActivAngajat(angajat);
+		//de inlocuit aici cu metoda getContractActivAngajat
+		//daca prin absurd un angajat are mai multe contracte active la un moment data
+		//atunci o sa iteram prin lista de contracte si o sa facem calculul
 		Double valoareTotala=0.0;
 		ArrayList<Spor> sporuri= new ArrayList<Spor>();
 		sporuri.addAll(registru.getSporuriAngajat(an, luna, angajat));
@@ -86,7 +90,7 @@ public class SalarizareImpl implements SalarizareSrv {
 			}
 			else{
 				//valoare
-				valoareTotala = valoareTotala + spor.getValoare()*angajat.getSalarBaza();
+				valoareTotala = valoareTotala + spor.getValoare()*contract.getSalarBaza();
 			}
 		}
 		return valoareTotala;
@@ -208,7 +212,7 @@ public class SalarizareImpl implements SalarizareSrv {
 		logger.debug("Creare stat salarii pentru toti angajatii");
 		//toti angajatii
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
-		angajati.addAll(this.personalSrv.getAngajati());
+		angajati.addAll(this.personalSrv.getListaAngajati());
 		
 		//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 		for (Angajat angajat:angajati){
@@ -250,7 +254,7 @@ public class SalarizareImpl implements SalarizareSrv {
 		centralizator.setLuna(luna);
 		
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
-		angajati.addAll(this.personalSrv.getAngajati());
+		angajati.addAll(this.personalSrv.getListaAngajati());
 		
 		for (Angajat angajat:angajati){
 			StatSalarii statSalarii = new StatSalarii();
