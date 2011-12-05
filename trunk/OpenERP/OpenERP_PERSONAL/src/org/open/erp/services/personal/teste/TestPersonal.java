@@ -152,6 +152,11 @@ public class TestPersonal {
 		TestPersonalImpl test = new TestPersonalImpl();
 		vizualizareProbeEvaluarePeDepartament(test);
 	}
+	@Test
+	public void testRelocalizare_promovare(){
+		TestPersonalImpl test = new TestPersonalImpl();
+		personalService.relocalizare_promovare(10001, test.functie2, null, true, 1200.00, 8.00);
+	}
 	
 	/**
 	 * @throws java.lang.Exception

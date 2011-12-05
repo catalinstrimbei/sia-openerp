@@ -161,7 +161,22 @@ public interface PersonalSrv {
 	 */
 	
 	void concediere(ContractMunca contractMunca_);
-
+	/**
+	 * Scop						Relocalizarea unui angajat ca urmare a resturcturarii firmei sau ca urmare a promovarii angajatului 
+	 * 
+	 * @param marca_			marca angajatului ce urmeaza a fi relocalizat
+	 * @param functieNoua_		Noua functie pe care urmeaza a fi plasat
+	 * @param contractVizat_	Contractul care va fi terminat pentru a se incheia unul nou. In cazul in care acest parametru
+	 * 							este null se vor termina toate contractele precedente si se va incheia unul singur nou
+	 * @param promovare_		specifica daca metoda este apelata pentru relocalizare sau promovare
+	 * @param salarBaza			noul salariu de baza
+	 * @param tarifOrar_		noul tarif orar
+	 * @return					Contractul nou incheiat sau contractul modificat in urma promovarii.
+	 */
+	
+	ContractMunca relocalizare_promovare(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_);
+	
+	
 	Angajat getAngajatById(Integer marca_);
 	
 	

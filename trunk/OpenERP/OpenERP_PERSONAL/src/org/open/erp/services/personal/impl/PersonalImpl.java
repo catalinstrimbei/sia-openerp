@@ -232,9 +232,10 @@ public class PersonalImpl implements PersonalSrv{
 		Iterator <Angajat> iteratorAngajati = test.angajati.iterator();
 		while(iteratorAngajati.hasNext())
 		{
-			if(iteratorAngajati.next().getMarca() == marca_)
+			Angajat angajat = iteratorAngajati.next();
+			if(angajat.getMarca().equals(marca_))
 			{
-				return iteratorAngajati.next();
+				return angajat;
 			}
 			
 		}
@@ -379,6 +380,52 @@ public class PersonalImpl implements PersonalSrv{
 			angajatCurent = iteratorAngajatiCareAuDatProbe.next();
 		}
 		return rezultat;
+	}
+
+	@Override
+	public ContractMunca relocalizare_promovare(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_)
+	 {
+		// TODO Auto-generated method stub
+		Angajat angajat = this.getAngajatById(marca_);
+		if(angajat == null)
+		{
+			return null;
+		}
+		if (contractVizat_ == null)
+		{
+			Iterator<ContractMunca> iteratorContracte = this.getListaContracteByAngajat(angajat).iterator();
+			
+			while (iteratorContracte.hasNext())
+			{
+				ContractMunca contractVechi = iteratorContracte.next();
+				contractVechi.setDataTerminare(Calendar.getInstance().getTime());
+				if(promovare_)
+				{
+					contractVechi.setMotivIncheiere("Promovare");
+				}
+				else
+				{
+					contractVechi.setMotivIncheiere("Relocalizare");
+				}
+			}	
+		}
+		else
+		{
+			contractVizat_.setDataTerminare(Calendar.getInstance().getTime());
+			if(promovare_)
+			{
+				contractVizat_.setMotivIncheiere("Promovare");
+			}
+			else
+			{
+				contractVizat_.setMotivIncheiere("Relocalizare");
+			}
+		}
+		ContractMunca	contractNou = new ContractMunca("reloc01", salarBaza_, tarifOrar_, angajat, functieNoua_, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), null, 0, null);
+		
+		return contractNou;
+		
+		
 	}
 
 	
