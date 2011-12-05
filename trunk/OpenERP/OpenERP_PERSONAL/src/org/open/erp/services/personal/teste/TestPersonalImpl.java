@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.personal.Activitate;
+import org.open.erp.services.personal.ActivitateTeamBuilding;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.AngajatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
@@ -18,7 +20,9 @@ import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.CerereDemisie;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.DosarAngajat;
+import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.Functie;
+import org.open.erp.services.personal.InstructorTraining;
 import org.open.erp.services.personal.Interviu;
 import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.ProbaEvaluare;
@@ -40,6 +44,18 @@ public class TestPersonalImpl {
 	List<InterviuCandidat> listaInterviuri = new ArrayList<InterviuCandidat>();
 	List<InterviuCandidat> listaInterviuri2 = new ArrayList<InterviuCandidat>();
 
+	//List Narcisa
+	List<InstructorTraining>  instructori = new ArrayList<InstructorTraining>();//NMV adaugare Lista noua pentru instructoriTraining
+	List<Activitate> activitati = new ArrayList<Activitate>();//NMV adaugare lista noua pentru Activitati;
+	
+	//Creare evenimente
+	Eveniment eveniment1 = new Eveniment("EV1", "Training", 1200.00);
+	Eveniment eveniment2 = new Eveniment("EV2", "TeamBuilding", 1200.00);
+	
+	// Activitati
+	Activitate activitate1;
+	Activitate activitate2;
+	Activitate activitate3;
 	
 	List<Departament> listaDepartamente = new ArrayList<Departament>();
 	List<ProbaEvaluare> probeEvaluare = new ArrayList<ProbaEvaluare>();
@@ -186,5 +202,26 @@ public class TestPersonalImpl {
 		listaRezultateProbe.add(angajatProbaEvaluare7);
 		listaRezultateProbe.add(angajatProbaEvaluare8);
 	}
-	
+	void initEvenimenteActivitati() throws Exception
+	{
+		activitate1 = new ActivitateTeamBuilding(1, "In progres", angajati);
+		activitate2 = Activitate.construct(eveniment1);
+		activitate3 = Activitate.construct(eveniment2);
+		
+		eveniment1.setSumaAlocata(300.00);
+		eveniment2.setSumaAlocata(400.00);
+		Calendar date = Calendar.getInstance();
+		activitate2.setIdActivitate("2");
+		activitate2.setDescriereActivitate("Training 1");
+		activitate2.setLocatie("Locatie training 1");
+		activitate2.setSumaEstimata(100.00);
+		date.set(2009,Calendar.DECEMBER,1);
+		activitate2.setDataStart(date.getTime());
+		activitate3.setIdActivitate("3");
+		activitate3.setDescriereActivitate("TeamBuilding 1");
+		activitate3.setLocatie("Locatie TeamBuilding 1");
+		activitate3.setSumaEstimata(200.00);
+		date.set(2009,Calendar.DECEMBER,5);
+		activitate3.setDataStart(date.getTime());		
+	}
 }

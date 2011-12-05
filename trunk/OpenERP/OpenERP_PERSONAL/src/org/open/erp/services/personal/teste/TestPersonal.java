@@ -196,6 +196,48 @@ public class TestPersonal {
 		personalService.adaugareFunctie("Functie1", 1,null, null, null, null, null, test.departament1);
 		System.out.println("Functia a fost creta");
 	}
+	
+	@Test
+	public void testEvenimente(){//Test Narcisa
+		try
+		{
+			TestPersonalImpl test = new TestPersonalImpl();
+			test.initEvenimenteActivitati();
+			Iterator<Eveniment> evenimente = personalService.getEvenimenteAnuale(0).iterator();
+			while(evenimente.hasNext())
+			{
+				Eveniment eveniment = evenimente.next();
+				System.out.println(eveniment.getTipEveniment());
+				Iterator<Activitate> activitatiIterator = eveniment.getActivitati().iterator();							
+				while (activitatiIterator.hasNext()) {	
+					Activitate activitate = activitatiIterator.next();
+					System.out.println(activitate.getDescriereActivitate());
+				    System.out.println(activitate.getEveniment().getTipEveniment());
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+				
+	}
+	
+	@Test
+	public void testAprobareEveniment()
+	{
+		try
+		{
+			TestPersonalImpl test = new TestPersonalImpl();
+			test.initEvenimenteActivitati();
+			personalService.aprobareEveniment(test.eveniment1);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
 	/**
 	 * @throws java.lang.Exception
 	 */
