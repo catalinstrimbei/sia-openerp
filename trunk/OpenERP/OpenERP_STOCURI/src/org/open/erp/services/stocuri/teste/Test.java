@@ -64,11 +64,11 @@ public class Test {
 		logger.loggeazaINFO("START creare materiale ");
 		// creare materiale
 		
-		m1 = new Material(1, "den mat 1", "uM", null, 30 );
-		m2 = new Material(2, "den mat 2", "uM", null, 30 );
-		m3 = new Material(3, "den mat 3", "uM", null, 30 );
-		m4 = new Material(4, "den mat 3", "uM", null, 30 );
-		m5 = new Material(5, "den mat 3", "uM", null, 30 );
+		m1 = new Material(1, "den mat 1", "uM", null, 30, null,null );
+		m2 = new Material(2, "den mat 2", "uM", null, 30, null,null );
+		m3 = new Material(3, "den mat 3", "uM", null, 30,null,null );
+		m4 = new Material(4, "den mat 3", "uM", null, 30,null,null );
+		m5 = new Material(5, "den mat 3", "uM", null, 30,null,null );
 		logger.loggeazaINFO("END creare materiale ");
 		logger.loggeazaINFO("START creare gestiuni ");
 		// creare gestiune
