@@ -99,10 +99,11 @@ public class SalarizareImpl implements SalarizareSrv {
 	@Override
 	public Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) {
 		Pontaj p = registru.getPontajByAngajat(angajat, an, luna);
+		ContractMunca contract = registru.getContractActivAngajat(angajat);
 		logger.debug("Calcul venit brut angajat");
 		Double venitBrut = 0.0;
-		Double venitOreLucrate = (p.getOreLucrate()-p.getOreConcediu())*angajat.getTarifOrar();
-		Double venitOreSuplimentare = p.getOreSuplimentare()*angajat.getTarifOrar();
+		Double venitOreLucrate = (p.getOreLucrate()-p.getOreConcediu())*contract.getTarifOrar();
+		Double venitOreSuplimentare = p.getOreSuplimentare()*contract.getTarifOrar();
 		venitBrut = venitOreLucrate+venitOreSuplimentare;
 			
 		//venitul brut este format din nrorelucrate*tariforar+sporuri
