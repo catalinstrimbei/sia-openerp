@@ -8,3 +8,21 @@ Scop: Inregistrarea in contabilitate a notelor contabile aferente documentelor c
 = Details =
 
 Contabilitate Generala
+
+ContabilitateSrv asigura urmatoarele metode de jurnalizare:
+
+  1. Creaza instanta inregistrare in registru jurnal pentru vanzari
+  2. Creaza instanta inregistrare in registru jurnal pentru achizitii
+  3. Creaza instanta inregistrare in registru jurnal pentru incasari
+  4. Creaza instanta inregistrare in registru jurnal pentru plati
+  5. Creaza instanta inregistrare in registru jurnal pentru salarii
+  6. Creaza instanta inregistrare in registru jurnal pentru consum
+  7. Creaza instanta inregistrare in registru jurnal pentru productia obtinuta
+  8. Inregistreaza sabloane contabile specifice operatiilor de jurnalizare frecvente
+  9. Creaza planul de conturi utilizat in tratarea cheltuielilor si a clasificarii materialelor gestionate
+ 10.Jurnalizarea si inchiderea TVA
+ 11.Inchiderea lunilor contabile si calcularea soldurilor balantei de verificare
+Pentru celelate module pune la dispozitie:
+ 12. Planul de conturi
+ 13. Tipurile Contabile de utilizat la definirea materialor
+ 14. Metoda de verificare a statusului lunii in care se introduce un document
