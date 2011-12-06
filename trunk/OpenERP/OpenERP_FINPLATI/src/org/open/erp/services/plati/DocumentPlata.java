@@ -8,7 +8,7 @@ public class DocumentPlata {
 	private Date data;
 	private String seria;
 	private Integer nr;
-	private Double totalPlata;
+	
 	public Integer getIdDocumentPlata() {
 		return idDocumentPlata;
 	}
@@ -40,11 +40,4 @@ public class DocumentPlata {
 		this.nr = nr;
 	}
 	
-	public Double getTotalPlata(){
-	return totalPlata;
-	}
-	
-	public void setTotalPlata(Double totalPlata){
-	this.totalPlata = totalPlata;
-	}
 }
