@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.Articol;
@@ -18,6 +19,8 @@ import org.open.erp.services.achizitii.LiniePlanAprovizionare;
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
+import org.open.erp.services.achizitii.exceptions.AchizitiiExceptions;
+import org.open.erp.services.achizitii.teste.TestAprovizionareImpl;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
@@ -27,11 +30,16 @@ import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.exceptions.IntrariStocExceptions;
+import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
 import org.open.erp.services.stocuri.impl.Procesare;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 
 
 public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListener{
+	
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(AchizitiiExceptions.class.getName());
+	
 	public ContabilizareSrv contabilizareSrv = new ContabilizareSrvImpl();
 	public StocuriSrv stocuriSrv = new StocuriImpl();
 	
@@ -48,6 +56,8 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		CerereAprovizionare cerere = (CerereAprovizionare)cerereApr;		
 		//Vom adauga in plan liniile din cerere. In cazul in care in plan nu exista produsele din liniile cererii vom 
 		//crea o linie noua in plan
+		
+		 //try{
 		  for (LinieDocument linieCerere : cerere.getLiniiDocument()) {
 	            LiniePlanAprovizionare liniePlan=plan.existaArticolInLiniiPlan(linieCerere.getMaterial());
 	            int linii = plan.getLiniiPlan().size();
@@ -61,9 +71,17 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 	            }else{
 	            	liniePlan.setCantitate(liniePlan.getCantitate()+linieCerere.getCantitate()); 
 	            }
+		  
 	        }	
 		return plan;
-	}	
+		 //}catch (AchizitiiExceptions e) {
+				//e.printStackTrace();
+				//Logger.ERROR(e.getMessage(), e);
+			//}
+		 }
+	
+	
+	
 	public void ascultaFurnizoriCerereriAprovizionare( Procesare procesare) {
 		procesare.addChangeListener(this);
 	}
