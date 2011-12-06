@@ -1,4 +1,4 @@
-#summary Pagina modulului ContabGest.
+#summary Pagina modulului CONTABGEST
 
 = Introduction =
 
