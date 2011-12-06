@@ -1,6 +1,7 @@
 package org.open.erp.services.plati;
 
 import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.nomgen.PersoanaJuridica;
 
 public class ContBancaPF {
 

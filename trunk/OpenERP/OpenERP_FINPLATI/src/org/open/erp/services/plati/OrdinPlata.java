@@ -1,5 +1,7 @@
 package org.open.erp.services.plati;
 
+import org.open.erp.services.nomgen.PersoanaJuridica;
+
 public class OrdinPlata extends DocumentPlata{
 	private Double suma;
 	private Integer CIF;
@@ -35,7 +37,7 @@ public class OrdinPlata extends DocumentPlata{
 	}
 	
 	public PersoanaJuridica getBeneficiar() {
-		return beneficiarr;
+		return beneficiar;
 	}
 	
 	public void setBeneficiar(PersoanaJuridica beneficiar){

@@ -1,5 +1,5 @@
-package org.open.erp.services.plati.util;
+package org.open.erp.services.plati;
 
-public class Plati {
+public class PlatiLogger {
 
 }
