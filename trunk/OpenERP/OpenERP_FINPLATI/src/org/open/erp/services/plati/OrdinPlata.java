@@ -1,21 +1,17 @@
 package org.open.erp.services.plati;
 
-public class OrdinPlata {
-	private Integer idOP;
-	private Integer suma;
+public class OrdinPlata extends DocumentPlata{
+	private Double suma;
 	private Integer CIF;
 	private String reprezentand; 
+	private Double sumaPlataAvans;
+	private PersoanaJuridica emitent;
+	private PersoanaJuridica beneficiar;
 	
-	public Integer getIdOP() {
-		return idOP;
-	}
-	public void setIdOP(Integer idOP) {
-		this.idOP = idOP;
-	}
-	public Integer getSuma() {
+	public Double getSuma() {
 		return suma;
 	}
-	public void setSuma(Integer suma) {
+	public void setSuma(Double suma) {
 		this.suma = suma;
 	}
 	public Integer getCIF() {
@@ -30,5 +26,23 @@ public class OrdinPlata {
 	public void setReprezentand(String reprezentand) {
 		this.reprezentand = reprezentand;
 	}
-
+	public PersoanaJuridica getEmitent() {
+		return emitent;
+	}
+	
+	public void setEmitent(PersoanaJuridica emitent){
+		this.emitent = emitent;
+	}
+	
+	public PersoanaJuridica getBeneficiar() {
+		return beneficiarr;
+	}
+	
+	public void setBeneficiar(PersoanaJuridica beneficiar){
+		this.beneficiar = beneficiar;
+	}
+		
+	public Double PlataAvans(Double suma, Double procentAvans) {
+		return sumaPlataAvans;
+	}
 }
