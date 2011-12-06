@@ -126,8 +126,6 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		Comanda comandaAchizitie=comanda;
 		Integer linie=comandaAchizitie.getLiniiComanda().size();
 	for (LiniePlanAprovizionare liniePlan :liniiPlan){
-		Material articol = liniePlan.getArticol();
-		Double cantitate = liniePlan.getCantitate();
 		LinieComanda linieComanda =  new LinieComanda(linie+1
                                                      ,comandaAchizitie
                                                      ,liniePlan.getArticol()
