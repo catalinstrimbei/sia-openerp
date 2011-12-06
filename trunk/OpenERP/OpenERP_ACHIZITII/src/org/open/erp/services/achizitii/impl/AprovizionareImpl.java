@@ -38,7 +38,7 @@ import org.open.erp.services.stocuri.impl.StocuriImpl;
 
 public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListener{
 	
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(AchizitiiExceptions.class.getName());
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(AprovizionareImpl.class.getName());
 	
 	public ContabilizareSrv contabilizareSrv = new ContabilizareSrvImpl();
 	public StocuriSrv stocuriSrv = new StocuriImpl();
@@ -48,8 +48,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 
 
 	@Override
-	public PlanAprovizionare inregistrareCerereAprovizionare(
-			Document cerereApr) {
+	public PlanAprovizionare inregistrareCerereAprovizionare(Document cerereApr) {
 		//Vom crea un plan de aprovizionare nou daca suntem intr-o saptamana noua,
 		//altfel vom return planul de aprovizionare existent
 		PlanAprovizionare plan = PlanAprovizionare.getPlanAprovizionare();
@@ -57,7 +56,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		//Vom adauga in plan liniile din cerere. In cazul in care in plan nu exista produsele din liniile cererii vom 
 		//crea o linie noua in plan
 		
-		 //try{
+		 
 		  for (LinieDocument linieCerere : cerere.getLiniiDocument()) {
 	            LiniePlanAprovizionare liniePlan=plan.existaArticolInLiniiPlan(linieCerere.getMaterial());
 	            int linii = plan.getLiniiPlan().size();
@@ -74,23 +73,32 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		  
 	        }	
 		return plan;
-		 //}catch (AchizitiiExceptions e) {
-				//e.printStackTrace();
-				//Logger.ERROR(e.getMessage(), e);
-			//}
-		 }
+		 
+         }
 	
 	
 	
 	public void ascultaFurnizoriCerereriAprovizionare( Procesare procesare) {
+		
+		try{
 		procesare.addChangeListener(this);
+		}catch(Exception e) {
+		    logger.error( e.getMessage(),e);
+		
+		}
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evenimentCuCerereAprovizionare) {	
 		//Se extrage cererea de aprovizionare din evenimentul generat de crearea unei noi Cereri de Aprovizionare in clasa
 		//Procesare apartinand modulului de Stocuri
+		
+		try{
 		this.inregistrareCerereAprovizionare((CerereAprovizionare)evenimentCuCerereAprovizionare.getNewValue());
+		}catch(Exception e) {
+		    logger.error( e.getMessage(),e);
+		
+		}
 	}
 
 	@Override
@@ -114,8 +122,10 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 	//se inregistreaza Oferta de Achizitie primita de la furnizor
 	public OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,Date data,
 			Furnizor furnizor,List<LinieOfertaAchizitie> linii) {
-	    cerereOferta.setStatusCerereOferta(CerereOferta.PRIMITA);	    
+		
+		cerereOferta.setStatusCerereOferta(CerereOferta.PRIMITA);	
 		return new OfertaAchizitie(data,OfertaAchizitie.IN_CURS,furnizor,linii);
+	    
 	}
 
 	@Override
@@ -176,10 +186,13 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
     	nir.setLiniiDocument(liniiNIR);
     	this.inregistrareFactura(nir.getFactura());
     	this.receptieMateriale(nir);
-		return nirFact;    	
+    	
+		return nirFact;
+		
     }
 	@Override
-	public int inregistrareFactura(Factura factura) throws CtbException {		
+	public int inregistrareFactura(Factura factura) throws CtbException {	
+		
 		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc()
 				                                    , ((Factura) factura).getValFact()
 				                                    ,((Factura)factura).getTVATotal()				                                    
@@ -204,19 +217,31 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 
 	@Override
 	public void receptieMateriale(Document nir ) {
+		try{
 		stocuriSrv.intrareInStoc(nir);
+		}catch(Exception e) {
+		    logger.error( e.getMessage(),e);
+		
+		}
 	}
 
 	@Override
 	public void returMateriale(Document facturaRetur) {
+		try{
 		stocuriSrv.iesireStoc(facturaRetur);
+		}catch(Exception e) {
+		    logger.error( e.getMessage(),e);
+		
+		}
 			}
 
 	
 	@Override
 	public int hashCode() {
 		// TODO Auto-generated method stub
+		
 		return super.hashCode();
+		
 	}
 
 	@Override
