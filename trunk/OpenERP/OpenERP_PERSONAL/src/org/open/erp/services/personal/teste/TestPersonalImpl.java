@@ -35,6 +35,8 @@ public class TestPersonalImpl {
 	
 	Date dataAnunt;
 	
+	
+	
 	List<AnuntLocMunca> listaAnunturi = new ArrayList<AnuntLocMunca>();
 	List<AnuntLocMunca> listaAnunturi2 = new ArrayList<AnuntLocMunca>();
 	public List<CV> listaCandidati = new ArrayList<CV>();
@@ -117,15 +119,15 @@ public class TestPersonalImpl {
 	//Angajat	angajat2 = new Angajat ()
 	
 	
-	Angajat 		angajat1 = new Angajat(persoana1.getId(), persoana1.getNume(), persoana1.getPrenume(), candidat1.getIdCandidat(),candidat1.getTipCandidat(), 10001, true);
+	Angajat 		angajat1 = new Angajat(persoana1.getId(), persoana1.getNume(), persoana1.getPrenume(), candidat1.getIdCandidat(),candidat1.getTipCandidat(), 10001, false);
 	Angajat 		angajat2 = new Angajat(persoana2.getId(), persoana2.getNume(), persoana2.getPrenume(), candidat2.getIdCandidat(),candidat2.getTipCandidat(), 10002, true);
 	//Angajat 		angajat1 = new Angajat(persoana1.getIdPersoana(), "Nume1", "Prenume1");
 	//ContractMunca	contract1 = new ContractMunca("ContractNr0002", angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,null);
 	
-	ContractMunca	contract1 = new ContractMunca("ContractNr0002", 1000.00, 10.00, angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+	ContractMunca	contract1 = new ContractMunca("ContractNr0002", 1000.00, 10.00, angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2015"), null,0,null);
 	ContractMunca	contract2 = new ContractMunca("ContractNr0001", 1000.00, 10.00, angajat2, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
 
-	DosarAngajat dosar1 = new DosarAngajat(1, angajat1, null, null, null);
+	DosarAngajat dosar1 = new DosarAngajat(1, angajat1, true, true, true);
 	DosarAngajat dosar2 = new DosarAngajat(2, angajat2, null, null, null);
 	
 	AngajatProbaEvaluare angajatProbaEvaluare1 = new AngajatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare1);

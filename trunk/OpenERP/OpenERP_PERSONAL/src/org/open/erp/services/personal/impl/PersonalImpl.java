@@ -240,7 +240,7 @@ public class PersonalImpl implements PersonalSrv{
 		while (iteratorMunca.hasNext()){
 			ContractMunca contractCurent;
 			contractCurent = iteratorMunca.next();
-			if (contractCurent.getAngajat() == angajat_ 
+			if (contractCurent.getAngajat().getMarca().equals(angajat_ .getMarca())
 					&&
 					contractCurent.getDataInceput().compareTo(Calendar.getInstance().getTime()) <= 0 
 					&&
@@ -253,6 +253,28 @@ public class PersonalImpl implements PersonalSrv{
 	}
 	
 	@Override
+	public ContractMunca getContractByAngajat(Angajat angajat_) {
+		TestPersonalImpl test = new TestPersonalImpl();
+		test.listaContracte();
+		Iterator <ContractMunca> iteratorMunca = test.contracteMunca.iterator();
+		List <ContractMunca> listaContractelor = new ArrayList<ContractMunca>();
+		while (iteratorMunca.hasNext()){
+			ContractMunca contractCurent;
+			contractCurent = iteratorMunca.next();
+			if (contractCurent.getAngajat().getMarca().equals(angajat_ .getMarca())
+					&&
+					contractCurent.getDataInceput().compareTo(Calendar.getInstance().getTime()) <= 0 
+					&&
+					contractCurent.getDataTerminare().compareTo(Calendar.getInstance().getTime()) >= 0)
+			{
+				return contractCurent;
+			}
+		}
+		System.out.println("Nu a fost gasit niciun contract pentru angajatul cu numele " + angajat_.getNume());
+		return null;
+	}
+	
+	@Override
 	public CV getCVByCandidat (Candidat candidat_) {
 		// TODO Auto-generated method stub
 		TestPersonalImpl test = new TestPersonalImpl();
@@ -261,7 +283,7 @@ public class PersonalImpl implements PersonalSrv{
 		Iterator <CV> iteratorCV = test.listaCandidati.iterator();
 		while (iteratorCV.hasNext()){
 			CV cvCurent = iteratorCV.next();
-			if (cvCurent.getCandidat().equals(candidat_ ))
+			if (cvCurent.getCandidat().getIdCandidat().equals(candidat_.getIdCandidat() ))
 			{
 				return cvCurent;
 			}
@@ -297,42 +319,55 @@ public class PersonalImpl implements PersonalSrv{
 		Iterator <DosarAngajat> iteratorDosar = test.dosareAngajati.iterator();
 		while (iteratorDosar.hasNext()){
 			DosarAngajat dosarCurent = iteratorDosar.next();
-			if (dosarCurent.getAngajat() == angajat_ )
+			if (dosarCurent.getAngajat().getMarca().equals(angajat_.getMarca()))
 			{
 				return dosarCurent;
 			}
 		}
 		return null;
 	}
-	
-	
+		
 	
 	@Override
 	public void activareAngajati(List<Angajat> listaAngajati) {
 		// TODO Auto-generated method stub
 		Iterator<Angajat> iterator = listaAngajati.iterator();
 		List<ContractMunca> contracte = new ArrayList<ContractMunca>();
+		Integer nrActivari = 0; // variabila utilizata la metoda angajare
 		
 		while (iterator.hasNext()) {
-			
+			Angajat angajatCurent = iterator.next();
 			DosarAngajat dosar;   
-			dosar = getDosarByAngajat (iterator.next());
+			dosar = getDosarByAngajat (angajatCurent);
 		
+			System.out.println("activare1" + angajatCurent.getNume());
 			
-			if(iterator.next().getActiv() == false &&
+			if(angajatCurent.getActiv() == false &&
 				dosar.getAdeverintaStudii() ==true && dosar.getAdeverintaStudii() == true && dosar.getFisaMedicala() == true)
 				
 			{
-				contracte = getListaContracteByAngajat(iterator.next());
+				contracte = getListaContracteByAngajat(angajatCurent);
 				
-				if (contracte.size()>0){
+				System.out.println("activare2" + angajatCurent.getNume());
+				
+				System.out.println("activare3 " + contracte.size());
+
+				
+				if (contracte.size()>0) {
 					
-					iterator.next().setActiv(true);	
+					angajatCurent.setActiv(true);	
+					
+					nrActivari = nrActivari + 1;
+					
+					System.out.println("activare4  " + contracte.size());
 				}
 				
 				contracte.clear();
 			}
-		}				
+		}
+		
+		System.out.println("Numarul de angajati activati este: " + nrActivari);
+		
 	}
 
 	@Override

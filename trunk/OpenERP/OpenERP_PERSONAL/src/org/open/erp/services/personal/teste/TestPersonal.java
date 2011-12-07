@@ -175,9 +175,21 @@ public class TestPersonal {
 	
 	@Test
 	public void testAngajare(){
-		TestPersonalImpl test = new TestPersonalImpl();
+		TestPersonalImpl test = new TestPersonalImpl();	
 		personalService.angajare(test.candidat2);
-		System.out.println("Candidatul" + test.candidat1.getNume() + " " + test.candidat1.getPrenume() + " a fost angajat");
+		System.out.println("Candidatul " + test.candidat1.getNume() + " " + test.candidat1.getPrenume() + " a fost angajat");
+	}
+	
+	@Test
+	public void testActivareAngajati() {
+		TestPersonalImpl test = new TestPersonalImpl();	
+		test.listaAngajati();
+		test.listaContracte();
+		test.listaDosare();
+		personalService.activareAngajati(test.angajati);
+		System.out.println("Activare angajati");
+///// de verificat si metoda de cautare a contractelor de munca;
+		
 	}
 	
 	@Test

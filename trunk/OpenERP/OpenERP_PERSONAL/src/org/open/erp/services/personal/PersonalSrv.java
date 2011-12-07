@@ -237,6 +237,16 @@ public interface PersonalSrv {
 	 * 
 	 */
 	
+	ContractMunca getContractByAngajat(Angajat angajat_);
+	
+	/**
+	 * Scop  			 Returneaza un contract de munca pentru un angajat precizat
+	 * 
+	 * @param  angajat_  Angajatul dupa care se face cautarea
+	 * 
+	 * @return           un contract curent pentru un angajat
+	 * 
+	 */
 	
 	DosarAngajat getDosarByAngajat(Angajat angajat_);
 	
