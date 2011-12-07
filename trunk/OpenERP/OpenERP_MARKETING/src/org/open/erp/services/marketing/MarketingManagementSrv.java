@@ -130,4 +130,15 @@ Promotie definirePromotie(String denumire,String mesajPromotional, Date dataInce
  * @return pretul final dupa aplicarea discounturilor;
  */
 float getPretFinalByPromotie(Produs produs,Promotie promotie, float pretInitial);
+
+
+/**
+ * Returneaza un pretul unui produs dupa aplicarea discounturilor specifice unei promotii.
+ * 
+ * @param produs		Produsul pentru care se doreste calcularea pretului final
+ * @param promotie		Promotia in care se incadreaza produsul
+ * 
+ * @return pretul final dupa aplicarea discounturilor;
+ */
+float getPretFinalByProdus(Produs produs);
 }

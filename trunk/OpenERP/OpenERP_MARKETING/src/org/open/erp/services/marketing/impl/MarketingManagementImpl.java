@@ -160,4 +160,9 @@ public class MarketingManagementImpl implements MarketingManagementSrv{
 	public float getPretFinalByPromotie(Produs produs, Promotie promotie,float pretInitial) {
 		return promotie.getPretByPretInitial(produs, pretInitial);
 	}
+	@Override
+	public float getPretFinalByProdus(Produs produs) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
