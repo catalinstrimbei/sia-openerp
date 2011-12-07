@@ -3,8 +3,14 @@
 
 <h1> INTRODUCERE </h1>
 
-Modul STOCURI
+Modul STOCURI - se ocupa de Gestiunea STOCURILOR
 
 <h1> Detalii </h1>
 
-     Gestiunea STOCURILOR
+Cuprinde urmatoarele:
+
+<ul>
+ <li> Intrarea in stoc a materialeleor </li>
+ <li> Transferul materialelor de la o gestiune la alta</li>
+ <li> Iesirea din stoc a materialelor</li>
+     
