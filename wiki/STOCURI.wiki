@@ -5,6 +5,6 @@
 
 Modul STOCURI
 
-<h1> Detalii <h1>
+<h1> Detalii </h1>
 
      Gestiunea STOCURILOR
