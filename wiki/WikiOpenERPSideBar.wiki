@@ -11,3 +11,4 @@
     * [PRODUCTIE]
     * [MARKETING]
     * [PERSONAL]
+    * [STOCURI]
