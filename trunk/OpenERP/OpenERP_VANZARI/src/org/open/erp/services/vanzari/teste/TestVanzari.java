@@ -50,7 +50,7 @@ public class TestVanzari {
 		assertNotNull("Nu exista comanda!", comanda);
 	}
 	
-	@Test
+	/*@Test
 	public void testfacturareProduse(){
 		Client client = new Client();
 		Comanda comanda = new Comanda(1, new Date(), client, Comanda.PENDING);
@@ -59,4 +59,12 @@ public class TestVanzari {
 		assertNotNull("Nu exista factura!", fact);
 	}
 
+	@Test
+	public void testinregistrareFactura(){
+		Client client = new Client();
+		Vanzator vanzator = new Vanzator();
+		FacturaEmisa factura = new FacturaEmisa(1, client, vanzator, FacturaEmisa.NEPLATITA);
+		vanzariInstance.inregistrareFactura(factura);
+		
+	}*/
 }
