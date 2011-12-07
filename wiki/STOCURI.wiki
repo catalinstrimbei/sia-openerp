@@ -1,4 +1,4 @@
-#summary Pagina modulului salarizare
+#summary Pagina modulului STOCURI
 
 
 <h1> INTRODUCERE </h1>
