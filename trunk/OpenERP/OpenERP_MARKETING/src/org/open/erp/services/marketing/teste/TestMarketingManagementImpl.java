@@ -186,7 +186,10 @@ public class TestMarketingManagementImpl {
 			j++;
 			produs = null;
 			discount = null;
-			produs = new Produs(1000+j,"Produs" + j, "buc", dataStart,generator.nextInt() * 100);
+			produs = new Produs();
+			produs.setDenumire("Produs" + j);
+			produs.setId(1000+j);
+			produs.setPretVanzare(generator.nextDouble()*100);
 			discount = new Discount(1000+j,"Discount" + j,1,generator.nextFloat()*20);
 			listaDiscount.put(produs, discount);
 		}
@@ -216,7 +219,10 @@ public class TestMarketingManagementImpl {
 			j++;
 			produs = null;
 			discount = null;
-			produs = new Produs(1000+j,"Produs" + j, "buc", dataStart, generator.nextInt()*100);
+			produs = new Produs();
+			produs.setDenumire("Produs" + j);
+			produs.setId(1000+j);
+			produs.setPretVanzare(generator.nextDouble()*100);
 			discount = new Discount(1000+j,"Discount" + j,1,generator.nextFloat()*20);
 			listaDiscount.put(produs, discount);
 		}
