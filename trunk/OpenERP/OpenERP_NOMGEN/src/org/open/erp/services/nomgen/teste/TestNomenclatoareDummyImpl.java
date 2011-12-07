@@ -333,7 +333,7 @@ public class TestNomenclatoareDummyImpl{
 		
 			assertTrue(partener instanceof Partener);
 			
-			assertEquals((Integer)1, partener.getId());
+			assertEquals((Integer)1, partener.getIdPersoana());
 			
 		}catch (Exception e)
 		{ System.out.println("Eroare");}
@@ -359,7 +359,18 @@ public class TestNomenclatoareDummyImpl{
 
 	@Test
 	public void testCautareBancaDupaId() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		
+		try{
+			Banca banca = instance.cautareBancaDupaId(1);
+			assertNotNull(banca);
+		
+			assertTrue(banca instanceof Banca);
+			
+			assertEquals((Integer)1, banca.getId());
+			
+		}catch (Exception e)
+		{ System.out.println("Eroare");}
 	}
 
 	@Test
@@ -367,12 +378,12 @@ public class TestNomenclatoareDummyImpl{
 		//fail("Not yet implemented");
 		
 		try{
-			Banca banca = instance.cautareBancaDupaDenumire("denumire");
+			Banca banca = instance.cautareBancaDupaDenumire("dummy");
 			assertNotNull(banca);
 		
 			assertTrue(banca instanceof Banca);
 			
-			assertEquals((String)"denumire", banca.getDenumire());
+			assertEquals((String)"dummy", banca.getDenumire());
 			
 		}catch (Exception e)
 		{ System.out.println("Eroare");}
@@ -417,12 +428,12 @@ public class TestNomenclatoareDummyImpl{
 		//fail("Not yet implemented");
 		
 		try{
-			Departament dep = instance.cautareDepartamentDupaDenumire("denumire");
+			Departament dep = instance.cautareDepartamentDupaDenumire("dummy");
 			assertNotNull(dep);
 		
 			assertTrue(dep instanceof Departament);
 			
-			assertEquals((String)"denumire", dep.getDenumire());
+			assertEquals((String)"dummy", dep.getDenumire());
 			
 		}catch (Exception e)
 		{ System.out.println("Eroare");}
@@ -468,12 +479,12 @@ public class TestNomenclatoareDummyImpl{
 		//fail("Not yet implemented");
 		
 		try{
-			Divizie div = instance.cautareDivizieDupaDenumire("denumire");
+			Divizie div = instance.cautareDivizieDupaDenumire("dummy");
 			assertNotNull(div);
 		
 			assertTrue(div instanceof Divizie);
 			
-			assertEquals((String)"denumire", div.getDenumire());
+			assertEquals((String)"dummy", div.getDenumire());
 			
 		}catch (Exception e)
 		{ System.out.println("Eroare");}

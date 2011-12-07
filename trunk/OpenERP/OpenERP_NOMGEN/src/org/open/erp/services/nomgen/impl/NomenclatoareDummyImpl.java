@@ -400,7 +400,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 	public Banca cautareBancaDupaId(Integer id) {
 		Banca  bancaDummy= new Banca();
 		
-		bancaDummy.setId(-1);
+		bancaDummy.setId(1);
 		bancaDummy.setIdPersoana(new Persoana());
 		bancaDummy.setCapSocial("dummy");
 			
@@ -446,7 +446,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 	public Departament cautareDepartamentDupaId(Integer id) {
 		Departament  departamentDummy= new Departament();
 		
-		departamentDummy.setId(-1);
+		departamentDummy.setId(1);
 		departamentDummy.setDenumire("dummy");
 		departamentDummy.setAtributii("dummy");
 		departamentDummy.setIdContact(new Persoana());
@@ -497,7 +497,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 	public Divizie cautareDivizieDupaId(Integer id) {
 		Divizie  divizieDummy= new Divizie();
 		
-		divizieDummy.setId(-1);
+		divizieDummy.setId(1);
 		divizieDummy.setIdDepartament(new Departament());
 		divizieDummy.setDenumire("dummy");
 		divizieDummy.setAtributii("dummy");
@@ -570,13 +570,13 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 	@Override
 	public Email getEmailCuId(Integer id) {
 		// TODO Auto-generated method stub
-		Email  emailDummy = new Email();
+		Email emailDummy = new Email();
 		
 		emailDummy.setId(id);
 		emailDummy.setAdresaEmail("dummy");
 		emailDummy.setIdContact(new Persoana());
 		
-		return null;
+		return emailDummy;
 	}	
 	
 }
