@@ -1,8 +1,10 @@
 #summary Pagina modulului salarizare
 
 
-INTRODUCERE
+<h1> INTRODUCERE </h1>
 
 Modul STOCURI
 
-Detalii
+<h1> Detalii <h1>
+
+     Gestiunea STOCURILOR
