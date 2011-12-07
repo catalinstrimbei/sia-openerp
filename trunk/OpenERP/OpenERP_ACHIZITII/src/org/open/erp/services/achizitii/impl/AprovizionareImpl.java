@@ -54,8 +54,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		PlanAprovizionare plan = PlanAprovizionare.getPlanAprovizionare();
 		CerereAprovizionare cerere = (CerereAprovizionare)cerereApr;		
 		//Vom adauga in plan liniile din cerere. In cazul in care in plan nu exista produsele din liniile cererii vom 
-		//crea o linie noua in plan
-		
+		//crea o linie noua in plan		
 		 
 		  for (LinieDocument linieCerere : cerere.getLiniiDocument()) {
 	            LiniePlanAprovizionare liniePlan=plan.existaArticolInLiniiPlan(linieCerere.getMaterial());
@@ -185,14 +184,13 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
     	NIR nirFact=nir;
     	nir.setLiniiDocument(liniiNIR);
     	this.inregistrareFactura(nir.getFactura());
-    	this.receptieMateriale(nir);
-    	
+    	this.receptieMateriale(nir);    	
 		return nirFact;
 		
     }
 	@Override
 	public int inregistrareFactura(Factura factura) throws CtbException {	
-		
+		logger.debug("Se incearca inregistrarea facturii "+factura.getNrFact());
 		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc()
 				                                    , ((Factura) factura).getValFact()
 				                                    ,((Factura)factura).getTVATotal()				                                    

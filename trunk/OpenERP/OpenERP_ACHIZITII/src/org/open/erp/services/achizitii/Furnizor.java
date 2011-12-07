@@ -1,7 +1,9 @@
 package org.open.erp.services.achizitii;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.open.erp.services.nomgen.Partener;
-import org.open.erp.services.nomgen.Persoana;
 
 public class Furnizor extends Partener {
 private Integer cont;
@@ -9,8 +11,6 @@ private String CUI;
 private String denumire;
 private String adresa;
 private String telefon;
-private Persoana persoana;
-
 
 public Integer getCont() {
 	return cont;
@@ -21,15 +21,13 @@ public void setCont(Integer cont) {
 }
 
 public Furnizor(Integer id, Integer idPersoana, Integer durataAfilierii,
-		Integer cont, String cUI, String denumire, String adresa,
-		String telefon, Persoana persoana) {
+		Integer cont, String cUI, String denumire, String adresa, String telefon) {
 	super(id, idPersoana, durataAfilierii);
 	this.cont = cont;
 	CUI = cUI;
 	this.denumire = denumire;
 	this.adresa = adresa;
 	this.telefon = telefon;
-	this.persoana = persoana;
 }
 
 public String getCUI() {
@@ -63,16 +61,5 @@ public String getTelefon() {
 public void setTelefon(String telefon) {
 	this.telefon = telefon;
 }
-
-public Persoana getPersoana() {
-	return persoana;
-}
-
-public void setPersoana(Persoana persoana) {
-	this.persoana = persoana;
-}
-
-
-
 
 }

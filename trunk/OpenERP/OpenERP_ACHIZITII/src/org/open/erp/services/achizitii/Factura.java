@@ -69,4 +69,16 @@ public class Factura extends Document {
         this.getLiniiDocument().remove(li);
         li.setDocument(this);
     }
+	public Factura(Furnizor furnizor, String nrFact, Double valFact,
+			Double tVATotal, Integer status, Comanda comanda, Integer tipFact) {
+		super();
+		this.furnizor = furnizor;
+		this.nrFact = nrFact;
+		this.valFact = valFact;
+		TVATotal = tVATotal;
+		this.status = status;
+		this.comanda = comanda;
+		this.tipFact = tipFact;
+	}
+	
 }

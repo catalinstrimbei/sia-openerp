@@ -1,0 +1,21 @@
+(A1) 2011-12-07 02:45:51,922 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A1) 2011-12-07 02:45:51,924 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A1) 2011-12-07 02:45:51,925 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A1) 2011-12-07 02:45:51,925 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Begin test: Inregistrare Cerere Aprovizionare
+(A1) 2011-12-07 02:45:51,931 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - 0 2011 50 Wed Dec 07 02:45:51 EET 2011 Sun Dec 04 02:45:51 EET 2011
+(A1) 2011-12-07 02:45:51,932 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - End test: Plan unic de aprovizionare creat
+(A1) 2011-12-07 02:45:51,932 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A1) 2011-12-07 02:45:51,932 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Begin test: Inregistrare Factura
+(A1) 2011-12-07 02:45:51,951 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - Se incearca inregistrarea facturii fact1
+(A1) 2011-12-07 02:45:51,959 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare achizitie noua
+(A1) 2011-12-07 02:45:51,962 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
+(A1) 2011-12-07 02:45:51,963 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 301 | 401
+(A1) 2011-12-07 02:45:51,963 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 301 | 401
+(A1) 2011-12-07 02:45:51,963 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
+(A1) 2011-12-07 02:45:51,963 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de achizitie NOUA completa
+(A1) 2011-12-07 02:45:51,965 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - End test: factura inregistrata
+(A1) 2011-12-07 02:45:51,965 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A1) 2011-12-07 02:45:51,966 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A1) 2011-12-07 02:45:51,966 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A1) 2011-12-07 02:45:51,966 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A1) 2011-12-07 02:45:51,966 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest

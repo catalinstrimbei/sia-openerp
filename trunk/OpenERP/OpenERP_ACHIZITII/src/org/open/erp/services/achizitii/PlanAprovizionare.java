@@ -32,13 +32,17 @@ public class PlanAprovizionare {
 		super();
 		this.saptAn = saptAn;		
 		this.an = an;
+		this.dataStart=dataStart;
+		this.dataFinal=dataFinal;
 	}
 	//Va exista cate un singur plan de aprovizionare de-a lungul unei saptamani din an.
 	public static  PlanAprovizionare getPlanAprovizionare() {
         if ((planAprovizionare==null)||(Calendar.getInstance().get(Calendar.WEEK_OF_YEAR) != planAprovizionare.getSaptAn())||           
            (Calendar.getInstance().get(Calendar.YEAR) != planAprovizionare.getAn()))
           { 
-        	planAprovizionare.setStatusPlan(FINALIZAT);
+        	if (planAprovizionare!=null){
+        		planAprovizionare.setStatusPlan(FINALIZAT);
+        	}
         	Calendar c = Calendar.getInstance();
      	    Date date = new Date();
      	    c.setTime(date);
@@ -46,7 +50,7 @@ public class PlanAprovizionare {
 			planAprovizionare = new PlanAprovizionare(Calendar.getInstance().get(Calendar.WEEK_OF_YEAR)					
 					,Calendar.getInstance().get(Calendar.YEAR)
 					,Calendar.getInstance().getTime()
-					,c.getTime());
+					,c.getTime());			
 			planAprovizionare.setStatusPlan(IN_CURS);
         }
         return planAprovizionare;

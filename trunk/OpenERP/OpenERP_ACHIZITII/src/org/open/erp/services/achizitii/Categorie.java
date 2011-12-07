@@ -2,15 +2,20 @@ package org.open.erp.services.achizitii;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.open.erp.services.nomgen.LinieDocument;
+
 public class Categorie {
-private String id;
+private Integer id;
 private String denumire;
 private List<Furnizor> furnizoriCategorie=new ArrayList<Furnizor>();
-public String getId() {
-	return id;
+
+
+public void addFurnizor(Furnizor furn) {
+    this.getFurnizoriCategorie().add(furn);   
 }
-public void setId(String id) {
-	this.id = id;
+
+public void removeFurnizor(Furnizor furn) {
+    this.getFurnizoriCategorie().remove(furn);    
 }
 public String getDenumire() {
 	return denumire;
@@ -24,16 +29,28 @@ public List<Furnizor> getFurnizoriCategorie() {
 public void setFurnizoriCategorie(List<Furnizor> furnizoriCategorie) {
 	this.furnizoriCategorie = furnizoriCategorie;
 }
-public Categorie(String id, String denumire) {
-	super();
-	this.id = id;
-	this.denumire = denumire;
+public Integer getId() {
+	return id;
 }
-public Categorie(String id, String denumire, List<Furnizor> furnizoriCategorie) {
+public void setId(Integer id) {
+	this.id = id;
+}
+public Categorie(String denumire, List<Furnizor> furnizoriCategorie) {
+	super();
+	this.denumire = denumire;
+	this.furnizoriCategorie = furnizoriCategorie;
+}
+public Categorie(Integer id, String denumire, List<Furnizor> furnizoriCategorie) {
 	super();
 	this.id = id;
 	this.denumire = denumire;
 	this.furnizoriCategorie = furnizoriCategorie;
+}
+
+public Categorie(Integer id, String denumire) {
+	super();
+	this.id = id;
+	this.denumire = denumire;
 }
 
 
