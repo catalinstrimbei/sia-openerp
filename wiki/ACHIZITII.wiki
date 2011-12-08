@@ -36,10 +36,10 @@ Aplicatia are urmatoarele cazuri de utilizare: <br><br>
 <h3>Descriere tehnica  </h3></li></ul>
 <ol>
 <li><b>Dependente </b></LI>
-    Modulul ACHIZITII depinde de urmatoarele module: <br><br>
+    Modulul ACHIZITII depinde de urmatoarele module: <br><br><b>
     -<a href ="http://code.google.com/p/sia-openerp/wiki/NOMGEN"> Nomenclatoare generale </a> <br>
     - <a href ="http://code.google.com/p/sia-openerp/wiki/STOCURI"> Stocuri</a> <br>
-    - <a href ="http://code.google.com/p/sia-openerp/wiki/CONTABGEN"> Contabilitate generala </a> <br> <br>
+    - <a href ="http://code.google.com/p/sia-openerp/wiki/CONTABGEN"> Contabilitate generala </a> <br><br></b>
 <li><b>Business Objects Locale</b></LI> 
  - ArticolStoc <br>
  - BonConsum <br>
