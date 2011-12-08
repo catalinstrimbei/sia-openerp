@@ -33,7 +33,7 @@ Aplicatia are urmatoarele cazuri de utilizare: <br>
        <ul>
 <li>Dependente </LI>
     Modulul STOCURI depinde de urmatoarele module: <br>
-    -<a href ="http://code.google.com/p/sia-openerp/wiki/NOMGEN"> Nomgen </a> <br>
+    -<a href ="http://code.google.com/p/sia-openerp/wiki/NOMGEN"> Nomenclatoare generale </a> <br>
     - <a href ="http://code.google.com/p/sia-openerp/wiki/PERSONAL"> Personal</a> <br>
     - <a href ="http://code.google.com/p/sia-openerp/wiki/ACHIZITII"> Achizitii </a> <br>
 <li>BusinessObject.Locale</LI>
