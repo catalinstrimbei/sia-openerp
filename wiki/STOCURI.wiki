@@ -15,7 +15,7 @@ Cuprinde urmatoarele:
 <h1> Detalii </h1>
 
  <h3> Descriere functionala </h3>
-<ul><li>Use Case</li></ul>
+<ul><li>Use Case - Descriere etape/pasi</li></ul>
 
  <h3> Descriere tehnica </h3>
 
