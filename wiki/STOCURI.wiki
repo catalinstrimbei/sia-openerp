@@ -22,9 +22,9 @@ Cuprinde urmatoarele:
 Aplicatia are urmatoarele cazuri de utilizare: <br>
  
  - Intrarea materialelor in stoc - Intrarea in stoc se face pe baza unui document (NIR) intr-o anumita gestiune si intr-un lot. <br>
- - Transferul materialelor de la o gestiune la alta<br>
- - Iesirea materialelor din stoc pentru productie<br>
- - Iesirea produselor din stoc pentru vanzare <br>
+ - Transferul materialelor de la o gestiune la alta - Se poate transfera o anumita cantitate dintr-un matetrial de la o gestiune la alta. <br>
+ - Iesirea materialelor din stoc pentru Productie - Pe baza unui bon de consum se dau materiale din stoc catre productie. In cazul in care cantitatea ceruta nu este suficienta in stoc, se face o cerere de aprovizionare catre Achizitii.<br>
+ - Iesirea produselor din stoc pentru vanzare -  <br>
  - Verificarea stocului de materiale <br>
         
 
