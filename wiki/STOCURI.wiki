@@ -4,9 +4,9 @@
 
 <h1 align="center"> INTRODUCERE </h1>
 
-&nbsp &nbsp &nbsp Modul STOCURI se ocupa cu evidenta stocurilor, a gestiunilor si a loturilor acestora. <BR/> <br/>
+Modul STOCURI se ocupa cu evidenta stocurilor, a gestiunilor si a loturilor acestora. <BR/> <br/>
 
-&nbsp &nbsp &nbsp Modulul cuprinde urmatoarele functionalitati: 
+Modulul cuprinde urmatoarele functionalitati: 
 <ul>
  <li> Intrarea in stoc a materialeleor </li>
  <li> Transferul materialelor de la o gestiune la alta</li>
