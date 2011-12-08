@@ -185,7 +185,6 @@ public class TestPersonal {
 		TestPersonalImpl test = new TestPersonalImpl();	
 		test.listaAngajati();
 		test.listaContracte();
-		System.out.println("Activare candidati");
 		personalService.getContractAngajatActiv(test.angajat1);
 		
 	}
@@ -199,9 +198,8 @@ public class TestPersonal {
 		test.listaAngajati();
 		test.listaContracte();
 		test.listaDosare();
+		System.out.println("Activare candidati");
 		personalService.activareAngajati(test.angajati);
-		System.out.println("Activare angajati");
-///// de verificat si metoda de cautare a contractelor de munca;
 		
 	}
 	
