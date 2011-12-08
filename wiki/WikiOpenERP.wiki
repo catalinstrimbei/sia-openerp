@@ -22,7 +22,7 @@ Modul-VANZARI
 
 Modul-PRODUCTIE     
 
-Modul-STOCURI       
+Modul-[STOCURI]       
 
 Modul-[PERSONAL]      
 
