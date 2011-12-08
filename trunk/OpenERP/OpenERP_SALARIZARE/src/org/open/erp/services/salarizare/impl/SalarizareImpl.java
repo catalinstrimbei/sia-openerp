@@ -74,7 +74,7 @@ public class SalarizareImpl implements SalarizareSrv {
 	@Override
 	public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) {
 		// pentru fiecare angajat calculam sporurile (pot fi mai multe) si insumam
-		ContractMunca contract = registru.getContractActivAngajat(angajat);
+		ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
 		//de inlocuit aici cu metoda getContractActivAngajat
 		//daca prin absurd un angajat are mai multe contracte active la un moment data
 		//atunci o sa iteram prin lista de contracte si o sa facem calculul
@@ -99,7 +99,7 @@ public class SalarizareImpl implements SalarizareSrv {
 	@Override
 	public Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) {
 		Pontaj p = registru.getPontajByAngajat(angajat, an, luna);
-		ContractMunca contract = registru.getContractActivAngajat(angajat);
+		ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
 		logger.debug("Calcul venit brut angajat");
 		Double venitBrut = 0.0;
 		Double venitOreLucrate = (p.getOreLucrate()-p.getOreConcediu())*contract.getTarifOrar();
@@ -122,7 +122,7 @@ public class SalarizareImpl implements SalarizareSrv {
 	public Double calculRetineriAngajat(Integer an, Integer luna,
 			Angajat angajat) {
 		// pentru fiecare angajat calculam retinerile (pot fi mai multe) si insumam
-		ContractMunca contract = registru.getContractActivAngajat(angajat);
+		ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
 		logger.debug("Calcul retineri angajat");
 		Double valoareTotala=0.0;
 		ArrayList<Retinere> retineri= new ArrayList<Retinere>();
