@@ -15,7 +15,7 @@ Modulul cuprinde urmatoarele functionalitati:
 <h1 align="center"> DETALII </h1>
 <UL>
 <li type=square>
-<h3>Descriere functionala - Use Case  </h3>
+<h3>Descriere functionala - Use Case  </h3></li>
 
 
 Aplicatia are urmatoarele cazuri de utilizare: <br> <br>
