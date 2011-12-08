@@ -37,7 +37,7 @@ public class RegistruSalarizare {
 		retineri.add(new Retinere("CAR", 2, angajat, 2011, 11, 2, 5.0));
 		return retineri;
 	}
-	
+	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
 		contract.setAngajat(a);
@@ -45,4 +45,5 @@ public class RegistruSalarizare {
 		contract.setTarifOrar(10.0);
 		return contract;
 	}
+	*/
 }
