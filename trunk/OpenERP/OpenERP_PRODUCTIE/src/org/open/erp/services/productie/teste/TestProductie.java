@@ -16,12 +16,15 @@ import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.ContractMunca;
+import org.open.erp.services.productie.ComandaProductie;
+import org.open.erp.services.productie.CriteriuCalitate;
 import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.FunctieNecesara;
 import org.open.erp.services.productie.ProductieSrv;
 import org.open.erp.services.productie.Semifabricat;
 import org.open.erp.services.productie.Utilaj;
+import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.StocuriSrv;
 
 /**
@@ -42,7 +45,7 @@ public class TestProductie {
 	 public void setUp() throws Exception {
 	 }
 	 
-	/* @Test
+	 @Test
 	 public void testDefinireFluxProductie () {
 		 FluxProductie flux = new FluxProductie();
 			
@@ -61,7 +64,7 @@ public class TestProductie {
 		Produs pDorit;
 		Semifabricat sDorit;
 		
-		 logger.info("Begin test: Definire flux productie");
+		 logger.info("INCEPERE TESTE: DEFINIRE FLUX PRODUCTIE");
 		 Produs produsNou = new Produs();
 		 produsNou.setId(1);
 		 produsNou.setDenumire("Produs nou");
@@ -361,18 +364,25 @@ public class TestProductie {
 			}
 			
 			logger.info("Fluxul pentru " +produsNou+" a fost creat  si contine urmatoarele faze" + fazeFlux);
-			
+			flux.setFaze(fazeFlux);
 			//procesez semifabricatul sau produsul final
 			int n = fazeFlux.size();
-			for (int i = 0; i < n - 1; i++) {
+			int i;
+			for (i = 0; i < n - 1; i++) {
 				fazeFlux.get(i).procesareSemifabricat();
+				logger.info("Procesare semifabricat: " + fazeFlux.get(i).procesareSemifabricat() );
 			}
-			fazeFlux.get(n - 1).procesareProdus();
-			flux.setFaze(fazeFlux);
-		}*/
+			if(i==n){
+				fazeFlux.get(n - 1).procesareProdus();
+				logger.info("Procesare produs: " +fazeFlux.get(n - 1).procesareProdus());
+			}
+			
+			logger.info("SFRASIT TEST DEFINIRE FLUX PRODUCTIE");
+		}
 
 	@Test	
 	 public void testConsumResursa(){
+			logger.info("INCEPERE TEST CONSUM RESURSE");
 			ArrayList<MateriePrima>listaMateriale = new ArrayList<MateriePrima>();
 			ArrayList<Utilaj> listaUtilaje = new ArrayList<Utilaj>();
 			ArrayList<Angajat> listaAngajati = new ArrayList<Angajat>();
@@ -485,13 +495,168 @@ public class TestProductie {
 		    resurse.add(listaUtilaje);
 		    logger.info("Lista de utilaje a fost adaugata in lista de resurse");
 			resurse.add(listaMateriale);
-			logger.info("Lista de utilaje a fost adaugata in lista de resurse");
+			logger.info("Lista de materiale a fost adaugata in lista de resurse");
 			resurse.add(listaAngajati);
-			logger.info("Lista de utilaje a fost adaugata in lista de resurse");
+			logger.info("Lista de angajati a fost adaugata in lista de resurse");
 			
-			
+			logger.info("SFARSIT TEST CONSUM RESURSE");
 		 }
-		 
+	
+	@Test
+	public void testControlCalitate()
+	{
+		logger.info("INCEPERE TEST CONTROL CALITATE");
+		Boolean trecut;
+		Produs produs = new Produs();
+		produs.setId(1);
+		produs.setDenumire("produs 1");
+		produs.setDataFabricatiei(null);
+		produs.setDescriere(null);
+		produs.setGreutate(null);
+		produs.setPretVanzare(10.2);
+		produs.setProcentTVA(null);
+		produs.setTermenValabilitate(null);
+		produs.setUnitateMasura("buc");
+		logger.info("Produsul este:" + produs.getDenumire());
+		ComandaProductie comanda = new ComandaProductie();
+		comanda.setIdComanda(1);
+		comanda.setProdus(produs);
+		comanda.setDataComanda(null);
+		comanda.setCantitate(10);
+		logger.info("Comanda este:" + comanda.getIdComanda());
+		
+	
+	  
+	  Integer cantitate;
+	  Integer cantitateProdusFinal=0;
+	  Integer cantitateDeseu=0;
+	  CriteriuCalitate criteriuCalitate;
+	  ArrayList<Integer> cantitati = new ArrayList<Integer>();
+	  criteriuCalitate = new CriteriuCalitate(1, "criteriu 1");
+	  criteriuCalitate.getCriteriu();
+	  
+	  comanda=new ComandaProductie(1, produs, 10, null);  
+	  cantitate=comanda.getCantitate();  
+	  
+	  for (int i=0; i<cantitate; i++){
+		  trecut=true;//preluarea parametrului "trecut" se va face dintr-un checkbox din interfata
+		  if (trecut==true){
+		    cantitateProdusFinal=cantitateProdusFinal+1;
+		    logger.info("Cantitatea a fost incrementata:" + cantitateProdusFinal);
+		   }
+		   else{
+		    cantitateDeseu=cantitateDeseu+1;
+		    logger.info("Cantitatea a fost incrementata:" + cantitateDeseu);
+		   } 
+		   
+		  }
+	  for (int i=0; i<cantitate; i++){
+		  trecut=false;//preluarea parametrului "trecut" se va face dintr-un checkbox din interfata
+		  if (trecut==true){
+		    cantitateProdusFinal=cantitateProdusFinal+1;
+		    logger.info("Cantitatea a fost incrementata:" + cantitateProdusFinal);
+		   }
+		   else{
+		    cantitateDeseu=cantitateDeseu+1;
+		    logger.info("Cantitatea a fost incrementata:" + cantitateDeseu);
+		   } 
+		   
+		  }
+	  cantitati.add(cantitateProdusFinal);
+	  cantitati.add(cantitateDeseu);
+	  logger.info("Cantitati:"+ cantitati.get(0) + " | " + cantitati.get(1));
+	  logger.info("SFARSIT TEST CONTROL CALITATE");  
+	}
+	
+@Test	
+public void testLivrareProdus(){
+	logger.info("INCEPERE TEST LIVRARE PRODUS");
+	
+	Boolean trecut;
+	Produs produs = new Produs();
+	produs.setId(1);
+	produs.setDenumire("produs 1");
+	produs.setDataFabricatiei(null);
+	produs.setDescriere(null);
+	produs.setGreutate(null);
+	produs.setPretVanzare(10.2);
+	produs.setProcentTVA(null);
+	produs.setTermenValabilitate(null);
+	produs.setUnitateMasura("buc");
+	logger.info("Produsul este:" + produs.getDenumire());
+	ComandaProductie comanda = new ComandaProductie();
+	comanda.setIdComanda(1);
+	comanda.setProdus(produs);
+	comanda.setDataComanda(null);
+	comanda.setCantitate(10);
+	logger.info("Comanda este:" + comanda.getIdComanda());
+	
+
+  
+  Integer cantitate;
+  Integer cantitateProdusFinal=0;
+  Integer cantitateDeseu=0;
+  CriteriuCalitate criteriuCalitate;
+  ArrayList<Integer> cantitati = new ArrayList<Integer>();
+  criteriuCalitate = new CriteriuCalitate(1, "criteriu 1");
+  criteriuCalitate.getCriteriu();
+  
+  comanda=new ComandaProductie(1, produs, 10, null);  
+  cantitate=comanda.getCantitate();  
+  
+  for (int i=0; i<cantitate; i++){
+	  trecut=true;//preluarea parametrului "trecut" se va face dintr-un checkbox din interfata
+	  if (trecut==true){
+	    cantitateProdusFinal=cantitateProdusFinal+1;
+	    logger.info("Cantitatea a fost incrementata:" + cantitateProdusFinal);
+	   }
+	   else{
+	    cantitateDeseu=cantitateDeseu+1;
+	    logger.info("Cantitatea a fost incrementata:" + cantitateDeseu);
+	   } 
+	   
+	  }
+  	cantitati.add(cantitateProdusFinal);
+  	cantitati.add(cantitateDeseu);
+  	
+  	  ArticolStoc stocProduse;
+	  stocProduse=new ArticolStoc();
+	  Integer cantitateProdus;
+	  cantitateProdus=cantitati.get(0);
+	  stocProduse.getCatitateStocPeGestiune();
+	 // if (stocProduse.getIdArticolStoc() == produs.getId()){
+	   logger.info("Cantitatea de produs livrata:" + cantitateProdus);
+	  //}
+	  
+	 // else{
+	   
+	  // System.out.println("Nu exista comanda pentru produsul");
+	    
+	   
+	  //}
+	   logger.info("SFARSIT TEST LIVRARE PRODUS");
+	 }
+
+@Test
+public void testInregistrareGestiuneConsum(){
+	logger.info("INCEPERE TEST INREGISTRARE GESTIUNE CONSUM");
+	testConsumResursa();
+	logger.info("Consum resurse a fost inregistrat");
+	
+	logger.info("SFARSIT TEST INREGISTRARE GESTIUNE CONSUM");
+}
+
+
+@Test
+public void testInregistrareGestiuneProductie(){
+	logger.info("INCEPERE TEST INREGISTRARE GESTIUNE PRODUCTIE");
+	testControlCalitate();
+	logger.info("Produsele au fost inregistrate");
+	logger.info("SFARSIT TEST INREGISTRARE GESTIUNE PRODUCTIE");
+	
+}
+
+ 
 		 
 	 }
 
