@@ -1,14 +1,26 @@
 #summary Pagina Modului Achizitii
 
-= Introduction =
+<h2 align="center"> INTRODUCERE </h2>
+Functionalitate Modul ACHIZITII:
+<ul>
+ <li> Evidenta  furnizori </li>
+ <li> Inregistrarea cererilor de aprovizionare </li>
+ <li> Crearea si gestiune plan de aprovizionare </li>
+ <li> Crearea si evidenta cererilor de oferta </li>
+ <li> Inregistrarea ofertelor de achizitie </li>
+ <li> Analiza ofertei de achizitie pentru a stabili comanda </li>
+ <li> Crearea comenzii </li>
+ <li> Crearea si evidenta NIR-uri </li>
+ <li> Inregistrarea facturii </li>
+ <li> Evidenta facturilor de retur </li>
+ <li> Inregistrare receptie materiale </li>
+ <li> Inregistrare retur materiale </li>
 
-Modul Achizitii
 
 
 = Details =
 
 Vizeaza procesul de APROVIZIONARE
-
 - Serviciu Aprovizionare
 
   1. Primeste Cererile de aprovizionare
