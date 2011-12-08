@@ -2,43 +2,52 @@
 #labels -
 
 
-<h1> INTRODUCERE </h1>
+<h1 align="center"> INTRODUCERE </h1>
 
-Modul STOCURI - se ocupa de Gestiunea STOCURILOR <BR/>
+&nbsp &nbsp &nbsp Modul STOCURI se ocupa cu evidenta stocurilor, a gestiunilor si a loturilor acestora. <BR/> <br/>
 
-Cuprinde urmatoarele: 
-
+&nbsp &nbsp &nbsp Modulul cuprinde urmatoarele functionalitati: 
 <ul>
  <li> Intrarea in stoc a materialeleor </li>
  <li> Transferul materialelor de la o gestiune la alta</li>
  <li> Iesirea din stoc a materialelor</li>
 
-<h1> Detalii </h1>
+<h1 align="center"> DETALII </h1>
+<UL>
+<li type=square>
+<h3>Descriere functionala - Use Case  </h3>
 
- <h3> Descriere functionala </h3>
-<ul>
-<li>Use Case - Descriere etape/pasi</li>
-</ul>
 
-Aplicatia are urmatoarele cazuri de utilizare: <br>
+Aplicatia are urmatoarele cazuri de utilizare: <br> <br>
  
- <b>- Intrarea materialelor in stoc</b> - Intrarea in stoc se face pe baza unui document (NIR) intr-o anumita gestiune si intr-un lot. <br>
-<b> - Transferul materialelor de la o gestiune la alta</b> - Se poate transfera o anumita cantitate dintr-un matetrial de la o gestiune la alta. <br>
-<b> - Iesirea materialelor din stoc pentru Productie </b>- Pe baza unui bon de consum se dau materiale din stoc catre productie. In cazul in care cantitatea ceruta nu este suficienta in stoc, se face o cerere de aprovizionare catre Achizitii.<br>
-<b> - Iesirea produselor din stoc pentru vanzare </b>- Pe baza documentului aferent, se face iesirea din stoc catre modulul vanzari (pentru vanzare). <br>
-<b> - Verificarea stocului de materiale</b> - Putem obtine stocul unui material la un moment dat.<br>
+<b>Intrarea materialelor in stoc</b> <BR>
+ Intrarea in stoc se face pe baza unui document (NIR) intr-o anumita gestiune si intr-un lot. <br><br>
+<b>Transferul materialelor de la o gestiune la alta</b> <br> Se poate transfera o anumita cantitate dintr-un matetrial de la o gestiune la alta. <br><BR>
+<b>Iesirea materialelor din stoc pentru Productie </b><br> Pe baza unui bon de consum se dau materiale din stoc catre productie. In cazul in care cantitatea ceruta nu este suficienta in stoc, se face o cerere de aprovizionare catre Achizitii.<br><br>
+<b>  Iesirea produselor din stoc pentru vanzare </b><br> Pe baza documentului aferent, se face iesirea din stoc catre modulul vanzari (pentru vanzare). <br><br>
+<b> Verificarea stocului de materiale</b> <br> Putem obtine stocul unui material la un moment dat.<br></li>
         
 
- <h3> Descriere tehnica </h3>
+ <li type=square><h3> Descriere tehnica </h3>
        <ul>
-<li>Dependente </LI>
+<li type = circle><b>Dependente </b></LI>
     Modulul STOCURI depinde de urmatoarele module: <br><br>
     -<a href ="http://code.google.com/p/sia-openerp/wiki/NOMGEN"> Nomenclatoare generale </a> <br>
     - <a href ="http://code.google.com/p/sia-openerp/wiki/PERSONAL"> Personal</a> <br>
-    - <a href ="http://code.google.com/p/sia-openerp/wiki/ACHIZITII"> Achizitii </a> <br>
-<li>BusinessObject.Locale</LI>
-<li>Operatiile/ Actiunile/ ApplicationService</LI>
+    - <a href ="http://code.google.com/p/sia-openerp/wiki/ACHIZITII"> Achizitii </a> <br> <br>
+<li  type = circle><b>Business Objects Locale</b></LI> 
+ - ArticolStoc <br>
+ - BonConsum <br>
+ - BonTransfer <br>
+ - CerereAprovizionare<br>
+ - ComandaProduse<br>
+ - Depozit<br>
+ - Gestionar<br>
+ - Gestiune<br>
+ - LoturiIntrari<br>
+ - PrioritateMaterialeProductie<br>
+<br>
+<li type = circle><b>Operatiile/ Actiunile/ Application Service</b></LI>
 </ul>
-
-
-     
+</li>
+</ul>
