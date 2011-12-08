@@ -14,7 +14,13 @@ Cuprinde urmatoarele:
 
 <h1> Detalii </h1>
 
+ <h3> Descriere functionala </h3>
+ <h3> Descriere tehnica </h3>
 
+       <ul>
+<li>Dependente </LI>
+<li>BusinessObject.Locale</LI>
+<li>Operatiile/Actiunile/ApplicationService</LI>
 
 
 
