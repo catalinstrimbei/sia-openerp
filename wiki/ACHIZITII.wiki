@@ -42,7 +42,6 @@ Aplicatia are urmatoarele cazuri de utilizare: <br><br>
      <a href ="http://code.google.com/p/sia-openerp/wiki/CONTABGEN"> Contabilitate generala </a> <br><br>
 <li><b>Business Objects Locale</b></LI> 
  - Articol<br>
- - Categorie <br>
  - Cerere Oferta <br>
  - Comanda <br>
  - Factura <br>
