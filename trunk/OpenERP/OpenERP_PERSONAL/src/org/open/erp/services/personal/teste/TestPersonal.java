@@ -233,11 +233,18 @@ public class TestPersonal {
 			{
 				Eveniment eveniment = evenimente.next();
 				System.out.println(eveniment.getTipEveniment());
-				Iterator<Activitate> activitatiIterator = eveniment.getActivitati().iterator();							
-				while (activitatiIterator.hasNext()) {	
-					Activitate activitate = activitatiIterator.next();
-					System.out.println(activitate.getDescriereActivitate());
-				    System.out.println(activitate.getEveniment().getTipEveniment());
+				if(eveniment.getActivitati()!=null)
+				{
+					Iterator<Activitate> activitatiIterator = eveniment.getActivitati().iterator();							
+					while (activitatiIterator.hasNext()) {	
+						Activitate activitate = activitatiIterator.next();
+						System.out.println(activitate.getDescriereActivitate());
+					    System.out.println(activitate.getEveniment().getTipEveniment());
+					}
+				}
+				else
+				{
+					 System.out.println("Nu exista activitati pentru acest eveniment: "+eveniment.getIdEveniment());
 				}
 			}
 		}
