@@ -22,6 +22,6 @@ Functionalitate MODUL ACHIZITII:
 <h3>Descriere functionala - Use Case  </h3></li></ul>
 
 Aplicatia are urmatoarele cazuri de utilizare: <br><br>
-<b>Gestiune PLAN DE APROVIZIONARE</b><br>Planul de aprovizionare se creeaza pentru fiecare saptamana din an.<br><br><br>Planul de aprovizionare se creeaza prin inregistrarea fiecarei linii din CEREREA DE APROVIZIONARE.<br><br><br>In cazul in care in liniile planului exista produsul din cerere se actualizeaza cantitatea, daca nu exista se adauga o noua linie in planul de aprovizionare<br><br><br>Pentru fiecare linie din planul de aprovizionare se va seta un status pentru a observa daca s-a facut comanda pentru acel produs sau nu.<br><br>
+<b>Gestiune PLAN DE APROVIZIONARE</b><br>Planul de aprovizionare se creeaza pentru fiecare saptamana din an.<br>Planul de aprovizionare se creeaza prin inregistrarea fiecarei linii din CEREREA DE APROVIZIONARE.<br>In cazul in care in liniile planului exista produsul din cerere se actualizeaza cantitatea, daca nu exista se adauga o noua linie in planul de aprovizionare<br>Pentru fiecare linie din planul de aprovizionare se va seta un status pentru a observa daca s-a facut comanda pentru acel produs sau nu.<br><br>
 <b>Evidenta CERERE DE OFERTA</b><br>Fiecare linie din planul de aprovizionare devine o cerere de oferta ce va fi trimisa furnizorilor<br><br>
 <b>Evidenta OFERTA DE ACHIZITIE</b><br><br><BR>
