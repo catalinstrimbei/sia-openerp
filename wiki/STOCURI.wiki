@@ -15,7 +15,15 @@ Cuprinde urmatoarele:
 <h1> Detalii </h1>
 
  <h3> Descriere functionala </h3>
-<ul><li>Use Case - Descriere etape/pasi</li></ul>
+<ul>
+<li>Use Case - Descriere etape/pasi
+</li>
+Aplicatia are urmatoarele cazuri de utilizare: <br>
+ - Intrare in stoc
+ - Transfer de materiale de la o gestiune la alta
+ - Consum productie
+ - Iesire stoc
+</ul>
 
  <h3> Descriere tehnica </h3>
 
