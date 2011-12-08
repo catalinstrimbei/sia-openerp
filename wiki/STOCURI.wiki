@@ -20,7 +20,7 @@ Cuprinde urmatoarele:
        <ul>
 <li>Dependente </LI>
 <li>BusinessObject.Locale</LI>
-<li>Operatiile/Actiunile/ApplicationService</LI>
+<li>Operatiile/ Actiunile/ ApplicationService</LI>
 
 
 
