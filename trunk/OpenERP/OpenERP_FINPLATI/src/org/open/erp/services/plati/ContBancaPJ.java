@@ -1,5 +1,7 @@
 package org.open.erp.services.plati;
 
+import java.util.Date;
+
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
 public class ContBancaPJ {
@@ -13,6 +15,14 @@ public class ContBancaPJ {
 	        private String moneda;
 
 	        private Double sold;
+	        
+	        public ContBancaPJ(PersoanaJuridica banca, PersoanaJuridica titularCont, String numarCont, String moneda, Double sold) {
+	    		this.banca = banca;
+	    		this.titularCont = titularCont;
+	    		this.numarCont = numarCont;
+	    		this.moneda = moneda;
+	    		this.sold = sold;
+	    	}
 
 	        public PersoanaJuridica getBanca() {
 	                return banca;
