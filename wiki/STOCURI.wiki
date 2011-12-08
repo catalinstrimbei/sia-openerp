@@ -32,7 +32,7 @@ Aplicatia are urmatoarele cazuri de utilizare: <br>
  <h3> Descriere tehnica </h3>
        <ul>
 <li>Dependente </LI>
-    Modulul STOCURI depinde de urmatoarele module: <br>
+    Modulul STOCURI depinde de urmatoarele module: <br><br>
     -<a href ="http://code.google.com/p/sia-openerp/wiki/NOMGEN"> Nomenclatoare generale </a> <br>
     - <a href ="http://code.google.com/p/sia-openerp/wiki/PERSONAL"> Personal</a> <br>
     - <a href ="http://code.google.com/p/sia-openerp/wiki/ACHIZITII"> Achizitii </a> <br>
