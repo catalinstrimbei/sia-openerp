@@ -1,9 +1,9 @@
 #summary Pagina modulului NOMENCLATOARE GENERALE.
 
-= Introduction =
+= Introducere=
 
 Modul NOMGEN
 
 
-= Details =
+= Detalii =
 Nomenclatoare generale
