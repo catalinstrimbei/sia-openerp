@@ -19,7 +19,7 @@ Principalele functionalitati ale modulului sunt;<br />
 - generare centralizatoare si sume pentru contabilitate
 
 Use cases <br />
-  @UseCase("inregistrare pontaj"):
+  @UseCase ("inregistrare pontaj"):
  * 1. Creaza instanta pontaj
  * 2. Inregistrare pontaj pe angajat
  * 3. Returneata pontaj initializat pentru un angajat
