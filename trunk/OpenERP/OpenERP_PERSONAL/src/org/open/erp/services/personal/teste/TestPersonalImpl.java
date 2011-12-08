@@ -124,8 +124,8 @@ public class TestPersonalImpl {
 	//Angajat 		angajat1 = new Angajat(persoana1.getIdPersoana(), "Nume1", "Prenume1");
 	//ContractMunca	contract1 = new ContractMunca("ContractNr0002", angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,null);
 	
-	ContractMunca	contract1 = new ContractMunca("ContractNr0002", 1000.00, 10.00, angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2015"), null,0,null);
-	ContractMunca	contract2 = new ContractMunca("ContractNr0001", 1000.00, 10.00, angajat2, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+	ContractMunca	contract1 = new ContractMunca("ContractNr0002", 1000.00, 10.00, angajat1, functie1, new Date("01/01/2010"), new Date("01/01/2010"), new Date("15/08/2015"),0,null);
+	ContractMunca	contract2 = new ContractMunca("ContractNr0001", 1000.00, 10.00, angajat2, functie1, new Date("11/08/2011"), new Date("15/08/2011"), new Date("15/08/2020"),0,null);
 
 	DosarAngajat dosar1 = new DosarAngajat(1, angajat1, true, true, true);
 	DosarAngajat dosar2 = new DosarAngajat(2, angajat2, null, null, null);
@@ -186,6 +186,7 @@ public class TestPersonalImpl {
 	}
 	public void listaContracte(){
 		contracteMunca.add(contract1);
+		contracteMunca.add(contract2);
 	}
 	
 	public void listaDosare(){

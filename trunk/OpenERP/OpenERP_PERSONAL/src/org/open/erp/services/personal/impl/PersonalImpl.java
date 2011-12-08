@@ -253,11 +253,12 @@ public class PersonalImpl implements PersonalSrv{
 	}
 	
 	@Override
-	public ContractMunca getContractByAngajat(Angajat angajat_) {
+	public ContractMunca getContractAngajatActiv(Angajat angajat_) {
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.listaContracte();
+		
 		Iterator <ContractMunca> iteratorMunca = test.contracteMunca.iterator();
-		List <ContractMunca> listaContractelor = new ArrayList<ContractMunca>();
+
 		while (iteratorMunca.hasNext()){
 			ContractMunca contractCurent;
 			contractCurent = iteratorMunca.next();
@@ -267,8 +268,16 @@ public class PersonalImpl implements PersonalSrv{
 					&&
 					contractCurent.getDataTerminare().compareTo(Calendar.getInstance().getTime()) >= 0)
 			{
+				System.out.println( "Contractul are codul: " + contractCurent.getNrContract() + ", data inceput: " + contractCurent.getDataInceput() 
+						+ ", data sfarsit: " + contractCurent.getDataTerminare());
+				
+				System.out.println("Contract gasit pentru angajatul cu numele: " + angajat_.getNume());
+
+
 				return contractCurent;
 			}
+			
+
 		}
 		System.out.println("Nu a fost gasit niciun contract pentru angajatul cu numele " + angajat_.getNume());
 		return null;
@@ -340,7 +349,6 @@ public class PersonalImpl implements PersonalSrv{
 			DosarAngajat dosar;   
 			dosar = getDosarByAngajat (angajatCurent);
 		
-			System.out.println("activare1" + angajatCurent.getNume());
 			
 			if(angajatCurent.getActiv() == false &&
 				dosar.getAdeverintaStudii() ==true && dosar.getAdeverintaStudii() == true && dosar.getFisaMedicala() == true)
@@ -348,9 +356,9 @@ public class PersonalImpl implements PersonalSrv{
 			{
 				contracte = getListaContracteByAngajat(angajatCurent);
 				
-				System.out.println("activare2" + angajatCurent.getNume());
+				//System.out.println("activare2" + angajatCurent.getNume());
 				
-				System.out.println("activare3 " + contracte.size());
+				//System.out.println("activare3 " + contracte.size());
 
 				
 				if (contracte.size()>0) {
@@ -359,7 +367,7 @@ public class PersonalImpl implements PersonalSrv{
 					
 					nrActivari = nrActivari + 1;
 					
-					System.out.println("activare4  " + contracte.size());
+					System.out.println("-------- Angajatul activat are numele:  " + angajatCurent.getNume());
 				}
 				
 				contracte.clear();

@@ -237,8 +237,7 @@ public interface PersonalSrv {
 	 * 
 	 */
 	
-	ContractMunca getContractByAngajat(Angajat angajat_);
-	
+	ContractMunca getContractAngajatActiv(Angajat angajat_);	
 	/**
 	 * Scop  			 Returneaza un contract de munca pentru un angajat precizat
 	 * 

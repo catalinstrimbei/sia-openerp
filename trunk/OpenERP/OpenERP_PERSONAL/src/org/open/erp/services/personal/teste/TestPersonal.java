@@ -181,6 +181,19 @@ public class TestPersonal {
 	}
 	
 	@Test
+	public void testGetContractAngajatActiv() {
+		TestPersonalImpl test = new TestPersonalImpl();	
+		test.listaAngajati();
+		test.listaContracte();
+		System.out.println("Activare candidati");
+		personalService.getContractAngajatActiv(test.angajat1);
+		
+	}
+	
+	
+	
+	
+	@Test
 	public void testActivareAngajati() {
 		TestPersonalImpl test = new TestPersonalImpl();	
 		test.listaAngajati();
