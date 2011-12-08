@@ -42,14 +42,19 @@ Aplicatia are urmatoarele cazuri de utilizare: <br><br>
      <a href ="http://code.google.com/p/sia-openerp/wiki/CONTABGEN"> Contabilitate generala </a> <br><br>
 <li><b>Business Objects Locale</b></LI> 
  - Articol<br>
- - BonConsum <br>
- - BonTransfer <br>
- - CerereAprovizionare<br>
- - ComandaProduse<br>
- - Depozit<br>
- - Gestionar<br>
- - Gestiune<br>
- - LoturiIntrari<br>
- - PrioritateMaterialeProductie<br>
+ - Categorie <br>
+ - Cerere Oferta <br>
+ - Comanda <br>
+ - Factura <br>
+ - Furnizor <br>
+ - Linie Cerere Oferta<br>
+ - Linie Comanda <br>
+ - Linie Factura Achizitie <br>
+ - Linie NIR <br>
+ - Linie Oferta Achizitie <br>
+ - Linie Plan Aprovizionare <br>
+ - NIR <br>
+ - Oferta Achizitie <br>
+ - Plan Aprovizionare <br>
 <br>
 <li><b>Operatiile/ Actiunile/ Application Service</b></LI>
