@@ -1,26 +1,54 @@
 package org.open.erp.services.plati;
 
+import java.util.Date;
+
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
 public class OrdinPlata extends DocumentPlata{
-	private Double suma;
-	private Integer CIF;
-	private String reprezentand; 
-	private Double sumaPlataAvans;
+	private String seriaNr;
+	private Date data;
+	private Double totalPlata;
 	private PersoanaJuridica emitent;
 	private PersoanaJuridica beneficiar;
+	private ContBancaPJ contEmitent;
+	private ContBancaPJ contBeneficiar;
+	private String reprezentand;
 	
-	public Double getSuma() {
-		return suma;
+	public OrdinPlata(Integer idDocumentPlata, String seriaNr, Date data, Double totalPlata, PersoanaJuridica emitent, PersoanaJuridica beneficiar, ContBancaPJ contEmitent, ContBancaPJ contBeneficiar, String reprezentand) {
+		super(idDocumentPlata);
+		this.seriaNr=seriaNr;
+		this.data = data;
+		this.totalPlata = totalPlata;
+		this.emitent = emitent;
+		this.beneficiar = beneficiar;
+		this.contEmitent = contEmitent;
+		this.contBeneficiar = contBeneficiar;
+		this.reprezentand = reprezentand;
 	}
-	public void setSuma(Double suma) {
-		this.suma = suma;
+	
+	public Date getData() {
+		return data;
 	}
-	public Integer getCIF() {
-		return CIF;
+	public void setData(Date data) {
+		this.data = data;
 	}
-	public void setCIF(Integer cIF) {
-		CIF = cIF;
+	public PersoanaJuridica getEmitent() {
+		return emitent;
+	}
+	public void setEmitent(PersoanaJuridica emitent) {
+		this.emitent = emitent;
+	}
+	public PersoanaJuridica getBeneficiar() {
+		return beneficiar;
+	}
+	public void setBeneficiar(PersoanaJuridica beneficiar) {
+		this.beneficiar = beneficiar;
+	}
+	public Double getTotalPlata() {
+		return totalPlata;
+	}
+	public void setTotalPlata(Double totalPlata) {
+		this.totalPlata = totalPlata;
 	}
 	public String getReprezentand() {
 		return reprezentand;
@@ -28,23 +56,25 @@ public class OrdinPlata extends DocumentPlata{
 	public void setReprezentand(String reprezentand) {
 		this.reprezentand = reprezentand;
 	}
-	public PersoanaJuridica getEmitent() {
-		return emitent;
+	public ContBancaPJ getContEmitent() {
+		return contEmitent;
 	}
-	
-	public void setEmitent(PersoanaJuridica emitent){
-		this.emitent = emitent;
+	public void setContEmitent(ContBancaPJ contEmitent) {
+		this.contEmitent = contEmitent;
 	}
-	
-	public PersoanaJuridica getBeneficiar() {
-		return beneficiar;
+	public ContBancaPJ getContBeneficiar() {
+		return contBeneficiar;
 	}
-	
-	public void setBeneficiar(PersoanaJuridica beneficiar){
-		this.beneficiar = beneficiar;
+	public void setContBeneficiar(ContBancaPJ contBeneficiar) {
+		this.contBeneficiar = contBeneficiar;
 	}
-		
-	public Double PlataAvans(Double suma, Double procentAvans) {
-		return sumaPlataAvans;
+
+	public String getSeriaNr() {
+		return seriaNr;
+	}
+
+	public void setSeriaNr(String seriaNr) {
+		this.seriaNr = seriaNr;
 	}
 }
+
