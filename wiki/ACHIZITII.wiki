@@ -1,7 +1,7 @@
 #summary Pagina Modului Achizitii
 
 <h2 align="center"> INTRODUCERE </h2>
-Functionalitate Modul ACHIZITII:
+Functionalitate MODUL ACHIZITII:
 <ul>
  <li> Evidenta  furnizori </li>
  <li> Inregistrarea cererilor de aprovizionare </li>
@@ -16,27 +16,12 @@ Functionalitate Modul ACHIZITII:
  <li> Inregistrare receptie materiale </li>
  <li> Inregistrare retur materiale </li>
 
+<h2 align="center"> DETALII </h2>
+<UL>
+<li>
+<h3>Descriere functionala - Use Case  </h3></li></ul>
 
-
-= Details =
-
-Vizeaza procesul de APROVIZIONARE
-- Serviciu Aprovizionare
-
-  1. Primeste Cererile de aprovizionare
-
-  2. Gestioneaza plan de aprovizionare
-
-  3. Gestioneaza cereri de oferta
-
-  4. Gestioneaza Furnizori
-
-  5. Analiza Oferte Furnizori
-
-  6. Inregistrare comanda achizitie
-
-  7. Inregistrare Receptie materiale
-
-  8. Inregistrare Facturi furnizor
-
-  9. Inregistrare NIR
+Aplicatia are urmatoarele cazuri de utilizare: <br><br>
+<b>Gestiune PLAN DE APROVIZIONARE</b><br>Planul de aprovizionare se creeaza pentru fiecare saptamana din an.<br><br><br>Planul de aprovizionare se creeaza prin inregistrarea fiecarei linii din CEREREA DE APROVIZIONARE.<br><br><br>In cazul in care in liniile planului exista produsul din cerere se actualizeaza cantitatea, daca nu exista se adauga o noua linie in planul de aprovizionare<br><br><br>Pentru fiecare linie din planul de aprovizionare se va seta un status pentru a observa daca s-a facut comanda pentru acel produs sau nu.<br><br>
+<b>Evidenta CERERE DE OFERTA</b><br>Fiecare linie din planul de aprovizionare devine o cerere de oferta ce va fi trimisa furnizorilor<br><br>
+<b>Evidenta OFERTA DE ACHIZITIE</b><br><br><BR>
