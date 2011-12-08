@@ -22,7 +22,7 @@ Use cases <br />
  * @UseCase("inregistrare pontaj"):
  * 1. Creaza instanta pontaj
  * 2. Inregistrare pontaj pe angajat
- * *. Returneata pontaj initializat pentru un angajat
+ * 3. Returneata pontaj initializat pentru un angajat
  * 
  * @UseCase("inregistrare pontaj la nivel de luna"):
  * 1. Creaza instanta pontaj pe fiecare angajat
