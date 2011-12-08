@@ -19,8 +19,7 @@ Modulul cuprinde urmatoarele functionalitati:
 
 
 Aplicatia are urmatoarele cazuri de utilizare: <br> <br>
- 
-<b>Intrarea materialelor in stoc</b> <BR>
+<b>Intrarea materialelor in stoc</b> 
  Intrarea in stoc se face pe baza unui document (NIR) intr-o anumita gestiune si intr-un lot. <br><br>
 <b>Transferul materialelor de la o gestiune la alta</b> <br> Se poate transfera o anumita cantitate dintr-un matetrial de la o gestiune la alta. <br><BR>
 <b>Iesirea materialelor din stoc pentru Productie </b><br> Pe baza unui bon de consum se dau materiale din stoc catre productie. In cazul in care cantitatea ceruta nu este suficienta in stoc, se face o cerere de aprovizionare catre Achizitii.<br><br>
