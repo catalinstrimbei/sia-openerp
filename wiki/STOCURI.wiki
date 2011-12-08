@@ -16,14 +16,17 @@ Cuprinde urmatoarele:
 
  <h3> Descriere functionala </h3>
 <ul>
-<li>Use Case - Descriere etape/pasi
-</li>
-Aplicatia are urmatoarele cazuri de utilizare: <br>
- - Intrare in stoc
- - Transfer de materiale de la o gestiune la alta
- - Consum productie
- - Iesire stoc
+<li>Use Case - Descriere etape/pasi</li>
 </ul>
+
+Aplicatia are urmatoarele cazuri de utilizare: <br>
+ 
+ - Intrarea materialelor in stoc - Intrarea in stoc se face pe baza unui document (NIR) intr-o anumita gestiune si intr-un lot. <br>
+ - Transferul materialelor de la o gestiune la alta<br>
+ - Iesirea materialelor din stoc pentru productie<br>
+ - Iesirea produselor din stoc pentru vanzare <br>
+ - Verificarea stocului de materiale <br>
+        
 
  <h3> Descriere tehnica </h3>
 
