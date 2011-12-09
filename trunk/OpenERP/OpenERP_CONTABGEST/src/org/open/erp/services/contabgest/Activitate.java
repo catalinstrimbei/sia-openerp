@@ -23,7 +23,7 @@ public class Activitate {
 	private String denumireActivitate;
 	private Date dataStart;
 	private Date dataStop;
-	FazaProductie faza;
+	private FazaProductie faza;
 	private Double costActivitate;
 	private Integer status = NE_PORNITA;
 	private Angajat responsabil;
