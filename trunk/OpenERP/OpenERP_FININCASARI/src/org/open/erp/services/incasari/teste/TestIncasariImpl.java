@@ -1,6 +1,7 @@
 package org.open.erp.services.incasari.teste;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertNotNull;
 
 import java.text.DateFormat;
@@ -15,7 +16,8 @@ import org.junit.Test;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.incasari.Chitanta;
 import org.open.erp.services.incasari.IncasariSrv;
-import org.open.erp.services.incasari.exceptions.IncasariException;
+import org.open.erp.services.incasari.exception.IncasariException;
+
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.vanzari.Client;

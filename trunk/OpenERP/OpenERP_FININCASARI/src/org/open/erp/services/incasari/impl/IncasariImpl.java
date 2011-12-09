@@ -1,6 +1,7 @@
 package org.open.erp.services.incasari.impl;
 
 import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,7 @@ import org.open.erp.services.incasari.Chitanta;
 import org.open.erp.services.incasari.ExtrasCont;
 import org.open.erp.services.incasari.Incasare;
 import org.open.erp.services.incasari.IncasariSrv;
-import org.open.erp.services.incasari.exceptions.IncasariException;
+import org.open.erp.services.incasari.exception.IncasariException;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.vanzari.Client;

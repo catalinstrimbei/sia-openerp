@@ -1,10 +1,11 @@
 package org.open.erp.services.incasari;
 
 import java.util.Date;
+
 import java.util.List;
 
 import org.open.erp.services.ctbgen.exceptii.CtbException;
-import org.open.erp.services.incasari.exceptions.IncasariException;
+import org.open.erp.services.incasari.exception.IncasariException;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.vanzari.Client;
