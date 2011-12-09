@@ -2,8 +2,48 @@
 
 = Introducere=
 
-Modul NOMGEN
+Modul Nomenclatoare Generale cuprinde nomenclatura din domeniu.
+
+Modulul cuprinde urmatoarele functionalitati:
+<ul type="disc">
+<li>adaugare
+<li>stegere
+<li>modificare
+<li>cautare (dupa anumiti parametrii)
 
 
 = Detalii =
-Nomenclatoare generale
+
+*Descriere functionala - Use Case*
+
+ Avem urmatoarele cazuri de utilizare:
+<ol>
+<li>Adaugarea in baza de date a produselor, persoanelor (fizice sau juridice), bancilor, departamentelor, diviziilor, documentelor, email-urilor, materialelor, materiilor prime, mijloacelor fixe, partenerilor si a telefoanelor.
+<li>Stergerea din baza de date a produselor, persoanelor (fizice sau juridice), bancilor, departamentelor, diviziilor, documentelor, email-urilor, materialelor, materiilor prime, mijloacelor fixe, partenerilor si a telefoanelor.
+<li>Modificarea in baza de date a produselor, persoanelor (fizice sau juridice), bancilor, departamentelor, diviziilor, documentelor, email-urilor, materialelor, materiilor prime, mijloacelor fixe, partenerilor si a telefoanelor.
+<li>Cautarea in baza de date a produselor, persoanelor (fizice sau juridice), bancilor, departamentelor, diviziilor, documentelor, email-urilor, materialelor, materiilor prime, mijloacelor fixe, partenerilor si a telefoanelor dupa criterii specifice.
+
+*Descriere tehnica*
+
+<ul type="1">
+<li>Dependente
+
+     Modulul Nomenclatoare Generale nu are dependente
+
+<li>Business Objects Locale
+  
+  Banca<br>
+  Departament<br>
+  Divizie<br>
+  Document<br>
+  Email
+  Linie Document<br>
+  Material<br>
+  Materie Prima<br>
+  Mijloc Fix<br>
+  Partener<br>
+  Persoana
+    Persoana Fizica<br>
+    Persoana Juridica<br>
+  Produs<br>
+  Telefon<br>
