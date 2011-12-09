@@ -46,7 +46,7 @@ Se ocupa cu gestionarea Resurselor Umane.
 
 Modulul PERSONAL depinde de urmatorul modul: 
 
-- NOMGEN
+- [http://code.google.com/p/sia-openerp/wiki/NOMGEN]
 
 de unde utilizeaza entitatile:
 
