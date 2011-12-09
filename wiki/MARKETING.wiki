@@ -9,9 +9,68 @@ Aceasta pagina isi propune sa ofere informatiile necesare unei utilizari corecte
   # Crearea si gestionarea promotiilor
   # Crearea si derularea de chestionare, precum si procesarea raspunsurilor obtinute.
 
-= Details =
+<h3>Descrierea detaliata a modulului  </h3>
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Modulul de Marketing permite urmatoare operatiuni <br><br>
+<b>DEFINIREA UNEI CAMPANII</b><br>
+Informatiile necesare pentru definirea unei campanii publicitare sunt:
+  * Numele campaniei
+  * Data inceput si data Sfarsit
+  * Responsabilul campaniei
+  * Lista persoanelor tinta.
+
+Dependetele:
+  * PersonalSRV - avem nevoie de o instanta a clasei Angajat pentru a stabili un responsabil al campaniei;
+  * NomenclatorSRv - Persoana - pentru obtinerea listei Persoanelor tinta.
+
+<b> INITIEREA UNEI CAMPANII.</b><br>
+In aceasta etapa, responsabilul campaniei schimba statusul acesteia in "In curs". Totodata, se trimit mail-urile de informare catre persoanele tinta.
+ 
+<b>DEFINIREA UNUI CHESTIONAR</b><br>
+Chestionarele sunt folosite pentru obtinerea unui feedback din partea clientilor sau pentru efectuarea unui studiu de piata pentru un produs ce urmeaza a fi lansat. Acestea pot contine mai multe tipuri de intrebari. Pentru definirea unui chestionar, avem nevoie de urmatoarele informatii:
+  * Denumirea chestionarului
+  * Responsabilul chestionarului
+  * Numarul de intrebari
+  * Scopul chestionarului
+  * Lista intrebarilor
+
+Dependente:
+ * PersonalSRV - avem nevoie de o instanta a clasei Angajat pentru a stabili un responsabil al chestionarului;
+
+<b>DERULAREA UNUI CHESTIONAR</b><br>
+In aceasta etapa chestionarul este trimis prin email catre clienti. Raspunsurile la chestionar vor fi colectate pe durata a 2 saptamani<br>
+
+<b>PROCESAREA REZULTATELOR UNUI CHESTIONAR</b><br>
+In aceasta etape sistemul analizeaza raspusurile colectate si afiseaza un raport cu rezultatele obtinute.
+
+<b>Gestiune COMENZI </b><br>Pe baza analizei ofertelor de achizitie se va creea o comanda.<br>Comanda se realizeaza si pe baza liniilor din planul de aprovionare(comenzi periodice de la furnizor prestabiliti).<br><br>
+<b>Evidenta FACTURI </b><br>Se inregistreaza in contabilitate factura primita de la furnizor.<br><br>
+<b>Receptia comenzii</b><br>Pe baza facturii se realizeaza nota de intrare receptie.<br>Daca factura este in concordanta cu comanda articolele intra in stoc.<br>Daca articolele primite nu sunt conforme comenzii se inregistreaza in contabilitate factura de retur si se realizeaza iesire din stoc a articolelor.<br>
+
+
+<UL>
+<li>
+<h3>Descriere tehnica  </h3></li></ul>
+<ol>
+<li><b>Dependente </b></LI>
+    Modulul ACHIZITII depinde de urmatoarele module: <br><br><b>
+     <a href ="http://code.google.com/p/sia-openerp/wiki/NOMGEN"> Nomenclatoare generale </a> <br><br>
+     <a href ="http://code.google.com/p/sia-openerp/wiki/STOCURI"> Stocuri</a> <br><br>
+     <a href ="http://code.google.com/p/sia-openerp/wiki/CONTABGEN"> Contabilitate generala </a> <br><br>
+<li><b>Business Objects Locale</b></LI> 
+ - Articol<br>
+ - Cerere Oferta <br>
+ - Comanda <br>
+ - Factura <br>
+ - Furnizor <br>
+ - Linie Cerere Oferta<br>
+ - Linie Comanda <br>
+ - Linie Factura Achizitie <br>
+ - Linie NIR <br>
+ - Linie Oferta Achizitie <br>
+ - Linie Plan Aprovizionare <br>
+ - NIR <br>
+ - Oferta Achizitie <br>
+ - Plan Aprovizionare <br>
+<br>
+<li><b>Operatiile/ Actiunile/ Application Service</b></LI>
