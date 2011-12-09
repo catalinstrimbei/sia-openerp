@@ -49,7 +49,7 @@ public class TestCentruCostImpl {
 	 public void testCreareActivitate() {
 	 logger.info("Begin test: creareActivitate");
 	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
-	 Angajat responsabil = personalInstance.getAngajatCuId(1);
+	 Angajat responsabil = personalInstance.getAngajatById(1);
 
 	 Calendar calendarStart = Calendar.getInstance();
 	 Calendar calendarEnd = Calendar.getInstance();
@@ -68,7 +68,7 @@ public class TestCentruCostImpl {
 	 logger.info("Begin test: startCentruCost");
 
 	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
-	 Angajat responsabil = personalInstance.getAngajatCuId(1);
+	 Angajat responsabil = personalInstance.getAngajatById(1);
 
 	 Calendar calendarStart = Calendar.getInstance();
 	 Calendar calendarEnd = Calendar.getInstance();
@@ -94,7 +94,7 @@ public class TestCentruCostImpl {
 	 logger.info("Begin test: progresActivitate");
 
 	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
-	 Angajat responsabil = personalInstance.getAngajatCuId(1);
+	 Angajat responsabil = personalInstance.getAngajatById(1);
 
 	 Calendar calendarStart = Calendar.getInstance();
 	 Calendar calendarEnd = Calendar.getInstance();

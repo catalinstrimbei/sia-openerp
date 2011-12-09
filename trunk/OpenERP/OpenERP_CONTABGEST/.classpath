@@ -4,10 +4,11 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry exported="true" kind="src" path="/DummyERP_Personal"/>
 	<classpathentry kind="src" path="/OpenERP_PERSONAL"/>
-	<classpathentry kind="lib" path="C:/Users/Ank/Desktop/CS Proiect/apache-log4j-1.2.16/log4j-1.2.16.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ank/Desktop/New Folder/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="/OpenERP_CONTABGEST/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="/OpenERP_CONTABGEST/lib/junit-4.10.jar"/>
 	<classpathentry kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry kind="src" path="/OpenERP_CONTABGEN"/>
 	<classpathentry kind="src" path="/OpenERP_PRODUCTIE"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
