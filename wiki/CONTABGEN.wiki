@@ -60,7 +60,7 @@
 
       * _Operatiuni/Actiuni:_
 || *Metode/Procese* || *Observatii*  ||
-|| crearePlanContabil() || -adauga conturile, sau un nou cont ||
+|| CrearePlanContabil() || -adauga conturile, sau un nou cont ||
 || CreareLunaLucru() || -creaza sau deschide o luna de lucru noua ||
 || CreareSablonNC() || -creaza sabloane cu note contabile pentru documentele utilizate frecvent ||
 || JurnalizareVanzare() || -jurnalizeaza notele contabile aferente unei vanzari si scaderea din gestiune daca e cazul ||
