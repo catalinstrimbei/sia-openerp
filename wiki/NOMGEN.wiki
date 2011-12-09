@@ -36,7 +36,7 @@ Modulul cuprinde urmatoarele functionalitati:
   Departament<br>
   Divizie<br>
   Document<br>
-  Email
+  Email<br>
   Linie Document<br>
   Material<br>
   Materie Prima<br>
