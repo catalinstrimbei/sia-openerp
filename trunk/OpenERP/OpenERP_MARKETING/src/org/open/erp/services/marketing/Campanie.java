@@ -55,7 +55,7 @@ public class Campanie {
 		return responsabil;
 	}
 	public static Integer getTerminat() {
-		return TERMINAT;
+		return TERMINATA;
 	}
 	public static Integer getNePornita() {
 		return NE_PORNITA;
