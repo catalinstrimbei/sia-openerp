@@ -14,7 +14,6 @@ import org.open.erp.services.ctbgen.LinieMaterialValoare;
 import org.open.erp.services.ctbgen.LunaLucru;
 import org.open.erp.services.ctbgen.RegBalanta;
 import org.open.erp.services.ctbgen.RegInregistrareRJ;
-import org.open.erp.services.ctbgen.RegTipMaterial;
 import org.open.erp.services.ctbgen.RegTipuriContabile;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.TipContabil;
@@ -783,9 +782,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 	public RegConturi getRegConturi(){
 		return RegConturi.instantiaza();
 	}
-	public RegTipMaterial getRegTipMaterial(){
-		return RegTipMaterial.instantiaza();
-	}
+	
 	public RegSablonNC getRegSablonNC(){
 		return RegSablonNC.instantiaza();
 	}	

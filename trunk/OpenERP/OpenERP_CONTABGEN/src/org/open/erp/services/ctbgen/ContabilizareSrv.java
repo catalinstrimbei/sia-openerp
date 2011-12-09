@@ -119,7 +119,7 @@ public interface ContabilizareSrv {
 	
 	
 	/**
-	 * Jurnalizeaza notele contabile aferente unei plati prin casa sau banca
+	 * Jurnalizeaza notele contabile aferente unui stat de plata
 	 * 
 	 * @param data 			Data documentului de inregistrat
 	 * @param valBrut    	Valoarea salarii brute
@@ -191,7 +191,6 @@ public interface ContabilizareSrv {
 	
 	public RegConturi getRegConturi();
 	public RegLuniLucru getRegLuniLucru();
-	public RegTipMaterial getRegTipMaterial();
 	public List<String> getTipuriContabile();
 	//---------------------------------
 	
