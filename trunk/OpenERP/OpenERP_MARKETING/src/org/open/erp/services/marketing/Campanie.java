@@ -12,7 +12,7 @@ import java.util.List;
 public class Campanie {
 	public static final Integer NE_PORNITA = -1; 
 	public static final Integer IN_CURS = 1;
-	public static final Integer TERMINAT = 2; 
+	public static final Integer TERMINATA = 2; 
 	
 	private Integer idCampanie;
 	private String denumireCampanie;
