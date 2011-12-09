@@ -31,6 +31,8 @@ import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.ProbaEvaluare;
+import org.open.erp.services.personal.logger.PersonalExceptions;
+import org.open.erp.services.personal.logger.PersonalLogger;
 import org.open.erp.services.personal.teste.TestPersonalImpl;
 
 /**
@@ -43,134 +45,176 @@ public class PersonalImpl implements PersonalSrv{
 	final static long MILLIS_PER_DAY = 24 * 3600 * 1000;
 	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 	
+	PersonalLogger logger = new PersonalLogger();
+	
 	@Override
 	public void demisionare(CerereDemisie cerereDemisie_) {
 		// TODO Auto-generated method stub				
 		ContractMunca	contract = cerereDemisie_.getContract();
 		Angajat 		angajat = contract.getAngajat();
 		Date			data;
-		
-		if(cerereDemisie_.getDataCerere() == null)
+		try
 		{
-			data = Calendar.getInstance().getTime();
-			cerereDemisie_.setDataCerere(data);
+			if(cerereDemisie_.getDataCerere() == null)
+			{
+				data = Calendar.getInstance().getTime();
+				cerereDemisie_.setDataCerere(data);
+			}
+			
+			if(cerereDemisie_.getDataDemisie() == null)
+			{
+				cerereDemisie_.setDataDemisie(Calendar.getInstance().getTime());
+			}
+			
+			long msDiff= cerereDemisie_.getDataDemisie().getTime() - cerereDemisie_.getDataCerere().getTime();
+			int nrZile = Math.round(msDiff / ((int)MILLIS_PER_DAY));
+			
+			cerereDemisie_.setPerioadaPreaviz(nrZile);
+			
+			contract.setDataTerminare(cerereDemisie_.getDataDemisie());
+			contract.setMotivIncheiere("Demisionare");
+			
+			angajat.setActiv(false);
+			cerereDemisie_.setStatus("Finalizata");
+			
+			System.out.println("Detalii cerere: " + cerereDemisie_.getNrInregistrare().toString());
+			System.out.println("Status--------- " + cerereDemisie_.getStatus().toString());
+			System.out.println("DataCerere----- " + cerereDemisie_.getDataCerere().toString());
+			System.out.println("DataDemisie---- " + cerereDemisie_.getDataDemisie().toString());
+			System.out.println("PerioadaPreaviz " + cerereDemisie_.getPerioadaPreaviz().toString());
+			
+			System.out.println("------------------------------------------------------------ ");
+			System.out.println("Detalii ContractMunca: " + contract.getNrContract().toString());
+			System.out.println("DataSemnare----------- " + contract.getDataSemnare().toString());
+			System.out.println("DataTerminare--------- " + contract.getDataTerminare().toString());
+			System.out.println("MotivIncheiere-------- " + contract.getMotivIncheiere().toString());
+			
+			System.out.println("------------------------------------------------------------ ");
+			System.out.println("Detalii Angajat: " + angajat.getMarca().toString());
+			System.out.println("Activ----------- " + angajat.getActiv().toString());
+			System.out.println("Nume------------ " + angajat.getNume().toString());
+			System.out.println("Prenume--------- " + angajat.getPrenume().toString());	
 		}
-		
-		if(cerereDemisie_.getDataDemisie() == null)
+		catch(Exception e)
 		{
-			cerereDemisie_.setDataDemisie(Calendar.getInstance().getTime());
+			e.printStackTrace();
+			logger.logERROR(e.getMessage(), e);
 		}
-		
-		long msDiff= cerereDemisie_.getDataDemisie().getTime() - cerereDemisie_.getDataCerere().getTime();
-		int nrZile = Math.round(msDiff / ((int)MILLIS_PER_DAY));
-		
-		cerereDemisie_.setPerioadaPreaviz(nrZile);
-		
-		contract.setDataTerminare(cerereDemisie_.getDataDemisie());
-		contract.setMotivIncheiere("Demisionare");
-		
-		angajat.setActiv(false);
-		cerereDemisie_.setStatus("Finalizata");
-		
-		System.out.println("Detalii cerere: " + cerereDemisie_.getNrInregistrare().toString());
-		System.out.println("Status--------- " + cerereDemisie_.getStatus().toString());
-		System.out.println("DataCerere----- " + cerereDemisie_.getDataCerere().toString());
-		System.out.println("DataDemisie---- " + cerereDemisie_.getDataDemisie().toString());
-		System.out.println("PerioadaPreaviz " + cerereDemisie_.getPerioadaPreaviz().toString());
-		
-		System.out.println("------------------------------------------------------------ ");
-		System.out.println("Detalii ContractMunca: " + contract.getNrContract().toString());
-		System.out.println("DataSemnare----------- " + contract.getDataSemnare().toString());
-		System.out.println("DataTerminare--------- " + contract.getDataTerminare().toString());
-		System.out.println("MotivIncheiere-------- " + contract.getMotivIncheiere().toString());
-		
-		System.out.println("------------------------------------------------------------ ");
-		System.out.println("Detalii Angajat: " + angajat.getMarca().toString());
-		System.out.println("Activ----------- " + angajat.getActiv().toString());
-		System.out.println("Nume------------ " + angajat.getNume().toString());
-		System.out.println("Prenume--------- " + angajat.getPrenume().toString());	
 		
 	}
 
 	@Override
 	public void concediere(ContractMunca contractMunca_) {
-		// TODO Auto-generated method stub		
-		Angajat 		angajat = contractMunca_.getAngajat();
-		
-		contractMunca_.setDataTerminare(Calendar.getInstance().getTime());
-		
-		angajat.setActiv(false);
-		contractMunca_.setMotivIncheiere("Concediere");
-		
-		System.out.println("------------------------------------------------------------ ");
-		System.out.println("Detalii ContractMunca: " + contractMunca_.getNrContract().toString());
-		System.out.println("DataSemnare----------- " + contractMunca_.getDataSemnare().toString());
-		System.out.println("DataTerminare--------- " + contractMunca_.getDataTerminare().toString());
-		System.out.println("MotivIncheiere-------- " + contractMunca_.getMotivIncheiere().toString());
-		
-		System.out.println("------------------------------------------------------------ ");
-		System.out.println("Detalii Angajat: " + angajat.getMarca().toString());
-		System.out.println("Activ----------- " + angajat.getActiv().toString());
-		System.out.println("Nume------------ " + angajat.getNume().toString());
-		System.out.println("Prenume--------- " + angajat.getPrenume().toString());
+		try
+		{
+			// TODO Auto-generated method stub		
+			Angajat 		angajat = contractMunca_.getAngajat();
+			
+			contractMunca_.setDataTerminare(Calendar.getInstance().getTime());
+			
+			angajat.setActiv(false);
+			contractMunca_.setMotivIncheiere("Concediere");
+			
+			System.out.println("------------------------------------------------------------ ");
+			System.out.println("Detalii ContractMunca: " + contractMunca_.getNrContract().toString());
+			System.out.println("DataSemnare----------- " + contractMunca_.getDataSemnare().toString());
+			System.out.println("DataTerminare--------- " + contractMunca_.getDataTerminare().toString());
+			System.out.println("MotivIncheiere-------- " + contractMunca_.getMotivIncheiere().toString());
+			
+			System.out.println("------------------------------------------------------------ ");
+			System.out.println("Detalii Angajat: " + angajat.getMarca().toString());
+			System.out.println("Activ----------- " + angajat.getActiv().toString());
+			System.out.println("Nume------------ " + angajat.getNume().toString());
+			System.out.println("Prenume--------- " + angajat.getPrenume().toString());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			logger.logERROR(e.getMessage(), e);
+		}
 	}
 
 	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(PersonalImpl.class.getName());
 
 	@Override
 	public  List<AnuntLocMunca> getPosturiVacante(Date dataVizata_, List<AnuntLocMunca> listaInit_) {
-		List<AnuntLocMunca> rezultat = new ArrayList<AnuntLocMunca>();
-		
-		Iterator<AnuntLocMunca> iterator = listaInit_.iterator();
-		while (iterator.hasNext()) {
-			AnuntLocMunca	anunt = iterator.next();
-			//System.out.println(anunt.getCorpAnunt());
-			if(dataVizata_.compareTo(anunt.getDataInceput()) >= 0 && dataVizata_.compareTo(anunt.getDataExpirare()) <= 0)
-			{
-				rezultat.add(anunt);	
+		try
+		{
+			List<AnuntLocMunca> rezultat = new ArrayList<AnuntLocMunca>();
+			
+			Iterator<AnuntLocMunca> iterator = listaInit_.iterator();
+			while (iterator.hasNext()) {
+				AnuntLocMunca	anunt = iterator.next();
+				//System.out.println(anunt.getCorpAnunt());
+				if(dataVizata_.compareTo(anunt.getDataInceput()) >= 0 && dataVizata_.compareTo(anunt.getDataExpirare()) <= 0)
+				{
+					rezultat.add(anunt);	
+				}
 			}
+			return rezultat;
 		}
-		return rezultat;
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			logger.logERROR(e.getMessage(), e);
+			return null;
+		}
 	}
 
 	@Override
 	public List<Candidat> getCandidatipeFunctie(AnuntLocMunca anuntLocMunca_, List<CV> listaInit_) {
-		
-		List<Candidat> rezultat = new ArrayList<Candidat>();
-		
-		Iterator<CV> iterator = listaInit_.iterator();
-		
-		while (iterator.hasNext()) {
-			CV	cv = iterator.next();
-			//System.out.println(cv.getCandidat().getNume());
-			if(cv.getUltimaModificare().compareTo(anuntLocMunca_.getDataInceput()) >= 0 && cv.getUltimaModificare().compareTo(anuntLocMunca_.getDataExpirare()) <= 0
-				&& 	cv.getFunctieVizata() == anuntLocMunca_.getFunctie())
-			{
-				rezultat.add(cv.getCandidat());	
+		try
+		{
+			List<Candidat> rezultat = new ArrayList<Candidat>();
+			
+			Iterator<CV> iterator = listaInit_.iterator();
+			
+			while (iterator.hasNext()) {
+				CV	cv = iterator.next();
+				//System.out.println(cv.getCandidat().getNume());
+				if(cv.getUltimaModificare().compareTo(anuntLocMunca_.getDataInceput()) >= 0 && cv.getUltimaModificare().compareTo(anuntLocMunca_.getDataExpirare()) <= 0
+					&& 	cv.getFunctieVizata() == anuntLocMunca_.getFunctie())
+				{
+					rezultat.add(cv.getCandidat());	
+				}
 			}
+			return rezultat;
 		}
-		return rezultat;
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			logger.logERROR(e.getMessage(), e);
+			return null;
+		}
 	}
 	
 	
 	@Override
 	public List<Candidat> recrutare(Date dataAnunt_, Candidat candidat_, List<InterviuCandidat> listaInit_) {
-		
-		List<Candidat> rezultat = new ArrayList<Candidat>();
-		
-		Iterator<InterviuCandidat> iterator = listaInit_.iterator();
-		
-		while (iterator.hasNext()) {
-			InterviuCandidat	interviu = iterator.next();
-			if (interviu.getRezultatEvaluare() == "ADMIS" && interviu.getInterviu().getTipInterviu() == "Final" 
-							&& candidat_.getIdCandidat()== interviu.getCandidat().getIdCandidat()
-							&& (interviu.getDataInterviu().compareTo(dataAnunt_)) >= 0)
-										
-			{
-				rezultat.add(interviu.getCandidat());	
+		try
+		{
+			List<Candidat> rezultat = new ArrayList<Candidat>();
+			
+			Iterator<InterviuCandidat> iterator = listaInit_.iterator();
+			
+			while (iterator.hasNext()) {
+				InterviuCandidat	interviu = iterator.next();
+				if (interviu.getRezultatEvaluare() == "ADMIS" && interviu.getInterviu().getTipInterviu() == "Final" 
+								&& candidat_.getIdCandidat()== interviu.getCandidat().getIdCandidat()
+								&& (interviu.getDataInterviu().compareTo(dataAnunt_)) >= 0)
+											
+				{
+					rezultat.add(interviu.getCandidat());	
+				}
 			}
+			return rezultat;
 		}
-		return rezultat;
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			logger.logERROR(e.getMessage(), e);
+			return null;
+		}
 	}
 	
 	//evaluareAngajat - Andreea
@@ -206,6 +250,7 @@ public class PersonalImpl implements PersonalSrv{
 
 	@Override
 	public Angajat getAngajatById(Integer marca_) {
+		
 		// TODO Auto-generated method stub
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.listaAngajati();
