@@ -1,18 +1,53 @@
 #summary Pagina modulului CONTABGEST
 
-= Introduction =
+= Introducere =
 
-Modul ContabGest
-
-
-= Details =
-
-         Contabilitate de Gestiune
-
-  Serviciu CentruCostSrv
-
+Functionalitate Modul Contabilitate Gestiune:
  * 1. Creaza instanta Activitate 
  * 2. Creeaza Activitate si o asociaza Centrului de Cost.
  * 3. Creaza instanta Centru de Cost
  * 4. Gestioneaza stadiul in care se afla Activitatea
  * 5. Inregistreaza soldul pentru un Centru de Cost
+
+= Details =
+<UL>
+<li>
+<h3>Descriere functionala - Use Case  </h3></li></ul>
+
+Aplicatia are urmatoarele cazuri de utilizare: <br><br>
+<b>Creaza instanta ACTIVITATE</b>
+<br>Prin activitate intelegem actiunile intreprinse , asupra Centrului de Cost. 
+<br>Activitatea se creeaza pentru a fi atribuita unui Centru de Cost si unui Responsabil si unei Faze de Productie. 
+<br>Activitatea poate avea statusurile: NE_PORNITA, IN_CURS, TERMINATA.<br><br>
+<b>Creeaza Activitate si o asociaza Centrului de Cost</b>
+<br>Calculeaza procentajul si costul aferent atribuindu-le centrului de cost.<br><br>
+<b>Creaza instanta Centru de Cost</b>
+<br>Creaza instanta centrului caracterizata prin data. Costurile aferente unui centru de cost pot fi costuri costuri primare de natura interna sau externa.<br><br>
+<b>Gestioneaza stadiul in care se afla Activitatea</b>
+<br>Conform statusului activitatea poate trece dintr-o faza in alta, conform cu actiunile care se comit<br><br>
+<b>Inregistreaza soldul pentru un Centru de Cost </b>
+<br>Dupa ce cheltuielile au fost repartizate pe centre de cost se calculeaza valoarea acestora.<br><br>
+
+
+<UL>
+<li>
+<h3>Descriere tehnica  </h3></li></ul>
+<ol>
+<li><b>Dependente </b></LI>
+    Modulul CONTABGEST depinde de urmatoarele module: <br><br><b>
+     <a href ="http://code.google.com/p/sia-openerp/wiki/NOMGEN"> Nomenclatoare generale </a> <br><br>
+     <a href ="http://code.google.com/p/sia-openerp/wiki/PRODUCTIE"> Productie</a> <br><br>
+     <a href ="http://code.google.com/p/sia-openerp/wiki/CONTABGEN"> Contabilitate generala </a> <br><br>
+     <a href ="http://code.google.com/p/sia-openerp/wiki/PERSONAL"> Personal </a> <br><br>
+
+<li><b>Business Objects Locale</b></LI> 
+ - Activitate<br>
+ - CentruCost <br>
+ - CosturiPrimare<br>
+ - InregistrareGestiune<br>
+ - LinieCost<br>
+ - Responsabil <br>
+
+<br>
+<li><b>Operatiile/ Actiunile/ Application Service</b></LI>
+ 
