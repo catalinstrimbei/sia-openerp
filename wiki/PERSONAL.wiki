@@ -11,9 +11,9 @@ Se ocupa cu gestionarea Resurselor Umane.
    * Descriere functionala *
 == Modulul cuprinde urmatoarele procese: ==
 === 1. Procesul de recrutare ce include: === 
- * alcatuirea anunturilor pentru locurile de munca;
- * organizarea interviurilor;
- * selectia candidatilor pentru angajare.
+ - alcatuirea anunturilor pentru locurile de munca;
+ - organizarea interviurilor;
+ - selectia candidatilor pentru angajare.
 
 === 2. Procesul de angajare ===
  * presupune atribuirea unei marci unui candidat selectat pentru angajare, crearea dosarului si a contractului de munca pentru acesta; 
