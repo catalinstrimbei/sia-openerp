@@ -33,7 +33,7 @@ public class Cec extends Incasare {
 	}
 
 	public Cec(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
-			Double suma, String sumaInLitere, String seria, String numar,
+			Double suma, String sumaInLitere, String seria, Integer numar,
 			String locatie, String stare) {
 		super(dataEmiterii, avans, dataInregistrarii, suma, sumaInLitere,
 				seria, numar, locatie);

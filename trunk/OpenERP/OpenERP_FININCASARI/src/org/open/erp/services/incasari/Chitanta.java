@@ -26,7 +26,7 @@ public class Chitanta extends Incasare {
 	private Angajat casier;
 
 	public Chitanta(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
-			Double suma, String sumaInLitere, String seria, String numar,
+			Double suma, String sumaInLitere, String seria, Integer numar,
 			String locatie, Angajat casier) {
 		super(dataEmiterii, avans, dataInregistrarii, suma, sumaInLitere,
 				seria, numar, locatie);

@@ -47,7 +47,7 @@ public abstract class Incasare {
 	}
 
 	private String seria;
-	private String numar;
+	private Integer numar;
 	private String locatie;
 
 	public Date getData() {
@@ -66,11 +66,11 @@ public abstract class Incasare {
 		this.seria = seria;
 	}
 
-	public String getNumar() {
+	public Integer getNumar() {
 		return numar;
 	}
 
-	public void setNumar(String numar) {
+	public void setNumar(Integer numar) {
 		this.numar = numar;
 	}
 
@@ -110,7 +110,7 @@ public abstract class Incasare {
 
 	public Incasare(Date dataEmiterii, Boolean avans,
 			Date dataInregistrarii, Double suma, String sumaInLitere,
-			String seria, String numar, String locatie) {
+			String seria, Integer numar, String locatie) {
 		super();
 		this.dataEmiterii = dataEmiterii;
 		this.avans = avans;

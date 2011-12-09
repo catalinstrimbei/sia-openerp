@@ -47,7 +47,7 @@ public class BiletLaOrdin extends Incasare {
 
 	public BiletLaOrdin(Date dataEmiterii, Boolean avans,
 			Date dataInregistrarii, Double suma, String sumaInLitere,
-			String seria, String numar, String locatie,
+			String seria, Integer numar, String locatie,
 			 Date dataScadenta, Persoana garant,
 			String stare) {
 		super(dataEmiterii, avans, dataInregistrarii, suma, sumaInLitere,
