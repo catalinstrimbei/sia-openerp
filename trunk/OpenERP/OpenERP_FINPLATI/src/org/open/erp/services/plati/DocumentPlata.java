@@ -18,4 +18,7 @@ public class DocumentPlata {
 	public void setIdDocumentPlata(Integer idDocumentPlata) {
 		this.idDocumentPlata = idDocumentPlata;
 	}
+	public boolean efectPlata(Double totplata){
+		return true;
+	}
 }

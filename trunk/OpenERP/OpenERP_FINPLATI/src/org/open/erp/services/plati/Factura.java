@@ -7,7 +7,7 @@ import org.open.erp.services.nomgen.PersoanaJuridica;
 public class Factura {
 	private String seriaNr;
 	private Date data;
-	private Double totalPlata;
+	public Double totalPlata;
 	private PersoanaJuridica furnizor;
 	private PersoanaJuridica client;
 	

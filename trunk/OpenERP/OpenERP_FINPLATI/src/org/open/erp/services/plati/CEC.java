@@ -62,5 +62,10 @@ public class CEC extends DocumentPlata{
 
 	public void setSeriaNr(String seriaNr) {
 		this.seriaNr = seriaNr;
+		}
+	public boolean efectPlata(Double totplata){
+		System.out.println("Plata prin CEC in valoare de: " +
+				totplata + " RON "+ getTotalPlata());
+		return true;
 	}
-}	
+}

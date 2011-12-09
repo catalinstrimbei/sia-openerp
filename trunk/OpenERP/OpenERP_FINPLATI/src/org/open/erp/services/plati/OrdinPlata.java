@@ -76,5 +76,11 @@ public class OrdinPlata extends DocumentPlata{
 	public void setSeriaNr(String seriaNr) {
 		this.seriaNr = seriaNr;
 	}
+	
+	public boolean efectPlata(Double totplata){
+		System.out.println("Plata prin OP in valoare de: " +
+				totplata + " RON "+ getTotalPlata());
+		return true;
+	}
 }
 
