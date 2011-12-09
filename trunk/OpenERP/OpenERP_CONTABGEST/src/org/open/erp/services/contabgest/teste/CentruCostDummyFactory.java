@@ -23,7 +23,7 @@ public class CentruCostDummyFactory {
 		return new CostPrimarImpl();
 	}
 	
-	// ASA?!?!
+
 	
 	public static PersonalSrv getPersonalSrv(){
 		return new PersonalImpl();
