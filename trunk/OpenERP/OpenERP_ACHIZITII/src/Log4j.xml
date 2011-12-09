@@ -3,6 +3,13 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
 	<!-- Appenders -->
+	<appender name="Cool" class="org.apache.log4j.ConsoleAppender">		
+		<param name="threshold" value="debug" />
+		<param name="immediateFlush" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="(A1) %d [%t] %-5p %c - %m%n" />
+		</layout>
+	</appender>
 	<appender name="A1" class="org.apache.log4j.FileAppender">
 		
 		<param name="file" value="logs/logERP.txt" />
@@ -23,6 +30,7 @@
 			<param name="ConversionPattern" value="(A2) %d [%t] %-5p %c - %m%n" />
 		</layout>
 	</appender>
+	
 
 
 	<!-- Loggers -->
@@ -34,6 +42,7 @@
 		<priority value="all" />
 		<appender-ref ref="A1" />
 		<appender-ref ref="A2" />
+		<appender-ref ref="Cool" />
 	</root>
 
 </log4j:configuration>

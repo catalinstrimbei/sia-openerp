@@ -83,7 +83,7 @@ public interface AprovizionareSrv {
   	 * 
   	 */   
     
-    void analizaOferteAchizitie(List<OfertaAchizitie> oferteAchizitie );    
+    Comanda analizaOferteAchizitie(List<OfertaAchizitie> oferteAchizitie );    
     /**
   	 * Creare comanda de achizitie
   	 * 

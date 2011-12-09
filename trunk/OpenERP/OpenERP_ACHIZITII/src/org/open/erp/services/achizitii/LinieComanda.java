@@ -1,12 +1,13 @@
 package org.open.erp.services.achizitii;
 
-import org.open.erp.services.stocuri.ArticolStoc;
+import org.open.erp.services.nomgen.Material;
+
 
 
 public class LinieComanda   {
 	public Integer linieComanda;
 	public Comanda comanda;
-	public Articol articol;	
+	public Material articol;	
 	public Double cantitate;
 	public Double pret;
 	public Integer getLinieComanda() {
@@ -21,12 +22,7 @@ public class LinieComanda   {
 	public void setComanda(Comanda comanda) {
 		this.comanda = comanda;
 	}	
-	public Articol getArticol() {
-		return articol;
-	}
-	public void setArticol(Articol articol) {
-		this.articol = articol;
-	}
+	
 	public Double getCantitate() {
 		return cantitate;
 	}
@@ -39,7 +35,7 @@ public class LinieComanda   {
 	public void setPret(Double pret) {
 		this.pret = pret;
 	}
-	public LinieComanda(Integer linieComanda, Comanda comanda, Articol articol,
+	public LinieComanda(Integer linieComanda, Comanda comanda, Material articol,
 			Double cantitate, Double pret) {
 		super();
 		this.linieComanda = linieComanda;
@@ -47,6 +43,12 @@ public class LinieComanda   {
 		this.articol = articol;
 		this.cantitate = cantitate;
 		this.pret = pret;
+	}
+	public Material getArticol() {
+		return articol;
+	}
+	public void setArticol(Material articol) {
+		this.articol = articol;
 	}
 		
 

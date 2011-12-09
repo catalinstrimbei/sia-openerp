@@ -4,9 +4,10 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.Persoana;
 
-public class CerereOferta {
+public class CerereOferta /*extends Document*/ {
 public static final Integer TRIMISA = 0;
 public static final Integer PRIMITA = 1;
 public static final Integer ANULATA =-1;

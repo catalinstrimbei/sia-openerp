@@ -4,7 +4,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.Articol;
@@ -19,8 +18,6 @@ import org.open.erp.services.achizitii.LiniePlanAprovizionare;
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
-import org.open.erp.services.achizitii.exceptions.AchizitiiExceptions;
-import org.open.erp.services.achizitii.teste.TestAprovizionareImpl;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
@@ -30,8 +27,6 @@ import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.StocuriSrv;
-import org.open.erp.services.stocuri.exceptions.IntrariStocExceptions;
-import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
 import org.open.erp.services.stocuri.impl.Procesare;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 
@@ -52,15 +47,18 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		//Vom crea un plan de aprovizionare nou daca suntem intr-o saptamana noua,
 		//altfel vom return planul de aprovizionare existent
 		PlanAprovizionare plan = PlanAprovizionare.getPlanAprovizionare();
-		CerereAprovizionare cerere = (CerereAprovizionare)cerereApr;		
+		CerereAprovizionare cerere = (CerereAprovizionare) cerereApr;		
 		//Vom adauga in plan liniile din cerere. In cazul in care in plan nu exista produsele din liniile cererii vom 
 		//crea o linie noua in plan		
-		 
+		//logger.debug("NrLinii: "+cerereApr.getLiniiDocument().size());
 		  for (LinieDocument linieCerere : cerere.getLiniiDocument()) {
 	            LiniePlanAprovizionare liniePlan=plan.existaArticolInLiniiPlan(linieCerere.getMaterial());
+	            
+	            logger.debug("ExistaArticolInLiniiPlan: "+liniePlan);
 	            int linii = plan.getLiniiPlan().size();
+	            logger.error("NrLiniiInitial: "+linii);
 	            if (liniePlan==null){
-	            	liniePlan=new LiniePlanAprovizionare((Articol) linieCerere.getMaterial(),
+	            	liniePlan=new LiniePlanAprovizionare(linieCerere.getMaterial(),
                                                                   linieCerere.getCantitate(),
                                                                   linii+1);
 	            	liniePlan.setPlanAprovizionare(plan);
@@ -91,7 +89,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 	public void propertyChange(PropertyChangeEvent evenimentCuCerereAprovizionare) {	
 		//Se extrage cererea de aprovizionare din evenimentul generat de crearea unei noi Cereri de Aprovizionare in clasa
 		//Procesare apartinand modulului de Stocuri
-		
+		//logger.debug("Metoda : propertyChange ");
 		try{
 		this.inregistrareCerereAprovizionare((CerereAprovizionare)evenimentCuCerereAprovizionare.getNewValue());
 		}catch(Exception e) {
@@ -128,7 +126,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 	}
 
 	@Override
-	public void analizaOferteAchizitie(List<OfertaAchizitie> oferteAchizitie){
+	public Comanda analizaOferteAchizitie(List<OfertaAchizitie> oferteAchizitie){
 		Double prag = (double) 9999999;
 		OfertaAchizitie ofertaPrag=null;
 		for (OfertaAchizitie oferta :oferteAchizitie){
@@ -144,7 +142,11 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 				 ofertaPrag=oferta;
 			 } 
 		}
-		this.creareComandaDinOferta(ofertaPrag) ;		
+		logger.fatal(ofertaPrag.getNrZile());
+		for(LinieOfertaAchizitie linie:ofertaPrag.getLiniiOferta()){
+		    logger.fatal(linie.getLinie()+" "+linie.getArticol().getDenumire()+" "+linie.getCantitate()+" "+linie.getPret());
+		}
+		return this.creareComandaDinOferta(ofertaPrag) ;		
 	}
 
 	@Override
@@ -152,15 +154,16 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 	public Comanda adaugaLiniiComanda(Comanda comanda, List<LiniePlanAprovizionare> liniiPlan){
 		Comanda comandaAchizitie=comanda;
 		Integer linie=comandaAchizitie.getLiniiComanda().size();
+		logger.error(comandaAchizitie.getLiniiComanda().size());
 	for (LiniePlanAprovizionare liniePlan :liniiPlan){
 		LinieComanda linieComanda =  new LinieComanda(linie+1
                                                      ,comandaAchizitie
                                                      ,liniePlan.getArticol()
                                                      ,liniePlan.getCantitate()
-                                                     ,liniePlan.getArticol().getPretAchizitie());
+                                                     ,((Articol) liniePlan.getArticol()).getPretAchizitie());
 		comandaAchizitie.addLinii(linieComanda);
 		liniePlan.setStatus(LiniePlanAprovizionare.CREAT_COMANDA);
-		comandaAchizitie.addLinii(linieComanda);
+		linie++;
 	}	
 		return comandaAchizitie;
 	}
@@ -176,6 +179,7 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 					                                    ,linieOferta.getCantitate()
 					                                    ,linieOferta.getPret());
 			comanda.addLinii(linieComanda);
+			linie++;
 		}
 		return comanda;
 	}

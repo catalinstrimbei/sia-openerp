@@ -1,9 +1,12 @@
 package org.open.erp.services.achizitii.teste;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -11,26 +14,32 @@ import org.junit.Test;
 import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.Articol;
 import org.open.erp.services.achizitii.Categorie;
+import org.open.erp.services.achizitii.Comanda;
 import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.achizitii.Furnizor;
+import org.open.erp.services.achizitii.LinieComanda;
 import org.open.erp.services.achizitii.LinieFacturaAchizitie;
+import org.open.erp.services.achizitii.LinieOfertaAchizitie;
+import org.open.erp.services.achizitii.LiniePlanAprovizionare;
+import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
+import org.open.erp.services.achizitii.impl.AprovizionareImpl;
 import org.open.erp.services.ctbgen.Cont;
+import org.open.erp.services.ctbgen.Cont.StatusSintetic;
+import org.open.erp.services.ctbgen.Cont.TipCont;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.RegConturi;
-import org.open.erp.services.ctbgen.RegLuniLucru;
 import org.open.erp.services.ctbgen.RegSablonNC;
 import org.open.erp.services.ctbgen.RegTipuriContabile;
 import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.TipContabil;
-import org.open.erp.services.ctbgen.Cont.StatusSintetic;
-import org.open.erp.services.ctbgen.Cont.TipCont;
-import org.open.erp.services.ctbgen.exceptii.CtbException;
-import org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl;
+import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.impl.Procesare;
 
 public class TestAprovizionareImpl {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestAprovizionareImpl.class.getName());
@@ -54,7 +63,7 @@ public class TestAprovizionareImpl {
 
 	@Test
 	public void testCrearePlanAprovizionare() {
-		logger.info("Begin test: Inregistrare Cerere Aprovizionare");
+		logger.info("@Begin test: Inregistrare Cerere Aprovizionare");
 		try{
 			Calendar calendar = Calendar.getInstance();
 			CerereAprovizionare cerere = new CerereAprovizionare(121,calendar.getTime(),"test","0");
@@ -67,14 +76,14 @@ public class TestAprovizionareImpl {
 		catch(Exception e){
 		logger.error("Exceptie "+ e.getMessage());
 		}	
-		logger.info("End test: Plan unic de aprovizionare creat");
+		logger.info("#End test: Plan unic de aprovizionare creat");
 	}	
 	
 
 	@Test
 	public void testInregistrareFactura() throws Throwable {
-    logger.info("Begin test: Inregistrare Factura");   
-        //Initializare context ContabGen
+        logger.debug("@Begin test: Inregistrare Factura");   
+                //Initializare context ContabGen
         RegSablonNC regSablonNC = RegSablonNC.instantiaza();
         RegConturi regConturi = RegConturi.instantiaza();	
 	    RegTipuriContabile regTipContabile = RegTipuriContabile.instantiaza();
@@ -97,7 +106,7 @@ public class TestAprovizionareImpl {
 		fact.setNrDoc(11);
 		Categorie cat=new Categorie(1,"Categorie1");
 		cat.addFurnizor(furnizor);
-		
+		logger.error("bla");
 		Articol art1 = new Articol(1,"Articol1","buc",cat);
 		art1.setTipContabil("Materii prime");		
 		Articol art2 = new Articol(2,"Articol2","cutie",cat);
@@ -123,7 +132,7 @@ public class TestAprovizionareImpl {
 	    
 		Integer inreg =aprovizionareInstance.inregistrareFactura(fact);		
 		assertEquals("UUPPSSS: nu s-a inregistrat cu succes in contabilitate",inreg.getClass().getSimpleName(),"Integer");	
-		logger.info("End test: factura inregistrata");
+		logger.info("#End test: factura inregistrata");
 	}
 
 	/*@Test
@@ -147,34 +156,138 @@ public class TestAprovizionareImpl {
 	}*/
 
 	@Test
-	public void testReturMateriale() {
-		
-		
+	public void testReturMateriale() {	
+		logger.debug("@Start test: testReturMateriale");
+		logger.debug("===to be continued...");
+		logger.debug("#End test: testReturMateriale");
 	}
 	
 	@Test
 	public void testInregistrareCerereAprovizionare() {
-		
+		//Testare actualizare plan aprovizionare in mod automat
+	logger.debug("@Start test: inregistrare cerere aprovizionare");
+	Procesare procesareTestare = new Procesare(null,null);	
+	
+	CerereAprovizionare cerere = new CerereAprovizionare(1,new Date(),"solicitant","livrae");
+	
+	List<LinieDocument> lista = new LinkedList<LinieDocument>();
+	Material mat1 = new Material(1,"Mat1","buc");
+	Material mat2 = new Material(2,"Mat2","pachet");
+	LinieDocument linie1 = new LinieDocument(1,cerere,mat1,100.0,100.0,100.0);
+	LinieDocument linie2 = new LinieDocument(2,cerere,mat2,100.0,100.0,100.0);
+	lista.add(linie1);
+	lista.add(linie2);
+	AprovizionareImpl aprovImpl = new AprovizionareImpl();
+	aprovImpl.ascultaFurnizoriCerereriAprovizionare(procesareTestare);
+	//Apelare 'addLiniiCerereAprovizionare' din Clasa <Procesare> apartinand Stocurilor
+	procesareTestare.addLiniiCerereAprovizionare(cerere, lista);
+	
+	PlanAprovizionare plan = PlanAprovizionare.getPlanAprovizionare();
+	
+	plan.setIdPlan(11);
+	logger.debug("Plan: "+plan.getIdPlan()+" dataStart: "+plan.getDataStart()+" dataFinal: "+plan.getDataFinal());
+	for (LiniePlanAprovizionare linie: plan.getLiniiPlan()){
+		logger.debug("Linie nr: "+linie.getLinie()+" Material: "+linie.getArticol().getDenumire()+" cantitate: "+linie.getCantitate());
 	}
+	logger.debug(plan.getLiniiPlan().size());
+	
+	assertTrue(plan.getLiniiPlan().size()>=1);
+	logger.debug("#End test: inregistrare cerere aprovizionare");
+	}
+	
+	
 	@Test
 	public void testCreareCerereOferta() {
-		
+		logger.debug("@Start test: testCreareCerereOferta");
+		logger.debug("===to be continued...");
+		logger.debug("#End test: testCreareCerereOferta");
 	}
 	@Test
 	public void testCreareOfertaAchizitie() {
-		
+		logger.debug("@Start test: testCreareOfertaAchizitie");
+		logger.debug("===to be continued...");
+		logger.debug("#End test: testCreareOfertaAchizitie");
 	}
 	@Test
 	public void testCreareComandaAnalizaOferte() {
+		logger.debug("@Start test: Analiza oferte si creare comanda");
+		List<OfertaAchizitie> listaOferte = new LinkedList<OfertaAchizitie>();
+		OfertaAchizitie oferta1 = new OfertaAchizitie(1,new Date(),OfertaAchizitie.IN_CURS);
+		OfertaAchizitie oferta2 = new OfertaAchizitie(2,new Date(),OfertaAchizitie.IN_CURS);
+		OfertaAchizitie oferta3 = new OfertaAchizitie(3,new Date(),OfertaAchizitie.IN_CURS);
+		//logger.debug("OfertaAchizitie");
+		oferta1.setNrZile(2);
+		oferta2.setNrZile(3);
+		oferta3.setNrZile(1);
+		//logger.debug("Oferte");
+		Articol mat1 = new Articol(1,"Mat1","buc",null);		
+		Articol mat2 = new Articol(2,"Mat2","pachet",null);
+		Articol mat3 = new Articol(3,"Mat3","pachet",null);
+		
+		logger.debug(oferta1.liniiOferta);
+		//Inseram linii in <oferta1>
+		LinieOfertaAchizitie linie11 = new LinieOfertaAchizitie(oferta1,mat1,100.0,1,50.0);
+		LinieOfertaAchizitie linie12 = new LinieOfertaAchizitie(oferta1,mat2,100.0,2,60.0);
+		LinieOfertaAchizitie linie13 = new LinieOfertaAchizitie(oferta1,mat3,100.0,3,55.9);
+		oferta1.addLinieOfertaAchizitie(linie11);		
+		oferta1.addLinieOfertaAchizitie(linie12);
+		oferta1.addLinieOfertaAchizitie(linie13);
+		//Inseram linii in <oferta2>
+		LinieOfertaAchizitie linie21 = new LinieOfertaAchizitie(oferta2,mat1,100.0,1,77.0);
+		LinieOfertaAchizitie linie22 = new LinieOfertaAchizitie(oferta2,mat2,100.0,2,48.0);
+		LinieOfertaAchizitie linie23 = new LinieOfertaAchizitie(oferta2,mat3,100.0,3,50.0);
+		oferta2.addLinieOfertaAchizitie(linie21);
+		oferta2.addLinieOfertaAchizitie(linie22);
+		oferta2.addLinieOfertaAchizitie(linie23);
+		//Inseram linii in <oferta3>
+		LinieOfertaAchizitie linie31 = new LinieOfertaAchizitie(oferta3,mat1,100.0,1,80.0);
+		LinieOfertaAchizitie linie32 = new LinieOfertaAchizitie(oferta3,mat2,100.0,2,39.0);
+		LinieOfertaAchizitie linie33 = new LinieOfertaAchizitie(oferta3,mat3,100.0,3,49.0);
+		oferta3.addLinieOfertaAchizitie(linie31);
+		oferta3.addLinieOfertaAchizitie(linie32);
+		oferta3.addLinieOfertaAchizitie(linie33);
+		//Populam lista cu ofertele de achizitie
+	    listaOferte.add(oferta1);
+	    listaOferte.add(oferta2);
+	    listaOferte.add(oferta3);	    
+		Comanda comanda;
+		comanda=aprovizionareInstance.analizaOferteAchizitie(listaOferte);
+		logger.debug("Comanda creata: "+comanda.getIdComanda()+ " "+comanda.getDataComanda());
+		for (LinieComanda linieC:comanda.getLiniiComanda()){
+			logger.debug("Linie: "+linieC.getLinieComanda()+" "+linieC.getArticol().getDenumire()+" "+linieC.getPret()+" "+linieC.getCantitate());
+		}
+		logger.debug("#End test: Analiza oferte si creare comanda");
 		
 	}
 	@Test
 	public void testCreareComandaDinPlanAprovizionare() {
-		
+		logger.debug("@Start test: Creare comanda din linii plan aprovizionare");
+		Comanda comanda = new Comanda(1,new Date(),Comanda.IN_CURS);
+		Articol mat1 = new Articol(1,"Mat1","buc",null);
+		Articol mat2 = new Articol(2,"Mat2","pachet",null);
+		Articol mat3 = new Articol(3,"Mat3","pachet",null);
+		List<LiniePlanAprovizionare> liniiPlan = new LinkedList<LiniePlanAprovizionare>();
+		LiniePlanAprovizionare linie1 = new LiniePlanAprovizionare(mat1,100.0,1);
+		LiniePlanAprovizionare linie2 = new LiniePlanAprovizionare(mat2,100.0,2);
+		LiniePlanAprovizionare linie3 = new LiniePlanAprovizionare(mat3,100.0,3);
+		liniiPlan.add(linie1);
+		liniiPlan.add(linie2);
+		liniiPlan.add(linie3);
+		aprovizionareInstance.adaugaLiniiComanda(comanda, liniiPlan);	
+		logger.debug("LiniePlan1: "+linie1.getStatus());
+		logger.debug("LiniePlan2: "+linie2.getStatus());
+		logger.debug("LiniePlan3: "+linie3.getStatus());
+		logger.debug("----------------------------------");
+		for (LinieComanda linieComanda: comanda.getLiniiComanda()){
+			logger.error("LinieComanda: "+linieComanda.getLinieComanda()+ " "+linieComanda.getArticol().getDenumire()+" "+linieComanda.getCantitate()+" "+linieComanda.getPret());			
+		}
+		logger.debug("#End test: Creare comanda din linii plan aprovizionare; Legenda: 2=CREAT_COMANDA");
 	}
 	@Test
 	public void testCreareNir() {
-		
+		logger.debug("@Start test: testCreareNir");
+		logger.debug("===to be continued...");
+		logger.debug("#End test: testCreareNir");
 	}
 
 }

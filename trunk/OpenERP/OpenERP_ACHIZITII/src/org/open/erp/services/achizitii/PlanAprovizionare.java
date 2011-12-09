@@ -9,7 +9,7 @@ import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Persoana;
 
-public class PlanAprovizionare {
+public class PlanAprovizionare  {
 	private static PlanAprovizionare planAprovizionare;
 	public static final Integer FINALIZAT = 1;
 	public static final Integer IN_CURS = 0;
@@ -46,7 +46,8 @@ public class PlanAprovizionare {
         	Calendar c = Calendar.getInstance();
      	    Date date = new Date();
      	    c.setTime(date);
-     	    c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+     	    c.setFirstDayOfWeek(Calendar.MONDAY);
+     	    c.set(Calendar.DAY_OF_WEEK,  Calendar.SUNDAY);
 			planAprovizionare = new PlanAprovizionare(Calendar.getInstance().get(Calendar.WEEK_OF_YEAR)					
 					,Calendar.getInstance().get(Calendar.YEAR)
 					,Calendar.getInstance().getTime()

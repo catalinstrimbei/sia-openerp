@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.open.erp.services.achizitii.impl.AprovizionareImpl;
 import org.open.erp.services.nomgen.LinieDocument;
 
 public class OfertaAchizitie {
@@ -16,12 +18,21 @@ public class OfertaAchizitie {
 	private Furnizor furnizor;
 	private Double valTotal;
 	private Integer nrZile;
-	private CerereOferta cerereOferta;
-	private List<LinieOfertaAchizitie> liniiOferta = new LinkedList<LinieOfertaAchizitie>();
-	
+	private CerereOferta cerereOferta;	
+	public List<LinieOfertaAchizitie> liniiOferta = new LinkedList<LinieOfertaAchizitie>();
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(OfertaAchizitie.class.getName());
 	public Double getValTotal() {
 		return valTotal;
 	}
+	
+	public List<LinieOfertaAchizitie> getLiniiOferta() {
+		return liniiOferta;
+	}
+
+	public void setLiniiOferta(List<LinieOfertaAchizitie> liniiOferta) {
+		this.liniiOferta = liniiOferta;
+	}
+
 	public void setValTotal(Double valTotal) {
 		this.valTotal = valTotal;
 	}
@@ -44,6 +55,14 @@ public class OfertaAchizitie {
 		this.statusOferta = statusOferta;
 		this.furnizor = furnizor;
 		this.liniiOferta = liniiOferta;
+	}
+	
+	public OfertaAchizitie(Integer idOferta, Date dataOferta,
+			Integer statusOferta) {
+		super();
+		this.idOferta = idOferta;
+		this.dataOferta = dataOferta;
+		this.statusOferta = statusOferta;
 	}
 	public Integer getIdOferta() {
 		return idOferta;
@@ -69,15 +88,11 @@ public class OfertaAchizitie {
 	public void setFurnizor(Furnizor furnizor) {
 		this.furnizor = furnizor;
 	}
-	
-	public List<LinieOfertaAchizitie> getLiniiOferta() {
-		return liniiOferta;
-	}
-	public void setLiniiOferta(List<LinieOfertaAchizitie> liniiOferta) {
-		this.liniiOferta = liniiOferta;
-	}
+
 	public void addLinieOfertaAchizitie(LinieOfertaAchizitie li) {
-        this.getLiniiOferta().add(li);
+		//logger.debug("LinieOfertaAchizitie: "+li);		
+        this.getLiniiOferta().add(li);  
+        //logger.debug("UUPPSSSSSSSS");     
         li.setOferta(this);
     }
 

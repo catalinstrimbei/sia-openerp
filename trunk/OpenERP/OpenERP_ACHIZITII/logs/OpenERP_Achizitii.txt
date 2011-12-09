@@ -1,21 +1,71 @@
-(A2) 2011-12-08 20:41:33,057 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
-(A2) 2011-12-08 20:41:33,081 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
-(A2) 2011-12-08 20:41:33,082 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
-(A2) 2011-12-08 20:41:33,083 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Begin test: Inregistrare Cerere Aprovizionare
-(A2) 2011-12-08 20:41:33,139 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - 0 2011 50 Thu Dec 08 20:41:33 EET 2011 Sun Dec 04 20:41:33 EET 2011
-(A2) 2011-12-08 20:41:33,139 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - End test: Plan unic de aprovizionare creat
-(A2) 2011-12-08 20:41:33,140 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
-(A2) 2011-12-08 20:41:33,141 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Begin test: Inregistrare Factura
-(A2) 2011-12-08 20:41:33,259 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - Se incearca inregistrarea facturii fact1
-(A2) 2011-12-08 20:41:33,303 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare achizitie noua
-(A2) 2011-12-08 20:41:33,317 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
-(A2) 2011-12-08 20:41:33,317 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 301 | 401
-(A2) 2011-12-08 20:41:33,317 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 301 | 401
-(A2) 2011-12-08 20:41:33,318 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
-(A2) 2011-12-08 20:41:33,318 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de achizitie NOUA completa
-(A2) 2011-12-08 20:41:33,333 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - End test: factura inregistrata
-(A2) 2011-12-08 20:41:33,334 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
-(A2) 2011-12-08 20:41:33,334 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
-(A2) 2011-12-08 20:41:33,334 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
-(A2) 2011-12-08 20:41:33,335 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
-(A2) 2011-12-08 20:41:33,335 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,811 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,812 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - @Begin test: Inregistrare Cerere Aprovizionare
+(A2) 2011-12-09 03:42:24,818 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - 0 2011 50 Fri Dec 09 03:42:24 EET 2011 Sun Dec 11 03:42:24 EET 2011
+(A2) 2011-12-09 03:42:24,819 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - #End test: Plan unic de aprovizionare creat
+(A2) 2011-12-09 03:42:24,820 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,820 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - @Begin test: Inregistrare Factura
+(A2) 2011-12-09 03:42:24,836 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareImpl - bla
+(A2) 2011-12-09 03:42:24,836 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - Se incearca inregistrarea facturii fact1
+(A2) 2011-12-09 03:42:24,843 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare achizitie noua
+(A2) 2011-12-09 03:42:24,846 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
+(A2) 2011-12-09 03:42:24,846 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 301 | 401
+(A2) 2011-12-09 03:42:24,846 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 301 | 401
+(A2) 2011-12-09 03:42:24,847 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
+(A2) 2011-12-09 03:42:24,847 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de achizitie NOUA completa
+(A2) 2011-12-09 03:42:24,848 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - #End test: factura inregistrata
+(A2) 2011-12-09 03:42:24,849 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,849 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - @Start test: testReturMateriale
+(A2) 2011-12-09 03:42:24,849 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - ===to be continued...
+(A2) 2011-12-09 03:42:24,849 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - #End test: testReturMateriale
+(A2) 2011-12-09 03:42:24,849 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,850 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - @Start test: testCreareNir
+(A2) 2011-12-09 03:42:24,850 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - ===to be continued...
+(A2) 2011-12-09 03:42:24,850 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - #End test: testCreareNir
+(A2) 2011-12-09 03:42:24,850 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,851 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - @Start test: testCreareCerereOferta
+(A2) 2011-12-09 03:42:24,851 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - ===to be continued...
+(A2) 2011-12-09 03:42:24,851 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - #End test: testCreareCerereOferta
+(A2) 2011-12-09 03:42:24,851 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,851 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - @Start test: testCreareOfertaAchizitie
+(A2) 2011-12-09 03:42:24,852 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - ===to be continued...
+(A2) 2011-12-09 03:42:24,852 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - #End test: testCreareOfertaAchizitie
+(A2) 2011-12-09 03:42:24,852 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,852 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - @Start test: inregistrare cerere aprovizionare
+(A2) 2011-12-09 03:42:24,861 [main] DEBUG org.open.erp.services.stocuri.util.StocuriLogger - Creare obiect Procesare.-----
+(A2) 2011-12-09 03:42:24,861 [main] FATAL com.FATAL - Metoda: addChangeListener
+(A2) 2011-12-09 03:42:24,862 [main] ERROR com.ERROR - creare cerere Stocuri : Mat1
+(A2) 2011-12-09 03:42:24,862 [main] ERROR com.ERROR - creare cerere Stocuri : Mat2
+(A2) 2011-12-09 03:42:24,862 [main] FATAL com.FATAL - Metoda: addLiniiCerereAprovizionare
+(A2) 2011-12-09 03:42:24,862 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2011-12-09 03:42:24,862 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 0
+(A2) 2011-12-09 03:42:24,864 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2011-12-09 03:42:24,864 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 1
+(A2) 2011-12-09 03:42:24,864 [main] FATAL com.FATAL - Metoda: notifyListeners
+(A2) 2011-12-09 03:42:24,865 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Plan: 11 dataStart: Fri Dec 09 03:42:24 EET 2011 dataFinal: Sun Dec 11 03:42:24 EET 2011
+(A2) 2011-12-09 03:42:24,865 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Linie nr: 1 Material: Mat1 cantitate: 100.0
+(A2) 2011-12-09 03:42:24,865 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Linie nr: 2 Material: Mat2 cantitate: 100.0
+(A2) 2011-12-09 03:42:24,865 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - 2
+(A2) 2011-12-09 03:42:24,865 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - #End test: inregistrare cerere aprovizionare
+(A2) 2011-12-09 03:42:24,866 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,866 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - @Start test: Analiza oferte si creare comanda
+(A2) 2011-12-09 03:42:24,868 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - []
+(A2) 2011-12-09 03:42:24,869 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 2
+(A2) 2011-12-09 03:42:24,870 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 1 Mat1 100.0 50.0
+(A2) 2011-12-09 03:42:24,870 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 2 Mat2 100.0 60.0
+(A2) 2011-12-09 03:42:24,870 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 3 Mat3 100.0 55.9
+(A2) 2011-12-09 03:42:24,873 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Comanda creata: null Fri Dec 09 03:42:24 EET 2011
+(A2) 2011-12-09 03:42:24,873 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Linie: 1 Mat1 50.0 100.0
+(A2) 2011-12-09 03:42:24,873 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Linie: 2 Mat2 60.0 100.0
+(A2) 2011-12-09 03:42:24,873 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - Linie: 3 Mat3 55.9 100.0
+(A2) 2011-12-09 03:42:24,874 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - #End test: Analiza oferte si creare comanda
+(A2) 2011-12-09 03:42:24,874 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionareImpl - initTest
+(A2) 2011-12-09 03:42:24,875 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - @Start test: Creare comanda din linii plan aprovizionare
+(A2) 2011-12-09 03:42:24,875 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - 0
+(A2) 2011-12-09 03:42:24,875 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - LiniePlan1: 2
+(A2) 2011-12-09 03:42:24,875 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - LiniePlan2: 2
+(A2) 2011-12-09 03:42:24,875 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - LiniePlan3: 2
+(A2) 2011-12-09 03:42:24,875 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - ----------------------------------
+(A2) 2011-12-09 03:42:24,876 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareImpl - LinieComanda: 1 Mat1 100.0 null
+(A2) 2011-12-09 03:42:24,876 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareImpl - LinieComanda: 2 Mat2 100.0 null
+(A2) 2011-12-09 03:42:24,876 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareImpl - LinieComanda: 3 Mat3 100.0 null
+(A2) 2011-12-09 03:42:24,876 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareImpl - #End test: Creare comanda din linii plan aprovizionare; Legenda: 2=CREAT_COMANDA
