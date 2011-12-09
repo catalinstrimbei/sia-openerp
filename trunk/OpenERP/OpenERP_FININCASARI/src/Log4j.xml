@@ -21,7 +21,7 @@
   
   
 	<!-- Loggers -->
-	<logger name="org.open.erp.services.proman">
+	<logger name="org.open.erp.services.finincasari">
 		<level value="debug"/> 
 	</logger>  
 	<!-- Root Logger -->
