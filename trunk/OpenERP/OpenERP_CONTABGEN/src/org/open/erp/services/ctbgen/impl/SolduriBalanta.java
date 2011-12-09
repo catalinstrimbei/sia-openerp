@@ -61,10 +61,10 @@ public class SolduriBalanta {
 			}
 			//System.out.println(inregRJ.size());
 			for (InregistrareRJ irj : inregRJ) {
-				//System.out.println(irj.);
+			
 				for (ArticolCtb art : irj.getArticoleRJ()) {
-					//art.toString();
-					if (art.getContDebit() == c) {// sau poate vrea equals
+				
+					if (art.getContDebit() == c) {
 						rcd = rcd + art.getSumaDC();
 						//System.out.println("RJ contine contul pe debit");
 					}

@@ -122,7 +122,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 			//TODO: cod
 			return -1;
 		} else {
-			//TODO:
+			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
 			return -1;
 		}	
 	}
@@ -198,7 +198,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 			//TODO:
 			return -1;
 		} else {
-			//TODO:
+			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
 			return -1;
 		}	
 	}
@@ -220,7 +220,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 		if (stareDocument==StareDocument.NOU) {
 			logger.debug("Creare inregistrare incasare noua");
 
-			//TODO: doua variabile sabloane si if dupa tip tipinc
+			//TODO: doua  6  variabile sabloane+ cec, bo, avans si if dupa tip tipinc
 			Integer nrSabIncasare;
 			if(tipIncasare==TipIncasare.CASA){
 				nrSabIncasare=7;
@@ -261,7 +261,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 			//TODO:
 			return -1;
 		} else {
-			//TODO:
+			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
 			return -1;
 		}	
 	}
@@ -324,7 +324,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 			//TODO:
 			return -1;
 		} else {
-			//TODO:
+			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
 			return -1;
 		}	
 	}
@@ -405,7 +405,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 			//TODO:
 			return -1;
 		} else {
-			//TODO:
+			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
 			return -1;
 		}	
 	}
@@ -476,7 +476,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 			//TODO:
 			return -1;
 		} else {
-			//TODO:
+			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
 			return -1;
 		}	
 	}
@@ -550,13 +550,13 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 			//TODO:
 			return -1;
 		} else {
-			//TODO:
+			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
 			return -1;
 		}	
 	}
 //------------------------------------------------------------
 	@Override
-	public void jurnalizareNcDiversa( Date data, Integer nrInreg, Cont contd, Cont contc, Double suma, StareDocument stareDocument) throws CtbException{
+	public void jurnalizareNcDiversa( Date data, Integer nrInreg, Cont contd, Cont contc, Double suma, StareDocument stareDocument, Integer idInreg) throws CtbException{
 		
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		//RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
@@ -601,7 +601,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 			//TODO:
 			//return -1;
 		} else {
-			//TODO:
+			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
 			//return -1;
 		}	
 	}
@@ -748,7 +748,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 		//RegBalanta.instantiaza().printAll();
 		luna.inchideLuna();
 		
-		//cred ca am uitat sa stergem balantele din (luna), cu true care nu se mai utilizeaza
+		//TODO ca am uitat sa stergem balantele din (luna), cu true care nu se mai utilizeaza
 	}
 //-------------------------------------------------------
 	@Override
@@ -848,7 +848,8 @@ public class ContabilizareSrvImpl implements ContabilizareSrv {
 	
 	
 	public List<String> getTipuriContabile(){
-		
-		return null;//de pus get dun RegTipuriContabile
+		RegTipuriContabile regTipC =RegTipuriContabile.instantiaza();
+		return regTipC.getTipuriContabile();
+		//return null;//de pus get dun RegTipuriContabile
 	};
 }

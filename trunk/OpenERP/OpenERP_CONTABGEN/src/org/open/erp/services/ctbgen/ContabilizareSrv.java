@@ -177,7 +177,7 @@ public interface ContabilizareSrv {
 	 * Jurnalizeaza notele contabile diverse
 	 */
 	
-	void jurnalizareNcDiversa( Date data, Integer nrInreg, Cont contd, Cont contc, Double suma,StareDocument stareDocument)throws CtbException;
+	void jurnalizareNcDiversa( Date data, Integer nrInreg, Cont contd, Cont contc, Double suma,StareDocument stareDocument, Integer idInreg)throws CtbException;
 	
 	//---------------------------------
 	

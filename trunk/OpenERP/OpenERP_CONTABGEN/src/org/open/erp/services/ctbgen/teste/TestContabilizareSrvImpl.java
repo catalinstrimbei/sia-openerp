@@ -149,9 +149,9 @@ public class TestContabilizareSrvImpl {
 		TipContabil tipContabil = new TipContabil(1, "Materii prime", regConturi.getContDupaId(301), 
                 regConturi.getContDupaId(401),  regConturi.getContDupaId(601));	
 		
-		TipContabil tipContabil2 = new TipContabil(2, "materii prime", regConturi.getContDupaId(301), 
-                regConturi.getContDupaId(401),   regConturi.getContDupaId(601));
-		TipContabil tipContabil3 = new TipContabil(3, "cheltuieli cu terti", regConturi.getContDupaId(628), 
+		TipContabil tipContabil2 = new TipContabil(2, "Materiale", regConturi.getContDupaId(303), 
+                regConturi.getContDupaId(401),   regConturi.getContDupaId(603));
+		TipContabil tipContabil3 = new TipContabil(3, "Cheltuieli cu terti", regConturi.getContDupaId(628), 
 				         regConturi.getContDupaId(401),  regConturi.getContDupaId(628));
 		TipContabil tipContabi4 = new TipContabil(4, "Marfuri", regConturi.getContDupaId(307), 
                 regConturi.getContDupaId(401),  regConturi.getContDupaId(607));	
@@ -193,7 +193,7 @@ public class TestContabilizareSrvImpl {
 		
 		//transmite sa faca o metoda publica in NomSrv, nu este,
 		 Material mat1= new Material();
-		 mat1.setTipContabil("materii prime");
+		 mat1.setTipContabil("Materii prime");
 		LinieDocument lmv1=new LinieDocument(1,null,mat1,10.0,5.0,0.0);
 		List<LinieDocument> listaMat = new ArrayList <LinieDocument>();
 		listaMat.add(lmv1);
@@ -203,7 +203,7 @@ public class TestContabilizareSrvImpl {
 		Calendar cal = Calendar.getInstance();
 		Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizareVanzare(data, 1200.0,0.0, 501, 1001, listaMat, StareDocument.NOU, 0);
+			instantaCtbGen.jurnalizareVanzare(data, 1200.0,0.0, 501, 1001, listaMat, StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare vanzari nu s-a efectuat "+ e.getLocalizedMessage());
 		}
@@ -217,22 +217,22 @@ public class TestContabilizareSrvImpl {
 		
 	
 		//creare matrice listMatVal
-		 Material mat1= new Material();
-		 mat1.setTipContabil("materii prime");
+		Material mat1= new Material();
+		mat1.setTipContabil("Materii prime");
 		LinieDocument lmv1=new LinieDocument(1,null,mat1,10.0,5.0,0.0);
-		//Material mat2= new Material();
-		 //mat1.setTipContabil("cheltuieli cu terti");
-		//LinieDocument lmv2=new LinieDocument(1,null,mat2,20.0,10.0,0.0);
+		Material mat2= new Material();
+		mat2.setTipContabil("Cheltuieli cu terti");
+		LinieDocument lmv2=new LinieDocument(1,null,mat2,20.0,10.0,0.0);
 		List<LinieDocument> listaMat = new ArrayList <LinieDocument>();
 		listaMat.add(lmv1);
-		//listaMat.add(lmv2);
+		listaMat.add(lmv2);
 	
 		//-------------------------------------	
 		
 		Calendar cal = Calendar.getInstance();
 		Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizareAchizitie(data, 370.0,0.0, 501, 1001, listaMat, StareDocument.NOU, 0);
+			instantaCtbGen.jurnalizareAchizitie(data, 370.0,0.0, 501, 1001, listaMat, StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare achizitie nu s-a efectuat "+ e.getLocalizedMessage());
 		}
@@ -292,7 +292,7 @@ public class TestContabilizareSrvImpl {
 		Calendar cal = Calendar.getInstance();
 		Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizareConsum(data,  501,  listaMat, StareDocument.NOU, 0);
+			instantaCtbGen.jurnalizareConsum(data,  501,  listaMat, StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare consum nu s-a efectuat "+ e.getLocalizedMessage());
 		}
@@ -317,7 +317,7 @@ public class TestContabilizareSrvImpl {
 		Calendar cal = Calendar.getInstance();
 		Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizareProductie(data,  475,  listaMat, StareDocument.NOU, 0);
+			instantaCtbGen.jurnalizareProductie(data,  475,  listaMat, StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare productie nu s-a efectuat "+ e.getLocalizedMessage());
 		}
@@ -334,7 +334,7 @@ public class TestContabilizareSrvImpl {
 		Calendar cal = Calendar.getInstance();
 		Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizareSalarii(data,  8, 1500.0,150.0,10.0,240.0,200.0,145.0,10.0,500.0,30.0,80.0, StareDocument.NOU, 0);
+			instantaCtbGen.jurnalizareSalarii(data,  8, 1500.0,150.0,10.0,240.0,200.0,145.0,10.0,500.0,30.0,80.0, StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare salarii nu s-a efectuat "+ e.getLocalizedMessage());
 		}
@@ -356,8 +356,47 @@ public class TestContabilizareSrvImpl {
 		}
 		//RegBalanta.instantiaza().printAll();		
 		logger.info("End test: TestInchideLuna");
+		
 	}
 	
 	//--------------------------------------------------------------
-
+	@Test
+	public void TestverificaLunaInchisa(){
+		logger.info("Begin test: TestverificaLunaInchisa");
+		String s;
+	    s=instantaCtbGen.verificaLunaInchisa(Calendar .getInstance().getTime());
+	    logger.debug("Luna pentru " +Calendar .getInstance().getTime().toString()+" este "+s);
+				
+		logger.info("End test: TestInchideLuna");
+		
+	}
+	
+	@Test
+	public void TestAnuleazaInchidere(){
+		logger.info("Begin test: TestAnuleazaInchidere");
+		
+		LunaLucru luna=regLuniConturi .getLunaLucruDupa(Calendar .getInstance().getTime());
+	    instantaCtbGen.anuleazaInchidere(luna);
+	    
+	    logger.debug("Luna pentru " +Calendar .getInstance().getTime().toString()+" este: "+luna.getStatus().toString());
+				
+		logger.info("End test: TestAnuleazaInchidere");
+		
+	}
+	
+	@Test
+	public void TestListaTipuriCtb(){
+		logger.info("Begin test: TestListaTipuriCtb");
+		
+		List<String> ltp= new ArrayList<String>();
+		ltp=instantaCtbGen.getTipuriContabile();
+		//este deja completata de la celelalte teste
+		for (String l : ltp){
+			logger.debug("un tip: "+l.toString());
+		}
+	    
+	    	
+		logger.info("End test: TestListaTipuriCtb");
+		
+	}
 }

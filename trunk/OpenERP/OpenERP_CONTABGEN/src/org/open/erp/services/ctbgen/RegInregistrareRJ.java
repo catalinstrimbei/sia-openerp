@@ -47,23 +47,34 @@ public class RegInregistrareRJ {
 		List<InregistrareRJ> rez = new ArrayList<InregistrareRJ>();
 		
 		for(int i=0;i<inregistrariRJ.size();i++){
-			if(inregistrariRJ.get(i).getLunaCurs().equals(luna))
+			if(inregistrariRJ.get(i).getLunaCurs().equals(luna))// && !inregistrariRJ.get(i).isAnulat())
 				rez.add(inregistrariRJ.get(i));
 		}
 		
 		Collections.sort(rez);
 		return rez;
 	}
-	
-	public List<InregistrareRJ> getListaInreg(){
-		List<InregistrareRJ> rez = new ArrayList<InregistrareRJ>();
-		
+    public List<InregistrareRJ> getListaInreg(){
+        List<InregistrareRJ> rez = new ArrayList<InregistrareRJ>();
+        
+        for(int i=0;i<inregistrariRJ.size();i++){
+                rez.add(inregistrariRJ.get(i));
+        }
+        
+        Collections.sort(rez);
+        return rez;
+}
+
+	public void  anuleazaIregRJ(Integer id){
+			
 		for(int i=0;i<inregistrariRJ.size();i++){
-			rez.add(inregistrariRJ.get(i));
+			if (inregistrariRJ.get(i).getIdInregRJ()==id){
+				inregistrariRJ.get(i).anuleazaInreg();
+			}
 		}
 		
-		Collections.sort(rez);
-		return rez;
+		
+	
 	}
 	
 	

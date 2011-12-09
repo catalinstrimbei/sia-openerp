@@ -19,6 +19,7 @@ public class InregistrareRJ implements Comparable<InregistrareRJ>{
 	private Integer nrDocLeg;
 	private LunaLucru lunaCurs;
 	private Integer idPartener;
+	private boolean anulat;
 	
 	public InregistrareRJ() {
 		super();
@@ -32,6 +33,7 @@ public class InregistrareRJ implements Comparable<InregistrareRJ>{
 		this.lunaCurs = lunaCurs;
 		this.idPartener = idPartener;
 		this.articoleRJ=new ArrayList<ArticolCtb>();
+		this.anulat=false;
 	}
 	
 	public InregistrareRJ(Integer idInregRJ, Date dataInregRJ, List<ArticolCtb> articoleRJ, Integer nrDocLeg,
@@ -43,8 +45,17 @@ public class InregistrareRJ implements Comparable<InregistrareRJ>{
 		this.nrDocLeg = nrDocLeg;
 		this.lunaCurs = lunaCurs;
 		this.idPartener = idPartener;
+		this.anulat=false;
 	}
 	
+	public boolean isAnulat() {
+		return anulat;
+	}
+
+	public void setAnulat(boolean anulat) {
+		this.anulat = anulat;
+	}
+
 	public Integer getIdInregRJ() {
 		return idInregRJ;
 	}
@@ -100,5 +111,8 @@ public class InregistrareRJ implements Comparable<InregistrareRJ>{
 		return "InregistrareRJ [articolRJ=" + articoleRJ.toString() + "]";
 	}
 
+	public void anuleazaInreg(){
+		this.anulat=true;
+	}
 	
 }
