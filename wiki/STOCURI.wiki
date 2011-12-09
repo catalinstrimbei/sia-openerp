@@ -1,5 +1,4 @@
 #summary Pagina modulului STOCURI
-#labels -
 
 
 <h1> INTRODUCERE </h1>
