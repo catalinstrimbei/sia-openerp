@@ -28,4 +28,34 @@ public class FinPlatiImpl implements FinPlatiSrv {
 	public boolean efectPlata(Double totplata) {
 		return true;
 	}
+
+	@Override
+	public Double compensariParteneri() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Double verificareSoldFurnizor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Double plataAvans() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Double restPlata() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Double plataFactNumerar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
