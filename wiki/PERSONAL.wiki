@@ -46,7 +46,7 @@ de unde utilizeaza entitatile:
 
 
 == 2. Entitati Locale ==
-*
+
 - Activitate 
 - Angajat
 - AnuntLocMunca
