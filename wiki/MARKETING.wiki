@@ -25,7 +25,7 @@ Dependetele:
 
 <b> INITIEREA UNEI CAMPANII.</b><br>
 In aceasta etapa, responsabilul campaniei schimba statusul acesteia in "In curs". Totodata, se trimit mail-urile de informare catre persoanele tinta.
- 
+<br> 
 <b>DEFINIREA UNUI CHESTIONAR</b><br>
 Chestionarele sunt folosite pentru obtinerea unui feedback din partea clientilor sau pentru efectuarea unui studiu de piata pentru un produs ce urmeaza a fi lansat. Acestea pot contine mai multe tipuri de intrebari. Pentru definirea unui chestionar, avem nevoie de urmatoarele informatii:
   * Denumirea chestionarului
