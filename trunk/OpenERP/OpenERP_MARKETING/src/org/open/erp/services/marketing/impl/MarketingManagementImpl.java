@@ -163,6 +163,6 @@ public class MarketingManagementImpl implements MarketingManagementSrv{
 	@Override
 	public float getPretFinalByProdus(Produs produs) {
 		// TODO Auto-generated method stub
-		return 0;
+		return (float)(produs.getPretVanzare() * 0.8);
 	}
 }
