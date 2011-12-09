@@ -42,11 +42,11 @@ Aplicatia are urmatoarele cazuri de utilizare: <br><br>
 
 <li><b>Business Objects Locale</b></LI> 
  - Activitate<br>
- - CentruCost <br>
+ - CentruCost<br>
  - CosturiPrimare<br>
  - InregistrareGestiune<br>
  - LinieCost<br>
- - Responsabil <br>
+ - Responsabil<br>
 
 <br>
 <li><b>Operatiile/ Actiunile/ Application Service</b></LI>
