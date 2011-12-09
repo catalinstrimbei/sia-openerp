@@ -35,8 +35,7 @@ Se ocupa cu gestionarea Resurselor Umane.
    ca urmare a promovarii angajatului si are ca rezultat contractul nou
    incheiat sau contractul modificat in urma promovarii.
 === 5. Procesul de evaluare anuala a angajatilor ===
- * se inregistreaza probele de avaluare pe departamente si se pot 
-   obtine rezultatele pe fiecare departament / proba / angajati 
+ * se inregistreaza probele de avaluare pe departamente si se pot obtine rezultatele pe fiecare departament / proba / angajati 
 === 6. Procesul de organizare a evenimentelor din cadrul companiei. ===
  * se inregistreaza evenimentele spre aprobare; statusul documentelor
    se modifica cand acestea sunt aprobate, tinandu-se cont de bugetul
