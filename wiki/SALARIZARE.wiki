@@ -18,7 +18,19 @@ Principalele functionalitati ale modulului sunt;<br />
 - generare stat plata<br />
 - generare centralizatoare si sume pentru contabilitate
 
+
 Use cases <br />
+
+@ApplicationServiceFacade(ServiceAPI)
+ * 
+ * @Dependente: PersonalSrv, NomenclatoareSrv
+ * 
+ * @EntitatiNomenclatoare: Persoana, Departament
+ * 
+ * @EntitatiPersonalSrv: Angajat
+ * 
+ * @EntitatiLocale: Pontaj, Retinere, Spor, Configurare, StatSalarii, CentralizatorStatSalarii 
+ * 
   @UseCase("inregistrare pontaj"):
  * 1. Creaza instanta pontaj
  * 2. Inregistrare pontaj pe angajat
