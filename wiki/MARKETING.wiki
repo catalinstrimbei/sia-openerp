@@ -77,8 +77,8 @@ Dependente:
   * Chestionar
   * Discount
   * Intrebare
-  * PersoanaTinta
+  * Persoana Tinta
   * Promotie
-  * RaspunsChestionar
+  * Raspuns Chestionar
   * Responsabil
 <br>
