@@ -12,7 +12,7 @@ Modulul cuprinde urmatoarele functionalitati:
  <li> Transferul materialelor de la o gestiune la alta</li>
  <li> Iesirea din stoc a materialelor</li>
 
-<h1 align="center"> DETALII </h1>
+<h1> DETALII </h1>
 <UL>
 <li>
 <h3>Descriere functionala - Use Case  </h3></li></ul>
