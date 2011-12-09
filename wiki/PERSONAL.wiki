@@ -34,7 +34,7 @@ Se ocupa cu gestionarea Resurselor Umane.
 
   == Descriere tehnica ==
 
-1. Dependente
+== 1. Dependente ==
 
 Modulul PERSONAL depinde de urmatorul modul: 
 
@@ -45,7 +45,8 @@ de unde utilizeaza entitatile:
 - Persoana Fizica, Departament
 
 
-2. Entitati Locale
+== 2. Entitati Locale ==
+*
 - Activitate 
 - Angajat
 - AnuntLocMunca
