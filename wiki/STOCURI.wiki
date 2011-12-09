@@ -2,7 +2,7 @@
 #labels -
 
 
-<h1 align="center"> INTRODUCERE </h1>
+<h1> INTRODUCERE </h1>
 
 Modul STOCURI se ocupa cu evidenta stocurilor, a gestiunilor si a loturilor acestora. <BR/>
 
