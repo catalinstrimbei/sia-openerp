@@ -4,10 +4,10 @@
 
 Modul Nomenclatoare Generale cuprinde nomenclatura din domeniu.
 
-Modulul cuprinde urmatoarele functionalitati:
+Modulul are urmatoarele functionalitati:
 <ul type="disc">
 <li>adaugare
-<li>stegere
+<li>stergere
 <li>modificare
 <li>cautare (dupa anumiti parametrii)
 
@@ -28,7 +28,7 @@ Modulul cuprinde urmatoarele functionalitati:
 <ul type="1">
 <li>Dependente
 
-     Modulul Nomenclatoare Generale nu are dependente
+     Modulul Nomenclatoare Generale nu are dependente.
 
 <li>Business Objects Locale
   
