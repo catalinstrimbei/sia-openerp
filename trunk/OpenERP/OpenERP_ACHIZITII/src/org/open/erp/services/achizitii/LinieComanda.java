@@ -2,6 +2,14 @@ package org.open.erp.services.achizitii;
 
 import org.open.erp.services.nomgen.Material;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 
 
 public class LinieComanda   {

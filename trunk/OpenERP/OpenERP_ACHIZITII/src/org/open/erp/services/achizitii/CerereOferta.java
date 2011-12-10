@@ -7,6 +7,14 @@ import java.util.List;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.Persoana;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class CerereOferta /*extends Document*/ {
 public static final Integer TRIMISA = 0;
 public static final Integer PRIMITA = 1;

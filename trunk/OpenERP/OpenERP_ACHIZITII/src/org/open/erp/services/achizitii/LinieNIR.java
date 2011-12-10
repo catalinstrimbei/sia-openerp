@@ -4,6 +4,14 @@ import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class LinieNIR extends LinieDocument {	
 	private Double diferentaCantitate;
 	private Double cantitateFacturata;	

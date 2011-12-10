@@ -3,7 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.open.erp.services.nomgen.LinieDocument;
-
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
 public class Categorie {
 private Integer id;
 private String denumire;

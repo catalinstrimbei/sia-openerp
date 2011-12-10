@@ -8,6 +8,14 @@ import org.apache.log4j.Logger;
 import org.open.erp.services.achizitii.impl.AprovizionareImpl;
 import org.open.erp.services.nomgen.LinieDocument;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class OfertaAchizitie {
 	public static final Integer TRANSFORMATA = 1;
 	public static final Integer RESPINSA = -1;

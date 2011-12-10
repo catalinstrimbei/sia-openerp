@@ -2,6 +2,14 @@ package org.open.erp.services.achizitii;
 
 import org.open.erp.services.nomgen.LinieDocument;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class LinieFacturaAchizitie extends LinieDocument {
 	public Double valoareLinie;
 	public Double getValoareLinie() {

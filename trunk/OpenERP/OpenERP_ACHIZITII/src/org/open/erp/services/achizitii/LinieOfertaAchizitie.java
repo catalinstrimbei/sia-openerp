@@ -1,5 +1,13 @@
 package org.open.erp.services.achizitii;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class LinieOfertaAchizitie {
 	private OfertaAchizitie oferta;
 	private Articol articol;

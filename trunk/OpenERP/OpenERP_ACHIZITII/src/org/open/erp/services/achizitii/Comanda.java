@@ -4,6 +4,14 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class Comanda {
 	public static final Integer FINALIZATA = 1;
 	public static final Integer ANULATA = -1;

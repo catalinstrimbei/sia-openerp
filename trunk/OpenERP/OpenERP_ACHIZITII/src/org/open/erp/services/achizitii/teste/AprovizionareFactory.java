@@ -9,7 +9,13 @@ import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 
-
+/*
+ * 
+ * @Factory(StocuriSrv, ContabilizareSrv, NomGenSrv) 
+ *  
+ *  Furnizeaza depedente Dummy pentru serviciul local si cele dependente
+ * 
+ */
 public class AprovizionareFactory {
 	public static AprovizionareSrv getAprovizionareSrv(){
 		return new AprovizionareImpl();

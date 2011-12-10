@@ -9,24 +9,22 @@ import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Persoana;
 
 /**
- * 
- * @author ApprroovviizziioonnaarreeTeam
- * 
- * @Depinde: NomenclatoareSrv, FinPlatiSrv, ContabilitateSrv, StocuriSrv
- * 
- * @EntitatiNomGen: Partener, Persoana
- * 
- * @EntitatiAlteSrv:Contract, CerereAprovizionare 
- * 
- * @EntitatiLocale: 
- *  
- *  
- */
-
-/**
  * Returneaza o interfata a serviciului Aprovizionare
  * 
- * @UseCase:
+ * @ApplicationServiceFacade(ServiceAPI) * 
+ * 
+ * @author AchizitiiTeam
+ * 
+ * @Depinde: NomenclatoareSrv,  ContabilitateSrv, StocuriSrv
+ * 
+ * @EntitatiNomGen: Partener, Persoana, Material, Document, LinieDocument
+ * 
+ * @EntitatiAlteSrv:CerereAprovizionare 
+ * 
+ * @EntitatiLocale:Articol, Categorie, CerereOferta, LinieCerereOferta, Comanda, LinieComanda,Contract, Furnizor,
+ * FacturaAchizitie, LinieFacturaAchizitie, NIR, LinieNIR, PlanAprovizionare, LiniePlanAprovizionare, OfertaAchizitie, LinieOfertaAchizitie
+ * 
+ *  * @UseCase:
  * 1. Creeaza instanta cerere aprovizionare
  * 2. Gestioneaza plan de aprovizionare
  * 3. Gestioneaza cereri de oferta
@@ -37,6 +35,8 @@ import org.open.erp.services.nomgen.Persoana;
  * 8. Inregistrare Facturi furnizor
  * 9. Retur materiale
  * 
+ *  
+ *  
  */
 
 public interface AprovizionareSrv {

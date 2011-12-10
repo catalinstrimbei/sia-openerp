@@ -3,6 +3,14 @@ package org.open.erp.services.achizitii;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class Factura extends Document {
 	public static final Integer STORNATA = -1;
 	public static final Integer INREGISTRATA = 1;

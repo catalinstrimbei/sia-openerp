@@ -9,6 +9,14 @@ import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Persoana;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class PlanAprovizionare  {
 	private static PlanAprovizionare planAprovizionare;
 	public static final Integer FINALIZAT = 1;

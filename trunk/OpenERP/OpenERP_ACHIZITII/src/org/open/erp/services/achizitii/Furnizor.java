@@ -5,6 +5,14 @@ import java.util.List;
 
 import org.open.erp.services.nomgen.Partener;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class Furnizor extends Partener {
 private Integer cont;
 private String CUI;

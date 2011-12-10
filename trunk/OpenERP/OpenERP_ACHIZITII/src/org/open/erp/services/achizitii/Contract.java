@@ -4,6 +4,14 @@ import java.util.Date;
 
 import org.open.erp.services.nomgen.Document;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class Contract extends Document{
 public Date dataInceput;
 public Date dataIncheiere;

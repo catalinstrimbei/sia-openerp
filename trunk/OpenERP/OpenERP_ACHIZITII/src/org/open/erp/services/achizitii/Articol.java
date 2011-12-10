@@ -4,7 +4,13 @@ package org.open.erp.services.achizitii;
 import java.util.Date;
 
 import org.open.erp.services.nomgen.Material;
-
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
 public class Articol extends Material {	
     private Categorie categorieArticol;
     private Double pretAchizitie;

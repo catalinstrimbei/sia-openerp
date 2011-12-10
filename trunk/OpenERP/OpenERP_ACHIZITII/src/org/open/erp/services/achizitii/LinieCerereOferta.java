@@ -1,7 +1,15 @@
 package org.open.erp.services.achizitii;
 
 public class LinieCerereOferta {
-	
+
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public Integer nrLinie;
 public CerereOferta cerereOferta;
 public Articol articol;

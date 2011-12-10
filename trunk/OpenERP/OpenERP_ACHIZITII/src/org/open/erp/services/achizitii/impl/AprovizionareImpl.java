@@ -29,7 +29,11 @@ import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.Procesare;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
-
+/**
+ * 
+ * @ApplicationServiceImplementation(ServiceAPI)
+ * 
+ */
 
 public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListener{
 	

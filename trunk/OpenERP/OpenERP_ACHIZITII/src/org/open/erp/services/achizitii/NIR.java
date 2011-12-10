@@ -3,6 +3,14 @@ package org.open.erp.services.achizitii;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 
+/**
+ * 
+ * @author echipa.achizitii
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 public class NIR extends Document {
 	public Factura factura;
 
