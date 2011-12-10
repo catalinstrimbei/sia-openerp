@@ -1,7 +1,6 @@
 package org.open.erp.services.incasari.teste;
 
 import static org.junit.Assert.assertEquals;
-
 import static org.junit.Assert.assertNotNull;
 
 import java.text.DateFormat;
@@ -13,11 +12,16 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.open.erp.services.ctbgen.Cont;
+import org.open.erp.services.ctbgen.Cont.StatusSintetic;
+import org.open.erp.services.ctbgen.Cont.TipCont;
+import org.open.erp.services.ctbgen.RegConturi;
+import org.open.erp.services.ctbgen.RegSablonNC;
+import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.incasari.Chitanta;
 import org.open.erp.services.incasari.IncasariSrv;
 import org.open.erp.services.incasari.exception.IncasariException;
-
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.vanzari.Client;
@@ -58,6 +62,22 @@ public class TestIncasariImpl {
 		fact2.setValoareTotalaFactura(40.00);
 		fact2.setSumaIncasata(30.00);
 		fact2.setPlatita(false);
+		
+		RegSablonNC regSablonNC = RegSablonNC.instantiaza();
+        RegConturi regConturi = RegConturi.instantiaza();    
+        
+        Cont c531 =new Cont(531,"casa","531","5",StatusSintetic.SINTETIC,TipCont.ACTIV);
+        Cont c512 =new Cont(512,"banca","512","5",StatusSintetic.SINTETIC,TipCont.ACTIV);
+        Cont c401 =new Cont(401,"Furnizori","401","4",StatusSintetic.SINTETIC, TipCont.PASIV);
+        
+        regConturi.addCont(c531); 
+        regConturi.addCont(c512);
+        regConturi.addCont(c401);
+        
+        SablonNC sab9= new SablonNC(1007,7,c531,null);
+        SablonNC sab10= new SablonNC(1008,8,c512,null);
+        regSablonNC.addSablon(sab9);       
+        regSablonNC.addSablon(sab10);
 	}
 
 	@Test

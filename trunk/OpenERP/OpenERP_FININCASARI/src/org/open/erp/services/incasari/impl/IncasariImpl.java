@@ -62,8 +62,7 @@ public class IncasariImpl implements IncasariSrv {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
 		Chitanta chitanta;
-//		Integer idCont = 0;
-//		Integer idInreg = 0;
+
 		List<FacturaEmisa> facturiSelectate = new ArrayList<FacturaEmisa>(0);
 		
 		Calendar currentDate = Calendar.getInstance();
@@ -84,17 +83,17 @@ public class IncasariImpl implements IncasariSrv {
 		try {
 			if (avans) {
 
-//				ctbSrv.jurnalizareIncasare(dataInregistrarii,
-//						sumaIncasata, numar, TipIncasare.AVANSC,
-//						client.getId(), idCont, StareDocument.NOU, idInreg);
+				ctbSrv.jurnalizareIncasare(dataInregistrarii,
+						sumaIncasata, numar, TipIncasare.AVANSC,
+						client.getId(), 401, StareDocument.NOU, null);
 
 			}
 
 			else {
-//
-//				ctbSrv.jurnalizareIncasare(dataInregistrarii,
-//						sumaIncasata, numar, TipIncasare.CASA, client.getId(),
-//						idCont, StareDocument.NOU, idInreg);
+
+				ctbSrv.jurnalizareIncasare(dataInregistrarii,
+						sumaIncasata, numar, TipIncasare.CASA, client.getId(),
+						401, StareDocument.NOU, null);
 				
 			}
 
