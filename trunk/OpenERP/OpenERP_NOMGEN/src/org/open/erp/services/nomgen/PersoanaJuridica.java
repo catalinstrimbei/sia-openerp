@@ -1,5 +1,7 @@
 package org.open.erp.services.nomgen;
 
+import java.util.List;
+
 /*
  * 
  * @BusinessObject(DummyEntity)
@@ -10,7 +12,8 @@ public class PersoanaJuridica extends Persoana {
 	private String  codFiscal;
 	private String  nrInmatriculareFiscala;
 	private String  atributFiscal;
-	
+	private List<String> telefoane;
+	private List<String> emailuri;
 	
 	/**
 	 * @return the denumire
@@ -71,6 +74,22 @@ public class PersoanaJuridica extends Persoana {
 		this.atributFiscal = atributFiscal;
 	}
 	
+	public List<String> getTelefoane() {
+		return telefoane;
+	}
+
+	public void setTelefoane(List<String> telefoane) {
+		this.telefoane = telefoane;
+	}
+
+	public List<String> getEmailuri() {
+		return emailuri;
+	}
+
+	public void setEmailuri(List<String> emailuri) {
+		this.emailuri = emailuri;
+	}
+
 	public PersoanaJuridica(Integer id, String adresa, String denumire, String codFiscal, String nrInmatriculareFiscala, String atributFiscal) {
 		super(id, adresa);
 		
