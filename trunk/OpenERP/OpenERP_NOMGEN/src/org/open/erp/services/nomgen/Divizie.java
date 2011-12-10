@@ -3,17 +3,21 @@
  */
 package org.open.erp.services.nomgen;
 
+import java.util.List;
+
 /**
  * @author Suzy
  *
  */
-public class Divizie {
+public class Divizie extends Departament {
 
 	public Integer Id;
 	public Departament IdDepartament;
 	public String denumire;
 	public String atributii;
-	public Persoana IdContact;
+	public List<String> telefoane;
+	public List<String> emailuri;
+	
 	/**
 	 * @return the id
 	 */
@@ -62,19 +66,7 @@ public class Divizie {
 	public void setAtributii(String atributii) {
 		this.atributii = atributii;
 	}
-	/**
-	 * @return the idContact
-	 */
-	public Persoana getIdContact() {
-		return IdContact;
-	}
-	/**
-	 * @param idContact the idContact to set
-	 */
-	public void setIdContact(Persoana idContact) {
-		IdContact = idContact;
-	}
-
+	
 	
 	
 	public Divizie(Integer id, String denumire, String atributii, Persoana idContact) {
@@ -82,14 +74,15 @@ public class Divizie {
 		
 	}
 	
-	public Divizie(Integer id, Departament idDepartament, String denumire,
-			String atributii, Persoana idContact) {
+	public Divizie(Integer id, Departament dep, String denumire,
+			String atributii) {
 		super();
-		Id = id;
-		IdDepartament = idDepartament;
+		
+		this.Id = id;
+		
 		this.denumire = denumire;
 		this.atributii = atributii;
-		IdContact = idContact;
+	
 	}
 	
 	public Divizie() {

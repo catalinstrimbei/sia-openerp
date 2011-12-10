@@ -10,12 +10,12 @@ import java.util.Date;
  */
 
 public interface NomenclatoareSrv {
-	Persoana creazaPersoana(Integer id, String adresa, Integer idContact);
+	Persoana creazaPersoana(Integer id, String adresa);
 	Persoana getPersoanaCuId(Integer id);
 	Persoana cautarePersoanaDupaAdresa(String adresa);
 	
 	
-	PersoanaFizica creazaPersoanaFizica(Integer id, String adresa, Integer idContact,
+	PersoanaFizica creazaPersoanaFizica(Integer id, String adresa,
 			                            String nume, String prenume, String formaAdresare, char gen, String cnp);
 	PersoanaFizica getPersoanaFizicaCuId(Integer id);
 	PersoanaFizica cautarePersoanaFizicaDupaNume(String nume);
@@ -23,7 +23,7 @@ public interface NomenclatoareSrv {
 	PersoanaFizica cautarePersoanaFizicaDupaAdresa(String adresa);
 	
 	
-	PersoanaJuridica creazaPersoanaJuridica(Integer id, String adresa, Integer idContact,
+	PersoanaJuridica creazaPersoanaJuridica(Integer id, String adresa,
 			                                String denumire, String codFiscal, String nrInmatriculareFiscala, String atributFiscal);
 	PersoanaJuridica getPersoanaJuridicaCuId(Integer id);
 	PersoanaJuridica cautarePersoanaJuridicaDupaDenumire(String denumire);
@@ -51,28 +51,22 @@ public interface NomenclatoareSrv {
 	
 	// Max - Banca, Depatament, Divizie
 	
-	Banca creazaBanca(Integer id, Persoana idPersoana, String capSocial, String denumire);
+	Banca creazaBanca(Integer id, String capSocial, String denumire);
 	Banca getBancaCuId(Integer id);
 	Banca cautareBancaDupaId(Integer id);
 	Banca cautareBancaDupaDenumire(String denumire);
 	
-	Departament creazaDepartament(Integer id, String denumire, String atributii,Persoana idContact);
+	Departament creazaDepartament(Integer id, String denumire, String atributii);
 	Departament getDepartamentCuId(Integer id);
 	Departament cautareDepartamentDupaId(Integer id);
 	Departament cautareDepartamentDupaDenumire(String denumire);
 	
 	
-	Divizie creazaDivizie(Integer id, Departament idDepartament, String denumire, String atributii, Persoana idContact);
+	Divizie creazaDivizie(Integer id, Departament idDepartament, String denumire, String atributii);
 	Divizie getDivizieCuId(Integer id);
 	Divizie cautareDivizieDupaId(Integer id);
     Divizie cautareDivizieDupaDenumire(String denumire);
     
-    //Stefania - Telefon si Email
     
-    Telefon creazaTelefon(Integer id,String numar, Persoana idContact);
-    Telefon getTelefonCuId(Integer Id);
-    
-    Email creazaEmail(Integer id, String adresaEmail, Persoana idContact);
-    Email getEmailCuId(Integer Id);
     
 }

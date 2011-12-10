@@ -1,5 +1,7 @@
 package org.open.erp.services.nomgen;
 
+import java.util.List;
+
 /*
  * 
  * @BusinessObject(DummyEntity)
@@ -8,7 +10,9 @@ package org.open.erp.services.nomgen;
 public class Persoana {
 	private Integer id;
 	private String  adresa;
-	private Integer idContact;
+	
+	private List<String> telefoane;
+	private List<String> emailuri;
 	
 	
 	/**
@@ -41,27 +45,32 @@ public class Persoana {
 	}
 
 
-	/**
-	 * @return the idContact
-	 */
-	public Integer getIdContact() {
-		return idContact;
+	
+
+
+	public List<String> getTelefoane() {
+		return telefoane;
 	}
 
-	/**
-	 * @param idContact the idContact to set
-	 */
-	public void setIdContact(Integer idContact) {
-		this.idContact = idContact;
+	public void setTelefoane(List<String> telefoane) {
+		this.telefoane = telefoane;
 	}
 
+	public List<String> getEmailuri() {
+		return emailuri;
+	}
 
-	public Persoana(Integer id, String adresa, Integer idContact) {
+	public void setEmailuri(List<String> emailuri) {
+		this.emailuri = emailuri;
+	}
+
+	public Persoana(Integer id, String adresa) {
 		super();
 		
 		this.id = id;
 		this.adresa = adresa;
-		this.idContact = idContact;
+		
+		
 	}
 	
 	
@@ -70,9 +79,9 @@ public class Persoana {
 	      System.out.println("- Date despre persoana - "+p);
 	      System.out.println("Id persoana: " + getId());
 	      System.out.println("Adresa: " + adresa);
-	      System.out.println("Id contact: " + idContact);
+	      System.out.println("Id contact: " + telefoane);
+	      System.out.println("Id contact: " + emailuri);
 	   }
-
 	
 	public Persoana() {
 		super();

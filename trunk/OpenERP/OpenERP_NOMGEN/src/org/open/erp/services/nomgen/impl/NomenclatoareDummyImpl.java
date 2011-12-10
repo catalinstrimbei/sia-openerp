@@ -5,7 +5,7 @@ import java.util.Date;
 import org.open.erp.services.nomgen.Banca;
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Divizie;
-import org.open.erp.services.nomgen.Email;
+
 import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
@@ -14,7 +14,7 @@ import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.nomgen.PersoanaJuridica;
 import org.open.erp.services.nomgen.Produs;
-import org.open.erp.services.nomgen.Telefon;
+
 /**
  * 
  * @ApplicationServiceFacadeImpl(Dummy)
@@ -23,12 +23,12 @@ import org.open.erp.services.nomgen.Telefon;
 public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 
 	@Override
-	public Persoana creazaPersoana(Integer id, String adresa, Integer idContact) {
+	public Persoana creazaPersoana(Integer id, String adresa) {
 		Persoana persoana = new Persoana();
 		
 		persoana.setId(id);
 		persoana.setAdresa(adresa);
-		persoana.setIdContact(idContact);
+		
 		
 		return persoana;
 	}
@@ -39,7 +39,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		
 		persoanaDummy.setId(id);
 		persoanaDummy.setAdresa("dummy");
-		persoanaDummy.setIdContact(-1);
+
 		
 		return persoanaDummy;
 	}
@@ -50,20 +50,20 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		
 		persoanaDummy.setId(-1);
 		persoanaDummy.setAdresa(adresa);
-		persoanaDummy.setIdContact(-1);
+		
 		
 		return persoanaDummy;
 	}
 	
 	
 	@Override
-	public PersoanaFizica creazaPersoanaFizica(Integer id, String adresa, Integer idContact,
+	public PersoanaFizica creazaPersoanaFizica(Integer id, String adresa,
                                                String nume, String prenume, String formaAdresare, char gen, String cnp) {
 		PersoanaFizica persoanaFizica = new PersoanaFizica();
 		
 		persoanaFizica.setId(id);
 		persoanaFizica.setAdresa(adresa);
-		persoanaFizica.setIdContact(idContact);
+		
 		persoanaFizica.setNume(nume);
 		persoanaFizica.setPrenume(prenume);
 		persoanaFizica.setFormaAdresare(formaAdresare);
@@ -79,7 +79,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		
 		persoanaFizicaDummy.setId(id);
 		persoanaFizicaDummy.setAdresa("dummy");
-		persoanaFizicaDummy.setIdContact(-1);
+	
 		persoanaFizicaDummy.setNume("dummy");
 		persoanaFizicaDummy.setPrenume("dummy");
 		persoanaFizicaDummy.setGen('M');
@@ -94,7 +94,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		
 		persoanaFizicaDummy.setId(-1);
 		persoanaFizicaDummy.setAdresa("dummy");
-		persoanaFizicaDummy.setIdContact(-1);
+		
 		persoanaFizicaDummy.setNume(nume);
 		persoanaFizicaDummy.setPrenume("dummy");
 		persoanaFizicaDummy.setGen('M');
@@ -109,7 +109,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		
 		persoanaFizicaDummy.setId(-1);
 		persoanaFizicaDummy.setAdresa("dummy");
-		persoanaFizicaDummy.setIdContact(-1);
+		
 		persoanaFizicaDummy.setNume("dummy");
 		persoanaFizicaDummy.setPrenume(prenume);
 		persoanaFizicaDummy.setGen('M');
@@ -124,7 +124,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		
 		persoanaFizicaDummy.setId(-1);
 		persoanaFizicaDummy.setAdresa(adresa);
-		persoanaFizicaDummy.setIdContact(-1);
+		
 		persoanaFizicaDummy.setNume("dummy");
 		persoanaFizicaDummy.setPrenume("dummy");
 		persoanaFizicaDummy.setGen('M');
@@ -135,13 +135,13 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 	
 	
 	@Override
-    public PersoanaJuridica creazaPersoanaJuridica(Integer id, String adresa, Integer idContact,
+    public PersoanaJuridica creazaPersoanaJuridica(Integer id, String adresa,
                                                    String denumire, String codFiscal, String nrInmatriculareFiscala, String atributFiscal) {
 		PersoanaJuridica persoanaJuridica = new PersoanaJuridica();
 		
 		persoanaJuridica.setId(id);
 		persoanaJuridica.setAdresa(adresa);
-		persoanaJuridica.setIdContact(idContact);
+		
 		persoanaJuridica.setDenumire(denumire);
 		persoanaJuridica.setCodFiscal(codFiscal);
 		persoanaJuridica.setNrInmatriculareFiscala(nrInmatriculareFiscala);
@@ -156,7 +156,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		
 		persoanaJuridicaDummy.setId(id);
 		persoanaJuridicaDummy.setAdresa("dummy");
-		persoanaJuridicaDummy.setIdContact(-1);
+		
 		persoanaJuridicaDummy.setDenumire("dummy");
 		persoanaJuridicaDummy.setCodFiscal("dummy");
 		persoanaJuridicaDummy.setNrInmatriculareFiscala("dummy");
@@ -171,7 +171,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		
 		persoanaJuridicaDummy.setId(-1);
 		persoanaJuridicaDummy.setAdresa("dummy");
-		persoanaJuridicaDummy.setIdContact(-1);
+		
 		persoanaJuridicaDummy.setDenumire(denumire);
 		persoanaJuridicaDummy.setCodFiscal("dummy");
 		persoanaJuridicaDummy.setNrInmatriculareFiscala("dummy");
@@ -186,7 +186,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		
 		persoanaJuridicaDummy.setId(-1);
 		persoanaJuridicaDummy.setAdresa(adresa);
-		persoanaJuridicaDummy.setIdContact(-1);
+		
 		persoanaJuridicaDummy.setDenumire("dummy");
 		persoanaJuridicaDummy.setCodFiscal("dummy");
 		persoanaJuridicaDummy.setNrInmatriculareFiscala("dummy");
@@ -373,11 +373,11 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 	//Max 
 	
 	@Override
-	public Banca creazaBanca(Integer id, Persoana idPersoana, String capSocial, String denumire) {
+	public Banca creazaBanca(Integer id, String capSocial, String denumire) {
 		Banca banca = new Banca();
 		
 		banca.setId(id);
-		banca.setIdPersoana(idPersoana);
+		
 		banca.setCapSocial(capSocial);
 		banca.setDenumire(denumire);
 		
@@ -389,7 +389,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		Banca  bancaDummy = new Banca();
 		
 		bancaDummy.setId(id);
-		bancaDummy.setIdPersoana(new Persoana());
+		
 		bancaDummy.setCapSocial("dummy");
 	
 		
@@ -401,7 +401,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		Banca  bancaDummy= new Banca();
 		
 		bancaDummy.setId(1);
-		bancaDummy.setIdPersoana(new Persoana());
+	
 		bancaDummy.setCapSocial("dummy");
 			
 		return bancaDummy;
@@ -411,7 +411,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		Banca  bancaDummy= new Banca();
 		
 		bancaDummy.setId(-1);
-		bancaDummy.setIdPersoana(new Persoana());
+		
 		bancaDummy.setCapSocial("dummy");
 		bancaDummy.setDenumire("dummy");
 			
@@ -419,13 +419,13 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 	}
 	
 	@Override
-	public Departament creazaDepartament(Integer id, String denumire, String atributii,Persoana idContact) {
+	public Departament creazaDepartament(Integer id, String denumire, String atributii) {
 		Departament departament = new Departament();
 		
 		departament.setId(id);
 		departament.setDenumire(denumire);
 		departament.setAtributii(atributii);
-		departament.setIdContact(new Persoana());
+		
 		
 		return departament;
 	}
@@ -437,7 +437,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		departamentDummy.setId(id);
 		departamentDummy.setDenumire("dummy");
 		departamentDummy.setAtributii("dummy");
-		departamentDummy.setIdContact(new Persoana());
+		
 		
 		return departamentDummy;
 	}
@@ -449,7 +449,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		departamentDummy.setId(1);
 		departamentDummy.setDenumire("dummy");
 		departamentDummy.setAtributii("dummy");
-		departamentDummy.setIdContact(new Persoana());
+		
 			
 		return departamentDummy;
 	}
@@ -461,21 +461,21 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		departamentDummy.setId(-1);
 		departamentDummy.setDenumire("dummy");
 		departamentDummy.setAtributii("dummy");
-		departamentDummy.setIdContact(new Persoana());
+		
 		departamentDummy.setDenumire("dummy");
 			
 		return departamentDummy;
 	}
 	
 	@Override
-	public Divizie creazaDivizie(Integer id, Departament idDepartament, String denumire, String atributii, Persoana idContact) {
+	public Divizie creazaDivizie(Integer id, Departament idDepartament, String denumire, String atributii) {
 		Divizie divizie = new Divizie();
 		
 		divizie.setId(id);
 		divizie.setIdDepartament(idDepartament);
 		divizie.setDenumire(denumire);
 		divizie.setAtributii(atributii);
-		divizie.setIdContact(new Persoana());
+		
 		
 		return divizie;
 	}
@@ -488,7 +488,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		divizieDummy.setIdDepartament(new Departament());
 		divizieDummy.setDenumire("dummy");
 		divizieDummy.setAtributii("dummy");
-		divizieDummy.setIdContact(new Persoana());
+		
 		
 		return divizieDummy;
 	}
@@ -501,7 +501,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		divizieDummy.setIdDepartament(new Departament());
 		divizieDummy.setDenumire("dummy");
 		divizieDummy.setAtributii("dummy");
-		divizieDummy.setIdContact(new Persoana());
+	
 			
 		return divizieDummy;
 	}
@@ -514,69 +514,9 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv {
 		divizieDummy.setIdDepartament(new Departament());
 		divizieDummy.setDenumire("dummy");
 		divizieDummy.setAtributii("dummy");
-		divizieDummy.setIdContact(new Persoana());
+		
 			
 		return divizieDummy;
 	}
-
-	//Stefania - Telefon si Email
-	/* (non-Javadoc)
-	 * @see org.open.erp.services.nomgen.NomenclatoareSrv#creazaTelefon(java.lang.Integer, java.lang.Integer, java.lang.String, java.lang.String, java.lang.Integer)
-	 */
-	@Override
-	public Telefon creazaTelefon(Integer id,String numar,Persoana idContact) {
-		// TODO Auto-generated method stub
-		Telefon telefon = new Telefon();
-		
-		telefon.setId(id);
-		telefon.setNumar(numar);
-		telefon.setIdContact(new Persoana());
-			
-		return telefon;
-	}
-
-	
-	/* (non-Javadoc)
-	 * @see org.open.erp.services.nomgen.NomenclatoareSrv#getTelefonCuId(java.lang.Integer)
-	 */
-	@Override
-	public Telefon getTelefonCuId(Integer id) {
-		// TODO Auto-generated method stub		
-		Telefon telefonDummy = new Telefon();
-		
-		telefonDummy.setId(id);
-		telefonDummy.setNumar("dummy");
-		telefonDummy.setIdContact(new Persoana());
-		return telefonDummy;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.open.erp.services.nomgen.NomenclatoareSrv#creazaEmail(java.lang.Integer, java.lang.String, java.lang.Integer)
-	 */
-	@Override
-	public Email creazaEmail(Integer id, String adresaEmail, Persoana idContact) {
-		// TODO Auto-generated method stub
-		Email email = new Email();
-		email.setId(id);
-		email.setAdresaEmail(adresaEmail);
-		email.setIdContact(new Persoana());
-		
-		return email;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.open.erp.services.nomgen.NomenclatoareSrv#getEmailCuId(java.lang.Integer)
-	 */
-	@Override
-	public Email getEmailCuId(Integer id) {
-		// TODO Auto-generated method stub
-		Email emailDummy = new Email();
-		
-		emailDummy.setId(id);
-		emailDummy.setAdresaEmail("dummy");
-		emailDummy.setIdContact(new Persoana());
-		
-		return emailDummy;
-	}	
 	
 }

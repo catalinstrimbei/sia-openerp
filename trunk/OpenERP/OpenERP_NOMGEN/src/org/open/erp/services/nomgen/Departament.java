@@ -3,16 +3,19 @@
  */
 package org.open.erp.services.nomgen;
 
+import java.util.List;
+
 /**
  * @author Suzy
  *
  */
-public class Departament {
+public class Departament extends PersoanaFizica{
 
 	private Integer Id;
 	private String Denumire;
 	private String Atributii;
-	private Persoana IdContact;
+	private List<String> Telefoane;
+	private List<String> Emailuri;
 	/**
 	 * @return the id
 	 */
@@ -49,26 +52,30 @@ public class Departament {
 	public void setAtributii(String atributii) {
 		Atributii = atributii;
 	}
+	public List<String> getTelefoane() {
+		return Telefoane;
+	}
+	public void setTelefoane(List<String> telefoane) {
+		Telefoane = telefoane;
+	}
+	public List<String> getEmailuri() {
+		return Emailuri;
+	}
+	public void setEmailuri(List<String> emailuri) {
+		Emailuri = emailuri;
+	}
 	/**
 	 * @return the idContact
 	 */
-	public Persoana getIdContact() {
-		return IdContact;
-	}
-	/**
-	 * @param idContact the idContact to set
-	 */
-	public void setIdContact(Persoana idContact) {
-		IdContact = idContact;
-	}
 	
-	public Departament(Integer id, String denumire, String atributii,Persoana idContact) {
+	
+	public Departament(Integer id, String denumire, String atributii) {
 		super();
 		
 		Id = id;
 		Denumire = denumire;
 		Atributii = atributii;
-		IdContact = idContact;
+		
 	}
 	
 	public Departament() {

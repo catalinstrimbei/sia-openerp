@@ -6,6 +6,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.nomgen.PersoanaJuridica;
@@ -15,8 +20,7 @@ import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.Partener;
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Divizie;
-import org.open.erp.services.nomgen.Telefon;
-import org.open.erp.services.nomgen.Email;
+
 import org.open.erp.services.nomgen.Banca;
 import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
 
@@ -40,7 +44,9 @@ public class TestNomenclatoareDummyImpl{
 
 	@Test
 	public void testCreazaPersoana() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		Persoana p = new Persoana(1,"Alea Tudor Neculai");
+		System.out.println("Am creat o persoana cu id "+ p.getId()+ " adresa: "+p.getAdresa());
 	}
 
 	@Test
@@ -74,7 +80,9 @@ public class TestNomenclatoareDummyImpl{
 
 	@Test
 	public void testCreazaPersoanaFizica() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		PersoanaFizica p = new PersoanaFizica(1,"Adresa 1", "Popescu","Vasile","Domnul",'M',"1234567892365");
+		System.out.println("Am creat persoana "+p.getNume()+"  "+p.getPrenume()+"cu id "+ p.getId()+" cu adresa "+p.getAdresa()+" cu forma de adresare "+p.getFormaAdresare()+"de genul "+p.getGen()+", avand CNP-ul: "+p.getCnp());
 	}
 
 	@Test
@@ -140,8 +148,9 @@ public class TestNomenclatoareDummyImpl{
 
 	@Test
 	public void testCreazaPersoanaJuridica() {
-		fail("Not yet implemented");
-		
+		//fail("Not yet implemented");
+		PersoanaJuridica p = new PersoanaJuridica(1, "Adresa2","S.C. UnknownLevel S.R.L","32434","9876","RO3556357");
+		System.out.println("Am creat persoana juridica "+p.getDenumire()+" cu adresa "+p.getAdresa()+" cu codul fiscal "+p.getCodFiscal()+",cu nr de inmatriculare fiscala "+p.getNrInmatriculareFiscala()+" cu atributul fiscal "+p.getAtributFiscal());
 		 
 	}
 
@@ -191,8 +200,12 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testCreazaProdus() {
-		fail("Not yet implemented");
+	public void testCreazaProdus() throws ParseException {
+		//fail("Not yet implemented");
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+
+		Produs p = new Produs(1, "Produs1", "Litru", (Date)formatter.parse("01/29/02"), 70);
+		System.out.println("Am creat un produs "+p.getDenumire()+"cu UM "+p.getUnitateMasura()+" fabricat la data de "+p.getDataFabricatiei()+", cu valabilitatea de "+p.getTermenValabilitate()+" zile.");
 	}
 
 	@Test
@@ -225,8 +238,13 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testCreazaMateriePrima() {
-		fail("Not yet implemented");
+	public void testCreazaMateriePrima() throws ParseException {
+		//fail("Not yet implemented");
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+
+		MateriePrima p = new MateriePrima(1, "MateriePrima1", "Litru", (Date)formatter.parse("01/29/03"), 70);
+		System.out.println("Am creat o materie prima "+p.getDenumire()+"cu UM "+p.getUnitateMasura()+" fabricat la data de "+p.getDataFabricatiei()+", cu valabilitatea de "+p.getTermenValabilitate()+" zile.");
+		
 	}
 
 	@Test
@@ -258,8 +276,14 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testCreazaMijlocFix() {
-		fail("Not yet implemented");
+	public void testCreazaMijlocFix() throws ParseException {
+		//fail("Not yet implemented");
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+
+		Produs p = new Produs(1, "MijlcFix1", "Buc", (Date)formatter.parse("01/29/04"), 200);
+		System.out.println("Am creat un mijloc fix "+p.getDenumire()+"cu UM "+p.getUnitateMasura()+" fabricat la data de "+p.getDataFabricatiei()+", cu valabilitatea de "+p.getTermenValabilitate()+" zile.");
+		
+		
 	}
 
 	@Test
@@ -307,8 +331,13 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testCreazaPartener() {
-		fail("Not yet implemented");
+	public void testCreazaPartener() throws ParseException {
+		//fail("Not yet implemented");
+		
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+
+		Partener p = new Partener(1, 11, (Date)formatter.parse("01/29/02"), 120);
+		System.out.println("Am creat un partener cu id-ul "+p.getId()+"cu idPersoana "+p.getIdPersoana()+" cu data afilierii "+p.getDataAfilierii()+", cu durata afilierii de "+p.getDurataAfilierii()+" zile.");
 	}
 
 	@Test
@@ -341,7 +370,11 @@ public class TestNomenclatoareDummyImpl{
 
 	@Test
 	public void testCreazaBanca() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		
+
+		Banca b = new Banca(1,"Adresa3","Banca1", "12333448","J65576576","RO76345637","20000");
+		System.out.println("Am creat o banca cu id-ul "+b.getId()+", cu capitalul social de "+b.getCapSocial()+", cu denumirea "+b.getDenumire());
 	}
 
 	@Test
@@ -391,7 +424,10 @@ public class TestNomenclatoareDummyImpl{
 
 	@Test
 	public void testCreazaDepartament() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		Departament b = new Departament(1,"Departament1","Atributii");
+		System.out.println("Am creat o un departament cu id-ul "+b.getId()+", cu denumirea "+b.getDenumire()+", cu atributiile "+b.getAtributii());
+		
 	}
 
 	@Test
@@ -441,7 +477,11 @@ public class TestNomenclatoareDummyImpl{
 
 	@Test
 	public void testCreazaDivizie() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		Departament d = new Departament(1,"Dep1","Atrib1");
+		Divizie b = new Divizie(1,d ,"Divizie1","Atributii");
+		System.out.println("Am creat o divizie cu id-ul "+b.getId()+b.getIdDepartament()+" "+", cu denumirea "+b.getDenumire()+", cu atributiile "+b.getAtributii());
+		
 	}
 
 	@Test
@@ -490,41 +530,5 @@ public class TestNomenclatoareDummyImpl{
 		{ System.out.println("Eroare");}
 	}
 
-	@Test
-	public void testCreazaTelefon() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetTelefonCuId() {
-		//fail("Not yet implemented");
-		    Telefon tel = instance.getTelefonCuId(1);		
-			assertNotNull(tel);
-			
-			assertTrue(tel instanceof Telefon);
-			
-			assertEquals((Integer)1, tel.getId());
-	}
-
-	@Test
-	public void testCreazaEmail() {
-		
-		Email email = instance.getEmailCuId(1);	
-		assertNotNull(email);
-		
-		assertTrue(email instanceof Email);
-		
-	}
-
-	@Test
-	public void testGetEmailCuId() {
-		//fail("Not yet implemented");
-		    Email email = instance.getEmailCuId(1);	
-			assertNotNull(email);
-			
-			assertTrue(email instanceof Email);
-			
-			assertEquals((Integer)1, email.getId());
-	}
 
 }

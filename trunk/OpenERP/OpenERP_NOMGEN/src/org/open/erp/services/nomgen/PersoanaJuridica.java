@@ -70,11 +70,9 @@ public class PersoanaJuridica extends Persoana {
 	public void setAtributFiscal(String atributFiscal) {
 		this.atributFiscal = atributFiscal;
 	}
-
-
-	public PersoanaJuridica(Integer id, String adresa, Integer idContact,
-			                String denumire, String codFiscal, String nrInmatriculareFiscala, String atributFiscal) {
-		super(id, adresa, idContact);
+	
+	public PersoanaJuridica(Integer id, String adresa, String denumire, String codFiscal, String nrInmatriculareFiscala, String atributFiscal) {
+		super(id, adresa);
 		
 		this.denumire = denumire;
 		this.codFiscal = codFiscal;

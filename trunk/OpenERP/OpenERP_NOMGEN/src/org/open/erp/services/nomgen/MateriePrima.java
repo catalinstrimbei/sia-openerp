@@ -7,7 +7,7 @@ import java.util.Date;
  * @BusinessObject(DummyEntity)
  * 
  */
-public class MateriePrima extends Material{
+public class MateriePrima {
 	private Integer id;
 	private String  denumire;
 	private String  unitateMasura;
@@ -102,9 +102,5 @@ public class MateriePrima extends Material{
 	
 	public MateriePrima() {
 		super();
-	}
-
-	public MateriePrima(int i, String string, String string2, String string3) {
-		// TODO Auto-generated constructor stub
 	}	
 }

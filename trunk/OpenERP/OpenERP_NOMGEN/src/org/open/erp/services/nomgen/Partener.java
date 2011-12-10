@@ -62,11 +62,12 @@ public class Partener {
 		this.durataAfilierii = durataAfilierii;
 	}
 
-	public Partener (Integer id, Integer idPersoana , Integer durataAfilierii) {
+	public Partener (Integer id, Integer idPersoana , Date dataAfilierii, Integer durataAfilierii) {
 		super();
 		
 		this.id = id;
 		this.idPersoana = idPersoana;
+		this.dataAfilierii = dataAfilierii;
 		this.durataAfilierii = durataAfilierii;
 	
 	}

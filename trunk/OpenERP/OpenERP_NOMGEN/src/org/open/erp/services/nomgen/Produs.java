@@ -7,52 +7,14 @@ import java.util.Date;
  * @BusinessObject(DummyEntity)
  * 
  */
-public class Produs extends Material{
+public class Produs {
 	private Integer id;
 	private String  denumire;
 	private String  unitateMasura;
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
-	private Float procentTVA;
-	private Float greutate;
-	private String descriere;
-	private Double pretVanzare;
-	
-	public Double getPretVanzare() {
-		return pretVanzare;
-	}
-
-	public void setPretVanzare(Double pretVanzare) {
-		this.pretVanzare = pretVanzare;
-	}
-
-	public String getDescriere() {
-		return descriere;
-	}
-
-	public void setDescriere(String descriere) {
-		this.descriere = descriere;
-	}
-
-	public Float getGreutate() {
-		return greutate;
-	}
-
-	public void setGreutate(Float greutate) {
-		this.greutate = greutate;
-	}
-
-
 	
 	
-	public Float getProcentTVA() {
-		return procentTVA;
-	}
-
-	public void setProcentTVA(Float procentTVA) {
-		this.procentTVA = procentTVA;
-	}
-
 	/**
 	 * @return the id
 	 */
@@ -128,10 +90,7 @@ public class Produs extends Material{
 	}
 
 	
-	public Produs(Integer id, String denumire, String unitateMasura, 
-			Date dataFabricatiei, Integer termenValabilitate,
-			Float procentTVA, Float greutate, String descriere, 
-			Double pretVanzare) {
+	public Produs(Integer id, String denumire, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate) {
 		super();
 		
 		this.id = id;
@@ -139,10 +98,6 @@ public class Produs extends Material{
 		this.unitateMasura = unitateMasura;
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;
-		this.procentTVA = procentTVA;
-		this.greutate = greutate;
-		this.descriere = descriere;
-		this.pretVanzare = pretVanzare;
 	}
 	
 	public Produs() {
