@@ -34,6 +34,8 @@ public class Procesare {
 	//Cei care vor astepta <CerereAprovizionare>. In cazul nostru AprovizionareImpl
 	private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
 
+	public Procesare(){};
+	
 	public Procesare(List<Gestiune> gestiuni, 
 			AplicarePret aplicarepret) {
 		super();

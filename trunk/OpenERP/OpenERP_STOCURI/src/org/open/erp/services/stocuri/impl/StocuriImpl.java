@@ -23,6 +23,7 @@ public class StocuriImpl implements StocuriSrv {
 
 	public StocuriImpl() {
 		super();
+		procesare = new Procesare();
 	}
 
 	public StocuriImpl(Procesare procesareComandaMateriale,
