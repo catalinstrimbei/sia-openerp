@@ -9,7 +9,7 @@ public class TestPersoana {
 		
 		   Persoana p1 = new Persoana(1, "Adresa1", 1);
 			Persoana p2 = new Persoana(2, "Adresa2", 2);
-			Persoana p3 = new Persoana(3, "Adresa3", 3);
+	
 		   		
 		   p1.afiseazaInformatii("p1");
 		   p2 = p1;
