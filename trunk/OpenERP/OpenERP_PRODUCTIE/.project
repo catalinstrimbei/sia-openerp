@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Resources/log4j-1.2.16.jar</name>
-			<type>1</type>
-			<location>C:/Users/Lala/Desktop/apache-log4j-1.2.16/log4j-1.2.16.jar</location>
-		</link>
-	</linkedResources>
 </projectDescription>
