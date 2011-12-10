@@ -1,7 +1,6 @@
 package org.open.erp.services.contabgest.teste;
 import static org.junit.Assert.*;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -27,8 +26,8 @@ public class TestCentruCostImpl {
 	 
 	 @Before
 	 public void setUp() throws Exception {
-		 contabgestInstance= CentruCostDummyFactory.getCentruCostSrv();
-		 personalInstance = CentruCostDummyFactory.getPersonalSrv();
+		 contabgestInstance= CentruCostFactory.getCentruCostSrv();
+		 personalInstance = CentruCostFactory.getPersonalSrv();
 	 logger.info("initTest"); 
 	 }
 	 
