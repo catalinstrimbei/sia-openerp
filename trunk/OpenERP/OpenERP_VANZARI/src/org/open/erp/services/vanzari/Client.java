@@ -14,10 +14,19 @@ public class Client extends Partener {
 	//String adresa;
 	String adresaEmail;
 	String telefon;
-	String cod; // BI/CI/CUI
+	String codUnic; // BI/CI/CUI
 	Double soldClient;
 	
-	public Client(){}
+	public Client(){ super(); }
+	
+	public Client(Integer _id, Integer _idPersoana , Integer _durataAfilierii, String _nume,  String _adresaEmail, String _telefon, String _codUnic, Double _soldClient){
+		super(_id, _idPersoana, _durataAfilierii);
+		this.nume = _nume;
+		this.adresaEmail = _adresaEmail;
+		this.telefon = _telefon;
+		this.codUnic = _codUnic;
+		this.soldClient = _soldClient;
+	}
 
 	public boolean addClient(){
 		// set client data in DB
@@ -36,12 +45,12 @@ public class Client extends Partener {
 	
 	public static Client cautaClientByEmail(String email){
 		// search Client in DB
-		return new Client();
+		return new Client(1, 1, 2, "Gigel", email, "0987654321", "CT123456", 0.0);
 	}
 	
 	public static Client cautaClientByNume(String nume){
 		//search Client in DB by firstname / lastname
-		return new Client();
+		return new Client(1, 1, 2, nume, nume+"@yahoo.com", "0987654321", "CT123456", 0.0);
 	}
 
 	public String getNume() {
@@ -68,12 +77,12 @@ public class Client extends Partener {
 		this.telefon = telefon;
 	}
 
-	public String getCod() {
-		return cod;
+	public String getCodUnic() {
+		return codUnic;
 	}
 
-	public void setCod(String cod) {
-		this.cod = cod;
+	public void setCodUnic(String codUnic) {
+		this.codUnic = codUnic;
 	}
 
 	public Double getSoldClient() {

@@ -46,6 +46,7 @@ public class Comanda {
 		this.dataComanada = _dataComanda;
 		this.client = _client;
 		this.stareComanda = _stareComanda;
+		this.produseComandate = new ArrayList<LinieComanda>();
 	}
 	
 	public static Comanda gasesteComanda(Integer nrComanda){

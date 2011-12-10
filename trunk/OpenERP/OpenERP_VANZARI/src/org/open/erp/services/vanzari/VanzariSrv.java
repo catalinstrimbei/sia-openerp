@@ -46,7 +46,7 @@ public interface VanzariSrv {
 	 * 
 	 * @param factura factura penrtu care se realizeaza inregistrarea 
 	 */
-	public void inregistrareFactura(FacturaEmisa factura);
+	public Integer inregistrareFactura(FacturaEmisa factura);
 	
 	/**
 	 * Actualizarea stocului in momentul emiterii facturii

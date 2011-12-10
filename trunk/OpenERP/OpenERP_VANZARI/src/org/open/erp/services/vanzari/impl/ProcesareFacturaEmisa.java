@@ -21,14 +21,16 @@ public class ProcesareFacturaEmisa {
 		Double pretUnitar = 0.0; 
 		
 		// preluare de la Mk
-		Float valoareReducere = (float)0.0;
-		Float procentReducere = (float)10;
+		Double valoareReducere = 0.0;
+		Double procentReducere = 10.0;
 		
-		pretUnitar = linie.getProdus().getPretVanzare();
+		Produs produs = (Produs) linie.getMaterial();
+		pretUnitar = produs.getPretVanzare();
+		//pretUnitar = linie.getProdus().getPretVanzare();
 		
-		if( procentReducere != 0){
+		if( procentReducere != 0.0){
 			pret = pretUnitar * (1 - 0.01 * procentReducere); 
-		} else if(valoareReducere != 0){
+		} else if(valoareReducere != 0.0){
 			pret = pretUnitar - valoareReducere;
 		} else
 			pret = pretUnitar;
@@ -40,15 +42,16 @@ public class ProcesareFacturaEmisa {
 	}
 	
 	public void calculeazaPretLinie() throws ValoareNegativa{ // fara TVA
-		//Double pretLinie = linie.getProdus().getPretVanzare() * linie.getCantitateFacturata();
-		Double pretLinie = this.stabilirePret() * linie.getCantitateFacturata();  
+		Double pretLinie = this.stabilirePret() * linie.getCantitate();  
 		linie.setPretLinie(pretLinie);		
 	}
 	
 	public void calculeazaTvaLinie() throws ValoareNegativa{
-		//Double tva = linie.getProdus().getPretVanzare() * linie.getCantitateFacturata() * linie.getProdus().getProcentTVA();
-		Double tva = this.stabilirePret() * linie.getCantitateFacturata() * linie.getProdus().getProcentTVA();
-		linie.setTvaLinie(tva);
+		Produs produs = (Produs) linie.getMaterial();
+		Float procTVA = produs.getProcentTVA(); 
+		
+		Double tva = this.stabilirePret() * linie.getCantitate() * procTVA;
+		linie.setTVA(tva);
 	}
 	
 	/*public boolean addProdusInFactura(Produs produs, Double cantitate){

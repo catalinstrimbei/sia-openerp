@@ -21,8 +21,8 @@ import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
 public class VanzariImpl implements VanzariSrv{
 	
-	private ProcesareComanda procesareComanda; 
-	private ProcesareFacturaEmisa procesareFactura;
+	private ProcesareComanda procesareComanda  = new ProcesareComanda();
+	private ProcesareFacturaEmisa procesareFactura = new ProcesareFacturaEmisa();
 	public StocuriSrv stocuriSrv = new StocuriImpl();
 	public ContabilizareSrv contabilizareSrv = new ContabilizareSrvImpl();
 	
@@ -34,10 +34,10 @@ public class VanzariImpl implements VanzariSrv{
 	@Override
 	public Comanda inregistrareComanda(Produs[] produs, Double[] cant, Client client) {
 		//Comanda comanda = new Comanda();
-		Comanda comanda = new Comanda(1, new Date(), client, 'P');
+		Comanda comanda = new Comanda(1, new Date(), client, Comanda.PENDING);
 		procesareComanda.setComanda(comanda);
 		
-		for(int i=0; i<=produs.length; i++){
+		for(int i=0; i<produs.length; i++){
 			if( !procesareComanda.addProdusInComanda(produs[i], cant[i])){
 				// logger				
 			}
@@ -60,11 +60,13 @@ public class VanzariImpl implements VanzariSrv{
 		while(iterator.hasNext()){
 			LinieComanda linieComanda = iterator.next();
 			LinieFacturaEmisa linieFactura = new LinieFacturaEmisa();
-			prodAdaugat = procesareFactura.checkDisponibilitateProdus(linieComanda.getProdus(), linieComanda.getCantitate());
+			prodAdaugat = true; //procesareFactura.checkDisponibilitateProdus(linieComanda.getProdus(), linieComanda.getCantitate());
 			if( prodAdaugat){
 				try{
-					linieFactura.setProdus(linieComanda.getProdus());
+					//linieFactura.setProdus(linieComanda.getProdus());
+					linieFactura.setMaterial(linieComanda.getProdus());
 					linieFactura.setCantitate(linieComanda.getCantitate());
+					//linieFactura.setCantitateFacturata(linieComanda.getCantitate());
 					procesareFactura.setLinie(linieFactura);
 					procesareFactura.calculeazaPretLinie();
 					procesareFactura.calculeazaTvaLinie();
@@ -85,18 +87,20 @@ public class VanzariImpl implements VanzariSrv{
 		this.actualizeazaSoldClient(factura, client);
 		
 		this.actulizareStoc(1, factura); // iesire din stoc
-		this.inregistrareFactura(factura);
+		//this.inregistrareFactura(factura);
 		
 		return factura;
 	}
 	
 	@Override
-	public void inregistrareFactura(FacturaEmisa factura){
+	public Integer inregistrareFactura(FacturaEmisa factura){
+		Integer result = 0;
 		try{
 			//ArrayList<LinieDocument> liniiDoc = (ArrayList<LinieFacturaEmisa>) factura.getProduseFacturate();
-			contabilizareSrv.jurnalizareVanzare(factura.getDataDoc(), factura.getValoareTotalaFactura(), factura.getValoareTva(), factura.getNrDoc(), factura.getClient().getId(), factura.getLiniiDocument() , StareDocument.NOU, 1);
+			result = contabilizareSrv.jurnalizareVanzare(factura.getDataDoc(), factura.getValoareTotalaFactura(), factura.getValoareTva(), factura.getNrDoc(), factura.getClient().getId(), factura.getLiniiDocument() , StareDocument.NOU, 1);
 		} catch(CtbException e){	
 		}
+		return result;
 	}
 	
 	@Override
@@ -134,7 +138,7 @@ public class VanzariImpl implements VanzariSrv{
 	public void returProduse(FacturaEmisa factura) {
 		if( factura.isReturnable()){
 			this.actulizareStoc(2, factura); // intrare in stoc
-			this.inregistrareFactura(factura);
+			//this.inregistrareFactura(factura);
 		}
 	}
 

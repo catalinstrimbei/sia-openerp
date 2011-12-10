@@ -27,7 +27,7 @@ public class FacturaEmisa extends Document {
 	
 	Integer nrComanda;
 	Client client;
-	ArrayList<LinieFacturaEmisa> produseFacturate;
+	ArrayList<LinieFacturaEmisa> produseFacturate = new ArrayList<LinieFacturaEmisa>();
 	Vanzator vanzator;
 	
 	Integer idMetodaPlata;
@@ -69,7 +69,7 @@ public class FacturaEmisa extends Document {
 		Double tva = 0.0; 
 		while(iterator.hasNext()){
 			LinieFacturaEmisa produs = iterator.next();
-			tva += produs.getTvaLinie();
+			tva += produs.getTVA();
 		}
 		this.valoareTva = tva;
 	}

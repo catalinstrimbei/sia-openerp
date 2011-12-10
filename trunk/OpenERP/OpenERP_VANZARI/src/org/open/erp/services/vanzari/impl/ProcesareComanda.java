@@ -18,10 +18,10 @@ public class ProcesareComanda {
 	public Comanda comanda;
 	
 	public LinieComanda gasesteProdusComandat(Produs produs){
-		LinieComanda produsComandat = null;
+		LinieComanda produsComandat = new LinieComanda();
 		if( !comanda.getProduseComandate().isEmpty()){
 			Iterator<LinieComanda> iterator = comanda.getProduseComandate().iterator();
-			while(produsComandat == null && iterator.hasNext()){
+			while(produsComandat.getProdus().getDenumire() == null && iterator.hasNext()){
 				LinieComanda linie = iterator.next();
 				if( linie.getProdus().equals(produs)){
 					produsComandat = linie;
@@ -34,11 +34,11 @@ public class ProcesareComanda {
 	
 	// Adauga produs nou sau incrementeaza cantitatea daca deja exista
 	public boolean addProdusInComanda(Produs produs, Double cantitate){
-		if( !this.checkDisponibilitateProdus(produs, cantitate))
+		/*if( !this.checkDisponibilitateProdus(produs, cantitate))
 			return false;
-		else {
+		else*/ {
 			LinieComanda produsComandat = this.gasesteProdusComandat(produs);
-			if( produsComandat == null){
+			if( produsComandat.getProdus().getDenumire() == null){
 					LinieComanda linie = new LinieComanda(produs, cantitate);
 					return comanda.getProduseComandate().add(linie);
 			}

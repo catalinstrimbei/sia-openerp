@@ -25,7 +25,9 @@ public class LinieComanda {
 	Float procentReducere;
 	//Float cantitateMinRedusa;
 	
-public LinieComanda(){}
+public LinieComanda(){
+	produs = new Produs();
+}
 	
 	public LinieComanda(Produs _produs, Double _cantitate){
 		if( _produs != null) {

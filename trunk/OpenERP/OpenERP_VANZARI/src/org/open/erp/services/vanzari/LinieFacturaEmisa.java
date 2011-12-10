@@ -10,27 +10,21 @@ import org.open.erp.services.nomgen.LinieDocument;
  */
 
 public class LinieFacturaEmisa extends LinieDocument {
-	// Integer idFactura;
-	Integer idLinieFactura;
-	Produs produs;
+	//Integer idLinieFactura;
+	//Produs produs;
 	//Double pretUnitar;
 	Double pretLinie;
-	Double cantitateFacturata;
-	Double tvaLinie;
-	//Double cotaTva;
+	//Double cantitateFacturata;
+	//Double tvaLinie;
 	
-	public LinieFacturaEmisa(){}
+	public LinieFacturaEmisa(){
+		super();
+	}
 	
 	public LinieFacturaEmisa(Produs _produs, Double _cant){
-		this.produs= _produs;
-		this.cantitateFacturata = _cant;
-	}
-	
-	public Integer getIdLinieFactura() {
-		return idLinieFactura;
-	}
-	public void setIdLinieFactura(Integer idLinieFactura) {
-		this.idLinieFactura = idLinieFactura;
+		super();
+		this.material= _produs;
+		this.cantitate = _cant;
 	}
 
 	public Double getPretLinie() {
@@ -40,27 +34,5 @@ public class LinieFacturaEmisa extends LinieDocument {
 	public void setPretLinie(Double pretLinie) {
 		this.pretLinie = pretLinie;
 	}
-
-	public Double getCantitateFacturata() {
-		return cantitateFacturata;
-	}
-	public void setCantitateFacturata(Double cantitateFacturata) {
-		this.cantitateFacturata = cantitateFacturata;
-	}
-	public Double getTvaLinie() {
-		return tvaLinie;
-	}
-	public void setTvaLinie(Double tvaLinie) {
-		this.tvaLinie = tvaLinie;
-	}
-
-	public Produs getProdus() {
-		return produs;
-	}
-
-	public void setProdus(Produs produs) {
-		this.produs = produs;
-	}
-	
 	
 }
