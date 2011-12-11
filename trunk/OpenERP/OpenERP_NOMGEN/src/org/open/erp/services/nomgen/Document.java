@@ -10,10 +10,10 @@ public class Document {
 	public Persoana persoana;//responsabil        
 	public String observatie;   
 	
-	private ArrayList<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
+	private List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
 	
 	
-	public void addLinieDocument(LinieDocument linieDocument) {
+	public void addLinie(LinieDocument linieDocument) {
 		liniiDocument.add(linieDocument);
 	}
 	
@@ -21,6 +21,14 @@ public class Document {
 		return liniiDocument.size();
 	}
 	
+	public List<LinieDocument> getLiniiDocument(){
+		return liniiDocument;
+	}
+	
+	public void setLiniiDocument(List<LinieDocument> liniiDocument) {
+		this.liniiDocument = liniiDocument;
+	}
+
 	public LinieDocument getLinieDocumentAt(int index) {
 		return liniiDocument.get(index);
 	}
@@ -46,19 +54,19 @@ public class Document {
 		
 	}
 
-	public Integer getNrDocument() {               
+	public Integer getNrDoc() {               
 		return nrDocument;          
 		}         
 	
-	public void setNrDocument(Integer nrDocument) {              
+	public void setNrDoc(Integer nrDocument) {              
 		this.nrDocument = nrDocument;       
 		}       
 	
-	public Date getDataDpcument() {                 
+	public Date getDataDoc() {                 
 		return dataDocument;         
 		}       
 	
-	public void setDataDpcument(Date dataDocument) {        
+	public void setDataDoc(Date dataDocument) {        
 		this.dataDocument = dataDocument;   
 		}           
 	
