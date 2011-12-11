@@ -13,8 +13,9 @@ public class OrdinPlata extends DocumentPlata{
 	private ContBancaPJ contEmitent;
 	private ContBancaPJ contBeneficiar;
 	private String reprezentand;
+	private String stare;
 	
-	public OrdinPlata(Integer idDocumentPlata, String seriaNr, Date data, Double totalPlata, PersoanaJuridica emitent, PersoanaJuridica beneficiar, ContBancaPJ contEmitent, ContBancaPJ contBeneficiar, String reprezentand) {
+	public OrdinPlata(Integer idDocumentPlata, String seriaNr, Date data, Double totalPlata, PersoanaJuridica emitent, PersoanaJuridica beneficiar, ContBancaPJ contEmitent, ContBancaPJ contBeneficiar, String reprezentand, String stare) {
 		super(idDocumentPlata);
 		this.seriaNr=seriaNr;
 		this.data = data;
@@ -24,6 +25,7 @@ public class OrdinPlata extends DocumentPlata{
 		this.contEmitent = contEmitent;
 		this.contBeneficiar = contBeneficiar;
 		this.reprezentand = reprezentand;
+		this.stare = stare;
 	}
 	
 	public Date getData() {
@@ -81,6 +83,14 @@ public class OrdinPlata extends DocumentPlata{
 		System.out.println("Plata prin OP in valoare de: " +
 				totplata + " RON "+ getTotalPlata());
 		return true;
+	}
+
+	public String getStare() {
+		return stare;
+	}
+
+	public void setStare(String stare) {
+		this.stare = stare;
 	}
 }
 

@@ -8,6 +8,7 @@ public class PlatiExceptions extends Exception{
 	private static final long serialVersionUID = 1L;
 
 	public PlatiExceptions() {
+		super();
     }
 	
 	public PlatiExceptions(String message, Throwable cause) {

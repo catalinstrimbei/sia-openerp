@@ -1,8 +1,7 @@
 package org.open.erp.services.plati;
 
-import java.util.Date;
+import java.util.Calendar;
 
-import org.open.erp.services.nomgen.PersoanaJuridica;
 
 public class DocumentPlata {
 	private Integer idDocumentPlata;
@@ -20,5 +19,20 @@ public class DocumentPlata {
 	}
 	public boolean efectPlata(Double totplata){
 		return true;
+	}
+
+	public Double getTotalPlata() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Integer getSeriaNr() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Calendar getFacturi() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

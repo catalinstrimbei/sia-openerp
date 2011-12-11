@@ -2,7 +2,6 @@ package org.open.erp.services.plati;
 
 import java.util.Date;
 
-import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
 public class CEC extends DocumentPlata{
@@ -12,8 +11,9 @@ public class CEC extends DocumentPlata{
 	private PersoanaJuridica emitent;
 	private PersoanaJuridica beneficiar;
 	private ContBancaPJ contEmitent;
+	private String stare;
 
-	public CEC(Integer idDocumentPlata, String seriaNr, Date data, Double totalPlata, PersoanaJuridica emitent, PersoanaJuridica beneficiar, ContBancaPJ contEmitent) {
+	public CEC(Integer idDocumentPlata, String seriaNr, Date data, Double totalPlata, PersoanaJuridica emitent, PersoanaJuridica beneficiar, ContBancaPJ contEmitent,String stare) {
 		super(idDocumentPlata);
 		this.setSeriaNr(seriaNr);
 		this.data = data;
@@ -21,6 +21,7 @@ public class CEC extends DocumentPlata{
 		this.emitent = emitent;
 		this.beneficiar = beneficiar;
 		this.contEmitent = contEmitent;
+		this.stare = stare;
 	}
 	
 	public Date getData() {
@@ -67,5 +68,13 @@ public class CEC extends DocumentPlata{
 		System.out.println("Plata prin CEC in valoare de: " +
 				totplata + " RON "+ getTotalPlata());
 		return true;
+	}
+
+	public String getStare() {
+		return stare;
+	}
+
+	public void setStare(String stare) {
+		this.stare = stare;
 	}
 }
