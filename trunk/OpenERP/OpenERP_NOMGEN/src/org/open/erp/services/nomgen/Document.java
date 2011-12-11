@@ -13,6 +13,23 @@ public class Document {
 	private List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
 	
 	
+	public Document(Integer nrDocument, Date dataDocument, Persoana persoana,
+			String observatie) {
+		super();
+		this.nrDocument = nrDocument;
+		this.dataDocument = dataDocument;
+		this.persoana = persoana;
+		this.observatie = observatie;
+	}
+	
+	public Document(){
+		super();
+	}
+	
+	public Document(Integer nrDocument,Date dataDocument){ // adaugare constructor pt Stocuri
+		super();
+	}
+	
 	public void addLinie(LinieDocument linieDocument) {
 		liniiDocument.add(linieDocument);
 	}
@@ -41,18 +58,9 @@ public class Document {
 		liniiDocument.remove(index);
 	}
 	
-	public Document(Integer nrDocument, Date dataDocument, Persoana persoana,
-			String observatie) {
-		super();
-		this.nrDocument = nrDocument;
-		this.dataDocument = dataDocument;
-		this.persoana = persoana;
-		this.observatie = observatie;
-	}
 	
-	public Document(){
-		
-	}
+	
+	
 
 	public Integer getNrDoc() {               
 		return nrDocument;          
