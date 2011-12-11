@@ -4,9 +4,9 @@ public class LinieDocument {
 	public Integer linieDoc; 
 	public Document document; 
 	public Material material; 
-	public Double cantitate;  
-	public Double pret;  
-	public Double TVA;  
+	public Double cantitate = 0.0;  
+	public Double pret = 0.0;  
+	public Double TVA = 0.0 ;  
 	public LinieDocument(Integer linieDoc, Document document, Material material,                  Double cantitate, Double pret, Double tVA) {    
 		super();          
 		this.linieDoc = linieDoc;      
@@ -43,6 +43,7 @@ public class LinieDocument {
 		this.cantitate = cantitate;
 		} 
 	public Double getPret() { 
+		
 		return pret;  
 		}  
 	public void setPret(Double pret) {  
@@ -53,5 +54,6 @@ public class LinieDocument {
 		}  
 	public void setTVA(Double tVA) { 
 		TVA = tVA; 
-		} 
+		}
+	
 	}  

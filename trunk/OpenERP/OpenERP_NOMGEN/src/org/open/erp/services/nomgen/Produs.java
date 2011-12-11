@@ -7,7 +7,7 @@ import java.util.Date;
  * @BusinessObject(DummyEntity)
  * 
  */
-public class Produs {
+public class Produs extends Material{
 	private Integer id;
 	private String  denumire;
 	private String  unitateMasura;

@@ -146,7 +146,7 @@ public class Procesare {
 						// fiecare lot in parte si se aduna
 						// la valoarea liniei din bonul de consum pt produsul
 						// respectiv
-						linie.incementeazaPret(cantitateLivrata
+						linie.setPret(linie.getPret( )+ cantitateLivrata
 								* aplicarepret.getPretProdLot(articol));
 						// se actualizeaza stocul pe fiecare articol din
 						// gestiunea respectiva

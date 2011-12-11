@@ -22,13 +22,19 @@ public class Gestionar extends Angajat {
 
 	
 	
-	public Gestionar(Integer id, String adresa, Integer idContact, String nume,
-			String prenume, String formaAdresare, char gen, String cnp,
-			Integer idCandidat, String tipCandidat, Gestiune gestiune) {
-		super(id, adresa, idContact, nume, prenume, formaAdresare, gen, cnp,
-				idCandidat, tipCandidat);
+	
+
+
+	public Gestionar(Integer id, String adresa, String nume, String prenume,
+			String formaAdresare, char gen, String cnp, Integer idCandidat,
+			String tipCandidat, Gestiune gestiune) {
+		super(id, adresa, nume, prenume, formaAdresare, gen, cnp, idCandidat,
+				tipCandidat);
 		this.gestiune = gestiune;
 	}
+
+
+
 
 
 
