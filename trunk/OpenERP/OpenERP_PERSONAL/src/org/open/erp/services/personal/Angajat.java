@@ -50,18 +50,18 @@ public class Angajat extends Candidat{
 	}
 
 
-	public Angajat(Integer id, String adresa, Integer idContact, String nume,
+	public Angajat(Integer id, String adresa,  String nume,
 			String prenume, String formaAdresare, char gen, String cnp,
 			Integer idCandidat, String tipCandidat) {
-		super(id, adresa, idContact, nume, prenume, formaAdresare, gen, cnp,
+		super(id, adresa,  nume, prenume, formaAdresare, gen, cnp,
 				idCandidat, tipCandidat);
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Angajat(Integer id, String adresa, Integer idContact, String nume,
+	public Angajat(Integer id, String adresa,  String nume,
 			String prenume, String formaAdresare, char gen, String cnp) {
-		super(id, adresa, idContact, nume, prenume, formaAdresare, gen, cnp);
+		super(id, adresa, nume, prenume, formaAdresare, gen, cnp);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -69,7 +69,7 @@ public class Angajat extends Candidat{
 
 	public Angajat(Integer id, String nume,
 			String prenume, Integer marca, Boolean activ) {
-		super(id, null, null, nume, prenume, null, 'M', null);
+		super(id, null, nume, prenume, null, 'M', null);
 		this.marca = marca;
 		this.activ = activ;
 		this.numarCopii = 0;
@@ -81,7 +81,7 @@ public class Angajat extends Candidat{
 	public Angajat(Integer id,  String nume,
 			String prenume,	Integer idCandidat, String tipCandidat, Integer marca,
 			Boolean activ) {
-		super(id, null, null, nume, prenume, null, 'M', null,
+		super(id, null,  nume, prenume, null, 'M', null,
 				idCandidat, tipCandidat);
 		this.marca = marca;
 		this.activ = activ;
@@ -89,11 +89,11 @@ public class Angajat extends Candidat{
 	}
 
 
-	public Angajat(Integer id, String adresa, Integer idContact, String nume,
+	public Angajat(Integer id, String adresa, String nume,
 			String prenume, String formaAdresare, char gen, String cnp,
 			Integer idCandidat, String tipCandidat, Integer marca,
 			Boolean activ, Integer numarCopii) {
-		super(id, adresa, idContact, nume, prenume, formaAdresare, gen, cnp,
+		super(id, adresa, nume, prenume, formaAdresare, gen, cnp,
 				idCandidat, tipCandidat);
 		this.marca = marca;
 		this.activ = activ;

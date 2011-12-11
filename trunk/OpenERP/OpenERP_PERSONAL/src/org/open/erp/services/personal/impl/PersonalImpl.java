@@ -350,7 +350,7 @@ public class PersonalImpl implements PersonalSrv{
 	public void angajare(Candidat candidat_) {
 		// TODO Auto-generated method stub
 		Angajat angajat;
-		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getIdContact(), candidat_.getNume(), candidat_.getPrenume(),
+		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
 				3// va fi modificat odata cu baza de date
 				, null, 0);

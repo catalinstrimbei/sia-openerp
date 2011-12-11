@@ -28,22 +28,22 @@ public class Candidat extends PersoanaFizica{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Candidat(Integer id, String adresa, Integer idContact, String nume,
+	public Candidat(Integer id, String adresa, String nume,
 			String prenume, String formaAdresare, char gen, String cnp) {
-		super(id, adresa, idContact, nume, prenume, formaAdresare, gen, cnp);
+		super(id, adresa, nume, prenume, formaAdresare, gen, cnp);
 		// TODO Auto-generated constructor stub
 	}
-	public Candidat(Integer id, String adresa, Integer idContact, String nume,
+	public Candidat(Integer id, String adresa,  String nume,
 			String prenume, String formaAdresare, char gen, String cnp,
 			Integer idCandidat, String tipCandidat) {
-		super(id, adresa, idContact, nume, prenume, formaAdresare, gen, cnp);
+		super(id, adresa, nume, prenume, formaAdresare, gen, cnp);
 		this.idCandidat = idCandidat;
 		this.tipCandidat = tipCandidat;
 	}
 	
 	public Candidat(Integer id, String nume,
 			String prenume,	Integer idCandidat, String tipCandidat) {
-		super(id, null, null, nume, prenume, null, 'M', null);
+		super(id, null,  nume, prenume, null, 'M', null);
 		this.idCandidat = idCandidat;
 		this.tipCandidat = null;
 	}
