@@ -13,7 +13,7 @@ public class Banca extends PersoanaJuridica {
 	/**
 	 * @return the capSocial
 	 */
-	public String getCapSocial() {
+	public String getCapSocial() { 
 		return CapSocial;
 	}
 	/**

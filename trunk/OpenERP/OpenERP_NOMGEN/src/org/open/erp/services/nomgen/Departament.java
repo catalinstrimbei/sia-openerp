@@ -9,7 +9,7 @@ import java.util.List;
  * @author Suzy
  *
  */
-public class Departament extends PersoanaFizica{
+public class Departament{
 
 	private Integer Id;
 	private String Denumire;
