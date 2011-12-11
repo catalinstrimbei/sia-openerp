@@ -1,28 +1,39 @@
 package org.open.erp.services.nomgen;
 
-import java.util.List;
-
 public class Material { 
 	public Integer idMaterial; 
 	public String denumire; 
 	public String categorie;  
 	public String UM; 
-	public Integer stocCurent;  
+	
+	//public Integer stocCurent;  
 	private String tipContabil;
 
 	
 	public Material (Integer idMaterial, String denumire, 
-			    String categorie, String uM, Integer stocCurent, String tipContabil) {   
+			    String categorie, String uM, String tipContabil) {   
 		super();      
 		this.idMaterial = idMaterial;       
 		this.denumire = denumire;        
 		this.categorie = categorie;      
 		UM = uM;       
-		this.stocCurent = stocCurent; 
+		//this.stocCurent = stocCurent; 
 		this.tipContabil = tipContabil;
 		}  
 	
 	
+	public Material() {
+		super();
+	}
+
+	
+	
+	public Material(Integer idMaterial, String denumire, String uM) {
+		super();
+		this.idMaterial = idMaterial;
+		this.denumire = denumire;
+		UM = uM;
+	}
 	public void setTipContabil(String tipContabil) {
         this.tipContabil = tipContabil;
     }
@@ -56,10 +67,5 @@ public class Material {
 	public void setUM(String uM) { 
 		UM = uM;  
 		} 
-	public Integer getStocCurent() {   
-		return stocCurent; 
-		}  
-	public void setStocCurent(Integer stocCurent) {    
-		this.stocCurent = stocCurent;  
-		}          
+	
 	}  

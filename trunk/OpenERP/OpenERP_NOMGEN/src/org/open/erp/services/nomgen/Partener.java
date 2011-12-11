@@ -74,6 +74,12 @@ public class Partener {
 	
 	public Partener() {
 		super();
+	}
+	public Partener(Integer id, Integer idPersoana, Integer durataAfilierii) {
+		super();
+		this.id = id;
+		this.idPersoana = idPersoana;
+		this.durataAfilierii = durataAfilierii;
 	}	
 
 	

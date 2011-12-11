@@ -1,7 +1,7 @@
 package org.open.erp.services.nomgen;
 
 
-import java.util.Date; 
+import java.util.*;
 
 public class Document {  
 	
@@ -10,7 +10,42 @@ public class Document {
 	public Persoana persoana;//responsabil        
 	public String observatie;   
 	
+	private ArrayList<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
 	
+	
+	public void addLinieDocument(LinieDocument linieDocument) {
+		liniiDocument.add(linieDocument);
+	}
+	
+	public int getLiniiDocumentCount() {
+		return liniiDocument.size();
+	}
+	
+	public LinieDocument getLinieDocumentAt(int index) {
+		return liniiDocument.get(index);
+	}
+	
+	public void removeLinieDocument(LinieDocument linieDocument) {
+		liniiDocument.remove(linieDocument);
+	}
+	
+	public void removeLinieDocumentAt(int index) {
+		liniiDocument.remove(index);
+	}
+	
+	public Document(Integer nrDocument, Date dataDocument, Persoana persoana,
+			String observatie) {
+		super();
+		this.nrDocument = nrDocument;
+		this.dataDocument = dataDocument;
+		this.persoana = persoana;
+		this.observatie = observatie;
+	}
+	
+	public Document(){
+		
+	}
+
 	public Integer getNrDocument() {               
 		return nrDocument;          
 		}         
@@ -49,6 +84,7 @@ public class Document {
 	
 	public void setPersoana(Persoana persoana) {        
 		this.persoana = persoana;       
-		}            
+		}  
+	
 	}    
 
