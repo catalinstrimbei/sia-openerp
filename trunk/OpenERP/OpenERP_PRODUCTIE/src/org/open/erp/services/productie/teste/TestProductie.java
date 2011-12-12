@@ -110,7 +110,6 @@ public class TestProductie {
 				sectie.setDenumire("Sectie Productie");
 				sectie.setIdDepartament(null);
 				sectie.setAtributii(null);
-				sectie.setIdContact(null);
 				logger.info("Sectia a fost creata " + sectie.getDenumire());
 				
 				fz.setSectie(sectie);
@@ -155,7 +154,6 @@ public class TestProductie {
 				   a1.setId(1);
 				   a1.setAdresa("Adresa");
 				   a1.setIdCandidat(1);
-				   a1.setIdContact(1);
 				   a1.setMarca(1);
 				   a1.setTipCandidat("tip candidat 1");
 				   a1.setActiv(true);
@@ -174,7 +172,6 @@ public class TestProductie {
 				   a2.setId(2);
 				   a2.setAdresa("Adresa");
 				   a2.setIdCandidat(2);
-				   a2.setIdContact(2);
 				   a2.setMarca(2);
 				   a2.setTipCandidat("tip candidat 2");
 				   a2.setActiv(true);
@@ -194,7 +191,6 @@ public class TestProductie {
 				   a3.setId(3);
 				   a3.setAdresa("Adresa");
 				   a3.setIdCandidat(3);
-				   a3.setIdContact(3);
 				   a3.setMarca(3);
 				   a3.setTipCandidat("tip candidat 3");
 				   a3.setActiv(true);
@@ -414,7 +410,6 @@ public class TestProductie {
 			a1.setAdresa(null);
 			a1.setId(1);
 			a1.setIdCandidat(1);
-			a1.setIdContact(1);
 			a1.setMarca(null);
 			a1.setTipCandidat(null);
 			logger.info("a1: " + a1.getId());
@@ -424,7 +419,6 @@ public class TestProductie {
 			a2.setAdresa(null);
 			a2.setId(2);
 			a2.setIdCandidat(2);
-			a2.setIdContact(2);
 			a2.setMarca(null);
 			a2.setTipCandidat(null);
 			logger.info("a2: " + a2.getId());
@@ -434,7 +428,6 @@ public class TestProductie {
 			a3.setAdresa(null);
 			a3.setId(3);
 			a3.setIdCandidat(3);
-			a3.setIdContact(3);
 			a3.setMarca(null);
 			a3.setTipCandidat(null);
 			logger.info("a3: " + a3.getId());
@@ -511,12 +504,13 @@ public class TestProductie {
 		produs.setId(1);
 		produs.setDenumire("produs 1");
 		produs.setDataFabricatiei(null);
-		produs.setDescriere(null);
-		produs.setGreutate(null);
-		produs.setPretVanzare(10.2);
-		produs.setProcentTVA(null);
+		produs.setCategorie(null);
+		produs.setIdMaterial(null);
+		produs.setTipContabil(null);
+		produs.setUM(null);
 		produs.setTermenValabilitate(null);
 		produs.setUnitateMasura("buc");
+		
 		logger.info("Produsul este:" + produs.getDenumire());
 		ComandaProductie comanda = new ComandaProductie();
 		comanda.setIdComanda(1);
@@ -577,10 +571,10 @@ public void testLivrareProdus(){
 	produs.setId(1);
 	produs.setDenumire("produs 1");
 	produs.setDataFabricatiei(null);
-	produs.setDescriere(null);
-	produs.setGreutate(null);
-	produs.setPretVanzare(10.2);
-	produs.setProcentTVA(null);
+	produs.setCategorie(null);
+	produs.setIdMaterial(null);
+	produs.setTipContabil(null);
+	produs.setUM(null);
 	produs.setTermenValabilitate(null);
 	produs.setUnitateMasura("buc");
 	logger.info("Produsul este:" + produs.getDenumire());
