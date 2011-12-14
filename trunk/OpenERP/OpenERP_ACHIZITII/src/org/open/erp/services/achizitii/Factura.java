@@ -23,6 +23,12 @@ public class Factura extends Document {
 	private Integer status;
 	private Comanda comanda;
 	private Integer tipFact;
+	public Integer getTipFact() {
+		return tipFact;
+	}
+	public void setTipFact(Integer tipFact) {
+		this.tipFact = tipFact;
+	}
 	public Comanda getComanda() {
 		return comanda;
 	}

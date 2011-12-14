@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.Document;
-import org.open.erp.services.nomgen.LinieDocument;
-import org.open.erp.services.nomgen.Persoana;
 
 /**
  * Returneaza o interfata a serviciului Aprovizionare

@@ -1,8 +1,6 @@
 package org.open.erp.services.achizitii;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.open.erp.services.nomgen.LinieDocument;
 /**
  * 
  * @author echipa.achizitii

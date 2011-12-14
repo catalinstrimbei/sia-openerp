@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.Persoana;
 
 /**

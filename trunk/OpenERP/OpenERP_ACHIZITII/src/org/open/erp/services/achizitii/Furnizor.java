@@ -1,8 +1,5 @@
 package org.open.erp.services.achizitii;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import org.open.erp.services.nomgen.Partener;
 
 /**
