@@ -13,6 +13,7 @@ public class Produs extends Material{
 	private String  unitateMasura;
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
+	private Double pretVanzare= 0.0;
 	
 	
 	/**
@@ -90,6 +91,14 @@ public class Produs extends Material{
 	}
 
 	
+	public Double getPretVanzare() {
+		return pretVanzare;
+	}
+
+	public void setPretVanzare(Double pretVanzare) {
+		this.pretVanzare = pretVanzare;
+	}
+
 	public Produs(Integer id, String denumire, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate) {
 		super();
 		
@@ -102,5 +111,20 @@ public class Produs extends Material{
 	
 	public Produs() {
 		super();
+	}
+
+	public Produs(Integer idMaterial, String denumire, String categorie,
+			String uM, String tipContabil, Integer id, String denumire2,
+			String unitateMasura, Date dataFabricatiei,
+			Integer termenValabilitate, Double pretVanzare) {
+		super(idMaterial, denumire, categorie, uM, tipContabil);
+		this.id = id;
+		denumire = denumire2;
+		this.unitateMasura = unitateMasura;
+		this.dataFabricatiei = dataFabricatiei;
+		this.termenValabilitate = termenValabilitate;
+		this.pretVanzare = pretVanzare;
 	}	
+	
+	
 }
