@@ -1,5 +1,7 @@
 package org.open.erp.services.achizitii;
 
+import org.open.erp.services.nomgen.Material;
+
 public class LinieCerereOferta {
 
 /**
@@ -12,7 +14,7 @@ public class LinieCerereOferta {
 
 public Integer nrLinie;
 public CerereOferta cerereOferta;
-public Articol articol;
+public Material articol;
 public Double cantitate;
 
 public Integer getNrLinie() {
@@ -27,13 +29,12 @@ public CerereOferta getCerereOferta() {
 public void setCerereOferta(CerereOferta cerereOferta) {
 	this.cerereOferta = cerereOferta;
 }
-public Articol getArticol() {
+public Material getArticol() {
 	return articol;
 }
-public void setArticol(Articol articol) {
+public void setArticol(Material articol) {
 	this.articol = articol;
 }
-
 public Double getCantitate() {
 	return cantitate;
 }
@@ -41,7 +42,7 @@ public void setCantitate(Double cantitate) {
 	this.cantitate = cantitate;
 }
 public LinieCerereOferta(Integer nrLinie, CerereOferta cerereOferta,
-		Articol articol, Double cantitate) {
+		Material articol, Double cantitate) {
 	super();
 	this.nrLinie = nrLinie;
 	this.cerereOferta = cerereOferta;

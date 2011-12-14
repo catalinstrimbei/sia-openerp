@@ -14,13 +14,17 @@ import org.junit.Test;
 import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.Articol;
 import org.open.erp.services.achizitii.Categorie;
+import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.Comanda;
 import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.achizitii.Furnizor;
+import org.open.erp.services.achizitii.LinieCerereOferta;
 import org.open.erp.services.achizitii.LinieComanda;
 import org.open.erp.services.achizitii.LinieFacturaAchizitie;
+import org.open.erp.services.achizitii.LinieNIR;
 import org.open.erp.services.achizitii.LinieOfertaAchizitie;
 import org.open.erp.services.achizitii.LiniePlanAprovizionare;
+import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
 import org.open.erp.services.achizitii.impl.AprovizionareImpl;
@@ -38,7 +42,10 @@ import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.stocuri.CerereAprovizionare;
+import org.open.erp.services.stocuri.Depozit;
+import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
 import org.open.erp.services.stocuri.impl.Procesare;
 
 public class TestAprovizionareImpl {
@@ -135,30 +142,93 @@ public class TestAprovizionareImpl {
 		logger.info("#End test: factura inregistrata");
 	}
 
-	/*@Test
+	@Test
 	public void testReceptieMateriale() {
-		logger.info("Begin test: Inregistrare receptie comanda");
-		ArticolStoc articol = new ArticolStoc((double)0,"ArticolTest");
-		Persoana persoana = new Persoana();  
-		Furnizor furnizor = new Furnizor("cui","denumire","adresa","telefon",persoana,121);
-	    Comanda comanda = new Comanda(11,furnizor,new Date(),Comanda.IN_CURS);
-		LinieComanda linieComanda = new LinieComanda((Integer)1,comanda,articol,(double)2,(double)12);
-		comanda.addLinii(linieComanda);
-		Depozit depozit = new Depozit();
-		Gestiune gestiune = new Gestiune();
-		List<LinieComanda> linii=comanda.getLiniiComanda();
-		for (int i = 0; i < linii.size(); i++) { 
-		   stocuriInstance.intrareInStoc(linii.get(i).articol, linii.get(i).cantitate, gestiune, depozit);		   
-		   assertEquals("Nu s-a adaugat pe stoc: ",articol.getStoc(),linii.get(i).cantitate);
-		}
+		logger.info("Begin test: Inregistrare receptie comanda");		
+		List<Gestiune> gestiuni = new LinkedList<Gestiune>();
+		Gestiune gst1 = new Gestiune(1, "den gest 1", new Depozit(1, "Iasi",
+				"100 m2"));
+		Gestiune gst2 = new Gestiune(2, "den gest 1", new Depozit(2, "Iasi",
+				"100 m2"));
+		gestiuni.add(gst1);
+		gestiuni.add(gst2);
+		Procesare procesareTest = new Procesare(gestiuni,null);	
+		 Persoana persoana = new Persoana();        
+	        Furnizor furnizor = new Furnizor(1111,persoana.getId(),10,121,"CUI","Denumire","Adresa","Telefon");    
+			Categorie cat=new Categorie(1,"Categorie1");
+			cat.addFurnizor(furnizor);
+			logger.error("-Creat categorie articol-");
+			Articol art1 = new Articol(1,"Articol1","buc",cat);
+			art1.setTipContabil("Materii prime");		
+			Articol art2 = new Articol(2,"Articol2","cutie",cat);
+			art2.setTipContabil("Materii prime");
+			//Cream un NIR de test cu liniile aferente;
+			NIR nir = new NIR();
+			LinieNIR linie1= new LinieNIR(1,nir,art1,100.0,10.0,2.4,11.0);
+			linie1.setDocument(nir);
+			LinieNIR linie2= new LinieNIR(2,nir,art2,40.0,3.0,1.0,4.0);
+			linie2.setDocument(nir);
+			nir.addLinie(linie1);
+			nir.addLinie(linie2);
+			logger.debug("-NIR creat-");
+			logger.debug("Numar linii din NIR: "+nir.getLiniiDocument().size());
+			//Metoda noastra <receptieMateriale> apeleaza din 'Procesare' <intrareInStoc>
+			Boolean bool = procesareTest.intrareInStoc(nir);
+			assertEquals("Produsele din NIR au fost adaugate cu succes pe stoc", Boolean.TRUE,bool);
+			
+			logger.debug("Rezultat intrare pe stoc: "+bool);
 		logger.info("End test: comanda receptionata si adaugata pe stoc");
 		
-	}*/
+	}
 
 	@Test
-	public void testReturMateriale() {	
-		logger.debug("@Start test: testReturMateriale");
-		logger.debug("===to be continued...");
+	public void testReturMateriale() throws StocuriExceptions {	
+		logger.debug("@Start test: testReturMateriale");	
+		List<Gestiune> gestiuni = new LinkedList<Gestiune>();
+		Gestiune gst1 = new Gestiune(1, "den gest 1", new Depozit(1, "Iasi",
+				"100 m2"));
+		Gestiune gst2 = new Gestiune(2, "den gest 1", new Depozit(2, "Iasi",
+				"100 m2"));
+		gestiuni.add(gst1);
+		gestiuni.add(gst2);
+		Procesare procesareTest = new Procesare(gestiuni,null);	
+        Persoana persoana = new Persoana();        
+        Furnizor furnizor = new Furnizor(1111,persoana.getId(),10,121,"CUI","Denumire","Adresa","Telefon");     
+        
+		Factura fact = new Factura(600.0,200.0,"fact1",furnizor);	
+		fact.setDataDoc(new Date());
+		fact.setNrDoc(11);
+		Categorie cat=new Categorie(1,"Categorie1");
+		cat.addFurnizor(furnizor);
+		logger.error("bla");
+		Articol art1 = new Articol(1,"Articol1","buc",cat);
+		art1.setTipContabil("Materii prime");		
+		Articol art2 = new Articol(2,"Articol2","cutie",cat);
+		art2.setTipContabil("Materii prime");
+		
+	    LinieFacturaAchizitie linieFact1 = new LinieFacturaAchizitie();
+	    linieFact1.setCantitate(1.0);
+	    linieFact1.setLinieDoc(1);
+	    linieFact1.setMaterial(art1);
+	    linieFact1.setPret(300.0);
+	    linieFact1.setTVA(100.0);
+	    linieFact1.setDocument(fact);
+	    
+	    LinieFacturaAchizitie linieFact2 = new LinieFacturaAchizitie();
+	    linieFact2.setCantitate(1.0);
+	    linieFact2.setLinieDoc(2);
+	    linieFact2.setMaterial(art2);
+	    linieFact2.setPret(300.0);
+	    linieFact2.setTVA(100.0);
+	    linieFact2.setDocument(fact);
+	    fact.addLinie(linieFact1);
+	    fact.addLinie(linieFact2);
+	    logger.debug("-Factura creata-");
+	    Boolean bool = procesareTest.intrareInStoc(fact);
+	    //Metoda noastra din 'AprovizionareImpl' <returMateriale> apeleaza din 'StocuriSrv' metoda 
+	    //<iesireStoc> care la randul ei apeleaza din 'Procesare' <procesareComandaIesire> care ar trebui
+	    //sa diminueze stocul cu produsele de pe documentul trimis din modulul 'Achizitii'
+	    procesareTest.procesareComandaIesire(fact);
 		logger.debug("#End test: testReturMateriale");
 	}
 	
@@ -199,7 +269,39 @@ public class TestAprovizionareImpl {
 	@Test
 	public void testCreareCerereOferta() {
 		logger.debug("@Start test: testCreareCerereOferta");
-		logger.debug("===to be continued...");
+		Procesare procesareTestare = new Procesare(null,null);	
+		
+		CerereAprovizionare cerere = new CerereAprovizionare(1,new Date(),"solicitant","livrae");
+		
+		List<LinieDocument> lista = new LinkedList<LinieDocument>();
+		Material mat1 = new Material(1,"Mat1","buc");
+		Material mat2 = new Material(2,"Mat2","pachet");
+		LinieDocument linie1 = new LinieDocument(1,cerere,mat1,100.0,100.0,100.0);
+		LinieDocument linie2 = new LinieDocument(2,cerere,mat2,100.0,100.0,100.0);
+		lista.add(linie1);
+		lista.add(linie2);
+		AprovizionareImpl aprovImpl = new AprovizionareImpl();
+		aprovImpl.ascultaFurnizoriCerereriAprovizionare(procesareTestare);
+		//Apelare 'addLiniiCerereAprovizionare' din Clasa <Procesare> apartinand Stocurilor
+		procesareTestare.addLiniiCerereAprovizionare(cerere, lista);
+		
+		PlanAprovizionare plan = PlanAprovizionare.getPlanAprovizionare();
+		
+		plan.setIdPlan(11);
+		//Planul de aprovizionare contine acum cateva linii de test din care va fi generata a o cerere de oferta
+		
+		CerereOferta cerereOferta = new CerereOferta(new Date(),null,null);
+		cerereOferta.setIdCerereOferta(101);
+		aprovizionareInstance.adaugareLiniiCerereOferta(cerereOferta, plan.getLiniiPlan());
+		logger.debug("Cererea de oferta creata: "+cerereOferta.getIdCerereOferta()+" are "+cerereOferta.getLinii().size()+" linii create;");
+		for(LinieCerereOferta linieCerereOferta:cerereOferta.getLinii()){
+			logger.debug("Linie Cerere Oferta: "+linieCerereOferta.getNrLinie()+" "+linieCerereOferta.getArticol().getDenumire()+" "+linieCerereOferta.getCantitate());
+		}
+		//Testam daca s-a modificat statusulu liniilor din Plan
+		logger.debug("Plan: "+plan.getIdPlan()+" dataStart: "+plan.getDataStart()+" dataFinal: "+plan.getDataFinal());
+		for (LiniePlanAprovizionare linie: plan.getLiniiPlan()){
+			logger.debug("Linie nr: "+linie.getLinie()+" "+linie.getStatus());
+		}
 		logger.debug("#End test: testCreareCerereOferta");
 	}
 	@Test
@@ -282,7 +384,7 @@ public class TestAprovizionareImpl {
 			logger.error("LinieComanda: "+linieComanda.getLinieComanda()+ " "+linieComanda.getArticol().getDenumire()+" "+linieComanda.getCantitate()+" "+linieComanda.getPret());			
 		}
 		logger.debug("#End test: Creare comanda din linii plan aprovizionare; Legenda: 2=CREAT_COMANDA");
-	}
+	}	
 	@Test
 	public void testCreareNir() {
 		logger.debug("@Start test: testCreareNir");

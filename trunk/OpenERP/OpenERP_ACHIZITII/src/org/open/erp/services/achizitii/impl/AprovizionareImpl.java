@@ -111,9 +111,10 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
 		for (LiniePlanAprovizionare liniePlan :liniiPlan){
 			Material articol = liniePlan.getArticol();
 			Double cantitate = liniePlan.getCantitate();
-			LinieCerereOferta linieCerereOferta = new LinieCerereOferta(linie+1,cerere,(Articol)articol,cantitate);
+			LinieCerereOferta linieCerereOferta = new LinieCerereOferta(linie+1,cerere,articol,cantitate);
 			liniePlan.setStatus(LiniePlanAprovizionare.EXISTA_CERERE_OFERTA);
 			cerere.addLinieCerere(linieCerereOferta);
+			linie++;
 		}	
 		return cerereOferta;
 	}
@@ -192,7 +193,9 @@ public class AprovizionareImpl implements AprovizionareSrv ,PropertyChangeListen
     	NIR nirFact=nir;
     	nir.setLiniiDocument(liniiNIR);
     	this.inregistrareFactura(nir.getFactura());
-    	this.receptieMateriale(nir);    	
+    	logger.debug("S-a jurnalizat factura aferenta NIR-ului");
+    	this.receptieMateriale(nir);
+    	logger.debug("S-au inregistrat pe stoc articolele din NIR");
 		return nirFact;
 		
     }
