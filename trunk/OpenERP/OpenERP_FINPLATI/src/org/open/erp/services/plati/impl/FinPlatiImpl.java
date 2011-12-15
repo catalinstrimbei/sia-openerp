@@ -62,7 +62,7 @@ public class FinPlatiImpl implements FinPlatiSrv {
 		//			TipPlata tipPlata, Integer idPartener, Integer idCont,
 		//			StareDocument stareDocument, Integer idInreg) throws CtbException{
 			
-			ctbSrv.jurnalizarePlata(dataCurenta, doc.getTotalPlata(),
+			/*ctbSrv.jurnalizarePlata(dataCurenta, doc.getTotalPlata(),
 			doc.getSeriaNr(), TipPlata.CEC, doc.getFacturi().get(0)
 					.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
 
@@ -71,7 +71,7 @@ public class FinPlatiImpl implements FinPlatiSrv {
 
 			ctbSrv.jurnalizarePlata(dataCurenta, doc.getTotalPlata(),
 			doc.getSeriaNr(), TipPlata.OrdinPlata, doc.getFacturi().get(0)
-					.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
+					.getClient().getId(), 0, StareDocument.MODIFICAT, 0);*/
 }
 }
 	

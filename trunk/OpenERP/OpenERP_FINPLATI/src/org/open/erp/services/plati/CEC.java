@@ -5,7 +5,7 @@ import java.util.Date;
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
 public class CEC extends DocumentPlata{
-	private String seriaNr;
+	private Integer seriaNr;
 	private Date data;
 	private Double totalPlata;
 	private PersoanaJuridica emitent;
@@ -13,7 +13,7 @@ public class CEC extends DocumentPlata{
 	private ContBancaPJ contEmitent;
 	private String stare;
 
-	public CEC(Integer idDocumentPlata, String seriaNr, Date data, Double totalPlata, PersoanaJuridica emitent, PersoanaJuridica beneficiar, ContBancaPJ contEmitent,String stare) {
+	public CEC(Integer idDocumentPlata, Integer seriaNr, Date data, Double totalPlata, PersoanaJuridica emitent, PersoanaJuridica beneficiar, ContBancaPJ contEmitent,String stare) {
 		super(idDocumentPlata);
 		this.setSeriaNr(seriaNr);
 		this.data = data;
@@ -57,11 +57,11 @@ public class CEC extends DocumentPlata{
 		this.contEmitent = contEmitent;
 	}
 
-	public String getSeriaNr() {
+	public Integer getSeriaNr() {
 		return seriaNr;
 	}
 
-	public void setSeriaNr(String seriaNr) {
+	public void setSeriaNr(Integer seriaNr) {
 		this.seriaNr = seriaNr;
 		}
 	public boolean efectPlata(Double totplata){

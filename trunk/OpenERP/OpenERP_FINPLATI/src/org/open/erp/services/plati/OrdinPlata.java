@@ -5,7 +5,7 @@ import java.util.Date;
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
 public class OrdinPlata extends DocumentPlata{
-	private String seriaNr;
+	private Integer seriaNr;
 	private Date data;
 	private Double totalPlata;
 	private PersoanaJuridica emitent;
@@ -15,7 +15,7 @@ public class OrdinPlata extends DocumentPlata{
 	private String reprezentand;
 	private String stare;
 	
-	public OrdinPlata(Integer idDocumentPlata, String seriaNr, Date data, Double totalPlata, PersoanaJuridica emitent, PersoanaJuridica beneficiar, ContBancaPJ contEmitent, ContBancaPJ contBeneficiar, String reprezentand, String stare) {
+	public OrdinPlata(Integer idDocumentPlata, Integer seriaNr, Date data, Double totalPlata, PersoanaJuridica emitent, PersoanaJuridica beneficiar, ContBancaPJ contEmitent, ContBancaPJ contBeneficiar, String reprezentand, String stare) {
 		super(idDocumentPlata);
 		this.seriaNr=seriaNr;
 		this.data = data;
@@ -71,11 +71,11 @@ public class OrdinPlata extends DocumentPlata{
 		this.contBeneficiar = contBeneficiar;
 	}
 
-	public String getSeriaNr() {
+	public Integer getSeriaNr() {
 		return seriaNr;
 	}
 
-	public void setSeriaNr(String seriaNr) {
+	public void setSeriaNr(Integer seriaNr) {
 		this.seriaNr = seriaNr;
 	}
 	
