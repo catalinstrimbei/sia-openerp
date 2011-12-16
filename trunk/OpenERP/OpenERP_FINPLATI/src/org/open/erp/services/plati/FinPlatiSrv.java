@@ -1,12 +1,13 @@
 package org.open.erp.services.plati;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.plati.OrdinPlata;
 import org.open.erp.services.plati.CEC;
-import org.open.erp.services.incasari.Chitanta;
+import org.open.erp.services.plati.Chitanta;
 import org.open.erp.services.plati.ExtrasCont;
 import org.open.erp.services.plati.Plata;
 import org.open.erp.services.plati.exceptions.PlatiExceptions;
@@ -45,4 +46,6 @@ public interface FinPlatiSrv {
 	Furnizor furnizor, String seria, Integer numar, String locatie,
 	List<FacturaPrimita> facturi, Double suma,
 	String moneda, Double curs) throws PlatiExceptions;
+
+	ArrayList<FacturaPrimita> getFacturiFurnizor(Furnizor furnizor);
 }

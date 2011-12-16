@@ -1,11 +1,17 @@
 package org.open.erp.services.plati.impl;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.open.erp.services.achizitii.Furnizor;
+import org.open.erp.services.ctbgen.ContabilizareSrv;
+import org.open.erp.services.ctbgen.StareDocument;
+import org.open.erp.services.ctbgen.TipPlata;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
-import org.open.erp.services.incasari.Chitanta;
+import org.open.erp.services.plati.Chitanta;
+import org.open.erp.services.plati.exceptions.PlatiExceptions;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.plati.CEC;
 import org.open.erp.services.plati.ExtrasCont;
@@ -13,11 +19,42 @@ import org.open.erp.services.plati.FacturaPrimita;
 import org.open.erp.services.plati.FinPlatiSrv;
 import org.open.erp.services.plati.OrdinPlata;
 import org.open.erp.services.plati.Plata;
-import org.open.erp.services.plati.exceptions.PlatiExceptions;
+import org.open.erp.services.vanzari.Client;
+import org.open.erp.services.vanzari.FacturaEmisa;
+import org.open.erp.services.vanzari.VanzariSrv;
+import org.open.erp.services.vanzari.Vanzator;
+import org.open.erp.services.achizitii.AprovizionareSrv;
 
 
 public class FinPlatiImpl implements FinPlatiSrv {
 
+	private VanzariSrv vanzariSrv;
+	private ContabilizareSrv ctbSrv;
+	private AprovizionareSrv aproSrv;
+	
+	public VanzariSrv getVanzariSrv() {
+		return vanzariSrv;
+	}
+
+	public void setVanzariSrv(VanzariSrv vanzariSrv) {
+		this.vanzariSrv = vanzariSrv;
+	}
+
+	public ContabilizareSrv getCtbSrv() {
+		return ctbSrv;
+	}
+
+	public void setCtbSrv(ContabilizareSrv ctbSrv) {
+		this.ctbSrv = ctbSrv;
+	}
+
+	/**
+	 * @throws CtbException
+	 * @throws NumberFormatException
+	 * @throws IncasariException
+	 * @ApplicationServiceFacade
+	 */
+	
 	@Override
 	public void confirmarePlata(Plata doc) throws PlatiExceptions,
 			NumberFormatException, CtbException {
@@ -50,6 +87,56 @@ public class FinPlatiImpl implements FinPlatiSrv {
 			Furnizor furnizor, Double curs) throws PlatiExceptions,
 			CtbException {
 		// TODO Auto-generated method stub
+		
+		if (sumaIncasata == null ||  sumaIncasata == 0.00 ) {
+			throw new PlatiExceptions("Suma incasarii nu poate fi nula!");
+		}
+		Chitanta chitanta;
+
+		List<FacturaPrimita> facturiSelectate = new ArrayList<FacturaPrimita>(0);
+		
+		Calendar currentDate = Calendar.getInstance();
+		Date dataInregistrarii = currentDate.getTime();
+
+		chitanta = new Chitanta(dataEmiterii, avans, dataInregistrarii,
+				sumaIncasata, seria, numar, locatie, casier);
+
+		if (facturi.size() == 0) {
+			facturi = getFacturiFurnizor(furnizor);
+		}
+		if (!moneda.equals("RON")) {
+			sumaIncasata = getSumaRON(moneda, sumaIncasata, curs);
+		}
+		facturiSelectate = compensariIncasariFacturi(facturi, sumaIncasata);
+
+		//chitanta.setFacturi(facturiSelectate);
+		try {
+			if (avans) {
+
+				ctbSrv.jurnalizarePlata(dataInregistrarii,
+						sumaIncasata, numar, TipPlata.AVANSC,
+						furnizor.getId(), 401, StareDocument.NOU, null);
+
+			}
+
+			else {
+
+				ctbSrv.jurnalizarePlata(dataInregistrarii,
+						sumaIncasata, numar, TipPlata.CASA, furnizor.getId(),
+						401, StareDocument.NOU, null);
+				
+			}
+
+		} catch (Exception e) {
+			throw new PlatiExceptions(e.getMessage());
+		}
+
+		return chitanta;
+	}
+
+	private List<FacturaPrimita> compensariIncasariFacturi(
+			List<FacturaPrimita> facturi, Double sumaIncasata) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -79,5 +166,25 @@ public class FinPlatiImpl implements FinPlatiSrv {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public AprovizionareSrv getAproSrv() {
+		return aproSrv;
+	}
+
+	public void setAproSrv(AprovizionareSrv aproSrv) {
+		this.aproSrv = aproSrv;
+	}
 	
+	@Override
+	public ArrayList<FacturaPrimita> getFacturiFurnizor(Furnizor furnizor) {
+		
+		FacturaPrimita factura = new FacturaPrimita();
+		factura.getIdFactura();
+		factura.getFurnizor();
+		factura.getPlatita();
+		
+		ArrayList<FacturaPrimita> facturi = new ArrayList<FacturaPrimita>();
+		facturi.add(factura);
+		return facturi;
+	}
 }

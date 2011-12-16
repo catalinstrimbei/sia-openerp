@@ -1,5 +1,13 @@
 package org.open.erp.services.plati;
 
+/**
+ * 
+ * @author Echipa FINPLATI
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.nomgen.PersoanaJuridica;
 

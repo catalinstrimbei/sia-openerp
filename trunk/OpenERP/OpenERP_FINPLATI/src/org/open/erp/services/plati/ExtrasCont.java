@@ -1,5 +1,13 @@
 package org.open.erp.services.plati;
 
+/**
+ * 
+ * @author Echipa FINPLATI
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
+
 import java.util.Date;
 import org.open.erp.services.plati.Plata;
 
