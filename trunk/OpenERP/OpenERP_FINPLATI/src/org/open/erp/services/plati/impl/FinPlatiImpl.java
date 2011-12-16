@@ -13,6 +13,9 @@ import org.open.erp.services.ctbgen.TipPlata;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 //import org.open.erp.services.incasari.BiletLaOrdin;
 //import org.open.erp.services.incasari.Cec;
+import org.open.erp.services.incasari.exception.IncasariException;
+//import org.open.erp.services.incasari.BiletLaOrdin;
+//import org.open.erp.services.incasari.Cec;
 //import org.open.erp.services.incasari.Incasare;
 //import org.open.erp.services.incasari.exception.IncasariException;
 import org.open.erp.services.plati.Chitanta;
@@ -25,6 +28,7 @@ import org.open.erp.services.plati.FinPlatiSrv;
 import org.open.erp.services.plati.OrdinPlata;
 import org.open.erp.services.plati.Plata;
 //import org.open.erp.services.vanzari.Client;
+//import org.open.erp.services.vanzari.FacturaEmisa;
 //import org.open.erp.services.vanzari.FacturaEmisa;
 import org.open.erp.services.vanzari.VanzariSrv;
 //import org.open.erp.services.vanzari.Vanzator;
@@ -64,7 +68,12 @@ public class FinPlatiImpl implements FinPlatiSrv {
 	@Override
 	public void confirmareDepunereLaBanca(Plata doc) {
 		// TODO Auto-generated method stub
-		
+		if (doc instanceof CEC) {
+			((CEC) doc).setStare("depus");
+
+		} else if (doc instanceof OrdinPlata) {
+			((OrdinPlata) doc).setStare("depus");
+		}
 	}
 
 	@Override
@@ -92,7 +101,7 @@ public class FinPlatiImpl implements FinPlatiSrv {
 		}
 		Chitanta chitanta;
 
-		List<FacturaPrimita> facturiSelectate = new ArrayList<FacturaPrimita>(0);
+		//List<FacturaPrimita> facturiSelectate = new ArrayList<FacturaPrimita>(0);
 		
 		Calendar currentDate = Calendar.getInstance();
 		Date dataInregistrarii = currentDate.getTime();
@@ -106,7 +115,8 @@ public class FinPlatiImpl implements FinPlatiSrv {
 		if (!moneda.equals("RON")) {
 			sumaIncasata = getSumaRON(moneda, sumaIncasata, curs);
 		}
-		facturiSelectate = compensariIncasariFacturi(facturi, sumaIncasata);
+		
+		//facturiSelectate = compensariParteneri(facturi, sumaIncasata);
 
 		//chitanta.setFacturi(facturiSelectate);
 		try {
@@ -133,10 +143,33 @@ public class FinPlatiImpl implements FinPlatiSrv {
 		return chitanta;
 	}
 
-	private List<FacturaPrimita> compensariIncasariFacturi(
-			List<FacturaPrimita> facturi, Double sumaIncasata) {
+	public List<FacturaPrimita> compensariParteneri(
+			List<FacturaPrimita> facturi, Double suma) throws PlatiExceptions{
 		// TODO Auto-generated method stub
-		return null;
+
+		List<FacturaPrimita> facturiAsociate = new ArrayList<FacturaPrimita>();
+		for (FacturaPrimita fact : facturi) {
+			if (!fact.getPlatita()) {
+				facturiAsociate.add(fact);
+				Double restPlata = restPlataFactura(fact);
+				if (suma > restPlata) {
+					fact.setSumaPlatita(fact.getValoareTotalaFactura());
+					suma -= restPlata;
+				} else {
+					fact.setSumaPlatita(fact.getSumaPlatita() + suma);
+					suma = 0.00;
+					break;
+				}
+
+			}
+
+		}
+		if (suma > 0) {
+			throw new PlatiExceptions(
+					"Suma platita depaseste suma de platit");
+		}
+		return facturiAsociate;
+		
 	}
 
 	@Override

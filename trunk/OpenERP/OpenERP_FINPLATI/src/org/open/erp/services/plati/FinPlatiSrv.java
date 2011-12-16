@@ -48,4 +48,7 @@ public interface FinPlatiSrv {
 	String moneda, Double curs) throws PlatiExceptions;
 
 	ArrayList<FacturaPrimita> getFacturiFurnizor(Furnizor furnizor);
+	
+	public List<FacturaPrimita> compensariParteneri(
+			List<FacturaPrimita> facturi, Double suma) throws PlatiExceptions;
 }
