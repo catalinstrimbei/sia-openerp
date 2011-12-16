@@ -68,6 +68,7 @@ public class TestCentruCostImpl {
 
 	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
 	 Angajat responsabil = personalInstance.getAngajatById(1);
+	 
 
 	 Calendar calendarStart = Calendar.getInstance();
 	 Calendar calendarEnd = Calendar.getInstance();
@@ -94,6 +95,7 @@ public class TestCentruCostImpl {
 
 	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
 	 Angajat responsabil = personalInstance.getAngajatById(1);
+	 
 
 	 Calendar calendarStart = Calendar.getInstance();
 	 Calendar calendarEnd = Calendar.getInstance();

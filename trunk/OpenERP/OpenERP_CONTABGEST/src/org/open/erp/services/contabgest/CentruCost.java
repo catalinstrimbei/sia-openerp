@@ -121,7 +121,13 @@ public class CentruCost {
 		this.activitati = activitati;
 	}
 	public void adaugaActivitate(Activitate activitate, LinieCost linieCost) {
-		// TODO Auto-generated method stub
+		if (activitati != null) {
+
+		} else {
+		activitati = new HashMap<Activitate, LinieCost>();
+		}
+		activitati.put(activitate, linieCost);
+
 		
 	}
 	public LinieCost getLinieCosturiPrimare(Activitate activitate) {
