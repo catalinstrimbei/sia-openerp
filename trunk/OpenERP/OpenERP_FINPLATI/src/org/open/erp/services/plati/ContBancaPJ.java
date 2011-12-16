@@ -1,7 +1,5 @@
 package org.open.erp.services.plati;
 
-import java.util.Date;
-
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
 public class ContBancaPJ {
