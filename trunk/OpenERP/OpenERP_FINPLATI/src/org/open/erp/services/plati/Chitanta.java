@@ -2,38 +2,26 @@ package org.open.erp.services.plati;
 
 import java.util.Date;
 
-public class Chitanta {
-	private Integer idChitanta;
-	private Date data;
-	private Double suma;
-	
-	public Chitanta (Integer idChitanta, Date data, Double suma){
-		this.idChitanta=idChitanta;
-		this.data=data;
-		this.suma=suma;
-	}
-	
-	public Integer getIdChitanta() {
-		return idChitanta;
-	}
-	
-	public void setIdChitanta(Integer idChitanta) {
-		this.idChitanta = idChitanta;
+import org.open.erp.services.plati.Plata;
+import org.open.erp.services.personal.Angajat;
+
+public class Chitanta extends Plata {
+
+	public Angajat getCasier() {
+		return casier;
 	}
 
-	public Double getSuma() {
-		return suma;
+	public void setCasier(Angajat casier) {
+		this.casier = casier;
 	}
 
-	public void setSuma(Double suma) {
-		this.suma = suma;
-	}
+	private Angajat casier;
 
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
+	public Chitanta(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
+			Double suma, String seria, Integer numar,
+			String locatie, Angajat casier) {
+		super(dataEmiterii, avans, dataInregistrarii, suma,
+				seria, numar, locatie);
+		this.casier = casier;
 	}
 }
