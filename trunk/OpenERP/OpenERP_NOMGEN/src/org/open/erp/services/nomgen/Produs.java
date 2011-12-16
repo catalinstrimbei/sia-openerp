@@ -14,8 +14,16 @@ public class Produs extends Material{
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
 	private Double pretVanzare= 0.0;
+	private Integer procentTVA;
 	
-	
+	public Integer getProcentTVA() {
+		return procentTVA;
+	}
+
+	public void setProcentTVA(Integer procentTVA) {
+		this.procentTVA = procentTVA;
+	}
+
 	/**
 	 * @return the id
 	 */
@@ -116,7 +124,7 @@ public class Produs extends Material{
 	public Produs(Integer idMaterial, String denumire, String categorie,
 			String uM, String tipContabil, Integer id, String denumire2,
 			String unitateMasura, Date dataFabricatiei,
-			Integer termenValabilitate, Double pretVanzare) {
+			Integer termenValabilitate, Double pretVanzare, Integer procentTVA) {
 		super(idMaterial, denumire, categorie, uM, tipContabil);
 		this.id = id;
 		denumire = denumire2;
@@ -124,6 +132,7 @@ public class Produs extends Material{
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;
 		this.pretVanzare = pretVanzare;
+		this.procentTVA = procentTVA;
 	}	
 	
 	
