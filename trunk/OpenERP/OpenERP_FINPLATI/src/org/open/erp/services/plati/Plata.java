@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.vanzari.FacturaEmisa;
-
 public abstract class Plata {
 	private String moneda;
 	private Date dataEmiterii;
@@ -23,7 +21,7 @@ public abstract class Plata {
 	private String seria;
 	private Integer numar;
 	private String locatie;
-	private List<FacturaEmisa> facturi = new ArrayList<FacturaEmisa>();
+	private List<FacturaPrimita> facturi = new ArrayList<FacturaPrimita>();
 	
 	public Plata(Date dataEmiterii, Boolean avans,
 			Date dataInregistrarii, Double suma,
@@ -102,11 +100,11 @@ public abstract class Plata {
 		this.locatie = locatie;
 	}
 
-	public List<FacturaEmisa> getFacturi() {
+	public List<FacturaPrimita> getFacturi() {
 		return facturi;
 	}
 
-	public void setFacturi(List<FacturaEmisa> facturi) {
+	public void setFacturi(List<FacturaPrimita> facturi) {
 		this.facturi = facturi;
 	}
 

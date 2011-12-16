@@ -8,8 +8,13 @@ import java.util.List;
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
+//import org.open.erp.services.ctbgen.TipIncasare;
 import org.open.erp.services.ctbgen.TipPlata;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
+//import org.open.erp.services.incasari.BiletLaOrdin;
+//import org.open.erp.services.incasari.Cec;
+//import org.open.erp.services.incasari.Incasare;
+//import org.open.erp.services.incasari.exception.IncasariException;
 import org.open.erp.services.plati.Chitanta;
 import org.open.erp.services.plati.exceptions.PlatiExceptions;
 import org.open.erp.services.personal.Angajat;
@@ -19,10 +24,10 @@ import org.open.erp.services.plati.FacturaPrimita;
 import org.open.erp.services.plati.FinPlatiSrv;
 import org.open.erp.services.plati.OrdinPlata;
 import org.open.erp.services.plati.Plata;
-import org.open.erp.services.vanzari.Client;
-import org.open.erp.services.vanzari.FacturaEmisa;
+//import org.open.erp.services.vanzari.Client;
+//import org.open.erp.services.vanzari.FacturaEmisa;
 import org.open.erp.services.vanzari.VanzariSrv;
-import org.open.erp.services.vanzari.Vanzator;
+//import org.open.erp.services.vanzari.Vanzator;
 import org.open.erp.services.achizitii.AprovizionareSrv;
 
 
@@ -55,12 +60,6 @@ public class FinPlatiImpl implements FinPlatiSrv {
 	 * @ApplicationServiceFacade
 	 */
 	
-	@Override
-	public void confirmarePlata(Plata doc) throws PlatiExceptions,
-			NumberFormatException, CtbException {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void confirmareDepunereLaBanca(Plata doc) {
@@ -186,5 +185,33 @@ public class FinPlatiImpl implements FinPlatiSrv {
 		ArrayList<FacturaPrimita> facturi = new ArrayList<FacturaPrimita>();
 		facturi.add(factura);
 		return facturi;
+	}
+	
+	/**
+	 * @throws CtbException
+	 * @throws NumberFormatException
+	 * @ApplicationServiceFacade
+	 */
+
+	@Override
+	public void confirmarePlata(Plata doc) throws CtbException,
+			PlatiExceptions {
+		Calendar currentDate = Calendar.getInstance();
+		Date dataInregistrarii = currentDate.getTime();
+		if (doc instanceof CEC) {
+
+			((CEC) doc).setStare("platit");
+
+			ctbSrv.jurnalizarePlata(dataInregistrarii, doc.getSuma(),
+					doc.getNumar(), TipPlata.CEC, doc.getFacturi().get(0)
+							.getFurnizor().getId(), 0, StareDocument.MODIFICAT, 0);
+
+		} else if (doc instanceof OrdinPlata) {
+			((OrdinPlata) doc).setStare("platit");
+
+			ctbSrv.jurnalizarePlata(dataInregistrarii, doc.getSuma(),
+					doc.getNumar(), TipPlata.OrdinPlata, doc.getFacturi().get(0)
+							.getFurnizor().getId(), 0, StareDocument.MODIFICAT, 0);
+		}
 	}
 }
