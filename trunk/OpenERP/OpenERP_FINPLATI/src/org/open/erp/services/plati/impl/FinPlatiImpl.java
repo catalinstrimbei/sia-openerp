@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.TipPlata;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
-import org.open.erp.services.incasari.exception.IncasariException;
 import org.open.erp.services.plati.Chitanta;
 import org.open.erp.services.plati.exceptions.PlatiExceptions;
 import org.open.erp.services.personal.Angajat;
@@ -20,14 +18,8 @@ import org.open.erp.services.plati.FacturaPrimita;
 import org.open.erp.services.plati.FinPlatiSrv;
 import org.open.erp.services.plati.OrdinPlata;
 import org.open.erp.services.plati.Plata;
-//import org.open.erp.services.vanzari.Client;
-//import org.open.erp.services.vanzari.FacturaEmisa;
-//import org.open.erp.services.vanzari.FacturaEmisa;
 import org.open.erp.services.vanzari.VanzariSrv;
-//import org.open.erp.services.vanzari.Vanzator;
 import org.open.erp.services.achizitii.AprovizionareSrv;
-
-
 public class FinPlatiImpl implements FinPlatiSrv {
 
 	private VanzariSrv vanzariSrv;
@@ -71,14 +63,15 @@ public class FinPlatiImpl implements FinPlatiSrv {
 
 	@Override
 	public Double getSumaRON(String moneda, Double suma, Double curs) {
-		// TODO Auto-generated method stub
-		return null;
+		if (moneda.equals("EURO")) {
+			suma = suma * curs;
+		}
+		return suma;
 	}
 
 	@Override
 	public Double restPlataFactura(FacturaPrimita factura) {
-		// TODO Auto-generated method stub
-		return null;
+		return factura.getValoareTotalaFactura() - factura.getSumaPlatita();
 	}
 
 	@Override
@@ -94,7 +87,7 @@ public class FinPlatiImpl implements FinPlatiSrv {
 		}
 		Chitanta chitanta;
 
-		//List<FacturaPrimita> facturiSelectate = new ArrayList<FacturaPrimita>(0);
+		List<FacturaPrimita> facturiSelectate = new ArrayList<FacturaPrimita>(0);
 		
 		Calendar currentDate = Calendar.getInstance();
 		Date dataInregistrarii = currentDate.getTime();
@@ -109,9 +102,9 @@ public class FinPlatiImpl implements FinPlatiSrv {
 			sumaIncasata = getSumaRON(moneda, sumaIncasata, curs);
 		}
 		
-		//facturiSelectate = compensariParteneri(facturi, sumaIncasata);
+		facturiSelectate = compensariParteneri(facturi, sumaIncasata);
 
-		//chitanta.setFacturi(facturiSelectate);
+		chitanta.setFacturi(facturiSelectate);
 		try {
 			if (avans) {
 
@@ -171,7 +164,28 @@ public class FinPlatiImpl implements FinPlatiSrv {
 			String stare, Double suma, List<FacturaPrimita> facturi,
 			String moneda, Double curs) throws PlatiExceptions {
 		// TODO Auto-generated method stub
-		return null;
+		if (suma == null ||  suma == 0.00 ) {
+			throw new PlatiExceptions("Suma incasarii nu poate fi nula!");
+		}
+		CEC cec;
+		List<FacturaPrimita> facturiSelectate;
+		Calendar currentDate = Calendar.getInstance();
+		Date dataInregistrarii = currentDate.getTime();
+
+		if (!moneda.equals("RON")) {
+			suma = getSumaRON(moneda, suma, curs);
+		}
+		cec = new CEC(dataEmiterii, avans, dataInregistrarii, suma,
+				seria, numar, locatie, stare);
+
+		if (facturi.size() == 0) {
+			facturi = getFacturiFurnizor(furnizor);
+		}
+		facturiSelectate = compensariParteneri(facturi, suma);
+
+		cec.setFacturi(facturiSelectate);
+
+		return cec;
 	}
 
 	@Override
@@ -179,8 +193,28 @@ public class FinPlatiImpl implements FinPlatiSrv {
 			Furnizor furnizor, String seria, Integer numar, String locatie,
 			String stare, Double suma, List<FacturaPrimita> facturi,
 			String moneda, Double curs) throws PlatiExceptions {
-		// TODO Auto-generated method stub
-		return null;
+		if (suma == null ||  suma == 0.00 ) {
+			throw new PlatiExceptions("Suma incasarii nu poate fi nula!");
+		}
+		OrdinPlata op;
+		List<FacturaPrimita> facturiSelectate;
+		Calendar currentDate = Calendar.getInstance();
+		Date dataInregistrarii = currentDate.getTime();
+
+		if (!moneda.equals("RON")) {
+			suma = getSumaRON(moneda, suma, curs);
+		}
+		op = new OrdinPlata(dataEmiterii, avans, dataInregistrarii, suma,
+				seria, numar, locatie, stare);
+
+		if (facturi.size() == 0) {
+			facturi = getFacturiFurnizor(furnizor);
+		}
+		facturiSelectate = compensariParteneri(facturi, suma);
+
+		op.setFacturi(facturiSelectate);
+
+		return op;
 	}
 
 	@Override
@@ -188,9 +222,31 @@ public class FinPlatiImpl implements FinPlatiSrv {
 			Furnizor furnizor, String seria, Integer numar, String locatie,
 			List<FacturaPrimita> facturi, Double suma, String moneda,
 			Double curs) throws PlatiExceptions {
-		// TODO Auto-generated method stub
-		return null;
+		if (suma == null ||  suma == 0.00 ) {
+			throw new PlatiExceptions("Suma incasarii nu poate fi nula!");
+		}
+		ExtrasCont extrasCont;
+		List<FacturaPrimita> facturiSelectate;
+		Calendar currentDate = Calendar.getInstance();
+		Date dataInregistrarii = currentDate.getTime();
+
+		if (!moneda.equals("RON")) {
+			suma = getSumaRON(moneda, suma, curs);
+		}
+
+		extrasCont = new ExtrasCont(dataEmiterii, avans, dataInregistrarii, suma,
+				seria, numar, locatie);
+
+		if (facturi.size() == 0) {
+			facturi = getFacturiFurnizor(furnizor);
+		}
+		facturiSelectate = compensariParteneri(facturi, suma);
+
+		extrasCont.setFacturi(facturiSelectate);
+
+		return extrasCont;
 	}
+	
 
 	public AprovizionareSrv getAproSrv() {
 		return aproSrv;
