@@ -88,7 +88,7 @@ public class StocuriImpl implements StocuriSrv {
 		}catch (StocuriExceptions e) {
 			e.printStackTrace();
 			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
-			return null;
+			return 0.0;
 		}
 	}
 
