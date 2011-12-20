@@ -7,5 +7,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_STOCURI"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_MARKETING"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

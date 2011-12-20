@@ -13,5 +13,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_SALARIZARE"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_STOCURI"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_VANZARI"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

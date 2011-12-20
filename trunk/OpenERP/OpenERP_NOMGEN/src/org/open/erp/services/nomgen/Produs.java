@@ -132,5 +132,17 @@ public class Produs extends Material{
 		this.pretVanzare = pretVanzare;
 
 		}
+
+	public Produs(int i, String string, String string2, Date date, int j,
+			float f, float g, String string3, double d) {
+		super();
+		this.id = id;
+		this.denumire = denumire;
+		//this.unitateMasura = uM;
+		this.dataFabricatiei = dataFabricatiei;
+		this.termenValabilitate = termenValabilitate;
+		this.procentTVA = procentTVA;
+		this.pretVanzare = pretVanzare;
+	}
 	
 }
