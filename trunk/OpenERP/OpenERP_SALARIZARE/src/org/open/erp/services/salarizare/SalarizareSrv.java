@@ -47,7 +47,7 @@ import org.open.erp.services.personal.Angajat;
  *  1.Incarcare calcule luna
  *  2.Agregare sume
  *  3.Generare totaluri pentru contabilitate
- * @UseCase("inregistrare pontaj"):
+ * 
  *  
  */
 public interface SalarizareSrv {
