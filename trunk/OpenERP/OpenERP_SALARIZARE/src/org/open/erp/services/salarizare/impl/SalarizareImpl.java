@@ -2,6 +2,8 @@ package org.open.erp.services.salarizare.impl;
 
 import java.util.ArrayList;
 
+import javax.ejb.Stateful;
+
 //import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.ContractMunca;
@@ -11,10 +13,13 @@ import org.open.erp.services.salarizare.Configurare;
 import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.Retinere;
 import org.open.erp.services.salarizare.SalarizareSrv;
+import org.open.erp.services.salarizare.SalarizareSrvLocal;
+import org.open.erp.services.salarizare.SalarizareSrvRemote;
 import org.open.erp.services.salarizare.Spor;
 import org.open.erp.services.salarizare.StatSalarii;
 
-public class SalarizareImpl implements SalarizareSrv {
+@Stateful
+public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
 	
 	private PersonalSrv personalSrv;
