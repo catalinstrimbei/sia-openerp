@@ -1,15 +1,33 @@
 package org.open.erp.services.salarizare;
 
-import org.open.erp.services.personal.Angajat;
+import javax.persistence.Entity;
 
+import org.open.erp.services.personal.Angajat;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+
+@Entity
 public class Spor {
+	@Id
+	private Integer idSpor;
 	private String denumire;
 	private Integer tip;//general sau la nivel de angajat
+	
+	@ManyToOne
 	private Angajat angajat; //can be null
 	private Integer an;
 	private Integer luna;
 	private Integer modCalcul;//procent sau suma fixa
 	private Double  valoare;
+	
+	
+	public Integer getIdSpor() {
+		return idSpor;
+	}
+	public void setIdSpor(Integer idSpor) {
+		this.idSpor = idSpor;
+	}
 	public Double getValoare() {
 		return valoare;
 	}
@@ -22,6 +40,20 @@ public class Spor {
 	public Spor(String denumire, Integer tip, Integer an,
 			Integer luna, Angajat angajat, Integer modCalcul, Double valoare) {
 		super();
+		this.denumire = denumire;
+		this.tip = tip;
+		this.angajat = angajat;
+		this.an = an;
+		this.luna = luna;
+		this.modCalcul = modCalcul;
+		this.valoare = valoare;
+	}
+	
+	
+	public Spor(Integer idSpor, String denumire, Integer tip, Angajat angajat,
+			Integer an, Integer luna, Integer modCalcul, Double valoare) {
+		super();
+		this.idSpor = idSpor;
 		this.denumire = denumire;
 		this.tip = tip;
 		this.angajat = angajat;
@@ -65,6 +97,29 @@ public class Spor {
 	}
 	public void setModCalcul(Integer modCalcul) {
 		this.modCalcul = modCalcul;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idSpor == null) ? 0 : idSpor.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Spor other = (Spor) obj;
+		if (idSpor == null) {
+			if (other.idSpor != null)
+				return false;
+		} else if (!idSpor.equals(other.idSpor))
+			return false;
+		return true;
 	}
 	
 	
