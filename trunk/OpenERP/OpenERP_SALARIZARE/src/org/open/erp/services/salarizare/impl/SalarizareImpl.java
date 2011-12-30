@@ -284,7 +284,9 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(this.personalSrv.getListaAngajati());
-		
+		//inlocuit cu metodata getSalariiByLuna care returneaza salarii
+		//si parcurgem si insumam
+		//performance wise ar trebui facut in DB cu proceduri stocate
 		for (Angajat angajat:angajati){
 			StatSalarii statSalarii = new StatSalarii();
 			//aici ar trebui incarcat din DB din StatSalarii
