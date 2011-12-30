@@ -7,8 +7,8 @@
 		<class>org.open.erp.services.salarizare.Spor</class>
 		<class>org.open.erp.services.salarizare.Retinere</class>
 		<class>org.open.erp.services.salarizare.Pontaj</class>
+		<class>org.open.erp.services.salarizare.CentralizatorStatSalarii</class>
 		<class>org.open.erp.services.personal.Angajat</class>
-		<!--<class>org.open.erp.services.personal.Angajat</class>-->
 		<!--<jar-file>OpenERP_PERSONAL.jar</jar-file>-->
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
