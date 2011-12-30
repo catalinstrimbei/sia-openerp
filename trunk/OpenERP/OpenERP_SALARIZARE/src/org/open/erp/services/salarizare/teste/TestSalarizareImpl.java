@@ -25,9 +25,9 @@ public class TestSalarizareImpl {
 	@Before
 	public void setUp() throws Exception {
 		logger.info("initTest");
-		salarizareSrvInstance= SalarizareDummyFactory.getSalarizareSrv();
-		personalSrvInstance = SalarizareDummyFactory.getPersonalSrv();
-		registruSalarizare = SalarizareDummyFactory.getRegistruSalarizare();
+		salarizareSrvInstance= SalarizareFactory.getSalarizareSrv();
+		personalSrvInstance = SalarizareFactory.getPersonalSrv();
+		registruSalarizare = SalarizareFactory.getRegistruSalarizare();
 		logger.info("initTest");		
 	}
 
