@@ -22,7 +22,8 @@ import org.open.erp.services.salarizare.StatSalarii;
 @Stateful
 public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
-	
+
+	//TO DO - de schimbar cand se va comite in modulul Personal sa foloseasca interfata locala
 	@EJB(mappedName="PersonalImpl/local") 
 	private PersonalSrv personalSrv;
 	
