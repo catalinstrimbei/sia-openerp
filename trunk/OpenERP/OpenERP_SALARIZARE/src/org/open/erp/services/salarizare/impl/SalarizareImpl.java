@@ -2,6 +2,7 @@ package org.open.erp.services.salarizare.impl;
 
 import java.util.ArrayList;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
 //import org.open.erp.services.nomgen.NomenclatoareSrv;
@@ -22,7 +23,10 @@ import org.open.erp.services.salarizare.StatSalarii;
 public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
 	
+	@EJB(mappedName="PersonalImpl/local") 
 	private PersonalSrv personalSrv;
+	
+	
 	//private NomenclatoareSrv nomenclatoareSrv;
 
 	private RegistruSalarizare registru = new RegistruSalarizare();
