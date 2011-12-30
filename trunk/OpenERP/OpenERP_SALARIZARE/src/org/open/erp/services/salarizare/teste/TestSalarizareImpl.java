@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import javax.ejb.EJB;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,7 +17,10 @@ public class TestSalarizareImpl {
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestSalarizareImpl.class.getName());
 	SalarizareSrv salarizareSrvInstance;
+	
+	@EJB(mappedName="PersonalImpl/local")
 	PersonalSrv personalSrvInstance;
+	
 	RegistruSalarizare registruSalarizare;
 	
 	@BeforeClass

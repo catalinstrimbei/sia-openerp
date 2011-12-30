@@ -10,7 +10,7 @@ import org.open.erp.services.salarizare.impl.SalarizareImpl;
  * 
  * @Factory(SalarizareSrv, PersonalSrv, RegistruSalarizare) 
  *  
- *  Furnizeaza depedente Dummy pentru serviciul local si cele dependente
+ *  Furnizeaza depedente pentru serviciul local si cele dependente
  * 
  */
 public class SalarizareFactory {
