@@ -6,10 +6,13 @@ import org.open.erp.services.personal.Angajat;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 public class Spor {
 	@Id
+	@GeneratedValue(strategy = AUTO)
 	private Integer idSpor;
 	private String denumire;
 	private Integer tip;//general sau la nivel de angajat
