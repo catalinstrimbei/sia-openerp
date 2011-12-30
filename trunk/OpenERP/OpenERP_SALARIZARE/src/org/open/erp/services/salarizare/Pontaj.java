@@ -1,6 +1,12 @@
 package org.open.erp.services.salarizare;
 
+import javax.persistence.Entity;
+
 import org.open.erp.services.personal.Angajat;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.AUTO;
+import javax.persistence.ManyToOne;
 /**
  * 
  * @author ionut.hrubaru
@@ -8,13 +14,26 @@ import org.open.erp.services.personal.Angajat;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class Pontaj {
+	@Id
+	@GeneratedValue(strategy = AUTO)
+	private Integer idPontaj;
 	private Integer an;
 	private Integer luna;
+	@ManyToOne
 	private Angajat angajat;
 	private Double oreLucrate;
 	private Double oreSuplimentare;
 	private Double oreConcediu;
+	
+	
+	public Integer getIdPontaj() {
+		return idPontaj;
+	}
+	public void setIdPontaj(Integer idPontaj) {
+		this.idPontaj = idPontaj;
+	}
 	public Integer getAn() {
 		return an;
 	}
@@ -39,6 +58,19 @@ public class Pontaj {
 	public Pontaj(Angajat angajat, Integer an, Integer luna, Double oreLucrate,
 			Double oreSuplimentare, Double oreConcediu) {
 		super();
+		this.an = an;
+		this.luna = luna;
+		this.angajat = angajat;
+		this.oreLucrate = oreLucrate;
+		this.oreSuplimentare = oreSuplimentare;
+		this.oreConcediu = oreConcediu;
+	}
+	
+	
+	public Pontaj(Integer idPontaj, Integer an, Integer luna, Angajat angajat,
+			Double oreLucrate, Double oreSuplimentare, Double oreConcediu) {
+		super();
+		this.idPontaj = idPontaj;
 		this.an = an;
 		this.luna = luna;
 		this.angajat = angajat;
