@@ -2,6 +2,8 @@ package org.open.erp.services.salarizare.impl;
 
 import java.util.ArrayList;
 
+import javax.persistence.EntityManager;
+
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.salarizare.Pontaj;
@@ -10,23 +12,38 @@ import org.open.erp.services.salarizare.Spor;
 
 public class RegistruSalarizare {
 
+	private EntityManager entityManager;
+	public RegistruSalarizare(EntityManager em) {
+		entityManager = em;
+	}
+	public RegistruSalarizare() {
+	}
+	
 	public Pontaj getPontajByAngajat(Angajat angajat, Integer an, Integer luna) {
-		Pontaj p = new Pontaj();
+		Pontaj p;
+		p = (Pontaj)entityManager.createQuery("SELECT p FROM Pontaj p " +
+				"WHERE p.angajat.marca=:marca AND p.an=:an AND p.luna=:luna")
+				.setParameter("marca", angajat.getMarca())
+				.setParameter("an", an)
+				.setParameter("luna", luna)
+				.getSingleResult();
+		/*
 		p.setAngajat(angajat);
 		p.setAn(an);
 		p.setLuna(luna);
 		p.setOreLucrate(168.0);
 		p.setOreSuplimentare(12.0);
 		p.setOreConcediu(24.0);
+		*/
 		return p;
 	}
 
 	public ArrayList<Spor> getSporuriAngajat(Integer an, Integer luna, Angajat angajat){
 		ArrayList<Spor> sporuri= new ArrayList<Spor>();
 		//aici apelam ceva din DB care incarca sporurile
-		sporuri.add(new Spor("Bonus", 1, 2011, 11, angajat, 1, 100.0));
+		//sporuri.add(new Spor("Bonus", 1, 2011, 11, angajat, 1, 100.0));
 		
-		sporuri.add(new Spor("Bonus procent", 2, 2011, 11, angajat, 2, 5.0));
+		//sporuri.add(new Spor("Bonus procent", 2, 2011, 11, angajat, 2, 5.0));
 		return sporuri;
 	}
 
