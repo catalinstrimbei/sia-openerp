@@ -112,7 +112,6 @@ public class RegistruSalarizare {
 	/* persistenta */
 	public Pontaj salveazaPontaj(Pontaj pontaj) throws Exception{
 		try{
-			
 			if (pontaj.getIdPontaj() == null || 
 				entityManager.find(pontaj.getClass(), pontaj.getIdPontaj()) == null)
 				entityManager.persist(pontaj);
@@ -127,6 +126,9 @@ public class RegistruSalarizare {
 		return pontaj;
 	}
 	
+	public void stergePontaj(Pontaj pontaj){
+		entityManager.remove(pontaj);
+	}
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
