@@ -20,6 +20,25 @@ public class RegistruSalarizare {
 	public RegistruSalarizare() {
 	}
 	
+	public List<Pontaj> getPontajAnLuna(Integer an, Integer luna) {
+		List<Pontaj> pontaje = new ArrayList<Pontaj>();
+		
+		pontaje = entityManager.createQuery("SELECT p FROM Pontaj p " +
+				"WHERE p.angajat.marca=:marca AND p.an=:an AND p.luna=:luna")
+				.setParameter("an", an)
+				.setParameter("luna", luna)
+				.getResultList();
+		/*
+		p.setAngajat(angajat);
+		p.setAn(an);
+		p.setLuna(luna);
+		p.setOreLucrate(168.0);
+		p.setOreSuplimentare(12.0);
+		p.setOreConcediu(24.0);
+		*/
+		return pontaje;
+	}
+
 	public Pontaj getPontajByAngajat(Angajat angajat, Integer an, Integer luna) {
 		Pontaj p;
 		p = (Pontaj)entityManager.createQuery("SELECT p FROM Pontaj p " +
@@ -68,6 +87,8 @@ public class RegistruSalarizare {
 				.getResultList();
 		return retineri;
 	}
+	
+	
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
