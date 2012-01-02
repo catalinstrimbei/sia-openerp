@@ -2,8 +2,11 @@ package org.open.erp.services.salarizare.impl;
 
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 //import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.Angajat;
@@ -23,6 +26,20 @@ import org.open.erp.services.salarizare.StatSalarii;
 public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
 
+	//variabila de instanţa de tip EntityManager care sa fie injectata prin adnotarea @PersistenceContext(unitName="OpenERP_ModulPU");
+	@PersistenceContext(unitName="OpenERP_SALARIZARE")
+	private EntityManager em;
+	
+	//metodă callback - @PostConstruct – în care registrul sau registrele din proiect să primească referinţa EntityManagerului care va fi injectat.
+	@PostConstruct
+	public void initializare(){
+		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
+		logger.debug(">>>>>>>>>>>> Exista personalSrv? " + personalSrv);		
+		
+		if (this.registru == null)
+			registru = new RegistruSalarizare(em);
+	}
+	
 	//TO DO - de schimbar cand se va comite in modulul Personal sa foloseasca interfata locala
 	@EJB(mappedName="PersonalImpl/local") 
 	private PersonalSrv personalSrv;
