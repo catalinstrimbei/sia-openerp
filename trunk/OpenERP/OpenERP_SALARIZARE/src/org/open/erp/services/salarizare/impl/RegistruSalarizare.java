@@ -169,6 +169,26 @@ public class RegistruSalarizare {
 	public void stergeRetinere(Retinere retinere){
 		entityManager.remove(retinere);
 	}
+	
+	public StatSalarii salveazaStatSalarii(StatSalarii statSalarii) throws Exception{
+		try{
+			if (statSalarii.getIdStatSalarii() == null || 
+				entityManager.find(statSalarii.getClass(), statSalarii.getIdStatSalarii()) == null)
+				entityManager.persist(statSalarii);
+			else
+				entityManager.merge(statSalarii);
+			
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return statSalarii;
+	}
+	
+	public void stergeStatSalarii(StatSalarii statSalarii){
+		entityManager.remove(statSalarii);
+	}
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
