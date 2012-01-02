@@ -3,10 +3,16 @@ package org.open.erp.services.salarizare.impl;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 
 //import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.Angajat;
@@ -23,12 +29,17 @@ import org.open.erp.services.salarizare.Spor;
 import org.open.erp.services.salarizare.StatSalarii;
 
 @Stateful
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
 
 	//variabila de instanţa de tip EntityManager care sa fie injectata prin adnotarea @PersistenceContext(unitName="OpenERP_ModulPU");
 	@PersistenceContext(unitName="OpenERP_SALARIZARE")
 	private EntityManager em;
+
+	//variabila de instanţă adonatată @Resource care să păstreze referinţa SessionContext;
+	@Resource
+	private SessionContext sessionContext;
 	
 	//metodă callback - @PostConstruct – în care registrul sau registrele din proiect să primească referinţa EntityManagerului care va fi injectat.
 	@PostConstruct
@@ -44,7 +55,6 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@EJB(mappedName="PersonalImpl/local") 
 	private PersonalSrv personalSrv;
 	
-	
 	//private NomenclatoareSrv nomenclatoareSrv;
 
 	private RegistruSalarizare registru = new RegistruSalarizare();
@@ -57,6 +67,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return p;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inregistrarePontajLuna(Integer an, Integer luna) {
 		// pentru toti angajatii genereaza un pontaj default tinand cont de nr de ore lucratoare din luna
@@ -98,6 +109,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return spor;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) {
 		// pentru fiecare angajat calculam sporurile (pot fi mai multe) si insumam
@@ -158,6 +170,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return retinere;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Double calculRetineriAngajat(Integer an, Integer luna,
 			Angajat angajat) {
@@ -187,6 +200,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return valoareTotala;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Double calculRetineriObligatorii(Integer an, Integer luna,
 			Angajat angajat, String tipRetinere) {
@@ -251,7 +265,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return salarNet;
 	}
 
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inregistrarStatSalariiLuna(Integer an, Integer luna) {
 		
