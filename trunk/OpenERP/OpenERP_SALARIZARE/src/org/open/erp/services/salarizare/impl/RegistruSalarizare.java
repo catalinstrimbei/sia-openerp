@@ -55,11 +55,17 @@ public class RegistruSalarizare {
 		return sporuri;
 	}
 
-	public ArrayList<Retinere> getRetineriAngajat(Integer an, Integer luna, Angajat angajat){
-		ArrayList<Retinere> retineri= new ArrayList<Retinere>();
+	public List<Retinere> getRetineriAngajat(Integer an, Integer luna, Angajat angajat){
+		List<Retinere> retineri= new ArrayList<Retinere>();
 		//aici apelam ceva din DB care incarca sporurile
-		retineri.add(new Retinere("Pensie alimentara", 1, angajat, 2011, 11, 1, 100.0));
-		retineri.add(new Retinere("CAR", 2, angajat, 2011, 11, 2, 5.0));
+		//retineri.add(new Retinere("Pensie alimentara", 1, angajat, 2011, 11, 1, 100.0));
+		//retineri.add(new Retinere("CAR", 2, angajat, 2011, 11, 2, 5.0));
+		retineri = entityManager.createQuery("SELECT r FROM Retinere r " +
+				"WHERE s.angajat.marca=:marca AND s.an=:an AND s.luna=:luna")
+				.setParameter("marca", angajat.getMarca())
+				.setParameter("an", an)
+				.setParameter("luna", luna)
+				.getResultList();
 		return retineri;
 	}
 	/*
