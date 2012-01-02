@@ -333,8 +333,6 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			
 			centralizator.addStatSalarii(statSalarii);
 		}
-		
-		
 		return centralizator;
 	}
 	
