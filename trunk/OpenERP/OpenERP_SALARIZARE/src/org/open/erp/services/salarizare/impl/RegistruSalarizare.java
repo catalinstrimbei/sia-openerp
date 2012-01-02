@@ -10,6 +10,7 @@ import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.Retinere;
 import org.open.erp.services.salarizare.Spor;
+import org.open.erp.services.salarizare.StatSalarii;
 
 public class RegistruSalarizare {
 
@@ -24,7 +25,7 @@ public class RegistruSalarizare {
 		List<Pontaj> pontaje = new ArrayList<Pontaj>();
 		
 		pontaje = entityManager.createQuery("SELECT p FROM Pontaj p " +
-				"WHERE p.angajat.marca=:marca AND p.an=:an AND p.luna=:luna")
+				"WHERE p.an=:an AND p.luna=:luna")
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getResultList();
@@ -88,7 +89,24 @@ public class RegistruSalarizare {
 		return retineri;
 	}
 	
-	
+	public List<StatSalarii> getStatAnLuna(Integer an, Integer luna) {
+		List<StatSalarii> stat = new ArrayList<StatSalarii>();
+		
+		stat = entityManager.createQuery("SELECT s FROM StatSalarii s " +
+				"WHERE s.an=:an AND s.luna=:luna")
+				.setParameter("an", an)
+				.setParameter("luna", luna)
+				.getResultList();
+		/*
+		p.setAngajat(angajat);
+		p.setAn(an);
+		p.setLuna(luna);
+		p.setOreLucrate(168.0);
+		p.setOreSuplimentare(12.0);
+		p.setOreConcediu(24.0);
+		*/
+		return stat;
+	}
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
