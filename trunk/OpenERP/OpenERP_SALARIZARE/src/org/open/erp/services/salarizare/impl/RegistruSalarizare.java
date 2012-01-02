@@ -129,6 +129,46 @@ public class RegistruSalarizare {
 	public void stergePontaj(Pontaj pontaj){
 		entityManager.remove(pontaj);
 	}
+	
+	public Spor salveazaSpor(Spor spor) throws Exception{
+		try{
+			if (spor.getIdSpor() == null || 
+				entityManager.find(spor.getClass(), spor.getIdSpor()) == null)
+				entityManager.persist(spor);
+			else
+				entityManager.merge(spor);
+			
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return spor;
+	}
+	
+	public void stergeSpor(Spor spor){
+		entityManager.remove(spor);
+	}
+	
+	public Retinere salveazaRetinere(Retinere retinere) throws Exception{
+		try{
+			if (retinere.getIdRetinere() == null || 
+				entityManager.find(retinere.getClass(), retinere.getIdRetinere()) == null)
+				entityManager.persist(retinere);
+			else
+				entityManager.merge(retinere);
+			
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return retinere;
+	}
+	
+	public void stergeRetinere(Retinere retinere){
+		entityManager.remove(retinere);
+	}
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
