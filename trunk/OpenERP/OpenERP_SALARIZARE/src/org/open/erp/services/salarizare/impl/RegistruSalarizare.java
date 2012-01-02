@@ -11,10 +11,11 @@ import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.Retinere;
 import org.open.erp.services.salarizare.Spor;
 import org.open.erp.services.salarizare.StatSalarii;
+import org.open.erp.services.salarizare.teste.TestSalarizareImpl;
 
 public class RegistruSalarizare {
 
-	private EntityManager entityManager;
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestSalarizareImpl.class.getName());	private EntityManager entityManager;
 	public RegistruSalarizare(EntityManager em) {
 		entityManager = em;
 	}
@@ -107,6 +108,25 @@ public class RegistruSalarizare {
 		*/
 		return stat;
 	}
+	
+	/* persistenta */
+	public Pontaj salveazaPontaj(Pontaj pontaj) throws Exception{
+		try{
+			
+			if (pontaj.getIdPontaj() == null || 
+				entityManager.find(pontaj.getClass(), pontaj.getIdPontaj()) == null)
+				entityManager.persist(pontaj);
+			else
+				entityManager.merge(pontaj);
+			
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return pontaj;
+	}
+	
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
