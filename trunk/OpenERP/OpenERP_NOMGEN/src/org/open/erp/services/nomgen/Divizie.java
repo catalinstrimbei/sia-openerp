@@ -6,8 +6,8 @@ package org.open.erp.services.nomgen;
 import java.util.List;
 
 /**
- * @author Suzy
- *
+ * @author Echipa NomGen
+ * @BusinessObject(Entity)
  */
 public class Divizie extends Departament {
 

@@ -2,8 +2,11 @@
 package org.open.erp.services.nomgen;
 
 
-
-// author Suzy
+/*
+ * @author Echipa NomGen
+ * @BusinessObject(Entity)
+ */
+ 
 
 public class MijlocFix {
 

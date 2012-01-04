@@ -4,8 +4,8 @@ package org.open.erp.services.nomgen;
 import java.util.Date;
 
 /**
- * @author Suzy
- *
+ * @author Echipa NomGen
+ * @BusinessObject(Entity)
  */
 public class Partener {
 

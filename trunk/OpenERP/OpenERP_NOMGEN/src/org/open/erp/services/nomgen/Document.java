@@ -1,6 +1,9 @@
 package org.open.erp.services.nomgen;
 
-
+/*
+ * @author Echipa NomGen
+ * @BusinessObject(Entity)
+ */
 import java.util.*;
 
 public class Document {  

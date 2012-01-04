@@ -3,7 +3,7 @@ package org.open.erp.services.nomgen;
 import java.util.Date;
 
 /*
- * 
+ * @author Echipa NomGen
  * @BusinessObject(DummyEntity)
  * 
  */

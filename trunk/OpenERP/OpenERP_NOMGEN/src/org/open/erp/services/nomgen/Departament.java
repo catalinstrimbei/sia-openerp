@@ -5,13 +5,18 @@ package org.open.erp.services.nomgen;
 
 import java.util.List;
 
-/**
- * @author Suzy
- *
- */
-public class Departament{
 
+
+/**
+ * @author Echipa NomGen
+ * @BusinessObject(Entity)
+ */
+
+
+public class Departament{
+  
 	private Integer Id;
+    
 	private String Denumire;
 	private String Atributii;
 	private List<String> Telefoane;

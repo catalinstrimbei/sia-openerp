@@ -2,6 +2,8 @@ package org.open.erp.services.nomgen.impl;
 
 import java.util.Date;
 
+import javax.ejb.Stateful;
+
 import org.open.erp.services.nomgen.Banca;
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Divizie;
@@ -9,6 +11,8 @@ import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
+import org.open.erp.services.nomgen.NomenclatoareSrvRemote;
 import org.open.erp.services.nomgen.Partener;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
@@ -16,11 +20,12 @@ import org.open.erp.services.nomgen.PersoanaJuridica;
 import org.open.erp.services.nomgen.Produs;
 
 /**
- * 
+ * @author Echipa NomGen
  * @ApplicationServiceFacadeImpl(Dummy)
  * 
  */
-public class NomenclatoareDummyImpl implements NomenclatoareSrv {
+@Stateful
+public class NomenclatoareDummyImpl implements NomenclatoareSrv, NomenclatoareSrvRemote, NomenclatoareSrvLocal {
 
 	@Override
 	public Persoana creazaPersoana(Integer id, String adresa) {

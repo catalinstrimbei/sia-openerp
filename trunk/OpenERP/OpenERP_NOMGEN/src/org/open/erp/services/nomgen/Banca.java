@@ -1,18 +1,23 @@
-/**
- * 
- */
+
 package org.open.erp.services.nomgen;
 
+import javax.persistence.Entity;
+
+
+
 /**
- * @author Suzy
- *
+ * @author Echipa NomGen
+ * @BusinessObject(Entity)
  */
+
+
 public class Banca extends PersoanaJuridica {
 	public String CapSocial;
 	
 	/**
 	 * @return the capSocial
 	 */
+	
 	public String getCapSocial() { 
 		return CapSocial;
 	}
@@ -32,5 +37,5 @@ public class Banca extends PersoanaJuridica {
 	public Banca() {
 		super();
 	       }	
- 
+    
 }

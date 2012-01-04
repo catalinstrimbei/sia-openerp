@@ -1,5 +1,9 @@
 package org.open.erp.services.nomgen;
 
+/*
+ * @author Echipa NomGen
+ * @BusinessObject(Entity)
+ */
 public class LinieDocument { 
 	public Integer linieDoc; 
 	public Document document; 

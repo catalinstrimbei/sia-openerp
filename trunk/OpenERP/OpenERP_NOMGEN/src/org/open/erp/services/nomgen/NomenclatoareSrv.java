@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 
- * @author catalin.strimbei
+ * @author Echipa NomGen
  * 
  * @ApplicationServiceFacade(ServiceDummyAPI)
  */

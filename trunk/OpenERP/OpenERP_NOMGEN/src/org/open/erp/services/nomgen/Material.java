@@ -1,5 +1,9 @@
 package org.open.erp.services.nomgen;
 
+/*
+ * @author Echipa NomGen
+ * @BusinessObject(Entity)
+ */
 public class Material { 
 	public Integer idMaterial; 
 	public String denumire; 
