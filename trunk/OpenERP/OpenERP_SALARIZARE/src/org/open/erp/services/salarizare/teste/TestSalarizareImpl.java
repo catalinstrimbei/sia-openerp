@@ -47,7 +47,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void testInregistrarePontajLuna() {
+	public void testInregistrarePontajLuna() throws Exception {
 		logger.info("Begin test: inregistrarePontaj");
 		salarizareSrvInstance.inregistrarePontajLuna(2011, 11);
 		logger.info("End test: inregistrarePontaj");
