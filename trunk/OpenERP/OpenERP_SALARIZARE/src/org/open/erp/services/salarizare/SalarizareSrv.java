@@ -62,9 +62,10 @@ public interface SalarizareSrv {
 	 * @param oreConcediu 		Numarul de ore concediu 
 	 * 
 	 * @return instanta Pontaj nou creata. 
+	 * @throws Exception 
 	 * 
 	 */
-	Pontaj inregistrarePontaj(Angajat angajat, Integer an, Integer luna, Double oreLucrate, Double oreSuplimentare, Double oreConcediu);
+	Pontaj inregistrarePontaj(Angajat angajat, Integer an, Integer luna, Double oreLucrate, Double oreSuplimentare, Double oreConcediu) throws Exception;
 	/**
 	 * Inregistreaza pontajele tuturor angajatilor pornind de la numarul de ore lucratoare din luna
 	 * 
