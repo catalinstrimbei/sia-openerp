@@ -331,7 +331,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			StatSalarii statSalarii = new StatSalarii();
 			statSalarii.setPontaj(p);
 			statSalarii.setAlteSporuri(this.calculSporuriAngajat(an, luna, angajat));
-			statSalarii.setAlteRetineri(this.calculRetineriAngajat(an, luna, angajat));
+			statSalarii.setAlteRetineri(retineriAlte);
 			statSalarii.setCas(cas);
 			statSalarii.setCass(cass);
 			statSalarii.setSomaj(somaj);
@@ -379,7 +379,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			
 			//aici ar trebui incarcat din DB din StatSalarii
 			totalSporuri += this.calculSporuriAngajat(an, luna, angajat);
-			totalAlteRetineri += this.calculRetineriAngajat(an, luna, angajat);
+			totalAlteRetineri += retineriAlte;
 			totalCAS += cas;
 			totalCASS += cass;
 			totalSomaj += somaj;
