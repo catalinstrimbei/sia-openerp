@@ -293,16 +293,11 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	}
 
 	@Override
-	public Double calculSalarNet(Integer an, Integer luna, Angajat angajat) {
+	public Double calculSalarNet(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj, Double impozit) {
 		logger.debug("Calcul salar net angajat");
 		//TO DO: eliminare calcul de doua ori a retinerilor si deducerilor (sunt calculate si aici si la impozit)
 		Double salarNet = 0.0;
-		Double venitBrut = this.calculVenitBrut(an, luna, angajat);
 		Double retineriAlte = this.calculRetineriAngajat(an, luna, angajat);
-		Double cas = this.calculRetineriObligatorii(an, luna, angajat,"CAS",venitBrut);
-		Double cass = this.calculRetineriObligatorii(an, luna, angajat,"CASS",venitBrut);
-		Double somaj = this.calculRetineriObligatorii(an, luna, angajat,"SOMAJ",venitBrut);
-		Double impozit = this.calculImpozit(an, luna, angajat);
 		salarNet = venitBrut - retineriAlte - cas - cass - somaj - impozit;
 		return salarNet;
 	}

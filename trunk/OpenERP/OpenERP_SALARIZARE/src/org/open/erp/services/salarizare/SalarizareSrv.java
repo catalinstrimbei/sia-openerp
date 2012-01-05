@@ -221,11 +221,16 @@ public interface SalarizareSrv {
 	 * @param an 				Anul pentru care se calculeaza salarul net
 	 * @param luna 				Luna pentru care se calculeaza salarul net
 	 * @param angajat			Angajatul pentru care se calculeaza salarul net
+	 * @venitBrut				venitul brut al angajatului (vezi metoda calculVenitBrut)
+	 * @cas						cas angajat (vezi metoda calculRetineriObligatorii)
+	 * @cass					cass angajat (vezi metoda calculRetineriObligatorii)
+	 * @somaj					somaj angajat (vezi metoda calculRetineriObligatorii)
+	 * @impozit					impozit angajat (vezi metoda calculImpozit)
 	 * 
 	 * @return  Double - valoarea salarului net
 	 * 
 	 */
-	Double calculSalarNet(Integer an, Integer luna, Angajat angajat);
+	Double calculSalarNet(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj, Double impozit);
 	
 	/**
 	 * Inregistreaza statul de salariu pentru toti angajatiii 
