@@ -116,9 +116,10 @@ public interface SalarizareSrv {
 	 * @param modCalcul			1=>suma fixa, 2=>procent din salarul de baza (obtinut de undeva din PersonalSrv)
 	 * 
 	 * @return  Spor
+	 * @throws Exception 
 	 * 
 	 */
-	Spor inregistrareSpor(String denumire, Integer tip, Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare);
+	Spor inregistrareSpor(String denumire, Integer tip, Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception;
 	
 	/**
 	 * Calculeaza sporuri pentru un angajat (poate avea mai multe intr-o luna) si le insumeaza 

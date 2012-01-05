@@ -141,7 +141,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void testInregistrareSpor() {
+	public void testInregistrareSpor() throws Exception {
 		logger.info("Begin test: inregistrareSpor");
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
 		Spor spor = salarizareSrvInstance.inregistrareSpor("Bonus", 1, 2011, 11, angajat, 1, 100.0);
