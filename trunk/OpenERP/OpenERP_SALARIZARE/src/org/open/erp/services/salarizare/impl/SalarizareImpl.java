@@ -101,7 +101,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void adaugaOreConcediu(Pontaj pontaj, Double oreConcediu) throws Exception {
-		logger.debug("Adaugare ore concediu angajat");
+		logger.debug("Start - Adaugare ore concediu angajat");
 		
 		pontaj.setOreConcediu(oreConcediu);
 		
@@ -110,14 +110,23 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		}else{
 			 this.registru.salveazaPontaj(pontaj);
 		}
+		
+		logger.debug("End - Adaugare ore concediu angajat");
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public void adaugaOreSuplimentare(Pontaj pontaj, Double oreSuplimentare) {
+	public void adaugaOreSuplimentare(Pontaj pontaj, Double oreSuplimentare) throws Exception {
 		logger.debug("Adaugare ore suplimentare angajat");
 		pontaj.setOreSuplimentare(oreSuplimentare);
 
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug("END update ore suplimentare angajat - FAILED TRANSACTION");
+		}else{
+			 this.registru.salveazaPontaj(pontaj);
+		}
+		
+		logger.debug("End - Adaugare ore suplimentare angajat");
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)

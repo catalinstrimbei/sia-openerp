@@ -100,9 +100,10 @@ public interface SalarizareSrv {
 	 * @param oreSuplimentare 	Numarul de ore suplimentare
 	 * 
 	 * @return  
+	 * @throws Exception 
 	 * 
 	 */
-	void adaugaOreSuplimentare(Pontaj pontaj, Double oreSuplimentare);
+	void adaugaOreSuplimentare(Pontaj pontaj, Double oreSuplimentare) throws Exception;
 	
 	/**
 	 * Adauga spor pentru un angajat sau pt toti angajatii (practic e un create din CRUD)
