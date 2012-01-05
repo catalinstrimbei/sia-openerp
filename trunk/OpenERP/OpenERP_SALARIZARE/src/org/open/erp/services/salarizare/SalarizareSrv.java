@@ -73,9 +73,10 @@ public interface SalarizareSrv {
 	 * @param luna 				Luna pentru care se realizeaza pontajul
 	 * 
 	 * @return  
+	 * @throws Exception 
 	 * 
 	 */
-	void inregistrarePontajLuna(Integer an, Integer luna);
+	void inregistrarePontajLuna(Integer an, Integer luna) throws Exception;
 	//List<Pontaj> inregistrarePontajLuna(Integer an, Integer Luna); //o sa declare un array de angajati o sa-l ia din personal srv si pt fiecare o sa apeleze inregistrare Pontaj, si o sa puna in array de pontaje pe care il returneaza
 	//void inregistrarePontajLunaAngajati(Integer an, Integer Luna, List<Angajat> angajat);
 	
