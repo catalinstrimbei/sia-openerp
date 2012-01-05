@@ -45,8 +45,8 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	//metodă callback - @PostConstruct – în care registrul sau registrele din proiect să primească referinţa EntityManagerului care va fi injectat.
 	@PostConstruct
 	public void init(){
-		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
-		logger.debug(">>>>>>>>>>>> Exista personalSrv? " + personalSrv);		
+		logger.debug("EntityManager: " + em);		
+		logger.debug("PersonalSrv: " + personalSrv);		
 		
 		if (this.registru == null)
 			registru = new RegistruSalarizare(em);
@@ -132,9 +132,18 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Spor inregistrareSpor(String denumire, Integer tip, Integer an,
-			Integer luna, Angajat angajat, Integer modCalcul, Double valoare) {
-		logger.debug("Creare spor angajat");
+			Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception {
+		logger.debug("START creare spor angajat");
 		Spor spor = new Spor(denumire, tip, an, luna, angajat, modCalcul, valoare);
+		
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug("END creare spor angajat - FAILED TRANSACTION");
+		}else{
+			spor = this.registru.salveazaSpor(spor);
+		}
+		
+		logger.debug("END Creare spor angajat");
+		
 		return spor;
 	}
 
