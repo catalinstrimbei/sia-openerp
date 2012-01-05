@@ -62,10 +62,20 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Pontaj inregistrarePontaj(Angajat angajat, Integer an, Integer luna,
-			Double oreLucrate, Double oreSuplimentare, Double oreConcediu) {
+			Double oreLucrate, Double oreSuplimentare, Double oreConcediu) throws Exception {
 		
-		logger.debug("Creare pontaj angajat");
+		logger.debug("Start creare pontaj angajat");
 		Pontaj p = new Pontaj(angajat,an,luna,oreLucrate,oreSuplimentare,oreConcediu);
+		
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug("End creare pontaj angaja - FAILED TRANSACTION");
+		}else{
+			p = this.registru.salveazaPontaj(p);
+			//em.persist(proiectNou);
+		}
+		
+		logger.debug(">>>>>>>>>>>> END Creare proiect");
+		
 		return p;
 	}
 
