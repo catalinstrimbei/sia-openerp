@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.ContractMunca;
+import org.open.erp.services.salarizare.CentralizatorStatSalarii;
 import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.Retinere;
 import org.open.erp.services.salarizare.Spor;
@@ -189,6 +190,27 @@ public class RegistruSalarizare {
 	public void stergeStatSalarii(StatSalarii statSalarii){
 		entityManager.remove(statSalarii);
 	}
+	
+	public CentralizatorStatSalarii salveazaCentralizator(CentralizatorStatSalarii centralizator) throws Exception{
+		try{
+			if (centralizator.getIdCentralizator() == null || 
+				entityManager.find(centralizator.getClass(), centralizator.getIdCentralizator()) == null)
+				entityManager.persist(centralizator);
+			else
+				entityManager.merge(centralizator);
+			
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return centralizator;
+	}
+	
+	public void stergeCentralizator(CentralizatorStatSalarii centralizator){
+		entityManager.remove(centralizator);
+	}
+
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
