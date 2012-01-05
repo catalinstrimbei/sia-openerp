@@ -1,6 +1,7 @@
 package org.open.erp.services.salarizare.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -64,27 +65,27 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	public Pontaj inregistrarePontaj(Angajat angajat, Integer an, Integer luna,
 			Double oreLucrate, Double oreSuplimentare, Double oreConcediu) throws Exception {
 		
-		logger.debug("Start creare pontaj angajat");
+		logger.debug("START creare pontaj angajat");
 		Pontaj p = new Pontaj(angajat,an,luna,oreLucrate,oreSuplimentare,oreConcediu);
 		
 		if (sessionContext.getRollbackOnly() == true){
-			logger.debug("End creare pontaj angaja - FAILED TRANSACTION");
+			logger.debug("END creare pontaj angajat - FAILED TRANSACTION");
 		}else{
 			p = this.registru.salveazaPontaj(p);
-			//em.persist(proiectNou);
 		}
 		
-		logger.debug(">>>>>>>>>>>> END Creare proiect");
+		logger.debug("END Creare pontaj angajat");
 		
 		return p;
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public void inregistrarePontajLuna(Integer an, Integer luna) {
+	public void inregistrarePontajLuna(Integer an, Integer luna) throws Exception {
 		// pentru toti angajatii genereaza un pontaj default tinand cont de nr de ore lucratoare din luna
 		
 		//toti angajatii
+		logger.debug("Incarca lista tuturor angajatilor");
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(this.personalSrv.getListaAngajati());
 		
@@ -92,11 +93,9 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		
 		//parcurgem si setam pontajul (adica salvam in DB)
 		for (Angajat angajat:angajati){
-			Pontaj p = new Pontaj();
-			p.setAn(an);
-			p.setLuna(luna);
-			p.setAngajat(angajat);
+			this.inregistrarePontaj(angajat, an, luna, Configurare.NUMAR_ORE_LUCRATOARE_LUNA, 0.0, 0.0);
 		}
+		logger.debug("END Creare pontaj luna");
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -104,7 +103,6 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	public void adaugaOreConcediu(Pontaj pontaj, Double oreConcediu) {
 		logger.debug("Adaugare ore concediu angajat");
 		pontaj.setOreConcediu(oreConcediu);
-
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
