@@ -37,7 +37,7 @@ public class TestSalarizareImpl {
 	}
 
 	@Test
-	public void testInregistrarePontaj() {
+	public void testInregistrarePontaj() throws Exception {
 		logger.info("Begin test: inregistrarePontaj");
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
 		Pontaj pontaj = salarizareSrvInstance.inregistrarePontaj(angajat, 2011, 11, 160.0, 0.0, 0.0);
