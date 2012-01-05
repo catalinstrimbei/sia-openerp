@@ -141,7 +141,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void testinregistrarStatSalariiLuna() {
+	public void testinregistrarStatSalariiLuna() throws Exception {
 		logger.info("Begin test: inregistrareStatSalariiLuna");
 		salarizareSrvInstance.inregistrarStatSalariiLuna(2011, 11);
 		logger.info("End test: inregistrareStatSalariiLuna");

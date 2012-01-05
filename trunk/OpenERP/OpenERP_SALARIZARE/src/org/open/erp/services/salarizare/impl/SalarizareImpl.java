@@ -95,6 +95,10 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		for (Angajat angajat:angajati){
 			this.inregistrarePontaj(angajat, an, luna, Configurare.NUMAR_ORE_LUCRATOARE_LUNA, 0.0, 0.0);
 		}
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug("END creare pontaj luna - FAILED TRANSACTION");
+		}
+		
 		logger.debug("END Creare pontaj luna");
 	}
 
@@ -304,7 +308,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public void inregistrarStatSalariiLuna(Integer an, Integer luna) {
+	public void inregistrarStatSalariiLuna(Integer an, Integer luna) throws Exception {
 		
 		logger.debug("Creare stat salarii pentru toti angajatii");
 		//toti angajatii
@@ -339,9 +343,13 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			statSalarii.setImpozit(impozit);
 			statSalarii.setSalarNet(salarNet);
 			
-			//save in DB
+			this.registru.salveazaStatSalarii(statSalarii);
 		}
 		
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug("END creare retinere angajat - FAILED TRANSACTION");
+		}
+		logger.debug("END Creare retinere angajat");
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)

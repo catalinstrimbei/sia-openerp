@@ -243,9 +243,10 @@ public interface SalarizareSrv {
 	 * @param luna 				Luna pentru care se realizeaza statul de salarii
 	 * 
 	 * @return  
+	 * @throws Exception 
 	 * 
 	 */
-	void inregistrarStatSalariiLuna(Integer an, Integer luna);	
+	void inregistrarStatSalariiLuna(Integer an, Integer luna) throws Exception;	
 	
 	/**
 	 * returneaza statul de salariu pentru toti angajatii (de folosit in contabilitate, obiectul statsalarii returnat va contine toate sumele de inregistrat) 
