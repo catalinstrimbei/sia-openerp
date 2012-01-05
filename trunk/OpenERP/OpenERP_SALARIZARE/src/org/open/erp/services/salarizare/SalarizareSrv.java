@@ -88,9 +88,10 @@ public interface SalarizareSrv {
 	 * @param oreConcediu 		Numarul de ore concediu
 	 * 
 	 * @return  
+	 * @throws Exception 
 	 * 
 	 */
-	void adaugaOreConcediu(Pontaj pontaj, Double oreConcediu);
+	void adaugaOreConcediu(Pontaj pontaj, Double oreConcediu) throws Exception;
 	
 	/**
 	 * Adauga ore suplimentare pt un anumit pontaj (insemnand un angajat/luna/an)
