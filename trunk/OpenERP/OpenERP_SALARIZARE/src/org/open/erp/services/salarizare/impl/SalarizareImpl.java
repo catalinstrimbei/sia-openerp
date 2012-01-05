@@ -318,17 +318,22 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			p.setLuna(luna);
 			p.setAngajat(angajat);
 			Double venitBrut = this.calculVenitBrut(an, luna, angajat);
+			Double cas = calculRetineriObligatorii(2011, 11, angajat,"CAS", venitBrut);
+			Double cass = calculRetineriObligatorii(2011, 11, angajat,"CASS", venitBrut);
+			Double somaj = calculRetineriObligatorii(2011, 11, angajat,"SOMAJ", venitBrut);
+			Double impozit = calculImpozit(an, luna, angajat, venitBrut, cas, cass, somaj);
+			Double salarNet = calculSalarNet(an, luna, angajat, venitBrut, cas, cass, somaj, impozit);
 			
 			StatSalarii statSalarii = new StatSalarii();
 			statSalarii.setPontaj(p);
 			statSalarii.setAlteSporuri(this.calculSporuriAngajat(an, luna, angajat));
 			statSalarii.setAlteRetineri(this.calculRetineriAngajat(an, luna, angajat));
-			statSalarii.setCas(this.calculRetineriObligatorii(an, luna, angajat, "CAS",venitBrut));
-			statSalarii.setCass(this.calculRetineriObligatorii(an, luna, angajat, "CASS",venitBrut));
-			statSalarii.setSomaj(this.calculRetineriObligatorii(an, luna, angajat, "SOMAJ",venitBrut));
-			statSalarii.setSalarBrut(this.calculVenitBrut(an, luna, angajat));
-			statSalarii.setImpozit(this.calculImpozit(an, luna, angajat));
-			statSalarii.setSalarNet(this.calculSalarNet(an, luna, angajat));
+			statSalarii.setCas(cas);
+			statSalarii.setCass(cass);
+			statSalarii.setSomaj(somaj);
+			statSalarii.setSalarBrut(venitBrut);
+			statSalarii.setImpozit(impozit);
+			statSalarii.setSalarNet(salarNet);
 			
 			//save in DB
 		}
@@ -360,15 +365,20 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		for (Angajat angajat:angajati){
 			StatSalarii statSalarii = new StatSalarii();
 			Double venitBrut = this.calculVenitBrut(an, luna, angajat);
+			Double cas = calculRetineriObligatorii(2011, 11, angajat,"CAS", venitBrut);
+			Double cass = calculRetineriObligatorii(2011, 11, angajat,"CASS", venitBrut);
+			Double somaj = calculRetineriObligatorii(2011, 11, angajat,"SOMAJ", venitBrut);
+			Double impozit = calculImpozit(an, luna, angajat, venitBrut, cas, cass, somaj);
+			Double salarNet = calculSalarNet(an, luna, angajat, venitBrut, cas, cass, somaj, impozit);
+			
 			//aici ar trebui incarcat din DB din StatSalarii
 			totalSporuri += this.calculSporuriAngajat(an, luna, angajat);
 			totalAlteRetineri += this.calculRetineriAngajat(an, luna, angajat);
-			totalCAS += this.calculRetineriObligatorii(an, luna, angajat, "CAS",venitBrut);
-			totalCASS += this.calculRetineriObligatorii(an, luna, angajat, "CASS",venitBrut);
-			totalSomaj += this.calculRetineriObligatorii(an, luna, angajat, "SOMAJ",venitBrut);
-			
-			totalImpozit += this.calculImpozit(an, luna, angajat);
-			totalSalarNet += this.calculSalarNet(an, luna, angajat);
+			totalCAS += cas;
+			totalCASS += cass;
+			totalSomaj += somaj;
+			totalImpozit += impozit;
+			totalSalarNet += salarNet;
 			
 			
 			centralizator.addStatSalarii(statSalarii);
