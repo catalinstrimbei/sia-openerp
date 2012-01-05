@@ -101,9 +101,9 @@ public class TestSalarizareImpl {
 		//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 		for (Angajat angajat:angajati){
 			Double venitBrut = salarizareSrvInstance.calculVenitBrut(2011, 11, angajat);
-		salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CAS", venitBrut);
-		salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CASS", venitBrut);
-		salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"SOMAJ", venitBrut);		
+			salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CAS", venitBrut);
+			salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CASS", venitBrut);
+			salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"SOMAJ", venitBrut);		
 		}
 		logger.info("End test: calculRetineriObligatoriiAngajat");
 	}
@@ -116,7 +116,11 @@ public class TestSalarizareImpl {
 		
 		//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 		for (Angajat angajat:angajati){
-		salarizareSrvInstance.calculImpozit(2011, 11, angajat);
+			Double venitBrut = salarizareSrvInstance.calculVenitBrut(2011, 11, angajat);
+			Double cas = salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CAS", venitBrut);
+			Double cass = salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CASS", venitBrut);
+			Double somaj = salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"SOMAJ", venitBrut);
+			salarizareSrvInstance.calculImpozit(2011, 11, angajat, venitBrut, cas, cass, somaj);
 		}
 		logger.info("End test: calculImpozitAngajat");
 	}

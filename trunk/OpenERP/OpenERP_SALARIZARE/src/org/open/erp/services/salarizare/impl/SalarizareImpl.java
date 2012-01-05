@@ -282,14 +282,10 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	}
 
 	@Override
-	public Double calculImpozit(Integer an, Integer luna, Angajat angajat) {
+	public Double calculImpozit(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj) {
 		// impozitul se calculeaza dupa ce am scazut retinerile si deducerea din venitul brut
 		logger.debug("Calcul impozit angajat");
-		Double venitBrut = this.calculVenitBrut(an, luna, angajat);
 		Double retineriAlte = this.calculRetineriAngajat(an, luna, angajat);
-		Double cas = this.calculRetineriObligatorii(an, luna, angajat,"CAS");
-		Double cass = this.calculRetineriObligatorii(an, luna, angajat,"CASS");
-		Double somaj = this.calculRetineriObligatorii(an, luna, angajat,"SOMAJ");
 		Double deduceri = this.calculDeduceri(an, luna, angajat);
 		Double impozit = 0.0;
 		impozit = (venitBrut - retineriAlte - cas - cass - somaj - deduceri) * Configurare.IMPOZIT_ANGAJAT;
@@ -303,9 +299,9 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		Double salarNet = 0.0;
 		Double venitBrut = this.calculVenitBrut(an, luna, angajat);
 		Double retineriAlte = this.calculRetineriAngajat(an, luna, angajat);
-		Double cas = this.calculRetineriObligatorii(an, luna, angajat,"CAS");
-		Double cass = this.calculRetineriObligatorii(an, luna, angajat,"CASS");
-		Double somaj = this.calculRetineriObligatorii(an, luna, angajat,"SOMAJ");
+		Double cas = this.calculRetineriObligatorii(an, luna, angajat,"CAS",venitBrut);
+		Double cass = this.calculRetineriObligatorii(an, luna, angajat,"CASS",venitBrut);
+		Double somaj = this.calculRetineriObligatorii(an, luna, angajat,"SOMAJ",venitBrut);
 		Double impozit = this.calculImpozit(an, luna, angajat);
 		salarNet = venitBrut - retineriAlte - cas - cass - somaj - impozit;
 		return salarNet;
@@ -326,14 +322,15 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			p.setAn(an);
 			p.setLuna(luna);
 			p.setAngajat(angajat);
+			Double venitBrut = this.calculVenitBrut(an, luna, angajat);
 			
 			StatSalarii statSalarii = new StatSalarii();
 			statSalarii.setPontaj(p);
 			statSalarii.setAlteSporuri(this.calculSporuriAngajat(an, luna, angajat));
 			statSalarii.setAlteRetineri(this.calculRetineriAngajat(an, luna, angajat));
-			statSalarii.setCas(this.calculRetineriObligatorii(an, luna, angajat, "CAS"));
-			statSalarii.setCass(this.calculRetineriObligatorii(an, luna, angajat, "CASS"));
-			statSalarii.setSomaj(this.calculRetineriObligatorii(an, luna, angajat, "SOMAJ"));
+			statSalarii.setCas(this.calculRetineriObligatorii(an, luna, angajat, "CAS",venitBrut));
+			statSalarii.setCass(this.calculRetineriObligatorii(an, luna, angajat, "CASS",venitBrut));
+			statSalarii.setSomaj(this.calculRetineriObligatorii(an, luna, angajat, "SOMAJ",venitBrut));
 			statSalarii.setSalarBrut(this.calculVenitBrut(an, luna, angajat));
 			statSalarii.setImpozit(this.calculImpozit(an, luna, angajat));
 			statSalarii.setSalarNet(this.calculSalarNet(an, luna, angajat));
@@ -367,12 +364,13 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		//performance wise ar trebui facut in DB cu proceduri stocate
 		for (Angajat angajat:angajati){
 			StatSalarii statSalarii = new StatSalarii();
+			Double venitBrut = this.calculVenitBrut(an, luna, angajat);
 			//aici ar trebui incarcat din DB din StatSalarii
 			totalSporuri += this.calculSporuriAngajat(an, luna, angajat);
 			totalAlteRetineri += this.calculRetineriAngajat(an, luna, angajat);
-			totalCAS += this.calculRetineriObligatorii(an, luna, angajat, "CAS");
-			totalCASS += this.calculRetineriObligatorii(an, luna, angajat, "CASS");
-			totalSomaj += this.calculRetineriObligatorii(an, luna, angajat, "SOMAJ");
+			totalCAS += this.calculRetineriObligatorii(an, luna, angajat, "CAS",venitBrut);
+			totalCASS += this.calculRetineriObligatorii(an, luna, angajat, "CASS",venitBrut);
+			totalSomaj += this.calculRetineriObligatorii(an, luna, angajat, "SOMAJ",venitBrut);
 			
 			totalImpozit += this.calculImpozit(an, luna, angajat);
 			totalSalarNet += this.calculSalarNet(an, luna, angajat);

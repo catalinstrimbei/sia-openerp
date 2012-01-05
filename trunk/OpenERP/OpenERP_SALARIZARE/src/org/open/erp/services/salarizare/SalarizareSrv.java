@@ -205,18 +205,22 @@ public interface SalarizareSrv {
 	 * @param an 				Anul pentru care se calculeaza impozitul
 	 * @param luna 				Luna pentru care se calculeaza
 	 * @param angajat			Angajatul pentru care se calculeaza impozitul
+	 * @venitBrut				venitul brut al angajatului (vezi metoda calculVenitBrut)
+	 * @cas						cas angajat (vezi metoda calculRetineriObligatorii)
+	 * @cass					cass angajat (vezi metoda calculRetineriObligatorii)
+	 * @somaj					somaj angajat (vezi metoda calculRetineriObligatorii)
 	 * 
 	 * @return  Double - valoarea impozitului
 	 * 
 	 */
-	Double calculImpozit(Integer an, Integer luna, Angajat angajat);
+	Double calculImpozit(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj);
 	
 	/**
 	 * Calculeaza salarul net pentru un angajat -  
 	 * 
-	 * @param an 				Anul pentru care se calculeaza impozitul
-	 * @param luna 				Luna pentru care se calculeaza
-	 * @param angajat			Angajatul pentru care se calculeaza impozitul
+	 * @param an 				Anul pentru care se calculeaza salarul net
+	 * @param luna 				Luna pentru care se calculeaza salarul net
+	 * @param angajat			Angajatul pentru care se calculeaza salarul net
 	 * 
 	 * @return  Double - valoarea salarului net
 	 * 
