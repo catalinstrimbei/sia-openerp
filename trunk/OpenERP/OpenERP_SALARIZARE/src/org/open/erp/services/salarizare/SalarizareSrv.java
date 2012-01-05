@@ -156,9 +156,10 @@ public interface SalarizareSrv {
 	 * @param modCalcul			1=>suma fixa, 2=>procent din salarul de baza (obtinut de undeva din PersonalSrv)
 	 * 
 	 * @return  Retinere
+	 * @throws Exception 
 	 * 
 	 */
-	Retinere inregistrareRetinere(String denumire, Integer tip, Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare);
+	Retinere inregistrareRetinere(String denumire, Integer tip, Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception;
 	
 	/**
 	 * Calculeaza retinerile pentru un angajat (poate avea mai multe intr-o luna) si le insumeaza - mai putin retinerile obligatorii

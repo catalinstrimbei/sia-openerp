@@ -200,11 +200,21 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return venitBrut;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Retinere inregistrareRetinere(String denumire, Integer tip,
-			Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) {
-		logger.debug("Creare retinere angajat");
+			Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception {
+		logger.debug("Start creare retinere angajat");
 		Retinere retinere = new Retinere(denumire, tip, angajat, an, luna, modCalcul, valoare);
+		
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug("END creare retinere angajat - FAILED TRANSACTION");
+		}else{
+			retinere = this.registru.salveazaRetinere(retinere);
+		}
+		
+		logger.debug("END Creare retinere angajat");
+		
 		return retinere;
 	}
 

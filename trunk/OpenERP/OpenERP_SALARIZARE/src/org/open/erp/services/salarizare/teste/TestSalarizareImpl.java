@@ -151,7 +151,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void testInregistrareRetinere() {
+	public void testInregistrareRetinere() throws Exception {
 		logger.info("Begin test: inregistrareRetinere");
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
 		Retinere retinere = salarizareSrvInstance.inregistrareRetinere("Penalizare", 1, 2011, 11, angajat, 1, 100.0);
