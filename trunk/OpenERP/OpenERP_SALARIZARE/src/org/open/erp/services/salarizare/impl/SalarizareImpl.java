@@ -43,7 +43,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	
 	//metodă callback - @PostConstruct – în care registrul sau registrele din proiect să primească referinţa EntityManagerului care va fi injectat.
 	@PostConstruct
-	public void initializare(){
+	public void init(){
 		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
 		logger.debug(">>>>>>>>>>>> Exista personalSrv? " + personalSrv);		
 		
@@ -58,6 +58,8 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	//private NomenclatoareSrv nomenclatoareSrv;
 
 	private RegistruSalarizare registru = new RegistruSalarizare();
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Pontaj inregistrarePontaj(Angajat angajat, Integer an, Integer luna,
 			Double oreLucrate, Double oreSuplimentare, Double oreConcediu) {
@@ -87,6 +89,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		}
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void adaugaOreConcediu(Pontaj pontaj, Double oreConcediu) {
 		logger.debug("Adaugare ore concediu angajat");
@@ -94,6 +97,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void adaugaOreSuplimentare(Pontaj pontaj, Double oreSuplimentare) {
 		logger.debug("Adaugare ore suplimentare angajat");
@@ -101,6 +105,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Spor inregistrareSpor(String denumire, Integer tip, Integer an,
 			Integer luna, Angajat angajat, Integer modCalcul, Double valoare) {
@@ -109,7 +114,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return spor;
 	}
 
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
 	@Override
 	public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) {
 		// pentru fiecare angajat calculam sporurile (pot fi mai multe) si insumam
@@ -170,7 +175,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return retinere;
 	}
 
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
 	@Override
 	public Double calculRetineriAngajat(Integer an, Integer luna,
 			Angajat angajat) {
@@ -200,7 +205,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return valoareTotala;
 	}
 
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
 	@Override
 	public Double calculRetineriObligatorii(Integer an, Integer luna,
 			Angajat angajat, String tipRetinere) {
@@ -297,6 +302,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CentralizatorStatSalarii getStatSalariiLuna(Integer an, Integer luna) {
 		
