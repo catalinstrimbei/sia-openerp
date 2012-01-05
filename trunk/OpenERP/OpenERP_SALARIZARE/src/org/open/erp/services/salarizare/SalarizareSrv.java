@@ -255,7 +255,8 @@ public interface SalarizareSrv {
 	 * @param luna 				Luna pentru care se returneaza statul de salarii
 	 * 
 	 * @return  
+	 * @throws Exception 
 	 * 
 	 */
-	CentralizatorStatSalarii getStatSalariiLuna(Integer an, Integer luna);
+	CentralizatorStatSalarii getStatSalariiLuna(Integer an, Integer luna) throws Exception;
 }
