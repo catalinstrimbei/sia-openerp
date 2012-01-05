@@ -209,11 +209,13 @@ public interface SalarizareSrv {
 	 * @cas						cas angajat (vezi metoda calculRetineriObligatorii)
 	 * @cass					cass angajat (vezi metoda calculRetineriObligatorii)
 	 * @somaj					somaj angajat (vezi metoda calculRetineriObligatorii)
+	 * @retineriAlte			alte retineri angajat (vezi metoda calculRetineriAngajat)
+	 * @deduceri				deduceri angajat (vezi metoda calculDeduceri
 	 * 
 	 * @return  Double - valoarea impozitului
 	 * 
 	 */
-	Double calculImpozit(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj);
+	Double calculImpozit(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj, Double retineriAlte, Double deduceri);
 	
 	/**
 	 * Calculeaza salarul net pentru un angajat -  
@@ -226,11 +228,13 @@ public interface SalarizareSrv {
 	 * @cass					cass angajat (vezi metoda calculRetineriObligatorii)
 	 * @somaj					somaj angajat (vezi metoda calculRetineriObligatorii)
 	 * @impozit					impozit angajat (vezi metoda calculImpozit)
+	 * @retineriAlte			alte retineri angajat (vezi metoda calculRetineriAngajat)
+	 * @deduceri				deduceri angajat (vezi metoda calculDeduceri)
 	 * 
 	 * @return  Double - valoarea salarului net
 	 * 
 	 */
-	Double calculSalarNet(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj, Double impozit);
+	Double calculSalarNet(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj, Double impozit, Double retineriAlte, Double deduceri);
 	
 	/**
 	 * Inregistreaza statul de salariu pentru toti angajatiii 
