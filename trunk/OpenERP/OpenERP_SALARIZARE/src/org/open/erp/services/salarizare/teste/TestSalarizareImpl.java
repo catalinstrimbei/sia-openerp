@@ -97,12 +97,13 @@ public class TestSalarizareImpl {
 		logger.info("Begin test: calculRetineriObligatoriiAngajat");
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(personalSrvInstance.getListaAngajati());
-		
+
 		//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 		for (Angajat angajat:angajati){
-		salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CAS");
-		salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CASS");
-		salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"SOMAJ");		
+			Double venitBrut = salarizareSrvInstance.calculVenitBrut(2011, 11, angajat);
+		salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CAS", venitBrut);
+		salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CASS", venitBrut);
+		salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"SOMAJ", venitBrut);		
 		}
 		logger.info("End test: calculRetineriObligatoriiAngajat");
 	}

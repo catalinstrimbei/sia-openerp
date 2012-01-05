@@ -172,7 +172,6 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 					valoareTotala = valoareTotala + spor.getValoare()*contract.getSalarBaza();
 				}
 			}
-		
 		}
 		else{
 			valoareTotala = 0.0;
@@ -251,10 +250,9 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	
 	@Override
 	public Double calculRetineriObligatorii(Integer an, Integer luna,
-			Angajat angajat, String tipRetinere) {
+			Angajat angajat, String tipRetinere, Double venitBrut) {
 		logger.debug("Calcul retinere obligatorie "+tipRetinere+"angajat");
 		// retinerile obligatorii se retin din salarul brut
-		Double venitBrut = this.calculVenitBrut(an, luna, angajat);
 		Double retinere = 0.0;
 		if(tipRetinere=="CAS")
 			 retinere = venitBrut*Configurare.CAS_ANGAJAT;

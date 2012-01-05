@@ -180,11 +180,12 @@ public interface SalarizareSrv {
 	 * @param luna 				Luna pentru care se calculeaza
 	 * @param angajat			Angajatul pentru care se calculeaza retinerile
 	 * @tipRetinere				tipul - "CAS", "CASS", "Somaj"
+	 * @venitBrut				venitul brut al angajatului (vezi metoda calculVenitBrut)
 	 * 
 	 * @return  Double - valoarea insumata a retinerilor obligatorii
 	 * 
 	 */
-	Double calculRetineriObligatorii(Integer an, Integer luna, Angajat angajat, String tipRetinere);
+	Double calculRetineriObligatorii(Integer an, Integer luna, Angajat angajat, String tipRetinere, Double venitBrut);
 	
 	/**
 	 * Calculeaza deducerile pentru un angajat - folosind numarul de copii din intretinere obitnuti din PersonalSrv 
