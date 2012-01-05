@@ -16,4 +16,6 @@ public abstract class Configurare {
 	public static final Double DEDUCERE_DOI_COPII = 150.0;
 	public static final Double DEDUCERE_TREI_COPII = 200.0;
 	public static final Double DEDUCERE_PATRU_COPII = 250.0;
+	
+	public static final Double NUMAR_ORE_LUCRATOARE_LUNA = 160.0;
 }
