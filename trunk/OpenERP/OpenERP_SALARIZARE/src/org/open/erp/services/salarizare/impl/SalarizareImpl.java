@@ -2,6 +2,7 @@ package org.open.erp.services.salarizare.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -347,9 +348,9 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		}
 		
 		if (sessionContext.getRollbackOnly() == true){
-			logger.debug("END creare retinere angajat - FAILED TRANSACTION");
+			logger.debug("END inregistrare stat plata - FAILED TRANSACTION");
 		}
-		logger.debug("END Creare retinere angajat");
+		logger.debug("END inregistrare stat plata");
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -364,38 +365,30 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		Double totalSalarNet=0.0;
 		Double totalSporuri=0.0;
 		Double totalAlteRetineri=0.0;
+		Double totalSalarBrut = 0.0;
 		//insumam sume pentru toti angajatii
 		CentralizatorStatSalarii centralizator = new CentralizatorStatSalarii();
 		centralizator.setAn(an);
 		centralizator.setLuna(luna);
 		
-		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
-		angajati.addAll(this.personalSrv.getListaAngajati());
+		List<StatSalarii> salarii= new ArrayList<StatSalarii>();
+		salarii.addAll(registru.getStatAnLuna(an, luna));
+		
 		//inlocuit cu metodata getSalariiByLuna care returneaza salarii
 		//si parcurgem si insumam
 		//performance wise ar trebui facut in DB cu proceduri stocate
-		for (Angajat angajat:angajati){
-			StatSalarii statSalarii = new StatSalarii();
-			Double venitBrut = this.calculVenitBrut(an, luna, angajat);
-			Double retineriAlte = calculRetineriAngajat(an, luna, angajat);
-			Double deduceri = calculDeduceri(an, luna, angajat);
-			Double cas = calculRetineriObligatorii(2011, 11, angajat,"CAS", venitBrut);
-			Double cass = calculRetineriObligatorii(2011, 11, angajat,"CASS", venitBrut);
-			Double somaj = calculRetineriObligatorii(2011, 11, angajat,"SOMAJ", venitBrut);
-			Double impozit = calculImpozit(an, luna, angajat, venitBrut, cas, cass, somaj, retineriAlte, deduceri);
-			Double salarNet = calculSalarNet(an, luna, angajat, venitBrut, cas, cass, somaj, impozit, retineriAlte, deduceri);
+		for (StatSalarii salar:salarii){
 			
-			//aici ar trebui incarcat din DB din StatSalarii
-			totalSporuri += this.calculSporuriAngajat(an, luna, angajat);
-			totalAlteRetineri += retineriAlte;
-			totalCAS += cas;
-			totalCASS += cass;
-			totalSomaj += somaj;
-			totalImpozit += impozit;
-			totalSalarNet += salarNet;
+			totalSporuri += salar.getAlteSporuri();
+			totalAlteRetineri += salar.getAlteRetineri();
+			totalCAS += salar.getCas();
+			totalCASS += salar.getCass();
+			totalSomaj += salar.getSomaj();
+			totalImpozit += salar.getImpozit();
+			totalSalarNet += salar.getSalarNet();
+			totalSalarBrut += salar.getSalarBrut();
 			
-			
-			centralizator.addStatSalarii(statSalarii);
+			centralizator.addStatSalarii(salar);
 		}
 		return centralizator;
 	}
