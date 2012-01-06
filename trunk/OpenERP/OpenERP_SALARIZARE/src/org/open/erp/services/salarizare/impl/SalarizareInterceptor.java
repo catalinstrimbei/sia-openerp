@@ -11,6 +11,7 @@ public class SalarizareInterceptor {
 		// Decodifica informatii privind contextul de invocare
 		Class<? extends Object> targetBeanClass = ctx.getTarget().getClass();
 		String invokedMethodName = ctx.getMethod().getName();
+		
 		// Executa logica de interceptare
 		logger.info("#### call of: " + targetBeanClass.getName() + "." + invokedMethodName);
 		// executa metoda interceptata

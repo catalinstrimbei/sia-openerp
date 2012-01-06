@@ -1,6 +1,7 @@
 package org.open.erp.services.salarizare.impl;
 
 import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.interceptor.Interceptors;
 
 //import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.Angajat;
@@ -80,6 +82,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return p;
 	}
 
+	@Interceptors({SalarizareInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inregistrarePontajLuna(Integer an, Integer luna) throws Exception {
@@ -152,7 +155,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return spor;
 	}
 
-	
+	@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) {
 		// pentru fiecare angajat calculam sporurile (pot fi mai multe) si insumam
@@ -185,6 +188,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return valoareTotala;
 	}
 
+	@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) {
 		Pontaj p = registru.getPontajByAngajat(angajat, an, luna);
@@ -222,7 +226,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return retinere;
 	}
 
-	
+	@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculRetineriAngajat(Integer an, Integer luna,
 			Angajat angajat) {
@@ -307,6 +311,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return salarNet;
 	}
 
+	@Interceptors({SalarizareInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inregistrarStatSalariiLuna(Integer an, Integer luna) throws Exception {
