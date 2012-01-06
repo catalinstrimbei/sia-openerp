@@ -375,7 +375,6 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		salarii.addAll(registru.getStatAnLuna(an, luna));
 		
 		//inlocuit cu metodata getSalariiByLuna care returneaza salarii
-		//si parcurgem si insumam
 		//performance wise ar trebui facut in DB cu proceduri stocate
 		for (StatSalarii salar:salarii){
 			
@@ -400,7 +399,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		logger.debug("END generare centralizator");
 		return centralizator;
 	}
-	
+	 
 	public PersonalSrv getPersonalSrv() {
 		return personalSrv;
 	}
