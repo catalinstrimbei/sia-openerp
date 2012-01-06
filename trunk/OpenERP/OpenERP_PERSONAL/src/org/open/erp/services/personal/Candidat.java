@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.open.erp.services.nomgen.PersoanaFizica;
@@ -22,6 +23,7 @@ public class Candidat extends PersoanaFizica implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
 	private Integer		idCandidat;
 	private String 		tipCandidat;
 	@OneToMany(mappedBy = "candidat", cascade = CascadeType.ALL)
