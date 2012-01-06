@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.ejb.Stateful;
+import javax.xml.registry.infomodel.PersonName;
+
 
 //import org.open.erp.services.buget.Buget;
 //import org.open.erp.services.buget.BugetareSrv;
@@ -30,6 +33,8 @@ import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.personal.PersonalSrvLocal;
+import org.open.erp.services.personal.PersonalSrvRemote;
 import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.logger.PersonalExceptions;
 import org.open.erp.services.personal.logger.PersonalLogger;
@@ -40,8 +45,8 @@ import org.open.erp.services.personal.teste.TestPersonalImpl;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-
-public class PersonalImpl implements PersonalSrv{	
+@Stateful
+public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvRemote{	
 	final static long MILLIS_PER_DAY = 24 * 3600 * 1000;
 	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 	

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+
 //import org.open.erp.services.buget.Buget;
 
 /**
@@ -11,7 +13,6 @@ import java.util.List;
  * @BusinessObject(Entity)
  * 
  */
-
 
 public class Activitate {
 	private String 		idActivitate;
