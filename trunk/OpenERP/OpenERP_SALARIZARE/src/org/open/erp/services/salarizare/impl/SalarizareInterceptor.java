@@ -24,8 +24,15 @@ public class SalarizareInterceptor {
 		SalarizareImpl ejbean = (SalarizareImpl) ctx.getTarget();
 		
 		logger.info("#### call of: " + targetBeanClass.getName() + "." + invokedMethodName);
-		// Executa logica de interceptare
-		if ("inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass)){
+		// Executa logica de interceptare pt fiecare metoda care foloseste personalSrv
+		if (
+				"inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass) ||
+				"calculSporuriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass)   ||
+				"calculVenitBrut".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass)   ||
+				"calculRetineriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass)   ||
+				"inregistrarStatSalariiLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass)   
+				)
+		{
 			logger.info("#### personalSrv: " + (ejbean.getPersonalSrv()!=null? " is injected, ":" isn't injected, ") 
 					);
 			//return null;
