@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -34,17 +35,17 @@ public abstract class Activitate implements Serializable {
 
 	@Id 
 	protected String 	idActivitate;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name = "idEveniment")
 	protected Eveniment	eveniment;
-	protected String 		descriereActivitate;
+	protected String 	descriereActivitate;
 	protected Integer 	numarMinimParticipanti;
-	protected Double		sumaConsumata;
+	protected Double	sumaConsumata;
 	@Temporal(javax.persistence.TemporalType.DATE)
 	protected Date		dataStart;
 	@Temporal(javax.persistence.TemporalType.DATE)
 	protected Date		dataSfarsit;
-	protected String 		locatie;
-	protected Double		sumaEstimata;
+	protected String 	locatie;
+	protected Double	sumaEstimata;
 	
 	public Double getSumaEstimata() {
 		return sumaEstimata;

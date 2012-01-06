@@ -1,8 +1,11 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import org.open.erp.services.nomgen.PersoanaFizica;
 
@@ -21,6 +24,10 @@ public class Candidat extends PersoanaFizica implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer		idCandidat;
 	private String 		tipCandidat;
+	@OneToMany(mappedBy = "candidat", cascade = CascadeType.ALL)
+	private List<CV> 	CVuri;
+	@OneToMany(mappedBy = "candidat", cascade = CascadeType.ALL)
+	private List<InterviuCandidat> 	interviuri;
 	
 	public Integer getIdCandidat() {
 		return idCandidat;
@@ -56,6 +63,18 @@ public class Candidat extends PersoanaFizica implements Serializable{
 		super(id, null,  nume, prenume, null, 'M', null);
 		this.idCandidat = idCandidat;
 		this.tipCandidat = null;
+	}
+	public List<CV> getCVuri() {
+		return CVuri;
+	}
+	public void setCVuri(List<CV> cVuri) {
+		CVuri = cVuri;
+	}
+	public List<InterviuCandidat> getInterviuri() {
+		return interviuri;
+	}
+	public void setInterviuri(List<InterviuCandidat> interviuri) {
+		this.interviuri = interviuri;
 	}
 	
 	

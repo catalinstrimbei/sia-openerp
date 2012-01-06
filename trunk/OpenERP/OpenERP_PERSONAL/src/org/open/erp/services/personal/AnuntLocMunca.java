@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -23,7 +24,7 @@ public class AnuntLocMunca implements Serializable{
 	private Integer		idAnunt;
 	private String[] 	modAnunt = {"Internet", "Ziar", "Radio", "TV", "Altele"};
 	private String 		corpAnunt;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name = "idFunctie")
 	private Functie		functie;
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date		dataInceput;

@@ -3,7 +3,10 @@ package org.open.erp.services.personal;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 /**
@@ -18,18 +21,22 @@ public class ActivitateTraining extends Activitate implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	//private ProbaEvaluare				probaEvaluare;
-	@OneToMany
-	private List<InstructorTraining>	instructori;
+	@OneToMany 
+	@JoinTable(
+			name = "InstructorTraining",
+			joinColumns = @JoinColumn(name = "idActivitate"),
+			inverseJoinColumns = @JoinColumn(name = "id"))
+	private List<Instructor>	instructori;
 
-	public List<InstructorTraining> getInstructori() {
+	public List<Instructor> getInstructori() {
 		return instructori;
 	}
 
-	public void setInstructori(List<InstructorTraining> instructori) {
+	public void setInstructori(List<Instructor> instructori) {
 		this.instructori = instructori;
 	}
 
-	public ActivitateTraining(List<InstructorTraining> instructori) {
+	public ActivitateTraining(List<Instructor> instructori) {
 		super();
 		this.instructori = instructori;
 	}

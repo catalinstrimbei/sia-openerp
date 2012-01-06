@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -23,12 +24,12 @@ public class InterviuCandidat implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	private Integer     idInterviuCandidat;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="idCandidat")
 	private Candidat	candidat;
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date 		dataInterviu;
 	private String		rezultatEvaluare;	
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="idInterviu")
 	private Interviu	interviu;
 	
 	public Candidat getCandidat() {

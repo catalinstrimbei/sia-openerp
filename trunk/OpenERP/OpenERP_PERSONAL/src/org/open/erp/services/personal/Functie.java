@@ -3,8 +3,10 @@ package org.open.erp.services.personal;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.open.erp.services.nomgen.Departament;
 
@@ -29,9 +31,15 @@ public class Functie implements Serializable {
 	private List<String>	cunostinte;
 	private List<String>	deprinderi;
 	private List<String>	aptitudini;
+	@OneToMany(mappedBy = "functie", cascade = CascadeType.ALL)
+	private List<AnuntLocMunca>	anunturi;
 	//TODO    adauga Jar si clasa Departament in persistence.xml
-	//ManyToOne
+	//@ManyToOne @JoinColumn(name = "idDepartament")
 	private Departament		departament;
+	@OneToMany(mappedBy = "functie", cascade = CascadeType.ALL)
+	private List<ContractMunca> contracte;
+	@OneToMany(mappedBy = "functieVizata", cascade = CascadeType.ALL)
+	private List<CV> 	CVuri;
 	
 	public Integer getIdFunctie() {
 		return idFunctie;
@@ -110,6 +118,24 @@ public class Functie implements Serializable {
 	}
 	public void setDepartament(Departament departament) {
 		this.departament = departament;
+	}
+	public List<AnuntLocMunca> getAnunturi() {
+		return anunturi;
+	}
+	public void setAnunturi(List<AnuntLocMunca> anunturi) {
+		this.anunturi = anunturi;
+	}
+	public List<ContractMunca> getContracte() {
+		return contracte;
+	}
+	public void setContracte(List<ContractMunca> contracte) {
+		this.contracte = contracte;
+	}
+	public List<CV> getCVuri() {
+		return CVuri;
+	}
+	public void setCVuri(List<CV> cVuri) {
+		CVuri = cVuri;
 	}
 	
 	

@@ -1,7 +1,9 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -21,7 +23,11 @@ public class Angajat extends Candidat implements Serializable{
 	private Integer			marca;	
 	private Boolean			activ;
 	private Integer			numarCopii;
+	@OneToMany(mappedBy = "angajat", cascade = CascadeType.ALL)
+	private List<ContractMunca> contracte;
 	
+	@OneToMany(mappedBy = "angajat", cascade = CascadeType.ALL)
+	private List<RezultatProbaEvaluare> rezultateEval;
 	public Integer getMarca() {
 		return marca;
 	}
@@ -109,6 +115,22 @@ public class Angajat extends Candidat implements Serializable{
 		this.marca = marca;
 		this.activ = activ;
 		this.numarCopii = numarCopii;
+	}
+
+	public List<ContractMunca> getContracte() {
+		return contracte;
+	}
+
+	public void setContracte(List<ContractMunca> contracte) {
+		this.contracte = contracte;
+	}
+
+	public List<RezultatProbaEvaluare> getRezultateEval() {
+		return rezultateEval;
+	}
+
+	public void setRezultateEval(List<RezultatProbaEvaluare> rezultateEval) {
+		this.rezultateEval = rezultateEval;
 	}
 	
 	

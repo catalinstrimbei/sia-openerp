@@ -4,8 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+//TODO verify and delete this class
 @Entity
 public class InstructorTraining implements Serializable {
 	/**
@@ -14,9 +15,9 @@ public class InstructorTraining implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private Integer 	id;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="marca") 
 	private Angajat		responsabil;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="idActivitate")
 	private Activitate	activitate;
 	public InstructorTraining() {
 		super();

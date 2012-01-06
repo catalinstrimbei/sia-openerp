@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -27,9 +28,9 @@ public class ContractMunca implements Serializable{
 	private String  nrContract;
 	private Double	salarBaza;
 	private Double 	tarifOrar;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name = "marca")
 	private Angajat angajat;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name = "idFunctie")
 	private Functie	functie;
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date    dataSemnare;

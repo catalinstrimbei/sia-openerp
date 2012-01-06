@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 /**
@@ -20,7 +21,7 @@ public class DosarAngajat implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	private Integer	idDosar;
-	@OneToOne
+	@OneToOne @JoinColumn(name= "marca")
 	private Angajat	angajat;
 	private Boolean fisaMedicala = false;
 	private Boolean copieBuletin = false;

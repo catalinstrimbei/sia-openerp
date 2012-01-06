@@ -3,8 +3,11 @@ package org.open.erp.services.personal;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -23,7 +26,11 @@ public class ActivitateTeamBuilding extends Activitate implements Serializable{
 	private Integer 	nrInscrisi;
 	private String		status;	
 	@OneToMany
-	private List<ResponsabilActivitate> responsabili;
+	@JoinTable(
+			name = "ResponsabilActivitate",
+			joinColumns = @JoinColumn(name = "idActivitate"),
+			inverseJoinColumns = @JoinColumn(name = "marca"))
+	private List<Angajat> responsabili;
 	
 	
 	public Integer getNrInscrisi() {

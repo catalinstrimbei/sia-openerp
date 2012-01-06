@@ -4,9 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.open.erp.services.nomgen.Persoana;
 
@@ -25,10 +29,24 @@ public class Interviu implements Serializable{
 	@Id
 	private Integer idInterviu;
 	private String tipInterviu;
-	@ManyToMany
+	//TODO    adauga Jar si clasa Persoana in persistence.xml
+	/*
+	@OneToMany
+	@JoinTable(
+			name = "InterviewatorInterviu",
+			joinColumns = @JoinColumn(name = "idInterviu"),
+			inverseJoinColumns = @JoinColumn(name = "id"))
+	*/
 	private List<Persoana> intervievatori;
-	@ManyToMany
+	@OneToMany
+	@JoinTable(
+			name = "ProbaInterviu",
+			joinColumns = @JoinColumn(name = "idInterviu"),
+			inverseJoinColumns = @JoinColumn(name = "idProba"))
 	private List<ProbaEvaluare> probeEvaluare;
+	
+	@OneToMany(mappedBy = "interviu", cascade = CascadeType.ALL)
+	private List<InterviuCandidat> 	interviuri;
 	
 	public String getTipInterviu() {
 		return tipInterviu;
@@ -80,6 +98,12 @@ public class Interviu implements Serializable{
 		super();
 		this.idInterviu = idInterviu;
 		this.tipInterviu = tipInterviu;
+	}
+	public List<InterviuCandidat> getInterviuri() {
+		return interviuri;
+	}
+	public void setInterviuri(List<InterviuCandidat> interviuri) {
+		this.interviuri = interviuri;
 	}	
 	
 	

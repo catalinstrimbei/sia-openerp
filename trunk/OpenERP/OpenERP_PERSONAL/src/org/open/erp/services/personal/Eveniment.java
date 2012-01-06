@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
 /**
@@ -24,7 +26,7 @@ public class Eveniment implements Serializable{
 	private String tipEveniment;
 	private Double sumaAlocata;
 	private String statusEveniment;
-	@OneToMany
+	@OneToMany(mappedBy = "eveniment" , cascade = CascadeType.ALL)	
 	private List<Activitate> activitati;//NMV >> adaugat lista de activiati la eneniment
 	
 	
