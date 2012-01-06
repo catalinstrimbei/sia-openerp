@@ -1,11 +1,23 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-public class Angajat extends Candidat{	
+@Entity
+public class Angajat extends Candidat implements Serializable{	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer			marca;	
 	private Boolean			activ;
 	private Integer			numarCopii;
@@ -13,7 +25,6 @@ public class Angajat extends Candidat{
 	public Integer getMarca() {
 		return marca;
 	}
-	
 	
 	public void setMarca(Integer marca) {
 		this.marca = marca;

@@ -1,14 +1,24 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-public class ActivitateTraining extends Activitate{
+@Entity
+public class ActivitateTraining extends Activitate implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//private ProbaEvaluare				probaEvaluare;
+	@OneToMany
 	private List<InstructorTraining>	instructori;
 
 	public List<InstructorTraining> getInstructori() {

@@ -1,17 +1,31 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-public class DosarAngajat {
+@Entity
+public class DosarAngajat implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private Integer	idDosar;
+	@OneToOne
 	private Angajat	angajat;
 	private Boolean fisaMedicala = false;
 	private Boolean copieBuletin = false;
 	private Boolean adeverintaStudii = false;
+	
 	public Integer getIdDosar() {
 		return idDosar;
 	}

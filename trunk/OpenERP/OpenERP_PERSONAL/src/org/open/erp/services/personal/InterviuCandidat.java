@@ -1,7 +1,13 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 
 /**
@@ -9,12 +15,22 @@ import java.util.List;
  * @BusinessObject(Entity)
  * 
  */
-public class InterviuCandidat {
+@Entity
+public class InterviuCandidat implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private Integer     idInterviuCandidat;
+	@ManyToOne
 	private Candidat	candidat;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date 		dataInterviu;
 	private String		rezultatEvaluare;	
+	@ManyToOne
 	private Interviu	interviu;
+	
 	public Candidat getCandidat() {
 		return candidat;
 	}

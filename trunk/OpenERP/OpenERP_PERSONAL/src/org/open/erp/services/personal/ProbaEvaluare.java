@@ -1,7 +1,11 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Persoana;
@@ -11,13 +15,21 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
-public class ProbaEvaluare {
+@Entity
+public class ProbaEvaluare implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private String 			idProba;
 	private String 			tipEvaluare;
 	private Integer			durataMinute;
 	private List<String> 	intrebari;
 	private String			scop;
+	//TODO    adauga Jar si clasa Departament in persistence.xml
+	//@ManyToOne
 	private Departament		departament;
 	
 	public String getTipEvaluare() {

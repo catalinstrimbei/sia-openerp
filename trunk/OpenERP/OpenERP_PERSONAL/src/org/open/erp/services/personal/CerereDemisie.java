@@ -1,16 +1,31 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-public class CerereDemisie {
+@Entity
+public class CerereDemisie implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private  String  		nrInregistrare;
+	@OneToOne
 	private	 ContractMunca 	contract;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private  Date       	dataCerere;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private  Date       	dataDemisie;
 	private  Integer    	perioadaPreaviz;
 	private  String     	status;

@@ -1,10 +1,17 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 //import org.open.erp.services.buget.Buget;
 
@@ -13,17 +20,31 @@ import javax.persistence.Entity;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Activitate implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-public class Activitate {
-	private String 		idActivitate;
-	private Eveniment	eveniment;
-	private String 		descriereActivitate;
-	private Integer 	numarMinimParticipanti;
-	private Double		sumaConsumata;
-	private Date		dataStart;
-	private Date		dataSfarsit;
-	private String 		locatie;
-	private Double		sumaEstimata;
+	/**
+	 * 
+	 */	
+
+	@Id 
+	protected String 	idActivitate;
+	@ManyToOne
+	protected Eveniment	eveniment;
+	protected String 		descriereActivitate;
+	protected Integer 	numarMinimParticipanti;
+	protected Double		sumaConsumata;
+	@Temporal(javax.persistence.TemporalType.DATE)
+	protected Date		dataStart;
+	@Temporal(javax.persistence.TemporalType.DATE)
+	protected Date		dataSfarsit;
+	protected String 		locatie;
+	protected Double		sumaEstimata;
 	
 	public Double getSumaEstimata() {
 		return sumaEstimata;
@@ -137,5 +158,15 @@ public class Activitate {
 		activitateNoua.setEveniment(eveniment);
 		eveniment.AddActivitate(activitateNoua);
 		return activitateNoua;
+	}
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.equals(arg0);
+	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
 	}
 }

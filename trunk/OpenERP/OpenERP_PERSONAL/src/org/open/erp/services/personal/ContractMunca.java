@@ -1,24 +1,41 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-public class ContractMunca {
+@Entity
+public class ContractMunca implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public static final Integer durataNelimitata = 0;
 	
+	@Id
 	private String  nrContract;
 	private Double	salarBaza;
 	private Double 	tarifOrar;
+	@ManyToOne
 	private Angajat angajat;
-
+	@ManyToOne
 	private Functie	functie;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date    dataSemnare;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date    dataInceput;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date	dataTerminare;
 	private Integer	durataContract = durataNelimitata;
 	private String	motivIncheiere;

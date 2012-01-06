@@ -1,6 +1,10 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import org.open.erp.services.nomgen.Departament;
 
@@ -10,8 +14,13 @@ import org.open.erp.services.nomgen.Departament;
  * @BusinessObject(Entity)
  * 
  */
-public class Functie {
-
+@Entity
+public class Functie implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private Integer 		idFunctie;
 	private String 			numeFunctie;
 	private Integer 		pozitiaInCOR; //Clasificarea Ocupatiilor din Romania
@@ -20,7 +29,10 @@ public class Functie {
 	private List<String>	cunostinte;
 	private List<String>	deprinderi;
 	private List<String>	aptitudini;
+	//TODO    adauga Jar si clasa Departament in persistence.xml
+	//ManyToOne
 	private Departament		departament;
+	
 	public Integer getIdFunctie() {
 		return idFunctie;
 	}
@@ -91,6 +103,12 @@ public class Functie {
 		this.cunostinte = cunostinte;
 		this.deprinderi = deprinderi;
 		this.aptitudini = aptitudini;
+		this.departament = departament;
+	}
+	public Departament getDepartament() {
+		return departament;
+	}
+	public void setDepartament(Departament departament) {
 		this.departament = departament;
 	}
 	

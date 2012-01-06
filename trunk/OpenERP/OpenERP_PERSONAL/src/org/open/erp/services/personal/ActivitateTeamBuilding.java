@@ -1,18 +1,29 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-
-public class ActivitateTeamBuilding extends Activitate{
+@Entity
+public class ActivitateTeamBuilding extends Activitate implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer 	nrInscrisi;
 	private String		status;	
-	private List<Angajat> responsabili;
+	@OneToMany
+	private List<ResponsabilActivitate> responsabili;
 	
 	
 	public Integer getNrInscrisi() {

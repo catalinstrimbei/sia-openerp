@@ -1,19 +1,33 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-public class Eveniment {
+@Entity
+public class Eveniment implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private String idEveniment;
 	private String tipEveniment;
 	private Double sumaAlocata;
 	private String statusEveniment;
+	@OneToMany
 	private List<Activitate> activitati;//NMV >> adaugat lista de activiati la eneniment
+	
+	
 	private static List<Eveniment> evenimente = new ArrayList<Eveniment>();//NMV >> lista cu evenimente pentru a simula persistenta
 	
 	

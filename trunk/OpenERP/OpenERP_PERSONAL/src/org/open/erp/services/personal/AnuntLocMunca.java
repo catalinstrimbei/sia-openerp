@@ -1,18 +1,33 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-public class AnuntLocMunca {
+@Entity
+public class AnuntLocMunca implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private Integer		idAnunt;
 	private String[] 	modAnunt = {"Internet", "Ziar", "Radio", "TV", "Altele"};
 	private String 		corpAnunt;
+	@ManyToOne
 	private Functie		functie;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date		dataInceput;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date 		dataExpirare;
 	
 	

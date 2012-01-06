@@ -1,7 +1,12 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import org.open.erp.services.nomgen.Persoana;
 
@@ -11,10 +16,18 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
-public class Interviu {
+@Entity
+public class Interviu implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private Integer idInterviu;
 	private String tipInterviu;
+	@ManyToMany
 	private List<Persoana> intervievatori;
+	@ManyToMany
 	private List<ProbaEvaluare> probeEvaluare;
 	
 	public String getTipInterviu() {

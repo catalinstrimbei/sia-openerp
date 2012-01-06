@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class InstructorTraining implements Serializable {
+public class ResponsabilActivitate implements Serializable {
 	/**
 	 * 
 	 */
@@ -18,10 +18,6 @@ public class InstructorTraining implements Serializable {
 	private Angajat		responsabil;
 	@ManyToOne
 	private Activitate	activitate;
-	public InstructorTraining() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
 	public Integer getId() {
 		return id;
@@ -44,7 +40,11 @@ public class InstructorTraining implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
+	public ResponsabilActivitate() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }

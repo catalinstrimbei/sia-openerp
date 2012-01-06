@@ -9,6 +9,7 @@ import java.util.TreeMap;
 
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.personal.logger.PersonalExceptions;
 /**
  * 
  * @author Ioana
@@ -21,9 +22,9 @@ import org.open.erp.services.nomgen.Persoana;
  * 
  * @EntitatiBugetareSrv: Buget
  * 
- * @EntitatiLocale: Activitate, ActivitateTeamBuilding, ActivitateTraining, Angajat, AngajatProbaEvaluare,
+ * @EntitatiLocale: Activitate, ActivitateTeamBuilding, ActivitateTraining, Angajat, RezultatProbaEvaluare,
  * * * * * * * * *  AnuntLocMunca, Candidat, CerereDemisie, ContractMunca, CV, DosarAngajat, Eveniment, Functie,
- * * * * * * * * *  InstructorTraining, Interviu, InterviuCandidat, ProbaEvaluare
+ * * * * * * * * *  Instructor, Interviu, InterviuCandidat, ProbaEvaluare
  * 
  * 
  * @UseCase("recrutare"):
@@ -77,6 +78,15 @@ import org.open.erp.services.nomgen.Persoana;
  */
 public interface PersonalSrv {
 	
+	ActivitateTeamBuilding	creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions;
+	/**
+	 * Scop    Creaza o noua activitate de team building
+	 * 
+	 * @param  nrInscrisi	numarul de persoane inscrise	 
+	 * 
+	 * @return o noua activitate  
+	 * 
+	 */
 	List<AnuntLocMunca> getPosturiVacante(Date dataVizata_, List<AnuntLocMunca> listaInit_);
 	
 	/**

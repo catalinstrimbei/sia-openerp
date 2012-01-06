@@ -10,17 +10,24 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
-import javax.xml.registry.infomodel.PersonName;
-
-
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 //import org.open.erp.services.buget.Buget;
 //import org.open.erp.services.buget.BugetareSrv;
 //import org.open.erp.services.buget.LinieBugetara;
 import org.open.erp.services.nomgen.Departament;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 //import org.open.erp.services.personal.Activitate;
 //import org.open.erp.services.personal.Proiect;
 import org.open.erp.services.personal.Activitate;
+import org.open.erp.services.personal.ActivitateTeamBuilding;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.AngajatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
@@ -47,10 +54,53 @@ import org.open.erp.services.personal.teste.TestPersonalImpl;
  */
 @Stateful
 public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvRemote{	
+
 	final static long MILLIS_PER_DAY = 24 * 3600 * 1000;
 	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 	
 	PersonalLogger logger = new PersonalLogger();
+	
+	/* Dependente resurse injectate */
+	@PersistenceContext(unitName="OpenERP_PERSONAL")
+	private EntityManager em;
+	@Resource
+	private SessionContext sessionContext;	
+	
+	@EJB(mappedName="NomenclatoareDummyImpl/local") /* BUG JBoss 5 referinte EJB: de folosit mappedName */
+	private NomenclatoareSrvLocal nomGenSrv;
+	
+	/* Initializare */
+	public PersonalImpl() { }	
+	@PostConstruct
+	public void init(){
+		logger.logDEBUG(">>>>>>>>>>>> Exista em? " + em);		
+		logger.logDEBUG(">>>>>>>>>>>> Exista bugetareSrv? " + nomGenSrv);				
+		
+	}	
+	
+	
+	/* implementare actiuni serviciu ProjectManagementSrv */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
+	@Override
+	public ActivitateTeamBuilding creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start creare Activitate Team Bld");
+		ActivitateTeamBuilding	activitateTeamBld = new ActivitateTeamBuilding() ;
+		if (nrInscrisi_ <= 0){
+			throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");
+			
+			sessionContext.setRollbackOnly();
+			
+		}
+		else{
+			activitateTeamBld.setNrInscrisi(nrInscrisi_);
+			em.persist(activitateTeamBld);
+			// cum aflu idul noului obiect ?? em.refresh(bugetNou);
+			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+		}
+		return activitateTeamBld;
+	}
 	
 	@Override
 	public void demisionare(CerereDemisie cerereDemisie_) {
@@ -359,7 +409,7 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
 				3// va fi modificat odata cu baza de date
 				, null, 0);
-		
+		em.persist(angajat);
 		CV cv = getCVByCandidat(candidat_);
 		
 		ContractMunca contract;

@@ -1,5 +1,9 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
 import org.open.erp.services.nomgen.PersoanaFizica;
 
 /**
@@ -7,8 +11,14 @@ import org.open.erp.services.nomgen.PersoanaFizica;
  * @BusinessObject(Entity)
  * 
  */
-public class Candidat extends PersoanaFizica{
+//TODO    adauga Jar si clasa PersoanaFizica in persistence.xml
+@Entity
+public class Candidat extends PersoanaFizica implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer		idCandidat;
 	private String 		tipCandidat;
 	

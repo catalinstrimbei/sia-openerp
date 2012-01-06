@@ -1,17 +1,33 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-public class CV {
+@Entity
+public class CV implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private String   	nrCV;
+	@ManyToOne
 	private Candidat 	candidat;
+	@ManyToOne
 	private Functie		functieVizata;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date		dataDepunere;	
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date		ultimaModificare;
 	private String   	domeniu;
 	private Integer  	aniExperienta; 
