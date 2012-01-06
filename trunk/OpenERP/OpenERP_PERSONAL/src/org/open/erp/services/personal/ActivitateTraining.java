@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,7 +22,7 @@ public class ActivitateTraining extends Activitate implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	//private ProbaEvaluare				probaEvaluare;
-	@OneToMany 
+	@ManyToMany 
 	@JoinTable(
 			name = "InstructorTraining",
 			joinColumns = @JoinColumn(name = "idActivitate"),

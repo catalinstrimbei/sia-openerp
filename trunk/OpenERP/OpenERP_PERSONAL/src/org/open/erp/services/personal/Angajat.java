@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -28,6 +29,9 @@ public class Angajat extends Candidat implements Serializable{
 	
 	@OneToMany(mappedBy = "angajat", cascade = CascadeType.ALL)
 	private List<RezultatProbaEvaluare> rezultateEval;
+	
+	@ManyToMany(mappedBy = "responsabili")
+	private List<ActivitateTeamBuilding>	activitatiTeamBld;
 	public Integer getMarca() {
 		return marca;
 	}
@@ -131,6 +135,14 @@ public class Angajat extends Candidat implements Serializable{
 
 	public void setRezultateEval(List<RezultatProbaEvaluare> rezultateEval) {
 		this.rezultateEval = rezultateEval;
+	}
+
+	public List<ActivitateTeamBuilding> getActivitatiTeamBld() {
+		return activitatiTeamBld;
+	}
+
+	public void setActivitatiTeamBld(List<ActivitateTeamBuilding> activitatiTeamBld) {
+		this.activitatiTeamBld = activitatiTeamBld;
 	}
 	
 	

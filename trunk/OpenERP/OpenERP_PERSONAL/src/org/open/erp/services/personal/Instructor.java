@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 import org.open.erp.services.nomgen.Persoana;
 
@@ -37,6 +38,9 @@ public class Instructor extends Persoana implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer 		traininguriTotal;
 	private	List<String>	aptitudini;
+	@ManyToMany(mappedBy = "instructori")
+	private List<ActivitateTraining>	activitatiTeamBld;
+	
 	public Instructor() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -44,6 +48,12 @@ public class Instructor extends Persoana implements Serializable{
 	public Instructor(Integer id, String adresa) {
 		super(id, adresa);
 		// TODO Auto-generated constructor stub
+	}
+	public List<ActivitateTraining> getActivitatiTeamBld() {
+		return activitatiTeamBld;
+	}
+	public void setActivitatiTeamBld(List<ActivitateTraining> activitatiTeamBld) {
+		this.activitatiTeamBld = activitatiTeamBld;
 	}
 	
 }
