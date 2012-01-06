@@ -32,6 +32,10 @@ public class ProbaEvaluare implements Serializable{
 	//@ManyToOne
 	private Departament		departament;
 	
+	public ProbaEvaluare() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getTipEvaluare() {
 		return tipEvaluare;
 	}

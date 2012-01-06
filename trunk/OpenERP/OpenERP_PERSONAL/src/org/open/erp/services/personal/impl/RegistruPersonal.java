@@ -8,14 +8,15 @@ import javax.persistence.EntityManager;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.Functie;
+import org.open.erp.services.personal.logger.PersonalLogger;
 
-public class RegistruCandidat {
+public class RegistruPersonal {
 
-private static Logger logger = Logger.getLogger(RegistruCandidat.class.getName());	
+private static PersonalLogger logger ;	
 	
 	/* set up */
 	private EntityManager entityManager;
-	public RegistruCandidat(EntityManager em) {
+	public RegistruPersonal(EntityManager em) {
 		entityManager = em;
 	}
 
@@ -30,7 +31,7 @@ private static Logger logger = Logger.getLogger(RegistruCandidat.class.getName()
 	
 	public List<Candidat> getCandidatiPeFunctie(Integer idFunctie){
 		return entityManager.createQuery("SELECT C FROM Candidat c, CV cv WHERE " +
-										" cv.functiVizata.idFunctie = :idFunctie AND cv.candidat.idCandidat = c.idCandidat")
+										" cv.functieVizata.idFunctie = :idFunctie AND cv.candidat.idCandidat = c.idCandidat")
 										.setParameter("idFunctie", idFunctie)
 										.getResultList();
 	}
@@ -46,13 +47,30 @@ private static Logger logger = Logger.getLogger(RegistruCandidat.class.getName()
 			else
 				entityManager.merge(candidat);
 		}catch(Exception ex){
-			logger.info("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** ");
 			ex.printStackTrace();
 			throw ex;
 		}
 		return candidat;
 	}
 	
+	public Functie salveazaFunctie(Functie functie) throws Exception{
+		try{
+			
+			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+			if (functie.getIdFunctie() == null || 
+				entityManager.find(functie.getClass(), functie.getIdFunctie()) == null)
+				entityManager.persist(functie);
+			else
+				entityManager.merge(functie);
+			
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return functie;
+	}
 	public void stergeCandidat(Candidat candidat){
 		entityManager.remove(candidat);
 	}
@@ -60,7 +78,7 @@ private static Logger logger = Logger.getLogger(RegistruCandidat.class.getName()
 	//nu stiu daca este bine aici - ramane de discutat
 	public CV salveazaCVCandidat(
 			CV cv) throws Exception{
-		logger.debug("--De salvat CV cu ID: " + cv.getNrCV());
+		logger.logDEBUG("--De salvat CV cu ID: " + cv.getNrCV());
 		try{
 			
 			//if (!entityManager.contains(activitate.getProiect()))
@@ -74,7 +92,7 @@ private static Logger logger = Logger.getLogger(RegistruCandidat.class.getName()
 				entityManager.merge(cv);
 			
 		}catch(Exception ex){
-			logger.info("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** ");
 			ex.printStackTrace();
 			throw ex;
 		}

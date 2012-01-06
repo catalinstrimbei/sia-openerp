@@ -13,7 +13,7 @@ import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.ActivitateTeamBuilding;
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.personal.AngajatProbaEvaluare;
+import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
@@ -65,7 +65,7 @@ public class TestPersonalImpl {
 	public List<Angajat> angajati = new ArrayList<Angajat>();
 	public List<ContractMunca> contracteMunca	= new ArrayList<ContractMunca>();
 	public List<DosarAngajat>  dosareAngajati = new ArrayList<DosarAngajat>();
-	List<AngajatProbaEvaluare> listaRezultateProbe = new ArrayList<AngajatProbaEvaluare>();
+	List<RezultatProbaEvaluare> listaRezultateProbe = new ArrayList<RezultatProbaEvaluare>();
 	
 	Functie functie1 = new Functie(1001, "Functie1");
 	Functie functie2 = new Functie(1002, "Functie2");
@@ -130,14 +130,14 @@ public class TestPersonalImpl {
 	DosarAngajat dosar1 = new DosarAngajat(1, angajat1, true, true, true);
 	DosarAngajat dosar2 = new DosarAngajat(2, angajat2, null, null, null);
 	
-	AngajatProbaEvaluare angajatProbaEvaluare1 = new AngajatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare1);
-	AngajatProbaEvaluare angajatProbaEvaluare2 = new AngajatProbaEvaluare(angajat1, "Bine", null, probaEvaluare2);
-	AngajatProbaEvaluare angajatProbaEvaluare3 = new AngajatProbaEvaluare(angajat2, "Bine", null, probaEvaluare3);
-	AngajatProbaEvaluare angajatProbaEvaluare4 = new AngajatProbaEvaluare(angajat1, "Satisfacator", null, probaEvaluare3);
-	AngajatProbaEvaluare angajatProbaEvaluare5 = new AngajatProbaEvaluare(angajat2, "Foarte Bine", null, probaEvaluare4);
-	AngajatProbaEvaluare angajatProbaEvaluare6 = new AngajatProbaEvaluare(angajat2, "Satisfacator", null, probaEvaluare1);
-	AngajatProbaEvaluare angajatProbaEvaluare7 = new AngajatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare4);
-	AngajatProbaEvaluare angajatProbaEvaluare8 = new AngajatProbaEvaluare(angajat2, "Bine", null, probaEvaluare5);
+	RezultatProbaEvaluare angajatProbaEvaluare1 = new RezultatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare1);
+	RezultatProbaEvaluare angajatProbaEvaluare2 = new RezultatProbaEvaluare(angajat1, "Bine", null, probaEvaluare2);
+	RezultatProbaEvaluare angajatProbaEvaluare3 = new RezultatProbaEvaluare(angajat2, "Bine", null, probaEvaluare3);
+	RezultatProbaEvaluare angajatProbaEvaluare4 = new RezultatProbaEvaluare(angajat1, "Satisfacator", null, probaEvaluare3);
+	RezultatProbaEvaluare angajatProbaEvaluare5 = new RezultatProbaEvaluare(angajat2, "Foarte Bine", null, probaEvaluare4);
+	RezultatProbaEvaluare angajatProbaEvaluare6 = new RezultatProbaEvaluare(angajat2, "Satisfacator", null, probaEvaluare1);
+	RezultatProbaEvaluare angajatProbaEvaluare7 = new RezultatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare4);
+	RezultatProbaEvaluare angajatProbaEvaluare8 = new RezultatProbaEvaluare(angajat2, "Bine", null, probaEvaluare5);
 	
 	CerereDemisie	cerereDemisie1 = new CerereDemisie("CerereDem001", contract1, new Date("11/08/2011"), null, null,null);
 	

@@ -77,6 +77,7 @@ import org.open.erp.services.personal.logger.PersonalExceptions;
  *  
  */
 public interface PersonalSrv {
+	Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception;
 	
 	ActivitateTeamBuilding	creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions;
 	/**

@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.TreeMap;
 
+import javax.persistence.EntityManager;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,12 +21,13 @@ import org.junit.Test;
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.personal.AngajatProbaEvaluare;
+import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.impl.PersonalImpl;
+import org.open.erp.services.personal.impl.RegistruPersonal;
 
 /**
  * @author Doinoi
@@ -124,20 +127,20 @@ public class TestPersonal {
 	{
 		test.generareProbeEvaluare();
 		test.generareListaRezultate();
-		HashMap <ProbaEvaluare, List<AngajatProbaEvaluare>> mapFinal = new HashMap <ProbaEvaluare, List<AngajatProbaEvaluare>>(); 
+		HashMap <ProbaEvaluare, List<RezultatProbaEvaluare>> mapFinal = new HashMap <ProbaEvaluare, List<RezultatProbaEvaluare>>(); 
 		mapFinal = personalService.getRezultateEvaluareByProba(test.listaRezultateProbe, test.probeEvaluare);
 		List<ProbaEvaluare> keysProbe = new ArrayList<ProbaEvaluare>(mapFinal.keySet());
 		Iterator<ProbaEvaluare> iteratorProbe = keysProbe.iterator();
-		List<AngajatProbaEvaluare> valuesRezultateProbeEvaluare = new ArrayList<AngajatProbaEvaluare>();
+		List<RezultatProbaEvaluare> valuesRezultateProbeEvaluare = new ArrayList<RezultatProbaEvaluare>();
 		//Departament depCurent;
 		ProbaEvaluare probaEvaluareCurenta;
-		AngajatProbaEvaluare rezultatCurent;
+		RezultatProbaEvaluare rezultatCurent;
 		while (iteratorProbe.hasNext()){
 			probaEvaluareCurenta = iteratorProbe.next();
 			System.out.println("La proba " + probaEvaluareCurenta.getIdProba() + " s-au obtinut urmatoarele rezultate:");
 			valuesRezultateProbeEvaluare = mapFinal.get(probaEvaluareCurenta);
 			if (valuesRezultateProbeEvaluare.size() > 0) {
-				Iterator <AngajatProbaEvaluare> iteratorRezultateProbaEvaluare = valuesRezultateProbeEvaluare.iterator();
+				Iterator <RezultatProbaEvaluare> iteratorRezultateProbaEvaluare = valuesRezultateProbeEvaluare.iterator();
 				while (iteratorRezultateProbaEvaluare.hasNext()){
 					rezultatCurent = iteratorRezultateProbaEvaluare.next();
 					Angajat angajatCurent =  rezultatCurent.getAngajat();
@@ -148,7 +151,7 @@ public class TestPersonal {
 				System.out.println("Nu exista niciun rezultat pt proba curenta");
 			}
 		}
-	}
+	}	
 	
 	@Test
 	public void testRecrutare() {

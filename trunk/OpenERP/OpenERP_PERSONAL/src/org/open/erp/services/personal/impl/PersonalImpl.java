@@ -17,6 +17,8 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 //import org.open.erp.services.buget.Buget;
@@ -52,14 +54,15 @@ import org.open.erp.services.personal.teste.TestPersonalImpl;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-@Stateful
+@Stateful(name="PersonalSrv")
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvRemote{	
 
 	final static long MILLIS_PER_DAY = 24 * 3600 * 1000;
 	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 	
 	PersonalLogger logger = new PersonalLogger();
-	
+	private RegistruPersonal	registruPersonal;
 	/* Dependente resurse injectate */
 	@PersistenceContext(unitName="OpenERP_PERSONAL")
 	private EntityManager em;
@@ -74,12 +77,29 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	@PostConstruct
 	public void init(){
 		logger.logDEBUG(">>>>>>>>>>>> Exista em? " + em);		
-		logger.logDEBUG(">>>>>>>>>>>> Exista bugetareSrv? " + nomGenSrv);				
+		logger.logDEBUG(">>>>>>>>>>>> Exista nomGenSrv? " + nomGenSrv);				
 		
+		if (this.registruPersonal == null)
+			registruPersonal = new RegistruPersonal(em);
 	}	
+	@Override
+	public Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start creare Functie");
+		Functie functie = new Functie(idFunctie, numeFunctie);
+		if (idFunctie == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.salveazaFunctie(functie);
+			// cum aflu idul noului obiect ?? em.refresh(bugetNou);
+			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+		}
+		return functie;
+	}
 	
-	
-	/* implementare actiuni serviciu ProjectManagementSrv */
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	
 	@Override
@@ -88,10 +108,9 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 		logger.logDEBUG(">>>>>>Start creare Activitate Team Bld");
 		ActivitateTeamBuilding	activitateTeamBld = new ActivitateTeamBuilding() ;
 		if (nrInscrisi_ <= 0){
-			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");
-			
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			
+			logger.logDEBUG(">>>>>>TranzactieAnulata");
 		}
 		else{
 			activitateTeamBld.setNrInscrisi(nrInscrisi_);

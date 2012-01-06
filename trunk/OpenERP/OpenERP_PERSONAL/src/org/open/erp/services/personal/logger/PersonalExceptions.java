@@ -1,6 +1,8 @@
 package org.open.erp.services.personal.logger;
 
+import javax.ejb.ApplicationException;
 
+@ApplicationException(rollback=true)
 public class PersonalExceptions extends Exception  {
 
 	/**
