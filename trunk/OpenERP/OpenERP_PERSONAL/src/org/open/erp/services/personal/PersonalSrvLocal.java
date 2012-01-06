@@ -10,6 +10,6 @@ import javax.ejb.Local;
  *
  */
 @Local
-public interface PersonalSrvLocal extends PersonalSrv {
+public interface PersonalSrvLocal  extends PersonalSrv  {
 
 }

@@ -29,7 +29,7 @@ import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.ActivitateTeamBuilding;
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.personal.AngajatProbaEvaluare;
+import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
@@ -88,7 +88,7 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 		logger.logDEBUG(">>>>>>Start creare Activitate Team Bld");
 		ActivitateTeamBuilding	activitateTeamBld = new ActivitateTeamBuilding() ;
 		if (nrInscrisi_ <= 0){
-			throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");
 			
 			sessionContext.setRollbackOnly();
 			
@@ -479,18 +479,18 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	}
 
 	@Override
-	public HashMap<ProbaEvaluare, List<AngajatProbaEvaluare>> getRezultateEvaluareByProba(
-			List<AngajatProbaEvaluare> angajatProbaInit_,
+	public HashMap<ProbaEvaluare, List<RezultatProbaEvaluare>> getRezultateEvaluareByProba(
+			List<RezultatProbaEvaluare> angajatProbaInit_,
 			List<ProbaEvaluare> probeEvaluareInit_) {
 		//List<ProbaEvaluare> listaProbelorEvaluate = new ArrayList<ProbaEvaluare>();
-		HashMap<ProbaEvaluare, List<AngajatProbaEvaluare>> rezultat = new HashMap<ProbaEvaluare, List<AngajatProbaEvaluare>>();
-		List<AngajatProbaEvaluare> angajatiRezultate = new ArrayList<AngajatProbaEvaluare>();
+		HashMap<ProbaEvaluare, List<RezultatProbaEvaluare>> rezultat = new HashMap<ProbaEvaluare, List<RezultatProbaEvaluare>>();
+		List<RezultatProbaEvaluare> angajatiRezultate = new ArrayList<RezultatProbaEvaluare>();
 		Iterator<ProbaEvaluare> iteratorProbe = probeEvaluareInit_.iterator();
-		AngajatProbaEvaluare rezultatCurent;
+		RezultatProbaEvaluare rezultatCurent;
 		ProbaEvaluare probaCurenta;
 		while (iteratorProbe.hasNext()) {
 			probaCurenta = iteratorProbe.next();
-			Iterator<AngajatProbaEvaluare> iteratorRezultate = angajatProbaInit_.iterator();
+			Iterator<RezultatProbaEvaluare> iteratorRezultate = angajatProbaInit_.iterator();
 			while (iteratorRezultate.hasNext()){
 				rezultatCurent = iteratorRezultate.next();
 				//probaE = rezultatCurent.getProbaEvaluare();
@@ -499,7 +499,7 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 					angajatiRezultate.add(rezultatCurent);
 				}
 			}
-			rezultat.put(probaCurenta, new ArrayList<AngajatProbaEvaluare>(angajatiRezultate));
+			rezultat.put(probaCurenta, new ArrayList<RezultatProbaEvaluare>(angajatiRezultate));
 			angajatiRezultate.clear();
 		}
 		return rezultat;

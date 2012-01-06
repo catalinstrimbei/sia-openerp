@@ -142,7 +142,7 @@ public interface PersonalSrv {
 	 */
 	
 
-	HashMap<ProbaEvaluare, List<AngajatProbaEvaluare>> getRezultateEvaluareByProba (List <AngajatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_);
+	HashMap<ProbaEvaluare, List<RezultatProbaEvaluare>> getRezultateEvaluareByProba (List <RezultatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_);
 	/**
 	 * Scop    Returneaza lista rezultatelor angajatilor la fiecare proba  
 	 *         
