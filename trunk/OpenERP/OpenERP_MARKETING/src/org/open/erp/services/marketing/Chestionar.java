@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Chestionar {
 	
@@ -17,7 +18,7 @@ public class Chestionar {
 	Responsabil			Responsabil;
 	String				scopChestionar;
 	Integer				numarIntrebari;
-	@OneToMany (mappedBy = "chestionar", cascade = CascadeType.ALL) 
+	@OneToMany (mappedBy = "chestionare", cascade = CascadeType.ALL) 
 	List<Intrebare>		listaIntrebari;
 	/**
 	 * @return the idChestionar

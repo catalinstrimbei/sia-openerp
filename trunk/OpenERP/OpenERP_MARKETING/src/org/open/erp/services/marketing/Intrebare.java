@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Intrebare {
@@ -15,6 +17,8 @@ public class Intrebare {
 	String					textIntrebare;
 	String					tipIntrebare;
 	Map<Integer, String> 	optiuniRaspuns = new HashMap<Integer,String>();
+	@ManyToOne @JoinColumn (name = "idChestionar")
+	Chestionar chestionare;
 	
 	public Intrebare() {
 		super();
