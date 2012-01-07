@@ -1,6 +1,6 @@
 package org.open.erp.services.personal;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -20,10 +20,10 @@ public class Instructor extends DummyPersoana {
 	public void setTraininguriTotal(Integer traininguriTotal) {
 		this.traininguriTotal = traininguriTotal;
 	}
-	public List<String> getAptitudini() {
+	public Collection<String> getAptitudini() {
 		return aptitudini;
 	}
-	public void setAptitudini(List<String> aptitudini) {
+	public void setAptitudini(Collection<String> aptitudini) {
 		this.aptitudini = aptitudini;
 	}
 	public static long getSerialversionuid() {
@@ -34,9 +34,9 @@ public class Instructor extends DummyPersoana {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer 		traininguriTotal;
-	private	List<String>	aptitudini;
+	private	Collection<String>	aptitudini;
 	@ManyToMany(mappedBy = "instructori")
-	private List<ActivitateTraining>	activitatiTeamBld;
+	private Collection<ActivitateTraining>	activitatiTeamBld;
 	
 	public Instructor() {
 		super();
@@ -46,10 +46,10 @@ public class Instructor extends DummyPersoana {
 		super(id, adresa);
 		// TODO Auto-generated constructor stub
 	}
-	public List<ActivitateTraining> getActivitatiTeamBld() {
+	public Collection<ActivitateTraining> getActivitatiTeamBld() {
 		return activitatiTeamBld;
 	}
-	public void setActivitatiTeamBld(List<ActivitateTraining> activitatiTeamBld) {
+	public void setActivitatiTeamBld(Collection<ActivitateTraining> activitatiTeamBld) {
 		this.activitatiTeamBld = activitatiTeamBld;
 	}
 	

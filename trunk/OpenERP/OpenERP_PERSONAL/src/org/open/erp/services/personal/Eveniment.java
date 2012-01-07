@@ -2,7 +2,7 @@ package org.open.erp.services.personal;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -26,10 +26,10 @@ public class Eveniment implements Serializable{
 	private Double sumaAlocata;
 	private String statusEveniment;
 	@OneToMany(mappedBy = "eveniment" , cascade = CascadeType.ALL)	
-	private List<Activitate> activitati;//NMV >> adaugat lista de activiati la eneniment
+	private Collection<Activitate> activitati;//NMV >> adaugat Lista de activiati la eneniment
 	
 	
-	private static List<Eveniment> evenimente = new ArrayList<Eveniment>();//NMV >> lista cu evenimente pentru a simula persistenta
+	private static Collection<Eveniment> evenimente = new ArrayList<Eveniment>();//NMV >> Lista cu evenimente pentru a simula persistenta
 	
 	
 	
@@ -39,10 +39,10 @@ public class Eveniment implements Serializable{
 	public void setStatusEveniment(String statusEveniment) {
 		this.statusEveniment = statusEveniment;
 	}
-	public List<Activitate> getActivitati() {
+	public Collection<Activitate> getActivitati() {
 		return activitati;
 	}
-	public void setActivitati(List<Activitate> activitati) {
+	public void setActivitati(Collection<Activitate> activitati) {
 		this.activitati = activitati;
 	}
 	public String getIdEveniment() {
@@ -85,7 +85,7 @@ public class Eveniment implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean AddActivitate(Activitate _activitate) throws Exception //throws Exception//NMV >>adaugare activitate in lista activitati
+	public boolean AddActivitate(Activitate _activitate) throws Exception //throws Exception//NMV >>adaugare activitate in Lista activitati
 	{
 		boolean ret = false;
 		if(this.activitati == null)
@@ -127,7 +127,7 @@ public class Eveniment implements Serializable{
 		return ret;	
 	}
 	
-	public static List<Eveniment> getEvenimente()
+	public static Collection<Eveniment> getEvenimente()
 	{			
 		return evenimente;
 	}		

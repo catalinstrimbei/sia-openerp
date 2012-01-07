@@ -2,7 +2,7 @@ package org.open.erp.services.personal;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Collection;
 
 //TODO uncomment this
 //import org.open.erp.services.nomgen.Departament;
@@ -85,52 +85,52 @@ public interface PersonalSrv {
 	 * @return o noua activitate  
 	 * 
 	 */
-	List<AnuntLocMunca> getPosturiVacante(Date dataVizata_, List<AnuntLocMunca> listaInit_);
+	Collection<AnuntLocMunca> getPosturiVacante(Date dataVizata_, Collection<AnuntLocMunca> ListaInit_);
 	
 	/**
-	 * Scop    Returneaza o lista cu posturile valide dupa o data precizata
+	 * Scop    Returneaza o Lista cu posturile valide dupa o data precizata
 	 * 
 	 * @param  dataVizata_ 	Data setata de utilizator, care va fi comparata cu data anuntului de munca
-	 * @param  listaInit_ 	Lista cu toate anunturile existente
+	 * @param  ListaInit_ 	Lista cu toate anunturile existente
 	 * 
 	 * @return continutul fiecarui anunt valid 
 	 * 
 	 */
 	
-	List<Candidat> getCandidatipeFunctie(AnuntLocMunca anuntLocMunca_, List<CV> listaInit_);
+	Collection<Candidat> getCandidatipeFunctie(AnuntLocMunca anuntLocMunca_, Collection<CV> ListaInit_);
 	
 	/**
-	 * Scop    Pentru fiecare anunt de loc de munca, returneaza o lista cu candidatii care au aplicat cv-urile 
+	 * Scop    Pentru fiecare anunt de loc de munca, returneaza o Lista cu candidatii care au aplicat cv-urile 
 	 *          pentru functia precizata in anunt
 	 * 
 	 * @param  anuntLocMunca_ 	Anuntul locului de munca pentru care se vor afisa candidatii
-	 * @param  listaInit_ 	    Lista cu toate  cv-urile existente
+	 * @param  ListaInit_ 	    Lista cu toate  cv-urile existente
 	 * 
-	 * @return lista cu date despre candidati
+	 * @return Lista cu date despre candidati
 	 * 
 	 */
 	
 	
-	List<Candidat> recrutare(Date dataAnunt_, Candidat candidat_, List<InterviuCandidat> listaInit_);
+	Collection<Candidat> recrutare(Date dataAnunt_, Candidat candidat_, Collection<InterviuCandidat> ListaInit_);
 	
 	/**
-	 * Scop    Returneaza o lista cu candidatii care au au fost admisi la interviul final, interviu organizat dupa 
+	 * Scop    Returneaza o Lista cu candidatii care au au fost admisi la interviul final, interviu organizat dupa 
 	 *         o data precizata
 	 * 
 	 * @param  dataAnunt_ 	    Data precizata de utilizator, care va fi comparata cu data sustinerii interviului
 	 * @param  candidat_        Candidatul pentru care se afiseaza interviurile finale si admise
-	 * @param  listaInit_ 	    Lista cu toate  interviurile existente
+	 * @param  ListaInit_ 	    Lista cu toate  interviurile existente
 	 * 
-	 * @return lista cu date despre candidati admisi la interviurile finale
+	 * @return Lista cu date despre candidati admisi la interviurile finale
 	 * 
 	 */
 	
 	
 	
-	HashMap <DummyDepartament, List<ProbaEvaluare>> getProbeEvaluareDepartament (List<ProbaEvaluare> probeEvaluareInit_, List<DummyDepartament> departamenteInit_);
+	HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartament (Collection<ProbaEvaluare> probeEvaluareInit_, Collection<DummyDepartament> departamenteInit_);
 	
 	/**
-	 * Scop    Returneaza o lista a probelor grupate pe fiecare departament 
+	 * Scop    Returneaza o Lista a probelor grupate pe fiecare departament 
 	 *         
 	 * @param  probeEvaluareInit_ 	    Lista cu toate probele de evaluare
 	 * @param  departamenteInit_ 	    Lista cu toate  departamentele existente
@@ -140,9 +140,9 @@ public interface PersonalSrv {
 	 */
 	
 
-	HashMap<ProbaEvaluare, List<RezultatProbaEvaluare>> getRezultateEvaluareByProba (List <RezultatProbaEvaluare> angajatProbaInit_, List<ProbaEvaluare> probeEvaluareInit_);
+	HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProba (Collection <RezultatProbaEvaluare> angajatProbaInit_, Collection<ProbaEvaluare> probeEvaluareInit_);
 	/**
-	 * Scop    Returneaza lista rezultatelor angajatilor la fiecare proba  
+	 * Scop    Returneaza Lista rezultatelor angajatilor la fiecare proba  
 	 *         
 	 * @param  angajatProbaInit_ 	    Lista cu toate rezultatele la toate probele de evaluare
 	 * @param  probeEvaluareInit_ 	    Lista cu toate probele de evaluare
@@ -223,10 +223,10 @@ public interface PersonalSrv {
 	 */
 	
 	
-	List<Angajat> getListaAngajati();
+	Collection<Angajat> getListaAngajati();
 	
 	/**
-	 * Scop  Returneaza o lista cu toti angajatii
+	 * Scop  Returneaza o Lista cu toti angajatii
 	 * 
 	 * 
 	 * @return 
@@ -234,14 +234,14 @@ public interface PersonalSrv {
 	 */
 	
 	
-	List<ContractMunca> getListaContracteByAngajat(Angajat angajat_);
+	Collection<ContractMunca> getListaContracteByAngajat(Angajat angajat_);
 	
 	/**
-	 * Scop  			 Returneaza o lista a contractelor de munca pentru un angajat precizat
+	 * Scop  			 Returneaza o Lista a contractelor de munca pentru un angajat precizat
 	 * 
 	 * @param  angajat_  Angajatul dupa care se face cautarea
 	 * 
-	 * @return           lista contracte curente pentru un angajat
+	 * @return           Lista contracte curente pentru un angajat
 	 * 
 	 */
 	
@@ -266,19 +266,19 @@ public interface PersonalSrv {
 	 * 
 	 */
 
-	void activareAngajati(List<Angajat> listaAngajati);
+	void activareAngajati(Collection<Angajat> ListaAngajati);
 	
 	/**
 	 * Scop                   Seteaza activ statusul unui angajat daca dosarul acestuia este complet
 	 * 
-	 * @param  listaAngajati  Lista tuturor angajatilor pentru care se realizeaza operatiunea
+	 * @param  ListaAngajati  Lista tuturor angajatilor pentru care se realizeaza operatiunea
 	 * 
 	 * @return           
 	 * 
 	 */
-	Functie adaugareFunctie(String	numeFunctie_, Integer pozitiaInCOR_, List<String> obiective_, 
-							List<String>	responsabilitati_, List<String>	cunostinte_, 
-							List<String>	deprinderi_, List<String>	aptitudini_, DummyDepartament departament);
+	Functie adaugareFunctie(String	numeFunctie_, Integer pozitiaInCOR_, Collection<String> obiective_, 
+							Collection<String>	responsabilitati_, Collection<String>	cunostinte_, 
+							Collection<String>	deprinderi_, Collection<String>	aptitudini_, DummyDepartament departament);
 	/**
 	 * Scop                   Permite adaugarea unei noi functii cu anumite atribute
 	 * 
@@ -295,11 +295,11 @@ public interface PersonalSrv {
 	 */
 	
 	
-	List<Eveniment> getEvenimenteAnuale(Integer _year);//NMV>>metoda pentru evenimentele anuale
+	Collection<Eveniment> getEvenimenteAnuale(Integer _year);//NMV>>metoda pentru evenimentele anuale
 	/**
-	 * @param _year anul pentru care trebuie returnata lista de evenimente.
+	 * @param _year anul pentru care trebuie returnata Lista de evenimente.
 	 * Daca year = 0 va returna toate evenimentele din toti anii
-	 * @return list evenimente pentru anul primit ca parametru
+	 * @return Collection evenimente pentru anul primit ca parametru
 	 */	
 	
 	void aprobareEveniment(Eveniment _eveniment);

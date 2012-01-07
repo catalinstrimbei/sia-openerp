@@ -1,7 +1,7 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,7 +24,7 @@ public class ProbaEvaluare implements Serializable{
 	private String 			idProba;
 	private String 			tipEvaluare;
 	private Integer			durataMinute;
-	private List<String> 	intrebari;
+	private Collection<String> 	intrebari;
 	private String			scop;
 	//TODO    adauga Jar si clasa DummyDepartament in persistence.xml
 	//@ManyToOne
@@ -46,10 +46,10 @@ public class ProbaEvaluare implements Serializable{
 	public void setDurataMinute(Integer durataMinute) {
 		this.durataMinute = durataMinute;
 	}
-	public List<String> getIntrebari() {
+	public Collection<String> getIntrebari() {
 		return intrebari;
 	}
-	public void setIntrebari(List<String> intrebari) {
+	public void setIntrebari(Collection<String> intrebari) {
 		this.intrebari = intrebari;
 	}
 	public String getScop() {
@@ -71,7 +71,7 @@ public class ProbaEvaluare implements Serializable{
 		this.idProba = idProba;
 	}
 	public ProbaEvaluare(String idProba, String tipEvaluare,
-			Integer durataMinute, List<String> intrebari, String scop,
+			Integer durataMinute, Collection<String> intrebari, String scop,
 			DummyDepartament departament) {
 		super();
 		this.idProba = idProba;

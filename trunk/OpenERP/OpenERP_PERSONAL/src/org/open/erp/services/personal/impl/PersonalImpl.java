@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -234,12 +234,12 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(PersonalImpl.class.getName());
 
 	@Override
-	public  List<AnuntLocMunca> getPosturiVacante(Date dataVizata_, List<AnuntLocMunca> listaInit_) {
+	public  Collection<AnuntLocMunca> getPosturiVacante(Date dataVizata_, Collection<AnuntLocMunca> ListaInit_) {
 		try
 		{
-			List<AnuntLocMunca> rezultat = new ArrayList<AnuntLocMunca>();
+			Collection<AnuntLocMunca> rezultat = new ArrayList<AnuntLocMunca>();
 			
-			Iterator<AnuntLocMunca> iterator = listaInit_.iterator();
+			Iterator<AnuntLocMunca> iterator = ListaInit_.iterator();
 			while (iterator.hasNext()) {
 				AnuntLocMunca	anunt = iterator.next();
 				//System.out.println(anunt.getCorpAnunt());
@@ -259,12 +259,12 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	}
 
 	@Override
-	public List<Candidat> getCandidatipeFunctie(AnuntLocMunca anuntLocMunca_, List<CV> listaInit_) {
+	public Collection<Candidat> getCandidatipeFunctie(AnuntLocMunca anuntLocMunca_, Collection<CV> ListaInit_) {
 		try
 		{
-			List<Candidat> rezultat = new ArrayList<Candidat>();
+			Collection<Candidat> rezultat = new ArrayList<Candidat>();
 			
-			Iterator<CV> iterator = listaInit_.iterator();
+			Iterator<CV> iterator = ListaInit_.iterator();
 			
 			while (iterator.hasNext()) {
 				CV	cv = iterator.next();
@@ -287,12 +287,12 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	
 	
 	@Override
-	public List<Candidat> recrutare(Date dataAnunt_, Candidat candidat_, List<InterviuCandidat> listaInit_) {
+	public Collection<Candidat> recrutare(Date dataAnunt_, Candidat candidat_, Collection<InterviuCandidat> ListaInit_) {
 		try
 		{
-			List<Candidat> rezultat = new ArrayList<Candidat>();
+			Collection<Candidat> rezultat = new ArrayList<Candidat>();
 			
-			Iterator<InterviuCandidat> iterator = listaInit_.iterator();
+			Iterator<InterviuCandidat> iterator = ListaInit_.iterator();
 			
 			while (iterator.hasNext()) {
 				InterviuCandidat	interviu = iterator.next();
@@ -317,15 +317,15 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	//evaluareAngajat - Andreea
 
 	@Override
-	public HashMap <DummyDepartament, List<ProbaEvaluare>> getProbeEvaluareDepartament(
-			List<ProbaEvaluare> probeEvaluareInit_, List<DummyDepartament> departamenteInit) 
+	public HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartament(
+			Collection<ProbaEvaluare> probeEvaluareInit_, Collection<DummyDepartament> departamenteInit) 
 	{
 		DummyDepartament 	departamentCurent;
 		ProbaEvaluare	probaEvaluare;
 		
 		Iterator <DummyDepartament>	iteratorDepartament = departamenteInit.iterator();
-		HashMap <DummyDepartament, List<ProbaEvaluare>> tMap = new HashMap<DummyDepartament, List<ProbaEvaluare>>();
-		List<ProbaEvaluare> probeEvaluarePeDepartament = new ArrayList<ProbaEvaluare>();
+		HashMap <DummyDepartament, Collection<ProbaEvaluare>> tMap = new HashMap<DummyDepartament, Collection<ProbaEvaluare>>();
+		Collection<ProbaEvaluare> probeEvaluarePeDepartament = new ArrayList<ProbaEvaluare>();
 		while (iteratorDepartament.hasNext()) {
 			departamentCurent = iteratorDepartament.next();
 			probeEvaluarePeDepartament.clear();
@@ -350,7 +350,7 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 		
 		// TODO Auto-generated method stub
 		TestPersonalImpl test = new TestPersonalImpl();
-		test.listaAngajati();
+		test.ListaAngajati();
 		Iterator <Angajat> iteratorAngajati = test.angajati.iterator();
 		while(iteratorAngajati.hasNext())
 		{
@@ -366,19 +366,19 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	}
 
 	@Override
-	public List<Angajat> getListaAngajati() {
+	public Collection<Angajat> getListaAngajati() {
 		// TODO Auto-generated method stub
 		TestPersonalImpl test = new TestPersonalImpl();
-		test.listaAngajati();
+		test.ListaAngajati();
 		return test.angajati;
 	}
 
 	@Override
-	public List<ContractMunca> getListaContracteByAngajat(Angajat angajat_) {
+	public Collection<ContractMunca> getListaContracteByAngajat(Angajat angajat_) {
 		TestPersonalImpl test = new TestPersonalImpl();
-		test.listaContracte();
+		test.ListaContracte();
 		Iterator <ContractMunca> iteratorMunca = test.contracteMunca.iterator();
-		List <ContractMunca> listaContractelor = new ArrayList<ContractMunca>();
+		Collection <ContractMunca> ListaContractelor = new ArrayList<ContractMunca>();
 		while (iteratorMunca.hasNext()){
 			ContractMunca contractCurent;
 			contractCurent = iteratorMunca.next();
@@ -388,16 +388,16 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 					&&
 					contractCurent.getDataTerminare().compareTo(Calendar.getInstance().getTime()) >= 0)
 			{
-				listaContractelor.add(contractCurent);
+				ListaContractelor.add(contractCurent);
 			}
 		}
-		return listaContractelor;
+		return ListaContractelor;
 	}
 	
 	@Override
 	public ContractMunca getContractAngajatActiv(Angajat angajat_) {
 		TestPersonalImpl test = new TestPersonalImpl();
-		test.listaContracte();
+		test.ListaContracte();
 		
 		Iterator <ContractMunca> iteratorMunca = test.contracteMunca.iterator();
 
@@ -431,7 +431,7 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 		TestPersonalImpl test = new TestPersonalImpl();
 	
 		test.generareAnunturi();
-		Iterator <CV> iteratorCV = test.listaCandidati.iterator();
+		Iterator <CV> iteratorCV = test.ListaCandidati.iterator();
 		while (iteratorCV.hasNext()){
 			CV cvCurent = iteratorCV.next();
 			if (cvCurent.getCandidat().getIdCandidat().equals(candidat_.getIdCandidat() ))
@@ -466,7 +466,7 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	@Override
 	public DosarAngajat getDosarByAngajat(Angajat angajat_) {
 		TestPersonalImpl test = new TestPersonalImpl();
-		test.listaDosare();
+		test.ListaDosare();
 		Iterator <DosarAngajat> iteratorDosar = test.dosareAngajati.iterator();
 		while (iteratorDosar.hasNext()){
 			DosarAngajat dosarCurent = iteratorDosar.next();
@@ -480,10 +480,10 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 		
 	
 	@Override
-	public void activareAngajati(List<Angajat> listaAngajati) {
+	public void activareAngajati(Collection<Angajat> ListaAngajati) {
 		// TODO Auto-generated method stub
-		Iterator<Angajat> iterator = listaAngajati.iterator();
-		List<ContractMunca> contracte = new ArrayList<ContractMunca>();
+		Iterator<Angajat> iterator = ListaAngajati.iterator();
+		Collection<ContractMunca> contracte = new ArrayList<ContractMunca>();
 		Integer nrActivari = 0; // variabila utilizata la metoda angajare
 		
 		while (iterator.hasNext()) {
@@ -521,12 +521,12 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	}
 
 	@Override
-	public HashMap<ProbaEvaluare, List<RezultatProbaEvaluare>> getRezultateEvaluareByProba(
-			List<RezultatProbaEvaluare> angajatProbaInit_,
-			List<ProbaEvaluare> probeEvaluareInit_) {
-		//List<ProbaEvaluare> listaProbelorEvaluate = new ArrayList<ProbaEvaluare>();
-		HashMap<ProbaEvaluare, List<RezultatProbaEvaluare>> rezultat = new HashMap<ProbaEvaluare, List<RezultatProbaEvaluare>>();
-		List<RezultatProbaEvaluare> angajatiRezultate = new ArrayList<RezultatProbaEvaluare>();
+	public HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProba(
+			Collection<RezultatProbaEvaluare> angajatProbaInit_,
+			Collection<ProbaEvaluare> probeEvaluareInit_) {
+		//Collection<ProbaEvaluare> ListaProbelorEvaluate = new ArrayList<ProbaEvaluare>();
+		HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> rezultat = new HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>>();
+		Collection<RezultatProbaEvaluare> angajatiRezultate = new ArrayList<RezultatProbaEvaluare>();
 		Iterator<ProbaEvaluare> iteratorProbe = probeEvaluareInit_.iterator();
 		RezultatProbaEvaluare rezultatCurent;
 		ProbaEvaluare probaCurenta;
@@ -595,16 +595,16 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 
 	@Override
 	public Functie adaugareFunctie(String numeFunctie_, Integer pozitiaInCOR_,
-			List<String> obiective_, List<String> responsabilitati_,
-			List<String> cunostinte_, List<String> deprinderi_,
-			List<String> aptitudini_, DummyDepartament departament) {
+			Collection<String> obiective_, Collection<String> responsabilitati_,
+			Collection<String> cunostinte_, Collection<String> deprinderi_,
+			Collection<String> aptitudini_, DummyDepartament departament) {
 		Functie functieNoua = new Functie (1,//va fi modificat cu BD
 				numeFunctie_, pozitiaInCOR_, obiective_, responsabilitati_, cunostinte_, deprinderi_, aptitudini_, departament);
 		return functieNoua;
 	}
 	@Override
-	public List<Eveniment> getEvenimenteAnuale(Integer _year) {
-		List<Eveniment> evenimente = new ArrayList<Eveniment>();
+	public Collection<Eveniment> getEvenimenteAnuale(Integer _year) {
+		Collection<Eveniment> evenimente = new ArrayList<Eveniment>();
 		// TODO Auto-generated method stub
 		if(_year ==0)
 		{

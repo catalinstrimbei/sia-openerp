@@ -1,7 +1,7 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,13 +22,13 @@ public class Angajat extends Candidat implements Serializable{
 	private Boolean			activ;
 	private Integer			numarCopii;
 	@OneToMany(mappedBy = "angajat", cascade = CascadeType.ALL)
-	private List<ContractMunca> contracte;
+	private Collection<ContractMunca> contracte;
 	
 	@OneToMany(mappedBy = "angajat", cascade = CascadeType.ALL)
-	private List<RezultatProbaEvaluare> rezultateEval;
+	private Collection<RezultatProbaEvaluare> rezultateEval;
 	
 	@ManyToMany(mappedBy = "responsabili")
-	private List<ActivitateTeamBuilding>	activitatiTeamBld;
+	private Collection<ActivitateTeamBuilding>	activitatiTeamBld;
 	public Integer getMarca() {
 		return marca;
 	}
@@ -118,27 +118,27 @@ public class Angajat extends Candidat implements Serializable{
 		this.numarCopii = numarCopii;
 	}
 
-	public List<ContractMunca> getContracte() {
+	public Collection<ContractMunca> getContracte() {
 		return contracte;
 	}
 
-	public void setContracte(List<ContractMunca> contracte) {
+	public void setContracte(Collection<ContractMunca> contracte) {
 		this.contracte = contracte;
 	}
 
-	public List<RezultatProbaEvaluare> getRezultateEval() {
+	public Collection<RezultatProbaEvaluare> getRezultateEval() {
 		return rezultateEval;
 	}
 
-	public void setRezultateEval(List<RezultatProbaEvaluare> rezultateEval) {
+	public void setRezultateEval(Collection<RezultatProbaEvaluare> rezultateEval) {
 		this.rezultateEval = rezultateEval;
 	}
 
-	public List<ActivitateTeamBuilding> getActivitatiTeamBld() {
+	public Collection<ActivitateTeamBuilding> getActivitatiTeamBld() {
 		return activitatiTeamBld;
 	}
 
-	public void setActivitatiTeamBld(List<ActivitateTeamBuilding> activitatiTeamBld) {
+	public void setActivitatiTeamBld(Collection<ActivitateTeamBuilding> activitatiTeamBld) {
 		this.activitatiTeamBld = activitatiTeamBld;
 	}
 	

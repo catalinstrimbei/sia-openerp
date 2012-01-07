@@ -1,7 +1,7 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -26,7 +26,7 @@ public class ActivitateTeamBuilding extends Activitate implements Serializable{
 			name = "ResponsabilActivitate",
 			joinColumns = @JoinColumn(name = "idActivitate"),
 			inverseJoinColumns = @JoinColumn(name = "marca"))
-	private List<Angajat> responsabili;
+	private Collection<Angajat> responsabili;
 	
 	
 	public Integer getNrInscrisi() {
@@ -41,14 +41,14 @@ public class ActivitateTeamBuilding extends Activitate implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public List<Angajat> getResponsabili() {
+	public Collection<Angajat> getResponsabili() {
 		return responsabili;
 	}
-	public void setResponsabili(List<Angajat> responsabili) {
+	public void setResponsabili(Collection<Angajat> responsabili) {
 		this.responsabili = responsabili;
 	}
 	public ActivitateTeamBuilding(Integer nrInscrisi, String status,
-			List<Angajat> responsabili) {
+			Collection<Angajat> responsabili) {
 		super();
 		this.nrInscrisi = nrInscrisi;
 		this.status = status;

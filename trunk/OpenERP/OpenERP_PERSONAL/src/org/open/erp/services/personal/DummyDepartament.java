@@ -3,7 +3,7 @@
  */
 package org.open.erp.services.personal;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,8 +21,8 @@ public class DummyDepartament{
     
 	private String Denumire;
 	private String Atributii;
-	private List<String> Telefoane;
-	private List<String> Emailuri;
+	private Collection<String> Telefoane;
+	private Collection<String> Emailuri;
 	/**
 	 * @return the id
 	 */
@@ -59,16 +59,16 @@ public class DummyDepartament{
 	public void setAtributii(String atributii) {
 		Atributii = atributii;
 	}
-	public List<String> getTelefoane() {
+	public Collection<String> getTelefoane() {
 		return Telefoane;
 	}
-	public void setTelefoane(List<String> telefoane) {
+	public void setTelefoane(Collection<String> telefoane) {
 		Telefoane = telefoane;
 	}
-	public List<String> getEmailuri() {
+	public Collection<String> getEmailuri() {
 		return Emailuri;
 	}
-	public void setEmailuri(List<String> emailuri) {
+	public void setEmailuri(Collection<String> emailuri) {
 		Emailuri = emailuri;
 	}
 	/**

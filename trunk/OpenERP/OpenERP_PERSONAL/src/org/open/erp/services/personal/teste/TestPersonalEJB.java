@@ -54,7 +54,7 @@ public class TestPersonalEJB {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		System.out.println("Nume functie: ");
 	}
 	
 	@Test

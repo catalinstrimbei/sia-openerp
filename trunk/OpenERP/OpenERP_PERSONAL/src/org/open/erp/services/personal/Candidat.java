@@ -1,7 +1,7 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,9 +25,9 @@ public class Candidat extends DummyPersoanaFizica implements Serializable{
 	private Integer		idCandidat;
 	private String 		tipCandidat;
 	@OneToMany(mappedBy = "candidat", cascade = CascadeType.ALL)
-	private List<CV> 	CVuri;
+	private Collection<CV> 	CVuri;
 	@OneToMany(mappedBy = "candidat", cascade = CascadeType.ALL)
-	private List<InterviuCandidat> 	interviuri;
+	private Collection<InterviuCandidat> 	interviuri;
 	
 	public Integer getIdCandidat() {
 		return idCandidat;
@@ -64,16 +64,16 @@ public class Candidat extends DummyPersoanaFizica implements Serializable{
 		this.idCandidat = idCandidat;
 		this.tipCandidat = null;
 	}
-	public List<CV> getCVuri() {
+	public Collection<CV> getCVuri() {
 		return CVuri;
 	}
-	public void setCVuri(List<CV> cVuri) {
+	public void setCVuri(Collection<CV> cVuri) {
 		CVuri = cVuri;
 	}
-	public List<InterviuCandidat> getInterviuri() {
+	public Collection<InterviuCandidat> getInterviuri() {
 		return interviuri;
 	}
-	public void setInterviuri(List<InterviuCandidat> interviuri) {
+	public void setInterviuri(Collection<InterviuCandidat> interviuri) {
 		this.interviuri = interviuri;
 	}
 	

@@ -1,6 +1,6 @@
 package org.open.erp.services.personal;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 
@@ -20,8 +20,8 @@ public class DummyPersoanaFizica extends DummyPersoana {
 	private String  formaAdresare;
 	private char    gen;
 	private String  cnp;
-	private List<String> telefoane;
-	private List<String> emailuri;
+	private Collection<String> telefoane;
+	private Collection<String> emailuri;
 	
 	
 	/**
@@ -99,19 +99,19 @@ public class DummyPersoanaFizica extends DummyPersoana {
 	}
 
 
-	public List<String> getTelefoane() {
+	public Collection<String> getTelefoane() {
 		return telefoane;
 	}
 
-	public void setTelefoane(List<String> telefoane) {
+	public void setTelefoane(Collection<String> telefoane) {
 		this.telefoane = telefoane;
 	}
 
-	public List<String> getEmailuri() {
+	public Collection<String> getEmailuri() {
 		return emailuri;
 	}
 
-	public void setEmailuri(List<String> emailuri) {
+	public void setEmailuri(Collection<String> emailuri) {
 		this.emailuri = emailuri;
 	}
 

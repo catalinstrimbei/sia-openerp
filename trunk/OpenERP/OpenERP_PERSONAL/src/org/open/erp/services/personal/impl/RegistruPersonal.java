@@ -1,6 +1,6 @@
 package org.open.erp.services.personal.impl;
 
-import java.util.List;
+import java.util.Collection;
 import org.apache.log4j.Logger;
 
 import javax.persistence.EntityManager;
@@ -25,11 +25,11 @@ private static PersonalLogger logger ;
 		return entityManager.find(Candidat.class, id);
 	}
 	
-	public List<Candidat> getListaCandidatilor(){
+	public Collection<Candidat> getListaCandidatilor(){
 		return entityManager.createQuery("SELECT c FROM Candidat c").getResultList();
 	}
 	
-	public List<Candidat> getCandidatiPeFunctie(Integer idFunctie){
+	public Collection<Candidat> getCandidatiPeFunctie(Integer idFunctie){
 		return entityManager.createQuery("SELECT C FROM Candidat c, CV cv WHERE " +
 										" cv.functieVizata.idFunctie = :idFunctie AND cv.candidat.idCandidat = c.idCandidat")
 										.setParameter("idFunctie", idFunctie)
@@ -109,7 +109,7 @@ private static PersonalLogger logger ;
 	
 	//FUNCTIE
 	
-	public List<Functie> getListaFunctii(){
+	public Collection<Functie> getListaFunctii(){
 		return entityManager.createQuery("SELECT f FROM Functie f").getResultList();
 	}
 	

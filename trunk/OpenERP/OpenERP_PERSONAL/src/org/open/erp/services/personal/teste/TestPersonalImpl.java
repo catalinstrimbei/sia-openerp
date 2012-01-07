@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+import java.util.Collection;
 
 //TODO uncomment this
 //import org.open.erp.services.nomgen.Departament;
@@ -39,18 +39,18 @@ public class TestPersonalImpl {
 	
 	
 	
-	List<AnuntLocMunca> listaAnunturi = new ArrayList<AnuntLocMunca>();
-	List<AnuntLocMunca> listaAnunturi2 = new ArrayList<AnuntLocMunca>();
-	public List<CV> listaCandidati = new ArrayList<CV>();
-	List<Candidat> listaCandidati2 = new ArrayList<Candidat>();
-	List<Candidat> listaCandidati3 = new ArrayList<Candidat>();
+	Collection<AnuntLocMunca> ListaAnunturi = new ArrayList<AnuntLocMunca>();
+	Collection<AnuntLocMunca> ListaAnunturi2 = new ArrayList<AnuntLocMunca>();
+	public Collection<CV> ListaCandidati = new ArrayList<CV>();
+	Collection<Candidat> ListaCandidati2 = new ArrayList<Candidat>();
+	Collection<Candidat> ListaCandidati3 = new ArrayList<Candidat>();
 
-	List<InterviuCandidat> listaInterviuri = new ArrayList<InterviuCandidat>();
-	List<InterviuCandidat> listaInterviuri2 = new ArrayList<InterviuCandidat>();
+	Collection<InterviuCandidat> ListaInterviuri = new ArrayList<InterviuCandidat>();
+	Collection<InterviuCandidat> ListaInterviuri2 = new ArrayList<InterviuCandidat>();
 
-	//List Narcisa
-	List<InstructorTraining>  instructori = new ArrayList<InstructorTraining>();//NMV adaugare Lista noua pentru instructoriTraining
-	List<Activitate> activitati = new ArrayList<Activitate>();//NMV adaugare lista noua pentru Activitati;
+	//Collection Narcisa
+	Collection<InstructorTraining>  instructori = new ArrayList<InstructorTraining>();//NMV adaugare Lista noua pentru instructoriTraining
+	Collection<Activitate> activitati = new ArrayList<Activitate>();//NMV adaugare Lista noua pentru Activitati;
 	
 	//Creare evenimente
 	Eveniment eveniment1 = new Eveniment("EV1", "Training", 1200.00);
@@ -61,13 +61,13 @@ public class TestPersonalImpl {
 	Activitate activitate2;
 	Activitate activitate3;
 	
-	List<DummyDepartament> listaDepartamente = new ArrayList<DummyDepartament>();
-	List<ProbaEvaluare> probeEvaluare = new ArrayList<ProbaEvaluare>();
+	Collection<DummyDepartament> ListaDepartamente = new ArrayList<DummyDepartament>();
+	Collection<ProbaEvaluare> probeEvaluare = new ArrayList<ProbaEvaluare>();
 	
-	public List<Angajat> angajati = new ArrayList<Angajat>();
-	public List<ContractMunca> contracteMunca	= new ArrayList<ContractMunca>();
-	public List<DosarAngajat>  dosareAngajati = new ArrayList<DosarAngajat>();
-	List<RezultatProbaEvaluare> listaRezultateProbe = new ArrayList<RezultatProbaEvaluare>();
+	public Collection<Angajat> angajati = new ArrayList<Angajat>();
+	public Collection<ContractMunca> contracteMunca	= new ArrayList<ContractMunca>();
+	public Collection<DosarAngajat>  dosareAngajati = new ArrayList<DosarAngajat>();
+	Collection<RezultatProbaEvaluare> ListaRezultateProbe = new ArrayList<RezultatProbaEvaluare>();
 	
 	Functie functie1 = new Functie(1001, "Functie1");
 	Functie functie2 = new Functie(1002, "Functie2");
@@ -144,33 +144,33 @@ public class TestPersonalImpl {
 	CerereDemisie	cerereDemisie1 = new CerereDemisie("CerereDem001", contract1, new Date("11/08/2011"), null, null,null);
 	
 	public void generareAnunturi() {
-		listaCandidati.add(cv1);
-		listaCandidati.add(cv2);
-		listaCandidati.add(cv3);
-		listaCandidati.add(cv4);
-		listaCandidati.add(cv5);
-		listaCandidati.add(cv6);
-		listaCandidati.add(cv7);
+		ListaCandidati.add(cv1);
+		ListaCandidati.add(cv2);
+		ListaCandidati.add(cv3);
+		ListaCandidati.add(cv4);
+		ListaCandidati.add(cv5);
+		ListaCandidati.add(cv6);
+		ListaCandidati.add(cv7);
 		
-		listaAnunturi.add(anunt1);
-		listaAnunturi.add(anunt2);
-		listaAnunturi.add(anunt3);
+		ListaAnunturi.add(anunt1);
+		ListaAnunturi.add(anunt2);
+		ListaAnunturi.add(anunt3);
 
-		listaAnunturi2 = personalService.getPosturiVacante(new Date("02/08/2011"), listaAnunturi);
+		ListaAnunturi2 = personalService.getPosturiVacante(new Date("02/08/2011"), ListaAnunturi);
 	}
 	
 	
 	void generareCandidati() {
-		listaInterviuri.add(interviuCandidat1);
-		listaInterviuri.add(interviuCandidat2);
-		listaInterviuri.add(interviuCandidat3);
+		ListaInterviuri.add(interviuCandidat1);
+		ListaInterviuri.add(interviuCandidat2);
+		ListaInterviuri.add(interviuCandidat3);
 		
 	}
 	
 	void generareDepartamente(){
-		listaDepartamente.add(departament1);
-		listaDepartamente.add(departament2);
-		listaDepartamente.add(departament3);
+		ListaDepartamente.add(departament1);
+		ListaDepartamente.add(departament2);
+		ListaDepartamente.add(departament3);
 	}
 	
 	void generareProbeEvaluare(){
@@ -182,30 +182,30 @@ public class TestPersonalImpl {
 		probeEvaluare.add(probaEvaluare6);
 	}
 	
-	public void listaAngajati(){
+	public void ListaAngajati(){
 		angajati.add(angajat1);
 		angajati.add(angajat2);
 	}
-	public void listaContracte(){
+	public void ListaContracte(){
 		contracteMunca.add(contract1);
 		contracteMunca.add(contract2);
 	}
 	
-	public void listaDosare(){
+	public void ListaDosare(){
 		dosareAngajati.add(dosar1);
 		dosareAngajati.add(dosar2);
 
 	}
 	
 	void generareListaRezultate(){
-		listaRezultateProbe.add(angajatProbaEvaluare1);
-		listaRezultateProbe.add(angajatProbaEvaluare2);
-		listaRezultateProbe.add(angajatProbaEvaluare3);
-		listaRezultateProbe.add(angajatProbaEvaluare4);
-		listaRezultateProbe.add(angajatProbaEvaluare5);
-		listaRezultateProbe.add(angajatProbaEvaluare6);
-		listaRezultateProbe.add(angajatProbaEvaluare7);
-		listaRezultateProbe.add(angajatProbaEvaluare8);
+		ListaRezultateProbe.add(angajatProbaEvaluare1);
+		ListaRezultateProbe.add(angajatProbaEvaluare2);
+		ListaRezultateProbe.add(angajatProbaEvaluare3);
+		ListaRezultateProbe.add(angajatProbaEvaluare4);
+		ListaRezultateProbe.add(angajatProbaEvaluare5);
+		ListaRezultateProbe.add(angajatProbaEvaluare6);
+		ListaRezultateProbe.add(angajatProbaEvaluare7);
+		ListaRezultateProbe.add(angajatProbaEvaluare8);
 	}
 	void initEvenimenteActivitati() throws Exception
 	{

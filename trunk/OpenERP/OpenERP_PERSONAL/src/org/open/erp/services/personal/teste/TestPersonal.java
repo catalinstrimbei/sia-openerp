@@ -7,7 +7,7 @@ package org.open.erp.services.personal.teste;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Collection;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -37,10 +37,10 @@ public class TestPersonal {
 	{		
 		//this.generareAnunturi();
 		test.generareCandidati();
-		Iterator<AnuntLocMunca> iterator = test.listaAnunturi2.iterator();
-		System.out.println("Anunturi valide " + test.listaAnunturi2.size());
+		Iterator<AnuntLocMunca> iterator = test.ListaAnunturi2.iterator();
+		System.out.println("Anunturi valide " + test.ListaAnunturi2.size());
 		
-		//System.out.println("Interviuri " + listaInterviuri.size());
+		//System.out.println("Interviuri " + ListaInterviuri.size());
 
 		
 		while (iterator.hasNext()) 
@@ -50,22 +50,22 @@ public class TestPersonal {
 			System.out.println(anunt.getFunctie().getNumeFunctie());
 			
 			test.dataAnunt = anunt.getDataInceput();
-			test.listaCandidati2 = personalService.getCandidatipeFunctie(anunt, test.listaCandidati);			
-			Iterator<Candidat> iterator2 = test.listaCandidati2.iterator();
-			System.out.println("Candidati " + test.listaCandidati2.size());
+			test.ListaCandidati2 = personalService.getCandidatipeFunctie(anunt, test.ListaCandidati);			
+			Iterator<Candidat> iterator2 = test.ListaCandidati2.iterator();
+			System.out.println("Candidati " + test.ListaCandidati2.size());
 			while (iterator2.hasNext()) {		
 			   //System.out.println("--" + iterator2.next().getNume());
-				//System.out.println("Candidati " + listaCandidati2.size());
+				//System.out.println("Candidati " + ListaCandidati2.size());
 			   Candidat candidat = iterator2.next();
-			   test.listaCandidati3 = personalService.recrutare(test.dataAnunt, candidat, test.listaInterviuri);
-			  // System.out.println("Interviuri " + listaInterviuri.size());
+			   test.ListaCandidati3 = personalService.recrutare(test.dataAnunt, candidat, test.ListaInterviuri);
+			  // System.out.println("Interviuri " + ListaInterviuri.size());
 			   
-			//	if (listaCandidati3.size() == 0) {System.out.println("-- Candidatii nu indeplinesc conditiile de angajare  ");}
+			//	if (ListaCandidati3.size() == 0) {System.out.println("-- Candidatii nu indeplinesc conditiile de angajare  ");}
 
-				Iterator<Candidat> iterator3 = test.listaCandidati3.iterator();
+				Iterator<Candidat> iterator3 = test.ListaCandidati3.iterator();
 				
 
-				if (test.listaCandidati3.size() > 0) {
+				if (test.ListaCandidati3.size() > 0) {
 				while (iterator3.hasNext()) {
 					
 					System.out.println("--Numele candidatului pentru angajare: " + iterator3.next().getNume());
@@ -77,15 +77,15 @@ public class TestPersonal {
 	
 	void vizualizareListaAnunturiCurente(TestPersonalImpl test) {
 		test.generareAnunturi();
-		Iterator<AnuntLocMunca> iterator = test.listaAnunturi2.iterator();
-		//System.out.println("AM AJUNS AICI" + listaAnunturi2.size());
+		Iterator<AnuntLocMunca> iterator = test.ListaAnunturi2.iterator();
+		//System.out.println("AM AJUNS AICI" + ListaAnunturi2.size());
 		
 		while (iterator.hasNext()) {
 			//System.out.println("AM AJUNS AICI2");
 			AnuntLocMunca anunt = iterator.next();
 			System.out.println(anunt.getCorpAnunt());
-			test.listaCandidati2 = personalService.getCandidatipeFunctie(anunt, test.listaCandidati);
-			Iterator<Candidat> iterator2 = test.listaCandidati2.iterator();
+			test.ListaCandidati2 = personalService.getCandidatipeFunctie(anunt, test.ListaCandidati);
+			Iterator<Candidat> iterator2 = test.ListaCandidati2.iterator();
 			while (iterator2.hasNext()) {
 				System.out.println("--" + iterator2.next().getNume());
 			}
@@ -96,11 +96,11 @@ public class TestPersonal {
 	{
 		test.generareDepartamente();
 		test.generareProbeEvaluare();
-		HashMap <DummyDepartament, List<ProbaEvaluare>> mapFinal = new HashMap <DummyDepartament, List<ProbaEvaluare>>(); 
-		mapFinal = personalService.getProbeEvaluareDepartament(test.probeEvaluare, test.listaDepartamente);
-		List<DummyDepartament> keysDepartamente = new ArrayList<DummyDepartament>(mapFinal.keySet());
+		HashMap <DummyDepartament, Collection<ProbaEvaluare>> mapFinal = new HashMap <DummyDepartament, Collection<ProbaEvaluare>>(); 
+		mapFinal = personalService.getProbeEvaluareDepartament(test.probeEvaluare, test.ListaDepartamente);
+		Collection<DummyDepartament> keysDepartamente = new ArrayList<DummyDepartament>(mapFinal.keySet());
 		Iterator<DummyDepartament> iteratorDepartamente = keysDepartamente.iterator();
-		List<ProbaEvaluare> valuesProbeEvaluare = new ArrayList<ProbaEvaluare>();
+		Collection<ProbaEvaluare> valuesProbeEvaluare = new ArrayList<ProbaEvaluare>();
 		DummyDepartament depCurent;
 		ProbaEvaluare probaEvaluare;
 		while (iteratorDepartamente.hasNext()){
@@ -124,11 +124,11 @@ public class TestPersonal {
 	{
 		test.generareProbeEvaluare();
 		test.generareListaRezultate();
-		HashMap <ProbaEvaluare, List<RezultatProbaEvaluare>> mapFinal = new HashMap <ProbaEvaluare, List<RezultatProbaEvaluare>>(); 
-		mapFinal = personalService.getRezultateEvaluareByProba(test.listaRezultateProbe, test.probeEvaluare);
-		List<ProbaEvaluare> keysProbe = new ArrayList<ProbaEvaluare>(mapFinal.keySet());
+		HashMap <ProbaEvaluare, Collection<RezultatProbaEvaluare>> mapFinal = new HashMap <ProbaEvaluare, Collection<RezultatProbaEvaluare>>(); 
+		mapFinal = personalService.getRezultateEvaluareByProba(test.ListaRezultateProbe, test.probeEvaluare);
+		Collection<ProbaEvaluare> keysProbe = new ArrayList<ProbaEvaluare>(mapFinal.keySet());
 		Iterator<ProbaEvaluare> iteratorProbe = keysProbe.iterator();
-		List<RezultatProbaEvaluare> valuesRezultateProbeEvaluare = new ArrayList<RezultatProbaEvaluare>();
+		Collection<RezultatProbaEvaluare> valuesRezultateProbeEvaluare = new ArrayList<RezultatProbaEvaluare>();
 		//DummyDepartament depCurent;
 		ProbaEvaluare probaEvaluareCurenta;
 		RezultatProbaEvaluare rezultatCurent;
@@ -183,8 +183,8 @@ public class TestPersonal {
 	@Test
 	public void testGetContractAngajatActiv() {
 		TestPersonalImpl test = new TestPersonalImpl();	
-		test.listaAngajati();
-		test.listaContracte();
+		test.ListaAngajati();
+		test.ListaContracte();
 		personalService.getContractAngajatActiv(test.angajat1);
 		
 	}
@@ -195,9 +195,9 @@ public class TestPersonal {
 	@Test
 	public void testActivareAngajati() {
 		TestPersonalImpl test = new TestPersonalImpl();	
-		test.listaAngajati();
-		test.listaContracte();
-		test.listaDosare();
+		test.ListaAngajati();
+		test.ListaContracte();
+		test.ListaDosare();
 		System.out.println("Activare candidati");
 		personalService.activareAngajati(test.angajati);
 		

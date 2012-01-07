@@ -1,7 +1,7 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -35,16 +35,16 @@ public class Interviu implements Serializable{
 			joinColumns = @JoinColumn(name = "idInterviu"),
 			inverseJoinColumns = @JoinColumn(name = "id"))
 	*/
-	private List<DummyPersoana> intervievatori;
+	private Collection<DummyPersoana> intervievatori;
 	@OneToMany
 	@JoinTable(
 			name = "ProbaInterviu",
 			joinColumns = @JoinColumn(name = "idInterviu"),
 			inverseJoinColumns = @JoinColumn(name = "idProba"))
-	private List<ProbaEvaluare> probeEvaluare;
+	private Collection<ProbaEvaluare> probeEvaluare;
 	
 	@OneToMany(mappedBy = "interviu", cascade = CascadeType.ALL)
-	private List<InterviuCandidat> 	interviuri;
+	private Collection<InterviuCandidat> 	interviuri;
 	
 	public String getTipInterviu() {
 		return tipInterviu;
@@ -52,13 +52,13 @@ public class Interviu implements Serializable{
 	public void setTipInterviu(String tipInterviu) {
 		this.tipInterviu = tipInterviu;
 	}
-	public List<DummyPersoana> getIntervievatori() {
+	public Collection<DummyPersoana> getIntervievatori() {
 		return intervievatori;
 	}
-	public void setIntervievatori(List<DummyPersoana> intervievatori) {
+	public void setIntervievatori(Collection<DummyPersoana> intervievatori) {
 		this.intervievatori = intervievatori;
 	}
-	public List<ProbaEvaluare> getProbeEvaluare() {
+	public Collection<ProbaEvaluare> getProbeEvaluare() {
 		return probeEvaluare;
 	}
 	
@@ -66,7 +66,7 @@ public class Interviu implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Interviu(String tipInterviu, List<DummyPersoana> intervievatori) {
+	public Interviu(String tipInterviu, Collection<DummyPersoana> intervievatori) {
 		super();
 		this.tipInterviu = tipInterviu;
 		this.intervievatori = intervievatori;
@@ -78,7 +78,7 @@ public class Interviu implements Serializable{
 		this.idInterviu = idInterviu;
 	}
 	public Interviu(Integer idInterviu, String tipInterviu,
-			List<DummyPersoana> intervievatori, List<ProbaEvaluare> probeEvaluare) {
+			Collection<DummyPersoana> intervievatori, Collection<ProbaEvaluare> probeEvaluare) {
 		super();
 		this.idInterviu = idInterviu;
 		this.tipInterviu = tipInterviu;
@@ -86,7 +86,7 @@ public class Interviu implements Serializable{
 		this.probeEvaluare = probeEvaluare;
 	}
 	public Interviu(Integer idInterviu, String tipInterviu,
-			List<DummyPersoana> intervievatori) {
+			Collection<DummyPersoana> intervievatori) {
 		super();
 		this.idInterviu = idInterviu;
 		this.tipInterviu = tipInterviu;
@@ -97,10 +97,10 @@ public class Interviu implements Serializable{
 		this.idInterviu = idInterviu;
 		this.tipInterviu = tipInterviu;
 	}
-	public List<InterviuCandidat> getInterviuri() {
+	public Collection<InterviuCandidat> getInterviuri() {
 		return interviuri;
 	}
-	public void setInterviuri(List<InterviuCandidat> interviuri) {
+	public void setInterviuri(Collection<InterviuCandidat> interviuri) {
 		this.interviuri = interviuri;
 	}	
 	
