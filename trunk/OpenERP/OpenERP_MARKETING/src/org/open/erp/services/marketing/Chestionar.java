@@ -1,22 +1,30 @@
 package org.open.erp.services.marketing;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 
 
 @Entity
-public class Chestionar {
+public class Chestionar implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue
 	Integer				idChestionar;
 	String				denumireChestionar;	
-	Responsabil			Responsabil;
+    @ManyToOne @JoinColumn (name = "idPersoana")
+	Responsabil			Responsabil; 
 	String				scopChestionar;
 	Integer				numarIntrebari;
 	@OneToMany

@@ -1,5 +1,6 @@
 package org.open.erp.services.marketing;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,12 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Intrebare {
+public class Intrebare implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue
 	Integer					idIntrebare;
