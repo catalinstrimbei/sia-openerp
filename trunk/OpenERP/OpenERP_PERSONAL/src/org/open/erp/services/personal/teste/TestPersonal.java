@@ -3,15 +3,11 @@
  */
 package org.open.erp.services.personal.teste;
 
-import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.TreeMap;
-
-import javax.persistence.EntityManager;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -27,7 +23,6 @@ import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.impl.PersonalImpl;
-import org.open.erp.services.personal.impl.RegistruPersonal;
 
 /**
  * @author Doinoi

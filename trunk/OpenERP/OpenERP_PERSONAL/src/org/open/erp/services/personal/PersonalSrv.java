@@ -1,14 +1,11 @@
 package org.open.erp.services.personal;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 
 import org.open.erp.services.nomgen.Departament;
-import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.logger.PersonalExceptions;
 /**
  * 

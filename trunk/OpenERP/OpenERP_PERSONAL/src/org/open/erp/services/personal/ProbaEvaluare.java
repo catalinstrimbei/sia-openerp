@@ -1,14 +1,12 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import org.open.erp.services.nomgen.Departament;
-import org.open.erp.services.nomgen.Persoana;
 
 /**
  * 

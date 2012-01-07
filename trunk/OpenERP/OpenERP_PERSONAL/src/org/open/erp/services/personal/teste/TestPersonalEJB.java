@@ -9,11 +9,9 @@ import java.util.Properties;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.persistence.EntityManager;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.personal.impl.RegistruPersonal;
 import org.open.erp.services.personal.logger.*;
 import org.open.erp.services.personal.*;
 
@@ -67,7 +65,7 @@ public class TestPersonalEJB {
 		assertNotNull("Nu exista proiect nou!", proiect);
 		*/
 		logger.logINFO("End test: creareProiect");
-		TestPersonalImpl test = new TestPersonalImpl();		
+		//TestPersonalImpl test = new TestPersonalImpl();		
 		//fail("Not yet implemented");
 	}
 }
