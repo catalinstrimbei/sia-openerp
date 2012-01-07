@@ -3,6 +3,7 @@
  */
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -18,7 +19,12 @@ import javax.persistence.Transient;
  */
 
 @Entity
-public class DummyDepartament{
+public class DummyDepartament implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private Integer Id;
     

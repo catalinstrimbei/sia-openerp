@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 /*
  * @author Echipa NomGen
@@ -11,6 +13,7 @@ import javax.persistence.Id;
  * @BusinessObject(Entity)
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class DummyPersoana implements Serializable{
 	/**
 	 * 

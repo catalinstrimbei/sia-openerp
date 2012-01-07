@@ -1,5 +1,6 @@
 package org.open.erp.services.personal;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.persistence.Transient;
  * @BusinessObject(Entity)
  */
 @Entity
-public class DummyPersoanaFizica extends DummyPersoana {
+public class DummyPersoanaFizica extends DummyPersoana implements Serializable {
 	/**
 	 * 
 	 */
