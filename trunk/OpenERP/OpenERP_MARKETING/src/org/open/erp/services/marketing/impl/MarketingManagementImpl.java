@@ -5,11 +5,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.Stateful;
+
 import org.open.erp.services.marketing.Campanie;
 import org.open.erp.services.marketing.Chestionar;
 import org.open.erp.services.marketing.Discount;
 import org.open.erp.services.marketing.Intrebare;
 import org.open.erp.services.marketing.MarketingManagementSrv;
+import org.open.erp.services.marketing.MarketingManagementSrvLocal;
+import org.open.erp.services.marketing.MarketingManagementSrvRemote;
 import org.open.erp.services.marketing.PersoanaTinta;
 import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.Responsabil;
@@ -20,8 +24,8 @@ import org.open.erp.services.nomgen.Produs;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-
-public class MarketingManagementImpl implements MarketingManagementSrv{
+@Stateful
+public class MarketingManagementImpl implements MarketingManagementSrv, MarketingManagementSrvRemote, MarketingManagementSrvLocal {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingManagementImpl.class.getName());
 	
 	
