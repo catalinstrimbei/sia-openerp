@@ -10,6 +10,7 @@
 		<class>org.open.erp.services.marketing.Intrebare</class>	
 		<class>org.open.erp.services.marketing.Promotie</class>	
 		<class>org.open.erp.services.marketing.RaspunsChestionar</class>
+		<class>org.open.erp.services.marketing.Responsabil</class>
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
 	        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
