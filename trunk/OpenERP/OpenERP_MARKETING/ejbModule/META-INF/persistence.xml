@@ -10,6 +10,7 @@
 		<class>org.open.erp.services.nomgen.PersoanaFizica</class>
 		<class>org.open.erp.services.marketing.Chestionar</class>	
 		<class>org.open.erp.services.marketing.Discount</class>
+		<class>org.open.erp.services.nomgen.Produs</class>
 		<class>org.open.erp.services.marketing.Intrebare</class>	
 		<class>org.open.erp.services.marketing.Promotie</class>	
 		<class>org.open.erp.services.marketing.RaspunsChestionar</class>

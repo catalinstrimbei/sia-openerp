@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 import org.open.erp.services.nomgen.Produs;
 
 @Entity
@@ -18,18 +20,24 @@ public class Promotie {
 	public static final Integer PRODUSE_ADITIONALE = 2;
 	@Id @GeneratedValue
 	Integer						idPromotie;
+	
 	String						denumirePromotie;
 	String						mesajPromotional;
+	
+	@Temporal(DATE)
 	Date						dataStart;
+	@Temporal(DATE)
 	Date						dataSfarsit;
+	
 	Integer						tipPromotie = DISCOUNT;
+	
 	Map<Produs,Discount>		listaProduse = new HashMap<Produs, Discount>();
 	Map<Produs,List<Produs>>	listProduseAditionale = new HashMap<Produs, List<Produs>>();
 	public Promotie() {
 		super();
 	}
 	/**
-	 * @return the idPromotie
+	 * @return idPromotie
 	 */
 	public Integer getIdPromotie() {
 		return idPromotie;
@@ -41,7 +49,7 @@ public class Promotie {
 		this.idPromotie = idPromotie;
 	}
 	/**
-	 * @return the denumirePromotie
+	 * @return denumirePromotie
 	 */
 	public String getDenumirePromotie() {
 		return denumirePromotie;
@@ -53,7 +61,7 @@ public class Promotie {
 		this.denumirePromotie = denumirePromotie;
 	}
 	/**
-	 * @return the mesajPromotional
+	 * @return mesajPromotional
 	 */
 	public String getMesajPromotional() {
 		return mesajPromotional;
@@ -65,7 +73,7 @@ public class Promotie {
 		this.mesajPromotional = mesajPromotional;
 	}
 	/**
-	 * @return the dataStart
+	 * @return dataStart
 	 */
 	public Date getDataStart() {
 		return dataStart;
@@ -77,7 +85,7 @@ public class Promotie {
 		this.dataStart = dataStart;
 	}
 	/**
-	 * @return the dataSfarsit
+	 * @return dataSfarsit
 	 */
 	public Date getDataSfarsit() {
 		return dataSfarsit;
@@ -89,7 +97,7 @@ public class Promotie {
 		this.dataSfarsit = dataSfarsit;
 	}
 	/**
-	 * @return the tipPromotie
+	 * @return tipPromotie
 	 */
 	public Integer getTipPromotie() {
 		return tipPromotie;
@@ -101,7 +109,7 @@ public class Promotie {
 		this.tipPromotie = tipPromotie;
 	}
 	/**
-	 * @return the listaProduse
+	 * @return listaProduse
 	 */
 	
 	/**
@@ -124,7 +132,7 @@ public class Promotie {
 		this.tipPromotie = tipPromotie;
 	}
 	/**
-	 * @return the listaProduse
+	 * @return listaProduse
 	 */
 	public Map<Produs, Discount> getListaProduse() {
 		return listaProduse;
@@ -136,7 +144,7 @@ public class Promotie {
 		this.listaProduse = listaProduse;
 	}
 	/**
-	 * @return the listProduseAditionale
+	 * @return listProduseAditionale
 	 */
 	public Map<Produs, List<Produs>> getListProduseAditionale() {
 		return listProduseAditionale;
@@ -164,6 +172,7 @@ public class Promotie {
 	
 	public float getPretByPretInitial(Produs produs, float pretInitial)
 	{
+		
 		Discount   discount;
 		if (this.tipPromotie == Promotie.DISCOUNT)
 		{

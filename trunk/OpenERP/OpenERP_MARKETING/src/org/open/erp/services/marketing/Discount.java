@@ -13,13 +13,15 @@ public class Discount implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final Integer PROCENT = 1; 
 	public static final Integer VALOARE_NETA = 2;
+	
 	@Id @GeneratedValue
 	protected Integer 	idDiscount;
+	
 	protected String	denumireDiscount;
 	protected Integer	tipDiscount = PROCENT;
 	protected Float		valoare;
 	/**
-	 * @return the idDiscount
+	 * @return idDiscount
 	 */
 	public Integer getIdDiscount() {
 		return idDiscount;
@@ -31,7 +33,7 @@ public class Discount implements Serializable {
 		this.idDiscount = idDiscount;
 	}
 	/**
-	 * @return the denumireDiscount
+	 * @return denumireDiscount
 	 */
 	public String getDenumireDiscount() {
 		return denumireDiscount;
@@ -43,7 +45,7 @@ public class Discount implements Serializable {
 		this.denumireDiscount = denumireDiscount;
 	}
 	/**
-	 * @return the tipDiscount
+	 * @return tipDiscount
 	 */
 	public Integer getTipDiscount() {
 		return tipDiscount;
@@ -55,7 +57,7 @@ public class Discount implements Serializable {
 		this.tipDiscount = tipDiscount;
 	}
 	/**
-	 * @return the valoare
+	 * @return valoare
 	 */
 	public Float getValoare() {
 		return valoare;
