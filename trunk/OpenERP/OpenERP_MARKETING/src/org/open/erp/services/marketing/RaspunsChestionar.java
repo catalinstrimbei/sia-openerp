@@ -5,13 +5,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.open.erp.services.nomgen.Persoana;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
+import org.open.erp.services.nomgen.Persoana;
+@Entity
 public class RaspunsChestionar {
+	@Id
 	Integer					idRaspuns;
 	Persoana				Subiect;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	Date					dataRaspuns;
 	Chestionar				chestionar;
+	@OneToMany(mappedBy = "chestionar", cascade = CascadeType.ALL)
 	Map<Integer, List<String>>	raspunsuri = new HashMap<Integer, List<String>>();
 	
 	public RaspunsChestionar() {
