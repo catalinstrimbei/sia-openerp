@@ -23,7 +23,6 @@ import org.open.erp.services.marketing.PersoanaTinta;
 import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.Responsabil;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
-import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.Produs;
 
 
