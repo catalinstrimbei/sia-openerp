@@ -2,6 +2,7 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,9 @@ import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.DATE;
@@ -31,7 +35,14 @@ public class Promotie {
 	
 	Integer						tipPromotie = DISCOUNT;
 	
-	Map<Produs,Discount>		listaProduse = new HashMap<Produs, Discount>();
+	
+	//Map<Produs,Discount>		listaProduse = new HashMap<Produs, Discount>();
+	@OneToMany
+	@JoinTable(name="ProdusDiscount",
+	joinColumns = @JoinColumn (name="idPromotie"),
+	inverseJoinColumns = @JoinColumn(name = "idProdusDiscount"))
+	List<ProdusDiscount> listaProduseDiscount =  new ArrayList<ProdusDiscount>();	
+	
 	Map<Produs,List<Produs>>	listProduseAditionale = new HashMap<Produs, List<Produs>>();
 	public Promotie() {
 		super();
