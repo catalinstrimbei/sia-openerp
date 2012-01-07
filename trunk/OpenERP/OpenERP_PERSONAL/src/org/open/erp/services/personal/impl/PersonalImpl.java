@@ -98,7 +98,9 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
 		}
-		else{			
+		else{
+			if (this.registruPersonal == null)
+				registruPersonal = new RegistruPersonal(em);
 			this.registruPersonal.salveazaFunctie(functie);
 			// cum aflu idul noului obiect ?? em.refresh(bugetNou);
 			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");

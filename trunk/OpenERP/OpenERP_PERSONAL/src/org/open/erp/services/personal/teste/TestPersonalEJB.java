@@ -14,6 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.personal.logger.*;
 import org.open.erp.services.personal.*;
+import org.open.erp.services.personal.impl.*;
 
 /**
  * @author Tolic
@@ -34,7 +35,8 @@ public class TestPersonalEJB {
 	public static void setUpBeforeClass() throws Exception {
 		logger = new PersonalLogger();
 		InitialContext ctx = initJBossJNDICtx();
-		personalInstance = (PersonalSrv)ctx.lookup("PersonalSrv/local");
+		//personalInstance = (PersonalSrv)ctx.lookup("PersonalSrv/local");
+		personalInstance = new PersonalImpl();
 		logger.logINFO("initTest " + personalInstance);
 	
 	}
