@@ -4,7 +4,9 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>	
 		
+
 		<class>org.open.erp.services.marketing.Campanie</class>
+		<class>org.open.erp.services.nomgen.PersoanaFizica</class>
 		<class>org.open.erp.services.marketing.Chestionar</class>	
 		<class>org.open.erp.services.marketing.Discount</class>
 		<class>org.open.erp.services.marketing.Intrebare</class>	

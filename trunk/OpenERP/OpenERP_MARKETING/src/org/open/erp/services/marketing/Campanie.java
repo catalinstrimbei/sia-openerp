@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -35,11 +36,11 @@ public class Campanie {
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dataSfarsit;
 	private Integer status = NE_PORNITA;
+	@ManyToOne
 	Responsabil responsabil;
-	@OneToMany(mappedBy = "campanie", targetEntity = PersoanaFizica.class, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "idPersoana", targetEntity = PersoanaFizica.class, cascade = CascadeType.ALL)
 	private List<PersoanaTinta> PersoaneTinta;
 
-	
 	public Campanie() {
 		super();
 	}
