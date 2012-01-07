@@ -6,16 +6,17 @@ package org.open.erp.services.marketing;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
 import javax.persistence.Temporal;
 
-import org.open.erp.services.nomgen.Persoana;
+
 /**
  * 
  * @author Echipa.Marketing
@@ -37,9 +38,10 @@ public class Campanie {
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dataSfarsit;
 	private Integer status = NE_PORNITA;
-	@ManyToOne @JoinColumn(name = "id")
+	@ManyToOne @JoinColumn(name = "idPersoana")
 	Responsabil responsabil;
-	@OneToMany
+	@OneToMany @JoinTable(
+			name = "PersoanaTinta", joinColumns = @JoinColumn(name="idCampanie"), inverseJoinColumns = @JoinColumn(name="idPersoana"))
 	private List<PersoanaTinta> PersoaneTinta;
 
 	public Campanie() {
