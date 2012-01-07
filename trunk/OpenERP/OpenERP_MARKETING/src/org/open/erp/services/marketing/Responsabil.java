@@ -1,5 +1,5 @@
 package org.open.erp.services.marketing;
-
+//test commit
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
