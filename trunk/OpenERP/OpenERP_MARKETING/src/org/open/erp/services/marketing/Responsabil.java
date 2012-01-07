@@ -1,6 +1,7 @@
 package org.open.erp.services.marketing;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import org.open.erp.services.nomgen.Persoana;
 //import org.open.erp.services.personal.Angajat;
@@ -16,7 +17,8 @@ public class Responsabil extends Persoana {
 	public Responsabil() {
 		super();
 	}
-
+	@Id
+	Integer idResponsabil;
 	/**
 	 * @param idPersoana
 	 * @param nume
