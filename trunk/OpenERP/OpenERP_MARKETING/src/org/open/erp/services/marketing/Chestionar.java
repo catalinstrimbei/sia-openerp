@@ -2,11 +2,12 @@ package org.open.erp.services.marketing;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 
 
 @Entity
@@ -18,8 +19,13 @@ public class Chestionar {
 	Responsabil			Responsabil;
 	String				scopChestionar;
 	Integer				numarIntrebari;
-	@OneToMany (mappedBy = "chestionare", cascade = CascadeType.ALL) 
-	List<Intrebare>		listaIntrebari;
+	@OneToMany
+	@JoinTable (
+	name = "Intrebare",
+	joinColumns = @JoinColumn(name = "idChestionar"),
+	inverseJoinColumns = @JoinColumn(name = "idIntrebare")
+	) 
+	List<Intrebare>		listaIntrebari; 
 	/**
 	 * @return the idChestionar
 
