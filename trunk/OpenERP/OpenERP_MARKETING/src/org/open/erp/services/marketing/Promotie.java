@@ -1,23 +1,29 @@
 package org.open.erp.services.marketing;
 
 import java.util.Date;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.open.erp.services.nomgen.Produs;
 
+@Entity
 public class Promotie {
 	public static final Integer DISCOUNT = 1; 
 	public static final Integer PRODUSE_ADITIONALE = 2;
-	
+	@Id @GeneratedValue
 	Integer						idPromotie;
 	String						denumirePromotie;
 	String						mesajPromotional;
 	Date						dataStart;
 	Date						dataSfarsit;
 	Integer						tipPromotie = DISCOUNT;
-	Map<Produs,Discount>	listaProduse = new HashMap<Produs, Discount>();
+	Map<Produs,Discount>		listaProduse = new HashMap<Produs, Discount>();
 	Map<Produs,List<Produs>>	listProduseAditionale = new HashMap<Produs, List<Produs>>();
 	public Promotie() {
 		super();

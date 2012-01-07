@@ -1,12 +1,19 @@
 package org.open.erp.services.marketing;
 
-public class Discount {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Discount implements Serializable {
 	public static final Integer PROCENT = 1; 
 	public static final Integer VALOARE_NETA = 2;
-	Integer				idDiscount;
-	String				denumireDiscount;
-	Integer				tipDiscount = PROCENT;
-	Float				valoare;
+	@Id @GeneratedValue
+	protected Integer 	idDiscount;
+	protected String	denumireDiscount;
+	protected Integer	tipDiscount = PROCENT;
+	protected Float		valoare;
 	/**
 	 * @return the idDiscount
 	 */
