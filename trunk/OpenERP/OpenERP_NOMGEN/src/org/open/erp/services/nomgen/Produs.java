@@ -2,11 +2,14 @@ package org.open.erp.services.nomgen;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 /*
  * @author Echipa NomGen
  * @BusinessObject(DummyEntity)
  * @BusinessObject(Entity)
  */
+@Entity
 public class Produs extends Material{
 	private Integer id;
 	private String  denumire;

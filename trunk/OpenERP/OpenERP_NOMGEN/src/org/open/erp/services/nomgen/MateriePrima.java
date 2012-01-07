@@ -2,14 +2,18 @@ package org.open.erp.services.nomgen;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /*
  * @author Echipa NomGen
  * @BusinessObject(DummyEntity)
  * 
  */
-
+@Entity
 public class MateriePrima extends Material{
-
+//@Id @GeneratedValue
 	private Integer id;
 	private String  denumire;
 	private String  unitateMasura;

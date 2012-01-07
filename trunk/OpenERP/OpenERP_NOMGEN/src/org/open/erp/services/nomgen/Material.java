@@ -1,14 +1,22 @@
 package org.open.erp.services.nomgen;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
 /*
  * @author Echipa NomGen
  * @BusinessObject(Entity)
  */
+@Entity
+
 public class Material { 
-	public Integer idMaterial; 
-	public String denumire; 
-	public String categorie;  
-	public String UM; 
+	@Id @GeneratedValue
+	private Integer idMaterial; 
+	private String denumire; 
+	private String categorie;  
+	private String UM; 
 	
 	//public Integer stocCurent;  
 	private String tipContabil;

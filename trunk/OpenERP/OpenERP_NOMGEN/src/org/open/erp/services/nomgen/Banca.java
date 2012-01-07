@@ -2,6 +2,9 @@
 package org.open.erp.services.nomgen;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 
 
@@ -10,9 +13,12 @@ import javax.persistence.Entity;
  * @BusinessObject(Entity)
  */
 
-
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Banca extends PersoanaJuridica {
-	public String CapSocial;
+	@ManyToOne
+	PersoanaJuridica pj;
+	private String CapSocial;
 	
 	/**
 	 * @return the capSocial

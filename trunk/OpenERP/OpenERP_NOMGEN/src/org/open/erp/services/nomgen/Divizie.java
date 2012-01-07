@@ -5,18 +5,29 @@ package org.open.erp.services.nomgen;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 /**
  * @author Echipa NomGen
  * @BusinessObject(Entity)
  */
-public class Divizie extends Departament {
 
-	public Integer Id;
-	public Departament IdDepartament;
-	public String denumire;
-	public String atributii;
-	public List<String> telefoane;
-	public List<String> emailuri;
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public class Divizie extends Departament {
+	//@Id @GeneratedValue
+	private Integer Id;
+	@ManyToOne
+	private Departament IdDepartament;
+	private String denumire;
+	private String atributii;
+	
+	private List<String> telefoane;
+	
+	private List<String> emailuri;
 	
 	/**
 	 * @return the id

@@ -2,12 +2,18 @@ package org.open.erp.services.nomgen;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /*
  * @author Echipa NomGen
  * @BusinessObject(DummyEntity)
  * @BusinessObject(Entity)
  */
+@Entity
 public class Persoana {
+	@Id @GeneratedValue
 	private Integer id;
 	private String  adresa;
 	

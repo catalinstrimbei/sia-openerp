@@ -2,11 +2,14 @@ package org.open.erp.services.nomgen;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+
 /*
  * @author Echipa NomGen
  * @BusinessObject(DummyEntity)
  * @BusinessObject(Entity)
  */
+@Entity
 public class PersoanaJuridica extends Persoana {
 	private String  denumire;
 	private String  codFiscal;

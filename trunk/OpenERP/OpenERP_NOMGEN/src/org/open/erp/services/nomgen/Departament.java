@@ -5,6 +5,10 @@ package org.open.erp.services.nomgen;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 
 
 /**
@@ -12,14 +16,17 @@ import java.util.List;
  * @BusinessObject(Entity)
  */
 
+@Entity
 
-public class Departament{
-  
+public class Departament {
+	@Id @GeneratedValue
 	private Integer Id;
     
 	private String Denumire;
 	private String Atributii;
+
 	private List<String> Telefoane;
+	
 	private List<String> Emailuri;
 	/**
 	 * @return the id

@@ -3,12 +3,18 @@ package org.open.erp.services.nomgen;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * @author Echipa NomGen
  * @BusinessObject(Entity)
  */
-public class Partener {
 
+@Entity
+public class Partener {
+	@Id @GeneratedValue
 	private Integer id;
 	private Integer idPersoana;
 	private Date    dataAfilierii;
