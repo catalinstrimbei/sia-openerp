@@ -21,8 +21,6 @@ public class DummyPersoana implements Serializable{
 	private Integer id;
 	private String  adresa;
 	
-	private List<String> telefoane;
-	private List<String> emailuri;
 	
 	
 	/**
@@ -58,21 +56,6 @@ public class DummyPersoana implements Serializable{
 	
 
 
-	public List<String> getTelefoane() {
-		return telefoane;
-	}
-
-	public void setTelefoane(List<String> telefoane) {
-		this.telefoane = telefoane;
-	}
-
-	public List<String> getEmailuri() {
-		return emailuri;
-	}
-
-	public void setEmailuri(List<String> emailuri) {
-		this.emailuri = emailuri;
-	}
 
 	public DummyPersoana(Integer id, String adresa) {
 		super();
@@ -89,8 +72,6 @@ public class DummyPersoana implements Serializable{
 	      System.out.println("- Date despre persoana - "+p);
 	      System.out.println("Id persoana: " + getId());
 	      System.out.println("Adresa: " + adresa);
-	      System.out.println("Id contact: " + telefoane);
-	      System.out.println("Id contact: " + emailuri);
 	   }
 	
 	public DummyPersoana() {
