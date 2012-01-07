@@ -1,7 +1,6 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

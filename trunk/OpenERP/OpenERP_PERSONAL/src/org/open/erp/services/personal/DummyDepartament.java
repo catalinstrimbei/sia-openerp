@@ -97,4 +97,16 @@ public class DummyDepartament{
 	public DummyDepartament() {
 		super();	
 	}
+	public Collection<Functie> getFunctii() {
+		return functii;
+	}
+	public void setFunctii(Collection<Functie> functii) {
+		this.functii = functii;
+	}
+	public Collection<ProbaEvaluare> getProbeEvaluare() {
+		return probeEvaluare;
+	}
+	public void setProbeEvaluare(Collection<ProbaEvaluare> probeEvaluare) {
+		this.probeEvaluare = probeEvaluare;
+	}
 }

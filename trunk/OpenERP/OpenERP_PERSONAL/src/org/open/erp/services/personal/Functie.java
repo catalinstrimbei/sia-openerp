@@ -2,7 +2,6 @@ package org.open.erp.services.personal;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
