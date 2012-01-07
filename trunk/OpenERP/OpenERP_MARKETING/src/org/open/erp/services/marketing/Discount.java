@@ -7,6 +7,10 @@ import javax.persistence.Id;
 
 @Entity
 public class Discount implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final Integer PROCENT = 1; 
 	public static final Integer VALOARE_NETA = 2;
 	@Id @GeneratedValue
