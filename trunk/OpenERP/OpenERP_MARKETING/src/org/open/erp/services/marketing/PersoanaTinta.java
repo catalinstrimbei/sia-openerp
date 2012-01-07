@@ -2,9 +2,11 @@ package org.open.erp.services.marketing;
 
 
 
+import javax.persistence.MappedSuperclass;
+
 import org.open.erp.services.nomgen.PersoanaFizica;
 
-
+@MappedSuperclass
 public class PersoanaTinta extends PersoanaFizica {
 	public PersoanaTinta() {
 		super();

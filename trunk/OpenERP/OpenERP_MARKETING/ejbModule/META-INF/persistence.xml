@@ -6,6 +6,7 @@
 		
 
 		<class>org.open.erp.services.marketing.Campanie</class>
+		<class>org.open.erp.services.marketing.PersoanaTinta</class>
 		<class>org.open.erp.services.nomgen.PersoanaFizica</class>
 		<class>org.open.erp.services.marketing.Chestionar</class>	
 		<class>org.open.erp.services.marketing.Discount</class>

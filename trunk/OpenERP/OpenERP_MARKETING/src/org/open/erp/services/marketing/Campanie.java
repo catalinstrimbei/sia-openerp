@@ -10,11 +10,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
-import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.nomgen.Persoana;
 /**
  * 
  * @author Echipa.Marketing
@@ -36,9 +37,9 @@ public class Campanie {
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dataSfarsit;
 	private Integer status = NE_PORNITA;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name = "id")
 	Responsabil responsabil;
-	@OneToMany(mappedBy = "idPersoana", targetEntity = PersoanaFizica.class, cascade = CascadeType.ALL)
+	@OneToMany
 	private List<PersoanaTinta> PersoaneTinta;
 
 	public Campanie() {
