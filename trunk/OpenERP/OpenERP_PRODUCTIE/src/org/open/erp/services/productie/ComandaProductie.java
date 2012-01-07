@@ -2,7 +2,14 @@ package org.open.erp.services.productie;
 
 import org.open.erp.services.nomgen.Produs;
 
+import java.io.Serializable;
 import java.util.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  * 
@@ -10,12 +17,25 @@ import java.util.*;
  * 
  * @BusinessObject(Entity)
  */
+@Entity
 
-public class ComandaProductie {
+public class ComandaProductie implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
+	@Id @GeneratedValue
+	
 	Integer idComanda;
+	
+	@OneToMany
 	Produs produs;
+	
 	Integer cantitate;
+	
+	@Temporal(javax.persistence.TemporalType.DATE)
 	Date dataComanda;
 	
 	

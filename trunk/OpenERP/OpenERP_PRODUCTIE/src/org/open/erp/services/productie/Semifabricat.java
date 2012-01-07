@@ -1,6 +1,13 @@
 package org.open.erp.services.productie;
 
+import java.io.Serializable;
 import java.util.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.nomgen.Produs;
@@ -12,20 +19,37 @@ import org.open.erp.services.nomgen.Produs;
  * @BusinessObject(Entity)
  */
 
-public class Semifabricat extends Produs{
+@Entity
+public class Semifabricat extends Produs implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
+	@Id @GeneratedValue
+	Integer idSemifabricat;
 	
 	String semifabricat;
+	
+	@OneToMany (mappedBy="Semifabricat", cascade = CascadeType.ALL)
 	ArrayList <MateriePrima> listaMateriale;
+	
 	Semifabricat semifabricatContinut;
 	
-	public Semifabricat(String semifabricat,
+	public Semifabricat(Integer idSemifabricat, String semifabricat,
 			ArrayList<MateriePrima> listaMateriale,
 			Semifabricat semifabricatContinut) {
 		super();
 		this.semifabricat = semifabricat;
 		this.listaMateriale = listaMateriale;
 		this.semifabricatContinut = semifabricatContinut;
+		this.idSemifabricat=idSemifabricat;
+	}
+	public Integer getIdSemifabricat() {
+		return idSemifabricat;
+	}
+	public void setIdSemifabricat(Integer idSemifabricat) {
+		this.idSemifabricat = idSemifabricat;
 	}
 	public Semifabricat() {
 		super();
@@ -48,8 +72,5 @@ public class Semifabricat extends Produs{
 	public void setSemifabricatContinut(Semifabricat semifabricatContinut) {
 		this.semifabricatContinut = semifabricatContinut;
 	}
-	
-	
-	
 	
 }

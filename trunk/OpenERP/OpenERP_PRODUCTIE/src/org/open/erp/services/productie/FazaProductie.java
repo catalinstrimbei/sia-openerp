@@ -1,7 +1,16 @@
 package org.open.erp.services.productie;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.MateriePrima;
@@ -14,20 +23,46 @@ import org.open.erp.services.personal.*;
  * 
  * @BusinessObject(Entity)
  */
+@Entity
+public class FazaProductie implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-public class FazaProductie {
-
+	@Id @GeneratedValue
 	String faza;
+	
+	@ManyToOne
 	Utilaj utilaj;
 	Double timpFolosire;
+	
+	@OneToMany (mappedBy="FazaProductie", cascade= CascadeType.ALL)
 	ArrayList <FunctieNecesara> functiiNecesare;
+	
+	@OneToMany (mappedBy="FazaProductie", cascade= CascadeType.ALL)
 	ArrayList <Angajat> angajati;
+	
+	@OneToMany (mappedBy="FazaProductie", cascade= CascadeType.ALL)
 	ArrayList <MateriePrima> materialeReteta;
+	
+	@ManyToOne
 	Semifabricat semifabricatReteta;
+	
+	@ManyToOne
 	Semifabricat semifabricatDorit;
+	
+	@ManyToOne 
 	Produs produsDorit;
+	
+	@ManyToOne
 	Semifabricat semifabricatObtinut;
+	
+	@ManyToOne
 	Produs produsObtinut;
+	
+	@ManyToOne
 	Divizie sectie;
 
 	

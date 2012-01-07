@@ -1,6 +1,7 @@
 package org.open.erp.services.productie;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.open.erp.services.nomgen.Produs;
 
@@ -48,10 +49,11 @@ public interface ProductieSrv {
 	 * 
 	 * @return 	semifabricat/produs in functie de faza la care se gaseste 
 	 * 			(prin apelarea functiilor procesareSemifabricat() si procesareProdus()). 
+	 * @throws Exception 
 	 * 
 	 */
 	
-	public void definireFluxProductie(Produs produs);
+	public void definireFluxProductie(Produs produs) throws Exception;
 	
 	/**
 	 * Apeleaza fluxul de productie si creaza produsul pentru care s-a facut comanda
@@ -60,7 +62,7 @@ public interface ProductieSrv {
 	 * 
 	 * @return 	Produsul creat.
 	 */
-	public Produs lansareComandaProductie (ComandaProductie comanda, Produs produs);
+	public Produs lansareComandaProductie (ComandaProductie comanda, Produs produs)  throws Exception;
 	
 	/**
 	 * Contorizeaza consumul de resurse
@@ -69,7 +71,7 @@ public interface ProductieSrv {
 	 * 
 	 * @return 	Lista de resurse (utilaje,materiale,angajati)
 	 */
-	public ArrayList<Object> consumResursa(FazaProductie faza, Produs produs);
+	public ArrayList<Object> consumResursa(FazaProductie faza, Produs produs) throws Exception;
 	
 	/**
 	 * Realizeaza controlul calitatii pentru fiecare unitate de produs
@@ -77,7 +79,7 @@ public interface ProductieSrv {
 	 * 
 	 * @return	Cantitatea de produse finite si cantitatea de deseuri (sub forma unei liste)
 	 */
-	public ArrayList<Integer> controlCalitate (Produs produs);
+	public ArrayList<Integer> controlCalitate (Produs produs)  throws Exception;
 	
 	/**
 	 * Trimite cantitatea de produs final obtinut catre modulul de stocuri
@@ -85,7 +87,7 @@ public interface ProductieSrv {
 	 * @param produs			Produsul livrabil
 	 * @return		Cantiatea de produs final care va fi adaugata la cantitatea din stocuri.
 	 */
-	public Integer livrareProdus(Integer cantitateProdus, Produs produs);
+	public Integer livrareProdus(Integer cantitateProdus, Produs produs)  throws Exception;
 	
 	/**
 	 * Gestioneaza consumul de resurse pentru a fi preluat de contabilitatea de gestiune
@@ -93,7 +95,7 @@ public interface ProductieSrv {
 	 * 
 	 * @return 	Lista de resurse consumate
 	 */
-	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza, Produs produs);
+	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza, Produs produs)  throws Exception;
 	
 	/**
 	 * Gestioneaza cantitatea de produse obtinute
@@ -101,6 +103,6 @@ public interface ProductieSrv {
 	 * 
 	 * @return	Cantitatea de produse finale si deseuri.
 	 */
-	public ArrayList<Integer> inregistrareGestiuneProductie(Produs produs);
+	public ArrayList<Integer> inregistrareGestiuneProductie(Produs produs)  throws Exception;
 
 }

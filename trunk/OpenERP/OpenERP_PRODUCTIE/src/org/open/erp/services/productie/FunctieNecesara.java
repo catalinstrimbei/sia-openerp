@@ -1,5 +1,9 @@
 package org.open.erp.services.productie;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
 import org.open.erp.services.personal.Functie;
 
 /**
@@ -8,9 +12,14 @@ import org.open.erp.services.personal.Functie;
  * 
  * @BusinessObject(Entity)
  */
+@Entity
+public class FunctieNecesara extends Functie implements Serializable{
 
-public class FunctieNecesara extends Functie{
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	Integer nrAngajatiFunctie;
 
 	public FunctieNecesara(Integer id, String denumire) {

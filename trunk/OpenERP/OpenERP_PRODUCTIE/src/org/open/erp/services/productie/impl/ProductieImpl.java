@@ -2,6 +2,17 @@ package org.open.erp.services.productie.impl;
 
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.nomgen.MijlocFix;
@@ -12,17 +23,42 @@ import org.open.erp.services.productie.CriteriuCalitate;
 import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.FunctieNecesara;
+import org.open.erp.services.productie.ProductieSrvLocal;
+import org.open.erp.services.productie.ProductieSrvRemote;
 import org.open.erp.services.productie.Utilaj;
 import org.open.erp.services.productie.ProductieSrv;
 import org.open.erp.services.productie.Semifabricat;
-import org.open.erp.services.stocuri.ArticolStoc;
+import org.open.erp.services.stocuri.*;
+
+
 
 /**
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-public class ProductieImpl implements ProductieSrv {
+@Stateful
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, ProductieSrvRemote {
+	
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductieImpl.class.getName());
 
+	
+	@PersistenceContext(unitName="OpenERP_Productie")
+	private EntityManager em;
+	
+	@Resource
+	private SessionContext sessionContext;
+	
+	@PostConstruct
+	public void init(){
+		logger.debug("EntityManager: " + em);		
+				
+		if (this.registru == null)
+			registru = new RegistruProductie(em);
+	}
+	
+	private RegistruProductie registru = new RegistruProductie();
+	
 	ArrayList<FazaProductie> fazeFlux;
 	Integer cantitateProdusFinal = 0;
 	Integer cantitateDeseu =0 ;
@@ -32,9 +68,10 @@ public class ProductieImpl implements ProductieSrv {
 	ArrayList<Integer> cantitati;
 	ArrayList<Object> resurse;
 
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public void definireFluxProductie(Produs produs) {
+	public void definireFluxProductie(Produs produs) throws Exception{
+		
 		// setez numarul de faze pentru flux
 		FluxProductie flux = new FluxProductie();
 		flux.setProdus(produs);
@@ -120,12 +157,14 @@ public class ProductieImpl implements ProductieSrv {
 			MateriePrima m4=new MateriePrima();
 			m3.getDenumire();
 			m4.getDenumire();
-		
+	
 			materialeReteta.add(m3);
 			materialeReteta.add(m4);
 		
 			fz.setMaterialeReteta(materialeReteta);
-		
+			//CerereAprovizionare comandaMateriale = new CerereAprovizionare();
+			// trebuie verificat cum cerem cantitatea si materialul
+			//consumProductie(comandaMateriale);
 			if(i==1){
 				//pentru prima faza nu exista un semifabricat
 				fz.setSemifabricatReteta(null);
@@ -185,18 +224,26 @@ public class ProductieImpl implements ProductieSrv {
 		fazeFlux.get(n - 1).procesareProdus();
 		
 		flux.setFaze(fazeFlux);
+		
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug("END definire flux productie - FAILED TRANSACTION");
+		}else{
+			flux= this.registru.salveazaFlux(flux);
+		}
+		logger.debug("---END definire flux productie ---");
 	}
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public Produs lansareComandaProductie(ComandaProductie comanda, Produs produs) {
+	public Produs lansareComandaProductie(ComandaProductie comanda, Produs produs)  throws Exception{
 		  // cautare faze pentru produsul x in baza de date;
 		   definireFluxProductie(produs);
 		   
 		   return produs;
 		 }
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public ArrayList<Object> consumResursa(FazaProductie faza,Produs produs) {
+	public ArrayList<Object> consumResursa(FazaProductie faza,Produs produs)  throws Exception{
 		 	  
 		  listaMateriale = new ArrayList<MateriePrima>();
 		  listaUtilaje = new ArrayList<Utilaj>();
@@ -220,9 +267,9 @@ public class ProductieImpl implements ProductieSrv {
 		  return resurse;
 		 }
 
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public ArrayList<Integer> controlCalitate(Produs produs) {
+	public ArrayList<Integer> controlCalitate(Produs produs)  throws Exception {
 		  Boolean trecut;
 		  ComandaProductie comanda;
 		  
@@ -251,8 +298,9 @@ public class ProductieImpl implements ProductieSrv {
 		    
 }
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public Integer livrareProdus(Integer cantitateProdus, Produs produs) {
+	public Integer livrareProdus(Integer cantitateProdus, Produs produs)  throws Exception{
 		  ArticolStoc stocProduse;
 		  stocProduse=new ArticolStoc();
 		  cantitateProdus=cantitati.get(0);
@@ -269,13 +317,17 @@ public class ProductieImpl implements ProductieSrv {
 		  }
 		 }
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza,Produs produs) {
+	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza,Produs produs)  throws Exception{
 		consumResursa(faza, produs);
 		return resurse;
 		
 	}
-	public ArrayList<Integer> inregistrareGestiuneProductie(Produs produs){
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ArrayList<Integer> inregistrareGestiuneProductie(Produs produs) throws Exception{
 		controlCalitate(produs);
 		return cantitati;
 	}
