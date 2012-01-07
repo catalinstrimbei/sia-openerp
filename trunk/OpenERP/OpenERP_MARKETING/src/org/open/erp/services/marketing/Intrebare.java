@@ -3,8 +3,14 @@ package org.open.erp.services.marketing;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Intrebare {
+	
+	@Id @GeneratedValue
 	Integer					idIntrebare;
 	String					textIntrebare;
 	String					tipIntrebare;

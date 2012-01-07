@@ -2,15 +2,26 @@ package org.open.erp.services.marketing;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Chestionar {
+	
+	@Id @GeneratedValue
 	Integer				idChestionar;
-	String				denumireChestionar;
+	String				denumireChestionar;	
 	Responsabil			Responsabil;
 	String				scopChestionar;
 	Integer				numarIntrebari;
+	@OneToMany (mappedBy = "chestionar", cascade = CascadeType.ALL) 
 	List<Intrebare>		listaIntrebari;
 	/**
 	 * @return the idChestionar
+
 	 */
 	public Integer getIdChestionar() {
 		return idChestionar;
