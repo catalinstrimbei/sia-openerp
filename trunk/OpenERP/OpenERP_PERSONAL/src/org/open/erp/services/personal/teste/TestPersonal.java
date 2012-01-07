@@ -14,7 +14,9 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.nomgen.Departament;
+//TODO uncomment this
+//import org.open.erp.services.nomgen.Departament;
+import org.open.erp.services.personal.DummyDepartament;
 import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.RezultatProbaEvaluare;
@@ -94,12 +96,12 @@ public class TestPersonal {
 	{
 		test.generareDepartamente();
 		test.generareProbeEvaluare();
-		HashMap <Departament, List<ProbaEvaluare>> mapFinal = new HashMap <Departament, List<ProbaEvaluare>>(); 
+		HashMap <DummyDepartament, List<ProbaEvaluare>> mapFinal = new HashMap <DummyDepartament, List<ProbaEvaluare>>(); 
 		mapFinal = personalService.getProbeEvaluareDepartament(test.probeEvaluare, test.listaDepartamente);
-		List<Departament> keysDepartamente = new ArrayList<Departament>(mapFinal.keySet());
-		Iterator<Departament> iteratorDepartamente = keysDepartamente.iterator();
+		List<DummyDepartament> keysDepartamente = new ArrayList<DummyDepartament>(mapFinal.keySet());
+		Iterator<DummyDepartament> iteratorDepartamente = keysDepartamente.iterator();
 		List<ProbaEvaluare> valuesProbeEvaluare = new ArrayList<ProbaEvaluare>();
-		Departament depCurent;
+		DummyDepartament depCurent;
 		ProbaEvaluare probaEvaluare;
 		while (iteratorDepartamente.hasNext()){
 			depCurent = iteratorDepartamente.next();
@@ -127,7 +129,7 @@ public class TestPersonal {
 		List<ProbaEvaluare> keysProbe = new ArrayList<ProbaEvaluare>(mapFinal.keySet());
 		Iterator<ProbaEvaluare> iteratorProbe = keysProbe.iterator();
 		List<RezultatProbaEvaluare> valuesRezultateProbeEvaluare = new ArrayList<RezultatProbaEvaluare>();
-		//Departament depCurent;
+		//DummyDepartament depCurent;
 		ProbaEvaluare probaEvaluareCurenta;
 		RezultatProbaEvaluare rezultatCurent;
 		while (iteratorProbe.hasNext()){

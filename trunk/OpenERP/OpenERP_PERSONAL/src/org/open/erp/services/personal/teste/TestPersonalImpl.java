@@ -7,8 +7,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.nomgen.Departament;
-import org.open.erp.services.nomgen.PersoanaFizica;
+//TODO uncomment this
+//import org.open.erp.services.nomgen.Departament;
+//import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.personal.DummyDepartament;
+import org.open.erp.services.personal.DummyPersoanaFizica;
 import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.ActivitateTeamBuilding;
 import org.open.erp.services.personal.Angajat;
@@ -58,7 +61,7 @@ public class TestPersonalImpl {
 	Activitate activitate2;
 	Activitate activitate3;
 	
-	List<Departament> listaDepartamente = new ArrayList<Departament>();
+	List<DummyDepartament> listaDepartamente = new ArrayList<DummyDepartament>();
 	List<ProbaEvaluare> probeEvaluare = new ArrayList<ProbaEvaluare>();
 	
 	public List<Angajat> angajati = new ArrayList<Angajat>();
@@ -84,8 +87,8 @@ public class TestPersonalImpl {
 	CV cv7 = new CV("CV7", candidat6, functie2, new Date("10/08/2011"), new Date("20/11/2011"));
 	
 	
-	PersoanaFizica persoana1 = new PersoanaFizica(1,null,  "Nume1", "Prenume1", null, 'M', null);
-	PersoanaFizica persoana2 = new PersoanaFizica(2,null,  "Nume2", "Prenume2", null, 'F', null);
+	DummyPersoanaFizica persoana1 = new DummyPersoanaFizica(1,null,  "Nume1", "Prenume1", null, 'M', null);
+	DummyPersoanaFizica persoana2 = new DummyPersoanaFizica(2,null,  "Nume2", "Prenume2", null, 'F', null);
 	
 	
 	Interviu interviu1 = new Interviu(1, "Final");
@@ -104,9 +107,9 @@ public class TestPersonalImpl {
 	AnuntLocMunca anunt3 = new AnuntLocMunca(3, new String[] { "Internet"}, "Anunt3", functie2, new Date("01/08/2011"), new Date("11/09/2011"));
 	AnuntLocMunca anunt2 = new AnuntLocMunca(1, new String[] { "Internet"}, "Anunt2", functie1, new Date("12/09/2011"), new Date("10/12/2011"));
 	
-	Departament departament1 = new Departament(1, "Departament1", null);
-	Departament departament2 = new Departament(2, "Departament2", null);
-	Departament departament3 = new Departament(3, "Departament3", null);
+	DummyDepartament departament1 = new DummyDepartament(1, "Departament1", null);
+	DummyDepartament departament2 = new DummyDepartament(2, "Departament2", null);
+	DummyDepartament departament3 = new DummyDepartament(3, "Departament3", null);
 	
 	ProbaEvaluare	probaEvaluare1 = new ProbaEvaluare("Proba1", "Oral", "EvaluarePeriodica", departament1);
 	ProbaEvaluare	probaEvaluare2 = new ProbaEvaluare("Proba2", "Practic", "EvaluarePeriodica", departament1);

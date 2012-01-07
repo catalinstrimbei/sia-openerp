@@ -5,25 +5,23 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import org.open.erp.services.nomgen.PersoanaFizica;
+//TODO uncomment this
+//import org.open.erp.services.nomgen.PersoanaFizica;
 
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-//TODO    adauga Jar si clasa PersoanaFizica in persistence.xml
+//TODO    adauga Jar si clasa DummyPersoanaFizica in persistence.xml
 @Entity
-public class Candidat extends PersoanaFizica implements Serializable{
+public class Candidat extends DummyPersoanaFizica implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
 	private Integer		idCandidat;
 	private String 		tipCandidat;
 	@OneToMany(mappedBy = "candidat", cascade = CascadeType.ALL)

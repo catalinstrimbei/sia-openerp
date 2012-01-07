@@ -1,22 +1,19 @@
 package org.open.erp.services.personal;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
-import org.open.erp.services.nomgen.Persoana;
 
 /**
  * 
  * @BusinessObject(Entity)
  * 
  */
-//TODO    adauga Jar si clasa Persoana in persistence.xml
+//TODO    adauga Jar si clasa DummyPersoana in persistence.xml
 @Entity
-public class Instructor extends Persoana implements Serializable{
-	
+public class Instructor extends DummyPersoana {
 	public Integer getTraininguriTotal() {
 		return traininguriTotal;
 	}

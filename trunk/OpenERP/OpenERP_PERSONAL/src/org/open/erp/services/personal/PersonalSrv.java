@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-
-import org.open.erp.services.nomgen.Departament;
+//TODO uncomment this
+//import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.personal.logger.PersonalExceptions;
 /**
  * 
@@ -15,7 +15,7 @@ import org.open.erp.services.personal.logger.PersonalExceptions;
  * 
  * @Dependente: BugetareSrv, NomGenSrv
  * 
- * @EntitatiNomGen: Persoana, Departament
+ * @EntitatiNomGen: DummyPersoana, DummyDepartament
  * 
  * @EntitatiBugetareSrv: Buget
  * 
@@ -127,7 +127,7 @@ public interface PersonalSrv {
 	
 	
 	
-	HashMap <Departament, List<ProbaEvaluare>> getProbeEvaluareDepartament (List<ProbaEvaluare> probeEvaluareInit_, List<Departament> departamenteInit_);
+	HashMap <DummyDepartament, List<ProbaEvaluare>> getProbeEvaluareDepartament (List<ProbaEvaluare> probeEvaluareInit_, List<DummyDepartament> departamenteInit_);
 	
 	/**
 	 * Scop    Returneaza o lista a probelor grupate pe fiecare departament 
@@ -278,7 +278,7 @@ public interface PersonalSrv {
 	 */
 	Functie adaugareFunctie(String	numeFunctie_, Integer pozitiaInCOR_, List<String> obiective_, 
 							List<String>	responsabilitati_, List<String>	cunostinte_, 
-							List<String>	deprinderi_, List<String>	aptitudini_, Departament departament);
+							List<String>	deprinderi_, List<String>	aptitudini_, DummyDepartament departament);
 	/**
 	 * Scop                   Permite adaugarea unei noi functii cu anumite atribute
 	 * 

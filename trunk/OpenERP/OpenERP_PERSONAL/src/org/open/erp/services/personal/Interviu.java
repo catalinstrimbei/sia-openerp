@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-
-import org.open.erp.services.nomgen.Persoana;
+//TODO uncomment this
+//import org.open.erp.services.nomgen.Persoana;
 
 
 /**
@@ -27,7 +27,7 @@ public class Interviu implements Serializable{
 	@Id
 	private Integer idInterviu;
 	private String tipInterviu;
-	//TODO    adauga Jar si clasa Persoana in persistence.xml
+	//TODO    adauga Jar si clasa DummyPersoana in persistence.xml
 	/*
 	@OneToMany
 	@JoinTable(
@@ -35,7 +35,7 @@ public class Interviu implements Serializable{
 			joinColumns = @JoinColumn(name = "idInterviu"),
 			inverseJoinColumns = @JoinColumn(name = "id"))
 	*/
-	private List<Persoana> intervievatori;
+	private List<DummyPersoana> intervievatori;
 	@OneToMany
 	@JoinTable(
 			name = "ProbaInterviu",
@@ -52,10 +52,10 @@ public class Interviu implements Serializable{
 	public void setTipInterviu(String tipInterviu) {
 		this.tipInterviu = tipInterviu;
 	}
-	public List<Persoana> getIntervievatori() {
+	public List<DummyPersoana> getIntervievatori() {
 		return intervievatori;
 	}
-	public void setIntervievatori(List<Persoana> intervievatori) {
+	public void setIntervievatori(List<DummyPersoana> intervievatori) {
 		this.intervievatori = intervievatori;
 	}
 	public List<ProbaEvaluare> getProbeEvaluare() {
@@ -66,7 +66,7 @@ public class Interviu implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Interviu(String tipInterviu, List<Persoana> intervievatori) {
+	public Interviu(String tipInterviu, List<DummyPersoana> intervievatori) {
 		super();
 		this.tipInterviu = tipInterviu;
 		this.intervievatori = intervievatori;
@@ -78,7 +78,7 @@ public class Interviu implements Serializable{
 		this.idInterviu = idInterviu;
 	}
 	public Interviu(Integer idInterviu, String tipInterviu,
-			List<Persoana> intervievatori, List<ProbaEvaluare> probeEvaluare) {
+			List<DummyPersoana> intervievatori, List<ProbaEvaluare> probeEvaluare) {
 		super();
 		this.idInterviu = idInterviu;
 		this.tipInterviu = tipInterviu;
@@ -86,7 +86,7 @@ public class Interviu implements Serializable{
 		this.probeEvaluare = probeEvaluare;
 	}
 	public Interviu(Integer idInterviu, String tipInterviu,
-			List<Persoana> intervievatori) {
+			List<DummyPersoana> intervievatori) {
 		super();
 		this.idInterviu = idInterviu;
 		this.tipInterviu = tipInterviu;

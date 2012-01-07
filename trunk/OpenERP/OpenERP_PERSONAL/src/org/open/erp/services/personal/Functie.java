@@ -7,8 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import org.open.erp.services.nomgen.Departament;
+//TODO uncomment this
+//import org.open.erp.services.nomgen.Departament;
 
 
 /**
@@ -33,9 +33,9 @@ public class Functie implements Serializable {
 	private List<String>	aptitudini;
 	@OneToMany(mappedBy = "functie", cascade = CascadeType.ALL)
 	private List<AnuntLocMunca>	anunturi;
-	//TODO    adauga Jar si clasa Departament in persistence.xml
+	//TODO    adauga Jar si clasa DummyDepartament in persistence.xml
 	//@ManyToOne @JoinColumn(name = "idDepartament")
-	private Departament		departament;
+	private DummyDepartament		departament;
 	@OneToMany(mappedBy = "functie", cascade = CascadeType.ALL)
 	private List<ContractMunca> contracte;
 	@OneToMany(mappedBy = "functieVizata", cascade = CascadeType.ALL)
@@ -101,7 +101,7 @@ public class Functie implements Serializable {
 	public Functie(Integer idFunctie, String numeFunctie, Integer pozitiaInCOR,
 			List<String> obiective, List<String> responsabilitati,
 			List<String> cunostinte, List<String> deprinderi,
-			List<String> aptitudini, Departament departament) {
+			List<String> aptitudini, DummyDepartament departament) {
 		super();
 		this.idFunctie = idFunctie;
 		this.numeFunctie = numeFunctie;
@@ -113,10 +113,10 @@ public class Functie implements Serializable {
 		this.aptitudini = aptitudini;
 		this.departament = departament;
 	}
-	public Departament getDepartament() {
+	public DummyDepartament getDepartament() {
 		return departament;
 	}
-	public void setDepartament(Departament departament) {
+	public void setDepartament(DummyDepartament departament) {
 		this.departament = departament;
 	}
 	public List<AnuntLocMunca> getAnunturi() {

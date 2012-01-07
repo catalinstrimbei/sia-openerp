@@ -21,7 +21,10 @@
 		<class>org.open.erp.services.personal.InterviuCandidat</class>
 		<class>org.open.erp.services.personal.ProbaEvaluare</class>				
 		<class>org.open.erp.services.personal.ResponsabilActivitate</class>
-		<class>org.open.erp.services.personal.RezultatProbaEvaluare</class>							
+		<class>org.open.erp.services.personal.RezultatProbaEvaluare</class>	
+		<class>org.open.erp.services.personal.DummyDepartament</class>
+		<class>org.open.erp.services.personal.DummyPersoana</class>
+		<class>org.open.erp.services.personal.DummyPersoanaFizica</class>						
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
 	        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>

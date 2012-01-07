@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-import org.open.erp.services.nomgen.Departament;
+//TODO uncomment this
+//import org.open.erp.services.nomgen.Departament;
 
 /**
  * 
@@ -26,9 +26,9 @@ public class ProbaEvaluare implements Serializable{
 	private Integer			durataMinute;
 	private List<String> 	intrebari;
 	private String			scop;
-	//TODO    adauga Jar si clasa Departament in persistence.xml
+	//TODO    adauga Jar si clasa DummyDepartament in persistence.xml
 	//@ManyToOne
-	private Departament		departament;
+	private DummyDepartament		departament;
 	
 	public ProbaEvaluare() {
 		super();
@@ -58,10 +58,10 @@ public class ProbaEvaluare implements Serializable{
 	public void setScop(String scop) {
 		this.scop = scop;
 	}
-	public Departament getDepartament() {
+	public DummyDepartament getDepartament() {
 		return departament;
 	}
-	public void setDepartament(Departament departament) {
+	public void setDepartament(DummyDepartament departament) {
 		this.departament = departament;
 	}
 	public String getIdProba() {
@@ -72,7 +72,7 @@ public class ProbaEvaluare implements Serializable{
 	}
 	public ProbaEvaluare(String idProba, String tipEvaluare,
 			Integer durataMinute, List<String> intrebari, String scop,
-			Departament departament) {
+			DummyDepartament departament) {
 		super();
 		this.idProba = idProba;
 		this.tipEvaluare = tipEvaluare;
@@ -82,7 +82,7 @@ public class ProbaEvaluare implements Serializable{
 		this.departament = departament;
 	}
 	public ProbaEvaluare(String idProba, String tipEvaluare, String scop,
-			Departament departament) {
+			DummyDepartament departament) {
 		super();
 		this.idProba = idProba;
 		this.tipEvaluare = tipEvaluare;

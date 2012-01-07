@@ -25,8 +25,9 @@ import javax.persistence.PersistenceContext;
 //import org.open.erp.services.buget.Buget;
 //import org.open.erp.services.buget.BugetareSrv;
 //import org.open.erp.services.buget.LinieBugetara;
-import org.open.erp.services.nomgen.Departament;
-import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
+//TODO uncomment this
+//import org.open.erp.services.nomgen.Departament;
+//import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 //import org.open.erp.services.personal.Activitate;
 //import org.open.erp.services.personal.Proiect;
 import org.open.erp.services.personal.Activitate;
@@ -46,6 +47,7 @@ import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.PersonalSrvLocal;
 import org.open.erp.services.personal.PersonalSrvRemote;
 import org.open.erp.services.personal.ProbaEvaluare;
+import org.open.erp.services.personal.DummyDepartament;
 import org.open.erp.services.personal.logger.PersonalExceptions;
 import org.open.erp.services.personal.logger.PersonalLogger;
 import org.open.erp.services.personal.teste.TestPersonalImpl;
@@ -70,15 +72,15 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	@Resource
 	private SessionContext sessionContext;	
 	
-	@EJB(mappedName="NomenclatoareDummyImpl/local") /* BUG JBoss 5 referinte EJB: de folosit mappedName */
-	private NomenclatoareSrvLocal nomGenSrv;
+	//@EJB(mappedName="NomenclatoareDummyImpl/local") /* BUG JBoss 5 referinte EJB: de folosit mappedName */
+	//private NomenclatoareSrvLocal nomGenSrv;
 	
 	/* Initializare */
 	public PersonalImpl() { }	
 	@PostConstruct
 	public void init(){
 		logger.logDEBUG(">>>>>>>>>>>> Exista em? " + em);		
-		logger.logDEBUG(">>>>>>>>>>>> Exista nomGenSrv? " + nomGenSrv);				
+		//logger.logDEBUG(">>>>>>>>>>>> Exista nomGenSrv? " + nomGenSrv);				
 		
 		if (this.registruPersonal == null)
 			registruPersonal = new RegistruPersonal(em);
@@ -315,14 +317,14 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	//evaluareAngajat - Andreea
 
 	@Override
-	public HashMap <Departament, List<ProbaEvaluare>> getProbeEvaluareDepartament(
-			List<ProbaEvaluare> probeEvaluareInit_, List<Departament> departamenteInit) 
+	public HashMap <DummyDepartament, List<ProbaEvaluare>> getProbeEvaluareDepartament(
+			List<ProbaEvaluare> probeEvaluareInit_, List<DummyDepartament> departamenteInit) 
 	{
-		Departament 	departamentCurent;
+		DummyDepartament 	departamentCurent;
 		ProbaEvaluare	probaEvaluare;
 		
-		Iterator <Departament>	iteratorDepartament = departamenteInit.iterator();
-		HashMap <Departament, List<ProbaEvaluare>> tMap = new HashMap<Departament, List<ProbaEvaluare>>();
+		Iterator <DummyDepartament>	iteratorDepartament = departamenteInit.iterator();
+		HashMap <DummyDepartament, List<ProbaEvaluare>> tMap = new HashMap<DummyDepartament, List<ProbaEvaluare>>();
 		List<ProbaEvaluare> probeEvaluarePeDepartament = new ArrayList<ProbaEvaluare>();
 		while (iteratorDepartament.hasNext()) {
 			departamentCurent = iteratorDepartament.next();
@@ -595,7 +597,7 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 	public Functie adaugareFunctie(String numeFunctie_, Integer pozitiaInCOR_,
 			List<String> obiective_, List<String> responsabilitati_,
 			List<String> cunostinte_, List<String> deprinderi_,
-			List<String> aptitudini_, Departament departament) {
+			List<String> aptitudini_, DummyDepartament departament) {
 		Functie functieNoua = new Functie (1,//va fi modificat cu BD
 				numeFunctie_, pozitiaInCOR_, obiective_, responsabilitati_, cunostinte_, deprinderi_, aptitudini_, departament);
 		return functieNoua;
