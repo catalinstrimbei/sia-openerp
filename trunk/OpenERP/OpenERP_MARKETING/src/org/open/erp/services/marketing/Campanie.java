@@ -3,6 +3,7 @@ package org.open.erp.services.marketing;
  * test2
  * test MR
  */
+
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,8 @@ import javax.persistence.Temporal;
  * 
  */
 @Entity
-public class Campanie {
+public  class Campanie {
+
 	public static final Integer NE_PORNITA = -1; 
 	public static final Integer IN_CURS = 1;
 	public static final Integer TERMINATA = 2; 
