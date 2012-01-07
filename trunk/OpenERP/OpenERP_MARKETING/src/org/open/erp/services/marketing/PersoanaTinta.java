@@ -2,12 +2,19 @@ package org.open.erp.services.marketing;
 
 
 
+import java.io.Serializable;
+
 import javax.persistence.MappedSuperclass;
 
 import org.open.erp.services.nomgen.PersoanaFizica;
 
 @MappedSuperclass
-public class PersoanaTinta extends PersoanaFizica {
+public class PersoanaTinta extends PersoanaFizica implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public PersoanaTinta() {
 		super();
 		// TODO Auto-generated constructor stub

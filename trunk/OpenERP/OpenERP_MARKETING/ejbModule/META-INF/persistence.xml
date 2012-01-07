@@ -4,7 +4,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>	
 		
-
+        <!-- <jar-file>OpenERP_NOMGEN.jar</jar-file> -->
 		<class>org.open.erp.services.marketing.Campanie</class>
 		<class>org.open.erp.services.marketing.PersoanaTinta</class>
 		<class>org.open.erp.services.nomgen.PersoanaFizica</class>

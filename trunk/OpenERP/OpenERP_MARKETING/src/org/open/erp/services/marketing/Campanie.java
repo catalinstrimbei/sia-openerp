@@ -4,6 +4,7 @@ package org.open.erp.services.marketing;
  * test MR
  */
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -26,8 +27,12 @@ import javax.persistence.Temporal;
  * 
  */
 @Entity
-public  class Campanie {
+public  class Campanie implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final Integer NE_PORNITA = -1; 
 	public static final Integer IN_CURS = 1;
 	public static final Integer TERMINATA = 2; 
