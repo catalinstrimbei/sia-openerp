@@ -5,6 +5,14 @@ package org.open.erp.services.marketing;
  */
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 /**
  * 
  * @author Echipa.Marketing
@@ -12,17 +20,23 @@ import java.util.List;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class Campanie {
 	public static final Integer NE_PORNITA = -1; 
 	public static final Integer IN_CURS = 1;
 	public static final Integer TERMINATA = 2; 
 	
+	@Id
 	private Integer idCampanie;
 	private String denumireCampanie;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dataStart;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dataSfarsit;
 	private Integer status = NE_PORNITA;
+	@ManyToOne @JoinColumn(name = "idPersoana")
 	Responsabil responsabil;
+	@OneToMany(mappedBy = "campanie", cascade = CascadeType.ALL)
 	private List<PersoanaTinta> PersoaneTinta;
 
 	
