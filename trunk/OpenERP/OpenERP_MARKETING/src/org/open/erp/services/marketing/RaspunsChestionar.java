@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import org.open.erp.services.nomgen.Persoana;
 @Entity
 public class RaspunsChestionar {
+	
 	@Id
 	Integer					idRaspuns;
 	
