@@ -5,7 +5,9 @@
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>	
 		
 		<class>org.open.erp.services.marketing.Campanie</class>	
+		<class>org.open.erp.services.marketing.Discount</class>	
 		<class>org.open.erp.services.marketing.PersoanaTinta</class>	
+		<class>org.open.erp.services.marketing.Promotie</class>	
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
 	        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
