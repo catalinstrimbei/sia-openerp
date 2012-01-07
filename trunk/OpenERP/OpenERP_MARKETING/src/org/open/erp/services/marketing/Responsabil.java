@@ -12,13 +12,10 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
-@Entity
 public class Responsabil extends Persoana {
 	public Responsabil() {
 		super();
 	}
-	@Id
-	Integer idResponsabil;
 	/**
 	 * @param idPersoana
 	 * @param nume

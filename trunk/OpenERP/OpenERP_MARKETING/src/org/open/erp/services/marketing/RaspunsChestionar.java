@@ -16,6 +16,7 @@ import org.open.erp.services.nomgen.Persoana;
 public class RaspunsChestionar {
 	@Id
 	Integer					idRaspuns;
+	
 	Persoana				Subiect;
 	@Temporal(javax.persistence.TemporalType.DATE)
 	Date					dataRaspuns;
