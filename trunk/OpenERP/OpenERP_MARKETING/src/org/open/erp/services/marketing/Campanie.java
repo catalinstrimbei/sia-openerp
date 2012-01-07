@@ -1,6 +1,7 @@
 package org.open.erp.services.marketing;
 /*
  * test
+ * test MR
  */
 import java.util.Date;
 import java.util.List;
