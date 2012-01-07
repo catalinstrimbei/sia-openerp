@@ -20,7 +20,6 @@ public class RaspunsChestionar {
 	@Temporal(javax.persistence.TemporalType.DATE)
 	Date					dataRaspuns;
 	Chestionar				chestionar;
-	@OneToMany(mappedBy = "chestionar", cascade = CascadeType.ALL)
 	Map<Integer, List<String>>	raspunsuri = new HashMap<Integer, List<String>>();
 	
 	public RaspunsChestionar() {
