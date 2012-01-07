@@ -8,9 +8,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+
+import org.open.erp.services.nomgen.PersoanaFizica;
 /**
  * 
  * @author Echipa.Marketing
@@ -24,7 +27,7 @@ public class Campanie {
 	public static final Integer IN_CURS = 1;
 	public static final Integer TERMINATA = 2; 
 	
-	@Id
+	@Id @GeneratedValue
 	private Integer idCampanie;
 	private String denumireCampanie;
 	@Temporal(javax.persistence.TemporalType.DATE)
@@ -33,7 +36,7 @@ public class Campanie {
 	private Date dataSfarsit;
 	private Integer status = NE_PORNITA;
 	Responsabil responsabil;
-	@OneToMany(mappedBy = "campanie", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "campanie", targetEntity = PersoanaFizica.class, cascade = CascadeType.ALL)
 	private List<PersoanaTinta> PersoaneTinta;
 
 	
