@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
@@ -54,7 +55,7 @@ import org.open.erp.services.personal.teste.TestPersonalImpl;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-@Stateful(name="PersonalSrv")
+@Stateless(name="PersonalSrv")
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvRemote{	
 
@@ -82,6 +83,9 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 		if (this.registruPersonal == null)
 			registruPersonal = new RegistruPersonal(em);
 	}	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
 	@Override
 	public Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception {
 		// TODO Auto-generated method stub
@@ -100,7 +104,24 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 		return functie;
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
+	@Override
+	public Functie getFunctie(Integer idFunctie) throws Exception {
+		logger.logDEBUG(">>>>>>Start afisare Functie");
+		Functie functie = new Functie();
+		if (idFunctie == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			functie = this.registruPersonal.getFunctieById(idFunctie);
+			// cum aflu idul noului obiect ?? em.refresh(bugetNou);
+			logger.logDEBUG(">>>>>>End ");
+		}
+		return functie;
+	}
+	
 	
 	@Override
 	public ActivitateTeamBuilding creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions {
@@ -608,5 +629,6 @@ public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvR
 		}		
 		System.out.println(_eveniment.getStatusEveniment());
 	}
+
 	
 }

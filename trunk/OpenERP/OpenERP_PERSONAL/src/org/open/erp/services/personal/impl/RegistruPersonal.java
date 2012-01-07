@@ -105,4 +105,17 @@ private static PersonalLogger logger ;
 		entityManager.refresh(candidat);
 	}
 	
+	
+	
+	//FUNCTIE
+	
+	public List<Functie> getListaFunctii(){
+		return entityManager.createQuery("SELECT f FROM Functie f").getResultList();
+	}
+	
+	public Functie getFunctieById(Integer idFunctie){
+		return (Functie) entityManager.createQuery("SELECT f FROM Functie f WHERE f.idFunctie = :idFunctie")
+							.setParameter("idFunctie",idFunctie)
+							.getSingleResult();
+	}
 }

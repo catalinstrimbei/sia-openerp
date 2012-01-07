@@ -47,9 +47,16 @@ public class TestPersonalEJB {
 	}	
 
 	@Test
+	public void testFunctieById() throws Exception {
+		Functie functie = personalInstance.getFunctie(101);
+		System.out.println("Nume functie: " + functie.getNumeFunctie().toString());
+	}
+
+	@Test
 	public void test() {
 		fail("Not yet implemented");
 	}
+	
 	@Test
 	public void testSalveazaFunctie() throws Exception {
 		logger.logINFO("Begin test: adaugaFunctie");
@@ -68,4 +75,7 @@ public class TestPersonalEJB {
 		//TestPersonalImpl test = new TestPersonalImpl();		
 		//fail("Not yet implemented");
 	}
+	
+	
+	
 }
