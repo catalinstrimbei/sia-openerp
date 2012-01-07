@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 
 /**
@@ -34,6 +35,7 @@ public class Instructor extends DummyPersoana {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer 		traininguriTotal;
+	@Transient
 	private	Collection<String>	aptitudini;
 	@ManyToMany(mappedBy = "instructori")
 	private Collection<ActivitateTraining>	activitatiTeamBld;

@@ -3,6 +3,7 @@ package org.open.erp.services.personal;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 /*
  * @author Echipa NomGen
@@ -20,7 +21,9 @@ public class DummyPersoanaFizica extends DummyPersoana {
 	private String  formaAdresare;
 	private char    gen;
 	private String  cnp;
+	@Transient
 	private Collection<String> telefoane;
+	@Transient
 	private Collection<String> emailuri;
 	
 	

@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Collection;
 
+import javax.ejb.Remote;
+
 //TODO uncomment this
 //import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.personal.logger.PersonalExceptions;

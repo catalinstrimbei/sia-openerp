@@ -32,8 +32,9 @@ public class TestPersonalEJB {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		logger = new PersonalLogger();
 		InitialContext ctx = initJBossJNDICtx();
-		personalInstance = (PersonalSrv)ctx.lookup("PersonalSrv/remote");
+		personalInstance = (PersonalSrv)ctx.lookup("PersonalSrv/local");
 		logger.logINFO("initTest " + personalInstance);
 	
 	}

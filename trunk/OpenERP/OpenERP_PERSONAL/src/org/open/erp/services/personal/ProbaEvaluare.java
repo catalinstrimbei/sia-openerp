@@ -5,8 +5,11 @@ import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 //TODO uncomment this
 //import org.open.erp.services.nomgen.Departament;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -24,10 +27,11 @@ public class ProbaEvaluare implements Serializable{
 	private String 			idProba;
 	private String 			tipEvaluare;
 	private Integer			durataMinute;
+	@Transient
 	private Collection<String> 	intrebari;
 	private String			scop;
 	//TODO    adauga Jar si clasa DummyDepartament in persistence.xml
-	//@ManyToOne
+	@ManyToOne @JoinColumn(name="idDepartament") 
 	private DummyDepartament		departament;
 	
 	public ProbaEvaluare() {

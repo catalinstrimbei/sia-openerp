@@ -28,13 +28,11 @@ public class Interviu implements Serializable{
 	private Integer idInterviu;
 	private String tipInterviu;
 	//TODO    adauga Jar si clasa DummyPersoana in persistence.xml
-	/*
 	@OneToMany
 	@JoinTable(
 			name = "InterviewatorInterviu",
 			joinColumns = @JoinColumn(name = "idInterviu"),
 			inverseJoinColumns = @JoinColumn(name = "id"))
-	*/
 	private Collection<DummyPersoana> intervievatori;
 	@OneToMany
 	@JoinTable(

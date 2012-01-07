@@ -5,8 +5,11 @@ package org.open.erp.services.personal;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 
 /**
@@ -21,8 +24,14 @@ public class DummyDepartament{
     
 	private String Denumire;
 	private String Atributii;
+	@Transient
 	private Collection<String> Telefoane;
+	@Transient
 	private Collection<String> Emailuri;
+	@OneToMany(mappedBy = "departament", cascade = CascadeType.ALL)
+	private Collection<Functie> functii;
+	@OneToMany(mappedBy = "departament", cascade = CascadeType.ALL)
+	private Collection<ProbaEvaluare> probeEvaluare;
 	/**
 	 * @return the id
 	 */

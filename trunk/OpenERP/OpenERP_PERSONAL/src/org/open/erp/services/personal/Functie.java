@@ -7,9 +7,12 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 //TODO uncomment this
 //import org.open.erp.services.nomgen.Departament;
+import javax.persistence.Transient;
 
 
 /**
@@ -27,15 +30,20 @@ public class Functie implements Serializable {
 	private Integer 		idFunctie;
 	private String 			numeFunctie;
 	private Integer 		pozitiaInCOR; //Clasificarea Ocupatiilor din Romania
+	@Transient
 	private Collection<String>	obiective;
+	@Transient
 	private Collection<String>	responsabilitati;
+	@Transient
 	private Collection<String>	cunostinte;
+	@Transient
 	private Collection<String>	deprinderi;
+	@Transient
 	private Collection<String>	aptitudini;
 	@OneToMany(mappedBy = "functie", cascade = CascadeType.ALL)
 	private Collection<AnuntLocMunca>	anunturi;
 	//TODO    adauga Jar si clasa DummyDepartament in persistence.xml
-	//@ManyToOne @JoinColumn(name = "idDepartament")
+	@ManyToOne @JoinColumn(name="idDepartament") 
 	private DummyDepartament		departament;
 	@OneToMany(mappedBy = "functie", cascade = CascadeType.ALL)
 	private Collection<ContractMunca> contracte;
