@@ -11,7 +11,7 @@ import org.open.erp.services.nomgen.Partener;
 public class Client extends Partener {
 	//Integer idClient;
 	String nume;
-	//String adresa;
+	String adresa;
 	String adresaEmail;
 	String telefon;
 	String codUnic; // BI/CI/CUI
@@ -91,6 +91,13 @@ public class Client extends Partener {
 
 	public void setSoldClient(Double soldClient) {
 		this.soldClient = soldClient;
-	}	
-	
+	}
+
+	public String getAdresa() {
+		return adresa;
+	}
+
+	public void setAdresa(String adresa) {
+		this.adresa = adresa;
+	}
 }

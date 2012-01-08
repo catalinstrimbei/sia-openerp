@@ -2,6 +2,14 @@ package org.open.erp.services.stocuri;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 /**
  * 
  * @author echipa.stocuri
@@ -9,11 +17,19 @@ import java.util.List;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class Gestiune {
+	@Id@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idGestiune;
 	private String denumire;
+	@ManyToOne@JoinColumn(name="idDepozit") 
 	private Depozit depozit;
+	@OneToMany(mappedBy="gestiune")
 	private List<ArticolStoc>articole = new ArrayList<ArticolStoc>();
+	
+	
+	
+	
 	public Gestiune() {
 		super();
 	}
@@ -76,6 +92,10 @@ public class Gestiune {
 		} else if (!idGestiune.equals(other.idGestiune))
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Gestiune [denumire=" + denumire + "]";
 	}
 	
 	

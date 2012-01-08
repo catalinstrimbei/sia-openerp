@@ -1,6 +1,10 @@
 package org.open.erp.services.stocuri.impl;
 
 
+import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.stocuri.ArticolStoc;
@@ -9,6 +13,8 @@ import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.LoturiIntrari;
 import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.StocuriSrvLocal;
+import org.open.erp.services.stocuri.StocuriSrvRemote;
 import org.open.erp.services.stocuri.exceptions.IntrariStocExceptions;
 import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
 
@@ -17,7 +23,12 @@ import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-public class StocuriImpl implements StocuriSrv {
+
+
+@Stateless(name="StocuriSrv", mappedName="StocuriSrv")
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class StocuriImpl implements StocuriSrvLocal, StocuriSrvRemote{
+
 	private Procesare procesare;
 	private AplicarePret applicarepret;
 
@@ -59,7 +70,7 @@ public class StocuriImpl implements StocuriSrv {
 
 	@Override
 	public BonConsum consumProductie(CerereAprovizionare comMateriale) {
-		return (BonConsum) procesare.preoceseazaComandaMateriale(comMateriale);
+		return (BonConsum) procesare.proceseazaComandaMateriale(comMateriale);
 
 	}
 
@@ -120,6 +131,11 @@ public class StocuriImpl implements StocuriSrv {
 			return false;
 		}
 	}
-
+	
+	@Override
+	public Document proceseazaComandaMateriale(CerereAprovizionare comandaMateriale){
+		
+		return procesare.proceseazaComandaMateriale(comandaMateriale);
+	}
 	
 }

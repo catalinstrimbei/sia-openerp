@@ -3,6 +3,12 @@ package org.open.erp.services.stocuri;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.open.erp.services.nomgen.Document;
 
 /**
@@ -12,11 +18,19 @@ import org.open.erp.services.nomgen.Document;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class BonTransfer extends Document {
+	@ManyToOne@JoinColumn(name="idGestiuneOut")
 	private Gestiune gestiuneOUT;
+	@ManyToOne@JoinColumn(name="idGestiuneIn")
 	private Gestiune gestiuneIN;
+	@Temporal(TemporalType.DATE)
 	private Date dataTransfer;
+	@ManyToOne@JoinColumn(name="responsabil")
 	private Gestionar responsabil;
+	
+	
+	
 	public BonTransfer(Integer idDoc, Date dataDoc, String solicitant) {
 		super(idDoc, dataDoc);
 	}

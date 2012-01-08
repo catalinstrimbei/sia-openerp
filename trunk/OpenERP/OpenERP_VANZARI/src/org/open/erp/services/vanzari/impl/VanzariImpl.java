@@ -60,7 +60,7 @@ public class VanzariImpl implements VanzariSrv{
 		while(iterator.hasNext()){
 			LinieComanda linieComanda = iterator.next();
 			LinieFacturaEmisa linieFactura = new LinieFacturaEmisa();
-			prodAdaugat = true; //procesareFactura.checkDisponibilitateProdus(linieComanda.getProdus(), linieComanda.getCantitate());
+			prodAdaugat = procesareFactura.checkDisponibilitateProdus(linieComanda.getProdus(), linieComanda.getCantitate());
 			if( prodAdaugat){
 				try{
 					//linieFactura.setProdus(linieComanda.getProdus());

@@ -1,5 +1,10 @@
 package org.open.erp.services.stocuri;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * 
  * @author echipa.stocuri
@@ -7,10 +12,14 @@ package org.open.erp.services.stocuri;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class Depozit {
+	@Id@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idDepozit;
 	private String Locatie;
 	private String suprafata;
+	
+	
 	public Depozit() {
 		super();
 	}

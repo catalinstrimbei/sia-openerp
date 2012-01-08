@@ -44,7 +44,7 @@ public class Procesare {
 		logger.loggeazaDEBUG("Creare obiect Procesare.-----");
 	}
 
-	public Document preoceseazaComandaMateriale(
+	public Document proceseazaComandaMateriale(
 			CerereAprovizionare comandaMateriale) {
 		logger.loggeazaDEBUG("Inceput Procesare comanda Materiale.-----");
 		try {
@@ -333,6 +333,7 @@ public class Procesare {
 			}
 
 		}
+				
 		if (!are) {
 			throw new IesiriStocExceptions(
 					"Gestiunea out  nu contine materialul/produsul necesar transferului !!");

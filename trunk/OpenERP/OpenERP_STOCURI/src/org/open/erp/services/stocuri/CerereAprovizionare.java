@@ -2,6 +2,8 @@ package org.open.erp.services.stocuri;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import org.open.erp.services.nomgen.Document;
 /**
  * 
@@ -10,6 +12,7 @@ import org.open.erp.services.nomgen.Document;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class CerereAprovizionare extends Document  {
 	private String livrarePartiala;
 

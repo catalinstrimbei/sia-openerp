@@ -74,29 +74,6 @@ public class Comanda {
 		}
 		return suma;
 	}
-	
-	public Double calculeazaReducereTotal() throws ValoareNegativa{
-		Iterator<LinieComanda> iterator = this.produseComandate.iterator();
-		Double reducere = 0.0;
-		while(iterator.hasNext()){
-			LinieComanda produs = iterator.next();
-			reducere += produs.getValoareRedusa(); 
-		}
-		return reducere;
-	}
-	
-	/*public Double calculDiscountComanda() throws ValoareNegativa{
-		Double discount = 0.0;
-		//Comanda comanda = Comanda.gasesteComanda(nrComanda);
-		// preluare discount din BD
-		discount = 0.05;
-		return  discount * this.calculeazaValoareFaraDiscount();
-		//return discount;
-	}
-	
-	public Double calculeazaValoareCuDiscount() throws ValoareNegativa{
-		return (this.calculeazaValoareFaraDiscount() - this.calculDiscountComanda());
-	}*/
 				
 	public Integer getNrComanda() {
 		return nrComanda;

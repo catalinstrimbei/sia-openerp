@@ -2,6 +2,15 @@ package org.open.erp.services.stocuri;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 /**
  * 
@@ -11,13 +20,17 @@ import java.util.Date;
  * 
  */
 
-
+@Entity
 public class LoturiIntrari implements Comparable<LoturiIntrari>{
+	@Id@GeneratedValue(strategy=GenerationType.AUTO)
 	private	Integer idLot;
 	private Integer cantitate;
 	private Double pretIntrare;
+	@Temporal(TemporalType.DATE)
 	private Date dataIntrare;
+	@ManyToOne@JoinColumn(name="idArticolStoc")
 	private ArticolStoc articol;
+	
 	public LoturiIntrari() {
 		super();
 	}

@@ -2,6 +2,8 @@ package org.open.erp.services.stocuri;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import org.open.erp.services.nomgen.Document;
 
 
@@ -13,10 +15,11 @@ import org.open.erp.services.nomgen.Document;
  * 
  */
 
-
+@Entity
 public class PrioritateMaterialeProductie extends Document  {
 	private Document comMatariale;
 	private String inchisa;
+	
 	public PrioritateMaterialeProductie(Integer idDoc, Date dataDoc,
 			String solicitant) {
 		super(idDoc, dataDoc);

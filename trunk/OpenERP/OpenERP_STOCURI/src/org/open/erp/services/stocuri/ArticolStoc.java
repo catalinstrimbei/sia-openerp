@@ -5,6 +5,14 @@ package org.open.erp.services.stocuri;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import org.open.erp.services.nomgen.Material;
 
 
@@ -16,13 +24,18 @@ import org.open.erp.services.nomgen.Material;
  * @BusinessObject(Entity)
  * 
  */
-
+@Entity
 public class ArticolStoc  {
+	@Id@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idArticolStoc;
 	private Integer catitateStocPeGestiune;
+	@ManyToOne@JoinColumn(name="idGestiune")
 	private Gestiune gestiune;
+	@ManyToOne@JoinColumn(name="material")
 	private Material material;
+	@OneToMany(mappedBy="articol")
 	private List<LoturiIntrari> loturiIntrariArt=  new LinkedList<LoturiIntrari>();
+	
 	
 	public ArticolStoc() {
 		super();
