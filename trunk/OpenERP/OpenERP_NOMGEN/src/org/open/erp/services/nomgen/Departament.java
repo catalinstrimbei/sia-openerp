@@ -6,7 +6,7 @@ package org.open.erp.services.nomgen;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+
 import javax.persistence.Id;
 
 
@@ -19,18 +19,19 @@ import javax.persistence.Id;
 @Entity
 
 public class Departament {
-	@Id @GeneratedValue
-	private Integer Id;
+	//@Id @GeneratedValue
+	public Integer Id;
     
-	private String Denumire;
-	private String Atributii;
+	public String Denumire;
+	public String Atributii;
 
-	private List<String> Telefoane;
+	public List<String> Telefoane;
 	
-	private List<String> Emailuri;
+	public List<String> Emailuri;
 	/**
 	 * @return the id
 	 */
+	@Id
 	public Integer getId() {
 		return Id;
 	}

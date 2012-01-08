@@ -1,24 +1,20 @@
 
 package org.open.erp.services.nomgen;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 
 /*
  * @author Echipa NomGen
  * @BusinessObject(Entity)
  */
  
-@Entity
+//@Entity
 public class MijlocFix {
-	@Id @GeneratedValue
-	private Integer id;
-	private String  denumire;
-	private String  adresa;
-	private Integer valoare;
-	private Integer termenExploatare;
+	//@Id @GeneratedValue
+	public Integer id;
+	public String  denumire;
+	public String  adresa;
+	public Integer valoare;
+	public Integer termenExploatare;
 	
 	/**
 	 * @return the id

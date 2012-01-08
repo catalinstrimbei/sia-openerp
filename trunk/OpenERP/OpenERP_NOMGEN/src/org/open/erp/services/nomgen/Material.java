@@ -1,7 +1,7 @@
 package org.open.erp.services.nomgen;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+
 import javax.persistence.Id;
 
 
@@ -12,14 +12,14 @@ import javax.persistence.Id;
 @Entity
 
 public class Material { 
-	@Id @GeneratedValue
-	private Integer idMaterial; 
-	private String denumire; 
-	private String categorie;  
-	private String UM; 
+	//@Id @GeneratedValue
+	public Integer idMaterial; 
+	public String denumire; 
+	public String categorie;  
+	public String UM; 
 	
 	//public Integer stocCurent;  
-	private String tipContabil;
+	public String tipContabil;
 
 	
 	public Material (Integer idMaterial, String denumire, 
@@ -54,7 +54,7 @@ public class Material {
         return tipContabil;
     }
 
-	
+	@Id
 	public Integer getIdMaterial() {     
 		return idMaterial; 
 		}  

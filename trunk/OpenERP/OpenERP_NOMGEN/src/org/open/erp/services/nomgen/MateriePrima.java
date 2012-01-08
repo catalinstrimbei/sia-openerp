@@ -3,8 +3,7 @@ package org.open.erp.services.nomgen;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
 
 /*
  * @author Echipa NomGen
@@ -14,16 +13,17 @@ import javax.persistence.Id;
 @Entity
 public class MateriePrima extends Material{
 //@Id @GeneratedValue
-	private Integer id;
-	private String  denumire;
-	private String  unitateMasura;
-	private Date    dataFabricatiei;
-	private Integer termenValabilitate;
+	public Integer id;
+	public String  denumire;
+	public String  unitateMasura;
+	public Date    dataFabricatiei;
+	public Integer termenValabilitate;
 	
 	
 	/**
 	 * @return the id
 	 */
+
 	public Integer getId() {
 		return id;
 	}

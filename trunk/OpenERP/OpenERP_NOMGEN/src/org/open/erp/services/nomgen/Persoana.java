@@ -3,7 +3,6 @@ package org.open.erp.services.nomgen;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /*
@@ -13,17 +12,18 @@ import javax.persistence.Id;
  */
 @Entity
 public class Persoana {
-	@Id @GeneratedValue
-	private Integer id;
-	private String  adresa;
 	
-	private List<String> telefoane;
-	private List<String> emailuri;
+	public Integer id;
+	public String  adresa;
+	
+	public List<String> telefoane;
+	public List<String> emailuri;
 	
 	
 	/**
 	 * @return the id
 	 */
+	@Id
 	public Integer getId() {
 		return id;
 	}

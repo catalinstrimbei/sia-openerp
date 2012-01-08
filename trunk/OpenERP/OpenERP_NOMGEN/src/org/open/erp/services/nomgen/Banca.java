@@ -2,9 +2,6 @@
 package org.open.erp.services.nomgen;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 
 
 
@@ -14,9 +11,9 @@ import javax.persistence.InheritanceType;
  */
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Banca extends PersoanaJuridica {
-	@ManyToOne
+	//@ManyToOne
 	PersoanaJuridica pj;
 	private String CapSocial;
 	

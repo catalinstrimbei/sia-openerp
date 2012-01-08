@@ -4,7 +4,7 @@ package org.open.erp.services.nomgen;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+
 import javax.persistence.Id;
 
 /**
@@ -14,14 +14,16 @@ import javax.persistence.Id;
 
 @Entity
 public class Partener {
-	@Id @GeneratedValue
-	private Integer id;
-	private Integer idPersoana;
-	private Date    dataAfilierii;
-	private Integer durataAfilierii;
+	//@Id @GeneratedValue
+	public Integer id;
+	public Integer idPersoana;
+	public Date    dataAfilierii;
+	public Integer durataAfilierii;
 	/**
 	 * @return the id
 	 */
+	
+	@Id
 	public Integer getId() {
 		return id;
 	}

@@ -1,13 +1,23 @@
 package org.open.erp.services.nomgen.impl;
 
-import java.util.Date;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Stateful;
 
-import org.open.erp.services.nomgen.Banca;
-import org.open.erp.services.nomgen.Departament;
-import org.open.erp.services.nomgen.Divizie;
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
+import org.apache.log4j.Logger;
+
+
+import org.open.erp.services.nomgen.Departament;
+import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
@@ -18,6 +28,10 @@ import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.nomgen.PersoanaJuridica;
 import org.open.erp.services.nomgen.Produs;
+import org.open.erp.services.nomgen.RegistruDepartament;
+import org.open.erp.services.nomgen.RegistruDocument;
+import org.open.erp.services.nomgen.RegistruPersoana;
+import org.open.erp.services.nomgen.RegistruProdus;
 
 /**
  * @author Echipa NomGen
@@ -27,501 +41,386 @@ import org.open.erp.services.nomgen.Produs;
 @Stateful
 public class NomenclatoareDummyImpl implements NomenclatoareSrv, NomenclatoareSrvRemote, NomenclatoareSrvLocal {
 
-	@Override
-	public Persoana creazaPersoana(Integer id, String adresa) {
-		Persoana persoana = new Persoana();
-		
-		persoana.setId(id);
-		persoana.setAdresa(adresa);
-		
-		
-		return persoana;
-	}
+	
+	/* Dependente resurse proprii*/
+	private static Logger logger = Logger.getLogger(NomenclatoareDummyImpl.class.getName());
+	
+	/* Dependente resurse injectate*/
+	@PersistenceContext(unitName="OpenERP_NOMGEN")
+	private EntityManager em;	
+	@Resource
+	//private SessionContext sessionContext;		
+	private NomenclatoareSrvLocal nomenclatoareSrv;
+	private RegistruDocument rd;
+	private RegistruPersoana rp;
+	private RegistruProdus rprod;
+	private RegistruDepartament rdep;
+	
 
-	@Override
-	public Persoana getPersoanaCuId(Integer id) {
-		Persoana persoanaDummy = new Persoana();
+	/* Initializare */
+	public NomenclatoareDummyImpl() { }
+	@PostConstruct
+	public void init(){ 
+		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
+		logger.debug(">>>>>>>>>>>> Exista NomenclatoareSrv? " + nomenclatoareSrv);		
 		
-		persoanaDummy.setId(id);
-		persoanaDummy.setAdresa("dummy");
+		if (this.nomenclatoareSrv== null)
+			rd = new RegistruDocument(em);
+			rp = new RegistruPersoana(em);
+			rprod = new RegistruProdus(em);
+			rdep = new RegistruDepartament(em);
+	}
+	@Override
+	public Set<PersoanaFizica> getPF() {
+		return rp.getPF();
+		
+	}
+	@Override
+	public PersoanaFizica getPF(String idPersoana) {
+		return rp.getPF(idPersoana);
+	
+	}
+	@Override
+	public Set<Partener> getPartener() {
+		return rp.getPartener();
+	
+	}
+	@Override
+	public Partener getPartenerDupaCodPersoana(String idPersoana) {
+		return rp.getPartenerDupaCodPersoana(idPersoana);
+		
+	}
+	@Override
+	public Set<PersoanaJuridica> getPJ() {
+		
+		return  rp.getPJ();
+	}
+	@Override
+	public PersoanaJuridica getPJ(String idPersoana) {
+
+		return rp.getPJ(idPersoana);
+	}
+	@Override
+	public void addPersoana(Persoana persoana) {
+		return;
+		
+	}
+	@Override
+	public void removePersoana(Persoana persoana) {
+		rp.removePersoana(persoana);
+		
+	}
+	@Override
+	public void refreshPersoana(Persoana persoana) {
+		rp.refreshPersoana(persoana);
+		
+	}
+	@Override
+	public void addPartener(Partener partener) {
+		rp.addPartener(partener);
+		
+	}
+	@Override
+	public void removePartener(Partener partener) {
+		rp.removePartener(partener);
+		
+	}
+	@Override
+	public void refreshPartener(Partener partener) {
+		rp.refreshPartener(partener);
+		
+	}
+	@Override
+	public void addPersoanaFizica(PersoanaFizica pf) {
+		rp.addPersoanaFizica(pf);
+		
+	}
+	@Override
+	public void removePersoanaFizica(PersoanaFizica pf) {
+		rp.removePersoanaFizica(pf);
+		
+	}
+	@Override
+	public void refreshPersoanaFizica(PersoanaFizica pf) {
+		rp.refreshPersoanaFizica(pf);
+		
+	}
+	@Override
+	public void addPersoanaJuridica(PersoanaJuridica pj) {
+		rp.addPersoanaJuridica(pj);
+		
+	}
+	@Override
+	public void removePersoanaJuridica(PersoanaJuridica pj) {
+		rp.removePersoanaJuridica(pj);
+		
+	}
+	@Override
+	public void refreshPersoanaJuridica(PersoanaJuridica pj) {
+		rp.refreshPersoanaJuridica(pj);
+		
+	}
+	@Override
+	public Persoana getPersoanaDupaAdresa(String adresa) {
 
 		
-		return persoanaDummy;
+		return rp.getPersoanaDupaAdresa(adresa);
+	}
+	@Override
+	public Long getCountPersoane() {
+		
+		return rp.getCountPersoane();
+	}
+	@Override
+	public Set<Document> getDocumente() {
+		
+		return rd.getDocumente();
+	}
+	@Override
+	public Document getDocumentDupaCod(String codDocument) {
+		
+		return rd.getDocumentDupaCod(codDocument);
+	}
+	@Override
+	public Set<LinieDocument> getLinieDocument() {
+		
+		return rd.getLinieDocument();
+	}
+	@Override
+	public LinieDocument getLinieDocumentDupaCodDoc(String codDocument) {
+		// TODO Auto-generated method stub
+		return rd.getLinieDocumentDupaCodDoc(codDocument);
+	}
+	@Override
+	public LinieDocument getLinieDocumentDupaMaterial(Material m) {
+		// TODO Auto-generated method stub
+		return rd.getLinieDocumentDupaMaterial(m);
+	}
+	@Override
+	public void addDocument(Document document) {
+		// TODO Auto-generated method stub
+		 rd.addDocument(document);
+	}
+	@Override
+	public void addLinieDocument(LinieDocument ld) {
+		rd.addLinieDocument(ld);
+		
+	}
+	@Override
+	public void removeDocument(Document document) {
+		rd.removeDocument(document);
+		
+	}
+	@Override
+	public void removeLinieDocument(LinieDocument ld) {
+		rd.removeLinieDocument(ld);
+		
+	}
+	@Override
+	public void refreshDocument(Document document) {
+		rd.refreshDocument(document);
+		
+	}
+	@Override
+	public void refreshLinieDocument(LinieDocument ld) {
+		// TODO Auto-generated method stub
+		rd.removeLinieDocument(ld);
+	}
+	@Override
+	public Document getDocumentDupaNrDocument(String nrDocument) {
+		// TODO Auto-generated method stub
+		return rd.getDocumentDupaNrDocument(nrDocument);
+	}
+	@Override
+	public Long getCountDocumente() {
+		// TODO Auto-generated method stub
+		return rd.getCountDocumente();
+	}
+	@Override
+	public List<Produs> getProduse() {
+		// TODO Auto-generated method stub
+		return rprod.getProduse();
+	}
+	@Override
+	public void setProduse(List<Produs> produse) {
+		rprod.setProduse(produse);
+		
+	}
+	@Override
+	public void generateRandomProduse(Integer nrProduse) {
+		// TODO Auto-generated method stub
+		rprod.generateRandomProduse(nrProduse);
+		
+	}
+	@Override
+	public Collection<Produs> getProduseOrdonateDupaId() {
+		// TODO Auto-generated method stub
+		return rprod.getProduseOrdonateDupaId();
+	}
+	@Override
+	public Produs getProdusDupaCod(Integer id) {
+		// TODO Auto-generated method stub
+		return rprod.getProdusDupaCod(id);
+	}
+	@Override
+	public Collection<MijlocFix> getMFOrdonatbyId() {
+		// TODO Auto-generated method stub
+		return rprod.getMFOrdonatbyId();
+	}
+	@Override
+	public MijlocFix getMFDupaCod(Integer id) {
+		// TODO Auto-generated method stub
+		return rprod.getMFDupaCod(id);
+	}
+	@Override
+	public Collection<Material> getMaterialOrdonatbyId() {
+		// TODO Auto-generated method stub
+		return rprod.getMaterialOrdonatbyId();
+	}
+	@Override
+	public Material getMaterialDupaCod(Integer id) {
+		// TODO Auto-generated method stub
+		return rprod.getMaterialDupaCod(id);
+	}
+	@Override
+	public Collection<MateriePrima> getMPOrdonatbyId() {
+		// TODO Auto-generated method stub
+		return rprod.getMPOrdonatbyId();
+	}
+	@Override
+	public MateriePrima getMPDupaCod(Integer id) {
+		// TODO Auto-generated method stub
+		return rprod.getMPDupaCod(id);
+	}
+	@Override
+	public void addProdus(Produs p) {
+		// TODO Auto-generated method stub
+		rprod.addProdus(p);
+	}
+	@Override
+	public void removeProdus(Produs p) {
+		// TODO Auto-generated method stub
+		rprod.removeProdus(p);
+	}
+	@Override
+	public void refreshProdus(Produs p) {
+		// TODO Auto-generated method stub
+		rprod.refreshProdus(p);
+	}
+	@Override
+	public void addMF(MijlocFix m) {
+		// TODO Auto-generated method stub
+		rprod.addMF(m);
+	}
+	@Override
+	public void removeMijlocFix(MijlocFix m) {
+		// TODO Auto-generated method stub
+		rprod.removeMijlocFix(m);
+	}
+	@Override
+	public void refreshMF(MijlocFix m) {
+		// TODO Auto-generated method stub
+		rprod.refreshMF(m);
+	}
+	@Override
+	public void addMP(MateriePrima mp) {
+		// TODO Auto-generated method stub
+		rprod.addMP(mp);
+	}
+	@Override
+	public void removeMP(MateriePrima mp) {
+		// TODO Auto-generated method stub
+		rprod.removeMP(mp);
+	}
+	@Override
+	public void refreshMP(MateriePrima mp) {
+		// TODO Auto-generated method stub
+		rprod.refreshMP(mp);
+	}
+	@Override
+	public void addMaterial(Material m) {
+		// TODO Auto-generated method stub
+		rprod.addMaterial(m);
+	}
+	@Override
+	public void removeMaterial(Material m) {
+		// TODO Auto-generated method stub
+		rprod.removeMaterial(m);
+	}
+	@Override
+	public void refreshMaterial(Material m) {
+		// TODO Auto-generated method stub
+		rprod.refreshMaterial(m);
 	}
 	
+	
 	@Override
-	public Persoana cautarePersoanaDupaAdresa(String adresa) {
-		Persoana persoanaDummy = new Persoana();
-		
-		persoanaDummy.setId(-1);
-		persoanaDummy.setAdresa(adresa);
+	public void synchronize() {
 		
 		
-		return persoanaDummy;
 	}
-	
-	
 	@Override
-	public PersoanaFizica creazaPersoanaFizica(Integer id, String adresa,
-                                               String nume, String prenume, String formaAdresare, char gen, String cnp) {
-		PersoanaFizica persoanaFizica = new PersoanaFizica();
-		
-		persoanaFizica.setId(id);
-		persoanaFizica.setAdresa(adresa);
-		
-		persoanaFizica.setNume(nume);
-		persoanaFizica.setPrenume(prenume);
-		persoanaFizica.setFormaAdresare(formaAdresare);
-		persoanaFizica.setGen(gen);
-		persoanaFizica.setCnp(cnp);
-		
-		return persoanaFizica;
+	public Produs getProdus(Integer idProdus) throws Exception {
+		// TODO Auto-generated method stub
+		return rprod.getProdus(idProdus);
 	}
-	
 	@Override
-	public PersoanaFizica getPersoanaFizicaCuId(Integer id) {
-		PersoanaFizica persoanaFizicaDummy = new PersoanaFizica();
-		
-		persoanaFizicaDummy.setId(id);
-		persoanaFizicaDummy.setAdresa("dummy");
-	
-		persoanaFizicaDummy.setNume("dummy");
-		persoanaFizicaDummy.setPrenume("dummy");
-		persoanaFizicaDummy.setGen('M');
-		persoanaFizicaDummy.setCnp("dummy");
-		
-		return persoanaFizicaDummy;
-	}
-
-	@Override
-	public PersoanaFizica cautarePersoanaFizicaDupaNume(String nume) {
-		PersoanaFizica persoanaFizicaDummy = new PersoanaFizica();
-		
-		persoanaFizicaDummy.setId(-1);
-		persoanaFizicaDummy.setAdresa("dummy");
-		
-		persoanaFizicaDummy.setNume(nume);
-		persoanaFizicaDummy.setPrenume("dummy");
-		persoanaFizicaDummy.setGen('M');
-		persoanaFizicaDummy.setCnp("dummy");
-		
-		return persoanaFizicaDummy;
-	}
-	
-	@Override
-	public PersoanaFizica cautarePersoanaFizicaDupaPrenume(String prenume) {
-		PersoanaFizica persoanaFizicaDummy = new PersoanaFizica();
-		
-		persoanaFizicaDummy.setId(-1);
-		persoanaFizicaDummy.setAdresa("dummy");
-		
-		persoanaFizicaDummy.setNume("dummy");
-		persoanaFizicaDummy.setPrenume(prenume);
-		persoanaFizicaDummy.setGen('M');
-		persoanaFizicaDummy.setCnp("dummy");
-		
-		return persoanaFizicaDummy;
-	}
-	
-	@Override
-	public PersoanaFizica cautarePersoanaFizicaDupaAdresa(String adresa) {
-		PersoanaFizica persoanaFizicaDummy = new PersoanaFizica();
-		
-		persoanaFizicaDummy.setId(-1);
-		persoanaFizicaDummy.setAdresa(adresa);
-		
-		persoanaFizicaDummy.setNume("dummy");
-		persoanaFizicaDummy.setPrenume("dummy");
-		persoanaFizicaDummy.setGen('M');
-		persoanaFizicaDummy.setCnp("dummy");
-		
-		return persoanaFizicaDummy;
-	}
-	
-	
-	@Override
-    public PersoanaJuridica creazaPersoanaJuridica(Integer id, String adresa,
-                                                   String denumire, String codFiscal, String nrInmatriculareFiscala, String atributFiscal) {
-		PersoanaJuridica persoanaJuridica = new PersoanaJuridica();
-		
-		persoanaJuridica.setId(id);
-		persoanaJuridica.setAdresa(adresa);
-		
-		persoanaJuridica.setDenumire(denumire);
-		persoanaJuridica.setCodFiscal(codFiscal);
-		persoanaJuridica.setNrInmatriculareFiscala(nrInmatriculareFiscala);
-		persoanaJuridica.setAtributFiscal(atributFiscal);
-		
-		return persoanaJuridica;
-	}
-	
-	@Override
-    public PersoanaJuridica getPersoanaJuridicaCuId(Integer id) {
-		PersoanaJuridica persoanaJuridicaDummy = new PersoanaJuridica();
-		
-		persoanaJuridicaDummy.setId(id);
-		persoanaJuridicaDummy.setAdresa("dummy");
-		
-		persoanaJuridicaDummy.setDenumire("dummy");
-		persoanaJuridicaDummy.setCodFiscal("dummy");
-		persoanaJuridicaDummy.setNrInmatriculareFiscala("dummy");
-		persoanaJuridicaDummy.setAtributFiscal("dummy");
-		
-		return persoanaJuridicaDummy;
+	public PersoanaFizica cautarePersoanaFizicaDupaPrenume(String nume) {
+		// TODO Auto-generated method stub
+		return rp.cautarePersoanaFizicaDupaPrenume(nume);
 	}
 	
 	@Override
 	public PersoanaJuridica cautarePersoanaJuridicaDupaDenumire(String denumire) {
-		PersoanaJuridica persoanaJuridicaDummy = new PersoanaJuridica();
-		
-		persoanaJuridicaDummy.setId(-1);
-		persoanaJuridicaDummy.setAdresa("dummy");
-		
-		persoanaJuridicaDummy.setDenumire(denumire);
-		persoanaJuridicaDummy.setCodFiscal("dummy");
-		persoanaJuridicaDummy.setNrInmatriculareFiscala("dummy");
-		persoanaJuridicaDummy.setAtributFiscal("dummy");
-		
-		return persoanaJuridicaDummy;
+		// TODO Auto-generated method stub
+		return rp.cautarePersoanaJuridicaDupaDenumire(denumire);
 	}
-	
 	@Override
-	public PersoanaJuridica cautarePersoanaJuridicaDupaAdresa(String adresa) {
-		PersoanaJuridica persoanaJuridicaDummy = new PersoanaJuridica();
-		
-		persoanaJuridicaDummy.setId(-1);
-		persoanaJuridicaDummy.setAdresa(adresa);
-		
-		persoanaJuridicaDummy.setDenumire("dummy");
-		persoanaJuridicaDummy.setCodFiscal("dummy");
-		persoanaJuridicaDummy.setNrInmatriculareFiscala("dummy");
-		persoanaJuridicaDummy.setAtributFiscal("dummy");
-		
-		return persoanaJuridicaDummy;
+	public Produs CautareProdusDupaDenumire(String denumire) {
+		// TODO Auto-generated method stub
+		return rprod.CautareProdusDupaDenumire(denumire);
 	}
-	
-	
 	@Override
-	public Produs creazaProdus(Integer id, String denumire, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate) {
-		Produs produs = new Produs();
-		
-		produs.setId(id);
-		produs.setDenumire(denumire);
-		produs.setUnitateMasura(unitateMasura);
-		produs.setDataFabricatiei(dataFabricatiei);
-		produs.setTermenValabilitate(termenValabilitate);
-		
-		return produs;
+	public Set<Departament> getDepartament() {
+		// TODO Auto-generated method stub
+		return rdep.getDepartament();
 	}
-	
 	@Override
-	public Produs getProdusCuId(Integer id) {
-		Produs produsDummy = new Produs();
-		
-		produsDummy.setId(id);
-		produsDummy.setDenumire("dummy");
-		produsDummy.setUnitateMasura("dummy");
-		produsDummy.setDataFabricatiei(new Date());
-		produsDummy.setTermenValabilitate(-1);
-		
-		return produsDummy;
+	public Departament getDepDupaCod(Integer codDep) {
+		// TODO Auto-generated method stub
+		return rdep.getDepDupaCod(codDep);
 	}
-	
 	@Override
-	public Produs cautareProdusDupaDenumire(String denumire) {
-		Produs produsDummy = new Produs();
-		
-		produsDummy.setId(-1);
-		produsDummy.setDenumire(denumire);
-		produsDummy.setUnitateMasura("dummy");
-		produsDummy.setDataFabricatiei(new Date());
-		produsDummy.setTermenValabilitate(-1);
-		
-		return produsDummy;
+	public void addDepartament(Departament document) {
+		// TODO Auto-generated method stub
+		rdep.addDepartament(document);
+	}
+	@Override
+	public void removeDepartament(Departament document) {
+		// TODO Auto-generated method stub
+		rdep.removeDepartament(document);
+	}
+	@Override
+	public Departament getDepartamentDupaDenumire(String den) {
+		// TODO Auto-generated method stub
+		return rdep.getDepartamentDupaDenumire(den);
+	}
+	@Override
+	public Long getCountDepartament() {
+		// TODO Auto-generated method stub
+		return rdep.getCountDepartament();
 	}
 	
 	
-	@Override
-	public MateriePrima creazaMateriePrima(Integer id, String denumire, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate) {
-		MateriePrima materiePrima = new MateriePrima();
-		
-		materiePrima.setId(id);
-		materiePrima.setDenumire(denumire);
-		materiePrima.setUnitateMasura(unitateMasura);
-		materiePrima.setDataFabricatiei(dataFabricatiei);
-		materiePrima.setTermenValabilitate(termenValabilitate);
-		
-		return materiePrima;
-	}
-	
-	@Override
-	public MateriePrima getMateriePrimaCuId(Integer id) {
-		MateriePrima materiePrimaDummy = new MateriePrima();
-		
-		materiePrimaDummy.setId(id);
-		materiePrimaDummy.setDenumire("dummy");
-		materiePrimaDummy.setUnitateMasura("dummy");
-		materiePrimaDummy.setDataFabricatiei(new Date());
-		materiePrimaDummy.setTermenValabilitate(-1);
-		
-		return materiePrimaDummy;
-	}
-	
-	@Override
-	public MateriePrima cautareMateriePrimaDupaDenumire(String denumire) {
-		MateriePrima materiePrimaDummy = new MateriePrima();
-		
-		materiePrimaDummy.setId(-1);
-		materiePrimaDummy.setDenumire(denumire);
-		materiePrimaDummy.setUnitateMasura("dummy");
-		materiePrimaDummy.setDataFabricatiei(new Date());
-		materiePrimaDummy.setTermenValabilitate(-1);
-		
-		return materiePrimaDummy;
-	}
-	
-// Bianca - Mijloc Fix si Partener
-	
-	@Override
-	public MijlocFix creazaMijlocFix(Integer id, String denumire, String adresa, Integer valoare, Integer termenExploatare) {
-		MijlocFix mijlocFix = new MijlocFix();
-		
-		mijlocFix.setId(id);
-		mijlocFix.setDenumire(denumire);
-		mijlocFix.setAdresa(adresa);
-		mijlocFix.setValoare(valoare);
-		mijlocFix.setTermenExploatare(termenExploatare);
-		
-		return mijlocFix;
-		}
-
-		
-	@Override
-	public MijlocFix getMijlocFixCuId(Integer id){
-	   
-		MijlocFix mijlocfixDummy = new MijlocFix();
-		
-		mijlocfixDummy.setId(id);
-		mijlocfixDummy.setDenumire("dummy");
-		mijlocfixDummy.setAdresa("dummy");
-		mijlocfixDummy.setValoare(-1);
-		mijlocfixDummy.setTermenExploatare(-1);
-		
-		return mijlocfixDummy;
-	}
-	
-	@Override
-	public MijlocFix cautareMijlocFixDupaDenumire(String denumire) {
-		
-		MijlocFix mijlocfixDummy = new MijlocFix();
-		
-		mijlocfixDummy.setId(-1);
-		mijlocfixDummy.setDenumire(denumire);
-		mijlocfixDummy.setAdresa("dummy");
-		mijlocfixDummy.setValoare(-1);
-		mijlocfixDummy.setTermenExploatare(-1);
-		
-		return mijlocfixDummy;
-	}
- 
-    public MijlocFix cautareMijlocFixDupaAdresa(String adresa) {
-		
-		MijlocFix mijlocfixDummy = new MijlocFix();
-		
-		mijlocfixDummy.setId(-1);
-		mijlocfixDummy.setDenumire("dummy");
-		mijlocfixDummy.setAdresa(adresa);
-		mijlocfixDummy.setValoare(-1);
-		mijlocfixDummy.setTermenExploatare(-1);
-		
-		return mijlocfixDummy;
-	}
 	
 	
-	@Override
-	public Partener creazaPartener(Integer id,Integer idPersoana,Date dataAfilierii,Integer durataAfilierii) {
-		Partener partener= new Partener();
-		
-		partener.setId(id);
-		partener.setIdPersoana(idPersoana);
-		partener.setDataAfilierii(dataAfilierii);
-		partener.setDurataAfilierii(durataAfilierii);
-				
-		return partener;
-	}
 	
-	@Override
-	public Partener getPartenerCuId(Integer id) {
-		Partener  partenerDummy = new Partener();
-		
-		partenerDummy.setId(id);
-		partenerDummy.setIdPersoana(-1);
-		partenerDummy.setDataAfilierii(new Date());
-		partenerDummy.setDurataAfilierii(-1);
-	
-		
-		return partenerDummy;
-	}
-	
-	@Override
-	public Partener cautarePartenerDupaIdPersoana(Integer IdPersoana) {
-		Partener  partenerDummy= new Partener();
-		
-		partenerDummy.setId(-1);
-		partenerDummy.setIdPersoana(IdPersoana);
-		partenerDummy.setDataAfilierii(new Date());
-		partenerDummy.setDurataAfilierii(-1);
-			
-		return partenerDummy;
 	}
 
-	//Max 
 	
-	@Override
-	public Banca creazaBanca(Integer id, String capSocial, String denumire) {
-		Banca banca = new Banca();
-		
-		banca.setId(id);
-		
-		banca.setCapSocial(capSocial);
-		banca.setDenumire(denumire);
-		
-		return banca;
-	}
 	
-	@Override
-	public Banca getBancaCuId(Integer id) {
-		Banca  bancaDummy = new Banca();
-		
-		bancaDummy.setId(id);
-		
-		bancaDummy.setCapSocial("dummy");
 	
-		
-		return bancaDummy;
-	}
 	
-	@Override
-	public Banca cautareBancaDupaId(Integer id) {
-		Banca  bancaDummy= new Banca();
-		
-		bancaDummy.setId(1);
 	
-		bancaDummy.setCapSocial("dummy");
-			
-		return bancaDummy;
-	}
 	
-	public Banca cautareBancaDupaDenumire(String denumire) {
-		Banca  bancaDummy= new Banca();
-		
-		bancaDummy.setId(-1);
-		
-		bancaDummy.setCapSocial("dummy");
-		bancaDummy.setDenumire("dummy");
-			
-		return bancaDummy;
-	}
 	
-	@Override
-	public Departament creazaDepartament(Integer id, String denumire, String atributii) {
-		Departament departament = new Departament();
-		
-		departament.setId(id);
-		departament.setDenumire(denumire);
-		departament.setAtributii(atributii);
-		
-		
-		return departament;
-	}
-	
-	@Override
-	public Departament getDepartamentCuId(Integer id) {
-		Departament  departamentDummy = new Departament();
-		
-		departamentDummy.setId(id);
-		departamentDummy.setDenumire("dummy");
-		departamentDummy.setAtributii("dummy");
-		
-		
-		return departamentDummy;
-	}
-	
-	@Override
-	public Departament cautareDepartamentDupaId(Integer id) {
-		Departament  departamentDummy= new Departament();
-		
-		departamentDummy.setId(1);
-		departamentDummy.setDenumire("dummy");
-		departamentDummy.setAtributii("dummy");
-		
-			
-		return departamentDummy;
-	}
-	
-	@Override
-	public Departament cautareDepartamentDupaDenumire(String denumire) {
-		Departament  departamentDummy= new Departament();
-		
-		departamentDummy.setId(-1);
-		departamentDummy.setDenumire("dummy");
-		departamentDummy.setAtributii("dummy");
-		
-		departamentDummy.setDenumire("dummy");
-			
-		return departamentDummy;
-	}
-	
-	@Override
-	public Divizie creazaDivizie(Integer id, Departament idDepartament, String denumire, String atributii) {
-		Divizie divizie = new Divizie();
-		
-		divizie.setId(id);
-		divizie.setIdDepartament(idDepartament);
-		divizie.setDenumire(denumire);
-		divizie.setAtributii(atributii);
-		
-		
-		return divizie;
-	}
-	
-	@Override
-	public Divizie getDivizieCuId(Integer id) {
-		Divizie  divizieDummy = new Divizie();
-		
-		divizieDummy.setId(id);
-		divizieDummy.setIdDepartament(new Departament());
-		divizieDummy.setDenumire("dummy");
-		divizieDummy.setAtributii("dummy");
-		
-		
-		return divizieDummy;
-	}
-	
-	@Override
-	public Divizie cautareDivizieDupaId(Integer id) {
-		Divizie  divizieDummy= new Divizie();
-		
-		divizieDummy.setId(1);
-		divizieDummy.setIdDepartament(new Departament());
-		divizieDummy.setDenumire("dummy");
-		divizieDummy.setAtributii("dummy");
-	
-			
-		return divizieDummy;
-	}
-	
-	@Override
-	public Divizie cautareDivizieDupaDenumire(String denumire) {
-		Divizie  divizieDummy= new Divizie();
-		
-		divizieDummy.setId(-1);
-		divizieDummy.setIdDepartament(new Departament());
-		divizieDummy.setDenumire("dummy");
-		divizieDummy.setAtributii("dummy");
-		
-			
-		return divizieDummy;
-	}
-	
-}

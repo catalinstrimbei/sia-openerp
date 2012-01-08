@@ -1,10 +1,7 @@
 package org.open.erp.services.nomgen;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
 /*
  * @author Echipa NomGen
  * @BusinessObject(Entity)
@@ -13,14 +10,14 @@ import java.util.*;
 @Entity
 
 public class Document {  
-	@Id @GeneratedValue
-	private Integer nrDocument;         
-	private Date dataDocument; 
-	@OneToOne
-	private Persoana persoana;//responsabil        
-	private String observatie;   
+	//@Id @GeneratedValue
+	public Integer nrDocument;         
+	public Date dataDocument; 
+	//@OneToOne
+	public Persoana persoana;//responsabil        
+	public String observatie;   
 	
-	private List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
+	public List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
 	
 	
 	public Document(Integer nrDocument, Date dataDocument, Persoana persoana,
@@ -71,7 +68,7 @@ public class Document {
 	
 	
 	
-
+    @Id
 	public Integer getNrDoc() {               
 		return nrDocument;          
 		}         

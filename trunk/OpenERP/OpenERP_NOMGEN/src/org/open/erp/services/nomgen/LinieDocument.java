@@ -1,27 +1,24 @@
 package org.open.erp.services.nomgen;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
 
 /*
  * @author Echipa NomGen
  * @BusinessObject(Entity)
  */
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class LinieDocument { 
-	@Id @GeneratedValue
+	 
+	//@GeneratedValue
 	private Integer linieDoc; 
-	@ManyToOne
-	private Document document; 
-	private Material material; 
-	private Double cantitate = 0.0;  
-	private Double pret = 0.0;  
-	private Double TVA = 0.0 ; 
+	//@ManyToOne
+	public Document document; 
+	public Material material; 
+	public Double cantitate = 0.0;  
+	public Double pret = 0.0;  
+	public Double TVA = 0.0 ; 
 	
 	public LinieDocument(Integer linieDoc, Document document, Material material,                  Double cantitate, Double pret, Double tVA) {    
 		super();          
@@ -34,6 +31,7 @@ public class LinieDocument {
 	public LinieDocument() {  
 		
 	}  
+	@Id
 	public Integer getLinieDoc() {    
 		return linieDoc;  
 		}  

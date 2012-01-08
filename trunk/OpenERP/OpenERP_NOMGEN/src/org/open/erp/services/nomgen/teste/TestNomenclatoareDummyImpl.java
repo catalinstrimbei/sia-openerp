@@ -11,6 +11,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.nomgen.PersoanaJuridica;
@@ -24,8 +30,10 @@ import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.Banca;
 import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
 
+
+
 public class TestNomenclatoareDummyImpl{
-	private NomenclatoareDummyImpl instance = null;
+	private NomenclatoareSrv instance = null;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -36,7 +44,18 @@ public class TestNomenclatoareDummyImpl{
 		instance = new NomenclatoareDummyImpl();
 		assertNotNull(instance);		
 		assertTrue(instance instanceof NomenclatoareDummyImpl);
+		
+		InitialContext ctx = initJBossJNDICtx();
+		instance = (NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
 	}
+	
+	private static InitialContext initJBossJNDICtx() throws NamingException{
+		Properties props = new Properties();
+		props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");
+		props.put("java.naming.provider.url", "jnp://localhost:1099/");
+		props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
+		return new InitialContext(props);
+		}
 
 	@After
 	public void tearDown() throws Exception {
@@ -50,9 +69,9 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testGetPersoanaCuId() {
+	public void testGetPersoanaDupaAdresa() {
 		//fail("Not yet implemented");
-		Persoana persoana = instance.getPersoanaCuId(1);
+		Persoana persoana = instance.getPersoanaDupaAdresa("A1");
 		
 		assertNotNull(persoana);
 		
@@ -62,15 +81,15 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testCautarePersoanaDupaAdresa() {
+	public void testCautarePersoanaDupaId() {
 		//fail("Not yet implemented");
 		try{
-			Persoana persoana = instance.cautarePersoanaDupaAdresa("adresa");
+			Persoana persoana = instance.getPF("2");
 			assertNotNull(persoana);
 		
 			assertTrue(persoana instanceof Persoana);
 			
-			assertEquals((String)"adresa", persoana.getAdresa());
+			assertEquals((String)"id", persoana.getAdresa());
 			
 		}catch (Exception e)
 		{ System.out.println("Eroare");}
@@ -89,7 +108,7 @@ public class TestNomenclatoareDummyImpl{
 	public void testGetPersoanaFizicaCuId() {
 		//fail("Not yet implemented");
 		
-        PersoanaFizica persoana = instance.getPersoanaFizicaCuId(1);
+        PersoanaFizica persoana = instance.getPF("1");
 		
 		assertNotNull(persoana);
 		
@@ -99,21 +118,7 @@ public class TestNomenclatoareDummyImpl{
 		
 	}
 
-	@Test
-	public void testCautarePersoanaFizicaDupaNume() {
-		//fail("Not yet implemented");
-		
-		try{
-			PersoanaFizica persoana = instance.cautarePersoanaFizicaDupaNume("nume");
-			assertNotNull(persoana);
-		
-			assertTrue(persoana instanceof PersoanaFizica);
-			
-			assertEquals((String)"nume", persoana.getNume());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
+
 
 	@Test
 	public void testCautarePersoanaFizicaDupaPrenume() {
@@ -131,20 +136,7 @@ public class TestNomenclatoareDummyImpl{
 		{ System.out.println("Eroare");}
 	}
 
-	@Test
-	public void testCautarePersoanaFizicaDupaAdresa() {
-		//fail("Not yet implemented");
-		try{
-			PersoanaFizica persoana = instance.cautarePersoanaFizicaDupaAdresa("adresa");
-			assertNotNull(persoana);
-		
-			assertTrue(persoana instanceof PersoanaFizica);
-			
-			assertEquals((String)"adresa", persoana.getAdresa());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
+	
 
 	@Test
 	public void testCreazaPersoanaJuridica() {
@@ -158,7 +150,7 @@ public class TestNomenclatoareDummyImpl{
 	public void testGetPersoanaJuridicaCuId() {
 	//	fail("Not yet implemented");
 		
-		PersoanaJuridica persoana = instance.getPersoanaJuridicaCuId(1);
+		PersoanaJuridica persoana = instance.getPJ("1");
 		
 		assertNotNull(persoana);
 		
@@ -167,33 +159,18 @@ public class TestNomenclatoareDummyImpl{
 		assertEquals((Integer)1, persoana.getId());
 	}
 
+	
 	@Test
 	public void testCautarePersoanaJuridicaDupaDenumire() {
 		//fail("Not yet implemented");
 		
 		try{
-			PersoanaJuridica persoana = instance.cautarePersoanaJuridicaDupaDenumire("denumire");
+			PersoanaJuridica persoana = instance.cautarePersoanaJuridicaDupaDenumire("adresa");
 			assertNotNull(persoana);
 		
 			assertTrue(persoana instanceof PersoanaJuridica);
 			
-			assertEquals((String)"denumire", persoana.getDenumire());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
-
-	@Test
-	public void testCautarePersoanaJuridicaDupaAdresa() {
-		//fail("Not yet implemented");
-		
-		try{
-			PersoanaJuridica persoana = instance.cautarePersoanaJuridicaDupaAdresa("adresa");
-			assertNotNull(persoana);
-		
-			assertTrue(persoana instanceof PersoanaJuridica);
-			
-			assertEquals((String)"adresa", persoana.getAdresa());
+			assertEquals((String)"denumire", persoana.getAdresa());
 			
 		}catch (Exception e)
 		{ System.out.println("Eroare");}
@@ -209,9 +186,9 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testGetProdusCuId() {
+	public void testGetProdusCuId() throws Exception {
 		//fail("Not yet implemented");
-		Produs produs = instance.getProdusCuId(1);
+		Produs produs = instance.getProdus(1);
 		
 		assertNotNull(produs);
 		
@@ -226,7 +203,7 @@ public class TestNomenclatoareDummyImpl{
 		//fail("Not yet implemented");
 		
 		try{
-			Produs produs = instance.cautareProdusDupaDenumire("denumire");
+			Produs produs = instance.CautareProdusDupaDenumire("denumire");
 			assertNotNull(produs);
 		
 			assertTrue(produs instanceof Produs);
@@ -250,7 +227,7 @@ public class TestNomenclatoareDummyImpl{
 	@Test
 	public void testGetMateriePrimaCuId() {
 		//fail("Not yet implemented");
-        MateriePrima materieprima = instance.getMateriePrimaCuId(1);
+        MateriePrima materieprima = instance.getMPDupaCod(1);
 		
 		assertNotNull(materieprima);
 		
@@ -259,21 +236,7 @@ public class TestNomenclatoareDummyImpl{
 		assertEquals((Integer)1, materieprima.getId());	
 	}
 
-	@Test
-	public void testCautareMateriePrimaDupaDenumire() {
-		//fail("Not yet implemented");
-		
-		try{
-			MateriePrima materie = instance.cautareMateriePrimaDupaDenumire("denumire");
-			assertNotNull(materie);
-		
-			assertTrue(materie instanceof MateriePrima);
-			
-			assertEquals((String)"denumire", materie.getDenumire());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
+
 
 	@Test
 	public void testCreazaMijlocFix() throws ParseException {
@@ -289,7 +252,7 @@ public class TestNomenclatoareDummyImpl{
 	@Test
 	public void testGetMijlocFixCuId() {
 		//fail("Not yet implemented");
-		 MijlocFix mijlocfix = instance.getMijlocFixCuId(1);
+		 MijlocFix mijlocfix = instance.getMFDupaCod(1);
 			
 			assertNotNull(mijlocfix);
 			
@@ -298,37 +261,9 @@ public class TestNomenclatoareDummyImpl{
 			assertEquals((Integer)1, mijlocfix.getId());	
 	}
 
-	@Test
-	public void testCautareMijlocFixDupaDenumire() {
-		//fail("Not yet implemented");
-		
-		try{
-			MijlocFix mijlocfix = instance.cautareMijlocFixDupaDenumire("denumire");
-			assertNotNull(mijlocfix);
-		
-			assertTrue(mijlocfix instanceof MijlocFix);
-			
-			assertEquals((String)"denumire", mijlocfix.getDenumire());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
 
-	@Test
-	public void testCautareMijlocFixDupaAdresa() {
-		//fail("Not yet implemented");
-		
-		try{
-			MijlocFix mijlocfix = instance.cautareMijlocFixDupaAdresa("adresa");
-			assertNotNull(mijlocfix);
-		
-			assertTrue(mijlocfix instanceof MijlocFix);
-			
-			assertEquals((String)"adresa", mijlocfix.getAdresa());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
+
+
 
 	@Test
 	public void testCreazaPartener() throws ParseException {
@@ -343,7 +278,7 @@ public class TestNomenclatoareDummyImpl{
 	@Test
 	public void testGetPartenerCuId() {
 		//fail("Not yet implemented");
-		Partener partener = instance.getPartenerCuId(1);
+		Partener partener = instance.getPartenerDupaCodPersoana("1");
 		
 		assertNotNull(partener);
 		
@@ -352,21 +287,7 @@ public class TestNomenclatoareDummyImpl{
 		assertEquals((Integer)1, partener.getId());
 	}
 
-	@Test
-	public void testCautarePartenerDupaIdPersoana() {
-		//fail("Not yet implemented");
-		
-		try{
-			Partener partener = instance.cautarePartenerDupaIdPersoana(1);
-			assertNotNull(partener);
-		
-			assertTrue(partener instanceof Partener);
-			
-			assertEquals((Integer)1, partener.getIdPersoana());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
+	
 
 	@Test
 	public void testCreazaBanca() {
@@ -377,50 +298,10 @@ public class TestNomenclatoareDummyImpl{
 		System.out.println("Am creat o banca cu id-ul "+b.getId()+", cu capitalul social de "+b.getCapSocial()+", cu denumirea "+b.getDenumire());
 	}
 
-	@Test
-	public void testGetBancaCuId() {
-	//	fail("Not yet implemented");
-       Banca banca = instance.getBancaCuId(1);
-		
-		assertNotNull(banca);
-		
-		assertTrue(banca instanceof Banca);
-		
-		assertEquals((Integer)1, banca.getId());
-		
-	}
+	
+	
 
-	@Test
-	public void testCautareBancaDupaId() {
-		//fail("Not yet implemented");
-		
-		try{
-			Banca banca = instance.cautareBancaDupaId(1);
-			assertNotNull(banca);
-		
-			assertTrue(banca instanceof Banca);
-			
-			assertEquals((Integer)1, banca.getId());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
-
-	@Test
-	public void testCautareBancaDupaDenumire() {
-		//fail("Not yet implemented");
-		
-		try{
-			Banca banca = instance.cautareBancaDupaDenumire("dummy");
-			assertNotNull(banca);
-		
-			assertTrue(banca instanceof Banca);
-			
-			assertEquals((String)"dummy", banca.getDenumire());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
+	
 
 	@Test
 	public void testCreazaDepartament() {
@@ -434,7 +315,7 @@ public class TestNomenclatoareDummyImpl{
 	public void testGetDepartamentCuId() {
 		//fail("Not yet implemented");
 		
-        Departament dep = instance.getDepartamentCuId(1);
+        Departament dep = instance.getDepDupaCod(1);
 		
 		assertNotNull(dep);
 		
@@ -444,11 +325,11 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testCautareDepartamentDupaId() {
+	public void testCautareDepartamentDupaDen() {
 		//fail("Not yet implemented");
 		
 		try{
-			Departament dep = instance.cautareDepartamentDupaId(1);
+			Departament dep = instance.getDepartamentDupaDenumire("dummy");
 			assertNotNull(dep);
 		
 			assertTrue(dep instanceof Departament);
@@ -459,78 +340,9 @@ public class TestNomenclatoareDummyImpl{
 		{ System.out.println("Eroare");}
 	}
 
-	@Test
-	public void testCautareDepartamentDupaDenumire() {
-		//fail("Not yet implemented");
-		
-		try{
-			Departament dep = instance.cautareDepartamentDupaDenumire("dummy");
-			assertNotNull(dep);
-		
-			assertTrue(dep instanceof Departament);
-			
-			assertEquals((String)"dummy", dep.getDenumire());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
-
-	@Test
-	public void testCreazaDivizie() {
-		//fail("Not yet implemented");
-		Departament d = new Departament(1,"Dep1","Atrib1");
-		Divizie b = new Divizie(1,d ,"Divizie1","Atributii");
-		System.out.println("Am creat o divizie cu id-ul "+b.getId()+b.getIdDepartament()+" "+", cu denumirea "+b.getDenumire()+", cu atributiile "+b.getAtributii());
-		
-	}
-
-	@Test
-	public void testGetDivizieCuId() {
-		//fail("Not yet implemented");
-        Divizie divizie = instance.getDivizieCuId(1);
-		
-		assertNotNull(divizie);
-		
-		assertTrue(divizie instanceof Divizie);
-		
-		assertEquals((Integer)1, divizie.getId());
-		
-	}
+	
 
 	
-	
-	@Test
-	public void testCautareDivizieDupaId() {
-		//fail("Not yet implemented");
-		
-		try{
-			Divizie div = instance.cautareDivizieDupaId(1);
-			assertNotNull(div);
-		
-			assertTrue(div instanceof Divizie);
-			
-			assertEquals((Integer)1, div.getId());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-			
-	}
-
-	@Test
-	public void testCautareDivizieDupaDenumire() {
-		//fail("Not yet implemented");
-		
-		try{
-			Divizie div = instance.cautareDivizieDupaDenumire("dummy");
-			assertNotNull(div);
-		
-			assertTrue(div instanceof Divizie);
-			
-			assertEquals((String)"dummy", div.getDenumire());
-			
-		}catch (Exception e)
-		{ System.out.println("Eroare");}
-	}
 
 
 }
