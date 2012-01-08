@@ -23,7 +23,7 @@ public class Chestionar implements Serializable {
 	@Id @GeneratedValue
 	Integer				idChestionar;
 	String				denumireChestionar;	
-    @ManyToOne @JoinColumn (name = "idPersoana")
+    @ManyToOne @JoinColumn (name = "idResponsabil")
 	Responsabil			Responsabil; 
 	String				scopChestionar;
 	Integer				numarIntrebari;
