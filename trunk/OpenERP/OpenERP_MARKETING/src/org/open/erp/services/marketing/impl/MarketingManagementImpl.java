@@ -32,7 +32,7 @@ import org.open.erp.services.nomgen.Produs;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-@Stateful
+@Stateful(name="MarketingManagementSrv")
 public class MarketingManagementImpl implements MarketingManagementSrv, MarketingManagementSrvRemote, MarketingManagementSrvLocal {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingManagementImpl.class.getName());
 	
