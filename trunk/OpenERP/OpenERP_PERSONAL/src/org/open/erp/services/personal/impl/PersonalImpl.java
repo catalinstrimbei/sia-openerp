@@ -32,6 +32,7 @@ import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.ActivitateTeamBuilding;
 import org.open.erp.services.personal.ActivitateTraining;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.ResponsabilActivitate;
 import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.CV;
@@ -378,7 +379,289 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		return functie;
 	}
 	
+	//InterviuCandidat
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public InterviuCandidat getInterviuCandidatById(Integer idInterviuCandidat_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start afisare InterviuCandidat");
+		InterviuCandidat interviuCandidat_ = new InterviuCandidat();
+		if (idInterviuCandidat_ == null){	
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			interviuCandidat_ = this.registruPersonal.getInterviuCandidatById(idInterviuCandidat_);
+			// cum aflu idul noului obiect ?? em.refresh(bugetNou);
+			logger.logDEBUG(">>>>>>End ");
+		}
+		return interviuCandidat_;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<InterviuCandidat> getListaInterviuriCandidati()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaAnunturiLocMunca");
+		Collection<InterviuCandidat> result = this.registruPersonal.getListaInterviuCandidat();
+		logger.logDEBUG(">>>>>>End getListaAnunturiLocMunca");
+		return result;
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public InterviuCandidat salveazaInterviuCandidat(
+			InterviuCandidat idInterviuCandidat_) throws Exception {
+		// TODO Auto-generated method stub
+				logger.logDEBUG(">>>>>>Start creare InterviuCandidat");
+				InterviuCandidat interviuCandidat_ = new InterviuCandidat();
+				if (idInterviuCandidat_ == null){
+					sessionContext.setRollbackOnly();
+					logger.logDEBUG(">>>>>>Tranzactie Anulata");
+				}
+				else{
+					if (this.registruPersonal == null)
+						registruPersonal = new RegistruPersonal(em);
+					this.registruPersonal.salveazaInterviuCandidat(interviuCandidat_);
+					logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+				}
+				return interviuCandidat_;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public void stergeInterviuCandidat(InterviuCandidat interviuCandidat_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeInterviuCandidat");
+		if (interviuCandidat_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeInterviuCandidat(interviuCandidat_);
+			logger.logDEBUG(">>>>>>End stergeInterviuCandidat");
+		}
+	}
+	
+	
+	
+	
+	//ProbaEvaluare
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ProbaEvaluare getProbaEvaluareById(Integer idProba_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start afisare ProbaEvaluare");
+		ProbaEvaluare probaEvaluare_ = new ProbaEvaluare();
+		if (idProba_ == null){	
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			probaEvaluare_ = this.registruPersonal.getProbaEvaluareById(idProba_);
+			logger.logDEBUG(">>>>>>End ");
+		}
+		return probaEvaluare_;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<ProbaEvaluare> getListaProbeEvaluare()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaProbeEvaluare");
+		Collection<ProbaEvaluare> result = this.registruPersonal.getListaProbaEvaluare();
+		logger.logDEBUG(">>>>>>End getListaProbeEvaluare");
+		return result;
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ProbaEvaluare salveazaProbaEvaluare(Integer idProba_,
+			String tipEvaluare) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start creare ProbaEvaluare");
+		ProbaEvaluare probaEvaluare_ = new ProbaEvaluare();
+		if (idProba_ == null){
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{
+			if (this.registruPersonal == null)
+				registruPersonal = new RegistruPersonal(em);
+			this.registruPersonal.salveazaProbaEvaluare(probaEvaluare_);
+			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+		}
+		return probaEvaluare_;
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public void stergeProbaEvaluare(ProbaEvaluare proba_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeProbaEvaluare");
+		if (proba_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeProbaEvaluare(proba_);
+			logger.logDEBUG(">>>>>>End stergeProbaEvaluare");
+		}
+	}
+	
+	
+	
+	//ResponsabilActivitate
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ResponsabilActivitate getResponsabilActivitateById(Integer id_)
+		throws Exception {
+			logger.logDEBUG(">>>>>>Start afisare ResponsabilActivitate");
+			ResponsabilActivitate responsabilActivitate_ = new ResponsabilActivitate();
+			if (id_ == null){	
+				sessionContext.setRollbackOnly();
+				logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			}
+			else{			
+				responsabilActivitate_ = this.registruPersonal.getResponsabilActivitateById(id_);
+				logger.logDEBUG(">>>>>>End ");
+			}
+			return responsabilActivitate_;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<ResponsabilActivitate> getListaResponsabiliActivitati()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaResponsabiliActivitati");
+		Collection<ResponsabilActivitate> result = this.registruPersonal.getListaResponsabilActivitate();
+		logger.logDEBUG(">>>>>>End getListaResponsabiliActivitati");
+		return result;
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ResponsabilActivitate salveazaResponsabilActivitate(Integer id_)
+			throws Exception {
+		// TODO Auto-generated method stub
+				logger.logDEBUG(">>>>>>Start creare ResponsabilActivitate");
+				ResponsabilActivitate responsabilActivitate_ = new ResponsabilActivitate();
+				if (id_ == null){
+					sessionContext.setRollbackOnly();
+					logger.logDEBUG(">>>>>>Tranzactie Anulata");
+				}
+				else{
+					if (this.registruPersonal == null)
+						registruPersonal = new RegistruPersonal(em);
+					this.registruPersonal.salveazaResponsabilActivitate(responsabilActivitate_);
+					logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+				}
+				return responsabilActivitate_;
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public void stergeResponsabilActivitate(ResponsabilActivitate responsabil_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeResponsabilActivitate");
+		if (responsabil_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeResponsabilActivitate(responsabil_);
+			logger.logDEBUG(">>>>>>End stergeResponsabilActivitate");
+		}
+	}
+	
+	
+	// RezultatProbaEvaluare
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public RezultatProbaEvaluare getRezultatProbaEvaluareById(Integer id_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start afisare RezultatProbaEvaluare");
+		RezultatProbaEvaluare rezultatProbaEvaluare_ = new RezultatProbaEvaluare();
+		if (id_ == null){	
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			rezultatProbaEvaluare_ = this.registruPersonal.getRezultatProbaEvaluareById(id_);
+			logger.logDEBUG(">>>>>>End ");
+		}
+		return rezultatProbaEvaluare_;
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<RezultatProbaEvaluare> getListaRezultateProbeEvaluare()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaRezultateProbeEvaluare");
+		Collection<RezultatProbaEvaluare> result = this.registruPersonal.getListaRezultatProbaEvaluare();
+		logger.logDEBUG(">>>>>>End getListaRezultateProbeEvaluare");
+		return result;
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public RezultatProbaEvaluare salveazaRezultatProbaEvaluare(Integer id_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start creare RezultatProbaEvaluare");
+		RezultatProbaEvaluare rezultatProbaEvaluare_ = new RezultatProbaEvaluare();
+		if (id_ == null){
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{
+			if (this.registruPersonal == null)
+				registruPersonal = new RegistruPersonal(em);
+			this.registruPersonal.salveazaRezultatProbaEvaluare(rezultatProbaEvaluare_);
+			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+		}
+		return rezultatProbaEvaluare_;
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public void stergeRezultatProbaEvaluare(RezultatProbaEvaluare rezultat_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeRezultatProbaEvaluare");
+		if (rezultat_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeRezultatProbaEvaluare(rezultat_);
+			logger.logDEBUG(">>>>>>End stergeRezultatProbaEvaluare");
+		}
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTeamBuilding creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions {
 		// TODO Auto-generated method stub

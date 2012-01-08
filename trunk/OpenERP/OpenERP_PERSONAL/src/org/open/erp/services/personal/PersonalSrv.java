@@ -220,8 +220,168 @@ public interface PersonalSrv {
 	 * 
 	 */
 	
-
 	
+
+	// InterviuCandidat
+	InterviuCandidat getInterviuCandidatById(Integer idInterviuCandidat_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unui Interviu Candidat dupa precizarea id-ului
+	 * 
+	 * @param idInterviuCandidat_  id-ul interviului, element unic de identificare pentru un interviu, dupa care se face cautarea
+	 * 
+	* @return Obiectul de tip InterviuCandidat 
+	* 
+	*/
+	Collection<InterviuCandidat>	getListaInterviuriCandidati() throws Exception;
+	/**
+	 * Scop  Returneaza o lista cu toate Interviurile Candidati
+	 * 
+	 * 
+	 * @return o lista cu toate Interviurile Candidati
+	 * 
+	 */
+	
+	InterviuCandidat	salveazaInterviuCandidat(InterviuCandidat idInterviuCandidat_) throws Exception;
+	/**
+	 * Scop  Salveaza un AnuntLocMunca in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip AnuntLocMunca 
+	 * 
+	 */
+	
+	
+	void	stergeInterviuCandidat(InterviuCandidat interviuCandidat_) throws Exception;
+	/**
+	 * Scop  Sterge un InterviuCandidat  din BD
+	 * 
+	 * 
+	 * @return 
+	 * 
+	 */
+	
+	
+		
+	//ProbaEvaluare
+	ProbaEvaluare getProbaEvaluareById(Integer idProba_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unei Probe de Evaluare dupa precizarea id-ului
+	 * 
+	 * @param idProba_  id-ul probei, element unic de identificare, dupa care se face cautarea
+	 * 
+	* @return Obiectul de tip ProbaEvaluare 
+	* 
+	*/
+	
+	Collection<ProbaEvaluare>	getListaProbeEvaluare() throws Exception;
+	/**
+	 * Scop  Returneaza o lista cu toate Probele de Evaluare
+	 * 
+	 * 
+	 * @return o lista cu toate Probele de Evaluare
+	 * 
+	 */
+	ProbaEvaluare salveazaProbaEvaluare(Integer idProba_, String tipEvaluare) throws Exception;
+	/**
+	 * Scop  Salveaza o proba de evealuare
+	 * 
+	 * 
+	 * @return Obiectul de tip ProbaEvaluare
+	 * 
+	 */
+	
+	void	stergeProbaEvaluare(ProbaEvaluare proba_) throws Exception;
+	/**
+	 * Scop  Sterge un InterviuCandidat  din BD
+	 * 
+	 * 
+	 * @return 
+	 * 
+	 */	
+	
+	
+	//ResponsabilActivitate
+	ResponsabilActivitate getResponsabilActivitateById(Integer id_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unei Responsabil al unei activitati dupa precizarea id-ului
+	 * 
+	 * @param id_  id-ul probei, element unic de identificare, dupa care se face cautarea
+	 * 
+	* @return Obiectul de tip ResponsabilActivitate 
+	* 
+	*/
+	
+	Collection<ResponsabilActivitate>	getListaResponsabiliActivitati() throws Exception;
+	/**
+	 * Scop  Returneaza o lista cu toti Responsabilii de Activitati
+	 * 
+	 * 
+	 * @return o lista cu cu toti Responsailii de Activitati
+	 * 
+	 */
+	
+	ResponsabilActivitate salveazaResponsabilActivitate(Integer id_) throws Exception;
+	/**
+	 * Scop  Salveaza un responsabil pentru o activitate
+	 * 
+	 * 
+	 * @return Obiectul de tip ResponsabilActivitate
+	 * 
+	 */
+	
+	void	stergeResponsabilActivitate(ResponsabilActivitate responsabil_) throws Exception;
+	/**
+	 * Scop  Sterge un ResponsabilActivitate  din BD
+	 * 
+	 * 
+	 * @return 
+	 * 
+	 */	
+	
+		
+	//RezultatProbaEvaluare
+	RezultatProbaEvaluare getRezultatProbaEvaluareById(Integer id_) throws Exception;
+	/**
+	 * Scop  Returneaza rezultatele pentru probele de evaluare dupa precizarea id-ului
+	 * 
+	 * @param id_  id-ul rezultatului, element unic de identificare, dupa care se face cautarea
+	 * 
+	* @return Obiectul de tip RezultatProbaEvaluare 
+	* 
+	*/
+	
+	Collection<RezultatProbaEvaluare>	getListaRezultateProbeEvaluare() throws Exception;
+	/**
+	 * Scop  Returneaza o lista cu toate rezultatele pentru probele de evaluare
+	 * 
+	 * 
+	 * @return o lista cu cu toti Responsabilii de Activitati
+	 * 
+	 */
+	
+	RezultatProbaEvaluare salveazaRezultatProbaEvaluare(Integer id_) throws Exception;
+	/**
+	 * Scop  Salveaza rezultatatul pentru probele de evaluare
+	 * 
+	 * 
+	 * @return Obiectul de tip RezultatProbaEvaluare
+	 * 
+	 */
+	
+	void	stergeRezultatProbaEvaluare(RezultatProbaEvaluare rezultat_) throws Exception;
+	/**
+	 * Scop  Sterge un RezultatProbaEvaluare  din BD
+	 * 
+	 * 
+	 * @return 
+	 * 
+	 */	
+	
+	
+	
+	
+	
+
 	Candidat				getCandidatById(Integer idPersoanaCandidat_) throws Exception;
 	/**
 	 * Scop  Returneaza datele unui Candidat dupa precizarea id-ului persoanei
@@ -409,11 +569,18 @@ public interface PersonalSrv {
 	
 	
 	
+
 	Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception;
 	Functie getFunctie(Integer idFunctie) throws Exception;
 	
 	
 	ActivitateTeamBuilding	creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions;
+	
+	
+	
+	
+	
+	
 	/**
 	 * Scop    Creaza o noua activitate de team building
 	 * 

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,8 +25,8 @@ public class ProbaEvaluare implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	private String 			idProba;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer 		idProba;
 	private String 			tipEvaluare;
 	private Integer			durataMinute;
 	@Transient
@@ -68,13 +70,13 @@ public class ProbaEvaluare implements Serializable{
 	public void setDepartament(DummyDepartament departament) {
 		this.departament = departament;
 	}
-	public String getIdProba() {
+	public Integer getIdProba() {
 		return idProba;
 	}
-	public void setIdProba(String idProba) {
+	public void setIdProba(Integer idProba) {
 		this.idProba = idProba;
 	}
-	public ProbaEvaluare(String idProba, String tipEvaluare,
+	public ProbaEvaluare(Integer idProba, String tipEvaluare,
 			Integer durataMinute, Collection<String> intrebari, String scop,
 			DummyDepartament departament) {
 		super();
@@ -85,7 +87,7 @@ public class ProbaEvaluare implements Serializable{
 		this.scop = scop;
 		this.departament = departament;
 	}
-	public ProbaEvaluare(String idProba, String tipEvaluare, String scop,
+	public ProbaEvaluare(Integer idProba, String tipEvaluare, String scop,
 			DummyDepartament departament) {
 		super();
 		this.idProba = idProba;

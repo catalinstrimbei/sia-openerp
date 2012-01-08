@@ -14,6 +14,10 @@ import org.open.erp.services.personal.CerereDemisie;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.DosarAngajat;
 import org.open.erp.services.personal.Functie;
+import org.open.erp.services.personal.InterviuCandidat;
+import org.open.erp.services.personal.ProbaEvaluare;
+import org.open.erp.services.personal.ResponsabilActivitate;
+import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.logger.PersonalLogger;
 
 public class RegistruPersonal {
@@ -356,7 +360,269 @@ private static PersonalLogger logger ;
 		return candidat;
 	}
 	
+
+	//begin 
+	
+	//InterviuCandidat
+	
+	public InterviuCandidat getInterviuCandidatById(Integer idInterviuCandidat_) throws Exception{
+		try
+		{
+			return (InterviuCandidat) entityManager.createQuery("SELECT ic FROM InterviuCandidat ic WHERE ic.idInterviuCandidat = :idInterviuCandidat")
+					.setParameter("idInterviuCandidat",idInterviuCandidat_)
+					.getSingleResult();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		
+	}
+	
+	public Collection<InterviuCandidat> getListaInterviuCandidat() throws Exception{
+		try
+		{
+			return entityManager.createQuery("SELECT ic InterviuCandidat ic").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	
+	public InterviuCandidat salveazaInterviuCandidat(InterviuCandidat interviuCandidat_) throws Exception{
+		try{
+			
+			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+			if (interviuCandidat_.getIdInterviuCandidat() == null || 
+				entityManager.find(interviuCandidat_.getClass(), interviuCandidat_.getIdInterviuCandidat()) == null)
+				entityManager.persist(interviuCandidat_);
+			else
+				entityManager.merge(interviuCandidat_);
+			
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return interviuCandidat_;
+	}
+	
+	public void stergeInterviuCandidat(InterviuCandidat interviuCandidat_) throws Exception{
+		try
+		{
+			entityManager.remove(interviuCandidat_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	//ProbaEvaluare
+	
+	public ProbaEvaluare getProbaEvaluareById(Integer idProbaEvaluare_) throws Exception{
+		try
+		{
+			return (ProbaEvaluare) entityManager.createQuery("SELECT pe FROM ProbaEvaluare pe WHERE pe.idProba = :idProbaEvaluare_")
+					.setParameter("idProbaEvaluare",idProbaEvaluare_)
+					.getSingleResult();		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+		
+	
+	
+	public Collection<ProbaEvaluare> getListaProbaEvaluare() throws Exception {
+		try
+		{
+			return entityManager.createQuery("SELECT pe FROM ProbaEvaluare pe").getResultList();
+	}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	
+	public ProbaEvaluare salveazaProbaEvaluare(ProbaEvaluare probaEvaluare_) throws Exception{
+		try{
+			
+			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+			if (probaEvaluare_.getIdProba() == null || 
+				entityManager.find(probaEvaluare_.getClass(), probaEvaluare_.getIdProba()) == null)
+				entityManager.persist(probaEvaluare_);
+			else
+				entityManager.merge(probaEvaluare_);
+			
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return probaEvaluare_;
+	}
+	
+	public void stergeProbaEvaluare(ProbaEvaluare probaEvaluare_) throws Exception{
+		try
+		{
+			entityManager.remove(probaEvaluare_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	//ResponsabilActivitate
+	
+	public ResponsabilActivitate getResponsabilActivitateById(Integer id_) throws Exception {
+		try
+		{
+			return (ResponsabilActivitate) entityManager.createQuery("SELECT r FROM ResponsabilActivitate r WHERE r.id = :id_")
+					.setParameter("id",id_)
+					.getSingleResult();	}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		
+	}
+	
+	public Collection<ResponsabilActivitate> getListaResponsabilActivitate() throws Exception{
+		try
+		{
+			return entityManager.createQuery("SELECT r FROM ResponsabilActivitate r").getResultList();
+}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	
+	public ResponsabilActivitate salveazaResponsabilActivitate(ResponsabilActivitate responsabilActivitate_) throws Exception{
+		try{
+			
+			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+			if (responsabilActivitate_.getId() == null || 
+				entityManager.find(responsabilActivitate_.getClass(), responsabilActivitate_.getId()) == null)
+				entityManager.persist(responsabilActivitate_);
+			else
+				entityManager.merge(responsabilActivitate_);
+			
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return responsabilActivitate_;
+	}
+	
+	public void stergeResponsabilActivitate(ResponsabilActivitate responsabilActivitate_ ) throws Exception{
+		try
+		{
+			entityManager.remove(responsabilActivitate_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	
+	// RezultatProbaEvaluare
+	
+	public RezultatProbaEvaluare getRezultatProbaEvaluareById(Integer id_) throws Exception{
+		try
+		{
+			return (RezultatProbaEvaluare) entityManager.createQuery("SELECT rb FROM RezultatProbaEvaluare rb WHERE r.id = :id_")
+					.setParameter("id",id_)
+					.getSingleResult();}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		
+	}
+	
+	public Collection<RezultatProbaEvaluare> getListaRezultatProbaEvaluare() throws Exception{
+		try
+		{
+			return entityManager.createQuery("SELECT rb FROM RezultatProbaEvaluare rb").getResultList();
+}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	
+	public RezultatProbaEvaluare salveazaRezultatProbaEvaluare(RezultatProbaEvaluare rezultatProbaEvaluare_) throws Exception{
+		try{
+			
+			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+			if (rezultatProbaEvaluare_.getId() == null || 
+				entityManager.find(rezultatProbaEvaluare_.getClass(), rezultatProbaEvaluare_.getId()) == null)
+				entityManager.persist(rezultatProbaEvaluare_);
+			else
+				entityManager.merge(rezultatProbaEvaluare_);
+			
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return rezultatProbaEvaluare_;
+	}
+	
+	public void stergeRezultatProbaEvaluare (RezultatProbaEvaluare rezultatProbaEvaluare_) throws Exception{
+		try
+		{
+			entityManager.remove(rezultatProbaEvaluare_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	
+	
+	//end 
+	
+	
+	
+
 	public void stergeCandidat(Candidat candidat) throws Exception{
+
 		try{
 			entityManager.remove(candidat);
 		}catch(Exception ex){
