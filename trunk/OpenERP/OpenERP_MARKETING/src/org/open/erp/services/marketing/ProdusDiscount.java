@@ -24,7 +24,7 @@ public class ProdusDiscount implements Serializable {
 	@OneToOne
 	@JoinColumn(name="IdProdus")
 	Produs	produs;
-	
+	private static final long serialVersionUID = 1L;
 	public ProdusDiscount() {
 		super();
 	}
