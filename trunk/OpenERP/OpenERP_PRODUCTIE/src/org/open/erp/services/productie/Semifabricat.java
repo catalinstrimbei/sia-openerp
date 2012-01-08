@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.open.erp.services.nomgen.MateriePrima;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
 
 /**
@@ -32,12 +32,12 @@ public class Semifabricat extends Produs implements Serializable{
 	String semifabricat;
 	
 	@OneToMany (mappedBy="Semifabricat", cascade = CascadeType.ALL)
-	ArrayList <MateriePrima> listaMateriale;
+	ArrayList <Material> listaMateriale;
 	
 	Semifabricat semifabricatContinut;
 	
 	public Semifabricat(Integer idSemifabricat, String semifabricat,
-			ArrayList<MateriePrima> listaMateriale,
+			ArrayList<Material> listaMateriale,
 			Semifabricat semifabricatContinut) {
 		super();
 		this.semifabricat = semifabricat;
@@ -60,10 +60,10 @@ public class Semifabricat extends Produs implements Serializable{
 	public void setSemifabricat(String semifabricat) {
 		this.semifabricat = semifabricat;
 	}
-	public ArrayList<MateriePrima> getListaMateriale() {
+	public ArrayList<Material> getListaMateriale() {
 		return listaMateriale;
 	}
-	public void setListaMateriale(ArrayList<MateriePrima> listaMateriale) {
+	public void setListaMateriale(ArrayList<Material> listaMateriale) {
 		this.listaMateriale = listaMateriale;
 	}
 	public Semifabricat getSemifabricatContinut() {

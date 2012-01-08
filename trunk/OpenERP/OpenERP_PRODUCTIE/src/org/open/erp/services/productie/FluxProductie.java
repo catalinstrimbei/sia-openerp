@@ -33,10 +33,10 @@ public class FluxProductie implements Serializable{
 	@OneToMany (mappedBy="FazaProductie", targetEntity= FazaProductie.class, cascade= CascadeType.ALL)
 	ArrayList <FazaProductie> faze;
 	
-	public FluxProductie(Integer idFlux, Produs produs, ArrayList<FazaProductie> faze) {
+	public FluxProductie(Integer idFlux, Produs produs) {
 		super();
 		this.produs = produs;
-		this.faze = faze;
+		
 		this.idFlux=idFlux;
 	}
 	public FluxProductie() {
@@ -59,11 +59,11 @@ public class FluxProductie implements Serializable{
 		return this.faze;
 	}
 	
-	
-	
-	public void setFaze(ArrayList<FazaProductie> faze) {
-		this.faze = faze;
+	public void adaugaFaza(FazaProductie faza){
+		this.faze.add(faza);
 	}
+	
+	
 	
 	
 	

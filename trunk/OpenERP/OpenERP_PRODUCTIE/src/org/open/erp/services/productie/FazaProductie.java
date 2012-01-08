@@ -13,7 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.open.erp.services.nomgen.Divizie;
-import org.open.erp.services.nomgen.MateriePrima;
+import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.*;
 
@@ -35,6 +36,9 @@ public class FazaProductie implements Serializable {
 	String faza;
 	
 	@ManyToOne
+	FluxProductie flux;
+	
+	@ManyToOne
 	Utilaj utilaj;
 	Double timpFolosire;
 	
@@ -45,7 +49,7 @@ public class FazaProductie implements Serializable {
 	ArrayList <Angajat> angajati;
 	
 	@OneToMany (mappedBy="FazaProductie", cascade= CascadeType.ALL)
-	ArrayList <MateriePrima> materialeReteta;
+	ArrayList <Material> materialeReteta;
 	
 	@ManyToOne
 	Semifabricat semifabricatReteta;
@@ -64,10 +68,30 @@ public class FazaProductie implements Serializable {
 	
 	@ManyToOne
 	Divizie sectie;
+	
+	Integer nrOrdine;
+	Boolean isFinal;
+	
 
 	
 	
 		
+	public Integer getNrOrdine() {
+		return nrOrdine;
+	}
+
+	public void setNrOrdine(Integer nrOrdine) {
+		this.nrOrdine = nrOrdine;
+	}
+
+	public Boolean getIsFinal() {
+		return isFinal;
+	}
+
+	public void setIsFinal(Boolean isFinal) {
+		this.isFinal = isFinal;
+	}
+
 	public FazaProductie() {
 		super();
 	}
@@ -84,32 +108,41 @@ public class FazaProductie implements Serializable {
 		return functiiNecesare;
 	}
 
-	public void setFunctiiNecesare(ArrayList<FunctieNecesara> functiiNecesare) {
-		this.functiiNecesare = functiiNecesare;
+	public void adaugaFunctieNecesara(FunctieNecesara functieNecesare) {
+		this.functiiNecesare.add(functieNecesare);
 	}
 
-	public FazaProductie(String faza, Utilaj utilaj, Double timpFolosire,
-			ArrayList<FunctieNecesara> functiiNecesare, ArrayList<Angajat> angajati,
-			ArrayList<MateriePrima> materialeReteta,
-			Semifabricat semifabricatReteta, Semifabricat semifabricatDorit,
-			Produs produsDorit, Divizie sectie) {
+	public FazaProductie(String faza,  Utilaj utilaj, Double timpFolosire,
+			ArrayList<FunctieNecesara> functiiNecesare,
+			ArrayList<Material> materialeReteta,
+			 Semifabricat semifabricatDorit,
+			Produs produsDorit, Divizie sectie, Integer nrOrdine, Boolean isFinal) {
 		super();
 		this.faza = faza;
 		this.utilaj = utilaj;
 		this.timpFolosire = timpFolosire;
 		this.functiiNecesare = functiiNecesare;
-		this.angajati = angajati;
 		this.materialeReteta = materialeReteta;
-		this.semifabricatReteta = semifabricatReteta;
+		
 		this.semifabricatDorit = semifabricatDorit;
 		this.produsDorit = produsDorit;
 		this.sectie=sectie;
+		this.nrOrdine=nrOrdine;
+		this.isFinal=isFinal;
 		
 		
 	}
 
 	public String getFaza() {
 		return faza;
+	}
+
+	public FluxProductie getFlux() {
+		return flux;
+	}
+
+	public void setFlux(FluxProductie flux) {
+		this.flux = flux;
 	}
 
 	public void setFaza(String faza) {
@@ -132,12 +165,12 @@ public class FazaProductie implements Serializable {
 		this.angajati = angajati;
 	}
 
-	public ArrayList<MateriePrima> getMaterialeReteta() {
+	public ArrayList<Material> getMaterialeReteta() {
 		return materialeReteta;
 	}
 
-	public void setMaterialeReteta(ArrayList<MateriePrima> materialeReteta) {
-		this.materialeReteta = materialeReteta;
+	public void addMaterialeReteta(Material materialReteta) {
+		this.materialeReteta.add(materialReteta);
 	}
 
 	public Semifabricat getSemifabricatReteta() {
@@ -207,4 +240,5 @@ public class FazaProductie implements Serializable {
 	     
 	    }
 	
+	 
 }

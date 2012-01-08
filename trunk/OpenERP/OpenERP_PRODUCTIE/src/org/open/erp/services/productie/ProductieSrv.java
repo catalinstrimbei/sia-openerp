@@ -3,7 +3,12 @@ package org.open.erp.services.productie;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.open.erp.services.nomgen.Divizie;
+import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.stocuri.BonConsum;
 
 /**
  * 
@@ -44,7 +49,7 @@ public interface ProductieSrv {
 	/**
 	 * Creaza un flux de productie pentru produs.
 	 * 
-	 * 
+	 * @param idFlux    Id-ul fluxului
 	 * @param produs; 	Produsul pentru care se creaza fluxul
 	 * 
 	 * @return 	semifabricat/produs in functie de faza la care se gaseste 
@@ -53,7 +58,27 @@ public interface ProductieSrv {
 	 * 
 	 */
 	
-	public void definireFluxProductie(Produs produs) throws Exception;
+	public FluxProductie definireFluxProductie(Integer idFlux, Produs produs) throws Exception;
+	
+	
+	/**
+	 * Creaza o faza de productie pentru flux.
+	 * 
+	 * 
+	 * @param ......................
+	 * 
+	 * @return 	semifabricat/produs in functie de faza la care se gaseste 
+	 * 			(prin apelarea functiilor procesareSemifabricat() si procesareProdus()). 
+	 * @throws Exception 
+	 * 
+	 */
+	
+	public FazaProductie definireFazaProductie(String faza, FluxProductie flux, Utilaj utilaj, Double timpFolosire,
+			ArrayList<FunctieNecesara> functiiNecesare, 
+			ArrayList <Material> materialeReteta, 
+			Semifabricat semifabricatDorit, Produs produsDorit, Divizie sectie,Integer nrOrdine, Boolean isFinal) throws Exception;
+	
+	
 	
 	/**
 	 * Apeleaza fluxul de productie si creaza produsul pentru care s-a facut comanda
@@ -105,4 +130,12 @@ public interface ProductieSrv {
 	 */
 	public ArrayList<Integer> inregistrareGestiuneProductie(Produs produs)  throws Exception;
 
+	FluxProductie getFlux(Integer idFlux) throws Exception;
+	
+	public void fabricare(Produs produs, Integer idFlux) throws Exception;
+	public FazaProductie getFazaFlux(FluxProductie flux,Integer nrOrdine) throws Exception;
+	
+	public void comandaMateriale(FazaProductie faza, FluxProductie flux) throws Exception;
+	
+	
 }

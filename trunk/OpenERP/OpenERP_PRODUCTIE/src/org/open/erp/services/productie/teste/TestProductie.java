@@ -10,7 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import org.open.erp.services.nomgen.Divizie;
-import org.open.erp.services.nomgen.MateriePrima;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Produs;
@@ -57,8 +57,8 @@ public class TestProductie {
 		Double timp;
 		ArrayList<FunctieNecesara> functiiNecesare;
 		ArrayList<Angajat> angajati;
-		ArrayList <MateriePrima> materialeReteta;
-		ArrayList <MateriePrima> materialeSemifabricat;
+		ArrayList <Material> materialeReteta;
+		ArrayList <Material> materialeSemifabricat;
 		Semifabricat semifabricatContinut;
 		Semifabricat semifabricatReteta;
 		Produs pDorit;
@@ -245,9 +245,9 @@ public class TestProductie {
 			//lista materialelor pe care le-am luat din baza de date
 			//sau in cazul de fata, lista materialelor definite local
 			//lista materialelor din reteta
-				materialeReteta = new ArrayList<MateriePrima>();
-				MateriePrima m3=new MateriePrima();
-				MateriePrima m4=new MateriePrima();
+				materialeReteta = new ArrayList<Material>();
+				Material m3=new Material();
+				Material m4=new Material();
 				
 
 				m3.setId(1);
@@ -275,9 +275,9 @@ public class TestProductie {
 					
 					sDorit=new Semifabricat();
 					String denSemifabricatDorit = "semifabricat";
-					ArrayList<MateriePrima> materialeSemifabricatDorit = new ArrayList<MateriePrima>();
-					MateriePrima m7=new MateriePrima();
-					MateriePrima m8=new MateriePrima();
+					ArrayList<Material> materialeSemifabricatDorit = new ArrayList<Material>();
+					Material m7=new Material();
+					Material m8=new Material();
 					m7.setId(3);
 					m7.setDenumire("material3");
 					m7.setDataFabricatiei(null);
@@ -312,9 +312,9 @@ public class TestProductie {
 					
 					sDorit=new Semifabricat();
 					String denSemifabricatDorit = "semifabricat";
-					ArrayList<MateriePrima> materialeSemifabricatDorit = new ArrayList<MateriePrima>();
-					MateriePrima m7=new MateriePrima();
-					MateriePrima m8=new MateriePrima();
+					ArrayList<Material> materialeSemifabricatDorit = new ArrayList<Material>();
+					Material m7=new Material();
+					Material m8=new Material();
 					m7.setId(3);
 					m7.setDenumire("material3");
 					m7.setDataFabricatiei(null);
@@ -379,7 +379,7 @@ public class TestProductie {
 	@Test	
 	 public void testConsumResursa(){
 			logger.info("INCEPERE TEST CONSUM RESURSE");
-			ArrayList<MateriePrima>listaMateriale = new ArrayList<MateriePrima>();
+			ArrayList<Material>listaMateriale = new ArrayList<Material>();
 			ArrayList<Utilaj> listaUtilaje = new ArrayList<Utilaj>();
 			ArrayList<Angajat> listaAngajati = new ArrayList<Angajat>();
 			ArrayList<Object> resurse = new ArrayList<Object>();
@@ -440,11 +440,11 @@ public class TestProductie {
 			
 			faza.setAngajati(angajati);
 			
-			MateriePrima m1 = new MateriePrima(1, "materie prima 1", null, null, null);
-			MateriePrima m2 = new MateriePrima(2, "materie prima 2", null, null, null);
-			MateriePrima m3 = new MateriePrima(3, "materie prima 3", null, null, null);
-			MateriePrima m4 = new MateriePrima(4, "materie prima 4", null, null, null);
-			ArrayList <MateriePrima> materialeReteta = new ArrayList<MateriePrima>();
+			Material m1 = new Material(1, "materie prima 1", null, null, null);
+			Material m2 = new Material(2, "materie prima 2", null, null, null);
+			Material m3 = new Material(3, "materie prima 3", null, null, null);
+			Material m4 = new Material(4, "materie prima 4", null, null, null);
+			ArrayList <Material> materialeReteta = new ArrayList<Material>();
 			materialeReteta.add(m1);
 			materialeReteta.add(m2);
 			materialeReteta.add(m3);
@@ -457,9 +457,9 @@ public class TestProductie {
 			
 			Semifabricat sem = new Semifabricat();
 			String denSem = "semifabricat";
-			ArrayList<MateriePrima> materialeSem = new ArrayList<MateriePrima>();
-			MateriePrima m5 = new MateriePrima(5, "materie prima 5", null, null, null);
-			MateriePrima m6 = new MateriePrima(6, "materie prima 6", null, null, null);
+			ArrayList<Material> materialeSem = new ArrayList<Material>();
+			Material m5 = new Material(5, "materie prima 5", null, null, null);
+			Material m6 = new Material(6, "materie prima 6", null, null, null);
 			materialeSem.add(m5);
 			materialeSem.add(m6);
 			sem.setDenumire(denSem);
