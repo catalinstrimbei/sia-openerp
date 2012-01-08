@@ -90,6 +90,12 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		
 		return campanieNoua;
 	}
+	
+	@Override
+	public Campanie getCampanie(Integer idCampanie) {
+		return registruMarketing.getCampanie(idCampanie);
+//		return null;
+	}	
 	@Override
 	public void initiereCampanie(Campanie campanie) {
 		campanie.setStatus(1);

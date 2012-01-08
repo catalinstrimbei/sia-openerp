@@ -48,6 +48,13 @@ public interface MarketingManagementSrv {
 	 */
 	Campanie definireCampanie(String nume,  Date dataStart, Date dataSfarsit,Responsabil responsabil,List<PersoanaTinta> PersoaneTinta) throws Exception;
 //-----------------------------------------------DEFINIRE CAMPANIE END-----------------------------------------------
+	/**
+	 * Returneaza o campanie existenta.
+	 * 
+	 * @param idCampanie    Id-ul  campaniei existente
+	 * @return
+	 */
+	Campanie getCampanie(Integer idCampanie) ;
 //-----------------------------------------------INITIERE CAMPANIE START---------------------------------------------
 	/**
 	 * Scop					Schimba status unei campanii in started, trimite mail-urile informative persoanelor tinta.
