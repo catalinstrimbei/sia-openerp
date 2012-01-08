@@ -27,7 +27,7 @@ public class TestMarketingManagementImplEJB {
 		@BeforeClass
 		public static void setUpBeforeClass() throws Exception {
 			InitialContext ctx = initJBossJNDICtx();
-			marketingInstance = (MarketingManagementImpl)ctx.lookup("MarketingManagementImpl/remote");
+			marketingInstance = (MarketingManagementImpl)ctx.lookup("MarketingManagementSrv/remote");
 			logger.info("initTest " + marketingInstance);
 		}
 

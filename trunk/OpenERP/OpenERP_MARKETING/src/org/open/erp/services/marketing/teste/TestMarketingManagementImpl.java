@@ -37,8 +37,8 @@ public class TestMarketingManagementImpl {
 
 	@Before
 	public void setUp() throws Exception {
-		marketingInstance= MarketingManagementDummyFactory.getMarketingManagementSrv();
-		nomenclatorInstance = MarketingManagementDummyFactory.getNomenclatoareSrv();
+		//marketingInstance= MarketingManagementDummyFactory.getMarketingManagementSrv();
+		//nomenclatorInstance = MarketingManagementDummyFactory.getNomenclatoareSrv();
 		logger.info("initTest");	
 	}
 

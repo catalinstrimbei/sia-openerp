@@ -36,7 +36,7 @@ import org.open.erp.services.nomgen.Produs;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-@Stateless(name="MarketingManagementSrv")
+@Stateless(name="MarketingManagementImpl")
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class MarketingManagementImpl implements  MarketingManagementSrvLocal,MarketingManagementSrvRemote {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingManagementImpl.class.getName());
