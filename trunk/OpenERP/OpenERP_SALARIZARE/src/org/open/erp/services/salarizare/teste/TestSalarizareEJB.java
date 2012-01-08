@@ -56,7 +56,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void testInregistrarePontaj() throws Exception {
 		logger.info("Begin test: inregistrarePontaj");
-		Angajat angajat = personalSrvInstance.getAngajatById(1);
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		Pontaj pontaj = salarizareSrvInstance.inregistrarePontaj(angajat, 2011, 11, 160.0, 0.0, 0.0);
 		logger.info("A fost creat pontajul cu id-ul: "+pontaj.getIdPontaj());
@@ -81,7 +81,7 @@ public class TestSalarizareEJB {
 	public void calculSporuriAngajati() {
 		logger.info("Begin test: calculSporuriAngajat");
 		Double sporuri;
-		Angajat angajat = personalSrvInstance.getAngajatById(1);
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
 		
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
@@ -97,7 +97,7 @@ public class TestSalarizareEJB {
 	public void calculRetineriAngajati() {
 		logger.info("Begin test: calculRetineriAngajat");
 		Double retineri;
-		Angajat angajat = personalSrvInstance.getAngajatById(1);
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 
 		retineri = salarizareSrvInstance.calculRetineriAngajat(2011, 11, angajat);
@@ -106,6 +106,45 @@ public class TestSalarizareEJB {
 		assertNotNull("Metoda de calcul a retinerilor nu a functionat!", retineri);
 		
 		logger.info("End test: calculRetineriAngajat");
+	}
+	
+	@Test
+	public void calculVenitBrutAngajati() {
+		logger.info("Begin test: calculVenitBrutAngajat");
+		Double venitBrut;
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		venitBrut=salarizareSrvInstance.calculVenitBrut(2011, 11, angajat);
+		
+		logger.info("Retinerile insumate sunt: "+venitBrut);
+		
+		assertNotNull("Metoda de calcul a retinerilor nu a functionat!", venitBrut);
+		
+		logger.info("End test: calculVenitBrutAngajat");
+	}
+	
+	@Test
+	public void calculRetineriObligatoriiAngajati() {
+		logger.info("Begin test: calculRetineriObligatoriiAngajat");
+		logger.info("Begin test: calculVenitBrutAngajat");
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		Double venitBrut = salarizareSrvInstance.calculVenitBrut(2011, 11, angajat);
+		Double cas 	= salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CAS", venitBrut);
+		logger.info("CAS-ul este: "+cas);
+		assertNotNull("Metoda de calcul a cas-ului nu a functionat!", cas);
+
+		Double cass = salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"CASS", venitBrut);
+		logger.info("CASS-ul este: "+cas);
+		assertNotNull("Metoda de calcul a cass-ului nu a functionat!", cass);
+		
+		Double somaj = salarizareSrvInstance.calculRetineriObligatorii(2011, 11, angajat,"SOMAJ", venitBrut);		
+		logger.info("Somaj este: "+cas);
+		assertNotNull("Metoda de calcul a somajului nu a functionat!", somaj);
+		
+		logger.info("End test: calculRetineriObligatoriiAngajat");
 	}
 	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/

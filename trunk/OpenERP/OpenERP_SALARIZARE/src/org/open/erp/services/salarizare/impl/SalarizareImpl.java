@@ -420,4 +420,17 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	public void setRegistru(RegistruSalarizare registru) {
 		this.registru = registru;
 	}
+	
+	public  Angajat getAngajatById(Integer id){
+		Angajat angajat = personalSrv.getAngajatById(id);
+		if (angajat==null){
+			angajat = new Angajat();
+			angajat.setId(id);
+			angajat.setNume("Gigel");
+			angajat.setNumarCopii(2);
+			
+			
+		}
+		return angajat;
+	}
 }
