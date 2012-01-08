@@ -4,15 +4,18 @@ package org.open.erp.services.marketing;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import org.open.erp.services.nomgen.PersoanaFizica;
 
-@MappedSuperclass
+@Entity
 public class PersoanaTinta extends PersoanaFizica implements Serializable {
 	/**
 	 * 
 	 */
+	boolean   isPersoanaTinta;
 	private static final long serialVersionUID = 1L;
 
 	public PersoanaTinta() {

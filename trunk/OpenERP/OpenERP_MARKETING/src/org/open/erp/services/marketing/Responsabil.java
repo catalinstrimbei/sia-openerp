@@ -2,6 +2,9 @@ package org.open.erp.services.marketing;
 //test commit
 
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import javax.persistence.CascadeType; 
@@ -18,9 +21,12 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
-@MappedSuperclass
+@Entity
+
 public class Responsabil extends Persoana implements Serializable {
 	
+	@Id
+	Integer IdResponsabil;
 	@OneToMany (mappedBy = "responsabil", cascade = CascadeType.ALL)
 		List<Campanie> listaCampanii;
     
