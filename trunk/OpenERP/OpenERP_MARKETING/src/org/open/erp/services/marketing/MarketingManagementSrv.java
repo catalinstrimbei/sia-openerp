@@ -119,7 +119,7 @@ public interface MarketingManagementSrv {
  * 
  */
 Promotie definirePromotie(String denumire,String mesajPromotional, Date dataInceput, Date dataSfarsit, Integer TipPromotie,
-		Map<Produs,Discount>	listaProduse , Map<Produs,List<Produs>>	listProduseAditionale);
+		List<ProdusDiscount>  produseDiscount,List<ProduseAditionale> listProduseAditionale);
 
 /**
  * Returneaza un pretul unui produs dupa aplicarea discounturilor specifice unei promotii.

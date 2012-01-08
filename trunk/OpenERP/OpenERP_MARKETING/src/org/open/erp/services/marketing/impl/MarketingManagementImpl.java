@@ -15,6 +15,8 @@ import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.MarketingManagementSrvRemote;
 import org.open.erp.services.marketing.PersoanaTinta;
+import org.open.erp.services.marketing.ProdusDiscount;
+import org.open.erp.services.marketing.ProduseAditionale;
 import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.Responsabil;
 import org.open.erp.services.nomgen.Produs;
@@ -102,11 +104,13 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 	@Override
 	public Promotie definirePromotie(String denumire,
 			String mesajPromotional, Date dataInceput, Date dataSfarsit,
-			Integer tipPromotie, Map<Produs, Discount> listaProduse,
-			Map<Produs, List<Produs>> listProduseAditionale) {
+			Integer tipPromotie, List<ProdusDiscount>  produseDiscount,
+			List<ProduseAditionale> listProduseAditionale) {
 		Promotie  promotieNoua = new Promotie(1,denumire,mesajPromotional,dataInceput,dataSfarsit,tipPromotie);
 		Produs				produs;
 		Discount			discount;
+		ProdusDiscount		prodDisc;
+		ProduseAditionale	prodAdd;
 		Iterator			iterator;
 		String				tipDiscount;
 		List<Produs>		produseAditionale;
@@ -114,7 +118,7 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		if ( tipPromotie == Promotie.DISCOUNT) 
 		{
 			logger.debug("Tip Promotie: Discount");
-			promotieNoua.setListaProduse(listaProduse);
+			promotieNoua.setListaProduseDiscount(produseDiscount);
 		}
 		else
 		{
@@ -127,11 +131,12 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		if ( tipPromotie == Promotie.DISCOUNT) 
 		{
 			logger.debug("Produs         Tip discount          Valoare");
-			iterator = listaProduse.keySet().iterator();
+			iterator = produseDiscount.iterator();
 			while (iterator.hasNext())
 			{
-				produs = (Produs)iterator.next();
-				discount = listaProduse.get(produs);
+				prodDisc = (ProdusDiscount) iterator.next();
+				discount = prodDisc.getDiscount();
+				produs = prodDisc.getProdus();
 				if (discount.getTipDiscount() == Discount.PROCENT)
 					tipDiscount = "Procent";
 				else
@@ -143,11 +148,12 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		{
 			logger.debug("Produs         Tip discount");
 			logger.debug("             Se mai primesc si produsele:");
-			iterator = listProduseAditionale.keySet().iterator();
+			iterator = listProduseAditionale.iterator();
 			while (iterator.hasNext())
 			{
-				produs = (Produs)iterator.next();
-				produseAditionale = (List<Produs>) listProduseAditionale.get(produs);
+				prodAdd = (ProduseAditionale)iterator.next();
+				produseAditionale = (List<Produs>) prodAdd.getProduseAditionale();
+				produs = prodAdd.getProdus();
 				for (int p = 1; p < produseAditionale.size(); p++)
 				{
 					
