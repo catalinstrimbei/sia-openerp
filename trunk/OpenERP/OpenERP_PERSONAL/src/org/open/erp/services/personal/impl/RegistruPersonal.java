@@ -1,7 +1,6 @@
 package org.open.erp.services.personal.impl;
 
 import java.util.Collection;
-import org.apache.log4j.Logger;
 
 import javax.persistence.EntityManager;
 

@@ -12,10 +12,8 @@ import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
@@ -43,7 +41,6 @@ import org.open.erp.services.personal.DosarAngajat;
 import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.InterviuCandidat;
-import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.PersonalSrvLocal;
 import org.open.erp.services.personal.PersonalSrvRemote;
 import org.open.erp.services.personal.ProbaEvaluare;

@@ -14,13 +14,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.personal.logger.*;
 import org.open.erp.services.personal.*;
-import org.open.erp.services.personal.impl.*;
 
 /**
  * @author Tolic
  *
  */
-public class TestPersonalEJB {
+public class TestPersonalEJBregistru {
 
 	/**
 	 * @throws java.lang.Exception
@@ -35,8 +34,7 @@ public class TestPersonalEJB {
 	public static void setUpBeforeClass() throws Exception {
 		logger = new PersonalLogger();
 		InitialContext ctx = initJBossJNDICtx();
-		personalInstance = (PersonalSrv)ctx.lookup("PersonalSrv/remote");
-		//personalInstance = new PersonalImpl();
+		personalInstance = (PersonalSrv)ctx.lookup("PersonalSrv/remote");		
 		logger.logINFO("initTest " + personalInstance);
 	
 	}
@@ -61,22 +59,13 @@ public class TestPersonalEJB {
 	}
 	
 	@Test
+	
 	public void testSalveazaFunctie() throws Exception {
-		logger.logINFO("Begin test: adaugaFunctie");
-				
-		Functie functie = personalInstance.adaugaFunctie(101, "primaFunctie");
-		
-		logger.logINFO("Functia cu id: " + functie.getIdFunctie() + " a fost creata!");
-		
+		logger.logINFO("Begin test: adaugaFunctie");			
+		Functie functie = personalInstance.adaugaFunctie(101, "primaFunctie");		
+		logger.logINFO("Functia cu id: " + functie.getIdFunctie() + " a fost creata!");		
 		assertNotNull("Functie ne-validata!", functie.getIdFunctie());
-		/*
-		proiect = promanInstance.getProiect(proiect.getIdProiect());
-		
-		assertNotNull("Nu exista proiect nou!", proiect);
-		*/
 		logger.logINFO("End test: creareProiect");
-		//TestPersonalImpl test = new TestPersonalImpl();		
-		//fail("Not yet implemented");
 	}
 	
 	

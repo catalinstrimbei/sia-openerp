@@ -41,11 +41,9 @@ public class TestPersonal {
 		System.out.println("Anunturi valide " + test.ListaAnunturi2.size());
 		
 		//System.out.println("Interviuri " + ListaInterviuri.size());
-
-		
+	
 		while (iterator.hasNext()) 
-		{
-			
+		{			
 			AnuntLocMunca anunt = iterator.next();
 			System.out.println(anunt.getFunctie().getNumeFunctie());
 			
