@@ -2,6 +2,7 @@ package org.open.erp.services.salarizare.teste;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Properties;
 
 import org.junit.After;
@@ -73,9 +74,25 @@ public class TestSalarizareEJB {
 		
 		salarizareSrvInstance.inregistrarePontajLuna(2011, 11);
 		
-		assertNotNull("Metoda de creere a pontajului nu a functionat!");
 		logger.info("End test: inregistrarePontaj");
 	}
+	
+	@Test
+	public void calculSporuriAngajati() {
+		logger.info("Begin test: calculSporuriAngajat");
+		Double sporuri;
+		Angajat angajat = personalSrvInstance.getAngajatById(1);
+		
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		sporuri = salarizareSrvInstance.calculSporuriAngajat(2011, 11, angajat);
+		logger.info("Sporurile insumate sunt: "+sporuri);
+		
+		assertNotNull("Metoda de creere a pontajului nu a functionat!", sporuri);
+		
+		logger.info("End test: calculSporuriAngajat");
+	}
+	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
