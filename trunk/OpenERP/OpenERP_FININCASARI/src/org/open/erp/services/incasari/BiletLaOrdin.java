@@ -76,8 +76,7 @@ public class BiletLaOrdin extends Incasare {
 		this.garant = garant;
 		this.stare = stare;
 	}
-	
-	@ManyToOne
+
 	public Persoana getGarant() {
 		return garant;
 	}
