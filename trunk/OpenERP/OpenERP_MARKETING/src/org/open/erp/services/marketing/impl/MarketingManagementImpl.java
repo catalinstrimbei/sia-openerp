@@ -74,6 +74,7 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		logger.debug("Perioada in care se desfasoara campania:" + campanieNoua.getDataStart().toString() + " - " + campanieNoua.getDataSfarsit().toString());
 		campanieNoua.setStatus(-1);
 		campanieNoua.setPersoaneTinta(PersoaneTinta);
+		this.registruMarketing.salveazaCampanie(campanieNoua);
 		
 		logger.debug("Persoane avizate : " );
 		for (int i=0 ; i < PersoaneTinta.size() ; i++)
