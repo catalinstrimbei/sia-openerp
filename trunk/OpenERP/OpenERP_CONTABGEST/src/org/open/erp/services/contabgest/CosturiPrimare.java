@@ -1,5 +1,11 @@
 package org.open.erp.services.contabgest;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * 
  * @author andreea.andronic, marius.borsan, andreea.zaharia, anca.zavate
@@ -7,17 +13,42 @@ package org.open.erp.services.contabgest;
  * @BusinessObject(Entity)
  * 
  */
-
-public class CosturiPrimare {
-
+@Entity
+public class CosturiPrimare implements Serializable {
+	@Id
+	@GeneratedValue
 	private Integer idCostPrimar;
-	private String tipCost; //de tip comanda sau din stocuri
+	private String tipCost; // de tip comanda sau din stocuri
 	private Double valoareCost;
-	
-	///luam din comenzi si stocuri
-	
-	
-	
+
+	// /luam din comenzi si stocuri
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idCostPrimar == null) ? 0 : idCostPrimar.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CosturiPrimare other = (CosturiPrimare) obj;
+		if (idCostPrimar == null) {
+			if (other.idCostPrimar != null)
+				return false;
+		} else if (!idCostPrimar.equals(other.idCostPrimar))
+			return false;
+		return true;
+	}
+
 	public CosturiPrimare(Integer idCostPrimar, String tipCost,
 			Double valoareCost) {
 		super();
@@ -53,8 +84,5 @@ public class CosturiPrimare {
 	public void setValoareCost(Double valoareCost) {
 		this.valoareCost = valoareCost;
 	}
-	
-	
-	
-	
+
 }
