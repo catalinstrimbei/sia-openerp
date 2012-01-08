@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 
 import org.open.erp.services.nomgen.Produs;
 
+
 @Entity
 
 public class ProdusDiscount implements Serializable {

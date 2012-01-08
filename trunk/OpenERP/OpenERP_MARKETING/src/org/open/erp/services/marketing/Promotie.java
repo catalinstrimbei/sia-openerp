@@ -3,10 +3,8 @@ package org.open.erp.services.marketing;
 import java.util.Date;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -175,10 +173,23 @@ public class Promotie {
 		this.listProduseAditionale = listProduseAditionale;
 	}
 	public void adaugaProdusDiscount(Produs produs,Discount prodDisc){
-		
+		ProdusDiscount produseDiscount = new ProdusDiscount();
+		produseDiscount.setProdus(produs);
+		produseDiscount.setDiscount(prodDisc);
+		this.listaProduseDiscount.add(produseDiscount);
 	}
 	public void StergeProdusDiscount(Produs produs){
-		listaProduse.remove(produs);
+		Iterator<ProdusDiscount> produsDiscount = this.listaProduseDiscount.iterator();
+		ProdusDiscount produsDisc;
+		while (produsDiscount.hasNext())
+		{
+			produsDisc = produsDiscount.next();
+			if(produsDisc.getProdus().equals(produs))
+			{
+				this.listaProduseDiscount.remove(produsDisc);
+			}
+		}
+		
 	}
 	public void adaugaProdusAdiacent(Produs produs,List<Produs> prodAddiacent){
 		ProduseAditionale produseAditionale = new ProduseAditionale();
