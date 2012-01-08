@@ -13,6 +13,8 @@ import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.marketing.Campanie;
+import org.open.erp.services.marketing.MarketingManagementSrv;
+import org.open.erp.services.marketing.MarketingManagementSrvRemote;
 import org.open.erp.services.marketing.PersoanaTinta;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 
@@ -21,13 +23,13 @@ public class TestMarketingManagementImplEJB {
 		private static Logger logger = Logger.getLogger(TestMarketingManagementImplEJB.class.getName());
 		
 		/* Unitatea de test sursa/gazda unitatii de test */
-		private static MarketingManagementImpl marketingInstance;
+		private static MarketingManagementSrvRemote marketingInstance;
 		
 		/* Set up */
 		@BeforeClass
 		public static void setUpBeforeClass() throws Exception {
 			InitialContext ctx = initJBossJNDICtx();
-			marketingInstance = (MarketingManagementImpl)ctx.lookup("MarketingManagementSrv/remote");
+			marketingInstance = (MarketingManagementSrvRemote)ctx.lookup("MarketingManagementSrvRemote/remote");
 			logger.info("initTest " + marketingInstance);
 		}
 
@@ -38,7 +40,7 @@ public class TestMarketingManagementImplEJB {
 		 * - procesare persistenta cu 2JPA-PU,
 		 * - definire BO local cu asociaţie către BO din alt modul.
 		 * */
-		//@Test
+		@Test
 		public void testdefinireCampanie() throws Exception{
 			
 			logger.info("Begin test: definireCampanie");
