@@ -87,6 +87,11 @@ public class Responsabil implements Serializable {
 	public void setListaChestionare(List<Chestionar> listaChestionare) {
 		this.listaChestionare = listaChestionare;
 	}
+	public Responsabil(Integer idResponsabil, Angajat angajat) {
+		super();
+		IdResponsabil = idResponsabil;
+		this.angajat = angajat;
+	}
 	
 	
 }
