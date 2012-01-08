@@ -57,9 +57,9 @@ import org.open.erp.services.personal.teste.TestPersonalImpl;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-@Stateless(name="PersonalSrv")
+@Stateful(name="PersonalSrv")
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class PersonalImpl implements PersonalSrv, PersonalSrvLocal, PersonalSrvRemote{	
+public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{	
 
 	final static long MILLIS_PER_DAY = 24 * 3600 * 1000;
 	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
