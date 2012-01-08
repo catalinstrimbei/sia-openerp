@@ -47,10 +47,10 @@ public class TestMarketingManagementImpl {
 	} 
 
 	@Test
-	public final void testDefinireCampanie() {
+	public final void testDefinireCampanie() throws Exception {
 			logger.info("Begin test: definireCampanie");
 		 Campanie  campanieNoua;
-		 Responsabil responsabil= new Responsabil(1000, "Responsabil", "Prima campanie"); //= (Responsabil)nomenclatorInstance.creazaPersona(1000, "Responsabil", "Prima campanie");
+		 //Responsabil responsabil= new Responsabil(1000, "Responsabil", "Prima campanie"); //= (Responsabil)nomenclatorInstance.creazaPersona(1000, "Responsabil", "Prima campanie");
 		 PersoanaTinta  persoanaTinta;
 		 List<PersoanaTinta>  listaPersoaneTinta = new ArrayList<PersoanaTinta>();
 		 Calendar		calendar = Calendar.getInstance();
@@ -64,7 +64,8 @@ public class TestMarketingManagementImpl {
 			 persoanaTinta =new PersoanaTinta(1000+i, "Nume" + i, "Prenume" + i); //(PersoanaTinta) nomenclatorInstance.creazaPersona(1000+i, "Nume" + i, "Prenume" + i);
 			 listaPersoaneTinta.add(persoanaTinta);
 		 }
-		 campanieNoua = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, responsabil, listaPersoaneTinta);
+		 campanieNoua = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, null, listaPersoaneTinta);
+		 assertNotNull("Nu exista campanie noua!", campanieNoua);
 		 logger.info("End test: definireCampanie");
 	}
 
