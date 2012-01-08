@@ -59,10 +59,15 @@ public class TestPersonalEJBregistru {
 	public void testInserari() throws Exception {
 		logger.logINFO("Begin test: Inserari");			
 		TestPersonalImpl test = new TestPersonalImpl();
-		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
-		ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);
+		test.generareAnunturi();
+		test.initEvenimenteActivitati();
+		Candidat candidat = personalInstance.salveazaCandidat(test.candidat1);
 		Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);
-		AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
+		DosarAngajat	dosar = personalInstance.salveazaDosarAngajat(test.dosar1);
+		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
+		//ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);
+		
+		//AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
 		logger.logINFO("End test: Inserari");
 	}
 	
