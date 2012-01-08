@@ -5,15 +5,23 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.open.erp.services.nomgen.Produs;
 @Entity
 public class ProduseAditionale {
 	@Id
 	Integer IdCombinatie;
+	@OneToOne
+	@JoinColumn(name="IdProdus")
 	Produs	produs;
-	//toDO Add oneToMany relations
+	@OneToMany
+	@JoinTable(name="Produs",
+	joinColumns = @JoinColumn (name="idCombinatie"),
+	inverseJoinColumns = @JoinColumn(name = "idProdus"))
 	List<Produs> produseAditionale = new ArrayList<Produs>();
 	public Integer getIdCombinatie() {
 		return IdCombinatie;
