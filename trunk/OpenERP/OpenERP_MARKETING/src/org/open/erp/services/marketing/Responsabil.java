@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import javax.persistence.CascadeType; 
@@ -13,7 +15,8 @@ import java.io.Serializable;
 import javax.persistence.MappedSuperclass;
 
 import org.open.erp.services.nomgen.Persoana;
-//import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.personal.Angajat;
 /**
  * 
  * @author echipa.marketing
@@ -23,10 +26,12 @@ import org.open.erp.services.nomgen.Persoana;
  */
 @Entity
 
-public class Responsabil extends Persoana implements Serializable {
+public class Responsabil implements Serializable {
 	
 	@Id
 	Integer IdResponsabil;
+	@ManyToOne @JoinColumn(name = "marca")
+	Angajat		angajat;
 	@OneToMany (mappedBy = "responsabil", cascade = CascadeType.ALL)
 		List<Campanie> listaCampanii;
     
@@ -45,13 +50,33 @@ public class Responsabil extends Persoana implements Serializable {
 	 * @param nume
 	 * @param prenume
 	 */
-	public Responsabil(Integer idPersoana, String nume, String prenume) {
-		super();
-		this.setId(idPersoana);
-		// TODO Auto-generated constructor stub
-	}
+	
 	public List<Campanie> getListaCampanii() {
 		return listaCampanii;
+	}
+	/**
+	 * @return the idResponsabil
+	 */
+	public Integer getIdResponsabil() {
+		return IdResponsabil;
+	}
+	/**
+	 * @param idResponsabil the idResponsabil to set
+	 */
+	public void setIdResponsabil(Integer idResponsabil) {
+		IdResponsabil = idResponsabil;
+	}
+	/**
+	 * @return the angajat
+	 */
+	public Angajat getAngajat() {
+		return angajat;
+	}
+	/**
+	 * @param angajat the angajat to set
+	 */
+	public void setAngajat(Angajat angajat) {
+		this.angajat = angajat;
 	}
 	public void setListaCampanii(List<Campanie> listaCampanii) {
 		this.listaCampanii = listaCampanii;
