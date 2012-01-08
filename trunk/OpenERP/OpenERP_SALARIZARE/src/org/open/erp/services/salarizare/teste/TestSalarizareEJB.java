@@ -158,6 +158,13 @@ public class TestSalarizareEJB {
 		logger.info("End test: calculDeduceriAngajat");
 	}
 	
+	@Test
+	public void testinregistrarStatSalariiLuna() throws Exception {
+		logger.info("Begin test: inregistrareStatSalariiLuna");
+		salarizareSrvInstance.inregistrarStatSalariiLuna(2011, 11);
+		logger.info("End test: inregistrareStatSalariiLuna");
+	}
+	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
