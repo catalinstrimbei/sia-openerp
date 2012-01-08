@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,8 +26,8 @@ public class ContractMunca implements Serializable{
 
 	public static final Integer durataNelimitata = 0;
 	
-	@Id
-	private String  nrContract;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer  nrContract;
 	private Double	salarBaza;
 	private Double 	tarifOrar;
 	@ManyToOne @JoinColumn(name = "marca")
@@ -48,10 +50,10 @@ public class ContractMunca implements Serializable{
 	public void setMotivIncheiere(String motivIncheiere) {
 		this.motivIncheiere = motivIncheiere;
 	}
-	public String getNrContract() {
+	public Integer getNrContract() {
 		return nrContract;
 	}
-	public void setNrContract(String nrContract) {
+	public void setNrContract(Integer nrContract) {
 		this.nrContract = nrContract;
 	}
 	public Angajat getAngajat() {
@@ -105,7 +107,7 @@ public class ContractMunca implements Serializable{
 	public void setTarifOrar(Double tarifOrar) {
 		this.tarifOrar = tarifOrar;
 	}
-	public ContractMunca(String nrContract, Double salarBaza, Double tarifOrar,
+	public ContractMunca(Integer nrContract, Double salarBaza, Double tarifOrar,
 			Angajat angajat, Functie functie, Date dataSemnare,
 			Date dataInceput, Date dataTerminare, Integer durataContract,
 			String motivIncheiere) {
