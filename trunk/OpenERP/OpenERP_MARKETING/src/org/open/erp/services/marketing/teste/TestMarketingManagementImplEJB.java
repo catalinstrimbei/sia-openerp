@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -57,21 +58,21 @@ public class TestMarketingManagementImplEJB {
 			 }
 			 campanie = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, null, listaPersoaneTinta);
 			
-			logger.info("Campania cu id: " + campanie.getIdCampanie() + " a fost creata!");
+			logger.info("Campania cu id: " + campanie.getIdCampanie() + " a fost definita!");
 			
 			assertNotNull("Campania ne-validata!", campanie.getIdCampanie());
 			
-			campanie = marketingInstance.(proiect.getIdProiect());
+			campanie = marketingInstance.getCampanie(campanie.getIdCampanie());
 			
-			assertNotNull("Nu exista proiect nou!", proiect);
-			logger.info("End test: creareProiect");
+			assertNotNull("Nu exista campanie noua!", campanie);
+			logger.info("End test: definireCamppanie");
 		}
 		
 		/* Test creare proiect: 
 		 * - procesare persistenta cu 2JPA-PU
 		 * - definire BO local extinzând (moştenind) definiţia BO local din alt modul;
 		 * */	
-		@Test
+		/*@Test
 		public void testCreareActivitate() throws Exception  {
 			logger.info("Begin test: creareActivitate");
 			Proiect proiect = promanInstance.creareProiect("Test", null, null, null, 1000.0);
@@ -98,6 +99,7 @@ public class TestMarketingManagementImplEJB {
 			
 			logger.info("End test: creareActivitate");
 		}	
+		*/
 		/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 		private static InitialContext initJBossJNDICtx() throws NamingException{
 			Properties props = new Properties();
