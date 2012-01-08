@@ -25,6 +25,7 @@ import org.open.erp.services.marketing.ProdusDiscount;
 import org.open.erp.services.marketing.ProduseAditionale;
 import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.Responsabil;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.nomgen.Produs;
 
 /**
@@ -42,6 +43,8 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 	private EntityManager em;
 	@Resource
 	private SessionContext sessionContext;	
+	//@EJB(mappedName="NomenclatoareDummyImpl/local") /* BUG JBoss 5 referinte EJB: de folosit mappedName */
+	//private NomenclatoareSrvLocal nomGenSrv;
 	/*
 	 * 
 	 * @ConstrutorForDummy
@@ -62,9 +65,9 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 
 	@Override
 	public Campanie definireCampanie(String nume, 
-			Date dataStart, Date dataSfarsit,Responsabil responsabil, List<PersoanaTinta> PersoaneTinta) {
+			Date dataStart, Date dataSfarsit,Responsabil responsabil, List<PersoanaTinta> PersoaneTinta) throws Exception {
 		
-		logger.debug("Creare Campanie");
+		logger.debug(">>>>>>>>>>>> START Creare Campanie");	
 		
 		Campanie campanieNoua = new Campanie(1, nume, dataStart, dataSfarsit, responsabil);
 		logger.debug(campanieNoua.getDenumireCampanie());
@@ -77,6 +80,13 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		{
 			logger.debug(PersoaneTinta.get(i).getNume() + " " + PersoaneTinta.get(i).getPrenume());
 		}
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare Campanie - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+		} else
+			campanieNoua = this.registruMarketing.salveazaCampanie(campanieNoua);
+			//em.persist(proiectNou);
 		
 		return campanieNoua;
 	}

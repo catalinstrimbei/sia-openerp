@@ -43,9 +43,10 @@ public interface MarketingManagementSrv {
 	 * @param PersoaneTinta	Lista persoanelor tinta 
 	 * 
 	 * @return instanta Campanie nou creata. 
+	 * @throws Exception 
 	 * 
 	 */
-	Campanie definireCampanie(String nume,  Date dataStart, Date dataSfarsit,Responsabil responsabil,List<PersoanaTinta> PersoaneTinta);
+	Campanie definireCampanie(String nume,  Date dataStart, Date dataSfarsit,Responsabil responsabil,List<PersoanaTinta> PersoaneTinta) throws Exception;
 //-----------------------------------------------DEFINIRE CAMPANIE END-----------------------------------------------
 //-----------------------------------------------INITIERE CAMPANIE START---------------------------------------------
 	/**

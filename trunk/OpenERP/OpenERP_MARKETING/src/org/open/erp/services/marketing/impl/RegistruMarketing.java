@@ -42,7 +42,7 @@ public class RegistruMarketing {
 		}
 		
 		/* persistenta */
-		public Campanie salveazaProiect(Campanie campanie) throws Exception{
+		public Campanie salveazaCampanie(Campanie campanie) throws Exception{
 			try{
 				
 				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
