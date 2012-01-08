@@ -14,6 +14,7 @@ import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.SalarizareSrv;
+import org.open.erp.services.salarizare.Spor;
 import org.open.erp.services.salarizare.impl.SalarizareImpl;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -165,6 +166,18 @@ public class TestSalarizareEJB {
 		logger.info("End test: inregistrareStatSalariiLuna");
 	}
 	
+	@Test
+	public void testInregistrareSpor() throws Exception {
+		logger.info("Begin test: inregistrareSpor");
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		Spor spor = salarizareSrvInstance.inregistrareSpor("Bonus", 1, 2011, 11, angajat, 1, 100.0);
+		logger.info("A fost creat sporul cu id-ul: "+spor.getIdSpor());
+		assertNotNull("Metoda de creare a sporului nu a functionat!", spor);
+		
+		logger.info("End test: inregistrareSpor");
+	}
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
