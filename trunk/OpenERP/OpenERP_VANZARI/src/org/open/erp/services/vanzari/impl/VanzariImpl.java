@@ -2,9 +2,15 @@ package org.open.erp.services.vanzari.impl;
 
 /**
  * @author Irina Bogdan
+ * 
+ * @ApplicationServiceImplementation(ServiceAPI)
+ * 
  */
 
 import java.util.ArrayList;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateful;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -13,17 +19,21 @@ import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
 import org.open.erp.services.nomgen.Produs;
-import org.open.erp.services.stocuri.StocuriSrv;
+//import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.StocuriSrvLocal;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 import org.open.erp.services.vanzari.*;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
-
-public class VanzariImpl implements VanzariSrv{
+@Stateful
+public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	
 	private ProcesareComanda procesareComanda  = new ProcesareComanda();
 	private ProcesareFacturaEmisa procesareFactura = new ProcesareFacturaEmisa();
-	public StocuriSrv stocuriSrv = new StocuriImpl();
+	@EJB(mappedName="StocuriImpl/local")
+	public StocuriSrvLocal stocuriSrv = new StocuriImpl();
+	@EJB(mappedName="ContabilizareSrvImpl/local")
+	// TO DO - change when to ContabilizareSrvLocal
 	public ContabilizareSrv contabilizareSrv = new ContabilizareSrvImpl();
 	
 	//public static final Integer INTRARE_STOC = 1;

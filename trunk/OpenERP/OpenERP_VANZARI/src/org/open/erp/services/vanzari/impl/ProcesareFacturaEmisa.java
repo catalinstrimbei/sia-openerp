@@ -2,17 +2,24 @@ package org.open.erp.services.vanzari.impl;
 
 /**
  * @author Irina Bogdan
+ * 
+ *  @BusinessObject(Service)
+ *  
  */
 
+import javax.ejb.EJB;
+
 import org.open.erp.services.nomgen.Produs;
-import org.open.erp.services.stocuri.StocuriSrv;
+//import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.StocuriSrvLocal;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 import org.open.erp.services.vanzari.LinieFacturaEmisa;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
 public class ProcesareFacturaEmisa {
 
-	private StocuriSrv stocuriSrv = new StocuriImpl();
+	@EJB(mappedName="StocuriImpl/local")
+	public StocuriSrvLocal stocuriSrv = new StocuriImpl();
 
 	private LinieFacturaEmisa linie;
 	

@@ -1,25 +1,38 @@
 package org.open.erp.services.vanzari;
+import java.io.Serializable;
 import java.util.Date;
+
+import static javax.persistence.TemporalType.TIMESTAMP;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.vanzari.Client;
 
 /**
  * @author Irina Bogdan
+ * 
+ * @BusinessObject(Entity)
+ * 
  */
 
-public class ContractVanzare extends Document {
-	Integer idContract;
+@Entity
+public class ContractVanzare extends Document implements Serializable {
+	//@Id @GeneratedValue
+	//Integer idContract;
+	@OneToOne
 	Client client;
+	@Temporal(TIMESTAMP)
 	Date dataInceputContract;
+	@Temporal(TIMESTAMP)
 	Date dataIncheireContract;
 	
-	public Integer getIdContract() {
-		return idContract;
-	}
-	public void setIdContract(Integer idContract) {
-		this.idContract = idContract;
-	}
+	public ContractVanzare(){super();}
+	
 	public Client getClient() {
 		return client;
 	}

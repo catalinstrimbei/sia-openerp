@@ -1,15 +1,20 @@
 package org.open.erp.services.vanzari;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.nomgen.LinieDocument;
 
-/*
+/**
  * @author Irina Bogdan
  * 
- * @BusinessObject(DummyEntity)
+ * @BusinessObject(Entity)
  */
 
-public class LinieFacturaEmisa extends LinieDocument {
+@Entity
+public class LinieFacturaEmisa extends LinieDocument implements Serializable {
 	//Integer idLinieFactura;
 	//Produs produs;
 	//Double pretUnitar;
@@ -23,8 +28,8 @@ public class LinieFacturaEmisa extends LinieDocument {
 	
 	public LinieFacturaEmisa(Produs _produs, Double _cant){
 		super();
-		this.material= _produs;
-		this.cantitate = _cant;
+		this.setMaterial(_produs);
+		this.setCantitate(_cant);
 	}
 
 	public Double getPretLinie() {

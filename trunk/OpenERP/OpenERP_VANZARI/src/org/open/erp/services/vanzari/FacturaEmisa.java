@@ -1,33 +1,51 @@
 package org.open.erp.services.vanzari;
 
+import static javax.persistence.TemporalType.TIMESTAMP;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import static javax.persistence.CascadeType.ALL;
+
 import org.open.erp.services.nomgen.Document;
 
-/*
+/**
  * @author Irina Bogdan
  * 
- * @BusinessObject(DummyEntity)
+ * @BusinessObject(Entity)
  */
 
-public class FacturaEmisa extends Document {
+@Entity
+public class FacturaEmisa extends Document implements Serializable {
 	public static final Boolean PLATITA = true;
 	public static final Boolean NEPLATITA = false;
 	
 	public static final Integer ZILE_RETUR = 20;
 	
+	@Id @GeneratedValue
 	Integer idFactura;
 	//Date dataFacturare;		
 	Double valoareTotalaFactura;
 	Double valoareTva;
 	Boolean platita; /* factura platita sau nu */
 	String adresaFacturare;
+	@Temporal(TIMESTAMP)
 	Date dataLivrare;
 	
 	Integer nrComanda;
+	@ManyToOne
 	Client client;
+	@OneToMany(targetEntity=LinieFacturaEmisa.class, cascade=ALL)
 	ArrayList<LinieFacturaEmisa> produseFacturate = new ArrayList<LinieFacturaEmisa>();
+	@ManyToOne
 	Vanzator vanzator;
 	
 	Integer idMetodaPlata;

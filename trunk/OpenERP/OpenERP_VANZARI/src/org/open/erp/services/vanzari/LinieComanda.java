@@ -1,21 +1,33 @@
 package org.open.erp.services.vanzari;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
+
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
-/*
+/**
  * @author Irina Bogdan
  * 
- * @BusinessObject(DummyEntity)
+ * @BusinessObject(Entity)
  */
 
-public class LinieComanda {
+@Entity @IdClass(LinieComandaId.class)
+public class LinieComanda implements Serializable {
 	public static final Integer STOC_DISPONIBIL = 1;
 	public static final Integer STOC_INDISPONIBIL = 0;
 	
+	@Id @GeneratedValue
 	Integer nrComanda;
+	@Id @GeneratedValue
 	Integer nrLinie;
-	Produs produs;	
+	@ManyToOne
+	Produs produs;
 	Double cantitate;
 	Double pretLinie;
 	Double tvaLinie;

@@ -1,22 +1,31 @@
 package org.open.erp.services.vanzari;
 
-/*
+/**
  * @author Irina Bogdan
  * 
- * @BusinessObject(DummyEntity)
+ * @BusinessObject(Entity)
  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import static javax.persistence.CascadeType.ALL;
+
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
-public class Comanda {
+@Entity
+public class Comanda implements Serializable {
 	public static final char PENDING = 'P';
 	public static final char COMPLETED = 'C';
 	public static final char CANCELED = 'X';
 	
+	@Id @GeneratedValue
 	Integer nrComanda;
 	Date dataComanada;
 	Client client;
@@ -25,6 +34,7 @@ public class Comanda {
 	//Double discountTotal;
 	//Double reduceriTotale;
 	char stareComanda; // P, C, X
+	@OneToMany(targetEntity=LinieComanda.class, cascade=ALL)
 	ArrayList<LinieComanda> produseComandate;
 	// !!!!!!!!!!
 	Integer idMetodaPlata;

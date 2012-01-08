@@ -6,7 +6,7 @@ import org.open.erp.services.nomgen.Produs;
 /**
  * @author Irina Bogdan
  * 
- * @ApplicationServiceFacade(ServiceDummyAPI)
+ * @ApplicationServiceFacade(ServiceAPI)
  * 
  * @Dependente: StocuriSrv, NomenclatoareSrv, ContabilitateSrv
  * 

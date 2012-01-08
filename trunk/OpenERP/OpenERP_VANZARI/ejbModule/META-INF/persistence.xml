@@ -2,7 +2,21 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="OpenERP_VANZARI">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>		
+		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
+		
+		<!-- <jar-file>OpenERP_NOMGEN.jar</jar-file> -->
+		<class>org.open.erp.services.vanzari.Client</class>
+		<class>org.open.erp.services.vanzari.Comanda</class>
+		<class>org.open.erp.services.vanzari.ContractVanzare</class>
+		<class>org.open.erp.services.vanzari.FacturaEmisa</class>
+		<class>org.open.erp.services.vanzari.LinieComanda</class>
+		<class>org.open.erp.services.vanzari.LinieFacturaEmisa</class>
+		<class>org.open.erp.services.vanzari.Vanzator</class>
+		<class>org.open.erp.services.nomgen.Produs</class>
+		
+		<!--<class>org.open.erp.services.nomgen.Persoana</class>
+		<class>org.open.erp.services.nomgen.LinieDocument</class>
+		<class>org.open.erp.services.nomgen.Partener</class>  -->
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
 	        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>

@@ -2,28 +2,38 @@ package org.open.erp.services.vanzari.impl;
 
 /**
  * @author Irina Bogdan
+ * 
+ * @BusinessObject(Service)
+ *  
  */
 
 import java.util.Date;
+import javax.ejb.EJB;
 import java.util.Iterator;
 
-import org.open.erp.services.marketing.MarketingManagementSrv;
+//import org.open.erp.services.marketing.MarketingManagementSrv;
+import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.productie.ComandaProductie;
-import org.open.erp.services.productie.ProductieSrv;
+//import org.open.erp.services.productie.ProductieSrv;
+import org.open.erp.services.productie.ProductieSrvLocal;
 import org.open.erp.services.productie.impl.ProductieImpl;
-import org.open.erp.services.stocuri.StocuriSrv;
+//import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.StocuriSrvLocal;
 import org.open.erp.services.vanzari.Comanda;
 import org.open.erp.services.vanzari.LinieComanda;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 
 public class ProcesareComanda {
-	
-	public StocuriSrv stocuriSrv = new StocuriImpl();
-	public MarketingManagementSrv mkSrv = new MarketingManagementImpl();
-	public ProductieSrv prodSrv = new ProductieImpl();
+
+	@EJB(mappedName="StocuriImpl/local")
+	public StocuriSrvLocal stocuriSrv = new StocuriImpl();
+	@EJB(mappedName="MarketingManagementImpl/local")
+	public MarketingManagementSrvLocal mkSrv = new MarketingManagementImpl();
+	@EJB(mappedName="ProductieImpl/local")
+	public ProductieSrvLocal prodSrv = new ProductieImpl();
 	
 	public Comanda comanda;
 	
@@ -91,8 +101,8 @@ public class ProcesareComanda {
 		if( cantDisponibila >= cantitate)
 			return true;
 		else{
-			//ComandaProductie comprod = new ComandaProductie(1, produs, cantitate.intValue(), new Date());
-			//prodSrv.lansareComandaProductie(comprod, produs);
+			ComandaProductie comprod = new ComandaProductie(1, produs, cantitate.intValue(), new Date());
+			prodSrv.lansareComandaProductie(comprod, produs);
 			return false;
 		}
 	}

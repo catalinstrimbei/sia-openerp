@@ -1,14 +1,20 @@
 package org.open.erp.services.vanzari;
 
-/*
+/**
  * @author Irina Bogdan
  * 
- * @BusinessObject(DummyEntity)
+ * @BusinessObject(Entity)
  */
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
 
 import org.open.erp.services.nomgen.Partener;
 
-public class Client extends Partener {
+@Entity
+public class Client extends Partener implements Serializable {
+	//@Id @GeneratedValue
 	//Integer idClient;
 	String nume;
 	String adresa;

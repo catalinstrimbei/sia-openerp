@@ -1,23 +1,29 @@
 package org.open.erp.services.vanzari;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
+import org.open.erp.services.nomgen.Persoana;
+
 /**
  * @author Irina Bogdan
+ * 
+ * @BusinessObject(Entity)
+ * 
  */
 
-public class Vanzator {
+@Entity
+public class Vanzator extends Persoana implements Serializable {
 
-	Integer idVinzator;
+	//Integer idVinzator;
 	String nume;
 	String prenume;
-	String adresa;
+	//String adresa;
 	Integer codAcces;
+
+	public Vanzator(){super();}
 	
-	public Integer getIdVinzator() {
-		return idVinzator;
-	}
-	public void setIdVinzator(Integer idVinzator) {
-		this.idVinzator = idVinzator;
-	}
 	public String getNume() {
 		return nume;
 	}
@@ -29,12 +35,6 @@ public class Vanzator {
 	}
 	public void setPrenume(String prenume) {
 		this.prenume = prenume;
-	}
-	public String getAdresa() {
-		return adresa;
-	}
-	public void setAdresa(String adresa) {
-		this.adresa = adresa;
 	}
 	public Integer getCodAcces() {
 		return codAcces;
