@@ -54,7 +54,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void calculSporuriAngajati() {
+	public void calculSporuriAngajati() throws Exception {
 		logger.info("Begin test: calculSporuriAngajat");
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(personalSrvInstance.getListaAngajati());
@@ -67,7 +67,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void calculRetineriAngajati() {
+	public void calculRetineriAngajati() throws Exception {
 		logger.info("Begin test: calculRetineriAngajat");
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(personalSrvInstance.getListaAngajati());
@@ -80,7 +80,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void calculVenitBrutAngajati() {
+	public void calculVenitBrutAngajati() throws Exception {
 		logger.info("Begin test: calculVenitBrutAngajat");
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(personalSrvInstance.getListaAngajati());
@@ -93,7 +93,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void calculRetineriObligatoriiAngajati() {
+	public void calculRetineriObligatoriiAngajati() throws Exception {
 		logger.info("Begin test: calculRetineriObligatoriiAngajat");
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(personalSrvInstance.getListaAngajati());
@@ -109,7 +109,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void calculImpozitAngajati() {
+	public void calculImpozitAngajati() throws Exception {
 		logger.info("Begin test: calculImpozitAngajat");
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(personalSrvInstance.getListaAngajati());
@@ -128,7 +128,7 @@ public class TestSalarizareImpl {
 	}
 	
 	@Test
-	public void calculDeduceriAngajati() {
+	public void calculDeduceriAngajati() throws Exception {
 		logger.info("Begin test: calculDeduceriAngajat");
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(personalSrvInstance.getListaAngajati());

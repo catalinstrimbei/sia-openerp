@@ -421,7 +421,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		this.registru = registru;
 	}
 	
-	public  Angajat getAngajatById(Integer id){
+	public  Angajat getAngajatById(Integer id) throws Exception{
 		Angajat angajat = personalSrv.getAngajatById(id);
 		if (angajat==null){
 			angajat = new Angajat();
