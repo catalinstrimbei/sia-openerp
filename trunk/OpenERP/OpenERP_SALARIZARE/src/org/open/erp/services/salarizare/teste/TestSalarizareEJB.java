@@ -16,6 +16,7 @@ import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.Retinere;
 import org.open.erp.services.salarizare.SalarizareSrv;
 import org.open.erp.services.salarizare.Spor;
+import org.open.erp.services.salarizare.impl.RegistruSalarizare;
 import org.open.erp.services.salarizare.impl.SalarizareImpl;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -24,7 +25,7 @@ public class TestSalarizareEJB {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
 	private static SalarizareSrv salarizareSrvInstance;
 	private static PersonalSrv personalSrvInstance;
-	
+	private static RegistruSalarizare registruSalarizare;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -200,5 +201,31 @@ public class TestSalarizareEJB {
         props.put("java.naming.provider.url", "jnp://localhost:1099/");
         props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
         return new InitialContext(props);
-	}		
+	}
+	
+	public void testAdaugaOreConcediu() throws Exception {
+		logger.info("Begin test: adaugaOreConcediu");
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		Pontaj pontaj = registruSalarizare.getPontajByAngajat(angajat, 2011, 11);
+		logger.info("A fost incarcat pontajul cu id-ul: "+pontaj.getIdPontaj());
+
+		salarizareSrvInstance.adaugaOreConcediu(pontaj, 8.0);
+		
+		logger.info("End test: adaugaOreConcediu");
+	}
+	
+	public void testAdaugaOreSuplimentare() throws Exception {
+		logger.info("Begin test: adaugaOreSuplimentare");
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		Pontaj pontaj = registruSalarizare.getPontajByAngajat(angajat, 2011, 11);
+		logger.info("A fost incarcat pontajul cu id-ul: "+pontaj.getIdPontaj());
+
+		salarizareSrvInstance.adaugaOreSuplimentare(pontaj, 8.0);
+		
+		logger.info("End test: adaugaOreSuplimentare");
+	}
 }
