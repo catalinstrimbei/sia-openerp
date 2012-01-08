@@ -12,10 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType; 
 import java.io.Serializable;
 
-import javax.persistence.MappedSuperclass;
-
-import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.personal.Angajat;
 /**
  * 
