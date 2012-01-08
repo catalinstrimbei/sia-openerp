@@ -3,7 +3,6 @@ package org.open.erp.services.marketing.impl;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.ejb.Stateful;
 
@@ -111,7 +110,8 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		Discount			discount;
 		ProdusDiscount		prodDisc;
 		ProduseAditionale	prodAdd;
-		Iterator			iterator;
+		Iterator<ProdusDiscount>			iteratorDisc;
+		Iterator<ProduseAditionale>			iteratorProdAdd;
 		String				tipDiscount;
 		List<Produs>		produseAditionale;
 		logger.debug("Promotia " + denumire + " a fost creata.");
@@ -131,10 +131,10 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		if ( tipPromotie == Promotie.DISCOUNT) 
 		{
 			logger.debug("Produs         Tip discount          Valoare");
-			iterator = produseDiscount.iterator();
-			while (iterator.hasNext())
+			iteratorDisc = produseDiscount.iterator();
+			while (iteratorDisc.hasNext())
 			{
-				prodDisc = (ProdusDiscount) iterator.next();
+				prodDisc = (ProdusDiscount) iteratorDisc.next();
 				discount = prodDisc.getDiscount();
 				produs = prodDisc.getProdus();
 				if (discount.getTipDiscount() == Discount.PROCENT)
@@ -148,10 +148,10 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		{
 			logger.debug("Produs         Tip discount");
 			logger.debug("             Se mai primesc si produsele:");
-			iterator = listProduseAditionale.iterator();
-			while (iterator.hasNext())
+			iteratorProdAdd = listProduseAditionale.iterator();
+			while (iteratorProdAdd.hasNext())
 			{
-				prodAdd = (ProduseAditionale)iterator.next();
+				prodAdd = (ProduseAditionale)iteratorProdAdd.next();
 				produseAditionale = (List<Produs>) prodAdd.getProduseAditionale();
 				produs = prodAdd.getProdus();
 				for (int p = 1; p < produseAditionale.size(); p++)
