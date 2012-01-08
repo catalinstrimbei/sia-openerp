@@ -17,6 +17,7 @@ public class MarketingManagementDummyFactory {
 	public static MarketingManagementSrv getMarketingManagementSrv(){
 		MarketingManagementImpl MarketingSrv = new MarketingManagementImpl();
 		
+		MarketingSrv.init();
 		return MarketingSrv;
 	}
 	

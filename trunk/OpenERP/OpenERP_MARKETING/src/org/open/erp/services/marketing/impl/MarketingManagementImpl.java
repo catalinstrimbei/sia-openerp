@@ -8,8 +8,11 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -33,8 +36,9 @@ import org.open.erp.services.nomgen.Produs;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-@Stateful(name="MarketingManagementSrv")
-public class MarketingManagementImpl implements MarketingManagementSrv, MarketingManagementSrvRemote, MarketingManagementSrvLocal {
+@Stateless(name="MarketingManagementSrv")
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class MarketingManagementImpl implements  MarketingManagementSrvLocal,MarketingManagementSrvRemote {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingManagementImpl.class.getName());
 	
 	private RegistruMarketing	registruMarketing;
@@ -74,7 +78,6 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 		logger.debug("Perioada in care se desfasoara campania:" + campanieNoua.getDataStart().toString() + " - " + campanieNoua.getDataSfarsit().toString());
 		campanieNoua.setStatus(-1);
 		campanieNoua.setPersoaneTinta(PersoaneTinta);
-		this.registruMarketing.salveazaCampanie(campanieNoua);
 		
 		logger.debug("Persoane avizate : " );
 		for (int i=0 ; i < PersoaneTinta.size() ; i++)
