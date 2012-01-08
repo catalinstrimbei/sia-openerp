@@ -1,21 +1,20 @@
 package org.open.erp.services.stocuri;
 
-
-
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import org.open.erp.services.nomgen.Material;
-
-
 
 /**
  * 
@@ -25,44 +24,46 @@ import org.open.erp.services.nomgen.Material;
  * 
  */
 @Entity
-public class ArticolStoc  {
-	@Id@GeneratedValue(strategy=GenerationType.AUTO)
+@NamedQuery(name = "getArticoleStocByGestiune", query = "Select o from ArticolStoc o where o.gestiune.idGestiune := idGest")
+public class ArticolStoc {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idArticolStoc;
 	private Integer catitateStocPeGestiune;
-	@ManyToOne@JoinColumn(name="idGestiune")
+	private Integer cantitateMinimaStoc;
+
+	@ManyToOne
+	@JoinColumn(name = "idGestiune")
 	private Gestiune gestiune;
-	@ManyToOne@JoinColumn(name="material")
+	@ManyToOne
+	@JoinColumn(name = "material")
 	private Material material;
-	@OneToMany(mappedBy="articol")
-	private List<LoturiIntrari> loturiIntrariArt=  new LinkedList<LoturiIntrari>();
-	
-	
+	@OneToMany(mappedBy = "articol", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<LoturiIntrari> loturiIntrariArt = new LinkedList<LoturiIntrari>();
+
 	public ArticolStoc() {
 		super();
 	}
-	
-	
-	
-	
-	public void addLotIntrare(LoturiIntrari lot){
+
+	public void addLotIntrare(LoturiIntrari lot) {
 		this.loturiIntrariArt.add(lot);
-		catitateStocPeGestiune+=lot.getCantitate();
+		catitateStocPeGestiune += lot.getCantitate();
 		lot.setArticol(this);
 	}
 
-	public void removeLotIntrare(LoturiIntrari lot){
+	public void removeLotIntrare(LoturiIntrari lot) {
 		this.loturiIntrariArt.remove(lot);
-		catitateStocPeGestiune-=lot.getCantitate();
+		catitateStocPeGestiune -= lot.getCantitate();
 	}
-	
-	public void incrementeazaCantArticolPeGestiune(Integer cant){
+
+	public void incrementeazaCantArticolPeGestiune(Integer cant) {
 		this.catitateStocPeGestiune += cant;
 	}
-	public void decrementeazaCantArticolPeGestiune(Integer cant){
+
+	public void decrementeazaCantArticolPeGestiune(Integer cant) {
 		this.catitateStocPeGestiune -= cant;
 	}
-	
-	
+
 	public ArticolStoc(Integer idArticolStoc, Integer catitateStocPeGestiune,
 			Gestiune gestiune, Material material) {
 		super();
@@ -78,12 +79,13 @@ public class ArticolStoc  {
 		this.idArticolStoc = idArticolStoc;
 		this.catitateStocPeGestiune = catitateStocPeGestiune;
 		this.gestiune = gestiune;
-		
+
 	}
 
 	public Integer getIdArticolStoc() {
 		return idArticolStoc;
 	}
+
 	public void setIdArticolStoc(Integer idArticolStoc) {
 		this.idArticolStoc = idArticolStoc;
 	}
@@ -91,37 +93,42 @@ public class ArticolStoc  {
 	public Integer getCatitateStocPeGestiune() {
 		return catitateStocPeGestiune;
 	}
+
 	public void setCatitateStocPeGestiune(Integer catitateStocPeGestiune) {
 		this.catitateStocPeGestiune = catitateStocPeGestiune;
 	}
+
 	public Gestiune getGestiune() {
 		return gestiune;
 	}
+
 	public void setGestiune(Gestiune gestiune) {
 		this.gestiune = gestiune;
 	}
+
 	public List<LoturiIntrari> getLoturiIntrariArt() {
 		return loturiIntrariArt;
 	}
+
 	public void setLoturiIntrariArt(LinkedList<LoturiIntrari> preturiPeLoturi) {
 		this.loturiIntrariArt = preturiPeLoturi;
 	}
-	
-	
 
 	public Material getMaterial() {
 		return material;
 	}
 
-
-
-
 	public void setMaterial(Material material) {
 		this.material = material;
 	}
 
+	public Integer getCantitateMinimaStoc() {
+		return cantitateMinimaStoc;
+	}
 
-
+	public void setCantitateMinimaStoc(Integer cantitateMinimaStoc) {
+		this.cantitateMinimaStoc = cantitateMinimaStoc;
+	}
 
 	@Override
 	public int hashCode() {
@@ -131,6 +138,7 @@ public class ArticolStoc  {
 				+ ((idArticolStoc == null) ? 0 : idArticolStoc.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -147,7 +155,5 @@ public class ArticolStoc  {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }

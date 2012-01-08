@@ -1,9 +1,18 @@
 package org.open.erp.services.stocuri.impl;
 
+import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import javax.interceptor.Interceptors;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.Material;
@@ -11,42 +20,40 @@ import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.BonConsum;
 import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.Gestiune;
+import org.open.erp.services.stocuri.LogInterceptor;
 import org.open.erp.services.stocuri.LoturiIntrari;
-import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.StocuriSrvLocal;
 import org.open.erp.services.stocuri.StocuriSrvRemote;
 import org.open.erp.services.stocuri.exceptions.IntrariStocExceptions;
 import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
+import org.open.erp.services.stocuri.impl.AplicarePret.METODE;
 
 /**
  * 
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-
-
-@Stateless(name="StocuriSrv", mappedName="StocuriSrv")
+@Interceptors(LogInterceptor.class)
+@Stateless(name = "StocuriSrv", mappedName = "StocuriSrv")
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class StocuriImpl implements StocuriSrvLocal, StocuriSrvRemote{
-
+public class StocuriImpl implements StocuriSrvLocal, StocuriSrvRemote {
 	private Procesare procesare;
-	private AplicarePret applicarepret;
+	private AplicarePret applicarePret;
+	@Resource
+	private SessionContext sessionContext;
+	@PersistenceContext(unitName = "OpenERP_STOCURI")
+	private EntityManager em;
 
-	public StocuriImpl() {
-		super();
-		procesare = new Procesare();
-	}
-
-	public StocuriImpl(Procesare procesareComandaMateriale,
-			AplicarePret applicarepret) {
-		super();
-		this.procesare = procesareComandaMateriale;
-		this.applicarepret = applicarepret;
+	@PostConstruct
+	void init() {
+		this.applicarePret = new AplicarePret(em);
+		this.procesare = new Procesare(applicarePret, em);
 	}
 
 	@Override
-	public void intrareInStoc(Material mijlocCirculant,
-			LoturiIntrari lot, Gestiune gestiune) {
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void intrareInStoc(Material mijlocCirculant, LoturiIntrari lot,
+			Gestiune gestiune) {
 		try {
 			procesare.intrareInStoc(mijlocCirculant, lot, gestiune);
 		} catch (IntrariStocExceptions e) {
@@ -57,6 +64,7 @@ public class StocuriImpl implements StocuriSrvLocal, StocuriSrvRemote{
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void transfer(Gestiune gestOut, Gestiune gestIn,
 			Material mijlocCirculant, Integer cantitate) {
 		try {
@@ -69,22 +77,28 @@ public class StocuriImpl implements StocuriSrvLocal, StocuriSrvRemote{
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public BonConsum consumProductie(CerereAprovizionare comMateriale) {
 		return (BonConsum) procesare.proceseazaComandaMateriale(comMateriale);
 
 	}
 
 	@Override
-	public Double getStocMaterialByGestiune(Material produs, Gestiune gestiune) {
-		return procesare.getArticolByMijlocAndGestiune(produs, gestiune)
-				.getCatitateStocPeGestiune().doubleValue();
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public Double getStocMaterialByGestiune(Material material, Gestiune gestiune) {
+		return procesare
+				.getRegArtStoc()
+				.getArticolByGestiuneAndMaterial(gestiune.getIdGestiune(),
+						material.getIdMaterial()).getCatitateStocPeGestiune()
+				.doubleValue();
 
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Double getPretArticolAplicareMetodaCalcul(ArticolStoc articol) {
 		try {
-			return applicarepret.getPretProdLot(articol);
+			return applicarePret.getPretProdLot(articol);
 		} catch (StocuriExceptions e) {
 			e.printStackTrace();
 			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
@@ -93,10 +107,11 @@ public class StocuriImpl implements StocuriSrvLocal, StocuriSrvRemote{
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Double verificareStocMaterial(Material material) {
-		try{
-		return procesare.verificareStocMaterial(material);
-		}catch (StocuriExceptions e) {
+		try {
+			return procesare.verificareStocMaterial(material);
+		} catch (StocuriExceptions e) {
 			e.printStackTrace();
 			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
 			return 0.0;
@@ -104,38 +119,68 @@ public class StocuriImpl implements StocuriSrvLocal, StocuriSrvRemote{
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void iesireStoc(Document doc) {
-		try{
+		try {
 			procesare.procesareComandaIesire(doc);
-		}catch (StocuriExceptions e) {
+		} catch (StocuriExceptions e) {
 			e.printStackTrace();
 			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
 		}
-		
+
 	}
 
 	@Override
-	public Boolean intrareInStoc(Document doc) {
-		return procesare.intrareInStoc(doc);
-			
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public Boolean intrareInStoc(Document doc, Gestiune gestIn) {
+		return procesare.intrareInStoc(doc, gestIn);
+
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Boolean iesireDinStoc(Material material, Integer cantitate) {
-		try{
+		try {
 			return procesare.iesireDinStoc(material, cantitate);
-			
-		}catch (StocuriExceptions e) {
+
+		} catch (StocuriExceptions e) {
 			e.printStackTrace();
 			IntrariStocExceptions.logger.loggeazaERROR(e.getMessage(), e);
 			return false;
 		}
 	}
-	
+
 	@Override
-	public Document proceseazaComandaMateriale(CerereAprovizionare comandaMateriale){
-		
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public Document proceseazaComandaMateriale(
+			CerereAprovizionare comandaMateriale) {
+
 		return procesare.proceseazaComandaMateriale(comandaMateriale);
 	}
-	
+
+	@Override
+	public List<ArticolStoc> getArticole() {
+		return procesare.getRegArtStoc().getListaByClasa(ArticolStoc.class);
+	}
+
+	@Override
+	public ArticolStoc getArticolById(Integer id) {
+		return procesare.getRegArtStoc().getEntityById(id, ArticolStoc.class);
+	}
+
+	public SessionContext getSessionContext() {
+		return sessionContext;
+	}
+
+	@Override
+	public void setMetodaCurenta(METODE metoda) {
+		applicarePret.setMetodaCurenta(metoda);
+
+	}
+
+	@Override
+	public METODE getMetodaCurenta() {
+		return applicarePret.getMetodaCurenta();
+	}
+
 }

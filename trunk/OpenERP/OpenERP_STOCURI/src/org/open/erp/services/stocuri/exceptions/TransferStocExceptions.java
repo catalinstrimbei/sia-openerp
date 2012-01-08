@@ -1,5 +1,8 @@
 package org.open.erp.services.stocuri.exceptions;
 
+import javax.ejb.ApplicationException;
+
+@ApplicationException(rollback = true)
 public class TransferStocExceptions extends StocuriExceptions {
 
 	/**

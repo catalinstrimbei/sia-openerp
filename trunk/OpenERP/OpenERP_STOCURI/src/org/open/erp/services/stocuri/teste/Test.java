@@ -1,6 +1,7 @@
 package org.open.erp.services.stocuri.teste;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,22 +11,19 @@ import java.util.List;
 import org.junit.Before;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
-
 import org.open.erp.services.stocuri.ArticolStoc;
 import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.Depozit;
-
 import org.open.erp.services.stocuri.Gestiune;
-import org.open.erp.services.stocuri.StocuriSrv;
-
 import org.open.erp.services.stocuri.LoturiIntrari;
+import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.AplicarePret;
 import org.open.erp.services.stocuri.impl.AplicarePret.METODE;
 import org.open.erp.services.stocuri.impl.Procesare;
 import org.open.erp.services.stocuri.util.StocuriLogger;
 
 public class Test {
-	AplicarePret apPret = new AplicarePret();
+	AplicarePret apPret = new AplicarePret(null);
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	List<Gestiune> gestiuni = new ArrayList<Gestiune>();
 	StocuriLogger logger = new StocuriLogger();
@@ -49,8 +47,7 @@ public class Test {
 			t.setUp();
 			t.metodaDeTestFIFO();
 			t.metodaDeTestLIFO();
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

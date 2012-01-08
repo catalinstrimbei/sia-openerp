@@ -1,5 +1,8 @@
 package org.open.erp.services.stocuri.exceptions;
 
+import javax.ejb.ApplicationException;
+
+@ApplicationException(rollback = true)
 public class IntrariStocExceptions extends StocuriExceptions {
 
 	/**
@@ -9,13 +12,12 @@ public class IntrariStocExceptions extends StocuriExceptions {
 
 	public IntrariStocExceptions(String message) {
 		super(message);
-		
+
 	}
 
 	public IntrariStocExceptions(String message, Throwable cause) {
 		super(message, cause);
-		
+
 	}
 
-	
 }

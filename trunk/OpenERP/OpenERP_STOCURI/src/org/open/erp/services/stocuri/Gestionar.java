@@ -1,10 +1,8 @@
 package org.open.erp.services.stocuri;
 
+import javax.persistence.Entity;
+
 import org.open.erp.services.personal.Angajat;
-
-
-
-
 
 /**
  * 
@@ -13,17 +11,13 @@ import org.open.erp.services.personal.Angajat;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class Gestionar extends Angajat {
 	private Gestiune gestiune;
 
 	public Gestionar() {
-		
+
 	}
-
-	
-	
-	
-
 
 	public Gestionar(Integer id, String adresa, String nume, String prenume,
 			String formaAdresare, char gen, String cnp, Integer idCandidat,
@@ -33,14 +27,9 @@ public class Gestionar extends Angajat {
 		this.gestiune = gestiune;
 	}
 
-
-
-
-
-
 	public Gestionar(Integer idPersoana, String nume, String prenume,
 			Integer idCandidat, String tipCandidat, Gestiune gestiune) {
-		//super(idPersoana, nume, prenume, idCandidat, tipCandidat);
+		// super(idPersoana, nume, prenume, idCandidat, tipCandidat);
 		this.gestiune = gestiune;
 	}
 
@@ -52,6 +41,4 @@ public class Gestionar extends Angajat {
 		this.gestiune = gestiune;
 	}
 
-	
-	
 }

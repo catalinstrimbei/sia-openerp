@@ -1,7 +1,8 @@
 package org.open.erp.services.stocuri.exceptions;
 
+import javax.ejb.ApplicationException;
 
-
+@ApplicationException(rollback = true)
 public class IesiriStocExceptions extends StocuriExceptions {
 
 	/**
@@ -19,5 +20,4 @@ public class IesiriStocExceptions extends StocuriExceptions {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 }

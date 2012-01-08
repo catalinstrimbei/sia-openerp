@@ -1,7 +1,10 @@
 package org.open.erp.services.stocuri;
 
+import java.util.List;
+
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.stocuri.impl.AplicarePret.METODE;
 
 /**
  * 
@@ -55,7 +58,7 @@ public interface StocuriSrv {
 	 * 
 	 */
 
-	Boolean intrareInStoc(Document doc);
+	Boolean intrareInStoc(Document doc, Gestiune gestIn);
 
 	/**
 	 * Returneaza void
@@ -151,5 +154,13 @@ public interface StocuriSrv {
 	Boolean iesireDinStoc(Material material, Integer cantitate);
 
 	Document proceseazaComandaMateriale(CerereAprovizionare comandaMateriale);
+
+	List<ArticolStoc> getArticole();
+
+	ArticolStoc getArticolById(Integer id);
+
+	void setMetodaCurenta(METODE metoda);
+
+	METODE getMetodaCurenta();
 
 }
