@@ -50,6 +50,8 @@ public class TestSalarizareEJB {
 		fail("Not yet implemented");
 	}
 
+	//Test pentru inregistrarea pontajului pt un anumit angajat
+	//load angajat din componenta EJB Personal
 	@Test
 	public void testInregistrarePontaj() throws Exception {
 		logger.info("Begin test: inregistrarePontaj");
@@ -63,7 +65,17 @@ public class TestSalarizareEJB {
 		logger.info("End test: inregistrarePontaj");
 	}
 	
-	
+	//test metoda generare automata pontaj pe toata luna pt toti angajatii
+	//propagare tranzactie intre inregistrare pontaj si inregistrarePontajLuna
+	@Test
+	public void testInregistrarePontajLuna() throws Exception {
+		logger.info("Begin test: inregistrarePontaj");
+		
+		salarizareSrvInstance.inregistrarePontajLuna(2011, 11);
+		
+		assertNotNull("Metoda de creere a pontajului nu a functionat!");
+		logger.info("End test: inregistrarePontaj");
+	}
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
