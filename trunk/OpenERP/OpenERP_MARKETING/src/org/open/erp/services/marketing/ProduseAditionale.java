@@ -40,6 +40,15 @@ public class ProduseAditionale {
 		this.produs = produs;
 		this.produseAditionale = produseAditionale;
 	}
+	public void adaugaProdusAditional(Produs   prodAditional)
+	{
+		this.produseAditionale.add(prodAditional);
+	}
+	
+	public void stergeProdusAditional (Produs prodAditional)
+	{
+		this.produseAditionale.remove(prodAditional);
+	}
 	public ProduseAditionale() {
 		super();
 		// TODO Auto-generated constructor stub

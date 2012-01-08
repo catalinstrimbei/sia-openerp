@@ -4,6 +4,7 @@ import java.util.Date;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +44,11 @@ public class Promotie {
 	inverseJoinColumns = @JoinColumn(name = "idProdusDiscount"))
 	List<ProdusDiscount> listaProduseDiscount =  new ArrayList<ProdusDiscount>();	
 	
-	Map<Produs,List<Produs>>	listProduseAditionale = new HashMap<Produs, List<Produs>>();
+	@OneToMany
+	@JoinTable(name="ProduseAditionale",
+	joinColumns = @JoinColumn (name="idPromotie"),
+	inverseJoinColumns = @JoinColumn(name = "idCombinatie"))
+	List<ProduseAditionale>	listProduseAditionale = new ArrayList<ProduseAditionale>();
 	public Promotie() {
 		super();
 	}
@@ -142,58 +147,110 @@ public class Promotie {
 		this.dataSfarsit = dataSfarsit;
 		this.tipPromotie = tipPromotie;
 	}
+	
+
 	/**
-	 * @return listaProduse
+	 * @return the listaProduseDiscount
 	 */
-	public Map<Produs, Discount> getListaProduse() {
-		return listaProduse;
+	public List<ProdusDiscount> getListaProduseDiscount() {
+		return listaProduseDiscount;
 	}
 	/**
-	 * @param listaProduse the listaProduse to set
+	 * @param listaProduseDiscount the listaProduseDiscount to set
 	 */
-	public void setListaProduse(Map<Produs, Discount> listaProduse) {
-		this.listaProduse = listaProduse;
+	public void setListaProduseDiscount(List<ProdusDiscount> listaProduseDiscount) {
+		this.listaProduseDiscount = listaProduseDiscount;
 	}
 	/**
-	 * @return listProduseAditionale
+	 * @return the listProduseAditionale
 	 */
-	public Map<Produs, List<Produs>> getListProduseAditionale() {
+	public List<ProduseAditionale> getListProduseAditionale() {
 		return listProduseAditionale;
 	}
 	/**
 	 * @param listProduseAditionale the listProduseAditionale to set
 	 */
 	public void setListProduseAditionale(
-			Map<Produs, List<Produs>> listProduseAditionale) {
+			List<ProduseAditionale> listProduseAditionale) {
 		this.listProduseAditionale = listProduseAditionale;
 	}
-
 	public void adaugaProdusDiscount(Produs produs,Discount prodDisc){
-		listaProduse.put(produs, prodDisc);
+		
 	}
 	public void StergeProdusDiscount(Produs produs){
 		listaProduse.remove(produs);
 	}
 	public void adaugaProdusAdiacent(Produs produs,List<Produs> prodAddiacent){
-		this.listProduseAditionale.put(produs,prodAddiacent);
-	}
+		ProduseAditionale produseAditionale = new ProduseAditionale();
+		produseAditionale.setProdus(produs);
+		produseAditionale.setProduseAditionale(prodAddiacent);
+		this.listProduseAditionale.add(produseAditionale);
+}
 	public void StergeProdusAdiacent(Produs produs){
-		this.listProduseAditionale.remove(produs);
+		Iterator<ProduseAditionale>  produsaditional= this.listProduseAditionale.iterator();
+		ProduseAditionale    produsAdd;
+		while (produsaditional.hasNext())
+		{
+			produsAdd = produsaditional.next();
+			if (produsAdd.getProdus().equals(produs))
+			{
+				this.listProduseAditionale.remove(produsAdd);
+			}
+		}
+	}
+	
+	public void adaugaProdusAditionalLaProdus(Produs produs, Produs prodAdiacent)
+	{
+		Iterator<ProduseAditionale>  produsaditional= this.listProduseAditionale.iterator();
+		ProduseAditionale    produsAdd;
+		while (produsaditional.hasNext())
+		{
+			produsAdd = produsaditional.next();
+			if (produsAdd.getProdus().equals(produs))
+			{
+				produsAdd.adaugaProdusAditional(prodAdiacent);
+			}
+		}
+	}
+	
+	public void StergeProdusAditionaldinProdus(Produs produs, Produs prodAdiacent)
+	{
+		Iterator<ProduseAditionale>  produsaditional= this.listProduseAditionale.iterator();
+		ProduseAditionale    produsAdd;
+		while (produsaditional.hasNext())
+		{
+			produsAdd = produsaditional.next();
+			if (produsAdd.getProdus().equals(produs))
+			{
+				produsAdd.stergeProdusAditional(prodAdiacent);
+			}
+		}
 	}
 	
 	public float getPretByPretInitial(Produs produs, float pretInitial)
 	{
 		
 		Discount   discount;
+		ProdusDiscount  produsDiscount;
+		float pretFinal = 0;
 		if (this.tipPromotie == Promotie.DISCOUNT)
 		{
-			discount = this.listaProduse.get(produs);
-			if (discount.getTipDiscount() == Discount.PROCENT)
-				return pretInitial - (pretInitial * discount.getValoare()) / 100;
-			else
-				return pretInitial - discount.getValoare();
+			Iterator<ProdusDiscount> iterator = this.listaProduseDiscount.iterator();
+			while (iterator.hasNext())
+			{
+				produsDiscount = iterator.next();
+				if (produsDiscount.getProdus().equals(produs))
+				{
+					discount = produsDiscount.getDiscount();
+						if (discount.getTipDiscount() == Discount.PROCENT)
+							pretFinal = pretInitial - (pretInitial * discount.getValoare()) / 100;
+						else
+							pretFinal = pretInitial - discount.getValoare();
+				}
+			}
 		}
 		else
-			return pretInitial;
+			pretFinal = pretInitial;
+		return pretFinal;
 	}
 }
