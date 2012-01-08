@@ -10,6 +10,9 @@ import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
+import org.open.erp.services.personal.CerereDemisie;
+import org.open.erp.services.personal.ContractMunca;
+import org.open.erp.services.personal.DosarAngajat;
 import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.logger.PersonalLogger;
 
@@ -24,6 +27,8 @@ private static PersonalLogger logger ;
 	}
 
 	/* interogari */
+
+	
 	
 	ActivitateTeamBuilding				getActivitateTeamBuildingById(Integer idActivitate_) throws Exception 
 	{
@@ -287,19 +292,50 @@ private static PersonalLogger logger ;
 	}
 	
 	
-	public Candidat getCandidat(Integer id){
-		return entityManager.find(Candidat.class, id);
+
+	//Andreea
+		public Candidat getCandidatById(Integer id) throws Exception{
+			try{
+				return entityManager.find(Candidat.class, id);
+			}catch(Exception ex){
+				logger.logINFO("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+		}
+	public Candidat getCandidatByIdCandidat(Integer idCandidat) throws Exception{
+		try{
+			return (Candidat) entityManager.createQuery("SELECT c FROM Candidat c WHERE c.idCandidat = :idCandidat")
+					.setParameter("idCandidat", idCandidat)
+					.getSingleResult();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
 	}
 	
-	public Collection<Candidat> getListaCandidatilor(){
-		return entityManager.createQuery("SELECT c FROM Candidat c").getResultList();
+	public Collection<Candidat> getListaCandidatilor() throws Exception{		
+		try{
+			return entityManager.createQuery("SELECT c FROM Candidat c").getResultList();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
 	}
 	
-	public Collection<Candidat> getCandidatiPeFunctie(Integer idFunctie){
-		return entityManager.createQuery("SELECT C FROM Candidat c, CV cv WHERE " +
+	public Collection<Candidat> getCandidatiPeFunctie(Integer idFunctie) throws Exception{
+		try{
+			return entityManager.createQuery("SELECT C FROM Candidat c, CV cv WHERE " +
 										" cv.functieVizata.idFunctie = :idFunctie AND cv.candidat.idCandidat = c.idCandidat")
 										.setParameter("idFunctie", idFunctie)
 										.getResultList();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
 	}
 	
 	/* persistenta */
@@ -320,26 +356,26 @@ private static PersonalLogger logger ;
 		return candidat;
 	}
 	
-	public Functie salveazaFunctie(Functie functie) throws Exception{
+	public void stergeCandidat(Candidat candidat) throws Exception{
 		try{
-			
-			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
-			if (functie.getIdFunctie() == null || 
-				entityManager.find(functie.getClass(), functie.getIdFunctie()) == null)
-				entityManager.persist(functie);
-			else
-				entityManager.merge(functie);
-			
+			entityManager.remove(candidat);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}	
+	}
+	
+	public void refreshCandidat(Candidat candidat) throws Exception{
+		try{
+			entityManager.refresh(candidat);
 		}catch(Exception ex){
 			logger.logINFO("EROARE PERSISTENTA ***** ");
 			ex.printStackTrace();
 			throw ex;
 		}
-		return functie;
 	}
-	public void stergeCandidat(Candidat candidat){
-		entityManager.remove(candidat);
-	}
+	
 	
 	//nu stiu daca este bine aici - ramane de discutat
 	public CV salveazaCVCandidat(
@@ -367,21 +403,241 @@ private static PersonalLogger logger ;
 	}
 
 	
-	public void refreshCandidat(Candidat candidat){
-		entityManager.refresh(candidat);
+	
+	//CerereDemisie
+	public CerereDemisie getCerereDemisieById(Integer id) throws Exception{
+		try{
+			return entityManager.find(CerereDemisie.class, id);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
 	}
 	
+	public Collection<Candidat> getListaCererilorDeDemisie() throws Exception{
+		try{
+			return entityManager.createQuery("SELECT cd FROM CerereDemisie cd").getResultList();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
 	
+	/* persistenta */
+	public CerereDemisie salveazaCerereDemisie(CerereDemisie cerereDemisie) throws Exception{
+		try{
+
+			if (cerereDemisie.getNrInregistrare() == null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+				entityManager.find(cerereDemisie.getClass(), cerereDemisie.getNrInregistrare()) == null)
+				entityManager.persist(cerereDemisie);
+			else
+				entityManager.merge(cerereDemisie);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return cerereDemisie;
+	}
+	public void stergeCerereDemisie(CerereDemisie cerereDemisie) throws Exception{
+		try{
+			entityManager.remove(cerereDemisie);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	//CerereDemisie.end
+	
+	//ContractMunca.start
+	public ContractMunca getContractMuncaById(Integer id) throws Exception{
+		try{
+			return entityManager.find(ContractMunca.class, id);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	public Collection<Candidat> getListaContracteMunca() throws Exception{
+		try{
+			return entityManager.createQuery("SELECT cm FROM ContractMunca cm").getResultList();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	/* persistenta */
+	public ContractMunca salveazaContractMunca(ContractMunca contractMunca) throws Exception{
+		try{
+
+			if (contractMunca.getNrContract() == null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+				entityManager.find(contractMunca.getClass(), contractMunca.getNrContract()) == null)
+				entityManager.persist(contractMunca);
+			else
+				entityManager.merge(contractMunca);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return contractMunca;
+	}
+	public void stergeContractMunca(ContractMunca contractMunca) throws Exception{
+		try{
+			entityManager.remove(contractMunca);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	//ContractMunca.end
+	
+	//CV.start
+	public CV getCVById(Integer id) throws Exception{
+		try{
+			return entityManager.find(CV.class, id);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	public Collection<Candidat> getListaCVuri() throws Exception{
+		try{
+			return entityManager.createQuery("SELECT cv FROM CV cv").getResultList();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	/* persistenta */
+	public CV salveazaCV(CV cv) throws Exception{
+		try{
+
+			if (cv.getNrCV() == null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+				entityManager.find(cv.getClass(), cv.getNrCV()) == null)
+				entityManager.persist(cv);
+			else
+				entityManager.merge(cv);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return cv;
+	}
+	public void stergeCV(CV cv) throws Exception{
+		try{
+			entityManager.remove(cv);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	//CV.end
+	
+	//DosarAngajat.start
+	public DosarAngajat getDosarAngajatById(Integer id) throws Exception{
+		try{
+			return entityManager.find(DosarAngajat.class, id);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	public Collection<Candidat> getListaDosareAngajat() throws Exception{
+		try{
+			return entityManager.createQuery("SELECT da FROM DosarAngajat da").getResultList();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	/* persistenta */
+	public DosarAngajat salveazaDosarAngajat(DosarAngajat dosarAngajat) throws Exception{
+		try{
+
+			if (dosarAngajat.getIdDosar() == null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+				entityManager.find(dosarAngajat.getClass(), dosarAngajat.getIdDosar()) == null)
+				entityManager.persist(dosarAngajat);
+			else
+				entityManager.merge(dosarAngajat);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return dosarAngajat;
+	}
+	public void stergeDosarAngajat(DosarAngajat dosarAngajat) throws Exception{
+		try{
+			entityManager.remove(dosarAngajat);
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	//DosarAngajat.start
+
 	
 	//FUNCTIE
 	
-	public Collection<Functie> getListaFunctii(){
-		return entityManager.createQuery("SELECT f FROM Functie f").getResultList();
+	public Collection<Functie> getListaFunctii() throws Exception{
+		try{
+			return entityManager.createQuery("SELECT f FROM Functie f").getResultList();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
 	}
 	
-	public Functie getFunctieById(Integer idFunctie){
-		return (Functie) entityManager.createQuery("SELECT f FROM Functie f WHERE f.idFunctie = :idFunctie")
+	public Functie getFunctieById(Integer idFunctie) throws Exception{
+		try{
+			return (Functie) entityManager.createQuery("SELECT f FROM Functie f WHERE f.idFunctie = :idFunctie")
 							.setParameter("idFunctie",idFunctie)
 							.getSingleResult();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
 	}
+	public Functie salveazaFunctie(Functie functie) throws Exception{
+		try{
+			
+			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+			if (functie.getIdFunctie() == null || 
+				entityManager.find(functie.getClass(), functie.getIdFunctie()) == null)
+				entityManager.persist(functie);
+			else
+				entityManager.merge(functie);
+			
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return functie;
+	}
+
+	
 }
+
