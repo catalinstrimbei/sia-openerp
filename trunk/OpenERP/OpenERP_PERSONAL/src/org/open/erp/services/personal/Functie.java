@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,7 +27,7 @@ public class Functie implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer 		idFunctie;
 	private String 			numeFunctie;
 	private Integer 		pozitiaInCOR; //Clasificarea Ocupatiilor din Romania

@@ -6,6 +6,8 @@ import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -20,8 +22,8 @@ public class Eveniment implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	private String idEveniment;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer idEveniment;
 	private String tipEveniment;
 	private Double sumaAlocata;
 	private String statusEveniment;
@@ -45,10 +47,10 @@ public class Eveniment implements Serializable{
 	public void setActivitati(Collection<Activitate> activitati) {
 		this.activitati = activitati;
 	}
-	public String getIdEveniment() {
-		return idEveniment;
+	public Integer getIdEveniment() {
+		return idEveniment; 
 	}
-	public void setIdEveniment(String idEveniment) {
+	public void setIdEveniment(Integer idEveniment) {
 		this.idEveniment = idEveniment;
 	}
 	public String getTipEveniment() {
@@ -68,7 +70,7 @@ public class Eveniment implements Serializable{
 	 * @param tipEveniment
 	 * @param sumaAlocata
 	 */
-	public Eveniment(String idEveniment, String tipEveniment, Double sumaAlocata) {
+	public Eveniment(Integer idEveniment, String tipEveniment, Double sumaAlocata) {
 		super();
 		this.idEveniment = idEveniment;
 		this.tipEveniment = tipEveniment;
