@@ -53,19 +53,17 @@ public class TestPersonalEJBregistru {
 		System.out.println("Nume functie: " + functie.getNumeFunctie().toString());
 	}
 
-	@Test
-	public void test() {
-		System.out.println("Nume functie: ");
-	}
 	
-	@Test
 	
-	public void testSalveazaFunctie() throws Exception {
-		logger.logINFO("Begin test: adaugaFunctie");			
-		Functie functie = personalInstance.adaugaFunctie(101, "primaFunctie");		
-		logger.logINFO("Functia cu id: " + functie.getIdFunctie() + " a fost creata!");		
-		assertNotNull("Functie ne-validata!", functie.getIdFunctie());
-		logger.logINFO("End test: creareProiect");
+	@Test	
+	public void testInserari() throws Exception {
+		logger.logINFO("Begin test: Inserari");			
+		TestPersonalImpl test = new TestPersonalImpl();
+		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
+		ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);
+		Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);
+		AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
+		logger.logINFO("End test: Inserari");
 	}
 	
 	
