@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.salarizare.Pontaj;
+import org.open.erp.services.salarizare.Retinere;
 import org.open.erp.services.salarizare.SalarizareSrv;
 import org.open.erp.services.salarizare.Spor;
 import org.open.erp.services.salarizare.impl.SalarizareImpl;
@@ -178,6 +179,20 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrareSpor");
 	}
+	
+	@Test
+	public void testInregistrareRetinere() throws Exception {
+		logger.info("Begin test: inregistrareRetinere");
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		Retinere retinere = salarizareSrvInstance.inregistrareRetinere("Penalizare", 1, 2011, 11, angajat, 1, 100.0);
+		logger.info("A fost creat sporul cu id-ul: "+retinere.getIdRetinere());
+		assertNotNull("Metoda de creare a retinerii nu a functionat!", retinere);
+		
+		logger.info("End test: inregistrareRetinere");
+	}
+	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
