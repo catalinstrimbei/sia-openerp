@@ -32,6 +32,9 @@ import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.ActivitateTeamBuilding;
 import org.open.erp.services.personal.ActivitateTraining;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.Instructor;
+import org.open.erp.services.personal.InstructorTraining;
+import org.open.erp.services.personal.Interviu;
 import org.open.erp.services.personal.ResponsabilActivitate;
 import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
@@ -676,6 +679,297 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return functie;
 	}
+	//Evenimente
+	@Override
+	public Eveniment getEvenimentById(
+			Integer idEveniment_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getEvenimentbyId");
+		Eveniment result = new Eveniment();
+		if (idEveniment_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getEvenimentById(idEveniment_);
+			
+			logger.logDEBUG(">>>>>>End getEvenimentbyId");
+		}
+		return result;
+	}
+	@Override
+	public Collection<Eveniment> getListaEvenimente()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaEvenimente");
+		Collection<Eveniment> result = this.registruPersonal.getListaEvenimente();
+		logger.logDEBUG(">>>>>>End getListaEvenimente");
+		return result;
+	}
+	@Override
+	public Eveniment salveazaEveniment(
+			Eveniment eveniment_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start salveazaEveniment");
+		Eveniment result = new Eveniment();
+		if (eveniment_ == null){			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaEveniment(eveniment_);
+			logger.logDEBUG(">>>>>>End salveazaEveniment");
+		}
+		return result;
+	}
+	@Override
+	public void stergeEveniment(Eveniment eveniment_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeEveniment");
+		if (eveniment_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeEveniment(eveniment_);
+			logger.logDEBUG(">>>>>>End stergeEveniment");
+		}		
+	}
+
+
+
+
+public Functie getFunctieById(
+			Integer idFunctie_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getFunctieById");
+		Functie result = new Functie();
+		if (idFunctie_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getFunctieById(idFunctie_); 
+			
+			logger.logDEBUG(">>>>>>End getFunctieById");
+		}
+		return result;
+	}
+	@Override
+	public Collection<Functie> getListaFunctii()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaFunctii");
+		Collection<Functie> result = this.registruPersonal.getListaFunctii();
+		logger.logDEBUG(">>>>>>End getListaFunctii");
+		return result;
+	}
+	@Override
+	public Functie salveazaFunctie(
+			Functie functie_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start salveazaActivitateTeamBuilding");
+		Functie result = new Functie();
+		if (functie_ == null){			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaFunctie(functie_);
+			logger.logDEBUG(">>>>>>End salveazaActivitateTeamBuilding");
+		}
+		return result;
+	}
+	@Override
+	public void stergeFunctie(Functie functie_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeFunctie");
+		if (functie_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeFunctie(functie_);
+			logger.logDEBUG(">>>>>>End stergeFunctie");
+		}		
+	}
+	
+	//2 more
+	public Instructor getInstructorById(
+			Integer Id_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getInstructorById");
+		Instructor result = new Instructor(); 
+		if (Id_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getInstructorById(Id_);
+			
+			logger.logDEBUG(">>>>>>End getInstructorById");
+		}
+		return result;
+	}
+	@Override
+	public Collection<Instructor> getListaInstructori()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaInstructori");
+		Collection<Instructor> result = this.registruPersonal.getListaInstructori();
+		logger.logDEBUG(">>>>>>End getListaInstructori");
+		return result;
+	}
+	@Override
+	public Instructor salveazaInstructor(
+			Instructor instructor_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start salveazaEveniment");
+		Instructor result = new Instructor();
+		if (instructor_ == null){			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaInstructor(instructor_);
+			logger.logDEBUG(">>>>>>End salveazaEveniment");
+		}
+		return result;
+	}
+	@Override
+	public void stergeInstructor(Instructor instructor_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeInstructor");
+		if (instructor_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeInstructor(instructor_);
+			logger.logDEBUG(">>>>>>End stergeInstructor");
+		}		
+	}
+	
+	public InstructorTraining getInstructorTrainingById(
+			Integer idInstructorTraining_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getFunctieById");
+		InstructorTraining result = new InstructorTraining();
+		if (idInstructorTraining_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getInstructorTrainingById(idInstructorTraining_); 
+			
+			logger.logDEBUG(">>>>>>End getFunctieById");
+		}
+		return result;
+	}
+	@Override
+	public Collection<InstructorTraining> getListaInstructoriTraining()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaFunctii");
+		Collection<InstructorTraining> result = this.registruPersonal.getListaInstructoriTraining();
+		logger.logDEBUG(">>>>>>End getListaFunctii");
+		return result;
+	}
+	@Override
+	public InstructorTraining salveazaInstructorTraining(
+			InstructorTraining instructorTraining_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start salveazaInstructorTraining");
+		InstructorTraining result = new InstructorTraining();
+		if (instructorTraining_ == null){			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaInstructorTraining(instructorTraining_);
+			logger.logDEBUG(">>>>>>End salveazaInstructorTraining");
+		}
+		return result;
+	}
+	@Override
+	public void stergeInstructorTraining(InstructorTraining instructorTraining_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeInstructorTraining");
+		if (instructorTraining_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeInstructorTraining(instructorTraining_);
+			logger.logDEBUG(">>>>>>End stergeInstructorTraining");
+		}		
+	}
+	
+	public Interviu getInterviuById(
+			Integer idInterviu_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getInterviuById");
+		Interviu result = new Interviu();
+		if (idInterviu_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getInterviuById(idInterviu_);
+			
+			logger.logDEBUG(">>>>>>End getInterviuById");
+		}
+		return result;
+	}
+	@Override
+	public Collection<Interviu> getListaInterviuri()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaInterviuri");
+		Collection<Interviu> result = this.registruPersonal.getListaInterviuri();
+		logger.logDEBUG(">>>>>>End getListaInterviuri");
+		return result;
+	}
+	@Override
+	public Interviu salveazaInterviu(
+			Interviu interviu_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start salveazaInterviu");
+		Interviu result = new Interviu();
+		if (interviu_ == null){			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaInterviu(interviu_);
+			logger.logDEBUG(">>>>>>End salveazaInterviu");
+		}
+		return result;
+	}
+	@Override
+	public void stergeInterviu(Interviu interviu_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeInterviu");
+		if (interviu_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeInterviu(interviu_);
+			logger.logDEBUG(">>>>>>End stergeInterviu");
+		}		
+	}
+
 	
 	//InterviuCandidat
 	

@@ -219,7 +219,175 @@ public interface PersonalSrv {
 	 * @return nimic.
 	 * 
 	 */
+	//Evenimente
+	Eveniment				getEvenimentById(Integer IdEveniment_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unei eveniment dupa id.
+	 * 
+	 * @param IdEveniment_  id-ul evenimentului, element unic de identificare pentru un eveniment, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip Eveniment 
+	 * 
+	 */
+	Collection<Eveniment>	getListaEvenimente() throws Exception;
+	/**
+	 * Scop  Returneaza o Lista cu toate evenimentele
+	 * 
+	 * 
+	 * @return o lista cu toate evenimentele
+	 * 
+	 */
+	Eveniment				salveazaEveniment(Eveniment eveniment_) throws Exception;
+	/**
+	 * Scop  Salveaza un eveniment in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip eveniment 
+	 * 
+	 */
+	void								stergeEveniment(Eveniment eveniment_) throws Exception;
+	/**
+	 * Scop  Sterge un eveniment din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	Functie				getFunctieByid(Integer IdFunctie_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unei functii dupa id.
+	 * 
+	 * @param IdFunctie_  id-ul functiei, element unic de identificare pentru o functie, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip functie 
+	 * 
+	 */
+	Collection<Functie>	getListaFunctii() throws Exception;
+	/**
+	 * Scop  Returneaza o Lista cu toate functiile
+	 * 
+	 * 
+	 * @return o lista cu toate functiile
+	 * 
+	 */
+	Functie				salveazaFunctie(Functie functie_) throws Exception;
+	/**
+	 * Scop  Salveaza o functie in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip functie 
+	 * 
+	 */
+	void								stergeFunctie(Functie functie_) throws Exception;
+	/**
+	 * Scop  Sterge o functie din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	Instructor				getInstructorById(Integer IdPersoana_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unui instructor dupa id.
+	 * 
+	 * @param IdPersoana_  id-ul persoanei, element unic de identificare pentru un instructor, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip instructor 
+	 * 
+	 */
+	Collection<Instructor>	getListaInstructori() throws Exception;
+	/**
+	 * Scop  Returneaza o Lista cu toti instructorii
+	 * 
+	 * 
+	 * @return o lista cu toti instructorii
+	 * 
+	 */
+	Instructor				salveazaInstructor(Instructor instructor_) throws Exception;
+	/**
+	 * Scop  Salveaza un instructor in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip instructor 
+	 * 
+	 */
+	void								stergeInstructor(Instructor instructor_) throws Exception;
+	/**
+	 * Scop  Sterge un instructor din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
 	
+	
+	InstructorTraining				getInstructorTrainingById(Integer IdInstructor_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unui instructorTraining dupa id.
+	 * 
+	 * @param IdInstructor_  id-ul instructorului, element unic de identificare pentru un instructorTraining, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip instructorTraining
+	 * 
+	 */
+	Collection<InstructorTraining>	getListaInstructoriTraining() throws Exception;
+	/**
+	 * Scop  Returneaza o Lista cu toti instructorii de training
+	 * 
+	 * 
+	 * @return o lista cu toti instructorii de training
+	 * 
+	 */
+	InstructorTraining				salveazaInstructorTraining(InstructorTraining instructorTraining_) throws Exception;
+	/**
+	 * Scop  Salveaza un instructorTraining in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip instructorTraining 
+	 * 
+	 */
+	void								stergeInstructorTraining(InstructorTraining instructorTraining_) throws Exception;
+	/**
+	 * Scop  Sterge un instructorTraining din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	Interviu				getInterviuByid(Integer IdInterviu_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unei interviu dupa id.
+	 * 
+	 * @param IdInterviu_  id-ul interviului, element unic de identificare pentru un interviu, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip interviu 
+	 * 
+	 */
+	Collection<Interviu>	getListaInterviuri() throws Exception;
+	/**
+	 * Scop  Returneaza o Lista cu toate interviurile
+	 * 
+	 * 
+	 * @return o lista cu toate interviurile
+	 * 
+	 */
+	Interviu				salveazaInterviu(Interviu interviu_) throws Exception;
+	/**
+	 * Scop  Salveaza un interviu in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip interviu 
+	 * 
+	 */
+	void								stergeInterviu(Interviu interviu_) throws Exception;
+	/**
+	 * Scop  Sterge un interviu din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+
 	
 
 	// InterviuCandidat

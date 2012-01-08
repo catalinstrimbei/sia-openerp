@@ -53,8 +53,8 @@ public class TestPersonalImpl {
 	Collection<Activitate> activitati = new ArrayList<Activitate>();//NMV adaugare Lista noua pentru Activitati;
 	
 	//Creare evenimente
-	Eveniment eveniment1 = new Eveniment("EV1", "Training", 1200.00);
-	Eveniment eveniment2 = new Eveniment("EV2", "TeamBuilding", 1200.00);
+	Eveniment eveniment1 = new Eveniment(1, "Training", 1200.00);
+	Eveniment eveniment2 = new Eveniment(1, "TeamBuilding", 1200.00);
 	
 	// Activitati
 	Activitate activitate1;
