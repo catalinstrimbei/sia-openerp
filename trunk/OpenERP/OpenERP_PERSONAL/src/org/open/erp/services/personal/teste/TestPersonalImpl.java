@@ -78,13 +78,13 @@ public class TestPersonalImpl {
 	Candidat candidat4 = new Candidat(4, "Nume4", "Prenume4", 104, null);
 	Candidat candidat5 = new Candidat(5, "Nume5", "Prenume5", 104, null);
 	Candidat candidat6 = new Candidat(6, "Nume6", "Prenume6", 105, null);
-	CV cv1 = new CV("CV1", candidat1, functie1, new Date("10/08/2011"));
-	CV cv2 = new CV("CV2", candidat2, functie1, new Date("10/09/2011"));
-	CV cv3 = new CV("CV3", candidat3, functie1, new Date("01/08/2011"));
-	CV cv4 = new CV("CV4", candidat4, functie1, new Date("01/08/2011"));
-	CV cv5 = new CV("CV5", candidat5, functie2, new Date("01/08/2011"), new Date("10/09/2011"));
-	CV cv6 = new CV("CV6", candidat6, functie1, new Date("10/08/2011"));
-	CV cv7 = new CV("CV7", candidat6, functie2, new Date("10/08/2011"), new Date("20/11/2011"));
+	CV cv1 = new CV(1, candidat1, functie1, new Date("10/08/2011"));
+	CV cv2 = new CV(2, candidat2, functie1, new Date("10/09/2011"));
+	CV cv3 = new CV(3, candidat3, functie1, new Date("01/08/2011"));
+	CV cv4 = new CV(4, candidat4, functie1, new Date("01/08/2011"));
+	CV cv5 = new CV(5, candidat5, functie2, new Date("01/08/2011"), new Date("10/09/2011"));
+	CV cv6 = new CV(6, candidat6, functie1, new Date("10/08/2011"));
+	CV cv7 = new CV(7, candidat6, functie2, new Date("10/08/2011"), new Date("20/11/2011"));
 	
 	
 	DummyPersoanaFizica persoana1 = new DummyPersoanaFizica(1,null,  "Nume1", "Prenume1", null, 'M', null);
@@ -126,8 +126,8 @@ public class TestPersonalImpl {
 	//Angajat 		angajat1 = new Angajat(persoana1.getIdPersoana(), "Nume1", "Prenume1");
 	//ContractMunca	contract1 = new ContractMunca("ContractNr0002", angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,null);
 	
-	ContractMunca	contract1 = new ContractMunca("ContractNr0002", 1000.00, 10.00, angajat1, functie1, new Date("01/01/2010"), new Date("01/01/2010"), new Date("15/08/2015"),0,null);
-	ContractMunca	contract2 = new ContractMunca("ContractNr0001", 1000.00, 10.00, angajat2, functie1, new Date("11/08/2011"), new Date("15/08/2011"), new Date("15/08/2020"),0,null);
+	ContractMunca	contract1 = new ContractMunca(1, 1000.00, 10.00, angajat1, functie1, new Date("01/01/2010"), new Date("01/01/2010"), new Date("15/08/2015"),0,null);
+	ContractMunca	contract2 = new ContractMunca(2, 1000.00, 10.00, angajat2, functie1, new Date("11/08/2011"), new Date("15/08/2011"), new Date("15/08/2020"),0,null);
 
 	DosarAngajat dosar1 = new DosarAngajat(1, angajat1, true, true, true);
 	DosarAngajat dosar2 = new DosarAngajat(2, angajat2, null, null, null);
@@ -141,7 +141,7 @@ public class TestPersonalImpl {
 	RezultatProbaEvaluare angajatProbaEvaluare7 = new RezultatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare4);
 	RezultatProbaEvaluare angajatProbaEvaluare8 = new RezultatProbaEvaluare(angajat2, "Bine", null, probaEvaluare5);
 	
-	CerereDemisie	cerereDemisie1 = new CerereDemisie("CerereDem001", contract1, new Date("11/08/2011"), null, null,null);
+	CerereDemisie	cerereDemisie1 = new CerereDemisie(0, contract1, new Date("11/08/2011"), null, null,null);
 	
 	public void generareAnunturi() {
 		ListaCandidati.add(cv1);

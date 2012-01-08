@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -20,8 +22,8 @@ public class CerereDemisie implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	private  String  		nrInregistrare;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private  Integer  		nrInregistrare;
 	@OneToOne @JoinColumn(name = "nrContract")
 	private	 ContractMunca 	contract;
 	@Temporal(javax.persistence.TemporalType.DATE)
@@ -31,7 +33,7 @@ public class CerereDemisie implements Serializable{
 	private  Integer    	perioadaPreaviz;
 	private  String     	status;
 	
-	public String getNrInregistrare() {
+	public Integer getNrInregistrare() {
 		return nrInregistrare;
 	}
 	public ContractMunca getContract() {
@@ -40,7 +42,7 @@ public class CerereDemisie implements Serializable{
 	public void setContract(ContractMunca contract) {
 		this.contract = contract;
 	}
-	public void setNrInregistrare(String nrInregistrare) {
+	public void setNrInregistrare(Integer nrInregistrare) {
 		this.nrInregistrare = nrInregistrare;
 	}
 	
@@ -68,7 +70,7 @@ public class CerereDemisie implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public CerereDemisie(String nrInregistrare, ContractMunca contract,
+	public CerereDemisie(Integer nrInregistrare, ContractMunca contract,
 			Date dataCerere, Date dataDemisie, Integer perioadaPreaviz,
 			String status) {
 		super();

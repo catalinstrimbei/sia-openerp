@@ -222,6 +222,193 @@ public interface PersonalSrv {
 	
 
 	
+	Candidat				getCandidatById(Integer idPersoanaCandidat_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unui Candidat dupa precizarea id-ului persoanei
+	 * 
+	 * @param idPersoanaCandidat_  id-ul Persoanei extinse de Candidat
+	 * 
+	 * @return Obiectul de tip Candidat
+	 * 
+	 */
+	
+	Candidat				getCandidatByIdCandidat(Integer idCandidat_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unui Candidat dupa precizarea id-ului candidatului
+	 * 
+	 * @param idCandidat_  id-ul Candidatului
+	 * 
+	 * @return Obiectul de tip Candidat
+	 * 
+	 */
+	
+	Collection<Candidat>	getListaCandidati() throws Exception;
+	/**
+	 * Scop  Returneaza o Lista cu toti candidatii
+	 * 
+	 * 
+	 * @return o lista cu toti candidatii
+	 * 
+	 */
+	Candidat				salveazaCandidat(Candidat candidat) throws Exception;
+	/**
+	 * Scop  Salveaza un Candidat in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip Candidat 
+	 * 
+	 */
+	void				   stergeCandidat(Candidat candidat_) throws Exception;
+	/**
+	 * Scop  Sterge un candidat din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	
+	CerereDemisie				getCerereDemisieById(Integer idCerereDemisie_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unei cererei de demisie dupa precizarea id-ului
+	 * 
+	 * @param idCerereDemisie_  id-ul cererii de demisie, element unic de identificare pentru o cerere de demisie, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip CerereDemisie 
+	 * 
+	 */
+	Collection<CerereDemisie>	getListaCereriDemisie() throws Exception;
+	/**
+	 * Scop  Returneaza o lista cu toate cererile de demisie
+	 * 
+	 * 
+	 * @return o lista cu toate cererile de demisie
+	 * 
+	 */
+	CerereDemisie				salveazaCerereDemisie(CerereDemisie cerereDemisie_) throws Exception;
+	/**
+	 * Scop  Salveaza o CerereDemisie in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip CerereDemisie 
+	 * 
+	 */
+	void						stergeCerereDemisie(CerereDemisie cerereDemisie_) throws Exception;
+	/**
+	 * Scop  Sterge o CerereDemisie din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	
+	ContractMunca							getContractMuncaById(Integer idContractMunca_) throws Exception;
+	/**
+	 * Scop  Returneaza datele despre un contract de munca dupa precizarea id-ului
+	 * 
+	 * @param idContractMunca_  id-ul contractului de munca
+	 * 
+	 * @return Obiectul de tip ContractMunca 
+	 * 
+	 */
+	
+	Collection<ContractMunca>				getListaContracteMunca() throws Exception;
+	/**
+	 * Scop  Returneaza o Lista cu toate contractele de munca
+	 * 
+	 * 
+	 * @return o lista cu toate Contractele de Munca
+	 * 
+	 */
+	ContractMunca							salveazaContractMunca(ContractMunca contractMunca_) throws Exception;
+	/**
+	 * Scop  Salveaza un ContractMunca in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip ContractMunca 
+	 * 
+	 */
+	void							stergeContractMunca(ContractMunca contractMunca_) throws Exception;
+	/**
+	 * Scop  Sterge un contract de munca din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+							
+	CV				getCVById(Integer idCV_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unui CV dupa precizarea id-ului
+	 * 
+	 * @param idCV_  id-ul CVului, element unic de identificare pentru un CV, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip CV 
+	 * 
+	 */
+	Collection<CV>	getListaCVuri() throws Exception;
+	/**
+	 * Scop  Returneaza o lista cu toate CVurile
+	 * 
+	 * 
+	 * @return o lista cu toate CVurile
+	 * 
+	 */
+	CV				salveazaCV(CV cv_) throws Exception;
+	/**
+	 * Scop  Salveaza un CV in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip CV
+	 * 
+	 */
+	void							stergeCV(CV cv_) throws Exception;
+	/**
+	 * Scop  Sterge un CV  din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	
+	
+	DosarAngajat				getDosarAngajatById(Integer idDosarAngajat_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unui DosarAngajat dupa precizarea id-ului
+	 * 
+	 * @param idDosarAngajat_  id-ul Dosarului Angajatului, element unic de identificare pentru un Dosar Angajat, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip dosar Angajat 
+	 * 
+	 */
+	Collection<DosarAngajat>	getListaDosareAngajat() throws Exception;
+	/**
+	 * Scop  Returneaza o lista cu toate Dosarele
+	 * 
+	 * 
+	 * @return o lista cu toate Dosarele
+	 * 
+	 */
+	DosarAngajat				salveazaDosarAngajat(DosarAngajat dosarAngajat_) throws Exception;
+	/**
+	 * Scop  Salveaza un Dosar Angajat in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip Dosar Angajat
+	 * 
+	 */
+	void							stergeDosarAngajat(DosarAngajat dosarAngajat_) throws Exception;
+	/**
+	 * Scop  Sterge un DosarAngajat  din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	
+	
+	
+	
+	
 	Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception;
 	Functie getFunctie(Integer idFunctie) throws Exception;
 	

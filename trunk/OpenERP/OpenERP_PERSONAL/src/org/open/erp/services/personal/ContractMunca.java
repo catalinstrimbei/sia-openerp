@@ -27,7 +27,7 @@ public class ContractMunca implements Serializable{
 	public static final Integer durataNelimitata = 0;
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer  nrContract;
+	private Integer nrContract;
 	private Double	salarBaza;
 	private Double 	tarifOrar;
 	@ManyToOne @JoinColumn(name = "marca")

@@ -682,7 +682,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		CV cv = getCVByCandidat(candidat_);
 		
 		ContractMunca contract;
-		contract = new ContractMunca("C1", 1000.00, 10.00, angajat, cv.getFunctieVizata(), new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+		contract = new ContractMunca(1, 1000.00, 10.00, angajat, cv.getFunctieVizata(), new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
 		
 		DosarAngajat dosar;
 		dosar = new DosarAngajat(10, angajat, false, false, false);	
@@ -822,7 +822,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 				contractVizat_.setMotivIncheiere("Relocalizare");
 			}
 		}
-		ContractMunca	contractNou = new ContractMunca("reloc01", salarBaza_, tarifOrar_, angajat, functieNoua_, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), null, 0, null);
+		ContractMunca	contractNou = new ContractMunca(1, salarBaza_, tarifOrar_, angajat, functieNoua_, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), null, 0, null);
 		
 		return contractNou;
 		
@@ -866,6 +866,122 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			_eveniment.setStatusEveniment("Eveniment Aprobat");
 		}		
 		System.out.println(_eveniment.getStatusEveniment());
+	}
+	
+	@Override
+	public Candidat getCandidatById(Integer idPersoanaCandidat_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Candidat getCandidatByIdCandidat(Integer idCandidat_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Collection<Candidat> getListaCandidati() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Candidat salveazaCandidat(Candidat candidat) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void stergeCandidat(Candidat candidat_) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public CerereDemisie getCerereDemisieById(Integer idCerereDemisie_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Collection<CerereDemisie> getListaCereriDemisie() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public CerereDemisie salveazaCerereDemisie(CerereDemisie cerereDemisie_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void stergeCerereDemisie(CerereDemisie cerereDemisie_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public ContractMunca getContractMuncaById(Integer idContractMunca_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Collection<ContractMunca> getListaContracteMunca() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ContractMunca salveazaContractMunca(ContractMunca contractMunca_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void stergeContractMunca(ContractMunca contractMunca_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public CV getCVById(Integer idCV_) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Collection<CV> getListaCVuri() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public CV salveazaCV(CV cv_) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void stergeCV(CV cv_) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public DosarAngajat getDosarAngajatById(Integer idDosarAngajat_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Collection<DosarAngajat> getListaDosareAngajat() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public DosarAngajat salveazaDosarAngajat(DosarAngajat dosarAngajat_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void stergeDosarAngajat(DosarAngajat dosarAngajat_) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

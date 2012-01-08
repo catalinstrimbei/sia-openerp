@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,8 +22,8 @@ public class CV implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	private String   	nrCV;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer   	nrCV;
 	@ManyToOne @JoinColumn(name = "idCandidat")
 	private Candidat 	candidat;
 	@ManyToOne @JoinColumn(name = "idFunctie")
@@ -38,10 +40,10 @@ public class CV implements Serializable{
 	private String   	studiiInCurs;
 	private String   	institutieInCurs;
 	private String[] 	limbiCunoscute = {"Engleza", "Franceza", "Italiana", "Spaniola", "Germana", "Altele"};
-	public String getNrCV() {
+	public Integer getNrCV() {
 		return nrCV;
 	}
-	public void setNrCV(String nrCV) {
+	public void setNrCV(Integer nrCV) {
 		this.nrCV = nrCV;
 	}
 	public Candidat getCandidat() {
@@ -116,7 +118,7 @@ public class CV implements Serializable{
 	public void setLimbiCunoscute(String[] limbiCunoscute) {
 		this.limbiCunoscute = limbiCunoscute;
 	}
-	public CV(String nrCV, Candidat candidat, Functie functieVizata,
+	public CV(Integer nrCV, Candidat candidat, Functie functieVizata,
 			Date dataDepunere, Date ultimaModificare, String domeniu,
 			Integer aniExperienta, String nationalitate,
 			String studiiAbsolvite, String institutieAbsolvita,
@@ -141,7 +143,7 @@ public class CV implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CV(String nrCV, Candidat candidat, Functie functieVizata,
+	public CV(Integer nrCV, Candidat candidat, Functie functieVizata,
 			Date dataDepunere, Date ultimaModificare) {
 		super();
 		this.nrCV = nrCV;
@@ -158,7 +160,7 @@ public class CV implements Serializable{
 		this.institutieInCurs = null;
 		this.limbiCunoscute = null;
 	}
-	public CV(String nrCV, Candidat candidat, Functie functieVizata,
+	public CV(Integer nrCV, Candidat candidat, Functie functieVizata,
 			Date dataDepunere) {
 		super();
 		this.nrCV = nrCV;
