@@ -16,6 +16,8 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
+//comment
+
 @Entity(name="BiletLaOrdin")
 @DiscriminatorValue("BiletLaOrdin")
 public class BiletLaOrdin extends Incasare {
