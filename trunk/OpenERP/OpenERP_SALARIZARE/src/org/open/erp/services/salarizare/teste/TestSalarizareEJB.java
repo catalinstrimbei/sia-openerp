@@ -88,9 +88,24 @@ public class TestSalarizareEJB {
 		sporuri = salarizareSrvInstance.calculSporuriAngajat(2011, 11, angajat);
 		logger.info("Sporurile insumate sunt: "+sporuri);
 		
-		assertNotNull("Metoda de creere a pontajului nu a functionat!", sporuri);
+		assertNotNull("Metoda de calcul a sporurilor nu a functionat!", sporuri);
 		
 		logger.info("End test: calculSporuriAngajat");
+	}
+	
+	@Test
+	public void calculRetineriAngajati() {
+		logger.info("Begin test: calculRetineriAngajat");
+		Double retineri;
+		Angajat angajat = personalSrvInstance.getAngajatById(1);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+
+		retineri = salarizareSrvInstance.calculRetineriAngajat(2011, 11, angajat);
+		logger.info("Retinerile insumate sunt: "+retineri);
+		
+		assertNotNull("Metoda de calcul a retinerilor nu a functionat!", retineri);
+		
+		logger.info("End test: calculRetineriAngajat");
 	}
 	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/

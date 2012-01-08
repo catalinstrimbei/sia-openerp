@@ -152,7 +152,7 @@ public class TestSalarizareImpl {
 		logger.info("Begin test: inregistrareSpor");
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
 		Spor spor = salarizareSrvInstance.inregistrareSpor("Bonus", 1, 2011, 11, angajat, 1, 100.0);
-		assertNotNull("Metoda de creere a pontajului nu a functionat!", spor);
+		assertNotNull("Metoda de creare a sporului nu a functionat!", spor);
 		
 		logger.info("End test: inregistrareSpor");
 	}
@@ -162,7 +162,7 @@ public class TestSalarizareImpl {
 		logger.info("Begin test: inregistrareRetinere");
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
 		Retinere retinere = salarizareSrvInstance.inregistrareRetinere("Penalizare", 1, 2011, 11, angajat, 1, 100.0);
-		assertNotNull("Metoda de creere a pontajului nu a functionat!", retinere);
+		assertNotNull("Metoda de creare a retinerii nu a functionat!", retinere);
 		
 		logger.info("End test: inregistrareRetinere");
 	}
