@@ -45,7 +45,7 @@ public  class Campanie implements Serializable {
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dataSfarsit;
 	private Integer status = NE_PORNITA;
-	@ManyToOne @JoinColumn(name = "idPersoana")
+	@ManyToOne @JoinColumn(name = "idResponsabil")
 	Responsabil responsabil;
 	@OneToMany @JoinTable(
 			name = "PersoanaTinta", joinColumns = @JoinColumn(name="idCampanie"), inverseJoinColumns = @JoinColumn(name="idPersoana"))
