@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import org.open.erp.services.nomgen.Persoana;
 
@@ -24,6 +25,8 @@ public class BiletLaOrdin extends Incasare {
 
 	private Date dataScadenta;
 	private static Long intervalValabilitate;
+	
+	@ManyToOne
 	private Persoana garant;
 	private String stare;
 
@@ -73,7 +76,8 @@ public class BiletLaOrdin extends Incasare {
 		this.garant = garant;
 		this.stare = stare;
 	}
-
+	
+	@ManyToOne
 	public Persoana getGarant() {
 		return garant;
 	}
