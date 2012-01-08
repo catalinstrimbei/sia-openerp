@@ -5,8 +5,6 @@ package org.open.erp.services.marketing;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 
 import org.open.erp.services.nomgen.PersoanaFizica;
 

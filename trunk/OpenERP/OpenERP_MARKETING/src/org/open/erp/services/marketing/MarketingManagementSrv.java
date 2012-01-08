@@ -3,7 +3,6 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.open.erp.services.nomgen.Produs;
 /**
