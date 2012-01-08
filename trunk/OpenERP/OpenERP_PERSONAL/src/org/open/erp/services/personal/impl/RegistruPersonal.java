@@ -681,7 +681,7 @@ private static PersonalLogger logger ;
 		}
 	}
 	
-	public Collection<Candidat> getListaCererilorDeDemisie() throws Exception{
+	public Collection<CerereDemisie> getListaCererilorDeDemisie() throws Exception{
 		try{
 			return entityManager.createQuery("SELECT cd FROM CerereDemisie cd").getResultList();
 		}catch(Exception ex){
@@ -729,7 +729,7 @@ private static PersonalLogger logger ;
 		}
 	}
 	
-	public Collection<Candidat> getListaContracteMunca() throws Exception{
+	public Collection<ContractMunca> getListaContracteMunca() throws Exception{
 		try{
 			return entityManager.createQuery("SELECT cm FROM ContractMunca cm").getResultList();
 		}catch(Exception ex){
@@ -777,7 +777,7 @@ private static PersonalLogger logger ;
 		}
 	}
 	
-	public Collection<Candidat> getListaCVuri() throws Exception{
+	public Collection<CV> getListaCVuri() throws Exception{
 		try{
 			return entityManager.createQuery("SELECT cv FROM CV cv").getResultList();
 		}catch(Exception ex){
@@ -825,7 +825,7 @@ private static PersonalLogger logger ;
 		}
 	}
 	
-	public Collection<Candidat> getListaDosareAngajat() throws Exception{
+	public Collection<DosarAngajat> getListaDosareAngajat() throws Exception{
 		try{
 			return entityManager.createQuery("SELECT da FROM DosarAngajat da").getResultList();
 		}catch(Exception ex){

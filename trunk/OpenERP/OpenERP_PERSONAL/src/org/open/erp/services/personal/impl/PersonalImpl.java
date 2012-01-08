@@ -337,6 +337,304 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			logger.logDEBUG(">>>>>>End stergeAnuntLocMunca");
 		}
 	}
+	//Andreea
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Candidat getCandidatById(Integer idPersoanaCandidat_) throws Exception{
+	// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getCandidatById");
+		Candidat result = new Candidat();
+		if (idPersoanaCandidat_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getCandidatById(idPersoanaCandidat_);
+			
+			logger.logDEBUG(">>>>>>End getCandidatById");
+		}
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Candidat getCandidatByIdCandidat(Integer idCandidat_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getCandidatByIdCandidat");
+		Candidat result = new Candidat();
+		if (idCandidat_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getCandidatByIdCandidat(idCandidat_);
+			
+			logger.logDEBUG(">>>>>>End getCandidatByIdCandidat");
+		}
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<Candidat> getListaCandidati() throws Exception {
+		logger.logDEBUG(">>>>>>Start getListaCandidati");
+		Collection<Candidat> result = this.registruPersonal.getListaCandidatilor();
+		logger.logDEBUG(">>>>>>End getListaCandidati");
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Candidat salveazaCandidat(Candidat candidat_) throws Exception {
+		logger.logDEBUG(">>>>>>Start salveazaCandidat");
+		Candidat result = new Candidat();
+		if (candidat_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaCandidat(candidat_);
+			logger.logDEBUG(">>>>>>End salveazaCandidat");
+		}
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public void stergeCandidat(Candidat candidat_) throws Exception {
+		logger.logDEBUG(">>>>>>Start stergeCandidat");
+		if (candidat_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeCandidat(candidat_);
+			logger.logDEBUG(">>>>>>End stergeCandidat");
+		}	
+		
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public CerereDemisie getCerereDemisieById(Integer idCerereDemisie_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start getCerereDemisieById");
+		CerereDemisie result = new CerereDemisie();
+		if (idCerereDemisie_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getCerereDemisieById(idCerereDemisie_);
+			
+			logger.logDEBUG(">>>>>>End getCerereDemisieById");
+		}
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<CerereDemisie> getListaCereriDemisie() throws Exception {
+		logger.logDEBUG(">>>>>>Start getListaCereriDemisie");
+		Collection<CerereDemisie> result = this.registruPersonal.getListaCererilorDeDemisie();
+		logger.logDEBUG(">>>>>>End getListaCereriDemisie");
+		return result;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public CerereDemisie salveazaCerereDemisie(CerereDemisie cerereDemisie_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start salveazaCerereDemisie");
+		CerereDemisie result = new CerereDemisie();
+		if (cerereDemisie_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaCerereDemisie(cerereDemisie_);
+			logger.logDEBUG(">>>>>>End salveazaCerereDemisie");
+		}
+		return result;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public void stergeCerereDemisie(CerereDemisie cerereDemisie_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start stergeCerereDemisie");
+		if (cerereDemisie_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeCerereDemisie(cerereDemisie_);
+			logger.logDEBUG(">>>>>>End stergeCerereDemisie");
+		}	
+		
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ContractMunca getContractMuncaById(Integer idContractMunca_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start getContractMuncaById");
+		ContractMunca result = new ContractMunca();
+		if (idContractMunca_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getContractMuncaById(idContractMunca_);
+			
+			logger.logDEBUG(">>>>>>End getCerereDemisieById");
+		}
+		return result;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<ContractMunca> getListaContracteMunca() throws Exception {
+		logger.logDEBUG(">>>>>>Start getListaContracteMunca");
+		Collection<ContractMunca> result = this.registruPersonal.getListaContracteMunca();
+		logger.logDEBUG(">>>>>>End getListaContracteMunca");
+		return result;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ContractMunca salveazaContractMunca(ContractMunca contractMunca_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start salveazaContractMunca");
+		ContractMunca result = new ContractMunca();
+		if (contractMunca_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaContractMunca(contractMunca_);
+			logger.logDEBUG(">>>>>>End salveazaContractMunca");
+		}
+		return result;
+	}
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void stergeContractMunca(ContractMunca contractMunca_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start stergeContractMunca");
+		if (contractMunca_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeContractMunca(contractMunca_);
+			logger.logDEBUG(">>>>>>End stergeContractMunca");
+		}	
+		
+	}
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public CV getCVById(Integer idCV_) throws Exception {
+		logger.logDEBUG(">>>>>>Start getCVById");
+		CV result = new CV();
+		if (idCV_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getCVById(idCV_);
+			
+			logger.logDEBUG(">>>>>>End getCVById");
+		}
+		return result;
+	}
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public Collection<CV> getListaCVuri() throws Exception {
+		logger.logDEBUG(">>>>>>Start getListaCVuri");
+		Collection<CV> result = this.registruPersonal.getListaCVuri();
+		logger.logDEBUG(">>>>>>End getListaCvuri");
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public CV salveazaCV(CV cv_) throws Exception {
+		logger.logDEBUG(">>>>>>Start salveazaCV");
+		CV result = new CV();
+		if (cv_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaCV(cv_);
+			logger.logDEBUG(">>>>>>End salveazaCV");
+		}
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public void stergeCV(CV cv_) throws Exception {
+		logger.logDEBUG(">>>>>>Start stergeCV");
+		if (cv_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeCV(cv_);
+			logger.logDEBUG(">>>>>>End stergeCV");
+		}	
+		
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public DosarAngajat getDosarAngajatById(Integer idDosarAngajat_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start getDosarAngajatById");
+		DosarAngajat result = new DosarAngajat();
+		if (idDosarAngajat_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getDosarAngajatById(idDosarAngajat_);
+			
+			logger.logDEBUG(">>>>>>End getCerereDemisieById");
+		}
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<DosarAngajat> getListaDosareAngajat() throws Exception {
+		logger.logDEBUG(">>>>>>Start getListaCereriDemisie");
+		Collection<DosarAngajat> result = this.registruPersonal.getListaDosareAngajat();
+		logger.logDEBUG(">>>>>>End getListaCereriDemisie");
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public DosarAngajat salveazaDosarAngajat(DosarAngajat dosarAngajat_)
+			throws Exception {
+		logger.logDEBUG(">>>>>>Start salveazaDosarAngajat");
+		DosarAngajat result = new DosarAngajat();
+		if (dosarAngajat_ == null){				
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaDosarAngajat(dosarAngajat_);
+			logger.logDEBUG(">>>>>>End salveazaDosarAngajat");
+		}
+		return result;
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public void stergeDosarAngajat(DosarAngajat dosarAngajat_) throws Exception {
+		logger.logDEBUG(">>>>>>Start stergeDosarAngajat");
+		if (dosarAngajat_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeDosarAngajat(dosarAngajat_);
+			logger.logDEBUG(">>>>>>End stergeCandidat");
+		}	
+		
+	}
+
+	
 	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -740,7 +1038,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public void concediere(ContractMunca contractMunca_) {
 		try
 		{
-			// TODO Auto-generated method stub		
+		
 			Angajat 		angajat = contractMunca_.getAngajat();
 			
 			contractMunca_.setDataTerminare(Calendar.getInstance().getTime());
@@ -937,7 +1235,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public CV getCVByCandidat (Candidat candidat_) {
-		// TODO Auto-generated method stub
 		TestPersonalImpl test = new TestPersonalImpl();
 	
 		test.generareAnunturi();
@@ -955,7 +1252,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	@Override
 	public void angajare(Candidat candidat_) {
-		// TODO Auto-generated method stub
 		Angajat angajat;
 		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
@@ -991,7 +1287,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void activareAngajati(Collection<Angajat> ListaAngajati) {
-		// TODO Auto-generated method stub
+
 		Iterator<Angajat> iterator = ListaAngajati.iterator();
 		Collection<ContractMunca> contracte = new ArrayList<ContractMunca>();
 		Integer nrActivari = 0; // variabila utilizata la metoda angajare
@@ -1060,7 +1356,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ContractMunca relocalizare_promovare(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_)
 	 {
-		// TODO Auto-generated method stub
+
 		Angajat angajat = new Angajat();
 		try
 		{
@@ -1124,7 +1420,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Eveniment> getEvenimenteAnuale(Integer _year) {
 		Collection<Eveniment> evenimente = new ArrayList<Eveniment>();
-		// TODO Auto-generated method stub
+
 		if(_year ==0)
 		{
 			return Eveniment.getEvenimente();
@@ -1136,7 +1432,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void aprobareEveniment(Eveniment _eveniment) {
-		// TODO Auto-generated method stub
+		
 		Iterator <Activitate> activitatiEveniment =_eveniment.getActivitati().iterator();
 		Double sumaActivitati = 0.00;
 		while (activitatiEveniment.hasNext())
@@ -1151,121 +1447,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		System.out.println(_eveniment.getStatusEveniment());
 	}
 	
-	@Override
-	public Candidat getCandidatById(Integer idPersoanaCandidat_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Candidat getCandidatByIdCandidat(Integer idCandidat_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Collection<Candidat> getListaCandidati() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Candidat salveazaCandidat(Candidat candidat) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void stergeCandidat(Candidat candidat_) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public CerereDemisie getCerereDemisieById(Integer idCerereDemisie_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Collection<CerereDemisie> getListaCereriDemisie() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public CerereDemisie salveazaCerereDemisie(CerereDemisie cerereDemisie_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void stergeCerereDemisie(CerereDemisie cerereDemisie_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public ContractMunca getContractMuncaById(Integer idContractMunca_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Collection<ContractMunca> getListaContracteMunca() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ContractMunca salveazaContractMunca(ContractMunca contractMunca_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void stergeContractMunca(ContractMunca contractMunca_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public CV getCVById(Integer idCV_) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Collection<CV> getListaCVuri() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public CV salveazaCV(CV cv_) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void stergeCV(CV cv_) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public DosarAngajat getDosarAngajatById(Integer idDosarAngajat_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Collection<DosarAngajat> getListaDosareAngajat() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public DosarAngajat salveazaDosarAngajat(DosarAngajat dosarAngajat_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void stergeDosarAngajat(DosarAngajat dosarAngajat_) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 }
