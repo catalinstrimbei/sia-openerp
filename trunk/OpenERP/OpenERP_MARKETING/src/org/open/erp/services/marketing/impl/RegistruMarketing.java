@@ -60,12 +60,12 @@ public class RegistruMarketing {
 			return campanie;
 		}
 		
-		public void stergeProiect(Campanie campanie){
+		public void stergeCampanie(Campanie campanie){
 			entityManager.remove(campanie);
 		}
 
 		
-		public void refreshProiect(Campanie campanie){
+		public void refreshCampanie(Campanie campanie){
 			entityManager.refresh(campanie);
 		}
 	}
