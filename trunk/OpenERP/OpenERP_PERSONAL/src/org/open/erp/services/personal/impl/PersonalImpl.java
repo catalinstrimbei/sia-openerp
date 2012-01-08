@@ -663,22 +663,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	
 	
-	@Override
-	public Functie getFunctie(Integer idFunctie) throws Exception {
-		logger.logDEBUG(">>>>>>Start afisare Functie");
-		Functie functie = new Functie();
-		if (idFunctie == null){
-			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
-			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
-		}
-		else{			
-			functie = this.registruPersonal.getFunctieById(idFunctie);
-			
-			logger.logDEBUG(">>>>>>End ");
-		}
-		return functie;
-	}
 	//Evenimente
 	@Override
 	public Eveniment getEvenimentById(
@@ -737,12 +721,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			logger.logDEBUG(">>>>>>End stergeEveniment");
 		}		
 	}
-
-
-
-
-public Functie getFunctieById(
-			Integer idFunctie_) throws Exception {
+	
+	@Override
+	public Functie getFunctieById(Integer idFunctie_) throws Exception {
 		// TODO Auto-generated method stub
 		logger.logDEBUG(">>>>>>Start getFunctieById");
 		Functie result = new Functie();
@@ -756,7 +737,7 @@ public Functie getFunctieById(
 			logger.logDEBUG(">>>>>>End getFunctieById");
 		}
 		return result;
-	}
+	}	
 	@Override
 	public Collection<Functie> getListaFunctii()
 			throws Exception {
@@ -913,8 +894,8 @@ public Functie getFunctieById(
 		}		
 	}
 	
-	public Interviu getInterviuById(
-			Integer idInterviu_) throws Exception {
+	@Override
+	public Interviu getInterviuById(Integer idInterviu_) throws Exception {
 		// TODO Auto-generated method stub
 		logger.logDEBUG(">>>>>>Start getInterviuById");
 		Interviu result = new Interviu();

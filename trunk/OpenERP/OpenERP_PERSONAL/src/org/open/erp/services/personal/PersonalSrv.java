@@ -253,7 +253,7 @@ public interface PersonalSrv {
 	 * @return nimic.
 	 * 
 	 */
-	Functie				getFunctieByid(Integer IdFunctie_) throws Exception;
+	Functie				getFunctieById(Integer IdFunctie_) throws Exception;
 	/**
 	 * Scop  Returneaza datele unei functii dupa id.
 	 * 
@@ -354,7 +354,7 @@ public interface PersonalSrv {
 	 * @return nimic.
 	 * 
 	 */
-	Interviu				getInterviuByid(Integer IdInterviu_) throws Exception;
+	Interviu				getInterviuById(Integer IdInterviu_) throws Exception;
 	/**
 	 * Scop  Returneaza datele unei interviu dupa id.
 	 * 
@@ -739,7 +739,7 @@ public interface PersonalSrv {
 	
 
 	Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception;
-	Functie getFunctie(Integer idFunctie) throws Exception;
+	
 	
 	
 	ActivitateTeamBuilding	creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions;
