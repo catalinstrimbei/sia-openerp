@@ -127,7 +127,6 @@ public class TestSalarizareEJB {
 	@Test
 	public void calculRetineriObligatoriiAngajati() {
 		logger.info("Begin test: calculRetineriObligatoriiAngajat");
-		logger.info("Begin test: calculVenitBrutAngajat");
 		Angajat angajat = personalSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
@@ -145,6 +144,18 @@ public class TestSalarizareEJB {
 		assertNotNull("Metoda de calcul a somajului nu a functionat!", somaj);
 		
 		logger.info("End test: calculRetineriObligatoriiAngajat");
+	}
+	
+	@Test
+	public void calculDeduceriAngajati() {
+		logger.info("Begin test: calculDeduceriAngajat");
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		Double deduceri = salarizareSrvInstance.calculDeduceri(2011, 11, angajat);
+		logger.info("Deducerile sunt: "+deduceri);
+		assertNotNull("Metoda de calcul a deducerilor nu a functionat!", deduceri);
+		logger.info("End test: calculDeduceriAngajat");
 	}
 	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
