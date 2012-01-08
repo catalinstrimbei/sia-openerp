@@ -4,7 +4,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.open.erp.services.marketing.Campanie;
 import org.open.erp.services.marketing.Chestionar;
@@ -29,7 +36,12 @@ import org.open.erp.services.nomgen.Produs;
 public class MarketingManagementImpl implements MarketingManagementSrv, MarketingManagementSrvRemote, MarketingManagementSrvLocal {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingManagementImpl.class.getName());
 	
-	
+	private RegistruMarketing	registruMarketing;
+	/* Dependente resurse injectate */
+	@PersistenceContext(unitName="OpenERP_MARKETING")
+	private EntityManager em;
+	@Resource
+	private SessionContext sessionContext;	
 	/*
 	 * 
 	 * @ConstrutorForDummy
@@ -38,8 +50,16 @@ public class MarketingManagementImpl implements MarketingManagementSrv, Marketin
 	public MarketingManagementImpl() {
 	}	
 	
+	@PostConstruct
+	public void init(){
+		logger.debug(">>>>>>>>>>>> Exista em? " + em);						
+		
+		if (this.registruMarketing == null)
+			registruMarketing = new RegistruMarketing(em);
+	}	
 	
-	// implementare actiuni serviciu ProjectManagementSrv //
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+
 	@Override
 	public Campanie definireCampanie(String nume, 
 			Date dataStart, Date dataSfarsit,Responsabil responsabil, List<PersoanaTinta> PersoaneTinta) {
