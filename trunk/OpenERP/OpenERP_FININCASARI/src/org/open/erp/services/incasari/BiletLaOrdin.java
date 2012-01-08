@@ -4,6 +4,9 @@ package org.open.erp.services.incasari;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import org.open.erp.services.nomgen.Persoana;
 
 /**
@@ -13,7 +16,8 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
-
+@Entity(name="BiletLaOrdin")
+@DiscriminatorValue("BiletLaOrdin")
 public class BiletLaOrdin extends Incasare {
 
 	private Date dataScadenta;
@@ -56,6 +60,17 @@ public class BiletLaOrdin extends Incasare {
 		this.garant = garant;
 		this.stare = stare;
 	}
+	
+	public BiletLaOrdin(Integer idIncasare, Date dataEmiterii, Boolean avans,
+			Date dataInregistrarii, Double suma, String sumaInLitere,
+			String seria, Integer numar, String locatie, Date dataScadenta,
+			Persoana garant, String stare) {
+		super(idIncasare, dataEmiterii, avans, dataInregistrarii, suma,
+				sumaInLitere, seria, numar, locatie);
+		this.dataScadenta = dataScadenta;
+		this.garant = garant;
+		this.stare = stare;
+	}
 
 	public Persoana getGarant() {
 		return garant;
@@ -64,5 +79,12 @@ public class BiletLaOrdin extends Incasare {
 	public void setGarant(Persoana garant) {
 		this.garant = garant;
 	}
+
+	public BiletLaOrdin() {
+		super();
+		
+	}
+
+
 
 }

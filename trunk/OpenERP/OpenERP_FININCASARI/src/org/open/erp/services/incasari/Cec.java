@@ -1,6 +1,5 @@
 package org.open.erp.services.incasari;
 
-
 /**
  * 
  * @author Echipa FININCASARI
@@ -11,6 +10,11 @@ package org.open.erp.services.incasari;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity(name = "Cec")
+@DiscriminatorValue("Cec")
 public class Cec extends Incasare {
 
 	private static Long intervalValabilitate;
@@ -40,7 +44,16 @@ public class Cec extends Incasare {
 		this.stare = stare;
 	}
 
+	public Cec(Integer idIncasare, Date dataEmiterii, Boolean avans,
+			Date dataInregistrarii, Double suma, String sumaInLitere,
+			String seria, Integer numar, String locatie, String stare) {
+		super(idIncasare, dataEmiterii, avans, dataInregistrarii, suma,
+				sumaInLitere, seria, numar, locatie);
+		this.stare = stare;
+	}
 
-
+	public Cec() {
+		super();
+	}
 
 }

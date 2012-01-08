@@ -8,16 +8,32 @@ package org.open.erp.services.incasari;
  * 
  */
 
+import static javax.persistence.GenerationType.AUTO;
+
 import java.util.ArrayList;
 
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.Table;
+
 import org.open.erp.services.vanzari.FacturaEmisa;
 
-
+@Entity
+@Table(name="Incasare")
+@Inheritance
+@DiscriminatorColumn(name="Tip_incasare")
 public abstract class Incasare {
-	
+
+	@Id
+	@GeneratedValue(strategy = AUTO)
+	private Integer idIncasare;
+
 	private String moneda;
 
 	public String getMoneda() {
@@ -35,9 +51,9 @@ public abstract class Incasare {
 	private Date dataInregistrarii;
 
 	private Double suma;
-	
+
 	private String sumaInLitere;
-	
+
 	public String getSumaInLitere() {
 		return sumaInLitere;
 	}
@@ -108,9 +124,9 @@ public abstract class Incasare {
 
 	private List<FacturaEmisa> facturi = new ArrayList<FacturaEmisa>();
 
-	public Incasare(Date dataEmiterii, Boolean avans,
-			Date dataInregistrarii, Double suma, String sumaInLitere,
-			String seria, Integer numar, String locatie) {
+	public Incasare(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
+			Double suma, String sumaInLitere, String seria, Integer numar,
+			String locatie) {
 		super();
 		this.dataEmiterii = dataEmiterii;
 		this.avans = avans;
@@ -120,7 +136,23 @@ public abstract class Incasare {
 		this.seria = seria;
 		this.numar = numar;
 		this.locatie = locatie;
-		
+
+	}
+
+	public Incasare(Integer idIncasare, Date dataEmiterii, Boolean avans,
+			Date dataInregistrarii, Double suma, String sumaInLitere,
+			String seria, Integer numar, String locatie) {
+		super();
+		this.setIdIncasare(idIncasare);
+		this.dataEmiterii = dataEmiterii;
+		this.avans = avans;
+		this.dataInregistrarii = dataInregistrarii;
+		this.suma = suma;
+		this.sumaInLitere = sumaInLitere;
+		this.seria = seria;
+		this.numar = numar;
+		this.locatie = locatie;
+
 	}
 
 	public List<FacturaEmisa> getFacturi() {
@@ -137,6 +169,18 @@ public abstract class Incasare {
 
 	public void setSuma(Double suma) {
 		this.suma = suma;
+	}
+
+	public Incasare() {
+		super();
+	}
+
+	public Integer getIdIncasare() {
+		return idIncasare;
+	}
+
+	public void setIdIncasare(Integer idIncasare) {
+		this.idIncasare = idIncasare;
 	}
 
 }

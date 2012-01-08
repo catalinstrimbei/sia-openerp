@@ -1,6 +1,5 @@
 package org.open.erp.services.incasari;
 
-
 /**
  * 
  * @author Echipa FININCASARI
@@ -11,6 +10,11 @@ package org.open.erp.services.incasari;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity(name = "ExtrasCont")
+@DiscriminatorValue("ExtrasCont")
 public class ExtrasCont extends Incasare {
 
 	public ExtrasCont(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
@@ -18,6 +22,12 @@ public class ExtrasCont extends Incasare {
 			String locatie) {
 		super(dataEmiterii, avans, dataInregistrarii, suma, sumaInLitere,
 				seria, numar, locatie);
+
+	}
+
+	public ExtrasCont() {
+		super();
+
 	}
 
 }

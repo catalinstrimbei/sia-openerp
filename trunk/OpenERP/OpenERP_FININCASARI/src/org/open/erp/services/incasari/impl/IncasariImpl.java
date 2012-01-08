@@ -1,10 +1,21 @@
 package org.open.erp.services.incasari.impl;
 
 import java.util.ArrayList;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
@@ -15,7 +26,8 @@ import org.open.erp.services.incasari.Cec;
 import org.open.erp.services.incasari.Chitanta;
 import org.open.erp.services.incasari.ExtrasCont;
 import org.open.erp.services.incasari.Incasare;
-import org.open.erp.services.incasari.IncasariSrv;
+import org.open.erp.services.incasari.IncasariSrvLocal;
+import org.open.erp.services.incasari.IncasariSrvRemote;
 import org.open.erp.services.incasari.exception.IncasariException;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
@@ -23,10 +35,30 @@ import org.open.erp.services.vanzari.Client;
 import org.open.erp.services.vanzari.FacturaEmisa;
 import org.open.erp.services.vanzari.VanzariSrv;
 
-public class IncasariImpl implements IncasariSrv {
-
+@Stateless(name = "IncasariSrv", mappedName = "IncasariSrv")
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
+			.getLogger(IncasariImpl.class.getName());
+	@EJB(mappedName = "VanzariSrvImpl/local")
 	private VanzariSrv vanzariSrv;
+
+	@EJB(mappedName = "ContabilizareSrvImpl/local")
 	private ContabilizareSrv ctbSrv;
+
+	@PersistenceContext(unitName = "OpenERP_FININCASARI")
+	private EntityManager em;
+
+	@Resource
+	private SessionContext sessionContext;
+
+	@PostConstruct
+	public void init() {
+		logger.debug("EntityManager: " + em);
+		logger.debug("PersonalSrv: " + vanzariSrv);
+		logger.debug("ContabilizareSrv: " + ctbSrv);
+
+	}
 
 	public VanzariSrv getVanzariSrv() {
 		return vanzariSrv;
@@ -50,7 +82,7 @@ public class IncasariImpl implements IncasariSrv {
 	 * @throws IncasariException
 	 * @ApplicationServiceFacade
 	 */
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Chitanta inregistrareChitanta(Angajat casier, Double sumaIncasata,
 			String sumaIncasataLitere, Boolean avans,
@@ -58,13 +90,13 @@ public class IncasariImpl implements IncasariSrv {
 			Integer numar, String locatie, String moneda, Client client,
 			Double curs) throws IncasariException {
 
-		if (sumaIncasata == null ||  sumaIncasata == 0.00 ) {
+		if (sumaIncasata == null || sumaIncasata == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
 		Chitanta chitanta;
 
 		List<FacturaEmisa> facturiSelectate = new ArrayList<FacturaEmisa>(0);
-		
+
 		Calendar currentDate = Calendar.getInstance();
 		Date dataInregistrarii = currentDate.getTime();
 
@@ -83,18 +115,18 @@ public class IncasariImpl implements IncasariSrv {
 		try {
 			if (avans) {
 
-				ctbSrv.jurnalizareIncasare(dataInregistrarii,
-						sumaIncasata, numar, TipIncasare.AVANSC,
-						client.getId(), 401, StareDocument.NOU, null);
+				ctbSrv.jurnalizareIncasare(dataInregistrarii, sumaIncasata,
+						numar, TipIncasare.AVANSC, client.getId(), 401,
+						StareDocument.NOU, null);
 
 			}
 
 			else {
 
-				ctbSrv.jurnalizareIncasare(dataInregistrarii,
-						sumaIncasata, numar, TipIncasare.CASA, client.getId(),
-						401, StareDocument.NOU, null);
-				
+				ctbSrv.jurnalizareIncasare(dataInregistrarii, sumaIncasata,
+						numar, TipIncasare.CASA, client.getId(), 401,
+						StareDocument.NOU, null);
+
 			}
 
 		} catch (Exception e) {
@@ -122,14 +154,14 @@ public class IncasariImpl implements IncasariSrv {
 
 			ctbSrv.jurnalizareIncasare(dataInregistrarii, doc.getSuma(),
 					doc.getNumar(), TipIncasare.CEC, doc.getFacturi().get(0)
-							.getClient().getId(), 0, StareDocument.MODIFICAT, null);
+							.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
 
 		} else if (doc instanceof BiletLaOrdin) {
 			((BiletLaOrdin) doc).setStare("incasat");
 
 			ctbSrv.jurnalizareIncasare(dataInregistrarii, doc.getSuma(),
 					doc.getNumar(), TipIncasare.BO, doc.getFacturi().get(0)
-							.getClient().getId(), 0, StareDocument.MODIFICAT, null);
+							.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
 		}
 	}
 
@@ -215,8 +247,8 @@ public class IncasariImpl implements IncasariSrv {
 			String seria, Integer numar, String locatie, String stare,
 			Double suma, String sumaInLitere, List<FacturaEmisa> facturi,
 			String moneda, Double curs) throws IncasariException {
-		
-		if (suma == null ||  suma == 0.00 ) {
+
+		if (suma == null || suma == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
 		Cec cec;
@@ -251,8 +283,8 @@ public class IncasariImpl implements IncasariSrv {
 			Persoana garant, Date dataScadenta, Double suma,
 			String sumaInLitere, String moneda, Double curs)
 			throws IncasariException {
-		
-		if (suma == null ||  suma == 0.00 ) {
+
+		if (suma == null || suma == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
 		BiletLaOrdin bo;
@@ -284,15 +316,14 @@ public class IncasariImpl implements IncasariSrv {
 		return factura.getValoareTotalaFactura() - factura.getSumaIncasata();
 
 	}
-	
+
 	@Override
-	public ExtrasCont inregistrareExtrasCont(Date dataEmiterii,
-			Boolean avans, Client client, String seria, Integer numar,
-			String locatie,  List<FacturaEmisa> facturi,
-			Double suma, String sumaInLitere, String moneda, Double curs)
-			throws IncasariException {
-		
-		if (suma == null ||  suma == 0.00 ) {
+	public ExtrasCont inregistrareExtrasCont(Date dataEmiterii, Boolean avans,
+			Client client, String seria, Integer numar, String locatie,
+			List<FacturaEmisa> facturi, Double suma, String sumaInLitere,
+			String moneda, Double curs) throws IncasariException {
+
+		if (suma == null || suma == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
 		ExtrasCont extrasCont;
@@ -304,8 +335,8 @@ public class IncasariImpl implements IncasariSrv {
 			suma = getSumaRON(moneda, suma, curs);
 		}
 
-		extrasCont = new ExtrasCont(dataEmiterii, avans, dataInregistrarii, suma,
-				sumaInLitere, seria, numar, locatie);
+		extrasCont = new ExtrasCont(dataEmiterii, avans, dataInregistrarii,
+				suma, sumaInLitere, seria, numar, locatie);
 
 		if (facturi.size() == 0) {
 			facturi = vanzariSrv.getFacturiClient(client);
