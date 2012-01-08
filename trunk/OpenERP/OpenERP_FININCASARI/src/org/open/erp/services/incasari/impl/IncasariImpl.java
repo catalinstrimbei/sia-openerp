@@ -122,14 +122,14 @@ public class IncasariImpl implements IncasariSrv {
 
 			ctbSrv.jurnalizareIncasare(dataInregistrarii, doc.getSuma(),
 					doc.getNumar(), TipIncasare.CEC, doc.getFacturi().get(0)
-							.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
+							.getClient().getId(), 0, StareDocument.MODIFICAT, null);
 
 		} else if (doc instanceof BiletLaOrdin) {
 			((BiletLaOrdin) doc).setStare("incasat");
 
 			ctbSrv.jurnalizareIncasare(dataInregistrarii, doc.getSuma(),
 					doc.getNumar(), TipIncasare.BO, doc.getFacturi().get(0)
-							.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
+							.getClient().getId(), 0, StareDocument.MODIFICAT, null);
 		}
 	}
 
