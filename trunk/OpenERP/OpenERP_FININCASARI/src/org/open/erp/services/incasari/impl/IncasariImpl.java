@@ -47,19 +47,23 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	private ContabilizareSrv ctbSrv;
 
 	@PersistenceContext(unitName = "OpenERP_FININCASARI")
-	private EntityManager em;
+	private EntityManager entityManager;
 
 	@Resource
 	private SessionContext sessionContext;
 
 	@PostConstruct
 	public void init() {
-		logger.debug("EntityManager: " + em);
+		logger.debug("EntityManager: " + entityManager);
 		logger.debug("PersonalSrv: " + vanzariSrv);
 		logger.debug("ContabilizareSrv: " + ctbSrv);
-
+		
+		if (this.registru == null)
+			registru = new RegistruIncasari(entityManager);
 	}
-
+	
+	private RegistruIncasari registru = new RegistruIncasari();
+	
 	public VanzariSrv getVanzariSrv() {
 		return vanzariSrv;
 	}

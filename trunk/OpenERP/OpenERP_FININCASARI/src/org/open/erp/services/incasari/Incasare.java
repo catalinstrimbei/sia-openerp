@@ -9,7 +9,7 @@ package org.open.erp.services.incasari;
  */
 
 import static javax.persistence.GenerationType.AUTO;
-
+import static javax.persistence.TemporalType.DATE;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,13 +23,14 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 import org.open.erp.services.vanzari.FacturaEmisa;
 
 @Entity
-@Table(name="Incasare")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="Tip_incasare")
+@Table(name = "Incasare")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "Tip_incasare")
 public abstract class Incasare {
 
 	@Id
@@ -37,17 +38,17 @@ public abstract class Incasare {
 	private Integer idIncasare;
 
 	private String moneda;
-
+	@Temporal(DATE)
 	private Date dataEmiterii;
 
 	private Boolean avans;
-
+	@Temporal(DATE)
 	private Date dataInregistrarii;
 
 	private Double suma;
 
 	private String sumaInLitere;
-	
+
 	@OneToMany
 	private List<FacturaEmisa> facturi = new ArrayList<FacturaEmisa>();
 
@@ -58,6 +59,7 @@ public abstract class Incasare {
 	public void setMoneda(String moneda) {
 		this.moneda = moneda;
 	}
+
 	public String getSumaInLitere() {
 		return sumaInLitere;
 	}
@@ -125,8 +127,6 @@ public abstract class Incasare {
 	public void setLocatie(String locatie) {
 		this.locatie = locatie;
 	}
-	
-	
 
 	public Incasare(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
 			Double suma, String sumaInLitere, String seria, Integer numar,

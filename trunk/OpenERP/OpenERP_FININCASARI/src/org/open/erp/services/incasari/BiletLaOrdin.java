@@ -2,11 +2,14 @@
 
 package org.open.erp.services.incasari;
 
+import static javax.persistence.TemporalType.DATE;
+
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 import org.open.erp.services.nomgen.Persoana;
 
@@ -22,7 +25,8 @@ import org.open.erp.services.nomgen.Persoana;
 @Entity(name="BiletLaOrdin")
 @DiscriminatorValue("BiletLaOrdin")
 public class BiletLaOrdin extends Incasare {
-
+	
+	@Temporal(DATE)
 	private Date dataScadenta;
 	private static Long intervalValabilitate;
 	
