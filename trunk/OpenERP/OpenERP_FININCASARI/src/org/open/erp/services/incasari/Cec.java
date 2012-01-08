@@ -7,7 +7,7 @@ package org.open.erp.services.incasari;
  * @BusinessObject(Entity)
  * 
  */
-
+//comment
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
