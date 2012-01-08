@@ -3,11 +3,12 @@ package org.open.erp.services.incasari;
 /**
  * 
  * @author Echipa FININCASARI
+
  * 
  * @BusinessObject(Entity)
  * 
  */
-//comment
+
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;

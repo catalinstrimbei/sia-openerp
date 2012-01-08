@@ -12,6 +12,7 @@ import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import org.open.erp.services.personal.Angajat;
 
@@ -27,6 +28,7 @@ public class Chitanta extends Incasare {
 		this.casier = casier;
 	}
 
+	@ManyToOne
 	private Angajat casier;
 
 	public Chitanta(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
