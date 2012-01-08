@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -32,8 +34,8 @@ public abstract class Activitate implements Serializable {
 	 * 
 	 */	
 
-	@Id 
-	protected String 	idActivitate;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	protected Integer 	idActivitate;
 	@ManyToOne @JoinColumn(name = "idEveniment")
 	protected Eveniment	eveniment;
 	protected String 	descriereActivitate;
@@ -56,10 +58,10 @@ public abstract class Activitate implements Serializable {
 	//NMV>>se adauga o activitate noua in lista cand se initializeaza clasa.
 	private static List<Activitate> activitati = new ArrayList<Activitate>();//NMV>> lista folosita pentru a simula persistenta
 	
-	public String getIdActivitate() {
+	public Integer getIdActivitate() {
 		return idActivitate;
 	}
-	public void setIdActivitate(String idActivitate) {
+	public void setIdActivitate(Integer idActivitate) {
 		this.idActivitate = idActivitate;
 	}
 	public Eveniment getEveniment() {
@@ -114,7 +116,7 @@ public abstract class Activitate implements Serializable {
 	 * @param dataSfarsit
 	 * @param locatie
 	 */
-	public Activitate(String idActivitate, Eveniment eveniment,
+	public Activitate(Integer idActivitate, Eveniment eveniment,
 			String descriereActivitate, Integer numarMinimParticipanti,
 			Double sumaConsumata, Date dataStart, Date dataSfarsit,
 			String locatie, Double sumaEstimata) {

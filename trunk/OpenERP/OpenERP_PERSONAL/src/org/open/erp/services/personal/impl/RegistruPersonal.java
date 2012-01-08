@@ -4,6 +4,10 @@ import java.util.Collection;
 
 import javax.persistence.EntityManager;
 
+import org.open.erp.services.personal.ActivitateTeamBuilding;
+import org.open.erp.services.personal.ActivitateTraining;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.Functie;
@@ -20,6 +24,269 @@ private static PersonalLogger logger ;
 	}
 
 	/* interogari */
+	
+	ActivitateTeamBuilding				getActivitateTeamBuildingById(Integer idActivitate_) throws Exception 
+	{
+		try
+		{
+			return entityManager.find(ActivitateTeamBuilding.class, idActivitate_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	Collection<ActivitateTeamBuilding>	getListaActivitatiTeamBuilding() throws Exception 
+	{
+		try
+		{
+			return entityManager.createQuery("SELECT x FROM ActivitateTeamBuilding x").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	ActivitateTeamBuilding				salveazaActivitateTeamBuilding(ActivitateTeamBuilding activitate_) throws Exception 
+	{
+		try
+		{		
+			if (activitate_.getIdActivitate() == null ||
+				entityManager.find(activitate_.getClass(), activitate_.getIdActivitate()) == null)
+				entityManager.persist(activitate_);
+			else
+				entityManager.merge(activitate_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return activitate_;
+	}
+
+	void								stergeActivitateTeamBuilding(ActivitateTeamBuilding activitate_) throws Exception
+	{
+		try
+		{
+			entityManager.remove(activitate_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	
+	ActivitateTraining				getActivitateTrainingById(Integer idActivitate_) throws Exception
+	{
+		try
+		{
+			return entityManager.find(ActivitateTraining.class, idActivitate_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	Collection<ActivitateTraining>	getListaActivitatiTraining() throws Exception
+	{
+		try
+		{
+			return entityManager.createQuery("SELECT x FROM ActivitateTraining x").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	ActivitateTraining				salveazaActivitateTraining(ActivitateTraining activitate_) throws Exception
+	{
+		try
+		{		
+			if (activitate_.getIdActivitate() == null ||
+				entityManager.find(activitate_.getClass(), activitate_.getIdActivitate()) == null)
+				entityManager.persist(activitate_);
+			else
+				entityManager.merge(activitate_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return activitate_;
+	}
+	
+	void							stergeActivitateTraining(ActivitateTraining activitate_) throws Exception
+	{
+		try
+		{
+			entityManager.remove(activitate_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	
+	Angajat							getAngajatById(Integer idAngajat_) throws Exception
+	{
+		try
+		{
+			return entityManager.find(Angajat.class, idAngajat_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	Angajat							getAngajatByMarca(Integer marca_) throws Exception
+	{
+		try
+		{
+			return (Angajat) entityManager.createQuery("SELECT x FROM Angajat x WHERE x.marca == :marcaAng AND rownum <= 1").setParameter("marcaAng", marca_).getSingleResult();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	Collection<Angajat>				getListaAngajati() throws Exception
+	{
+		try
+		{
+			return entityManager.createQuery("SELECT x FROM Angajat x").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	Angajat							salveazaAngajat(Angajat angajat_) throws Exception
+	{
+		try
+		{		
+			if (angajat_.getMarca() == null ||
+				entityManager.find(angajat_.getClass(), angajat_.getMarca()) == null)
+				entityManager.persist(angajat_);
+			else
+				entityManager.merge(angajat_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return angajat_;
+	}
+
+	void							stergeAngajat(Angajat angajat_) throws Exception
+	{
+		try
+		{
+			entityManager.remove(angajat_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+							
+	AnuntLocMunca				getAnuntLocMuncaById(Integer idAnunt_) throws Exception
+	{
+		try
+		{
+			return entityManager.find(AnuntLocMunca.class, idAnunt_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+
+	Collection<AnuntLocMunca>	getListaAnunturiLocMunca() throws Exception
+	{
+		try
+		{
+			return entityManager.createQuery("SELECT x FROM AnuntLocMunca x").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+
+	AnuntLocMunca				salveazaAnuntLocMunca(AnuntLocMunca anunt_) throws Exception
+	{
+		try
+		{		
+			if (anunt_.getIdAnunt() == null ||
+				entityManager.find(anunt_.getClass(), anunt_.getIdAnunt()) == null)
+				entityManager.persist(anunt_);
+			else
+				entityManager.merge(anunt_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return anunt_;
+	}
+
+	void							stergeAnuntLocMunca(AnuntLocMunca anunt_) throws Exception
+	{
+		try
+		{
+			entityManager.remove(anunt_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	
 	public Candidat getCandidat(Integer id){
 		return entityManager.find(Candidat.class, id);
 	}

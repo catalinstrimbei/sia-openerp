@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +22,7 @@ public class AnuntLocMunca implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
+	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer		idAnunt;
 	private String[] 	modAnunt = {"Internet", "Ziar", "Radio", "TV", "Altele"};
 	private String 		corpAnunt;

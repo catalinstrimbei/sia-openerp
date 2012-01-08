@@ -30,6 +30,7 @@ import javax.persistence.PersistenceContext;
 //import org.open.erp.services.personal.Proiect;
 import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.ActivitateTeamBuilding;
+import org.open.erp.services.personal.ActivitateTraining;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
@@ -81,7 +82,261 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 		if (this.registruPersonal == null)
 			registruPersonal = new RegistruPersonal(em);
-	}	
+	}
+	
+	
+	
+	
+	@Override
+	public ActivitateTeamBuilding getActivitateTeamBuildingById(
+			Integer idActivitate_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getActivitateTeamBuildingById");
+		ActivitateTeamBuilding result = new ActivitateTeamBuilding();
+		if (idActivitate_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getActivitateTeamBuildingById(idActivitate_);
+			
+			logger.logDEBUG(">>>>>>End getActivitateTeamBuildingById");
+		}
+		return result;
+	}
+	@Override
+	public Collection<ActivitateTeamBuilding> getListaActivitatiTeamBuilding()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaActivitatiTeamBuilding");
+		Collection<ActivitateTeamBuilding> result = this.registruPersonal.getListaActivitatiTeamBuilding();
+		logger.logDEBUG(">>>>>>End getListaActivitatiTeamBuilding");
+		return result;
+	}
+	@Override
+	public ActivitateTeamBuilding salveazaActivitateTeamBuilding(
+			ActivitateTeamBuilding activitate_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start salveazaActivitateTeamBuilding");
+		ActivitateTeamBuilding result = new ActivitateTeamBuilding();
+		if (activitate_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaActivitateTeamBuilding(activitate_);
+			logger.logDEBUG(">>>>>>End salveazaActivitateTeamBuilding");
+		}
+		return result;
+	}
+	@Override
+	public void stergeActivitateTeamBuilding(ActivitateTeamBuilding activitate_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeActivitateTeamBuilding");
+		if (activitate_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeActivitateTeamBuilding(activitate_);
+			logger.logDEBUG(">>>>>>End stergeActivitateTeamBuilding");
+		}		
+	}
+	@Override
+	public ActivitateTraining getActivitateTrainingById(Integer idActivitate_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getActivitateTrainingById");
+		ActivitateTraining result = new ActivitateTraining();
+		if (idActivitate_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getActivitateTrainingById(idActivitate_);
+			
+			logger.logDEBUG(">>>>>>End getActivitateTrainingById");
+		}
+		return result;
+	}
+	@Override
+	public Collection<ActivitateTraining> getListaActivitatiTraining()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaActivitatiTraining");
+		Collection<ActivitateTraining> result = this.registruPersonal.getListaActivitatiTraining();
+		logger.logDEBUG(">>>>>>End getListaActivitatiTraining");
+		return result;
+	}
+	@Override
+	public ActivitateTraining salveazaActivitateTraining(
+			ActivitateTraining activitate_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start salveazaActivitateTraining");
+		ActivitateTraining result = new ActivitateTraining();
+		if (activitate_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaActivitateTraining(activitate_);
+			logger.logDEBUG(">>>>>>End salveazaActivitateTraining");
+		}
+		return result;
+	}
+	@Override
+	public void stergeActivitateTraining(ActivitateTraining activitate_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeActivitateTraining");
+		if (activitate_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeActivitateTraining(activitate_);
+			logger.logDEBUG(">>>>>>End stergeActivitateTraining");
+		}	
+	}
+	@Override
+	public Angajat getAngajatByMarca(Integer marca_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getAngajatById");
+		Angajat result = new Angajat();
+		if (marca_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getAngajatById(marca_);
+			
+			logger.logDEBUG(">>>>>>End getAngajatById");
+		}
+		return result;
+	}
+	@Override
+	public Angajat getAngajatById(Integer id_) throws Exception{
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getAngajatById");
+		Angajat result = new Angajat();
+		if (id_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getAngajatById(id_);
+			
+			logger.logDEBUG(">>>>>>End getAngajatById");
+		}
+		return result;
+	}
+
+	@Override
+	public Collection<Angajat> getListaAngajati() throws Exception{
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaAngajati");
+		Collection<Angajat> result = this.registruPersonal.getListaAngajati();
+		logger.logDEBUG(">>>>>>End getListaAngajati");
+		return result;
+	}
+	@Override
+	public Angajat salveazaAngajat(Angajat angajat_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start salveazaAngajat");
+		Angajat result = new Angajat();
+		if (angajat_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaAngajat(angajat_);
+			logger.logDEBUG(">>>>>>End salveazaAngajat");
+		}
+		return result;
+	}
+	@Override
+	public void stergeAngajat(Angajat angajat_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeAngajat");
+		if (angajat_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeAngajat(angajat_);
+			logger.logDEBUG(">>>>>>End stergeAngajat");
+		}	
+	}
+	@Override
+	public AnuntLocMunca getAnuntLocMuncaById(Integer idAnunt_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getAnuntLocMuncaById");
+		AnuntLocMunca result = new AnuntLocMunca();
+		if (idAnunt_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.getAnuntLocMuncaById(idAnunt_);
+			
+			logger.logDEBUG(">>>>>>End getAnuntLocMuncaById");
+		}
+		return result;
+	}
+	@Override
+	public Collection<AnuntLocMunca> getListaAnunturiLocMunca()
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start getListaAnunturiLocMunca");
+		Collection<AnuntLocMunca> result = this.registruPersonal.getListaAnunturiLocMunca();
+		logger.logDEBUG(">>>>>>End getListaAnunturiLocMunca");
+		return result;
+	}
+	@Override
+	public AnuntLocMunca salveazaAnuntLocMunca(AnuntLocMunca anunt_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start salveazaAnuntLocMunca");
+		AnuntLocMunca result = new AnuntLocMunca();
+		if (anunt_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruPersonal.salveazaAnuntLocMunca(anunt_);
+			logger.logDEBUG(">>>>>>End salveazaAnuntLocMunca");
+		}
+		return result;
+	}
+	@Override
+	public void stergeAnuntLocMunca(AnuntLocMunca anunt_) throws Exception {
+		// TODO Auto-generated method stub
+		logger.logDEBUG(">>>>>>Start stergeAnuntLocMunca");
+		if (anunt_ == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			this.registruPersonal.stergeAnuntLocMunca(anunt_);
+			logger.logDEBUG(">>>>>>End stergeAnuntLocMunca");
+		}
+	}
+	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	
@@ -99,7 +354,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			if (this.registruPersonal == null)
 				registruPersonal = new RegistruPersonal(em);
 			this.registruPersonal.salveazaFunctie(functie);
-			// cum aflu idul noului obiect ?? em.refresh(bugetNou);
+			
 			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
 		}
 		return functie;
@@ -117,7 +372,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		else{			
 			functie = this.registruPersonal.getFunctieById(idFunctie);
-			// cum aflu idul noului obiect ?? em.refresh(bugetNou);
+			
 			logger.logDEBUG(">>>>>>End ");
 		}
 		return functie;
@@ -136,8 +391,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		else{
 			activitateTeamBld.setNrInscrisi(nrInscrisi_);
-			em.persist(activitateTeamBld);
-			// cum aflu idul noului obiect ?? em.refresh(bugetNou);
+			em.persist(activitateTeamBld);			
 			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
 		}
 		return activitateTeamBld;
@@ -344,33 +598,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		return tMap;
 	}
 
-	@Override
-	public Angajat getAngajatById(Integer marca_) {
-		
-		// TODO Auto-generated method stub
-		TestPersonalImpl test = new TestPersonalImpl();
-		test.ListaAngajati();
-		Iterator <Angajat> iteratorAngajati = test.angajati.iterator();
-		while(iteratorAngajati.hasNext())
-		{
-			Angajat angajat = iteratorAngajati.next();
-			if(angajat.getMarca().equals(marca_))
-			{
-				return angajat;
-			}
-			
-		}
-		System.out.println("Nu a fost gasit niciun angajat cu marca " + marca_.toString());
-		return null;
-	}
-
-	@Override
-	public Collection<Angajat> getListaAngajati() {
-		// TODO Auto-generated method stub
-		TestPersonalImpl test = new TestPersonalImpl();
-		test.ListaAngajati();
-		return test.angajati;
-	}
+	
 
 	@Override
 	public Collection<ContractMunca> getListaContracteByAngajat(Angajat angajat_) {
@@ -550,7 +778,16 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public ContractMunca relocalizare_promovare(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_)
 	 {
 		// TODO Auto-generated method stub
-		Angajat angajat = this.getAngajatById(marca_);
+		Angajat angajat = new Angajat();
+		try
+		{
+			angajat = this.getAngajatById(marca_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();			
+		}
 		if(angajat == null)
 		{
 			return null;

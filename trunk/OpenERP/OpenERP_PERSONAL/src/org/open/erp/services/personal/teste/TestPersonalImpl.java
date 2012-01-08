@@ -216,13 +216,13 @@ public class TestPersonalImpl {
 		eveniment1.setSumaAlocata(300.00);
 		eveniment2.setSumaAlocata(400.00);
 		Calendar date = Calendar.getInstance();
-		activitate2.setIdActivitate("2");
+		activitate2.setIdActivitate(2);
 		activitate2.setDescriereActivitate("Training 1");
 		activitate2.setLocatie("Locatie training 1");
 		activitate2.setSumaEstimata(100.00);
 		date.set(2009,Calendar.DECEMBER,1);
 		activitate2.setDataStart(date.getTime());
-		activitate3.setIdActivitate("3");
+		activitate3.setIdActivitate(3);
 		activitate3.setDescriereActivitate("TeamBuilding 1");
 		activitate3.setLocatie("Locatie TeamBuilding 1");
 		activitate3.setSumaEstimata(200.00);

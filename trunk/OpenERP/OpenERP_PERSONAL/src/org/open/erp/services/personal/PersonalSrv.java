@@ -74,8 +74,158 @@ import org.open.erp.services.personal.logger.PersonalExceptions;
  *  
  */
 public interface PersonalSrv {
+	
+	ActivitateTeamBuilding				getActivitateTeamBuildingById(Integer idActivitate_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unei activitati de Team-Building dupa precizarea id-ului
+	 * 
+	 * @param idActivitate_  id-ul activitatii, element unic de identificare pentru o activitate, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip ActivitateTeamBuilding 
+	 * 
+	 */
+	Collection<ActivitateTeamBuilding>	getListaActivitatiTeamBuilding() throws Exception;
+	/**
+	 * Scop  Returneaza o Lista cu toate Activitatile de Team-Building
+	 * 
+	 * 
+	 * @return o lista cu toate Activitatile de Team-Building
+	 * 
+	 */
+	ActivitateTeamBuilding				salveazaActivitateTeamBuilding(ActivitateTeamBuilding activitate_) throws Exception;
+	/**
+	 * Scop  Salveaza o ActivitateTeamBuilding in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip ActivitateTeamBuilding 
+	 * 
+	 */
+	void								stergeActivitateTeamBuilding(ActivitateTeamBuilding activitate_) throws Exception;
+	/**
+	 * Scop  Sterge o ActivitateTeamBuilding din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	
+	ActivitateTraining				getActivitateTrainingById(Integer idActivitate_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unei activitati de Training dupa precizarea id-ului
+	 * 
+	 * @param idActivitate_  id-ul activitatii, element unic de identificare pentru o activitate, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip ActivitateTraining 
+	 * 
+	 */
+	Collection<ActivitateTraining>	getListaActivitatiTraining() throws Exception;
+	/**
+	 * Scop  Returneaza o lista cu toate Activitatile de Training
+	 * 
+	 * 
+	 * @return o lista cu toate Activitatile de Training
+	 * 
+	 */
+	ActivitateTraining				salveazaActivitateTraining(ActivitateTraining activitate_) throws Exception;
+	/**
+	 * Scop  Salveaza o ActivitateTraining in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip ActivitateTraining 
+	 * 
+	 */
+	void							stergeActivitateTraining(ActivitateTraining activitate_) throws Exception;
+	/**
+	 * Scop  Sterge o ActivitateTraining din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	
+	Angajat							getAngajatById(Integer idAngajat_) throws Exception;
+	/**
+	 * Scop  Returneaza datele despre un angajat dupa precizarea id-ului
+	 * 
+	 * @param idAngajat_  id-ul persoanei, element unic de identificare pentru o persoana din cadrul firmei, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip Angajat 
+	 * 
+	 */
+	Angajat							getAngajatByMarca(Integer marca_) throws Exception;
+	/**
+	 * Scop  Returneaza datele despre un angajat dupa precizarea marcii
+	 * 
+	 * @param marca_  Marca angajatului, element unic de identificare pentru angajat, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip Angajat 
+	 * 
+	 */
+	Collection<Angajat>				getListaAngajati() throws Exception;
+	/**
+	 * Scop  Returneaza o Lista cu toti angajatii
+	 * 
+	 * 
+	 * @return o lista cu toti Angajatii
+	 * 
+	 */
+	Angajat							salveazaAngajat(Angajat angajat_) throws Exception;
+	/**
+	 * Scop  Salveaza un Angajat in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip Angajat 
+	 * 
+	 */
+	void							stergeAngajat(Angajat angajat_) throws Exception;
+	/**
+	 * Scop  Sterge un angajat din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+							
+	AnuntLocMunca				getAnuntLocMuncaById(Integer idAnunt_) throws Exception;
+	/**
+	 * Scop  Returneaza datele unui Anunt de loc de Munca dupa precizarea id-ului
+	 * 
+	 * @param idAnunt_  id-ul anuntului, element unic de identificare pentru un anunt, dupa care se face cautarea
+	 * 
+	 * @return Obiectul de tip AnuntLocMunca 
+	 * 
+	 */
+	Collection<AnuntLocMunca>	getListaAnunturiLocMunca() throws Exception;
+	/**
+	 * Scop  Returneaza o lista cu toate Anunturile pentru locuri de Munca
+	 * 
+	 * 
+	 * @return o lista cu toate Anunturile pentru locuri de Munca
+	 * 
+	 */
+	AnuntLocMunca				salveazaAnuntLocMunca(AnuntLocMunca anunt_) throws Exception;
+	/**
+	 * Scop  Salveaza un AnuntLocMunca in BD
+	 * 
+	 * 
+	 * @return Obiectul de tip AnuntLocMunca 
+	 * 
+	 */
+	void							stergeAnuntLocMunca(AnuntLocMunca anunt_) throws Exception;
+	/**
+	 * Scop  Sterge un AnuntLocMunca  din BD
+	 * 
+	 * 
+	 * @return nimic.
+	 * 
+	 */
+	
+
+	
 	Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception;
 	Functie getFunctie(Integer idFunctie) throws Exception;
+	
+	
 	ActivitateTeamBuilding	creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions;
 	/**
 	 * Scop    Creaza o noua activitate de team building
@@ -208,30 +358,7 @@ public interface PersonalSrv {
 	 * @param salarBaza			noul salariu de baza
 	 * @param tarifOrar_		noul tarif orar
 	 * @return					Contractul nou incheiat sau contractul modificat in urma promovarii.
-	 */
-	
-	
-	Angajat getAngajatById(Integer marca_);
-	
-	/**
-	 * Scop  Returneaza datele despre un angajat dupa precizarea marcii 
-	 * 
-	 * @param marca_  Marca angajatului, element unic de identificare pentru angajat, dupa care se face cautarea
-	 * 
-	 * @return date angajat 
-	 * 
-	 */
-	
-	
-	Collection<Angajat> getListaAngajati();
-	
-	/**
-	 * Scop  Returneaza o Lista cu toti angajatii
-	 * 
-	 * 
-	 * @return 
-	 * 
-	 */
+	 */			
 	
 	
 	Collection<ContractMunca> getListaContracteByAngajat(Angajat angajat_);
