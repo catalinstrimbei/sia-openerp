@@ -2,6 +2,8 @@ package org.open.erp.services.stocuri;
 
 import java.util.List;
 
+import javax.ejb.Timer;
+
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.stocuri.impl.AplicarePret.METODE;
@@ -162,5 +164,7 @@ public interface StocuriSrv {
 	void setMetodaCurenta(METODE metoda);
 
 	METODE getMetodaCurenta();
+
+	public void urmarireListaPrioritati(Timer timer);
 
 }

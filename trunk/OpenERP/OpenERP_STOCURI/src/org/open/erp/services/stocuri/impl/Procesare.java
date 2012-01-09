@@ -30,12 +30,14 @@ import org.open.erp.services.stocuri.BonConsum;
 import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.LoturiIntrari;
+import org.open.erp.services.stocuri.PrioritateMaterialeProductie;
 import org.open.erp.services.stocuri.exceptions.IesiriStocExceptions;
 import org.open.erp.services.stocuri.exceptions.IntrariStocExceptions;
 import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
 import org.open.erp.services.stocuri.registri.RegistruArticoleStoc;
 import org.open.erp.services.stocuri.registri.RegistruGestiune;
 import org.open.erp.services.stocuri.registri.RegistruLoturiIntrari;
+import org.open.erp.services.stocuri.registri.RegistruPrioritatiMaterialeProductie;
 import org.open.erp.services.stocuri.util.StocuriLogger;
 
 /**
@@ -57,6 +59,7 @@ public class Procesare {
 	private RegistruGestiune regGest;
 	private RegistruArticoleStoc regArtStoc;
 	private RegistruLoturiIntrari regLoturi;
+	private RegistruPrioritatiMaterialeProductie regPrioritati;
 
 	public RegistruGestiune getRegGest() {
 		return regGest;
@@ -128,7 +131,12 @@ public class Procesare {
 				addLiniiCerereAprovizionare(comAprov, produseInSuficiente);
 				// apelem metoda din modului achizitii
 				// ProjectDummyFactory.getAprovizionareSrv().inregistrareCerereAprovizionare(comAprov);
-				// TODO de adaugat in lista cu prioritati
+
+				PrioritateMaterialeProductie prioritate = new PrioritateMaterialeProductie(
+						null, new Date(), null);
+				prioritate.getLiniiDocument().addAll(
+						comAprov.getLiniiDocument());
+				regPrioritati.saveEntity(prioritate);
 			} else if (!produseInSuficiente.isEmpty()
 					&& comandaMateriale.getLivrarePartiala().equalsIgnoreCase(
 							"no")) {
@@ -412,7 +420,26 @@ public class Procesare {
 		return loturiOut;
 	}
 
-	private void trimiteComandaPtProductie(Document comandaProductie) {
+	public void urmarireListaPrioritati() throws StocuriExceptions {
+		double cantitate = 0.0;
+		double cantitateDisponibila = 0.0;
+		Material material;
+		List<PrioritateMaterialeProductie> prioritati = regPrioritati
+				.getListaByClasa(PrioritateMaterialeProductie.class);
+		for (int i = 0; i < prioritati.size(); i++) {
+			for (LinieDocument l : prioritati.get(i).getLiniiDocument()) {
+				cantitate = l.cantitate;
+				material = l.material;
+				cantitateDisponibila = verificareStocMaterial(material);
+				if (cantitateDisponibila > cantitate) {
+					// todo de notificat productia --send mail
+				}
+			}
+		}
+
+	}
+
+	public void trimiteComandaPtProductie(Document comandaProductie) {
 		QueueConnection conn = null;
 		QueueSession session = null;
 		Queue que;

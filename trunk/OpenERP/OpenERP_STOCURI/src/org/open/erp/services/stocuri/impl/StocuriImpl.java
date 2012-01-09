@@ -6,6 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.ejb.Timeout;
+import javax.ejb.Timer;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
@@ -155,6 +157,9 @@ public class StocuriImpl implements StocuriSrvLocal, StocuriSrvRemote {
 	public Document proceseazaComandaMateriale(
 			CerereAprovizionare comandaMateriale) {
 
+		// sessionContext.getTimerService().createTimer(
+		// new Date(new Date().getTime() + (12 * 60 * 60 * 1000)),
+		// "start new timer");
 		return procesare.proceseazaComandaMateriale(comandaMateriale);
 	}
 
@@ -181,6 +186,16 @@ public class StocuriImpl implements StocuriSrvLocal, StocuriSrvRemote {
 	@Override
 	public METODE getMetodaCurenta() {
 		return applicarePret.getMetodaCurenta();
+	}
+
+	@Override
+	@Timeout
+	public void urmarireListaPrioritati(Timer timer) {
+		try {
+			procesare.urmarireListaPrioritati();
+		} catch (StocuriExceptions e) {
+			e.logger.loggeazaERROR("esec in urmarirea comanzilor", e);
+		}
 	}
 
 }
