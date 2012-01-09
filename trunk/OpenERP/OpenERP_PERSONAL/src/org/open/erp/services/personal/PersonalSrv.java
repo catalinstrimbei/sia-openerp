@@ -417,7 +417,7 @@ public interface PersonalSrv {
 	 * @return o lista cu toate Probele de Evaluare
 	 * 
 	 */
-	ProbaEvaluare salveazaProbaEvaluare(Integer idProba_, String tipEvaluare) throws Exception;
+	ProbaEvaluare salveazaProbaEvaluare(ProbaEvaluare	probaEvaluare_) throws Exception;
 	/**
 	 * Scop  Salveaza o proba de evealuare
 	 * 
@@ -456,7 +456,7 @@ public interface PersonalSrv {
 	 * 
 	 */
 	
-	RezultatProbaEvaluare salveazaRezultatProbaEvaluare(Integer id_) throws Exception;
+	RezultatProbaEvaluare salveazaRezultatProbaEvaluare(RezultatProbaEvaluare rezultatProbaEvaluare_) throws Exception;
 	/**
 	 * Scop  Salveaza rezultatatul pentru probele de evaluare
 	 * 

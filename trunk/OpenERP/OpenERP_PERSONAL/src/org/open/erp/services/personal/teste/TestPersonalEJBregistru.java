@@ -61,13 +61,28 @@ public class TestPersonalEJBregistru {
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.generareAnunturi();
 		test.initEvenimenteActivitati();
-		Candidat candidat = personalInstance.salveazaCandidat(test.candidat1);
-		Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);
-		DosarAngajat	dosar = personalInstance.salveazaDosarAngajat(test.dosar1);
-		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
-		//ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);
 		
-		//AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
+		Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);			
+		
+		Functie functie = personalInstance.salveazaFunctie(test.functie1);		
+		Candidat candidat = personalInstance.salveazaCandidat(test.candidat1);
+		CV	cv = personalInstance.salveazaCV(test.cv1);
+		Interviu interviu = personalInstance.salveazaInterviu(test.interviu1);
+		InterviuCandidat	interviuCandidat = personalInstance.salveazaInterviuCandidat(test.interviuCandidat1);
+		AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
+		ProbaEvaluare	proba = personalInstance.salveazaProbaEvaluare(test.probaEvaluare1);
+		
+		ContractMunca	contract = personalInstance.salveazaContractMunca(test.contract1);
+		DosarAngajat	dosar = personalInstance.salveazaDosarAngajat(test.dosar1);
+		RezultatProbaEvaluare rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(test.angajatProbaEvaluare1);
+		CerereDemisie		cerereDemisie = personalInstance.salveazaCerereDemisie(test.cerereDemisie1);			
+		
+		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
+		ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);
+		
+		Eveniment	eveniment1 = personalInstance.salveazaEveniment(test.eveniment1);
+		Eveniment	eveniment2 = personalInstance.salveazaEveniment(test.eveniment2);
+		
 		logger.logINFO("End test: Inserari");
 	}
 	

@@ -68,7 +68,7 @@ public class TestPersonalImpl {
 	public Collection<DosarAngajat>  dosareAngajati = new ArrayList<DosarAngajat>();
 	Collection<RezultatProbaEvaluare> ListaRezultateProbe = new ArrayList<RezultatProbaEvaluare>();
 	
-	Functie functie1 = new Functie(1001, "Functie1");
+	Functie functie1 = new Functie();
 	Functie functie2 = new Functie(1002, "Functie2");
 	Functie functie3 = new Functie(1003, "Functie3");
 	Candidat candidat1 = new Candidat(1, "Nume1", "Prenume1", 101, null);
@@ -110,7 +110,7 @@ public class TestPersonalImpl {
 	DummyDepartament departament2 = new DummyDepartament(2, "Departament2", null);
 	DummyDepartament departament3 = new DummyDepartament(3, "Departament3", null);
 	
-	ProbaEvaluare	probaEvaluare1 = new ProbaEvaluare(1, "Oral", "EvaluarePeriodica", departament1);
+	ProbaEvaluare	probaEvaluare1 = new ProbaEvaluare(1, "Oral", "EvaluarePeriodica", null);
 	ProbaEvaluare	probaEvaluare2 = new ProbaEvaluare(2, "Practic", "EvaluarePeriodica", departament1);
 	ProbaEvaluare	probaEvaluare3 = new ProbaEvaluare(3, "Scris", "EvaluarePeriodica", departament2);
 	ProbaEvaluare	probaEvaluare4 = new ProbaEvaluare(4, "Oral", "EvaluarePeriodica", departament2);
@@ -208,12 +208,15 @@ public class TestPersonalImpl {
 	}
 	void initEvenimenteActivitati() throws Exception
 	{
+		
+		functie1.setNumeFunctie("Functie1");
 		activitate1 = new ActivitateTeamBuilding(1, "In progres", angajati);
 		activitate2 = Activitate.construct(eveniment1);
 		activitate3 = Activitate.construct(eveniment2);
 		
 		eveniment1.setSumaAlocata(300.00);
-		eveniment2.setSumaAlocata(400.00);
+		eveniment2.setSumaAlocata(400.00);		
+		
 		Calendar date = Calendar.getInstance();
 		activitate2.setIdActivitate(2);
 		activitate2.setDescriereActivitate("Training 1");

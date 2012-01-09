@@ -441,22 +441,22 @@ private static PersonalLogger logger ;
 		}
 	}		
 	
-	public Functie salveazaFunctie(Functie functie) throws Exception{
+	public Functie salveazaFunctie(Functie functie_) throws Exception{
 		try{
 			
 			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
-			if (functie.getIdFunctie() == null || 
-				entityManager.find(functie.getClass(), functie.getIdFunctie()) == null)
-				entityManager.persist(functie);
+			if (functie_.getNumeFunctie() == null || 
+				entityManager.find(functie_.getClass(), functie_.getNumeFunctie()) == null)
+				entityManager.persist(functie_);
 			else
-				entityManager.merge(functie);
+				entityManager.merge(functie_);
 			
 		}catch(Exception ex){
 			logger.logINFO("EROARE PERSISTENTA ***** ");
 			ex.printStackTrace();
 			throw ex;
 		}
-		return functie;
+		return functie_;
 	}
 
 	public void stergeFunctie(Functie functie_) throws Exception

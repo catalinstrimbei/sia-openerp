@@ -85,10 +85,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (this.registruPersonal == null)
 			registruPersonal = new RegistruPersonal(em);
 	}
-	
-	
-	
-	
+		
+	//ActivitateTeamBuilding
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTeamBuilding getActivitateTeamBuildingById(
 			Integer idActivitate_) throws Exception {
@@ -107,6 +106,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<ActivitateTeamBuilding> getListaActivitatiTeamBuilding()
 			throws Exception {
@@ -116,6 +117,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaActivitatiTeamBuilding");
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTeamBuilding salveazaActivitateTeamBuilding(
 			ActivitateTeamBuilding activitate_) throws Exception {
@@ -133,6 +136,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeActivitateTeamBuilding(ActivitateTeamBuilding activitate_)
 			throws Exception {
@@ -148,6 +153,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			logger.logDEBUG(">>>>>>End stergeActivitateTeamBuilding");
 		}		
 	}
+	
+	//ActivitateTraining
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTraining getActivitateTrainingById(Integer idActivitate_)
 			throws Exception {
@@ -166,6 +175,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<ActivitateTraining> getListaActivitatiTraining()
 			throws Exception {
@@ -175,6 +186,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaActivitatiTraining");
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTraining salveazaActivitateTraining(
 			ActivitateTraining activitate_) throws Exception {
@@ -192,6 +205,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeActivitateTraining(ActivitateTraining activitate_)
 			throws Exception {
@@ -207,6 +222,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			logger.logDEBUG(">>>>>>End stergeActivitateTraining");
 		}	
 	}
+	
+	//Angajat
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Angajat getAngajatByMarca(Integer marca_) throws Exception {
 		// TODO Auto-generated method stub
@@ -224,6 +243,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Angajat getAngajatById(Integer id_) throws Exception{
 		// TODO Auto-generated method stub
@@ -241,7 +262,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
-
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Angajat> getListaAngajati() throws Exception{
 		// TODO Auto-generated method stub
@@ -250,6 +272,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaAngajati");
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Angajat salveazaAngajat(Angajat angajat_) throws Exception {
 		// TODO Auto-generated method stub
@@ -266,6 +290,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeAngajat(Angajat angajat_) throws Exception {
 		// TODO Auto-generated method stub
@@ -280,6 +306,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			logger.logDEBUG(">>>>>>End stergeAngajat");
 		}	
 	}
+	
+	//AnuntLocMunca
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public AnuntLocMunca getAnuntLocMuncaById(Integer idAnunt_)
 			throws Exception {
@@ -298,6 +328,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<AnuntLocMunca> getListaAnunturiLocMunca()
 			throws Exception {
@@ -307,6 +339,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaAnunturiLocMunca");
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public AnuntLocMunca salveazaAnuntLocMunca(AnuntLocMunca anunt_)
 			throws Exception {
@@ -324,6 +358,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeAnuntLocMunca(AnuntLocMunca anunt_) throws Exception {
 		// TODO Auto-generated method stub
@@ -338,7 +374,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			logger.logDEBUG(">>>>>>End stergeAnuntLocMunca");
 		}
 	}
-	//Andreea
+	
+	//Candidat
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat getCandidatById(Integer idPersoanaCandidat_) throws Exception{
@@ -356,6 +393,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat getCandidatByIdCandidat(Integer idCandidat_) throws Exception {
@@ -373,6 +411,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Candidat> getListaCandidati() throws Exception {
@@ -381,6 +420,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaCandidati");
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat salveazaCandidat(Candidat candidat_) throws Exception {
@@ -396,6 +436,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeCandidat(Candidat candidat_) throws Exception {
@@ -410,6 +451,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}	
 		
 	}
+	
+	//CerereDemisie
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CerereDemisie getCerereDemisieById(Integer idCerereDemisie_)
@@ -427,6 +471,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<CerereDemisie> getListaCereriDemisie() throws Exception {
@@ -468,6 +513,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}	
 		
 	}
+	
+	//ContractMunca
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ContractMunca getContractMuncaById(Integer idContractMunca_)
@@ -511,6 +559,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void stergeContractMunca(ContractMunca contractMunca_)
@@ -526,6 +575,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}	
 		
 	}
+	
+	//CV
+	
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public CV getCVById(Integer idCV_) throws Exception {
@@ -542,6 +594,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Collection<CV> getListaCVuri() throws Exception {
@@ -550,6 +603,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaCvuri");
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CV salveazaCV(CV cv_) throws Exception {
@@ -565,6 +619,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeCV(CV cv_) throws Exception {
@@ -579,6 +634,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}	
 		
 	}
+	
+	//DosarAngajat
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public DosarAngajat getDosarAngajatById(Integer idDosarAngajat_)
@@ -596,6 +654,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<DosarAngajat> getListaDosareAngajat() throws Exception {
@@ -604,6 +663,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaCereriDemisie");
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public DosarAngajat salveazaDosarAngajat(DosarAngajat dosarAngajat_)
@@ -620,6 +680,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeDosarAngajat(DosarAngajat dosarAngajat_) throws Exception {
@@ -661,7 +722,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	
 	
-	//Evenimente
+	//Eveniment
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Eveniment getEvenimentById(
 			Integer idEveniment_) throws Exception {
@@ -679,6 +741,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Eveniment> getListaEvenimente()
 			throws Exception {
@@ -688,6 +752,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaEvenimente");
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Eveniment salveazaEveniment(
 			Eveniment eveniment_) throws Exception {
@@ -704,6 +770,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeEveniment(Eveniment eveniment_)
 			throws Exception {
@@ -720,6 +788,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}		
 	}
 	
+	//Functie
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Functie getFunctieById(Integer idFunctie_) throws Exception {
 		// TODO Auto-generated method stub
@@ -736,6 +807,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Functie> getListaFunctii()
 			throws Exception {
@@ -745,11 +818,13 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaFunctii");
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Functie salveazaFunctie(
 			Functie functie_) throws Exception {
 		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaActivitateTeamBuilding");
+		logger.logDEBUG(">>>>>>Start salveazaFunctie");
 		Functie result = new Functie();
 		if (functie_ == null){			
 			sessionContext.setRollbackOnly();
@@ -757,10 +832,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		else{			
 			result = this.registruPersonal.salveazaFunctie(functie_);
-			logger.logDEBUG(">>>>>>End salveazaActivitateTeamBuilding");
+			logger.logDEBUG(">>>>>>End salveazaFunctie");
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeFunctie(Functie functie_)
 			throws Exception {
@@ -777,7 +854,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}		
 	}
 	
-	//2 more
+	//Instructor
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
 	public Instructor getInstructorById(
 			Integer Id_) throws Exception {
 		// TODO Auto-generated method stub
@@ -794,6 +874,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Instructor> getListaInstructori()
 			throws Exception {
@@ -803,6 +885,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaInstructori");
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Instructor salveazaInstructor(
 			Instructor instructor_) throws Exception {
@@ -819,6 +903,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeInstructor(Instructor instructor_)
 			throws Exception {
@@ -835,8 +921,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}		
 	}
 	
-
+	//Interviu
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Interviu getInterviuById(Integer idInterviu_) throws Exception {
 		// TODO Auto-generated method stub
@@ -853,6 +940,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Interviu> getListaInterviuri()
 			throws Exception {
@@ -862,6 +951,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>End getListaInterviuri");
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Interviu salveazaInterviu(
 			Interviu interviu_) throws Exception {
@@ -878,6 +969,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeInterviu(Interviu interviu_)
 			throws Exception {
@@ -962,10 +1055,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			logger.logDEBUG(">>>>>>End stergeInterviuCandidat");
 		}
 	}
-	
-	
-	
-	
+		
 	//ProbaEvaluare
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -994,17 +1084,14 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Collection<ProbaEvaluare> result = this.registruPersonal.getListaProbaEvaluare();
 		logger.logDEBUG(">>>>>>End getListaProbeEvaluare");
 		return result;
-	}
-	
+	}	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public ProbaEvaluare salveazaProbaEvaluare(Integer idProba_,
-			String tipEvaluare) throws Exception {
+	public ProbaEvaluare salveazaProbaEvaluare(ProbaEvaluare probaEvaluare_) throws Exception {
 		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start creare ProbaEvaluare");
-		ProbaEvaluare probaEvaluare_ = new ProbaEvaluare();
-		if (idProba_ == null){
+		logger.logDEBUG(">>>>>>Start creare ProbaEvaluare");		
+		if (probaEvaluare_ == null){
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
 		}
@@ -1016,7 +1103,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return probaEvaluare_;
 	}
-	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
@@ -1033,10 +1119,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			logger.logDEBUG(">>>>>>End stergeProbaEvaluare");
 		}
 	}
-	
-	
+		
 	// RezultatProbaEvaluare
-	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
@@ -1054,8 +1138,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return rezultatProbaEvaluare_;
 	}
-	
-	
+		
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<RezultatProbaEvaluare> getListaRezultateProbeEvaluare()
@@ -1065,17 +1148,15 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Collection<RezultatProbaEvaluare> result = this.registruPersonal.getListaRezultatProbaEvaluare();
 		logger.logDEBUG(">>>>>>End getListaRezultateProbeEvaluare");
 		return result;
-	}
-	
+	}	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public RezultatProbaEvaluare salveazaRezultatProbaEvaluare(Integer id_)
+	public RezultatProbaEvaluare salveazaRezultatProbaEvaluare(RezultatProbaEvaluare rezultatProbaEvaluare_)
 			throws Exception {
 		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start creare RezultatProbaEvaluare");
-		RezultatProbaEvaluare rezultatProbaEvaluare_ = new RezultatProbaEvaluare();
-		if (id_ == null){
+		logger.logDEBUG(">>>>>>Start creare RezultatProbaEvaluare");		
+		if (rezultatProbaEvaluare_ == null){
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
 		}
@@ -1087,7 +1168,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		return rezultatProbaEvaluare_;
 	}
-	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
@@ -1105,6 +1185,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 	}
 	
+	
+	
+	///BusinessLogicRelated
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
