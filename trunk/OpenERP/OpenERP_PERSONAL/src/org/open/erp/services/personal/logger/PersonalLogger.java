@@ -38,12 +38,15 @@ public class PersonalLogger {
 		        layout.setConversionPattern("%d %-5p [%c] %m%n");
 		        RollingFileAppender myAppender;
 				try {
+					/*
 					ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 					URL url = classLoader.getResource("");
 					String path = url.getPath().toString().substring(1, url.getPath().toString().length() - 4);					
 					path = path + "Resources/";					
 					path = path.replace("/", "\\");
 					path = path.replace("%20", " ");
+				*/
+					String path = "T:\\";
 					myAppender = new RollingFileAppender(layout, path + "LogFile_OpenERP_PERSONAL.log");
 					myAppender.setAppend(true);
 			        myAppender.setMaxFileSize("5MB");
