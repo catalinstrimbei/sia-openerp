@@ -38,6 +38,7 @@ import org.open.erp.services.salarizare.StatSalarii;
 public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
 
+	private RegistruSalarizare registru ;
 	//variabila de instanţa de tip EntityManager care sa fie injectata prin adnotarea @PersistenceContext(unitName="OpenERP_ModulPU");
 	@PersistenceContext(unitName="OpenERP_SALARIZARE")
 	private EntityManager em;
@@ -46,6 +47,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@Resource
 	private SessionContext sessionContext;
 	
+	public SalarizareImpl() { }
 	//metodă callback - @PostConstruct – în care registrul sau registrele din proiect să primească referinţa EntityManagerului care va fi injectat.
 	@PostConstruct
 	public void init(){
@@ -62,7 +64,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	
 	//private NomenclatoareSrv nomenclatoareSrv;
 
-	private RegistruSalarizare registru = new RegistruSalarizare();
+	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
@@ -83,7 +85,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return p;
 	}
 
-	@Interceptors({SalarizareInterceptor.class})
+	//@Interceptors({SalarizareInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inregistrarePontajLuna(Integer an, Integer luna) throws Exception {
@@ -156,7 +158,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return spor;
 	}
 
-	@Interceptors({SalarizareInterceptor.class})
+	//@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) {
 		// pentru fiecare angajat calculam sporurile (pot fi mai multe) si insumam
@@ -189,7 +191,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return valoareTotala;
 	}
 
-	@Interceptors({SalarizareInterceptor.class})
+	//@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) {
 		Pontaj p = registru.getPontajByAngajat(angajat, an, luna);
@@ -227,7 +229,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return retinere;
 	}
 
-	@Interceptors({SalarizareInterceptor.class})
+	//@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculRetineriAngajat(Integer an, Integer luna,
 			Angajat angajat) {
@@ -312,7 +314,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return salarNet;
 	}
 
-	@Interceptors({SalarizareInterceptor.class})
+	//@Interceptors({SalarizareInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inregistrarStatSalariiLuna(Integer an, Integer luna) throws Exception {
