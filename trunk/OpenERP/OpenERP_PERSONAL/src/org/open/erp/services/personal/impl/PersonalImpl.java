@@ -66,6 +66,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	PersonalLogger logger = new PersonalLogger();
 	private RegistruPersonal	registruPersonal;
+	private RegistruPersonalEJB	registruPersonalEJB;
 	/* Dependente resurse injectate */
 	@PersistenceContext(unitName="OpenERP_PERSONAL")
 	private EntityManager em;
@@ -84,6 +85,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 		if (this.registruPersonal == null)
 			registruPersonal = new RegistruPersonal(em);
+		
+		if (this.registruPersonalEJB == null)
+			registruPersonalEJB = new RegistruPersonalEJB(em);
 	}
 		
 	//ActivitateTeamBuilding
@@ -1675,6 +1679,37 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			_eveniment.setStatusEveniment("Eveniment Aprobat");
 		}		
 		System.out.println(_eveniment.getStatusEveniment());
+	}
+	@Override
+	public HashMap<DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB() {
+	////	Collection<DummyDepartament> listaDepartamente =  this.registruPersonal.getListaDepartamente();
+	//	Iterator <DummyDepartament>	iteratorDepartament = listaDepartamente.iterator();
+		//while ()
+		DummyDepartament 	departamentCurent;
+		ProbaEvaluare	probaEvaluare;
+		/*
+		Iterator <DummyDepartament>	iteratorDepartament = departamenteInit.iterator();
+		HashMap <DummyDepartament, Collection<ProbaEvaluare>> tMap = new HashMap<DummyDepartament, Collection<ProbaEvaluare>>();
+		Collection<ProbaEvaluare> probeEvaluarePeDepartament = new ArrayList<ProbaEvaluare>();
+		while (iteratorDepartament.hasNext()) {
+			departamentCurent = iteratorDepartament.next();
+			probeEvaluarePeDepartament.clear();
+			Iterator <ProbaEvaluare> iteratorProbe = probeEvaluareInit_.iterator();
+			while (iteratorProbe.hasNext())
+			{
+				probaEvaluare = iteratorProbe.next();
+				if (probaEvaluare.getDepartament() == departamentCurent
+						&& probaEvaluare.getScop() == "EvaluarePeriodica")
+				{
+					probeEvaluarePeDepartament.add(probaEvaluare);
+				}
+			}			
+			tMap.put(departamentCurent, new ArrayList<ProbaEvaluare>(probeEvaluarePeDepartament));			
+		}
+		
+		return tMap;
+		*/
+		return null;
 	}
 	
 
