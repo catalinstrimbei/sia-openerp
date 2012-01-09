@@ -1,5 +1,6 @@
 package org.open.erp.services.productie;
 
+import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.Produs;
 
 import java.io.Serializable;
@@ -8,6 +9,7 @@ import java.util.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -19,7 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 
-public class ComandaProductie implements Serializable{
+public class ComandaProductie extends Document implements Serializable{
 	
 	/**
 	 * 
@@ -30,7 +32,7 @@ public class ComandaProductie implements Serializable{
 	
 	Integer idComanda;
 	
-	@OneToMany
+	@ManyToMany
 	Produs produs;
 	
 	Integer cantitate;

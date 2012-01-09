@@ -69,7 +69,7 @@ public class TestProductieEJB {
 			logger.info("Begin test: definireFlux");
 		 
 		 Produs produs = new Produs();
-		 produs=nomenclatoare.cautareProdusDupaDenumire("produs");
+		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
 		 
@@ -92,7 +92,7 @@ public class TestProductieEJB {
 		 logger.info("Begin test: definireFaza");
 		 
 		 Produs produs = new Produs();
-		 produs=nomenclatoare.cautareProdusDupaDenumire("produs");
+		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
 		 
@@ -243,7 +243,7 @@ public class TestProductieEJB {
 	 public void testComandaMateriale() throws Exception{
 		logger.info("----START test: comandaMateriale ---");
 		 Produs produs = new Produs();
-		 produs=nomenclatoare.cautareProdusDupaDenumire("produs");
+		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
 		 
@@ -400,7 +400,7 @@ public class TestProductieEJB {
 	public void testFabricareProdus() throws Exception {
 		logger.info("----START test: fabricareProdus ---");
 		 Produs produs = new Produs();
-		 produs=nomenclatoare.cautareProdusDupaDenumire("produs");
+		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
 		 
@@ -424,7 +424,7 @@ public class TestProductieEJB {
 		
 			logger.info("----INCEPERE TEST CONSUM RESURSE----");
 			 Produs produs = new Produs();
-			 produs=nomenclatoare.cautareProdusDupaDenumire("produs");
+			 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 			 
 			 FluxProductie flux = productie.definireFluxProductie(1, produs);
 			 
@@ -578,7 +578,7 @@ public class TestProductieEJB {
 		logger.info("INCEPERE TEST CONTROL CALITATE");
 		
 		Produs produs = new Produs();
-		produs=nomenclatoare.cautareProdusDupaDenumire("produs");
+		produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		
 		productie.controlCalitate(produs);
 	
@@ -591,7 +591,7 @@ public void testLivrareProdus() throws Exception{
 	logger.info("INCEPERE TEST LIVRARE PRODUS");
 	
 	Produs produs = new Produs();
-	produs=nomenclatoare.cautareProdusDupaDenumire("produs");
+	produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 	ComandaProductie comanda = new ComandaProductie();
 	Integer cantitateProdus = comanda.getCantitate();
 	

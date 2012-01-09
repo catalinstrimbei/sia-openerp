@@ -2,7 +2,6 @@ package org.open.erp.services.productie;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,7 +30,7 @@ public class FluxProductie implements Serializable{
 	@ManyToOne @JoinColumn(name="id")
 	Produs produs;
 	
-	@ManyToOne @JoinColumn(name="faza")
+	@OneToMany 
 	ArrayList <FazaProductie> faze;
 	
 	public FluxProductie(Integer idFlux, Produs produs) {

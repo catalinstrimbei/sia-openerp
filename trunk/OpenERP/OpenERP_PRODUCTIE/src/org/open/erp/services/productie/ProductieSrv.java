@@ -3,6 +3,9 @@ package org.open.erp.services.productie;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.ejb.Local;
+import javax.ejb.Remote;
+
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Material;
@@ -43,7 +46,7 @@ import org.open.erp.services.stocuri.BonConsum;
  *2. calcul produse finale si deseuri 
  *
  */
-
+@Local
 public interface ProductieSrv {
 
 	/**
