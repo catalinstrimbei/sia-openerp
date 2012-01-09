@@ -5,21 +5,27 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.open.erp.services.contabgest.Activitate;
+import org.open.erp.services.contabgest.ActivitateCentruCost;
 import org.open.erp.services.contabgest.CentruCost;
 import org.open.erp.services.contabgest.CentruCostSRV;
 import org.open.erp.services.contabgest.CentruCostSRVLocal;
 import org.open.erp.services.contabgest.CentruCostSRVRemote;
 import org.open.erp.services.contabgest.CostPrimarSRV;
+import org.open.erp.services.contabgest.CostPrimarSRVLocal;
 import org.open.erp.services.contabgest.CosturiPrimare;
 import org.open.erp.services.contabgest.LinieCost;
-import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.contabgest.Responsabil;
 import org.open.erp.services.productie.FazaProductie;
 
 /**
@@ -27,7 +33,8 @@ import org.open.erp.services.productie.FazaProductie;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-@Stateless
+@Stateless(name="CentruCostSRV")
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, CentruCostSRVRemote{
 	
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(CentruCostImpl.class.getName());
@@ -35,80 +42,102 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 	
 	// referinte servicii (application service) dependente
 	@PersistenceContext(unitName="OpenERP_CONTABGEST")
-	private CostPrimarSRV costPrimarSRV;
+	private EntityManager em;
 	@Resource
 	private SessionContext sessionContext;
+	
+	@EJB(mappedName="CostPrimarImpl/local")
+	private CostPrimarSRV costPrimarSRV;
+	
 	
 	public CentruCostImpl() {
 
 	}
 	@PostConstruct
 	public void init(){
-		logger.debug("Exista cost primar ");
+		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
+		logger.debug(">>>>>>>>>>>> Exista CostPrimarSrv? " + costPrimarSRV);		
+		
+		if (this.registruCentruCost == null)
+			registruCentruCost = new RegistruCentruCost(em);
+				
 	}
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	//implementare actiuni serviciu CentruCostSRV
+		@Override
+		public CentruCost creareCentruCost(String denumireCentruCost, FazaProductie faza, Responsabil responsabil,
+				Date dataStart, Date dataSfarsit, Double sumaCentruCost) throws Exception {
+			
+		
+			System.out.println(">> START Creare CentruCost");
+
+			logger.debug("Creare CentruCost");
+							
+			//CentruCost centruCostNou = new CentruCost(1, denumireCentruCost, dataStart, dataSfarsit, sumaCentruCost, responsabil);
+			CentruCost centruCostNou = new CentruCost (denumireCentruCost,faza, responsabil, dataStart, dataSfarsit, sumaCentruCost);
+			
+			logger.debug(">> Cerere costPrimar: " + CostPrimarSRV);		
+			CosturiPrimare costuriPrimare = CostPrimarSRV.creareCosturiPrimare(valoareCosturiPrimare);
+			centruCostNou.setCosturiPrimare(costuriPrimare);
+			logger.debug("CostPrimar centruCost: " + CosturiPrimare.getValoareCost());
+			
+		
+			if (sessionContext.getRollbackOnly() == true){
+				logger.debug(">> END Creare centruCost - TRANZACTIE ANULATA");
+				//throw new RuntimeException("Creare centruCost - TRANZACTIE ANULATA");
+			}
+			else
+			{
+				centruCostNou = this.registruCentruCost.salveazaCentruCost(centruCostNou);
+				//em.persist(centruCostNou);
+			}
+			
+			logger.debug(">> END Creare centruCostNou");
+			return centruCostNou;
+		
+					
+		}
 	public void setCostPrimarSRV (CostPrimarSRV costPrimarSRV){
 		this.costPrimarSRV=costPrimarSRV;
 		
 	}
 	
-	// alte referinte
-	private RegistruCentruCost registruCentruCost = new RegistruCentruCost();
-	
-	/*
-	 * 
-	 * @ConstrutorForDummy
-	 * 
-	*/
-	
-	
-	
-	//implementare actiuni serviciu CentruCostSRV
-	@Override
-	public CentruCost creareCentruCost(String denumireCentruCost, FazaProductie faza, Angajat responsabil,
-			Date dataStart, Date dataSfarsit, Double valoareCost) {
-		
-		logger.debug("Creare CentruCost");
-		
-		CentruCost centruCostNou = new CentruCost (1, denumireCentruCost, faza, dataStart, dataSfarsit, valoareCost, null, responsabil, null, null);
-		if(valoareCost<= 0)
-		{
-			sessionContext.setRollbackOnly();
-		}
-		else
-		{
-		CosturiPrimare costuriPrimare = costPrimarSRV.creareCosturiPrimare(valoareCost);
-		centruCostNou.setCosturiPrimare(costuriPrimare);
-		
-		logger.debug("CosturiPrimare centruCost: " + costuriPrimare.getValoareCost());
-		}
-		return centruCostNou;
-	}
-	
-	
 	
 	
 	@Override
-	public Activitate creareActivitate(CentruCost centruCost, FazaProductie faza, Angajat responsabil, String denumireActivitate, 
-			Date dataStart, Date dataSfarsit, Double costActivitate) {
-		Activitate activitate = new Activitate(1, faza, denumireActivitate, dataStart, dataSfarsit, 
+	public Activitate creareActivitate(CentruCost centruCost, FazaProductie faza,
+			Responsabil responsabil, String denumireCentru, Date dataStart,
+			Date dataSfarsit, Double costActivitate) throws Exception 
+			{
+		logger.debug(">>START CREARE ACTIVITATE");
+	
+		ActivitateCentruCost activitate = new ActivitateCentruCost (denumire, dataStart, dataSfarsit, 
 				costActivitate, responsabil);
-		
-		LinieCost linieCost = costPrimarSRV.creareLinieCosturiPrimareInCosturiPrimare(centruCost.getCosturiPrimare(), 
-				activitate.getCostActivitate());
-		centruCost.adaugaActivitate(activitate, linieCost);
+		centruCost.adaugaActivitate(activitate);
 		activitate.setCentruCost(centruCost);
+				
 		
+		this.registruCentruCost.salveazaCentruCost(centruCost);
+		logger.debug(">>Activitate salvata in centru cost");
+		logger.debug(">> END creare Activitate");
 		return activitate;
-	}
+		
+			}
 
 	@Override
 	public void startCentruCost(CentruCost centruCost) {
 		// Schimba status centrului de cost in started, schimba status prima activitate in started
+		System.out.println("To start centru cost..");
+		
 		centruCost.setStatus(CentruCost.ALOCAT);
+		System.out.println("To centru cost started..");
+		
 		Activitate primaActivitate = centruCost.getActivitati().iterator().next();
+		System.out.println("activity started..");
+		
 		primaActivitate.setStatus(Activitate.IN_CURS);
+		System.out.println("Finish starting centru cost");
 		
 	}
 	@Override
@@ -120,7 +149,7 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 		activitate.setDataActualizare(dataActualizata);
 		activitate.setProcentRealizare(activitate.getProcentRealizare() + procentRealizare);
 		// Actualizare costuri primare
-		costPrimarSRV.actualizareCosturiPrimare(activitate.getCentruCost().getLinieCosturiPrimare(activitate), costActivitate);
+		//costPrimarSRV.actualizareCosturiPrimare(activitate.getCentruCost().getLinieCosturiPrimare(activitate), costActivitate);
 	}
 
 	@Override
@@ -131,6 +160,12 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 		Double costActivitate = procesorCentruCost.getSoldCentruCostInCurs(centruCost, dataSold);
 		
 		return costuriPrimare - costActivitate;
+	}
+
+	
+	@Override
+	public CentruCost getCentruCost(Integer idCentruCost) {
+		return registruCentruCost.getCentruCost(idCentruCost);
 	}	
 }
 

@@ -20,7 +20,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.CascadeType;
 
 
-import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.productie.FazaProductie;
 
 /**
@@ -33,6 +32,11 @@ import org.open.erp.services.productie.FazaProductie;
 @Entity
 public class CentruCost implements Serializable {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
@@ -52,7 +56,7 @@ public class CentruCost implements Serializable {
 	private Integer status = CentruCost.IN_ALOCARE;
 	
 	@ManyToOne
-	private Angajat responsabil;
+	private Responsabil responsabil;
 	
 	// Costuri primare
 	@ManyToOne
@@ -78,7 +82,7 @@ public class CentruCost implements Serializable {
 
 	public CentruCost(Integer idCentruCost, String denumireCentruCost,
 			FazaProductie faza, Date dataStart, Date dataSfarsit,
-			Double sumaCentruCost, Integer status, Angajat responsabil,
+			Double sumaCentruCost, Integer status, Responsabil responsabil,
 			CosturiPrimare costuriPrimare, List<Activitate> activitati) {
 		super();
 		this.idCentruCost = idCentruCost;
@@ -97,10 +101,23 @@ public class CentruCost implements Serializable {
 
 	public CentruCost(Integer idCentruCost, String denumireCentruCost,
 			Date dataStart, Date dataSfarsit, Double sumaCentruCost,
-			Angajat responsabil) {
+			Responsabil responsabil) {
 		super();
 		this.idCentruCost = idCentruCost;
 		this.denumireCentruCost = denumireCentruCost;
+		this.dataStart = dataStart;
+		this.dataSfarsit = dataSfarsit;
+		this.sumaCentruCost = sumaCentruCost;
+		this.responsabil = responsabil;
+	}
+
+	
+	public CentruCost(String denumireCentruCost, FazaProductie faza,
+			Date dataStart, Date dataSfarsit, Double sumaCentruCost,
+			Responsabil responsabil) {
+		super();
+		this.denumireCentruCost = denumireCentruCost;
+		this.faza = faza;
 		this.dataStart = dataStart;
 		this.dataSfarsit = dataSfarsit;
 		this.sumaCentruCost = sumaCentruCost;
@@ -155,11 +172,11 @@ public class CentruCost implements Serializable {
 		this.status = status;
 	}
 
-	public Angajat getResponsabil() {
+	public Responsabil getResponsabil() {
 		return responsabil;
 	}
 
-	public void setResponsabil(Angajat responsabil) {
+	public void setResponsabil(Responsabil responsabil) {
 		this.responsabil = responsabil;
 	}
 

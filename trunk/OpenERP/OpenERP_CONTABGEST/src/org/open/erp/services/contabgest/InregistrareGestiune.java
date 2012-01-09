@@ -11,6 +11,10 @@ import org.open.erp.services.ctbgen.Cont;
 
 @Entity
 public class InregistrareGestiune implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Integer idInregistrare;

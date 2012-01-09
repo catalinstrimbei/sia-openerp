@@ -3,7 +3,6 @@ package org.open.erp.services.contabgest;
 
 import java.util.Date;
 
-import org.open.erp.services.personal.Angajat;
 
 
 public interface Activitate {

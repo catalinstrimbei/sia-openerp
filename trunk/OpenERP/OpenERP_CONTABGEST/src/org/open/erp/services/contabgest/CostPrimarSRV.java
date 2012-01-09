@@ -10,7 +10,7 @@ package org.open.erp.services.contabgest;
 
 public interface CostPrimarSRV {
 
-	public CosturiPrimare creareCosturiPrimare(Double valoareCosturiPrimare);
+	public CosturiPrimare creareCosturiPrimare(Double valoareCosturiPrimare) throws Exception;
 
 	public LinieCost creareLinieCosturiPrimareInCosturiPrimare(
 			CosturiPrimare costuriPrimare, Double valoareCosturiPrimare);

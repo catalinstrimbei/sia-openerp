@@ -2,6 +2,8 @@ package org.open.erp.services.contabgest;
 
 import java.util.Date;
 
+import javax.ejb.Remote;
+
 
 import org.open.erp.services.productie.FazaProductie;
 
@@ -25,7 +27,7 @@ import org.open.erp.services.productie.FazaProductie;
  * @UseCase("initiere centru cost"):
  * 
  */
-
+@Remote
 public interface CentruCostSRV {
 
 	/**
@@ -39,7 +41,7 @@ public interface CentruCostSRV {
 	 *            Data start conform fazei de productie
 	 * @param dataSfarsit
 	 *            Data sfarsit conform fazei de productie
-	 * @param ValoareCost
+	 * @param sumaCentruCost
 	 *            Valoarea costului (din CosturiPrimare)
 	 * 
 	 * @return instanta Activitate nou creat.
