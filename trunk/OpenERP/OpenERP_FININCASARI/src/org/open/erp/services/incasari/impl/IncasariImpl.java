@@ -94,6 +94,8 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 			Integer numar, String locatie, String moneda, Client client,
 			Double curs) throws IncasariException {
 
+		//Se efectueaza inregistrarea platii in contabilitate pe baza chitantei
+		//Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o noua chitanta pe baza unei facturi
 		if (sumaIncasata == null || sumaIncasata == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
@@ -116,6 +118,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		facturiSelectate = compensariIncasariFacturi(facturi, sumaIncasata);
 
 		chitanta.setFacturi(facturiSelectate);
+		//inregistrarea in contabilitate a platii se face in functie de tipul incasarii
 		try {
 			if (avans) {
 
@@ -150,6 +153,8 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	@Override
 	public void confirmareIncasare(Incasare doc) throws CtbException,
 			IncasariException {
+		//Jurnalizeaza notele contabile aferente efectuarii unei plati, in functie de
+		//documentul de plata(cec sau bilet la ordin)
 		Calendar currentDate = Calendar.getInstance();
 		Date dataInregistrarii = currentDate.getTime();
 		if (doc instanceof Cec) {
@@ -175,12 +180,13 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 
 	@Override
 	public void confirmareDepunereLaBanca(Incasare doc) {
-
+		//Jurnalizarea depunerii cec-ului sau biletului la ordin
 		if (doc instanceof Cec) {
 			((Cec) doc).setStare("depus");
 
 		} else if (doc instanceof BiletLaOrdin) {
 			((BiletLaOrdin) doc).setStare("depus");
+			//Se schimba starea documentului in "depus"
 		}
 
 	}
@@ -190,7 +196,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	 */
 	private List<FacturaEmisa> compensariIncasariFacturi(
 			List<FacturaEmisa> facturi, Double suma) throws IncasariException {
-
+// Verifica achitarea facturilor in ordine cronologica
 		List<FacturaEmisa> facturiAsociate = new ArrayList<FacturaEmisa>();
 		for (FacturaEmisa fact : facturi) {
 			if (!fact.getPlatita()) {
@@ -222,6 +228,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 
 	@Override
 	public void confirmareImposibilitatePlata(Incasare doc) {
+		//Se constata imposibilitatea de plata a clientului, daca starea cec-ului sau biletului la ordin este "refuzat" 
 		if (doc instanceof Cec) {
 			((Cec) doc).setStare("refuzat");
 		} else if (doc instanceof BiletLaOrdin) {
@@ -235,10 +242,12 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	 */
 
 	public Double getSumaRON(String moneda, Double suma, Double curs) {
+		// Calculeaza suma in functie de moneda in care se efectueaza plata
 		if (moneda.equals("EURO")) {
 			suma = suma * curs;
 		}
 		return suma;
+		
 	}
 
 	/**
@@ -251,7 +260,8 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 			String seria, Integer numar, String locatie, String stare,
 			Double suma, String sumaInLitere, List<FacturaEmisa> facturi,
 			String moneda, Double curs) throws IncasariException {
-
+		//Se efectueaza inregistrarea platii in contabilitate pe baza unui cec
+		//Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o noua inregistrare in baza de date
 		if (suma == null || suma == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
@@ -287,6 +297,8 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 			Persoana garant, Date dataScadenta, Double suma,
 			String sumaInLitere, String moneda, Double curs)
 			throws IncasariException {
+		//Se efectueaza inregistrarea platii in contabilitate pe baza unui bilet la ordin
+		//Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o noua inregistrare in baza de date
 
 		if (suma == null || suma == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
@@ -317,6 +329,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	@Override
 	// metoda care ar putea apartine de modulul Vanzari
 	public Double restIncasareFactura(FacturaEmisa factura) {
+		//Calculeaza diferenta dintre suma totala a facturii si suma incasata
 		return factura.getValoareTotalaFactura() - factura.getSumaIncasata();
 
 	}
@@ -326,7 +339,8 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 			Client client, String seria, Integer numar, String locatie,
 			List<FacturaEmisa> facturi, Double suma, String sumaInLitere,
 			String moneda, Double curs) throws IncasariException {
-
+		//Se efectueaza inregistrarea platii in contabilitate pe baza unui extras de cont
+		//Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o noua inregistrare in baza de date
 		if (suma == null || suma == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
