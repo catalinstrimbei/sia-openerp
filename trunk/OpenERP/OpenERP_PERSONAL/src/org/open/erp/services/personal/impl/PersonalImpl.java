@@ -1682,42 +1682,62 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}		
 		System.out.println(_eveniment.getStatusEveniment());
 	}
+	
 	@Override
 	public HashMap<DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB() {
-	try{
-		Collection<DummyDepartament> listaDepartamente =  this.registruPersonal.getListaDepartamente() ;
-	}catch(Exception ex){
-		logger.logERROR(ex.getMessage());
-	}
-	//	Iterator <DummyDepartament>	iteratorDepartament = listaDepartamente.iterator();
-		//while ()
-		DummyDepartament 	departamentCurent;
-		ProbaEvaluare	probaEvaluare;
-		/*
-		Iterator <DummyDepartament>	iteratorDepartament = departamenteInit.iterator();
-		HashMap <DummyDepartament, Collection<ProbaEvaluare>> tMap = new HashMap<DummyDepartament, Collection<ProbaEvaluare>>();
-		Collection<ProbaEvaluare> probeEvaluarePeDepartament = new ArrayList<ProbaEvaluare>();
-		while (iteratorDepartament.hasNext()) {
-			departamentCurent = iteratorDepartament.next();
-			probeEvaluarePeDepartament.clear();
-			Iterator <ProbaEvaluare> iteratorProbe = probeEvaluareInit_.iterator();
-			while (iteratorProbe.hasNext())
+		try
+		{
+			Collection<DummyDepartament> listaDepartamente =  this.registruPersonal.getListaDepartamente();
+			Collection<ProbaEvaluare> listaProbaEvaluare = this.registruPersonal.getListaProbaEvaluare();
+			
+			Iterator <DummyDepartament>	iteratorDepartament = listaDepartamente.iterator();
+			
+			HashMap <DummyDepartament, Collection<ProbaEvaluare>> tMap = new HashMap<DummyDepartament, Collection<ProbaEvaluare>>();
+			DummyDepartament 	departamentCurent;
+			Collection<ProbaEvaluare> probeEvaluarePeDepartament = new ArrayList<ProbaEvaluare>();
+			while (iteratorDepartament.hasNext()) 
 			{
-				probaEvaluare = iteratorProbe.next();
-				if (probaEvaluare.getDepartament() == departamentCurent
-						&& probaEvaluare.getScop() == "EvaluarePeriodica")
-				{
-					probeEvaluarePeDepartament.add(probaEvaluare);
-				}
-			}			
-			tMap.put(departamentCurent, new ArrayList<ProbaEvaluare>(probeEvaluarePeDepartament));			
-		}
+				departamentCurent = iteratorDepartament.next();
+				probeEvaluarePeDepartament.clear();
+				probeEvaluarePeDepartament = this.registruPersonalEJB.getProbaEvaluarePeDepartament(departamentCurent);	
+				
+				tMap.put(departamentCurent, new ArrayList<ProbaEvaluare>(probeEvaluarePeDepartament));			
+			
+			}
+			
+			return tMap;
 		
-		return tMap;
-		*/
-		return null;
+		
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+			return null;
+		}		
 	}
 	
-
+	@Override
+	public HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProbaEJB() {
+		try{
+			//Collection <RezultatProbaEvaluare> rezultateProbaEvaluare = this.registruPersonal.getListaRezultatProbaEvaluare();
+			Collection <ProbaEvaluare> probeEvaluare = this.registruPersonal.getListaProbaEvaluare();
+			Iterator<ProbaEvaluare> iteratorProbe = probeEvaluare.iterator();
+		
+			HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> rezultat = new HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>>();
+			ProbaEvaluare probaCurenta;
+			Collection<RezultatProbaEvaluare> angajatiRezultate = new ArrayList<RezultatProbaEvaluare>();
+			while (iteratorProbe.hasNext()) {
+				angajatiRezultate.clear();
+				probaCurenta = iteratorProbe.next();
+				angajatiRezultate = this.registruPersonalEJB.getRezultateProbaEvaluare(probaCurenta);
+				rezultat.put(probaCurenta, new ArrayList<RezultatProbaEvaluare>(angajatiRezultate));
+			}
+			return rezultat;
+	
+		}catch (Exception ex){
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+			return null;
+			}
+		}
 	
 }

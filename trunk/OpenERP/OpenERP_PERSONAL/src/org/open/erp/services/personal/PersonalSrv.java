@@ -897,4 +897,12 @@ public interface PersonalSrv {
 	 * @return map cu fiecare departament si probele fiecaruia
 	 * 
 	 */
+	
+	HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProbaEJB ();
+	/**
+	 * Scop    Returneaza Lista rezultatelor angajatilor la fiecare proba  
+	 *         
+	 * @return map cu fiecare proba si rezultatele fiecarui angajat
+	 * 
+	 */
 }

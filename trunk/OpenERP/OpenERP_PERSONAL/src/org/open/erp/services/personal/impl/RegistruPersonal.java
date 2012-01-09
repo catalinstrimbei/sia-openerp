@@ -751,7 +751,7 @@ public class RegistruPersonal {
 	public RezultatProbaEvaluare getRezultatProbaEvaluareById(Integer id_) throws Exception{
 		try
 		{
-			return (RezultatProbaEvaluare) entityManager.createQuery("SELECT rb FROM RezultatProbaEvaluare rb WHERE r.id = :id_")
+			return (RezultatProbaEvaluare) entityManager.createQuery("SELECT rb FROM RezultatProbaEvaluare rb WHERE rb.id = :id_")
 					.setParameter("id",id_)
 					.getSingleResult();}
 		catch(Exception ex)
