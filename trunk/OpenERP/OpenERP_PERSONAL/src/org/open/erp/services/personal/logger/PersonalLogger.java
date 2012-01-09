@@ -78,7 +78,8 @@ public class PersonalLogger {
 	
 	public void log( Level level, Object message_, Throwable t)
 	{
-		 if(level == null || level.equals(Level.DEBUG))
+		/* 
+		if(level == null || level.equals(Level.DEBUG))
 		 {
 			 level = Level.DEBUG;
 			 logger= Logger.getLogger(PersonalLogger.class.getName());  
@@ -107,6 +108,8 @@ public class PersonalLogger {
 		 {
 	      logger= Logger.getLogger(PersonalLogger.class.getName());
 	     }
+	     */
+		 logger= Logger.getLogger(PersonalLogger.class.getName());
 		 this.addAppender(logger);
 	     logger.log(level, message_, t );                       
 	 }    

@@ -25,6 +25,7 @@ import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.impl.PersonalImpl;
+import org.open.erp.services.personal.logger.PersonalLogger;
 
 /**
  * @author Doinoi
@@ -32,7 +33,7 @@ import org.open.erp.services.personal.impl.PersonalImpl;
  */
 public class TestPersonal {
 	PersonalImpl personalService = new PersonalImpl();
-	
+	PersonalLogger logger = new PersonalLogger();
 	void vizualizareRecrutare2(TestPersonalImpl test) 
 	{		
 		//this.generareAnunturi();

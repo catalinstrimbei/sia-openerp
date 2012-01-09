@@ -63,6 +63,7 @@ public class TestPersonalEJBregistru {
 		test.initEvenimenteActivitati();
 		
 		Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);			
+		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
 		
 		Functie functie = personalInstance.salveazaFunctie(test.functie1);		
 		Candidat candidat = personalInstance.salveazaCandidat(test.candidat1);
@@ -77,7 +78,7 @@ public class TestPersonalEJBregistru {
 		RezultatProbaEvaluare rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(test.angajatProbaEvaluare1);
 		CerereDemisie		cerereDemisie = personalInstance.salveazaCerereDemisie(test.cerereDemisie1);			
 		
-		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
+		//ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
 		ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);
 		
 		Eveniment	eveniment1 = personalInstance.salveazaEveniment(test.eveniment1);

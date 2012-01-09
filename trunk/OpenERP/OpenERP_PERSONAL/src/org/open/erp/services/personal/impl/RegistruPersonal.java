@@ -44,8 +44,8 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
+			logger.logINFO("EROARE PERSISTENTA ***** getActivitateTeamBuildingById");
+			logger.logERROR(ex.getClass().toString() + ex.getStackTrace().toString());
 			throw ex;
 		}
 	}
@@ -58,7 +58,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getListaActivitatiTeamBuilding");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -76,7 +76,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** salveazaActivitateTeamBuilding");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -91,7 +91,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** stergeActivitateTeamBuilding");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -106,7 +106,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getActivitateTrainingById");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -120,7 +120,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getListaActivitatiTraining");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -138,7 +138,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** salveazaActivitateTraining");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -153,7 +153,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** stergeActivitateTraining");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -168,7 +168,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getAngajatById");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -182,7 +182,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getAngajatByMarca");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -196,7 +196,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getListaAngajati");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -214,7 +214,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** salveazaAngajat");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -229,7 +229,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** stergeAngajat");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -244,7 +244,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getAnuntLocMuncaById");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -258,7 +258,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getListaAnunturiLocMunca");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -276,7 +276,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** salveazaAnuntLocMunca");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -291,7 +291,7 @@ private static PersonalLogger logger ;
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** stergeAnuntLocMunca");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -304,7 +304,7 @@ private static PersonalLogger logger ;
 			try{
 				return entityManager.find(Candidat.class, id);
 			}catch(Exception ex){
-				logger.logINFO("EROARE PERSISTENTA ***** ");
+				logger.logINFO("EROARE PERSISTENTA ***** getCandidatById");
 				ex.printStackTrace();
 				throw ex;
 			}
@@ -315,7 +315,7 @@ private static PersonalLogger logger ;
 					.setParameter("idCandidat", idCandidat)
 					.getSingleResult();
 		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getCandidatByIdCandidat");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -325,7 +325,7 @@ private static PersonalLogger logger ;
 		try{
 			return entityManager.createQuery("SELECT c FROM Candidat c").getResultList();
 		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getListaCandidatilor");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -338,7 +338,7 @@ private static PersonalLogger logger ;
 										.setParameter("idFunctie", idFunctie)
 										.getResultList();
 		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** getCandidatiPeFunctie");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -452,7 +452,8 @@ private static PersonalLogger logger ;
 				entityManager.merge(functie_);
 			
 		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** salveazaFunctie");
+			logger.logERROR(ex.getClass().toString() + ex.getStackTrace().toString());
 			ex.printStackTrace();
 			throw ex;
 		}
