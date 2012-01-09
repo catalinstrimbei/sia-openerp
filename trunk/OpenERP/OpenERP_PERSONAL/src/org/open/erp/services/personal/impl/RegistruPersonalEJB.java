@@ -1,5 +1,7 @@
 package org.open.erp.services.personal.impl;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
@@ -16,7 +18,7 @@ import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.logger.PersonalLogger;
 
 public class RegistruPersonalEJB {
-	private static PersonalLogger logger ;	
+	PersonalLogger logger = new PersonalLogger();
 
 	/* set up */
 	private EntityManager entityManager;
@@ -31,8 +33,9 @@ public class RegistruPersonalEJB {
 											.setParameter("idDepartament", departament_.getId())
 											.getResultList();
 		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			throw ex;
 		}
 	}
@@ -44,8 +47,9 @@ public class RegistruPersonalEJB {
 											.setParameter("probaEvaluare", probaEvaluare_.getIdProba())
 											.getResultList();
 		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			throw ex;
 		}
 	}
@@ -58,8 +62,9 @@ public class RegistruPersonalEJB {
 											.setParameter("idFunctie", anuntMunca_.getFunctie().getIdFunctie())
 											.getResultList();
 		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			throw ex;
 		}
 	}
@@ -70,8 +75,9 @@ public class RegistruPersonalEJB {
 											.setParameter("idFunctie", functie_.getIdFunctie())
 											.getResultList();
 		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			throw ex;
 		}
 	}
@@ -86,8 +92,9 @@ public class RegistruPersonalEJB {
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			throw ex;
 		}		
 	}
