@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><entities>
+	<entity>
+		<entity-name>org.open.erp.services.contabgest.ActivitateCentruCost</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>286</entity-height>
+		<entity-X-Coordinate>50</entity-X-Coordinate>
+		<entity-Y-Coordinate>50</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>org.open.erp.services.contabgest.CentruCost</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>148</entity-height>
+		<entity-X-Coordinate>607</entity-X-Coordinate>
+		<entity-Y-Coordinate>360</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>org.open.erp.services.contabgest.CosturiPrimare</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>266</entity-height>
+		<entity-X-Coordinate>607</entity-X-Coordinate>
+		<entity-Y-Coordinate>20</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>org.open.erp.services.contabgest.InregistrareGestiune</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>108</entity-height>
+		<entity-X-Coordinate>210</entity-X-Coordinate>
+		<entity-Y-Coordinate>460</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+	
+	<entity>
+		<entity-name>org.open.erp.services.contabgest.LinieCost</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>150</entity-height>
+		<entity-X-Coordinate>320</entity-X-Coordinate>
+		<entity-Y-Coordinate>600</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+	
+	<entity>
+		<entity-name>org.open.erp.services.contabgest.Responsabil</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>170</entity-height>
+		<entity-X-Coordinate>280</entity-X-Coordinate>
+		<entity-Y-Coordinate>560</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+	
+	<entity>
+		<entity-name>org.open.erp.services.personal.Angajat</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>135</entity-height>
+		<entity-X-Coordinate>300</entity-X-Coordinate>
+		<entity-Y-Coordinate>500</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+	
+</entities>
