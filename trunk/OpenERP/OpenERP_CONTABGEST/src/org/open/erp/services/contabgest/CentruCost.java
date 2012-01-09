@@ -1,14 +1,22 @@
 package org.open.erp.services.contabgest;
 
+import static javax.persistence.TemporalType.TIMESTAMP;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.productie.FazaProductie;
@@ -25,20 +33,33 @@ public class CentruCost implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue
 	private Integer idCentruCost;
+	
 	private String denumireCentruCost;
 	private FazaProductie faza;
+	
+	@Temporal(TIMESTAMP)
 	private Date dataStart = new Date();
+	
+	@Temporal(TIMESTAMP)
 	private Date dataSfarsit;
+	
 	private Double sumaCentruCost;
+	
 	private Integer status = CentruCost.IN_ALOCARE;
+	
+	@ManyToOne
 	private Angajat responsabil;
+	
 	// Costuri primare
+	@ManyToOne
 	private CosturiPrimare costuriPrimare;
-	private Map<Activitate, LinieCost> activitati = new HashMap<Activitate, LinieCost>();
+	
+	@OneToMany (mappedBy = "centruCost", targetEntity = ActivitateCentruCost.class, cascade = ALL )
+	List <Activitate> activitati = new ArrayList<Activitate>();
 
 	public static final Integer IN_ALOCARE = -1;
 	public static final Integer ALOCAT = 0;
