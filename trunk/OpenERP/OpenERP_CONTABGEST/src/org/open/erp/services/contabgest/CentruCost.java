@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.CascadeType;
+
 
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.productie.FazaProductie;
@@ -30,10 +32,8 @@ import org.open.erp.services.productie.FazaProductie;
  */
 @Entity
 public class CentruCost implements Serializable {
-	/**
-	 * 
-	 */
-	
+
+
 	@Id
 	@GeneratedValue
 	private Integer idCentruCost;
@@ -58,9 +58,13 @@ public class CentruCost implements Serializable {
 	@ManyToOne
 	private CosturiPrimare costuriPrimare;
 	
-	@OneToMany (mappedBy = "centruCost", targetEntity = ActivitateCentruCost.class, cascade = ALL )
+	@OneToMany (mappedBy = "centruCost", targetEntity = ActivitateCentruCost.class, cascade=ALL)
 	List <Activitate> activitati = new ArrayList<Activitate>();
 
+	
+
+
+	
 	public static final Integer IN_ALOCARE = -1;
 	public static final Integer ALOCAT = 0;
 	public static final Integer IN_CURS = 1;
@@ -75,7 +79,7 @@ public class CentruCost implements Serializable {
 	public CentruCost(Integer idCentruCost, String denumireCentruCost,
 			FazaProductie faza, Date dataStart, Date dataSfarsit,
 			Double sumaCentruCost, Integer status, Angajat responsabil,
-			CosturiPrimare costuriPrimare, Map<Activitate, LinieCost> activitati) {
+			CosturiPrimare costuriPrimare, List<Activitate> activitati) {
 		super();
 		this.idCentruCost = idCentruCost;
 		this.denumireCentruCost = denumireCentruCost;
@@ -153,8 +157,8 @@ public class CentruCost implements Serializable {
 		this.costuriPrimare = costuriPrimare;
 	}
 
-	public Set<Activitate> getActivitati() {
-		return activitati.keySet();
+	public List<Activitate> getActivitati() {
+		return activitati;
 	}
 
 	public FazaProductie getFaza() {
@@ -165,24 +169,15 @@ public class CentruCost implements Serializable {
 		this.faza = faza;
 	}
 
-	public void setActivitati(Map<Activitate, LinieCost> activitati) {
-		this.activitati = activitati;
+	//public void setActivitati(Map<Activitate, LinieCost> activitati) {
+	//	this.activitati = activitati;
+	//}
+
+	public void adaugaActivitate(Activitate activitate) {
+		this.activitati.add(activitate);
 	}
 
-	public void adaugaActivitate(Activitate activitate, LinieCost linieCost) {
-		if (activitati != null) {
-
-		} else {
-			activitati = new HashMap<Activitate, LinieCost>();
-		}
-		activitati.put(activitate, linieCost);
-
-	}
-
-	public LinieCost getLinieCosturiPrimare(Activitate activitate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public int hashCode() {
