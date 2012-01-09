@@ -13,6 +13,7 @@ import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.CerereDemisie;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.DosarAngajat;
+import org.open.erp.services.personal.DummyDepartament;
 import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.Instructor;
@@ -445,8 +446,8 @@ private static PersonalLogger logger ;
 		try{
 			
 			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
-			if (functie_.getNumeFunctie() == null || 
-				entityManager.find(functie_.getClass(), functie_.getNumeFunctie()) == null)
+			if (functie_.getIdFunctie() == null || 
+				entityManager.find(functie_.getClass(), functie_.getIdFunctie()) == null)
 				entityManager.persist(functie_);
 			else
 				entityManager.merge(functie_);
@@ -1007,9 +1008,17 @@ private static PersonalLogger logger ;
 			throw ex;
 		}
 	}
-	//DosarAngajat.start
-	
 
+	//TODO - to be deleted
+	public Collection<DummyDepartament> getListaDepartamente() throws Exception{
+		try{
+			return entityManager.createQuery("SELECT d FROM DummyDepartament d").getResultList();
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
 	
 }
 

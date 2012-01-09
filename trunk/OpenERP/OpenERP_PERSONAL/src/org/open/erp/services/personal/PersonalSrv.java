@@ -885,4 +885,16 @@ public interface PersonalSrv {
 	 * @param _activitate //metoda ce determina daca un eveniment este aprobat sau nu in functie de suma alocata si estimata
 	 * 
 	 */
+	
+	
+	HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB ();
+	
+	/**
+	 * Scop    Returneaza o Lista a probelor grupate pe fiecare departament 
+	 *         
+	 * @param -none	
+	 * 
+	 * @return map cu fiecare departament si probele fiecaruia
+	 * 
+	 */
 }

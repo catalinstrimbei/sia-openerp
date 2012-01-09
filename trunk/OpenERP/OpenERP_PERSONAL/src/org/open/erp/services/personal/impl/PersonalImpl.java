@@ -1682,7 +1682,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	@Override
 	public HashMap<DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB() {
-	////	Collection<DummyDepartament> listaDepartamente =  this.registruPersonal.getListaDepartamente();
+	try{
+		Collection<DummyDepartament> listaDepartamente =  this.registruPersonal.getListaDepartamente() ;
+	}catch(Exception ex){
+		logger.logERROR(ex.getMessage());
+	}
 	//	Iterator <DummyDepartament>	iteratorDepartament = listaDepartamente.iterator();
 		//while ()
 		DummyDepartament 	departamentCurent;
