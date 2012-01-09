@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -27,10 +28,10 @@ public class FluxProductie implements Serializable{
 	@Id @GeneratedValue
 	Integer idFlux;
 	
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="id")
 	Produs produs;
 	
-	@OneToMany (mappedBy="FazaProductie", targetEntity= FazaProductie.class, cascade= CascadeType.ALL)
+	@ManyToOne @JoinColumn(name="faza")
 	ArrayList <FazaProductie> faze;
 	
 	public FluxProductie(Integer idFlux, Produs produs) {

@@ -3,17 +3,18 @@ package org.open.erp.services.productie;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.ArrayList;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.open.erp.services.nomgen.Divizie;
-import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.*;
@@ -39,34 +40,44 @@ public class FazaProductie implements Serializable {
 	FluxProductie flux;
 	
 	@ManyToOne
+	@JoinColumn(name = "id")
 	Utilaj utilaj;
 	Double timpFolosire;
 	
-	@OneToMany (mappedBy="FazaProductie", cascade= CascadeType.ALL)
+	@OneToMany 
 	ArrayList <FunctieNecesara> functiiNecesare;
-	
-	@OneToMany (mappedBy="FazaProductie", cascade= CascadeType.ALL)
+		
+	@ManyToOne
+	@JoinColumn(name = "marca")
 	ArrayList <Angajat> angajati;
 	
-	@OneToMany (mappedBy="FazaProductie", cascade= CascadeType.ALL)
-	ArrayList <Material> materialeReteta;
-	
 	@ManyToOne
+	@JoinColumn(name = "idMaterial")
+	ArrayList<Material> materialeReteta;
+	
+	@ManyToOne 
+	@JoinColumn(name = "idSemifabricat")
 	Semifabricat semifabricatReteta;
 	
 	@ManyToOne
+	@JoinColumn(name = "idSemifabricat")
 	Semifabricat semifabricatDorit;
 	
 	@ManyToOne 
+	@JoinTable(name="produs", joinColumns=@JoinColumn(name = "id"))
+	
 	Produs produsDorit;
 	
 	@ManyToOne
+	@JoinColumn(name = "idSemifabricat")
 	Semifabricat semifabricatObtinut;
 	
 	@ManyToOne
+	@JoinColumn(name = "id")
 	Produs produsObtinut;
 	
 	@ManyToOne
+	@JoinColumn(name = "id")
 	Divizie sectie;
 	
 	Integer nrOrdine;
@@ -130,9 +141,7 @@ public class FazaProductie implements Serializable {
 		this.nrOrdine=nrOrdine;
 		this.isFinal=isFinal;
 		
-		
 	}
-
 	public String getFaza() {
 		return faza;
 	}

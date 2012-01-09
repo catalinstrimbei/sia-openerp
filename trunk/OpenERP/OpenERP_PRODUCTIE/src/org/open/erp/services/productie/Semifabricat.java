@@ -3,12 +3,11 @@ package org.open.erp.services.productie;
 import java.io.Serializable;
 import java.util.*;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
 
@@ -31,7 +30,7 @@ public class Semifabricat extends Produs implements Serializable{
 	
 	String semifabricat;
 	
-	@OneToMany (mappedBy="Semifabricat", cascade = CascadeType.ALL)
+	@ManyToOne @JoinColumn(name="id")
 	ArrayList <Material> listaMateriale;
 	
 	Semifabricat semifabricatContinut;
