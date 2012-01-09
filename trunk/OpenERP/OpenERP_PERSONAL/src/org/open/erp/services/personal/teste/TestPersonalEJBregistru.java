@@ -5,6 +5,8 @@ package org.open.erp.services.personal.teste;
 
 import static org.junit.Assert.*;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Properties;
 
 import javax.naming.InitialContext;
@@ -60,48 +62,45 @@ public class TestPersonalEJBregistru {
 	public void testInserari1() throws Exception {
 		try
 		{
-		logger.logINFO("Begin test: Inserari1");			
-		TestPersonalImpl test = new TestPersonalImpl();
-		test.generareAnunturi();
-		test.initEvenimenteActivitati();		
-		
-		Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);			
-		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
-		
-		Functie functie = personalInstance.salveazaFunctie(test.functie1);				
-		Interviu interviu = personalInstance.salveazaInterviu(test.interviu1);
-		ProbaEvaluare	proba = personalInstance.salveazaProbaEvaluare(test.probaEvaluare1);
-		
-		logger.logINFO("End test: Inserari1");
+			logger.logINFO("Begin test: Inserari1");			
+			TestPersonalImpl test = new TestPersonalImpl();
+			test.generareAnunturi();
+			test.initEvenimenteActivitati();		
+			
+			Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);			
+			ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);		
+			Functie functie = personalInstance.salveazaFunctie(test.functie1);				
+			Interviu interviu = personalInstance.salveazaInterviu(test.interviu1);
+			ProbaEvaluare	proba = personalInstance.salveazaProbaEvaluare(test.probaEvaluare1);
+			
+			logger.logINFO("End test: Inserari1");
 		}
 		catch(Exception ex)
 		{
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
 		}
 	}
 	@Test	
 	public void testInserari2() throws Exception {
 		try
 		{
-		logger.logINFO("Begin test: Inserari2");			
-		TestPersonalImpl test = new TestPersonalImpl();
-		test.generareAnunturi();
-		test.initEvenimenteActivitati();		
-		
-		InterviuCandidat	interviuCandidat = personalInstance.salveazaInterviuCandidat(test.interviuCandidat1);
-		DosarAngajat	dosar = personalInstance.salveazaDosarAngajat(test.dosar1);
-		//CV	cv = personalInstance.salveazaCV(test.cv1);						
-		AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);					
-		ContractMunca	contract = personalInstance.salveazaContractMunca(test.contract1);				
-		RezultatProbaEvaluare rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(test.angajatProbaEvaluare1);				
-		
-		logger.logINFO("End test: Inserari2");
+			logger.logINFO("Begin test: Inserari2");			
+			TestPersonalImpl test = new TestPersonalImpl();
+			test.generareAnunturi();
+			test.initEvenimenteActivitati();		
+			
+			InterviuCandidat	interviuCandidat = personalInstance.salveazaInterviuCandidat(test.interviuCandidat1);
+			AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
+			DosarAngajat	dosar = personalInstance.salveazaDosarAngajat(test.dosar1);
+			RezultatProbaEvaluare rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(test.angajatProbaEvaluare1);													
+			
+			logger.logINFO("End test: Inserari2");
 		}
 		catch(Exception ex)
 		{
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
 		}
 	}
 	
@@ -109,24 +108,43 @@ public class TestPersonalEJBregistru {
 	public void testInserari3() throws Exception {
 		try
 		{
-		logger.logINFO("Begin test: Inserari3");			
-		TestPersonalImpl test = new TestPersonalImpl();
-		test.generareAnunturi();
-		test.initEvenimenteActivitati();		
-		
-		CerereDemisie		cerereDemisie = personalInstance.salveazaCerereDemisie(test.cerereDemisie1);			
-		
-		ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);
-		
-		Eveniment	eveniment1 = personalInstance.salveazaEveniment(test.eveniment1);
-		Eveniment	eveniment2 = personalInstance.salveazaEveniment(test.eveniment2);
-		
-		logger.logINFO("End test: Inserari3");
+			logger.logINFO("Begin test: Inserari3");			
+			TestPersonalImpl test = new TestPersonalImpl();
+			test.generareAnunturi();
+			test.initEvenimenteActivitati();						
+			
+			CV	cv = personalInstance.salveazaCV(test.cv1);														
+			ContractMunca	contract = personalInstance.salveazaContractMunca(test.contract1);				
+			
+			logger.logINFO("End test: Inserari3");
 		}
 		catch(Exception ex)
 		{
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
+	
+	@Test	
+	public void testInserari4() throws Exception {
+		try
+		{
+			logger.logINFO("Begin test: Inserari4");			
+			TestPersonalImpl test = new TestPersonalImpl();
+			test.generareAnunturi();
+			test.initEvenimenteActivitati();		
+			
+			CerereDemisie		cerereDemisie = personalInstance.salveazaCerereDemisie(test.cerereDemisie1);					
+			ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);		
+			Eveniment	eveniment1 = personalInstance.salveazaEveniment(test.eveniment1);
+			Eveniment	eveniment2 = personalInstance.salveazaEveniment(test.eveniment2);
+			
+			logger.logINFO("End test: Inserari4");
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
 		}
 	}
 	
@@ -167,7 +185,7 @@ public class TestPersonalEJBregistru {
 		catch(Exception ex)
 		{
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
 		}
 	}
 	

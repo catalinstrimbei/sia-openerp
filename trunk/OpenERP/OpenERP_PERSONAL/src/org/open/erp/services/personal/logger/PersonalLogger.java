@@ -20,12 +20,17 @@ public class PersonalLogger {
 	public static void trace(PersonalLogger logger_, StackTraceElement e[]) 
 	{
 	   boolean doNext = false;
+	   logger_.logERROR("<<< START Stack Trace >>> ");
 	   for (StackTraceElement s : e) 
 	   {
-	       if (doNext)
-	       {
-	    	   logger_.logERROR("Stack Trace >>> " + s.getMethodName());
-	          return;
+		   logger_.logERROR(" Class >> " + s.getClassName());
+    	   logger_.logERROR(" Method >> " + s.getMethodName());
+    	   logger_.logERROR(" LineNum >> " + s.getLineNumber());
+    	   
+		   if (doNext)
+	       {	    	   	    	   
+	    	   logger_.logERROR("<<< END Stack Trace >>> ");
+	    	   return;
 	       }
 	       doNext = s.getMethodName().equals("getStackTrace");
 	   }
