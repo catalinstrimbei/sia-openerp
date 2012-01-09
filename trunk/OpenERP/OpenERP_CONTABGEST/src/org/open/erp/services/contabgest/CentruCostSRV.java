@@ -2,7 +2,7 @@ package org.open.erp.services.contabgest;
 
 import java.util.Date;
 
-import org.open.erp.services.personal.Angajat;
+
 import org.open.erp.services.productie.FazaProductie;
 
 /**
@@ -13,7 +13,7 @@ import org.open.erp.services.productie.FazaProductie;
  * 
  * @Dependente: CosturiPrimareSrv, PersonalSrv
  * 
- * @EntitatiNomGen: Angajat
+ * @EntitatiNomGen: Responsabil
  * 
  * @EntitatiAlteSrv:
  * 
@@ -45,9 +45,8 @@ public interface CentruCostSRV {
 	 * @return instanta Activitate nou creat.
 	 * 
 	 */
-	CentruCost creareCentruCost(String denumireCentruCost, FazaProductie faza,
-			Angajat responsabil, Date dataStart, Date dataSfarsit,
-			Double sumaCentruCost);
+	CentruCost creareCentruCost(String denumireCentruCost,FazaProductie faza, Responsabil responsabil,
+		 Date dataStart, Date dataSfarsit, Double sumaCentruCost) throws Exception;
 
 	/**
 	 * Scop Creeaza activitate si o asociaza centrului de cost.
@@ -68,8 +67,8 @@ public interface CentruCostSRV {
 	 */
 
 	Activitate creareActivitate(CentruCost centruCost, FazaProductie faza,
-			Angajat responsabil, String denumireCentru, Date dataStart,
-			Date dataSfarsit, Double valoareAprovizionareExterna);
+			Responsabil responsabil, String denumireCentru, Date dataStart,
+			Date dataSfarsit, Double valoareAprovizionareExterna) throws Exception;
 
 	/**
 	 * Scop Schimba status centrului de cost in started, schimba status primei
@@ -111,5 +110,6 @@ public interface CentruCostSRV {
 	 * 
 	 */
 	Double getSoldCentruCostInCurs(Integer idCentruCost, Date dataSold);
+	CentruCost getCentruCost (Integer idCentruCost);
 
 }
