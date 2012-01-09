@@ -19,6 +19,11 @@ import javax.persistence.ManyToOne;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class LinieCost implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	protected Integer idLinieCost;
