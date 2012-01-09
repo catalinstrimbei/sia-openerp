@@ -19,6 +19,7 @@ public class CentralizatorStatSalarii {
 	private Integer An;
 	private Integer Luna;
 	
+	@Transient
 	private List<StatSalarii> centralizator = new ArrayList<StatSalarii>();
 	private Double totalCas;
 	private Double totalCass;
