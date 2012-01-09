@@ -6,10 +6,11 @@ import javax.persistence.Id;
  * @author Echipa NomGen
  * @BusinessObject(Entity)
  */
+import java.io.Serializable;
 import java.util.*;
 @Entity
 
-public class Document {  
+public class Document implements Serializable{  
 	//@Id @GeneratedValue
 	public Integer nrDocument;         
 	public Date dataDocument; 
