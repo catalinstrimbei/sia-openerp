@@ -65,7 +65,7 @@ public class TestSalarizareEJB {
 		logger.info("End test: inregistrarePontaj");
 	}
 
-/*	
+	
 	//test metoda generare automata pontaj pe toata luna pt toti angajatii
 	//propagare tranzactie intre inregistrare pontaj si inregistrarePontajLuna
 	@Test
@@ -76,7 +76,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrarePontaj");
 	}
-	
+/*	
 	@Test
 	public void calculSporuriAngajati() throws Exception {
 		logger.info("Begin test: calculSporuriAngajat");
