@@ -49,7 +49,7 @@ public class TestSalarizareEJB {
 	public void tearDown() throws Exception {
 	}
 
-/*
+
 	//Test pentru inregistrarea pontajului pt un anumit angajat
 	//load angajat din componenta EJB Personal
 	@Test
@@ -64,7 +64,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrarePontaj");
 	}
-	*/
+
 /*	
 	//test metoda generare automata pontaj pe toata luna pt toti angajatii
 	//propagare tranzactie intre inregistrare pontaj si inregistrarePontajLuna
