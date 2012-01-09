@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 
 /**
  * 
@@ -14,10 +16,16 @@ import javax.persistence.Id;
  * 
  */
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class LinieCost implements Serializable {
 	@Id
 	@GeneratedValue
 	protected Integer idLinieCost;
+	
+	@ManyToOne
+	protected CosturiPrimare costuriPrimare;
+	protected Double valoareAprovizionareExterna; // comanda
+	protected Double valoareAprovizionareInterna; // val consumata--consum
 
 	@Override
 	public int hashCode() {
@@ -27,10 +35,6 @@ public class LinieCost implements Serializable {
 				+ ((idLinieCost == null) ? 0 : idLinieCost.hashCode());
 		return result;
 	}
-
-	protected CosturiPrimare costuriPrimare;
-	protected Double valoareAprovizionareExterna; // comanda
-	protected Double valoareAprovizionareInterna; // val consumata--consum
 
 	public LinieCost() {
 		super();
