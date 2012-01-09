@@ -3,9 +3,9 @@
 	<persistence-unit name="OpenERP_NOMGEN">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-	<!--  	<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>-->
+	 	<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
 	
-	        <jta-data-source>java:jdbc/feaaORCL_XA</jta-data-source>
+	     <!--    <jta-data-source>java:jdbc/feaaORCL_XA</jta-data-source>-->
 		<class>org.open.erp.services.nomgen.PersoanaJuridica</class>
 		<class>org.open.erp.services.nomgen.PersoanaFizica</class>
 		<class>org.open.erp.services.nomgen.Persoana</class>
