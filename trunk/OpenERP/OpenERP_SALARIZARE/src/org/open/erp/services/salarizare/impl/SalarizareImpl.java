@@ -57,7 +57,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	}
 	
 	//TO DO - de schimbar cand se va comite in modulul Personal sa foloseasca interfata locala
-	@EJB(mappedName="PersonalImpl/local") 
+	@EJB(mappedName="PersonalSrv/local") 
 	private PersonalSrvLocal personalSrv;
 	
 	//private NomenclatoareSrv nomenclatoareSrv;
