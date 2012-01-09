@@ -79,9 +79,7 @@ public class RegistruCentruCost {
 			throw e;
 		}
 		
-		return activitate;
-		
-		
+		return activitate;	
 		
 	}
 	
