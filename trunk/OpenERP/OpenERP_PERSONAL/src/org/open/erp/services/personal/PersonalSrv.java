@@ -887,6 +887,7 @@ public interface PersonalSrv {
 	 */
 	
 	
+
 	HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB ();
 	
 	/**
@@ -905,6 +906,105 @@ public interface PersonalSrv {
 	 * @return map cu fiecare proba si rezultatele fiecarui angajat
 	 * 
 	 */
+	
+	Collection<AnuntLocMunca> getPosturiVacanteEJB(Date dataVizata_);
+	
+	/**
+	 * Scop    Returneaza o Lista cu posturile valide dupa o data precizata
+	 * 
+	 * @param  dataVizata_ 	Data setata de utilizator, care va fi comparata cu data anuntului de munca
+	 * 
+	 * @return posturile vacante 
+	 * 
+	 */
+	
+	Collection<Candidat> getCandidatipeFunctieEJB(AnuntLocMunca anuntLocMunca_);
+	
+	/**
+	 * Scop    Pentru fiecare anunt de loc de munca, returneaza o Lista cu candidatii care au aplicat cv-urile 
+	 *          pentru functia precizata in anunt
+	 * 
+	 * @param  anuntLocMunca_ 	Anuntul locului de munca pentru care se vor afisa candidatii
+	 * 
+	 * @return Lista cu date despre candidati
+	 * 
+	 */
+	
+	Collection<Angajat> getAngajatipeFunctieEJB(Functie functie_);
+	
+	/**
+	 * Scop    Pentru fiecare functie, returneaza o Lista cu angajatii activi
+	 * 
+	 * @param  functie_ 	Functia pentru care se afiseaza angajatii
+	 * 
+	 * @return Lista cu angajatii
+	 * 
+	 */
+	
+	void angajareEJB(Candidat candidat_);
+	/**
+	 * Scop    Creeaza un nou angajat cu dosarul acestuia si a contractului de munca prin precizarea candidatului
+	 *         
+	 * @param  candidat_ 	    Candidatul care va fi angajat
+	 * 
+	 * @return 
+	 * 	
+	 */
+	void demisionareEJB(CerereDemisie cerereDemisie_);
+	
+	/**
+	 * Scop   
+	 * 
+	 * @param cerereDemisie_ 
+	 * 
+	 * @return 
+	 * 
+	 */
+	
+	void concediereEJB(ContractMunca contractMunca_);
+	
+	/**
+	 * Scop   
+	 * 
+	 * @param contractMunca_ 
+	 * 
+	 * @return 
+	 * 
+	 */
+	
+	ContractMunca relocalizare_promovareEJB(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_);
+	
+	/**
+	 * Scop						Relocalizarea unui angajat ca urmare a resturcturarii firmei sau ca urmare a promovarii angajatului 
+	 * 
+	 * @param marca_			marca angajatului ce urmeaza a fi relocalizat
+	 * @param functieNoua_		Noua functie pe care urmeaza a fi plasat
+	 * @param contractVizat_	Contractul care va fi terminat pentru a se incheia unul nou. In cazul in care acest parametru
+	 * 							este null se vor termina toate contractele precedente si se va incheia unul singur nou
+	 * @param promovare_		specifica daca metoda este apelata pentru relocalizare sau promovare
+	 * @param salarBaza			noul salariu de baza
+	 * @param tarifOrar_		noul tarif orar
+	 * @return					Contractul nou incheiat sau contractul modificat in urma promovarii.
+	 *
+	
+	*/
+	
+	
+	Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_);
+	
+	/**
+	 * Scop    Returneaza o Lista cu candidatii care  au fost admisi la interviul final, interviu organizat dupa 
+	 *         o data precizata
+	 * 
+	 * @param  dataAnunt_ 	    Data precizata de utilizator, care va fi comparata cu data sustinerii interviului
+	 * @param  candidat_        Candidatul pentru care se afiseaza interviurile finale si admise
+	
+	 * @return Lista cu date despre candidati admisi la interviurile finale
+	 * 
+	 */
+	
+
+	
 	void aprobareEvenimentEJB(Eveniment eveniment_)throws Exception;
 	/**
 	 * @param _activitate //metoda ce determina daca un eveniment este aprobat sau nu in functie de suma alocata si estimata
