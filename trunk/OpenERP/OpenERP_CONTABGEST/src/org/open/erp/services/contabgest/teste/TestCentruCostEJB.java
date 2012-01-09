@@ -35,6 +35,32 @@ public class TestCentruCostEJB {
 		logger.info("initTest " + centruCostInstance);
 	}
 
+	 @Test
+	 public void testStartCentruCost() throws Exception {
+	 logger.info("Begin test: startCentruCost");
+
+	 CentruCost centruCost = centruCostInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
+	 Angajat responsabil = personalInstance.getAngajatById(1);
+	 
+
+	 Calendar calendarStart = Calendar.getInstance();
+	 Calendar calendarEnd = Calendar.getInstance();
+	 calendarStart.setTime(new Date());
+	 calendarEnd.setTime(new Date()); calendarEnd.add(Calendar.WEEK_OF_MONTH, 2);
+	 Activitate activitate1 = centruCostInstance.creareActivitate(centruCost, null, responsabil, "Prima activitate test", 
+	 calendarStart.getTime(), calendarEnd.getTime(), 500.0);
+
+	 calendarStart.add(Calendar.MONTH, 2);
+	 calendarEnd.add(Calendar.WEEK_OF_MONTH, 6);
+	 Activitate activitate2 = centruCostInstance.creareActivitate(centruCost, null, responsabil, "Prima activitate test", 
+	 calendarStart.getTime(), calendarEnd.getTime(), 500.0);
+
+	 centruCostInstance.startCentruCost(centruCost);
+
+	 logger.info("End test: startCentruCost");
+
+	 }
+	
 	@Test
 	public void testProgresActivitate() throws Exception {
 		logger.info("Begin test: progresActivitate");
