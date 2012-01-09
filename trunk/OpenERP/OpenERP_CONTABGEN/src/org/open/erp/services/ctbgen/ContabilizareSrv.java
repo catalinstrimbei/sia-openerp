@@ -11,7 +11,7 @@ import org.open.erp.services.nomgen.LinieDocument;
 
 /**
  * 
- * @author Echipa9 Irimia, Iftimie, Sarbu, Ricea, Chiriac
+ * @author Echipa9 Irimia, Iftimii, Sarbu, Ricea, Chiriac
  * 
  * @ApplicationServiceFacade(ServiceAPI):
  * 
@@ -25,10 +25,8 @@ import org.open.erp.services.nomgen.LinieDocument;
  * ListaContMatVal, FisaCont, RegPlanConturi,RegLuniLucru, RegTipuriContabile, RegInregistrariRJ, 
  * RegSablonNC, RegBalanta .
  * 
- * @UseCaseL:
- * 
- * ("Jurnalizare Operatii Contabile"):
- * 1. Creaza instanta inregistrare in registru jurnal pentru vanzari
+ * @UseCase: ("Jurnalizare Operatii Contabile"):
+ * <p>1. Creaza instanta inregistrare in registru jurnal pentru vanzari
  * 2. Creaza instanta inregistrare in registru jurnal pentru achizitii
  * 3. Creaza instanta inregistrare in registru jurnal pentru incasari
  * 4. Creaza instanta inregistrare in registru jurnal pentru plati
@@ -37,7 +35,7 @@ import org.open.erp.services.nomgen.LinieDocument;
  * 7. Creaza instanta inregistrare in registru jurnal pentru productia obtinuta
  * 8. Returneaza status de existenta sau inchidere pentru luna operatiei
  * 9. Returneaza un cont pentru asocieri diverse
- * 10. Utilizare interna- creareCont, creareaSablon, sau inchidereLuna cu creareBalata
+ * 10. Utilizare interna- creareCont, creareaSablon, sau inchidereLuna cu creareBalanta</p>
  *  
  *    
  */

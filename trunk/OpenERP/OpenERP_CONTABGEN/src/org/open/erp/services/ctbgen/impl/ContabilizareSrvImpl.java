@@ -3,11 +3,12 @@ package org.open.erp.services.ctbgen.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import javax.ejb.Stateful;
 import org.open.erp.services.ctbgen.ArticolCtb;
 import org.open.erp.services.ctbgen.Balanta;
 import org.open.erp.services.ctbgen.Cont;
-import org.open.erp.services.ctbgen.ContabilizareSrv;
+import org.open.erp.services.ctbgen.ContabilizareSrvLocal;
+import org.open.erp.services.ctbgen.ContabilizareSrvRemote;
 import org.open.erp.services.ctbgen.FisaCont;
 import org.open.erp.services.ctbgen.InregistrareRJ;
 import org.open.erp.services.ctbgen.LinieMaterialValoare;
@@ -36,7 +37,8 @@ import org.open.erp.services.nomgen.LinieDocument;
  * 
  */
 
-public class ContabilizareSrvImpl implements ContabilizareSrv {
+@Stateful
+public class ContabilizareSrvImpl implements ContabilizareSrvLocal, ContabilizareSrvRemote {
 		
 	//--------------------
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ContabilizareSrvImpl.class.getName());

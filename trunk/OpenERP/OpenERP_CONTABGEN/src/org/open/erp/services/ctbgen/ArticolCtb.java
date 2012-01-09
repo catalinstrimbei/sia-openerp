@@ -1,5 +1,13 @@
 package org.open.erp.services.ctbgen;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.AUTO;
+
+
+
 /**
  * 
  * @author Echipa ContaGen
@@ -8,17 +16,25 @@ package org.open.erp.services.ctbgen;
  * 
  */
 
-public class ArticolCtb extends SablonNC {
+@Entity
+public class ArticolCtb extends Sablon {
+	
+
+	
+	@Id
+	@GeneratedValue(strategy = AUTO)
 	private Integer idArt;
 	private Integer nrLinArt;
+	@ManyToOne
+	private InregistrareRJ inregRJ;
 	private String denArt;
 	private Double sumaDC;
 
 	public ArticolCtb() {
 	}
 	
-	public ArticolCtb(Integer idSablon, Integer nrSablon, Cont contDebit, Cont contCredit, Integer idArt, Integer nrLinArt, String denArt, Double sumaDC) {
-		super(idSablon, nrSablon, contDebit, contCredit);
+	public ArticolCtb(Cont contDebit, Cont contCredit, Integer idArt, Integer nrLinArt, String denArt, Double sumaDC) {
+		super(contDebit, contCredit);
 		this.idArt = idArt;
 		this.nrLinArt = nrLinArt;
 		this.denArt = denArt;
@@ -61,4 +77,14 @@ public class ArticolCtb extends SablonNC {
 	public String toString() {
 		return "ArticolCtb [idArt=" + idArt + ", nrLinArt=" + nrLinArt + ", denArt=" + denArt + ", sumaDC=" + sumaDC + "]";
 	}
+
+	public InregistrareRJ getInregRJ() {
+		return inregRJ;
+	}
+
+	public void setInregRJ(InregistrareRJ inregRJ) {
+		this.inregRJ = inregRJ;
+	}
+	
+	
 }

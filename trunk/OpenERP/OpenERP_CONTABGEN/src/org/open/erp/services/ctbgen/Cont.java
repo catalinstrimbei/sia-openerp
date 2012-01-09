@@ -1,5 +1,13 @@
 package org.open.erp.services.ctbgen;
 
+import static javax.persistence.GenerationType.AUTO;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+
 /**
  * 
  * @author Echipa ContaGen
@@ -7,13 +15,16 @@ package org.open.erp.services.ctbgen;
  * @BusinessObject(Entity)
  * 
  */
-
+@Entity
 public class Cont {
+	@Id
+	@GeneratedValue(strategy = AUTO)
 	private int idCont;
 	private String denCont;
 	private String simbolCont;
 	private String clasaCont;
 	private String tipSintetic;
+	@OneToOne
 	private Cont contParinte;
 	private TipCont tipCont;
 

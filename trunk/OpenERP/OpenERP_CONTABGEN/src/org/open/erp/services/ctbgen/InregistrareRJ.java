@@ -4,6 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Temporal;
+
+import static javax.persistence.GenerationType.AUTO;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import static javax.persistence.TemporalType.DATE;
+
+
 /**
  * 
  * @author Echipa ContaGen
@@ -12,11 +24,18 @@ import java.util.List;
  * 
  */
 
+@Entity
 public class InregistrareRJ implements Comparable<InregistrareRJ>{
+	@Id
+	@GeneratedValue(strategy = AUTO)
 	private Integer idInregRJ;
+	@Temporal(DATE)
 	private Date dataInregRJ;
+	@OneToMany(mappedBy = "inregRJ")
 	private List <ArticolCtb> articoleRJ;
 	private Integer nrDocLeg;
+	@ManyToOne
+	@JoinColumn(name = "lunaCurs_idLuna", referencedColumnName = "idLuna")
 	private LunaLucru lunaCurs;
 	private Integer idPartener;
 	private boolean anulat;

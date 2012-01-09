@@ -1,5 +1,11 @@
 package org.open.erp.services.ctbgen;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.AUTO;
+
+
 /**
  * 
  * @author Echipa ContaGen
@@ -8,13 +14,22 @@ package org.open.erp.services.ctbgen;
  * 
  */
 
+@Entity
 public class LunaLucru implements Comparable<LunaLucru> { 
+	@Id
+	@GeneratedValue(strategy = AUTO)
 	private Integer idLuna;
 	private Integer luna;
 	private Integer an;
 	private String status;
 
 	public enum StatusLuna { DESCHISA, INCHISA };
+	
+	
+
+	public LunaLucru() {
+		super();
+	}
 
 	public Integer getIdLuna() {
 		return idLuna;

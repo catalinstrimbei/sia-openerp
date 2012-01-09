@@ -1,5 +1,11 @@
 package org.open.erp.services.ctbgen;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.AUTO;
+
+
 /**
  * 
  * @author Echipa ContaGen
@@ -8,31 +14,39 @@ package org.open.erp.services.ctbgen;
  * 
  */
 
-public class SablonNC {
+@Entity
+public class SablonNC extends Sablon{
+	
+	@Id
+	@GeneratedValue(strategy = AUTO)
 	private Integer idSablon;
 	private Integer nrSablon;
-	private Cont contDebit;
-	private Cont contCredit;
 
-	public SablonNC(Integer idSablon, Integer nrSablon, Cont contDebit, Cont contCredit) {
-		super();
+		
+
+	public SablonNC( Integer idSablon,Integer nrSablon,Cont contDebit, Cont contCredit) {
+		super(contDebit, contCredit);
 		this.idSablon = idSablon;
 		this.nrSablon = nrSablon;
-		this.contDebit = contDebit;
-		this.contCredit = contCredit;
+	}
+	public SablonNC(Integer nrSablon, Cont contDebit, Cont contCredit) {
+		super(contDebit, contCredit);
+		this.nrSablon = nrSablon;
 	}
 	
-	public SablonNC(Integer nrSablon, Cont contDebit, Cont contCredit) {
-		super();
-		this.nrSablon = nrSablon;
-		this.contDebit = contDebit;
-		this.contCredit = contCredit;
+	
+	public SablonNC(Cont contDebit, Cont contCredit) {
+		super(contDebit, contCredit);
 	}
+
+
 
 	public SablonNC() {
 		super();
 	}
-	
+
+
+
 	public Integer getIdSablon() {
 		return idSablon;
 	}
@@ -49,24 +63,10 @@ public class SablonNC {
 		this.nrSablon = nrSablon;
 	}
 
-	public Cont getContDebit() {
-		return contDebit;
-	}
-
-	public void setContDebit(Cont contDebit) {
-		this.contDebit = contDebit;
-	}
-
-	public Cont getContCredit() {
-		return contCredit;
-	}
-
-	public void setContCredit(Cont contCredit) {
-		this.contCredit = contCredit;
-	}
+	
 	
 	public String toString() {
-		return this.idSablon + ") " + this.nrSablon+ " - D=" +this.contDebit +" C="+this.contCredit;
+		return this.idSablon + ") " + this.nrSablon+ " - D=";
 	}
 
 }

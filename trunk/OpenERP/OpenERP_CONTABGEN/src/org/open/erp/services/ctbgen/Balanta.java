@@ -1,5 +1,10 @@
 package org.open.erp.services.ctbgen;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+
 /**
  * 
  * @author Echipa ContaGen
@@ -7,10 +12,15 @@ package org.open.erp.services.ctbgen;
  * @BusinessObject(Entity)
  * 
  */
-
+@Entity
 public class Balanta implements Comparable<Balanta> {
+	@Id
 	private int id;
+	@ManyToOne
+	@JoinColumn(name = "lunaB_idLuna", referencedColumnName = "idLuna")
 	private LunaLucru lunaB;
+	@ManyToOne
+	@JoinColumn(name = "contB_idCont", referencedColumnName = "idCont")
 	private Cont contB;
 	private Double slodInD;
 	private Double slodInC;
@@ -64,6 +74,12 @@ public class Balanta implements Comparable<Balanta> {
 		this.slodFinD = slodFinD;
 		this.slodFinC = slodFinC;
 		this.anulat = anulat;
+	}
+	
+	
+
+	public Balanta() {
+		super();
 	}
 
 	public int getId() {

@@ -1,5 +1,13 @@
 package org.open.erp.services.ctbgen;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.AUTO;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+
+
 /**
  * 
  * @author Echipa ContaGen
@@ -8,13 +16,28 @@ package org.open.erp.services.ctbgen;
  * 
  */
 
+@Entity
 public class TipContabil {
+	@Id
+	@GeneratedValue(strategy = AUTO)
 	private Integer idTipContabil;
 	private String denumireTip;
+	@ManyToOne
+	@JoinColumn(name = "contProprietar_idCont", referencedColumnName = "idCont")
 	private Cont contProprietar;
+	@ManyToOne
+	@JoinColumn(name = "contIntrare_idCont", referencedColumnName = "idCont")
 	private Cont contIntrare;
+	@ManyToOne
+	@JoinColumn(name = "contIesire_idCont", referencedColumnName = "idCont")
 	private Cont contIesire;
 	
+	
+	
+	public TipContabil() {
+		super();
+	}
+
 	public TipContabil(String denumireTip, Cont contProprietar, Cont contIntrare, Cont contIesire) {
 		super();
 		this.idTipContabil=-1;
