@@ -38,34 +38,6 @@ public class PersonalLogger {
 					e.printStackTrace();
 				}
 	}
-	public static void addCustomAppender(String logId) throws IOException {
-        String logName = logId;
-
-	//Make sure the logger has not already been added.
-        Logger rootLogger = Logger.getRootLogger();
-        if (rootLogger.getAppender(logId) != null)
-            return;
-
-	//Get the FILE appender to find the location of our server.log file.
-        Appender fileAppender = rootLogger.getAppender("FILE");
-        if (fileAppender != null) {
-            String logFolder = ((RollingFileAppender)fileAppender).getFile();
-            logFolder = logFolder.substring(1, logFolder.lastIndexOf(File.pathSeparator));
-            logName = logFolder + File.pathSeparator + logId + ".log";
-        }
-
-	//Create the RollingFileAppender.
-        PatternLayout layout = new PatternLayout();
-	layout.setConversionPattern("%d %-5p [%c] %m%n");
-        RollingFileAppender myAppender = new RollingFileAppender(layout, logName);
-        myAppender.setAppend(true);
-        myAppender.setMaxFileSize("5MB");
-        myAppender.setMaxBackupIndex(3);
-        myAppender.setName(logId);
-
-	//Add the appender.
-        rootLogger.addAppender(myAppender);
-    }
 	
 	public String getName() {
 		return logger.getName();
