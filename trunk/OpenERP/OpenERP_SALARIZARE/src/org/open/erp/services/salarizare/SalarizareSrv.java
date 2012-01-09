@@ -261,4 +261,16 @@ public interface SalarizareSrv {
 	CentralizatorStatSalarii getStatSalariiLuna(Integer an, Integer luna) throws Exception;
 	
 	Angajat getAngajatById(Integer id) throws Exception;
+	
+	/**
+	 * returneaza pontajul pentru un anumit angajat si o luna  
+	 * @param an 				Anul pentru care se returneaza pontajuk
+	 * @param luna 				Luna pentru care se returneaza pontajul
+	 * @param angajat			Angajatul pentru care se returneaza pontajul 
+	 * 
+	 * @return  Pontaj
+	 * @throws Exception 
+	 * 
+	 */
+	Pontaj getPontajByAngajat(Angajat angajat, Integer an, Integer luna) throws Exception;
 }
