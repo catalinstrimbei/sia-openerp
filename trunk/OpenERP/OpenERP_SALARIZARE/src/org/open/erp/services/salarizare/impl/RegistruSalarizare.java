@@ -140,7 +140,6 @@ public class RegistruSalarizare {
 			if (spor.getIdSpor() == null || 
 				entityManager.find(spor.getClass(), spor.getIdSpor()) == null)
 			{
-				logger.info("INAINTE ***** " + entityManager);
 				entityManager.persist(spor);
 			}
 			else
