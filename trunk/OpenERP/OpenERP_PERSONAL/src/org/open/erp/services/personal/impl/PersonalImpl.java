@@ -1474,7 +1474,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Iterator <CV> iteratorCV = test.ListaCandidati.iterator();
 		while (iteratorCV.hasNext()){
 			CV cvCurent = iteratorCV.next();
-			if (cvCurent.getCandidat().getIdCandidat().equals(candidat_.getIdCandidat() ))
+			if (cvCurent.getCandidat().getIdCandidat().equals(candidat_.getIdCandidat())
+					&& cvCurent.getDataDepunere().compareTo(cvCurent.getUltimaModificare()) <= 0 
+				)
 			{
 				return cvCurent;
 			}
@@ -1679,7 +1681,188 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}		
 		System.out.println(_eveniment.getStatusEveniment());
 	}
+
+
+	// begin Ioana
+
+	@Override
+	public ContractMunca getContractAngajatActivEJB(Angajat angajat_) throws Exception {
+		logger.logDEBUG(">>>>>>Start getContractAngajatActivEJB din personal impl");
+		if (angajat_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			Collection<ContractMunca> listaContracteAngajat = this.registruPersonalEJB.getListaContracteAngajatEJB(angajat_);
+			
+			Iterator <ContractMunca> iteratorContract = listaContracteAngajat.iterator();
+
+			while (iteratorContract.hasNext()){
+				ContractMunca contractCurent;
+				contractCurent = iteratorContract.next();
+				if (contractCurent.getDataInceput().compareTo(Calendar.getInstance().getTime()) <= 0 
+						&&
+						contractCurent.getDataTerminare().compareTo(Calendar.getInstance().getTime()) >= 0)
+				{
+					System.out.println( "Contractul are codul: " + contractCurent.getNrContract() + ", data inceput: " + contractCurent.getDataInceput() 
+							+ ", data sfarsit: " + contractCurent.getDataTerminare());
+					
+					System.out.println("Contract gasit pentru angajatul cu numele: " + angajat_.getNume());
+
+
+					return contractCurent;
+				}
+				
+			}
+			
+			logger.logDEBUG(">>>>>>End getContractAngajatActivEJB  din personal impl");
+		}
+		System.out.println("Nu a fost gasit niciun contract pentru angajatul cu numele " + angajat_.getNume());
+		return null;
+	}
 	
+	
+
+	@Override
+	public Collection<ContractMunca> getListaContracteAngajatEJB ( Angajat angajat_) throws Exception {	
+			logger.logDEBUG(">>>>>>Start getListaContracteAngajatEJB din personal impl");
+			Collection<ContractMunca> result = this.registruPersonalEJB.getListaContracteAngajatEJB(angajat_);
+			logger.logDEBUG(">>>>>>End getListaContracteAngajatEJB din personal impl");
+			return result;
+	}
+	
+	
+	@Override
+	public CV getCVByCandidatEJB(Candidat candidat_) throws Exception{
+		
+	if (candidat_ == null){					
+		sessionContext.setRollbackOnly();
+		logger.logDEBUG(">>>>>>Tranzactie Anulata");
+	}
+	else{			
+		Collection<CV> listaCVuriCandidat = this.registruPersonalEJB.getListaCVuriCandidatEJB(candidat_);
+		Iterator <CV> iteratorCV = listaCVuriCandidat.iterator();
+			while (iteratorCV.hasNext()){
+				CV cvCurent = iteratorCV.next();
+				if (cvCurent.getCandidat().getIdCandidat().equals(candidat_.getIdCandidat())
+						&& cvCurent.getDataDepunere().compareTo(cvCurent.getUltimaModificare()) <= 0 
+					)
+				{
+					return cvCurent;
+				}		
+
+			}		
+		
+		}
+	    logger.logDEBUG(">>>>>>End getContractAngajatActivEJB  din personal impl");
+		System.out.println("Nu a fost gasit niciun cv pentru angajatul cu numele " + candidat_.getNume());
+		return null;
+	}
+	
+	
+	@Override
+	public DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception {
+		if (angajat_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			Collection<DosarAngajat> listaDosareAngajati = this.registruPersonal.getListaDosareAngajat();
+			Iterator <DosarAngajat> iteratorDosar = listaDosareAngajati.iterator();
+			while (iteratorDosar.hasNext()){
+				DosarAngajat dosarCurent = iteratorDosar.next();
+				if (dosarCurent.getAngajat().getMarca().equals(angajat_.getMarca()))
+				{
+					return dosarCurent;
+				}
+			}
+		}
+			return null;
+	}
+	
+	
+	
+	
+	@Override
+	public void activareAngajatiEJB() throws Exception {
+		Collection<Angajat> listaAngajati = this.registruPersonal.getListaAngajati();
+		Iterator<Angajat> iterator = listaAngajati.iterator();
+		Integer nrActivari = 0; // variabila 
+		
+		while (iterator.hasNext()) {
+			Angajat angajatCurent = iterator.next();
+			DosarAngajat dosar = this.getDosarByAngajatEJB(angajatCurent);
+				
+			if(angajatCurent.getActiv() == false &&
+				dosar.getAdeverintaStudii() ==true && dosar.getAdeverintaStudii() == true && dosar.getFisaMedicala() == true)
+				
+			{
+				Collection<ContractMunca> contracte = this.registruPersonalEJB.getListaContracteAngajatEJB(angajatCurent);
+				
+				//System.out.println("activare2" + angajatCurent.getNume());
+				
+				//System.out.println("activare3 " + contracte.size());
+
+				
+				if (contracte.size()>0) {
+					
+					angajatCurent.setActiv(true);	
+					this.registruPersonal.salveazaAngajat(angajatCurent);
+					
+					nrActivari = nrActivari + 1;
+					
+					System.out.println("-------- Angajatul activat are numele:  " + angajatCurent.getNume());
+				}
+				
+				contracte.clear();
+			}
+		}	
+		
+	}
+
+	@Override
+	public Collection<Candidat> recrutareEJB(Date dataAnunt_,
+			Candidat candidat_, Collection<InterviuCandidat> ListaInit_)
+			throws Exception {
+		// TODO Auto-generated method stub
+		try
+		{
+			Collection<Candidat> rezultat = new ArrayList<Candidat>();
+			
+			Iterator<InterviuCandidat> iterator = ListaInit_.iterator();
+			
+			while (iterator.hasNext()) {
+				InterviuCandidat	interviu = iterator.next();
+				if (interviu.getRezultatEvaluare() == "ADMIS" && interviu.getInterviu().getTipInterviu() == "Final" 
+								&& candidat_.getIdCandidat()== interviu.getCandidat().getIdCandidat()
+								&& (interviu.getDataInterviu().compareTo(dataAnunt_)) >= 0)
+											
+				{
+					rezultat.add(interviu.getCandidat());	
+				}
+			}
+			return rezultat;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			logger.logERROR(e.getMessage(), e);
+			return null;
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	// end Ioana
+	
+	
+	
+
 	
 	@Override
 	public HashMap<DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB() {
@@ -1822,7 +2005,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		
 	}
+
 	
+
 	@Override
 	public Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_) {
 		
@@ -1984,6 +2169,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		return contractNou;
 	}
 	
+
 
 	@Override
 	public Collection<Eveniment> getEvenimenteAnualeEJB(Integer _year)throws Exception

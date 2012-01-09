@@ -1078,6 +1078,7 @@ public class RegistruPersonal {
 			throw ex;
 		}
 	}
+	
 
 	//TODO - to be deleted
 	public Collection<DummyDepartament> getListaDepartamente() throws Exception{

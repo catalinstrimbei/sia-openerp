@@ -1,10 +1,23 @@
 package org.open.erp.services.personal.impl;
 
+
+import java.util.Collection;
+
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Collection;
 
+
 import javax.persistence.EntityManager;
+
+
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.CV;
+import org.open.erp.services.personal.Candidat;
+import org.open.erp.services.personal.ContractMunca;
+import org.open.erp.services.personal.DosarAngajat;
+import org.open.erp.services.personal.InterviuCandidat;
 
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.CV;
@@ -25,6 +38,41 @@ public class RegistruPersonalEJB {
 	public RegistruPersonalEJB(EntityManager em) {
 		entityManager = em;
 	}
+
+
+	public Collection<ContractMunca> getListaContracteAngajatEJB(Angajat angajat_) throws Exception {
+		try
+		{
+			return  entityManager.createQuery("SELECT c FROM  ContractMunca c INNER JOIN  Angajat a  WHERE c.marca = :a.marca AND a.marca = :marca_")
+					.setParameter("marca_",angajat_.getMarca())
+					.getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		
+	}
+	
+	public Collection<CV> getListaCVuriCandidatEJB(Candidat candidat_) throws Exception {
+		try
+		{
+			return  entityManager.createQuery("SELECT c FROM  CV c INNER JOIN  Candidat cn  WHERE c.idCandidat = :cn.idCandidat AND cn.idCandidat = :idcandidat_")
+					.setParameter("idcandidat_",candidat_.getIdCandidat())
+					.getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		
+	}
+	
+	
 
 	public Collection<ProbaEvaluare> getProbaEvaluarePeDepartament(DummyDepartament departament_) throws Exception{
 		try{
@@ -53,6 +101,7 @@ public class RegistruPersonalEJB {
 			throw ex;
 		}
 	}
+
 
 	
 	public Collection<CV> getCVuriPeAnuntLocMunca(AnuntLocMunca anuntMunca_) throws Exception{

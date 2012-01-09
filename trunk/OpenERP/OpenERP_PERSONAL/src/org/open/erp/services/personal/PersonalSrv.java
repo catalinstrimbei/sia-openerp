@@ -885,7 +885,81 @@ public interface PersonalSrv {
 	 * @param _activitate //metoda ce determina daca un eveniment este aprobat sau nu in functie de suma alocata si estimata
 	 * 
 	 */
+
 	
+	
+
+	// EJB Ioana
+	ContractMunca getContractAngajatActivEJB(Angajat angajat_) throws Exception;	
+	/**
+	 * Scop  			 Returneaza un contract de munca pentru un angajat precizat
+	 * 
+	 * @param  angajat_  Angajatul dupa care se face cautarea
+	 * 
+	 * @return           un contract curent pentru un angajat
+	 * 
+	 */
+	
+	Collection<ContractMunca> getListaContracteAngajatEJB(Angajat angajat_) throws Exception;
+	/**
+	 * Scop  			 Returneaza o lista de contracte  pentru un angajat precizat
+	 * 
+	 * @param  angajat_  Angajatul dupa care se face cautarea
+	 * 
+	 * @return           contractele pentru un angajat
+	 * 
+	 */
+	
+	
+    CV getCVByCandidatEJB(Candidat candidat_) throws Exception;
+	
+	/**
+	 * Scop    Returneaza cv-ul pentru fiecare candidat
+	 *         
+	 * @param  candidat_ 	    Candidatul pentru care se cauta cv-ul
+	 * 
+	 * @return date Cv pentru candidatul precizat
+	 * 	
+	 */
+    
+    DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception;
+	
+	/**
+	 * Scop  			 Returneaza dosarul de angajare pentru un angajat precizat
+	 * 
+	 * @param  angajat_  Angajatul dupa care se face cautarea
+	 * 
+	 * @return           dosarul curent pentru un angajat
+	 * 
+	 */
+
+	void activareAngajatiEJB() throws Exception;
+	
+	/**
+	 * Scop                   Seteaza activ statusul unui angajat daca dosarul acestuia este complet
+	 * 
+	 * @param  ListaAngajati  Lista tuturor angajatilor pentru care se realizeaza operatiunea
+	 * 
+	 * @return           
+	 * 
+	 */
+    
+    Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_, Collection<InterviuCandidat> ListaInit_) throws Exception;
+	
+	/**
+	 * Scop    Returneaza o Lista cu candidatii care au au fost admisi la interviul final, interviu organizat dupa 
+	 *         o data precizata
+	 * 
+	 * @param  dataAnunt_ 	    Data precizata de utilizator, care va fi comparata cu data sustinerii interviului
+	 * @param  candidat_        Candidatul pentru care se afiseaza interviurile finale si admise
+	 * @param  ListaInit_ 	    Lista cu toate  interviurile existente
+	 * 
+	 * @return Lista cu date despre candidati admisi la interviurile finale
+	 * 
+	 */
+	
+    
+	// end Ioana
 	
 
 	HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB ();
@@ -898,6 +972,7 @@ public interface PersonalSrv {
 	 * @return map cu fiecare departament si probele fiecaruia
 	 * 
 	 */
+
 	
 	HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProbaEJB ();
 	/**
@@ -1016,5 +1091,6 @@ public interface PersonalSrv {
 	 * Daca year = 0 va returna toate evenimentele din toti anii
 	 * @return Collection evenimente pentru anul primit ca parametru
 	 */	
+
 
 }

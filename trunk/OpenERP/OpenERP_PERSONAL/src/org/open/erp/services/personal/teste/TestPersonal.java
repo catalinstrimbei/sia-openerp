@@ -34,6 +34,7 @@ import org.open.erp.services.personal.logger.PersonalLogger;
 public class TestPersonal {
 	PersonalImpl personalService = new PersonalImpl();
 	PersonalLogger logger = new PersonalLogger();
+	
 	void vizualizareRecrutare2(TestPersonalImpl test) 
 	{		
 		//this.generareAnunturi();
