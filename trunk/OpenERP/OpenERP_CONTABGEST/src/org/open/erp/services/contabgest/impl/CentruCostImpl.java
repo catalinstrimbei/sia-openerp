@@ -15,6 +15,7 @@ import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+
 import org.open.erp.services.contabgest.Activitate;
 import org.open.erp.services.contabgest.ActivitateCentruCost;
 import org.open.erp.services.contabgest.CentruCost;
@@ -37,8 +38,9 @@ import org.open.erp.services.productie.FazaProductie;
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, CentruCostSRVRemote{
 	
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(CentruCostImpl.class.getName());
 	
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(CentruCostImpl.class.getName());
+	private RegistruCentruCost registruCentruCost;
 	
 	// referinte servicii (application service) dependente
 	@PersistenceContext(unitName="OpenERP_CONTABGEST")
@@ -47,6 +49,7 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 	private SessionContext sessionContext;
 	
 	@EJB(mappedName="CostPrimarImpl/local")
+	
 	private CostPrimarSRV costPrimarSRV;
 	
 	
@@ -55,8 +58,8 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 	}
 	@PostConstruct
 	public void init(){
-		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
-		logger.debug(">>>>>>>>>>>> Exista CostPrimarSrv? " + costPrimarSRV);		
+		logger.debug(">> Exista em? " + em);		
+		logger.debug(">> Exista CostPrimarSrv? " + costPrimarSRV);		
 		
 		if (this.registruCentruCost == null)
 			registruCentruCost = new RegistruCentruCost(em);
@@ -77,10 +80,10 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 			//CentruCost centruCostNou = new CentruCost(1, denumireCentruCost, dataStart, dataSfarsit, sumaCentruCost, responsabil);
 			CentruCost centruCostNou = new CentruCost (denumireCentruCost,faza, responsabil, dataStart, dataSfarsit, sumaCentruCost);
 			
-			logger.debug(">> Cerere costPrimar: " + CostPrimarSRV);		
+			logger.debug(">> Cerere costPrimar: " + costPrimarSRV);		
 			CosturiPrimare costuriPrimare = CostPrimarSRV.creareCosturiPrimare(valoareCosturiPrimare);
 			centruCostNou.setCosturiPrimare(costuriPrimare);
-			logger.debug("CostPrimar centruCost: " + CosturiPrimare.getValoareCost());
+			logger.debug("CostPrimar centruCost: " + costuriPrimare.getValoareCost());
 			
 		
 			if (sessionContext.getRollbackOnly() == true){
@@ -99,7 +102,7 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 					
 		}
 	public void setCostPrimarSRV (CostPrimarSRV costPrimarSRV){
-		this.costPrimarSRV=costPrimarSRV;
+		this.costPrimarSRV= costPrimarSRV;
 		
 	}
 	
