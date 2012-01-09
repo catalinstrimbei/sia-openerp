@@ -1,5 +1,6 @@
 package org.open.erp.services.stocuri;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQuery(name = "getGestiuneByDepozit", query = "Select g from Gestiune g where g.depozit.idDepozit := idDepozit")
-public class Gestiune {
+public class Gestiune implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idGestiune;

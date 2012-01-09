@@ -1,5 +1,6 @@
 package org.open.erp.services.stocuri;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -11,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 /**
  * 
  * @author echipa.stocuri
@@ -21,19 +21,22 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
-public class LoturiIntrari implements Comparable<LoturiIntrari>{
-	@Id@GeneratedValue(strategy=GenerationType.AUTO)
-	private	Integer idLot;
+public class LoturiIntrari implements Comparable<LoturiIntrari>, Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer idLot;
 	private Integer cantitate;
 	private Double pretIntrare;
 	@Temporal(TemporalType.DATE)
 	private Date dataIntrare;
-	@ManyToOne@JoinColumn(name="idArticolStoc")
+	@ManyToOne
+	@JoinColumn(name = "idArticolStoc")
 	private ArticolStoc articol;
-	
+
 	public LoturiIntrari() {
 		super();
 	}
+
 	public LoturiIntrari(Integer idLot, Integer cantitate, Double pretIntrare,
 			Date dataIntrare, ArticolStoc articol) {
 		super();
@@ -43,45 +46,57 @@ public class LoturiIntrari implements Comparable<LoturiIntrari>{
 		this.dataIntrare = dataIntrare;
 		this.articol = articol;
 	}
-	public void decrementeazaCant(Integer cant){
-		this.cantitate-=cant;
+
+	public void decrementeazaCant(Integer cant) {
+		this.cantitate -= cant;
 		this.articol.decrementeazaCantArticolPeGestiune(cant);
 	}
-	public void incrementeazaCant(Integer cant){
-		this.cantitate+=cant;
+
+	public void incrementeazaCant(Integer cant) {
+		this.cantitate += cant;
 		this.articol.incrementeazaCantArticolPeGestiune(cant);
 	}
-	
+
 	public Integer getIdLot() {
 		return idLot;
 	}
+
 	public void setIdLot(Integer idLot) {
 		this.idLot = idLot;
 	}
+
 	public Integer getCantitate() {
 		return cantitate;
 	}
+
 	public void setCantitate(Integer cantitate) {
 		this.cantitate = cantitate;
 	}
+
 	public Double getPretIntrare() {
 		return pretIntrare;
 	}
+
 	public void setPretIntrare(Double pretIntrare) {
 		this.pretIntrare = pretIntrare;
 	}
+
 	public Date getDataIntrare() {
 		return dataIntrare;
 	}
+
 	public void setDataIntrare(Date dataIntrare) {
 		this.dataIntrare = dataIntrare;
 	}
+
 	public ArticolStoc getArticol() {
 		return articol;
 	}
+
 	public void setArticol(ArticolStoc articol) {
 		this.articol = articol;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,6 +104,7 @@ public class LoturiIntrari implements Comparable<LoturiIntrari>{
 		result = prime * result + ((idLot == null) ? 0 : idLot.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -105,19 +121,19 @@ public class LoturiIntrari implements Comparable<LoturiIntrari>{
 			return false;
 		return true;
 	}
+
 	@Override
 	public int compareTo(LoturiIntrari o) {
-		if(o==null){
+		if (o == null) {
 			return 0;
 		}
-		if(this.dataIntrare.after(o.dataIntrare)){
+		if (this.dataIntrare.after(o.dataIntrare)) {
 			return 1;
-		}else if(this.dataIntrare.before(o.dataIntrare)){
+		} else if (this.dataIntrare.before(o.dataIntrare)) {
 			return -1;
-		}else{
+		} else {
 			return 0;
 		}
 	}
-	
-	
+
 }

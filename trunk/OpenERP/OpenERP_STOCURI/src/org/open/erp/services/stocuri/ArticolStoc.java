@@ -1,5 +1,6 @@
 package org.open.erp.services.stocuri;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import org.open.erp.services.nomgen.Material;
  */
 @Entity
 @NamedQuery(name = "getArticoleStocByGestiune", query = "Select o from ArticolStoc o where o.gestiune.idGestiune := idGest")
-public class ArticolStoc {
+public class ArticolStoc implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idArticolStoc;
