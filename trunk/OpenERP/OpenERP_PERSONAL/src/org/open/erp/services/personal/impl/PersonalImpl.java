@@ -94,8 +94,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTeamBuilding getActivitateTeamBuildingById(
-			Integer idActivitate_) throws Exception {
-		// TODO Auto-generated method stub
+			Integer idActivitate_) throws Exception {	
 		logger.logDEBUG(">>>>>>Start getActivitateTeamBuildingById");
 		ActivitateTeamBuilding result = new ActivitateTeamBuilding();
 		if (idActivitate_ == null){
@@ -401,7 +400,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat getCandidatByIdCandidat(Integer idCandidat_) throws Exception {
-		// TODO Auto-generated method stub
 		logger.logDEBUG(">>>>>>Start getCandidatByIdCandidat");
 		Candidat result = new Candidat();
 		if (idCandidat_ == null){					
@@ -1084,8 +1082,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<ProbaEvaluare> getListaProbeEvaluare()
-			throws Exception {
-		// TODO Auto-generated method stub
+			throws Exception {		
 		logger.logDEBUG(">>>>>>Start getListaProbeEvaluare");
 		Collection<ProbaEvaluare> result = this.registruPersonal.getListaProbaEvaluare();
 		logger.logDEBUG(">>>>>>End getListaProbeEvaluare");
@@ -1095,7 +1092,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ProbaEvaluare salveazaProbaEvaluare(ProbaEvaluare probaEvaluare_) throws Exception {
-		// TODO Auto-generated method stub
 		logger.logDEBUG(">>>>>>Start creare ProbaEvaluare");		
 		if (probaEvaluare_ == null){
 			sessionContext.setRollbackOnly();
@@ -1113,8 +1109,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeProbaEvaluare(ProbaEvaluare proba_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeProbaEvaluare");
+			logger.logDEBUG(">>>>>>Start stergeProbaEvaluare");
 		if (proba_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -1216,7 +1211,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void demisionare(CerereDemisie cerereDemisie_) {
-		// TODO Auto-generated method stub				
+			
 		ContractMunca	contract = cerereDemisie_.getContract();
 		Angajat 		angajat = contract.getAngajat();
 		Date			data;
@@ -1740,6 +1735,239 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			return null;
 			}
 		}
+
+	@Override
+	public Collection<AnuntLocMunca> getPosturiVacanteEJB(Date dataVizata_) {
+		try
+		{
+			Collection<AnuntLocMunca> listaInit = this.registruPersonal.getListaAnunturiLocMunca();
+			
+			Iterator<AnuntLocMunca> iterator = listaInit.iterator();
+			
+			Collection<AnuntLocMunca> rezultat = new ArrayList<AnuntLocMunca>();
+			while (iterator.hasNext()) {
+				AnuntLocMunca	anunt = iterator.next();
+				//System.out.println(anunt.getCorpAnunt());
+				if(dataVizata_.compareTo(anunt.getDataInceput()) >= 0 && dataVizata_.compareTo(anunt.getDataExpirare()) <= 0)
+				{
+					rezultat.add(anunt);	
+				}
+			}
+			return rezultat;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+			return null;
+		}
+	}
+	@Override
+	public Collection<Candidat> getCandidatipeFunctieEJB(AnuntLocMunca anuntLocMunca_){
+		try
+		{
+			Collection<Candidat> rezultat = new ArrayList<Candidat>();
+			
+			Collection<CV> listaInit = this.registruPersonalEJB.getCVuriPeAnuntLocMunca(anuntLocMunca_);
+			Iterator<CV> iterator = listaInit.iterator();
+			
+			while (iterator.hasNext()) {
+				CV	cv = iterator.next();
+				if(cv.getUltimaModificare().compareTo(anuntLocMunca_.getDataInceput()) >= 0 && cv.getUltimaModificare().compareTo(anuntLocMunca_.getDataExpirare()) <= 0)
+				{
+					rezultat.add(cv.getCandidat());	
+				}
+			}
+			return rezultat;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+			return null;
+		}		
+	}
+	@Override
+	public Collection<Angajat> getAngajatipeFunctieEJB(Functie functie_) {
+		try{
+			Collection<Angajat> rezultat = new ArrayList<Angajat>();
+			Collection<ContractMunca> listaContractMuncapeFunctie = new ArrayList<ContractMunca>();
+			listaContractMuncapeFunctie = this.registruPersonalEJB.getContracteMuncaPeFunctie(functie_);
+			Iterator<ContractMunca> iterator = listaContractMuncapeFunctie.iterator();
+			
+			while (iterator.hasNext()) {
+				ContractMunca	contractCurent = iterator.next();
+				if (contractCurent.getDataInceput().compareTo(Calendar.getInstance().getTime()) <= 0 
+						&&
+						contractCurent.getDataTerminare().compareTo(Calendar.getInstance().getTime()) >= 0)
+				{
+					rezultat.add(contractCurent.getAngajat());	
+				}
+			}
+			return rezultat;
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+			return null;
+		}
+		
+	}
+	
+	@Override
+	public Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_) {
+		
+			return null;
+		
+	}
+	
+	@Override
+	public void angajareEJB(Candidat candidat_) {
+		try{
+		Angajat angajat;
+		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
+				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
+				null, null, 0);
+		//em.persist(angajat);
+		CV cv = getCVByCandidat(candidat_);
+		
+		ContractMunca contract;
+		contract = new ContractMunca(null, 1000.00, 10.00, angajat, cv.getFunctieVizata(), new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+		this.registruPersonal.salveazaContractMunca(contract);
+		
+		DosarAngajat dosar;
+		dosar = new DosarAngajat(null, angajat, false, false, false);
+		//TODO - must revise - two different transactions
+		this.registruPersonal.salveazaDosarAngajat(dosar);
+		
+		}catch(Exception ex){
+			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+		}
+		
+	}
+	
+	@Override
+	public void demisionareEJB(CerereDemisie cerereDemisie_) {
+		ContractMunca	contract = cerereDemisie_.getContract();
+		Angajat 		angajat = contract.getAngajat();
+		Date			data;
+		try
+		{
+			if(cerereDemisie_.getDataCerere() == null)
+			{
+				data = Calendar.getInstance().getTime();
+				cerereDemisie_.setDataCerere(data);
+				
+			}
+			
+			if(cerereDemisie_.getDataDemisie() == null)
+			{
+				cerereDemisie_.setDataDemisie(Calendar.getInstance().getTime());
+			}
+			
+			long msDiff= cerereDemisie_.getDataDemisie().getTime() - cerereDemisie_.getDataCerere().getTime();
+			int nrZile = Math.round(msDiff / ((int)MILLIS_PER_DAY));
+			
+			cerereDemisie_.setPerioadaPreaviz(nrZile);
+			
+			contract.setDataTerminare(cerereDemisie_.getDataDemisie());
+			contract.setMotivIncheiere("Demisionare");
+			
+			angajat.setActiv(false);
+			cerereDemisie_.setStatus("Finalizata");
+			
+			this.registruPersonal.salveazaCerereDemisie(cerereDemisie_);
+			
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+		}
+		
+	}
+	@Override
+	public void concediereEJB(ContractMunca contractMunca_) {
+		try
+		{
+		
+			Angajat 		angajat = contractMunca_.getAngajat();
+			
+			contractMunca_.setDataTerminare(Calendar.getInstance().getTime());
+			
+			angajat.setActiv(false);
+			contractMunca_.setMotivIncheiere("Concediere");
+			this.registruPersonal.salveazaContractMunca(contractMunca_);
+		}catch(Exception ex){
+			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+		}
+		
+	}
+	@Override
+	public ContractMunca relocalizare_promovareEJB(Integer marca_,
+			Functie functieNoua_, ContractMunca contractVizat_,
+			boolean promovare_, double salarBaza_, double tarifOrar_) {
+		Angajat angajat = new Angajat();
+		try
+		{
+			angajat = this.registruPersonal.getAngajatByMarca(marca_);
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();			
+		}
+		if(angajat == null)
+		{
+			return null;
+		}
+		if (contractVizat_ == null)
+		{
+			
+			//TODO - Add this.registruPerosnal.getListaContracteByAngajat(angajat).iterator();
+			Iterator<ContractMunca> iteratorContracte = this.getListaContracteByAngajat(angajat).iterator();
+			
+			while (iteratorContracte.hasNext())
+			{
+				ContractMunca contractVechi = iteratorContracte.next();
+				contractVechi.setDataTerminare(Calendar.getInstance().getTime());
+				if(promovare_)
+				{
+					contractVechi.setMotivIncheiere("Promovare");
+				}
+				else
+				{
+					contractVechi.setMotivIncheiere("Relocalizare");
+				}
+			}	
+		}
+		else
+		{
+			contractVizat_.setDataTerminare(Calendar.getInstance().getTime());
+			if(promovare_)
+			{
+				contractVizat_.setMotivIncheiere("Promovare");
+			}
+			else
+			{
+				contractVizat_.setMotivIncheiere("Relocalizare");
+			}
+		}
+		ContractMunca	contractNou = new ContractMunca(null, salarBaza_, tarifOrar_, angajat, functieNoua_, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), null, 0, null);
+		try{
+			this.registruPersonal.salveazaContractMunca(contractVizat_);
+			this.registruPersonal.salveazaContractMunca(contractNou);
+		}
+			catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();			
+		}
+		return contractNou;
+	}
+	
+
 	@Override
 	public Collection<Eveniment> getEvenimenteAnualeEJB(Integer _year)throws Exception
 	{
