@@ -1,5 +1,7 @@
 package org.open.erp.services.salarizare;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 import org.open.erp.services.personal.Angajat;
@@ -10,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-public class Spor {
+public class Spor implements Serializable{
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private Integer idSpor;
