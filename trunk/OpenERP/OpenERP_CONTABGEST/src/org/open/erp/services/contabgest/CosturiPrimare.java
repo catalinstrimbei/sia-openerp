@@ -18,6 +18,7 @@ public class CosturiPrimare implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer idCostPrimar;
+	
 	private String tipCost; // de tip comanda sau din stocuri
 	private Double valoareCost;
 
