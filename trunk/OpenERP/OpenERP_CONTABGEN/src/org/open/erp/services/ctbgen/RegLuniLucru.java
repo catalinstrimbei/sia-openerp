@@ -1,11 +1,13 @@
 package org.open.erp.services.ctbgen;
 
-import java.util.ArrayList;
+
+
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import org.open.erp.services.ctbgen.LunaLucru;
 import org.open.erp.services.ctbgen.LunaLucru.StatusLuna;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 
@@ -17,11 +19,11 @@ import org.open.erp.services.ctbgen.exceptii.CtbException;
  * 
  */
 
-public class RegLuniLucru {
+public class RegLuniLucru extends Registru{
 	private static RegLuniLucru singleReference;
 
 	private RegLuniLucru() {
-		listaLuni = new ArrayList<LunaLucru>();
+		sqlDefaultText = "SELECT o FROM LunaLucru o";
 	}
 
 	public static RegLuniLucru instantiaza() {
@@ -29,11 +31,17 @@ public class RegLuniLucru {
 			singleReference = new RegLuniLucru();
 		return singleReference;
 	}
-
-	private List<LunaLucru> listaLuni;
 	
+	public List<LunaLucru> getLuniLucru() {
+		@SuppressWarnings("unchecked")
+		List<LunaLucru> result = em.createQuery(this.sqlDefaultText).getResultList();
+		return result;
+	}
+
 	public LunaLucru getOrCreateLunaLucru(Date data) throws CtbException {
 		LunaLucru lunaGasita = getLunaLucruDupa(data, null);
+		List<LunaLucru> listaLuni = getLuniLucru();
+		
 		if(lunaGasita!=null){
 			return lunaGasita; //luna lucru exista
 		}else {
@@ -66,17 +74,19 @@ public class RegLuniLucru {
 	
 	//set metode care doar cauta - prima generalizat, interna
 	private LunaLucru getLunaLucruDupa(Date data, Integer idLuna){
+		List<LunaLucru> listaLuni = getLuniLucru();
+		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(data);
 		int an = cal.get(Calendar.YEAR);
 		int luna =cal.get(Calendar.MONTH)+1;
 		if(idLuna == null){
-			for (LunaLucru l : this.listaLuni) {
+			for (LunaLucru l : listaLuni) {
 				if (l.getAn() == an && l.getLuna() == luna)
 						return l;
 			}
 		} else{ 
-			for (LunaLucru l : this.listaLuni) {
+			for (LunaLucru l : listaLuni) {
 				if (l.getIdLuna() == idLuna)
 					return l;
 			}
@@ -93,28 +103,31 @@ public class RegLuniLucru {
 	}
 	
 
-	private void sorteazaLuni() {
-		Collections.sort(listaLuni);
-	}
+	//private void sorteazaLuni() { 
+		//TODO: asta nu mai are sens, in BD is inregistrate dupa propria logica: sters, adugat -> nu raman in ordinea inserarii (id crescatoare)
+		//e folosit in getUltimaLuna(): vezi ce-am facut acolo!, la fel in getUltimaLunaInchisa();
+		//Collections.sort(listaLuni);
+	//}
 
-	private static int contorId = 1;
+	//private static int contorId = 1;
 	public void addLuna(LunaLucru luna) {
-		if(luna.getIdLuna()==-1){
-			luna.setIdLuna(contorId);
-			contorId++;
-		}
-		
-		if (!listaLuni.contains(luna)) {
-			listaLuni.add(luna);
-		}
+		if (em.contains(luna))
+			em.merge(luna);
+		else
+			em.persist(luna);
+	
+		synchronize();
 	}
 
 	public void removeLuna(LunaLucru luna) {
-		listaLuni.remove(luna);
+		em.remove(luna);
+		
+		synchronize();
 	}
 
-	private LunaLucru getUltimaLuna() {
-		sorteazaLuni();
+	private LunaLucru getUltimaLuna() { //sau se putea in querry cu max luna?
+		List<LunaLucru>listaLuni = getLuniLucru();
+		Collections.sort(listaLuni);
 		LunaLucru ultimaLuna = listaLuni.get(listaLuni.size() - 1);
 		return ultimaLuna;
 	}
@@ -130,7 +143,8 @@ public class RegLuniLucru {
 	}
 	
 	public LunaLucru getUltimaLunaInchisa() {
-		sorteazaLuni();
+		List<LunaLucru>listaLuni = getLuniLucru();
+		Collections.sort(listaLuni);
 		for(int i=listaLuni.size()-1;i>=0;i--)
 			if(listaLuni.get(i).getStatus().equals(StatusLuna.INCHISA.toString()))
 					return listaLuni.get(i);
@@ -139,13 +153,18 @@ public class RegLuniLucru {
 	}
 	
 	public void anuleazaLunaLucru (LunaLucru luna){
-		for (LunaLucru l : this.listaLuni) {
+		List<LunaLucru>listaLuni = getLuniLucru(); //astea provin din un querry deci is managed deci syncronised de la final le ia in calcul
+		
+		for (LunaLucru l : listaLuni) {
 			if (l == luna)
 				 l.anuleazaInchidere();
 		}
+		
+		synchronize();
 	}
 	//TODO: remove me
 	public void printAll(){
+		List<LunaLucru>listaLuni = getLuniLucru();
 		for(int i=0;i<listaLuni.size();i++){
 			System.out.println(listaLuni.get(i).toString());
 		}

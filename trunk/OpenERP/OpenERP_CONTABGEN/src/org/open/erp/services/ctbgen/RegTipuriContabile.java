@@ -11,11 +11,11 @@ import java.util.List;
  */
 
 
-public class RegTipuriContabile {
+public class RegTipuriContabile extends Registru{
 	private static RegTipuriContabile singleReference;
 
 	private RegTipuriContabile() {
-		listaTipuri = new ArrayList<TipContabil>();
+		sqlDefaultText = "SELECT o FROM TipContabil o";
 	}
 
 	public static RegTipuriContabile instantiaza() {
@@ -24,32 +24,38 @@ public class RegTipuriContabile {
 		return singleReference;
 	}
 	
-	private List<TipContabil> listaTipuri;
-	private static int contorId = 1;
+	public List<TipContabil> getTipuriCbt() {
+		@SuppressWarnings("unchecked")
+		List<TipContabil> result = em.createQuery(this.sqlDefaultText).getResultList();
+		return result;
+	}
 	
 	public void addTipContabil(TipContabil tip) {
-		if(tip.getIdTipContabil()==-1){
-			tip.setIdTipContabil(contorId);
-			contorId++;
-		}
-		
-		if (!listaTipuri.contains(tip)) {
-			listaTipuri.add(tip);
-		}
+		if (em.contains(tip))
+			em.merge(tip);
+		else
+			em.persist(tip);
+
+		synchronize();
 	}
 
 	public void removeTipContabil(TipContabil tip) {
-		listaTipuri.remove(tip);
+		em.remove(tip);
+		
+		synchronize();
 	}
 	
-	// TODO: remove me
+	// TODO: La majoritatea astea mergea si cu JSQL
 	public void printAll() {
+		List<TipContabil> listaTipuri=getTipuriCbt();
 		for (int i = 0; i < listaTipuri.size(); i++) {
 			System.out.println(listaTipuri.get(i).toString());
 		}
 	}
 	
 	public TipContabil getTipContabilDupa(Integer idTipContabil) {
+		List<TipContabil> listaTipuri=getTipuriCbt();
+		
 		for (TipContabil t : listaTipuri) {
 			if (idTipContabil == t.getIdTipContabil()) {
 				return t;
@@ -59,6 +65,8 @@ public class RegTipuriContabile {
 	}
 
 	public TipContabil getTipDupaDen(String denumire) {
+		List<TipContabil> listaTipuri=getTipuriCbt();
+		
 		for (TipContabil t : listaTipuri) {
 			if (denumire.equals(t.getDenumireTip())) {
 				return t;
@@ -68,7 +76,9 @@ public class RegTipuriContabile {
 	}
 	
 	public List<String> getTipuriContabile() {
+		List<TipContabil> listaTipuri=getTipuriCbt();
 		List<String> rez = new ArrayList<String>();
+		
 		for (TipContabil t : listaTipuri) {
 			rez.add(t.getDenumireTip());
 		}

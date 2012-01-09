@@ -1,6 +1,6 @@
 package org.open.erp.services.ctbgen;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -11,11 +11,12 @@ import java.util.List;
  * 
  */
 
-public class RegConturi {
+public class RegConturi extends Registru{
+	
 	private static RegConturi singleReference;
 
 	private RegConturi() {
-		planConturi = new ArrayList<Cont>();
+		sqlDefaultText = "SELECT o FROM Cont o";
 	}
 
 	public static RegConturi instantiaza() {
@@ -27,30 +28,45 @@ public class RegConturi {
 	private List<Cont> planConturi;
 
 	public List<Cont> getPlanConturi() {
-		return planConturi; 
+		/*
+		TODO: dar exista si javax.persistence.TypedQuery
+		
+		TypedQuery<Cont> query = em.createQuery(sqlDefaultText, Cont.class);
+		List<Cont> results = query.getResultList();
+
+		dar mie imi arata cu rosu importul ..de cand am instalat cele din tutoriale
+		 */
+		
+		@SuppressWarnings("unchecked")
+		List<Cont> result = em.createQuery(this.sqlDefaultText).getResultList();
+		return result;
 	}
 
-	void setPlanConturi(List<Cont> planConturi) {
-		this.planConturi = planConturi;
+	void setPlanConturi(List<Cont> planConturi) {//TODO: le adaug adica sterg to si adaug + nu cred ca mai ai nevoie
+		for(int i=0;i<planConturi.size();i++){
+			addCont(planConturi.get(i)); //aici e syncronise
+		}
 	}
 	
-	private static int contorId = 1;
+	//private static int contorId = 1;
+	
 	public void addCont(Cont cont) {
-		if(cont.getIdCont()==-1){
-			cont.setIdCont(contorId);
-			contorId++;
-		}
-		
-		if (!planConturi.contains(cont)) {
-			planConturi.add(cont);
-		}
+		if (em.contains(cont))
+			em.merge(cont);
+		else
+			em.persist(cont);
+	
+		synchronize();
 	}
 
-	void removeSablon(Cont cont) {
-		planConturi.remove(cont);
+	void removeSablon(Cont cont) { //TODO: de ce se cheama asa? lucreaza cu conturi
+		em.remove(cont);
+		
+		synchronize();
 	}
 
 	public Cont getContDupaId(Integer idCont) {
+		List<Cont> planConturi = this.getPlanConturi();
 		for (Cont c : planConturi) {
 			if (idCont == c.getIdCont()) {
 				return c;

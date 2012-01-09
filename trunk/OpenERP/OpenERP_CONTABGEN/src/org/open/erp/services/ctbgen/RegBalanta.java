@@ -14,45 +14,59 @@ import java.util.List;
  * 
  */
 
-public class RegBalanta {
-	private static RegBalanta singleReference;
-
+public class RegBalanta extends Registru{
+	
 	private RegBalanta() {
-		balante = new ArrayList<Balanta>();
+		sqlDefaultText = "SELECT o FROM Balanta o";
 	}
+	
+	private static RegBalanta singleReference;
 
 	public static RegBalanta instantiaza() {
 		if (singleReference == null)
 			singleReference = new RegBalanta();
 		return singleReference;
 	}
-
-	private List<Balanta> balante;
 	
-	private static int contorId = 1;
-	public void addBalanta(Balanta balanta) {
-		if(balanta.getId()==-1){
-			balanta.setId(contorId);
-			contorId++;
-		}
-		if (!balante.contains(balanta)) {
-			balante.add(balanta);
-		}
+	public List<Balanta> getBalante() {
+		@SuppressWarnings("unchecked")
+		List<Balanta> result = em.createQuery(this.sqlDefaultText).getResultList();
+		return result;
 	}
+	
+	public void addBalanta(Balanta balanta) {
+		if (em.contains(balanta))
+				em.merge(balanta);
+		else
+			em.persist(balanta);
+		
+		synchronize();
+	}
+	
 	public void addAll(List<Balanta> listBal){
 		for(Balanta b:listBal){
-			addBalanta(b);
+			if (em.contains(b))
+				em.merge(b);
+			else
+				em.persist(b);
 		}
+		
+		synchronize();
 	}
 
 	void removeBalanta(Balanta balanta) {
-		balante.remove(balanta);
+		em.remove(balanta);
+		
+		synchronize();
 	}
 	
 	void removeBalanta(int id) {
+		List<Balanta> balante=getBalante();
 		for(int i=0;i<balante.size();i++){
-			if(balante.get(i).getId()==id)
+			if(balante.get(i).getId()==id) {
 				removeBalanta(balante.get(i));
+				break;//e doar una
+			}	
 		}
 	}
 	
@@ -65,40 +79,45 @@ public class RegBalanta {
 		Date lunaAnterioara_date = c.getTime();
 		
 		LunaLucru lunaAnterioara = RegLuniLucru.instantiaza().getLunaLucruDupa(lunaAnterioara_date);
+		List<Balanta> balante=getBalante();
 		for(int i=0;i<balante.size();i++){
 			if(balante.get(i).getLunaB().equals(lunaAnterioara))
 				rez.add(balante.get(i));
 		}
 		
-		Collections.sort(rez);//TODO: sortare dupa conturi
+		Collections.sort(rez);//TODO: sortare dupa luni si conturi
 		return rez;
 	}
 	
 	public List<Balanta> getBalantaLunaDeInchis(LunaLucru luna){
 		List<Balanta> rez = new ArrayList<Balanta>();
+		List<Balanta> balante=getBalante();
 		
 		for(int i=0;i<balante.size();i++){
 			if(balante.get(i).getLunaB().equals(luna))
 				rez.add(balante.get(i));
 		}
 		
-		Collections.sort(rez);//TODO: sortare dupa conturi
+		Collections.sort(rez);//TODO: sortare dupa luni si conturi
 		return rez;
 	}
 	
 	public List<Balanta> getBalantaContParinte(Cont cont){
 		List<Balanta> rez = new ArrayList<Balanta>();
+		List<Balanta> balante=getBalante();
 		
 		for(int i=0;i<balante.size();i++){
 			if(balante.get(i).getContB().equals(cont))
 				rez.add(balante.get(i));
 		}
 		
-		Collections.sort(rez);//TODO: sortare dupa conturi
+		Collections.sort(rez);//TODO: sortare dupa luni si conturi
 		return rez;
 	}
 	
 	public void updateRegistru(List<Balanta> balanteModificate) {
+		List<Balanta> balante=getBalante();
+		
 		for (int i = 0; i < balante.size(); i++) {
 			for (int j = 0; j < balanteModificate.size(); j++)
 				if (balante.get(i).getId() == balanteModificate.get(j).getId()) {
@@ -106,15 +125,19 @@ public class RegBalanta {
 				}
 		}
 		
+		synchronize();
+		
 		List<Balanta> deAnulat = getBalantaLunaDeInchis(balanteModificate.get(0).getLunaB());
 		for(int i=0;i<deAnulat.size();i++){
 			if(deAnulat.get(i).isAnulat()==true)
-				removeBalanta(deAnulat.get(i).getId());
+				removeBalanta(deAnulat.get(i).getId()); //e apelat intern syncronise
 		}
 	}
 	
 	public void anuleazaBalanta (LunaLucru luna){
-		for (Balanta b : this.balante) {
+		List<Balanta> balante=getBalante();
+		
+		for (Balanta b : balante) {
 			if (b.getLunaB() == luna)
 				 b.setAnulat(true);
 		}
@@ -123,9 +146,10 @@ public class RegBalanta {
 	//TODO: remove me
 	public void printAll(){
 		//System.out.println(balante.size());
+		List<Balanta> balante=getBalante();
 		for(int i=0;i<balante.size();i++){
-					System.out.println(balante.get(i).toString());
+				System.out.println(balante.get(i).toString());
 		}
 	}
-	
+		
 }

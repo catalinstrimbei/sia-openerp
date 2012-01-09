@@ -1,6 +1,5 @@
 package org.open.erp.services.ctbgen;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,11 +10,11 @@ import java.util.List;
  * 
  */
 
-public class RegSablonNC {
+public class RegSablonNC extends Registru{
 	private static RegSablonNC singleReference;
 
 	private RegSablonNC() {
-		listaSabloane = new ArrayList<SablonNC>();
+		sqlDefaultText = "SELECT o FROM Cont o";
 	}
 
 	public static RegSablonNC instantiaza() {
@@ -24,10 +23,17 @@ public class RegSablonNC {
 		return singleReference;
 	}
 	
-	private List<SablonNC> listaSabloane;
+	public List<SablonNC> getSabloane() { 
+		@SuppressWarnings("unchecked")
+		List<SablonNC> result = em.createQuery(this.sqlDefaultText).getResultList();
+		return result;
+	}
+	
 
 	public SablonNC getSablonDupaNr(Integer nrSab) {
-		for (SablonNC s : this.listaSabloane) {
+		List<SablonNC>listaSabloane=getSabloane();
+		
+		for (SablonNC s : listaSabloane) {
 			if (nrSab.equals(s.getNrSablon())) {
 				return s;
 			}
@@ -36,7 +42,9 @@ public class RegSablonNC {
 	}
 
 	public SablonNC getSablonConsum(Integer nr, Cont contMat) {
-		for (SablonNC s : this.listaSabloane) {
+		List<SablonNC>listaSabloane=getSabloane();
+		
+		for (SablonNC s : listaSabloane) {
 			if (nr.equals(s.getNrSablon()) && contMat.equals(s.getContCredit())) {
 				return s;
 			}
@@ -45,7 +53,9 @@ public class RegSablonNC {
 	}
 	
 	public SablonNC getSablonAchizitie(Integer nr, Cont contMat) {
-		for (SablonNC s : this.listaSabloane) {
+		List<SablonNC>listaSabloane=getSabloane();
+		
+		for (SablonNC s : listaSabloane) {
 			if (nr.equals(s.getNrSablon()) && contMat.equals(s.getContDebit())) {
 				return s;
 			}
@@ -54,7 +64,9 @@ public class RegSablonNC {
 	}
 	
 	public SablonNC getSablonIncasare(Integer nr) {
-		for (SablonNC s : this.listaSabloane) {
+		List<SablonNC>listaSabloane=getSabloane();
+		
+		for (SablonNC s : listaSabloane) {
 			if (nr.equals(s.getNrSablon())) {
 				return s;
 			}
@@ -62,23 +74,24 @@ public class RegSablonNC {
 		return null;
 	}
 
-	private static int contorId = 1;
 	public void addSablon(SablonNC sabl) {
-		if(sabl.getIdSablon()==-1){
-			sabl.setIdSablon(contorId);
-			contorId++;
-		}
-		if (!listaSabloane.contains(sabl)) {
-			listaSabloane.add(sabl);
-		}
+		if (em.contains(sabl))
+			em.merge(sabl);
+		else
+			em.persist(sabl);
+	
+		synchronize();
 	}
 
 	public void removeSablon(SablonNC sabl) {
-		listaSabloane.remove(sabl);
+		em.remove(sabl);
+		
+		synchronize();
 	}
 
 	// TODO: remove me
 	public void printAll() {
+		List<SablonNC>listaSabloane=getSabloane();
 		for (int i = 0; i < listaSabloane.size(); i++) {
 			System.out.println(listaSabloane.get(i).toString());
 		}

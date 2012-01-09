@@ -12,11 +12,11 @@ import java.util.List;
  * 
  */
 
-public class RegInregistrareRJ {
+public class RegInregistrareRJ extends Registru{
 	private static RegInregistrareRJ singleReference;
 
 	private RegInregistrareRJ() {
-		inregistrariRJ = new ArrayList<InregistrareRJ>();
+		sqlDefaultText = "SELECT o FROM Cont o";
 	}
 
 	public static RegInregistrareRJ instantiaza() {
@@ -24,27 +24,25 @@ public class RegInregistrareRJ {
 			singleReference = new RegInregistrareRJ();
 		return singleReference;
 	}
-
-	private List<InregistrareRJ> inregistrariRJ;
 	
-	private static int contorId = 1;
 	public void addInregistrareRJ(InregistrareRJ inregistrareRJ) {
-		if(inregistrareRJ.getIdInregRJ()==-1){
-			inregistrareRJ.setIdInregRJ(contorId);
-			contorId++;
-		}
-		
-		if (!inregistrariRJ.contains(inregistrareRJ)) {
-			inregistrariRJ.add(inregistrareRJ);
-		}
+		if (em.contains(inregistrareRJ))
+			em.merge(inregistrareRJ);
+		else
+			em.persist(inregistrareRJ);
+	
+		synchronize();
 	}
 
 	public void removeInregistrareRJ(InregistrareRJ inregistrareRJ) {
-		inregistrariRJ.remove(inregistrareRJ);
+		em.remove(inregistrareRJ);
+		
+		synchronize();
 	}
 	
 	public List<InregistrareRJ> getInregistrariLunaDeInchis(LunaLucru luna){
 		List<InregistrareRJ> rez = new ArrayList<InregistrareRJ>();
+		List<InregistrareRJ> inregistrariRJ = getListaInreg();
 		
 		for(int i=0;i<inregistrariRJ.size();i++){
 			if(inregistrariRJ.get(i).getLunaCurs().equals(luna))// && !inregistrariRJ.get(i).isAnulat())
@@ -56,6 +54,7 @@ public class RegInregistrareRJ {
 	}
     public List<InregistrareRJ> getListaInreg(){
         List<InregistrareRJ> rez = new ArrayList<InregistrareRJ>();
+        List<InregistrareRJ> inregistrariRJ = getListaInreg();
         
         for(int i=0;i<inregistrariRJ.size();i++){
                 rez.add(inregistrariRJ.get(i));
@@ -66,15 +65,15 @@ public class RegInregistrareRJ {
 }
 
 	public void  anuleazaIregRJ(Integer id){
-			
+		List<InregistrareRJ> inregistrariRJ = getListaInreg();
+		
 		for(int i=0;i<inregistrariRJ.size();i++){
 			if (inregistrariRJ.get(i).getIdInregRJ()==id){
 				inregistrariRJ.get(i).anuleazaInreg();
 			}
 		}
 		
-		
-	
+		synchronize();//pt ca au fost facute modificari la un/mai multe managed objects
 	}
 	
 	
