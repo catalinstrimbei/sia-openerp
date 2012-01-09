@@ -64,6 +64,13 @@ public  class Campanie implements Serializable {
 			this.dataSfarsit = dataSfarsit;
 			this.responsabil = responsabil;
 		}
+	public Campanie(int i, String nume, Date dataStart2, Date dataSfarsit2) {
+		super();
+		this.idCampanie = i;
+		this.denumireCampanie = nume;
+		this.dataStart = dataStart2;
+		this.dataSfarsit = dataSfarsit2;
+	}
 	public Date getDataSfarsit() {
 		return dataSfarsit;
 	}

@@ -2,8 +2,8 @@ package org.open.erp.services.marketing.teste;
 
 import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
-import org.open.erp.services.nomgen.NomenclatoareSrv;
-import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
+//import org.open.erp.services.nomgen.NomenclatoareSrv;
+//import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
 
 /*
  * 
@@ -22,7 +22,7 @@ public class MarketingManagementDummyFactory {
 	}
 	
 	
-	public static NomenclatoareSrv getNomenclatoareSrv(){
-		return new NomenclatoareDummyImpl();
-	}
+//	public static NomenclatoareSrv getNomenclatoareSrv(){
+//		return new NomenclatoareDummyImpl();
+//	}
 }

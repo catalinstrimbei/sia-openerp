@@ -10,50 +10,50 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.open.erp.services.nomgen.Produs;
+//import org.open.erp.services.nomgen.Produs;
 @Entity
 public class ProduseAditionale {
 	@Id
 	Integer IdCombinatie;
 	@OneToOne
 	@JoinColumn(name="IdProdus")
-	Produs	produs;
+	DummyProdus	produs;
 	@OneToMany
 	@JoinTable(name="Produs",
 	joinColumns = @JoinColumn (name="idCombinatie"),
 	inverseJoinColumns = @JoinColumn(name = "idProdus"))
-	List<Produs> produseAditionale = new ArrayList<Produs>();
+	List<DummyProdus> produseAditionale = new ArrayList<DummyProdus>();
 	public Integer getIdCombinatie() {
 		return IdCombinatie;
 	}
 	public void setIdCombinatie(Integer idCombinatie) {
 		IdCombinatie = idCombinatie;
 	}
-	public Produs getProdus() {
+	public DummyProdus getProdus() {
 		return produs;
 	}
-	public void setProdus(Produs produs) {
+	public void setProdus(DummyProdus produs) {
 		this.produs = produs;
 	}
-	public List<Produs> getProduseAditionale() {
+	public List<DummyProdus> getProduseAditionale() {
 		return produseAditionale;
 	}
-	public void setProduseAditionale(List<Produs> produseAditionale) {
+	public void setProduseAditionale(List<DummyProdus> produseAditionale) {
 		this.produseAditionale = produseAditionale;
 	}
-	public ProduseAditionale(Integer idCombinatie, Produs produs,
-			List<Produs> produseAditionale) {
+	public ProduseAditionale(Integer idCombinatie, DummyProdus produs,
+			List<DummyProdus> produseAditionale) {
 		super();
 		IdCombinatie = idCombinatie;
 		this.produs = produs;
 		this.produseAditionale = produseAditionale;
 	}
-	public void adaugaProdusAditional(Produs   prodAditional)
+	public void adaugaProdusAditional(DummyProdus   prodAditional)
 	{
 		this.produseAditionale.add(prodAditional);
 	}
 	
-	public void stergeProdusAditional (Produs prodAditional)
+	public void stergeProdusAditional (DummyProdus prodAditional)
 	{
 		this.produseAditionale.remove(prodAditional);
 	}

@@ -4,7 +4,7 @@ package org.open.erp.services.marketing;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.nomgen.Produs;
+//import org.open.erp.services.nomgen.Produs;
 /**
  * 
  * @author Echipa.Marketing
@@ -46,7 +46,7 @@ public interface MarketingManagementSrv {
 	 * @throws Exception 
 	 * 
 	 */
-	Campanie definireCampanie(String nume,  Date dataStart, Date dataSfarsit,Responsabil responsabil,List<PersoanaTinta> PersoaneTinta) throws Exception;
+	Campanie definireCampanie(String nume,  Date dataStart, Date dataSfarsit,/*Responsabil responsabil,*/List<PersoanaTinta> PersoaneTinta) throws Exception;
 //-----------------------------------------------DEFINIRE CAMPANIE END-----------------------------------------------
 	/**
 	 * Returneaza o campanie existenta.
@@ -136,7 +136,7 @@ Promotie definirePromotie(String denumire,String mesajPromotional, Date dataInce
  * 
  * @return pretul final dupa aplicarea discounturilor;
  */
-float getPretFinalByPromotie(Produs produs,Promotie promotie, float pretInitial);
+float getPretFinalByPromotie(DummyProdus produs,Promotie promotie, float pretInitial);
 
 
 /**
@@ -147,5 +147,5 @@ float getPretFinalByPromotie(Produs produs,Promotie promotie, float pretInitial)
  * 
  * @return pretul final dupa aplicarea discounturilor;
  */
-float getPretFinalByProdus(Produs produs);
+float getPretFinalByProdus(DummyProdus produs);
 }

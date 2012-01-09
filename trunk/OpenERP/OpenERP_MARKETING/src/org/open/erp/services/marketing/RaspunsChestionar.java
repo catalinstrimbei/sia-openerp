@@ -1,5 +1,6 @@
 package org.open.erp.services.marketing;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -8,20 +9,28 @@ import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
-import org.open.erp.services.nomgen.Persoana;
+//import org.open.erp.services.nomgen.Persoana;
 @Entity
 public class RaspunsChestionar {
 	
 	@Id
 	Integer					idRaspuns;
 	
-	Persoana				Subiect;
+	DummyPersoana				Subiect;
 	@Temporal(javax.persistence.TemporalType.DATE)
 	Date					dataRaspuns;
 	Chestionar				chestionar;
-	Map<Integer, List<String>>	raspunsuri = new HashMap<Integer, List<String>>();
+	@OneToMany
+	@JoinTable(name="RaspunsIntrebare",
+	joinColumns = @JoinColumn (name="IdRaspunsIntrebare"),
+	inverseJoinColumns = @JoinColumn(name = "IdRaspuns"))
+	List<RaspunsIntrebare> raspunsuri = new ArrayList<RaspunsIntrebare>();
+	//Map<Integer, List<String>>	raspunsuri = new HashMap<Integer, List<String>>();
 	
 	public RaspunsChestionar() {
 		super();
@@ -44,14 +53,14 @@ public class RaspunsChestionar {
 	/**
 	 * @return the subiect
 	 */
-	public Persoana getSubiect() {
+	public DummyPersoana getSubiect() {
 		return Subiect;
 	}
 
 	/**
 	 * @param subiect the subiect to set
 	 */
-	public void setSubiect(Persoana subiect) {
+	public void setSubiect(DummyPersoana subiect) {
 		Subiect = subiect;
 	}
 
@@ -86,14 +95,14 @@ public class RaspunsChestionar {
 	/**
 	 * @return the raspunsuri
 	 */
-	public Map<Integer, List<String>> getRaspunsuri() {
+	public List<RaspunsIntrebare> getRaspunsuri() {
 		return raspunsuri;
 	}
 
 	/**
 	 * @param raspunsuri the raspunsuri to set
 	 */
-	public void setRaspunsuri(Map<Integer, List<String>> raspunsuri) {
+	public void setRaspunsuri(List<RaspunsIntrebare> raspunsuri) {
 		this.raspunsuri = raspunsuri;
 	}
 	

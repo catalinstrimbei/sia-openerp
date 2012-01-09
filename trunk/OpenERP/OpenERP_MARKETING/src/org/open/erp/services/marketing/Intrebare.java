@@ -6,7 +6,11 @@ import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Column;
+
+import org.hibernate.validator.NotNull;
 
 
 @Entity
@@ -17,11 +21,11 @@ public class Intrebare implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue
+	@Id 
 	Integer					idIntrebare;
 	String					textIntrebare;
 	String					tipIntrebare;
-	Map<Integer, String> 	optiuniRaspuns = new HashMap<Integer,String>();
+	//Map<Integer, String> 	optiuniRaspuns = new HashMap<Integer,String>();
 
 	public Intrebare() {
 		super();
@@ -41,12 +45,12 @@ public class Intrebare implements Serializable {
 	public void setTipIntrebare(String tipIntrebare) {
 		this.tipIntrebare = tipIntrebare;
 	}
-	public Map<Integer, String> getRaspunsuri() {
-		return optiuniRaspuns;
-	}
-	public void setRaspunsuri(Map<Integer, String> raspunsuri) {
-		this.optiuniRaspuns = raspunsuri;
-	}
+	//public Map<Integer, String> getRaspunsuri() {
+	//	return optiuniRaspuns;
+	//}
+	//public void setRaspunsuri(Map<Integer, String> raspunsuri) {
+	//	this.optiuniRaspuns = raspunsuri;
+	//}
 	public void setIdIntrebare(Integer idIntrebare) {
 		this.idIntrebare = idIntrebare;
 	}
@@ -56,12 +60,12 @@ public class Intrebare implements Serializable {
 		this.tipIntrebare = tipIntrebare;
 	}
 	
-	public void adaugaRaspuns(Integer nrRaspuns, String textRaspuns){
-		if(optiuniRaspuns == null)
-			optiuniRaspuns = new HashMap<Integer,String>();
-		optiuniRaspuns.put(nrRaspuns, textRaspuns);
-	}
-	public String getRaspuns(Integer nrRaspuns){
-		return optiuniRaspuns.get(nrRaspuns);
-	}
+	//public void adaugaRaspuns(Integer nrRaspuns, String textRaspuns){
+	//	if(optiuniRaspuns == null)
+	//		optiuniRaspuns = new HashMap<Integer,String>();
+	//	optiuniRaspuns.put(nrRaspuns, textRaspuns);
+	//}
+	//public String getRaspuns(Integer nrRaspuns){
+	//	return optiuniRaspuns.get(nrRaspuns);
+	//}
 }

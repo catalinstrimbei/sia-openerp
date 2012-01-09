@@ -58,7 +58,7 @@ public class TestMarketingManagementImplEJB {
 				 persoanaTinta =new PersoanaTinta(1000+i, "Nume" + i, "Prenume" + i); //(PersoanaTinta) nomenclatorInstance.creazaPersona(1000+i, "Nume" + i, "Prenume" + i);
 				 listaPersoaneTinta.add(persoanaTinta);
 			 }
-			 campanie = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, null, listaPersoaneTinta);
+			 campanie = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, listaPersoaneTinta);
 			
 			logger.info("Campania cu id: " + campanie.getIdCampanie() + " a fost definita!");
 			

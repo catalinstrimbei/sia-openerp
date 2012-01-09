@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import org.open.erp.services.nomgen.Produs;
+//import org.open.erp.services.nomgen.Produs;
 
 
 @Entity
@@ -23,7 +23,7 @@ public class ProdusDiscount implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name="IdProdus")
-	Produs	produs;
+	DummyProdus	produs;
 	private static final long serialVersionUID = 1L;
 	public ProdusDiscount() {
 		super();
@@ -44,15 +44,15 @@ public class ProdusDiscount implements Serializable {
 		this.discount = discount;
 	}
 
-	public Produs getProdus() {
+	public DummyProdus getProdus() {
 		return produs;
 	}
 
-	public void setProdus(Produs produs) {
+	public void setProdus(DummyProdus produs) {
 		this.produs = produs;
 	}
 	public ProdusDiscount(Integer idProdusDiscount, Discount discount,
-			Produs produs) {
+			DummyProdus produs) {
 		super();
 		this.idProdusDiscount = idProdusDiscount;
 		this.discount = discount;

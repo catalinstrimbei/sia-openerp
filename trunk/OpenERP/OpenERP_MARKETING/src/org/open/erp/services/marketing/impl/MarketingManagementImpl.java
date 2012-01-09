@@ -19,6 +19,7 @@ import javax.persistence.PersistenceContext;
 import org.open.erp.services.marketing.Campanie;
 import org.open.erp.services.marketing.Chestionar;
 import org.open.erp.services.marketing.Discount;
+import org.open.erp.services.marketing.DummyProdus;
 import org.open.erp.services.marketing.Intrebare;
 import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.MarketingManagementSrvLocal;
@@ -28,8 +29,8 @@ import org.open.erp.services.marketing.ProdusDiscount;
 import org.open.erp.services.marketing.ProduseAditionale;
 import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.Responsabil;
-import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
-import org.open.erp.services.nomgen.Produs;
+//import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
+//import org.open.erp.services.nomgen.Produs;
 
 /**
  * 
@@ -69,11 +70,11 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 
 	@Override
 	public Campanie definireCampanie(String nume, 
-			Date dataStart, Date dataSfarsit,Responsabil responsabil, List<PersoanaTinta> PersoaneTinta) throws Exception {
+			Date dataStart, Date dataSfarsit,/*Responsabil responsabil,*/ List<PersoanaTinta> PersoaneTinta) throws Exception {
 		
 		logger.debug(">>>>>>>>>>>> START Creare Campanie");	
 		
-		Campanie campanieNoua = new Campanie(1, nume, dataStart, dataSfarsit, responsabil);
+		Campanie campanieNoua = new Campanie(0, nume, dataStart, dataSfarsit);
 		logger.debug(campanieNoua.getDenumireCampanie());
 		logger.debug("Perioada in care se desfasoara campania:" + campanieNoua.getDataStart().toString() + " - " + campanieNoua.getDataSfarsit().toString());
 		campanieNoua.setStatus(-1);
@@ -129,9 +130,9 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		{
 			iteratorIntrebari = listaIntrebari.get(i);
 			logger.debug(iteratorIntrebari.getIdIntrebare() + ") "  + iteratorIntrebari.getTextIntrebare());
-			for (int j=1 ; j <= iteratorIntrebari.getRaspunsuri().size() ; j++){
-				logger.debug("   "+j + ")" + iteratorIntrebari.getRaspuns(j));
-			}
+		//	for (int j=1 ; j <= iteratorIntrebari.getRaspunsuri().size() ; j++){
+		//		logger.debug("   "+j + ")" + iteratorIntrebari.getRaspuns(j));
+		//	}
 		}
 		
 		return chestionarNou;
@@ -146,14 +147,14 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 			Integer tipPromotie, List<ProdusDiscount>  produseDiscount,
 			List<ProduseAditionale> listProduseAditionale) {
 		Promotie  promotieNoua = new Promotie(1,denumire,mesajPromotional,dataInceput,dataSfarsit,tipPromotie);
-		Produs				produs;
+		DummyProdus				produs;
 		Discount			discount;
 		ProdusDiscount		prodDisc;
 		ProduseAditionale	prodAdd;
 		Iterator<ProdusDiscount>			iteratorDisc;
 		Iterator<ProduseAditionale>			iteratorProdAdd;
 		String				tipDiscount;
-		List<Produs>		produseAditionale;
+		List<DummyProdus>		produseAditionale;
 		logger.debug("Promotia " + denumire + " a fost creata.");
 		if ( tipPromotie == Promotie.DISCOUNT) 
 		{
@@ -192,7 +193,7 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 			while (iteratorProdAdd.hasNext())
 			{
 				prodAdd = (ProduseAditionale)iteratorProdAdd.next();
-				produseAditionale = (List<Produs>) prodAdd.getProduseAditionale();
+				produseAditionale = (List<DummyProdus>) prodAdd.getProduseAditionale();
 				produs = prodAdd.getProdus();
 				for (int p = 1; p < produseAditionale.size(); p++)
 				{
@@ -206,11 +207,11 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	}
 	
 	@Override
-	public float getPretFinalByPromotie(Produs produs, Promotie promotie,float pretInitial) {
+	public float getPretFinalByPromotie(DummyProdus produs, Promotie promotie,float pretInitial) {
 		return promotie.getPretByPretInitial(produs, pretInitial);
 	}
 	@Override
-	public float getPretFinalByProdus(Produs produs) {
+	public float getPretFinalByProdus(DummyProdus produs) {
 		// TODO Auto-generated method stub
 		return (float)(produs.getPretVanzare() * 0.8);
 	}

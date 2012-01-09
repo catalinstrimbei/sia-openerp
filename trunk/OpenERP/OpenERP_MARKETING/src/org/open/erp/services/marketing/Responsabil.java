@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType; 
 import java.io.Serializable;
 
-import org.open.erp.services.personal.Angajat;
+//import org.open.erp.services.personal.Angajat;
 /**
  * 
  * @author echipa.marketing
@@ -26,8 +26,8 @@ public class Responsabil implements Serializable {
 	
 	@Id
 	Integer IdResponsabil;
-	@ManyToOne @JoinColumn(name = "marca")
-	Angajat		angajat;
+	//@ManyToOne @JoinColumn(name = "marca")
+	//Angajat		angajat;
 	@OneToMany (mappedBy = "responsabil", cascade = CascadeType.ALL)
 		List<Campanie> listaCampanii;
     
@@ -65,15 +65,15 @@ public class Responsabil implements Serializable {
 	/**
 	 * @return the angajat
 	 */
-	public Angajat getAngajat() {
-		return angajat;
-	}
+//	public Angajat getAngajat()// {
+//		return angajat;
+//	}
 	/**
 	 * @param angajat the angajat to set
 	 */
-	public void setAngajat(Angajat angajat) {
-		this.angajat = angajat;
-	}
+//	public void setAngajat(Angajat angajat)// {
+//		this.angajat = angajat;
+//	}
 	public void setListaCampanii(List<Campanie> listaCampanii) {
 		this.listaCampanii = listaCampanii;
 	}
@@ -83,11 +83,11 @@ public class Responsabil implements Serializable {
 	public void setListaChestionare(List<Chestionar> listaChestionare) {
 		this.listaChestionare = listaChestionare;
 	}
-	public Responsabil(Integer idResponsabil, Angajat angajat) {
-		super();
-		IdResponsabil = idResponsabil;
-		this.angajat = angajat;
-	}
+//	public Responsabil(Integer idResponsabil,/* Angajat angajat*/) {
+//		super();
+//		IdResponsabil = idResponsabil;
+//		this.angajat = angajat;
+//	}
 	
 	
 }

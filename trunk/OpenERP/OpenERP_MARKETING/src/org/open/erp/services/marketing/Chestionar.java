@@ -30,8 +30,8 @@ public class Chestionar implements Serializable {
 	@OneToMany
 	@JoinTable (
 	name = "Intrebare",
-	joinColumns = @JoinColumn(name = "idChestionar"),
-	inverseJoinColumns = @JoinColumn(name = "idIntrebare")
+	joinColumns = @JoinColumn(name = "idIntrebare"),
+	inverseJoinColumns = @JoinColumn(name = "idChestionar")
 	) 
 	List<Intrebare>		listaIntrebari; 
 	/**

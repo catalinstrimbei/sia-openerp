@@ -15,7 +15,7 @@ import javax.persistence.JoinColumn;
 
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.DATE;
-import org.open.erp.services.nomgen.Produs;
+//import org.open.erp.services.nomgen.Produs;
 
 @Entity
 public class Promotie {
@@ -38,14 +38,14 @@ public class Promotie {
 	//Map<Produs,Discount>		listaProduse = new HashMap<Produs, Discount>();
 	@OneToMany
 	@JoinTable(name="ProdusDiscount",
-	joinColumns = @JoinColumn (name="idPromotie"),
-	inverseJoinColumns = @JoinColumn(name = "idProdusDiscount"))
+	joinColumns = @JoinColumn (name="idProdusDiscount"),
+	inverseJoinColumns = @JoinColumn(name = "idPromotie"))
 	List<ProdusDiscount> listaProduseDiscount =  new ArrayList<ProdusDiscount>();	
 	
 	@OneToMany
 	@JoinTable(name="ProduseAditionale",
-	joinColumns = @JoinColumn (name="idPromotie"),
-	inverseJoinColumns = @JoinColumn(name = "idCombinatie"))
+	joinColumns = @JoinColumn (name="idCombinatie"),
+	inverseJoinColumns = @JoinColumn(name = "idPromotie"))
 	List<ProduseAditionale>	listProduseAditionale = new ArrayList<ProduseAditionale>();
 	public Promotie() {
 		super();
@@ -172,13 +172,13 @@ public class Promotie {
 			List<ProduseAditionale> listProduseAditionale) {
 		this.listProduseAditionale = listProduseAditionale;
 	}
-	public void adaugaProdusDiscount(Produs produs,Discount prodDisc){
+	public void adaugaProdusDiscount(DummyProdus produs,Discount prodDisc){
 		ProdusDiscount produseDiscount = new ProdusDiscount();
 		produseDiscount.setProdus(produs);
 		produseDiscount.setDiscount(prodDisc);
 		this.listaProduseDiscount.add(produseDiscount);
 	}
-	public void StergeProdusDiscount(Produs produs){
+	public void StergeProdusDiscount(DummyProdus produs){
 		Iterator<ProdusDiscount> produsDiscount = this.listaProduseDiscount.iterator();
 		ProdusDiscount produsDisc;
 		while (produsDiscount.hasNext())
@@ -191,13 +191,13 @@ public class Promotie {
 		}
 		
 	}
-	public void adaugaProdusAdiacent(Produs produs,List<Produs> prodAddiacent){
+	public void adaugaProdusAdiacent(DummyProdus produs,List<DummyProdus> prodAddiacent){
 		ProduseAditionale produseAditionale = new ProduseAditionale();
 		produseAditionale.setProdus(produs);
 		produseAditionale.setProduseAditionale(prodAddiacent);
 		this.listProduseAditionale.add(produseAditionale);
 }
-	public void StergeProdusAdiacent(Produs produs){
+	public void StergeProdusAdiacent(DummyProdus produs){
 		Iterator<ProduseAditionale>  produsaditional= this.listProduseAditionale.iterator();
 		ProduseAditionale    produsAdd;
 		while (produsaditional.hasNext())
@@ -210,7 +210,7 @@ public class Promotie {
 		}
 	}
 	
-	public void adaugaProdusAditionalLaProdus(Produs produs, Produs prodAdiacent)
+	public void adaugaProdusAditionalLaProdus(DummyProdus produs, DummyProdus prodAdiacent)
 	{
 		Iterator<ProduseAditionale>  produsaditional= this.listProduseAditionale.iterator();
 		ProduseAditionale    produsAdd;
@@ -224,7 +224,7 @@ public class Promotie {
 		}
 	}
 	
-	public void StergeProdusAditionaldinProdus(Produs produs, Produs prodAdiacent)
+	public void StergeProdusAditionaldinProdus(DummyProdus produs, DummyProdus prodAdiacent)
 	{
 		Iterator<ProduseAditionale>  produsaditional= this.listProduseAditionale.iterator();
 		ProduseAditionale    produsAdd;
@@ -238,7 +238,7 @@ public class Promotie {
 		}
 	}
 	
-	public float getPretByPretInitial(Produs produs, float pretInitial)
+	public float getPretByPretInitial(DummyProdus produs, float pretInitial)
 	{
 		
 		Discount   discount;
