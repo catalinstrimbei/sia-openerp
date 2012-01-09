@@ -1,5 +1,7 @@
 package org.open.erp.services.salarizare;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 import org.open.erp.services.personal.Angajat;
@@ -12,10 +14,10 @@ import javax.persistence.ManyToOne;
  * @author ionut.hrubaru
  * 
  * @BusinessObject(Entity)
- * 
+ *  
  */
 @Entity
-public class Pontaj {
+public class Pontaj implements Serializable{
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private Integer idPontaj;
