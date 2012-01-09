@@ -115,7 +115,11 @@ public class RegistruSalarizare {
 		try{
 			if (pontaj.getIdPontaj() == null || 
 				entityManager.find(pontaj.getClass(), pontaj.getIdPontaj()) == null)
+			{
+				logger.info("Inainte de persist ***** " + pontaj.getAngajat().getId());
 				entityManager.persist(pontaj);
+				logger.info("Dupa persist ******** ");
+			}
 			else
 				entityManager.merge(pontaj);
 			
@@ -135,7 +139,10 @@ public class RegistruSalarizare {
 		try{
 			if (spor.getIdSpor() == null || 
 				entityManager.find(spor.getClass(), spor.getIdSpor()) == null)
+			{
+				logger.info("INAINTE ***** " + entityManager);
 				entityManager.persist(spor);
+			}
 			else
 				entityManager.merge(spor);
 			
