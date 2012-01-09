@@ -905,4 +905,16 @@ public interface PersonalSrv {
 	 * @return map cu fiecare proba si rezultatele fiecarui angajat
 	 * 
 	 */
+	void aprobareEvenimentEJB(Eveniment eveniment_)throws Exception;
+	/**
+	 * @param _activitate //metoda ce determina daca un eveniment este aprobat sau nu in functie de suma alocata si estimata
+	 * 
+	 */
+	Collection<Eveniment> getEvenimenteAnualeEJB(Integer year_) throws Exception;
+	/**
+	 * @param _year anul pentru care trebuie returnata Lista de evenimente.
+	 * Daca year = 0 va returna toate evenimentele din toti anii
+	 * @return Collection evenimente pentru anul primit ca parametru
+	 */	
+
 }

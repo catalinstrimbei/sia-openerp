@@ -1683,6 +1683,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		System.out.println(_eveniment.getStatusEveniment());
 	}
 	
+	
 	@Override
 	public HashMap<DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB() {
 		try
@@ -1739,5 +1740,41 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			return null;
 			}
 		}
-	
+	@Override
+	public Collection<Eveniment> getEvenimenteAnualeEJB(Integer _year)throws Exception
+	{
+		Collection<Eveniment> evenimente = new ArrayList<Eveniment>();
+		try{
+
+			if(_year ==0)
+			{
+				return this.registruPersonal.getListaEvenimente();
+			}	
+			
+		}catch(Exception ex){
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+		}
+		return evenimente;
+	}	
+	@Override
+	public void aprobareEvenimentEJB(Eveniment _eveniment) throws Exception
+	{
+		try{
+			Iterator<Activitate> activitatiEveniment = this.registruPersonalEJB.getActivitatiByEvenimentEJB(_eveniment.getIdEveniment()).iterator();
+			Double sumaActivitati = 0.00;
+			while (activitatiEveniment.hasNext())
+			{
+				Activitate activitateCurenta = activitatiEveniment.next();
+				sumaActivitati += activitateCurenta.getSumaEstimata();				
+			}
+			if(sumaActivitati<= _eveniment.getSumaAlocata())
+			{
+				_eveniment.setStatusEveniment("Eveniment Aprobat");
+			}		
+			System.out.println(_eveniment.getStatusEveniment());	
+		}catch(Exception ex){
+			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
+		}
+	}
+
 }

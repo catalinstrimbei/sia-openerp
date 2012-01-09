@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.persistence.EntityManager;
 
+import org.open.erp.services.personal.Activitate;
 import org.open.erp.services.personal.DosarAngajat;
 import org.open.erp.services.personal.DummyDepartament;
 import org.open.erp.services.personal.ProbaEvaluare;
@@ -44,5 +45,22 @@ public class RegistruPersonalEJB {
 			throw ex;
 		}
 	}
+	
+	public Collection<Activitate> getActivitatiByEvenimentEJB(Integer IdEveniment) throws Exception	{
+		try
+		{
+			return entityManager.createQuery("SELECT a FROM Activitate a WHERE"+ 
+					"a.eveniment.IdEveniment =:idEveniment")
+					.setParameter("IdEveniment", IdEveniment)
+					.getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}		
+	}
+
 
 }
