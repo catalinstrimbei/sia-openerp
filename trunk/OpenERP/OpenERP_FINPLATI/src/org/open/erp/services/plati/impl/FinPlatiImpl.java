@@ -9,6 +9,7 @@ import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.TipPlata;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
+import org.open.erp.services.nomgen.Partener;
 import org.open.erp.services.plati.Chitanta;
 import org.open.erp.services.plati.exceptions.PlatiExceptions;
 import org.open.erp.services.personal.Angajat;
@@ -80,7 +81,7 @@ public class FinPlatiImpl implements FinPlatiSrv {
 			String seria, Integer numar, String locatie, String moneda,
 			Furnizor furnizor, Double curs) throws PlatiExceptions,
 			CtbException {
-		// TODO Auto-generated method stub
+		
 		
 		if (sumaIncasata == null ||  sumaIncasata == 0.00 ) {
 			throw new PlatiExceptions("Suma incasarii nu poate fi nula!");
@@ -295,5 +296,12 @@ public class FinPlatiImpl implements FinPlatiSrv {
 					doc.getNumar(), TipPlata.OrdinPlata, doc.getFacturi().get(0)
 							.getFurnizor().getId(), 0, StareDocument.MODIFICAT, 0);
 		}
+		
+	
+	}
+
+	@Override
+	public int acceptaPlataFurnizor(Partener partener, Double valoare, Date data) {
+		return 1;
 	}
 }

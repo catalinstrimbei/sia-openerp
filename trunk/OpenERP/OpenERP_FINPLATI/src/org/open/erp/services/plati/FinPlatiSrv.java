@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.open.erp.services.ctbgen.exceptii.CtbException;
+import org.open.erp.services.nomgen.Partener;
 import org.open.erp.services.plati.OrdinPlata;
 import org.open.erp.services.plati.CEC;
 import org.open.erp.services.plati.Chitanta;
@@ -51,4 +52,6 @@ public interface FinPlatiSrv {
 	
 	public List<FacturaPrimita> compensariParteneri(
 			List<FacturaPrimita> facturi, Double suma) throws PlatiExceptions;
+	
+	public int acceptaPlataFurnizor(Partener partener,Double valoare, Date data);
 }
