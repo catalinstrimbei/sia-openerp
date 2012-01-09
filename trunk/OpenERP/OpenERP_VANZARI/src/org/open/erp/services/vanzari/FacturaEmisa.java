@@ -30,7 +30,7 @@ public class FacturaEmisa extends Document implements Serializable {
 	
 	public static final Integer ZILE_RETUR = 20;
 	
-	@Id @GeneratedValue
+	//@Id @GeneratedValue
 	Integer idFactura;
 	//Date dataFacturare;		
 	Double valoareTotalaFactura;

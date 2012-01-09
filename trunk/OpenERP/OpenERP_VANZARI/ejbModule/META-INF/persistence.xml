@@ -16,6 +16,7 @@
 		<class>org.open.erp.services.nomgen.Document</class>
 		<class>org.open.erp.services.nomgen.LinieDocument</class>
 		<class>org.open.erp.services.nomgen.Persoana</class>
+		<class>org.open.erp.services.nomgen.Partener</class>
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
 	        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
