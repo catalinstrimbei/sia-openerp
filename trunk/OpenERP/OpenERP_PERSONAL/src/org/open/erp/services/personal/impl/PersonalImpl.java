@@ -130,7 +130,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaActivitateTeamBuilding(activitate_);
@@ -148,7 +148,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeActivitateTeamBuilding(activitate_);
@@ -167,7 +167,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (idActivitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getActivitateTrainingById(idActivitate_);
@@ -196,7 +196,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaActivitateTraining(activitate_);
@@ -213,7 +213,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeActivitateTraining(activitate_);
@@ -231,7 +231,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (marca_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getAngajatById(marca_);
@@ -249,7 +249,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (id_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getAngajatById(id_);
@@ -276,7 +276,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (angajat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaAngajat(angajat_);
@@ -292,7 +292,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (angajat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeAngajat(angajat_);
@@ -311,7 +311,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (idAnunt_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getAnuntLocMuncaById(idAnunt_);
@@ -340,7 +340,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (anunt_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaAnuntLocMunca(anunt_);
@@ -356,7 +356,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (anunt_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeAnuntLocMunca(anunt_);
@@ -372,7 +372,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Candidat result = new Candidat();
 		if (idPersoanaCandidat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getCandidatById(idPersoanaCandidat_);
@@ -389,7 +389,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Candidat result = new Candidat();
 		if (idCandidat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getCandidatByIdCandidat(idCandidat_);
@@ -415,7 +415,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Candidat result = new Candidat();
 		if (candidat_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaCandidat(candidat_);
@@ -430,7 +430,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (candidat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeCandidat(candidat_);
@@ -449,7 +449,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		CerereDemisie result = new CerereDemisie();
 		if (idCerereDemisie_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getCerereDemisieById(idCerereDemisie_);
@@ -476,7 +476,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		CerereDemisie result = new CerereDemisie();
 		if (cerereDemisie_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaCerereDemisie(cerereDemisie_);
@@ -492,7 +492,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (cerereDemisie_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeCerereDemisie(cerereDemisie_);
@@ -511,7 +511,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		ContractMunca result = new ContractMunca();
 		if (idContractMunca_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getContractMuncaById(idContractMunca_);
@@ -538,7 +538,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		ContractMunca result = new ContractMunca();
 		if (contractMunca_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaContractMunca(contractMunca_);
@@ -554,7 +554,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (contractMunca_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeContractMunca(contractMunca_);
@@ -572,7 +572,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		CV result = new CV();
 		if (idCV_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getCVById(idCV_);
@@ -598,7 +598,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		CV result = new CV();
 		if (cv_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaCV(cv_);
@@ -613,7 +613,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (cv_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeCV(cv_);
@@ -632,7 +632,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		DosarAngajat result = new DosarAngajat();
 		if (idDosarAngajat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getDosarAngajatById(idDosarAngajat_);
@@ -659,7 +659,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		DosarAngajat result = new DosarAngajat();
 		if (dosarAngajat_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaDosarAngajat(dosarAngajat_);
@@ -674,7 +674,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (dosarAngajat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeDosarAngajat(dosarAngajat_);
@@ -695,7 +695,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (idFunctie == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{
 			if (this.registruPersonal == null)
@@ -717,7 +717,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Eveniment result = new Eveniment();
 		if (idEveniment_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getEvenimentById(idEveniment_);
@@ -745,7 +745,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Eveniment result = new Eveniment();
 		if (eveniment_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaEveniment(eveniment_);
@@ -762,7 +762,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (eveniment_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeEveniment(eveniment_);
@@ -779,7 +779,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Functie result = new Functie();
 		if (idFunctie_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getFunctieById(idFunctie_); 
@@ -808,7 +808,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG("Am trecut de new Functie()");
 		if (functie_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaFunctie(functie_);
@@ -825,7 +825,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (functie_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeFunctie(functie_);
@@ -843,7 +843,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Instructor result = new Instructor(); 
 		if (Id_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getInstructorById(Id_);
@@ -871,7 +871,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Instructor result = new Instructor();
 		if (instructor_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaInstructor(instructor_);
@@ -888,7 +888,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (instructor_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeInstructor(instructor_);
@@ -905,7 +905,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Interviu result = new Interviu();
 		if (idInterviu_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getInterviuById(idInterviu_);
@@ -933,7 +933,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Interviu result = new Interviu();
 		if (interviu_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaInterviu(interviu_);
@@ -950,7 +950,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (interviu_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeInterviu(interviu_);
@@ -969,7 +969,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		InterviuCandidat interviuCandidat_ = new InterviuCandidat();
 		if (idInterviuCandidat_ == null){	
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			interviuCandidat_ = this.registruPersonal.getInterviuCandidatById(idInterviuCandidat_);
@@ -998,7 +998,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		InterviuCandidat interviuCandidat_ = new InterviuCandidat();
 		if (idInterviuCandidat_ == null){
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{
 			if (this.registruPersonal == null)
@@ -1016,7 +1016,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (interviuCandidat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeInterviuCandidat(interviuCandidat_);
@@ -1034,7 +1034,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		ProbaEvaluare probaEvaluare_ = new ProbaEvaluare();
 		if (idProba_ == null){	
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			probaEvaluare_ = this.registruPersonal.getProbaEvaluareById(idProba_);
@@ -1059,7 +1059,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());	
 		if (probaEvaluare_ == null){
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{
 			if (this.registruPersonal == null)
@@ -1077,7 +1077,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (proba_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeProbaEvaluare(proba_);
@@ -1095,7 +1095,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		RezultatProbaEvaluare rezultatProbaEvaluare_ = new RezultatProbaEvaluare();
 		if (id_ == null){	
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			rezultatProbaEvaluare_ = this.registruPersonal.getRezultatProbaEvaluareById(id_);
@@ -1121,7 +1121,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());		
 		if (rezultatProbaEvaluare_ == null){
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{
 			if (this.registruPersonal == null)
@@ -1139,7 +1139,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		if (rezultat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeRezultatProbaEvaluare(rezultat_);
@@ -1648,7 +1648,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>Start getContractAngajatActivEJB din personal impl");
 		if (angajat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			Collection<ContractMunca> listaContracteAngajat = this.registruPersonalEJB.getListaContracteAngajatEJB(angajat_);
@@ -1695,7 +1695,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 	if (candidat_ == null){					
 		sessionContext.setRollbackOnly();
-		logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 	}
 	else{			
 		Collection<CV> listaCVuriCandidat = this.registruPersonalEJB.getListaCVuriCandidatEJB(candidat_);
@@ -1722,7 +1722,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception {
 		if (angajat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			Collection<DosarAngajat> listaDosareAngajati = this.registruPersonal.getListaDosareAngajat();
