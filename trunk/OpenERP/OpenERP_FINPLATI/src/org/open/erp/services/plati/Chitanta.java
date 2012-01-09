@@ -8,12 +8,18 @@ package org.open.erp.services.plati;
  * 
  */
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.open.erp.services.plati.Plata;
 import org.open.erp.services.personal.Angajat;
 
-public class Chitanta extends Plata {
+public class Chitanta extends Plata implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Angajat getCasier() {
 		return casier;

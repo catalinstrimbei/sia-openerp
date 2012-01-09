@@ -8,10 +8,16 @@ package org.open.erp.services.plati;
  * 
  */
 
+import java.io.Serializable;
+
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Produs;
 
-public class LinieFacturaPrimita extends LinieDocument {
+public class LinieFacturaPrimita extends LinieDocument implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Integer idLinieFactura;
 	//Produs produs;
 	//Double pretUnitar;

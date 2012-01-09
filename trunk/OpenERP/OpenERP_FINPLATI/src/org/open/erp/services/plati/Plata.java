@@ -8,11 +8,16 @@ package org.open.erp.services.plati;
  * 
  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class Plata {
+public abstract class Plata implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String moneda;
 	private Date dataEmiterii;
 	private Boolean avans;

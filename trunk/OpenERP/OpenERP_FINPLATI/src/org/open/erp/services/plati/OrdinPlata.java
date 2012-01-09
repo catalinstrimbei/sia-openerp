@@ -8,9 +8,14 @@ package org.open.erp.services.plati;
  * 
  */
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OrdinPlata extends Plata{
+public class OrdinPlata extends Plata implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static Long intervalValabilitate;
 	private String stare;
 	private String reprezentand;

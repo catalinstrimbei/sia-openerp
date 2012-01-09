@@ -8,6 +8,7 @@ package org.open.erp.services.plati;
  * 
  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -16,7 +17,11 @@ import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.plati.LinieFacturaPrimita;
 
-public class FacturaPrimita extends Document {
+public class FacturaPrimita extends Document implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final Boolean PLATITA = true;
 	public static final Boolean NEPLATITA = false;
 	

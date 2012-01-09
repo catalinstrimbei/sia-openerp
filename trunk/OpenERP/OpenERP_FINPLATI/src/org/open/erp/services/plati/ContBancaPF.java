@@ -8,12 +8,19 @@ package org.open.erp.services.plati;
  * 
  */
 
+import java.io.Serializable;
+
 import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
-public class ContBancaPF {
+public class ContBancaPF implements Serializable {
 
-	  private PersoanaJuridica banca;
+	  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private PersoanaJuridica banca;
     
     private PersoanaFizica titularCont;
 
