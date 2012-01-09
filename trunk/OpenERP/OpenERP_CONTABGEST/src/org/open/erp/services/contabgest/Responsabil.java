@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 
 import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.nomgen.PersoanaFizica;
 
 /**
  * 
@@ -15,6 +16,7 @@ import org.open.erp.services.nomgen.Persoana;
  */
 
 @Entity
-public class Responsabil extends Persoana implements Serializable {
+public class Responsabil extends PersoanaFizica implements Serializable {
 
+	
 }
