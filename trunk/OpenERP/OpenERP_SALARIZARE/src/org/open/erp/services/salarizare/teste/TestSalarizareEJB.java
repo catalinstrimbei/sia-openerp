@@ -168,7 +168,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void testInregistrareSpor() throws Exception {
 		logger.info("Begin test: inregistrareSpor");
-		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);//personalSrvInstance
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
 		Spor spor = salarizareSrvInstance.inregistrareSpor("Bonus", 1, 2011, 11, angajat, 1, 100.0);

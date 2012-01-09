@@ -218,6 +218,7 @@ public class RegistruSalarizare {
 		entityManager.remove(centralizator);
 	}
 
+
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();

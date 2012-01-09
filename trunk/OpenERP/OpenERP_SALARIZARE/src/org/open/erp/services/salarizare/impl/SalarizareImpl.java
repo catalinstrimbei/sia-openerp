@@ -431,7 +431,8 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			angajat.setId(id);
 			angajat.setNume("Gigel");
 			angajat.setNumarCopii(2);
-			
+	
+			angajat = personalSrv.salveazaAngajat(angajat);
 			
 		}
 		return angajat;

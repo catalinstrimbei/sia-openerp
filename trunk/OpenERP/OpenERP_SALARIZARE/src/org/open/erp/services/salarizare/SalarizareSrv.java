@@ -259,4 +259,6 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	CentralizatorStatSalarii getStatSalariiLuna(Integer an, Integer luna) throws Exception;
+	
+	Angajat getAngajatById(Integer id) throws Exception;
 }
