@@ -78,7 +78,7 @@ public class TestPersonalImpl {
 	Candidat candidat4 = new Candidat(4, "Nume4", "Prenume4", 104, null);
 	Candidat candidat5 = new Candidat(5, "Nume5", "Prenume5", 104, null);
 	Candidat candidat6 = new Candidat(6, "Nume6", "Prenume6", 105, null);
-	CV cv1 = new CV(1, candidat1, functie1, new Date("10/08/2011"));
+	CV cv1 = new CV(null, candidat1, functie1, new Date("10/08/2011"));
 	CV cv2 = new CV(2, candidat2, functie1, new Date("10/09/2011"));
 	CV cv3 = new CV(3, candidat3, functie1, new Date("01/08/2011"));
 	CV cv4 = new CV(4, candidat4, functie1, new Date("01/08/2011"));
@@ -91,28 +91,28 @@ public class TestPersonalImpl {
 	DummyPersoanaFizica persoana2 = new DummyPersoanaFizica(2,null,  "Nume2", "Prenume2", null, 'F', null);
 	
 	
-	Interviu interviu1 = new Interviu(1, "Final");
+	Interviu interviu1 = new Interviu(null, "Final");
 	Interviu interviu2 = new Interviu(2, "Intermediar");
 	Interviu interviu3 = new Interviu(3, "Final");
 	Interviu interviu4 = new Interviu(4, "Intermediar");
 	
-	InterviuCandidat interviuCandidat1 = new InterviuCandidat(1, candidat1, new Date("11/08/2011"), "ADMIS", interviu1);
+	InterviuCandidat interviuCandidat1 = new InterviuCandidat(null, candidat1, new Date("11/08/2011"), "ADMIS", interviu1);
 	InterviuCandidat interviuCandidat2 = new InterviuCandidat(2, candidat2, new Date("11/08/2011"), "RESPINS", interviu1);
 	InterviuCandidat interviuCandidat3 = new InterviuCandidat(3, candidat3, new Date("11/08/2011"), "ADMIS", interviu2);
 
 
 
 	
-	AnuntLocMunca anunt1 = new AnuntLocMunca(1, new String[] { "Internet"}, "Anunt1", functie1, new Date("01/08/2011"), new Date("11/09/2011"));
-	AnuntLocMunca anunt3 = new AnuntLocMunca(3, new String[] { "Internet"}, "Anunt3", functie2, new Date("01/08/2011"), new Date("11/09/2011"));
-	AnuntLocMunca anunt2 = new AnuntLocMunca(1, new String[] { "Internet"}, "Anunt2", functie1, new Date("12/09/2011"), new Date("10/12/2011"));
+	AnuntLocMunca anunt1 = new AnuntLocMunca(null, new String[] { "Internet"}, "Anunt1", functie1, new Date("01/08/2011"), new Date("11/09/2011"));
+	AnuntLocMunca anunt3 = new AnuntLocMunca(null, new String[] { "Internet"}, "Anunt3", functie2, new Date("01/08/2011"), new Date("11/09/2011"));
+	AnuntLocMunca anunt2 = new AnuntLocMunca(null, new String[] { "Internet"}, "Anunt2", functie1, new Date("12/09/2011"), new Date("10/12/2011"));
 	
 	DummyDepartament departament1 = new DummyDepartament(1, "Departament1", null);
 	DummyDepartament departament2 = new DummyDepartament(2, "Departament2", null);
 	DummyDepartament departament3 = new DummyDepartament(3, "Departament3", null);
 	
-	ProbaEvaluare	probaEvaluare1 = new ProbaEvaluare(1, "Oral", "EvaluarePeriodica", null);
-	ProbaEvaluare	probaEvaluare2 = new ProbaEvaluare(2, "Practic", "EvaluarePeriodica", departament1);
+	ProbaEvaluare	probaEvaluare1 = new ProbaEvaluare(null, "Oral", "EvaluarePeriodica", null);
+	ProbaEvaluare	probaEvaluare2 = new ProbaEvaluare(null, "Practic", "EvaluarePeriodica", departament1);
 	ProbaEvaluare	probaEvaluare3 = new ProbaEvaluare(3, "Scris", "EvaluarePeriodica", departament2);
 	ProbaEvaluare	probaEvaluare4 = new ProbaEvaluare(4, "Oral", "EvaluarePeriodica", departament2);
 	ProbaEvaluare	probaEvaluare5 = new ProbaEvaluare(5, "Scris", "EvaluarePeriodica", departament3);
@@ -126,11 +126,11 @@ public class TestPersonalImpl {
 	//Angajat 		angajat1 = new Angajat(persoana1.getIdPersoana(), "Nume1", "Prenume1");
 	//ContractMunca	contract1 = new ContractMunca("ContractNr0002", angajat1, functie1, new Date("11/08/2011"), new Date("15/08/2011"), null,null);
 	
-	ContractMunca	contract1 = new ContractMunca(1, 1000.00, 10.00, angajat1, functie1, new Date("01/01/2010"), new Date("01/01/2010"), new Date("15/08/2015"),0,null);
-	ContractMunca	contract2 = new ContractMunca(2, 1000.00, 10.00, angajat2, functie1, new Date("11/08/2011"), new Date("15/08/2011"), new Date("15/08/2020"),0,null);
+	ContractMunca	contract1 = new ContractMunca(null, 1000.00, 10.00, angajat1, functie1, new Date("01/01/2010"), new Date("01/01/2010"), new Date("15/08/2015"),0,null);
+	ContractMunca	contract2 = new ContractMunca(null, 1000.00, 10.00, angajat2, functie1, new Date("11/08/2011"), new Date("15/08/2011"), new Date("15/08/2020"),0,null);
 
-	DosarAngajat dosar1 = new DosarAngajat(1, angajat1, true, true, true);
-	DosarAngajat dosar2 = new DosarAngajat(2, angajat2, null, null, null);
+	DosarAngajat dosar1 = new DosarAngajat(null, angajat1, true, true, true);
+	DosarAngajat dosar2 = new DosarAngajat(null, angajat2, null, null, null);
 	
 	RezultatProbaEvaluare angajatProbaEvaluare1 = new RezultatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare1);
 	RezultatProbaEvaluare angajatProbaEvaluare2 = new RezultatProbaEvaluare(angajat1, "Bine", null, probaEvaluare2);
@@ -141,7 +141,7 @@ public class TestPersonalImpl {
 	RezultatProbaEvaluare angajatProbaEvaluare7 = new RezultatProbaEvaluare(angajat1, "Foarte Bine", null, probaEvaluare4);
 	RezultatProbaEvaluare angajatProbaEvaluare8 = new RezultatProbaEvaluare(angajat2, "Bine", null, probaEvaluare5);
 	
-	CerereDemisie	cerereDemisie1 = new CerereDemisie(0, contract1, new Date("11/08/2011"), null, null,null);
+	CerereDemisie	cerereDemisie1 = new CerereDemisie(null, contract1, new Date("11/08/2011"), null, null,null);
 	
 	public void generareAnunturi() {
 		ListaCandidati.add(cv1);
@@ -211,7 +211,7 @@ public class TestPersonalImpl {
 	{
 		
 		functie1.setNumeFunctie("Functie1");
-		activitate1 = new ActivitateTeamBuilding(1, "In progres", angajati);
+		activitate1 = new ActivitateTeamBuilding(null, "In progres", angajati);
 		activitate2 = Activitate.construct(eveniment1);
 		activitate3 = Activitate.construct(eveniment2);
 		

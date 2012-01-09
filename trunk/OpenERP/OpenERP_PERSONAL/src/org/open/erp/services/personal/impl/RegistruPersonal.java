@@ -46,8 +46,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -61,8 +61,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -75,13 +75,13 @@ public class RegistruPersonal {
 				entityManager.find(activitate_.getClass(), activitate_.getIdActivitate()) == null)
 				entityManager.persist(activitate_);
 			else
-				entityManager.merge(activitate_);
+				entityManager.merge(activitate_);	
 		}
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return activitate_;
@@ -96,8 +96,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -112,8 +112,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -127,8 +127,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -146,8 +146,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return activitate_;
@@ -162,8 +162,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -178,8 +178,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -193,8 +193,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -208,8 +208,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -229,8 +229,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return angajat_;
@@ -245,8 +245,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -261,8 +261,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -276,8 +276,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -295,8 +295,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return anunt_;
@@ -311,8 +311,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -325,8 +325,8 @@ public class RegistruPersonal {
 				return entityManager.find(Candidat.class, id);
 			}catch(Exception ex){
 				logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-				logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-				ex.printStackTrace();
+				logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+				ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 				throw ex;
 			}
 		}
@@ -337,8 +337,8 @@ public class RegistruPersonal {
 					.getSingleResult();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -348,8 +348,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT c FROM Candidat c").getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -362,8 +362,8 @@ public class RegistruPersonal {
 										.getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -380,8 +380,8 @@ public class RegistruPersonal {
 				entityManager.merge(candidat);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return candidat;
@@ -395,8 +395,8 @@ public class RegistruPersonal {
 		
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		
@@ -408,8 +408,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT e from Eveniment e").getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;	
 		}
 	}	
@@ -424,8 +424,8 @@ public class RegistruPersonal {
 				entityManager.merge(eveniment_);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return eveniment_;		
@@ -440,8 +440,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -455,8 +455,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}		
@@ -466,8 +466,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT f FROM Functie f").getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}		
@@ -484,8 +484,8 @@ public class RegistruPersonal {
 			
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());			
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());			
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return functie_;
@@ -500,8 +500,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -515,8 +515,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}		
@@ -527,8 +527,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT i from Instructor i").getResultList();	
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}		
 	}
@@ -543,8 +543,8 @@ public class RegistruPersonal {
 				entityManager.merge(instructor_);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return instructor_;		
@@ -556,8 +556,8 @@ public class RegistruPersonal {
 			entityManager.remove(instructor);		
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -569,8 +569,8 @@ public class RegistruPersonal {
 			return entityManager.find(Interviu.class, idInterviu_);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -581,8 +581,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT i from Interviu i").getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}	
 	}
@@ -597,8 +597,8 @@ public class RegistruPersonal {
 				entityManager.merge(interviu_);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return interviu_;		
@@ -623,8 +623,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		
@@ -638,8 +638,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -657,8 +657,8 @@ public class RegistruPersonal {
 			
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return interviuCandidat_;
@@ -672,8 +672,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -689,8 +689,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -705,8 +705,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -724,8 +724,8 @@ public class RegistruPersonal {
 			
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return probaEvaluare_;
@@ -739,8 +739,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -757,8 +757,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		
@@ -772,8 +772,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -791,8 +791,8 @@ public class RegistruPersonal {
 			
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return rezultatProbaEvaluare_;
@@ -806,8 +806,8 @@ public class RegistruPersonal {
 		catch(Exception ex)
 		{
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -819,8 +819,8 @@ public class RegistruPersonal {
 			entityManager.remove(candidat);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}	
 	}
@@ -830,8 +830,8 @@ public class RegistruPersonal {
 			entityManager.refresh(candidat);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -855,8 +855,8 @@ public class RegistruPersonal {
 			
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		
@@ -871,8 +871,8 @@ public class RegistruPersonal {
 			return entityManager.find(CerereDemisie.class, id);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -882,8 +882,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT cd FROM CerereDemisie cd").getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -899,8 +899,8 @@ public class RegistruPersonal {
 				entityManager.merge(cerereDemisie);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return cerereDemisie;
@@ -910,8 +910,8 @@ public class RegistruPersonal {
 			entityManager.remove(cerereDemisie);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -923,8 +923,8 @@ public class RegistruPersonal {
 			return entityManager.find(ContractMunca.class, id);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -934,8 +934,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT cm FROM ContractMunca cm").getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -951,8 +951,8 @@ public class RegistruPersonal {
 				entityManager.merge(contractMunca);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return contractMunca;
@@ -962,8 +962,8 @@ public class RegistruPersonal {
 			entityManager.remove(contractMunca);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -975,8 +975,8 @@ public class RegistruPersonal {
 			return entityManager.find(CV.class, id);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -986,8 +986,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT cv FROM CV cv").getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -1003,8 +1003,8 @@ public class RegistruPersonal {
 				entityManager.merge(cv);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return cv;
@@ -1014,8 +1014,8 @@ public class RegistruPersonal {
 			entityManager.remove(cv);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -1027,8 +1027,8 @@ public class RegistruPersonal {
 			return entityManager.find(DosarAngajat.class, id);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -1038,8 +1038,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT da FROM DosarAngajat da").getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}
@@ -1055,8 +1055,8 @@ public class RegistruPersonal {
 				entityManager.merge(dosarAngajat);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 		return dosarAngajat;
@@ -1066,8 +1066,8 @@ public class RegistruPersonal {
 			entityManager.remove(dosarAngajat);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());			
 			throw ex;
 		}
 	}
@@ -1078,8 +1078,8 @@ public class RegistruPersonal {
 			return entityManager.createQuery("SELECT d FROM DummyDepartament d").getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "StackTrace >> " + ex.getStackTrace().toString() + "Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   PersonalLogger.trace(logger, ex.getStackTrace());
 			throw ex;
 		}
 	}

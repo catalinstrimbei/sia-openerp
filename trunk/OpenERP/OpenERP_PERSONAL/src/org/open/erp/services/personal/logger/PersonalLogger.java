@@ -17,14 +17,14 @@ public class PersonalLogger {
 	public PersonalLogger() {
 		super();
 	}
-	private void trace(StackTraceElement e[]) 
+	public static void trace(PersonalLogger logger_, StackTraceElement e[]) 
 	{
 	   boolean doNext = false;
 	   for (StackTraceElement s : e) 
 	   {
 	       if (doNext)
 	       {
-	    	  this.logERROR("Stack Trace >>> " + s.getMethodName());
+	    	   logger_.logERROR("Stack Trace >>> " + s.getMethodName());
 	          return;
 	       }
 	       doNext = s.getMethodName().equals("getStackTrace");
@@ -38,15 +38,22 @@ public class PersonalLogger {
 		        layout.setConversionPattern("%d %-5p [%c] %m%n");
 		        RollingFileAppender myAppender;
 				try {
-					/*
+					
 					ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 					URL url = classLoader.getResource("");
-					String path = url.getPath().toString().substring(1, url.getPath().toString().length() - 4);					
-					path = path + "Resources/";					
-					path = path.replace("/", "\\");
-					path = path.replace("%20", " ");
-				*/
-					String path = "T:\\";
+					String path = url.getPath().toString();
+					if(false || path.length() > 4)
+					{
+						path = path.substring(1, path.length() - 4);					
+						path = path + "Resources/";					
+						path = path.replace("/", "\\");
+						path = path.replace("%20", " ");
+					}
+					else
+					{
+						path = "T:\\";
+					}
+					path = "T:\\";
 					myAppender = new RollingFileAppender(layout, path + "LogFile_OpenERP_PERSONAL.log");
 					myAppender.setAppend(true);
 			        myAppender.setMaxFileSize("5MB");
@@ -110,6 +117,7 @@ public class PersonalLogger {
 			 level = Level.DEBUG;			 
 		 }
 		 logger= Logger.getLogger(PersonalLogger.class.getName());
+		 logger.setLevel(Level.ALL);
 		 if(logger.getAppender("fileAppender") == null)
 		 {
 			 this.addAppender(logger);
