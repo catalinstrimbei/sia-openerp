@@ -17,7 +17,7 @@ import javax.persistence.Id;
 public class LinieCost implements Serializable {
 	@Id
 	@GeneratedValue
-	private Integer idLinieCost;
+	protected Integer idLinieCost;
 
 	@Override
 	public int hashCode() {
@@ -28,9 +28,9 @@ public class LinieCost implements Serializable {
 		return result;
 	}
 
-	private CosturiPrimare costuriPrimare;
-	private Double valoareAprovizionareExterna; // comanda
-	private Double valoareAprovizionareInterna; // val consumata--consum
+	protected CosturiPrimare costuriPrimare;
+	protected Double valoareAprovizionareExterna; // comanda
+	protected Double valoareAprovizionareInterna; // val consumata--consum
 
 	public LinieCost() {
 		super();
