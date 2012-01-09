@@ -2,6 +2,8 @@ package org.open.erp.services.personal.logger;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Calendar;
 
 import org.apache.log4j.Appender;
 import org.apache.log4j.Level;
@@ -24,15 +26,24 @@ public class PersonalLogger {
 		        layout.setConversionPattern("%d %-5p [%c] %m%n");
 		        RollingFileAppender myAppender;
 				try {
-					myAppender = new RollingFileAppender(layout, "T:\\logTest.log");
+					ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+					URL url = classLoader.getResource("");
+					String path = url.getPath().toString().substring(1, url.getPath().toString().length() - 4);					
+					path = path + "Resources/";					
+					path = path.replace("/", "\\");
+					path = path.replace("%20", " ");
+					myAppender = new RollingFileAppender(layout, path + "LogFile_OpenERP_PERSONAL.log");
 					myAppender.setAppend(true);
 			        myAppender.setMaxFileSize("5MB");
 			        myAppender.setMaxBackupIndex(3);
-			        myAppender.setName("logTest");
+			        myAppender.setName("fileAppender");
 
 				//Add the appender.
 			        logger.addAppender(myAppender);
-					
+					logger.setLevel(Level.ALL);
+					logger.info("**************************************************************************************");
+					logger.info("LOG begins at " + Calendar.getInstance().getTime().toString());
+					logger.info("**************************************************************************************");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -78,12 +89,13 @@ public class PersonalLogger {
 	
 	public void log( Level level, Object message_, Throwable t)
 	{
-		/* 
+		
 		if(level == null || level.equals(Level.DEBUG))
 		 {
 			 level = Level.DEBUG;
-			 logger= Logger.getLogger(PersonalLogger.class.getName());  
-		 }			 	
+			 //logger= Logger.getLogger(PersonalLogger.class.getName());  
+		 }
+		/* 
 		 else if(level.equals(Level.DEBUG)) 
 		 {
 	    	 logger= Logger.getLogger(PersonalLogger.class.getName());
@@ -104,13 +116,17 @@ public class PersonalLogger {
 		 {
 	    	 logger= Logger.getLogger("com.FATAL");
 	     }
+	     
 		 else
 		 {
 	      logger= Logger.getLogger(PersonalLogger.class.getName());
 	     }
 	     */
 		 logger= Logger.getLogger(PersonalLogger.class.getName());
-		 this.addAppender(logger);
+		 if(logger.getAppender("fileAppender") == null)
+		 {
+			 this.addAppender(logger);
+		 }
 	     logger.log(level, message_, t );                       
 	 }    
 	

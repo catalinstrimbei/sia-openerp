@@ -68,7 +68,8 @@ public class TestPersonalImpl {
 	public Collection<DosarAngajat>  dosareAngajati = new ArrayList<DosarAngajat>();
 	Collection<RezultatProbaEvaluare> ListaRezultateProbe = new ArrayList<RezultatProbaEvaluare>();
 	
-	Functie functie1 = new Functie(1001,"Functie1");
+	//Functie functie1 = new Functie(1001,"Functie1");
+	Functie functie1 = new Functie();
 	Functie functie2 = new Functie(1002, "Functie2");
 	Functie functie3 = new Functie(1003, "Functie3");
 	Candidat candidat1 = new Candidat(1, "Nume1", "Prenume1", 101, null);

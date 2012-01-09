@@ -80,7 +80,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public PersonalImpl() { }	
 	@PostConstruct
 	public void init(){
-		logger.logDEBUG(">>>>>>>>>>>> Exista em? " + em);		
+		logger.logDEBUG(">>>>>>>>>>>> EM = " + em);		
 		//logger.logDEBUG(">>>>>>>>>>>> Exista nomGenSrv? " + nomGenSrv);				
 		
 		if (this.registruPersonal == null)
@@ -829,7 +829,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			Functie functie_) throws Exception {
 		// TODO Auto-generated method stub
 		logger.logDEBUG(">>>>>>Start salveazaFunctie");
+		logger.logDEBUG("functie_ = " + functie_.toString());
 		Functie result = new Functie();
+		logger.logDEBUG("Am trecut de new Functie()");
 		if (functie_ == null){			
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");

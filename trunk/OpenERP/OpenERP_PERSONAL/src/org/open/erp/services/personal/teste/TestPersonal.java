@@ -148,6 +148,14 @@ public class TestPersonal {
 			}
 		}
 	}	
+	@Test
+	public void testLogger() {
+		logger.logDEBUG("DEBUG test");
+		logger.logERROR("ERROR test");
+		logger.logFATAL("FATAL test");
+		logger.logINFO("INFO test");
+		logger.logWARN("WARN test");		
+	}
 	
 	@Test
 	public void testRecrutare() {
