@@ -1,7 +1,13 @@
 package org.open.erp.services.nomgen;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
+import org.hibernate.annotations.Fetch;
 /*
  * @author Echipa NomGen
  * @BusinessObject(Entity)
@@ -21,6 +27,7 @@ public class Document implements Serializable{
 	public List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
 	
 	
+
 	public Document(Integer nrDocument, Date dataDocument, Persoana persoana,
 			String observatie) {
 		super();
@@ -46,9 +53,12 @@ public class Document implements Serializable{
 		return liniiDocument.size();
 	}
 	
+
+	@OneToMany(fetch=FetchType.EAGER)
 	public List<LinieDocument> getLiniiDocument(){
 		return liniiDocument;
 	}
+	
 	
 	public void setLiniiDocument(List<LinieDocument> liniiDocument) {
 		this.liniiDocument = liniiDocument;
