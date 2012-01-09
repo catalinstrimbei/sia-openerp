@@ -98,7 +98,6 @@ public class CentruCost implements Serializable {
 	}
 	
 	
-
 	public CentruCost(Integer idCentruCost, String denumireCentruCost,
 			Date dataStart, Date dataSfarsit, Double sumaCentruCost,
 			Responsabil responsabil) {
@@ -112,12 +111,13 @@ public class CentruCost implements Serializable {
 	}
 
 	
+	
+
 	public CentruCost(String denumireCentruCost, FazaProductie faza,
-			Date dataStart, Date dataSfarsit, Double sumaCentruCost,
-			Responsabil responsabil) {
+			Responsabil responsabil, Date dataStart, Date dataSfarsit,
+			Double sumaCentruCost) {
 		super();
 		this.denumireCentruCost = denumireCentruCost;
-		this.faza = faza;
 		this.dataStart = dataStart;
 		this.dataSfarsit = dataSfarsit;
 		this.sumaCentruCost = sumaCentruCost;
