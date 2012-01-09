@@ -22,6 +22,7 @@ import javax.interceptor.Interceptors;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.personal.PersonalSrvLocal;
 import org.open.erp.services.salarizare.CentralizatorStatSalarii;
 import org.open.erp.services.salarizare.Configurare;
 import org.open.erp.services.salarizare.Pontaj;
@@ -57,7 +58,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	
 	//TO DO - de schimbar cand se va comite in modulul Personal sa foloseasca interfata locala
 	@EJB(mappedName="PersonalImpl/local") 
-	private PersonalSrv personalSrv;
+	private PersonalSrvLocal personalSrv;
 	
 	//private NomenclatoareSrv nomenclatoareSrv;
 
@@ -410,7 +411,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	}
 
 	public void setPersonalSrv(PersonalSrv personalSrv) {
-		this.personalSrv = personalSrv;
+		this.personalSrv = (PersonalSrvLocal) personalSrv;
 	}
 
 	public RegistruSalarizare getRegistru() {
