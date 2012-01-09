@@ -55,7 +55,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void testInregistrarePontaj() throws Exception {
 		logger.info("Begin test: inregistrarePontaj");
-		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		Pontaj pontaj = salarizareSrvInstance.inregistrarePontaj(angajat, 2011, 11, 160.0, 0.0, 0.0);
 		logger.info("A fost creat pontajul cu id-ul: "+pontaj.getIdPontaj());
