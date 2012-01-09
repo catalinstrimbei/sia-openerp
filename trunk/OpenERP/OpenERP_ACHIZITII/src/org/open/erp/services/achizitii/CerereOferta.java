@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.hibernate.annotations.Entity;
 import org.open.erp.services.nomgen.Persoana;
 
 /**
@@ -13,7 +14,7 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
-
+@Entity
 public class CerereOferta /*extends Document*/ {
 public static final Integer TRIMISA = 0;
 public static final Integer PRIMITA = 1;

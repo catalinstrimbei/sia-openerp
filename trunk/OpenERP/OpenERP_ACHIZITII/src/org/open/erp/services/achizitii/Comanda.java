@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.hibernate.annotations.Entity;
+
 /**
  * 
  * @author echipa.achizitii
@@ -11,7 +13,7 @@ import java.util.List;
  * @BusinessObject(Entity)
  * 
  */
-
+@Entity
 public class Comanda {
 	public static final Integer FINALIZATA = 1;
 	public static final Integer ANULATA = -1;
