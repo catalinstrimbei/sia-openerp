@@ -90,12 +90,41 @@ public class TestPersonalEJBregistru {
 			test.generareAnunturi();
 			test.initEvenimenteActivitati();		
 			
-			InterviuCandidat	interviuCandidat = personalInstance.salveazaInterviuCandidat(test.interviuCandidat1);
-			AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
-			DosarAngajat	dosar = personalInstance.salveazaDosarAngajat(test.dosar1);
-			RezultatProbaEvaluare rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(test.angajatProbaEvaluare1);													
+			Angajat	angajat = personalInstance.getAngajatById(1);
+			InterviuCandidat	interviuCandidat = test.interviuCandidat1;
+			Candidat candidat = personalInstance.getCandidatById(1);
+			interviuCandidat.setCandidat(candidat);
+			Interviu interviu = personalInstance.getInterviuById(3);
+			interviuCandidat.setInterviu(interviu);
+			interviuCandidat = personalInstance.salveazaInterviuCandidat(interviuCandidat);
+			
+			DosarAngajat	dosar = test.dosar1;
+			dosar.setAngajat(angajat);
+			dosar = personalInstance.salveazaDosarAngajat(dosar);																			
 			
 			logger.logINFO("End test: Inserari2");
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
+	
+	@Test	
+	public void testInserari2a() throws Exception {
+		try
+		{
+			logger.logINFO("Begin test: Inserari2a");			
+			TestPersonalImpl test = new TestPersonalImpl();
+			test.generareAnunturi();
+			test.initEvenimenteActivitati();							
+			
+			AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
+			
+			RezultatProbaEvaluare rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(test.angajatProbaEvaluare1);													
+			
+			logger.logINFO("End test: Inserari2a");
 		}
 		catch(Exception ex)
 		{

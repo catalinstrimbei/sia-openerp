@@ -651,10 +651,15 @@ public class RegistruPersonal {
 		try{
 			
 			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+			logger.logDEBUG("interviuCandidat_.getIdInterviuCandidat() >>> " + interviuCandidat_.getIdInterviuCandidat().toString());
+			
 			if (interviuCandidat_.getIdInterviuCandidat() == null || 
 				entityManager.find(interviuCandidat_.getClass(), interviuCandidat_.getIdInterviuCandidat()) == null)
+			{
 				entityManager.persist(interviuCandidat_);
-			else
+				logger.logDEBUG("Am intrat pe Persist");
+			}
+				else
 				entityManager.merge(interviuCandidat_);
 			
 		}catch(Exception ex){
