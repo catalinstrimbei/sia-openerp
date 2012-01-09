@@ -16,7 +16,7 @@ public class PersonalLogger {
 		super();
 	}
 	
-	private static void addAppender(Logger logger)
+	private void addAppender(Logger logger)
 	{
 		// TODO Auto-generated constructor stub	
 				//Create the RollingFileAppender.
