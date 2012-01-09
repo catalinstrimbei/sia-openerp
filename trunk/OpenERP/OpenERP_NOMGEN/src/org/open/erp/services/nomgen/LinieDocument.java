@@ -1,5 +1,7 @@
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -9,7 +11,7 @@ import javax.persistence.Id;
  */
 @Entity
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class LinieDocument { 
+public class LinieDocument implements Serializable { 
 	 
 	//@GeneratedValue
 	private Integer linieDoc; 

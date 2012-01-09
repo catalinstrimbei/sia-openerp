@@ -1,5 +1,7 @@
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 import javax.persistence.Id;
@@ -11,7 +13,7 @@ import javax.persistence.Id;
  */
 @Entity
 
-public class Material { 
+public class Material implements Serializable{ 
 	//@Id @GeneratedValue
 	public Integer idMaterial; 
 	public String denumire; 
