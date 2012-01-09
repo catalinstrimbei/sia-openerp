@@ -1,8 +1,7 @@
-
-
 package org.open.erp.services.incasari;
 
 import static javax.persistence.TemporalType.DATE;
+
 
 import java.util.Date;
 

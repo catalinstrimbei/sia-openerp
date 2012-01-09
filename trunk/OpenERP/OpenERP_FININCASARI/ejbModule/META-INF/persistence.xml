@@ -5,9 +5,9 @@
 	<persistence-unit name="OpenERP_FININCASARI">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jdbc/LocalPG_TX</jta-data-source>
-		<!--<jar-file>OpenERP_VANZARI</jar-file>
+		<jar-file>OpenERP_VANZARI</jar-file>
 		<jar-file>OpenERP_PERSONAL</jar-file>
-		<jar-file>OpenERP_NOMGEN</jar-file> -->
+		<jar-file>OpenERP_NOMGEN</jar-file> 
 		<class>org.open.erp.services.incasari.BiletLaOrdin</class>
 		<class>org.open.erp.services.incasari.Cec</class>
 		<class>org.open.erp.services.incasari.Chitanta</class>

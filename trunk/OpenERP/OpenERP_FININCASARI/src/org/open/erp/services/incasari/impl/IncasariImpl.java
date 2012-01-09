@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
@@ -35,11 +35,12 @@ import org.open.erp.services.vanzari.Client;
 import org.open.erp.services.vanzari.FacturaEmisa;
 import org.open.erp.services.vanzari.VanzariSrv;
 
-@Stateless(name = "IncasariSrv", mappedName = "IncasariSrv")
+@Stateful
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
 			.getLogger(IncasariImpl.class.getName());
+
 	@EJB(mappedName = "VanzariSrvImpl/local")
 	private VanzariSrv vanzariSrv;
 
@@ -57,13 +58,13 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		logger.debug("EntityManager: " + entityManager);
 		logger.debug("PersonalSrv: " + vanzariSrv);
 		logger.debug("ContabilizareSrv: " + ctbSrv);
-		
+
 		if (this.registru == null)
 			registru = new RegistruIncasari(entityManager);
 	}
-	
+
 	private RegistruIncasari registru = new RegistruIncasari();
-	
+
 	public VanzariSrv getVanzariSrv() {
 		return vanzariSrv;
 	}
@@ -94,8 +95,9 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 			Integer numar, String locatie, String moneda, Client client,
 			Double curs) throws IncasariException {
 
-		//Se efectueaza inregistrarea platii in contabilitate pe baza chitantei
-		//Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o noua chitanta pe baza unei facturi
+		// Se efectueaza inregistrarea platii in contabilitate pe baza chitantei
+		// Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o
+		// noua chitanta pe baza unei facturi
 		if (sumaIncasata == null || sumaIncasata == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
@@ -118,7 +120,19 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		facturiSelectate = compensariIncasariFacturi(facturi, sumaIncasata);
 
 		chitanta.setFacturi(facturiSelectate);
-		//inregistrarea in contabilitate a platii se face in functie de tipul incasarii
+
+		if (sessionContext.getRollbackOnly() == true) {
+			logger.debug("END inregistrareChitanta - FAILED TRANSACTION");
+		} else {
+			try {
+				chitanta = (Chitanta) this.registru.salveazaIncasare(chitanta);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		// inregistrarea in contabilitate a platii se face in functie de tipul
+		// incasarii
 		try {
 			if (avans) {
 
@@ -149,44 +163,85 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	 * @throws NumberFormatException
 	 * @ApplicationServiceFacade
 	 */
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void confirmareIncasare(Incasare doc) throws CtbException,
 			IncasariException {
-		//Jurnalizeaza notele contabile aferente efectuarii unei plati, in functie de
-		//documentul de plata(cec sau bilet la ordin)
+		// Jurnalizeaza notele contabile aferente efectuarii unei plati, in
+		// functie de
+		// documentul de plata(cec sau bilet la ordin)
 		Calendar currentDate = Calendar.getInstance();
 		Date dataInregistrarii = currentDate.getTime();
+
 		if (doc instanceof Cec) {
 
 			((Cec) doc).setStare("incasat");
-
+			if (sessionContext.getRollbackOnly() == true) {
+				logger.debug("FAILED TRANSACTION");
+			} else {
+				try {
+					doc = (Cec) this.registru.salveazaIncasare(doc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 			ctbSrv.jurnalizareIncasare(dataInregistrarii, doc.getSuma(),
 					doc.getNumar(), TipIncasare.CEC, doc.getFacturi().get(0)
 							.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
 
 		} else if (doc instanceof BiletLaOrdin) {
+
 			((BiletLaOrdin) doc).setStare("incasat");
+
+			if (sessionContext.getRollbackOnly() == true) {
+				logger.debug("FAILED TRANSACTION");
+			} else {
+				try {
+					doc = (BiletLaOrdin) this.registru.salveazaIncasare(doc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 
 			ctbSrv.jurnalizareIncasare(dataInregistrarii, doc.getSuma(),
 					doc.getNumar(), TipIncasare.BO, doc.getFacturi().get(0)
 							.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
 		}
+
 	}
 
 	/**
 	 * @ApplicationServiceFacade
 	 */
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void confirmareDepunereLaBanca(Incasare doc) {
-		//Jurnalizarea depunerii cec-ului sau biletului la ordin
+		// Jurnalizarea depunerii cec-ului sau biletului la ordin
 		if (doc instanceof Cec) {
 			((Cec) doc).setStare("depus");
+			if (sessionContext.getRollbackOnly() == true) {
+				logger.debug("FAILED TRANSACTION");
+			} else {
+				try {
+					doc = (BiletLaOrdin) this.registru.salveazaIncasare(doc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 
 		} else if (doc instanceof BiletLaOrdin) {
 			((BiletLaOrdin) doc).setStare("depus");
-			//Se schimba starea documentului in "depus"
+			// Se schimba starea documentului in "depus"
+
+			if (sessionContext.getRollbackOnly() == true) {
+				logger.debug("FAILED TRANSACTION");
+			} else {
+				try {
+					doc = (BiletLaOrdin) this.registru.salveazaIncasare(doc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}
@@ -194,9 +249,10 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	/**
 	 * @ApplicationServiceFacade
 	 */
+
 	private List<FacturaEmisa> compensariIncasariFacturi(
 			List<FacturaEmisa> facturi, Double suma) throws IncasariException {
-// Verifica achitarea facturilor in ordine cronologica
+		// Verifica achitarea facturilor in ordine cronologica
 		List<FacturaEmisa> facturiAsociate = new ArrayList<FacturaEmisa>();
 		for (FacturaEmisa fact : facturi) {
 			if (!fact.getPlatita()) {
@@ -225,14 +281,33 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	/**
 	 * @ApplicationServiceFacade
 	 */
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void confirmareImposibilitatePlata(Incasare doc) {
-		//Se constata imposibilitatea de plata a clientului, daca starea cec-ului sau biletului la ordin este "refuzat" 
+		// Se constata imposibilitatea de plata a clientului, daca starea
+		// cec-ului sau biletului la ordin este "refuzat"
 		if (doc instanceof Cec) {
 			((Cec) doc).setStare("refuzat");
+			if (sessionContext.getRollbackOnly() == true) {
+				logger.debug("FAILED TRANSACTION");
+			} else {
+				try {
+					doc = (Cec) this.registru.salveazaIncasare(doc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		} else if (doc instanceof BiletLaOrdin) {
 			((BiletLaOrdin) doc).setStare("refuzat");
+			if (sessionContext.getRollbackOnly() == true) {
+				logger.debug("FAILED TRANSACTION");
+			} else {
+				try {
+					doc = (BiletLaOrdin) this.registru.salveazaIncasare(doc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}
@@ -247,21 +322,22 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 			suma = suma * curs;
 		}
 		return suma;
-		
+
 	}
 
 	/**
 	 * @throws IncasariException
 	 * @ApplicationServiceFacade
 	 */
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Cec inregistrareCec(Date dataEmiterii, Boolean avans, Client client,
 			String seria, Integer numar, String locatie, String stare,
 			Double suma, String sumaInLitere, List<FacturaEmisa> facturi,
 			String moneda, Double curs) throws IncasariException {
-		//Se efectueaza inregistrarea platii in contabilitate pe baza unui cec
-		//Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o noua inregistrare in baza de date
+		// Se efectueaza inregistrarea platii in contabilitate pe baza unui cec
+		// Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o
+		// noua inregistrare in baza de date
 		if (suma == null || suma == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
@@ -283,6 +359,16 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 
 		cec.setFacturi(facturiSelectate);
 
+		if (sessionContext.getRollbackOnly() == true) {
+			logger.debug("FAILED TRANSACTION");
+		} else {
+			try {
+				cec = (Cec) this.registru.salveazaIncasare(cec);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		return cec;
 	}
 
@@ -290,6 +376,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	 * @throws IncasariException
 	 * @ApplicationServiceFacade
 	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public BiletLaOrdin inregistrareBiletLaOrdin(Date dataEmiterii,
 			Boolean avans, Client client, String seria, Integer numar,
@@ -297,8 +384,10 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 			Persoana garant, Date dataScadenta, Double suma,
 			String sumaInLitere, String moneda, Double curs)
 			throws IncasariException {
-		//Se efectueaza inregistrarea platii in contabilitate pe baza unui bilet la ordin
-		//Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o noua inregistrare in baza de date
+		// Se efectueaza inregistrarea platii in contabilitate pe baza unui
+		// bilet la ordin
+		// Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o
+		// noua inregistrare in baza de date
 
 		if (suma == null || suma == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
@@ -323,24 +412,36 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 
 		bo.setFacturi(facturiSelectate);
 
+		if (sessionContext.getRollbackOnly() == true) {
+			logger.debug("FAILED TRANSACTION");
+		} else {
+			try {
+				bo = (BiletLaOrdin) this.registru.salveazaIncasare(bo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		return bo;
 	}
 
 	@Override
-	// metoda care ar putea apartine de modulul Vanzari
 	public Double restIncasareFactura(FacturaEmisa factura) {
-		//Calculeaza diferenta dintre suma totala a facturii si suma incasata
+		// Calculeaza diferenta dintre suma totala a facturii si suma incasata
 		return factura.getValoareTotalaFactura() - factura.getSumaIncasata();
 
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ExtrasCont inregistrareExtrasCont(Date dataEmiterii, Boolean avans,
 			Client client, String seria, Integer numar, String locatie,
 			List<FacturaEmisa> facturi, Double suma, String sumaInLitere,
 			String moneda, Double curs) throws IncasariException {
-		//Se efectueaza inregistrarea platii in contabilitate pe baza unui extras de cont
-		//Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o noua inregistrare in baza de date
+		// Se efectueaza inregistrarea platii in contabilitate pe baza unui
+		// extras de cont
+		// Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o
+		// noua inregistrare in baza de date
 		if (suma == null || suma == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
@@ -362,6 +463,17 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		facturiSelectate = compensariIncasariFacturi(facturi, suma);
 
 		extrasCont.setFacturi(facturiSelectate);
+
+		if (sessionContext.getRollbackOnly() == true) {
+			logger.debug("FAILED TRANSACTION");
+		} else {
+			try {
+				extrasCont = (ExtrasCont) this.registru
+						.salveazaIncasare(extrasCont);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		return extrasCont;
 	}
