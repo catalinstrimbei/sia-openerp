@@ -49,7 +49,7 @@ public class TestPersonalEJBregistru {
 
 	@Test
 	public void testFunctieById() throws Exception {
-		Functie functie = personalInstance.getFunctie(101);
+		Functie functie = personalInstance.getFunctieById(101);
 		System.out.println("Nume functie: " + functie.getNumeFunctie().toString());
 	}
 

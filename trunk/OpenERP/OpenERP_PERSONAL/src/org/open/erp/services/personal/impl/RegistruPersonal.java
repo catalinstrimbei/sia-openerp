@@ -16,11 +16,9 @@ import org.open.erp.services.personal.DosarAngajat;
 import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.Instructor;
-import org.open.erp.services.personal.InstructorTraining;
 import org.open.erp.services.personal.Interviu;
 import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.ProbaEvaluare;
-import org.open.erp.services.personal.ResponsabilActivitate;
 import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.logger.PersonalLogger;
 
@@ -527,56 +525,7 @@ private static PersonalLogger logger ;
 		}
 	}
 		
-	//InstructorTraining
-	public InstructorTraining getInstructorTrainingById(Integer idInstructorTraining_) throws Exception
-	{
-		try{
-			return entityManager.find(InstructorTraining.class, idInstructorTraining_);		
-		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
-			throw ex;
-		}
-		
-	}
-
-	public Collection<InstructorTraining> getListaInstructoriTraining() throws Exception
-	{
-		try{
-			return entityManager.createQuery("SELECT it from InstructorTraining it").getResultList();				
-		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
-			throw ex;
-		}
-	}	
-
-	public InstructorTraining salveazaInstructorTraining(InstructorTraining instructorTraining_) throws Exception 
-	{
-		try{
-			if (instructorTraining_.getId() == null || 
-				entityManager.find(instructorTraining_.getClass(), instructorTraining_.getId()) == null)
-				entityManager.persist(instructorTraining_);
-			else
-				entityManager.merge(instructorTraining_);
-		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
-			throw ex;
-		}
-		return instructorTraining_;		
-	}	
-
-	public void stergeInstructorTraining(InstructorTraining instructorTraining_) throws Exception
-	{
-		try{
-			entityManager.remove(instructorTraining_);
-		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
-			throw ex;
-		}		
-	}
+	
 	public Interviu getInterviuById(Integer idInterviu_) throws Exception
 	{
 		try{
@@ -739,68 +688,6 @@ private static PersonalLogger logger ;
 		try
 		{
 			entityManager.remove(probaEvaluare_);
-		}
-		catch(Exception ex)
-		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
-			throw ex;
-		}
-	}
-	
-	//ResponsabilActivitate
-	
-	public ResponsabilActivitate getResponsabilActivitateById(Integer id_) throws Exception {
-		try
-		{
-			return (ResponsabilActivitate) entityManager.createQuery("SELECT r FROM ResponsabilActivitate r WHERE r.id = :id_")
-					.setParameter("id",id_)
-					.getSingleResult();	}
-		catch(Exception ex)
-		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
-			throw ex;
-		}
-		
-	}
-	
-	public Collection<ResponsabilActivitate> getListaResponsabilActivitate() throws Exception{
-		try
-		{
-			return entityManager.createQuery("SELECT r FROM ResponsabilActivitate r").getResultList();
-}
-		catch(Exception ex)
-		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
-			throw ex;
-		}
-	}
-	
-	
-	public ResponsabilActivitate salveazaResponsabilActivitate(ResponsabilActivitate responsabilActivitate_) throws Exception{
-		try{
-			
-			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
-			if (responsabilActivitate_.getId() == null || 
-				entityManager.find(responsabilActivitate_.getClass(), responsabilActivitate_.getId()) == null)
-				entityManager.persist(responsabilActivitate_);
-			else
-				entityManager.merge(responsabilActivitate_);
-			
-		}catch(Exception ex){
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
-			throw ex;
-		}
-		return responsabilActivitate_;
-	}
-	
-	public void stergeResponsabilActivitate(ResponsabilActivitate responsabilActivitate_ ) throws Exception{
-		try
-		{
-			entityManager.remove(responsabilActivitate_);
 		}
 		catch(Exception ex)
 		{

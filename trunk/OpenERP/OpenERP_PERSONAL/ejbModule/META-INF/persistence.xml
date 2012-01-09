@@ -16,11 +16,9 @@
 		<class>org.open.erp.services.personal.Eveniment</class>	
 		<class>org.open.erp.services.personal.Functie</class>	
 		<class>org.open.erp.services.personal.Instructor</class>	
-		<class>org.open.erp.services.personal.InstructorTraining</class>	
 		<class>org.open.erp.services.personal.Interviu</class>
 		<class>org.open.erp.services.personal.InterviuCandidat</class>
-		<class>org.open.erp.services.personal.ProbaEvaluare</class>				
-		<class>org.open.erp.services.personal.ResponsabilActivitate</class>
+		<class>org.open.erp.services.personal.ProbaEvaluare</class>
 		<class>org.open.erp.services.personal.RezultatProbaEvaluare</class>	
 		<class>org.open.erp.services.personal.DummyDepartament</class>
 		<class>org.open.erp.services.personal.DummyPersoana</class>

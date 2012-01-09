@@ -321,39 +321,7 @@ public interface PersonalSrv {
 	 */
 	
 	
-	InstructorTraining				getInstructorTrainingById(Integer IdInstructor_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unui instructorTraining dupa id.
-	 * 
-	 * @param IdInstructor_  id-ul instructorului, element unic de identificare pentru un instructorTraining, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip instructorTraining
-	 * 
-	 */
-	Collection<InstructorTraining>	getListaInstructoriTraining() throws Exception;
-	/**
-	 * Scop  Returneaza o Lista cu toti instructorii de training
-	 * 
-	 * 
-	 * @return o lista cu toti instructorii de training
-	 * 
-	 */
-	InstructorTraining				salveazaInstructorTraining(InstructorTraining instructorTraining_) throws Exception;
-	/**
-	 * Scop  Salveaza un instructorTraining in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip instructorTraining 
-	 * 
-	 */
-	void								stergeInstructorTraining(InstructorTraining instructorTraining_) throws Exception;
-	/**
-	 * Scop  Sterge un instructorTraining din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
+
 	Interviu				getInterviuById(Integer IdInterviu_) throws Exception;
 	/**
 	 * Scop  Returneaza datele unei interviu dupa id.
@@ -461,45 +429,6 @@ public interface PersonalSrv {
 	void	stergeProbaEvaluare(ProbaEvaluare proba_) throws Exception;
 	/**
 	 * Scop  Sterge un InterviuCandidat  din BD
-	 * 
-	 * 
-	 * @return 
-	 * 
-	 */	
-	
-	
-	//ResponsabilActivitate
-	ResponsabilActivitate getResponsabilActivitateById(Integer id_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unei Responsabil al unei activitati dupa precizarea id-ului
-	 * 
-	 * @param id_  id-ul probei, element unic de identificare, dupa care se face cautarea
-	 * 
-	* @return Obiectul de tip ResponsabilActivitate 
-	* 
-	*/
-	
-	Collection<ResponsabilActivitate>	getListaResponsabiliActivitati() throws Exception;
-	/**
-	 * Scop  Returneaza o lista cu toti Responsabilii de Activitati
-	 * 
-	 * 
-	 * @return o lista cu cu toti Responsailii de Activitati
-	 * 
-	 */
-	
-	ResponsabilActivitate salveazaResponsabilActivitate(Integer id_) throws Exception;
-	/**
-	 * Scop  Salveaza un responsabil pentru o activitate
-	 * 
-	 * 
-	 * @return Obiectul de tip ResponsabilActivitate
-	 * 
-	 */
-	
-	void	stergeResponsabilActivitate(ResponsabilActivitate responsabil_) throws Exception;
-	/**
-	 * Scop  Sterge un ResponsabilActivitate  din BD
 	 * 
 	 * 
 	 * @return 

@@ -24,7 +24,6 @@ import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.DosarAngajat;
 import org.open.erp.services.personal.Eveniment;
 import org.open.erp.services.personal.Functie;
-import org.open.erp.services.personal.InstructorTraining;
 import org.open.erp.services.personal.Interviu;
 import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.ProbaEvaluare;
@@ -49,7 +48,7 @@ public class TestPersonalImpl {
 	Collection<InterviuCandidat> ListaInterviuri2 = new ArrayList<InterviuCandidat>();
 
 	//Collection Narcisa
-	Collection<InstructorTraining>  instructori = new ArrayList<InstructorTraining>();//NMV adaugare Lista noua pentru instructoriTraining
+	//Collection<InstructorTraining>  instructori = new ArrayList<InstructorTraining>();//NMV adaugare Lista noua pentru instructoriTraining
 	Collection<Activitate> activitati = new ArrayList<Activitate>();//NMV adaugare Lista noua pentru Activitati;
 	
 	//Creare evenimente

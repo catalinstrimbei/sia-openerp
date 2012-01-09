@@ -33,9 +33,7 @@ import org.open.erp.services.personal.ActivitateTeamBuilding;
 import org.open.erp.services.personal.ActivitateTraining;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.Instructor;
-import org.open.erp.services.personal.InstructorTraining;
 import org.open.erp.services.personal.Interviu;
-import org.open.erp.services.personal.ResponsabilActivitate;
 import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.AnuntLocMunca;
 import org.open.erp.services.personal.CV;
@@ -837,62 +835,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}		
 	}
 	
-	public InstructorTraining getInstructorTrainingById(
-			Integer idInstructorTraining_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getFunctieById");
-		InstructorTraining result = new InstructorTraining();
-		if (idInstructorTraining_ == null){				
-			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
-		}
-		else{			
-			result = this.registruPersonal.getInstructorTrainingById(idInstructorTraining_); 
-			
-			logger.logDEBUG(">>>>>>End getFunctieById");
-		}
-		return result;
-	}
-	@Override
-	public Collection<InstructorTraining> getListaInstructoriTraining()
-			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaFunctii");
-		Collection<InstructorTraining> result = this.registruPersonal.getListaInstructoriTraining();
-		logger.logDEBUG(">>>>>>End getListaFunctii");
-		return result;
-	}
-	@Override
-	public InstructorTraining salveazaInstructorTraining(
-			InstructorTraining instructorTraining_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaInstructorTraining");
-		InstructorTraining result = new InstructorTraining();
-		if (instructorTraining_ == null){			
-			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
-		}
-		else{			
-			result = this.registruPersonal.salveazaInstructorTraining(instructorTraining_);
-			logger.logDEBUG(">>>>>>End salveazaInstructorTraining");
-		}
-		return result;
-	}
-	@Override
-	public void stergeInstructorTraining(InstructorTraining instructorTraining_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeInstructorTraining");
-		if (instructorTraining_ == null){
-			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
-			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
-		}
-		else{			
-			this.registruPersonal.stergeInstructorTraining(instructorTraining_);
-			logger.logDEBUG(">>>>>>End stergeInstructorTraining");
-		}		
-	}
+
 	
 	@Override
 	public Interviu getInterviuById(Integer idInterviu_) throws Exception {
@@ -1088,77 +1031,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		else{			
 			this.registruPersonal.stergeProbaEvaluare(proba_);
 			logger.logDEBUG(">>>>>>End stergeProbaEvaluare");
-		}
-	}
-	
-	
-	
-	//ResponsabilActivitate
-	
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	@Override
-	public ResponsabilActivitate getResponsabilActivitateById(Integer id_)
-		throws Exception {
-			logger.logDEBUG(">>>>>>Start afisare ResponsabilActivitate");
-			ResponsabilActivitate responsabilActivitate_ = new ResponsabilActivitate();
-			if (id_ == null){	
-				sessionContext.setRollbackOnly();
-				logger.logDEBUG(">>>>>>Tranzactie Anulata");
-			}
-			else{			
-				responsabilActivitate_ = this.registruPersonal.getResponsabilActivitateById(id_);
-				logger.logDEBUG(">>>>>>End ");
-			}
-			return responsabilActivitate_;
-	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	@Override
-	public Collection<ResponsabilActivitate> getListaResponsabiliActivitati()
-			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaResponsabiliActivitati");
-		Collection<ResponsabilActivitate> result = this.registruPersonal.getListaResponsabilActivitate();
-		logger.logDEBUG(">>>>>>End getListaResponsabiliActivitati");
-		return result;
-	}
-	
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	@Override
-	public ResponsabilActivitate salveazaResponsabilActivitate(Integer id_)
-			throws Exception {
-		// TODO Auto-generated method stub
-				logger.logDEBUG(">>>>>>Start creare ResponsabilActivitate");
-				ResponsabilActivitate responsabilActivitate_ = new ResponsabilActivitate();
-				if (id_ == null){
-					sessionContext.setRollbackOnly();
-					logger.logDEBUG(">>>>>>Tranzactie Anulata");
-				}
-				else{
-					if (this.registruPersonal == null)
-						registruPersonal = new RegistruPersonal(em);
-					this.registruPersonal.salveazaResponsabilActivitate(responsabilActivitate_);
-					logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
-				}
-				return responsabilActivitate_;
-	}
-	
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	@Override
-	public void stergeResponsabilActivitate(ResponsabilActivitate responsabil_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeResponsabilActivitate");
-		if (responsabil_ == null){
-			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
-			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
-		}
-		else{			
-			this.registruPersonal.stergeResponsabilActivitate(responsabil_);
-			logger.logDEBUG(">>>>>>End stergeResponsabilActivitate");
 		}
 	}
 	
