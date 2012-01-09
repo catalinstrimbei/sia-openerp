@@ -9,12 +9,20 @@ package org.open.erp.services.vanzari.impl;
 
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import java.util.Date;
 import java.util.Iterator;
 
+import org.apache.log4j.Logger;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
+import org.open.erp.services.ctbgen.ContabilizareSrvLocal;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
@@ -28,18 +36,35 @@ import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 @Stateful
 public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	
+	/* Dependente proprii */
+	private static Logger logger = Logger.getLogger(VanzariImpl.class.getName());
+	private RegistruVanzari registruVanzari;
+	
 	private ProcesareComanda procesareComanda  = new ProcesareComanda();
 	private ProcesareFacturaEmisa procesareFactura = new ProcesareFacturaEmisa();
+	
+	/* Dependente resurse injectate */
 	@EJB(mappedName="StocuriImpl/local")
 	public StocuriSrvLocal stocuriSrv = new StocuriImpl();
 	@EJB(mappedName="ContabilizareSrvImpl/local")
-	// TO DO - change when to ContabilizareSrvLocal
-	public ContabilizareSrv contabilizareSrv = new ContabilizareSrvImpl();
+	public ContabilizareSrvLocal contabilizareSrv = new ContabilizareSrvImpl();
 	
-	//public static final Integer INTRARE_STOC = 1;
-	//public static final Integer IESIRE_STOC = 2;
+	@PersistenceContext(unitName="OpenERP_VANZARI")
+	private EntityManager em;
+	@Resource
+	private SessionContext sessionContext;	
 	
+	/* Initializare */
 	public VanzariImpl(){}
+	@PostConstruct
+	public void init(){
+		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
+		logger.debug(">>>>>>>>>>>> Exista stocuriSrv? " + stocuriSrv);
+		logger.debug(">>>>>>>>>>>> Exista caontabSrv? " + contabilizareSrv);
+		
+		if (this.registruVanzari == null)
+			registruVanzari = new RegistruVanzari(em);
+	}
 
 	@Override
 	public Comanda inregistrareComanda(Produs[] produs, Double[] cant, Client client) {
