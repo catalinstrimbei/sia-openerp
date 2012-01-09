@@ -25,7 +25,7 @@ public class TestSalarizareEJB {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
 	private static SalarizareSrv salarizareSrvInstance;
 	private static PersonalSrv personalSrvInstance;
-	private static RegistruSalarizare registruSalarizare;
+//	private static RegistruSalarizare registruSalarizare;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -190,20 +190,21 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrareRetinere");
 	}
-	/*
+	
+	@Test
 	public void testAdaugaOreConcediu() throws Exception {
 		logger.info("Begin test: adaugaOreConcediu");
-		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
-		Pontaj pontaj = registruSalarizare.getPontajByAngajat(angajat, 2011, 11);
+		Pontaj pontaj = salarizareSrvInstance.getPontajByAngajat(angajat, 2011, 11);
 		logger.info("A fost incarcat pontajul cu id-ul: "+pontaj.getIdPontaj());
 
 		salarizareSrvInstance.adaugaOreConcediu(pontaj, 8.0);
 		
 		logger.info("End test: adaugaOreConcediu");
 	}
-	
+	/*
 	public void testAdaugaOreSuplimentare() throws Exception {
 		logger.info("Begin test: adaugaOreSuplimentare");
 		Angajat angajat = personalSrvInstance.getAngajatById(10001);
