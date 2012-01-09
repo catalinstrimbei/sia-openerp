@@ -3,9 +3,7 @@ package org.open.erp.services.contabgest;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-
-import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.personal.Angajat;
 
 /**
  * 
@@ -16,7 +14,7 @@ import org.open.erp.services.nomgen.PersoanaFizica;
  */
 
 @Entity
-public class Responsabil extends PersoanaFizica implements Serializable {
+public class Responsabil extends Angajat implements Serializable {
 
 	
 }
