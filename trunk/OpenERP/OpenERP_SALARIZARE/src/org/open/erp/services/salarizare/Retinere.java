@@ -1,5 +1,7 @@
 package org.open.erp.services.salarizare;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 import org.open.erp.services.personal.Angajat;
@@ -10,7 +12,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Retinere {
+public class Retinere implements Serializable{
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private Integer idRetinere;

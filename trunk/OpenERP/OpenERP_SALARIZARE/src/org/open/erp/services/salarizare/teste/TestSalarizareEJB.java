@@ -177,7 +177,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrareSpor");
 	}
-	/*
+	
 	@Test
 	public void testInregistrareRetinere() throws Exception {
 		logger.info("Begin test: inregistrareRetinere");
@@ -190,7 +190,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrareRetinere");
 	}
-	
+	/*
 	public void testAdaugaOreConcediu() throws Exception {
 		logger.info("Begin test: adaugaOreConcediu");
 		Angajat angajat = personalSrvInstance.getAngajatById(10001);
