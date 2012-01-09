@@ -30,7 +30,7 @@ public class TestSalarizareEJB {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		InitialContext ctx = initJBossJNDICtx();
-		salarizareSrvInstance = (SalarizareSrv)ctx.lookup("SalarizareSrv/remote");
+		salarizareSrvInstance = (SalarizareSrv)ctx.lookup("SalarizareImpl/remote");
 		personalSrvInstance = (PersonalSrv)ctx.lookup("PersonalSrv/remote");
 		
 		logger.info("initTest " + salarizareSrvInstance);
@@ -49,11 +49,7 @@ public class TestSalarizareEJB {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
+/*
 	//Test pentru inregistrarea pontajului pt un anumit angajat
 	//load angajat din componenta EJB Personal
 	@Test
@@ -68,7 +64,8 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrarePontaj");
 	}
-	
+	*/
+/*	
 	//test metoda generare automata pontaj pe toata luna pt toti angajatii
 	//propagare tranzactie intre inregistrare pontaj si inregistrarePontajLuna
 	@Test
@@ -167,7 +164,7 @@ public class TestSalarizareEJB {
 		salarizareSrvInstance.inregistrarStatSalariiLuna(2011, 11);
 		logger.info("End test: inregistrareStatSalariiLuna");
 	}
-	
+	*/
 	@Test
 	public void testInregistrareSpor() throws Exception {
 		logger.info("Begin test: inregistrareSpor");
@@ -180,7 +177,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrareSpor");
 	}
-	
+	/*
 	@Test
 	public void testInregistrareRetinere() throws Exception {
 		logger.info("Begin test: inregistrareRetinere");
@@ -192,15 +189,6 @@ public class TestSalarizareEJB {
 		assertNotNull("Metoda de creare a retinerii nu a functionat!", retinere);
 		
 		logger.info("End test: inregistrareRetinere");
-	}
-	
-	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
-	private static InitialContext initJBossJNDICtx() throws NamingException{
-		Properties props = new Properties();
-        props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");		
-        props.put("java.naming.provider.url", "jnp://localhost:1099/");
-        props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
-        return new InitialContext(props);
 	}
 	
 	public void testAdaugaOreConcediu() throws Exception {
@@ -228,4 +216,15 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: adaugaOreSuplimentare");
 	}
+	*/
+	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
+	private static InitialContext initJBossJNDICtx() throws NamingException{
+		Properties props = new Properties();
+        props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");		
+        props.put("java.naming.provider.url", "jnp://localhost:1099/");
+        props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
+        return new InitialContext(props);
+	}
+	
+	
 }
