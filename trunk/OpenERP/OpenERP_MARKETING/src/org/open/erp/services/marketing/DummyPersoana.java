@@ -3,6 +3,7 @@ package org.open.erp.services.marketing;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -19,7 +20,7 @@ public class DummyPersoana implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
+	@Id @GeneratedValue
 	private Integer id;
 	private String  adresa;
 	

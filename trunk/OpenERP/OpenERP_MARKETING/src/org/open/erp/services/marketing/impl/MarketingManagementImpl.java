@@ -32,6 +32,7 @@ import org.open.erp.services.marketing.Responsabil;
 //import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 //import org.open.erp.services.nomgen.Produs;
 
+
 /**
  * 
  * @ApplicationServiceImplementation(ServiceAPI)
@@ -74,7 +75,11 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 			throws Exception {
 		logger.debug(">>>>>>>>>>>> START Creare Campanie");	
 		
-		Campanie campanieNoua = new Campanie(0, nume, dataStart, dataSfarsit);
+		Campanie campanieNoua = new Campanie();
+		campanieNoua.setDenumireCampanie(nume);
+		campanieNoua.setDataSfarsit(dataSfarsit);
+		campanieNoua.setDataStart(dataStart);
+		campanieNoua.setPersoaneTinta(PersoaneTinta);
 		logger.debug(campanieNoua.getDenumireCampanie());
 		logger.debug("Perioada in care se desfasoara campania:" + campanieNoua.getDataStart().toString() + " - " + campanieNoua.getDataSfarsit().toString());
 		campanieNoua.setStatus(-1);
@@ -99,6 +104,11 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	@Override
 	public Campanie getCampanie(Integer idCampanie) {
 		return registruMarketing.getCampanie(idCampanie);
+//		return null;
+	}	
+	@Override
+	public PersoanaTinta getPersoanaTinta(Integer idPersoana) {
+		return registruMarketing.getPersoanaTinta(idPersoana);
 //		return null;
 	}	
 	@Override
@@ -216,4 +226,34 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		return (float)(produs.getPretVanzare() * 0.8);
 	}
 
+	@Override
+	public PersoanaTinta creeazaPersoanaTinta(String Nume, String prenume)throws Exception {
+		PersoanaTinta persoanaTinta = new PersoanaTinta();
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare Campanie - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+		} else
+			persoanaTinta = this.registruMarketing.salveazaPersoanaTinta(persoanaTinta);
+			//em.persist(proiectNou);
+		
+		return persoanaTinta;
+	}
+
+	@Override
+	public PersoanaTinta salveazaPersoanaTinta(PersoanaTinta persoana)
+			throws Exception {
+		logger.debug(">>>>>>Start salveazaPersoanaTinta");
+		PersoanaTinta result = new PersoanaTinta();
+		if (persoana == null){
+			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaPersoanaTinta(persoana);
+			logger.debug(">>>>>>End salveazaAngajat");
+		}
+		return result;
+	}
+	
 }

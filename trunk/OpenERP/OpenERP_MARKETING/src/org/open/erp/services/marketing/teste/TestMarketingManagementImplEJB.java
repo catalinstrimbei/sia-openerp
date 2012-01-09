@@ -14,6 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.marketing.Campanie;
 import org.open.erp.services.marketing.MarketingManagementSrv;
+import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.MarketingManagementSrvRemote;
 import org.open.erp.services.marketing.PersoanaTinta;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
@@ -69,7 +70,25 @@ public class TestMarketingManagementImplEJB {
 			assertNotNull("Nu exista campanie noua!", campanie);
 			logger.info("End test: definireCamppanie");
 		}
+		@Test
+		public void testcrearePersoanaTinta() throws Exception{
+			logger.info("Begin test: Creaza Persoana Tinta");
+			
+			 PersoanaTinta  persoanaTinta = new PersoanaTinta();
+			 persoanaTinta.setNume("Rusu");
+			 persoanaTinta.setPrenume("Prenume");
+			 persoanaTinta = marketingInstance.salveazaPersoanaTinta(persoanaTinta);
+				
+			 
+			logger.info("Persoana cu id: " + persoanaTinta.getId() + " a fost definita!");
+			
+			assertNotNull("Campania ne-validata!", persoanaTinta.getId());
+			
+			persoanaTinta = marketingInstance.getPersoanaTinta(persoanaTinta.getId());
+			
+			assertNotNull("Nu exista campanie noua!", persoanaTinta);
 		
+		}
 		/* Test creare proiect: 
 		 * - procesare persistenta cu 2JPA-PU
 		 * - definire BO local extinzând (moştenind) definiţia BO local din alt modul;

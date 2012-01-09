@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 
 import org.open.erp.services.marketing.Campanie;
+import org.open.erp.services.marketing.PersoanaTinta;
 
 
 
@@ -29,7 +30,9 @@ public class RegistruMarketing {
 		public Campanie getCampanie(Integer id){
 			return entityManager.find(Campanie.class, id);
 		}
-		
+		public PersoanaTinta getPersoanaTinta(Integer id){
+			return entityManager.find(PersoanaTinta.class, id);
+		}
 		public List<Campanie> getCampaniile(){
 			return entityManager.createQuery("SELECT C FROM Campanie c").getResultList();
 		}
@@ -60,6 +63,23 @@ public class RegistruMarketing {
 			return campanie;
 		}
 		
+		public PersoanaTinta salveazaPersoanaTinta(PersoanaTinta persoanaTinta) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (persoanaTinta.getId() == null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(persoanaTinta.getClass(), persoanaTinta.getId()) == null)
+					entityManager.persist(persoanaTinta);
+				else
+					entityManager.merge(persoanaTinta);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return persoanaTinta;
+		}
 		public void stergeCampanie(Campanie campanie){
 			entityManager.remove(campanie);
 		}

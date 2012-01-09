@@ -65,7 +65,7 @@ public class TestMarketingManagementImpl {
 			 persoanaTinta =new PersoanaTinta(1000+i, "Nume" + i, "Prenume" + i); //(PersoanaTinta) nomenclatorInstance.creazaPersona(1000+i, "Nume" + i, "Prenume" + i);
 			 listaPersoaneTinta.add(persoanaTinta);
 		 }
-		 campanieNoua = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, null, listaPersoaneTinta);
+		 campanieNoua = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, listaPersoaneTinta);
 		 assertNotNull("Nu exista campanie noua!", campanieNoua);
 		 logger.info("End test: definireCampanie");
 	}
@@ -142,8 +142,8 @@ public class TestMarketingManagementImpl {
 		intrebare.setIdIntrebare(1);
 		intrebare.setTipIntrebare("Un singur raspuns posibil");
 		intrebare.setTextIntrebare("V-ar interesa noul nostru produs?");
-		intrebare.adaugaRaspuns(1, "Da");
-		intrebare.adaugaRaspuns(2, "Nu");
+		//intrebare.adaugaRaspuns(1, "Da");
+		//intrebare.adaugaRaspuns(2, "Nu");
 		listaIntrebari.add(intrebare);
 		
 		intrebare = null;
@@ -151,9 +151,9 @@ public class TestMarketingManagementImpl {
 		intrebare.setIdIntrebare(2);
 		intrebare.setTextIntrebare("Cat ati fi dispus sa cheltuiti pentru produsul noul nostru produs");
 		intrebare.setTipIntrebare("Un singur raspuns posibil");
-		intrebare.adaugaRaspuns(1, "Sub 400 ron");
-		intrebare.adaugaRaspuns(2, "Intre 400 - 500 ron");
-		intrebare.adaugaRaspuns(3, "Peste 500 ron");
+		//intrebare.adaugaRaspuns(1, "Sub 400 ron");
+		//intrebare.adaugaRaspuns(2, "Intre 400 - 500 ron");
+		//intrebare.adaugaRaspuns(3, "Peste 500 ron");
 		listaIntrebari.add(intrebare);
 		
 		responsabil = new Responsabil();

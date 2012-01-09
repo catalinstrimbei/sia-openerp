@@ -148,4 +148,8 @@ float getPretFinalByPromotie(DummyProdus produs,Promotie promotie, float pretIni
  * @return pretul final dupa aplicarea discounturilor;
  */
 float getPretFinalByProdus(DummyProdus produs);
+
+PersoanaTinta creeazaPersoanaTinta(String Nume, String prenume)throws Exception;
+public PersoanaTinta getPersoanaTinta(Integer idPersoana);
+public PersoanaTinta salveazaPersoanaTinta(PersoanaTinta persoana) throws Exception;
 }
