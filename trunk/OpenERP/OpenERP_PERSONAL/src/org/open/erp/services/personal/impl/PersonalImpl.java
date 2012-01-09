@@ -96,18 +96,17 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTeamBuilding getActivitateTeamBuildingById(
-			Integer idActivitate_) throws Exception {	
-		logger.logDEBUG(">>>>>>Start getActivitateTeamBuildingById");
+			Integer idActivitate_) throws Exception {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		ActivitateTeamBuilding result = new ActivitateTeamBuilding();
-		if (idActivitate_ == null){
-			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
+		if (idActivitate_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getActivitateTeamBuildingById(idActivitate_);
 			
-			logger.logDEBUG(">>>>>>End getActivitateTeamBuildingById");
+			logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		return result;
 	}
@@ -116,10 +115,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<ActivitateTeamBuilding> getListaActivitatiTeamBuilding()
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaActivitatiTeamBuilding");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<ActivitateTeamBuilding> result = this.registruPersonal.getListaActivitatiTeamBuilding();
-		logger.logDEBUG(">>>>>>End getListaActivitatiTeamBuilding");
+		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		return result;
 	}
 	
@@ -127,8 +125,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ActivitateTeamBuilding salveazaActivitateTeamBuilding(
 			ActivitateTeamBuilding activitate_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaActivitateTeamBuilding");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		ActivitateTeamBuilding result = new ActivitateTeamBuilding();
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -147,7 +144,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public void stergeActivitateTeamBuilding(ActivitateTeamBuilding activitate_)
 			throws Exception {
 		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeActivitateTeamBuilding");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -164,9 +161,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTraining getActivitateTrainingById(Integer idActivitate_)
-			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getActivitateTrainingById");
+			throws Exception {		
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		ActivitateTraining result = new ActivitateTraining();
 		if (idActivitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -185,8 +181,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<ActivitateTraining> getListaActivitatiTraining()
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaActivitatiTraining");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<ActivitateTraining> result = this.registruPersonal.getListaActivitatiTraining();
 		logger.logDEBUG(">>>>>>End getListaActivitatiTraining");
 		return result;
@@ -196,8 +191,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ActivitateTraining salveazaActivitateTraining(
 			ActivitateTraining activitate_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaActivitateTraining");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		ActivitateTraining result = new ActivitateTraining();
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -215,8 +209,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeActivitateTraining(ActivitateTraining activitate_)
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeActivitateTraining");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -233,8 +226,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Angajat getAngajatByMarca(Integer marca_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getAngajatById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Angajat result = new Angajat();
 		if (marca_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -252,8 +244,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Angajat getAngajatById(Integer id_) throws Exception{
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getAngajatById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Angajat result = new Angajat();
 		if (id_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -271,8 +262,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Angajat> getListaAngajati() throws Exception{
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaAngajati");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<Angajat> result = this.registruPersonal.getListaAngajati();
 		logger.logDEBUG(">>>>>>End getListaAngajati");
 		return result;
@@ -281,8 +271,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Angajat salveazaAngajat(Angajat angajat_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaAngajat");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Angajat result = new Angajat();
 		if (angajat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -299,8 +288,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeAngajat(Angajat angajat_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeAngajat");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (angajat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -318,8 +306,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public AnuntLocMunca getAnuntLocMuncaById(Integer idAnunt_)
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getAnuntLocMuncaById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		AnuntLocMunca result = new AnuntLocMunca();
 		if (idAnunt_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -338,8 +325,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<AnuntLocMunca> getListaAnunturiLocMunca()
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaAnunturiLocMunca");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<AnuntLocMunca> result = this.registruPersonal.getListaAnunturiLocMunca();
 		logger.logDEBUG(">>>>>>End getListaAnunturiLocMunca");
 		return result;
@@ -349,8 +335,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public AnuntLocMunca salveazaAnuntLocMunca(AnuntLocMunca anunt_)
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaAnuntLocMunca");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		AnuntLocMunca result = new AnuntLocMunca();
 		if (anunt_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -367,8 +352,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeAnuntLocMunca(AnuntLocMunca anunt_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeAnuntLocMunca");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (anunt_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -384,8 +368,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat getCandidatById(Integer idPersoanaCandidat_) throws Exception{
-	// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getCandidatById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Candidat result = new Candidat();
 		if (idPersoanaCandidat_ == null){					
 			sessionContext.setRollbackOnly();
@@ -402,7 +385,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat getCandidatByIdCandidat(Integer idCandidat_) throws Exception {
-		logger.logDEBUG(">>>>>>Start getCandidatByIdCandidat");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Candidat result = new Candidat();
 		if (idCandidat_ == null){					
 			sessionContext.setRollbackOnly();
@@ -419,7 +402,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Candidat> getListaCandidati() throws Exception {
-		logger.logDEBUG(">>>>>>Start getListaCandidati");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<Candidat> result = this.registruPersonal.getListaCandidatilor();
 		logger.logDEBUG(">>>>>>End getListaCandidati");
 		return result;
@@ -428,7 +411,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat salveazaCandidat(Candidat candidat_) throws Exception {
-		logger.logDEBUG(">>>>>>Start salveazaCandidat");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Candidat result = new Candidat();
 		if (candidat_ == null){				
 			sessionContext.setRollbackOnly();
@@ -444,7 +427,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeCandidat(Candidat candidat_) throws Exception {
-		logger.logDEBUG(">>>>>>Start stergeCandidat");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (candidat_ == null){					
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
@@ -462,7 +445,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public CerereDemisie getCerereDemisieById(Integer idCerereDemisie_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start getCerereDemisieById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		CerereDemisie result = new CerereDemisie();
 		if (idCerereDemisie_ == null){					
 			sessionContext.setRollbackOnly();
@@ -479,7 +462,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<CerereDemisie> getListaCereriDemisie() throws Exception {
-		logger.logDEBUG(">>>>>>Start getListaCereriDemisie");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<CerereDemisie> result = this.registruPersonal.getListaCererilorDeDemisie();
 		logger.logDEBUG(">>>>>>End getListaCereriDemisie");
 		return result;
@@ -489,7 +472,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public CerereDemisie salveazaCerereDemisie(CerereDemisie cerereDemisie_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start salveazaCerereDemisie");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		CerereDemisie result = new CerereDemisie();
 		if (cerereDemisie_ == null){				
 			sessionContext.setRollbackOnly();
@@ -506,7 +489,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeCerereDemisie(CerereDemisie cerereDemisie_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start stergeCerereDemisie");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (cerereDemisie_ == null){					
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
@@ -524,7 +507,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ContractMunca getContractMuncaById(Integer idContractMunca_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start getContractMuncaById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		ContractMunca result = new ContractMunca();
 		if (idContractMunca_ == null){					
 			sessionContext.setRollbackOnly();
@@ -541,7 +524,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<ContractMunca> getListaContracteMunca() throws Exception {
-		logger.logDEBUG(">>>>>>Start getListaContracteMunca");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<ContractMunca> result = this.registruPersonal.getListaContracteMunca();
 		logger.logDEBUG(">>>>>>End getListaContracteMunca");
 		return result;
@@ -551,7 +534,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ContractMunca salveazaContractMunca(ContractMunca contractMunca_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start salveazaContractMunca");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		ContractMunca result = new ContractMunca();
 		if (contractMunca_ == null){				
 			sessionContext.setRollbackOnly();
@@ -568,7 +551,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void stergeContractMunca(ContractMunca contractMunca_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start stergeContractMunca");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (contractMunca_ == null){					
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
@@ -585,7 +568,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public CV getCVById(Integer idCV_) throws Exception {
-		logger.logDEBUG(">>>>>>Start getCVById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		CV result = new CV();
 		if (idCV_ == null){					
 			sessionContext.setRollbackOnly();
@@ -602,7 +585,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Collection<CV> getListaCVuri() throws Exception {
-		logger.logDEBUG(">>>>>>Start getListaCVuri");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<CV> result = this.registruPersonal.getListaCVuri();
 		logger.logDEBUG(">>>>>>End getListaCvuri");
 		return result;
@@ -611,7 +594,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CV salveazaCV(CV cv_) throws Exception {
-		logger.logDEBUG(">>>>>>Start salveazaCV");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		CV result = new CV();
 		if (cv_ == null){				
 			sessionContext.setRollbackOnly();
@@ -627,7 +610,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeCV(CV cv_) throws Exception {
-		logger.logDEBUG(">>>>>>Start stergeCV");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (cv_ == null){					
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
@@ -645,7 +628,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public DosarAngajat getDosarAngajatById(Integer idDosarAngajat_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start getDosarAngajatById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		DosarAngajat result = new DosarAngajat();
 		if (idDosarAngajat_ == null){					
 			sessionContext.setRollbackOnly();
@@ -662,7 +645,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<DosarAngajat> getListaDosareAngajat() throws Exception {
-		logger.logDEBUG(">>>>>>Start getListaCereriDemisie");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<DosarAngajat> result = this.registruPersonal.getListaDosareAngajat();
 		logger.logDEBUG(">>>>>>End getListaCereriDemisie");
 		return result;
@@ -672,7 +655,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public DosarAngajat salveazaDosarAngajat(DosarAngajat dosarAngajat_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start salveazaDosarAngajat");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		DosarAngajat result = new DosarAngajat();
 		if (dosarAngajat_ == null){				
 			sessionContext.setRollbackOnly();
@@ -688,7 +671,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeDosarAngajat(DosarAngajat dosarAngajat_) throws Exception {
-		logger.logDEBUG(">>>>>>Start stergeDosarAngajat");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (dosarAngajat_ == null){					
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
@@ -707,8 +690,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start creare Functie");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Functie functie = new Functie(idFunctie, numeFunctie);
 		if (idFunctie == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -731,8 +713,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Eveniment getEvenimentById(
 			Integer idEveniment_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getEvenimentbyId");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Eveniment result = new Eveniment();
 		if (idEveniment_ == null){				
 			sessionContext.setRollbackOnly();
@@ -750,8 +731,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Eveniment> getListaEvenimente()
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaEvenimente");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<Eveniment> result = this.registruPersonal.getListaEvenimente();
 		logger.logDEBUG(">>>>>>End getListaEvenimente");
 		return result;
@@ -761,8 +741,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Eveniment salveazaEveniment(
 			Eveniment eveniment_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaEveniment");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Eveniment result = new Eveniment();
 		if (eveniment_ == null){			
 			sessionContext.setRollbackOnly();
@@ -779,8 +758,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeEveniment(Eveniment eveniment_)
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeEveniment");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (eveniment_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -797,8 +775,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Functie getFunctieById(Integer idFunctie_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getFunctieById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Functie result = new Functie();
 		if (idFunctie_ == null){				
 			sessionContext.setRollbackOnly();
@@ -816,8 +793,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Functie> getListaFunctii()
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaFunctii");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<Functie> result = this.registruPersonal.getListaFunctii();
 		logger.logDEBUG(">>>>>>End getListaFunctii");
 		return result;
@@ -827,9 +803,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Functie salveazaFunctie(
 			Functie functie_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaFunctie");
-		logger.logDEBUG("functie_ = " + functie_.toString());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Functie result = new Functie();
 		logger.logDEBUG("Am trecut de new Functie()");
 		if (functie_ == null){			
@@ -847,8 +821,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeFunctie(Functie functie_)
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeFunctie");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (functie_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -866,8 +839,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Instructor getInstructorById(
 			Integer Id_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getInstructorById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Instructor result = new Instructor(); 
 		if (Id_ == null){				
 			sessionContext.setRollbackOnly();
@@ -885,8 +857,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Instructor> getListaInstructori()
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaInstructori");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<Instructor> result = this.registruPersonal.getListaInstructori();
 		logger.logDEBUG(">>>>>>End getListaInstructori");
 		return result;
@@ -896,8 +867,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Instructor salveazaInstructor(
 			Instructor instructor_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaEveniment");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Instructor result = new Instructor();
 		if (instructor_ == null){			
 			sessionContext.setRollbackOnly();
@@ -914,8 +884,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeInstructor(Instructor instructor_)
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeInstructor");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (instructor_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -932,8 +901,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Interviu getInterviuById(Integer idInterviu_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getInterviuById");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Interviu result = new Interviu();
 		if (idInterviu_ == null){				
 			sessionContext.setRollbackOnly();
@@ -951,8 +919,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Interviu> getListaInterviuri()
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaInterviuri");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<Interviu> result = this.registruPersonal.getListaInterviuri();
 		logger.logDEBUG(">>>>>>End getListaInterviuri");
 		return result;
@@ -962,8 +929,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Interviu salveazaInterviu(
 			Interviu interviu_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start salveazaInterviu");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Interviu result = new Interviu();
 		if (interviu_ == null){			
 			sessionContext.setRollbackOnly();
@@ -980,8 +946,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeInterviu(Interviu interviu_)
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeInterviu");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (interviu_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -1000,7 +965,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public InterviuCandidat getInterviuCandidatById(Integer idInterviuCandidat_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start afisare InterviuCandidat");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		InterviuCandidat interviuCandidat_ = new InterviuCandidat();
 		if (idInterviuCandidat_ == null){	
 			sessionContext.setRollbackOnly();
@@ -1018,8 +983,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<InterviuCandidat> getListaInterviuriCandidati()
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaAnunturiLocMunca");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<InterviuCandidat> result = this.registruPersonal.getListaInterviuCandidat();
 		logger.logDEBUG(">>>>>>End getListaAnunturiLocMunca");
 		return result;
@@ -1030,27 +994,25 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public InterviuCandidat salveazaInterviuCandidat(
 			InterviuCandidat idInterviuCandidat_) throws Exception {
-		// TODO Auto-generated method stub
-				logger.logDEBUG(">>>>>>Start creare InterviuCandidat");
-				InterviuCandidat interviuCandidat_ = new InterviuCandidat();
-				if (idInterviuCandidat_ == null){
-					sessionContext.setRollbackOnly();
-					logger.logDEBUG(">>>>>>Tranzactie Anulata");
-				}
-				else{
-					if (this.registruPersonal == null)
-						registruPersonal = new RegistruPersonal(em);
-					this.registruPersonal.salveazaInterviuCandidat(interviuCandidat_);
-					logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
-				}
-				return interviuCandidat_;
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		InterviuCandidat interviuCandidat_ = new InterviuCandidat();
+		if (idInterviuCandidat_ == null){
+			sessionContext.setRollbackOnly();
+			logger.logDEBUG(">>>>>>Tranzactie Anulata");
+		}
+		else{
+			if (this.registruPersonal == null)
+				registruPersonal = new RegistruPersonal(em);
+			this.registruPersonal.salveazaInterviuCandidat(interviuCandidat_);
+			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+		}
+		return interviuCandidat_;
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeInterviuCandidat(InterviuCandidat interviuCandidat_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeInterviuCandidat");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (interviuCandidat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -1068,7 +1030,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ProbaEvaluare getProbaEvaluareById(Integer idProba_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start afisare ProbaEvaluare");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		ProbaEvaluare probaEvaluare_ = new ProbaEvaluare();
 		if (idProba_ == null){	
 			sessionContext.setRollbackOnly();
@@ -1084,8 +1046,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<ProbaEvaluare> getListaProbeEvaluare()
-			throws Exception {		
-		logger.logDEBUG(">>>>>>Start getListaProbeEvaluare");
+			throws Exception {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<ProbaEvaluare> result = this.registruPersonal.getListaProbaEvaluare();
 		logger.logDEBUG(">>>>>>End getListaProbeEvaluare");
 		return result;
@@ -1094,7 +1056,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ProbaEvaluare salveazaProbaEvaluare(ProbaEvaluare probaEvaluare_) throws Exception {
-		logger.logDEBUG(">>>>>>Start creare ProbaEvaluare");		
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());	
 		if (probaEvaluare_ == null){
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
@@ -1111,7 +1073,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeProbaEvaluare(ProbaEvaluare proba_) throws Exception {
-			logger.logDEBUG(">>>>>>Start stergeProbaEvaluare");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (proba_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -1129,7 +1091,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public RezultatProbaEvaluare getRezultatProbaEvaluareById(Integer id_)
 			throws Exception {
-		logger.logDEBUG(">>>>>>Start afisare RezultatProbaEvaluare");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		RezultatProbaEvaluare rezultatProbaEvaluare_ = new RezultatProbaEvaluare();
 		if (id_ == null){	
 			sessionContext.setRollbackOnly();
@@ -1146,8 +1108,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<RezultatProbaEvaluare> getListaRezultateProbeEvaluare()
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start getListaRezultateProbeEvaluare");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<RezultatProbaEvaluare> result = this.registruPersonal.getListaRezultatProbaEvaluare();
 		logger.logDEBUG(">>>>>>End getListaRezultateProbeEvaluare");
 		return result;
@@ -1157,8 +1118,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public RezultatProbaEvaluare salveazaRezultatProbaEvaluare(RezultatProbaEvaluare rezultatProbaEvaluare_)
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start creare RezultatProbaEvaluare");		
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());		
 		if (rezultatProbaEvaluare_ == null){
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(">>>>>>Tranzactie Anulata");
@@ -1175,8 +1135,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeRezultatProbaEvaluare(RezultatProbaEvaluare rezultat_) throws Exception {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start stergeRezultatProbaEvaluare");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (rezultat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
@@ -1187,7 +1146,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			logger.logDEBUG(">>>>>>End stergeRezultatProbaEvaluare");
 		}
 	}
-	
 	
 	
 	///BusinessLogicRelated
