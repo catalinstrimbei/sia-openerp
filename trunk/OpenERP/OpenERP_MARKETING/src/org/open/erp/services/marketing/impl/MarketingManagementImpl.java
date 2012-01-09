@@ -69,9 +69,9 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 
 	@Override
-	public Campanie definireCampanie(String nume, 
-			Date dataStart, Date dataSfarsit,/*Responsabil responsabil,*/ List<PersoanaTinta> PersoaneTinta) throws Exception {
-		
+	public Campanie definireCampanie(String nume, Date dataStart,
+			Date dataSfarsit, List<PersoanaTinta> PersoaneTinta)
+			throws Exception {
 		logger.debug(">>>>>>>>>>>> START Creare Campanie");	
 		
 		Campanie campanieNoua = new Campanie(0, nume, dataStart, dataSfarsit);
@@ -215,4 +215,5 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		// TODO Auto-generated method stub
 		return (float)(produs.getPretVanzare() * 0.8);
 	}
+
 }
