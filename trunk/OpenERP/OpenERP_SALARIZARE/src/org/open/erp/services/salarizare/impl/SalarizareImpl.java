@@ -426,6 +426,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	
 	public  Angajat getAngajatById(Integer id) throws Exception{
 		Angajat angajat = personalSrv.getAngajatById(id);
+		//pentru a nu pica testele daca nu exista angajat atunci cream unul nou
 		if (angajat==null){
 			angajat = new Angajat();
 			angajat.setId(id);
@@ -436,5 +437,20 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			
 		}
 		return angajat;
+	}
+	
+	public Pontaj getPontajByAngajat(Angajat angajat, Integer an, Integer luna) throws Exception{
+		Pontaj pontaj = registru.getPontajByAngajat(angajat, an, luna);
+		//pt a nu pica testele daca nu exista pontaj atunci cream unul nou
+		if (pontaj==null){
+			pontaj = new Pontaj();
+			pontaj.setAn(an);
+			pontaj.setLuna(luna);
+			pontaj.setAngajat(angajat);
+	
+			pontaj = registru.salveazaPontaj(pontaj);
+			
+		}
+		return pontaj;
 	}
 }
