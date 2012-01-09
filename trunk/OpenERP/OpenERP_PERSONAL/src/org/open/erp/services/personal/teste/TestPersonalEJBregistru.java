@@ -66,7 +66,7 @@ public class TestPersonalEJBregistru {
 		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
 		
 		Functie functie = personalInstance.salveazaFunctie(test.functie1);		
-		Candidat candidat = personalInstance.salveazaCandidat(test.candidat1);
+		//Candidat candidat = personalInstance.salveazaCandidat(test.candidat1);
 		CV	cv = personalInstance.salveazaCV(test.cv1);
 		Interviu interviu = personalInstance.salveazaInterviu(test.interviu1);
 		InterviuCandidat	interviuCandidat = personalInstance.salveazaInterviuCandidat(test.interviuCandidat1);

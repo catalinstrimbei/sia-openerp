@@ -17,7 +17,19 @@ public class PersonalLogger {
 	public PersonalLogger() {
 		super();
 	}
-	
+	private void trace(StackTraceElement e[]) 
+	{
+	   boolean doNext = false;
+	   for (StackTraceElement s : e) 
+	   {
+	       if (doNext)
+	       {
+	    	  this.logERROR("Stack Trace >>> " + s.getMethodName());
+	          return;
+	       }
+	       doNext = s.getMethodName().equals("getStackTrace");
+	   }
+	}
 	private void addAppender(Logger logger)
 	{
 		// TODO Auto-generated constructor stub	
@@ -92,42 +104,19 @@ public class PersonalLogger {
 		
 		if(level == null || level.equals(Level.DEBUG))
 		 {
-			 level = Level.DEBUG;
-			 //logger= Logger.getLogger(PersonalLogger.class.getName());  
+			 level = Level.DEBUG;			 
 		 }
-		/* 
-		 else if(level.equals(Level.DEBUG)) 
-		 {
-	    	 logger= Logger.getLogger(PersonalLogger.class.getName());
-	     }
-		 else  if(level.equals(Level.INFO))
-		 {
-	    	 logger= Logger.getLogger("com.INFO"); 
-	     }
-		 else  if(level.equals(Level.ERROR)) 
-		 {
-	    	 logger= Logger.getLogger("com.ERROR");
-	     }
-		 else  if(level.equals(Level.WARN))
-		 {
-	    	 logger= Logger.getLogger("com.WARN");
-	     }
-		 else  if(level.equals(Level.FATAL))
-		 {
-	    	 logger= Logger.getLogger("com.FATAL");
-	     }
-	     
-		 else
-		 {
-	      logger= Logger.getLogger(PersonalLogger.class.getName());
-	     }
-	     */
 		 logger= Logger.getLogger(PersonalLogger.class.getName());
 		 if(logger.getAppender("fileAppender") == null)
 		 {
 			 this.addAppender(logger);
 		 }
-	     logger.log(level, message_, t );                       
+	     logger.log(level, message_, t );
+	     if(level.equals(Level.ERROR) || level.equals(Level.FATAL)) 
+	     {
+	    	 
+	    	 
+	     }
 	 }    
 	
 }
