@@ -92,6 +92,20 @@ public class CentruCost implements Serializable {
 		this.costuriPrimare = costuriPrimare;
 		this.activitati = activitati;
 	}
+	
+	
+
+	public CentruCost(Integer idCentruCost, String denumireCentruCost,
+			Date dataStart, Date dataSfarsit, Double sumaCentruCost,
+			Angajat responsabil) {
+		super();
+		this.idCentruCost = idCentruCost;
+		this.denumireCentruCost = denumireCentruCost;
+		this.dataStart = dataStart;
+		this.dataSfarsit = dataSfarsit;
+		this.sumaCentruCost = sumaCentruCost;
+		this.responsabil = responsabil;
+	}
 
 	public Integer getIdCentruCost() {
 		return idCentruCost;
