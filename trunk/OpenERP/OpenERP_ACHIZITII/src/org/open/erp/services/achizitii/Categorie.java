@@ -1,6 +1,8 @@
 package org.open.erp.services.achizitii;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.annotations.Entity;
 /**
  * 
  * @author echipa.achizitii
@@ -8,6 +10,8 @@ import java.util.List;
  * @BusinessObject(Entity)
  * 
  */
+
+@Entity
 public class Categorie {
 private Integer id;
 private String denumire;

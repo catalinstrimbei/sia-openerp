@@ -1,6 +1,7 @@
 package org.open.erp.services.achizitii;
 
 
+import org.hibernate.annotations.Entity;
 import org.open.erp.services.nomgen.Material;
 /**
  * 
@@ -9,6 +10,7 @@ import org.open.erp.services.nomgen.Material;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class Articol extends Material {	
     private Categorie categorieArticol;
     private Double pretAchizitie;
