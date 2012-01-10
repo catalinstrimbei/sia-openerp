@@ -106,9 +106,9 @@ public class RegistruPersonalEJB {
 	
 	public Collection<CV> getCVuriPeAnuntLocMunca(AnuntLocMunca anuntMunca_) throws Exception{
 		try{
-			return entityManager.createQuery("SELECT cv FROM CV cv " +
-											"WHERE cv.idFunctie = :idFunctie")
-											.setParameter("idFunctie", anuntMunca_.getFunctie().getIdFunctie())
+			return entityManager.createQuery("SELECT cv FROM CV cv, AnuntLocMunca am " +
+											"WHERE cv.functieVizata = :am.functie")
+											.setParameter("am", anuntMunca_)
 											.getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
@@ -120,8 +120,8 @@ public class RegistruPersonalEJB {
 	public Collection<ContractMunca> getContracteMuncaPeFunctie(Functie functie_) throws Exception{
 		try{
 			return entityManager.createQuery("SELECT cm FROM ContractMunca cm " +
-											"WHERE cm.idFunctie = :idFunctie")
-											.setParameter("idFunctie", functie_.getIdFunctie())
+											"WHERE cm.functie = :functie")
+											.setParameter("functie", functie_)
 											.getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
@@ -151,4 +151,5 @@ public class RegistruPersonalEJB {
 
 
 }
+
 
