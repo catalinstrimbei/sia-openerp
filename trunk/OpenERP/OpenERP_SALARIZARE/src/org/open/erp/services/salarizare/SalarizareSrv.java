@@ -260,6 +260,15 @@ public interface SalarizareSrv {
 	 */
 	CentralizatorStatSalarii getStatSalariiLuna(Integer an, Integer luna) throws Exception;
 	
+	/**
+	 * returneaza un angajat pornind de la id prin apelarea metodei corespunzatoare din Personal - singura diferenta e ca daca metoda din Personal nu intoarce nimic a
+	 * atunci un angajat nou este creat 
+	 * @param id 				Id-ul angajatului
+	 * 
+	 * @return Angajat  
+	 * @throws Exception 
+	 * 
+	 */
 	Angajat getAngajatById(Integer id) throws Exception;
 	
 	/**
