@@ -1,10 +1,7 @@
 #labels PaginamodululuiPLATI
-
 = Introduction =
 Echipa FinPlati
-
 = Details =
-
 1. Comfirmarea unei plati
 
 2. Inregistrare chitanta
