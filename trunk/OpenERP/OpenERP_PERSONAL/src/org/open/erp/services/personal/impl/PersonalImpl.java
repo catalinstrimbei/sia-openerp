@@ -1804,13 +1804,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try
 		{
-			Collection<InterviuCandidat> listaInterviuri = this.registruPersonal.getListaInterviuCandidat();		
+			Collection<InterviuCandidat> listaInterviuri = this.registruPersonal.getListaInterviuriByCandidat(candidat_);		
 			Iterator<InterviuCandidat> iterator = listaInterviuri.iterator();
 			
 			while (iterator.hasNext()) {
 				InterviuCandidat	interviu = iterator.next();
-				if (candidat_.getIdCandidat()== interviu.getCandidat().getIdCandidat()
-						&&  interviu.getRezultatEvaluare() == "ADMIS" && interviu.getInterviu().getTipInterviu() == "Final" 
+				if (interviu.getRezultatEvaluare() == "ADMIS" && interviu.getInterviu().getTipInterviu() == "Final" 
 						&& (interviu.getDataInterviu().compareTo(dataAnunt_)) >= 0)
 											
 				{

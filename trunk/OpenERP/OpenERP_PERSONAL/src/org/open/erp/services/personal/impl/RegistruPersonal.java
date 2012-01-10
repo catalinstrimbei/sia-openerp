@@ -653,7 +653,23 @@ public class RegistruPersonal {
 	public Collection<InterviuCandidat> getListaInterviuCandidat() throws Exception{
 		try
 		{
-			return entityManager.createQuery("SELECT ic InterviuCandidat ic").getResultList();
+			return entityManager.createQuery("SELECT ic FROM InterviuCandidat ic").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
+	
+	public Collection<InterviuCandidat> getListaInterviuriByCandidat(Candidat candidat_) throws Exception{
+		try
+		{
+			return entityManager.createQuery("SELECT ic FROM InterviuCandidat ic WHERE ic.candidat = :candidat")
+					.setParameter("candidat", candidat_)
+					.getResultList();
 		}
 		catch(Exception ex)
 		{

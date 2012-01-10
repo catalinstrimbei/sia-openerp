@@ -139,7 +139,14 @@ public class TestPersonalEJBBusinessLogic {
 
 			for(Iterator<AnuntLocMunca> i = listaAnunturi.iterator(); i.hasNext();)
 			{
-				Collection<Candidat> listaCandidati = personalInstance.recrutareEJB(i.next());
+				AnuntLocMunca anunt = i.next(); 
+				Collection<Candidat> candidatiAnunt = personalInstance.getCandidatiPeAnuntLocMuncaEJB(anunt);
+				for(Iterator<Candidat> k = candidatiAnunt.iterator(); k.hasNext();)
+				{
+					Candidat candidat = k.next();
+					candidat = personalInstance.validareRecrutareEJB(anunt.getDataInceput(), candidat);
+				}
+				Collection<Candidat> listaCandidati = personalInstance.recrutareEJB(anunt);
 				for(Iterator<Candidat> j = listaCandidati.iterator(); j.hasNext();)
 				{
 					Candidat candidat = j.next();
