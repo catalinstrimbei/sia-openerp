@@ -3,6 +3,8 @@ package org.open.erp.services.contabgest;
 
 import java.util.Date;
 
+import org.open.erp.services.personal.Angajat;
+
 
 
 public interface Activitate {
@@ -47,9 +49,9 @@ public interface Activitate {
 
 		public abstract void setStatus(Integer status);
 
-		public abstract Responsabil getResponsabil();
+		public abstract Angajat getAngajat();
 
-		public abstract void setResponsabil(Responsabil responsabil);
+		public abstract void setAngajat(Angajat responsabil);
 
 	
 }
