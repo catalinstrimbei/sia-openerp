@@ -209,6 +209,7 @@ public class TestSalarizareEJB {
 		logger.info("End test: adaugaOreConcediu");
 	}
 	
+	@Test
 	public void testAdaugaOreSuplimentare() throws Exception {
 		logger.info("Begin test: adaugaOreSuplimentare");
 		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
