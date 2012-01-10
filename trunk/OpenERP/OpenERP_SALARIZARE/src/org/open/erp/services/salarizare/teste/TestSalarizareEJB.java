@@ -221,6 +221,29 @@ public class TestSalarizareEJB {
 		logger.info("End test: adaugaOreSuplimentare");
 	}
 	
+	@Test
+	public void testGetPontajAnLuna() throws Exception {
+		logger.info("Begin test: getPontajAnLuna");
+		List<Pontaj> pontaje = salarizareSrvInstance.getPontajAnLuna(2011, 11);
+		
+		assertNotNull("Metoda de incarcare a pontajelor dintr-o luna nu a functionat!", pontaje);
+		
+		logger.info("End test: getPontajAnLuna");
+	}
+	
+	@Test
+	public void testGetSporuriAngajat() throws Exception {
+		logger.info("Begin test: getSporuriAngajat");
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		List<Spor> sporuri = salarizareSrvInstance.getSporuriAngajat(2011, 11, angajat);
+		
+		assertNotNull("Metoda de incarcare a sporurilor pentru angajat nu a functionat!", sporuri);
+		
+		logger.info("End test: getSporuriAngajat");
+	}
+	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
@@ -229,14 +252,4 @@ public class TestSalarizareEJB {
         props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
         return new InitialContext(props);
 	}
-	
-	@Test
-	public void testgetPontajAnLuna() throws Exception {
-		logger.info("Begin test: getPontajAnLuna");
-		List<Pontaj> pontaje = salarizareSrvInstance.getPontajAnLuna(2011, 11);
-		
-		assertNotNull("Metoda de incarcare a pontajelor dintr-o luna nu a functionat!", pontaje);
-		
-		logger.info("End test: getPontajAnLuna");
-	}	
 }
