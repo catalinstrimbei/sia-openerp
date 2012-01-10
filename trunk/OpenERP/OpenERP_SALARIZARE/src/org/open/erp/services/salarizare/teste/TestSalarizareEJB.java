@@ -108,7 +108,7 @@ public class TestSalarizareEJB {
 		logger.info("End test: calculRetineriAngajat");
 	}
 	
-	/*
+	
 	@Test
 	public void calculVenitBrutAngajati() throws Exception {
 		logger.info("Begin test: calculVenitBrutAngajat");
@@ -118,13 +118,13 @@ public class TestSalarizareEJB {
 		
 		venitBrut=salarizareSrvInstance.calculVenitBrut(2011, 11, angajat);
 		
-		logger.info("Retinerile insumate sunt: "+venitBrut);
+		logger.info("Venitul brut calculat este: "+venitBrut);
 		
-		assertNotNull("Metoda de calcul a retinerilor nu a functionat!", venitBrut);
+		assertNotNull("Metoda de calcul a venitului brut nu a functionat!", venitBrut);
 		
 		logger.info("End test: calculVenitBrutAngajat");
 	}
-	
+	/*
 	@Test
 	public void calculRetineriObligatoriiAngajati() throws Exception {
 		logger.info("Begin test: calculRetineriObligatoriiAngajat");
@@ -147,6 +147,9 @@ public class TestSalarizareEJB {
 		logger.info("End test: calculRetineriObligatoriiAngajat");
 	}
 	
+	 
+	 */
+	
 	@Test
 	public void calculDeduceriAngajati() throws Exception {
 		logger.info("Begin test: calculDeduceriAngajat");
@@ -158,7 +161,7 @@ public class TestSalarizareEJB {
 		assertNotNull("Metoda de calcul a deducerilor nu a functionat!", deduceri);
 		logger.info("End test: calculDeduceriAngajat");
 	}
-	
+	/*
 	@Test
 	public void testinregistrarStatSalariiLuna() throws Exception {
 		logger.info("Begin test: inregistrareStatSalariiLuna");
