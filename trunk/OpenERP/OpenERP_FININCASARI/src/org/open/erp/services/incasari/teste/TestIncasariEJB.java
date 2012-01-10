@@ -26,10 +26,13 @@ import org.open.erp.services.ctbgen.RegConturi;
 import org.open.erp.services.ctbgen.RegSablonNC;
 import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
+import org.open.erp.services.incasari.BiletLaOrdin;
+import org.open.erp.services.incasari.Cec;
 import org.open.erp.services.incasari.Chitanta;
 import org.open.erp.services.incasari.IncasariSrv;
 import org.open.erp.services.incasari.exception.IncasariException;
 import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.vanzari.Client;
 import org.open.erp.services.vanzari.FacturaEmisa;
@@ -208,6 +211,145 @@ public class TestIncasariEJB {
 				Double.doubleToLongBits(40.00), Double.doubleToLongBits(suma));
 	}
 	
+	
+	
+	
+	@Test(expected = IncasariException.class)
+	public void testInregistrareCecSumaExcedenta()
+			throws IncasariException, CtbException {
+
+		Date dataEmiterii = null;
+		try {
+			dataEmiterii = dfm.parse("2011-12-22");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Client client = new Client();
+		client.setId(2);
+		facturi = new ArrayList<FacturaEmisa>();
+
+		facturi.add(fact1);
+
+		facturi.add(fact2);
+
+		@SuppressWarnings("unused")
+		Cec cec = incasariSrvInstance.inregistrareCec( dataEmiterii, false,
+				client,"bx", 2, "sediu", "depus", Double.valueOf(80.00), 
+				"optzeci", facturi, "RON", null);
+
+	}
+
+
+
+
+
+
+        @Test(expected = IncasariException.class)
+	public void testInregistrareCecSumaNula() 
+			throws IncasariException, CtbException {
+
+		Date dataEmiterii = null;
+		try {
+			dataEmiterii = dfm.parse("2011-05-23");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Client client = new Client();
+		client.setId(4);
+		facturi = new ArrayList<FacturaEmisa>();
+
+		facturi.add(fact1);
+
+		facturi.add(fact2);
+
+		@SuppressWarnings("unused")
+		Cec cec = incasariSrvInstance.inregistrareCec( dataEmiterii, false, 
+				client,"wy", 4, "sediu", "depus", null , "zero", facturi, 
+				"RON", null);
+
+	}
+	
+
+
+	@Test(expected = IncasariException.class)
+	public void testInregistrareBiletLaOrdinSumaExcedenta()
+			throws IncasariException, CtbException {
+
+		Date dataEmiterii = null;
+		try {
+			dataEmiterii = dfm.parse("2010-06-22");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		Date dataScadenta = null;
+		try {
+			dataScadenta = dfm.parse("2010-07-22");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		
+		Persoana garant = new Persoana();
+		garant.setId(3);
+		Client client = new Client();
+		client.setId(1);
+		facturi = new ArrayList<FacturaEmisa>();
+
+		facturi.add(fact1);
+
+		facturi.add(fact2);
+
+		@SuppressWarnings("unused")
+		BiletLaOrdin biletlaordin = incasariSrvInstance.inregistrareBiletLaOrdin( 
+				dataEmiterii, false, client,"gw",
+				2, "sediu", "depus", facturi, garant, dataScadenta, 
+				Double.valueOf(70.00), "saptezeci", "RON", null);
+
+	}
+
+
+
+
+
+
+        @Test(expected = IncasariException.class)
+	public void testInregistrareBiletLaOrdinSumaNula()
+			throws IncasariException, CtbException {
+
+		Date dataEmiterii = null;
+		try {
+			dataEmiterii = dfm.parse("2011-05-23");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Date dataScadenta = null;
+		try {
+			dataScadenta = dfm.parse("2010-07-22");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		Persoana garant = new Persoana();
+		garant.setId(3);
+		Client client = new Client();
+		client.setId(4);
+		facturi = new ArrayList<FacturaEmisa>();
+
+		facturi.add(fact1);
+
+		facturi.add(fact2);
+
+		@SuppressWarnings("unused")
+		BiletLaOrdin biletlaordin = incasariSrvInstance.inregistrareBiletLaOrdin( 
+				dataEmiterii, false, client,"gw",
+				2, "sediu", "depus", facturi, garant, dataScadenta, 
+				null, " zero", "RON", null);
+
+	}
 	private static InitialContext initJBossJNDICtx() throws NamingException {
 		Properties props = new Properties();
 		props.put("java.naming.factory.initial",
