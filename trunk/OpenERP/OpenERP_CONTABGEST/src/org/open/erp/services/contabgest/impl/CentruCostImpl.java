@@ -50,7 +50,7 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 	
 	@EJB(mappedName="CostPrimarImpl/local")
 	
-	private CostPrimarSRV costPrimarSRV;
+	private CostPrimarSRVLocal CostPrimarSRV;
 	
 	
 	public CentruCostImpl() {
@@ -59,7 +59,7 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 	@PostConstruct
 	public void init(){
 		logger.debug(">> Exista em? " + em);		
-		logger.debug(">> Exista CostPrimarSrv? " + costPrimarSRV);		
+		logger.debug(">> Exista CostPrimarSrv? " + CostPrimarSRV);		
 		
 		if (this.registruCentruCost == null)
 			registruCentruCost = new RegistruCentruCost(em);
@@ -70,7 +70,7 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 	//implementare actiuni serviciu CentruCostSRV
 		@Override
 		public CentruCost creareCentruCost(String denumireCentruCost, FazaProductie faza, Responsabil responsabil,
-				Date dataStart, Date dataSfarsit, Double sumaCentruCost) throws Exception {
+				Date dataStart, Date dataSfarsit, Double valoareCost) throws Exception {
 			
 		
 			System.out.println(">> START Creare CentruCost");
@@ -78,12 +78,12 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 			logger.debug("Creare CentruCost");
 							
 			//CentruCost centruCostNou = new CentruCost(1, denumireCentruCost, dataStart, dataSfarsit, sumaCentruCost, responsabil);
-			CentruCost centruCostNou = new CentruCost (denumireCentruCost,faza, responsabil, dataStart, dataSfarsit, sumaCentruCost);
+			CentruCost centruCostNou = new CentruCost (denumireCentruCost,faza, responsabil, dataStart, dataSfarsit, valoareCost);
 			
-			logger.debug(">> Cerere costPrimar: " + costPrimarSRV);		
-			CosturiPrimare costuriPrimare = CostPrimarSRV.creareCosturiPrimare(valoareCosturiPrimare);
-			centruCostNou.setCosturiPrimare(costuriPrimare);
-			logger.debug("CostPrimar centruCost: " + costuriPrimare.getValoareCost());
+			logger.debug(">> Cerere costPrimar: " + CostPrimarSRV);		
+			CosturiPrimare CosturiPrimare = CostPrimarSRV.creareCosturiPrimare(valoareCost);
+			centruCostNou.setCosturiPrimare(CosturiPrimare);
+			logger.debug("CostPrimar centruCost: " + CosturiPrimare.getValoareCost());
 			
 		
 			if (sessionContext.getRollbackOnly() == true){
@@ -101,11 +101,6 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 		
 					
 		}
-	public void setCostPrimarSRV (CostPrimarSRV costPrimarSRV){
-		this.costPrimarSRV= costPrimarSRV;
-		
-	}
-	
 	
 	
 	@Override
@@ -115,7 +110,7 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 			{
 		logger.debug(">>START CREARE ACTIVITATE");
 	
-		ActivitateCentruCost activitate = new ActivitateCentruCost (denumire, dataStart, dataSfarsit, 
+		ActivitateCentruCost activitate = new ActivitateCentruCost (denumireCentru, dataStart, dataSfarsit, 
 				costActivitate, responsabil);
 		centruCost.adaugaActivitate(activitate);
 		activitate.setCentruCost(centruCost);
