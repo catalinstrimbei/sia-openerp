@@ -2,7 +2,15 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="OpenERP_FINPLATI">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>		
+		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
+		<class>org.open.erp.services.plati.Plata</class>
+		<class>org.open.erp.services.plati.OrdinPlata</class>
+		<class>org.open.erp.services.plati.LinieFacturaPrimita</class>
+		<class>org.open.erp.services.plati.FacturaPrimita</class>
+		<class>org.open.erp.services.plati.ExtrasCont</class>
+		<class>org.open.erp.services.plati.ContBancaPJ</class>
+		<class>org.open.erp.services.plati.ContBancaPF</class>
+		<class>org.open.erp.services.plati.CEC</class>		
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
 	        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>

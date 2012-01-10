@@ -10,20 +10,24 @@ package org.open.erp.services.plati;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import org.open.erp.services.plati.Plata;
 
-public class ExtrasCont extends Plata implements Serializable {
+@Entity(name = "ExtrasCont")
+@DiscriminatorValue("ExtrasCont")
+public class ExtrasCont extends Plata implements Serializable{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public ExtrasCont(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
+	public ExtrasCont(Integer idPlata, Date dataEmiterii, Boolean avans, Date dataInregistrarii,
 			Double suma, String seria, Integer numar,
 			String locatie) {
-		super(dataEmiterii, avans, dataInregistrarii, suma,
+		super(idPlata, dataEmiterii, avans, dataInregistrarii, suma,
 				seria, numar, locatie);
 	}
 
+	public ExtrasCont() {
+		super();
+	}
 }

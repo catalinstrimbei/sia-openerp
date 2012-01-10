@@ -8,25 +8,38 @@ package org.open.erp.services.plati;
  * 
  */
 
+import static javax.persistence.GenerationType.AUTO;
+
 import java.io.Serializable;
 import java.util.Date;
 
-public class CEC extends Plata implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity(name = "CEC")
+@DiscriminatorValue("CEC")
+public class CEC extends Plata implements Serializable{
+	
+	private Integer idCEC;
 	private static Long intervalValabilitate;
 	private String stare;
 
-	public CEC(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
+	public CEC(Integer idPlata, Date dataEmiterii, Boolean avans, Date dataInregistrarii,
 			Double suma, String seria, Integer numar,
 			String locatie, String stare) {
-		super(dataEmiterii, avans, dataInregistrarii, suma,
+		super(idPlata, dataEmiterii, avans, dataInregistrarii, suma,
 				seria, numar, locatie);
 		this.stare = stare;
 	}
 	
+	public Integer getIdCEC() {
+		return idCEC;
+	}
+
+	public void setIdCEC(Integer idCEC) {
+		this.idCEC = idCEC;
+	}
+
 	public static Long getIntervalValabilitate() {
 		return intervalValabilitate;
 	}
@@ -41,5 +54,9 @@ public class CEC extends Plata implements Serializable {
 
 	public void setStare(String stare) {
 	this.stare = stare;
+	}
+	
+	public CEC() {
+		super();
 	}
 }

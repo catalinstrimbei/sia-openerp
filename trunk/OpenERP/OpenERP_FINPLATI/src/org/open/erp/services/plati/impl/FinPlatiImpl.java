@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import javax.ejb.Stateful;
+
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
@@ -16,12 +19,15 @@ import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.plati.CEC;
 import org.open.erp.services.plati.ExtrasCont;
 import org.open.erp.services.plati.FacturaPrimita;
-import org.open.erp.services.plati.FinPlatiSrv;
+import org.open.erp.services.plati.FinPlatiSrvLocal;
+import org.open.erp.services.plati.FinPlatiSrvRemote;
 import org.open.erp.services.plati.OrdinPlata;
 import org.open.erp.services.plati.Plata;
 import org.open.erp.services.vanzari.VanzariSrv;
 import org.open.erp.services.achizitii.AprovizionareSrv;
-public class FinPlatiImpl implements FinPlatiSrv {
+
+@Stateful
+public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 
 	private VanzariSrv vanzariSrv;
 	private ContabilizareSrv ctbSrv;
@@ -81,7 +87,7 @@ public class FinPlatiImpl implements FinPlatiSrv {
 			String seria, Integer numar, String locatie, String moneda,
 			Furnizor furnizor, Double curs) throws PlatiExceptions,
 			CtbException {
-		
+		// TODO Auto-generated method stub
 		
 		if (sumaIncasata == null ||  sumaIncasata == 0.00 ) {
 			throw new PlatiExceptions("Suma incasarii nu poate fi nula!");
@@ -296,12 +302,9 @@ public class FinPlatiImpl implements FinPlatiSrv {
 					doc.getNumar(), TipPlata.OrdinPlata, doc.getFacturi().get(0)
 							.getFurnizor().getId(), 0, StareDocument.MODIFICAT, 0);
 		}
-		
-	
 	}
-
-	@Override
-	public int acceptaPlataFurnizor(Partener partener, Double valoare, Date data) {
-		return 1;
+	
+	public int acceptaPlataFurnizor(Partener partener,Double valoare, Date data){
+		return 1;		
 	}
 }

@@ -13,11 +13,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class Plata implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity(name = "Plata")
+public abstract class Plata implements Serializable{
+	@Id
+	private Integer idPlata;
+	
 	private String moneda;
 	private Date dataEmiterii;
 	private Boolean avans;
@@ -28,10 +32,11 @@ public abstract class Plata implements Serializable {
 	private String locatie;
 	private List<FacturaPrimita> facturi = new ArrayList<FacturaPrimita>();
 	
-	public Plata(Date dataEmiterii, Boolean avans,
+	public Plata(Integer idPlata, Date dataEmiterii, Boolean avans,
 			Date dataInregistrarii, Double suma,
 			String seria, Integer numar, String locatie) {
 		super();
+		this.idPlata = idPlata;
 		this.dataEmiterii = dataEmiterii;
 		this.avans = avans;
 		this.dataInregistrarii = dataInregistrarii;
@@ -41,6 +46,9 @@ public abstract class Plata implements Serializable {
 		this.locatie = locatie;
 	}
 	
+	public Plata() {
+	}
+
 	public String getMoneda() {
 		return moneda;
 	}
@@ -111,6 +119,14 @@ public abstract class Plata implements Serializable {
 
 	public void setFacturi(List<FacturaPrimita> facturi) {
 		this.facturi = facturi;
+	}
+
+	public Integer getIdPlata() {
+		return idPlata;
+	}
+
+	public void setIdPlata(Integer idPlata) {
+		this.idPlata = idPlata;
 	}
 
 	public Double getSuma() {

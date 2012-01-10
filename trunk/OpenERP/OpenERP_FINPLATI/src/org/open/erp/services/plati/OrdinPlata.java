@@ -11,19 +11,20 @@ package org.open.erp.services.plati;
 import java.io.Serializable;
 import java.util.Date;
 
-public class OrdinPlata extends Plata implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity(name = "OrdinPlata")
+@DiscriminatorValue("OrdinPlata")
+public class OrdinPlata extends Plata implements Serializable{
 	private static Long intervalValabilitate;
 	private String stare;
 	private String reprezentand;
 	
-	public OrdinPlata(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
+	public OrdinPlata(Integer idPlata, Date dataEmiterii, Boolean avans, Date dataInregistrarii,
 			Double suma, String seria, Integer numar,
 			String locatie, String stare) {
-		super(dataEmiterii, avans, dataInregistrarii, suma,
+		super(idPlata, dataEmiterii, avans, dataInregistrarii, suma,
 				seria, numar, locatie);
 		this.stare = stare;
 	}
@@ -50,6 +51,10 @@ public class OrdinPlata extends Plata implements Serializable {
 
 	public void setReprezentand(String reprezentand) {
 		this.reprezentand = reprezentand;
+	}
+	
+	public OrdinPlata() {
+		super();
 	}
 }
 

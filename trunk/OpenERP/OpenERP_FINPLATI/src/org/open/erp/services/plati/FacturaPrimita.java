@@ -13,20 +13,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.plati.LinieFacturaPrimita;
 
-public class FacturaPrimita extends Document implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity(name = "FacturaPrimita")
+@DiscriminatorValue("FacturaPrimita")
+public class FacturaPrimita extends Document implements Serializable{
 	public static final Boolean PLATITA = true;
 	public static final Boolean NEPLATITA = false;
 	
 	public static final Integer ZILE_RETUR = 20;
-	
+	@Id
 	Integer idFactura;
 	//Date dataFacturare;		
 	Double valoareTotalaFactura;

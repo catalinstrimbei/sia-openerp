@@ -14,12 +14,7 @@ import java.util.Date;
 import org.open.erp.services.plati.Plata;
 import org.open.erp.services.personal.Angajat;
 
-public class Chitanta extends Plata implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Chitanta extends Plata implements Serializable{
 
 	public Angajat getCasier() {
 		return casier;

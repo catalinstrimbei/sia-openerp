@@ -10,16 +10,18 @@ package org.open.erp.services.plati;
 
 import java.io.Serializable;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
-public class ContBancaPJ implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-			private PersoanaJuridica banca;
+@Entity(name = "ContBancaPJ")
+@DiscriminatorValue("ContBancaPJ")
+public class ContBancaPJ implements Serializable{
+			@Id
+			private Integer idContBancaPJ;
+	        private PersoanaJuridica banca;
 	        
 	        private PersoanaJuridica titularCont;
 
@@ -37,7 +39,15 @@ public class ContBancaPJ implements Serializable {
 	    		this.sold = sold;
 	    	}
 
-	        public PersoanaJuridica getBanca() {
+	        public Integer getIdContBancaPJ() {
+				return idContBancaPJ;
+			}
+
+			public void setIdContBancaPJ(Integer idContBancaPJ) {
+				this.idContBancaPJ = idContBancaPJ;
+			}
+
+			public PersoanaJuridica getBanca() {
 	                return banca;
 	        }
 
@@ -77,4 +87,7 @@ public class ContBancaPJ implements Serializable {
 	                this.sold = sold;
 	        }
 
+	        public ContBancaPJ(){
+	        	
+	        }
 	}
