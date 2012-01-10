@@ -244,6 +244,19 @@ public class TestSalarizareEJB {
 		logger.info("End test: getSporuriAngajat");
 	}
 	
+	@Test
+	public void testGetRetineriAngajat() throws Exception {
+		logger.info("Begin test: getRetineriAngajat");
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		List<Retinere> retineri = salarizareSrvInstance.getRetineriAngajat(2011, 11, angajat);
+		
+		assertNotNull("Metoda de incarcare a retinerilor pentru angajat nu a functionat!", retineri);
+		
+		logger.info("End test: getRetineriAngajat");
+	}
+	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
