@@ -350,5 +350,5 @@ public interface SalarizareSrv {
 	 * @throws Exception 
 	 * 
 	 */
-	void stergeCentralizator(Integer idCentralizator) throws Exception;
+	void stergeCentralizator(CentralizatorStatSalarii idCentralizator) throws Exception;
 }

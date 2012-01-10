@@ -481,4 +481,8 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		CentralizatorStatSalarii centralizator = registru.getCentralizatorStatSalarii(an, luna);
 		return centralizator;
 	}
+	
+	public void stergeCentralizator(CentralizatorStatSalarii centralizator){
+		registru.stergeCentralizator(centralizator);
+	}
 }
