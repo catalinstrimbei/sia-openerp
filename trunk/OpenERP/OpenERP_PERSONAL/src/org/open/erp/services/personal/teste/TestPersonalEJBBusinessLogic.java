@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
@@ -214,16 +215,16 @@ public class TestPersonalEJBBusinessLogic {
 		}
 	}
 	@Test
-		public void TESTgetRezultatePeProbaEvaluare(){
+	public void TESTgetRezultatePeProbaEvaluare(){
 		try{
-				logger.logINFO("Start test: TESTgetRezultatePeProbaEvaluare");
+			logger.logINFO("Start test: TESTgetRezultatePeProbaEvaluare");
 			HashMap <ProbaEvaluare, Collection<RezultatProbaEvaluare>> mapFinal = new HashMap <ProbaEvaluare, Collection<RezultatProbaEvaluare>>();
-				mapFinal = personalInstance.getRezultateEvaluareByProbaEJB();
-				Collection<ProbaEvaluare> keysProbe = new ArrayList<ProbaEvaluare>(mapFinal.keySet());
-				Iterator<ProbaEvaluare> iteratorProbe = keysProbe.iterator();
+			mapFinal = personalInstance.getRezultateEvaluareByProbaEJB();
+			Collection<ProbaEvaluare> keysProbe = new ArrayList<ProbaEvaluare>(mapFinal.keySet());
+			Iterator<ProbaEvaluare> iteratorProbe = keysProbe.iterator();
 			Collection<RezultatProbaEvaluare> valuesRezultateProbeEvaluare = new ArrayList<RezultatProbaEvaluare>();
 				//DummyDepartament depCurent;
-				ProbaEvaluare probaEvaluareCurenta;
+			ProbaEvaluare probaEvaluareCurenta;
 			RezultatProbaEvaluare rezultatCurent;
 			while (iteratorProbe.hasNext()){
 				probaEvaluareCurenta = iteratorProbe.next();
@@ -243,10 +244,87 @@ public class TestPersonalEJBBusinessLogic {
 				}
 				logger.logINFO("End test: TESTgetRezultatePeProbaEvaluare");
 		}catch(Exception ex){
-				logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
-			}
 		}
+	}
+	
+	@Test
+	public void TESTgetPosturiVacanteEJB(){
+		try{
+			logger.logINFO("Start test: TESTgetPosturiVacante");
+			Collection<AnuntLocMunca> rezultat = new ArrayList<AnuntLocMunca>();
+			rezultat = personalInstance.getPosturiVacanteEJB(new Date("10/08/2010"));
+			AnuntLocMunca anuntCurent;
+			while (rezultat.iterator().hasNext())
+			{
+				anuntCurent = rezultat.iterator().next();
+				System.out.println(anuntCurent.getFunctie().getNumeFunctie());
+			}
+			logger.logINFO("End test: TESTgetPosturiVacante");
+		}catch(Exception ex){
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+
+	}
+
+	@Test
+	public void TESTgetCandidatiPeAnuntLocMunca(){
+		try{
+			logger.logINFO("Start test: TESTgetCandidatiPeAnuntLocMunca");
+			Collection<AnuntLocMunca> anunturiLocMunca = personalInstance.getListaAnunturiLocMunca();
+			Iterator<AnuntLocMunca> iteratorAnuntLocMunca = anunturiLocMunca.iterator();
+			AnuntLocMunca	anuntCurent;
+			
+			while (iteratorAnuntLocMunca.hasNext()){				
+				anuntCurent = iteratorAnuntLocMunca.next();
+				
+				Collection<Candidat> colectie = personalInstance.getCandidatiPeAnuntLocMuncaEJB(anuntCurent);
+				if (colectie.size()>0)
+				{
+					System.out.println(anuntCurent.getCorpAnunt());
+					Iterator<Candidat> iteratorCandidat = colectie.iterator();
+					while (iteratorCandidat.hasNext()){
+						System.out.println("-->" + iteratorCandidat.next().getNume());
+					}
+				}
+				colectie.clear();
+			}
+			logger.logINFO("End test: TESTgetCandidatiPeAnuntLocMunca");
+		}
+		catch(Exception ex){
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
+
+	@Test
+	public void TESTgetAngajatiPeFunctieEJB(){
+		try{
+			logger.logINFO("Start test: TESTgetgetAngajatiPeFunctieEJB");
+			Collection <Functie> functii = personalInstance.getListaFunctii();
+			Iterator<Functie> iteratorFunctii = functii.iterator();
+			
+			while (iteratorFunctii.hasNext())
+			{		
+				Collection<Angajat> angajati = personalInstance.getAngajatipeFunctieEJB(iteratorFunctii.next());
+				Iterator <Angajat> iteratorAngajati = angajati.iterator();
+				while (iteratorAngajati.hasNext())
+				{
+					Angajat angajatCurent = iteratorAngajati.next();
+					System.out.println("-->" + angajatCurent.getNume());
+				}
+				angajati.clear();
+			}
+			logger.logINFO("End test: TESTgetgetAngajatiPeFunctieEJB");
+		}
+		catch(Exception ex){
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+}
+
 		
 }
 
