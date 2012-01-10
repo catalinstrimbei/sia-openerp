@@ -132,10 +132,13 @@ public class ProcesareComanda {
 	
 	public Double getPretProdusFinal(Produs produs) throws ValoareNegativa{
 		Double pretFinal = 0.0;
-		pretFinal = (double) mkSrv.getPretFinalByProdus(produs);
+		//pretFinal = (double) mkSrv.getPretFinalByProdus(produs);
+		org.open.erp.services.marketing.DummyProdus dummyProd = new org.open.erp.services.marketing.DummyProdus(produs.getId(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
+		//pretFinal = mkSrv.getPretFinalByProdus(dummyProd);
+		mkSrv.getPretFinalByProdus(dummyProd);
 		if( pretFinal <= 0)
 			throw new ValoareNegativa();
-		return (double) mkSrv.getPretFinalByProdus(produs);
+		return pretFinal;
 	}	
 	
 	public Double getValoareLinieFaraTVA(Produs produs, Double cantitate) throws ValoareNegativa{
