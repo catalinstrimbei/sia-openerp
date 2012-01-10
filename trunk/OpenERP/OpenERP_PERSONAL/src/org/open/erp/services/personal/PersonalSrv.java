@@ -179,7 +179,7 @@ public interface PersonalSrv {
 		 * 
 		 */
 		
-		Collection<Candidat> getCandidatiPeAnuntLocMunca(AnuntLocMunca anuntLocMunca_);
+		Collection<Candidat> getCandidatiPeAnuntLocMuncaEJB(AnuntLocMunca anuntLocMunca_);
 		
 		/**
 		 * Scop    Pentru fiecare anunt de loc de munca, returneaza o Lista cu candidatii care au aplicat cv-urile 
