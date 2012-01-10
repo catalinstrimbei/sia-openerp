@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.Calendar;
 
 import org.apache.log4j.Appender;
+import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
@@ -76,6 +77,29 @@ public class PersonalLogger {
 				}
 	}
 	
+	private void addConsoleAppender(Logger logger)
+	{
+		// TODO Auto-generated constructor stub	
+				//Create the ConsoleAppender.
+		        PatternLayout layout = new PatternLayout();
+		        layout.setConversionPattern("%d %-5p [%c] %m%n");
+		        ConsoleAppender myAppender;
+				try {										
+					myAppender = new ConsoleAppender(layout, "System.out");					
+			        myAppender.setName("consoleAppender");
+			        myAppender.setFollow(true);
+				//Add the appender.
+			        logger.addAppender(myAppender);
+					logger.setLevel(Level.ALL);
+					logger.info("**************************************************************************************");
+					logger.info("LOG begins on " + Calendar.getInstance().getTime().toString());
+					logger.info("**************************************************************************************");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	}
+	
 	public String getName() {
 		return logger.getName();
 	}	
@@ -122,10 +146,17 @@ public class PersonalLogger {
 		 }
 		 logger= Logger.getLogger(PersonalLogger.class.getName());
 		 logger.setLevel(Level.ALL);
+		 /*
 		 if(logger.getAppender("fileAppender") == null)
 		 {
 			 this.addAppender(logger);
 		 }
+		 */
+		 if(logger.getAppender("consoleAppender") == null)
+		 {
+			 this.addConsoleAppender(logger);
+		 }
+		 
 	     logger.log(level, message_, t );
 	     if(level.equals(Level.ERROR) || level.equals(Level.FATAL)) 
 	     {

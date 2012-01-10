@@ -2035,7 +2035,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
 				null, null, 0);
 		//em.persist(angajat);
-		CV cv = getCVByCandidat(candidat_);
+		CV cv = getCVByCandidatEJB(candidat_);
 		
 		ContractMunca contract;
 		contract = new ContractMunca(null, 1000.00, 10.00, angajat, cv.getFunctieVizata(), new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
