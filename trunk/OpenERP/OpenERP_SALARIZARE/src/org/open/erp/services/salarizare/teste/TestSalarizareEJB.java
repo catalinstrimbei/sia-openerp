@@ -13,6 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.salarizare.CentralizatorStatSalarii;
 import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.Retinere;
 import org.open.erp.services.salarizare.SalarizareSrv;
@@ -266,6 +267,17 @@ public class TestSalarizareEJB {
 		assertNotNull("Metoda de incarcare a salariilor dintr-o luna nu a functionat!", salarii);
 		
 		logger.info("End test: getStatSalariiAnLuna");
+	}
+
+	@Test
+	public void testInregistrareCentralizator() throws Exception {
+		logger.info("Begin test: InregistrareCentralizator");
+		
+		CentralizatorStatSalarii centralizator = salarizareSrvInstance.inregistreazaCentralizatorStatSalariiLuna(2011, 11);
+		logger.info("A fost creat centralizatorul cu id-ul: "+centralizator.getIdCentralizator());
+		assertNotNull("Metoda de creare a centralizatorului nu a functionat!", centralizator);
+		
+		logger.info("End test: InregistrareCentralizator");
 	}
 	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
