@@ -68,7 +68,10 @@ public class TestPersonalEJBregistru {
 			
 			//DummyDepartament departament1 = new DummyDepartament(null, "Departament1", "atributiile vietii");
 			
-			Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);
+			Angajat	angajat = new Angajat();
+			angajat.setActiv(false);
+			angajat.setNume(test.angajat1.getNume());
+			angajat = personalInstance.salveazaAngajat(test.angajat1);
 			Angajat	angajat2 = personalInstance.salveazaAngajat(test.angajat2);	
 			
 			Functie functie = personalInstance.salveazaFunctie(test.functie1);				
@@ -87,8 +90,9 @@ public class TestPersonalEJBregistru {
 			candidat2.setGen('M');
 			candidat2.setNume("Nume2");
 			candidat2.setTipCandidat("Intern");
-			candidat2.setId(33);
-			personalInstance.salveazaCandidat(candidat2);
+			//candidat2.setId(33);
+			candidat2.setIdCandidat(104);
+			candidat2 = personalInstance.salveazaCandidat(candidat2);
 			interviuCandidat.setCandidat(candidat);			
 			interviuCandidat.setInterviu(interviu);
 			interviuCandidat = personalInstance.salveazaInterviuCandidat(interviuCandidat);		

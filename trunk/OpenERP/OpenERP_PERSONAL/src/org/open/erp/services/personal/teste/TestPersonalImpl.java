@@ -87,8 +87,8 @@ public class TestPersonalImpl {
 	CV cv7 = new CV(7, candidat6, functie2, new Date("10/08/2011"), new Date("20/11/2011"));
 	
 	
-	DummyPersoanaFizica persoana1 = new DummyPersoanaFizica(1,null,  "Nume1", "Prenume1", null, 'M', null);
-	DummyPersoanaFizica persoana2 = new DummyPersoanaFizica(2,null,  "Nume2", "Prenume2", null, 'F', null);
+	DummyPersoanaFizica persoana1 = new DummyPersoanaFizica(null,null,  "Nume1", "Prenume1", null, 'M', null);
+	DummyPersoanaFizica persoana2 = new DummyPersoanaFizica(null,null,  "Nume2", "Prenume2", null, 'F', null);
 	
 	
 	Interviu interviu1 = new Interviu(null, "Final");
