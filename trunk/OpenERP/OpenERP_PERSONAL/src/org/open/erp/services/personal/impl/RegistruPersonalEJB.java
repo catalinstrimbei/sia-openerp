@@ -76,9 +76,9 @@ public class RegistruPersonalEJB {
 
 	public Collection<ProbaEvaluare> getProbaEvaluarePeDepartament(DummyDepartament departament_) throws Exception{
 		try{
-			return entityManager.createQuery("SELECT pe FROM ProbeEvaluare pe " +
-											"WHERE pe.Id = :idDepartament AND pe.scop = 'EvaluarePeriodica'")
-											.setParameter("idDepartament", departament_.getId())
+			return entityManager.createQuery("SELECT pe FROM ProbaEvaluare pe " +
+											"WHERE pe.departament = :departament AND pe.scop = 'EvaluarePeriodica'")
+											.setParameter("departament", departament_)
 											.getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
@@ -90,9 +90,9 @@ public class RegistruPersonalEJB {
 	
 	public Collection<RezultatProbaEvaluare> getRezultateProbaEvaluare(ProbaEvaluare probaEvaluare_) throws Exception{
 		try{
-			return entityManager.createQuery("SELECT rpe FROM RezultatProbeEvaluare rpe " +
-											"WHERE rpe.idProba = :probaEvaluare")
-											.setParameter("probaEvaluare", probaEvaluare_.getIdProba())
+			return entityManager.createQuery("SELECT rpe FROM RezultatProbaEvaluare rpe " +
+											"WHERE rpe.probaEvaluare = :probaEvaluare")
+											.setParameter("probaEvaluare", probaEvaluare_)
 											.getResultList();
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());

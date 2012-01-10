@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -14,9 +16,6 @@ import javax.naming.NamingException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.personal.*;
-import org.open.erp.services.personal.Candidat;
-import org.open.erp.services.personal.ContractMunca;
-import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.logger.PersonalLogger;
 
 public class TestPersonalEJBBusinessLogic {
@@ -196,7 +195,7 @@ public class TestPersonalEJBBusinessLogic {
 			{
 				ContractMunca contract = j.next();
 				System.out.println(contract.getNrContract());
-				personalInstance.relocalizare_promovareEJB(contract.get);
+			//	personalInstance.relocalizare_promovareEJB(contract.get);
 			}
 			logger.logINFO("End test: TESTrelocalizare_promovareEJB");
 		}
@@ -206,5 +205,41 @@ public class TestPersonalEJBBusinessLogic {
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
 		}
 	}
-
+	@Test
+		public void TESTgetRezultatePeProbaEvaluare(){
+		try{
+				logger.logINFO("Start test: TESTgetRezultatePeProbaEvaluare");
+			HashMap <ProbaEvaluare, Collection<RezultatProbaEvaluare>> mapFinal = new HashMap <ProbaEvaluare, Collection<RezultatProbaEvaluare>>();
+				mapFinal = personalInstance.getRezultateEvaluareByProbaEJB();
+				Collection<ProbaEvaluare> keysProbe = new ArrayList<ProbaEvaluare>(mapFinal.keySet());
+				Iterator<ProbaEvaluare> iteratorProbe = keysProbe.iterator();
+			Collection<RezultatProbaEvaluare> valuesRezultateProbeEvaluare = new ArrayList<RezultatProbaEvaluare>();
+				//DummyDepartament depCurent;
+				ProbaEvaluare probaEvaluareCurenta;
+			RezultatProbaEvaluare rezultatCurent;
+			while (iteratorProbe.hasNext()){
+				probaEvaluareCurenta = iteratorProbe.next();
+					System.out.println("La proba " + probaEvaluareCurenta.getIdProba() + " s-au obtinut urmatoarele rezultate:");
+				valuesRezultateProbeEvaluare = mapFinal.get(probaEvaluareCurenta);
+					if (valuesRezultateProbeEvaluare.size() > 0) {
+						Iterator <RezultatProbaEvaluare> iteratorRezultateProbaEvaluare = valuesRezultateProbeEvaluare.iterator();
+						while (iteratorRezultateProbaEvaluare.hasNext()){
+							rezultatCurent = iteratorRezultateProbaEvaluare.next();
+							Angajat angajatCurent =  rezultatCurent.getAngajat();
+						System.out.println(" -- Angajatul: " + angajatCurent.getNume() + " a avut urmatorul rezultat: " + rezultatCurent.getRezultat());
+						}
+				}
+					else{
+						System.out.println("Nu exista niciun rezultat pt proba curenta");
+					}
+				}
+				logger.logINFO("End test: TESTgetRezultatePeProbaEvaluare");
+		}catch(Exception ex){
+				logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+			}
+		}
+		
 }
+
+
