@@ -1843,7 +1843,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		{
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
 			
-			Collection<Candidat> candidatiAnunt = this.getCandidatiPeAnuntLocMunca(anunt_);
+			Collection<Candidat> candidatiAnunt = this.getCandidatiPeAnuntLocMuncaEJB(anunt_);
 			Iterator<Candidat> iterator = candidatiAnunt.iterator();
 			
 			while (iterator.hasNext()) {
@@ -1966,8 +1966,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 	}
 	@Override
-	public Collection<Candidat> getCandidatiPeAnuntLocMunca(AnuntLocMunca anuntLocMunca_){
+	public Collection<Candidat> getCandidatiPeAnuntLocMuncaEJB(AnuntLocMunca anuntLocMunca_){
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG("ANUNT:" + anuntLocMunca_.toString());
 		try
 		{
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
