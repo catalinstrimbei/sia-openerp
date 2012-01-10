@@ -12,6 +12,7 @@ import org.open.erp.services.nomgen.Material;
  * 
  */
 
+///
 public class LinieNIR extends LinieDocument {	
 	private Double diferentaCantitate;
 	private Double cantitateFacturata;	
