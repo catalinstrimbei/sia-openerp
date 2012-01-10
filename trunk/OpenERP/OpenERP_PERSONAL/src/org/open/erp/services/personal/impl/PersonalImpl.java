@@ -1722,9 +1722,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Iterator <CV> iteratorCV = listaCVuriCandidat.iterator();
 			while (iteratorCV.hasNext()){
 				CV cvCurent = iteratorCV.next();
-				if (cvCurent.getCandidat().getIdCandidat().equals(candidat_.getIdCandidat())
-						&& cvCurent.getDataDepunere().compareTo(cvCurent.getUltimaModificare()) <= 0 
-					)
+				if (cvCurent.getDataDepunere().compareTo(cvCurent.getUltimaModificare()) <= 0)
 				{
 					return cvCurent;
 				}		
@@ -2032,29 +2030,36 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		try{
 		if(candidat_ == null)
 			return;
-			Angajat angajat = registruPersonal.getAngajatById(candidat_.getId());
+		Angajat angajat = registruPersonal.getAngajatById(candidat_.getId());
 		if(angajat != null)
 			return;
-		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
+		//logger.logDEBUG("inainte de cast");
+		//Angajat angajat1 = (Angajat) candidat_;
+		//logger.logDEBUG("dupa cast");
+		angajat = new Angajat (null, candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
 				null, null, 0);
 		//em.persist(angajat);
+		angajat = registruPersonal.salveazaAngajat(angajat);
+		//angajat = registruPersonal.salveazaAngajat(angajat1);
+		logger.logDEBUG("Am trecut de angajat = registruPersonal.salveazaAngajat(angajat);");
+		//candidat_ = registruPersonal.getCandidatById(id)
 		CV cv = getCVByCandidatEJB(candidat_);
 		logger.logDEBUG("Am trecut de CV cv = getCVByCandidatEJB(candidat_) ");
 		if (cv == null || cv.getFunctieVizata() == null )
 				return;
-		angajat = registruPersonal.salveazaAngajat(angajat);
-		logger.logDEBUG("Am trecut de angajat = registruPersonal.salveazaAngajat(angajat);");
+		
 		ContractMunca contract;
 		contract = new ContractMunca(null, 1000.00, 10.00, angajat, cv.getFunctieVizata(), new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
 		logger.logDEBUG("Am trecut de contract = new ContractMunca(null, 1000.00 ");
+		contract.setAngajat(angajat);
 		this.registruPersonal.salveazaContractMunca(contract);
-		
+		logger.logDEBUG("Am trecut de this.registruPersonal.salveazaContractMunca(contract);");
 		
 		//TODO - must revise - two different transactions		
 		DosarAngajat dosar = new DosarAngajat(null, angajat, false, false, false);
 		dosar = this.registruPersonal.salveazaDosarAngajat(dosar);
-		
+		logger.logDEBUG("Am trecut de dosar = this.registruPersonal.salveazaDosarAngajat(dosar);");
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
