@@ -994,17 +994,19 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public InterviuCandidat salveazaInterviuCandidat(
 			InterviuCandidat interviuCandidat_) throws Exception {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());		
+		InterviuCandidat result = new InterviuCandidat();
 		if (interviuCandidat_ == null){
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
 		else{
+			
 			if (this.registruPersonal == null)
 				registruPersonal = new RegistruPersonal(em);
-			this.registruPersonal.salveazaInterviuCandidat(interviuCandidat_);
+			result = this.registruPersonal.salveazaInterviuCandidat(interviuCandidat_);
 			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
 		}
-		return interviuCandidat_;
+		return result;
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
