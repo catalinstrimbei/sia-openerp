@@ -40,7 +40,7 @@ public class TestCentruCostImplEJB {
 	 }
 	 
 	 @Test
-	 public void testCreareCentruCost() {
+	 public void testCreareCentruCost() throws Exception {
 	 logger.info("Begin test: creareCentruCost");
 
 	 Double sumaCentruCost = 0.0;
@@ -53,7 +53,7 @@ public class TestCentruCostImplEJB {
 	}
 	
 	 @Test
-	 public void testCreareActivitateEJB() {
+	 public void testCreareActivitateEJB() throws Exception {
 	 logger.info("Begin test: creareActivitate");
 	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
 	 Angajat responsabil = personalInstance.getAngajatById(1);
@@ -74,16 +74,16 @@ public class TestCentruCostImplEJB {
 public class TestCentruCostEJB {
 
 	/* Resurse test */
-	private static   Logger logger = Logger.getLogger(TestCentruCostEJB.class
+	private final   Logger logger = Logger.getLogger(TestCentruCostEJB.class
 			.getName());
 
 	/* Unitatea de test sursa/gazda unitatii de test */
-	private static CentruCostSRV centruCostInstance;
+	private CentruCostSRV centruCostInstance;
 	// private CentruCostSRV contabgestInstance;
-	private static PersonalSrv personalInstance;
+	private PersonalSrv personalInstance;
 
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	public void setUpBeforeClass() throws Exception {
 		InitialContext ctx = initJBossJNDICtx();
 		centruCostInstance = (CentruCostSRV) ctx.lookup("CentruCostSRV/remote");
 		personalInstance = (PersonalSrv) ctx.lookup("personalInstance/remote");
@@ -146,7 +146,7 @@ public class TestCentruCostEJB {
 		logger.info("End test: progresActivitate");
 	}
 
-	private static InitialContext initJBossJNDICtx() throws NamingException {
+	private InitialContext initJBossJNDICtx() throws NamingException {
 		Properties props = new Properties();
 		props.put("java.naming.factory.initial",
 				"org.jnp.interfaces.NamingContextFactory");

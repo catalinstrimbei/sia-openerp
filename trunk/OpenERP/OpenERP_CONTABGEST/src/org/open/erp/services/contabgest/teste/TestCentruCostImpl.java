@@ -32,7 +32,7 @@ public class TestCentruCostImpl {
 	 }
 	 
 	 @Test
-	 public void testCreareCentruCost() {
+	 public void testCreareCentruCost() throws Exception {
 	 logger.info("Begin test: creareCentruCost");
 
 	 Double sumaCentruCost = 0.0;
@@ -45,7 +45,7 @@ public class TestCentruCostImpl {
 	}
 	
 	 @Test
-	 public void testCreareActivitate() {
+	 public void testCreareActivitate() throws Exception {
 	 logger.info("Begin test: creareActivitate");
 	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
 	 Angajat responsabil = personalInstance.getAngajatById(1);
@@ -63,7 +63,7 @@ public class TestCentruCostImpl {
 	 
 	 
 	 @Test
-	 public void testStartCentruCost() {
+	 public void testStartCentruCost() throws Exception {
 	 logger.info("Begin test: startCentruCost");
 
 	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
@@ -90,7 +90,7 @@ public class TestCentruCostImpl {
 	 
 	 
 	 @Test
-	 public void testProgresActivitate() {
+	 public void testProgresActivitate() throws Exception {
 	 logger.info("Begin test: progresActivitate");
 
 	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
