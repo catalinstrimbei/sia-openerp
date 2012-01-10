@@ -90,7 +90,8 @@ public class TestPersonalEJBBusinessLogic {
 			for(Iterator<Candidat> i = listaCandidati.iterator(); i.hasNext();)
 			{
 				CV cvCurent = personalInstance.getCVByCandidatEJB(i.next());
-				System.out.println(cvCurent.getNrCV().toString());
+				if(cvCurent != null)
+					System.out.println(cvCurent.getNrCV().toString());
 			}					
 			logger.logINFO("End test: TESTgetCVByCandidatEJB");
 		}
