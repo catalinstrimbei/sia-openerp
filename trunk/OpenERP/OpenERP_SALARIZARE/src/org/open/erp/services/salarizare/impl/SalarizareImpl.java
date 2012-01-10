@@ -326,11 +326,14 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		
 		//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 		for (Angajat angajat:angajati){
-			Pontaj p = new Pontaj();
+			/*
+			 * Pontaj p = new Pontaj();
+			
 			p.setAn(an);
 			p.setLuna(luna);
 			p.setAngajat(angajat);
-			
+			 */
+			Pontaj p = registru.getPontajByAngajat(angajat, an, luna);
 			Double venitBrut = this.calculVenitBrut(an, luna, angajat);
 			Double retineriAlte = calculRetineriAngajat(an, luna, angajat);
 			Double deduceri = calculDeduceri(an, luna, angajat);
