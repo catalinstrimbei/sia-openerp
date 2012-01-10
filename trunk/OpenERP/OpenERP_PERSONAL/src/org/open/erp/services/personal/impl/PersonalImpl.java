@@ -992,10 +992,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public InterviuCandidat salveazaInterviuCandidat(
-			InterviuCandidat idInterviuCandidat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
-		InterviuCandidat interviuCandidat_ = new InterviuCandidat();
-		if (idInterviuCandidat_ == null){
+			InterviuCandidat interviuCandidat_) throws Exception {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());		
+		if (interviuCandidat_ == null){
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		}
