@@ -293,6 +293,16 @@ public class TestSalarizareEJB {
 		logger.info("End test: getCentralizatorStatSalariiLuna");
 	}
 
+	@Test
+	public void testStergeCentralizator() throws Exception {
+		logger.info("Begin test: testStergeCentralizator");
+		
+		CentralizatorStatSalarii centralizator = salarizareSrvInstance.getCentralizatorStatSalariiLuna(2011, 11);
+		logger.info("A fost incarcat centralizatorul cu id-ul: "+centralizator.getIdCentralizator());
+		salarizareSrvInstance.stergeCentralizator(centralizator);
+		
+		logger.info("End test: testStergeCentralizator");
+	}
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
