@@ -8,6 +8,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
@@ -35,6 +37,7 @@ import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.stocuri.CerereAprovizionare;
+import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.Procesare;
 
 import com.sun.xml.ws.developer.Stateful;
@@ -57,7 +60,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	 private ContabilizareSrv contabilizareSrv;
 	
 	@EJB(mappedName = "StocuriSrvImpl/local")
-	 private ContabilizareSrv stocuriSrv;
+	 private StocuriSrv stocuriSrv;
 	
 	@PersistenceContext(unitName = "OpenERP_Achizitii")
 	 private EntityManager entityManager;
@@ -69,6 +72,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public PlanAprovizionare inregistrareCerereAprovizionare(Document cerereApr) {
 		// Vom crea un plan de aprovizionare nou daca suntem intr-o saptamana
 		// noua,
@@ -102,7 +106,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 		return plan;
 
 	}
-
+		
 	public void ascultaFurnizoriCerereriAprovizionare(Procesare procesare) {
 
 		try {
@@ -114,6 +118,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void propertyChange(
 			PropertyChangeEvent evenimentCuCerereAprovizionare) {
 		// Se extrage cererea de aprovizionare din evenimentul generat de
@@ -129,11 +134,13 @@ public class AprovizionareImpl implements AprovizionareSrv,
 		}
 	}
 
-	@Override
+	
 	// fiecare linie a Planului de Aprovizionare devine o Cerere de Oferta
 	// pentru furnizori
 	// schimbam statusul pentru fiecare linie pentru a sti care care sunt
 	// articolele pentru care s-a facut cererea de oferta
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public CerereOferta adaugareLiniiCerereOferta(CerereOferta cerere,
 			List<LiniePlanAprovizionare> liniiPlan) {
 		CerereOferta cerereOferta = cerere;
@@ -151,6 +158,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	// se inregistreaza Oferta de Achizitie primita de la furnizor
 	public OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,
 			Date data, Furnizor furnizor, List<LinieOfertaAchizitie> linii) {
@@ -162,6 +170,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Comanda analizaOferteAchizitie(List<OfertaAchizitie> oferteAchizitie) {
 		Double prag = (double) 9999999;
 		OfertaAchizitie ofertaPrag = null;
@@ -188,6 +197,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	// Comanda se realizeaza pe baza liniilor de Aprovizionare - in cazul
 	// comenzilor regulate
 	public Comanda adaugaLiniiComanda(Comanda comanda,
@@ -208,6 +218,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	// Comanda se realizeaza pe baza Ofertei de Achizitie primita
 	public Comanda creareComandaDinOferta(OfertaAchizitie oferta) {
 		Comanda comanda = new Comanda(oferta.getFurnizor(),
@@ -223,6 +234,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 		return comanda;
 	}
 
+	
 	public NIR adaugareLiniiNir(NIR nir, List<LinieDocument> liniiNIR)
 			throws CtbException {
 		NIR nirFact = nir;
@@ -236,6 +248,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public int inregistrareFactura(Factura factura) throws CtbException {
 		logger.debug("Se incearca inregistrarea facturii "
 				+ factura.getNrFact());
@@ -257,6 +270,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void receptieMateriale(Document nir) {
 		try {
 			stocuriSrv.intrareInStoc(nir);
@@ -267,6 +281,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void returMateriale(Document facturaRetur) {
 		try {
 			stocuriSrv.iesireStoc(facturaRetur);
@@ -277,6 +292,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public int hashCode() {
 		// TODO Auto-generated method stub
 
@@ -285,6 +301,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public String toString() {
 		// TODO Auto-generated method stub
 		return super.toString();
