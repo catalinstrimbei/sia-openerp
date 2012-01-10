@@ -280,6 +280,17 @@ public class TestSalarizareEJB {
 		logger.info("End test: InregistrareCentralizator");
 	}
 	
+	@Test
+	public void testGetCentralizatorStatSalariiLuna() throws Exception {
+		logger.info("Begin test: getCentralizatorStatSalariiLuna");
+		
+		CentralizatorStatSalarii centralizator = salarizareSrvInstance.getCentralizatorStatSalariiLuna(2011, 11);
+		logger.info("A fost incarcat centralizatorul cu id-ul: "+centralizator.getIdCentralizator());
+		assertNotNull("Metoda de creare a centralizatorului nu a functionat!", centralizator);
+		
+		logger.info("End test: getCentralizatorStatSalariiLuna");
+	}
+	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
