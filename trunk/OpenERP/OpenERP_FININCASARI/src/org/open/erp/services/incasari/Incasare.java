@@ -21,7 +21,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -49,7 +49,8 @@ public abstract class Incasare {
 
 	private String sumaInLitere;
 
-	@OneToMany
+      @ManyToMany
+	@JoinTable(name = "Incasari_Facturi", joinColumns = @JoinColumn(name = "idIncasare"), inverseJoinColumns = @JoinColumn(name = "idFactura"))
 	private List<FacturaEmisa> facturi = new ArrayList<FacturaEmisa>();
 
 	public String getMoneda() {
