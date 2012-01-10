@@ -295,4 +295,16 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	List<Pontaj> getPontajAnLuna(Integer an, Integer luna) throws Exception;
+	
+	/**
+	 * returneaza sporurile pentru un angajat specific, un an si o luna  
+	 * @param an 				Anul pentru care se returneaza pontajuk
+	 * @param luna 				Luna pentru care se returneaza pontajul
+	 * @param angajat			Angajatul pentru care se returneaza pontajul
+	 * 
+	 * @return  List<Spor>
+	 * @throws Exception 
+	 * 
+	 */
+	List<Spor> getSporuriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception;
 }
