@@ -212,6 +212,45 @@ public class TestIncasariEJB {
 	}
 	
 	
+	@Test
+	public void testInregistrareCec() throws Exception {
+
+		Date dataEmiterii = null;
+		try {
+			dataEmiterii = dfm.parse("2007-02-26");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		Client client = new Client();
+		client.setId(1);
+		facturi = new ArrayList<FacturaEmisa>();
+
+		facturi.add(fact1);
+
+		facturi.add(fact2);
+
+		Cec cec = incasariSrvInstance.inregistrareCec( dataEmiterii, false,
+				client,"bx", 2, "sediu", "depus", Double.valueOf(80.00), 
+				"optzeci", facturi, "RON", null);
+
+		logger.info("Cecul are asociate " + cec.getFacturi().size()
+				+ " facturi");
+		assertNotNull("Cecul nu are asociata o factura",
+				cec.getFacturi());
+
+		assertEquals("Cecul nu are asociata nici o factura", 2, cec.getFacturi().size());
+		logger.info(fact1.getSumaIncasata());
+		assertEquals(
+				"Facturile nu au fost asociate cecului in ordine cronologica",
+				Double.doubleToLongBits(80.00),
+				Double.doubleToLongBits(fact2.getSumaIncasata()));
+		logger.info(cec.getDataInregistrarii());
+		assertNotNull(
+				"Nu s-a preluat corect data inregistrarii pentru cec",
+				cec.getDataInregistrarii());
+
+	}
 	
 	
 	@Test(expected = IncasariException.class)
@@ -241,10 +280,6 @@ public class TestIncasariEJB {
 	}
 
 
-
-
-
-
         @Test(expected = IncasariException.class)
 	public void testInregistrareCecSumaNula() 
 			throws IncasariException, CtbException {
@@ -272,6 +307,63 @@ public class TestIncasariEJB {
 	}
 	
 
+        
+        
+        
+        @Test
+    	public void testInregistrareBiletLaOrdin() throws Exception {
+
+    		Date dataEmiterii = null;
+    		try {
+    			dataEmiterii = dfm.parse("2011-07-22");
+    		} catch (ParseException e) {
+    			e.printStackTrace();
+    		}
+
+    		Date dataScadenta = null;
+    		try {
+    			dataScadenta = dfm.parse("2011-12-22");
+    		} catch (ParseException e) {
+    			e.printStackTrace();
+    		}
+    		
+    		Persoana garant = new Persoana();
+    		garant.setId(3);
+    		Client client = new Client();
+    		client.setId(1);
+    		facturi = new ArrayList<FacturaEmisa>();
+
+    		facturi.add(fact1);
+
+    		facturi.add(fact2);
+
+    BiletLaOrdin biletlaordin = incasariSrvInstance.inregistrareBiletLaOrdin( 
+    				dataEmiterii, false, client,"gw",
+    				2, "sediu", "depus", facturi, garant, dataScadenta, 
+    				Double.valueOf(70.00), "saptezeci", "RON", null);
+
+    		logger.info("Biletul la ordin are asociate " + biletlaordin.getFacturi().size()
+    				+ " facturi");
+    		assertNotNull("Biletul la ordin nu are asociata o factura",
+    				biletlaordin.getFacturi());
+
+    		assertEquals("Biletul la ordin nu are asociata nici o factura", 2, biletlaordin
+    				.getFacturi().size());
+    		logger.info(fact1.getSumaIncasata());
+    		assertEquals(
+    				"Facturile nu au fost asociate biletului la ordin in ordine cronologica",
+    				Double.doubleToLongBits(80.00),
+    				Double.doubleToLongBits(fact2.getSumaIncasata()));
+    		logger.info(biletlaordin.getDataInregistrarii());
+    		assertNotNull(
+    				"Nu s-a preluat corect data inregistrarii pentru Biletul la ordin",
+    				biletlaordin.getDataInregistrarii());
+
+    	}
+    	
+        
+        
+        
 
 	@Test(expected = IncasariException.class)
 	public void testInregistrareBiletLaOrdinSumaExcedenta()
