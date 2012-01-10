@@ -226,7 +226,8 @@ public class RegistruSalarizare {
 	}
 	
 	public void stergeCentralizator(CentralizatorStatSalarii centralizator){
-		entityManager.find(centralizator.getClass(), centralizator.getIdCentralizator());
+		centralizator = entityManager.find(centralizator.getClass(), centralizator.getIdCentralizator());
+		if(centralizator!=null)
 		entityManager.remove(centralizator);
 	}
 
