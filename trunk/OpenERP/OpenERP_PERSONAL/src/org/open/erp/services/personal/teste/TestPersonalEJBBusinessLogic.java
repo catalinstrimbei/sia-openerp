@@ -107,13 +107,18 @@ public class TestPersonalEJBBusinessLogic {
 		try
 		{
 			logger.logINFO("Start test: TESTrecrutareEJB");
-			
-			Collection<Candidat> listaCandidati= personalInstance.getListaCandidati();
-			for(Iterator<Candidat> i = listaCandidati.iterator(); i.hasNext();)
+			Collection<AnuntLocMunca> listaAnunturi= personalInstance.getListaAnunturiLocMunca();
+			Collection<Candidat> rezultat = new ArrayList<Candidat>();
+
+			for(Iterator<AnuntLocMunca> i = listaAnunturi.iterator(); i.hasNext();)
 			{
-				CV cvCurent = personalInstance.getCVByCandidatEJB(i.next());
-				if(cvCurent != null)
-					System.out.println(cvCurent.getNrCV().toString());
+				Collection<Candidat> listaCandidati = personalInstance.recrutareEJB(i.next());
+				for(Iterator<Candidat> j = listaCandidati.iterator(); j.hasNext();)
+				{
+					Candidat candidat = j.next();
+					System.out.println(candidat.getIdCandidat() + candidat.getNume());
+				}
+				
 			}					
 			logger.logINFO("End test: TESTrecrutareEJB");
 		}
