@@ -153,7 +153,8 @@ public class TestPersonalEJBBusinessLogic {
 			Collection<CerereDemisie> listaCereri= personalInstance.getListaCereriDemisie();
 			for(Iterator<CerereDemisie> i = listaCereri.iterator(); i.hasNext();)
 			{
-				personalInstance.demisionareEJB(i.next());				
+				CerereDemisie cerere = i.next();
+				personalInstance.demisionareEJB(cerere);				
 			}					
 			logger.logINFO("End test: TESTdemisionareEJB");
 		}

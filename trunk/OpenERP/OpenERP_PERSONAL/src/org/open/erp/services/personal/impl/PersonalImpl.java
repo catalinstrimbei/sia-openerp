@@ -2030,21 +2030,30 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public void angajareEJB(Candidat candidat_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try{
-		Angajat angajat;
+		if(candidat_ == null)
+			return;
+			Angajat angajat = registruPersonal.getAngajatById(candidat_.getId());
+		if(angajat != null)
+			return;
 		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
 				null, null, 0);
 		//em.persist(angajat);
 		CV cv = getCVByCandidatEJB(candidat_);
-		
+		logger.logDEBUG("Am trecut de CV cv = getCVByCandidatEJB(candidat_) ");
+		if (cv == null || cv.getFunctieVizata() == null )
+				return;
+		angajat = registruPersonal.salveazaAngajat(angajat);
+		logger.logDEBUG("Am trecut de angajat = registruPersonal.salveazaAngajat(angajat);");
 		ContractMunca contract;
 		contract = new ContractMunca(null, 1000.00, 10.00, angajat, cv.getFunctieVizata(), new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+		logger.logDEBUG("Am trecut de contract = new ContractMunca(null, 1000.00 ");
 		this.registruPersonal.salveazaContractMunca(contract);
 		
-		DosarAngajat dosar;
-		dosar = new DosarAngajat(null, angajat, false, false, false);
-		//TODO - must revise - two different transactions
-		this.registruPersonal.salveazaDosarAngajat(dosar);
+		
+		//TODO - must revise - two different transactions		
+		DosarAngajat dosar = new DosarAngajat(null, angajat, false, false, false);
+		dosar = this.registruPersonal.salveazaDosarAngajat(dosar);
 		
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
@@ -2058,8 +2067,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void demisionareEJB(CerereDemisie cerereDemisie_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
-		ContractMunca	contract = cerereDemisie_.getContract();
-		Angajat 		angajat = contract.getAngajat();
+		ContractMunca	contract = cerereDemisie_.getContract();		
 		Date			data;
 		try
 		{
@@ -2078,17 +2086,18 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			long msDiff= cerereDemisie_.getDataDemisie().getTime() - cerereDemisie_.getDataCerere().getTime();
 			int nrZile = Math.round(msDiff / ((int)MILLIS_PER_DAY));
 			
-			cerereDemisie_.setPerioadaPreaviz(nrZile);
-			
+			cerereDemisie_.setPerioadaPreaviz(nrZile);		
 			contract.setDataTerminare(cerereDemisie_.getDataDemisie());
-			contract.setMotivIncheiere("Demisionare");
+			contract.setMotivIncheiere("Demisionare");		
+			cerereDemisie_.setStatus("Finalizata");						
 			
+			contract = this.registruPersonal.salveazaContractMunca(contract);
+			cerereDemisie_.setContract(contract);
+			cerereDemisie_ = this.registruPersonal.salveazaCerereDemisie(cerereDemisie_);
+			
+			Angajat angajat = contract.getAngajat();
 			angajat.setActiv(false);
-			cerereDemisie_.setStatus("Finalizata");
-			
-			this.registruPersonal.salveazaCerereDemisie(cerereDemisie_);
-			
-			
+			angajat = this.registruPersonal.salveazaAngajat(angajat);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
@@ -2100,15 +2109,14 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public void concediereEJB(ContractMunca contractMunca_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try
-		{
-		
-			Angajat 		angajat = contractMunca_.getAngajat();
-			
-			contractMunca_.setDataTerminare(Calendar.getInstance().getTime());
-			
-			angajat.setActiv(false);
+		{		
+			contractMunca_.setDataTerminare(Calendar.getInstance().getTime());						
 			contractMunca_.setMotivIncheiere("Concediere");
-			this.registruPersonal.salveazaContractMunca(contractMunca_);
+			contractMunca_ = this.registruPersonal.salveazaContractMunca(contractMunca_);
+			
+			Angajat 		angajat = contractMunca_.getAngajat();
+			angajat.setActiv(false);
+			angajat = this.registruPersonal.salveazaAngajat(angajat);
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());

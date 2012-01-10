@@ -83,6 +83,12 @@ public class TestPersonalEJBregistru {
 			
 			InterviuCandidat	interviuCandidat = new InterviuCandidat();
 			Candidat candidat = personalInstance.getCandidatById(1);
+			Candidat candidat2 = new Candidat();
+			candidat2.setGen('M');
+			candidat2.setNume("Nume2");
+			candidat2.setTipCandidat("Intern");
+			candidat2.setId(33);
+			personalInstance.salveazaCandidat(candidat2);
 			interviuCandidat.setCandidat(candidat);			
 			interviuCandidat.setInterviu(interviu);
 			interviuCandidat = personalInstance.salveazaInterviuCandidat(interviuCandidat);		
@@ -100,14 +106,18 @@ public class TestPersonalEJBregistru {
 			cv.setCandidat(candidat);
 			cv.setFunctieVizata(functie);
 			cv = personalInstance.salveazaCV(cv);					
-						
+			
+			cv.setCandidat(candidat2);
+			cv.setNrCV(null);
+			cv = personalInstance.salveazaCV(cv);
+			
 			ContractMunca	contract = test.contract1;
 			contract.setAngajat(angajat);
 			contract.setFunctie(functie);
 			contract = personalInstance.salveazaContractMunca(contract);	
 			
 			CerereDemisie		cerereDemisie = test.cerereDemisie1;
-			cerereDemisie.setContract(personalInstance.getContractMuncaById(10));
+			cerereDemisie.setContract(contract);
 			cerereDemisie = personalInstance.salveazaCerereDemisie(cerereDemisie);		
 			
 			Eveniment	eveniment1 = test.eveniment1;

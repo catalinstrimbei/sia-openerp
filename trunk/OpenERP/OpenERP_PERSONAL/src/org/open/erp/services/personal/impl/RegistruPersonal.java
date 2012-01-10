@@ -222,8 +222,8 @@ public class RegistruPersonal {
 		try
 		{		
 			logger.logINFO("Am intrat pe  try in salveazaAngajat in RegistruPersonal" );
-			if (angajat_.getMarca() == null ||
-				entityManager.find(angajat_.getClass(), angajat_.getMarca()) == null)
+			if (angajat_.getId() == null ||
+				entityManager.find(angajat_.getClass(), angajat_.getId()) == null)
 				entityManager.persist(angajat_);
 			else
 				entityManager.merge(angajat_);
