@@ -48,10 +48,10 @@ public class TestPersonalEJBBusinessLogic {
 	}	
 
 	@Test
-	public void TESTgetListaContracteAngajatEJB() {
+	public void TESTgetDosareAndContracteAngajatEJB() {
 		try
 		{			
-			logger.logINFO("Start test: TESTgetListaContracteAngajatEJB");
+			logger.logINFO("Start test: TESTgetDosareAndContracteAngajatEJB");
 			
 			Collection<Angajat> listaAngajati = personalInstance.getListaAngajati();
 			for(Iterator<Angajat> i = listaAngajati.iterator(); i.hasNext();)
@@ -72,7 +72,7 @@ public class TestPersonalEJBBusinessLogic {
 					System.out.println(contract.getNrContract());
 				}
 			}					
-			logger.logINFO("End test: TESTgetListaContracteAngajatEJB");
+			logger.logINFO("End test: TESTgetDosareAndContracteAngajatEJB");
 		}
 		catch(Exception ex)
 		{

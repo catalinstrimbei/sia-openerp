@@ -42,7 +42,6 @@ public class PersonalInterceptor {
 					("salveazaCandidat".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
 					("stergeCandidat".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
 					("refreshCandidat".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||					
-
 					
 					("getEvenimentById".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
 					("salveazaEveniment".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
@@ -147,7 +146,6 @@ public class PersonalInterceptor {
 				("salveazaCandidat".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
 				("stergeCandidat".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
 				("refreshCandidat".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||					
-
 				
 				("getEvenimentById".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
 				("salveazaEveniment".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
