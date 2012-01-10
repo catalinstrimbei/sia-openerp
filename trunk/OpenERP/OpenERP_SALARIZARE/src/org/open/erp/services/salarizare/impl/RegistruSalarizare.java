@@ -112,7 +112,7 @@ public class RegistruSalarizare {
 	public CentralizatorStatSalarii getCentralizatorStatSalarii(Integer an, Integer luna) {
 		CentralizatorStatSalarii centralizator;
 		centralizator = (CentralizatorStatSalarii)entityManager.createQuery("SELECT c FROM CentralizatorStatSalarii c " +
-				"WHERE c.an=:an AND c.luna=:luna AND rownum<=1")
+				"WHERE c.An=:an AND c.Luna=:luna AND rownum<=1")
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getSingleResult();
