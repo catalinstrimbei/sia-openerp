@@ -2,6 +2,8 @@ package org.open.erp.services.salarizare;
 
 //import java.util.List;
 
+import java.util.List;
+
 import org.open.erp.services.personal.Angajat;
 
 /**
@@ -282,4 +284,15 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	Pontaj getPontajByAngajat(Angajat angajat, Integer an, Integer luna) throws Exception;
+	
+	/**
+	 * returneaza pontajele pentru un an si o luna  
+	 * @param an 				Anul pentru care se returneaza pontajuk
+	 * @param luna 				Luna pentru care se returneaza pontajul
+	 * 
+	 * @return  List<Pontaj>
+	 * @throws Exception 
+	 * 
+	 */
+	List<Pontaj> getPontajAnLuna(Integer an, Integer luna) throws Exception;
 }
