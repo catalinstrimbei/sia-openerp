@@ -290,6 +290,9 @@ public class Procesare {
 
 	public Boolean intrareInStoc(Document doc, Gestiune gestIn) {
 		try {
+			if (gestIn == null) {
+				gestIn = gestiuni.get(0);
+			}
 			for (LinieDocument l : doc.getLiniiDocument()) {
 				// id va fi autogenerat
 				intrareInStoc(l.getMaterial(), new LoturiIntrari(1, l
