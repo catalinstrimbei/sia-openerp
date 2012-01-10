@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.naming.InitialContext;
@@ -95,6 +96,10 @@ public class TestPersonalEJBregistru {
 			candidat2 = personalInstance.salveazaCandidat(candidat2);
 			interviuCandidat.setCandidat(candidat);			
 			interviuCandidat.setInterviu(interviu);
+			
+			interviuCandidat.setRezultatEvaluare("ADMIS");
+			interviuCandidat.setDataInterviu(new Date("11/08/2011"));
+			
 			interviuCandidat = personalInstance.salveazaInterviuCandidat(interviuCandidat);		
 			
 			AnuntLocMunca	anunt = test.anunt1;
