@@ -651,18 +651,19 @@ public class RegistruPersonal {
 		try{
 			
 			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
-			logger.logDEBUG("interviuCandidat_.getIdInterviuCandidat() >>> " + interviuCandidat_.getIdInterviuCandidat().toString());
+			//logger.logDEBUG("interviuCandidat_.getIdInterviuCandidat() >>> " + interviuCandidat_.getIdInterviuCandidat().toString());
 			
 			if (interviuCandidat_.getIdInterviuCandidat() == null || 
 				entityManager.find(interviuCandidat_.getClass(), interviuCandidat_.getIdInterviuCandidat()) == null)
 			{
-				entityManager.persist(interviuCandidat_);
 				logger.logDEBUG("Am intrat pe Persist");
+				entityManager.persist(interviuCandidat_);				
 			}
 				else
 				entityManager.merge(interviuCandidat_);
 			
 		}catch(Exception ex){
+			//logger.logERROR("interviuCandidat_.getIdInterviuCandidat() >>> " + interviuCandidat_.getIdInterviuCandidat().toString());
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
@@ -691,7 +692,7 @@ public class RegistruPersonal {
 		try
 		{
 			return (ProbaEvaluare) entityManager.createQuery("SELECT pe FROM ProbaEvaluare pe WHERE pe.idProba = :idProbaEvaluare_")
-					.setParameter("idProbaEvaluare",idProbaEvaluare_)
+					.setParameter("idProbaEvaluare_",idProbaEvaluare_)
 					.getSingleResult();		}
 		catch(Exception ex)
 		{

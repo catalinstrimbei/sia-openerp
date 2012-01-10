@@ -52,8 +52,8 @@ public class TestPersonalImpl {
 	Collection<Activitate> activitati = new ArrayList<Activitate>();//NMV adaugare Lista noua pentru Activitati;
 	
 	//Creare evenimente
-	Eveniment eveniment1 = new Eveniment(1, "Training", 1200.00);
-	Eveniment eveniment2 = new Eveniment(1, "TeamBuilding", 1200.00);
+	Eveniment eveniment1 = new Eveniment(null, "Training", 1200.00);
+	Eveniment eveniment2 = new Eveniment(null, "TeamBuilding", 1200.00);
 	
 	// Activitati
 	Activitate activitate1;
@@ -92,13 +92,13 @@ public class TestPersonalImpl {
 	
 	
 	Interviu interviu1 = new Interviu(null, "Final");
-	Interviu interviu2 = new Interviu(2, "Intermediar");
-	Interviu interviu3 = new Interviu(3, "Final");
-	Interviu interviu4 = new Interviu(4, "Intermediar");
+	Interviu interviu2 = new Interviu(null, "Intermediar");
+	Interviu interviu3 = new Interviu(null, "Final");
+	Interviu interviu4 = new Interviu(null, "Intermediar");
 	
-	InterviuCandidat interviuCandidat1 = new InterviuCandidat(null, candidat1, new Date("11/08/2011"), "ADMIS", interviu1);
-	InterviuCandidat interviuCandidat2 = new InterviuCandidat(2, candidat2, new Date("11/08/2011"), "RESPINS", interviu1);
-	InterviuCandidat interviuCandidat3 = new InterviuCandidat(3, candidat3, new Date("11/08/2011"), "ADMIS", interviu2);
+	InterviuCandidat interviuCandidat1 = new InterviuCandidat(null, null, new Date("11/08/2011"), "ADMIS", null);
+	InterviuCandidat interviuCandidat2 = new InterviuCandidat(null, candidat2, new Date("11/08/2011"), "RESPINS", interviu1);
+	InterviuCandidat interviuCandidat3 = new InterviuCandidat(null, candidat3, new Date("11/08/2011"), "ADMIS", interviu2);
 
 
 
@@ -107,16 +107,16 @@ public class TestPersonalImpl {
 	AnuntLocMunca anunt3 = new AnuntLocMunca(null, new String[] { "Internet"}, "Anunt3", functie2, new Date("01/08/2011"), new Date("11/09/2011"));
 	AnuntLocMunca anunt2 = new AnuntLocMunca(null, new String[] { "Internet"}, "Anunt2", functie1, new Date("12/09/2011"), new Date("10/12/2011"));
 	
-	DummyDepartament departament1 = new DummyDepartament(1, "Departament1", null);
-	DummyDepartament departament2 = new DummyDepartament(2, "Departament2", null);
-	DummyDepartament departament3 = new DummyDepartament(3, "Departament3", null);
+	DummyDepartament departament1 = new DummyDepartament(null, "Departament1", null);
+	DummyDepartament departament2 = new DummyDepartament(null, "Departament2", null);
+	DummyDepartament departament3 = new DummyDepartament(null, "Departament3", null);
 	
 	ProbaEvaluare	probaEvaluare1 = new ProbaEvaluare(null, "Oral", "EvaluarePeriodica", null);
 	ProbaEvaluare	probaEvaluare2 = new ProbaEvaluare(null, "Practic", "EvaluarePeriodica", departament1);
-	ProbaEvaluare	probaEvaluare3 = new ProbaEvaluare(3, "Scris", "EvaluarePeriodica", departament2);
-	ProbaEvaluare	probaEvaluare4 = new ProbaEvaluare(4, "Oral", "EvaluarePeriodica", departament2);
-	ProbaEvaluare	probaEvaluare5 = new ProbaEvaluare(5, "Scris", "EvaluarePeriodica", departament3);
-	ProbaEvaluare	probaEvaluare6 = new ProbaEvaluare(6, "Practic", "Test", departament1);
+	ProbaEvaluare	probaEvaluare3 = new ProbaEvaluare(null, "Scris", "EvaluarePeriodica", departament2);
+	ProbaEvaluare	probaEvaluare4 = new ProbaEvaluare(null, "Oral", "EvaluarePeriodica", departament2);
+	ProbaEvaluare	probaEvaluare5 = new ProbaEvaluare(null, "Scris", "EvaluarePeriodica", departament3);
+	ProbaEvaluare	probaEvaluare6 = new ProbaEvaluare(null, "Practic", "Test", departament1);
 	
 	//Angajat	angajat2 = new Angajat ()
 	

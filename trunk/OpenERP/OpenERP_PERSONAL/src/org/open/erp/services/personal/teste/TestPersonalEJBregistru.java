@@ -91,16 +91,17 @@ public class TestPersonalEJBregistru {
 			test.initEvenimenteActivitati();		
 			
 			Angajat	angajat = personalInstance.getAngajatById(1);
-			InterviuCandidat	interviuCandidat = test.interviuCandidat1;
+			DosarAngajat	dosar = test.dosar1;
+			dosar.setAngajat(angajat);
+			dosar = personalInstance.salveazaDosarAngajat(dosar);	
+			
+			//InterviuCandidat	interviuCandidat = test.interviuCandidat1;
+			InterviuCandidat	interviuCandidat = new InterviuCandidat();
 			Candidat candidat = personalInstance.getCandidatById(1);
 			interviuCandidat.setCandidat(candidat);
 			Interviu interviu = personalInstance.getInterviuById(3);
 			interviuCandidat.setInterviu(interviu);
-			interviuCandidat = personalInstance.salveazaInterviuCandidat(interviuCandidat);
-			
-			DosarAngajat	dosar = test.dosar1;
-			dosar.setAngajat(angajat);
-			dosar = personalInstance.salveazaDosarAngajat(dosar);																			
+			interviuCandidat = personalInstance.salveazaInterviuCandidat(interviuCandidat);																				
 			
 			logger.logINFO("End test: Inserari2");
 		}
@@ -119,10 +120,16 @@ public class TestPersonalEJBregistru {
 			TestPersonalImpl test = new TestPersonalImpl();
 			test.generareAnunturi();
 			test.initEvenimenteActivitati();							
+			AnuntLocMunca	anunt = test.anunt1;
+			anunt.setFunctie(personalInstance.getFunctieById(2));
+			anunt = personalInstance.salveazaAnuntLocMunca(anunt);
 			
-			AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
+			RezultatProbaEvaluare rezProbaEval = test.angajatProbaEvaluare1;
 			
-			RezultatProbaEvaluare rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(test.angajatProbaEvaluare1);													
+			rezProbaEval.setAngajat(personalInstance.getAngajatById(1));
+			rezProbaEval.setProbaEvaluare(personalInstance.getProbaEvaluareById(4));		
+			
+			rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(rezProbaEval);													
 			
 			logger.logINFO("End test: Inserari2a");
 		}
@@ -142,8 +149,16 @@ public class TestPersonalEJBregistru {
 			test.generareAnunturi();
 			test.initEvenimenteActivitati();						
 			
-			CV	cv = personalInstance.salveazaCV(test.cv1);														
-			ContractMunca	contract = personalInstance.salveazaContractMunca(test.contract1);				
+			CV	cv = test.cv1;
+			cv.setCandidat(personalInstance.getCandidatById(1));
+			cv.setFunctieVizata(personalInstance.getFunctieById(2));
+			cv = personalInstance.salveazaCV(cv);					
+			
+			
+			ContractMunca	contract = test.contract1;
+			contract.setAngajat(personalInstance.getAngajatById(1));
+			contract.setFunctie(personalInstance.getFunctieById(2));
+			contract = personalInstance.salveazaContractMunca(contract);				
 			
 			logger.logINFO("End test: Inserari3");
 		}
@@ -163,10 +178,34 @@ public class TestPersonalEJBregistru {
 			test.generareAnunturi();
 			test.initEvenimenteActivitati();		
 			
-			CerereDemisie		cerereDemisie = personalInstance.salveazaCerereDemisie(test.cerereDemisie1);					
-			ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);		
-			Eveniment	eveniment1 = personalInstance.salveazaEveniment(test.eveniment1);
-			Eveniment	eveniment2 = personalInstance.salveazaEveniment(test.eveniment2);
+			CerereDemisie		cerereDemisie = test.cerereDemisie1;
+			cerereDemisie.setContract(personalInstance.getContractMuncaById(10));
+			cerereDemisie = personalInstance.salveazaCerereDemisie(cerereDemisie);		
+			
+			Eveniment	eveniment1 = test.eveniment1;
+			eveniment1.setActivitati(null);
+			eveniment1 = personalInstance.salveazaEveniment(eveniment1);
+			
+			Eveniment	eveniment2 = test.eveniment2;
+			eveniment2.setActivitati(null);
+			eveniment2 = personalInstance.salveazaEveniment(eveniment2);
+			
+			//ActivitateTraining	activitateTraining = (ActivitateTraining)test.activitate2;
+			ActivitateTraining	activitateTraining = new ActivitateTraining();
+			activitateTraining.setDescriereActivitate("Training 1");
+			activitateTraining.setLocatie("Locatie training 1");
+			activitateTraining.setSumaEstimata(100.00);
+			activitateTraining.setEveniment(eveniment1);
+			activitateTraining = personalInstance.salveazaActivitateTraining(activitateTraining);		
+			
+			ActivitateTeamBuilding	activitateTeam = new ActivitateTeamBuilding();
+			activitateTeam.setDescriereActivitate("TeamBuilding 1");
+			activitateTeam.setLocatie("Locatie TeamBuilding 1");
+			activitateTeam.setSumaEstimata(200.00);
+			activitateTeam.setEveniment(eveniment2);
+			activitateTeam = personalInstance.salveazaActivitateTeamBuilding(activitateTeam);
+			
+			//Eveniment	eveniment2 = personalInstance.salveazaEveniment(test.eveniment2);
 			
 			logger.logINFO("End test: Inserari4");
 		}
