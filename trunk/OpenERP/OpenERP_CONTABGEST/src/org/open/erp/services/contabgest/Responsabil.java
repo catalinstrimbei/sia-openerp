@@ -16,5 +16,10 @@ import org.open.erp.services.personal.Angajat;
 @Entity
 public class Responsabil extends Angajat implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	
 }
