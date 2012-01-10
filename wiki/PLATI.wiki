@@ -1,8 +1,7 @@
 #labels PaginamodululuiPLATI
-Echipa FinPlati
 
 = Introduction =
-
+Echipa FinPlati
 
 = Details =
 
