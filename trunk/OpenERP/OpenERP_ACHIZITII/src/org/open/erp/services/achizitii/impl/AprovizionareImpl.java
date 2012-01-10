@@ -273,7 +273,7 @@ public class AprovizionareImpl implements AprovizionareSrv,
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void receptieMateriale(Document nir) {
 		try {
-			stocuriSrv.intrareInStoc(nir);
+			stocuriSrv.intrareInStoc(nir,null);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 
