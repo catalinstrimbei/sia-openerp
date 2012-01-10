@@ -20,6 +20,8 @@ import javax.persistence.JoinColumn;
 import  javax.persistence.ManyToOne;
 import  javax.persistence.Temporal;
 
+import org.open.erp.services.personal.Angajat;
+
 
 import  static  javax.persistence.CascadeType.PERSIST;
 import  static  javax.persistence.CascadeType.MERGE;
@@ -31,6 +33,11 @@ public class ActivitateCentruCost extends LinieCost implements Serializable, Act
 	//@Id @GeneratedValue
 	//private Integer idActivitate;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@ManyToOne 
     @JoinColumn(name="idCentruCost")
 	private CentruCost centruCost;
@@ -48,7 +55,7 @@ public class ActivitateCentruCost extends LinieCost implements Serializable, Act
 	private Double costActivitate;
 	
 	@ManyToOne
-	private Responsabil responsabil;
+	private Angajat responsabil;
 	
 	@Temporal(TIMESTAMP)
 	private Date dataActualizare;
@@ -117,7 +124,7 @@ public class ActivitateCentruCost extends LinieCost implements Serializable, Act
 
 
 	public ActivitateCentruCost(String denumire, Date dataStart,
-			Date dataSfarsit, Double costActivitate, Responsabil responsabil) {
+			Date dataSfarsit, Double costActivitate, Angajat responsabil) {
 		super();
 		this.denumire = denumire;
 		this.dataStart = dataStart;
@@ -177,11 +184,11 @@ public class ActivitateCentruCost extends LinieCost implements Serializable, Act
 		this.status = status;
 	}
 
-	public Responsabil getResponsabil() {
+	public Angajat getAngajat() {
 		return responsabil;
 	}
 
-	public void setResponsabil(Responsabil responsabil) {
+	public void setAngajat(Angajat responsabil) {
 		this.responsabil = responsabil;
 	}
 
@@ -217,16 +224,25 @@ public class ActivitateCentruCost extends LinieCost implements Serializable, Act
 		return valoareAprovizionareExterna;
 	}
 
+
+
+
+
 	@Override
 	public void setCostActivitate(Double costActivitate) {
-		
-		this.valoareAprovizionareExterna = costActivitate;
+		// TODO Auto-generated method stub
 		
 	}
 
+	
 
 
 
 	
-	
+
+
+
+
+
+
 }
