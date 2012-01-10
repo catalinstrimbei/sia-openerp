@@ -59,8 +59,8 @@ public class RegistruPersonalEJB {
 	public Collection<CV> getListaCVuriCandidatEJB(Candidat candidat_) throws Exception {
 		try
 		{
-			return  entityManager.createQuery("SELECT c FROM  CV c INNER JOIN  Candidat cn  WHERE c.idCandidat = :cn.idCandidat AND cn.idCandidat = :idcandidat_")
-					.setParameter("idcandidat_",candidat_.getIdCandidat())
+			return  entityManager.createQuery("SELECT c FROM  CV c WHERE c.candidat = :candidat")
+					.setParameter("candidat",candidat_)
 					.getResultList();
 		}
 		catch(Exception ex)
