@@ -11,7 +11,7 @@
 		<track-connection-by-tx>true</track-connection-by-tx> 
 		<isSameRM-override-value>false</isSameRM-override-value> 
 		<xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class> 
-		<xa-datasource-property name="URL">jdbc:oracle:thin:@localhost:1521:ORCL</xa-datasource-property> 
+		<xa-datasource-property name="URL">jdbc:oracle:thin:@//localhost:1521:ORCL</xa-datasource-property> 
 		<xa-datasource-property name="User">openerp</xa-datasource-property> 
 		<xa-datasource-property name="Password">openerp</xa-datasource-property> 
 		<exception-sorter-class-name>

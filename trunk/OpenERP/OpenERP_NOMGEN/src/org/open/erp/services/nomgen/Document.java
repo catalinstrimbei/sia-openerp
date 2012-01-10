@@ -1,6 +1,7 @@
 package org.open.erp.services.nomgen;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -27,10 +28,12 @@ public class Document implements Serializable{
 	private String observatie;   
 	
 	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	@Column(name="liniiDocument")
 	private List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
 	
 	
 
+	
 	public Document(Integer nrDocument, Date dataDocument, Persoana persoana,
 			String observatie) {
 		super();

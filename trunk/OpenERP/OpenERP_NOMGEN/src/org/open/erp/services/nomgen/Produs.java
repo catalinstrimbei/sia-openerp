@@ -11,13 +11,13 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Produs extends Material{
-	public Integer id;
-	public String  denumire;
-	public String  unitateMasura;
-	public Date    dataFabricatiei;
-	public Integer termenValabilitate;
-	public Double pretVanzare= 0.0;
-	public Float procentTVA;
+	private Integer id;
+	private String  denumire;
+	private String  unitateMasura;
+	private Date    dataFabricatiei;
+	private Integer termenValabilitate;
+	private Double pretVanzare= 0.0;
+	private Float procentTVA;
 	
 	public Float getProcentTVA() {
 		return procentTVA;

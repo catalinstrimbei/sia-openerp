@@ -15,10 +15,10 @@ import javax.persistence.Id;
 @Entity
 public class Partener {
 	//@Id @GeneratedValue
-	public Integer id;
-	public Integer idPersoana;
-	public Date    dataAfilierii;
-	public Integer durataAfilierii;
+	private Integer id;
+	private Integer idPersoana;
+	private Date    dataAfilierii;
+	private Integer durataAfilierii;
 	/**
 	 * @return the id
 	 */

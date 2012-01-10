@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.ejb.TransactionManagement;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -31,7 +32,7 @@ import org.open.erp.services.nomgen.Banca;
 import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
 
 
-
+@TransactionManagement
 public class TestNomenclatoareDummyImpl{
 	private NomenclatoareSrv instance = null;
 	

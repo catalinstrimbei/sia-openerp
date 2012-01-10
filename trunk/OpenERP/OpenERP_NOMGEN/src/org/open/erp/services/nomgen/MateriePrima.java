@@ -13,11 +13,11 @@ import javax.persistence.Entity;
 @Entity
 public class MateriePrima extends Material{
 //@Id @GeneratedValue
-	public Integer id;
-	public String  denumire;
-	public String  unitateMasura;
-	public Date    dataFabricatiei;
-	public Integer termenValabilitate;
+	private Integer id;
+	private String  denumire;
+	private String  unitateMasura;
+	private Date    dataFabricatiei;
+	private Integer termenValabilitate;
 	
 	
 	/**

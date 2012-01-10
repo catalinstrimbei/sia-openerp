@@ -10,11 +10,11 @@ package org.open.erp.services.nomgen;
 //@Entity
 public class MijlocFix {
 	//@Id @GeneratedValue
-	public Integer id;
-	public String  denumire;
-	public String  adresa;
-	public Integer valoare;
-	public Integer termenExploatare;
+	private Integer id;
+	private String  denumire;
+	private String  adresa;
+	private Integer valoare;
+	private Integer termenExploatare;
 	
 	/**
 	 * @return the id

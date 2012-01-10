@@ -15,13 +15,13 @@ import javax.persistence.Id;
 
 public class Material implements Serializable{ 
 	//@Id @GeneratedValue
-	public Integer idMaterial; 
-	public String denumire; 
-	public String categorie;  
-	public String UM; 
+	private Integer idMaterial; 
+	private String denumire; 
+	private String categorie;  
+	private String UM; 
 	
 	//public Integer stocCurent;  
-	public String tipContabil;
+	private String tipContabil;
 
 	
 	public Material (Integer idMaterial, String denumire, 

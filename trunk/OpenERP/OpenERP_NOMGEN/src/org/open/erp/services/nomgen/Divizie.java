@@ -18,13 +18,13 @@ public class Divizie extends Departament {
 	//@Id @GeneratedValue
 	private Integer Id;
 	//@ManyToOne
-	public Departament IdDepartament;
-	public String denumire;
-	public String atributii;
+	private Departament IdDepartament;
+	private String denumire;
+	private String atributii;
 	
-	public List<String> telefoane;
+	private List<String> telefoane;
 	
-	public List<String> emailuri;
+	private List<String> emailuri;
 	
 	/**
 	 * @return the id
