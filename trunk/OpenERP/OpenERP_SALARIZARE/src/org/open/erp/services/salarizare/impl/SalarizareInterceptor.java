@@ -62,6 +62,9 @@ public class SalarizareInterceptor {
 				if(salar<0){
 					logger.info("Metoda "+ invokedMethodName + " a returnat un salar negativ: "+salar);
 				}
+				else{
+					logger.info("Metoda "+ invokedMethodName + " a returnat CORECT un salar pozitiv: "+salar);
+				}
 			}
 			// executa metoda interceptata
 			return ctx.proceed();
@@ -116,7 +119,7 @@ public class SalarizareInterceptor {
 		logger.info("#### call of: " + targetBeanClass.getName() + "." + invokedMethodName);
 		// Executa logica de interceptare
 		if (
-				("inregistrarStatSalariiLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))||
+				("inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))||
 				("calculSporuriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
 				("calculVenitBrut".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
 				("calculRetineriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
