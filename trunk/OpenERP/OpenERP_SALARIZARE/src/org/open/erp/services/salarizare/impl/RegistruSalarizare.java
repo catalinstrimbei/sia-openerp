@@ -109,6 +109,19 @@ public class RegistruSalarizare {
 		return stat;
 	}
 	
+	public CentralizatorStatSalarii getCentralizatorStatSalarii(Integer an, Integer luna) {
+		CentralizatorStatSalarii centralizator;
+		centralizator = (CentralizatorStatSalarii)entityManager.createQuery("SELECT c FROM CentralizatorStatSalarii c " +
+				"WHERE c.an=:an AND c.luna=:luna AND rownum<=1")
+				.setParameter("an", an)
+				.setParameter("luna", luna)
+				.getSingleResult();
+	
+		return centralizator;
+	}
+
+
+	
 	/* persistenta */
 	public Pontaj salveazaPontaj(Pontaj pontaj) throws Exception{
 		try{
