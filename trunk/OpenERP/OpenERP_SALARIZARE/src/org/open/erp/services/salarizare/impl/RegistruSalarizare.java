@@ -45,7 +45,7 @@ public class RegistruSalarizare {
 	public Pontaj getPontajByAngajat(Angajat angajat, Integer an, Integer luna) {
 		Pontaj p;
 		p = (Pontaj)entityManager.createQuery("SELECT p FROM Pontaj p " +
-				"WHERE p.angajat.id=:id AND p.an=:an AND p.luna=:luna")
+				"WHERE p.angajat.id=:id AND p.an=:an AND p.luna=:luna AND rownum<=1")
 				.setParameter("id", angajat.getId())
 				.setParameter("an", an)
 				.setParameter("luna", luna)
