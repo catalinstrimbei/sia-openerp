@@ -58,7 +58,7 @@ public class PersonalLogger {
 					{
 						path = "T:\\";
 					}
-					path = "T:\\";
+					//path = "T:\\";
 					myAppender = new RollingFileAppender(layout, path + "LogFile_OpenERP_PERSONAL.log");
 					myAppender.setAppend(true);
 			        myAppender.setMaxFileSize("5MB");
