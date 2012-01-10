@@ -94,8 +94,7 @@ public class RegistruSalarizare {
 	public List<StatSalarii> getStatAnLuna(Integer an, Integer luna) {
 		List<StatSalarii> stat = new ArrayList<StatSalarii>();
 		
-		stat = entityManager.createQuery("SELECT s FROM StatSalarii s " +
-				"WHERE s.an=:an AND s.luna=:luna")
+		stat = entityManager.createQuery("SELECT s FROM StatSalarii s, Pontaj p WHERE s.pontaj.idPontaj = p.idPontaj AND p.an = :an AND p.luna = :luna" )
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getResultList();
