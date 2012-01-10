@@ -158,7 +158,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return spor;
 	}
 
-	//@Interceptors({SalarizareInterceptor.class})
+	@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) {
 		// pentru fiecare angajat calculam sporurile (pot fi mai multe) si insumam
@@ -191,7 +191,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return valoareTotala;
 	}
 
-	//@Interceptors({SalarizareInterceptor.class})
+	@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) {
 		Pontaj p = registru.getPontajByAngajat(angajat, an, luna);
@@ -229,7 +229,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return retinere;
 	}
 
-	//@Interceptors({SalarizareInterceptor.class})
+	@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculRetineriAngajat(Integer an, Integer luna,
 			Angajat angajat) {
@@ -314,7 +314,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return salarNet;
 	}
 
-	//@Interceptors({SalarizareInterceptor.class})
+	@Interceptors({SalarizareInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inregistrarStatSalariiLuna(Integer an, Integer luna) throws Exception {
