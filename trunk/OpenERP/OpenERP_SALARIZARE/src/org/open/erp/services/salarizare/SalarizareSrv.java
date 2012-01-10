@@ -330,4 +330,15 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	List<StatSalarii> getStatAnLuna(Integer an, Integer luna) throws Exception;
+	
+	/**
+	 * genereaza centralizatorul de salarii pentru toti angajatii pentru un an si o luna 
+	 * @param an 				Anul pentru care se returneaza statul de salarii
+	 * @param luna 				Luna pentru care se returneaza statul de salarii
+	 * 
+	 * @return  
+	 * @throws Exception 
+	 * 
+	 */
+	CentralizatorStatSalarii inregistreazaCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception;	
 }
