@@ -3,8 +3,11 @@ package org.open.erp.services.salarizare.teste;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.ejb.EJB;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -16,30 +19,37 @@ import org.open.erp.services.salarizare.impl.RegistruSalarizare;
 public class TestSalarizareImpl {
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestSalarizareImpl.class.getName());
-	SalarizareSrv salarizareSrvInstance;
-	
-	@EJB(mappedName="PersonalImpl/local")
-	PersonalSrv personalSrvInstance;
-	
-	RegistruSalarizare registruSalarizare;
+	private static SalarizareSrv salarizareSrvInstance;
+	private static PersonalSrv personalSrvInstance;
+//	private static RegistruSalarizare registruSalarizare;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		InitialContext ctx = initJBossJNDICtx();
+		salarizareSrvInstance = (SalarizareSrv)ctx.lookup("SalarizareImpl/remote");
+		personalSrvInstance = (PersonalSrv)ctx.lookup("PersonalSrv/remote");
+		
+		logger.info("initTest " + salarizareSrvInstance);
+		logger.info("initTest " + personalSrvInstance);
 	}
+
+	
 
 	@Before
 	public void setUp() throws Exception {
-		logger.info("initTest");
-		salarizareSrvInstance= SalarizareFactory.getSalarizareSrv();
-		personalSrvInstance = SalarizareFactory.getPersonalSrv();
-		registruSalarizare = SalarizareFactory.getRegistruSalarizare();
+	
+	//	salarizareSrvInstance= SalarizareFactory.getSalarizareSrv();
+	//	personalSrvInstance = SalarizareFactory.getPersonalSrv();
+	//	registruSalarizare = SalarizareFactory.getRegistruSalarizare();
 		logger.info("initTest");		
 	}
 
 	@Test
 	public void testInregistrarePontaj() throws Exception {
 		logger.info("Begin test: inregistrarePontaj");
-		Angajat angajat = personalSrvInstance.getAngajatById(1);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
+//		Angajat angajat = new Angajat();
+//		angajat.setId(10001);
 		Pontaj pontaj = salarizareSrvInstance.inregistrarePontaj(angajat, 2011, 11, 160.0, 0.0, 0.0);
 		assertNotNull("Metoda de creere a pontajului nu a functionat!", pontaj);
 		
@@ -165,5 +175,14 @@ public class TestSalarizareImpl {
 		assertNotNull("Metoda de creare a retinerii nu a functionat!", retinere);
 		
 		logger.info("End test: inregistrareRetinere");
+	}
+	
+	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
+	private static InitialContext initJBossJNDICtx() throws NamingException{
+		Properties props = new Properties();
+        props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");		
+        props.put("java.naming.provider.url", "jnp://localhost:1099/");
+        props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
+        return new InitialContext(props);
 	}
 }
