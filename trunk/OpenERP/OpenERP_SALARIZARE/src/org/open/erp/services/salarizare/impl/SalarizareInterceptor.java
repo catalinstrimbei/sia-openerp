@@ -17,7 +17,7 @@ public class SalarizareInterceptor {
 			logger.info("#### call of: " + targetBeanClass.getName() + "." + invokedMethodName);
 			// Executa logica de interceptare
 			if (
-					("inregistrarStatSalariiLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))||
+					("inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))||
 					("calculSporuriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
 					("calculVenitBrut".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
 					("calculRetineriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
@@ -25,11 +25,15 @@ public class SalarizareInterceptor {
 					)
 			{
 				//verifica parametri An/Luna sa aiba valori intre 2000 si 2050, respectiv 1 si 12
-				Integer an = (Integer)ctx.getParameters()[1];
-				Integer luna = (Integer)ctx.getParameters()[2];
+				Integer an = (Integer)ctx.getParameters()[0];
+				Integer luna = (Integer)ctx.getParameters()[1];
 				if(an>2050||an<2000){
 					logger.info("Metoda "+ invokedMethodName + " a fost apelata cu parametrul an cu valoarea "+an);
 				}
+				else{
+					logger.info("Metoda "+ invokedMethodName + " a fost apelata CORECT cu parametrul an cu valoarea "+an);	
+					}
+				
 				if(luna>12||an<1){
 					logger.info("Metoda "+ invokedMethodName + " a fost apelata cu parametrul luna cu valoarea "+luna);
 				}
