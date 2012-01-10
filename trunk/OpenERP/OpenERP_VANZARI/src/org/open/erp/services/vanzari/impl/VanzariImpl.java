@@ -14,6 +14,8 @@ import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -40,7 +42,7 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	private static Logger logger = Logger.getLogger(VanzariImpl.class.getName());
 	private RegistruVanzari registruVanzari;
 	
-	private ProcesareComanda procesareComanda  = new ProcesareComanda();
+	private ProcesareComanda procesareComanda = new ProcesareComanda();
 	private ProcesareFacturaEmisa procesareFactura = new ProcesareFacturaEmisa();
 	
 	/* Dependente resurse injectate */
@@ -64,25 +66,44 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 		
 		if (this.registruVanzari == null)
 			registruVanzari = new RegistruVanzari(em);
+		
+		//procesareComanda = new ProcesareComanda(em, registruVanzari);
+		//procesareFactura = new ProcesareFacturaEmisa(em, registruVanzari);
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Comanda inregistrareComanda(Produs[] produs, Double[] cant, Client client) {
-		//Comanda comanda = new Comanda();
+		logger.debug(">>>>>>>>>>>> START Creare comanda");
 		Comanda comanda = new Comanda(1, new Date(), client, Comanda.PENDING);
 		procesareComanda.setComanda(comanda);
 		
 		for(int i=0; i<produs.length; i++){
 			if( !procesareComanda.addProdusInComanda(produs[i], cant[i])){
-				// logger				
+				logger.debug("Produsul nu a fost adaugat in comanda");			
 			}
 		}
+		logger.debug(">>>>>>>>>>>> END Creare comanda");
 		
-		return procesareComanda.getComanda();
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare comanda - TRANZACTIE ANULATA");
+		}else{
+			try{
+				comanda = procesareComanda.getComanda();
+				comanda = this.registruVanzari.salveazaComanda(comanda);
+			} catch(Exception e){
+				logger.debug("Probleme procesare comanda");
+			}
+		}
+		//return procesareComanda.getComanda();
+		return comanda;
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public FacturaEmisa facturareProduse(Comanda comanda, Client client, Vanzator vanzator) {
+		logger.debug(">>>>>>>>>>>> START Creare factura");
+		
 		FacturaEmisa factura = new FacturaEmisa(1, client, vanzator, FacturaEmisa.NEPLATITA);
 		factura.setNrComanda(comanda.getNrComanda());
 		factura.setDataDoc(new Date());
@@ -110,7 +131,7 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 					factura.addLinie(linieFactura);
 					
 				} catch(ValoareNegativa e){
-					
+					logger.debug("Probleme procesare factura");
 				}
 			}
 		}
@@ -122,8 +143,19 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 		this.actualizeazaSoldClient(factura, client);
 		
 		this.actulizareStoc(1, factura); // iesire din stoc
-		//this.inregistrareFactura(factura);
 		
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare factura - TRANZACTIE ANULATA");
+		}else{
+			try{
+				factura = this.registruVanzari.salveazaFactura(factura);
+			} catch(Exception e){
+				logger.debug("Probleme procesare factura");
+			}
+		}
+		
+		//this.inregistrareFactura(factura);
+		logger.debug(">>>>>>>>>>>> END Creare factura");
 		return factura;
 	}
 	
@@ -144,7 +176,7 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 		case 1:
 			stocuriSrv.iesireStoc(factura); break;
 		case 2:
-			stocuriSrv.intrareInStoc(factura); break;
+			//stocuriSrv.intrareInStoc(factura); break;
 		}
 	}
 	

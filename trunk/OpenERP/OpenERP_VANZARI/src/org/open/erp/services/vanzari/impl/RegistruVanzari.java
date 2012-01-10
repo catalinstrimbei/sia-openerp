@@ -66,9 +66,29 @@ public class RegistruVanzari {
 		em.remove(factura);
 	}
 	
-	public Client getClient(Client client){
-		return em.find(Client.class, client.getId());
-	}	
+	public Client getClient(Integer idClient){
+		return em.find(Client.class, idClient);
+	}
+	
+	public List<Client> getClientByNume(String nume){
+		return em.createQuery("SELECT c FROM Client c WHERE c.nume=:nume")
+				.setParameter("nume", nume)
+				.getResultList();
+	}
+	
+	public Client salveazaClient(Client client) throws Exception{
+		try{
+			if(client.getId() == null || em.find(client.getClass(), client.getId()) == null)
+				em.persist(client);
+			else
+				em.merge(client);
+		} catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return client;
+	}
 	
 	public List<FacturaEmisa> getFacturiClient(Integer idClient){
 		return em.createQuery("SELECT f FROM FacturaEmisa f WHERE f.client.id:=IdClient")

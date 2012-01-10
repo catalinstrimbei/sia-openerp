@@ -9,6 +9,8 @@ package org.open.erp.services.vanzari.impl;
 
 import java.util.Date;
 import javax.ejb.EJB;
+import javax.persistence.EntityManager;
+
 import java.util.Iterator;
 
 //import org.open.erp.services.marketing.MarketingManagementSrv;
@@ -16,6 +18,7 @@ import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.productie.ComandaProductie;
+import org.open.erp.services.productie.DummyProdus;
 //import org.open.erp.services.productie.ProductieSrv;
 import org.open.erp.services.productie.ProductieSrvLocal;
 import org.open.erp.services.productie.impl.ProductieImpl;
@@ -35,7 +38,21 @@ public class ProcesareComanda {
 	@EJB(mappedName="ProductieImpl/local")
 	public ProductieSrvLocal prodSrv = new ProductieImpl();
 	
+	//private EntityManager em;
+	//private RegistruVanzari registruVanzari;
+	
 	public Comanda comanda;
+	
+	public ProcesareComanda(){} 
+	
+	/*public ProcesareComanda(EntityManager em){
+		this.em = em;
+	}
+	
+	public ProcesareComanda(EntityManager em, RegistruVanzari reg){
+		this.em = em;
+		this.registruVanzari = reg;
+	}*/
 	
 	public LinieComanda gasesteProdusComandat(Produs produs){
 		LinieComanda produsComandat = new LinieComanda();
@@ -101,8 +118,14 @@ public class ProcesareComanda {
 		if( cantDisponibila >= cantitate)
 			return true;
 		else{
-			ComandaProductie comprod = new ComandaProductie(1, produs, cantitate.intValue(), new Date());
-			prodSrv.lansareComandaProductie(comprod, produs);
+			// lansare Comanda daca prod nu e in stoc 
+			try{
+				DummyProdus dummyProd = new DummyProdus(produs.getId(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
+				ComandaProductie comprod = new ComandaProductie(1, dummyProd, cantitate.intValue(), new Date());
+				prodSrv.lansareComandaProductie(comprod, dummyProd);
+			} catch(Exception ex){
+				
+			}
 			return false;
 		}
 	}

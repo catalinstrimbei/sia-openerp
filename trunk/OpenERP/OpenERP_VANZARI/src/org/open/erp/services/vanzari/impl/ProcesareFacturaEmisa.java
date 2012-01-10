@@ -8,6 +8,7 @@ package org.open.erp.services.vanzari.impl;
  */
 
 import javax.ejb.EJB;
+import javax.persistence.EntityManager;
 
 import org.open.erp.services.nomgen.Produs;
 //import org.open.erp.services.stocuri.StocuriSrv;
@@ -20,8 +21,22 @@ public class ProcesareFacturaEmisa {
 
 	@EJB(mappedName="StocuriImpl/local")
 	public StocuriSrvLocal stocuriSrv = new StocuriImpl();
+	
+	//private EntityManager em;
+	//private RegistruVanzari registruVanzari;
 
 	private LinieFacturaEmisa linie;
+	
+	public ProcesareFacturaEmisa(){}
+	
+	/*public ProcesareFacturaEmisa(EntityManager em){
+		this.em = em;
+	}
+	
+	public ProcesareFacturaEmisa(EntityManager em, RegistruVanzari reg){
+		this.em = em;
+		this.registruVanzari = reg;
+	}*/
 	
 	public Double stabilirePret() throws ValoareNegativa{
 		Double pret = 0.0;

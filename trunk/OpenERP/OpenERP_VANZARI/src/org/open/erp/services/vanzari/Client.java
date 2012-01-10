@@ -34,31 +34,6 @@ public class Client extends Partener implements Serializable {
 		this.soldClient = _soldClient;
 	}
 
-	public boolean addClient(){
-		// set client data in DB
-		return true;
-	}
-	
-	public boolean updateDateClient(){
-		// modify client data in DB
-		return true;
-	}
-	
-	public boolean stergeClient(){
-		// remove client from DB
-		return true;
-	}
-	
-	public static Client cautaClientByEmail(String email){
-		// search Client in DB
-		return new Client(1, 1, 2, "Gigel", email, "0987654321", "CT123456", 0.0);
-	}
-	
-	public static Client cautaClientByNume(String nume){
-		//search Client in DB by firstname / lastname
-		return new Client(1, 1, 2, nume, nume+"@yahoo.com", "0987654321", "CT123456", 0.0);
-	}
-
 	public String getNume() {
 		return nume;
 	}
