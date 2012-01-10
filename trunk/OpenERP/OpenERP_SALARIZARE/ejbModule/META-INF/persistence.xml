@@ -3,7 +3,7 @@
 	<persistence-unit name="OpenERP_SALARIZARE">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
-		<jar-file>OpenERP_PERSONAL.jar</jar-file>
+		<jar-file>OpenERP_PERSONAL.jar</jar-file> 
 		<class>org.open.erp.services.salarizare.StatSalarii</class>
 		<class>org.open.erp.services.salarizare.Spor</class>
 		<class>org.open.erp.services.salarizare.Retinere</class>
