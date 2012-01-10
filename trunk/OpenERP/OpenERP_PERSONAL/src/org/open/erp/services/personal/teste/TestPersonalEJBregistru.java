@@ -55,7 +55,87 @@ public class TestPersonalEJBregistru {
 		Functie functie = personalInstance.getFunctieById(101);
 		System.out.println("Nume functie: " + functie.getNumeFunctie().toString());
 	}
-
+	@Test	
+	public void testInserari() throws Exception {
+		try
+		{
+			logger.logINFO("Begin test: Inserari");			
+			
+			TestPersonalImpl test = new TestPersonalImpl();
+			test.generareAnunturi();
+			test.initEvenimenteActivitati();		
+			
+			Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);
+			Angajat	angajat2 = personalInstance.salveazaAngajat(test.angajat2);	
+			
+			Functie functie = personalInstance.salveazaFunctie(test.functie1);				
+			Interviu interviu = personalInstance.salveazaInterviu(test.interviu1);
+			ProbaEvaluare	proba = personalInstance.salveazaProbaEvaluare(test.probaEvaluare1);
+						
+			DosarAngajat	dosar = test.dosar1;
+			dosar.setAngajat(angajat);
+			dosar = personalInstance.salveazaDosarAngajat(dosar);	
+			
+			
+			InterviuCandidat	interviuCandidat = new InterviuCandidat();
+			Candidat candidat = personalInstance.getCandidatById(1);
+			interviuCandidat.setCandidat(candidat);			
+			interviuCandidat.setInterviu(interviu);
+			interviuCandidat = personalInstance.salveazaInterviuCandidat(interviuCandidat);		
+			
+			AnuntLocMunca	anunt = test.anunt1;
+			anunt.setFunctie(functie);
+			anunt = personalInstance.salveazaAnuntLocMunca(anunt);
+			
+			RezultatProbaEvaluare rezProbaEval = test.angajatProbaEvaluare1;						
+			rezProbaEval.setAngajat(angajat);				
+			rezProbaEval.setProbaEvaluare(proba);			
+			rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(rezProbaEval);	
+		
+			CV	cv = test.cv1;
+			cv.setCandidat(candidat);
+			cv.setFunctieVizata(functie);
+			cv = personalInstance.salveazaCV(cv);					
+						
+			ContractMunca	contract = test.contract1;
+			contract.setAngajat(angajat);
+			contract.setFunctie(functie);
+			contract = personalInstance.salveazaContractMunca(contract);	
+			
+			CerereDemisie		cerereDemisie = test.cerereDemisie1;
+			cerereDemisie.setContract(personalInstance.getContractMuncaById(10));
+			cerereDemisie = personalInstance.salveazaCerereDemisie(cerereDemisie);		
+			
+			Eveniment	eveniment1 = test.eveniment1;
+			eveniment1.setActivitati(null);
+			eveniment1 = personalInstance.salveazaEveniment(eveniment1);
+			
+			Eveniment	eveniment2 = test.eveniment2;
+			eveniment2.setActivitati(null);
+			eveniment2 = personalInstance.salveazaEveniment(eveniment2);
+						
+			ActivitateTraining	activitateTraining = new ActivitateTraining();
+			activitateTraining.setDescriereActivitate("Training 1");
+			activitateTraining.setLocatie("Locatie training 1");
+			activitateTraining.setSumaEstimata(100.00);
+			activitateTraining.setEveniment(eveniment1);
+			activitateTraining = personalInstance.salveazaActivitateTraining(activitateTraining);		
+			
+			ActivitateTeamBuilding	activitateTeam = new ActivitateTeamBuilding();
+			activitateTeam.setDescriereActivitate("TeamBuilding 1");
+			activitateTeam.setLocatie("Locatie TeamBuilding 1");
+			activitateTeam.setSumaEstimata(200.00);
+			activitateTeam.setEveniment(eveniment2);
+			activitateTeam = personalInstance.salveazaActivitateTeamBuilding(activitateTeam);
+						
+			logger.logINFO("End test: Inserari");
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
 	
 	
 	@Test	
@@ -214,48 +294,7 @@ public class TestPersonalEJBregistru {
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
 		}
-	}
-	
-	@Test	
-	public void testInserari() throws Exception {
-		try
-		{
-		logger.logINFO("Begin test: Inserari");			
-		TestPersonalImpl test = new TestPersonalImpl();
-		test.generareAnunturi();
-		test.initEvenimenteActivitati();		
-		
-		Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);			
-		ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
-		
-		Functie functie = personalInstance.salveazaFunctie(test.functie1);		
-		//Candidat candidat = personalInstance.salveazaCandidat(test.candidat1);		
-		CV	cv = personalInstance.salveazaCV(test.cv1);
-		
-		Interviu interviu = personalInstance.salveazaInterviu(test.interviu1);
-		InterviuCandidat	interviuCandidat = personalInstance.salveazaInterviuCandidat(test.interviuCandidat1);
-		AnuntLocMunca	anunt = personalInstance.salveazaAnuntLocMunca(test.anunt1);
-		ProbaEvaluare	proba = personalInstance.salveazaProbaEvaluare(test.probaEvaluare1);
-		
-		ContractMunca	contract = personalInstance.salveazaContractMunca(test.contract1);
-		DosarAngajat	dosar = personalInstance.salveazaDosarAngajat(test.dosar1);
-		RezultatProbaEvaluare rezProbaEval = personalInstance.salveazaRezultatProbaEvaluare(test.angajatProbaEvaluare1);
-		CerereDemisie		cerereDemisie = personalInstance.salveazaCerereDemisie(test.cerereDemisie1);			
-		
-		//ActivitateTeamBuilding	activitateTeamBld = personalInstance.salveazaActivitateTeamBuilding((ActivitateTeamBuilding)test.activitate1);
-		ActivitateTraining	activitateTraining = personalInstance.salveazaActivitateTraining((ActivitateTraining)test.activitate2);
-		
-		Eveniment	eveniment1 = personalInstance.salveazaEveniment(test.eveniment1);
-		Eveniment	eveniment2 = personalInstance.salveazaEveniment(test.eveniment2);
-		
-		logger.logINFO("End test: Inserari");
-		}
-		catch(Exception ex)
-		{
-			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
-		}
-	}
+	}		
 	
 	
 }
