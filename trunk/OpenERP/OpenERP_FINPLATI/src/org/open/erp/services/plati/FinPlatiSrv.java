@@ -33,17 +33,17 @@ public interface FinPlatiSrv {
 	Integer numar, String locatie, String moneda, Furnizor furnizor,
 	Double curs) throws PlatiExceptions, CtbException;
 
-	CEC inregistrareCEC(Date dataEmiterii, Boolean avans, Furnizor furnizor,
+	CEC inregistrareCEC(Integer idPlata, Date dataEmiterii, Boolean avans, Furnizor furnizor,
 	String seria, Integer numar, String locatie, String stare,
 	Double suma, List<FacturaPrimita> facturi,
 	String moneda, Double curs) throws PlatiExceptions;
 
-	OrdinPlata inregistrareOrdinPlata(Date dataEmiterii, Boolean avans, Furnizor furnizor,
+	OrdinPlata inregistrareOrdinPlata(Integer idPlata, Date dataEmiterii, Boolean avans, Furnizor furnizor,
 			String seria, Integer numar, String locatie, String stare,
 			Double suma, List<FacturaPrimita> facturi,
 			String moneda, Double curs) throws PlatiExceptions;
 
-	ExtrasCont inregistrareExtrasCont(Date dataEmiterii, Boolean avans,
+	ExtrasCont inregistrareExtrasCont(Integer idPlata, Date dataEmiterii, Boolean avans,
 	Furnizor furnizor, String seria, Integer numar, String locatie,
 	List<FacturaPrimita> facturi, Double suma,
 	String moneda, Double curs) throws PlatiExceptions;

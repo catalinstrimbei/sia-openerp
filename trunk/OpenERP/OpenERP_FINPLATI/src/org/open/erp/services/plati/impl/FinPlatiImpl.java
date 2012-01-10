@@ -23,23 +23,23 @@ import org.open.erp.services.plati.FinPlatiSrvLocal;
 import org.open.erp.services.plati.FinPlatiSrvRemote;
 import org.open.erp.services.plati.OrdinPlata;
 import org.open.erp.services.plati.Plata;
-import org.open.erp.services.vanzari.VanzariSrv;
+//import org.open.erp.services.vanzari.VanzariSrv;
 import org.open.erp.services.achizitii.AprovizionareSrv;
 
 @Stateful
 public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 
-	private VanzariSrv vanzariSrv;
+	//private VanzariSrv vanzariSrv;
 	private ContabilizareSrv ctbSrv;
 	private AprovizionareSrv aproSrv;
 	
-	public VanzariSrv getVanzariSrv() {
+	/*public VanzariSrv getVanzariSrv() {
 		return vanzariSrv;
 	}
 
 	public void setVanzariSrv(VanzariSrv vanzariSrv) {
 		this.vanzariSrv = vanzariSrv;
-	}
+	}*/
 
 	public ContabilizareSrv getCtbSrv() {
 		return ctbSrv;
@@ -52,7 +52,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 	/**
 	 * @throws CtbException
 	 * @throws NumberFormatException
-	 * @throws IncasariException
+	 * @throws PlatiExceptions
 	 * @ApplicationServiceFacade
 	 */
 	
@@ -166,7 +166,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 	}
 
 	@Override
-	public CEC inregistrareCEC(Date dataEmiterii, Boolean avans,
+	public CEC inregistrareCEC(Integer idPlata, Date dataEmiterii, Boolean avans,
 			Furnizor furnizor, String seria, Integer numar, String locatie,
 			String stare, Double suma, List<FacturaPrimita> facturi,
 			String moneda, Double curs) throws PlatiExceptions {
@@ -182,7 +182,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 		if (!moneda.equals("RON")) {
 			suma = getSumaRON(moneda, suma, curs);
 		}
-		cec = new CEC(dataEmiterii, avans, dataInregistrarii, suma,
+		cec = new CEC(idPlata, dataEmiterii, avans, dataInregistrarii, suma,
 				seria, numar, locatie, stare);
 
 		if (facturi.size() == 0) {
@@ -196,7 +196,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 	}
 
 	@Override
-	public OrdinPlata inregistrareOrdinPlata(Date dataEmiterii, Boolean avans,
+	public OrdinPlata inregistrareOrdinPlata(Integer idPlata, Date dataEmiterii, Boolean avans,
 			Furnizor furnizor, String seria, Integer numar, String locatie,
 			String stare, Double suma, List<FacturaPrimita> facturi,
 			String moneda, Double curs) throws PlatiExceptions {
@@ -211,7 +211,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 		if (!moneda.equals("RON")) {
 			suma = getSumaRON(moneda, suma, curs);
 		}
-		op = new OrdinPlata(dataEmiterii, avans, dataInregistrarii, suma,
+		op = new OrdinPlata(idPlata, dataEmiterii, avans, dataInregistrarii, suma,
 				seria, numar, locatie, stare);
 
 		if (facturi.size() == 0) {
@@ -225,7 +225,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 	}
 
 	@Override
-	public ExtrasCont inregistrareExtrasCont(Date dataEmiterii, Boolean avans,
+	public ExtrasCont inregistrareExtrasCont(Integer idPlata, Date dataEmiterii, Boolean avans,
 			Furnizor furnizor, String seria, Integer numar, String locatie,
 			List<FacturaPrimita> facturi, Double suma, String moneda,
 			Double curs) throws PlatiExceptions {
@@ -241,7 +241,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 			suma = getSumaRON(moneda, suma, curs);
 		}
 
-		extrasCont = new ExtrasCont(dataEmiterii, avans, dataInregistrarii, suma,
+		extrasCont = new ExtrasCont(idPlata, dataEmiterii, avans, dataInregistrarii, suma,
 				seria, numar, locatie);
 
 		if (facturi.size() == 0) {
