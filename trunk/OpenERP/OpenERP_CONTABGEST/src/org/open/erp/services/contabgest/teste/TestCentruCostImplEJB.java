@@ -1,5 +1,7 @@
 package org.open.erp.services.contabgest.teste;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -8,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.contabgest.Activitate;
@@ -16,10 +19,62 @@ import org.open.erp.services.contabgest.CentruCostSRV;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
 
+
+
+public class TestCentruCostImplEJB {
+
+	
+	 private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestCentruCostImpl.class.getName());
+	 CentruCostSRV contabgestInstance;
+	 PersonalSrv personalInstance;
+	 
+	 @BeforeClass
+	 public static void setUpBeforeClass() throws Exception {
+	 }
+	 
+	 @Before
+	 public void setUp() throws Exception {
+		 contabgestInstance= CentruCostFactory.getCentruCostSrv();
+		 personalInstance = CentruCostFactory.getPersonalSrv();
+	 logger.info("initTest"); 
+	 }
+	 
+	 @Test
+	 public void testCreareCentruCost() {
+	 logger.info("Begin test: creareCentruCost");
+
+	 Double sumaCentruCost = 0.0;
+	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, sumaCentruCost);
+	 assertNotNull("Nu exista Centru Cost nou!", centruCost);
+	
+	 //assertNotNull("Centrul Cost nu are o activitate alocata!", centruCost.getCentruCost());
+	
+	logger.info("End test: creareCentruCost");
+	}
+	
+	 @Test
+	 public void testCreareActivitateEJB() {
+	 logger.info("Begin test: creareActivitate");
+	 CentruCost centruCost = contabgestInstance.creareCentruCost("Test", null, null, null, null, 1000.0);
+	 Angajat responsabil = personalInstance.getAngajatById(1);
+
+	 Calendar calendarStart = Calendar.getInstance();
+	 Calendar calendarEnd = Calendar.getInstance();
+	 calendarStart.setTime(new Date());
+	 calendarEnd.setTime(new Date()); calendarEnd.add(Calendar.WEEK_OF_MONTH, 2);
+	 Activitate activitate1 = contabgestInstance.creareActivitate(centruCost,  null, responsabil, "Prima activitate test", 
+	 calendarStart.getTime(), calendarEnd.getTime(), 500.0);
+
+
+	 logger.info("End test: creareActivitate");
+	 }
+	 
+
+	 
 public class TestCentruCostEJB {
 
 	/* Resurse test */
-	private static Logger logger = Logger.getLogger(TestCentruCostEJB.class
+	private static   Logger logger = Logger.getLogger(TestCentruCostEJB.class
 			.getName());
 
 	/* Unitatea de test sursa/gazda unitatii de test */
@@ -100,4 +155,8 @@ public class TestCentruCostEJB {
 				"org.jboss.naming:org.jnp.interfaces");
 		return new InitialContext(props);
 	}
+	 
 }
+}
+
+
