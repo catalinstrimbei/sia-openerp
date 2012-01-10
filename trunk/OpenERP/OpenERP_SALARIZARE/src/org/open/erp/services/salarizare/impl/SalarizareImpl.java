@@ -85,7 +85,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return p;
 	}
 
-	//@Interceptors({SalarizareInterceptor.class})
+	@Interceptors({SalarizareInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inregistrarePontajLuna(Integer an, Integer luna) throws Exception {
