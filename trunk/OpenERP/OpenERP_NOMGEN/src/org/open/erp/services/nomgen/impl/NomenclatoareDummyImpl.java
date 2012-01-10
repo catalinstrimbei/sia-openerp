@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import javax.ejb.Local;
 import javax.ejb.Stateful;
 
 import javax.annotation.PostConstruct;
@@ -39,6 +40,7 @@ import org.open.erp.services.nomgen.RegistruProdus;
  * 
  */
 @Stateful
+//@Local(NomenclatoareSrv.class)
 public class NomenclatoareDummyImpl implements NomenclatoareSrv, NomenclatoareSrvRemote, NomenclatoareSrvLocal {
 
 	
@@ -48,7 +50,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv, NomenclatoareSr
 	/* Dependente resurse injectate*/
 	@PersistenceContext(unitName="OpenERP_NOMGEN")
 	private EntityManager em;	
-	@Resource
+	@Resource(mappedName="NomenclatoareSrv")
 	//private SessionContext sessionContext;		
 	private NomenclatoareSrvLocal nomenclatoareSrv;
 	private RegistruDocument rd;
