@@ -68,8 +68,8 @@ public class RegistruSalarizare {
 		
 		//sporuri.add(new Spor("Bonus procent", 2, 2011, 11, angajat, 2, 5.0));
 		sporuri = entityManager.createQuery("SELECT s FROM Spor s " +
-				"WHERE s.angajat.marca=:marca AND s.an=:an AND s.luna=:luna")
-				.setParameter("marca", angajat.getMarca())
+				"WHERE s.angajat.id=:id AND s.an=:an AND s.luna=:luna")
+				.setParameter("id", angajat.getId())
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getResultList();
@@ -83,8 +83,8 @@ public class RegistruSalarizare {
 		//retineri.add(new Retinere("Pensie alimentara", 1, angajat, 2011, 11, 1, 100.0));
 		//retineri.add(new Retinere("CAR", 2, angajat, 2011, 11, 2, 5.0));
 		retineri = entityManager.createQuery("SELECT r FROM Retinere r " +
-				"WHERE s.angajat.marca=:marca AND s.an=:an AND s.luna=:luna")
-				.setParameter("marca", angajat.getMarca())
+				"WHERE r.angajat.id=:id AND r.an=:an AND r.luna=:luna")
+				.setParameter("id", angajat.getId())
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getResultList();
