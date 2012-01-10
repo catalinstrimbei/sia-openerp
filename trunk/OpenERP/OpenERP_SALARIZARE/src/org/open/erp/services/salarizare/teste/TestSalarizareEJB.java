@@ -3,6 +3,7 @@ package org.open.erp.services.salarizare.teste;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.junit.After;
@@ -229,5 +230,13 @@ public class TestSalarizareEJB {
         return new InitialContext(props);
 	}
 	
-	
+	@Test
+	public void testgetPontajAnLuna() throws Exception {
+		logger.info("Begin test: getPontajAnLuna");
+		List<Pontaj> pontaje = salarizareSrvInstance.getPontajAnLuna(2011, 11);
+		
+		assertNotNull("Metoda de incarcare a pontajelor dintr-o luna nu a functionat!", pontaje);
+		
+		logger.info("End test: getPontajAnLuna");
+	}	
 }
