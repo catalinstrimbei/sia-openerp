@@ -124,11 +124,11 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: calculVenitBrutAngajat");
 	}
-	/*
+	
 	@Test
 	public void calculRetineriObligatoriiAngajati() throws Exception {
 		logger.info("Begin test: calculRetineriObligatoriiAngajat");
-		Angajat angajat = personalSrvInstance.getAngajatById(10001);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
 		Double venitBrut = salarizareSrvInstance.calculVenitBrut(2011, 11, angajat);
@@ -148,7 +148,7 @@ public class TestSalarizareEJB {
 	}
 	
 	 
-	 */
+	
 	
 	@Test
 	public void calculDeduceriAngajati() throws Exception {
