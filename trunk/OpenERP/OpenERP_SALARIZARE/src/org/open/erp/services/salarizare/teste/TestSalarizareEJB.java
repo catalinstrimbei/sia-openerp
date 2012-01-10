@@ -55,6 +55,7 @@ public class TestSalarizareEJB {
 
 	//Test pentru inregistrarea pontajului pt un anumit angajat
 	//load angajat din componenta EJB Personal
+	
 	@Test
 	public void testInregistrarePontaj() throws Exception {
 		logger.info("Begin test: inregistrarePontaj");
@@ -79,6 +80,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrarePontaj");
 	}
+	
 	
 	@Test
 	public void calculSporuriAngajati() throws Exception {
@@ -290,7 +292,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: getCentralizatorStatSalariiLuna");
 	}
-	
+
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
