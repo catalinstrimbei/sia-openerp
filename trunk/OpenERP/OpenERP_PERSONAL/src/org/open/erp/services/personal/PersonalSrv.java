@@ -78,7 +78,7 @@ public interface PersonalSrv {
 	//------------------------------------------------------------------------------------------------------------------------
 	//--Metode noi EJB
 	//------------------------------------------------------------------------------------------------------------------------	
-		ContractMunca getContractAngajatActivEJB(Angajat angajat_) throws Exception;	
+		ContractMunca getContractAngajatActivEJB(Angajat angajat_) throws Exception;	//
 		/**
 		 * Scop  			 Returneaza un contract de munca pentru un angajat precizat
 		 * 
@@ -88,7 +88,7 @@ public interface PersonalSrv {
 		 * 
 		 */
 		
-		Collection<ContractMunca> getListaContracteAngajatEJB(Angajat angajat_) throws Exception;
+		Collection<ContractMunca> getListaContracteAngajatEJB(Angajat angajat_) throws Exception; //
 		/**
 		 * Scop  			 Returneaza o lista de contracte  pentru un angajat precizat
 		 * 
@@ -110,7 +110,7 @@ public interface PersonalSrv {
 		 * 	
 		 */
 	    
-	    DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception;
+	    DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception; //
 		
 		/**
 		 * Scop  			 Returneaza dosarul de angajare pentru un angajat precizat
