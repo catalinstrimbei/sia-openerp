@@ -251,7 +251,7 @@ public interface SalarizareSrv {
 	void inregistrarStatSalariiLuna(Integer an, Integer luna) throws Exception;	
 	
 	/**
-	 * returneaza statul de salariu pentru toti angajatii (de folosit in contabilitate, obiectul statsalarii returnat va contine toate sumele de inregistrat) 
+	 * returneaza centralizatorul de salarii pentru toti angajatii (de folosit in contabilitate, obiectul statsalarii returnat va contine toate sumele de inregistrat) 
 	 * de vorbit cu cei de la conta daca au nevoie de total sume sau pt fiecare angajat
 	 * @param an 				Anul pentru care se returneaza statul de salarii
 	 * @param luna 				Luna pentru care se returneaza statul de salarii
@@ -260,7 +260,7 @@ public interface SalarizareSrv {
 	 * @throws Exception 
 	 * 
 	 */
-	CentralizatorStatSalarii getStatSalariiLuna(Integer an, Integer luna) throws Exception;
+	CentralizatorStatSalarii getCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception;
 	
 	/**
 	 * returneaza un angajat pornind de la id prin apelarea metodei corespunzatoare din Personal - singura diferenta e ca daca metoda din Personal nu intoarce nimic a

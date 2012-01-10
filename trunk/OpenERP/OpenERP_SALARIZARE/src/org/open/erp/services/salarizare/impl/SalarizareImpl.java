@@ -366,7 +366,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public CentralizatorStatSalarii getStatSalariiLuna(Integer an, Integer luna) throws Exception {
+	public CentralizatorStatSalarii getCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception {
 		
 		logger.debug("Generare centralizator salarii");
 		Double totalCAS=0.0;
