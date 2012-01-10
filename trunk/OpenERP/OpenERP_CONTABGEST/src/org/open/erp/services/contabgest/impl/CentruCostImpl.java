@@ -27,6 +27,7 @@ import org.open.erp.services.contabgest.CostPrimarSRVLocal;
 import org.open.erp.services.contabgest.CosturiPrimare;
 import org.open.erp.services.contabgest.LinieCost;
 import org.open.erp.services.contabgest.Responsabil;
+import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.productie.FazaProductie;
 
 /**
@@ -69,7 +70,7 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	//implementare actiuni serviciu CentruCostSRV
 		@Override
-		public CentruCost creareCentruCost(String denumireCentruCost, FazaProductie faza, Responsabil responsabil,
+		public CentruCost creareCentruCost(String denumireCentruCost, FazaProductie faza, Angajat responsabil,
 				Date dataStart, Date dataSfarsit, Double valoareCost) throws Exception {
 			
 		
@@ -105,7 +106,7 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 	
 	@Override
 	public Activitate creareActivitate(CentruCost centruCost, FazaProductie faza,
-			Responsabil responsabil, String denumireCentru, Date dataStart,
+			Angajat responsabil, String denumireCentru, Date dataStart,
 			Date dataSfarsit, Double costActivitate) throws Exception 
 			{
 		logger.debug(">>START CREARE ACTIVITATE");
@@ -164,6 +165,10 @@ public class CentruCostImpl implements CentruCostSRV, CentruCostSRVLocal, Centru
 	@Override
 	public CentruCost getCentruCost(Integer idCentruCost) {
 		return registruCentruCost.getCentruCost(idCentruCost);
+	}
+	public void setCostPrimarSRV(CostPrimarSRV costPrimarSrv) {
+		// TODO Auto-generated method stub
+		
 	}	
 }
 

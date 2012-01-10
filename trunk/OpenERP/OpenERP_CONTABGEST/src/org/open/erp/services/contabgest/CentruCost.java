@@ -20,6 +20,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.CascadeType;
 
 
+import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.productie.FazaProductie;
 
 /**
@@ -56,7 +57,7 @@ public class CentruCost implements Serializable {
 	private Integer status = CentruCost.IN_ALOCARE;
 	
 	@ManyToOne
-	private Responsabil responsabil;
+	private Angajat responsabil;
 	
 	// Costuri primare
 	@ManyToOne
@@ -82,7 +83,7 @@ public class CentruCost implements Serializable {
 
 	public CentruCost(Integer idCentruCost, String denumireCentruCost,
 			FazaProductie faza, Date dataStart, Date dataSfarsit,
-			Double sumaCentruCost, Integer status, Responsabil responsabil,
+			Double sumaCentruCost, Integer status, Angajat responsabil,
 			CosturiPrimare costuriPrimare, List<Activitate> activitati) {
 		super();
 		this.idCentruCost = idCentruCost;
@@ -100,7 +101,7 @@ public class CentruCost implements Serializable {
 	
 	public CentruCost(Integer idCentruCost, String denumireCentruCost,
 			Date dataStart, Date dataSfarsit, Double sumaCentruCost,
-			Responsabil responsabil) {
+			Angajat responsabil) {
 		super();
 		this.idCentruCost = idCentruCost;
 		this.denumireCentruCost = denumireCentruCost;
@@ -114,7 +115,7 @@ public class CentruCost implements Serializable {
 	
 
 	public CentruCost(String denumireCentruCost, FazaProductie faza,
-			Responsabil responsabil, Date dataStart, Date dataSfarsit,
+			Angajat responsabil, Date dataStart, Date dataSfarsit,
 			Double sumaCentruCost) {
 		super();
 		this.denumireCentruCost = denumireCentruCost;
@@ -172,11 +173,11 @@ public class CentruCost implements Serializable {
 		this.status = status;
 	}
 
-	public Responsabil getResponsabil() {
+	public Angajat getAngajat() {
 		return responsabil;
 	}
 
-	public void setResponsabil(Responsabil responsabil) {
+	public void setAngajat(Angajat responsabil) {
 		this.responsabil = responsabil;
 	}
 

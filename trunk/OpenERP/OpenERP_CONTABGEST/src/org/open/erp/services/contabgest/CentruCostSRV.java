@@ -1,10 +1,12 @@
 package org.open.erp.services.contabgest;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.ejb.Remote;
 
 
+import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.productie.FazaProductie;
 
 /**
@@ -47,7 +49,7 @@ public interface CentruCostSRV {
 	 * @return instanta Activitate nou creat.
 	 * 
 	 */
-	CentruCost creareCentruCost(String denumireCentruCost,FazaProductie faza, Responsabil responsabil,
+	CentruCost creareCentruCost(String denumireCentruCost,FazaProductie faza, Angajat responsabil,
 		 Date dataStart, Date dataSfarsit, Double sumaCentruCost) throws Exception;
 
 	/**
@@ -69,7 +71,7 @@ public interface CentruCostSRV {
 	 */
 
 	Activitate creareActivitate(CentruCost centruCost, FazaProductie faza,
-			Responsabil responsabil, String denumireCentru, Date dataStart,
+			Angajat responsabil, String denumireCentru, Date dataStart,
 			Date dataSfarsit, Double valoareAprovizionareExterna) throws Exception;
 
 	/**
