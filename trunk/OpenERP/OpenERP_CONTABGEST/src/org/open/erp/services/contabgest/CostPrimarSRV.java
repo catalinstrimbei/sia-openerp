@@ -1,5 +1,8 @@
 package org.open.erp.services.contabgest;
 
+
+import javax.ejb.Remote;
+
 /**
  * 
  * @author andreea.andronic, marius.borsan, andreea.zaharia, anca.zavate
@@ -7,7 +10,6 @@ package org.open.erp.services.contabgest;
  * @ApplicationServiceFacade(ServiceDummyAPI)
  * 
  */
-
 public interface CostPrimarSRV {
 
 	public CosturiPrimare creareCosturiPrimare(Double valoareCosturiPrimare) throws Exception;
