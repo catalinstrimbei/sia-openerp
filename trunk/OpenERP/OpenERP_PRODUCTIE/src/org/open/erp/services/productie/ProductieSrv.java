@@ -46,7 +46,7 @@ import org.open.erp.services.stocuri.BonConsum;
  *2. calcul produse finale si deseuri 
  *
  */
-@Local
+//@Remote
 public interface ProductieSrv {
 
 	/**
@@ -61,7 +61,7 @@ public interface ProductieSrv {
 	 * 
 	 */
 	
-	public FluxProductie definireFluxProductie(Integer idFlux, Produs produs) throws Exception;
+	public FluxProductie definireFluxProductie(Integer idFlux, DummyProdus produs) throws Exception;
 	
 	
 	/**
@@ -76,11 +76,11 @@ public interface ProductieSrv {
 	 * 
 	 */
 	
-	public FazaProductie definireFazaProductie(String faza, FluxProductie flux, Utilaj utilaj, Double timpFolosire,
-			ArrayList<FunctieNecesara> functiiNecesare, 
-			ArrayList <Material> materialeReteta, 
-			Semifabricat semifabricatDorit, Produs produsDorit, Divizie sectie,Integer nrOrdine, Boolean isFinal) throws Exception;
-	
+	public FazaProductie definireFazaProductie(String faza, FluxProductie flux,
+			Utilaj utilaj, Double timpFolosire, ArrayList<FunctieNecesara> functiiNecesare,
+			ArrayList<DummyMaterial> materialeReteta,
+			Semifabricat semifabricatDorit, DummyProdus produsDorit,
+			DummyDivizie sectie, Integer nrOrdine, Boolean isFinal) throws Exception; 
 	
 	
 	/**
@@ -90,7 +90,7 @@ public interface ProductieSrv {
 	 * 
 	 * @return 	Produsul creat.
 	 */
-	public Produs lansareComandaProductie (ComandaProductie comanda, Produs produs)  throws Exception;
+	public DummyProdus lansareComandaProductie (ComandaProductie comanda, DummyProdus produs)  throws Exception;
 	
 	/**
 	 * Contorizeaza consumul de resurse
@@ -99,7 +99,7 @@ public interface ProductieSrv {
 	 * 
 	 * @return 	Lista de resurse (utilaje,materiale,angajati)
 	 */
-	public ArrayList<Object> consumResursa(FazaProductie faza, Produs produs) throws Exception;
+	public ArrayList<Object> consumResursa(FazaProductie faza, DummyProdus produs) throws Exception;
 	
 	/**
 	 * Realizeaza controlul calitatii pentru fiecare unitate de produs
@@ -107,7 +107,7 @@ public interface ProductieSrv {
 	 * 
 	 * @return	Cantitatea de produse finite si cantitatea de deseuri (sub forma unei liste)
 	 */
-	public ArrayList<Integer> controlCalitate (Produs produs)  throws Exception;
+	public ArrayList<Integer> controlCalitate (DummyProdus produs)  throws Exception;
 	
 	/**
 	 * Trimite cantitatea de produs final obtinut catre modulul de stocuri
@@ -115,7 +115,7 @@ public interface ProductieSrv {
 	 * @param produs			Produsul livrabil
 	 * @return		Cantiatea de produs final care va fi adaugata la cantitatea din stocuri.
 	 */
-	public Integer livrareProdus(Integer cantitateProdus, Produs produs)  throws Exception;
+	public Integer livrareProdus(Integer cantitateProdus, DummyProdus produs)  throws Exception;
 	
 	/**
 	 * Gestioneaza consumul de resurse pentru a fi preluat de contabilitatea de gestiune
@@ -123,7 +123,7 @@ public interface ProductieSrv {
 	 * 
 	 * @return 	Lista de resurse consumate
 	 */
-	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza, Produs produs)  throws Exception;
+	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza, DummyProdus produs)  throws Exception;
 	
 	/**
 	 * Gestioneaza cantitatea de produse obtinute
@@ -131,11 +131,11 @@ public interface ProductieSrv {
 	 * 
 	 * @return	Cantitatea de produse finale si deseuri.
 	 */
-	public ArrayList<Integer> inregistrareGestiuneProductie(Produs produs)  throws Exception;
+	public ArrayList<Integer> inregistrareGestiuneProductie(DummyProdus produs)  throws Exception;
 
 	FluxProductie getFlux(Integer idFlux) throws Exception;
 	
-	public void fabricare(Produs produs, Integer idFlux) throws Exception;
+	public void fabricare(DummyProdus produs, Integer idFlux) throws Exception;
 	public FazaProductie getFazaFlux(FluxProductie flux,Integer nrOrdine) throws Exception;
 	
 	public void comandaMateriale(FazaProductie faza, FluxProductie flux) throws Exception;

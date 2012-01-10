@@ -25,12 +25,14 @@ public class Utilaj implements Serializable{
 	@Id @GeneratedValue
 	Integer idUtilaj;
 	
-	@OneToOne
-	MijlocFix utilaj;
+	@OneToOne (targetEntity=DummyMijlocFix.class)
+	private DummyMijlocFix utilaj;
+	
 	String status;
 	
 	
-	public Utilaj(Integer idUtilaj, MijlocFix utilaj, String status) {
+	
+	public Utilaj(Integer idUtilaj, DummyMijlocFix utilaj, String status) {
 		super();
 		this.utilaj = utilaj;
 		this.status = status;
@@ -45,10 +47,10 @@ public class Utilaj implements Serializable{
 	public Utilaj() {
 		super();
 	}
-	public MijlocFix getUtilaj() {
+	public DummyMijlocFix getUtilaj() {
 		return utilaj;
 	}
-	public void setUtilaj(MijlocFix utilaj) {
+	public void setUtilaj(DummyMijlocFix utilaj) {
 		this.utilaj = utilaj;
 	}
 	public String getStatus() {
@@ -58,5 +60,15 @@ public class Utilaj implements Serializable{
 		this.status = status;
 	}
 
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.equals(arg0);
+	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
 	
 }

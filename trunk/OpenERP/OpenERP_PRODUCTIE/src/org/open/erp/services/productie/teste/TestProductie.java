@@ -33,7 +33,7 @@ import org.open.erp.services.stocuri.StocuriSrv;
  */
 	
 public class TestProductie {
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestProductie.class.getName());
+	/*private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestProductie.class.getName());
 	ProductieSrv productie;
 	NomenclatoareSrv nomenclatoare;
 	StocuriSrv stocuri;
@@ -650,7 +650,7 @@ public void testInregistrareGestiuneProductie(){
 	
 }
 
- 
+ */
 		 
 	 }
 

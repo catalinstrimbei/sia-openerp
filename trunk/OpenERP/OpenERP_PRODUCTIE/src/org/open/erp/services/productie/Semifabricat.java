@@ -30,13 +30,14 @@ public class Semifabricat extends Produs implements Serializable{
 	
 	String semifabricat;
 	
-	@ManyToOne @JoinColumn(name="id")
-	ArrayList <Material> listaMateriale;
+	@ManyToOne (targetEntity=DummyMaterial.class)
+	@JoinColumn(name="id")
+	ArrayList <DummyMaterial> listaMateriale;
 	
 	Semifabricat semifabricatContinut;
 	
 	public Semifabricat(Integer idSemifabricat, String semifabricat,
-			ArrayList<Material> listaMateriale,
+			ArrayList<DummyMaterial> listaMateriale,
 			Semifabricat semifabricatContinut) {
 		super();
 		this.semifabricat = semifabricat;
@@ -59,10 +60,10 @@ public class Semifabricat extends Produs implements Serializable{
 	public void setSemifabricat(String semifabricat) {
 		this.semifabricat = semifabricat;
 	}
-	public ArrayList<Material> getListaMateriale() {
+	public ArrayList<DummyMaterial> getListaMateriale() {
 		return listaMateriale;
 	}
-	public void setListaMateriale(ArrayList<Material> listaMateriale) {
+	public void setListaMateriale(ArrayList<DummyMaterial> listaMateriale) {
 		this.listaMateriale = listaMateriale;
 	}
 	public Semifabricat getSemifabricatContinut() {

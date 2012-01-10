@@ -32,8 +32,9 @@ public class ComandaProductie extends Document implements Serializable{
 	
 	Integer idComanda;
 	
-	@ManyToMany
-	Produs produs;
+	@ManyToMany (targetEntity=DummyProdus.class)
+	
+	DummyProdus produs;
 	
 	Integer cantitate;
 	
@@ -41,7 +42,7 @@ public class ComandaProductie extends Document implements Serializable{
 	Date dataComanda;
 	
 	
-	public ComandaProductie(Integer idComanda, Produs produs,
+	public ComandaProductie(Integer idComanda, DummyProdus produs,
 			Integer cantitate, Date dataComanda) {
 		super();
 		this.idComanda = idComanda;
@@ -58,10 +59,10 @@ public class ComandaProductie extends Document implements Serializable{
 	public void setIdComanda(Integer idComanda) {
 		this.idComanda = idComanda;
 	}
-	public Produs getProdus() {
+	public DummyProdus getProdus() {
 		return produs;
 	}
-	public void setProdus(Produs produs) {
+	public void setProdus(DummyProdus produs) {
 		this.produs = produs;
 	}
 	public Integer getCantitate() {
@@ -76,8 +77,6 @@ public class ComandaProductie extends Document implements Serializable{
 	public void setDataComanda(Date dataComanda) {
 		this.dataComanda = dataComanda;
 	}
-	
-	
 	
 	
 }

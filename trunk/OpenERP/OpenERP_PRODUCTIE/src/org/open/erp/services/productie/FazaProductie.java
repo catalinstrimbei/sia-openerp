@@ -3,12 +3,15 @@ package org.open.erp.services.productie;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
@@ -26,6 +29,7 @@ import org.open.erp.services.personal.*;
  * @BusinessObject(Entity)
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class FazaProductie implements Serializable {
 	
 	/**
@@ -44,16 +48,16 @@ public class FazaProductie implements Serializable {
 	Utilaj utilaj;
 	Double timpFolosire;
 	
-	@OneToMany 
+	@OneToMany (targetEntity=FunctieNecesara.class, mappedBy="faza")
 	ArrayList <FunctieNecesara> functiiNecesare;
 		
-	@ManyToOne
-	@JoinColumn(name = "marca")
-	ArrayList <Angajat> angajati;
+	@ManyToOne (targetEntity=DummyAngajat.class)
+	@JoinColumn(name="marca")
+	ArrayList<DummyAngajat> angajati;
 	
-	@ManyToOne
+	@ManyToOne (targetEntity=DummyMaterial.class)
 	@JoinColumn(name = "idMaterial")
-	ArrayList<Material> materialeReteta;
+	ArrayList<DummyMaterial> materialeReteta;
 	
 	@ManyToOne 
 	@JoinColumn(name = "idSemifabricat")
@@ -63,22 +67,22 @@ public class FazaProductie implements Serializable {
 	@JoinColumn(name = "idSemifabricat")
 	Semifabricat semifabricatDorit;
 	
-	@ManyToOne 
-	@JoinTable(name="produs", joinColumns=@JoinColumn(name = "id"))
+	@ManyToOne (targetEntity=DummyProdus.class)
+	@JoinColumn(name = "id")
 	
-	Produs produsDorit;
+	DummyProdus produsDorit;
 	
 	@ManyToOne
 	@JoinColumn(name = "idSemifabricat")
 	Semifabricat semifabricatObtinut;
 	
-	@ManyToOne
+	@ManyToOne (targetEntity=DummyProdus.class)
 	@JoinColumn(name = "id")
-	Produs produsObtinut;
+	DummyProdus produsObtinut;
 	
-	@ManyToOne
+	@ManyToOne  (targetEntity=DummyDivizie.class)
 	@JoinColumn(name = "id")
-	Divizie sectie;
+	DummyDivizie sectie;
 	
 	Integer nrOrdine;
 	Boolean isFinal;
@@ -125,9 +129,9 @@ public class FazaProductie implements Serializable {
 
 	public FazaProductie(String faza,  Utilaj utilaj, Double timpFolosire,
 			ArrayList<FunctieNecesara> functiiNecesare,
-			ArrayList<Material> materialeReteta,
+			ArrayList<DummyMaterial> materialeReteta,
 			 Semifabricat semifabricatDorit,
-			Produs produsDorit, Divizie sectie, Integer nrOrdine, Boolean isFinal) {
+			DummyProdus produsDorit, DummyDivizie sectie, Integer nrOrdine, Boolean isFinal) {
 		super();
 		this.faza = faza;
 		this.utilaj = utilaj;
@@ -166,19 +170,19 @@ public class FazaProductie implements Serializable {
 		this.timpFolosire = timpFolosire;
 	}
 
-	public ArrayList<Angajat> getAngajati() {
+	public ArrayList<DummyAngajat> getAngajati() {
 		return angajati;
 	}
 
-	public void setAngajati(ArrayList<Angajat> angajati) {
+	public void setAngajati(ArrayList<DummyAngajat> angajati) {
 		this.angajati = angajati;
 	}
 
-	public ArrayList<Material> getMaterialeReteta() {
+	public ArrayList<DummyMaterial> getMaterialeReteta() {
 		return materialeReteta;
 	}
 
-	public void addMaterialeReteta(Material materialReteta) {
+	public void addMaterialeReteta(DummyMaterial materialReteta) {
 		this.materialeReteta.add(materialReteta);
 	}
 
@@ -198,21 +202,21 @@ public class FazaProductie implements Serializable {
 		this.semifabricatDorit = semifabricatDorit;
 	}
 
-	public Produs getProdusDorit() {
+	public DummyProdus getProdusDorit() {
 		return produsDorit;
 	}
 
-	public void setProdusDorit(Produs produsDorit) {
+	public void setProdusDorit(DummyProdus produsDorit) {
 		this.produsDorit = produsDorit;
 	}
 
 	
 
-	public Divizie getSectie() {
+	public DummyDivizie getSectie() {
 		return sectie;
 	}
 
-	public void setSectie(Divizie sectie) {
+	public void setSectie(DummyDivizie sectie) {
 		this.sectie = sectie;
 	}
 
@@ -234,7 +238,7 @@ public class FazaProductie implements Serializable {
 		
 	}
 	
-	 public Produs procesareProdus(){
+	 public DummyProdus procesareProdus(){
 	     
 	     utilaj.setStatus("ocupat");
 	     if(semifabricatDorit.semifabricat==produsDorit.getDenumire())
