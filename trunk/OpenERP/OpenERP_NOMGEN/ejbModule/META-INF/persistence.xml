@@ -4,20 +4,20 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
 	 	<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
+	 	<class>org.open.erp.services.nomgen.Produs</class>
+	 	<class>org.open.erp.services.nomgen.PersoanaJuridica</class>
+	 	<class>org.open.erp.services.nomgen.PersoanaFizica</class>
+	 	<class>org.open.erp.services.nomgen.Persoana</class>
+	 	<class>org.open.erp.services.nomgen.Partener</class>
+	 	<class>org.open.erp.services.nomgen.MateriePrima</class>
+	 	<class>org.open.erp.services.nomgen.Material</class>
+	 	<class>org.open.erp.services.nomgen.LinieDocument</class>
+	 	<class>org.open.erp.services.nomgen.Document</class>
+	 	<class>org.open.erp.services.nomgen.Divizie</class>
+	 	<class>org.open.erp.services.nomgen.Departament</class>
+	 	<class>org.open.erp.services.nomgen.Banca</class>
 	
 	     <!--    <jta-data-source>java:jdbc/feaaORCL_XA</jta-data-source>-->
-		<class>org.open.erp.services.nomgen.PersoanaJuridica</class>
-		<class>org.open.erp.services.nomgen.PersoanaFizica</class>
-		<class>org.open.erp.services.nomgen.Persoana</class>
-		<class>org.open.erp.services.nomgen.Partener</class>
-		<class>org.open.erp.services.nomgen.MateriePrima</class>
-		<class>org.open.erp.services.nomgen.Material</class>
-		<class>org.open.erp.services.nomgen.LinieDocument</class>
-		<class>org.open.erp.services.nomgen.Document</class>
-		<class>org.open.erp.services.nomgen.Divizie</class>
-		<class>org.open.erp.services.nomgen.Departament</class>
-		<class>org.open.erp.services.nomgen.Banca</class>
-		<class>org.open.erp.services.nomgen.Produs</class>
 		
 	
 		

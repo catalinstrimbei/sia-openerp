@@ -11,12 +11,12 @@ import javax.persistence.Entity;
  */
 @Entity
 public class PersoanaJuridica extends Persoana {
-	public String  denumire;
-	public String  codFiscal;
-	public String  nrInmatriculareFiscala;
-	public String  atributFiscal;
-	public List<String> telefoane;
-	public List<String> emailuri;
+	private String  denumire;
+	private String  codFiscal;
+	private String  nrInmatriculareFiscala;
+	private String  atributFiscal;
+	private List<String> telefoane;
+	private List<String> emailuri;
 	
 	/**
 	 * @return the denumire

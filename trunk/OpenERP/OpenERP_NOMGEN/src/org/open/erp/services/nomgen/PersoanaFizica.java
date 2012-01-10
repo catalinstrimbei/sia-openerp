@@ -13,15 +13,15 @@ import javax.persistence.Entity;
 
 @Entity
 public class PersoanaFizica extends Persoana {
-	public String  nume;
-	public String  prenume;
-	public String  formaAdresare;
-	public char    gen;
-	public String  cnp;
+	private String  nume;
+	private String  prenume;
+	private String  formaAdresare;
+	private char    gen;
+	private String  cnp;
 	
-	public List<String> telefoane;
+	private List<String> telefoane;
 	
-	public List<String> emailuri;
+	private List<String> emailuri;
 	
 	
 	/**

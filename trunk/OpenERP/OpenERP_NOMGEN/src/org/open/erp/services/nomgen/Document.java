@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 
 import org.hibernate.annotations.Fetch;
@@ -17,14 +19,15 @@ import java.util.*;
 @Entity
 
 public class Document implements Serializable{  
-	//@Id @GeneratedValue
-	public Integer nrDocument;         
-	public Date dataDocument; 
-	//@OneToOne
-	public Persoana persoana;//responsabil        
-	public String observatie;   
+	@Id
+	private Integer nrDocument;         
+	private Date dataDocument; 
+    @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	private Persoana persoana;//responsabil        
+	private String observatie;   
 	
-	public List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
+	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	private List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
 	
 	
 
@@ -48,13 +51,13 @@ public class Document implements Serializable{
 	public void addLinie(LinieDocument linieDocument) {
 		liniiDocument.add(linieDocument);
 	}
-	
+	@Transient
 	public int getLiniiDocumentCount() {
 		return liniiDocument.size();
 	}
 	
 
-	@OneToMany(fetch=FetchType.EAGER)
+	
 	public List<LinieDocument> getLiniiDocument(){
 		return liniiDocument;
 	}
@@ -75,8 +78,6 @@ public class Document implements Serializable{
 	public void removeLinieDocumentAt(int index) {
 		liniiDocument.remove(index);
 	}
-	
-	
 	
 	
     @Id
@@ -111,7 +112,7 @@ public class Document implements Serializable{
 	public void setDataDocument(Date dataDocument) {      
 		this.dataDocument = dataDocument;        
 		}         
-	
+	@OneToOne
 	public Persoana getPersoana() {               
 		return persoana;          
 		}    
