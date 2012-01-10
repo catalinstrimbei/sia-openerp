@@ -28,14 +28,14 @@ public class SalarizareInterceptor {
 				Integer an = (Integer)ctx.getParameters()[0];
 				Integer luna = (Integer)ctx.getParameters()[1];
 				if(an>2050||an<2000){
-					logger.info("Metoda "+ invokedMethodName + " a fost apelata cu parametrul an cu valoarea "+an);
+					logger.info("#### Metoda "+ invokedMethodName + " a fost apelata cu parametrul an cu valoarea "+an);
 				}
 				else{
-					logger.info("Metoda "+ invokedMethodName + " a fost apelata CORECT cu parametrul an cu valoarea "+an);	
+					logger.info("#### Metoda "+ invokedMethodName + " a fost apelata CORECT cu parametrul an cu valoarea "+an);	
 					}
 				
 				if(luna>12||an<1){
-					logger.info("Metoda "+ invokedMethodName + " a fost apelata cu parametrul luna cu valoarea "+luna);
+					logger.info("##### Metoda "+ invokedMethodName + " a fost apelata cu parametrul luna cu valoarea "+luna);
 				}
 			}
 			// executa metoda interceptata
