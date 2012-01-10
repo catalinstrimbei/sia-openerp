@@ -1065,7 +1065,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			if (this.registruPersonal == null)
 				registruPersonal = new RegistruPersonal(em);
 			this.registruPersonal.salveazaProbaEvaluare(probaEvaluare_);
-			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+			logger.logDEBUG(">>>>>>End salveazaProbaEvaluare");
 		}
 		return probaEvaluare_;
 	}
@@ -1127,7 +1127,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			if (this.registruPersonal == null)
 				registruPersonal = new RegistruPersonal(em);
 			this.registruPersonal.salveazaRezultatProbaEvaluare(rezultatProbaEvaluare_);
-			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+			logger.logDEBUG(">>>>>>End salveazaRezultatProbaEvaluare");
 		}
 		return rezultatProbaEvaluare_;
 	}
@@ -1800,24 +1800,58 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 
 	@Override
-	public Collection<Candidat> recrutareEJB(Date dataAnunt_,
-			Candidat candidat_, Collection<InterviuCandidat> ListaInit_)
+	public Candidat validareRecrutareEJB(Date dataAnunt_, Candidat candidat_)
+			throws Exception {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		try
+		{
+			Collection<InterviuCandidat> listaInterviuri = this.registruPersonal.getListaInterviuCandidat();		
+			Iterator<InterviuCandidat> iterator = listaInterviuri.iterator();
+			
+			while (iterator.hasNext()) {
+				InterviuCandidat	interviu = iterator.next();
+				if (candidat_.getIdCandidat()== interviu.getCandidat().getIdCandidat()
+						&&  interviu.getRezultatEvaluare() == "ADMIS" && interviu.getInterviu().getTipInterviu() == "Final" 
+						&& (interviu.getDataInterviu().compareTo(dataAnunt_)) >= 0)
+											
+				{
+					return candidat_;	
+				}
+			
+			}
+			
+		}
+		
+		catch(Exception ex)
+		{
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
+			return null;
+		}
+		
+		return null;
+		
+	}	
+	
+	@Override
+	public Collection<Candidat> recrutareEJB(AnuntLocMunca anunt_)
 			throws Exception {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try
 		{
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
 			
-			Iterator<InterviuCandidat> iterator = ListaInit_.iterator();
+			Collection<Candidat> candidatiAnunt = this.getCandidatipeFunctieEJB(anunt_);
+			Iterator<Candidat> iterator = candidatiAnunt.iterator();
 			
 			while (iterator.hasNext()) {
-				InterviuCandidat	interviu = iterator.next();
-				if (interviu.getRezultatEvaluare() == "ADMIS" && interviu.getInterviu().getTipInterviu() == "Final" 
-								&& candidat_.getIdCandidat()== interviu.getCandidat().getIdCandidat()
-								&& (interviu.getDataInterviu().compareTo(dataAnunt_)) >= 0)
+				Candidat	candidat_ = iterator.next();
+				Candidat candidatAdmis = this.validareRecrutareEJB(anunt_.getDataInceput(), candidat_);
+				if (candidatAdmis != null)
 											
 				{
-					rezultat.add(interviu.getCandidat());	
+					rezultat.add(candidatAdmis);	
 				}
 			}
 			return rezultat;
@@ -1829,13 +1863,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
 		}
-		
-		
-		
-	}
-	
-	
-	
+			
+	}	
 	
 	
 	// end Ioana
@@ -1993,12 +2022,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	
 
-	@Override
-	public Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_) {
-		
-			return null;
-		
-	}
+	
+	
 	
 	@Override
 	public void angajareEJB(Candidat candidat_) {

@@ -944,7 +944,7 @@ public interface PersonalSrv {
 	 * 
 	 */
     
-    Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_, Collection<InterviuCandidat> ListaInit_) throws Exception;
+    Candidat validareRecrutareEJB(Date dataAnunt_, Candidat candidat_) throws Exception;
 	
 	/**
 	 * Scop    Returneaza o Lista cu candidatii care au au fost admisi la interviul final, interviu organizat dupa 
@@ -952,12 +952,12 @@ public interface PersonalSrv {
 	 * 
 	 * @param  dataAnunt_ 	    Data precizata de utilizator, care va fi comparata cu data sustinerii interviului
 	 * @param  candidat_        Candidatul pentru care se afiseaza interviurile finale si admise
-	 * @param  ListaInit_ 	    Lista cu toate  interviurile existente
 	 * 
 	 * @return Lista cu date despre candidati admisi la interviurile finale
 	 * 
 	 */
 	
+    Collection<Candidat> recrutareEJB(AnuntLocMunca anunt_) throws Exception;
     
 	// end Ioana
 	
@@ -1065,7 +1065,7 @@ public interface PersonalSrv {
 	*/
 	
 	
-	Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_);
+	/*Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_);
 	
 	/**
 	 * Scop    Returneaza o Lista cu candidatii care  au fost admisi la interviul final, interviu organizat dupa 
