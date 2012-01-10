@@ -275,7 +275,7 @@ public interface SalarizareSrv {
 	
 	/**
 	 * returneaza pontajul pentru un anumit angajat si o luna  
-	 * @param an 				Anul pentru care se returneaza pontajuk
+	 * @param an 				Anul pentru care se returneaza pontajul
 	 * @param luna 				Luna pentru care se returneaza pontajul
 	 * @param angajat			Angajatul pentru care se returneaza pontajul 
 	 * 
@@ -287,8 +287,8 @@ public interface SalarizareSrv {
 	
 	/**
 	 * returneaza pontajele pentru un an si o luna  
-	 * @param an 				Anul pentru care se returneaza pontajuk
-	 * @param luna 				Luna pentru care se returneaza pontajul
+	 * @param an 				Anul pentru care se returneaza pontajele
+	 * @param luna 				Luna pentru care se returneaza pontajele
 	 * 
 	 * @return  List<Pontaj>
 	 * @throws Exception 
@@ -298,13 +298,25 @@ public interface SalarizareSrv {
 	
 	/**
 	 * returneaza sporurile pentru un angajat specific, un an si o luna  
-	 * @param an 				Anul pentru care se returneaza pontajuk
-	 * @param luna 				Luna pentru care se returneaza pontajul
-	 * @param angajat			Angajatul pentru care se returneaza pontajul
+	 * @param an 				Anul pentru care se returneaza sporurile
+	 * @param luna 				Luna pentru care se returneaza sporurile
+	 * @param angajat			Angajatul pentru care se returneaza sporurile
 	 * 
 	 * @return  List<Spor>
 	 * @throws Exception 
 	 * 
 	 */
 	List<Spor> getSporuriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception;
+	
+	/**
+	 * returneaza retinerile pentru un angajat specific, un an si o luna  
+	 * @param an 				Anul pentru care se returneaza retinerile
+	 * @param luna 				Luna pentru care se returneaza retinerile
+	 * @param angajat			Angajatul pentru care se returneaza retinerile
+	 * 
+	 * @return  List<Retinere>
+	 * @throws Exception 
+	 * 
+	 */
+	List<Retinere> getRetineriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception;
 }
