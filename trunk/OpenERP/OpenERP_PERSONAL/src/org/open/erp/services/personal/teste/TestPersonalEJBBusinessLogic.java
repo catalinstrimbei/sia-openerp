@@ -62,7 +62,7 @@ public class TestPersonalEJBBusinessLogic {
 				logger.logINFO("End test: TESTgetContractAngajatActivEJB");
 				
 				logger.logINFO("Start test: TESTgetDosarByAngajatEJB cu angajat" + angajat.getNume());
-				DosarAngajat dosar = personalInstance.getDosarByAngajat(angajat);
+				DosarAngajat dosar = personalInstance.getDosarByAngajatEJB(angajat);
 				logger.logINFO("End test: TESTgetDosarByAngajatEJB");
 				
 				Collection<ContractMunca> listaContracte = personalInstance.getListaContracteAngajatEJB(angajat);
@@ -94,6 +94,27 @@ public class TestPersonalEJBBusinessLogic {
 				System.out.println(cvCurent.getNrCV().toString());
 			}					
 			logger.logINFO("End test: TESTgetCVByCandidatEJB");
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
+	
+	@Test
+	public void TESTrecrutareEJB() {
+		try
+		{
+			logger.logINFO("Start test: TESTrecrutareEJB");
+			
+			Collection<Candidat> listaCandidati= personalInstance.getListaCandidati();
+			for(Iterator<Candidat> i = listaCandidati.iterator(); i.hasNext();)
+			{
+				CV cvCurent = personalInstance.getCVByCandidatEJB(i.next());
+				System.out.println(cvCurent.getNrCV().toString());
+			}					
+			logger.logINFO("End test: TESTrecrutareEJB");
 		}
 		catch(Exception ex)
 		{

@@ -75,609 +75,815 @@ import org.open.erp.services.personal.logger.PersonalExceptions;
  */
 public interface PersonalSrv {
 	
-	ActivitateTeamBuilding				getActivitateTeamBuildingById(Integer idActivitate_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unei activitati de Team-Building dupa precizarea id-ului
-	 * 
-	 * @param idActivitate_  id-ul activitatii, element unic de identificare pentru o activitate, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip ActivitateTeamBuilding 
-	 * 
-	 */
-	Collection<ActivitateTeamBuilding>	getListaActivitatiTeamBuilding() throws Exception;
-	/**
-	 * Scop  Returneaza o Lista cu toate Activitatile de Team-Building
-	 * 
-	 * 
-	 * @return o lista cu toate Activitatile de Team-Building
-	 * 
-	 */
-	ActivitateTeamBuilding				salveazaActivitateTeamBuilding(ActivitateTeamBuilding activitate_) throws Exception;
-	/**
-	 * Scop  Salveaza o ActivitateTeamBuilding in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip ActivitateTeamBuilding 
-	 * 
-	 */
-	void								stergeActivitateTeamBuilding(ActivitateTeamBuilding activitate_) throws Exception;
-	/**
-	 * Scop  Sterge o ActivitateTeamBuilding din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	
-	ActivitateTraining				getActivitateTrainingById(Integer idActivitate_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unei activitati de Training dupa precizarea id-ului
-	 * 
-	 * @param idActivitate_  id-ul activitatii, element unic de identificare pentru o activitate, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip ActivitateTraining 
-	 * 
-	 */
-	Collection<ActivitateTraining>	getListaActivitatiTraining() throws Exception;
-	/**
-	 * Scop  Returneaza o lista cu toate Activitatile de Training
-	 * 
-	 * 
-	 * @return o lista cu toate Activitatile de Training
-	 * 
-	 */
-	ActivitateTraining				salveazaActivitateTraining(ActivitateTraining activitate_) throws Exception;
-	/**
-	 * Scop  Salveaza o ActivitateTraining in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip ActivitateTraining 
-	 * 
-	 */
-	void							stergeActivitateTraining(ActivitateTraining activitate_) throws Exception;
-	/**
-	 * Scop  Sterge o ActivitateTraining din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	
-	Angajat							getAngajatById(Integer idAngajat_) throws Exception;
-	/**
-	 * Scop  Returneaza datele despre un angajat dupa precizarea id-ului
-	 * 
-	 * @param idAngajat_  id-ul persoanei, element unic de identificare pentru o persoana din cadrul firmei, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip Angajat 
-	 * 
-	 */
-	Angajat							getAngajatByMarca(Integer marca_) throws Exception;
-	/**
-	 * Scop  Returneaza datele despre un angajat dupa precizarea marcii
-	 * 
-	 * @param marca_  Marca angajatului, element unic de identificare pentru angajat, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip Angajat 
-	 * 
-	 */
-	Collection<Angajat>				getListaAngajati() throws Exception;
-	/**
-	 * Scop  Returneaza o Lista cu toti angajatii
-	 * 
-	 * 
-	 * @return o lista cu toti Angajatii
-	 * 
-	 */
-	Angajat							salveazaAngajat(Angajat angajat_) throws Exception;
-	/**
-	 * Scop  Salveaza un Angajat in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip Angajat 
-	 * 
-	 */
-	void							stergeAngajat(Angajat angajat_) throws Exception;
-	/**
-	 * Scop  Sterge un angajat din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-							
-	AnuntLocMunca				getAnuntLocMuncaById(Integer idAnunt_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unui Anunt de loc de Munca dupa precizarea id-ului
-	 * 
-	 * @param idAnunt_  id-ul anuntului, element unic de identificare pentru un anunt, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip AnuntLocMunca 
-	 * 
-	 */
-	Collection<AnuntLocMunca>	getListaAnunturiLocMunca() throws Exception;
-	/**
-	 * Scop  Returneaza o lista cu toate Anunturile pentru locuri de Munca
-	 * 
-	 * 
-	 * @return o lista cu toate Anunturile pentru locuri de Munca
-	 * 
-	 */
-	AnuntLocMunca				salveazaAnuntLocMunca(AnuntLocMunca anunt_) throws Exception;
-	/**
-	 * Scop  Salveaza un AnuntLocMunca in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip AnuntLocMunca 
-	 * 
-	 */
-	void							stergeAnuntLocMunca(AnuntLocMunca anunt_) throws Exception;
-	/**
-	 * Scop  Sterge un AnuntLocMunca  din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	//Evenimente
-	Eveniment				getEvenimentById(Integer IdEveniment_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unei eveniment dupa id.
-	 * 
-	 * @param IdEveniment_  id-ul evenimentului, element unic de identificare pentru un eveniment, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip Eveniment 
-	 * 
-	 */
-	Collection<Eveniment>	getListaEvenimente() throws Exception;
-	/**
-	 * Scop  Returneaza o Lista cu toate evenimentele
-	 * 
-	 * 
-	 * @return o lista cu toate evenimentele
-	 * 
-	 */
-	Eveniment				salveazaEveniment(Eveniment eveniment_) throws Exception;
-	/**
-	 * Scop  Salveaza un eveniment in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip eveniment 
-	 * 
-	 */
-	void								stergeEveniment(Eveniment eveniment_) throws Exception;
-	/**
-	 * Scop  Sterge un eveniment din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	Functie				getFunctieById(Integer IdFunctie_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unei functii dupa id.
-	 * 
-	 * @param IdFunctie_  id-ul functiei, element unic de identificare pentru o functie, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip functie 
-	 * 
-	 */
-	Collection<Functie>	getListaFunctii() throws Exception;
-	/**
-	 * Scop  Returneaza o Lista cu toate functiile
-	 * 
-	 * 
-	 * @return o lista cu toate functiile
-	 * 
-	 */
-	Functie				salveazaFunctie(Functie functie_) throws Exception;
-	/**
-	 * Scop  Salveaza o functie in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip functie 
-	 * 
-	 */
-	void								stergeFunctie(Functie functie_) throws Exception;
-	/**
-	 * Scop  Sterge o functie din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	Instructor				getInstructorById(Integer IdPersoana_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unui instructor dupa id.
-	 * 
-	 * @param IdPersoana_  id-ul persoanei, element unic de identificare pentru un instructor, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip instructor 
-	 * 
-	 */
-	Collection<Instructor>	getListaInstructori() throws Exception;
-	/**
-	 * Scop  Returneaza o Lista cu toti instructorii
-	 * 
-	 * 
-	 * @return o lista cu toti instructorii
-	 * 
-	 */
-	Instructor				salveazaInstructor(Instructor instructor_) throws Exception;
-	/**
-	 * Scop  Salveaza un instructor in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip instructor 
-	 * 
-	 */
-	void								stergeInstructor(Instructor instructor_) throws Exception;
-	/**
-	 * Scop  Sterge un instructor din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	
-	
+	//------------------------------------------------------------------------------------------------------------------------
+	//--Metode noi EJB
+	//------------------------------------------------------------------------------------------------------------------------	
+		ContractMunca getContractAngajatActivEJB(Angajat angajat_) throws Exception;	
+		/**
+		 * Scop  			 Returneaza un contract de munca pentru un angajat precizat
+		 * 
+		 * @param  angajat_  Angajatul dupa care se face cautarea
+		 * 
+		 * @return           un contract curent pentru un angajat
+		 * 
+		 */
+		
+		Collection<ContractMunca> getListaContracteAngajatEJB(Angajat angajat_) throws Exception;
+		/**
+		 * Scop  			 Returneaza o lista de contracte  pentru un angajat precizat
+		 * 
+		 * @param  angajat_  Angajatul dupa care se face cautarea
+		 * 
+		 * @return           contractele pentru un angajat
+		 * 
+		 */
+		
+		
+	    CV getCVByCandidatEJB(Candidat candidat_) throws Exception;
+		
+		/**
+		 * Scop    Returneaza cv-ul pentru fiecare candidat
+		 *         
+		 * @param  candidat_ 	    Candidatul pentru care se cauta cv-ul
+		 * 
+		 * @return date Cv pentru candidatul precizat
+		 * 	
+		 */
+	    
+	    DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception;
+		
+		/**
+		 * Scop  			 Returneaza dosarul de angajare pentru un angajat precizat
+		 * 
+		 * @param  angajat_  Angajatul dupa care se face cautarea
+		 * 
+		 * @return           dosarul curent pentru un angajat
+		 * 
+		 */
 
-	Interviu				getInterviuById(Integer IdInterviu_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unei interviu dupa id.
-	 * 
-	 * @param IdInterviu_  id-ul interviului, element unic de identificare pentru un interviu, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip interviu 
-	 * 
-	 */
-	Collection<Interviu>	getListaInterviuri() throws Exception;
-	/**
-	 * Scop  Returneaza o Lista cu toate interviurile
-	 * 
-	 * 
-	 * @return o lista cu toate interviurile
-	 * 
-	 */
-	Interviu				salveazaInterviu(Interviu interviu_) throws Exception;
-	/**
-	 * Scop  Salveaza un interviu in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip interviu 
-	 * 
-	 */
-	void								stergeInterviu(Interviu interviu_) throws Exception;
-	/**
-	 * Scop  Sterge un interviu din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
+		void activareAngajatiEJB() throws Exception;
+		
+		/**
+		 * Scop                   Seteaza activ statusul unui angajat daca dosarul acestuia este complet
+		 * 
+		 * @param  ListaAngajati  Lista tuturor angajatilor pentru care se realizeaza operatiunea
+		 * 
+		 * @return           
+		 * 
+		 */
+	    
+	    Candidat validareRecrutareEJB(Date dataAnunt_, Candidat candidat_) throws Exception;
+		
+		/**
+		 * Scop    Returneaza o Lista cu candidatii care au au fost admisi la interviul final, interviu organizat dupa 
+		 *         o data precizata
+		 * 
+		 * @param  dataAnunt_ 	    Data precizata de utilizator, care va fi comparata cu data sustinerii interviului
+		 * @param  candidat_        Candidatul pentru care se afiseaza interviurile finale si admise
+		 * 
+		 * @return Lista cu date despre candidati admisi la interviurile finale
+		 * 
+		 */
+		
+	    Collection<Candidat> recrutareEJB(AnuntLocMunca anunt_) throws Exception;
+		
 
-	
+		HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB ();
+		
+		/**
+		 * Scop    Returneaza o Lista a probelor grupate pe fiecare departament 
+		 *         
+		 * @param -none	
+		 * 
+		 * @return map cu fiecare departament si probele fiecaruia
+		 * 
+		 */
 
-	// InterviuCandidat
-	InterviuCandidat getInterviuCandidatById(Integer idInterviuCandidat_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unui Interviu Candidat dupa precizarea id-ului
-	 * 
-	 * @param idInterviuCandidat_  id-ul interviului, element unic de identificare pentru un interviu, dupa care se face cautarea
-	 * 
-	* @return Obiectul de tip InterviuCandidat 
-	* 
-	*/
-	Collection<InterviuCandidat>	getListaInterviuriCandidati() throws Exception;
-	/**
-	 * Scop  Returneaza o lista cu toate Interviurile Candidati
-	 * 
-	 * 
-	 * @return o lista cu toate Interviurile Candidati
-	 * 
-	 */
-	
-	InterviuCandidat	salveazaInterviuCandidat(InterviuCandidat idInterviuCandidat_) throws Exception;
-	/**
-	 * Scop  Salveaza un AnuntLocMunca in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip AnuntLocMunca 
-	 * 
-	 */
-	
-	
-	void	stergeInterviuCandidat(InterviuCandidat interviuCandidat_) throws Exception;
-	/**
-	 * Scop  Sterge un InterviuCandidat  din BD
-	 * 
-	 * 
-	 * @return 
-	 * 
-	 */
-	
+		
+		HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProbaEJB ();
+		/**
+		 * Scop    Returneaza Lista rezultatelor angajatilor la fiecare proba  
+		 *         
+		 * @return map cu fiecare proba si rezultatele fiecarui angajat
+		 * 
+		 */
+		
+		Collection<AnuntLocMunca> getPosturiVacanteEJB(Date dataVizata_);
+		
+		/**
+		 * Scop    Returneaza o Lista cu posturile valide dupa o data precizata
+		 * 
+		 * @param  dataVizata_ 	Data setata de utilizator, care va fi comparata cu data anuntului de munca
+		 * 
+		 * @return posturile vacante 
+		 * 
+		 */
+		
+		Collection<Candidat> getCandidatiPeAnuntLocMunca(AnuntLocMunca anuntLocMunca_);
+		
+		/**
+		 * Scop    Pentru fiecare anunt de loc de munca, returneaza o Lista cu candidatii care au aplicat cv-urile 
+		 *          pentru functia precizata in anunt
+		 * 
+		 * @param  anuntLocMunca_ 	Anuntul locului de munca pentru care se vor afisa candidatii
+		 * 
+		 * @return Lista cu date despre candidati
+		 * 
+		 */
+		
+		Collection<Angajat> getAngajatipeFunctieEJB(Functie functie_);
+		
+		/**
+		 * Scop    Pentru fiecare functie, returneaza o Lista cu angajatii activi
+		 * 
+		 * @param  functie_ 	Functia pentru care se afiseaza angajatii
+		 * 
+		 * @return Lista cu angajatii
+		 * 
+		 */
+		
+		void angajareEJB(Candidat candidat_);
+		/**
+		 * Scop    Creeaza un nou angajat cu dosarul acestuia si a contractului de munca prin precizarea candidatului
+		 *         
+		 * @param  candidat_ 	    Candidatul care va fi angajat
+		 * 
+		 * @return 
+		 * 	
+		 */
+		void demisionareEJB(CerereDemisie cerereDemisie_);
+		
+		/**
+		 * Scop   
+		 * 
+		 * @param cerereDemisie_ 
+		 * 
+		 * @return 
+		 * 
+		 */
+		
+		void concediereEJB(ContractMunca contractMunca_);
+		
+		/**
+		 * Scop   
+		 * 
+		 * @param contractMunca_ 
+		 * 
+		 * @return 
+		 * 
+		 */
+		
+		ContractMunca relocalizare_promovareEJB(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_);
+		
+		/**
+		 * Scop						Relocalizarea unui angajat ca urmare a resturcturarii firmei sau ca urmare a promovarii angajatului 
+		 * 
+		 * @param marca_			marca angajatului ce urmeaza a fi relocalizat
+		 * @param functieNoua_		Noua functie pe care urmeaza a fi plasat
+		 * @param contractVizat_	Contractul care va fi terminat pentru a se incheia unul nou. In cazul in care acest parametru
+		 * 							este null se vor termina toate contractele precedente si se va incheia unul singur nou
+		 * @param promovare_		specifica daca metoda este apelata pentru relocalizare sau promovare
+		 * @param salarBaza			noul salariu de baza
+		 * @param tarifOrar_		noul tarif orar
+		 * @return					Contractul nou incheiat sau contractul modificat in urma promovarii.
+		 *
+		
+		*/
+		
+		
+		/*Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_);
+		
+		/**
+		 * Scop    Returneaza o Lista cu candidatii care  au fost admisi la interviul final, interviu organizat dupa 
+		 *         o data precizata
+		 * 
+		 * @param  dataAnunt_ 	    Data precizata de utilizator, care va fi comparata cu data sustinerii interviului
+		 * @param  candidat_        Candidatul pentru care se afiseaza interviurile finale si admise
+		
+		 * @return Lista cu date despre candidati admisi la interviurile finale
+		 * 
+		 */
+		
+		
+		void aprobareEvenimentEJB(Eveniment eveniment_)throws Exception;
+		/**
+		 * @param _activitate //metoda ce determina daca un eveniment este aprobat sau nu in functie de suma alocata si estimata
+		 * 
+		 */
+		Collection<Eveniment> getEvenimenteAnualeEJB(Integer year_) throws Exception;
+		/**
+		 * @param _year anul pentru care trebuie returnata Lista de evenimente.
+		 * Daca year = 0 va returna toate evenimentele din toti anii
+		 * @return Collection evenimente pentru anul primit ca parametru
+		 */	
+		
 	
 		
-	//ProbaEvaluare
-	ProbaEvaluare getProbaEvaluareById(Integer idProba_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unei Probe de Evaluare dupa precizarea id-ului
-	 * 
-	 * @param idProba_  id-ul probei, element unic de identificare, dupa care se face cautarea
-	 * 
-	* @return Obiectul de tip ProbaEvaluare 
-	* 
-	*/
-	
-	Collection<ProbaEvaluare>	getListaProbeEvaluare() throws Exception;
-	/**
-	 * Scop  Returneaza o lista cu toate Probele de Evaluare
-	 * 
-	 * 
-	 * @return o lista cu toate Probele de Evaluare
-	 * 
-	 */
-	ProbaEvaluare salveazaProbaEvaluare(ProbaEvaluare	probaEvaluare_) throws Exception;
-	/**
-	 * Scop  Salveaza o proba de evealuare
-	 * 
-	 * 
-	 * @return Obiectul de tip ProbaEvaluare
-	 * 
-	 */
-	
-	void	stergeProbaEvaluare(ProbaEvaluare proba_) throws Exception;
-	/**
-	 * Scop  Sterge un InterviuCandidat  din BD
-	 * 
-	 * 
-	 * @return 
-	 * 
-	 */	
-	
+		//-----------------------------------------------------------------------------------------------------------------------
 		
-	//RezultatProbaEvaluare
-	RezultatProbaEvaluare getRezultatProbaEvaluareById(Integer id_) throws Exception;
-	/**
-	 * Scop  Returneaza rezultatele pentru probele de evaluare dupa precizarea id-ului
-	 * 
-	 * @param id_  id-ul rezultatului, element unic de identificare, dupa care se face cautarea
-	 * 
-	* @return Obiectul de tip RezultatProbaEvaluare 
-	* 
-	*/
-	
-	Collection<RezultatProbaEvaluare>	getListaRezultateProbeEvaluare() throws Exception;
-	/**
-	 * Scop  Returneaza o lista cu toate rezultatele pentru probele de evaluare
-	 * 
-	 * 
-	 * @return o lista cu cu toti Responsabilii de Activitati
-	 * 
-	 */
-	
-	RezultatProbaEvaluare salveazaRezultatProbaEvaluare(RezultatProbaEvaluare rezultatProbaEvaluare_) throws Exception;
-	/**
-	 * Scop  Salveaza rezultatatul pentru probele de evaluare
-	 * 
-	 * 
-	 * @return Obiectul de tip RezultatProbaEvaluare
-	 * 
-	 */
-	
-	void	stergeRezultatProbaEvaluare(RezultatProbaEvaluare rezultat_) throws Exception;
-	/**
-	 * Scop  Sterge un RezultatProbaEvaluare  din BD
-	 * 
-	 * 
-	 * @return 
-	 * 
-	 */	
-	
-	
-	
-	
-	
+		//--Metode CRUD
+		
+		//-----------------------------------------------------------------------------------------------------------------------	
+		
+		ActivitateTeamBuilding				getActivitateTeamBuildingById(Integer idActivitate_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unei activitati de Team-Building dupa precizarea id-ului
+		 * 
+		 * @param idActivitate_  id-ul activitatii, element unic de identificare pentru o activitate, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip ActivitateTeamBuilding 
+		 * 
+		 */
+		Collection<ActivitateTeamBuilding>	getListaActivitatiTeamBuilding() throws Exception;
+		/**
+		 * Scop  Returneaza o Lista cu toate Activitatile de Team-Building
+		 * 
+		 * 
+		 * @return o lista cu toate Activitatile de Team-Building
+		 * 
+		 */
+		ActivitateTeamBuilding				salveazaActivitateTeamBuilding(ActivitateTeamBuilding activitate_) throws Exception;
+		/**
+		 * Scop  Salveaza o ActivitateTeamBuilding in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip ActivitateTeamBuilding 
+		 * 
+		 */
+		void								stergeActivitateTeamBuilding(ActivitateTeamBuilding activitate_) throws Exception;
+		/**
+		 * Scop  Sterge o ActivitateTeamBuilding din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+		
+		ActivitateTraining				getActivitateTrainingById(Integer idActivitate_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unei activitati de Training dupa precizarea id-ului
+		 * 
+		 * @param idActivitate_  id-ul activitatii, element unic de identificare pentru o activitate, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip ActivitateTraining 
+		 * 
+		 */
+		Collection<ActivitateTraining>	getListaActivitatiTraining() throws Exception;
+		/**
+		 * Scop  Returneaza o lista cu toate Activitatile de Training
+		 * 
+		 * 
+		 * @return o lista cu toate Activitatile de Training
+		 * 
+		 */
+		ActivitateTraining				salveazaActivitateTraining(ActivitateTraining activitate_) throws Exception;
+		/**
+		 * Scop  Salveaza o ActivitateTraining in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip ActivitateTraining 
+		 * 
+		 */
+		void							stergeActivitateTraining(ActivitateTraining activitate_) throws Exception;
+		/**
+		 * Scop  Sterge o ActivitateTraining din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+		
+		Angajat							getAngajatById(Integer idAngajat_) throws Exception;
+		/**
+		 * Scop  Returneaza datele despre un angajat dupa precizarea id-ului
+		 * 
+		 * @param idAngajat_  id-ul persoanei, element unic de identificare pentru o persoana din cadrul firmei, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip Angajat 
+		 * 
+		 */
+		Angajat							getAngajatByMarca(Integer marca_) throws Exception;
+		/**
+		 * Scop  Returneaza datele despre un angajat dupa precizarea marcii
+		 * 
+		 * @param marca_  Marca angajatului, element unic de identificare pentru angajat, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip Angajat 
+		 * 
+		 */
+		Collection<Angajat>				getListaAngajati() throws Exception;
+		/**
+		 * Scop  Returneaza o Lista cu toti angajatii
+		 * 
+		 * 
+		 * @return o lista cu toti Angajatii
+		 * 
+		 */
+		Angajat							salveazaAngajat(Angajat angajat_) throws Exception;
+		/**
+		 * Scop  Salveaza un Angajat in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip Angajat 
+		 * 
+		 */
+		void							stergeAngajat(Angajat angajat_) throws Exception;
+		/**
+		 * Scop  Sterge un angajat din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+								
+		AnuntLocMunca				getAnuntLocMuncaById(Integer idAnunt_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unui Anunt de loc de Munca dupa precizarea id-ului
+		 * 
+		 * @param idAnunt_  id-ul anuntului, element unic de identificare pentru un anunt, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip AnuntLocMunca 
+		 * 
+		 */
+		Collection<AnuntLocMunca>	getListaAnunturiLocMunca() throws Exception;
+		/**
+		 * Scop  Returneaza o lista cu toate Anunturile pentru locuri de Munca
+		 * 
+		 * 
+		 * @return o lista cu toate Anunturile pentru locuri de Munca
+		 * 
+		 */
+		AnuntLocMunca				salveazaAnuntLocMunca(AnuntLocMunca anunt_) throws Exception;
+		/**
+		 * Scop  Salveaza un AnuntLocMunca in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip AnuntLocMunca 
+		 * 
+		 */
+		void							stergeAnuntLocMunca(AnuntLocMunca anunt_) throws Exception;
+		/**
+		 * Scop  Sterge un AnuntLocMunca  din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+		//Evenimente
+		Eveniment				getEvenimentById(Integer IdEveniment_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unei eveniment dupa id.
+		 * 
+		 * @param IdEveniment_  id-ul evenimentului, element unic de identificare pentru un eveniment, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip Eveniment 
+		 * 
+		 */
+		Collection<Eveniment>	getListaEvenimente() throws Exception;
+		/**
+		 * Scop  Returneaza o Lista cu toate evenimentele
+		 * 
+		 * 
+		 * @return o lista cu toate evenimentele
+		 * 
+		 */
+		Eveniment				salveazaEveniment(Eveniment eveniment_) throws Exception;
+		/**
+		 * Scop  Salveaza un eveniment in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip eveniment 
+		 * 
+		 */
+		void								stergeEveniment(Eveniment eveniment_) throws Exception;
+		/**
+		 * Scop  Sterge un eveniment din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+		Functie				getFunctieById(Integer IdFunctie_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unei functii dupa id.
+		 * 
+		 * @param IdFunctie_  id-ul functiei, element unic de identificare pentru o functie, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip functie 
+		 * 
+		 */
+		Collection<Functie>	getListaFunctii() throws Exception;
+		/**
+		 * Scop  Returneaza o Lista cu toate functiile
+		 * 
+		 * 
+		 * @return o lista cu toate functiile
+		 * 
+		 */
+		Functie				salveazaFunctie(Functie functie_) throws Exception;
+		/**
+		 * Scop  Salveaza o functie in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip functie 
+		 * 
+		 */
+		void								stergeFunctie(Functie functie_) throws Exception;
+		/**
+		 * Scop  Sterge o functie din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+		Instructor				getInstructorById(Integer IdPersoana_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unui instructor dupa id.
+		 * 
+		 * @param IdPersoana_  id-ul persoanei, element unic de identificare pentru un instructor, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip instructor 
+		 * 
+		 */
+		Collection<Instructor>	getListaInstructori() throws Exception;
+		/**
+		 * Scop  Returneaza o Lista cu toti instructorii
+		 * 
+		 * 
+		 * @return o lista cu toti instructorii
+		 * 
+		 */
+		Instructor				salveazaInstructor(Instructor instructor_) throws Exception;
+		/**
+		 * Scop  Salveaza un instructor in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip instructor 
+		 * 
+		 */
+		void								stergeInstructor(Instructor instructor_) throws Exception;
+		/**
+		 * Scop  Sterge un instructor din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+		
+		
 
-	Candidat				getCandidatById(Integer idPersoanaCandidat_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unui Candidat dupa precizarea id-ului persoanei
-	 * 
-	 * @param idPersoanaCandidat_  id-ul Persoanei extinse de Candidat
-	 * 
-	 * @return Obiectul de tip Candidat
-	 * 
-	 */
+		Interviu				getInterviuById(Integer IdInterviu_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unei interviu dupa id.
+		 * 
+		 * @param IdInterviu_  id-ul interviului, element unic de identificare pentru un interviu, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip interviu 
+		 * 
+		 */
+		Collection<Interviu>	getListaInterviuri() throws Exception;
+		/**
+		 * Scop  Returneaza o Lista cu toate interviurile
+		 * 
+		 * 
+		 * @return o lista cu toate interviurile
+		 * 
+		 */
+		Interviu				salveazaInterviu(Interviu interviu_) throws Exception;
+		/**
+		 * Scop  Salveaza un interviu in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip interviu 
+		 * 
+		 */
+		void								stergeInterviu(Interviu interviu_) throws Exception;
+		/**
+		 * Scop  Sterge un interviu din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+
+		
+
+		// InterviuCandidat
+		InterviuCandidat getInterviuCandidatById(Integer idInterviuCandidat_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unui Interviu Candidat dupa precizarea id-ului
+		 * 
+		 * @param idInterviuCandidat_  id-ul interviului, element unic de identificare pentru un interviu, dupa care se face cautarea
+		 * 
+		* @return Obiectul de tip InterviuCandidat 
+		* 
+		*/
+		Collection<InterviuCandidat>	getListaInterviuriCandidati() throws Exception;
+		/**
+		 * Scop  Returneaza o lista cu toate Interviurile Candidati
+		 * 
+		 * 
+		 * @return o lista cu toate Interviurile Candidati
+		 * 
+		 */
+		
+		InterviuCandidat	salveazaInterviuCandidat(InterviuCandidat idInterviuCandidat_) throws Exception;
+		/**
+		 * Scop  Salveaza un AnuntLocMunca in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip AnuntLocMunca 
+		 * 
+		 */
+		
+		
+		void	stergeInterviuCandidat(InterviuCandidat interviuCandidat_) throws Exception;
+		/**
+		 * Scop  Sterge un InterviuCandidat  din BD
+		 * 
+		 * 
+		 * @return 
+		 * 
+		 */
+		
+		
+			
+		//ProbaEvaluare
+		ProbaEvaluare getProbaEvaluareById(Integer idProba_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unei Probe de Evaluare dupa precizarea id-ului
+		 * 
+		 * @param idProba_  id-ul probei, element unic de identificare, dupa care se face cautarea
+		 * 
+		* @return Obiectul de tip ProbaEvaluare 
+		* 
+		*/
+		
+		Collection<ProbaEvaluare>	getListaProbeEvaluare() throws Exception;
+		/**
+		 * Scop  Returneaza o lista cu toate Probele de Evaluare
+		 * 
+		 * 
+		 * @return o lista cu toate Probele de Evaluare
+		 * 
+		 */
+		ProbaEvaluare salveazaProbaEvaluare(ProbaEvaluare	probaEvaluare_) throws Exception;
+		/**
+		 * Scop  Salveaza o proba de evealuare
+		 * 
+		 * 
+		 * @return Obiectul de tip ProbaEvaluare
+		 * 
+		 */
+		
+		void	stergeProbaEvaluare(ProbaEvaluare proba_) throws Exception;
+		/**
+		 * Scop  Sterge un InterviuCandidat  din BD
+		 * 
+		 * 
+		 * @return 
+		 * 
+		 */	
+		
+			
+		//RezultatProbaEvaluare
+		RezultatProbaEvaluare getRezultatProbaEvaluareById(Integer id_) throws Exception;
+		/**
+		 * Scop  Returneaza rezultatele pentru probele de evaluare dupa precizarea id-ului
+		 * 
+		 * @param id_  id-ul rezultatului, element unic de identificare, dupa care se face cautarea
+		 * 
+		* @return Obiectul de tip RezultatProbaEvaluare 
+		* 
+		*/
+		
+		Collection<RezultatProbaEvaluare>	getListaRezultateProbeEvaluare() throws Exception;
+		/**
+		 * Scop  Returneaza o lista cu toate rezultatele pentru probele de evaluare
+		 * 
+		 * 
+		 * @return o lista cu cu toti Responsabilii de Activitati
+		 * 
+		 */
+		
+		RezultatProbaEvaluare salveazaRezultatProbaEvaluare(RezultatProbaEvaluare rezultatProbaEvaluare_) throws Exception;
+		/**
+		 * Scop  Salveaza rezultatatul pentru probele de evaluare
+		 * 
+		 * 
+		 * @return Obiectul de tip RezultatProbaEvaluare
+		 * 
+		 */
+		
+		void	stergeRezultatProbaEvaluare(RezultatProbaEvaluare rezultat_) throws Exception;
+		/**
+		 * Scop  Sterge un RezultatProbaEvaluare  din BD
+		 * 
+		 * 
+		 * @return 
+		 * 
+		 */	
+		
+		
+		
+		
+		
+
+		Candidat				getCandidatById(Integer idPersoanaCandidat_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unui Candidat dupa precizarea id-ului persoanei
+		 * 
+		 * @param idPersoanaCandidat_  id-ul Persoanei extinse de Candidat
+		 * 
+		 * @return Obiectul de tip Candidat
+		 * 
+		 */
+		
+		Candidat				getCandidatByIdCandidat(Integer idCandidat_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unui Candidat dupa precizarea id-ului candidatului
+		 * 
+		 * @param idCandidat_  id-ul Candidatului
+		 * 
+		 * @return Obiectul de tip Candidat
+		 * 
+		 */
+		
+		Collection<Candidat>	getListaCandidati() throws Exception;
+		/**
+		 * Scop  Returneaza o Lista cu toti candidatii
+		 * 
+		 * 
+		 * @return o lista cu toti candidatii
+		 * 
+		 */
+		Candidat				salveazaCandidat(Candidat candidat) throws Exception;
+		/**
+		 * Scop  Salveaza un Candidat in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip Candidat 
+		 * 
+		 */
+		void				   stergeCandidat(Candidat candidat_) throws Exception;
+		/**
+		 * Scop  Sterge un candidat din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+		
+		CerereDemisie				getCerereDemisieById(Integer idCerereDemisie_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unei cererei de demisie dupa precizarea id-ului
+		 * 
+		 * @param idCerereDemisie_  id-ul cererii de demisie, element unic de identificare pentru o cerere de demisie, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip CerereDemisie 
+		 * 
+		 */
+		Collection<CerereDemisie>	getListaCereriDemisie() throws Exception;
+		/**
+		 * Scop  Returneaza o lista cu toate cererile de demisie
+		 * 
+		 * 
+		 * @return o lista cu toate cererile de demisie
+		 * 
+		 */
+		CerereDemisie				salveazaCerereDemisie(CerereDemisie cerereDemisie_) throws Exception;
+		/**
+		 * Scop  Salveaza o CerereDemisie in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip CerereDemisie 
+		 * 
+		 */
+		void						stergeCerereDemisie(CerereDemisie cerereDemisie_) throws Exception;
+		/**
+		 * Scop  Sterge o CerereDemisie din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+		
+		ContractMunca							getContractMuncaById(Integer idContractMunca_) throws Exception;
+		/**
+		 * Scop  Returneaza datele despre un contract de munca dupa precizarea id-ului
+		 * 
+		 * @param idContractMunca_  id-ul contractului de munca
+		 * 
+		 * @return Obiectul de tip ContractMunca 
+		 * 
+		 */
+		
+		Collection<ContractMunca>				getListaContracteMunca() throws Exception;
+		/**
+		 * Scop  Returneaza o Lista cu toate contractele de munca
+		 * 
+		 * 
+		 * @return o lista cu toate Contractele de Munca
+		 * 
+		 */
+		ContractMunca							salveazaContractMunca(ContractMunca contractMunca_) throws Exception;
+		/**
+		 * Scop  Salveaza un ContractMunca in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip ContractMunca 
+		 * 
+		 */
+		void							stergeContractMunca(ContractMunca contractMunca_) throws Exception;
+		/**
+		 * Scop  Sterge un contract de munca din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+								
+		CV				getCVById(Integer idCV_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unui CV dupa precizarea id-ului
+		 * 
+		 * @param idCV_  id-ul CVului, element unic de identificare pentru un CV, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip CV 
+		 * 
+		 */
+		Collection<CV>	getListaCVuri() throws Exception;
+		/**
+		 * Scop  Returneaza o lista cu toate CVurile
+		 * 
+		 * 
+		 * @return o lista cu toate CVurile
+		 * 
+		 */
+		CV				salveazaCV(CV cv_) throws Exception;
+		/**
+		 * Scop  Salveaza un CV in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip CV
+		 * 
+		 */
+		void							stergeCV(CV cv_) throws Exception;
+		/**
+		 * Scop  Sterge un CV  din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */
+		
+		
+		DosarAngajat				getDosarAngajatById(Integer idDosarAngajat_) throws Exception;
+		/**
+		 * Scop  Returneaza datele unui DosarAngajat dupa precizarea id-ului
+		 * 
+		 * @param idDosarAngajat_  id-ul Dosarului Angajatului, element unic de identificare pentru un Dosar Angajat, dupa care se face cautarea
+		 * 
+		 * @return Obiectul de tip dosar Angajat 
+		 * 
+		 */
+		Collection<DosarAngajat>	getListaDosareAngajat() throws Exception;
+		/**
+		 * Scop  Returneaza o lista cu toate Dosarele
+		 * 
+		 * 
+		 * @return o lista cu toate Dosarele
+		 * 
+		 */
+		DosarAngajat				salveazaDosarAngajat(DosarAngajat dosarAngajat_) throws Exception;
+		/**
+		 * Scop  Salveaza un Dosar Angajat in BD
+		 * 
+		 * 
+		 * @return Obiectul de tip Dosar Angajat
+		 * 
+		 */
+		void							stergeDosarAngajat(DosarAngajat dosarAngajat_) throws Exception;
+		/**
+		 * Scop  Sterge un DosarAngajat  din BD
+		 * 
+		 * 
+		 * @return nimic.
+		 * 
+		 */				
+
+		
 	
-	Candidat				getCandidatByIdCandidat(Integer idCandidat_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unui Candidat dupa precizarea id-ului candidatului
-	 * 
-	 * @param idCandidat_  id-ul Candidatului
-	 * 
-	 * @return Obiectul de tip Candidat
-	 * 
-	 */
-	
-	Collection<Candidat>	getListaCandidati() throws Exception;
-	/**
-	 * Scop  Returneaza o Lista cu toti candidatii
-	 * 
-	 * 
-	 * @return o lista cu toti candidatii
-	 * 
-	 */
-	Candidat				salveazaCandidat(Candidat candidat) throws Exception;
-	/**
-	 * Scop  Salveaza un Candidat in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip Candidat 
-	 * 
-	 */
-	void				   stergeCandidat(Candidat candidat_) throws Exception;
-	/**
-	 * Scop  Sterge un candidat din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	
-	CerereDemisie				getCerereDemisieById(Integer idCerereDemisie_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unei cererei de demisie dupa precizarea id-ului
-	 * 
-	 * @param idCerereDemisie_  id-ul cererii de demisie, element unic de identificare pentru o cerere de demisie, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip CerereDemisie 
-	 * 
-	 */
-	Collection<CerereDemisie>	getListaCereriDemisie() throws Exception;
-	/**
-	 * Scop  Returneaza o lista cu toate cererile de demisie
-	 * 
-	 * 
-	 * @return o lista cu toate cererile de demisie
-	 * 
-	 */
-	CerereDemisie				salveazaCerereDemisie(CerereDemisie cerereDemisie_) throws Exception;
-	/**
-	 * Scop  Salveaza o CerereDemisie in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip CerereDemisie 
-	 * 
-	 */
-	void						stergeCerereDemisie(CerereDemisie cerereDemisie_) throws Exception;
-	/**
-	 * Scop  Sterge o CerereDemisie din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	
-	ContractMunca							getContractMuncaById(Integer idContractMunca_) throws Exception;
-	/**
-	 * Scop  Returneaza datele despre un contract de munca dupa precizarea id-ului
-	 * 
-	 * @param idContractMunca_  id-ul contractului de munca
-	 * 
-	 * @return Obiectul de tip ContractMunca 
-	 * 
-	 */
-	
-	Collection<ContractMunca>				getListaContracteMunca() throws Exception;
-	/**
-	 * Scop  Returneaza o Lista cu toate contractele de munca
-	 * 
-	 * 
-	 * @return o lista cu toate Contractele de Munca
-	 * 
-	 */
-	ContractMunca							salveazaContractMunca(ContractMunca contractMunca_) throws Exception;
-	/**
-	 * Scop  Salveaza un ContractMunca in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip ContractMunca 
-	 * 
-	 */
-	void							stergeContractMunca(ContractMunca contractMunca_) throws Exception;
-	/**
-	 * Scop  Sterge un contract de munca din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-							
-	CV				getCVById(Integer idCV_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unui CV dupa precizarea id-ului
-	 * 
-	 * @param idCV_  id-ul CVului, element unic de identificare pentru un CV, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip CV 
-	 * 
-	 */
-	Collection<CV>	getListaCVuri() throws Exception;
-	/**
-	 * Scop  Returneaza o lista cu toate CVurile
-	 * 
-	 * 
-	 * @return o lista cu toate CVurile
-	 * 
-	 */
-	CV				salveazaCV(CV cv_) throws Exception;
-	/**
-	 * Scop  Salveaza un CV in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip CV
-	 * 
-	 */
-	void							stergeCV(CV cv_) throws Exception;
-	/**
-	 * Scop  Sterge un CV  din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	
-	
-	DosarAngajat				getDosarAngajatById(Integer idDosarAngajat_) throws Exception;
-	/**
-	 * Scop  Returneaza datele unui DosarAngajat dupa precizarea id-ului
-	 * 
-	 * @param idDosarAngajat_  id-ul Dosarului Angajatului, element unic de identificare pentru un Dosar Angajat, dupa care se face cautarea
-	 * 
-	 * @return Obiectul de tip dosar Angajat 
-	 * 
-	 */
-	Collection<DosarAngajat>	getListaDosareAngajat() throws Exception;
-	/**
-	 * Scop  Returneaza o lista cu toate Dosarele
-	 * 
-	 * 
-	 * @return o lista cu toate Dosarele
-	 * 
-	 */
-	DosarAngajat				salveazaDosarAngajat(DosarAngajat dosarAngajat_) throws Exception;
-	/**
-	 * Scop  Salveaza un Dosar Angajat in BD
-	 * 
-	 * 
-	 * @return Obiectul de tip Dosar Angajat
-	 * 
-	 */
-	void							stergeDosarAngajat(DosarAngajat dosarAngajat_) throws Exception;
-	/**
-	 * Scop  Sterge un DosarAngajat  din BD
-	 * 
-	 * 
-	 * @return nimic.
-	 * 
-	 */
-	
-	
-	
-	
-	
+	//------------------------------------------------------------------------------------------------------------------------
+	//--Metode vechi
+	//------------------------------------------------------------------------------------------------------------------------
 
 	Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception;
 	
 	
 	
 	ActivitateTeamBuilding	creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions;
-	
-	
-	
-	
-	
-	
+		
 	/**
 	 * Scop    Creaza o noua activitate de team building
 	 * 
@@ -887,210 +1093,5 @@ public interface PersonalSrv {
 	 */
 
 	
-	
-
-	// EJB Ioana
-	ContractMunca getContractAngajatActivEJB(Angajat angajat_) throws Exception;	
-	/**
-	 * Scop  			 Returneaza un contract de munca pentru un angajat precizat
-	 * 
-	 * @param  angajat_  Angajatul dupa care se face cautarea
-	 * 
-	 * @return           un contract curent pentru un angajat
-	 * 
-	 */
-	
-	Collection<ContractMunca> getListaContracteAngajatEJB(Angajat angajat_) throws Exception;
-	/**
-	 * Scop  			 Returneaza o lista de contracte  pentru un angajat precizat
-	 * 
-	 * @param  angajat_  Angajatul dupa care se face cautarea
-	 * 
-	 * @return           contractele pentru un angajat
-	 * 
-	 */
-	
-	
-    CV getCVByCandidatEJB(Candidat candidat_) throws Exception;
-	
-	/**
-	 * Scop    Returneaza cv-ul pentru fiecare candidat
-	 *         
-	 * @param  candidat_ 	    Candidatul pentru care se cauta cv-ul
-	 * 
-	 * @return date Cv pentru candidatul precizat
-	 * 	
-	 */
-    
-    DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception;
-	
-	/**
-	 * Scop  			 Returneaza dosarul de angajare pentru un angajat precizat
-	 * 
-	 * @param  angajat_  Angajatul dupa care se face cautarea
-	 * 
-	 * @return           dosarul curent pentru un angajat
-	 * 
-	 */
-
-	void activareAngajatiEJB() throws Exception;
-	
-	/**
-	 * Scop                   Seteaza activ statusul unui angajat daca dosarul acestuia este complet
-	 * 
-	 * @param  ListaAngajati  Lista tuturor angajatilor pentru care se realizeaza operatiunea
-	 * 
-	 * @return           
-	 * 
-	 */
-    
-    Candidat validareRecrutareEJB(Date dataAnunt_, Candidat candidat_) throws Exception;
-	
-	/**
-	 * Scop    Returneaza o Lista cu candidatii care au au fost admisi la interviul final, interviu organizat dupa 
-	 *         o data precizata
-	 * 
-	 * @param  dataAnunt_ 	    Data precizata de utilizator, care va fi comparata cu data sustinerii interviului
-	 * @param  candidat_        Candidatul pentru care se afiseaza interviurile finale si admise
-	 * 
-	 * @return Lista cu date despre candidati admisi la interviurile finale
-	 * 
-	 */
-	
-    Collection<Candidat> recrutareEJB(AnuntLocMunca anunt_) throws Exception;
-    
-	// end Ioana
-	
-
-	HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB ();
-	
-	/**
-	 * Scop    Returneaza o Lista a probelor grupate pe fiecare departament 
-	 *         
-	 * @param -none	
-	 * 
-	 * @return map cu fiecare departament si probele fiecaruia
-	 * 
-	 */
-
-	
-	HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProbaEJB ();
-	/**
-	 * Scop    Returneaza Lista rezultatelor angajatilor la fiecare proba  
-	 *         
-	 * @return map cu fiecare proba si rezultatele fiecarui angajat
-	 * 
-	 */
-	
-	Collection<AnuntLocMunca> getPosturiVacanteEJB(Date dataVizata_);
-	
-	/**
-	 * Scop    Returneaza o Lista cu posturile valide dupa o data precizata
-	 * 
-	 * @param  dataVizata_ 	Data setata de utilizator, care va fi comparata cu data anuntului de munca
-	 * 
-	 * @return posturile vacante 
-	 * 
-	 */
-	
-	Collection<Candidat> getCandidatipeFunctieEJB(AnuntLocMunca anuntLocMunca_);
-	
-	/**
-	 * Scop    Pentru fiecare anunt de loc de munca, returneaza o Lista cu candidatii care au aplicat cv-urile 
-	 *          pentru functia precizata in anunt
-	 * 
-	 * @param  anuntLocMunca_ 	Anuntul locului de munca pentru care se vor afisa candidatii
-	 * 
-	 * @return Lista cu date despre candidati
-	 * 
-	 */
-	
-	Collection<Angajat> getAngajatipeFunctieEJB(Functie functie_);
-	
-	/**
-	 * Scop    Pentru fiecare functie, returneaza o Lista cu angajatii activi
-	 * 
-	 * @param  functie_ 	Functia pentru care se afiseaza angajatii
-	 * 
-	 * @return Lista cu angajatii
-	 * 
-	 */
-	
-	void angajareEJB(Candidat candidat_);
-	/**
-	 * Scop    Creeaza un nou angajat cu dosarul acestuia si a contractului de munca prin precizarea candidatului
-	 *         
-	 * @param  candidat_ 	    Candidatul care va fi angajat
-	 * 
-	 * @return 
-	 * 	
-	 */
-	void demisionareEJB(CerereDemisie cerereDemisie_);
-	
-	/**
-	 * Scop   
-	 * 
-	 * @param cerereDemisie_ 
-	 * 
-	 * @return 
-	 * 
-	 */
-	
-	void concediereEJB(ContractMunca contractMunca_);
-	
-	/**
-	 * Scop   
-	 * 
-	 * @param contractMunca_ 
-	 * 
-	 * @return 
-	 * 
-	 */
-	
-	ContractMunca relocalizare_promovareEJB(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_);
-	
-	/**
-	 * Scop						Relocalizarea unui angajat ca urmare a resturcturarii firmei sau ca urmare a promovarii angajatului 
-	 * 
-	 * @param marca_			marca angajatului ce urmeaza a fi relocalizat
-	 * @param functieNoua_		Noua functie pe care urmeaza a fi plasat
-	 * @param contractVizat_	Contractul care va fi terminat pentru a se incheia unul nou. In cazul in care acest parametru
-	 * 							este null se vor termina toate contractele precedente si se va incheia unul singur nou
-	 * @param promovare_		specifica daca metoda este apelata pentru relocalizare sau promovare
-	 * @param salarBaza			noul salariu de baza
-	 * @param tarifOrar_		noul tarif orar
-	 * @return					Contractul nou incheiat sau contractul modificat in urma promovarii.
-	 *
-	
-	*/
-	
-	
-	/*Collection<Candidat> recrutareEJB(Date dataAnunt_, Candidat candidat_);
-	
-	/**
-	 * Scop    Returneaza o Lista cu candidatii care  au fost admisi la interviul final, interviu organizat dupa 
-	 *         o data precizata
-	 * 
-	 * @param  dataAnunt_ 	    Data precizata de utilizator, care va fi comparata cu data sustinerii interviului
-	 * @param  candidat_        Candidatul pentru care se afiseaza interviurile finale si admise
-	
-	 * @return Lista cu date despre candidati admisi la interviurile finale
-	 * 
-	 */
-	
-
-	
-	void aprobareEvenimentEJB(Eveniment eveniment_)throws Exception;
-	/**
-	 * @param _activitate //metoda ce determina daca un eveniment este aprobat sau nu in functie de suma alocata si estimata
-	 * 
-	 */
-	Collection<Eveniment> getEvenimenteAnualeEJB(Integer year_) throws Exception;
-	/**
-	 * @param _year anul pentru care trebuie returnata Lista de evenimente.
-	 * Daca year = 0 va returna toate evenimentele din toti anii
-	 * @return Collection evenimente pentru anul primit ca parametru
-	 */	
-
 
 }

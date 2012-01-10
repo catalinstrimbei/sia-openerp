@@ -43,8 +43,8 @@ public class RegistruPersonalEJB {
 	public Collection<ContractMunca> getListaContracteAngajatEJB(Angajat angajat_) throws Exception {
 		try
 		{
-			return   entityManager.createQuery("SELECT c FROM  ContractMunca c, Angajat a where c.marca = a.id and a.marca = :marca_")
-					.setParameter("marca_",angajat_.getMarca())
+			return   entityManager.createQuery("SELECT c FROM  ContractMunca c where c.angajat = :angajat_")
+					.setParameter("angajat_",angajat_)
 					.getResultList();
 		}
 		catch(Exception ex)
