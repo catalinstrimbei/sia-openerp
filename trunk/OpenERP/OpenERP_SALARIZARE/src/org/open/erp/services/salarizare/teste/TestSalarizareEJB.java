@@ -76,7 +76,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: inregistrarePontaj");
 	}
-/*	
+	
 	@Test
 	public void calculSporuriAngajati() throws Exception {
 		logger.info("Begin test: calculSporuriAngajat");
@@ -92,7 +92,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: calculSporuriAngajat");
 	}
-	
+	/*	
 	@Test
 	public void calculRetineriAngajati() throws Exception {
 		logger.info("Begin test: calculRetineriAngajat");
