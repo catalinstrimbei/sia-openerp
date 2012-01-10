@@ -147,9 +147,6 @@ public class TestSalarizareEJB {
 		logger.info("End test: calculRetineriObligatoriiAngajat");
 	}
 	
-	 
-	
-	
 	@Test
 	public void calculDeduceriAngajati() throws Exception {
 		logger.info("Begin test: calculDeduceriAngajat");
@@ -161,14 +158,14 @@ public class TestSalarizareEJB {
 		assertNotNull("Metoda de calcul a deducerilor nu a functionat!", deduceri);
 		logger.info("End test: calculDeduceriAngajat");
 	}
-	/*
+	
 	@Test
 	public void testinregistrarStatSalariiLuna() throws Exception {
 		logger.info("Begin test: inregistrareStatSalariiLuna");
 		salarizareSrvInstance.inregistrarStatSalariiLuna(2011, 11);
 		logger.info("End test: inregistrareStatSalariiLuna");
 	}
-	*/
+	
 	@Test
 	public void testInregistrareSpor() throws Exception {
 		logger.info("Begin test: inregistrareSpor");
