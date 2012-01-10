@@ -606,9 +606,16 @@ public class RegistruPersonal {
 		return interviu_;		
 	}	
 	
-	public void stergeInterviu(Interviu interviu)
+	public void stergeInterviu(Interviu interviu) throws Exception 
 	{
-		entityManager.remove(interviu);
+		try{
+			entityManager.remove(interviu);
+		}catch(Exception ex){
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
 	}
 
 	//begin 
