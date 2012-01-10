@@ -122,5 +122,89 @@ public class TestPersonalEJBBusinessLogic {
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
 		}
 	}
+	
+	@Test
+	public void TESTangajareEJB() {
+		try
+		{
+			logger.logINFO("Start test: TESTangajareEJB");
+			
+			Collection<Candidat> listaCandidati= personalInstance.getListaCandidati();
+			for(Iterator<Candidat> i = listaCandidati.iterator(); i.hasNext();)
+			{
+				personalInstance.angajareEJB(i.next());				
+			}					
+			logger.logINFO("End test: TESTangajareEJB");
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
+	
+	@Test
+	public void TESTdemisionareEJB() {
+		try
+		{
+			logger.logINFO("Start test: TESTdemisionareEJB");
+			
+			Collection<CerereDemisie> listaCereri= personalInstance.getListaCereriDemisie();
+			for(Iterator<CerereDemisie> i = listaCereri.iterator(); i.hasNext();)
+			{
+				personalInstance.demisionareEJB(i.next());				
+			}					
+			logger.logINFO("End test: TESTdemisionareEJB");
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
+	
+	@Test
+	public void TESTconcediereEJB() {
+		try
+		{
+			logger.logINFO("Start test: TESTconcediereEJB");
+			
+			Collection<ContractMunca> listaContracte = personalInstance.getListaContracteMunca();
+			for(Iterator<ContractMunca> j = listaContracte.iterator(); j.hasNext();)
+			{
+				ContractMunca contract = j.next();
+				System.out.println(contract.getNrContract());
+				personalInstance.concediereEJB(contract);
+			}
+			logger.logINFO("End test: TESTconcediereEJB");
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
+	
+	@Test
+	public void TESTrelocalizare_promovareEJB() {
+		try
+		{
+			logger.logINFO("Start test: TESTrelocalizare_promovareEJB");
+			
+			Collection<ContractMunca> listaContracte = personalInstance.getListaContracteMunca();
+			for(Iterator<ContractMunca> j = listaContracte.iterator(); j.hasNext();)
+			{
+				ContractMunca contract = j.next();
+				System.out.println(contract.getNrContract());
+				personalInstance.relocalizare_promovareEJB(contract.get);
+			}
+			logger.logINFO("End test: TESTrelocalizare_promovareEJB");
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
 
 }

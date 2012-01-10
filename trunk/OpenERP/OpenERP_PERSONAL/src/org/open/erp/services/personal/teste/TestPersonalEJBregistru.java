@@ -60,16 +60,20 @@ public class TestPersonalEJBregistru {
 		try
 		{
 			logger.logINFO("Begin test: Inserari");			
+						
 			
 			TestPersonalImpl test = new TestPersonalImpl();
 			test.generareAnunturi();
 			test.initEvenimenteActivitati();		
+			
+			//DummyDepartament departament1 = new DummyDepartament(null, "Departament1", "atributiile vietii");
 			
 			Angajat	angajat = personalInstance.salveazaAngajat(test.angajat1);
 			Angajat	angajat2 = personalInstance.salveazaAngajat(test.angajat2);	
 			
 			Functie functie = personalInstance.salveazaFunctie(test.functie1);				
 			Interviu interviu = personalInstance.salveazaInterviu(test.interviu1);
+			
 			ProbaEvaluare	proba = personalInstance.salveazaProbaEvaluare(test.probaEvaluare1);
 						
 			DosarAngajat	dosar = test.dosar1;

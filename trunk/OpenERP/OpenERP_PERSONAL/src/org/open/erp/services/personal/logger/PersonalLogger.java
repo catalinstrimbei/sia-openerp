@@ -47,7 +47,7 @@ public class PersonalLogger {
 					ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 					URL url = classLoader.getResource("");
 					String path = url.getPath().toString();
-					if(false || path.length() > 4)
+					if(path.length() > 4)
 					{
 						path = path.substring(1, path.length() - 4);					
 						path = path + "Resources/";					
@@ -56,9 +56,8 @@ public class PersonalLogger {
 					}
 					else
 					{
-						path = "T:\\";
-					}
-					//path = "T:\\";
+						path = "C:\\";
+					}					
 					myAppender = new RollingFileAppender(layout, path + "LogFile_OpenERP_PERSONAL.log");
 					myAppender.setAppend(true);
 			        myAppender.setMaxFileSize("5MB");

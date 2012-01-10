@@ -99,7 +99,7 @@ public interface PersonalSrv {
 		 */
 		
 		
-	    CV getCVByCandidatEJB(Candidat candidat_) throws Exception;
+	    CV getCVByCandidatEJB(Candidat candidat_) throws Exception; //
 		
 		/**
 		 * Scop    Returneaza cv-ul pentru fiecare candidat
@@ -145,7 +145,7 @@ public interface PersonalSrv {
 		 * 
 		 */
 		
-	    Collection<Candidat> recrutareEJB(AnuntLocMunca anunt_) throws Exception;
+	    Collection<Candidat> recrutareEJB(AnuntLocMunca anunt_) throws Exception; //
 		
 
 		HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB ();
