@@ -319,4 +319,15 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	List<Retinere> getRetineriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception;
+
+	/**
+	 * returneaza salariile tuturor angajatilor pentru un an si o luna  
+	 * @param an 				Anul pentru care se returneaza salariile
+	 * @param luna 				Luna pentru care se returneaza salariile
+	 * 
+	 * @return  List<StatSalarii>
+	 * @throws Exception 
+	 * 
+	 */
+	List<StatSalarii> getStatAnLuna(Integer an, Integer luna) throws Exception;
 }
