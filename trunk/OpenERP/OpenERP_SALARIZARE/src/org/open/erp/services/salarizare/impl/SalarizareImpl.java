@@ -456,4 +456,9 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		}
 		return pontaj;
 	}
+	
+	public List<Pontaj> getPontajAnLuna(Integer an, Integer luna) {
+		List<Pontaj> pontaje = registru.getPontajAnLuna(an, luna);
+		return pontaje;
+	}
 }
