@@ -1,5 +1,6 @@
 package org.open.erp.services.salarizare;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +13,7 @@ import static javax.persistence.TemporalType.DATE;
 import javax.persistence.Transient;
 
 @Entity
-public class CentralizatorStatSalarii {
+public class CentralizatorStatSalarii implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idCentralizator;
