@@ -17,6 +17,7 @@ import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.Retinere;
 import org.open.erp.services.salarizare.SalarizareSrv;
 import org.open.erp.services.salarizare.Spor;
+import org.open.erp.services.salarizare.StatSalarii;
 import org.open.erp.services.salarizare.impl.RegistruSalarizare;
 import org.open.erp.services.salarizare.impl.SalarizareImpl;
 import javax.naming.InitialContext;
@@ -255,6 +256,16 @@ public class TestSalarizareEJB {
 		assertNotNull("Metoda de incarcare a retinerilor pentru angajat nu a functionat!", retineri);
 		
 		logger.info("End test: getRetineriAngajat");
+	}
+
+	@Test
+	public void testGetStatSalariiAnLuna() throws Exception {
+		logger.info("Begin test: getStatSalariiAnLuna");
+		List<StatSalarii> salarii = salarizareSrvInstance.getStatAnLuna(2011, 11);
+		
+		assertNotNull("Metoda de incarcare a salariilor dintr-o luna nu a functionat!", salarii);
+		
+		logger.info("End test: getStatSalariiAnLuna");
 	}
 	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
