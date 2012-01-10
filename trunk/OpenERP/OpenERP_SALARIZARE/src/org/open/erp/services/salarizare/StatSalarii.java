@@ -1,5 +1,7 @@
 package org.open.erp.services.salarizare;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 
 @Entity
-public class StatSalarii {
+public class StatSalarii implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idStatSalarii;
