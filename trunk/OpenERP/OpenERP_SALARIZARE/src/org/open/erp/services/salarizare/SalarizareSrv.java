@@ -336,9 +336,19 @@ public interface SalarizareSrv {
 	 * @param an 				Anul pentru care se returneaza statul de salarii
 	 * @param luna 				Luna pentru care se returneaza statul de salarii
 	 * 
-	 * @return  
+	 * @return CentralizatorStatSalarii 
 	 * @throws Exception 
 	 * 
 	 */
 	CentralizatorStatSalarii inregistreazaCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception;	
+	
+	/**
+	 * sterge un centralizator de salarii pornind de la id 
+	 * @param idCentralizator   id-ul centralizatorului care se doreste a fi sters 				I
+	 * 
+	 * @return  
+	 * @throws Exception 
+	 * 
+	 */
+	void stergeCentralizator(Integer idCentralizator) throws Exception;
 }
