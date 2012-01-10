@@ -20,13 +20,6 @@ import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.Cont.StatusSintetic;
 import org.open.erp.services.ctbgen.Cont.TipCont;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
-/*import org.open.erp.services.incasari.BiletLaOrdin;
-import org.open.erp.services.incasari.Cec;
-import org.open.erp.services.incasari.Chitanta;
-import org.open.erp.services.incasari.IncasariSrv;
-import org.open.erp.services.incasari.exception.IncasariException;
-import org.open.erp.services.incasari.teste.IncasariServiceFactory;
-import org.open.erp.services.incasari.teste.TestIncasariImpl;*/
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.plati.CEC;
