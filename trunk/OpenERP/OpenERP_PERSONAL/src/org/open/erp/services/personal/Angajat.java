@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 /**
@@ -20,6 +21,7 @@ public class Angajat extends Candidat implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer			marca;	
 	private Boolean			activ;
