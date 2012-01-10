@@ -48,6 +48,32 @@ public class TestPersonalEJBBusinessLogic {
 	}	
 
 	@Test
+	public void TESTgetCVuriPeAnuntLocMunca() {
+		try
+		{
+			logger.logINFO("Start test: TESTgetCVuriPeAnuntLocMunca");
+			Collection<AnuntLocMunca> listaAnunturi= personalInstance.getListaAnunturiLocMunca();			
+
+			for(Iterator<AnuntLocMunca> i = listaAnunturi.iterator(); i.hasNext();)
+			{
+				Collection<CV> listaCVuri = personalInstance.getCVuriPeAnuntLocMuncaEJB(i.next());
+				for(Iterator<CV> j = listaCVuri.iterator(); j.hasNext();)
+				{
+					CV cv = j.next();
+					//System.out.println(candidat.getIdCandidat() + candidat.getNume());
+				}
+				
+			}					
+			logger.logINFO("End test: TESTgetCVuriPeAnuntLocMunca");
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+		}
+	}
+	
+	@Test
 	public void TESTgetDosareAndContracteAngajatEJB() {
 		try
 		{			

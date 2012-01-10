@@ -1091,6 +1091,7 @@ public interface PersonalSrv {
 	 * @param _activitate //metoda ce determina daca un eveniment este aprobat sau nu in functie de suma alocata si estimata
 	 * 
 	 */
+	Collection<CV> getCVuriPeAnuntLocMuncaEJB(AnuntLocMunca anuntLocMunca_);
 
 	
 

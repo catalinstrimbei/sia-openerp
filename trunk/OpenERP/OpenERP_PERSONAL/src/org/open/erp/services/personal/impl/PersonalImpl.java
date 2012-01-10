@@ -97,16 +97,16 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ActivitateTeamBuilding getActivitateTeamBuildingById(
 			Integer idActivitate_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		ActivitateTeamBuilding result = new ActivitateTeamBuilding();
 		if (idActivitate_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getActivitateTeamBuildingById(idActivitate_);
 			
-			logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		return result;
 	}
@@ -115,9 +115,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<ActivitateTeamBuilding> getListaActivitatiTeamBuilding()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<ActivitateTeamBuilding> result = this.registruPersonal.getListaActivitatiTeamBuilding();
-		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return result;
 	}
 	
@@ -125,12 +125,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ActivitateTeamBuilding salveazaActivitateTeamBuilding(
 			ActivitateTeamBuilding activitate_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		ActivitateTeamBuilding result = new ActivitateTeamBuilding();
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaActivitateTeamBuilding(activitate_);
@@ -143,11 +143,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeActivitateTeamBuilding(ActivitateTeamBuilding activitate_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeActivitateTeamBuilding(activitate_);
@@ -161,12 +161,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ActivitateTraining getActivitateTrainingById(Integer idActivitate_)
 			throws Exception {		
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		ActivitateTraining result = new ActivitateTraining();
 		if (idActivitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getActivitateTrainingById(idActivitate_);
@@ -180,7 +180,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<ActivitateTraining> getListaActivitatiTraining()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<ActivitateTraining> result = this.registruPersonal.getListaActivitatiTraining();
 		logger.logDEBUG(">>>>>>End getListaActivitatiTraining");
 		return result;
@@ -190,12 +190,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ActivitateTraining salveazaActivitateTraining(
 			ActivitateTraining activitate_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		ActivitateTraining result = new ActivitateTraining();
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaActivitateTraining(activitate_);
@@ -208,11 +208,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeActivitateTraining(ActivitateTraining activitate_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeActivitateTraining(activitate_);
@@ -225,12 +225,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Angajat getAngajatByMarca(Integer marca_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Angajat result = new Angajat();
 		if (marca_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getAngajatById(marca_);
@@ -243,12 +243,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Angajat getAngajatById(Integer id_) throws Exception{
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Angajat result = new Angajat();
 		if (id_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getAngajatById(id_);
@@ -261,7 +261,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Angajat> getListaAngajati() throws Exception{
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<Angajat> result = this.registruPersonal.getListaAngajati();
 		logger.logDEBUG(">>>>>>End getListaAngajati");
 		return result;
@@ -270,12 +270,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Angajat salveazaAngajat(Angajat angajat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Angajat result = new Angajat();
 		if (angajat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaAngajat(angajat_);
@@ -287,11 +287,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeAngajat(Angajat angajat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (angajat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeAngajat(angajat_);
@@ -305,12 +305,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public AnuntLocMunca getAnuntLocMuncaById(Integer idAnunt_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		AnuntLocMunca result = new AnuntLocMunca();
 		if (idAnunt_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getAnuntLocMuncaById(idAnunt_);
@@ -324,7 +324,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<AnuntLocMunca> getListaAnunturiLocMunca()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<AnuntLocMunca> result = this.registruPersonal.getListaAnunturiLocMunca();
 		logger.logDEBUG(">>>>>>End getListaAnunturiLocMunca");
 		return result;
@@ -334,12 +334,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public AnuntLocMunca salveazaAnuntLocMunca(AnuntLocMunca anunt_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		AnuntLocMunca result = new AnuntLocMunca();
 		if (anunt_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaAnuntLocMunca(anunt_);
@@ -351,11 +351,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeAnuntLocMunca(AnuntLocMunca anunt_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (anunt_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeAnuntLocMunca(anunt_);
@@ -367,11 +367,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat getCandidatById(Integer idPersoanaCandidat_) throws Exception{
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Candidat result = new Candidat();
 		if (idPersoanaCandidat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getCandidatById(idPersoanaCandidat_);
@@ -384,11 +384,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat getCandidatByIdCandidat(Integer idCandidat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Candidat result = new Candidat();
 		if (idCandidat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getCandidatByIdCandidat(idCandidat_);
@@ -401,7 +401,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Candidat> getListaCandidati() throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<Candidat> result = this.registruPersonal.getListaCandidatilor();
 		logger.logDEBUG(">>>>>>End getListaCandidati");
 		return result;
@@ -410,11 +410,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat salveazaCandidat(Candidat candidat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Candidat result = new Candidat();
 		if (candidat_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaCandidat(candidat_);
@@ -426,10 +426,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeCandidat(Candidat candidat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (candidat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeCandidat(candidat_);
@@ -444,11 +444,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public CerereDemisie getCerereDemisieById(Integer idCerereDemisie_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		CerereDemisie result = new CerereDemisie();
 		if (idCerereDemisie_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getCerereDemisieById(idCerereDemisie_);
@@ -461,7 +461,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<CerereDemisie> getListaCereriDemisie() throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<CerereDemisie> result = this.registruPersonal.getListaCererilorDeDemisie();
 		logger.logDEBUG(">>>>>>End getListaCereriDemisie");
 		return result;
@@ -471,11 +471,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public CerereDemisie salveazaCerereDemisie(CerereDemisie cerereDemisie_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		CerereDemisie result = new CerereDemisie();
 		if (cerereDemisie_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaCerereDemisie(cerereDemisie_);
@@ -488,10 +488,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeCerereDemisie(CerereDemisie cerereDemisie_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (cerereDemisie_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeCerereDemisie(cerereDemisie_);
@@ -506,11 +506,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ContractMunca getContractMuncaById(Integer idContractMunca_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		ContractMunca result = new ContractMunca();
 		if (idContractMunca_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getContractMuncaById(idContractMunca_);
@@ -523,7 +523,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<ContractMunca> getListaContracteMunca() throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<ContractMunca> result = this.registruPersonal.getListaContracteMunca();
 		logger.logDEBUG(">>>>>>End getListaContracteMunca");
 		return result;
@@ -533,11 +533,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ContractMunca salveazaContractMunca(ContractMunca contractMunca_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		ContractMunca result = new ContractMunca();
 		if (contractMunca_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaContractMunca(contractMunca_);
@@ -550,10 +550,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void stergeContractMunca(ContractMunca contractMunca_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (contractMunca_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeContractMunca(contractMunca_);
@@ -567,11 +567,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public CV getCVById(Integer idCV_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		CV result = new CV();
 		if (idCV_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getCVById(idCV_);
@@ -584,7 +584,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Collection<CV> getListaCVuri() throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<CV> result = this.registruPersonal.getListaCVuri();
 		logger.logDEBUG(">>>>>>End getListaCvuri");
 		return result;
@@ -593,11 +593,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CV salveazaCV(CV cv_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		CV result = new CV();
 		if (cv_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaCV(cv_);
@@ -609,10 +609,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeCV(CV cv_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (cv_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeCV(cv_);
@@ -627,11 +627,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public DosarAngajat getDosarAngajatById(Integer idDosarAngajat_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		DosarAngajat result = new DosarAngajat();
 		if (idDosarAngajat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getDosarAngajatById(idDosarAngajat_);
@@ -644,7 +644,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<DosarAngajat> getListaDosareAngajat() throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<DosarAngajat> result = this.registruPersonal.getListaDosareAngajat();
 		logger.logDEBUG(">>>>>>End getListaCereriDemisie");
 		return result;
@@ -654,11 +654,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public DosarAngajat salveazaDosarAngajat(DosarAngajat dosarAngajat_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		DosarAngajat result = new DosarAngajat();
 		if (dosarAngajat_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaDosarAngajat(dosarAngajat_);
@@ -670,10 +670,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeDosarAngajat(DosarAngajat dosarAngajat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (dosarAngajat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeDosarAngajat(dosarAngajat_);
@@ -689,12 +689,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public Functie adaugaFunctie(Integer idFunctie, String numeFunctie) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Functie functie = new Functie(idFunctie, numeFunctie);
 		if (idFunctie == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{
 			if (this.registruPersonal == null)
@@ -712,11 +712,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Eveniment getEvenimentById(
 			Integer idEveniment_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Eveniment result = new Eveniment();
 		if (idEveniment_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getEvenimentById(idEveniment_);
@@ -730,7 +730,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Eveniment> getListaEvenimente()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<Eveniment> result = this.registruPersonal.getListaEvenimente();
 		logger.logDEBUG(">>>>>>End getListaEvenimente");
 		return result;
@@ -740,11 +740,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Eveniment salveazaEveniment(
 			Eveniment eveniment_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Eveniment result = new Eveniment();
 		if (eveniment_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaEveniment(eveniment_);
@@ -757,11 +757,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeEveniment(Eveniment eveniment_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (eveniment_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeEveniment(eveniment_);
@@ -774,11 +774,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Functie getFunctieById(Integer idFunctie_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Functie result = new Functie();
 		if (idFunctie_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getFunctieById(idFunctie_); 
@@ -792,7 +792,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Functie> getListaFunctii()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<Functie> result = this.registruPersonal.getListaFunctii();
 		logger.logDEBUG(">>>>>>End getListaFunctii");
 		return result;
@@ -802,12 +802,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Functie salveazaFunctie(
 			Functie functie_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Functie result = new Functie();
 		logger.logDEBUG("Am trecut de new Functie()");
 		if (functie_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaFunctie(functie_);
@@ -820,11 +820,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeFunctie(Functie functie_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (functie_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeFunctie(functie_);
@@ -838,11 +838,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Instructor getInstructorById(
 			Integer Id_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Instructor result = new Instructor(); 
 		if (Id_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getInstructorById(Id_);
@@ -856,7 +856,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Instructor> getListaInstructori()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<Instructor> result = this.registruPersonal.getListaInstructori();
 		logger.logDEBUG(">>>>>>End getListaInstructori");
 		return result;
@@ -866,11 +866,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Instructor salveazaInstructor(
 			Instructor instructor_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Instructor result = new Instructor();
 		if (instructor_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaInstructor(instructor_);
@@ -883,11 +883,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeInstructor(Instructor instructor_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (instructor_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeInstructor(instructor_);
@@ -900,11 +900,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Interviu getInterviuById(Integer idInterviu_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Interviu result = new Interviu();
 		if (idInterviu_ == null){				
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.getInterviuById(idInterviu_);
@@ -918,7 +918,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Interviu> getListaInterviuri()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<Interviu> result = this.registruPersonal.getListaInterviuri();
 		logger.logDEBUG(">>>>>>End getListaInterviuri");
 		return result;
@@ -928,11 +928,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Interviu salveazaInterviu(
 			Interviu interviu_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Interviu result = new Interviu();
 		if (interviu_ == null){			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			result = this.registruPersonal.salveazaInterviu(interviu_);
@@ -945,11 +945,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeInterviu(Interviu interviu_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (interviu_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeInterviu(interviu_);
@@ -964,11 +964,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public InterviuCandidat getInterviuCandidatById(Integer idInterviuCandidat_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		InterviuCandidat interviuCandidat_ = new InterviuCandidat();
 		if (idInterviuCandidat_ == null){	
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			interviuCandidat_ = this.registruPersonal.getInterviuCandidatById(idInterviuCandidat_);
@@ -982,7 +982,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<InterviuCandidat> getListaInterviuriCandidati()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<InterviuCandidat> result = this.registruPersonal.getListaInterviuCandidat();
 		logger.logDEBUG(">>>>>>End getListaAnunturiLocMunca");
 		return result;
@@ -993,11 +993,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public InterviuCandidat salveazaInterviuCandidat(
 			InterviuCandidat interviuCandidat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());		
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());		
 		InterviuCandidat result = new InterviuCandidat();
 		if (interviuCandidat_ == null){
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{
 			
@@ -1013,11 +1013,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeInterviuCandidat(InterviuCandidat interviuCandidat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (interviuCandidat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeInterviuCandidat(interviuCandidat_);
@@ -1031,11 +1031,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ProbaEvaluare getProbaEvaluareById(Integer idProba_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		ProbaEvaluare probaEvaluare_ = new ProbaEvaluare();
 		if (idProba_ == null){	
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			probaEvaluare_ = this.registruPersonal.getProbaEvaluareById(idProba_);
@@ -1048,7 +1048,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<ProbaEvaluare> getListaProbeEvaluare()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<ProbaEvaluare> result = this.registruPersonal.getListaProbaEvaluare();
 		logger.logDEBUG(">>>>>>End getListaProbeEvaluare");
 		return result;
@@ -1057,10 +1057,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ProbaEvaluare salveazaProbaEvaluare(ProbaEvaluare probaEvaluare_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());	
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());	
 		if (probaEvaluare_ == null){
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{
 			if (this.registruPersonal == null)
@@ -1074,11 +1074,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeProbaEvaluare(ProbaEvaluare proba_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (proba_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeProbaEvaluare(proba_);
@@ -1092,11 +1092,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public RezultatProbaEvaluare getRezultatProbaEvaluareById(Integer id_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		RezultatProbaEvaluare rezultatProbaEvaluare_ = new RezultatProbaEvaluare();
 		if (id_ == null){	
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			rezultatProbaEvaluare_ = this.registruPersonal.getRezultatProbaEvaluareById(id_);
@@ -1109,7 +1109,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<RezultatProbaEvaluare> getListaRezultateProbeEvaluare()
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<RezultatProbaEvaluare> result = this.registruPersonal.getListaRezultatProbaEvaluare();
 		logger.logDEBUG(">>>>>>End getListaRezultateProbeEvaluare");
 		return result;
@@ -1119,10 +1119,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public RezultatProbaEvaluare salveazaRezultatProbaEvaluare(RezultatProbaEvaluare rezultatProbaEvaluare_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());		
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());		
 		if (rezultatProbaEvaluare_ == null){
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{
 			if (this.registruPersonal == null)
@@ -1136,11 +1136,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void stergeRezultatProbaEvaluare(RezultatProbaEvaluare rezultat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (rezultat_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			this.registruPersonal.stergeRezultatProbaEvaluare(rezultat_);
@@ -1154,7 +1154,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTeamBuilding creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		ActivitateTeamBuilding	activitateTeamBld = new ActivitateTeamBuilding() ;
 		if (nrInscrisi_ <= 0){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -1177,7 +1177,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Date			data;
 		try
 		{
-			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			if(cerereDemisie_.getDataCerere() == null)
 			{
 				data = Calendar.getInstance().getTime();
@@ -1220,7 +1220,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 		}
@@ -1231,7 +1231,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public void concediere(ContractMunca contractMunca_) {
 		try
 		{
-			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			Angajat 		angajat = contractMunca_.getAngajat();
 			
 			contractMunca_.setDataTerminare(Calendar.getInstance().getTime());
@@ -1253,7 +1253,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 		}
@@ -1265,7 +1265,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public  Collection<AnuntLocMunca> getPosturiVacante(Date dataVizata_, Collection<AnuntLocMunca> ListaInit_) {
 		try
 		{
-			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			Collection<AnuntLocMunca> rezultat = new ArrayList<AnuntLocMunca>();
 			
 			Iterator<AnuntLocMunca> iterator = ListaInit_.iterator();
@@ -1281,7 +1281,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
@@ -1292,7 +1292,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public Collection<Candidat> getCandidatipeFunctie(AnuntLocMunca anuntLocMunca_, Collection<CV> ListaInit_) {
 		try
 		{
-			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
 			
 			Iterator<CV> iterator = ListaInit_.iterator();
@@ -1310,7 +1310,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
@@ -1322,7 +1322,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public Collection<Candidat> recrutare(Date dataAnunt_, Candidat candidat_, Collection<InterviuCandidat> ListaInit_) {
 		try
 		{
-			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
 			
 			Iterator<InterviuCandidat> iterator = ListaInit_.iterator();
@@ -1341,7 +1341,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
@@ -1354,7 +1354,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartament(
 			Collection<ProbaEvaluare> probeEvaluareInit_, Collection<DummyDepartament> departamenteInit) 
 	{
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		
 		DummyDepartament 	departamentCurent;
 		ProbaEvaluare	probaEvaluare;
@@ -1385,7 +1385,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	@Override
 	public Collection<ContractMunca> getListaContracteByAngajat(Angajat angajat_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.ListaContracte();
 		Iterator <ContractMunca> iteratorMunca = test.contracteMunca.iterator();
@@ -1407,7 +1407,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public ContractMunca getContractAngajatActiv(Angajat angajat_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.ListaContracte();
 		
@@ -1439,7 +1439,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public CV getCVByCandidat (Candidat candidat_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		TestPersonalImpl test = new TestPersonalImpl();
 	
 		test.generareAnunturi();
@@ -1459,7 +1459,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	@Override
 	public void angajare(Candidat candidat_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Angajat angajat;
 		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
@@ -1479,7 +1479,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public DosarAngajat getDosarByAngajat(Angajat angajat_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.ListaDosare();
 		Iterator <DosarAngajat> iteratorDosar = test.dosareAngajati.iterator();
@@ -1496,7 +1496,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void activareAngajati(Collection<Angajat> ListaAngajati) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Iterator<Angajat> iterator = ListaAngajati.iterator();
 		Collection<ContractMunca> contracte = new ArrayList<ContractMunca>();
 		Integer nrActivari = 0; // variabila utilizata la metoda angajare
@@ -1539,7 +1539,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProba(
 			Collection<RezultatProbaEvaluare> angajatProbaInit_,
 			Collection<ProbaEvaluare> probeEvaluareInit_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		//Collection<ProbaEvaluare> ListaProbelorEvaluate = new ArrayList<ProbaEvaluare>();
 		HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> rezultat = new HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>>();
 		Collection<RezultatProbaEvaluare> angajatiRezultate = new ArrayList<RezultatProbaEvaluare>();
@@ -1566,7 +1566,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ContractMunca relocalizare_promovare(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_)
 	 {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Angajat angajat = new Angajat();
 		try
 		{
@@ -1574,7 +1574,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());					
 		}
@@ -1624,14 +1624,14 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			Collection<String> obiective_, Collection<String> responsabilitati_,
 			Collection<String> cunostinte_, Collection<String> deprinderi_,
 			Collection<String> aptitudini_, DummyDepartament departament) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Functie functieNoua = new Functie (1,//va fi modificat cu BD
 				numeFunctie_, pozitiaInCOR_, obiective_, responsabilitati_, cunostinte_, deprinderi_, aptitudini_, departament);
 		return functieNoua;
 	}
 	@Override
 	public Collection<Eveniment> getEvenimenteAnuale(Integer _year) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<Eveniment> evenimente = new ArrayList<Eveniment>();
 
 		if(_year ==0)
@@ -1645,7 +1645,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void aprobareEveniment(Eveniment _eveniment) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Iterator <Activitate> activitatiEveniment =_eveniment.getActivitati().iterator();
 		Double sumaActivitati = 0.00;
 		while (activitatiEveniment.hasNext())
@@ -1668,7 +1668,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(">>>>>>Start getContractAngajatActivEJB din personal impl");
 		if (angajat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			Collection<ContractMunca> listaContracteAngajat = this.registruPersonalEJB.getListaContracteAngajatEJB(angajat_);
@@ -1712,10 +1712,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public CV getCVByCandidatEJB(Candidat candidat_) throws Exception{
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());	
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());	
 	if (candidat_ == null){					
 		sessionContext.setRollbackOnly();
-		logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 	else{			
 		Collection<CV> listaCVuriCandidat = this.registruPersonalEJB.getListaCVuriCandidatEJB(candidat_);
@@ -1738,10 +1738,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (angajat_ == null){					
 			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		}
 		else{			
 			Collection<DosarAngajat> listaDosareAngajati = this.registruPersonal.getListaDosareAngajat();
@@ -1762,7 +1762,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void activareAngajatiEJB() throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<Angajat> listaAngajati = this.registruPersonal.getListaAngajati();
 		Iterator<Angajat> iterator = listaAngajati.iterator();
 		Integer nrActivari = 0; // variabila 
@@ -1801,7 +1801,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Candidat validareRecrutareEJB(Date dataAnunt_, Candidat candidat_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try
 		{
 			Collection<InterviuCandidat> listaInterviuri = this.registruPersonal.getListaInterviuCandidat();		
@@ -1823,7 +1823,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
@@ -1836,7 +1836,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Candidat> recrutareEJB(AnuntLocMunca anunt_)
 			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try
 		{
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
@@ -1857,7 +1857,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
@@ -1874,7 +1874,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public HashMap<DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB() {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try
 		{
 			Collection<DummyDepartament> listaDepartamente =  this.registruPersonal.getListaDepartamente();
@@ -1901,7 +1901,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
@@ -1910,7 +1910,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProbaEJB() {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try{
 			//Collection <RezultatProbaEvaluare> rezultateProbaEvaluare = this.registruPersonal.getListaRezultatProbaEvaluare();
 			Collection <ProbaEvaluare> probeEvaluare = this.registruPersonal.getListaProbaEvaluare();
@@ -1928,7 +1928,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			return rezultat;
 	
 		}catch (Exception ex){
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
@@ -1937,7 +1937,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	@Override
 	public Collection<AnuntLocMunca> getPosturiVacanteEJB(Date dataVizata_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try
 		{
 			Collection<AnuntLocMunca> listaInit = this.registruPersonal.getListaAnunturiLocMunca();
@@ -1957,7 +1957,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
@@ -1965,7 +1965,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	@Override
 	public Collection<Candidat> getCandidatiPeAnuntLocMuncaEJB(AnuntLocMunca anuntLocMunca_){
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try
 		{
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
@@ -1984,15 +1984,36 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
 		}		
 	}
+	
+	@Override
+	public Collection<CV> getCVuriPeAnuntLocMuncaEJB(AnuntLocMunca anuntLocMunca_){
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		try
+		{
+			Collection<CV> rezultat = new ArrayList<CV>();
+			
+			rezultat = this.registruPersonalEJB.getCVuriPeAnuntLocMunca(anuntLocMunca_);
+			
+			return rezultat;
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
+			return null;
+		}		
+	}
+	
 	@Override
 	public Collection<Angajat> getAngajatipeFunctieEJB(Functie functie_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try{
 			Collection<Angajat> rezultat = new ArrayList<Angajat>();
 			Collection<ContractMunca> listaContractMuncapeFunctie = new ArrayList<ContractMunca>();
@@ -2011,7 +2032,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			return rezultat;
 			
 		}catch(Exception ex){
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
@@ -2026,7 +2047,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void angajareEJB(Candidat candidat_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try{
 		if(candidat_ == null)
 			return;
@@ -2061,7 +2082,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		dosar = this.registruPersonal.salveazaDosarAngajat(dosar);
 		logger.logDEBUG("Am trecut de dosar = this.registruPersonal.salveazaDosarAngajat(dosar);");
 		}catch(Exception ex){
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			
@@ -2071,7 +2092,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void demisionareEJB(CerereDemisie cerereDemisie_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		ContractMunca	contract = cerereDemisie_.getContract();		
 		Date			data;
 		try
@@ -2104,7 +2125,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			angajat.setActiv(false);
 			angajat = this.registruPersonal.salveazaAngajat(angajat);
 		}catch(Exception ex){
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 		}
@@ -2112,7 +2133,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	@Override
 	public void concediereEJB(ContractMunca contractMunca_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try
 		{		
 			contractMunca_.setDataTerminare(Calendar.getInstance().getTime());						
@@ -2123,7 +2144,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			angajat.setActiv(false);
 			angajat = this.registruPersonal.salveazaAngajat(angajat);
 		}catch(Exception ex){
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 		
@@ -2134,7 +2155,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public ContractMunca relocalizare_promovareEJB(Integer marca_,
 			Functie functieNoua_, ContractMunca contractVizat_,
 			boolean promovare_, double salarBaza_, double tarifOrar_) {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Angajat angajat = new Angajat();
 		try
 		{
@@ -2142,7 +2163,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());				
 		}
@@ -2189,7 +2210,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 			catch(Exception ex)
 		{
-				logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+				logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 				logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 				ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 				return null;		
@@ -2202,7 +2223,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Eveniment> getEvenimenteAnualeEJB(Integer _year)throws Exception
 	{
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<Eveniment> evenimente = new ArrayList<Eveniment>();
 		try{
 
@@ -2212,7 +2233,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			}	
 			
 		}catch(Exception ex){
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 		}
@@ -2221,7 +2242,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void aprobareEvenimentEJB(Eveniment _eveniment) throws Exception
 	{
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try{
 			Iterator<Activitate> activitatiEveniment = this.registruPersonalEJB.getActivitatiByEvenimentEJB(_eveniment.getIdEveniment()).iterator();
 			Double sumaActivitati = 0.00;
@@ -2236,7 +2257,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			}		
 			System.out.println(_eveniment.getStatusEveniment());	
 		}catch(Exception ex){
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 
