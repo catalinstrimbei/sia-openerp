@@ -1,0 +1,20 @@
+Echipa FinPlati
+
+= Introduction =
+
+
+= Details =
+
+1. Comfirmarea unei plati
+
+2. Inregistrare chitanta
+
+3. Inregistrare CEC
+
+4. Inregistrare Ordin de plata
+
+5. Inregistrare Extras de cont
+	
+6. Compensari cu partenerii
+	
+7. Plata unui furnizor
