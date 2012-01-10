@@ -366,7 +366,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public CentralizatorStatSalarii getCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception {
+	public CentralizatorStatSalarii inregistreazaCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception {
 		
 		logger.debug("Generare centralizator salarii");
 		Double totalCAS=0.0;
@@ -475,5 +475,10 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	public List<StatSalarii> getStatAnLuna(Integer an, Integer luna) {
 		List<StatSalarii> salarii = registru.getStatAnLuna(an, luna);
 		return salarii;
+	}
+	
+	public CentralizatorStatSalarii getCentralizatorStatSalariiLuna(Integer an, Integer luna) {
+		CentralizatorStatSalarii centralizator = registru.getCentralizatorStatSalarii(an, luna);
+		return centralizator;
 	}
 }
