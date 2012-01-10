@@ -268,7 +268,7 @@ public class TestPersonalEJBBusinessLogic {
 		}
 
 	}
-
+/*
 	@Test
 	public void TESTgetCandidatiPeAnuntLocMunca(){
 		try{
@@ -298,7 +298,7 @@ public class TestPersonalEJBBusinessLogic {
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
 		}
 	}
-
+*/
 	@Test
 	public void TESTgetAngajatiPeFunctieEJB(){
 		try{
@@ -310,6 +310,7 @@ public class TestPersonalEJBBusinessLogic {
 			{		
 				Collection<Angajat> angajati = personalInstance.getAngajatipeFunctieEJB(iteratorFunctii.next());
 				Iterator <Angajat> iteratorAngajati = angajati.iterator();
+				System.out.println(iteratorFunctii.next().getNumeFunctie());
 				while (iteratorAngajati.hasNext())
 				{
 					Angajat angajatCurent = iteratorAngajati.next();

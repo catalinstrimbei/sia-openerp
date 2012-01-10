@@ -1968,7 +1968,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Candidat> getCandidatiPeAnuntLocMuncaEJB(AnuntLocMunca anuntLocMunca_){
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
-		logger.logDEBUG("ANUNT:" + anuntLocMunca_.toString());
 		try
 		{
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
