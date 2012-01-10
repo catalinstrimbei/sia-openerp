@@ -1004,7 +1004,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			if (this.registruPersonal == null)
 				registruPersonal = new RegistruPersonal(em);
 			result = this.registruPersonal.salveazaInterviuCandidat(interviuCandidat_);
-			logger.logDEBUG(">>>>>>End creare Activitate Team Bld");
+			logger.logDEBUG(">>>>>>End creare InterviuCandidat");
 		}
 		return result;
 	}

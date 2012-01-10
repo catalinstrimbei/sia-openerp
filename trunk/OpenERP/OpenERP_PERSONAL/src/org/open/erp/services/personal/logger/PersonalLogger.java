@@ -69,7 +69,7 @@ public class PersonalLogger {
 			        logger.addAppender(myAppender);
 					logger.setLevel(Level.ALL);
 					logger.info("**************************************************************************************");
-					logger.info("LOG begins at " + Calendar.getInstance().getTime().toString());
+					logger.info("LOG begins on " + Calendar.getInstance().getTime().toString());
 					logger.info("**************************************************************************************");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
