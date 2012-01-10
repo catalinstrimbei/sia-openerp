@@ -143,7 +143,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void stergeActivitateTeamBuilding(ActivitateTeamBuilding activitate_)
 			throws Exception {
-		// TODO Auto-generated method stub
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (activitate_ == null){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -1153,8 +1152,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ActivitateTeamBuilding creareActivitateTeamBld(Integer nrInscrisi_) throws PersonalExceptions {
-		// TODO Auto-generated method stub
-		logger.logDEBUG(">>>>>>Start creare Activitate Team Bld");
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		ActivitateTeamBuilding	activitateTeamBld = new ActivitateTeamBuilding() ;
 		if (nrInscrisi_ <= 0){
 			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
@@ -1177,6 +1175,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		Date			data;
 		try
 		{
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 			if(cerereDemisie_.getDataCerere() == null)
 			{
 				data = Calendar.getInstance().getTime();
@@ -1217,10 +1216,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			System.out.println("Nume------------ " + angajat.getNume().toString());
 			System.out.println("Prenume--------- " + angajat.getPrenume().toString());	
 		}
-		catch(Exception e)
+		catch(Exception ex)
 		{
-			e.printStackTrace();
-			logger.logERROR(e.getMessage(), e);
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 		}
 		
 	}
@@ -1229,7 +1229,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public void concediere(ContractMunca contractMunca_) {
 		try
 		{
-		
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 			Angajat 		angajat = contractMunca_.getAngajat();
 			
 			contractMunca_.setDataTerminare(Calendar.getInstance().getTime());
@@ -1249,10 +1249,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			System.out.println("Nume------------ " + angajat.getNume().toString());
 			System.out.println("Prenume--------- " + angajat.getPrenume().toString());
 		}
-		catch(Exception e)
+		catch(Exception ex)
 		{
-			e.printStackTrace();
-			logger.logERROR(e.getMessage(), e);
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 		}
 	}
 
@@ -1262,6 +1263,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public  Collection<AnuntLocMunca> getPosturiVacante(Date dataVizata_, Collection<AnuntLocMunca> ListaInit_) {
 		try
 		{
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 			Collection<AnuntLocMunca> rezultat = new ArrayList<AnuntLocMunca>();
 			
 			Iterator<AnuntLocMunca> iterator = ListaInit_.iterator();
@@ -1275,10 +1277,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			}
 			return rezultat;
 		}
-		catch(Exception e)
+		catch(Exception ex)
 		{
-			e.printStackTrace();
-			logger.logERROR(e.getMessage(), e);
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
 		}
 	}
@@ -1287,6 +1290,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public Collection<Candidat> getCandidatipeFunctie(AnuntLocMunca anuntLocMunca_, Collection<CV> ListaInit_) {
 		try
 		{
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
 			
 			Iterator<CV> iterator = ListaInit_.iterator();
@@ -1302,10 +1306,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			}
 			return rezultat;
 		}
-		catch(Exception e)
+		catch(Exception ex)
 		{
-			e.printStackTrace();
-			logger.logERROR(e.getMessage(), e);
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
 		}
 	}
@@ -1315,6 +1320,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public Collection<Candidat> recrutare(Date dataAnunt_, Candidat candidat_, Collection<InterviuCandidat> ListaInit_) {
 		try
 		{
+			logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
 			
 			Iterator<InterviuCandidat> iterator = ListaInit_.iterator();
@@ -1331,10 +1337,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			}
 			return rezultat;
 		}
-		catch(Exception e)
+		catch(Exception ex)
 		{
-			e.printStackTrace();
-			logger.logERROR(e.getMessage(), e);
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
 		}
 	}
@@ -1345,6 +1352,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartament(
 			Collection<ProbaEvaluare> probeEvaluareInit_, Collection<DummyDepartament> departamenteInit) 
 	{
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		
 		DummyDepartament 	departamentCurent;
 		ProbaEvaluare	probaEvaluare;
 		
@@ -1374,6 +1383,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	@Override
 	public Collection<ContractMunca> getListaContracteByAngajat(Angajat angajat_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.ListaContracte();
 		Iterator <ContractMunca> iteratorMunca = test.contracteMunca.iterator();
@@ -1395,6 +1405,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public ContractMunca getContractAngajatActiv(Angajat angajat_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.ListaContracte();
 		
@@ -1426,6 +1437,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public CV getCVByCandidat (Candidat candidat_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		TestPersonalImpl test = new TestPersonalImpl();
 	
 		test.generareAnunturi();
@@ -1445,6 +1457,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	@Override
 	public void angajare(Candidat candidat_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Angajat angajat;
 		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
@@ -1464,6 +1477,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public DosarAngajat getDosarByAngajat(Angajat angajat_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		TestPersonalImpl test = new TestPersonalImpl();
 		test.ListaDosare();
 		Iterator <DosarAngajat> iteratorDosar = test.dosareAngajati.iterator();
@@ -1480,7 +1494,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void activareAngajati(Collection<Angajat> ListaAngajati) {
-
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Iterator<Angajat> iterator = ListaAngajati.iterator();
 		Collection<ContractMunca> contracte = new ArrayList<ContractMunca>();
 		Integer nrActivari = 0; // variabila utilizata la metoda angajare
@@ -1523,6 +1537,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProba(
 			Collection<RezultatProbaEvaluare> angajatProbaInit_,
 			Collection<ProbaEvaluare> probeEvaluareInit_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		//Collection<ProbaEvaluare> ListaProbelorEvaluate = new ArrayList<ProbaEvaluare>();
 		HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> rezultat = new HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>>();
 		Collection<RezultatProbaEvaluare> angajatiRezultate = new ArrayList<RezultatProbaEvaluare>();
@@ -1549,7 +1564,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public ContractMunca relocalizare_promovare(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_)
 	 {
-
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Angajat angajat = new Angajat();
 		try
 		{
@@ -1557,8 +1572,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		catch(Exception ex)
 		{
-			logger.logINFO("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();			
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());					
 		}
 		if(angajat == null)
 		{
@@ -1606,12 +1622,14 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			Collection<String> obiective_, Collection<String> responsabilitati_,
 			Collection<String> cunostinte_, Collection<String> deprinderi_,
 			Collection<String> aptitudini_, DummyDepartament departament) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Functie functieNoua = new Functie (1,//va fi modificat cu BD
 				numeFunctie_, pozitiaInCOR_, obiective_, responsabilitati_, cunostinte_, deprinderi_, aptitudini_, departament);
 		return functieNoua;
 	}
 	@Override
 	public Collection<Eveniment> getEvenimenteAnuale(Integer _year) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<Eveniment> evenimente = new ArrayList<Eveniment>();
 
 		if(_year ==0)
@@ -1625,7 +1643,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void aprobareEveniment(Eveniment _eveniment) {
-		
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Iterator <Activitate> activitatiEveniment =_eveniment.getActivitati().iterator();
 		Double sumaActivitati = 0.00;
 		while (activitatiEveniment.hasNext())
@@ -1692,7 +1710,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public CV getCVByCandidatEJB(Candidat candidat_) throws Exception{
-		
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());	
 	if (candidat_ == null){					
 		sessionContext.setRollbackOnly();
 		logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
@@ -1720,6 +1738,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		if (angajat_ == null){					
 			sessionContext.setRollbackOnly();
 			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
@@ -1743,6 +1762,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void activareAngajatiEJB() throws Exception {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<Angajat> listaAngajati = this.registruPersonal.getListaAngajati();
 		Iterator<Angajat> iterator = listaAngajati.iterator();
 		Integer nrActivari = 0; // variabila 
@@ -1782,7 +1802,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public Collection<Candidat> recrutareEJB(Date dataAnunt_,
 			Candidat candidat_, Collection<InterviuCandidat> ListaInit_)
 			throws Exception {
-		// TODO Auto-generated method stub
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try
 		{
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
@@ -1801,10 +1821,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			}
 			return rezultat;
 		}
-		catch(Exception e)
+		catch(Exception ex)
 		{
-			e.printStackTrace();
-			logger.logERROR(e.getMessage(), e);
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[2].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 			return null;
 		}
 		
@@ -1824,6 +1845,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public HashMap<DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB() {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try
 		{
 			Collection<DummyDepartament> listaDepartamente =  this.registruPersonal.getListaDepartamente();
@@ -1859,6 +1881,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProbaEJB() {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try{
 			//Collection <RezultatProbaEvaluare> rezultateProbaEvaluare = this.registruPersonal.getListaRezultatProbaEvaluare();
 			Collection <ProbaEvaluare> probeEvaluare = this.registruPersonal.getListaProbaEvaluare();
@@ -1885,6 +1908,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	@Override
 	public Collection<AnuntLocMunca> getPosturiVacanteEJB(Date dataVizata_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try
 		{
 			Collection<AnuntLocMunca> listaInit = this.registruPersonal.getListaAnunturiLocMunca();
@@ -1912,6 +1936,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	@Override
 	public Collection<Candidat> getCandidatipeFunctieEJB(AnuntLocMunca anuntLocMunca_){
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try
 		{
 			Collection<Candidat> rezultat = new ArrayList<Candidat>();
@@ -1938,6 +1963,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	@Override
 	public Collection<Angajat> getAngajatipeFunctieEJB(Functie functie_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try{
 			Collection<Angajat> rezultat = new ArrayList<Angajat>();
 			Collection<ContractMunca> listaContractMuncapeFunctie = new ArrayList<ContractMunca>();
@@ -1975,6 +2001,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void angajareEJB(Candidat candidat_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try{
 		Angajat angajat;
 		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
@@ -2003,6 +2030,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@Override
 	public void demisionareEJB(CerereDemisie cerereDemisie_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		ContractMunca	contract = cerereDemisie_.getContract();
 		Angajat 		angajat = contract.getAngajat();
 		Date			data;
@@ -2043,6 +2071,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	@Override
 	public void concediereEJB(ContractMunca contractMunca_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try
 		{
 		
@@ -2065,6 +2094,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public ContractMunca relocalizare_promovareEJB(Integer marca_,
 			Functie functieNoua_, ContractMunca contractVizat_,
 			boolean promovare_, double salarBaza_, double tarifOrar_) {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Angajat angajat = new Angajat();
 		try
 		{
@@ -2132,6 +2162,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public Collection<Eveniment> getEvenimenteAnualeEJB(Integer _year)throws Exception
 	{
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Collection<Eveniment> evenimente = new ArrayList<Eveniment>();
 		try{
 
@@ -2150,6 +2181,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	@Override
 	public void aprobareEvenimentEJB(Eveniment _eveniment) throws Exception
 	{
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		try{
 			Iterator<Activitate> activitatiEveniment = this.registruPersonalEJB.getActivitatiByEvenimentEJB(_eveniment.getIdEveniment()).iterator();
 			Double sumaActivitati = 0.00;
