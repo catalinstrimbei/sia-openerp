@@ -2120,13 +2120,13 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		//logger.logDEBUG("inainte de cast");
 		//Angajat angajat1 = (Angajat) candidat_;
 		//logger.logDEBUG("dupa cast");
-		angajat = new Angajat (null, candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
+		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
 				null, null, 0);
 		//em.persist(angajat);
-		angajat = registruPersonal.salveazaAngajat(angajat);
+		angajat = registruPersonal.salveazaAngajatFromCandidat(angajat);
 		//angajat = registruPersonal.salveazaAngajat(angajat1);
-		logger.logDEBUG("Am trecut de angajat = registruPersonal.salveazaAngajat(angajat);");
+		logger.logDEBUG("Am trecut de angajat = registruPersonal.salveazaAngajatFromCandidat(angajat);");
 		//candidat_ = registruPersonal.getCandidatById(id)
 		CV cv = getCVByCandidatEJB(candidat_);
 		logger.logDEBUG("Am trecut de CV cv = getCVByCandidatEJB(candidat_) ");

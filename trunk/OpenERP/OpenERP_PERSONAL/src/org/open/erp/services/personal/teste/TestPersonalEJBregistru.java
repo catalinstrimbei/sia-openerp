@@ -54,8 +54,9 @@ public class TestPersonalEJBregistru {
 
 	@Test
 	public void testFunctieById() throws Exception {
-		Functie functie = personalInstance.getFunctieById(101);
-		System.out.println("Nume functie: " + functie.getNumeFunctie().toString());
+		Functie functie = personalInstance.getFunctieById(3);
+		if(functie != null)
+			System.out.println("Nume functie: " + functie.getNumeFunctie().toString());
 	}
 	@SuppressWarnings("deprecation")
 	@Test	

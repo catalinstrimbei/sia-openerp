@@ -248,6 +248,66 @@ public class RegistruPersonal {
 		}
 		return angajat_;
 	}
+	
+	Angajat							salveazaAngajatFromCandidat(Angajat angajat_) throws Exception
+	{
+		logger.logINFO("Am intrat pe  salveazaAngajatFromCandidat in RegistruPersonal" );
+		Integer idAngajat;
+		try
+		{		
+			logger.logINFO("Am intrat pe  try in salveazaAngajatFromCandidat in RegistruPersonal" );
+			if(angajat_ == null)
+			{
+				logger.logINFO(" angajat_ is null");
+				return null;
+			}
+			else if (angajat_.getId() != null)
+			{
+				idAngajat = angajat_.getId();
+				logger.logINFO(" angajat_.getId() = " +idAngajat.toString());
+			}
+			else
+			{
+				logger.logINFO(" angajat_.getId() =  null");
+				return null;
+			}
+			Integer activ = 0;
+			logger.logINFO("Am ajuns la if(angajat_.getActiv() == true)" );
+			if(angajat_.getActiv() == null || angajat_.getActiv() == false)
+				activ = 0;
+			else
+				activ = 1;
+			logger.logINFO("Am ajuns la String sqlQuery = " );
+			String sqlQuery = "INSERT INTO Angajat VALUES(" + activ + ',' + angajat_.getMarca()
+					+ ',' + angajat_.getNumarCopii() + ',' + idAngajat + ')';
+			
+			logger.logINFO("Am ajuns la entityManager.createNativeQuery( cu SQL " + sqlQuery);
+			//angajat_ = (Angajat) 
+					entityManager.createNativeQuery(sqlQuery).executeUpdate();					
+			
+			/*
+			entityManager.createNativeQuery("INSERT INTO Angajat VALUES(" +
+					":activ , :marca , :nrcopii , :id );")
+					.setParameter("activ", activ)
+					.setParameter("marca", angajat_.getMarca())
+					.setParameter("nrcopii", angajat_.getNumarCopii())
+					.setParameter("id", idAngajat).executeUpdate()
+					;	
+					*/						
+			logger.logINFO("Am trecut de entityManager.createNativeQuery(" );
+			angajat_ = this.getAngajatById(idAngajat);
+			if(angajat_ != null)
+				logger.logINFO("Am trecut de if(angajat_ != null) si idAngajat = " + angajat_.getId());
+		}
+		catch(Exception ex)
+		{
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+		return angajat_;
+	}
 
 	void							stergeAngajat(Angajat angajat_) throws Exception
 	{
