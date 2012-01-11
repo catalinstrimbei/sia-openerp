@@ -34,9 +34,9 @@ public class TestFinPlatiImpl {
 FinPlatiSrv platiSrvInstance;
 	
 	
-	DateFormat dfm = new SimpleDateFormat("yyyy-MM-dd");
-	FacturaPrimita fact1;
-	FacturaPrimita fact2;
+	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	FacturaPrimita f1;
+	FacturaPrimita f2;
 	ArrayList<FacturaPrimita> facturi;
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
@@ -51,18 +51,18 @@ FinPlatiSrv platiSrvInstance;
 	
 		platiSrvInstance = FinPlatiServiceFactory.getFinPlatiSrv();
 		logger.info("initTest");
-		fact1 = new FacturaPrimita();
-		fact1.setIdFactura(1);
-		((Document) fact1).setDataDoc(dfm.parse("2010-01-01"));
-		fact1.setValoareTotalaFactura(40.00);
-		fact1.setSumaPlatita(10.00);
-		fact1.setPlatita(false);
-		fact2 = new FacturaPrimita();
-		fact2.setIdFactura(2);
-		fact2.setDataDoc(dfm.parse("2007-01-01"));
-		fact2.setValoareTotalaFactura(40.00);
-		fact2.setSumaPlatita(30.00);
-		fact2.setPlatita(false);
+		f1 = new FacturaPrimita();
+		f1.setIdFactura(1);
+		((Document) f1).setDataDoc(df.parse("2012-01-01"));
+		f1.setValoareTotalaFactura(33.00);
+		f1.setSumaPlatita(13.00);
+		f1.setPlatita(false);
+		f2 = new FacturaPrimita();
+		f2.setIdFactura(2);
+		f2.setDataDoc(df.parse("2011-01-01"));
+		f2.setValoareTotalaFactura(44.00);
+		f2.setSumaPlatita(14.00);
+		f2.setPlatita(false);
 		
 		RegSablonNC regSablonNC = RegSablonNC.instantiaza();
         RegConturi regConturi = RegConturi.instantiaza();    
@@ -86,7 +86,7 @@ FinPlatiSrv platiSrvInstance;
 
 		Date dataEmiterii = null;
 		try {
-			dataEmiterii = dfm.parse("2007-02-26");
+			dataEmiterii = df.parse("2011-01-13");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -95,12 +95,12 @@ FinPlatiSrv platiSrvInstance;
 		furnizor.setId(1);
 		facturi = new ArrayList<FacturaPrimita>();
 
-		facturi.add(fact1);
+		facturi.add(f1);
 
-		facturi.add(fact2);
+		facturi.add(f2);
 
 		Chitanta chitanta = platiSrvInstance.inregistrareChitanta(casier,
-				Double.valueOf(40.00), false, facturi,
+				Double.valueOf(44.00), false, facturi,
 				dataEmiterii, "mx", 1, "sediu", "RON", furnizor, null);
 
 		logger.info("Chitanta are asociate " + chitanta.getFacturi().size()
@@ -110,11 +110,11 @@ FinPlatiSrv platiSrvInstance;
 		 
 		assertEquals("Chitanta nu are asociata nici o factura", 2, chitanta
 				.getFacturi().size());
-		logger.info(fact1.getSumaPlatita());
+		logger.info(f1.getSumaPlatita());
 		assertEquals(
 				"Facturile nu au fost asociate chitantei in ordine cronologica",
 				Double.doubleToLongBits(40.00),
-				Double.doubleToLongBits(fact2.getSumaPlatita()));
+				Double.doubleToLongBits(f2.getSumaPlatita()));
 		logger.info(chitanta.getDataInregistrarii());
 		assertNotNull(
 				"Nu s-a preluat corect data inregistrarii pentru chitanta",
@@ -128,7 +128,7 @@ FinPlatiSrv platiSrvInstance;
 
 		Date dataEmiterii = null;
 		try {
-			dataEmiterii = dfm.parse("2007-02-26");
+			dataEmiterii = df.parse("2011-01-13");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -137,13 +137,13 @@ FinPlatiSrv platiSrvInstance;
 		furnizor.setId(1);
 		facturi = new ArrayList<FacturaPrimita>();
 
-		facturi.add(fact1);
+		facturi.add(f1);
 
-		facturi.add(fact2);
+		facturi.add(f2);
 
 		@SuppressWarnings("unused")
 		Chitanta chitanta = platiSrvInstance.inregistrareChitanta(casier,
-				Double.valueOf(60.00), false, facturi,
+				Double.valueOf(88.00), false, facturi,
 				dataEmiterii, "mx", 1, "sediu", "RON", furnizor, null);
 
 	}
@@ -154,7 +154,7 @@ FinPlatiSrv platiSrvInstance;
 
 		Date dataEmiterii = null;
 		try {
-			dataEmiterii = dfm.parse("2007-02-26");
+			dataEmiterii = df.parse("2011-01-13");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -163,9 +163,9 @@ FinPlatiSrv platiSrvInstance;
 		furnizor.setId(1);
 		facturi = new ArrayList<FacturaPrimita>();
 
-		facturi.add(fact1);
+		facturi.add(f1);
 
-		facturi.add(fact2);
+		facturi.add(f2);
 
 		@SuppressWarnings("unused")
 		Chitanta chitanta = platiSrvInstance.inregistrareChitanta(casier,
@@ -177,11 +177,11 @@ FinPlatiSrv platiSrvInstance;
 	@Test
 	public void testGetSumaRON() {
 
-		Double suma = platiSrvInstance.getSumaRON("EURO", 10.00, 4.00);
+		Double suma = platiSrvInstance.getSumaRON("EURO", 10.00, 4.40);
 
 		logger.info(suma);
 		assertEquals("Soldul nu a fost convertita corect in RON",
-				Double.doubleToLongBits(40.00), Double.doubleToLongBits(suma));
+				Double.doubleToLongBits(44.00), Double.doubleToLongBits(suma));
 	}
 	
 	
@@ -191,7 +191,7 @@ FinPlatiSrv platiSrvInstance;
 
 		Date dataEmiterii = null;
 		try {
-			dataEmiterii = dfm.parse("2011-12-22");
+			dataEmiterii = df.parse("2012-01-03");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -200,13 +200,13 @@ FinPlatiSrv platiSrvInstance;
 		furnizor.setId(2);
 		facturi = new ArrayList<FacturaPrimita>();
 
-		facturi.add(fact1);
+		facturi.add(f1);
 
-		facturi.add(fact2);
+		facturi.add(f2);
 
 		@SuppressWarnings("unused")
 		CEC cec = platiSrvInstance.inregistrareCEC(1112, dataEmiterii, false,
-				furnizor,"bx", 2, "sediu", "depus", Double.valueOf(80.00), 
+				furnizor,"mx", 2, "sediu", "depus", Double.valueOf(88.00), 
 				facturi, "RON", null);
 
 	}
@@ -222,7 +222,7 @@ FinPlatiSrv platiSrvInstance;
 
 		Date dataEmiterii = null;
 		try {
-			dataEmiterii = dfm.parse("2011-05-23");
+			dataEmiterii = df.parse("2012-01-05");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -231,13 +231,13 @@ FinPlatiSrv platiSrvInstance;
 		furnizor.setId(4);
 		facturi = new ArrayList<FacturaPrimita>();
 
-		facturi.add(fact1);
+		facturi.add(f1);
 
-		facturi.add(fact2);
+		facturi.add(f2);
 
 		@SuppressWarnings("unused")
 		CEC cec = platiSrvInstance.inregistrareCEC(1112, dataEmiterii, false,
-				furnizor,"bx", 2, "sediu", "depus", null, 
+				furnizor,"mx", 2, "sediu", "depus", null, 
 				facturi, "RON", null);
 
 	}
@@ -250,7 +250,7 @@ FinPlatiSrv platiSrvInstance;
 
 		Date dataEmiterii = null;
 		try {
-			dataEmiterii = dfm.parse("2010-06-22");
+			dataEmiterii = df.parse("2011-01-02");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -259,14 +259,14 @@ FinPlatiSrv platiSrvInstance;
 		furnizor.setId(1);
 		facturi = new ArrayList<FacturaPrimita>();
 
-		facturi.add(fact1);
+		facturi.add(f1);
 
-		facturi.add(fact2);
+		facturi.add(f2);
 
 		@SuppressWarnings("unused")
 		OrdinPlata ordinPlata = platiSrvInstance.inregistrareOrdinPlata( 
-				1111, dataEmiterii, false, furnizor,"gw",
-				2, "sediu", "depus", Double.valueOf(90.00), facturi, "RON", null);
+				1111, dataEmiterii, false, furnizor,"mx",
+				2, "sediu", "depus", Double.valueOf(88.00), facturi, "RON", null);
 
 	}
 
@@ -276,7 +276,7 @@ FinPlatiSrv platiSrvInstance;
 
 		Date dataEmiterii = null;
 		try {
-			dataEmiterii = dfm.parse("2011-05-23");
+			dataEmiterii = df.parse("2012-01-08");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -285,13 +285,13 @@ FinPlatiSrv platiSrvInstance;
 		furnizor.setId(4);
 		facturi = new ArrayList<FacturaPrimita>();
 
-		facturi.add(fact1);
+		facturi.add(f1);
 
-		facturi.add(fact2);
+		facturi.add(f1);
 
 		@SuppressWarnings("unused")
 		OrdinPlata ordinPlata= platiSrvInstance.inregistrareOrdinPlata( 
-				1111, dataEmiterii, false, furnizor,"gw",
+				1111, dataEmiterii, false, furnizor,"mx",
 				2, "sediu", "depus", null, facturi, "RON", null);
 
 	}
