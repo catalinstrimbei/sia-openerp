@@ -32,7 +32,7 @@ public class PersonalInterceptor {
 		PersonalImpl ejbean = (PersonalImpl) ctx.getTarget();
 		if(ctx.getParameters().length <= 1)
 			return ctx.proceed();
-		logger.logINFO("PersonalInterceptor : call method >>" + targetBeanClass.getName() + "." + invokedMethodName);		
+		logger.logINFO("PersonalInterceptor(logValidationResult) : call method >>" + targetBeanClass.getName() + "." + invokedMethodName);		
 		if (		
 				("getActivitateTeamBuildingById".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
 				("salveazaActivitateTeamBuilding".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
@@ -127,6 +127,7 @@ public class PersonalInterceptor {
 		PersonalImpl ejbean = (PersonalImpl) ctx.getTarget();
 		
 		logger.logINFO("PersonalInterceptor(logInvocationResult) : call method >>: " + targetBeanClass.getName() + "." + invokedMethodName);
+		/*
 		if 
 		(
 				("getActivitateTeamBuildingById".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
@@ -198,11 +199,12 @@ public class PersonalInterceptor {
 				("stergeDosarAngajat".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))					
 		)
 		{
+		*/
 			Object invocationResult = ctx.proceed();
 			logger.logINFO("PersonalInterceptor(logInvocationResult) : result >>: " + invocationResult);
 			return invocationResult;
-		}		
-		return ctx.proceed();
+		//}		
+		//return ctx.proceed();
 	}
 	
 	}
