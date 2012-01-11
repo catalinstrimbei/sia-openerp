@@ -16,7 +16,11 @@ import org.open.erp.services.salarizare.teste.TestSalarizareImpl;
 
 public class RegistruSalarizare {
 
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestSalarizareImpl.class.getName());	private EntityManager entityManager;
+	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestSalarizareImpl.class.getName());	
+	private EntityManager entityManager ;
+	
+	private static SalarizareLogger logger =  new SalarizareLogger();
+	
 	public RegistruSalarizare(EntityManager em) {
 		entityManager = em;
 	}
@@ -44,6 +48,7 @@ public class RegistruSalarizare {
 
 	public Pontaj getPontajByAngajat(Angajat angajat, Integer an, Integer luna) {
 		Pontaj p;
+		
 		p = (Pontaj)entityManager.createQuery("SELECT p FROM Pontaj p " +
 				"WHERE p.angajat.id=:id AND p.an=:an AND p.luna=:luna AND rownum<=1")
 				.setParameter("id", angajat.getId())
@@ -128,15 +133,16 @@ public class RegistruSalarizare {
 			if (pontaj.getIdPontaj() == null || 
 				entityManager.find(pontaj.getClass(), pontaj.getIdPontaj()) == null)
 			{
-				logger.info("Inainte de persist ***** " + pontaj.getAngajat().getId());
+				logger.logINFO("Inainte de persist ***** " + pontaj.getAngajat().getId());
 				entityManager.persist(pontaj);
-				logger.info("Dupa persist ******** ");
+				logger.logINFO("Dupa persist ******** ");
 			}
 			else
 				entityManager.merge(pontaj);
 			
 		}catch(Exception ex){
-			logger.info("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -158,7 +164,7 @@ public class RegistruSalarizare {
 				entityManager.merge(spor);
 			
 		}catch(Exception ex){
-			logger.info("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** ");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -178,7 +184,7 @@ public class RegistruSalarizare {
 				entityManager.merge(retinere);
 			
 		}catch(Exception ex){
-			logger.info("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** ");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -198,7 +204,7 @@ public class RegistruSalarizare {
 				entityManager.merge(statSalarii);
 			
 		}catch(Exception ex){
-			logger.info("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** ");
 			ex.printStackTrace();
 			throw ex;
 		}
@@ -218,7 +224,7 @@ public class RegistruSalarizare {
 				entityManager.merge(centralizator);
 			
 		}catch(Exception ex){
-			logger.info("EROARE PERSISTENTA ***** ");
+			logger.logINFO("EROARE PERSISTENTA ***** ");
 			ex.printStackTrace();
 			throw ex;
 		}
