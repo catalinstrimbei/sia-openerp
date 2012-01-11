@@ -23,6 +23,7 @@ import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.PersonalSrvLocal;
+import org.open.erp.services.personal.logger.PersonalLogger;
 import org.open.erp.services.salarizare.CentralizatorStatSalarii;
 import org.open.erp.services.salarizare.Configurare;
 import org.open.erp.services.salarizare.Pontaj;
@@ -36,8 +37,8 @@ import org.open.erp.services.salarizare.StatSalarii;
 @Stateful
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
-
+	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
+	private static PersonalLogger logger;
 	private RegistruSalarizare registru ;
 	//variabila de instanţa de tip EntityManager care sa fie injectata prin adnotarea @PersistenceContext(unitName="OpenERP_ModulPU");
 	@PersistenceContext(unitName="OpenERP_SALARIZARE")
@@ -51,8 +52,8 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	//metodă callback - @PostConstruct – în care registrul sau registrele din proiect să primească referinţa EntityManagerului care va fi injectat.
 	@PostConstruct
 	public void init(){
-		logger.debug("EntityManager: " + em);		
-		logger.debug("PersonalSrv: " + personalSrv);		
+		logger.logINFO("EntityManager: " + em);		
+		logger.logINFO("PersonalSrv: " + personalSrv);		
 		
 		if (this.registru == null)
 			registru = new RegistruSalarizare(em);
@@ -71,16 +72,16 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	public Pontaj inregistrarePontaj(Angajat angajat, Integer an, Integer luna,
 			Double oreLucrate, Double oreSuplimentare, Double oreConcediu) throws Exception {
 		
-		logger.debug("START creare pontaj angajat");
+		logger.logINFO("START creare pontaj angajat");
 		Pontaj p = new Pontaj(angajat,an,luna,oreLucrate,oreSuplimentare,oreConcediu);
 		
 		if (sessionContext.getRollbackOnly() == true){
-			logger.debug("END creare pontaj angajat - FAILED TRANSACTION");
+			logger.logINFO("END creare pontaj angajat - FAILED TRANSACTION");
 		}else{
 			p = this.registru.salveazaPontaj(p);
 		}
 		
-		logger.debug("END Creare pontaj angajat");
+		logger.logINFO("END Creare pontaj angajat");
 		
 		return p;
 	}
@@ -92,68 +93,68 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		// pentru toti angajatii genereaza un pontaj default tinand cont de nr de ore lucratoare din luna
 		
 		//toti angajatii
-		logger.debug("Incarca lista tuturor angajatilor");
+		logger.logINFO("Incarca lista tuturor angajatilor");
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(this.personalSrv.getListaAngajati());
 		
-		logger.debug("Creare pontaj pentru toti angajatii");
+		logger.logINFO("Creare pontaj pentru toti angajatii");
 		
 		//parcurgem si setam pontajul (adica salvam in DB)
 		for (Angajat angajat:angajati){
 			this.inregistrarePontaj(angajat, an, luna, Configurare.NUMAR_ORE_LUCRATOARE_LUNA, 0.0, 0.0);
 		}
 		if (sessionContext.getRollbackOnly() == true){
-			logger.debug("END creare pontaj luna - FAILED TRANSACTION");
+			logger.logINFO("END creare pontaj luna - FAILED TRANSACTION");
 		}
 		
-		logger.debug("END Creare pontaj luna");
+		logger.logINFO("END Creare pontaj luna");
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void adaugaOreConcediu(Pontaj pontaj, Double oreConcediu) throws Exception {
-		logger.debug("Start - Adaugare ore concediu angajat");
+		logger.logINFO("Start - Adaugare ore concediu angajat");
 		
 		pontaj.setOreConcediu(oreConcediu);
 		
 		if (sessionContext.getRollbackOnly() == true){
-			logger.debug("END update ore concediu angajat - FAILED TRANSACTION");
+			logger.logINFO("END update ore concediu angajat - FAILED TRANSACTION");
 		}else{
 			 this.registru.salveazaPontaj(pontaj);
 		}
 		
-		logger.debug("End - Adaugare ore concediu angajat");
+		logger.logINFO("End - Adaugare ore concediu angajat");
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void adaugaOreSuplimentare(Pontaj pontaj, Double oreSuplimentare) throws Exception {
-		logger.debug("Adaugare ore suplimentare angajat");
+		logger.logINFO("Adaugare ore suplimentare angajat");
 		pontaj.setOreSuplimentare(oreSuplimentare);
 
 		if (sessionContext.getRollbackOnly() == true){
-			logger.debug("END update ore suplimentare angajat - FAILED TRANSACTION");
+			logger.logINFO("END update ore suplimentare angajat - FAILED TRANSACTION");
 		}else{
 			 this.registru.salveazaPontaj(pontaj);
 		}
 		
-		logger.debug("End - Adaugare ore suplimentare angajat");
+		logger.logINFO("End - Adaugare ore suplimentare angajat");
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Spor inregistrareSpor(String denumire, Integer tip, Integer an,
 			Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception {
-		logger.debug("START creare spor angajat");
+		logger.logINFO("START creare spor angajat");
 		Spor spor = new Spor(denumire, tip, an, luna, angajat, modCalcul, valoare);
 		
 		if (sessionContext.getRollbackOnly() == true){
-			logger.debug("END creare spor angajat - FAILED TRANSACTION");
+			logger.logINFO("END creare spor angajat - FAILED TRANSACTION");
 		}else{
 			spor = this.registru.salveazaSpor(spor);
 		}
 		
-		logger.debug("END Creare spor angajat");
+		logger.logINFO("END Creare spor angajat");
 		
 		return spor;
 	}
@@ -172,7 +173,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		
 			sporuri.addAll(registru.getSporuriAngajat(an, luna, angajat));
 			
-			logger.debug("Calcul sporuri angajat");
+			logger.logINFO("Calcul sporuri angajat");
 			for (Spor spor:sporuri){
 				if(spor.getModCalcul()==1){ 
 					//valoare
@@ -197,7 +198,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		Pontaj p = registru.getPontajByAngajat(angajat, an, luna);
 		ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
 		
-		logger.debug("Calcul venit brut angajat");
+		logger.logINFO("Calcul venit brut angajat");
 		Double venitBrut = 0.0;
 		if (contract != null){
 			Double venitOreLucrate = (p.getOreLucrate()-p.getOreConcediu())*contract.getTarifOrar();
@@ -215,16 +216,16 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@Override
 	public Retinere inregistrareRetinere(String denumire, Integer tip,
 			Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception {
-		logger.debug("Start creare retinere angajat");
+		logger.logINFO("Start creare retinere angajat");
 		Retinere retinere = new Retinere(denumire, tip, angajat, an, luna, modCalcul, valoare);
 		
 		if (sessionContext.getRollbackOnly() == true){
-			logger.debug("END creare retinere angajat - FAILED TRANSACTION");
+			logger.logINFO("END creare retinere angajat - FAILED TRANSACTION");
 		}else{
 			retinere = this.registru.salveazaRetinere(retinere);
 		}
 		
-		logger.debug("END Creare retinere angajat");
+		logger.logINFO("END Creare retinere angajat");
 		
 		return retinere;
 	}
@@ -236,7 +237,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		// pentru fiecare angajat calculam retinerile (pot fi mai multe) si insumam
 		ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
 	
-		logger.debug("Calcul retineri angajat");
+		logger.logINFO("Calcul retineri angajat");
 		Double valoareTotala=0.0;
 		ArrayList<Retinere> retineri= new ArrayList<Retinere>();
 		if (contract != null){
@@ -263,7 +264,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@Override
 	public Double calculRetineriObligatorii(Integer an, Integer luna,
 			Angajat angajat, String tipRetinere, Double venitBrut) {
-		logger.debug("Calcul retinere obligatorie "+tipRetinere+"angajat");
+		logger.logINFO("Calcul retinere obligatorie "+tipRetinere+"angajat");
 		// retinerile obligatorii se retin din salarul brut
 		Double retinere = 0.0;
 		if(tipRetinere=="CAS")
@@ -279,7 +280,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		
 	@Override
 	public Double calculDeduceri(Integer an, Integer luna, Angajat angajat) {
-		logger.debug("Calcul deducere angajat");
+		logger.logINFO("Calcul deducere angajat");
 		
 		Integer numarCopii = angajat.getNumarCopii();
 		Double valoareDeducere = 0.0;
@@ -296,7 +297,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@Override
 	public Double calculImpozit(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj, Double retineriAlte, Double deduceri) {
 		// impozitul se calculeaza dupa ce am scazut retinerile si deducerea din venitul brut
-		logger.debug("Calcul impozit angajat");
+		logger.logINFO("Calcul impozit angajat");
 		
 		Double impozit = 0.0;
 		impozit = (venitBrut - retineriAlte - cas - cass - somaj - deduceri) * Configurare.IMPOZIT_ANGAJAT;
@@ -306,7 +307,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@Override
 	public Double calculSalarNet(Integer an, Integer luna, Angajat angajat, Double venitBrut, Double cas, Double cass, Double somaj, Double impozit, Double retineriAlte
 			, Double deduceri) {
-		logger.debug("Calcul salar net angajat");
+		logger.logINFO("Calcul salar net angajat");
 		//TO DO: eliminare calcul de doua ori a retinerilor si deducerilor (sunt calculate si aici si la impozit)
 		Double salarNet = 0.0;
 		
@@ -319,7 +320,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@Override
 	public void inregistrarStatSalariiLuna(Integer an, Integer luna) throws Exception {
 		
-		logger.debug("Creare stat salarii pentru toti angajatii");
+		logger.logINFO("Creare stat salarii pentru toti angajatii");
 		//toti angajatii
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(this.personalSrv.getListaAngajati());
@@ -359,16 +360,16 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		}
 		
 		if (sessionContext.getRollbackOnly() == true){
-			logger.debug("END inregistrare stat plata - FAILED TRANSACTION");
+			logger.logINFO("END inregistrare stat plata - FAILED TRANSACTION");
 		}
-		logger.debug("END inregistrare stat plata");
+		logger.logINFO("END inregistrare stat plata");
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CentralizatorStatSalarii inregistreazaCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception {
 		
-		logger.debug("Generare centralizator salarii");
+		logger.logINFO("Generare centralizator salarii");
 		Double totalCAS=0.0;
 		Double totalCASS=0.0;
 		Double totalSomaj=0.0;
@@ -401,13 +402,13 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			centralizator.addStatSalarii(salar);
 		}
 		if(sessionContext.getRollbackOnly()==true){
-			logger.debug("END generare centralizator - TRANZACTIE ESUATA!");
+			logger.logINFO("END generare centralizator - TRANZACTIE ESUATA!");
 		}
 		else{
 			centralizator = registru.salveazaCentralizator(centralizator);
 		}
 		
-		logger.debug("END generare centralizator");
+		logger.logINFO("END generare centralizator");
 		return centralizator;
 	}
 	 
@@ -432,11 +433,11 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		//pentru a nu pica testele daca nu exista angajat atunci cream unul nou
 		if (angajat==null){
 			angajat = new Angajat();
-			angajat.setId(id);
+			//angajat.setId(id);
 			angajat.setNume("Gigel");
 			angajat.setNumarCopii(2);
 	
-			angajat = personalSrv.salveazaAngajat(angajat);
+			 angajat = personalSrv.salveazaAngajat(angajat);
 			
 		}
 		return angajat;
