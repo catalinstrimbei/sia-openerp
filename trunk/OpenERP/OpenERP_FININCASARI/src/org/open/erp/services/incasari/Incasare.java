@@ -11,6 +11,7 @@ package org.open.erp.services.incasari;
 import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.TemporalType.DATE;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +32,12 @@ import org.open.erp.services.vanzari.FacturaEmisa;
 @Table(name = "Incasare")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "Tip_incasare")
-public abstract class Incasare {
+public abstract class Incasare implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = AUTO)

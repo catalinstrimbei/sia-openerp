@@ -8,6 +8,7 @@ package org.open.erp.services.incasari;
  * 
  */
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
@@ -18,7 +19,12 @@ import org.open.erp.services.personal.Angajat;
 
 @Entity(name = "Chitanta")
 @DiscriminatorValue("Chitanta")
-public class Chitanta extends Incasare {
+public class Chitanta extends Incasare implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Angajat getCasier() {
 		return casier;

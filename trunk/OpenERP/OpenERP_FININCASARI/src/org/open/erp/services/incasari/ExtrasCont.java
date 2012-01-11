@@ -8,6 +8,7 @@ package org.open.erp.services.incasari;
  * 
  */
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
@@ -15,7 +16,12 @@ import javax.persistence.Entity;
 
 @Entity(name = "ExtrasCont")
 @DiscriminatorValue("ExtrasCont")
-public class ExtrasCont extends Incasare {
+public class ExtrasCont extends Incasare implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public ExtrasCont(Date dataEmiterii, Boolean avans, Date dataInregistrarii,
 			Double suma, String sumaInLitere, String seria, Integer numar,

@@ -9,6 +9,7 @@ package org.open.erp.services.incasari;
  * 
  */
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
@@ -16,8 +17,12 @@ import javax.persistence.Entity;
 
 @Entity(name = "Cec")
 @DiscriminatorValue("Cec")
-public class Cec extends Incasare {
+public class Cec extends Incasare implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static Long intervalValabilitate;
 	private String stare;
 

@@ -3,6 +3,7 @@ package org.open.erp.services.incasari;
 import static javax.persistence.TemporalType.DATE;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
@@ -23,8 +24,12 @@ import org.open.erp.services.nomgen.Persoana;
 
 @Entity(name="BiletLaOrdin")
 @DiscriminatorValue("BiletLaOrdin")
-public class BiletLaOrdin extends Incasare {
+public class BiletLaOrdin extends Incasare implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Temporal(DATE)
 	private Date dataScadenta;
 	private static Long intervalValabilitate;
