@@ -1,5 +1,14 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 
@@ -10,9 +19,17 @@ import org.open.erp.services.nomgen.LinieDocument;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
+public class NIR extends Document implements Serializable{
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+	@OneToOne@JoinColumn(name="id")
+	private Factura factura;
 
-public class NIR extends Document {
-	public Factura factura;
+	public NIR() {
+		super();
+	}
 
 	public Factura getFactura() {
 		return factura;

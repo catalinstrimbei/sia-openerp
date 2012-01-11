@@ -1,8 +1,17 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Entity;
 
@@ -14,15 +23,22 @@ import org.hibernate.annotations.Entity;
  * 
  */
 @Entity
-public class Comanda {
+public class Comanda implements Serializable {
 	public static final Integer FINALIZATA = 1;
 	public static final Integer ANULATA = -1;
 	public static final Integer IN_CURS = 0;
-	public Integer idComanda;
-	public Furnizor furnizor;
-	public Date dataComanda;
-	public Integer statusComanda;
-	public List<LinieComanda> liniiComanda=new LinkedList<LinieComanda>();
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private String comanda_id;
+    private long id;
+	private Integer idComanda;
+	private Furnizor furnizor;
+	@Temporal(TemporalType.DATE)
+	private Date dataComanda;
+	private Integer statusComanda;
+	@OneToOne(mappedBy="comanda")
+	private Factura factura;
+	private List<LinieComanda> liniiComanda=new LinkedList<LinieComanda>();
 	
 	public Integer getIdComanda() {
 		return idComanda;

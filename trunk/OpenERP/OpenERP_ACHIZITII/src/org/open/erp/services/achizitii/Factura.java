@@ -1,5 +1,15 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Entity;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 
@@ -10,19 +20,26 @@ import org.open.erp.services.nomgen.LinieDocument;
  * @BusinessObject(Entity)
  * 
  */
-
-public class Factura extends Document {
+@Entity
+public class Factura extends Document implements Serializable {
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 	public static final Integer STORNATA = -1;
 	public static final Integer INREGISTRATA = 1;
 	public static final Integer FACTURA_RETUR = 2;
 	public static final Integer FACTURA_ACHIZITIE = 3;
+	@ManyToOne@JoinColumn(name="furnizor_id")
 	private Furnizor furnizor;
 	private String nrFact;
 	private Double valFact;
 	private Double TVATotal;
 	private Integer status;
+	@OneToOne@JoinColumn(name="comanda_id")
 	private Comanda comanda;
 	private Integer tipFact;
+	@OneToOne(mappedBy="factura")
+	private NIR nir;
 	public Integer getTipFact() {
 		return tipFact;
 	}

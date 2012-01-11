@@ -1,9 +1,20 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Persoana;
@@ -15,26 +26,39 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
-
-public class PlanAprovizionare  {
+@Entity
+public class PlanAprovizionare implements Serializable  {
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+	
 	private static PlanAprovizionare planAprovizionare;
 	public static final Integer FINALIZAT = 1;
 	public static final Integer IN_CURS = 0;
 	private Integer saptAn;	
 	private Integer an;
+
+	private Integer idPlan;
+	@Temporal(TemporalType.DATE)
+	private Date dataStart;
+	@Temporal(TemporalType.DATE)
+	private Date dataFinal;
+	@OneToOne@JoinColumn(name="id")
+	private Persoana persoana;
+	private Integer statusPlan;
+	@OneToMany(mappedBy="planAprovizionare")
+	private List<LiniePlanAprovizionare> liniiPlan = new LinkedList<LiniePlanAprovizionare>();
+	
 	public Integer getSaptAn() {
 		return saptAn;
 	}
 	public void setSaptAn(Integer saptAn) {
 		this.saptAn = saptAn;
 	}
-	private Integer idPlan;
-	private Date dataStart;
-	private Date dataFinal;
-	private Persoana persoana;
-	private Integer statusPlan;
-	private List<LiniePlanAprovizionare> liniiPlan = new LinkedList<LiniePlanAprovizionare>();
 	
+	public PlanAprovizionare() {
+		super();
+	}
 	private PlanAprovizionare(Integer saptAn, Integer an,Date dataStart,Date dataFinal) {
 		super();
 		this.saptAn = saptAn;		

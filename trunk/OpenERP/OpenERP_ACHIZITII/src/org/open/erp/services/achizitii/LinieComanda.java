@@ -1,5 +1,14 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Entity;
 import org.open.erp.services.nomgen.Material;
 
 /**
@@ -11,13 +20,18 @@ import org.open.erp.services.nomgen.Material;
  */
 
 
-
-public class LinieComanda   {
-	public Integer linieComanda;
-	public Comanda comanda;
-	public Material articol;	
-	public Double cantitate;
-	public Double pret;
+@Entity
+public class LinieComanda implements Serializable  {
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+	private Integer linieComanda;
+	@ManyToOne@JoinColumn(name="comanda_id")
+	private Comanda comanda;
+	@ManyToOne@JoinColumn(name="idMaterial")
+	private Material articol;	
+	private Double cantitate;
+	private Double pret;
 	public Integer getLinieComanda() {
 		return linieComanda;
 	}

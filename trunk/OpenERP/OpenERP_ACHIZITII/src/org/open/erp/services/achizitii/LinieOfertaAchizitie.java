@@ -1,5 +1,14 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 /**
  * 
  * @author echipa.achizitii
@@ -7,14 +16,22 @@ package org.open.erp.services.achizitii;
  * @BusinessObject(Entity)
  * 
  */
-
-public class LinieOfertaAchizitie {
+@Entity
+public class LinieOfertaAchizitie implements Serializable {
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+	@ManyToOne@JoinColumn(name="id")
 	private OfertaAchizitie oferta;
+	@ManyToOne@JoinColumn(name="id")
 	private Articol articol;
 	private Double cantitate;
 	private Integer linie;
 	private Double pret;
 	
+	public LinieOfertaAchizitie() {
+		super();
+	}
 	public Double getPret() {
 		return pret;
 	}

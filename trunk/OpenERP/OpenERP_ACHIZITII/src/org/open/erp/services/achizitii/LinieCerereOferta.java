@@ -1,9 +1,5 @@
 package org.open.erp.services.achizitii;
 
-import org.open.erp.services.nomgen.Material;
-
-public class LinieCerereOferta {
-
 /**
  * 
  * @author echipa.achizitii
@@ -11,12 +7,34 @@ public class LinieCerereOferta {
  * @BusinessObject(Entity)
  * 
  */
+import java.io.Serializable;
 
-public Integer nrLinie;
-public CerereOferta cerereOferta;
-public Material articol;
-public Double cantitate;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+import org.open.erp.services.nomgen.Material;
+
+@Entity
+public class LinieCerereOferta implements Serializable {
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+
+private Integer nrLinie;
+@ManyToOne@JoinColumn(name="co")
+private CerereOferta cerereOferta;
+@ManyToOne@JoinColumn(name="idMaterial")
+private Material articol;
+private Double cantitate;
+
+public LinieCerereOferta() {
+	super();
+}
 public Integer getNrLinie() {
 	return nrLinie;
 }

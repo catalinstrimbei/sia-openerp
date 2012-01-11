@@ -1,5 +1,14 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import org.open.erp.services.nomgen.Material;
 
 /**
@@ -9,13 +18,21 @@ import org.open.erp.services.nomgen.Material;
  * @BusinessObject(Entity)
  * 
  */
-
-public class LiniePlanAprovizionare {
+@Entity
+public class LiniePlanAprovizionare implements Serializable{
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+	@ManyToOne@JoinColumn(name="id")
 	private PlanAprovizionare planAprovizionare;	
+	@ManyToOne@JoinColumn(name="idMaterial")
 	private Material articol;
 	private Double cantitate;
 	private Integer linie;
 	
+	public LiniePlanAprovizionare() {
+		super();
+	}
 	public LiniePlanAprovizionare(Material articol, Double cantitate,
 			Integer linie) {
 		super();

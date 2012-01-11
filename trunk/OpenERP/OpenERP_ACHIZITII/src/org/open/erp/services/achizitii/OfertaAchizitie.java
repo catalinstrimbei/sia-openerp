@@ -1,8 +1,17 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 
@@ -11,24 +20,33 @@ import java.util.List;
  * @BusinessObject(Entity)
  * 
  */
-
-public class OfertaAchizitie {
+@Entity
+public class OfertaAchizitie implements Serializable {
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 	public static final Integer TRANSFORMATA = 1;
 	public static final Integer RESPINSA = -1;
 	public static final Integer IN_CURS = 0;
 	private Integer idOferta;
+	@Temporal(TemporalType.DATE)
 	private Date dataOferta;	
-	private Integer statusOferta;
+	private Integer statusOferta;	
 	private Furnizor furnizor;
 	private Double valTotal;
-	private Integer nrZile;
+	private Integer nrZile;	
+	@OneToOne(mappedBy="ofertaAchizitie")
 	private CerereOferta cerereOferta;	
-	public List<LinieOfertaAchizitie> liniiOferta = new LinkedList<LinieOfertaAchizitie>();
+	private List<LinieOfertaAchizitie> liniiOferta = new LinkedList<LinieOfertaAchizitie>();
 	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(OfertaAchizitie.class.getName());
 	public Double getValTotal() {
 		return valTotal;
 	}
 	
+	public OfertaAchizitie() {
+		super();
+	}
+
 	public List<LinieOfertaAchizitie> getLiniiOferta() {
 		return liniiOferta;
 	}

@@ -1,5 +1,14 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
@@ -11,12 +20,24 @@ import org.open.erp.services.nomgen.Material;
  * @BusinessObject(Entity)
  * 
  */
+<<<<<<< .mine
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public class LinieNIR extends LinieDocument implements Serializable{	
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+=======
 
 ///
 public class LinieNIR extends LinieDocument {	
+>>>>>>> .r827
 	private Double diferentaCantitate;
 	private Double cantitateFacturata;	
 	
+	public LinieNIR() {
+		super();
+	}
 	public Double getPret() {
 		return pret;
 	}
