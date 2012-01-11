@@ -85,8 +85,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	public PersonalImpl() { }	
 	@PostConstruct
 	public void init(){
-		logger.logDEBUG(">>>>>>>>>>>> EM = " + em);		
-		//logger.logDEBUG(">>>>>>>>>>>> Exista nomGenSrv? " + nomGenSrv);				
+		logger.logDEBUG("<<< EM >>> = " + em);		
+		//logger.logDEBUG("<<< Exista nomGenSrv? >>>" + nomGenSrv);				
 		
 		if (this.registruPersonal == null)
 			registruPersonal = new RegistruPersonal(em);

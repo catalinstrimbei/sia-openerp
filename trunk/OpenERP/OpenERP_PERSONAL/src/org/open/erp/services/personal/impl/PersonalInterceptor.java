@@ -33,7 +33,7 @@ public class PersonalInterceptor {
 		//PersonalImpl ejbean = (PersonalImpl) ctx.getTarget();
 		if(ctx.getParameters().length <= 1)
 			return ctx.proceed();
-		logger.logINFO("PersonalInterceptor(logValidationResult) : call method >>" + targetBeanClass.getName() + "." + invokedMethodName);		
+		logger.logINFO("*** PersonalInterceptor(logValidationResult) : call method >>" + targetBeanClass.getName() + "." + invokedMethodName);		
 		if (		
 				("getActivitateTeamBuildingById".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
 				("salveazaActivitateTeamBuilding".equals(invokedMethodName) && PersonalImpl.class.equals(targetBeanClass))||
@@ -106,7 +106,7 @@ public class PersonalInterceptor {
 		{			
 			if(ctx.getParameters()[1] == null)
 			{
-				logger.logINFO("Metoda >>"+ invokedMethodName + " a fost apelata cu parametrul null");
+				logger.logINFO("*** Metoda >>"+ invokedMethodName + " a fost apelata cu parametrul null");
 			}				
 		}		
 		return ctx.proceed();
@@ -117,7 +117,7 @@ public class PersonalInterceptor {
 		Class<? extends Object> targetBeanClass = ctx.getTarget().getClass();
 		String invokedMethodName = ctx.getMethod().getName();
 				
-		logger.logINFO("PersonalInterceptor(logMessage) : call method >>: " + targetBeanClass.getName() + "." + invokedMethodName);		
+		logger.logINFO("*** PersonalInterceptor(logMessage) : call method >>: " + targetBeanClass.getName() + "." + invokedMethodName);		
 		return ctx.proceed();
 	}
 	
@@ -128,7 +128,7 @@ public class PersonalInterceptor {
 		String invokedMethodName = ctx.getMethod().getName();
 		//PersonalImpl ejbean = (PersonalImpl) ctx.getTarget();
 		
-		logger.logINFO("PersonalInterceptor(logInvocationResult) : call method >>: " + targetBeanClass.getName() + "." + invokedMethodName);
+		logger.logINFO("*** PersonalInterceptor(logInvocationResult) : call method >>: " + targetBeanClass.getName() + "." + invokedMethodName);
 		/*
 		if 
 		(
@@ -203,7 +203,7 @@ public class PersonalInterceptor {
 		{
 		*/
 			Object invocationResult = ctx.proceed();
-			logger.logINFO("PersonalInterceptor(logInvocationResult) : result >>: " + invocationResult);
+			logger.logINFO("*** PersonalInterceptor(logInvocationResult) : result >>: " + invocationResult);
 			return invocationResult;
 		//}		
 		//return ctx.proceed();
