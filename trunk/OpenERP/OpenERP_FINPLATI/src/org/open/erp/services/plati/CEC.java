@@ -8,18 +8,19 @@ package org.open.erp.services.plati;
  * 
  */
 
-import static javax.persistence.GenerationType.AUTO;
-
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity(name = "CEC")
 @DiscriminatorValue("CEC")
 public class CEC extends Plata implements Serializable{
-	
+	@Id
+	@GeneratedValue
 	private Integer idCEC;
 	private static Long intervalValabilitate;
 	private String stare;

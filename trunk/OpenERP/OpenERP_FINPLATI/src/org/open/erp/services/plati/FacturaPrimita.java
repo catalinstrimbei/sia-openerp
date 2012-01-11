@@ -8,6 +8,9 @@ package org.open.erp.services.plati;
  * 
  */
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.TemporalType.TIMESTAMP;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,11 +18,16 @@ import java.util.Iterator;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.plati.LinieFacturaPrimita;
+import org.open.erp.services.vanzari.LinieFacturaEmisa;
 
 @Entity(name = "FacturaPrimita")
 @DiscriminatorValue("FacturaPrimita")
@@ -29,23 +37,24 @@ public class FacturaPrimita extends Document implements Serializable{
 	
 	public static final Integer ZILE_RETUR = 20;
 	@Id
+	@GeneratedValue
 	Integer idFactura;
 	//Date dataFacturare;		
 	Double valoareTotalaFactura;
 	Double valoareTva;
-	Boolean platita; /* factura platita sau nu */
+	Boolean platita; // factura platita sau nu
 	String adresaFacturare;
+	@Temporal(TIMESTAMP)
 	Date dataLivrare;
-	
 	Integer nrComanda;
+	@ManyToOne
 	Furnizor furnizor;
+	@OneToMany(targetEntity=LinieFacturaPrimita.class, cascade=ALL)
 	ArrayList<LinieFacturaPrimita> produseFacturate = new ArrayList<LinieFacturaPrimita>();
-	
 	Integer idMetodaPlata;
 	Integer idModalitateLivrare;
 	Double costLivrare;
 	String adresaLivrare;
-	
 	Double sumaPlatita;
 	
 	public FacturaPrimita(){

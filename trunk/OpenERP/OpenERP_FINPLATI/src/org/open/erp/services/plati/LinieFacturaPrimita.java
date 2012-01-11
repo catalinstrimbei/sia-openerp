@@ -13,16 +13,17 @@ import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Produs;
-//import org.open.erp.services.nomgen.Produs;
 
 @Entity(name = "LinieFacturaPrimita")
 @DiscriminatorValue("LinieFacturaPrimita")
 public class LinieFacturaPrimita extends LinieDocument implements Serializable{
 	@Id
 	Integer idLinieFactura;
+	@ManyToOne
 	Produs produs;
 	Double pretUnitar;
 	Double pretLinie;
@@ -33,11 +34,11 @@ public class LinieFacturaPrimita extends LinieDocument implements Serializable{
 		super();
 	}
 	
-	public LinieFacturaPrimita(Produs _produs, Double _cant){
+	/*public LinieFacturaPrimita(Produs _produs, Double _cant){
 		super();
 		this.material= getMaterial();
 		this.cantitate = _cant;
-	}
+	}*/
 
 	public Double getPretLinie() {
 		return pretLinie;

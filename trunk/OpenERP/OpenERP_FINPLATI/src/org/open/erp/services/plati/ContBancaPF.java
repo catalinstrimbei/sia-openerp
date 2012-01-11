@@ -13,6 +13,7 @@ import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.nomgen.PersoanaJuridica;
@@ -23,8 +24,9 @@ public class ContBancaPF implements Serializable{
 
 	@Id
 	private Integer idContBancaPF;
+	@ManyToOne
 	private PersoanaJuridica banca;
-    
+	@ManyToOne
     private PersoanaFizica titularCont;
 
     private String numarCont;

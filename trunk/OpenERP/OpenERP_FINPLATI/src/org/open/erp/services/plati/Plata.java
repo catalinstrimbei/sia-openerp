@@ -8,14 +8,17 @@ package org.open.erp.services.plati;
  * 
  */
 
+import static javax.persistence.TemporalType.DATE;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
 
 @Entity(name = "Plata")
 public abstract class Plata implements Serializable{
@@ -23,13 +26,16 @@ public abstract class Plata implements Serializable{
 	private Integer idPlata;
 	
 	private String moneda;
+	@Temporal(DATE)
 	private Date dataEmiterii;
 	private Boolean avans;
+	@Temporal(DATE)
 	private Date dataInregistrarii;
 	private Double suma;
 	private String seria;
 	private Integer numar;
 	private String locatie;
+	@ManyToMany
 	private List<FacturaPrimita> facturi = new ArrayList<FacturaPrimita>();
 	
 	public Plata(Integer idPlata, Date dataEmiterii, Boolean avans,
@@ -37,6 +43,7 @@ public abstract class Plata implements Serializable{
 			String seria, Integer numar, String locatie) {
 		super();
 		this.idPlata = idPlata;
+		
 		this.dataEmiterii = dataEmiterii;
 		this.avans = avans;
 		this.dataInregistrarii = dataInregistrarii;
