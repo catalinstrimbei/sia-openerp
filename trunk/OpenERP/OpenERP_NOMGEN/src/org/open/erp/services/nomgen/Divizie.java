@@ -3,9 +3,17 @@
  */
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * @author Echipa NomGen
@@ -14,10 +22,10 @@ import javax.persistence.Entity;
 
 @Entity
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class Divizie extends Departament {
-	//@Id @GeneratedValue
+public class Divizie extends Departament implements Serializable{
+	 @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer Id;
-	//@ManyToOne
+	 @ManyToOne @JoinColumn(name = "Id")
 	private Departament IdDepartament;
 	private String denumire;
 	private String atributii;

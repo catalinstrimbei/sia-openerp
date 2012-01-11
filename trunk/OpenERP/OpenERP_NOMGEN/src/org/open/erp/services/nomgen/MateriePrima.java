@@ -1,8 +1,11 @@
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 
 /*
@@ -11,13 +14,16 @@ import javax.persistence.Entity;
  * 
  */
 @Entity
-public class MateriePrima extends Material{
+public class MateriePrima extends Material implements Serializable{
 //@Id @GeneratedValue
 	private Integer id;
 	private String  denumire;
 	private String  unitateMasura;
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
+	@OneToOne @JoinColumn(name= "idMaterial")
+	private Material m;
+	
 	
 	
 	/**
@@ -36,6 +42,14 @@ public class MateriePrima extends Material{
 	}
 
 	
+	public Material getM() {
+		return m;
+	}
+
+	public void setM(Material m) {
+		this.m = m;
+	}
+
 	/**
 	 * @return the denumire
 	 */
@@ -108,5 +122,19 @@ public class MateriePrima extends Material{
 	
 	public MateriePrima() {
 		super();
+	}
+
+	public MateriePrima(Integer idMaterial, String denumire, String categorie,
+			String uM, String tipContabil, Integer id, String denumire2,
+			String unitateMasura, Date dataFabricatiei,
+			Integer termenValabilitate, Material m) {
+		super(idMaterial, denumire, categorie, uM, tipContabil);
+		this.id = id;
+		denumire = denumire2;
+		this.unitateMasura = unitateMasura;
+		this.dataFabricatiei = dataFabricatiei;
+		this.termenValabilitate = termenValabilitate;
+		this.m = m;
 	}	
+	
 }

@@ -1,8 +1,11 @@
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /*
  * @author Echipa NomGen
@@ -10,13 +13,16 @@ import javax.persistence.Entity;
  * @BusinessObject(Entity)
  */
 @Entity
-public class PersoanaJuridica extends Persoana {
+public class PersoanaJuridica extends Persoana implements Serializable{
 	private String  denumire;
 	private String  codFiscal;
 	private String  nrInmatriculareFiscala;
 	private String  atributFiscal;
 	private List<String> telefoane;
 	private List<String> emailuri;
+	
+	@OneToOne @JoinColumn(name= "id")
+	private Persoana p;
 	
 	/**
 	 * @return the denumire
@@ -94,6 +100,14 @@ public class PersoanaJuridica extends Persoana {
 		this.emailuri = emailuri;
 	}
 
+	public Persoana getP() {
+		return p;
+	}
+
+	public void setP(Persoana p) {
+		this.p = p;
+	}
+
 	public PersoanaJuridica(Integer id, String adresa, String denumire, String codFiscal, String nrInmatriculareFiscala, String atributFiscal) {
 		super(id, adresa);
 		
@@ -104,6 +118,21 @@ public class PersoanaJuridica extends Persoana {
 	}
 	
 	
+	public PersoanaJuridica(Integer id, Departament dep, String adresa,
+			List<String> telefoane, List<String> emailuri, String denumire,
+			String codFiscal, String nrInmatriculareFiscala,
+			String atributFiscal, List<String> telefoane2,
+			List<String> emailuri2, Persoana p) {
+		super(id, dep, adresa, telefoane, emailuri);
+		this.denumire = denumire;
+		this.codFiscal = codFiscal;
+		this.nrInmatriculareFiscala = nrInmatriculareFiscala;
+		this.atributFiscal = atributFiscal;
+		telefoane = telefoane2;
+		emailuri = emailuri2;
+		this.p = p;
+	}
+
 	public PersoanaJuridica() {
 		super();
 	}

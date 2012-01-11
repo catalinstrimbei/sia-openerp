@@ -1,9 +1,13 @@
 
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import javax.persistence.Id;
 
@@ -13,17 +17,18 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Partener {
+public class Partener extends Persoana implements Serializable{
 	//@Id @GeneratedValue
 	private Integer id;
-	private Integer idPersoana;
+	@OneToOne @JoinColumn(name= "id")
+	private Persoana p;
 	private Date    dataAfilierii;
 	private Integer durataAfilierii;
 	/**
 	 * @return the id
 	 */
 	
-	@Id
+	
 	public Integer getId() {
 		return id;
 	}
@@ -36,15 +41,7 @@ public class Partener {
 	/**
 	 * @return the idPersoana
 	 */
-	public Integer getIdPersoana() {
-		return idPersoana;
-	}
-	/**
-	 * @param idPersoana the idPersoana to set
-	 */
-	public void setIdPersoana(Integer idPersoana) {
-		this.idPersoana = idPersoana;
-	}
+
 	/**
 	 * @return the dataAfilierii
 	 */
@@ -70,11 +67,11 @@ public class Partener {
 		this.durataAfilierii = durataAfilierii;
 	}
 
-	public Partener (Integer id, Integer idPersoana , Date dataAfilierii, Integer durataAfilierii) {
+	public Partener (Integer id, Persoana p , Date dataAfilierii, Integer durataAfilierii) {
 		super();
 		
 		this.id = id;
-		this.idPersoana = idPersoana;
+		this.p = p;
 		this.dataAfilierii = dataAfilierii;
 		this.durataAfilierii = durataAfilierii;
 	
@@ -83,10 +80,25 @@ public class Partener {
 	public Partener() {
 		super();
 	}
-	public Partener(Integer id, Integer idPersoana, Integer durataAfilierii) {
+	public Partener(Integer id, Persoana p, Integer durataAfilierii) {
 		super();
 		this.id = id;
-		this.idPersoana = idPersoana;
+		this.p = p;
+		this.durataAfilierii = durataAfilierii;
+	}
+	public Persoana getP() {
+		return p;
+	}
+	public void setP(Persoana p) {
+		this.p = p;
+	}
+	public Partener(Integer id, Departament dep, String adresa,
+			List<String> telefoane, List<String> emailuri, Integer id2,
+			Persoana p, Date dataAfilierii, Integer durataAfilierii) {
+		super(id, dep, adresa, telefoane, emailuri);
+		id = id2;
+		this.p = p;
+		this.dataAfilierii = dataAfilierii;
 		this.durataAfilierii = durataAfilierii;
 	}	
 

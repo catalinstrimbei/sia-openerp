@@ -70,7 +70,7 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testGetPersoanaDupaAdresa() {
+	public void testGetPersoanaDupaAdresa() throws Exception {
 		//fail("Not yet implemented");
 		Persoana persoana = instance.getPersoanaDupaAdresa("A1");
 		
@@ -106,7 +106,7 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testGetPersoanaFizicaCuId() {
+	public void testGetPersoanaFizicaCuId() throws Exception {
 		//fail("Not yet implemented");
 		
         PersoanaFizica persoana = instance.getPF("1");
@@ -148,7 +148,7 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testGetPersoanaJuridicaCuId() {
+	public void testGetPersoanaJuridicaCuId() throws Exception {
 	//	fail("Not yet implemented");
 		
 		PersoanaJuridica persoana = instance.getPJ("1");
@@ -226,7 +226,7 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testGetMateriePrimaCuId() {
+	public void testGetMateriePrimaCuId() throws Exception {
 		//fail("Not yet implemented");
         MateriePrima materieprima = instance.getMPDupaCod(1);
 		
@@ -251,7 +251,7 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testGetMijlocFixCuId() {
+	public void testGetMijlocFixCuId() throws Exception {
 		//fail("Not yet implemented");
 		 MijlocFix mijlocfix = instance.getMFDupaCod(1);
 			
@@ -263,21 +263,20 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 
-
-
-
 	@Test
 	public void testCreazaPartener() throws ParseException {
 		//fail("Not yet implemented");
 		
+		Persoana pers = new Persoana(1,"adresa1");
+		
 		DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
 
-		Partener p = new Partener(1, 11, (Date)formatter.parse("01/29/02"), 120);
-		System.out.println("Am creat un partener cu id-ul "+p.getId()+"cu idPersoana "+p.getIdPersoana()+" cu data afilierii "+p.getDataAfilierii()+", cu durata afilierii de "+p.getDurataAfilierii()+" zile.");
+		Partener p = new Partener(1,pers, (Date)formatter.parse("01/29/02"), 120);
+		System.out.println("Am creat un partener cu id-ul "+p.getId()+"cu idPersoana "+pers.getId()+" cu data afilierii "+p.getDataAfilierii()+", cu durata afilierii de "+p.getDurataAfilierii()+" zile.");
 	}
 
 	@Test
-	public void testGetPartenerCuId() {
+	public void testGetPartenerCuId() throws Exception {
 		//fail("Not yet implemented");
 		Partener partener = instance.getPartenerDupaCodPersoana("1");
 		
@@ -313,7 +312,7 @@ public class TestNomenclatoareDummyImpl{
 	}
 
 	@Test
-	public void testGetDepartamentCuId() {
+	public void testGetDepartamentCuId() throws Exception {
 		//fail("Not yet implemented");
 		
         Departament dep = instance.getDepDupaCod(1);

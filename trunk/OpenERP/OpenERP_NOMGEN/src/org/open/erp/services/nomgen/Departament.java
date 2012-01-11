@@ -3,12 +3,16 @@
  */
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 
@@ -19,20 +23,27 @@ import javax.persistence.Id;
 
 @Entity
 
-public class Departament {
-	//@Id @GeneratedValue
+public class Departament implements Serializable{
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer Id;
     
 	private String Denumire;
 	private String Atributii;
-
+	@OneToMany(mappedBy="IdDepartament", cascade = CascadeType.ALL)
+	private Collection<Divizie> DivDepartament;
+	
+	
+	@OneToMany(mappedBy="dep", cascade = CascadeType.ALL)
+	private Collection<Persoana> pers;
+	private static final long serialVersionUID = 1L;
+	
 	private List<String> Telefoane;
 	
 	private List<String> Emailuri;
 	/**
 	 * @return the id
 	 */
-	@Id @GeneratedValue
+	
 	public Integer getId() {
 		return Id;
 	}

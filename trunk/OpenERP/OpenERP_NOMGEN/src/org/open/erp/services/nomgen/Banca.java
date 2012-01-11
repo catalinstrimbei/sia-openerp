@@ -1,7 +1,11 @@
 
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 
 
@@ -12,8 +16,8 @@ import javax.persistence.Entity;
 
 @Entity
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class Banca extends PersoanaJuridica {
-	//@ManyToOne
+public class Banca extends PersoanaJuridica implements Serializable {
+	@OneToOne@JoinColumn(name= "marca")
 	PersoanaJuridica pj;
 	private String CapSocial;
 	

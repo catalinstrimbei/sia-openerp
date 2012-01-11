@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /*
@@ -17,8 +18,9 @@ public class LinieDocument implements Serializable {
 	 
 	@Id@GeneratedValue
 	private Integer linieDoc; 
-	@ManyToOne
+	 @ManyToOne @JoinColumn(name = "nrDocument")
 	private Document document; 
+	
 	private Material material; 
 	private Double cantitate = 0.0;  
 	private Double pret = 0.0;  

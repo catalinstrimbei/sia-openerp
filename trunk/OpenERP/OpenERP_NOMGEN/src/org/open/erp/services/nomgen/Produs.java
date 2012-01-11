@@ -1,8 +1,11 @@
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /*
  * @author Echipa NomGen
@@ -10,7 +13,7 @@ import javax.persistence.Entity;
  * @BusinessObject(Entity)
  */
 @Entity
-public class Produs extends Material{
+public class Produs extends Material implements Serializable{
 	private Integer id;
 	private String  denumire;
 	private String  unitateMasura;
@@ -18,7 +21,10 @@ public class Produs extends Material{
 	private Integer termenValabilitate;
 	private Double pretVanzare= 0.0;
 	private Float procentTVA;
+	private static final long serialVersionUID = 1L;
 	
+	 @ManyToOne @JoinColumn(name = "idMaterial")
+	 private Material mat;
 	public Float getProcentTVA() {
 		return procentTVA;
 	}
@@ -110,6 +116,14 @@ public class Produs extends Material{
 		this.pretVanzare = pretVanzare;
 	}
 
+	public Material getMat() {
+		return mat;
+	}
+
+	public void setMat(Material mat) {
+		this.mat = mat;
+	}
+
 	public Produs(Integer id, String denumire, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate) {
 		super();
 		
@@ -147,5 +161,22 @@ public class Produs extends Material{
 		this.procentTVA = procentTVA;
 		this.pretVanzare = pretVanzare;
 	}
+
+	public Produs(Integer idMaterial, String denumire, String categorie,
+			String uM, String tipContabil, Integer id, String denumire2,
+			String unitateMasura, Date dataFabricatiei,
+			Integer termenValabilitate, Double pretVanzare, Float procentTVA,
+			Material mat) {
+		super(idMaterial, denumire, categorie, uM, tipContabil);
+		this.id = id;
+		denumire = denumire2;
+		this.unitateMasura = unitateMasura;
+		this.dataFabricatiei = dataFabricatiei;
+		this.termenValabilitate = termenValabilitate;
+		this.pretVanzare = pretVanzare;
+		this.procentTVA = procentTVA;
+		this.mat = mat;
+	}
+	
 	
 }

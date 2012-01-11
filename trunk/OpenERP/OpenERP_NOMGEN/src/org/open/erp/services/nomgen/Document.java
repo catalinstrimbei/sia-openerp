@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
@@ -23,12 +24,13 @@ public class Document implements Serializable{
 	@Id
 	private Integer nrDocument;         
 	private Date dataDocument; 
-    @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-	private Persoana persoana;//responsabil        
+	@OneToOne @JoinColumn(name= "id")
+	private Persoana persoana;//responsabil    
+    
+    
 	private String observatie;   
 	
-	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-	@Column(name="liniiDocument")
+	@OneToMany(mappedBy="document", cascade = CascadeType.ALL)
 	private List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
 	
 	
