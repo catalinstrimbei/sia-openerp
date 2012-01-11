@@ -1169,6 +1169,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		return activitateTeamBld;
 	}
 	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void demisionare(CerereDemisie cerereDemisie_) {
 			
@@ -1227,6 +1229,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 	}
 
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void concediere(ContractMunca contractMunca_) {
 		try
@@ -1261,6 +1265,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(PersonalImpl.class.getName());
 
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public  Collection<AnuntLocMunca> getPosturiVacante(Date dataVizata_, Collection<AnuntLocMunca> ListaInit_) {
 		try
@@ -1288,6 +1294,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 	}
 
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Candidat> getCandidatipeFunctie(AnuntLocMunca anuntLocMunca_, Collection<CV> ListaInit_) {
 		try
@@ -1318,6 +1326,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Candidat> recrutare(Date dataAnunt_, Candidat candidat_, Collection<InterviuCandidat> ListaInit_) {
 		try
@@ -1348,8 +1357,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 	}
 	
+	
 	//evaluareAngajat - Andreea
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public HashMap <DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartament(
 			Collection<ProbaEvaluare> probeEvaluareInit_, Collection<DummyDepartament> departamenteInit) 
@@ -1382,7 +1392,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 
 	
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<ContractMunca> getListaContracteByAngajat(Angajat angajat_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1405,6 +1415,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		return ListaContractelor;
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ContractMunca getContractAngajatActiv(Angajat angajat_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1437,6 +1448,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		return null;
 	}
 	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CV getCVByCandidat (Candidat candidat_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1456,7 +1469,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		return null;
 	}
 	
-
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void angajare(Candidat candidat_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1477,6 +1491,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public DosarAngajat getDosarByAngajat(Angajat angajat_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1494,6 +1509,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 		
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void activareAngajati(Collection<Angajat> ListaAngajati) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1535,6 +1551,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProba(
 			Collection<RezultatProbaEvaluare> angajatProbaInit_,
@@ -1563,6 +1580,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		return rezultat;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ContractMunca relocalizare_promovare(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_)
 	 {
@@ -1618,7 +1636,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 		
 	}
-
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Functie adaugareFunctie(String numeFunctie_, Integer pozitiaInCOR_,
 			Collection<String> obiective_, Collection<String> responsabilitati_,
@@ -1629,6 +1649,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 				numeFunctie_, pozitiaInCOR_, obiective_, responsabilitati_, cunostinte_, deprinderi_, aptitudini_, departament);
 		return functieNoua;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Eveniment> getEvenimenteAnuale(Integer _year) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1642,7 +1664,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 
 	
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void aprobareEveniment(Eveniment _eveniment) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1662,7 +1684,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 
 	// begin Ioana
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ContractMunca getContractAngajatActivEJB(Angajat angajat_) throws Exception {
 		logger.logDEBUG(">>>>>>Start getContractAngajatActivEJB din personal impl");
@@ -1700,7 +1722,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	
 	
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<ContractMunca> getListaContracteAngajatEJB ( Angajat angajat_) throws Exception {	
 			logger.logDEBUG(">>>>>>Start getListaContracteAngajatEJB din personal impl");
@@ -1710,6 +1732,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CV getCVByCandidatEJB(Candidat candidat_) throws Exception{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());	
@@ -1735,7 +1758,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		return null;
 	}
 	
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public DosarAngajat getDosarByAngajatEJB(Angajat angajat_) throws Exception {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1759,7 +1782,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	
 	
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void activareAngajatiEJB() throws Exception {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1798,6 +1821,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 	}
 
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Candidat validareRecrutareEJB(Date dataAnunt_, Candidat candidat_)
 			throws Exception {
@@ -1832,6 +1857,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 	}	
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<InterviuCandidat> getListaInterviuriByCandidatEJB(Candidat candidat_)
 			throws Exception {
@@ -1854,6 +1880,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 	}	
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Candidat> recrutareEJB(AnuntLocMunca anunt_)
 			throws Exception {
@@ -1892,7 +1919,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	
 
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public HashMap<DummyDepartament, Collection<ProbaEvaluare>> getProbeEvaluareDepartamentEJB() {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1929,6 +1956,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}		
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public HashMap<ProbaEvaluare, Collection<RezultatProbaEvaluare>> getRezultateEvaluareByProbaEJB() {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1956,6 +1984,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			}
 		}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<AnuntLocMunca> getPosturiVacanteEJB(Date dataVizata_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1984,6 +2013,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			return null;
 		}
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Candidat> getCandidatiPeAnuntLocMuncaEJB(AnuntLocMunca anuntLocMunca_){
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -2012,6 +2043,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}		
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<CV> getCVuriPeAnuntLocMuncaEJB(AnuntLocMunca anuntLocMunca_){
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -2032,6 +2064,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}		
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Angajat> getAngajatipeFunctieEJB(Functie functie_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -2068,7 +2101,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	
 	
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void angajareEJB(Candidat candidat_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -2114,6 +2147,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void demisionareEJB(CerereDemisie cerereDemisie_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -2155,6 +2189,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void concediereEJB(ContractMunca contractMunca_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -2175,6 +2211,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		
 	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ContractMunca relocalizare_promovareEJB(Angajat angajat_,
 			Functie functieNoua_, ContractMunca contractVizat_,
@@ -2245,7 +2284,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	}
 	
 
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Collection<Eveniment> getEvenimenteAnualeEJB(Integer _year)throws Exception
 	{
@@ -2264,7 +2303,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
 		}
 		return evenimente;
-	}	
+	}
+	
+	
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void aprobareEvenimentEJB(Eveniment _eveniment) throws Exception
 	{
