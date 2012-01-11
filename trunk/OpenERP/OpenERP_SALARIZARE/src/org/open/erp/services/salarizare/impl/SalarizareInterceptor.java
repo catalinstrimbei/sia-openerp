@@ -14,7 +14,7 @@ public class SalarizareInterceptor {
 			String invokedMethodName = ctx.getMethod().getName();
 			SalarizareImpl ejbean = (SalarizareImpl) ctx.getTarget();
 			
-			logger.info("#### call of: " + targetBeanClass.getName() + "." + invokedMethodName);
+			logger.info("#### call of logValidationResult: " + targetBeanClass.getName() + "." + invokedMethodName);
 			// Executa logica de interceptare
 			if (
 					("inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))||
@@ -50,7 +50,7 @@ public class SalarizareInterceptor {
 			String invokedMethodName = ctx.getMethod().getName();
 			SalarizareImpl ejbean = (SalarizareImpl) ctx.getTarget();
 			
-			logger.info("#### call of: " + targetBeanClass.getName() + "." + invokedMethodName);
+			logger.info("#### call of logValidationSalar: " + targetBeanClass.getName() + "." + invokedMethodName);
 			// Executa logica de interceptare
 			if (
 					("calculSalarNet".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))
@@ -90,7 +90,7 @@ public class SalarizareInterceptor {
 		String invokedMethodName = ctx.getMethod().getName();
 		SalarizareImpl ejbean = (SalarizareImpl) ctx.getTarget();
 		
-		logger.info("#### call of: " + targetBeanClass.getName() + "." + invokedMethodName);
+		logger.info("#### call of logEJBInjection: " + targetBeanClass.getName() + "." + invokedMethodName);
 		// Executa logica de interceptare pt fiecare metoda care foloseste personalSrv
 		if (
 				("inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass)) ||
@@ -116,7 +116,7 @@ public class SalarizareInterceptor {
 		String invokedMethodName = ctx.getMethod().getName();
 		SalarizareImpl ejbean = (SalarizareImpl) ctx.getTarget();
 		
-		logger.info("#### call of: " + targetBeanClass.getName() + "." + invokedMethodName);
+		logger.info("#### call of logInvocationResult: " + targetBeanClass.getName() + "." + invokedMethodName);
 		// Executa logica de interceptare
 		if (
 				("inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))||
