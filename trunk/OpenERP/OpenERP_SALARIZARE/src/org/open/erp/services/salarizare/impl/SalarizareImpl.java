@@ -195,7 +195,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 
 	//@Interceptors({SalarizareInterceptor.class})
 	@Override
-	public Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) {
+	public Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) throws Exception {
 		Pontaj p = registru.getPontajByAngajat(angajat, an, luna);
 		logger.logINFO("Am incarcat pontajul");
 		ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
@@ -343,13 +343,15 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			Double cas = calculRetineriObligatorii(2011, 11, angajat,"CAS", venitBrut);
 			Double cass = calculRetineriObligatorii(2011, 11, angajat,"CASS", venitBrut);
 			Double somaj = calculRetineriObligatorii(2011, 11, angajat,"SOMAJ", venitBrut);
-			
+			logger.logINFO("Inregistrare stat salarii inainte de calcul impozit");
 			Double impozit = calculImpozit(an, luna, angajat, venitBrut, cas, cass, somaj, retineriAlte, deduceri);
+			logger.logINFO("Inregistrare stat salarii dupa de calcul impozit");
 			Double salarNet = calculSalarNet(an, luna, angajat, venitBrut, cas, cass, somaj, impozit, retineriAlte, deduceri);
-			
+			logger.logINFO("Inregistrare stat salarii dupa calcul salar net");
 			StatSalarii statSalarii = new StatSalarii();
 			statSalarii.setPontaj(p);
 			statSalarii.setAlteSporuri(this.calculSporuriAngajat(an, luna, angajat));
+			logger.logINFO("Inregistrare stat salarii dupa sporuri");
 			statSalarii.setAlteRetineri(retineriAlte);
 			statSalarii.setCas(cas);
 			statSalarii.setCass(cass);
@@ -357,7 +359,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 			statSalarii.setSalarBrut(venitBrut);
 			statSalarii.setImpozit(impozit);
 			statSalarii.setSalarNet(salarNet);
-			
+			logger.logINFO("Inregistrare stat salarii inainte de salvare");
 			this.registru.salveazaStatSalarii(statSalarii);
 		}
 		

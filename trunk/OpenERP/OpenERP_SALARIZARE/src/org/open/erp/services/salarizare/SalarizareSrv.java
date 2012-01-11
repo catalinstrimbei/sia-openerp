@@ -143,9 +143,10 @@ public interface SalarizareSrv {
 	 * @param angajat			Angajatul pentru care se calculeaza sporurile
 	 * 
 	 * @return  Double - venitul brut
+	 * @throws Exception 
 	 * 
 	 */
-	Double calculVenitBrut(Integer an, Integer luna, Angajat angajat);
+	Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) throws Exception;
 	
 	/**
 	 * Adauga o retinere pentru un angajat sau pt toti angajatii (practic e un create din CRUD)
