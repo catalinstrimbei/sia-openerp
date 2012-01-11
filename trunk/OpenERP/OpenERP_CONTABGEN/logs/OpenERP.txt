@@ -1,155 +1,70 @@
-(A1) 2011-12-14 18:33:22,056 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,057 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestjurnalizareVanzare
-(A1) 2011-12-14 18:33:22,059 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare vanzare noua
-(A1) 2011-12-14 18:33:22,060 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
-(A1) 2011-12-14 18:33:22,062 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem articol vanzare clienti
-(A1) 2011-12-14 18:33:22,062 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 607 | 301
-(A1) 2011-12-14 18:33:22,062 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
-(A1) 2011-12-14 18:33:22,062 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de vanzare NOUA
-(A1) 2011-12-14 18:33:22,063 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestjurnalizareVanzare
-(A1) 2011-12-14 18:33:22,064 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,064 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareAchizitie
-(A1) 2011-12-14 18:33:22,064 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare achizitie noua
-(A1) 2011-12-14 18:33:22,064 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
-(A1) 2011-12-14 18:33:22,065 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 301 | 401
-(A1) 2011-12-14 18:33:22,065 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 628 | 401
-(A1) 2011-12-14 18:33:22,065 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
-(A1) 2011-12-14 18:33:22,065 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de achizitie NOUA completa
-(A1) 2011-12-14 18:33:22,065 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestjurnalizareAchizitie
-(A1) 2011-12-14 18:33:22,066 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,066 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareIncasare
-(A1) 2011-12-14 18:33:22,066 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare incasare noua
-(A1) 2011-12-14 18:33:22,067 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
-(A1) 2011-12-14 18:33:22,067 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 512 | 401
-(A1) 2011-12-14 18:33:22,067 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem articol incasare 
-(A1) 2011-12-14 18:33:22,067 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de incasare NOUA completa
-(A1) 2011-12-14 18:33:22,067 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestJurnalizareIncasare
-(A1) 2011-12-14 18:33:22,067 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,067 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizarePlata
-(A1) 2011-12-14 18:33:22,068 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare plata noua
-(A1) 2011-12-14 18:33:22,068 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
-(A1) 2011-12-14 18:33:22,068 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 628 | 512
-(A1) 2011-12-14 18:33:22,068 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem articol plata 
-(A1) 2011-12-14 18:33:22,069 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de plata NOUA completa
-(A1) 2011-12-14 18:33:22,069 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestJurnalizarePlata
-(A1) 2011-12-14 18:33:22,069 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,069 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareConsum
-(A1) 2011-12-14 18:33:22,069 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare consum noua
-(A1) 2011-12-14 18:33:22,069 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
-(A1) 2011-12-14 18:33:22,070 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 607 | 301
-(A1) 2011-12-14 18:33:22,070 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
-(A1) 2011-12-14 18:33:22,070 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de consum NOUA
-(A1) 2011-12-14 18:33:22,070 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestJurnalizareConsum
-(A1) 2011-12-14 18:33:22,070 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,070 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareProductie
-(A1) 2011-12-14 18:33:22,070 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare Productie noua
-(A1) 2011-12-14 18:33:22,070 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
-(A1) 2011-12-14 18:33:22,071 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 345 | 711
-(A1) 2011-12-14 18:33:22,071 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
-(A1) 2011-12-14 18:33:22,071 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de Productie NOUA
-(A1) 2011-12-14 18:33:22,071 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestJurnalizareProductie
-(A1) 2011-12-14 18:33:22,071 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,071 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareSalarii
-(A1) 2011-12-14 18:33:22,071 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare salarii noua
-(A1) 2011-12-14 18:33:22,071 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 641 | 421 | 1500.0
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 421 | 4314 | 150.0
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 421 | 4372 | 10.0
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 421 | 4312 | 240.0
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 421 | 444 | 200.0
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4313 | 145.0
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4371 | 10.0
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4311 | 240.0
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4315 | 30.0
-(A1) 2011-12-14 18:33:22,072 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4316 | 80.0
-(A1) 2011-12-14 18:33:22,073 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem articole salarii 
-(A1) 2011-12-14 18:33:22,073 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de salarii NOUA completa
-(A1) 2011-12-14 18:33:22,073 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestJurnalizareSalarii
-(A1) 2011-12-14 18:33:22,073 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,073 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestInchideLuna
-(A1) 2011-12-14 18:33:22,075 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 301 / Balanta [id=-1/1-12/2011 - DESCHISA/301sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=150.0tsd=0.0tsc=150.0sfd=0.0sfc=150.0/false]
-(A1) 2011-12-14 18:33:22,075 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 607 / Balanta [id=-1/1-12/2011 - DESCHISA/607sid=0.0sic=0.0rad=0.0rad=0.0rcd=150.0rcc=0.0tsd=150.0tsc=0.0sfd=150.0sfc=0.0/false]
-(A1) 2011-12-14 18:33:22,076 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 401 / Balanta [id=-1/1-12/2011 - DESCHISA/401sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=1600.0tsd=0.0tsc=1600.0sfd=0.0sfc=1600.0/false]
-(A1) 2011-12-14 18:33:22,076 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 628 / Balanta [id=-1/1-12/2011 - DESCHISA/628sid=0.0sic=0.0rad=0.0rad=0.0rcd=1600.0rcc=0.0tsd=1600.0tsc=0.0sfd=1600.0sfc=0.0/false]
-(A1) 2011-12-14 18:33:22,076 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 512 / Balanta [id=-1/1-12/2011 - DESCHISA/512sid=0.0sic=0.0rad=0.0rad=0.0rcd=1200.0rcc=1200.0tsd=1200.0tsc=1200.0sfd=0.0sfc=0.0/false]
-(A1) 2011-12-14 18:33:22,076 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 345 / Balanta [id=-1/1-12/2011 - DESCHISA/345sid=0.0sic=0.0rad=0.0rad=0.0rcd=50.0rcc=0.0tsd=50.0tsc=0.0sfd=50.0sfc=0.0/false]
-(A1) 2011-12-14 18:33:22,076 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 711 / Balanta [id=-1/1-12/2011 - DESCHISA/711sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=50.0tsd=0.0tsc=50.0sfd=0.0sfc=50.0/false]
-(A1) 2011-12-14 18:33:22,076 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 641 / Balanta [id=-1/1-12/2011 - DESCHISA/641sid=0.0sic=0.0rad=0.0rad=0.0rcd=1500.0rcc=0.0tsd=1500.0tsc=0.0sfd=1500.0sfc=0.0/false]
-(A1) 2011-12-14 18:33:22,076 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 645 / Balanta [id=-1/1-12/2011 - DESCHISA/645sid=0.0sic=0.0rad=0.0rad=0.0rcd=505.0rcc=0.0tsd=505.0tsc=0.0sfd=505.0sfc=0.0/false]
-(A1) 2011-12-14 18:33:22,076 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 421 / Balanta [id=-1/1-12/2011 - DESCHISA/421sid=0.0sic=0.0rad=0.0rad=0.0rcd=600.0rcc=1500.0tsd=600.0tsc=1500.0sfd=0.0sfc=900.0/false]
-(A1) 2011-12-14 18:33:22,077 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 4311 / Balanta [id=-1/1-12/2011 - DESCHISA/4311sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=240.0tsd=0.0tsc=240.0sfd=0.0sfc=240.0/false]
-(A1) 2011-12-14 18:33:22,077 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 4312 / Balanta [id=-1/1-12/2011 - DESCHISA/4312sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=240.0tsd=0.0tsc=240.0sfd=0.0sfc=240.0/false]
-(A1) 2011-12-14 18:33:22,077 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 4313 / Balanta [id=-1/1-12/2011 - DESCHISA/4313sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=145.0tsd=0.0tsc=145.0sfd=0.0sfc=145.0/false]
-(A1) 2011-12-14 18:33:22,077 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 4314 / Balanta [id=-1/1-12/2011 - DESCHISA/4314sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=150.0tsd=0.0tsc=150.0sfd=0.0sfc=150.0/false]
-(A1) 2011-12-14 18:33:22,077 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 4315 / Balanta [id=-1/1-12/2011 - DESCHISA/4315sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=30.0tsd=0.0tsc=30.0sfd=0.0sfc=30.0/false]
-(A1) 2011-12-14 18:33:22,077 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 4316 / Balanta [id=-1/1-12/2011 - DESCHISA/4316sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=80.0tsd=0.0tsc=80.0sfd=0.0sfc=80.0/false]
-(A1) 2011-12-14 18:33:22,077 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 4371 / Balanta [id=-1/1-12/2011 - DESCHISA/4371sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=10.0tsd=0.0tsc=10.0sfd=0.0sfc=10.0/false]
-(A1) 2011-12-14 18:33:22,078 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 4372 / Balanta [id=-1/1-12/2011 - DESCHISA/4372sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=10.0tsd=0.0tsc=10.0sfd=0.0sfc=10.0/false]
-(A1) 2011-12-14 18:33:22,078 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Am facut linieBalanta cont 444 / Balanta [id=-1/1-12/2011 - DESCHISA/444sid=0.0sic=0.0rad=0.0rad=0.0rcd=0.0rcc=200.0tsd=0.0tsc=200.0sfd=0.0sfc=200.0/false]
-(A1) 2011-12-14 18:33:22,078 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestInchideLuna
-(A1) 2011-12-14 18:33:22,078 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,078 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestverificaLunaInchisa
-(A1) 2011-12-14 18:33:22,079 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Luna pentru Wed Dec 14 18:33:22 EET 2011 este INCHISA
-(A1) 2011-12-14 18:33:22,079 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestInchideLuna
-(A1) 2011-12-14 18:33:22,079 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,079 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestAnuleazaInchidere
-(A1) 2011-12-14 18:33:22,079 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Luna pentru Wed Dec 14 18:33:22 EET 2011 este: DESCHISA
-(A1) 2011-12-14 18:33:22,079 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestAnuleazaInchidere
-(A1) 2011-12-14 18:33:22,080 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
-(A1) 2011-12-14 18:33:22,080 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestListaTipuriCtb
-(A1) 2011-12-14 18:33:22,080 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,080 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,080 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,080 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,080 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,080 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,080 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,080 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,081 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,082 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
-(A1) 2011-12-14 18:33:22,083 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
-(A1) 2011-12-14 18:33:22,084 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestListaTipuriCtb
+(A1) 2012-01-11 09:47:17,796 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Intiere Test
+(A1) 2012-01-11 09:47:17,828 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestjurnalizareVanzare
+(A1) 2012-01-11 09:47:17,828 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare vanzare noua
+(A1) 2012-01-11 09:47:17,843 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
+(A1) 2012-01-11 09:47:17,843 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem articol vanzare clienti
+(A1) 2012-01-11 09:47:17,843 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 607 | 301
+(A1) 2012-01-11 09:47:17,843 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
+(A1) 2012-01-11 09:47:17,843 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de vanzare NOUA
+(A1) 2012-01-11 09:47:17,859 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareAchizitie
+(A1) 2012-01-11 09:47:17,875 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare achizitie noua
+(A1) 2012-01-11 09:47:17,875 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
+(A1) 2012-01-11 09:47:17,875 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 301 | 401
+(A1) 2012-01-11 09:47:17,875 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 628 | 401
+(A1) 2012-01-11 09:47:17,875 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
+(A1) 2012-01-11 09:47:17,875 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de achizitie NOUA completa
+(A1) 2012-01-11 09:47:17,890 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareIncasare
+(A1) 2012-01-11 09:47:17,890 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare incasare noua
+(A1) 2012-01-11 09:47:17,890 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
+(A1) 2012-01-11 09:47:17,890 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 512 | 401
+(A1) 2012-01-11 09:47:17,890 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem articol incasare 
+(A1) 2012-01-11 09:47:17,890 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de incasare NOUA completa
+(A1) 2012-01-11 09:47:17,890 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizarePlata
+(A1) 2012-01-11 09:47:17,890 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare plata noua
+(A1) 2012-01-11 09:47:17,890 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
+(A1) 2012-01-11 09:47:17,890 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 628 | 512
+(A1) 2012-01-11 09:47:17,890 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem articol plata 
+(A1) 2012-01-11 09:47:17,890 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de plata NOUA completa
+(A1) 2012-01-11 09:47:17,906 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareConsum
+(A1) 2012-01-11 09:47:17,906 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare consum noua
+(A1) 2012-01-11 09:47:17,906 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
+(A1) 2012-01-11 09:47:17,906 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 607 | 301
+(A1) 2012-01-11 09:47:17,906 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
+(A1) 2012-01-11 09:47:17,906 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de consum NOUA
+(A1) 2012-01-11 09:47:17,906 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareProductie
+(A1) 2012-01-11 09:47:17,906 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare Productie noua
+(A1) 2012-01-11 09:47:17,906 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
+(A1) 2012-01-11 09:47:17,906 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 345 | 711
+(A1) 2012-01-11 09:47:17,906 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem lista de articole
+(A1) 2012-01-11 09:47:17,906 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de Productie NOUA
+(A1) 2012-01-11 09:47:17,906 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestJurnalizareSalarii
+(A1) 2012-01-11 09:47:17,906 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Creare inregistrare salarii noua
+(A1) 2012-01-11 09:47:17,921 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem obiecte
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 641 | 421 | 1500.0
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 421 | 4314 | 150.0
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 421 | 4372 | 10.0
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 421 | 4312 | 240.0
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 421 | 444 | 200.0
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4313 | 145.0
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4371 | 10.0
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4311 | 240.0
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4315 | 30.0
+(A1) 2012-01-11 09:47:17,921 [main] INFO  org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Articol rezolvat: 645 | 4316 | 80.0
+(A1) 2012-01-11 09:47:17,921 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem articole salarii 
+(A1) 2012-01-11 09:47:17,921 [main] DEBUG org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl - Avem o inregistrare jurnal de salarii NOUA completa
+(A1) 2012-01-11 09:47:17,937 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestInchideLuna
+(A1) 2012-01-11 09:47:17,937 [main] ERROR org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Inchidere luna nu s-a efectuat Luna anterioara este deschisa! Nu puteti inchide luna ceruta
+(A1) 2012-01-11 09:47:17,937 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestInchideLuna
+(A1) 2012-01-11 09:47:17,937 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestverificaLunaInchisa
+(A1) 2012-01-11 09:47:17,937 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Luna pentru Wed Jan 11 09:47:17 EET 2012 este DESCHISA
+(A1) 2012-01-11 09:47:17,937 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestverificaLunaInchisa
+(A1) 2012-01-11 09:47:17,937 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestAnuleazaInchidere
+(A1) 2012-01-11 09:47:17,937 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Luna pentru Wed Jan 11 09:47:17 EET 2012 este: DESCHISA
+(A1) 2012-01-11 09:47:17,937 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestAnuleazaInchidere
+(A1) 2012-01-11 09:47:17,937 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - Begin test: TestListaTipuriCtb
+(A1) 2012-01-11 09:47:17,937 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materii prime
+(A1) 2012-01-11 09:47:17,937 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Materiale
+(A1) 2012-01-11 09:47:17,937 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Cheltuieli cu terti
+(A1) 2012-01-11 09:47:17,937 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Marfuri
+(A1) 2012-01-11 09:47:17,937 [main] DEBUG org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - un tip: Produse finite
+(A1) 2012-01-11 09:47:17,937 [main] INFO  org.open.erp.services.ctbgen.teste.TestContabilizareSrvImpl - End test: TestListaTipuriCtb

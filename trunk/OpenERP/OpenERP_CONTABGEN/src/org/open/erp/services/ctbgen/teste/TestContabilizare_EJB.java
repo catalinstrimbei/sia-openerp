@@ -36,7 +36,7 @@ public class TestContabilizare_EJB {
 private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizareSrvImpl.class.getName());
 	
     private static ContabilizareSrv instantaCtbGen;
-    private static NomenclatoareSrv nomenclatorInstance;
+    //private static NomenclatoareSrv nomenclatorInstance;
 	
 	RegSablonNC regSablonNC;
 	RegConturi regConturi;
@@ -56,16 +56,16 @@ private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogge
 	public static void setUpBeforeClass() throws Exception {
 		InitialContext ctx = initJBossJNDICtx();
 		instantaCtbGen = (ContabilizareSrv)ctx.lookup("ContabilizareSrv/remote");
-		nomenclatorInstance = (NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
+		//nomenclatorInstance = (NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
 		
 		logger.info("initTest " + instantaCtbGen);
-		logger.info("initTest " + nomenclatorInstance);
+		//logger.info("initTest " + nomenclatorInstance);
 	}
 
 	@Before
 	public void setUp() throws Exception {
 		instantaCtbGen=  ContabilizareDummyFactory.getContabilizareSrv();
-		nomenclatorInstance = ContabilizareDummyFactory.getNomenclatoareSrv();
+		//nomenclatorInstance = ContabilizareDummyFactory.getNomenclatoareSrv();
 		regSablonNC = RegSablonNC.instantiaza();
 		regConturi = RegConturi.instantiaza();
 		regLuniConturi = RegLuniLucru.instantiaza();
