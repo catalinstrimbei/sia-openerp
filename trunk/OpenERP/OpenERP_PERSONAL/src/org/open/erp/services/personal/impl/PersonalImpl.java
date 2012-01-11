@@ -2189,7 +2189,13 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		{
 			
 			//TODO - Add this.registruPerosnal.getListaContracteByAngajat(angajat).iterator();
-			Iterator<ContractMunca> iteratorContracte = this.getListaContracteByAngajat(angajat_).iterator();
+			Iterator<ContractMunca> iteratorContracte = null;
+			try {
+				iteratorContracte = this.getListaContracteAngajatEJB(angajat_).iterator();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 			while (iteratorContracte.hasNext())
 			{

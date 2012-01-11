@@ -244,7 +244,7 @@ public class TestPersonalEJBBusinessLogic {
 	}
 	
 	@Test
-	public void TESTrelocalizare_promovareEJB() {
+	public void TESTrelocalizare_promovareEJB() {//
 		try
 		{
 			logger.logINFO("Start test: TESTrelocalizare_promovareEJB");
@@ -360,14 +360,12 @@ public class TestPersonalEJBBusinessLogic {
 			while (iteratorFunctii.hasNext())
 			{		
 				Collection<Angajat> angajati = personalInstance.getAngajatipeFunctieEJB(iteratorFunctii.next());
-				Iterator <Angajat> iteratorAngajati = angajati.iterator();
-				System.out.println(iteratorFunctii.next().getNumeFunctie());
+				Iterator <Angajat> iteratorAngajati = angajati.iterator();				
 				while (iteratorAngajati.hasNext())
 				{
 					Angajat angajatCurent = iteratorAngajati.next();
 					System.out.println("-->" + angajatCurent.getNume());
-				}
-				angajati.clear();
+				}				
 			}
 			logger.logINFO("End test: TESTgetgetAngajatiPeFunctieEJB");
 		}

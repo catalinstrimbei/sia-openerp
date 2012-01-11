@@ -149,8 +149,8 @@ public class RegistruPersonalEJB {
 
 	public Collection<Angajat> getAngajatiPeFunctie(Functie functie_) throws Exception{
 		try{
-			return entityManager.createQuery("SELECT a FROM Angajat a, Contract c " +
-											"WHERE a = c.angajat AND  c.functie = :functie")
+			return entityManager.createQuery("SELECT c.angajat from ContractMunca c " +
+											"WHERE c.functie = :functie")
 											.setParameter("functie", functie_)
 											.getResultList();
 		}catch(Exception ex){
