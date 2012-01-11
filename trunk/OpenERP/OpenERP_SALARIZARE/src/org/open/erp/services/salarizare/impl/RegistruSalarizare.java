@@ -48,7 +48,7 @@ public class RegistruSalarizare {
 
 	public Pontaj getPontajByAngajat(Angajat angajat, Integer an, Integer luna) {
 		Pontaj p;
-		
+		logger.logINFO(angajat.getId());
 		p = (Pontaj)entityManager.createQuery("SELECT p FROM Pontaj p " +
 				"WHERE p.angajat.id=:id AND p.an=:an AND p.luna=:luna AND rownum<=1")
 				.setParameter("id", angajat.getId())
