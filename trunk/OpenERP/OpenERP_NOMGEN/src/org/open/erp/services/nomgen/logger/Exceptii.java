@@ -13,19 +13,15 @@ public class Exceptii extends Exception  {
 	
 	public Exceptii() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Exceptii(String arg0, Throwable arg1) {
-		super(arg0, arg1);
-		// TODO Auto-generated constructor stub
+		super(arg0, arg1);	
 	}
 	public Exceptii(String arg0) {
 		super(arg0);
-		// TODO Auto-generated constructor stub
 	}
 	public Exceptii(Throwable arg0) {
 		super(arg0);
-		// TODO Auto-generated constructor stub
 	}
 	
 	

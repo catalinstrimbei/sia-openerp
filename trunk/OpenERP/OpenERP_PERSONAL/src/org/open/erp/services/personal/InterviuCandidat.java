@@ -77,7 +77,6 @@ public class InterviuCandidat implements Serializable{
 	}
 	public InterviuCandidat() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

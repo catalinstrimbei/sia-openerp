@@ -58,8 +58,7 @@ public class ActivitateTeamBuilding extends Activitate implements Serializable{
 	 * 
 	 */
 	public ActivitateTeamBuilding() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();		
 	}
 	
 	

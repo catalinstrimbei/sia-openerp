@@ -83,7 +83,6 @@ public class CerereDemisie implements Serializable{
 	}
 	public CerereDemisie() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

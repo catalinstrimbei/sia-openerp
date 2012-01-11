@@ -137,8 +137,7 @@ public abstract class Activitate implements Serializable {
 	 */
 	public Activitate() {
 		super();
-		activitati.add(this);//TODO de scos cand avem BD// NMV>>simulare persistenta 
-		// TODO Auto-generated constructor stub
+		activitati.add(this);//TODO de scos cand avem BD// NMV>>simulare persistenta  
 	}
 	
 	public static Activitate construct(Eveniment eveniment) throws Exception{//NMV>>creare metoda construct ce returneaza activitate noua de tip teambuilding sau training in functie de tipul evenimentului
@@ -162,13 +161,11 @@ public abstract class Activitate implements Serializable {
 		return activitateNoua;
 	}
 	@Override
-	public boolean equals(Object arg0) {
-		// TODO Auto-generated method stub
+	public boolean equals(Object arg0) {		
 		return super.equals(arg0);
 	}
 	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
+	public int hashCode() {		
 		return super.hashCode();
 	}
 }

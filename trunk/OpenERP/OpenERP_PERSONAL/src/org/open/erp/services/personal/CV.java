@@ -141,7 +141,6 @@ public class CV implements Serializable{
 	}
 	public CV() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public CV(Integer nrCV, Candidat candidat, Functie functieVizata,
 			Date dataDepunere, Date ultimaModificare) {

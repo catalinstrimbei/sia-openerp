@@ -42,13 +42,11 @@ public class Candidat extends DummyPersoanaFizica implements Serializable{
 		this.tipCandidat = tipCandidat;
 	}
 	public Candidat() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();		
 	}
 	public Candidat(Integer id, String adresa, String nume,
 			String prenume, String formaAdresare, char gen, String cnp) {
-		super(id, adresa, nume, prenume, formaAdresare, gen, cnp);
-		// TODO Auto-generated constructor stub
+		super(id, adresa, nume, prenume, formaAdresare, gen, cnp);		
 	}
 	public Candidat(Integer id, String adresa,  String nume,
 			String prenume, String formaAdresare, char gen, String cnp,

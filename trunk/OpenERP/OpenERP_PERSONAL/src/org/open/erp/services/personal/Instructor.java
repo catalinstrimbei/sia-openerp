@@ -42,11 +42,9 @@ public class Instructor extends DummyPersoana {
 	
 	public Instructor() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Instructor(Integer id, String adresa) {
 		super(id, adresa);
-		// TODO Auto-generated constructor stub
 	}
 	public Collection<ActivitateTraining> getActivitatiTeamBld() {
 		return activitatiTeamBld;

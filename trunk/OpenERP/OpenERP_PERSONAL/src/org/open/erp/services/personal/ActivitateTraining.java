@@ -42,7 +42,7 @@ public class ActivitateTraining extends Activitate implements Serializable{
 
 	public ActivitateTraining() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 }

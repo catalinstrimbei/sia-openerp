@@ -59,8 +59,7 @@ public class Angajat extends Candidat implements Serializable{
 
 
 	public Angajat() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();		
 	}
 
 
@@ -77,14 +76,12 @@ public class Angajat extends Candidat implements Serializable{
 			Integer idCandidat, String tipCandidat) {
 		super(id, adresa,  nume, prenume, formaAdresare, gen, cnp,
 				idCandidat, tipCandidat);
-		// TODO Auto-generated constructor stub
 	}
 
 
 	public Angajat(Integer id, String adresa,  String nume,
 			String prenume, String formaAdresare, char gen, String cnp) {
-		super(id, adresa, nume, prenume, formaAdresare, gen, cnp);
-		// TODO Auto-generated constructor stub
+		super(id, adresa, nume, prenume, formaAdresare, gen, cnp);		
 	}
 
 
@@ -96,9 +93,6 @@ public class Angajat extends Candidat implements Serializable{
 		this.activ = activ;
 		this.numarCopii = 0;
 	}
-
-
-
 
 	public Angajat(Integer id,  String nume,
 			String prenume,	Integer idCandidat, String tipCandidat, Integer marca,

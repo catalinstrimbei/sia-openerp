@@ -2212,8 +2212,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}catch(Exception ex){
 			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
-		
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());				
 		}
 		
 	}
@@ -2237,9 +2236,11 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			Iterator<ContractMunca> iteratorContracte = null;
 			try {
 				iteratorContracte = this.getListaContracteAngajatEJB(angajat_).iterator();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			} 
+			catch(Exception ex){
+				logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+				logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+				ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());				
 			}
 			
 			while (iteratorContracte.hasNext())
@@ -2256,9 +2257,13 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 				}
 				try {
 					contractVechi = this.salveazaContractMunca(contractVechi);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				} 
+				catch(Exception ex)
+				{
+						logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+						logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+						ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
+						return null;		
 				}
 			}	
 		}

@@ -70,7 +70,7 @@ public class DosarAngajat implements Serializable{
 	}
 	public DosarAngajat() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	

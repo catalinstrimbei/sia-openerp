@@ -82,7 +82,6 @@ public class AnuntLocMunca implements Serializable{
 	}
 	public AnuntLocMunca() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

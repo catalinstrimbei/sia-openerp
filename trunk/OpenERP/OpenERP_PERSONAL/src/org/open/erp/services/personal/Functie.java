@@ -101,7 +101,6 @@ public class Functie implements Serializable {
 	}
 	public Functie() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Functie(Integer idFunctie, String numeFunctie) {
 		super();

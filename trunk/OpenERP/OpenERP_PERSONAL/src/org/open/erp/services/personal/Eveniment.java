@@ -84,7 +84,7 @@ public class Eveniment implements Serializable{
 	public Eveniment() {
 		super();
 		evenimente.add(this);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public boolean AddActivitate(Activitate _activitate) throws Exception //throws Exception//NMV >>adaugare activitate in Lista activitati

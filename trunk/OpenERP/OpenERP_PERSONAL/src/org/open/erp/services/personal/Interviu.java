@@ -64,7 +64,6 @@ public class Interviu implements Serializable{
 	
 	public Interviu() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Interviu(String tipInterviu, Collection<DummyPersoana> intervievatori) {
 		super();

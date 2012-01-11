@@ -13,19 +13,15 @@ public class PersonalExceptions extends Exception  {
 	
 	public PersonalExceptions() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public PersonalExceptions(String arg0, Throwable arg1) {
-		super(arg0, arg1);
-		// TODO Auto-generated constructor stub
+		super(arg0, arg1);		
 	}
 	public PersonalExceptions(String arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
+		super(arg0);		
 	}
 	public PersonalExceptions(Throwable arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
+		super(arg0);		
 	}
 	
 	

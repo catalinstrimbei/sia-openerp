@@ -38,7 +38,6 @@ public class ProbaEvaluare implements Serializable{
 	
 	public ProbaEvaluare() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public String getTipEvaluare() {
 		return tipEvaluare;
