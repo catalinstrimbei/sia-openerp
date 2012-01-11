@@ -20,6 +20,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 //import org.open.erp.services.buget.Buget;
@@ -54,12 +55,14 @@ import org.open.erp.services.personal.logger.PersonalExceptions;
 import org.open.erp.services.personal.logger.PersonalLogger;
 import org.open.erp.services.personal.teste.TestPersonalImpl;
 
+
 /**
  * 
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
 @Stateful(name="PersonalSrv")
+@Interceptors({PersonalInterceptor.class})
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{	
 
