@@ -1,11 +1,9 @@
 package org.open.erp.services.personal.logger;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
 
-import org.apache.log4j.Appender;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -36,9 +34,9 @@ public class PersonalLogger {
 	       doNext = s.getMethodName().equals("getStackTrace");
 	   }
 	}
+	@SuppressWarnings("unused")
 	private void addAppender(Logger logger)
-	{
-		// TODO Auto-generated constructor stub	
+	{	
 				//Create the RollingFileAppender.
 		        PatternLayout layout = new PatternLayout();
 		        layout.setConversionPattern("%d %-5p [%c] %m%n");
@@ -72,14 +70,12 @@ public class PersonalLogger {
 					logger.info("LOG begins on " + Calendar.getInstance().getTime().toString());
 					logger.info("**************************************************************************************");
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	}
 	
 	private void addConsoleAppender(Logger logger)
 	{
-		// TODO Auto-generated constructor stub	
 				//Create the ConsoleAppender.
 		        PatternLayout layout = new PatternLayout();
 		        layout.setConversionPattern("%d %-5p [%c] %m%n");
@@ -94,8 +90,7 @@ public class PersonalLogger {
 					logger.info("**************************************************************************************");
 					logger.info("LOG begins on " + Calendar.getInstance().getTime().toString());
 					logger.info("**************************************************************************************");
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
+				} catch (Exception e) {					
 					e.printStackTrace();
 				}
 	}

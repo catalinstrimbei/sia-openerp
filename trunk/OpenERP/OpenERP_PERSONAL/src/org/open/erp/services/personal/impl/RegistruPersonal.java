@@ -24,7 +24,7 @@ import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.logger.PersonalLogger;
-
+@SuppressWarnings("unchecked")
 public class RegistruPersonal {
 
 	PersonalLogger logger = new PersonalLogger();
@@ -53,7 +53,7 @@ public class RegistruPersonal {
 			throw ex;
 		}
 	}
-	
+		
 	Collection<ActivitateTeamBuilding>	getListaActivitatiTeamBuilding() throws Exception 
 	{
 		try

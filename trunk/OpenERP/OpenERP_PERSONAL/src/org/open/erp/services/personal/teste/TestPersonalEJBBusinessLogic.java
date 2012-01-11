@@ -1,6 +1,5 @@
 package org.open.erp.services.personal.teste;
 
-import static org.junit.Assert.*;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -18,7 +17,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.personal.*;
 import org.open.erp.services.personal.logger.PersonalLogger;
-
+@SuppressWarnings("unused")
 public class TestPersonalEJBBusinessLogic {
 
 	/**
@@ -46,7 +45,7 @@ public class TestPersonalEJBBusinessLogic {
         props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
         return new InitialContext(props);
 	}	
-
+	
 	@Test
 	public void TESTgetCVuriPeAnuntLocMunca() {//
 		try
@@ -300,6 +299,7 @@ public class TestPersonalEJBBusinessLogic {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void TESTgetPosturiVacanteEJB(){//
 		try{

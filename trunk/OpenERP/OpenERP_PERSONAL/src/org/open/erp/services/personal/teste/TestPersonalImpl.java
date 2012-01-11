@@ -28,7 +28,7 @@ import org.open.erp.services.personal.Interviu;
 import org.open.erp.services.personal.InterviuCandidat;
 import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.impl.PersonalImpl;
-
+@SuppressWarnings("deprecation")
 public class TestPersonalImpl {
 	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 	

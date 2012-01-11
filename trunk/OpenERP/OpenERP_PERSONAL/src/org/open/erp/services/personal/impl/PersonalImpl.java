@@ -1483,13 +1483,15 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 				3// va fi modificat odata cu baza de date
 				, null, 0);
 		em.persist(angajat);
+		/*
 		CV cv = getCVByCandidat(candidat_);
 		
 		ContractMunca contract;
 		contract = new ContractMunca(1, 1000.00, 10.00, angajat, cv.getFunctieVizata(), new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
 		
 		DosarAngajat dosar;
-		dosar = new DosarAngajat(10, angajat, false, false, false);	
+		dosar = new DosarAngajat(10, angajat, false, false, false);
+		*/	
 		
 	}
 
@@ -1929,7 +1931,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		try
 		{
 			Collection<DummyDepartament> listaDepartamente =  this.registruPersonal.getListaDepartamente();
-			Collection<ProbaEvaluare> listaProbaEvaluare = this.registruPersonal.getListaProbaEvaluare();
+			//Collection<ProbaEvaluare> listaProbaEvaluare = this.registruPersonal.getListaProbaEvaluare();
 			
 			Iterator <DummyDepartament>	iteratorDepartament = listaDepartamente.iterator();
 			
@@ -2104,6 +2106,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 
 	
 	
+	@SuppressWarnings("deprecation")
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void angajareEJB(Candidat candidat_) {

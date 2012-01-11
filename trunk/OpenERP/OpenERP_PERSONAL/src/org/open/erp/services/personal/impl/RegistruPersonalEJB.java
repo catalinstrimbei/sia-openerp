@@ -6,7 +6,6 @@ import java.util.Collection;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.Collection;
 
 
 import javax.persistence.EntityManager;
@@ -16,20 +15,15 @@ import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.ContractMunca;
-import org.open.erp.services.personal.DosarAngajat;
-import org.open.erp.services.personal.InterviuCandidat;
 
 import org.open.erp.services.personal.AnuntLocMunca;
-import org.open.erp.services.personal.CV;
-import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.Activitate;
-import org.open.erp.services.personal.DosarAngajat;
 import org.open.erp.services.personal.DummyDepartament;
 import org.open.erp.services.personal.Functie;
 import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.RezultatProbaEvaluare;
 import org.open.erp.services.personal.logger.PersonalLogger;
-
+@SuppressWarnings("unchecked")
 public class RegistruPersonalEJB {
 	PersonalLogger logger = new PersonalLogger();
 

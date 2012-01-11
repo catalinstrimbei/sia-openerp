@@ -27,9 +27,10 @@ public class PersonalInterceptor {
 	@AroundInvoke
 	public Object logValidationResult(InvocationContext ctx) throws Exception
 	{		
+		@SuppressWarnings("rawtypes")
 		Class targetBeanClass = ctx.getTarget().getClass();
 		String invokedMethodName = ctx.getMethod().getName();
-		PersonalImpl ejbean = (PersonalImpl) ctx.getTarget();
+		//PersonalImpl ejbean = (PersonalImpl) ctx.getTarget();
 		if(ctx.getParameters().length <= 1)
 			return ctx.proceed();
 		logger.logINFO("PersonalInterceptor(logValidationResult) : call method >>" + targetBeanClass.getName() + "." + invokedMethodName);		
@@ -122,9 +123,10 @@ public class PersonalInterceptor {
 	
 	@AroundInvoke
 	public Object logInvocationResult(InvocationContext ctx) throws Exception{
+		@SuppressWarnings("rawtypes")
 		Class targetBeanClass = ctx.getTarget().getClass();
 		String invokedMethodName = ctx.getMethod().getName();
-		PersonalImpl ejbean = (PersonalImpl) ctx.getTarget();
+		//PersonalImpl ejbean = (PersonalImpl) ctx.getTarget();
 		
 		logger.logINFO("PersonalInterceptor(logInvocationResult) : call method >>: " + targetBeanClass.getName() + "." + invokedMethodName);
 		/*

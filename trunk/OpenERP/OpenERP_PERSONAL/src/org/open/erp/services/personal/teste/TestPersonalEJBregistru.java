@@ -23,6 +23,7 @@ import org.open.erp.services.personal.*;
  * @author Tolic
  *
  */
+@SuppressWarnings("unused")
 public class TestPersonalEJBregistru {
 
 	/**
@@ -56,6 +57,7 @@ public class TestPersonalEJBregistru {
 		Functie functie = personalInstance.getFunctieById(101);
 		System.out.println("Nume functie: " + functie.getNumeFunctie().toString());
 	}
+	@SuppressWarnings("deprecation")
 	@Test	
 	public void testInserari() throws Exception {
 		try
@@ -72,7 +74,7 @@ public class TestPersonalEJBregistru {
 			Angajat	angajat = new Angajat();
 			angajat.setActiv(false);
 			angajat.setNume(test.angajat1.getNume());
-			angajat = personalInstance.salveazaAngajat(test.angajat1);
+			angajat = personalInstance.salveazaAngajat(test.angajat1);			
 			Angajat	angajat2 = personalInstance.salveazaAngajat(test.angajat2);	
 			
 			Functie functie = personalInstance.salveazaFunctie(test.functie1);				
