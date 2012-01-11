@@ -18,7 +18,7 @@
 	 	<class>org.open.erp.services.nomgen.Banca</class>
 	
 	     <!--    <jta-data-source>java:jdbc/feaaORCL_XA</jta-data-source>-->
-		<exclude-unlisted-classes>false</exclude-unlisted-classes> 
+		<!--  <exclude-unlisted-classes>false</exclude-unlisted-classes> -->
 	
 		
 	    <properties>

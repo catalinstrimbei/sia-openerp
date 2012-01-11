@@ -72,12 +72,13 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrv, NomenclatoareSr
 		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
 		logger.debug(">>>>>>>>>>>> Exista NomenclatoareSrv? " + nomenclatoareSrv);		
 		
-		if (this.nomenclatoareSrv== null)
+		if (this.nomenclatoareSrv== null || this.rd==null || this.rp==null || this.rdep==null || this.rprod==null)
 			rd = new RegistruDocument(em);
 			rp = new RegistruPersoana(em);
 			rprod = new RegistruProdus(em);
 			rdep = new RegistruDepartament(em);
 	}
+	@SuppressWarnings("unchecked")
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Set<PersoanaFizica> getPF() throws Exception {

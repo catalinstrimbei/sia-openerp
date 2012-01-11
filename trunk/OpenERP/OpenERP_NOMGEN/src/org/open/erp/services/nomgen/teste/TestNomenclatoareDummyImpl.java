@@ -30,24 +30,27 @@ import org.open.erp.services.nomgen.Divizie;
 
 import org.open.erp.services.nomgen.Banca;
 import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
+import org.open.erp.services.nomgen.logger.NomgenLogger;
 
 
-@TransactionManagement
+
 public class TestNomenclatoareDummyImpl{
 	private NomenclatoareSrv instance = null;
-	
+	private static NomgenLogger logger;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
 
 	@Before
 	public void setUp() throws Exception {
+		logger = new NomgenLogger();
 		instance = new NomenclatoareDummyImpl();
 		assertNotNull(instance);		
 		assertTrue(instance instanceof NomenclatoareDummyImpl);
 		
 		InitialContext ctx = initJBossJNDICtx();
 		instance = (NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
+		logger.logINFO("test initial" + instance);
 	}
 	
 	private static InitialContext initJBossJNDICtx() throws NamingException{
@@ -58,17 +61,15 @@ public class TestNomenclatoareDummyImpl{
 		return new InitialContext(props);
 		}
 
-	@After
-	public void tearDown() throws Exception {
-	}
+	
 
-	@Test
+	/*@Test
 	public void testCreazaPersoana() {
 		//fail("Not yet implemented");
 		Persoana p = new Persoana(1,"Alea Tudor Neculai");
-		System.out.println("Am creat o persoana cu id "+ p.getId()+ " adresa: "+p.getAdresa());
+		System.out.println("Am creat o persoana cu id "+ instance.get()+ " adresa: "+p.getAdresa());
 	}
-
+*/
 	@Test
 	public void testGetPersoanaDupaAdresa() throws Exception {
 		//fail("Not yet implemented");
@@ -271,7 +272,7 @@ public class TestNomenclatoareDummyImpl{
 		
 		DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
 
-		Partener p = new Partener(1,pers, (Date)formatter.parse("01/29/02"), 120);
+		Partener p = new Partener(pers, (Date)formatter.parse("01/29/02"), 120);
 		System.out.println("Am creat un partener cu id-ul "+p.getId()+"cu idPersoana "+pers.getId()+" cu data afilierii "+p.getDataAfilierii()+", cu durata afilierii de "+p.getDurataAfilierii()+" zile.");
 	}
 

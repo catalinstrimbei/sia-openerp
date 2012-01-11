@@ -19,7 +19,7 @@ import javax.persistence.Id;
 @Entity
 public class Partener extends Persoana implements Serializable{
 	//@Id @GeneratedValue
-	private Integer id;
+	//private Integer id;
 	@OneToOne @JoinColumn(name= "id")
 	private Persoana p;
 	private Date    dataAfilierii;
@@ -29,15 +29,15 @@ public class Partener extends Persoana implements Serializable{
 	 */
 	
 	
-	public Integer getId() {
+	/*public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	/*public void setId(Integer id) {
 		this.id = id;
-	}
+	}*/
 	/**
 	 * @return the idPersoana
 	 */
@@ -67,10 +67,10 @@ public class Partener extends Persoana implements Serializable{
 		this.durataAfilierii = durataAfilierii;
 	}
 
-	public Partener (Integer id, Persoana p , Date dataAfilierii, Integer durataAfilierii) {
+	public Partener ( Persoana p , Date dataAfilierii, Integer durataAfilierii) {
 		super();
 		
-		this.id = id;
+		//this.id = id;
 		this.p = p;
 		this.dataAfilierii = dataAfilierii;
 		this.durataAfilierii = durataAfilierii;
@@ -80,9 +80,9 @@ public class Partener extends Persoana implements Serializable{
 	public Partener() {
 		super();
 	}
-	public Partener(Integer id, Persoana p, Integer durataAfilierii) {
+	public Partener( Persoana p, Integer durataAfilierii) {
 		super();
-		this.id = id;
+		//this.id = id;
 		this.p = p;
 		this.durataAfilierii = durataAfilierii;
 	}
