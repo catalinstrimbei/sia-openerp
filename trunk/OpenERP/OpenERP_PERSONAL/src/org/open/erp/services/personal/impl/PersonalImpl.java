@@ -2034,7 +2034,9 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 				CV	cv = iterator.next();
 				if(cv.getUltimaModificare().compareTo(anuntLocMunca_.getDataInceput()) >= 0 && cv.getUltimaModificare().compareTo(anuntLocMunca_.getDataExpirare()) <= 0)
 				{
-					rezultat.add(cv.getCandidat());	
+					Candidat candidatPotential = cv.getCandidat();
+					if(candidatPotential != null && this.getAngajatById(candidatPotential.getId()) == null)
+						rezultat.add(candidatPotential);	
 				}
 			}
 			return rezultat;
@@ -2102,11 +2104,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 	}
 
-	
-
-	
-	
-	@SuppressWarnings("deprecation")
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void angajareEJB(Candidat candidat_) {
@@ -2134,7 +2131,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 				return;
 		
 		ContractMunca contract;
-		contract = new ContractMunca(null, 1000.00, 10.00, angajat, cv.getFunctieVizata(), new Date("11/08/2011"), new Date("15/08/2011"), null,0,null);
+		contract = new ContractMunca(null, 1000.00, 10.00, angajat, cv.getFunctieVizata(), Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), null,0,null);
 		logger.logDEBUG("Am trecut de contract = new ContractMunca(null, 1000.00 ");
 		contract.setAngajat(angajat);
 		this.registruPersonal.salveazaContractMunca(contract);
