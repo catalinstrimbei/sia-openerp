@@ -193,10 +193,11 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return valoareTotala;
 	}
 
-	@Interceptors({SalarizareInterceptor.class})
+	//@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) {
 		Pontaj p = registru.getPontajByAngajat(angajat, an, luna);
+		logger.logINFO("Am incarcat pontajul");
 		ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
 		
 		logger.logINFO("Calcul venit brut angajat");
