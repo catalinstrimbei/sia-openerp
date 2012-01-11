@@ -59,7 +59,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void testInregistrarePontaj() throws Exception {
 		logger.info("Begin test: inregistrarePontaj");
-		Angajat angajat = salarizareSrvInstance.getAngajatById(2);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		Pontaj pontaj = salarizareSrvInstance.inregistrarePontaj(angajat, 2011, 11, 160.0, 0.0, 0.0);
 		logger.info("A fost creat pontajul cu id-ul: "+pontaj.getIdPontaj());
@@ -86,7 +86,7 @@ public class TestSalarizareEJB {
 	public void calculSporuriAngajati() throws Exception {
 		logger.info("Begin test: calculSporuriAngajat");
 		Double sporuri;
-		Angajat angajat = salarizareSrvInstance.getAngajatById(2);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
@@ -102,7 +102,7 @@ public class TestSalarizareEJB {
 	public void calculRetineriAngajati() throws Exception {
 		logger.info("Begin test: calculRetineriAngajat");
 		Double retineri;
-		Angajat angajat = salarizareSrvInstance.getAngajatById(2);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 
 		retineri = salarizareSrvInstance.calculRetineriAngajat(2011, 11, angajat);
@@ -118,7 +118,7 @@ public class TestSalarizareEJB {
 	public void calculVenitBrutAngajati() throws Exception {
 		logger.info("Begin test: calculVenitBrutAngajat");
 		Double venitBrut;
-		Angajat angajat = salarizareSrvInstance.getAngajatById(2);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(1);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
 		venitBrut=salarizareSrvInstance.calculVenitBrut(2011, 11, angajat);
@@ -133,7 +133,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void calculRetineriObligatoriiAngajati() throws Exception {
 		logger.info("Begin test: calculRetineriObligatoriiAngajat");
-		Angajat angajat = salarizareSrvInstance.getAngajatById(2);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
 		Double venitBrut = salarizareSrvInstance.calculVenitBrut(2011, 11, angajat);
@@ -155,7 +155,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void calculDeduceriAngajati() throws Exception {
 		logger.info("Begin test: calculDeduceriAngajat");
-		Angajat angajat = salarizareSrvInstance.getAngajatById(2);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
 		Double deduceri = salarizareSrvInstance.calculDeduceri(2011, 11, angajat);
@@ -174,7 +174,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void testInregistrareSpor() throws Exception {
 		logger.info("Begin test: inregistrareSpor");
-		Angajat angajat = salarizareSrvInstance.getAngajatById(2);//personalSrvInstance
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);//personalSrvInstance
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
 		Spor spor = salarizareSrvInstance.inregistrareSpor("Bonus", 1, 2011, 11, angajat, 1, 100.0);
@@ -187,7 +187,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void testInregistrareRetinere() throws Exception {
 		logger.info("Begin test: inregistrareRetinere");
-		Angajat angajat = personalSrvInstance.getAngajatById(2);
+		Angajat angajat = personalSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
 		Retinere retinere = salarizareSrvInstance.inregistrareRetinere("Penalizare", 1, 2011, 11, angajat, 1, 100.0);
@@ -200,7 +200,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void testAdaugaOreConcediu() throws Exception {
 		logger.info("Begin test: adaugaOreConcediu");
-		Angajat angajat = salarizareSrvInstance.getAngajatById(2);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
 		Pontaj pontaj = salarizareSrvInstance.getPontajByAngajat(angajat, 2011, 11);
@@ -214,7 +214,7 @@ public class TestSalarizareEJB {
 	@Test
 	public void testAdaugaOreSuplimentare() throws Exception {
 		logger.info("Begin test: adaugaOreSuplimentare");
-		Angajat angajat = salarizareSrvInstance.getAngajatById(2);
+		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
 		Pontaj pontaj = salarizareSrvInstance.getPontajByAngajat(angajat, 2011, 11);
@@ -303,6 +303,7 @@ public class TestSalarizareEJB {
 		
 		logger.info("End test: testStergeCentralizator");
 	}
+	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
