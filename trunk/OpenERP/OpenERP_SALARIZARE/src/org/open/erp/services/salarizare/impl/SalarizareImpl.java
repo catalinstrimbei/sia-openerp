@@ -38,7 +38,7 @@ import org.open.erp.services.salarizare.StatSalarii;
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
-	private static PersonalLogger logger;
+	private static SalarizareLogger logger;
 	private RegistruSalarizare registru ;
 	//variabila de instanţa de tip EntityManager care sa fie injectata prin adnotarea @PersistenceContext(unitName="OpenERP_ModulPU");
 	@PersistenceContext(unitName="OpenERP_SALARIZARE")
@@ -52,6 +52,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	//metodă callback - @PostConstruct – în care registrul sau registrele din proiect să primească referinţa EntityManagerului care va fi injectat.
 	@PostConstruct
 	public void init(){
+		logger = new SalarizareLogger();
 		logger.logINFO("EntityManager: " + em);		
 		logger.logINFO("PersonalSrv: " + personalSrv);		
 		
