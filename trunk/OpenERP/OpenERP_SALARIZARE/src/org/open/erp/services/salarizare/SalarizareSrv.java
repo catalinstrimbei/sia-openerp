@@ -131,9 +131,10 @@ public interface SalarizareSrv {
 	 * @param angajat			Angajatul pentru care se calculeaza sporurile
 	 * 
 	 * @return  Double valoarea insumata a sporurilor
+	 * @throws Exception 
 	 * 
 	 */
-	Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat);
+	Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception;
 	
 	/**
 	 * Calculeaza venitul brut pentru un anumit angajat - an si luna - insumeaza nr de ore + ore suplimentare - scade orele de concediu si aduna sporuri 
@@ -172,9 +173,10 @@ public interface SalarizareSrv {
 	 * @param angajat			Angajatul pentru care se calculeaza retinerile
 	 * 
 	 * @return  
+	 * @throws Exception 
 	 * 
 	 */
-	Double calculRetineriAngajat(Integer an, Integer luna, Angajat angajat);
+	Double calculRetineriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception;
 	
 	/**
 	 * Calculeaza retinerile obligatorii pentru un angajat - folosind configurarea procentelor CAS, CASS, Somaj si salarul brut 

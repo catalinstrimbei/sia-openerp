@@ -27,14 +27,19 @@ public class RegistruSalarizare {
 	public RegistruSalarizare() {
 	}
 	
-	public List<Pontaj> getPontajAnLuna(Integer an, Integer luna) {
+	public List<Pontaj> getPontajAnLuna(Integer an, Integer luna) throws Exception{
 		List<Pontaj> pontaje = new ArrayList<Pontaj>();
-		
+		try{
 		pontaje = entityManager.createQuery("SELECT p FROM Pontaj p " +
 				"WHERE p.an=:an AND p.luna=:luna")
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getResultList();
+		}
+		catch(Exception ex){
+			logger.logINFO("Eroare incarcare pontajAn Luna:");
+			return null;
+		}
 		/*
 		p.setAngajat(angajat);
 		p.setAn(an);
@@ -72,43 +77,59 @@ public class RegistruSalarizare {
 		return p;
 	}
 
-	public List<Spor> getSporuriAngajat(Integer an, Integer luna, Angajat angajat){
+	public List<Spor> getSporuriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception{
 		List<Spor> sporuri= new ArrayList<Spor>();
 		//aici apelam ceva din DB care incarca sporurile
 		//sporuri.add(new Spor("Bonus", 1, 2011, 11, angajat, 1, 100.0));
 		
 		//sporuri.add(new Spor("Bonus procent", 2, 2011, 11, angajat, 2, 5.0));
+		try{
 		sporuri = entityManager.createQuery("SELECT s FROM Spor s " +
 				"WHERE s.angajat.id=:id AND s.an=:an AND s.luna=:luna")
 				.setParameter("id", angajat.getId())
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getResultList();
-		
+		}
+		catch(Exception ex){
+			logger.logINFO("Eroare incarcare sporuri :");
+			return null;
+		}
 		return sporuri;
 	}
 
-	public List<Retinere> getRetineriAngajat(Integer an, Integer luna, Angajat angajat){
+	public List<Retinere> getRetineriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception{
 		List<Retinere> retineri= new ArrayList<Retinere>();
 		//aici apelam ceva din DB care incarca sporurile
 		//retineri.add(new Retinere("Pensie alimentara", 1, angajat, 2011, 11, 1, 100.0));
 		//retineri.add(new Retinere("CAR", 2, angajat, 2011, 11, 2, 5.0));
+		try{
 		retineri = entityManager.createQuery("SELECT r FROM Retinere r " +
 				"WHERE r.angajat.id=:id AND r.an=:an AND r.luna=:luna")
 				.setParameter("id", angajat.getId())
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getResultList();
+		}
+		catch(Exception ex){
+			logger.logINFO("Eroare incarcare retineri Luna:");
+			return null;
+		}
 		return retineri;
 	}
 	
-	public List<StatSalarii> getStatAnLuna(Integer an, Integer luna) {
+	public List<StatSalarii> getStatAnLuna(Integer an, Integer luna) throws Exception{
 		List<StatSalarii> stat = new ArrayList<StatSalarii>();
-		
+		try{
 		stat = entityManager.createQuery("SELECT s FROM StatSalarii s, Pontaj p WHERE s.pontaj.idPontaj = p.idPontaj AND p.an = :an AND p.luna = :luna" )
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getResultList();
+		}
+		catch(Exception ex){
+			logger.logINFO("Eroare incarcare stat salarii Luna:");
+			return null;
+		}
 		/*
 		p.setAngajat(angajat);
 		p.setAn(an);
@@ -120,14 +141,19 @@ public class RegistruSalarizare {
 		return stat;
 	}
 	
-	public CentralizatorStatSalarii getCentralizatorStatSalarii(Integer an, Integer luna) {
-		CentralizatorStatSalarii centralizator;
+	public CentralizatorStatSalarii getCentralizatorStatSalarii(Integer an, Integer luna) throws Exception{
+		CentralizatorStatSalarii centralizator = new CentralizatorStatSalarii();
+		try{
 		centralizator = (CentralizatorStatSalarii)entityManager.createQuery("SELECT c FROM CentralizatorStatSalarii c " +
 				"WHERE c.An=:an AND c.Luna=:luna AND rownum<=1")
 				.setParameter("an", an)
 				.setParameter("luna", luna)
 				.getSingleResult();
-	
+		}
+		catch(Exception ex){
+			logger.logINFO("Eroare incarcare centralizator Luna:");
+			return null;
+		}
 		return centralizator;
 	}
 

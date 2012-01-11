@@ -162,7 +162,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 
 	@Interceptors({SalarizareInterceptor.class})
 	@Override
-	public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) {
+	public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception {
 		// pentru fiecare angajat calculam sporurile (pot fi mai multe) si insumam
 		Double valoareTotala=0.0;
 		ArrayList<Spor> sporuri= new ArrayList<Spor>();
@@ -235,7 +235,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	@Interceptors({SalarizareInterceptor.class})
 	@Override
 	public Double calculRetineriAngajat(Integer an, Integer luna,
-			Angajat angajat) {
+			Angajat angajat) throws Exception {
 		// pentru fiecare angajat calculam retinerile (pot fi mai multe) si insumam
 		ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
 	
@@ -462,27 +462,27 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return pontaj;
 	}
 	
-	public List<Pontaj> getPontajAnLuna(Integer an, Integer luna) {
+	public List<Pontaj> getPontajAnLuna(Integer an, Integer luna) throws Exception {
 		List<Pontaj> pontaje = registru.getPontajAnLuna(an, luna);
 		return pontaje;
 	}
 	
-	public List<Spor> getSporuriAngajat(Integer an, Integer luna, Angajat angajat) {
+	public List<Spor> getSporuriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception {
 		List<Spor> sporuri = registru.getSporuriAngajat(an, luna, angajat);
 		return sporuri;
 	}
 	
-	public List<Retinere> getRetineriAngajat(Integer an, Integer luna, Angajat angajat) {
+	public List<Retinere> getRetineriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception {
 		List<Retinere> retineri = registru.getRetineriAngajat(an, luna, angajat);
 		return retineri;
 	}
 	
-	public List<StatSalarii> getStatAnLuna(Integer an, Integer luna) {
+	public List<StatSalarii> getStatAnLuna(Integer an, Integer luna) throws Exception {
 		List<StatSalarii> salarii = registru.getStatAnLuna(an, luna);
 		return salarii;
 	}
 	
-	public CentralizatorStatSalarii getCentralizatorStatSalariiLuna(Integer an, Integer luna) {
+	public CentralizatorStatSalarii getCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception {
 		CentralizatorStatSalarii centralizator = registru.getCentralizatorStatSalarii(an, luna);
 		return centralizator;
 	}
