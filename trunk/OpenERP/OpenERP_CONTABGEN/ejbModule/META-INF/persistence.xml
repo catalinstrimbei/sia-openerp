@@ -3,7 +3,6 @@
 	<persistence-unit name="OpenERP_CONTABGEN">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
-		
 		<class>org.open.erp.services.ctbgen.TipContabil</class>
 		<class>org.open.erp.services.ctbgen.SablonNC</class>
 		<class>org.open.erp.services.ctbgen.LunaLucru</class>

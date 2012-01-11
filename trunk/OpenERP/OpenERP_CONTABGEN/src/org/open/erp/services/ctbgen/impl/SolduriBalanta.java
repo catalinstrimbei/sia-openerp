@@ -17,6 +17,7 @@ import org.open.erp.services.ctbgen.RegInregistrareRJ;
 public class SolduriBalanta {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ContabilizareSrvImpl.class.getName());
 	//vom face toate soldurile la egalitatile din balanta pentru inregistrarile din registru aferente lunii date
+	
 	public SolduriBalanta(LunaLucru luna){
 		
 		List<Balanta> balLunaAnt = RegBalanta.instantiaza().getBalantaLunaAnterioare(luna);
@@ -91,7 +92,7 @@ public class SolduriBalanta {
 			for(int i=0;i<balDeInchis.size();i++){
 				if(balDeInchis.get(i).getContB().equals(c)){
 					Balanta bl= balDeInchis.get(i);
-					balDeUpdate.add(new Balanta(bl.getId(),bl.getLunaB(), bl.getContB(), sid, sic, rad, rac, rcd, rcc, tsd, tsc, sfd, sfc, false));
+					balDeUpdate.add(new Balanta(bl.getLunaB(), bl.getContB(), sid, sic, rad, rac, rcd, rcc, tsd, tsc, sfd, sfc, false));
 					existaBalanta=true;
 					//System.out.println("am updatat o bal existenta");
 					break;
@@ -150,7 +151,7 @@ public class SolduriBalanta {
 			for(int i=0;i<balDeInchis.size();i++){
 				if(balDeInchis.get(i).getContB().equals(c)){
 					Balanta bl= balDeInchis.get(i);
-					balDeUpdate.add(new Balanta(bl.getId(),bl.getLunaB(), bl.getContB(), sid, sic, rad, rac, rcd, rcc, tsd, tsc, sfd, sfc, false));
+					balDeUpdate.add(new Balanta(bl.getLunaB(), bl.getContB(), sid, sic, rad, rac, rcd, rcc, tsd, tsc, sfd, sfc, false));
 					existaBalanta=true;
 					//System.out.println("am updatat o bal existenta");
 					break;
@@ -206,7 +207,7 @@ public class SolduriBalanta {
 			for(int i=0;i<balDeInchis.size();i++){
 				if(balDeInchis.get(i).getContB().equals(c)){
 					Balanta bl= balDeInchis.get(i);
-					balDeUpdate.add(new Balanta(bl.getId(),bl.getLunaB(), bl.getContB(), sid, sic, rad, rac, rcd, rcc, tsd, tsc, sfd, sfc, false));
+					balDeUpdate.add(new Balanta(bl.getLunaB(), bl.getContB(), sid, sic, rad, rac, rcd, rcc, tsd, tsc, sfd, sfc, false));
 					existaBalanta=true;
 					//System.out.println("am updatat o bal existenta");
 					break;

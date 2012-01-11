@@ -34,6 +34,12 @@ public class RegBalanta extends Registru{
 		return result;
 	}
 	
+	public List<Balanta> getBalanteLuna(LunaLucru luna) {
+		@SuppressWarnings("unchecked")
+		List<Balanta> result = em.createQuery("SELECT b FROM Balanta b where  b.lunaB = :lunn").setParameter("lunn", luna ).getResultList();
+		return result;
+	}
+	
 	public void addBalanta(Balanta balanta) {
 		if (em.contains(balanta))
 				em.merge(balanta);

@@ -3,7 +3,16 @@ package org.open.erp.services.ctbgen.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.open.erp.services.ctbgen.ArticolCtb;
 import org.open.erp.services.ctbgen.Balanta;
 import org.open.erp.services.ctbgen.Cont;
@@ -29,6 +38,7 @@ import org.open.erp.services.ctbgen.RegConturi;
 import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.RegSablonNC;
 import org.open.erp.services.nomgen.LinieDocument;
+
 /**
  * 
  *@author Echipa9 Irimia, Iftimii, Sarbu, Ricea, Chiriac
@@ -38,11 +48,33 @@ import org.open.erp.services.nomgen.LinieDocument;
  */
 
 @Stateful
+//@TransactionManagement(TransactionManagementType.CONTAINER)
 public class ContabilizareSrvImpl implements ContabilizareSrvLocal, ContabilizareSrvRemote {
 		
 	//--------------------
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ContabilizareSrvImpl.class.getName());
 	
+	
+	@PersistenceContext(unitName="OpenERP_CONTABGEN")
+	private EntityManager em;
+
+	@Resource
+	private SessionContext sessionContext;
+	
+	
+	public ContabilizareSrvImpl() {
+	}
+	
+	@PostConstruct
+	public void init(){
+		logger.debug("EntityManager: " + em);		
+	
+	}
+	
+	
+	
+	//---------METODELE SRV
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Integer jurnalizareVanzare(Date data, Double valFact,Double tvaFact, Integer nrDoc,
 			Integer idPartener, List<LinieDocument> listaLinMat,  StareDocument stareDocument,	Integer idInreg) throws CtbException {
@@ -51,7 +83,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		List<LinieMaterialValoare> listaContMat= new ArrayList<LinieMaterialValoare>();
 		RegTipuriContabile regTip =RegTipuriContabile.instantiaza();
 		for (LinieDocument ld: listaLinMat){
-			listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.material.getTipContabil()),ld.cantitate*ld.pret));
+			listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.getMaterial().getTipContabil()),ld.getCantitate()*ld.getPret()));
 			
 			//aici facem exceptia de string  if regTip.getTipDupaDen(ld.material.getTipContabil()) is null{
 			//throw new CtbException("Materialul nu are un tipContabil valid!");
@@ -115,13 +147,21 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 			logger.debug("Avem lista de articole");
 			
 			logger.debug("Avem o inregistrare jurnal de vanzare NOUA");
-			//System.out.println("inregVanzare id:"+inregVanzare.getIdInregRJ());
+					
+						
+			if (sessionContext.getRollbackOnly() == true){
+				logger.debug("END jurnalizare vanzare - FAILED TRANSACTION");
+			}else{
+				RegInregistrareRJ.instantiaza().addInregistrareRJ(inregVanzare);
+			}
 			
-			RegInregistrareRJ.instantiaza().addInregistrareRJ(inregVanzare);
+			logger.debug("END jurnalizare vanzare-ok");
+			
+			
 			return inregVanzare.getIdInregRJ();
 			
 		} else if (stareDocument==StareDocument.MODIFICAT){
-			//TODO: cod
+			// cod
 			return -1;
 		} else {
 			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
@@ -129,6 +169,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		}	
 	}
    //------------------------------------------------------------------------------
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Integer jurnalizareAchizitie(Date data, Double valFact, Double tvaFact, Integer nrDoc,
 			Integer idPartener, List<LinieDocument> listaLinMat, StareDocument stareDocument,
@@ -137,7 +178,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 				List<LinieMaterialValoare> listaContMat= new ArrayList<LinieMaterialValoare>();
 				RegTipuriContabile regTip =RegTipuriContabile.instantiaza();
 				for (LinieDocument ld: listaLinMat){
-					listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.material.getTipContabil()),ld.cantitate*ld.pret));
+					listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.getMaterial().getTipContabil()),ld.getCantitate()*ld.getPret()));
 				}
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
@@ -192,12 +233,17 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 					
 			logger.debug("Avem o inregistrare jurnal de achizitie NOUA completa");
 			//ar trebui urmate de cazurile de modificare sau update
+			if (sessionContext.getRollbackOnly() == true){
+				logger.debug("END jurnalizare achizitie - FAILED TRANSACTION");
+			}else{
+				RegInregistrareRJ.instantiaza().addInregistrareRJ(inregAchizitie);
+			}
 			
-			//System.out.println("inregAchizitie id:"+inregAchizitie.getIdInregRJ());
-			RegInregistrareRJ.instantiaza().addInregistrareRJ(inregAchizitie);
+			logger.debug("END jurnalizare achizitie-ok");
+			
 			return inregAchizitie.getIdInregRJ();
 		} else if (stareDocument==StareDocument.MODIFICAT){
-			//TODO:
+			//
 			return -1;
 		} else {
 			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
@@ -205,11 +251,12 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		}	
 	}
   //---------------------------------------------------------------------------------
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Integer jurnalizareIncasare(Date data, Double valInc, Integer nrDoc,
 			TipIncasare tipIncasare, Integer idPartener, Integer idCont,
 			StareDocument stareDocument, Integer idInreg) throws CtbException{
-		// TODO Auto-generated method stub
+		
 		
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
@@ -222,7 +269,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		if (stareDocument==StareDocument.NOU) {
 			logger.debug("Creare inregistrare incasare noua");
 
-			//TODO: doua  6  variabile sabloane+ cec, bo, avans si if dupa tip tipinc
+			// doua  6  variabile sabloane+ cec, bo, avans si if dupa tip tipinc
 			Integer nrSabIncasare;
 			if(tipIncasare==TipIncasare.CASA){
 				nrSabIncasare=7;
@@ -256,11 +303,17 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 			
 		
 			logger.debug("Avem o inregistrare jurnal de incasare NOUA completa");
-			//ar trebui urmate de cazurile de modificare sau update
-			RegInregistrareRJ.instantiaza().addInregistrareRJ(inregIncasare);
+			if (sessionContext.getRollbackOnly() == true){
+				logger.debug("END jurnalizare incasare - FAILED TRANSACTION");
+			}else{
+				RegInregistrareRJ.instantiaza().addInregistrareRJ(inregIncasare);
+			}
+			
+			logger.debug("END jurnalizare incasare-ok");
+			
 			return inregIncasare.getIdInregRJ();
 		} else if (stareDocument==StareDocument.MODIFICAT){
-			//TODO:
+			//
 			return -1;
 		} else {
 			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
@@ -268,6 +321,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		}	
 	}
 //------------------------------------------------------------------
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Integer jurnalizarePlata(Date data, Double valInc, Integer nrDoc,
 			TipPlata tipPlata, Integer idPartener, Integer idCont,
@@ -284,7 +338,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		if (stareDocument==StareDocument.NOU) {
 			logger.debug("Creare inregistrare plata noua");
 
-			//TODO: doua variabile sabloane si if dupa tip tipinc
+			// doua variabile sabloane si if dupa tip tipinc
 			Integer nrSabPlata;
 			if(tipPlata==TipPlata.CASA){
 				nrSabPlata=9;
@@ -318,12 +372,18 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 			
 		
 			logger.debug("Avem o inregistrare jurnal de plata NOUA completa");
-			//ar trebui urmate de cazurile de modificare sau update
-			RegInregistrareRJ.instantiaza().addInregistrareRJ(inregPlata);
+			if (sessionContext.getRollbackOnly() == true){
+				logger.debug("END jurnalizare plata - FAILED TRANSACTION");
+			}else{
+				RegInregistrareRJ.instantiaza().addInregistrareRJ(inregPlata);
+			}
+			
+			logger.debug("END jurnalizare plata-ok");
+			//RegInregistrareRJ.instantiaza().addInregistrareRJ(inregPlata);
 			return inregPlata.getIdInregRJ();
 			
 		} else if (stareDocument==StareDocument.MODIFICAT){
-			//TODO:
+			
 			return -1;
 		} else {
 			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
@@ -331,12 +391,13 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		}	
 	}
   //--------------------------------------------------------------------
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Integer jurnalizareSalarii(Date data,Integer nrDoc, Double valBrut, Double sanatAng,
 			Double somajAng, Double casAng, Double impAng, Double sanatFirma,
 			Double somajFirma, Double casFirma, Double medicFirma,
 			Double riscFirma, StareDocument stareDocument, Integer idInreg)throws CtbException {
-		// TODO Auto-generated method stub
+		
 		
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
@@ -349,7 +410,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		if (stareDocument==StareDocument.NOU) {
 			logger.debug("Creare inregistrare salarii noua");
 
-			//TODO: doua variabile sabloane si if dupa tip tipinc
+			//doua variabile sabloane si if dupa tip tipinc
 			List<Double> valImp=new ArrayList<Double>();
 			valImp.add(valBrut);
 			valImp.add(sanatAng);
@@ -399,12 +460,18 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 			
 		
 			logger.debug("Avem o inregistrare jurnal de salarii NOUA completa");
+			if (sessionContext.getRollbackOnly() == true){
+				logger.debug("END jurnalizare salarii - FAILED TRANSACTION");
+			}else{
+				RegInregistrareRJ.instantiaza().addInregistrareRJ(inregPlata);
+			}
 			
-			RegInregistrareRJ.instantiaza().addInregistrareRJ(inregPlata);
+			logger.debug("END jurnalizare salarii-ok");
+			//RegInregistrareRJ.instantiaza().addInregistrareRJ(inregPlata);
 			return inregPlata.getIdInregRJ();
 			
 		} else if (stareDocument==StareDocument.MODIFICAT){
-			//TODO:
+			//
 			return -1;
 		} else {
 			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
@@ -412,6 +479,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		}	
 	}
   //-----------------------------------------------------
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Integer jurnalizareConsum(Date data, Integer nrDoc,
 			List<LinieDocument> listaLinMat, StareDocument stareDocument,Integer idInreg) throws CtbException{
@@ -419,7 +487,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 				List<LinieMaterialValoare> listaContMat= new ArrayList<LinieMaterialValoare>();
 				RegTipuriContabile regTip =RegTipuriContabile.instantiaza();
 				for (LinieDocument ld: listaLinMat){
-					listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.material.getTipContabil()),ld.cantitate*ld.pret));
+					listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.getMaterial().getTipContabil()),ld.getCantitate()*ld.getPret()));
 				}
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
@@ -470,12 +538,18 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 			
 			logger.debug("Avem o inregistrare jurnal de consum NOUA");
 			//System.out.println("inregConsum id:"+inregConsum.getIdInregRJ());
+			if (sessionContext.getRollbackOnly() == true){
+				logger.debug("END jurnalizare consum - FAILED TRANSACTION");
+			}else{
+				RegInregistrareRJ.instantiaza().addInregistrareRJ(inregConsum);
+			}
 			
-			RegInregistrareRJ.instantiaza().addInregistrareRJ(inregConsum);
+			logger.debug("END jurnalizare consum-ok");
+			//RegInregistrareRJ.instantiaza().addInregistrareRJ(inregConsum);
 			return inregConsum.getIdInregRJ();
 			
 		} else if (stareDocument==StareDocument.MODIFICAT){
-			//TODO:
+			
 			return -1;
 		} else {
 			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
@@ -483,15 +557,16 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		}	
 	}
 //-------------------------------------------------------
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Integer jurnalizareProductie(Date data, Integer nrDoc,
 			List<LinieDocument> listaLinMat, StareDocument stareDocument,Integer idInreg) throws CtbException{
-		// TODO Auto-generated method stub
+		
 		//construire linieMatVal
 				List<LinieMaterialValoare> listaContMat= new ArrayList<LinieMaterialValoare>();
 				RegTipuriContabile regTip =RegTipuriContabile.instantiaza();
 				for (LinieDocument ld: listaLinMat){
-					listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.material.getTipContabil()),ld.cantitate*ld.pret));
+					listaContMat.add(new LinieMaterialValoare(regTip.getTipDupaDen(ld.getMaterial().getTipContabil()),ld.getCantitate()*ld.getPret()));
 				}
 		RegLuniLucru regLuniLucru =RegLuniLucru.instantiaza();
 		RegSablonNC regSabloanNC = RegSablonNC.instantiaza();
@@ -544,12 +619,18 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 			
 			logger.debug("Avem o inregistrare jurnal de Productie NOUA");
 			//System.out.println("inregProductie id:"+inregProductie.getIdInregRJ());
+			if (sessionContext.getRollbackOnly() == true){
+				logger.debug("END jurnalizare Productie - FAILED TRANSACTION");
+			}else{
+				RegInregistrareRJ.instantiaza().addInregistrareRJ(inregProductie);
+			}
 			
-			RegInregistrareRJ.instantiaza().addInregistrareRJ(inregProductie);
+			logger.debug("END jurnalizare Productie-ok");
+			//RegInregistrareRJ.instantiaza().addInregistrareRJ(inregProductie);
 			return inregProductie.getIdInregRJ();
 			
 		} else if (stareDocument==StareDocument.MODIFICAT){
-			//TODO:
+			//
 			return -1;
 		} else {
 			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
@@ -557,6 +638,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		}	
 	}
 //------------------------------------------------------------
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void jurnalizareNcDiversa( Date data, Integer nrInreg, Cont contd, Cont contc, Double suma, StareDocument stareDocument, Integer idInreg) throws CtbException{
 		
@@ -595,12 +677,18 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 			
 			logger.debug("Avem o inregistrare diversa NOUA");
 			//System.out.println("inregVanzare id:"+inregDiversa.getIdInregRJ());
+			if (sessionContext.getRollbackOnly() == true){
+				logger.debug("END jurnalizare diversa - FAILED TRANSACTION");
+			}else{
+				RegInregistrareRJ.instantiaza().addInregistrareRJ(inregDiversa);
+			}
 			
-			RegInregistrareRJ.instantiaza().addInregistrareRJ(inregDiversa);
+			logger.debug("END jurnalizare diversa-ok");
+			//RegInregistrareRJ.instantiaza().addInregistrareRJ(inregDiversa);
 			//return inregDiversa.getIdInregRJ();
 			
 		} else if (stareDocument==StareDocument.MODIFICAT){
-			//TODO:
+			//
 			//return -1;
 		} else {
 			RegInregistrareRJ.instantiaza().anuleazaIregRJ(idInreg);
@@ -630,27 +718,46 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 //-------------------------------------------------------------
 	@Override
 	public int getIdCont(Cont cont) {
-		return cont.getIdCont(); //TODO: are vreun sens methoda pt vro echipa?
+		return cont.getIdCont(); 
 	}
 //---------------------------------------------------------
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Cont crearePlanCont(String denCont, String simbolCont, String clasaCont, StatusSintetic tipSintetic, 
 			Cont contParinte, TipCont tipCont) {
-		return new Cont(denCont, simbolCont, clasaCont, tipSintetic, contParinte, tipCont);
+		Cont c= new Cont(denCont, simbolCont, clasaCont, tipSintetic, contParinte, tipCont);
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug("END creare cont - FAILED TRANSACTION");
+		}else{
+			RegConturi.instantiaza().addCont(c);
+		}
+		
+		logger.debug("END creare cont-ok");
+		return c;
 	}
 //------------------------------------------------------
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public SablonNC creareSablonNC(Integer nrSablon, Cont contDebit, Cont contCredit) {
-		return new SablonNC(nrSablon, contDebit, contCredit);
+		SablonNC sb =new SablonNC(nrSablon, contDebit, contCredit);
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug("END creare sablont - FAILED TRANSACTION");
+		}else{
+			RegSablonNC.instantiaza().addSablon(sb);
+		}
+		
+		logger.debug("END creare sablon-ok");
+		return sb;
 	}
 //-------------------------------------------------------
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inchideLuna(LunaLucru luna) throws CtbException {
 		LunaLucru lunaAnterioara = RegLuniLucru.instantiaza().getLunaAnterioara(luna);
 		//boolean notAnterioara;
 		
 		if(lunaAnterioara!=null){
+			//System.out.println("cica exista");
 			if(lunaAnterioara.getStatus().equals(StatusLuna.DESCHISA.toString()))
 					throw new CtbException("Luna anterioara este deschisa! Nu puteti inchide luna ceruta");
 		}
@@ -658,7 +765,8 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		//	notAnterioara=true;
 		//}
 
-		List<Balanta> balLunaAnt = RegBalanta.instantiaza().getBalantaLunaAnterioare(luna);
+		//List<Balanta> balLunaAnt = RegBalanta.instantiaza().getBalantaLunaAnterioare(luna);
+		
 		List<Balanta> balDeInchis = RegBalanta.instantiaza().getBalantaLunaDeInchis(luna);
 		List<Balanta> balDeUpdate = new ArrayList<Balanta>();
 		List<Balanta> balNoi = new ArrayList<Balanta>();
@@ -683,6 +791,8 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 			//System.out.println("fiecare cont"+ c.getSimbolCont());
 			
 			//mai trebuie un if  verificat daca e luna ianuarie caci se scimba 
+			if(lunaAnterioara!=null){
+			List<Balanta> balLunaAnt = RegBalanta.instantiaza().getBalantaLunaAnterioare(luna);
 			for(int i=0;i<balLunaAnt.size();i++){
 				if(balLunaAnt.get(i).getContB().equals(c)){
 					sid=balLunaAnt.get(i).getSlodInD();
@@ -693,7 +803,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 					break;
 					
 				}
-			}
+			}}
 			//System.out.println(inregRJ.size());
 			for (InregistrareRJ irj : inregRJ) {
 				//System.out.println(irj.);
@@ -726,7 +836,7 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 			for(int i=0;i<balDeInchis.size();i++){
 				if(balDeInchis.get(i).getContB().equals(c)){
 					Balanta bl= balDeInchis.get(i);
-					balDeUpdate.add(new Balanta(bl.getId(),bl.getLunaB(), bl.getContB(), sid, sic, rad, rac, rcd, rcc, tsd, tsc, sfd, sfc, false));
+					balDeUpdate.add(new Balanta(bl.getLunaB(), bl.getContB(), sid, sic, rad, rac, rcd, rcc, tsd, tsc, sfd, sfc, false));
 					existaBalanta=true;
 					//System.out.println("am updatat o bal existenta");
 					break;
@@ -750,13 +860,13 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		//RegBalanta.instantiaza().printAll();
 		luna.inchideLuna();
 		
-		//TODO ca am uitat sa stergem balantele din (luna), cu true care nu se mai utilizeaza
+		// ca am uitat sa stergem balantele din (luna), cu true care nu se mai utilizeaza
 	}
 //-------------------------------------------------------
+
 	@Override
 	public void anuleazaInchidere(LunaLucru luna) {
-		// TODO Auto-generated method stub
-		
+				
 		RegBalanta.instantiaza().anuleazaBalanta(luna);
 		RegLuniLucru.instantiaza().anuleazaLunaLucru(luna);
 		
@@ -778,8 +888,10 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 	public LinieMaterialValoare creareLinieMaterialValoare(TipContabil tipMaterial, Double valoare) {
 		return new LinieMaterialValoare(tipMaterial, valoare);
 	}
+	
+	
 	public TipContabil creareTipMaterial(Integer idTip, String denumireTip, Cont contProprietar, Cont contIntrare, Cont contIesire){
-		return new TipContabil(idTip, denumireTip, contProprietar, contIntrare, contIesire);
+		return new TipContabil( denumireTip, contProprietar, contIntrare, contIesire);
 	}
 	public RegConturi getRegConturi(){
 		return RegConturi.instantiaza();

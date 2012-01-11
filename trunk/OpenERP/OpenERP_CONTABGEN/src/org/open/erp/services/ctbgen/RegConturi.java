@@ -25,18 +25,9 @@ public class RegConturi extends Registru{
 		return singleReference;
 	}
 
-	private List<Cont> planConturi;
-
+	
 	public List<Cont> getPlanConturi() {
-		/*
-		TODO: dar exista si javax.persistence.TypedQuery
-		
-		TypedQuery<Cont> query = em.createQuery(sqlDefaultText, Cont.class);
-		List<Cont> results = query.getResultList();
-
-		dar mie imi arata cu rosu importul ..de cand am instalat cele din tutoriale
-		 */
-		
+			
 		@SuppressWarnings("unchecked")
 		List<Cont> result = em.createQuery(this.sqlDefaultText).getResultList();
 		return result;
@@ -59,7 +50,7 @@ public class RegConturi extends Registru{
 		synchronize();
 	}
 
-	void removeSablon(Cont cont) { //TODO: de ce se cheama asa? lucreaza cu conturi
+	void removeCont(Cont cont) { //TODO: de ce se cheama asa? lucreaza cu conturi
 		em.remove(cont);
 		
 		synchronize();
@@ -77,6 +68,7 @@ public class RegConturi extends Registru{
 	
 	//TODO: remove me
 	public void printAll(){
+		List<Cont> planConturi = this.getPlanConturi();
 		for(int i=0;i<planConturi.size();i++){
 			System.out.println(planConturi.get(i).getSimbolCont().toString());
 		}

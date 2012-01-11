@@ -34,33 +34,33 @@ public class Balanta implements Comparable<Balanta> {
 	private Double slodFinC;
 	private boolean anulat;
 	
-	public Balanta(int id, LunaLucru lunaB, Cont contB, Double slodInD,
-			Double slodInC, Double rulajAnD, Double rulajAnC, Double rulajCurD,
-			Double rulajCurC, Double totalSumD, Double totalSumC,
-			Double slodFinD, Double slodFinC, boolean anulat) {
-		super();
-		this.id = id;
-		this.lunaB = lunaB;
-		this.contB = contB;
-		this.slodInD = slodInD;
-		this.slodInC = slodInC;
-		RulajAnD = rulajAnD;
-		RulajAnC = rulajAnC;
-		RulajCurD = rulajCurD;
-		RulajCurC = rulajCurC;
-		TotalSumD = totalSumD;
-		TotalSumC = totalSumC;
-		this.slodFinD = slodFinD;
-		this.slodFinC = slodFinC;
-		this.anulat = anulat;
-	}
+//	public Balanta(int id, LunaLucru lunaB, Cont contB, Double slodInD,
+//			Double slodInC, Double rulajAnD, Double rulajAnC, Double rulajCurD,
+//			Double rulajCurC, Double totalSumD, Double totalSumC,
+//			Double slodFinD, Double slodFinC, boolean anulat) {
+//		super();
+//		this.id = id;
+//		this.lunaB = lunaB;
+//		this.contB = contB;
+//		this.slodInD = slodInD;
+//		this.slodInC = slodInC;
+//		RulajAnD = rulajAnD;
+//		RulajAnC = rulajAnC;
+//		RulajCurD = rulajCurD;
+//		RulajCurC = rulajCurC;
+//		TotalSumD = totalSumD;
+//		TotalSumC = totalSumC;
+//		this.slodFinD = slodFinD;
+//		this.slodFinC = slodFinC;
+//		this.anulat = anulat;
+//	}
 	
 	public Balanta(LunaLucru lunaB, Cont contB, Double slodInD,
 			Double slodInC, Double rulajAnD, Double rulajAnC, Double rulajCurD,
 			Double rulajCurC, Double totalSumD, Double totalSumC,
 			Double slodFinD, Double slodFinC, boolean anulat) {
 		super();
-		this.id=-1;
+		//this.id=-1;
 		this.lunaB = lunaB;
 		this.contB = contB;
 		this.slodInD = slodInD;

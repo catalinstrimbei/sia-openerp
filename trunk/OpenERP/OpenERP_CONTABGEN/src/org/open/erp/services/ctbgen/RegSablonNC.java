@@ -14,7 +14,7 @@ public class RegSablonNC extends Registru{
 	private static RegSablonNC singleReference;
 
 	private RegSablonNC() {
-		sqlDefaultText = "SELECT o FROM Cont o";
+		sqlDefaultText = "SELECT o FROM SablonNC o";
 	}
 
 	public static RegSablonNC instantiaza() {

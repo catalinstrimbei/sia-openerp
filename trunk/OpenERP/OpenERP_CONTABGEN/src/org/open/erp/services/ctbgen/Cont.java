@@ -114,7 +114,7 @@ public class Cont {
 	public Cont(String denCont, String simbolCont, String clasaCont, StatusSintetic tipSintetic, 
 				Cont contParinte, TipCont tipCont) {
 		super();
-		this.idCont=-1;
+		//this.idCont=-1;
 		this.denCont = denCont;
 		this.simbolCont = simbolCont;
 		this.clasaCont = clasaCont;

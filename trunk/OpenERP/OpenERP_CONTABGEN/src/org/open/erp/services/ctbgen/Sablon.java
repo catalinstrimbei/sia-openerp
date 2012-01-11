@@ -1,5 +1,7 @@
 package org.open.erp.services.ctbgen;
 
+
+
 public class Sablon {
 	private Cont contDebit;
 	private Cont contCredit;

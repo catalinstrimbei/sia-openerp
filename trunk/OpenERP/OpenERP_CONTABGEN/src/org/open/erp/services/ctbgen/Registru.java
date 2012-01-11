@@ -3,7 +3,7 @@ package org.open.erp.services.ctbgen;
 import javax.persistence.EntityManager;
 
 public abstract class Registru {
-	protected static EntityManager em;
+	public static EntityManager em;
 	protected String sqlDefaultText;
 
 	public Registru() {

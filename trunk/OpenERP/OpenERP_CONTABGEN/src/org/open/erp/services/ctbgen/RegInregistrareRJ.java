@@ -16,7 +16,7 @@ public class RegInregistrareRJ extends Registru{
 	private static RegInregistrareRJ singleReference;
 
 	private RegInregistrareRJ() {
-		sqlDefaultText = "SELECT o FROM Cont o";
+		sqlDefaultText = "SELECT o FROM InregistrareRJ o";
 	}
 
 	public static RegInregistrareRJ instantiaza() {

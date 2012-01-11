@@ -4,43 +4,62 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.ctbgen.Cont;
-import org.open.erp.services.ctbgen.Cont.StatusSintetic;
-import org.open.erp.services.ctbgen.Cont.TipCont;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
-//import org.open.erp.services.ctbgen.LinieMaterialValoare;
 import org.open.erp.services.ctbgen.LunaLucru;
 import org.open.erp.services.ctbgen.RegConturi;
 import org.open.erp.services.ctbgen.RegLuniLucru;
 import org.open.erp.services.ctbgen.RegSablonNC;
-//import org.open.erp.services.ctbgen.RegTipMaterial;
 import org.open.erp.services.ctbgen.RegTipuriContabile;
 import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.TipContabil;
 import org.open.erp.services.ctbgen.TipIncasare;
 import org.open.erp.services.ctbgen.TipPlata;
+import org.open.erp.services.ctbgen.Cont.StatusSintetic;
+import org.open.erp.services.ctbgen.Cont.TipCont;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 
-public class TestContabilizareSrvImpl {
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizareSrvImpl.class.getName());
+
+public class TestContabilizare_EJB {
+private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizareSrvImpl.class.getName());
 	
-	ContabilizareSrv instantaCtbGen;
-	NomenclatoareSrv nomenclatorInstance;
+    private static ContabilizareSrv instantaCtbGen;
+    private static NomenclatoareSrv nomenclatorInstance;
+	
 	RegSablonNC regSablonNC;
 	RegConturi regConturi;
 	RegLuniLucru regLuniConturi;
 	RegTipuriContabile regTipContabile;
 	
+	/*--- InitialContext Client EJB-JDNI ----------------------------------------------------*/
+	private static InitialContext initJBossJNDICtx() throws NamingException{
+		Properties props = new Properties();
+        props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");		
+        props.put("java.naming.provider.url", "jnp://localhost:1099/");
+        props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
+        return new InitialContext(props);
+	}
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		InitialContext ctx = initJBossJNDICtx();
+		instantaCtbGen = (ContabilizareSrv)ctx.lookup("ContabilizareSrv/remote");
+		nomenclatorInstance = (NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
+		
+		logger.info("initTest " + instantaCtbGen);
+		logger.info("initTest " + nomenclatorInstance);
 	}
 
 	@Before
@@ -395,9 +414,9 @@ public class TestContabilizareSrvImpl {
 		for (String l : ltp){
 			logger.debug("un tip: "+l.toString());
 		}
-	    
-	    	
+	        	
 		logger.info("End test: TestListaTipuriCtb");
 		
 	}
+
 }

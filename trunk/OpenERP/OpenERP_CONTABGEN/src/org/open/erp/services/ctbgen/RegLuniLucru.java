@@ -54,14 +54,14 @@ public class RegLuniLucru extends Registru{
 			if(lunaGasita==null && listaLuni.isEmpty()==false){ //consecutive
 				LunaLucru ultimaLuna = getUltimaLuna();	
 				if ((ultimaLuna.getLuna() + 1 == luna && ultimaLuna.getAn() == an) || (luna == 1 && ultimaLuna.getAn() == an + 1 && ultimaLuna.getLuna() == 12)) {
-					LunaLucru lunaNoua = new LunaLucru(0, luna, an);
+					LunaLucru lunaNoua = new LunaLucru( luna, an);//LunaLucru(0, luna, an);
 					addLuna(lunaNoua);
 					return lunaNoua;
 				} else {
 					throw new CtbException("Documentul solicitat incearca sa creeze o luna neconsecutiva!!");
 				}
 			} else if(listaLuni.isEmpty()==true){ //e prima luna
-				LunaLucru lunaNoua = new LunaLucru(1, luna, an);
+				LunaLucru lunaNoua = new LunaLucru( luna, an);//LunaLucru(1, luna, an);
 				addLuna(lunaNoua);
 				//System.out.println(luna+ " - " +an);
 				return lunaNoua;
@@ -103,13 +103,7 @@ public class RegLuniLucru extends Registru{
 	}
 	
 
-	//private void sorteazaLuni() { 
-		//TODO: asta nu mai are sens, in BD is inregistrate dupa propria logica: sters, adugat -> nu raman in ordinea inserarii (id crescatoare)
-		//e folosit in getUltimaLuna(): vezi ce-am facut acolo!, la fel in getUltimaLunaInchisa();
-		//Collections.sort(listaLuni);
-	//}
-
-	//private static int contorId = 1;
+	
 	public void addLuna(LunaLucru luna) {
 		if (em.contains(luna))
 			em.merge(luna);
@@ -124,8 +118,20 @@ public class RegLuniLucru extends Registru{
 		
 		synchronize();
 	}
+	
+	public LunaLucru getLunaAnLuna(int luna, int an){
+		List<LunaLucru>listaLuni = getLuniLucru();
+		for(int i=listaLuni.size()-1;i>=0;i--)
+			if(listaLuni.get(i).getIdLuna()==luna & listaLuni.get(i).getAn()==an){
+				//System.out.println(listaLuni.get(i).toString());
+					return listaLuni.get(i);
+			}
+		return null;
+	}
+	
+	
 
-	private LunaLucru getUltimaLuna() { //sau se putea in querry cu max luna?
+	public LunaLucru getUltimaLuna() { //sau se putea in querry cu max luna?
 		List<LunaLucru>listaLuni = getLuniLucru();
 		Collections.sort(listaLuni);
 		LunaLucru ultimaLuna = listaLuni.get(listaLuni.size() - 1);
@@ -133,14 +139,32 @@ public class RegLuniLucru extends Registru{
 	}
 	
 	public LunaLucru getLunaAnterioara(LunaLucru luna){
+				
 		Calendar c = Calendar.getInstance();
-		c.set(luna.getAn(), luna.getLuna(), 15);
-		c.add(Calendar.MONTH,0);
-		Date lunaAnterioara_date = c.getTime();
+		c.set(luna.getAn(), luna.getLuna()-1, 15);
+		c.add(Calendar.MONTH,-1);
 		
+		Date lunaAnterioara_date = c.getTime();
+		//System.out.println("voi returna luna pt data:"+lunaAnterioara_date);
 		LunaLucru lunaAnterioara = RegLuniLucru.instantiaza().getLunaLucruDupa(lunaAnterioara_date);
+	
 		return lunaAnterioara;
 	}
+	
+//	public LunaLucru getLunaAnterioara(LunaLucru luna){
+//		List<LunaLucru>listaLuni = getLuniLucru();
+//		System.out.println("ln"+luna.getLuna());
+//		System.out.println("an"+luna.getAn());
+//		int lln= luna.getIdLuna()-1;
+//		int aan= luna.getAn();
+//		System.out.println(lln+aan);
+//		for(int i=listaLuni.size()-1;i>=0;i--)
+//			if(listaLuni.get(i).getIdLuna()==lln && listaLuni.get(i).getAn()==aan){
+//				System.out.println("?"+listaLuni.get(i).toString());
+//				return listaLuni.get(i);
+//			}
+//		return null;
+//	}
 	
 	public LunaLucru getUltimaLunaInchisa() {
 		List<LunaLucru>listaLuni = getLuniLucru();
@@ -162,6 +186,17 @@ public class RegLuniLucru extends Registru{
 		
 		synchronize();
 	}
+	
+	public void inchideLunaLucru (int idd){
+		List<LunaLucru>listaLuni = getLuniLucru(); 
+		for(int i=listaLuni.size()-1;i>=0;i--)
+			if(listaLuni.get(i).getIdLuna()==idd){
+				listaLuni.get(i).inchideLuna();
+			}
+				
+		synchronize();
+	}
+	
 	//TODO: remove me
 	public void printAll(){
 		List<LunaLucru>listaLuni = getLuniLucru();
@@ -169,5 +204,7 @@ public class RegLuniLucru extends Registru{
 			System.out.println(listaLuni.get(i).toString());
 		}
 	}
+
+	
 
 }

@@ -40,21 +40,21 @@ public class TipContabil {
 
 	public TipContabil(String denumireTip, Cont contProprietar, Cont contIntrare, Cont contIesire) {
 		super();
-		this.idTipContabil=-1;
+		//this.idTipContabil=-1;
 		this.denumireTip = denumireTip;
 		this.contProprietar = contProprietar;
 		this.contIntrare = contIntrare;
 		this.contIesire = contIesire;
 	}
 	
-	public TipContabil(Integer idTipContabil, String denumireTip, Cont contProprietar, Cont contIntrare, Cont contIesire) {
-		super();
-		this.idTipContabil=idTipContabil;
-		this.denumireTip = denumireTip;
-		this.contProprietar = contProprietar;
-		this.contIntrare = contIntrare;
-		this.contIesire = contIesire;
-	}
+//	public TipContabil(Integer idTipContabil, String denumireTip, Cont contProprietar, Cont contIntrare, Cont contIesire) {
+//		super();
+//		this.idTipContabil=idTipContabil;
+//		this.denumireTip = denumireTip;
+//		this.contProprietar = contProprietar;
+//		this.contIntrare = contIntrare;
+//		this.contIesire = contIesire;
+//	}
 
 	public Integer getIdTipContabil() {
 		return idTipContabil;

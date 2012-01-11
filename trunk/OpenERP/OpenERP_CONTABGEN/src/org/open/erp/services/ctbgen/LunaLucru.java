@@ -59,22 +59,28 @@ public class LunaLucru implements Comparable<LunaLucru> {
 		return status;
 	}
 
-	public LunaLucru(Integer idLuna, Integer luna, Integer an) {
-		super();
-		this.idLuna = idLuna;
-		this.luna = luna;
-		this.an = an;
-		this.status = StatusLuna.DESCHISA.toString();
-	}
+//	public LunaLucru(Integer idLuna, Integer luna, Integer an) {
+//		super();
+//		this.idLuna = idLuna;
+//		this.luna = luna;
+//		this.an = an;
+//		this.status = StatusLuna.DESCHISA.toString();
+//	}
 	
 	public LunaLucru(Integer luna, Integer an) {
 		super();
-		this.idLuna = -1;
+		//this.idLuna = -1;
 		this.luna = luna;
 		this.an = an;
 		this.status = StatusLuna.DESCHISA.toString();
 	}
-
+	public LunaLucru(Integer luna, Integer an, StatusLuna status) {
+		super();
+		//this.idLuna = -1;
+		this.luna = luna;
+		this.an = an;
+		this.status = status.toString();
+	}
 	public void inchideLuna() {
 		this.status = StatusLuna.INCHISA.toString();
 	}
