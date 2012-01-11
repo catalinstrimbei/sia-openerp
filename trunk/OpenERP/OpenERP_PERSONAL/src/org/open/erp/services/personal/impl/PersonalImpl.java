@@ -1809,7 +1809,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 			
 			while (iterator.hasNext()) {
 				InterviuCandidat	interviu = iterator.next();
-				if (interviu.getRezultatEvaluare() == "ADMIS" && interviu.getInterviu().getTipInterviu() == "Final" 
+				if (interviu.getRezultatEvaluare().toLowerCase().equals("admis") && interviu.getInterviu().getTipInterviu().toLowerCase().equals("final") 
 						&& (interviu.getDataInterviu().compareTo(dataAnunt_)) >= 0)
 											
 				{
@@ -1829,6 +1829,28 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		}
 		
 		return null;
+		
+	}	
+	
+	@Override
+	public Collection<InterviuCandidat> getListaInterviuriByCandidatEJB(Candidat candidat_)
+			throws Exception {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		try
+		{
+			Collection<InterviuCandidat> result = this.registruPersonal.getListaInterviuriByCandidat(candidat_);		
+			return result;
+			
+		}
+		
+		catch(Exception ex)
+		{
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
+			return null;
+		}
+				
 		
 	}	
 	
@@ -2015,8 +2037,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try{
 			Collection<Angajat> rezultat = new ArrayList<Angajat>();
+			rezultat = this.registruPersonalEJB.getAngajatiPeFunctie(functie_);
+			/*
 			Collection<ContractMunca> listaContractMuncapeFunctie = new ArrayList<ContractMunca>();
-			listaContractMuncapeFunctie = this.registruPersonalEJB.getContracteMuncaPeFunctie(functie_);
+			listaContractMuncapeFunctie = this.registruPersonalEJB.getContracteMuncaPeFunctie(functie_);						
 			Iterator<ContractMunca> iterator = listaContractMuncapeFunctie.iterator();
 			
 			while (iterator.hasNext()) {
@@ -2028,6 +2052,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 					rezultat.add(contractCurent.getAngajat());	
 				}
 			}
+			*/
 			return rezultat;
 			
 		}catch(Exception ex){
@@ -2151,22 +2176,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		
 	}
 	@Override
-	public ContractMunca relocalizare_promovareEJB(Integer marca_,
+	public ContractMunca relocalizare_promovareEJB(Angajat angajat_,
 			Functie functieNoua_, ContractMunca contractVizat_,
 			boolean promovare_, double salarBaza_, double tarifOrar_) {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
-		Angajat angajat = new Angajat();
-		try
-		{
-			angajat = this.registruPersonal.getAngajatByMarca(marca_);
-		}
-		catch(Exception ex)
-		{
-			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
-			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
-			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());				
-		}
-		if(angajat == null)
+		
+		if(angajat_ == null)
 		{
 			return null;
 		}
@@ -2174,7 +2189,7 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		{
 			
 			//TODO - Add this.registruPerosnal.getListaContracteByAngajat(angajat).iterator();
-			Iterator<ContractMunca> iteratorContracte = this.getListaContracteByAngajat(angajat).iterator();
+			Iterator<ContractMunca> iteratorContracte = this.getListaContracteByAngajat(angajat_).iterator();
 			
 			while (iteratorContracte.hasNext())
 			{
@@ -2187,6 +2202,12 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 				else
 				{
 					contractVechi.setMotivIncheiere("Relocalizare");
+				}
+				try {
+					contractVechi = this.salveazaContractMunca(contractVechi);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}	
 		}
@@ -2202,10 +2223,10 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 				contractVizat_.setMotivIncheiere("Relocalizare");
 			}
 		}
-		ContractMunca	contractNou = new ContractMunca(null, salarBaza_, tarifOrar_, angajat, functieNoua_, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), null, 0, null);
+		ContractMunca	contractNou = new ContractMunca(null, salarBaza_, tarifOrar_, angajat_, functieNoua_, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), null, 0, null);
 		try{
-			this.registruPersonal.salveazaContractMunca(contractVizat_);
-			this.registruPersonal.salveazaContractMunca(contractNou);
+			contractVizat_ = this.registruPersonal.salveazaContractMunca(contractVizat_);
+			contractNou = this.registruPersonal.salveazaContractMunca(contractNou);
 		}
 			catch(Exception ex)
 		{

@@ -233,7 +233,7 @@ public interface PersonalSrv {
 		 * 
 		 */
 		
-		ContractMunca relocalizare_promovareEJB(Integer marca_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_);
+		ContractMunca relocalizare_promovareEJB(Angajat angajat_, Functie functieNoua_, ContractMunca contractVizat_, boolean promovare_, double salarBaza_, double tarifOrar_);
 		
 		/**
 		 * Scop						Relocalizarea unui angajat ca urmare a resturcturarii firmei sau ca urmare a promovarii angajatului 
@@ -1092,6 +1092,8 @@ public interface PersonalSrv {
 	 * 
 	 */
 	Collection<CV> getCVuriPeAnuntLocMuncaEJB(AnuntLocMunca anuntLocMunca_);
+	Collection<InterviuCandidat> getListaInterviuriByCandidatEJB(
+			Candidat candidat_) throws Exception;
 
 	
 

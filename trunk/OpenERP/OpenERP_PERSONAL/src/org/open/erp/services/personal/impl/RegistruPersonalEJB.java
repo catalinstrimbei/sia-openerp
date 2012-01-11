@@ -147,7 +147,19 @@ public class RegistruPersonalEJB {
 		}		
 	}
 
-
+	public Collection<Angajat> getAngajatiPeFunctie(Functie functie_) throws Exception{
+		try{
+			return entityManager.createQuery("SELECT a FROM Angajat a, Contract c " +
+											"WHERE a = c.angajat AND  c.functie = :functie")
+											.setParameter("functie", functie_)
+											.getResultList();
+		}catch(Exception ex){
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());		
+			throw ex;
+		}
+	}
 
 }
 

@@ -48,7 +48,7 @@ public class TestPersonalEJBBusinessLogic {
 	}	
 
 	@Test
-	public void TESTgetCVuriPeAnuntLocMunca() {
+	public void TESTgetCVuriPeAnuntLocMunca() {//
 		try
 		{
 			logger.logINFO("Start test: TESTgetCVuriPeAnuntLocMunca");
@@ -74,7 +74,7 @@ public class TestPersonalEJBBusinessLogic {
 	}
 	
 	@Test
-	public void TESTgetDosareAndContracteAngajatEJB() {
+	public void TESTgetDosareAndContracteAngajatEJB() {//
 		try
 		{			
 			logger.logINFO("Start test: TESTgetDosareAndContracteAngajatEJB");
@@ -108,7 +108,7 @@ public class TestPersonalEJBBusinessLogic {
 	}
 	
 	@Test
-	public void TESTgetCVByCandidatEJB() {
+	public void TESTgetCVByCandidatEJB() {//
 		try
 		{
 			logger.logINFO("Start test: TESTgetCVByCandidatEJB");
@@ -130,7 +130,7 @@ public class TestPersonalEJBBusinessLogic {
 	}
 	
 	@Test
-	public void TESTrecrutareEJB() {
+	public void TESTrecrutareEJB() {//
 		try
 		{
 			logger.logINFO("Start test: TESTrecrutareEJB");
@@ -140,17 +140,32 @@ public class TestPersonalEJBBusinessLogic {
 			for(Iterator<AnuntLocMunca> i = listaAnunturi.iterator(); i.hasNext();)
 			{
 				AnuntLocMunca anunt = i.next(); 
+				/*
 				Collection<Candidat> candidatiAnunt = personalInstance.getCandidatiPeAnuntLocMuncaEJB(anunt);
+								
 				for(Iterator<Candidat> k = candidatiAnunt.iterator(); k.hasNext();)
 				{
 					Candidat candidat = k.next();
-					candidat = personalInstance.validareRecrutareEJB(anunt.getDataInceput(), candidat);
+					Collection<InterviuCandidat> interviuri = personalInstance.getListaInterviuriByCandidatEJB(candidat);
+					for(Iterator<InterviuCandidat> m = interviuri.iterator(); m.hasNext();)
+					{
+						InterviuCandidat ic = m.next();
+						if (ic.getRezultatEvaluare().toLowerCase().equals("admis") && ic.getInterviu().getTipInterviu().toLowerCase().equals("final") 
+								&& (ic.getDataInterviu().compareTo(anunt.getDataInceput())) >= 0)
+													
+						{
+							System.out.println("Candidat valabil");	
+						}
+					
+						candidat = personalInstance.validareRecrutareEJB(anunt.getDataInceput(), candidat);
+					}
 				}
+				*/
 				Collection<Candidat> listaCandidati = personalInstance.recrutareEJB(anunt);
 				for(Iterator<Candidat> j = listaCandidati.iterator(); j.hasNext();)
 				{
-					Candidat candidat = j.next();
-					System.out.println(candidat.getIdCandidat() + candidat.getNume());
+					Candidat candidata = j.next();
+					System.out.println(candidata.getIdCandidat() + candidata.getNume());
 				}
 				
 			}					
@@ -186,7 +201,7 @@ public class TestPersonalEJBBusinessLogic {
 	}
 	
 	@Test
-	public void TESTdemisionareEJB() {
+	public void TESTdemisionareEJB() {//
 		try
 		{
 			logger.logINFO("Start test: TESTdemisionareEJB");
@@ -207,7 +222,7 @@ public class TestPersonalEJBBusinessLogic {
 	}
 	
 	@Test
-	public void TESTconcediereEJB() {
+	public void TESTconcediereEJB() {//
 		try
 		{
 			logger.logINFO("Start test: TESTconcediereEJB");
@@ -239,7 +254,8 @@ public class TestPersonalEJBBusinessLogic {
 			{
 				ContractMunca contract = j.next();
 				System.out.println(contract.getNrContract());
-			//	personalInstance.relocalizare_promovareEJB(contract.get);
+				Functie functie = personalInstance.getFunctieById(3);
+				personalInstance.relocalizare_promovareEJB(contract.getAngajat(), functie,contract, true, 1200.00,15.30);
 			}
 			logger.logINFO("End test: TESTrelocalizare_promovareEJB");
 		}
@@ -250,7 +266,7 @@ public class TestPersonalEJBBusinessLogic {
 		}
 	}
 	@Test
-	public void TESTgetRezultatePeProbaEvaluare(){
+	public void TESTgetRezultatePeProbaEvaluare(){//
 		try{
 			logger.logINFO("Start test: TESTgetRezultatePeProbaEvaluare");
 			HashMap <ProbaEvaluare, Collection<RezultatProbaEvaluare>> mapFinal = new HashMap <ProbaEvaluare, Collection<RezultatProbaEvaluare>>();
@@ -285,7 +301,7 @@ public class TestPersonalEJBBusinessLogic {
 	}
 	
 	@Test
-	public void TESTgetPosturiVacanteEJB(){
+	public void TESTgetPosturiVacanteEJB(){//
 		try{
 			logger.logINFO("Start test: TESTgetPosturiVacante");
 			Collection<AnuntLocMunca> rezultat = new ArrayList<AnuntLocMunca>();
@@ -305,7 +321,7 @@ public class TestPersonalEJBBusinessLogic {
 	}
 
 	@Test
-	public void TESTgetCandidatiPeAnuntLocMunca(){
+	public void TESTgetCandidatiPeAnuntLocMunca(){//
 		try{
 			logger.logINFO("Start test: TESTgetCandidatiPeAnuntLocMunca");
 			Collection<AnuntLocMunca> anunturiLocMunca = personalInstance.getListaAnunturiLocMunca();
@@ -335,7 +351,7 @@ public class TestPersonalEJBBusinessLogic {
 	}
 
 	@Test
-	public void TESTgetAngajatiPeFunctieEJB(){
+	public void TESTgetAngajatiPeFunctieEJB(){//
 		try{
 			logger.logINFO("Start test: TESTgetgetAngajatiPeFunctieEJB");
 			Collection <Functie> functii = personalInstance.getListaFunctii();
