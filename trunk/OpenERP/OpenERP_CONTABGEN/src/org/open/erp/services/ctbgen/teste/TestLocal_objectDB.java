@@ -36,7 +36,7 @@ public class TestLocal_objectDB {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizareSrvImpl.class.getName());
 	
 	static ContabilizareSrv instantaCtbGen;
-	static NomenclatoareSrv nomenclatorInstance;
+	//static NomenclatoareSrv nomenclatorInstance;
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -45,7 +45,7 @@ public class TestLocal_objectDB {
 		Registru.em = em;
 		
 		instantaCtbGen=  ContabilizareDummyFactory.getContabilizareSrv();
-		nomenclatorInstance = ContabilizareDummyFactory.getNomenclatoareSrv();
+		//nomenclatorInstance = ContabilizareDummyFactory.getNomenclatoareSrv();
 		
 		RegConturi regConturi = RegConturi.instantiaza();
 		
@@ -61,7 +61,7 @@ public class TestLocal_objectDB {
 		Cont c345 =new Cont(345,"produse finite","345","3",StatusSintetic.SINTETIC,TipCont.ACTIV);
 		Cont c711 =new Cont(711,"Variatia stocurilor","711","7",StatusSintetic.SINTETIC,TipCont.PASIV);
 		Cont c641 =new Cont(641,"Ch salarii","641","6",StatusSintetic.SINTETIC,TipCont.ACTIV);
-		Cont c645 =new Cont(645,"Ch contributii","645","3",StatusSintetic.SINTETIC,TipCont.ACTIV);
+		Cont c645 =new Cont(645,"Ch contributii","645","6",StatusSintetic.SINTETIC,TipCont.ACTIV);
 		Cont c421 =new Cont(421,"Salarii personal","421","4",StatusSintetic.SINTETIC, TipCont.PASIV);
 		Cont c4311 =new Cont(4311,"CAS firma","4311","4",StatusSintetic.ANALITIC, TipCont.PASIV);
 		Cont c4312 =new Cont(4312,"CAS angajat","4312","4",StatusSintetic.ANALITIC, TipCont.PASIV);
@@ -144,19 +144,16 @@ public class TestLocal_objectDB {
 		regSablonNC.addSablon(sab18);
 		regSablonNC.addSablon(sab19);
 		regSablonNC.addSablon(sab20);
-		//----------------------
-		TipContabil tipContabil = new TipContabil("Materii prime", regConturi.getContDupaId(301), 
-                regConturi.getContDupaId(401),  regConturi.getContDupaId(601));	
+		//----------------------!!!!nu exista 303,603,601 create
+		TipContabil tipContabil = new TipContabil( "Materii prime", regConturi.getContDupaId(301), regConturi.getContDupaId(401),  regConturi.getContDupaId(601));	
 		
-		TipContabil tipContabil2 = new TipContabil( "Materiale", regConturi.getContDupaId(303), 
-                regConturi.getContDupaId(401),   regConturi.getContDupaId(603));
-		TipContabil tipContabil3 = new TipContabil( "Cheltuieli cu terti", regConturi.getContDupaId(628), 
-				         regConturi.getContDupaId(401),  regConturi.getContDupaId(628));
-		TipContabil tipContabi4 = new TipContabil( "Marfuri", regConturi.getContDupaId(307), 
-                regConturi.getContDupaId(401),  regConturi.getContDupaId(607));	
+		TipContabil tipContabil2 = new TipContabil( "Materiale", regConturi.getContDupaId(303),	regConturi.getContDupaId(401),   regConturi.getContDupaId(603));
 		
-		TipContabil tipContabil5 = new TipContabil( "Produse finite", regConturi.getContDupaId(345), 
-                regConturi.getContDupaId(711),  regConturi.getContDupaId(711));	
+		TipContabil tipContabil3 = new TipContabil( "Cheltuieli cu terti", regConturi.getContDupaId(628), regConturi.getContDupaId(401),  regConturi.getContDupaId(628));
+		
+		TipContabil tipContabi4 = new TipContabil( "Marfuri", regConturi.getContDupaId(307), regConturi.getContDupaId(401),  regConturi.getContDupaId(607));	
+		
+		TipContabil tipContabil5 = new TipContabil( "Produse finite", regConturi.getContDupaId(345), regConturi.getContDupaId(711),  regConturi.getContDupaId(711));	
 		
 		RegTipuriContabile regTipContabile = RegTipuriContabile.instantiaza();
 		

@@ -1,5 +1,7 @@
 package org.open.erp.services.ctbgen;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,10 @@ import javax.persistence.JoinColumn;
  */
 
 @Entity
-public class TipContabil {
+public class TipContabil implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private Integer idTipContabil;

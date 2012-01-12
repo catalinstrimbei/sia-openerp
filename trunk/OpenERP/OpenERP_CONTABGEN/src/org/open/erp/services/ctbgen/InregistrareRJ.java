@@ -1,12 +1,15 @@
 package org.open.erp.services.ctbgen;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -14,6 +17,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import static javax.persistence.TemporalType.DATE;
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+import javax.persistence.Inheritance;
+import static javax.persistence.InheritanceType.JOINED;
 
 
 /**
@@ -25,13 +32,16 @@ import static javax.persistence.TemporalType.DATE;
  */
 
 @Entity
-public class InregistrareRJ implements Comparable<InregistrareRJ>{
+@Table(name="InregistrariJurnal")
+public class InregistrareRJ implements Comparable<InregistrareRJ>, Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private Integer idInregRJ;
 	@Temporal(DATE)
 	private Date dataInregRJ;
-	@OneToMany(mappedBy = "inregRJ")
+	@OneToMany(mappedBy = "inregRJ", cascade =CascadeType. ALL)
 	private List <ArticolCtb> articoleRJ;
 	private Integer nrDocLeg;
 	@ManyToOne

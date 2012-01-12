@@ -1,8 +1,12 @@
 package org.open.erp.services.ctbgen;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
+
 import static javax.persistence.GenerationType.AUTO;
 
 
@@ -15,7 +19,11 @@ import static javax.persistence.GenerationType.AUTO;
  */
 
 @Entity
-public class LunaLucru implements Comparable<LunaLucru> { 
+//@Table(name="Luni_Lucru")
+public class LunaLucru implements Comparable<LunaLucru>,Serializable { 
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private Integer idLuna;

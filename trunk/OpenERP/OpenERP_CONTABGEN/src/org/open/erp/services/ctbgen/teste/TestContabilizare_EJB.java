@@ -29,7 +29,6 @@ import org.open.erp.services.ctbgen.Cont.TipCont;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
-import org.open.erp.services.nomgen.NomenclatoareSrv;
 
 
 public class TestContabilizare_EJB {

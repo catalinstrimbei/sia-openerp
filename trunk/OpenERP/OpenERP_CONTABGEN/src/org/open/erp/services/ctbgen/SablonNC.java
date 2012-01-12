@@ -1,9 +1,13 @@
 package org.open.erp.services.ctbgen;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 
 /**
@@ -15,13 +19,20 @@ import static javax.persistence.GenerationType.AUTO;
  */
 
 @Entity
-public class SablonNC extends Sablon{
+public class SablonNC implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private Integer idSablon;
 	private Integer nrSablon;
+	@ManyToOne
+	@JoinColumn(name = "contDebit_idCont", referencedColumnName = "idCont")
 	private Cont contDebit;
+	@ManyToOne
+	@JoinColumn(name = "contCredit_idCont", referencedColumnName = "idCont")
 	private Cont contCredit;
 		
 
