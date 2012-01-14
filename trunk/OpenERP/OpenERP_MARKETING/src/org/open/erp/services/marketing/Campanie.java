@@ -49,7 +49,7 @@ public  class Campanie implements Serializable {
 	private Integer status = NE_PORNITA;
 	@ManyToOne @JoinColumn(name = "idResponsabil")
 	Responsabil responsabil;
-	@OneToMany(mappedBy = "campanie",fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	
 	private List<PersoanaTinta> PersoaneTinta;
 
 	public Campanie() {
