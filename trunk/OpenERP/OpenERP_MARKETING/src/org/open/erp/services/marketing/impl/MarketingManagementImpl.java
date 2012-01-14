@@ -251,7 +251,7 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		}
 		else{			
 			result = this.registruMarketing.salveazaPersoanaTinta(persoana);
-			logger.debug(">>>>>>End salveazaAngajat");
+			logger.debug(">>>>>>End salveaza persoana Tinta");
 		}
 		return result;
 	}

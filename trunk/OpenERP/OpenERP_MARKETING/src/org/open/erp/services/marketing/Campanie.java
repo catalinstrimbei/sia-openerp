@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -47,8 +48,7 @@ public  class Campanie implements Serializable {
 	private Integer status = NE_PORNITA;
 	@ManyToOne @JoinColumn(name = "idResponsabil")
 	Responsabil responsabil;
-	@OneToMany @JoinTable(
-			name = "PersoanaTinta", joinColumns = @JoinColumn(name="idCampanie"), inverseJoinColumns = @JoinColumn(name="idPersoana"))
+	@OneToMany(mappedBy = "campanie", cascade = CascadeType.ALL)
 	private List<PersoanaTinta> PersoaneTinta;
 
 	public Campanie() {

@@ -54,11 +54,11 @@ public class TestMarketingManagementImplEJB {
 			 dataStart = calendar.getTime();
 			 calendar.set(2012, 02, 15);
 			 dataFinal = calendar.getTime();
-			 for (int i = 0 ; i<6;i++)
-			 {
-				 persoanaTinta =new PersoanaTinta(1000+i, "Nume" + i, "Prenume" + i); //(PersoanaTinta) nomenclatorInstance.creazaPersona(1000+i, "Nume" + i, "Prenume" + i);
-				 listaPersoaneTinta.add(persoanaTinta);
-			 }
+			 //for (int i = 0 ; i<6;i++)
+			// {
+			//	 persoanaTinta =new PersoanaTinta(1000+i, "Nume" + i, "Prenume" + i); //(PersoanaTinta) nomenclatorInstance.creazaPersona(1000+i, "Nume" + i, "Prenume" + i);
+			//	 listaPersoaneTinta.add(persoanaTinta);
+			// }
 			 campanie = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, listaPersoaneTinta);
 			
 			logger.info("Campania cu id: " + campanie.getIdCampanie() + " a fost definita!");
@@ -77,6 +77,7 @@ public class TestMarketingManagementImplEJB {
 			 PersoanaTinta  persoanaTinta = new PersoanaTinta();
 			 persoanaTinta.setNume("Rusu");
 			 persoanaTinta.setPrenume("Prenume");
+			 persoanaTinta.setIdCampanie(marketingInstance.getCampanie(1));
 			 persoanaTinta = marketingInstance.salveazaPersoanaTinta(persoanaTinta);
 				
 			 
