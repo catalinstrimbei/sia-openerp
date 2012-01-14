@@ -131,7 +131,12 @@ public class TestMarketingManagementImpl {
 		 logger.info("Mail-urile au fost trimise catre persoanele tinta");
 		 logger.info("End initiere campanie");
 		 logger.info("Start finalizareCampanie");
-		 marketingInstance.finalizareCampanie(campanieNoua);
+		 try {
+			marketingInstance.finalizareCampanie(campanieNoua);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 logger.info("Campania s-a incheiat");
 		 logger.info("End finalizareCampanie");
 	}
