@@ -64,7 +64,7 @@ public interface MarketingManagementSrv {
 	 * @return 
 	 * 
 	 */	
-	void initiereCampanie(Campanie campanie);
+	void initiereCampanie(Campanie campanie)throws Exception;
 //-----------------------------------------------INITIERE CAMPANIE END-----------------------------------------------
 //-----------------------------------------------DERULARE CAMPANIE START---------------------------------------------
 	/**
@@ -73,9 +73,10 @@ public interface MarketingManagementSrv {
 	 * @param Campanie		Campania ce va fi derulata
 	 * 
 	 * @return 
+	 * @throws Exception 
 	 * 
 	 */	
-	void finalizareCampanie(Campanie campanie);
+	void finalizareCampanie(Campanie campanie) throws Exception;
 //-----------------------------------------------DERULARE CAMPANIE END--------------------------------------------------
 //-----------------------------------------------INITIERE CHESTIONAR START-----------------------------------------------
 	/**

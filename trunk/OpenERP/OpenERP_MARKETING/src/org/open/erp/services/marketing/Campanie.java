@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -48,7 +49,7 @@ public  class Campanie implements Serializable {
 	private Integer status = NE_PORNITA;
 	@ManyToOne @JoinColumn(name = "idResponsabil")
 	Responsabil responsabil;
-	@OneToMany(mappedBy = "campanie", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "campanie",fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<PersoanaTinta> PersoaneTinta;
 
 	public Campanie() {

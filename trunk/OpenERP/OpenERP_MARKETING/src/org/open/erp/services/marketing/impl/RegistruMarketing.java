@@ -1,10 +1,16 @@
 package org.open.erp.services.marketing.impl;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 
+import org.hibernate.Hibernate;
 import org.open.erp.services.marketing.Campanie;
 import org.open.erp.services.marketing.PersoanaTinta;
 
@@ -27,8 +33,19 @@ public class RegistruMarketing {
 		}
 
 		/* interogari */
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
 		public Campanie getCampanie(Integer id){
-			return entityManager.find(Campanie.class, id);
+			Campanie campanie;
+			campanie = entityManager.find(Campanie.class, id);
+			try
+			{
+				campanie.setPersoaneTinta(this.getPersoaneTintaPeCampanie(campanie));
+			}
+			catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+			}
+			return campanie;
 		}
 		public PersoanaTinta getPersoanaTinta(Integer id){
 			return entityManager.find(PersoanaTinta.class, id);
@@ -87,6 +104,23 @@ public class RegistruMarketing {
 		
 		public void refreshCampanie(Campanie campanie){
 			entityManager.refresh(campanie);
+		}
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+		public List<PersoanaTinta> getPersoaneTintaPeCampanie(Campanie campanie) throws Exception{
+			
+			List<PersoanaTinta> persoaneTinta = new ArrayList<PersoanaTinta>();
+			try{
+				persoaneTinta = entityManager.createQuery("SELECT pt FROM PersoanaTinta pt,where pt.idCampanie= :campanie")
+												.setParameter("campanie", campanie)
+												.getResultList();
+				Hibernate.initialize(persoaneTinta);
+				persoaneTinta.size();
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return persoaneTinta;
 		}
 	}
 

@@ -1,5 +1,6 @@
 package org.open.erp.services.marketing.impl;
 
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -31,6 +31,7 @@ import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.Responsabil;
 //import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 //import org.open.erp.services.nomgen.Produs;
+
 
 
 /**
@@ -112,13 +113,26 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 //		return null;
 	}	
 	@Override
-	public void initiereCampanie(Campanie campanie) {
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void initiereCampanie(Campanie campanie) throws Exception{
 		campanie.setStatus(1);
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Editare Campanie - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+		} else
+			campanie = this.registruMarketing.salveazaCampanie(campanie);
+			//em.persist(proiectNou);
 		//TODO creaza metoda pentru trimiterea mail-urilor catre persoanele tinta
 	}
 	@Override
-	public void finalizareCampanie(Campanie campanie) {
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void finalizareCampanie(Campanie campanie) throws Exception {
 		campanie.setStatus(2);
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Editare Campanie - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+		} else
+			campanie = this.registruMarketing.salveazaCampanie(campanie);
 		//TODO creaza metoda pentru interpretarea rezultatelor daca este cazul;
 	}
 	@Override

@@ -4,6 +4,7 @@ package org.open.erp.services.marketing;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -59,15 +60,15 @@ public class PersoanaTinta extends DummyPersoanaFizica implements Serializable {
 	/**
 	 * @return the idCampanie
 	 */
-	public Campanie getIdCampanie() {
-		return idCampanie;
+	public Campanie getcampanie() {
+		return campanie;
 	}
 
 	/**
 	 * @param idCampanie the idCampanie to set
 	 */
-	public void setIdCampanie(Campanie idCampanie) {
-		this.idCampanie = idCampanie;
+	public void setCampanie(Campanie campanie) {
+		this.campanie = campanie;
 	}
 	
 }

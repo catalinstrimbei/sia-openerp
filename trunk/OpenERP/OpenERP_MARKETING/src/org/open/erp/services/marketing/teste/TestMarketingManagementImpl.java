@@ -91,7 +91,12 @@ public class TestMarketingManagementImpl {
 		 campanieNoua = new Campanie();//marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, null/*responsabil*/, listaPersoaneTinta);
 		 logger.info("End test: definireCampanie");
 		 logger.info("Start initiere Campanie");
-		 marketingInstance.initiereCampanie(campanieNoua);
+		 try {
+			marketingInstance.initiereCampanie(campanieNoua);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 logger.info("Mail-urile au fost trimise catre persoanele tinta");
 		 logger.info("End initiere campanie");
 	}
@@ -117,7 +122,12 @@ public class TestMarketingManagementImpl {
 		 campanieNoua = new Campanie();//marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, responsabil, listaPersoaneTinta);
 		 logger.info("End test: definireCampanie");
 		 logger.info("Start initiere Campanie");
-		 marketingInstance.initiereCampanie(campanieNoua);
+		 try {
+			marketingInstance.initiereCampanie(campanieNoua);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 logger.info("Mail-urile au fost trimise catre persoanele tinta");
 		 logger.info("End initiere campanie");
 		 logger.info("Start finalizareCampanie");

@@ -54,41 +54,64 @@ public class TestMarketingManagementImplEJB {
 			 dataStart = calendar.getTime();
 			 calendar.set(2012, 02, 15);
 			 dataFinal = calendar.getTime();
-			 //for (int i = 0 ; i<6;i++)
-			// {
-			//	 persoanaTinta =new PersoanaTinta(1000+i, "Nume" + i, "Prenume" + i); //(PersoanaTinta) nomenclatorInstance.creazaPersona(1000+i, "Nume" + i, "Prenume" + i);
-			//	 listaPersoaneTinta.add(persoanaTinta);
-			// }
+			 
 			 campanie = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, listaPersoaneTinta);
 			
 			logger.info("Campania cu id: " + campanie.getIdCampanie() + " a fost definita!");
 			
 			assertNotNull("Campania ne-validata!", campanie.getIdCampanie());
 			
+			//Adaugam persoanele tinta la campanie. Am ales un numar de 5 persoane tinta.
+			for (int i=1; i<=5; i++)
+			{
+				persoanaTinta = new PersoanaTinta();
+				persoanaTinta.setNume("Nume" + i);
+				persoanaTinta.setPrenume("Prenume" + i);
+				persoanaTinta.setCampanie(marketingInstance.getCampanie(1));
+				persoanaTinta = marketingInstance.salveazaPersoanaTinta(persoanaTinta);
+			}
+			//Am terminat de adaugat persoanele Tinta.
+			
+			//Recitim datele despre campanie din BD pentru a avea si lista Persoanelor Tinta;
 			campanie = marketingInstance.getCampanie(campanie.getIdCampanie());
+			
+			for (int i=0 ; i < campanie.getPersoaneTinta().size() ; i++)
+			{
+				logger.debug(campanie.getPersoaneTinta().get(i).getNume() + " " + campanie.getPersoaneTinta().get(i).getPrenume());
+			}
 			
 			assertNotNull("Nu exista campanie noua!", campanie);
 			logger.info("End test: definireCamppanie");
+			
 		}
 		@Test
-		public void testcrearePersoanaTinta() throws Exception{
-			logger.info("Begin test: Creaza Persoana Tinta");
+		public void testInitiereCampanie() throws Exception{
+			logger.debug("Start test Initiere campanie");
 			
-			 PersoanaTinta  persoanaTinta = new PersoanaTinta();
-			 persoanaTinta.setNume("Rusu");
-			 persoanaTinta.setPrenume("Prenume");
-			 persoanaTinta.setIdCampanie(marketingInstance.getCampanie(1));
-			 persoanaTinta = marketingInstance.salveazaPersoanaTinta(persoanaTinta);
-				
-			 
-			logger.info("Persoana cu id: " + persoanaTinta.getId() + " a fost definita!");
+			Campanie campanie = marketingInstance.getCampanie(1);
 			
-			assertNotNull("Campania ne-validata!", persoanaTinta.getId());
+			marketingInstance.initiereCampanie(campanie);
 			
-			persoanaTinta = marketingInstance.getPersoanaTinta(persoanaTinta.getId());
+			campanie = marketingInstance.getCampanie(1);
+			logger.debug("Campania si-a schimbat status-ul in " + campanie.getStatus());
 			
-			assertNotNull("Nu exista campanie noua!", persoanaTinta);
+			logger.debug("End test initiere campanie");
 		
+		}
+		@Test
+		public void testFinalizareCampanie() throws Exception{
+			logger.debug("Start test Finalizare campanie");
+			
+			Campanie campanie = marketingInstance.getCampanie(1);
+			
+			marketingInstance.finalizareCampanie(campanie);
+			
+			campanie = marketingInstance.getCampanie(1);
+			
+			logger.debug("Campania si-a schimbat status-ul in " + campanie.getStatus());
+			
+			logger.debug("End test Finalizare campanie");
+			 
 		}
 		/* Test creare proiect: 
 		 * - procesare persistenta cu 2JPA-PU
