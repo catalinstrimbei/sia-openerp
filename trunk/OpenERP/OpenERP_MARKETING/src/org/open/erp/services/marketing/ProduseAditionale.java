@@ -1,5 +1,6 @@
 package org.open.erp.services.marketing;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import javax.persistence.OneToOne;
 
 //import org.open.erp.services.nomgen.Produs;
 @Entity
-public class ProduseAditionale {
+public class ProduseAditionale implements Serializable{
 	@Id
 	Integer IdCombinatie;
 	@OneToOne

@@ -1,5 +1,6 @@
 package org.open.erp.services.marketing;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
  * @BusinessObject(Entity)
  */
 @Entity
-public class DummyProdus {//extends DummyMaterial{
+public class DummyProdus implements Serializable{//extends DummyMaterial{
 	@Id
 	protected Integer id;
 	protected String  denumire;

@@ -163,7 +163,8 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	public Promotie definirePromotie(String denumire,
 			String mesajPromotional, Date dataInceput, Date dataSfarsit,
 			Integer tipPromotie, List<ProdusDiscount>  produseDiscount,
-			List<ProduseAditionale> listProduseAditionale) {
+			List<ProduseAditionale> listProduseAditionale)
+					throws Exception {
 		Promotie  promotieNoua = new Promotie(1,denumire,mesajPromotional,dataInceput,dataSfarsit,tipPromotie);
 		DummyProdus				produs;
 		Discount			discount;
@@ -221,6 +222,7 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 			}
 			
 		}
+		promotieNoua = this.salveazaPromotie(promotieNoua);
 		return promotieNoua;
 	}
 	

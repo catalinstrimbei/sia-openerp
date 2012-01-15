@@ -124,10 +124,11 @@ public interface MarketingManagementSrv {
  * @param listaIntrebari	Lista intrebarilor continuta de chestionar
  * 
  * @return instanta Chestionar nou creata. 
+ * @throws Exception 
  * 
  */
 Promotie definirePromotie(String denumire,String mesajPromotional, Date dataInceput, Date dataSfarsit, Integer TipPromotie,
-		List<ProdusDiscount>  produseDiscount,List<ProduseAditionale> listProduseAditionale);
+		List<ProdusDiscount>  produseDiscount,List<ProduseAditionale> listProduseAditionale) throws Exception;
 
 /**
  * Returneaza un pretul unui produs dupa aplicarea discounturilor specifice unei promotii.

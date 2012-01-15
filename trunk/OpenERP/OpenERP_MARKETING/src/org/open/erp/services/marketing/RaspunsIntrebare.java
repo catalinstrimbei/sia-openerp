@@ -1,12 +1,14 @@
 package org.open.erp.services.marketing;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class RaspunsIntrebare {
+public class RaspunsIntrebare implements Serializable{
 	@Id
 	Integer	IdRaspunsIntrebare;
 	@OneToOne

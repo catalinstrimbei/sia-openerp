@@ -17,6 +17,9 @@ import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.MarketingManagementSrvRemote;
 import org.open.erp.services.marketing.PersoanaTinta;
+import org.open.erp.services.marketing.ProdusDiscount;
+import org.open.erp.services.marketing.ProduseAditionale;
+import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.Responsabil;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 import org.open.erp.services.personal.Angajat;
@@ -129,6 +132,27 @@ public class TestMarketingManagementImplEJB {
 			
 			logger.debug("End test Finalizare campanie");
 			 
+		}
+		
+		@Test
+		public void testdefinirePromotie() throws Exception{
+			
+			logger.info("Begin test: definirePromotie");
+			Promotie   promotie;
+			PersoanaTinta  persoanaTinta;
+			List<PersoanaTinta>  listaPersoaneTinta = new ArrayList<PersoanaTinta>();
+			Calendar		calendar = Calendar.getInstance();
+			Date			dataStart, dataFinal;
+			calendar.set(2011,11,15);
+			dataStart = calendar.getTime();
+			calendar.set(2012, 02, 15);
+			dataFinal = calendar.getTime();
+			List<ProdusDiscount> produseDiscount = new ArrayList<ProdusDiscount>();
+			List<ProduseAditionale> produseAditionale = new ArrayList<ProduseAditionale>();
+			 
+			promotie = marketingInstance.definirePromotie("Prima promotie", "Cumpara si nu vei regreta", dataStart, dataFinal, Promotie.DISCOUNT, produseDiscount, produseAditionale);
+			
+			
 		}
 		/* Test creare proiect: 
 		 * - procesare persistenta cu 2JPA-PU

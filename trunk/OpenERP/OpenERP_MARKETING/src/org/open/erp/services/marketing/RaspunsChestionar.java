@@ -1,5 +1,6 @@
 package org.open.erp.services.marketing;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,7 +17,7 @@ import javax.persistence.Temporal;
 
 //import org.open.erp.services.nomgen.Persoana;
 @Entity
-public class RaspunsChestionar {
+public class RaspunsChestionar implements Serializable {
 	
 	@Id
 	Integer					idRaspuns;

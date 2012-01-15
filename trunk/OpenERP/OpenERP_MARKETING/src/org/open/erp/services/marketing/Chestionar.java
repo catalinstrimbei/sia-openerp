@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 
 
 @Entity
-public class Chestionar implements Serializable {
+public class Chestionar implements Serializable{
 	
 	/**
 	 * 

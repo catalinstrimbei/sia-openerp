@@ -1,5 +1,6 @@
 package org.open.erp.services.marketing;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import static javax.persistence.TemporalType.DATE;
 //import org.open.erp.services.nomgen.Produs;
 
 @Entity
-public class Promotie {
+public class Promotie implements Serializable {
 	public static final Integer DISCOUNT = 1; 
 	public static final Integer PRODUSE_ADITIONALE = 2;
 	@Id @GeneratedValue
