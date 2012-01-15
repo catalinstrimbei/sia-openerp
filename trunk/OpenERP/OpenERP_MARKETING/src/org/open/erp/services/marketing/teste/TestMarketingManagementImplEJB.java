@@ -170,6 +170,18 @@ public class TestMarketingManagementImplEJB {
 			
 			
 		}
+		
+		@Test
+		public void testGetPretByPromotie() throws Exception{
+			logger.debug(">>>Start test Get pret final by promotie");
+			Promotie promotie = marketingInstance.getPromotie(4);
+			DummyProdus produs = marketingInstance.getProdus(1);
+			
+			Float pretFinal = marketingInstance.getPretFinalByPromotie(produs, promotie, 10);
+			logger.debug("Pretul final este " + pretFinal);
+			
+			logger.debug(">>>End test Get pret final by promotie");
+		}
 		/* Test creare proiect: 
 		 * - procesare persistenta cu 2JPA-PU
 		 * - definire BO local extinzând (moştenind) definiţia BO local din alt modul;

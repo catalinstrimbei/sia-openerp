@@ -58,6 +58,12 @@ public class RegistruMarketing {
 			return campanie;
 		}
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+		public DummyProdus getprodus(Integer id){
+			DummyProdus produs;
+			produs = entityManager.find(DummyProdus.class, id);
+			return produs;
+		}
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
 		public Promotie getPromotie(Integer id){
 			Promotie promotie;
 			promotie = entityManager.find(Promotie.class, id);

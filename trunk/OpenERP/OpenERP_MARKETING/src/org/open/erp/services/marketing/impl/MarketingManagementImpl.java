@@ -100,6 +100,14 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	}
 	
 	@Override
+	public Promotie getPromotie(Integer idPromotie) {
+		return registruMarketing.getPromotie(idPromotie);
+	}
+	@Override
+	public DummyProdus getProdus(Integer idProdus) {
+		return registruMarketing.getprodus(idProdus);
+	}
+	@Override
 	public Campanie getCampanie(Integer idCampanie) {
 		return registruMarketing.getCampanie(idCampanie);
 //		return null;

@@ -39,10 +39,10 @@ public class Promotie implements Serializable {
 	
 	
 	//Map<Produs,Discount>		listaProduse = new HashMap<Produs, Discount>();
-	@OneToMany(mappedBy = "promotie", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "promotie",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	List<ProdusDiscount> listaProduseDiscount =  new ArrayList<ProdusDiscount>();	
 	
-	@OneToMany(mappedBy = "promotie", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "promotie" ,cascade = CascadeType.ALL)
 	List<ProduseAditionale>	listProduseAditionale = new ArrayList<ProduseAditionale>();
 	public Promotie() {
 		super();
