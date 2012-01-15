@@ -431,8 +431,8 @@ public class Procesare {
 				.getListaByClasa(PrioritateMaterialeProductie.class);
 		for (int i = 0; i < prioritati.size(); i++) {
 			for (LinieDocument l : prioritati.get(i).getLiniiDocument()) {
-				cantitate = l.cantitate;
-				material = l.material;
+				cantitate = l.getCantitate();
+				material = l.getMaterial();
 				cantitateDisponibila = verificareStocMaterial(material);
 				if (cantitateDisponibila > cantitate) {
 					// todo de notificat productia --send mail

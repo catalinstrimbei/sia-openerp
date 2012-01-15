@@ -2,7 +2,6 @@ package org.open.erp.services.stocuri.impl;
 
 import java.util.TreeSet;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 
 import org.open.erp.services.stocuri.ArticolStoc;
@@ -15,7 +14,7 @@ import org.open.erp.services.stocuri.registri.RegistruLoturiIntrari;
  * @BusinessObject(Service)
  * 
  */
-@Stateless
+
 public class AplicarePret {
 
 	private final EntityManager em;
