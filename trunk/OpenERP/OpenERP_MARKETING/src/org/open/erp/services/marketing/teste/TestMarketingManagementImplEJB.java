@@ -20,6 +20,7 @@ import org.open.erp.services.marketing.PersoanaTinta;
 import org.open.erp.services.marketing.Responsabil;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.PersonalSrvRemote;
 
 public class TestMarketingManagementImplEJB {
@@ -28,14 +29,14 @@ public class TestMarketingManagementImplEJB {
 		
 		/* Unitatea de test sursa/gazda unitatii de test */
 		private static MarketingManagementSrvRemote marketingInstance;
-		private static PersonalSrvRemote personalInstance;
+		private static PersonalSrv personalInstance;
 		
 		/* Set up */
 		@BeforeClass
 		public static void setUpBeforeClass() throws Exception {
 			InitialContext ctx = initJBossJNDICtx();
 			marketingInstance = (MarketingManagementSrvRemote)ctx.lookup("MarketingManagementSrvRemote/remote");
-			personalInstance = (PersonalSrvRemote)ctx.lookup("PersonalSrvRemote/remote");
+			personalInstance = (PersonalSrv)ctx.lookup("PersonalSrv/remote");
 			
 			logger.info("initTest " + marketingInstance);
 			logger.info("initTest " + personalInstance);

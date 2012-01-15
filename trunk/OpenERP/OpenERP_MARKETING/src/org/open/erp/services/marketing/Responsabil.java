@@ -4,6 +4,7 @@ package org.open.erp.services.marketing;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,7 +25,7 @@ import org.open.erp.services.personal.Angajat;
 
 public class Responsabil implements Serializable {
 	
-	@Id
+	@Id @GeneratedValue
 	Integer IdResponsabil;
 	@ManyToOne @JoinColumn(name = "marca")
 	Angajat		angajat;

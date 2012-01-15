@@ -118,7 +118,14 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void finalizareCampanie(Campanie campanie) throws Exception {
-		campanie.setStatus(2);
+		campanie = this.getCampanie(campanie.getIdCampanie());
+		if (campanie.getStatus() != 1)
+		{
+			campanie = null;
+			logger.debug("Campania trebuie sa fie in desfasurare");
+		}
+		else
+			campanie.setStatus(2);
 		this.salveazaCampanie(campanie);
 		//TODO creaza metoda pentru interpretarea rezultatelor daca este cazul;
 	}
