@@ -22,6 +22,10 @@ import org.open.erp.services.nomgen.Material;
 
 @Entity
 public class LinieComanda implements Serializable  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8303590612907985930L;
 	public long getIdLinieComanda() {
 		return idLinieComanda;
 	}

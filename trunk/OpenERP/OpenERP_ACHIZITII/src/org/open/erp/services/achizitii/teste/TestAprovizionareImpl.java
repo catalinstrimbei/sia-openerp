@@ -7,6 +7,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -49,13 +53,28 @@ import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
 import org.open.erp.services.stocuri.impl.Procesare;
 
 public class TestAprovizionareImpl {
+	
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestAprovizionareImpl.class.getName());
-	StocuriSrv stocuriInstance;
-	AprovizionareSrv aprovizionareInstance;
-	NomenclatoareSrv nomenclatorInstance;
-	ContabilizareSrv contabgenInstance;
+	static StocuriSrv stocuriInstance;
+	static AprovizionareSrv aprovizionareInstance;
+	static NomenclatoareSrv nomenclatorInstance;
+	static ContabilizareSrv contabgenInstance;
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() throws Exception {		
+		InitialContext ctx = initJBossJNDICtx();		
+		stocuriInstance = (StocuriSrv)ctx.lookup("StocuriSrv/remote");	
+		aprovizionareInstance=(AprovizionareSrv)ctx.lookup("AprovizionareSrv/remote");
+		nomenclatorInstance=(NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
+		contabgenInstance=(org.open.erp.services.ctbgen.ContabilizareSrv)ctx.lookup("ContabilizareSrv/remote");
+	
+	}
+
+	private static InitialContext initJBossJNDICtx() throws NamingException{
+		Properties props = new Properties();
+        props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");		
+        props.put("java.naming.provider.url", "jnp://localhost:1099/");
+        props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
+        return new InitialContext(props);
 	}
 	
 
@@ -107,7 +126,7 @@ public class TestAprovizionareImpl {
         regSablonNC.addSablon(sab4);
        
         Persoana persoana = new Persoana();        
-        Furnizor furnizor = new Furnizor(1111,persoana.getId(),10,121,"CUI","Denumire","Adresa","Telefon");       
+        Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Adresa","Telefon");       
 		Factura fact = new Factura(600.0,200.0,"fact1",furnizor);	
 		fact.setDataDoc(new Date());
 		fact.setNrDoc(11);
@@ -154,7 +173,7 @@ public class TestAprovizionareImpl {
 		gestiuni.add(gst2);
 		Procesare procesareTest = new Procesare(gestiuni,null);	
 		 Persoana persoana = new Persoana();        
-	        Furnizor furnizor = new Furnizor(1111,persoana.getId(),10,121,"CUI","Denumire","Adresa","Telefon");    
+	        Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Adresa","Telefon");    
 			Categorie cat=new Categorie(1,"Categorie1");
 			cat.addFurnizor(furnizor);
 			logger.error("-Creat categorie articol-");
@@ -173,7 +192,7 @@ public class TestAprovizionareImpl {
 			logger.debug("-NIR creat-");
 			logger.debug("Numar linii din NIR: "+nir.getLiniiDocument().size());
 			//Metoda noastra <receptieMateriale> apeleaza din 'Procesare' <intrareInStoc>
-			Boolean bool = procesareTest.intrareInStoc(nir);
+			Boolean bool = procesareTest.intrareInStoc(nir,null);
 			assertEquals("Produsele din NIR au fost adaugate cu succes pe stoc", Boolean.TRUE,bool);
 			
 			logger.debug("Rezultat intrare pe stoc: "+bool);
@@ -195,7 +214,7 @@ public class TestAprovizionareImpl {
 		gestiuni.add(gst2);
 		Procesare procesareTest = new Procesare(gestiuni,null);	
         Persoana persoana = new Persoana();        
-        Furnizor furnizor = new Furnizor(1111,persoana.getId(),10,121,"CUI","Denumire","Adresa","Telefon");     
+        Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Adresa","Telefon");     
         
 		Factura fact = new Factura(600.0,200.0,"fact1",furnizor);	
 		fact.setDataDoc(new Date());
@@ -226,7 +245,7 @@ public class TestAprovizionareImpl {
 	    fact.addLinie(linieFact1);
 	    fact.addLinie(linieFact2);
 	    logger.debug("-Factura creata-");
-	    Boolean bool = procesareTest.intrareInStoc(fact);
+	    Boolean bool = procesareTest.intrareInStoc(fact,null);
 	    //Metoda noastra din 'AprovizionareImpl' <returMateriale> apeleaza din 'StocuriSrv' metoda 
 	    //<iesireStoc> care la randul ei apeleaza din 'Procesare' <procesareComandaIesire> care ar trebui
 	    //sa diminueze stocul cu produsele de pe documentul trimis din modulul 'Achizitii'
@@ -238,7 +257,7 @@ public class TestAprovizionareImpl {
 	public void testInregistrareCerereAprovizionare() {
 		//Testare actualizare plan aprovizionare in mod automat
 	logger.debug("@Start test: inregistrare cerere aprovizionare");
-	Procesare procesareTestare = new Procesare(null,null);	
+	Procesare procesareTestare = new Procesare();	
 	
 	CerereAprovizionare cerere = new CerereAprovizionare(1,new Date(),"solicitant","livrae");
 	
@@ -256,8 +275,8 @@ public class TestAprovizionareImpl {
 	
 	PlanAprovizionare plan = PlanAprovizionare.getPlanAprovizionare();
 	
-	plan.setIdPlan(11);
-	logger.debug("Plan: "+plan.getIdPlan()+" dataStart: "+plan.getDataStart()+" dataFinal: "+plan.getDataFinal());
+	plan.setIdPlanAprovizionare(11);
+	logger.debug("Plan: "+plan.getIdPlanAprovizionare()+" dataStart: "+plan.getDataStart()+" dataFinal: "+plan.getDataFinal());
 	for (LiniePlanAprovizionare linie: plan.getLiniiPlan()){
 		logger.debug("Linie nr: "+linie.getLinie()+" Material: "+linie.getArticol().getDenumire()+" cantitate: "+linie.getCantitate());
 	}
@@ -271,7 +290,7 @@ public class TestAprovizionareImpl {
 	@Test
 	public void testCreareCerereOferta() {
 		logger.debug("@Start test: testCreareCerereOferta");
-		Procesare procesareTestare = new Procesare(null,null);	
+		Procesare procesareTestare = new Procesare();	
 		
 		CerereAprovizionare cerere = new CerereAprovizionare(1,new Date(),"solicitant","livrae");
 		
@@ -289,18 +308,18 @@ public class TestAprovizionareImpl {
 		
 		PlanAprovizionare plan = PlanAprovizionare.getPlanAprovizionare();
 		
-		plan.setIdPlan(11);
+		plan.setIdPlanAprovizionare(11);
 		//Planul de aprovizionare contine acum cateva linii de test din care va fi generata a o cerere de oferta
 		
-		CerereOferta cerereOferta = new CerereOferta(new Date(),null,null);
-		cerereOferta.setIdCerereOferta(101);
+		CerereOferta cerereOferta = new CerereOferta(1,new Date());
+		cerereOferta.setId_CerereOferta(101);
 		aprovizionareInstance.adaugareLiniiCerereOferta(cerereOferta, plan.getLiniiPlan());
-		logger.debug("Cererea de oferta creata: "+cerereOferta.getIdCerereOferta()+" are "+cerereOferta.getLinii().size()+" linii create;");
+		logger.debug("Cererea de oferta creata: "+cerereOferta.getId_CerereOferta()+" are "+cerereOferta.getLinii().size()+" linii create;");
 		for(LinieCerereOferta linieCerereOferta:cerereOferta.getLinii()){
 			logger.debug("Linie Cerere Oferta: "+linieCerereOferta.getNrLinie()+" "+linieCerereOferta.getArticol().getDenumire()+" "+linieCerereOferta.getCantitate());
 		}
 		//Testam daca s-a modificat statusulu liniilor din Plan
-		logger.debug("Plan: "+plan.getIdPlan()+" dataStart: "+plan.getDataStart()+" dataFinal: "+plan.getDataFinal());
+		logger.debug("Plan: "+plan.getIdPlanAprovizionare()+" dataStart: "+plan.getDataStart()+" dataFinal: "+plan.getDataFinal());
 		for (LiniePlanAprovizionare linie: plan.getLiniiPlan()){
 			logger.debug("Linie nr: "+linie.getLinie()+" "+linie.getStatus());
 		}
@@ -328,7 +347,7 @@ public class TestAprovizionareImpl {
 		Articol mat2 = new Articol(2,"Mat2","pachet",null);
 		Articol mat3 = new Articol(3,"Mat3","pachet",null);
 		
-		logger.debug(oferta1.liniiOferta);
+		logger.debug(oferta1.getLiniiOferta());
 		//Inseram linii in <oferta1>
 		LinieOfertaAchizitie linie11 = new LinieOfertaAchizitie(oferta1,mat1,100.0,1,50.0);
 		LinieOfertaAchizitie linie12 = new LinieOfertaAchizitie(oferta1,mat2,100.0,2,60.0);

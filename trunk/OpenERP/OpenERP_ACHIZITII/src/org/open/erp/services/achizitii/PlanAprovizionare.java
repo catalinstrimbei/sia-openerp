@@ -28,6 +28,10 @@ import org.open.erp.services.nomgen.Persoana;
  */
 @Entity
 public class PlanAprovizionare implements Serializable  {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9111074543290370000L;
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idPlanAprovizionare;

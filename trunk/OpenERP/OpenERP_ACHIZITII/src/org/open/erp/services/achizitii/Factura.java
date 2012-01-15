@@ -22,6 +22,10 @@ import javax.persistence.Column;
 @javax.persistence.Entity
 @AttributeOverride(name = "nrDocument", column = @Column(table = "Factura", name = "idFactura"))
 public class Factura extends Document implements Serializable {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7616442863125266214L;
 	public static final Integer STORNATA = -1;
 	public static final Integer INREGISTRATA = 1;
 	public static final Integer FACTURA_RETUR = 2;

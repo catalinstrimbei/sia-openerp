@@ -25,6 +25,10 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Comanda implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -898811753866457945L;
 	public static final Integer FINALIZATA = 1;
 	public static final Integer ANULATA = -1;
 	public static final Integer IN_CURS = 0;
@@ -83,6 +87,30 @@ public class Comanda implements Serializable {
 		this.furnizor = furnizor;
 		this.dataComanda = dataComanda;
 		this.statusComanda = statusComanda;
+	}
+
+	public Integer getIdComanda() {
+		return idComanda;
+	}
+
+	public void setIdComanda(Integer idComanda) {
+		this.idComanda = idComanda;
+	}
+
+	public Furnizor getFurnizor() {
+		return furnizor;
+	}
+
+	public void setFurnizor(Furnizor furnizor) {
+		this.furnizor = furnizor;
+	}
+
+	public Factura getFactura() {
+		return factura;
+	}
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
 	}
 	
 	

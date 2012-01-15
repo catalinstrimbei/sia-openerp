@@ -21,6 +21,10 @@ import org.open.erp.services.nomgen.LinieDocument;
  */
 @Entity
 public class NIR extends Document implements Serializable{	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5673330387759089744L;
 	@OneToOne@JoinColumn(name="idFactura")
 	private Factura factura;
 

@@ -26,26 +26,14 @@ import javax.persistence.Column;
 @Entity
 @AttributeOverride(name = "id", column = @Column(table = "Furnizor", name = "furnizor_id"))
 public class Furnizor extends Persoana implements Serializable {
+
+
 /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 2019369183120390764L;
 @OneToMany(mappedBy="furnizor")
 private List<Factura> facturiFurnizor=new ArrayList<Factura>();
-
-public List<Factura> getFacturiFurnizor() {
-	return facturiFurnizor;
-}
-
-
-
-public void setFacturiFurnizor(List<Factura> facturiFurnizor) {
-	this.facturiFurnizor = facturiFurnizor;
-}
-
-
-
 private Integer cont;
 private String CUI;
 private String denumire;
@@ -54,6 +42,16 @@ private String telefon;
 
 @ManyToOne@JoinColumn(name="id_cat")
 private Categorie categorieArticol;
+
+
+
+public List<Factura> getFacturiFurnizor() {
+	return facturiFurnizor;
+}
+
+public void setFacturiFurnizor(List<Factura> facturiFurnizor) {
+	this.facturiFurnizor = facturiFurnizor;
+}
 public Integer getCont() {
 	return cont;
 }
@@ -118,6 +116,17 @@ public Furnizor(Integer id, Departament dep, String adresa,
 	CUI = cUI;
 	this.denumire = denumire;
 	adresa = adresa2;
+	this.telefon = telefon;
+}
+
+
+
+public Furnizor( Integer cont,String cUI, String denumire, String adresa, String telefon) {
+	super();
+	this.cont = cont;
+	CUI = cUI;
+	this.denumire = denumire;
+	adresa = adresa;
 	this.telefon = telefon;
 }
 

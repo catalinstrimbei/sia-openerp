@@ -117,5 +117,13 @@ public class OfertaAchizitie implements Serializable {
         this.getLiniiOferta().remove(li);
         li.setOferta(this);
     }
+
+	public OfertaAchizitie(long id_OfertaAchizitie, Date dataOferta,
+			Integer statusOferta) {
+		super();
+		this.id_OfertaAchizitie = id_OfertaAchizitie;
+		this.dataOferta = dataOferta;
+		this.statusOferta = statusOferta;
+	}
 	
 }

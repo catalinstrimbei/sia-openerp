@@ -23,6 +23,10 @@ import org.open.erp.services.nomgen.Material;
 @Entity
 public class LinieNIR extends LinieDocument implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -565032233306951172L;
 	private Double diferentaCantitate;
 	private Double cantitateFacturata;	
 	

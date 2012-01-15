@@ -22,14 +22,10 @@ import javax.persistence.Table;
 @Table(name="Categorii")
 public class Categorie implements Serializable {
 
-public long getId_cat() {
-		return id_cat;
-	}
-
-	public void setId_cat(long id_cat) {
-		this.id_cat = id_cat;
-	}
-
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4766008004517409356L;
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 private long id_cat;
@@ -47,7 +43,13 @@ public void addFurnizor(Furnizor furn) {
 public Categorie() {
 	super();
 }
+public long getId_cat() {
+	return id_cat;
+}
 
+public void setId_cat(long id_cat) {
+	this.id_cat = id_cat;
+}
 
 public void removeFurnizor(Furnizor furn) {
     this.getFurnizoriCategorie().remove(furn);    
@@ -85,6 +87,12 @@ public Categorie(String denumire, List<Furnizor> furnizoriCategorie) {
 	super();
 	this.denumire = denumire;
 	this.furnizoriCategorie = furnizoriCategorie;
+}
+
+public Categorie(long id_cat, String denumire) {
+	super();
+	this.id_cat = id_cat;
+	this.denumire = denumire;
 }
 
 

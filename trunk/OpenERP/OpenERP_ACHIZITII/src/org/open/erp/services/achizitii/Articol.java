@@ -22,7 +22,11 @@ public class Articol extends Material implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4821410858811466708L;
+	/**
+	 * 
+	 */
+	
 	@ManyToOne@JoinColumn(name="id_cat")
     private Categorie categorieArticol;
     private Double pretAchizitie;

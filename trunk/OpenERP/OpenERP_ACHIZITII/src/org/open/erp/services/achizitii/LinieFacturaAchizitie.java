@@ -21,6 +21,10 @@ import org.open.erp.services.nomgen.LinieDocument;
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class LinieFacturaAchizitie extends LinieDocument implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -828654688266809711L;
 	private Double valoareLinie;
 	public Double getValoareLinie() {
 		return valoareLinie;

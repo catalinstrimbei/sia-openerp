@@ -30,10 +30,32 @@ import org.open.erp.services.nomgen.Persoana;
  */
 @Entity
 public class CerereOferta  implements Serializable/*extends Document*/ {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6716715047777696990L;
 public static final Integer TRIMISA = 0;
 public static final Integer PRIMITA = 1;
 public static final Integer ANULATA =-1;
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+private long id_CerereOferta;
+@Temporal(TemporalType.DATE)
+private Date dataCerere;
+private Integer statusCerereOferta;
+@OneToOne@JoinColumn(name="id_OfertaAchizitie")
+private OfertaAchizitie ofertaAchizitie;
 
+@OneToMany(mappedBy = "cerereOferta", cascade = CascadeType.ALL)
+private List<LinieCerereOferta> liniiCerereOferta= new LinkedList<LinieCerereOferta>();
+
+private Persoana persona;
+
+@ManyToMany
+@JoinTable(name="CereriOfertaFurnizori",
+		joinColumns=@JoinColumn(name="cerereOferta_fk"), 
+		inverseJoinColumns=@JoinColumn(name="furnizor_fk"))
+private List<Furnizor> trimisaLaFurnizori = new ArrayList<Furnizor>();
 
 public long getId_CerereOferta() {
 	return id_CerereOferta;
@@ -67,25 +89,7 @@ public void setTrimisaLaFurnizori(List<Furnizor> trimisaLaFurnizori) {
 	this.trimisaLaFurnizori = trimisaLaFurnizori;
 }
 
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private long id_CerereOferta;
-@Temporal(TemporalType.DATE)
-private Date dataCerere;
-private Integer statusCerereOferta;
-@OneToOne@JoinColumn(name="id_OfertaAchizitie")
-private OfertaAchizitie ofertaAchizitie;
 
-@OneToMany(mappedBy = "cerereOferta", cascade = CascadeType.ALL)
-private List<LinieCerereOferta> liniiCerereOferta= new LinkedList<LinieCerereOferta>();
-
-private Persoana persona;
-
-@ManyToMany
-@JoinTable(name="CereriOfertaFurnizori",
-		joinColumns=@JoinColumn(name="cerereOferta_fk"), 
-		inverseJoinColumns=@JoinColumn(name="furnizor_fk"))
-private List<Furnizor> trimisaLaFurnizori = new ArrayList<Furnizor>();
 
 public void addLinieCerere(LinieCerereOferta li) {
     this.getLinii().add(li);
@@ -122,6 +126,12 @@ public Persoana getPersona() {
 }
 public void setPersona(Persoana persona) {
 	this.persona = persona;
+}
+
+public CerereOferta(long id_CerereOferta, Date dataCerere) {
+	super();
+	this.id_CerereOferta = id_CerereOferta;
+	this.dataCerere = dataCerere;
 }
 
 
