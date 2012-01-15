@@ -153,4 +153,14 @@ float getPretFinalByProdus(DummyProdus produs);
 PersoanaTinta creeazaPersoanaTinta(String Nume, String prenume)throws Exception;
 public PersoanaTinta getPersoanaTinta(Integer idPersoana);
 public PersoanaTinta salveazaPersoanaTinta(PersoanaTinta persoana) throws Exception;
+public Campanie salveazaCampanie(Campanie campanie) throws Exception;
+public Chestionar salveazaChestionar(Chestionar chestionar) throws Exception;
+public Discount salveazaDiscount(Discount discount) throws Exception;
+public Intrebare salveazaIntrebare(Intrebare intrebare) throws Exception;
+public ProdusDiscount salveazaProdusDiscount(ProdusDiscount produsDiscount) throws Exception;
+public ProduseAditionale salveazaProdusAditional(ProduseAditionale produsAditional) throws Exception;
+public Promotie salveazaPromotie(Promotie promotie) throws Exception;
+public RaspunsChestionar salveazaRaspunsChestionar(RaspunsChestionar raspunsChestionar) throws Exception;
+public RaspunsIntrebare salveazaRaspunsIntrebare(RaspunsIntrebare raspunsIntrebare) throws Exception;
+public Responsabil salveazaResponsabil(Responsabil responsabil) throws Exception;
 }

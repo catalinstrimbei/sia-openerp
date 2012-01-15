@@ -28,6 +28,8 @@ import org.open.erp.services.marketing.PersoanaTinta;
 import org.open.erp.services.marketing.ProdusDiscount;
 import org.open.erp.services.marketing.ProduseAditionale;
 import org.open.erp.services.marketing.Promotie;
+import org.open.erp.services.marketing.RaspunsChestionar;
+import org.open.erp.services.marketing.RaspunsIntrebare;
 import org.open.erp.services.marketing.Responsabil;
 //import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 //import org.open.erp.services.nomgen.Produs;
@@ -259,8 +261,6 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		logger.debug(">>>>>>Start salveazaPersoanaTinta");
 		PersoanaTinta result = new PersoanaTinta();
 		if (persoana == null){
-			//throw new PersonalExceptions("Numarul inscrisilor nu poate fi negativ!");			
-			sessionContext.setRollbackOnly();
 			logger.debug(">>>>>>Tranzactie Anulata");
 		}
 		else{			
@@ -268,6 +268,108 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 			logger.debug(">>>>>>End salveaza persoana Tinta");
 		}
 		return result;
+	}
+	@Override
+	public Campanie salveazaCampanie(Campanie campanie)
+			throws Exception {
+		logger.debug(">>>>>>Start salveaza campanie");
+		Campanie result = new Campanie();
+		if (campanie == null){	
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaCampanie(campanie);
+			logger.debug(">>>>>>End salveaza campanie");
+		}
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaChestionar(org.open.erp.services.marketing.Chestionar)
+	 */
+	@Override
+	public Chestionar salveazaChestionar(Chestionar chestionar)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaDiscount(org.open.erp.services.marketing.Discount)
+	 */
+	@Override
+	public Discount salveazaDiscount(Discount discount) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaIntrebare(org.open.erp.services.marketing.Intrebare)
+	 */
+	@Override
+	public Intrebare salveazaIntrebare(Intrebare intrebare) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaProdusDiscount(org.open.erp.services.marketing.ProdusDiscount)
+	 */
+	@Override
+	public ProdusDiscount salveazaProdusDiscount(ProdusDiscount produsDiscount)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaProdusAditional(org.open.erp.services.marketing.ProduseAditionale)
+	 */
+	@Override
+	public ProduseAditionale salveazaProdusAditional(
+			ProduseAditionale produsAditional) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaPromotie(org.open.erp.services.marketing.Promotie)
+	 */
+	@Override
+	public Promotie salveazaPromotie(Promotie promotie) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaRaspunsChestionar(org.open.erp.services.marketing.RaspunsChestionar)
+	 */
+	@Override
+	public RaspunsChestionar salveazaRaspunsChestionar(
+			RaspunsChestionar raspunsChestionar) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaRaspunsIntrebare(org.open.erp.services.marketing.RaspunsIntrebare)
+	 */
+	@Override
+	public RaspunsIntrebare salveazaRaspunsIntrebare(
+			RaspunsIntrebare raspunsIntrebare) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaResponsabil(org.open.erp.services.marketing.Responsabil)
+	 */
+	@Override
+	public Responsabil salveazaResponsabil(Responsabil responsabil)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
