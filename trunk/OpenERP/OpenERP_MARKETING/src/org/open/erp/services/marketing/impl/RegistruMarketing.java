@@ -57,18 +57,59 @@ public class RegistruMarketing {
 			}
 			return campanie;
 		}
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+		public Promotie getPromotie(Integer id){
+			Promotie promotie;
+			promotie = entityManager.find(Promotie.class, id);
+			try
+			{
+				if (promotie.getTipPromotie() == Promotie.DISCOUNT)
+				{
+					promotie.setListaProduseDiscount(this.getProduseDiscountDupaPromotie(promotie.getIdPromotie()));
+				}
+				else
+				{
+					promotie.setListProduseAditionale(this.getProduseAditionaleDupaPromotie(promotie.getIdPromotie()));
+				}
+				
+			}
+			catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+			}
+			return promotie;
+		}
 		public PersoanaTinta getPersoanaTinta(Integer id){
 			return entityManager.find(PersoanaTinta.class, id);
 		}
 		public List<Campanie> getCampaniile(){
 			return entityManager.createQuery("SELECT C FROM Campanie c").getResultList();
 		}
-		
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
 		public List<Campanie> getCampanieDupaResponsabil(Integer idResponsabil){
 			return entityManager.
-					createQuery("SELECT p FROM Proiect p WHERE p.responsabil.idPersoana=:idPersoana")
-					.setParameter("idPersoana", idResponsabil)
+					createQuery("SELECT c FROM Campanie c WHERE c.responsabil =:idResponsabil")
+					.setParameter("idResponsabil", idResponsabil)
 					.getResultList();
+		}
+		
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+		public List<ProdusDiscount> getProduseDiscountDupaPromotie(Integer idPromotie){
+			return entityManager.
+					createQuery("SELECT pd FROM ProdusDiscount pd WHERE pd.idPromotie =:idPromotie")
+					.setParameter("idPromotie", idPromotie)
+					.getResultList();
+		}
+		
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+		public List<ProduseAditionale> getProduseAditionaleDupaPromotie(Integer idPromotie){
+			return entityManager.
+					createQuery("SELECT pa FROM ProduseAditionale pa WHERE pa.idPromotie =:idPromotie")
+					.setParameter("idPromotie", idPromotie)
+					.getResultList();
+		}
+		public Responsabil getResponsabilDupaId(Integer id){
+			return entityManager.find(Responsabil.class, id);
 		}
 		
 		/* persistenta */
