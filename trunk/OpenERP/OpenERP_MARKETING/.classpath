@@ -15,6 +15,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="lib/OpenERP_PERSONAL.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
