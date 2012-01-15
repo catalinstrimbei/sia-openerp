@@ -65,15 +65,15 @@ public class Responsabil implements Serializable {
 	/**
 	 * @return the angajat
 	 */
-//	public Angajat getAngajat()// {
-//		return angajat;
-//	}
+	public Angajat getAngajat() {
+		return angajat;
+	}
 	/**
 	 * @param angajat the angajat to set
 	 */
-//	public void setAngajat(Angajat angajat)// {
-//		this.angajat = angajat;
-//	}
+	public void setAngajat(Angajat angajat) {
+		this.angajat = angajat;
+	}
 	public void setListaCampanii(List<Campanie> listaCampanii) {
 		this.listaCampanii = listaCampanii;
 	}

@@ -17,7 +17,10 @@ import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.MarketingManagementSrvRemote;
 import org.open.erp.services.marketing.PersoanaTinta;
+import org.open.erp.services.marketing.Responsabil;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.PersonalSrvRemote;
 
 public class TestMarketingManagementImplEJB {
 		/* Resurse test*/
@@ -25,13 +28,17 @@ public class TestMarketingManagementImplEJB {
 		
 		/* Unitatea de test sursa/gazda unitatii de test */
 		private static MarketingManagementSrvRemote marketingInstance;
+		private static PersonalSrvRemote personalInstance;
 		
 		/* Set up */
 		@BeforeClass
 		public static void setUpBeforeClass() throws Exception {
 			InitialContext ctx = initJBossJNDICtx();
 			marketingInstance = (MarketingManagementSrvRemote)ctx.lookup("MarketingManagementSrvRemote/remote");
+			personalInstance = (PersonalSrvRemote)ctx.lookup("PersonalSrvRemote/remote");
+			
 			logger.info("initTest " + marketingInstance);
+			logger.info("initTest " + personalInstance);
 		}
 
 		/* Test creare proiect: 
@@ -46,17 +53,26 @@ public class TestMarketingManagementImplEJB {
 			
 			logger.info("Begin test: definireCampanie");
 			Campanie   campanie;
-			 PersoanaTinta  persoanaTinta;
-			 List<PersoanaTinta>  listaPersoaneTinta = new ArrayList<PersoanaTinta>();
-			 Calendar		calendar = Calendar.getInstance();
-			 Date			dataStart, dataFinal;
-			 calendar.set(2011,11,15);
-			 dataStart = calendar.getTime();
-			 calendar.set(2012, 02, 15);
-			 dataFinal = calendar.getTime();
+			PersoanaTinta  persoanaTinta;
+			List<PersoanaTinta>  listaPersoaneTinta = new ArrayList<PersoanaTinta>();
+			Calendar		calendar = Calendar.getInstance();
+			Date			dataStart, dataFinal;
+			calendar.set(2011,11,15);
+			dataStart = calendar.getTime();
+			calendar.set(2012, 02, 15);
+			dataFinal = calendar.getTime();
 			 
-			 campanie = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, listaPersoaneTinta);
+			campanie = marketingInstance.definireCampanie("Campania de inceput", dataStart, dataFinal, listaPersoaneTinta);
 			
+			Angajat angajat = new Angajat();
+			angajat.setNume("Angajat 1");
+			angajat.setPrenume("Prenume");
+			angajat = personalInstance.salveazaAngajat(angajat);
+			Responsabil responsabil= new Responsabil();
+			responsabil.setAngajat(angajat);
+			responsabil = marketingInstance.salveazaResponsabil(responsabil);
+			campanie.setResponsabil(responsabil);
+			marketingInstance.salveazaCampanie(campanie);
 			logger.info("Campania cu id: " + campanie.getIdCampanie() + " a fost definita!");
 			
 			assertNotNull("Campania ne-validata!", campanie.getIdCampanie());
