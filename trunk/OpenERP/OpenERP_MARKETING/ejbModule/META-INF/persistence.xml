@@ -5,7 +5,7 @@
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>	
 		
         <!-- <jar-file>OpenERP_NOMGEN.jar</jar-file> -->
-        <!-- <jar-file>OpenERP_PERSONAL.jar</jar-file> -->
+        <jar-file>OpenERP_PERSONAL.jar</jar-file>
 		<class>org.open.erp.services.marketing.Campanie</class>
 		<class>org.open.erp.services.marketing.PersoanaTinta</class>
 		<!--<class>org.open.erp.services.nomgen.PersoanaFizica</class> -->
@@ -22,7 +22,7 @@
 		<class>org.open.erp.services.marketing.DummyProdus</class>
 		<class>org.open.erp.services.marketing.DummyPersoana</class>
 		<class>org.open.erp.services.marketing.DummyPersoanaFizica</class>
-		<!--<class>org.open.erp.services.personal.Angajat</class> -->
+		<class>org.open.erp.services.personal.Angajat</class>
 		<class>org.open.erp.services.marketing.RaspunsIntrebare</class>
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /*
@@ -11,7 +12,8 @@ import javax.persistence.Transient;
  * @BusinessObject(DummyEntity)
  * @BusinessObject(Entity)
  */
-@Entity
+@Entity(name = "PersoanaFizica")
+@Table(name = "PersoanaFizica")
 public class DummyPersoanaFizica extends DummyPersoana implements Serializable {
 	/**
 	 * 

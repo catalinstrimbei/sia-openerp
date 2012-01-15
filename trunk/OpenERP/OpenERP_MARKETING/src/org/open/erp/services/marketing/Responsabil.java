@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType; 
 import java.io.Serializable;
 
-//import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.Angajat;
 /**
  * 
  * @author echipa.marketing
@@ -26,8 +26,8 @@ public class Responsabil implements Serializable {
 	
 	@Id
 	Integer IdResponsabil;
-	//@ManyToOne @JoinColumn(name = "marca")
-	//Angajat		angajat;
+	@ManyToOne @JoinColumn(name = "marca")
+	Angajat		angajat;
 	@OneToMany (mappedBy = "responsabil", cascade = CascadeType.ALL)
 		List<Campanie> listaCampanii;
     

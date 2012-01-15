@@ -8,13 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 /*
  * @author Echipa NomGen
  * @BusinessObject(DummyEntity)
  * @BusinessObject(Entity)
  */
-@Entity
+@Entity(name = "Persoana")
+@Table(name = "Persoana")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class DummyPersoana implements Serializable{
 	/**
