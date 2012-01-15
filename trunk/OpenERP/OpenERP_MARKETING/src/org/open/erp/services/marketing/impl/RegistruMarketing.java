@@ -12,7 +12,17 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Hibernate;
 import org.open.erp.services.marketing.Campanie;
+import org.open.erp.services.marketing.Chestionar;
+import org.open.erp.services.marketing.Discount;
+import org.open.erp.services.marketing.DummyProdus;
+import org.open.erp.services.marketing.Intrebare;
 import org.open.erp.services.marketing.PersoanaTinta;
+import org.open.erp.services.marketing.ProdusDiscount;
+import org.open.erp.services.marketing.ProduseAditionale;
+import org.open.erp.services.marketing.Promotie;
+import org.open.erp.services.marketing.RaspunsChestionar;
+import org.open.erp.services.marketing.RaspunsIntrebare;
+import org.open.erp.services.marketing.Responsabil;
 
 
 
@@ -79,6 +89,74 @@ public class RegistruMarketing {
 			}
 			return campanie;
 		}
+		public Chestionar salveazaChestionar(Chestionar chestionar) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (chestionar.getIdChestionar()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(chestionar.getClass(), chestionar.getIdChestionar()) == null)
+					entityManager.persist(chestionar);
+				else
+					entityManager.merge(chestionar);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return chestionar;
+		}
+		public DummyProdus salveazaProdus(DummyProdus produs) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (produs.getId()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(produs.getClass(), produs.getId()) == null)
+					entityManager.persist(produs);
+				else
+					entityManager.merge(produs);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return produs;
+		}
+		public Discount salveazaDiscount(Discount discount) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (discount.getIdDiscount()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(discount.getClass(), discount.getIdDiscount()) == null)
+					entityManager.persist(discount);
+				else
+					entityManager.merge(discount);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return discount;
+		}
+		public Intrebare salveazaIntrebare(Intrebare intrebare) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (intrebare.getIdIntrebare()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(intrebare.getClass(), intrebare.getIdIntrebare()) == null)
+					entityManager.persist(intrebare);
+				else
+					entityManager.merge(intrebare);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return intrebare;
+		}
 		
 		public PersoanaTinta salveazaPersoanaTinta(PersoanaTinta persoanaTinta) throws Exception{
 			try{
@@ -97,6 +175,115 @@ public class RegistruMarketing {
 			}
 			return persoanaTinta;
 		}
+		public ProdusDiscount salveazaProdusDiscount(ProdusDiscount produsDiscount) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (produsDiscount.getIdProdusDiscount()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(produsDiscount.getClass(), produsDiscount.getIdProdusDiscount()) == null)
+					entityManager.persist(produsDiscount);
+				else
+					entityManager.merge(produsDiscount);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return produsDiscount;
+		}
+		
+		public ProduseAditionale salveazaProduseAditionale(ProduseAditionale produseAditionale) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (produseAditionale.getIdCombinatie()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(produseAditionale.getClass(), produseAditionale.getIdCombinatie()) == null)
+					entityManager.persist(produseAditionale);
+				else
+					entityManager.merge(produseAditionale);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return produseAditionale;
+		}
+		
+		public Promotie salveazaPromotie(Promotie promotie) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (promotie.getIdPromotie()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(promotie.getClass(), promotie.getIdPromotie()) == null)
+					entityManager.persist(promotie);
+				else
+					entityManager.merge(promotie);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return promotie;
+		}
+			
+		
+		public RaspunsChestionar salveazaRaspunsChestionar(RaspunsChestionar raspunsChestionar) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (raspunsChestionar.getIdRaspuns()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(raspunsChestionar.getClass(), raspunsChestionar.getIdRaspuns()) == null)
+					entityManager.persist(raspunsChestionar);
+				else
+					entityManager.merge(raspunsChestionar);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return raspunsChestionar;
+		}
+		public RaspunsIntrebare salveazaRaspunsIntrebare(RaspunsIntrebare raspunsIntrebare) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (raspunsIntrebare.getIdRaspunsIntrebare()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(raspunsIntrebare.getClass(), raspunsIntrebare.getIdRaspunsIntrebare()) == null)
+					entityManager.persist(raspunsIntrebare);
+				else
+					entityManager.merge(raspunsIntrebare);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return raspunsIntrebare;
+		}
+		public Responsabil salveazaResponsabil(Responsabil responsabil) throws Exception{
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				if (responsabil.getIdResponsabil()== null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+					entityManager.find(responsabil.getClass(), responsabil.getIdResponsabil()) == null)
+					entityManager.persist(responsabil);
+				else
+					entityManager.merge(responsabil);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return responsabil;
+		}
+		
+		
+		
 		public void stergeCampanie(Campanie campanie){
 			entityManager.remove(campanie);
 		}
