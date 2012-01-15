@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Entity;
-import org.open.erp.services.nomgen.Partener;
+import org.open.erp.services.nomgen.Departament;
+import org.open.erp.services.nomgen.Persoana;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
 
 /**
  * 
@@ -24,35 +24,41 @@ import org.open.erp.services.nomgen.Partener;
  * 
  */
 @Entity
-public class Furnizor extends Partener implements Serializable {
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private String furnizor_id;
+@AttributeOverride(name = "id", column = @Column(table = "Furnizor", name = "furnizor_id"))
+public class Furnizor extends Persoana implements Serializable {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 @OneToMany(mappedBy="furnizor")
 private List<Factura> facturiFurnizor=new ArrayList<Factura>();
-private Integer id;
+
+public List<Factura> getFacturiFurnizor() {
+	return facturiFurnizor;
+}
+
+
+
+public void setFacturiFurnizor(List<Factura> facturiFurnizor) {
+	this.facturiFurnizor = facturiFurnizor;
+}
+
+
+
 private Integer cont;
 private String CUI;
 private String denumire;
 private String adresa;
 private String telefon;
-@ManyToMany(mappedBy="trimisaLaFurnizori")
-private List<CerereOferta> cereriPerFurnizor=new ArrayList<CerereOferta>();
-@ManyToMany@JoinColumn(name="cerereoferta") 
-private CerereOferta cerereOferta;
-@ManyToOne@JoinColumn(name="cat")
+
+@ManyToOne@JoinColumn(name="id_cat")
 private Categorie categorieArticol;
 public Integer getCont() {
 	return cont;
 }
 
-public Integer getId() {
-	return id;
-}
 
-public void setId(Integer id) {
-	this.id = id;
-}
 
 public Categorie getCategorieArticol() {
 	return categorieArticol;
@@ -62,10 +68,7 @@ public void setCategorieArticol(Categorie categorieArticol) {
 	this.categorieArticol = categorieArticol;
 }
 
-public Furnizor(Integer id, Integer idPersoana, Date dataAfilierii,
-		Integer durataAfilierii) {
-	super(id, idPersoana, dataAfilierii, durataAfilierii);
-}
+
 public Furnizor() {
 	super();
 }
@@ -73,15 +76,6 @@ public void setCont(Integer cont) {
 	this.cont = cont;
 }
 
-public Furnizor(Integer id, Integer idPersoana, Integer durataAfilierii,
-		Integer cont, String cUI, String denumire, String adresa, String telefon) {
-	super(id, idPersoana, durataAfilierii);
-	this.cont = cont;
-	CUI = cUI;
-	this.denumire = denumire;
-	this.adresa = adresa;
-	this.telefon = telefon;
-}
 
 public String getCUI() {
 	return CUI;
@@ -112,6 +106,18 @@ public String getTelefon() {
 }
 
 public void setTelefon(String telefon) {
+	this.telefon = telefon;
+}
+
+
+
+public Furnizor(Integer id, Departament dep, String adresa,
+		List<String> telefoane, List<String> emailuri, String cUI,
+		String denumire, String adresa2, String telefon) {
+	super(id, dep, adresa, telefoane, emailuri);
+	CUI = cUI;
+	this.denumire = denumire;
+	adresa = adresa2;
 	this.telefon = telefon;
 }
 

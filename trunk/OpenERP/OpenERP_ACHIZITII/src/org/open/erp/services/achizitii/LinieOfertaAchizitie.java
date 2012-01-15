@@ -20,10 +20,18 @@ import javax.persistence.ManyToOne;
 public class LinieOfertaAchizitie implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-	@ManyToOne@JoinColumn(name="id")
+    private long idLinieOfertaAchizitie;
+	
+	@ManyToOne@JoinColumn(name="id_OfertaAchizitie")
 	private OfertaAchizitie oferta;
-	@ManyToOne@JoinColumn(name="id")
+	
+	public long getIdLinieOfertaAchizitie() {
+		return idLinieOfertaAchizitie;
+	}
+	public void setIdLinieOfertaAchizitie(long idLinieOfertaAchizitie) {
+		this.idLinieOfertaAchizitie = idLinieOfertaAchizitie;
+	}
+	@ManyToOne
 	private Articol articol;
 	private Double cantitate;
 	private Integer linie;

@@ -34,28 +34,56 @@ public static final Integer TRIMISA = 0;
 public static final Integer PRIMITA = 1;
 public static final Integer ANULATA =-1;
 
-private String co;
+
+public long getId_CerereOferta() {
+	return id_CerereOferta;
+}
+
+public void setId_CerereOferta(long id_CerereOferta) {
+	this.id_CerereOferta = id_CerereOferta;
+}
+
+public OfertaAchizitie getOfertaAchizitie() {
+	return ofertaAchizitie;
+}
+
+public void setOfertaAchizitie(OfertaAchizitie ofertaAchizitie) {
+	this.ofertaAchizitie = ofertaAchizitie;
+}
+
+public List<LinieCerereOferta> getLiniiCerereOferta() {
+	return liniiCerereOferta;
+}
+
+public void setLiniiCerereOferta(List<LinieCerereOferta> liniiCerereOferta) {
+	this.liniiCerereOferta = liniiCerereOferta;
+}
+
+public List<Furnizor> getTrimisaLaFurnizori() {
+	return trimisaLaFurnizori;
+}
+
+public void setTrimisaLaFurnizori(List<Furnizor> trimisaLaFurnizori) {
+	this.trimisaLaFurnizori = trimisaLaFurnizori;
+}
 
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
-private long id;
-private Integer idCerereOferta;
+private long id_CerereOferta;
 @Temporal(TemporalType.DATE)
 private Date dataCerere;
 private Integer statusCerereOferta;
-@OneToOne@JoinColumn(name="id")
+@OneToOne@JoinColumn(name="id_OfertaAchizitie")
 private OfertaAchizitie ofertaAchizitie;
 
 @OneToMany(mappedBy = "cerereOferta", cascade = CascadeType.ALL)
 private List<LinieCerereOferta> liniiCerereOferta= new LinkedList<LinieCerereOferta>();
 
-@OneToMany(mappedBy = "Furnizor", cascade = CascadeType.ALL)
-private List<Furnizor> listaFurnizori = new LinkedList<Furnizor>();
 private Persoana persona;
 
 @ManyToMany
 @JoinTable(name="CereriOfertaFurnizori",
-		joinColumns=@JoinColumn(name="cerereOferta_fk"),
+		joinColumns=@JoinColumn(name="cerereOferta_fk"), 
 		inverseJoinColumns=@JoinColumn(name="furnizor_fk"))
 private List<Furnizor> trimisaLaFurnizori = new ArrayList<Furnizor>();
 

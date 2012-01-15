@@ -28,27 +28,23 @@ public class Comanda implements Serializable {
 	public static final Integer ANULATA = -1;
 	public static final Integer IN_CURS = 0;
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	private String comanda_id;
-    private long id;
-	private Integer idComanda;
+    @GeneratedValue(strategy = GenerationType.AUTO)	
+    private Integer idComanda;	
 	private Furnizor furnizor;
 	@Temporal(TemporalType.DATE)
 	private Date dataComanda;
 	private Integer statusComanda;
+	
 	@OneToOne(mappedBy="comanda")
 	private Factura factura;
+	
+	@OneToMany(mappedBy = "comanda")
 	private List<LinieComanda> liniiComanda=new LinkedList<LinieComanda>();
 	
-	public Integer getIdComanda() {
-		return idComanda;
-	}
 	 public void addLinii(LinieComanda li) {
 	        this.getLiniiComanda().add(li);	       
 	    }
-	public void setIdComanda(Integer idComanda) {
-		this.idComanda = idComanda;
-	}
+	
 	public Date getDataComanda() {
 		return dataComanda;
 	}

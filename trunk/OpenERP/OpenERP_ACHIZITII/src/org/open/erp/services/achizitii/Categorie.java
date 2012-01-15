@@ -11,6 +11,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OrderBy;
+import javax.persistence.OrderColumn;
 /**
  * 
  * @author echipa.achizitii
@@ -23,6 +26,14 @@ import org.hibernate.annotations.Entity;
 @Table(name="Categorii")
 public class Categorie implements Serializable {
 
+public long getId_cat() {
+		return id_cat;
+	}
+
+	public void setId_cat(long id_cat) {
+		this.id_cat = id_cat;
+	}
+
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 private long id_cat;
@@ -30,7 +41,7 @@ private String denumire;
 @OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL,targetEntity=Furnizor.class)
 private List<Furnizor> furnizoriCategorie=new ArrayList<Furnizor>();
 
-@OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL,targetEntity=Articol.class)
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "categorieArticol")
 private List<Articol> articole = new ArrayList<Articol>();
 
 public void addFurnizor(Furnizor furn) {

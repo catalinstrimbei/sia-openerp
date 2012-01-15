@@ -27,18 +27,19 @@ import org.open.erp.services.nomgen.Persoana;
  * 
  */
 @Entity
-public class PlanAprovizionare implements Serializable  {
+public class PlanAprovizionare implements Serializable  {	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long idPlanAprovizionare;
 	
+	public static void setPlanAprovizionare(PlanAprovizionare planAprovizionare) {
+		PlanAprovizionare.planAprovizionare = planAprovizionare;
+	}
 	private static PlanAprovizionare planAprovizionare;
 	public static final Integer FINALIZAT = 1;
 	public static final Integer IN_CURS = 0;
 	private Integer saptAn;	
 	private Integer an;
-
-	private Integer idPlan;
 	@Temporal(TemporalType.DATE)
 	private Date dataStart;
 	@Temporal(TemporalType.DATE)
@@ -109,13 +110,7 @@ public class PlanAprovizionare implements Serializable  {
 	}
 	public void setAn(Integer an) {
 		this.an = an;
-	}	
-	public Integer getIdPlan() {
-		return idPlan;
-	}
-	public void setIdPlan(Integer idPlan) {
-		this.idPlan = idPlan;
-	}
+	}		
 	public Date getDataStart() {
 		return dataStart;
 	}
@@ -145,6 +140,12 @@ public class PlanAprovizionare implements Serializable  {
 	}
 	public void setLiniiPlan(List<LiniePlanAprovizionare> liniiPlan) {
 		this.liniiPlan = liniiPlan;
+	}
+	public long getIdPlanAprovizionare() {
+		return idPlanAprovizionare;
+	}
+	public void setIdPlanAprovizionare(long idPlanAprovizionare) {
+		this.idPlanAprovizionare = idPlanAprovizionare;
 	}
 	
 

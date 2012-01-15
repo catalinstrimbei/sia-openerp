@@ -22,14 +22,23 @@ import org.open.erp.services.nomgen.Material;
 
 @Entity
 public class LinieComanda implements Serializable  {
+	public long getIdLinieComanda() {
+		return idLinieComanda;
+	}
+	public void setIdLinieComanda(long idLinieComanda) {
+		this.idLinieComanda = idLinieComanda;
+	}
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long idLinieComanda;
 	private Integer linieComanda;
-	@ManyToOne@JoinColumn(name="comanda_id")
+	
+	@ManyToOne@JoinColumn(name="idComanda")	
 	private Comanda comanda;
+	
 	@ManyToOne@JoinColumn(name="idMaterial")
 	private Material articol;	
+	
 	private Double cantitate;
 	private Double pret;
 	public Integer getLinieComanda() {

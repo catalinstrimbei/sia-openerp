@@ -24,11 +24,10 @@ import javax.persistence.TemporalType;
 public class OfertaAchizitie implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long id_OfertaAchizitie;
 	public static final Integer TRANSFORMATA = 1;
 	public static final Integer RESPINSA = -1;
-	public static final Integer IN_CURS = 0;
-	private Integer idOferta;
+	public static final Integer IN_CURS = 0;	
 	@Temporal(TemporalType.DATE)
 	private Date dataOferta;	
 	private Integer statusOferta;	
@@ -43,6 +42,14 @@ public class OfertaAchizitie implements Serializable {
 		return valTotal;
 	}
 	
+	public long getId_OfertaAchizitie() {
+		return id_OfertaAchizitie;
+	}
+
+	public void setId_OfertaAchizitie(long id_OfertaAchizitie) {
+		this.id_OfertaAchizitie = id_OfertaAchizitie;
+	}
+
 	public OfertaAchizitie() {
 		super();
 	}

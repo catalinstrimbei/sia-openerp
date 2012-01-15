@@ -20,18 +20,9 @@ import org.open.erp.services.nomgen.Material;
  * @BusinessObject(Entity)
  * 
  */
-<<<<<<< .mine
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class LinieNIR extends LinieDocument implements Serializable{	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-=======
+public class LinieNIR extends LinieDocument implements Serializable{
 
-///
-public class LinieNIR extends LinieDocument {	
->>>>>>> .r827
 	private Double diferentaCantitate;
 	private Double cantitateFacturata;	
 	

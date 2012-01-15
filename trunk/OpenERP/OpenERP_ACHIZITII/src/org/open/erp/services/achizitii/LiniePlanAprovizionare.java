@@ -22,17 +22,28 @@ import org.open.erp.services.nomgen.Material;
 public class LiniePlanAprovizionare implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-	@ManyToOne@JoinColumn(name="id")
-	private PlanAprovizionare planAprovizionare;	
-	@ManyToOne@JoinColumn(name="idMaterial")
+    private long idLiniePlanAprovizionare;
+	@ManyToOne@JoinColumn(name="idPlanAprovizionare")	
+	private PlanAprovizionare planAprovizionare;
+	
+	@ManyToOne@JoinColumn(name="idMaterial")	
 	private Material articol;
+	
 	private Double cantitate;
 	private Integer linie;
 	
 	public LiniePlanAprovizionare() {
 		super();
 	}
+	
+	public long getIdLiniePlanAprovizionare() {
+		return idLiniePlanAprovizionare;
+	}
+
+	public void setIdLiniePlanAprovizionare(long idLiniePlanAprovizionare) {
+		this.idLiniePlanAprovizionare = idLiniePlanAprovizionare;
+	}
+
 	public LiniePlanAprovizionare(Material articol, Double cantitate,
 			Integer linie) {
 		super();

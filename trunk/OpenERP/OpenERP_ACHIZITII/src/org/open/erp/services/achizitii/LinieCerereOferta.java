@@ -20,16 +20,24 @@ import org.open.erp.services.nomgen.Material;
 
 @Entity
 public class LinieCerereOferta implements Serializable {
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+private long idLinieCerereOferta;
 
-
+public long getIdLinieCerereOferta() {
+	return idLinieCerereOferta;
+}
+public void setIdLinieCerereOferta(long idLinieCerereOferta) {
+	this.idLinieCerereOferta = idLinieCerereOferta;
+}
 private Integer nrLinie;
-@ManyToOne@JoinColumn(name="co")
+
+@ManyToOne@JoinColumn(name="id_CerereOferta")
 private CerereOferta cerereOferta;
+
 @ManyToOne@JoinColumn(name="idMaterial")
 private Material articol;
+
 private Double cantitate;
 
 public LinieCerereOferta() {

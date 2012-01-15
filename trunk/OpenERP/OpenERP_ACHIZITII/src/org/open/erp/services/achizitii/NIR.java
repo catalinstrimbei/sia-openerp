@@ -20,11 +20,8 @@ import org.open.erp.services.nomgen.LinieDocument;
  * 
  */
 @Entity
-public class NIR extends Document implements Serializable{
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-	@OneToOne@JoinColumn(name="id")
+public class NIR extends Document implements Serializable{	
+	@OneToOne@JoinColumn(name="idFactura")
 	private Factura factura;
 
 	public NIR() {

@@ -21,9 +21,6 @@ import org.open.erp.services.nomgen.LinieDocument;
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class LinieFacturaAchizitie extends LinieDocument implements Serializable{
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
 	private Double valoareLinie;
 	public Double getValoareLinie() {
 		return valoareLinie;
