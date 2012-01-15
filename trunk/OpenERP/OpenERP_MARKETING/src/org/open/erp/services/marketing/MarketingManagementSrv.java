@@ -150,7 +150,7 @@ float getPretFinalByPromotie(DummyProdus produs,Promotie promotie, float pretIni
  */
 float getPretFinalByProdus(DummyProdus produs);
 
-PersoanaTinta creeazaPersoanaTinta(String Nume, String prenume)throws Exception;
+//PersoanaTinta creeazaPersoanaTinta(String Nume, String prenume)throws Exception;
 public PersoanaTinta getPersoanaTinta(Integer idPersoana);
 public PersoanaTinta salveazaPersoanaTinta(PersoanaTinta persoana) throws Exception;
 public Campanie salveazaCampanie(Campanie campanie) throws Exception;

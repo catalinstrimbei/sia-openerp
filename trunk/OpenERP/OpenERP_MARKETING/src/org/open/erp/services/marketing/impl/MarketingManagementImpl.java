@@ -227,18 +227,7 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		return (float)(produs.getPretVanzare() * 0.8);
 	}
 
-	@Override
-	public PersoanaTinta creeazaPersoanaTinta(String Nume, String prenume)throws Exception {
-		PersoanaTinta persoanaTinta = new PersoanaTinta();
-		if (sessionContext.getRollbackOnly() == true){
-			logger.debug(">>>>>>>>>>>> END Creare Campanie - TRANZACTIE ANULATA");
-			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
-		} else
-			persoanaTinta = this.registruMarketing.salveazaPersoanaTinta(persoanaTinta);
-			//em.persist(proiectNou);
-		
-		return persoanaTinta;
-	}
+	
 
 	@Override
 	public PersoanaTinta salveazaPersoanaTinta(PersoanaTinta persoana)
@@ -294,8 +283,17 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	 */
 	@Override
 	public Discount salveazaDiscount(Discount discount) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.debug(">>>>>>Start salveaza discount");
+		Discount result = new Discount();
+		if (discount == null){	
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaDiscount(discount);
+			logger.debug(">>>>>>End salveaza discount");
+		}
+		return result;
 	}
 
 	/* (non-Javadoc)
@@ -303,8 +301,17 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	 */
 	@Override
 	public Intrebare salveazaIntrebare(Intrebare intrebare) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.debug(">>>>>>Start salveaza intrebare");
+		Intrebare result = new Intrebare();
+		if (intrebare == null){	
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaIntrebare(intrebare);
+			logger.debug(">>>>>>End salveaza intrebare");
+		}
+		return result;
 	}
 
 	/* (non-Javadoc)
@@ -313,8 +320,17 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	@Override
 	public ProdusDiscount salveazaProdusDiscount(ProdusDiscount produsDiscount)
 			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.debug(">>>>>>Start salveaza produs discount");
+		ProdusDiscount result = new ProdusDiscount();
+		if (produsDiscount == null){	
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaProdusDiscount(produsDiscount);
+			logger.debug(">>>>>>End salveaza produs discount");
+		}
+		return result;
 	}
 
 	/* (non-Javadoc)
@@ -323,8 +339,17 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	@Override
 	public ProduseAditionale salveazaProdusAditional(
 			ProduseAditionale produsAditional) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.debug(">>>>>>Start salveaza produse aditionale");
+		ProduseAditionale result = new ProduseAditionale();
+		if (produsAditional == null){	
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaProduseAditionale(produsAditional);
+			logger.debug(">>>>>>End salveaza produse aditionale");
+		}
+		return result;
 	}
 
 	/* (non-Javadoc)
@@ -332,8 +357,17 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	 */
 	@Override
 	public Promotie salveazaPromotie(Promotie promotie) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.debug(">>>>>>Start salveaza promotie");
+		Promotie result = new Promotie();
+		if (promotie == null){	
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaPromotie(promotie);
+			logger.debug(">>>>>>End salveaza promotie");
+		}
+		return result;
 	}
 
 	/* (non-Javadoc)
@@ -342,8 +376,17 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	@Override
 	public RaspunsChestionar salveazaRaspunsChestionar(
 			RaspunsChestionar raspunsChestionar) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.debug(">>>>>>Start salveaza raspuns chestionar");
+		RaspunsChestionar result = new RaspunsChestionar();
+		if (raspunsChestionar == null){	
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaRaspunsChestionar(raspunsChestionar);
+			logger.debug(">>>>>>End salveaza raspuns chestionar");
+		}
+		return result;
 	}
 
 	/* (non-Javadoc)
@@ -352,8 +395,17 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	@Override
 	public RaspunsIntrebare salveazaRaspunsIntrebare(
 			RaspunsIntrebare raspunsIntrebare) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.debug(">>>>>>Start salveaza raspuns intrebare");
+		RaspunsIntrebare result = new RaspunsIntrebare();
+		if (raspunsIntrebare == null){	
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaRaspunsIntrebare(raspunsIntrebare);
+			logger.debug(">>>>>>End salveaza raspuns intrebare");
+		}
+		return result;
 	}
 
 	/* (non-Javadoc)
