@@ -152,6 +152,7 @@ public class TestMarketingManagementImplEJB {
 			List<ProdusDiscount> produseDiscount = new ArrayList<ProdusDiscount>();
 			List<ProduseAditionale> produseAditionale = new ArrayList<ProduseAditionale>();
 			 
+			promotie = marketingInstance.definirePromotie("Prima promotie", "Cumpara si nu vei regreta", dataStart, dataFinal, Promotie.DISCOUNT);
 			DummyProdus produs = new DummyProdus();
 			produs.setDenumire("Produs1");
 			produs = marketingInstance.salveazaDummyProdus(produs);
@@ -163,10 +164,10 @@ public class TestMarketingManagementImplEJB {
 			discount = marketingInstance.salveazaDiscount(discount);
 			produsDiscount.setDiscount(discount);
 			produsDiscount.setProdus(produs);
+			produsDiscount.setPromotie(promotie);
 			produsDiscount = marketingInstance.salveazaProdusDiscount(produsDiscount);
 			produseDiscount.add(produsDiscount);
 			
-			promotie = marketingInstance.definirePromotie("Prima promotie", "Cumpara si nu vei regreta", dataStart, dataFinal, Promotie.DISCOUNT);
 			
 			
 		}
@@ -174,9 +175,13 @@ public class TestMarketingManagementImplEJB {
 		@Test
 		public void testGetPretByPromotie() throws Exception{
 			logger.debug(">>>Start test Get pret final by promotie");
-			Promotie promotie = marketingInstance.getPromotie(4);
-			DummyProdus produs = marketingInstance.getProdus(1);
+			Promotie promotie = marketingInstance.getPromotie(1);
+			DummyProdus produs = marketingInstance.getProdus(2);
 			
+			for (int i=0 ; i < promotie.getListaProduseDiscount().size() ; i++)
+			{
+				logger.debug(promotie.getListaProduseDiscount().get(i).getDiscount().getValoare());
+			}
 			Float pretFinal = marketingInstance.getPretFinalByPromotie(produs, promotie, 10);
 			logger.debug("Pretul final este " + pretFinal);
 			

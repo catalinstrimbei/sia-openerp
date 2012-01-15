@@ -88,6 +88,10 @@ public class RegistruMarketing {
 		public PersoanaTinta getPersoanaTinta(Integer id){
 			return entityManager.find(PersoanaTinta.class, id);
 		}
+		
+		public Discount getDiscount(Integer id){
+			return entityManager.find(Discount.class, id);
+		}
 		public List<Campanie> getCampaniile(){
 			return entityManager.createQuery("SELECT C FROM Campanie c").getResultList();
 		}

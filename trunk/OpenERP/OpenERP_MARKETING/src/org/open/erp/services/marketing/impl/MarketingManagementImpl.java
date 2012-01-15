@@ -118,6 +118,11 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 //		return null;
 	}	
 	@Override
+	public Discount getDiscount(Integer idDiscount) {
+		return registruMarketing.getDiscount(idDiscount);
+//		return null;
+	}	
+	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void initiereCampanie(Campanie campanie) throws Exception{
 		campanie.setStatus(1);
@@ -190,7 +195,29 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	
 	@Override
 	public float getPretFinalByPromotie(DummyProdus produs, Promotie promotie,float pretInitial) {
-		return promotie.getPretByPretInitial(produs, pretInitial);
+		ProdusDiscount  produsDiscount;
+		Discount 		discount;
+		Float			pretFinal = (float) 0;
+		if (promotie.getTipPromotie() == Promotie.DISCOUNT)
+		{
+			Iterator<ProdusDiscount> iterator = promotie.getListaProduseDiscount().iterator();
+			while (iterator.hasNext())
+			{
+				produsDiscount = iterator.next();
+				if (produsDiscount.getProdus().equals(produs))
+				{
+					discount = this.getDiscount(produsDiscount.getDiscount().getIdDiscount());
+					logger.debug(discount.getValoare());
+					if (discount.getTipDiscount() == Discount.PROCENT)
+						pretFinal = pretInitial - (pretInitial * discount.getValoare()) / 100;
+					else
+						pretFinal = pretInitial - discount.getValoare();
+				}
+			}
+		}
+		else
+			pretFinal = pretInitial;
+		return pretFinal;
 	}
 	@Override
 	public float getPretFinalByProdus(DummyProdus produs) {
