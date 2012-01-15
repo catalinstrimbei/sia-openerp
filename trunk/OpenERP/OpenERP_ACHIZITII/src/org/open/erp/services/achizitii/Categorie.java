@@ -80,28 +80,11 @@ public List<Furnizor> getFurnizoriCategorie() {
 public void setFurnizoriCategorie(List<Furnizor> furnizoriCategorie) {
 	this.furnizoriCategorie = furnizoriCategorie;
 }
-public Long getId() {
-	return id;
-}
-public void setId(Long id) {
-	this.id = id;
-}
+
 public Categorie(String denumire, List<Furnizor> furnizoriCategorie) {
 	super();
 	this.denumire = denumire;
 	this.furnizoriCategorie = furnizoriCategorie;
-}
-public Categorie(Integer id, String denumire, List<Furnizor> furnizoriCategorie) {
-	super();
-	this.id = id;
-	this.denumire = denumire;
-	this.furnizoriCategorie = furnizoriCategorie;
-}
-
-public Categorie(Integer id, String denumire) {
-	super();
-	this.id = id;
-	this.denumire = denumire;
 }
 
 

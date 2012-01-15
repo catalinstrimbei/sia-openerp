@@ -86,19 +86,7 @@ public class OfertaAchizitie implements Serializable {
 		this.liniiOferta = liniiOferta;
 	}
 	
-	public OfertaAchizitie(Integer idOferta, Date dataOferta,
-			Integer statusOferta) {
-		super();
-		this.idOferta = idOferta;
-		this.dataOferta = dataOferta;
-		this.statusOferta = statusOferta;
-	}
-	public Integer getIdOferta() {
-		return idOferta;
-	}
-	public void setIdOferta(Integer idOferta) {
-		this.idOferta = idOferta;
-	}
+
 	public Date getDataOferta() {
 		return dataOferta;
 	}

@@ -97,12 +97,7 @@ public void removeLinieCerere(LinieCerereOferta li) {
     li.setCerereOferta(null);
 }
 
-public Integer getIdCerereOferta() {
-	return idCerereOferta;
-}
-public void setIdCerereOferta(Integer idCerereOferta) {
-	this.idCerereOferta = idCerereOferta;
-}
+
 public Date getDataCerere() {
 	return dataCerere;
 }
@@ -121,12 +116,7 @@ public List<LinieCerereOferta> getLinii() {
 public void setLinii(List<LinieCerereOferta> linii) {
 	this.liniiCerereOferta = linii;
 }
-public List<Furnizor> getListaFurnizori() {
-	return listaFurnizori;
-}
-public void setListaFurnizori(List<Furnizor> listaFurnizori) {
-	this.listaFurnizori = listaFurnizori;
-}
+
 public Persoana getPersona() {
 	return persona;
 }
@@ -134,13 +124,7 @@ public void setPersona(Persoana persona) {
 	this.persona = persona;
 }
 
-public CerereOferta(Date dataCerere, List<Furnizor> listaFurnizori,
-		Persoana persona) {
-	super();
-	this.dataCerere = dataCerere;
-	this.listaFurnizori = listaFurnizori;
-	this.persona = persona;
-}
+
 
   
 
