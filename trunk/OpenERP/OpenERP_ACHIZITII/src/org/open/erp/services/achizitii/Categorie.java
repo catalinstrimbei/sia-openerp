@@ -22,24 +22,15 @@ import org.hibernate.annotations.Entity;
 @Entity
 @Table(name="Categorii")
 public class Categorie implements Serializable {
-	
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-/**
-	 * 
-	 */
-	
+
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
-private long id;
-private String cat;
+private long id_cat;
 private String denumire;
-@OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL,targetEntity=Furnizor.class)
 private List<Furnizor> furnizoriCategorie=new ArrayList<Furnizor>();
 
-@OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL,targetEntity=Articol.class)
 private List<Articol> articole = new ArrayList<Articol>();
 
 public void addFurnizor(Furnizor furn) {
@@ -50,13 +41,6 @@ public Categorie() {
 	super();
 }
 
-public String getCat() {
-	return cat;
-}
-
-public void setCat(String cat) {
-	this.cat = cat;
-}
 
 public void removeFurnizor(Furnizor furn) {
     this.getFurnizoriCategorie().remove(furn);    
