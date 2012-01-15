@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -24,6 +25,8 @@ public class ProduseAditionale implements Serializable{
 	joinColumns = @JoinColumn (name="idCombinatie"),
 	inverseJoinColumns = @JoinColumn(name = "idProdus"))
 	List<DummyProdus> produseAditionale = new ArrayList<DummyProdus>();
+	@ManyToOne @JoinColumn(name = "idPromotie")
+	Promotie	promotie;
 	public Integer getIdCombinatie() {
 		return IdCombinatie;
 	}

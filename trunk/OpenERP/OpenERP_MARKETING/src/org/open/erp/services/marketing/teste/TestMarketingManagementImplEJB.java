@@ -13,6 +13,8 @@ import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.marketing.Campanie;
+import org.open.erp.services.marketing.Discount;
+import org.open.erp.services.marketing.DummyProdus;
 import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.MarketingManagementSrvRemote;
@@ -150,7 +152,21 @@ public class TestMarketingManagementImplEJB {
 			List<ProdusDiscount> produseDiscount = new ArrayList<ProdusDiscount>();
 			List<ProduseAditionale> produseAditionale = new ArrayList<ProduseAditionale>();
 			 
-			promotie = marketingInstance.definirePromotie("Prima promotie", "Cumpara si nu vei regreta", dataStart, dataFinal, Promotie.DISCOUNT, produseDiscount, produseAditionale);
+			DummyProdus produs = new DummyProdus();
+			produs.setDenumire("Produs1");
+			produs = marketingInstance.salveazaDummyProdus(produs);
+			ProdusDiscount produsDiscount = new ProdusDiscount();
+			Discount discount = new Discount ();
+			discount.setDenumirediscount("5% reducere");
+			discount.setTipDiscount(Discount.PROCENT);
+			discount.setValoare((float) 5);
+			discount = marketingInstance.salveazaDiscount(discount);
+			produsDiscount.setDiscount(discount);
+			produsDiscount.setProdus(produs);
+			produsDiscount = marketingInstance.salveazaProdusDiscount(produsDiscount);
+			produseDiscount.add(produsDiscount);
+			
+			promotie = marketingInstance.definirePromotie("Prima promotie", "Cumpara si nu vei regreta", dataStart, dataFinal, Promotie.DISCOUNT);
 			
 			
 		}

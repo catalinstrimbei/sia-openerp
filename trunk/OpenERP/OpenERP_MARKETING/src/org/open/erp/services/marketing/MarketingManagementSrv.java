@@ -127,8 +127,7 @@ public interface MarketingManagementSrv {
  * @throws Exception 
  * 
  */
-Promotie definirePromotie(String denumire,String mesajPromotional, Date dataInceput, Date dataSfarsit, Integer TipPromotie,
-		List<ProdusDiscount>  produseDiscount,List<ProduseAditionale> listProduseAditionale) throws Exception;
+Promotie definirePromotie(String denumire,String mesajPromotional, Date dataInceput, Date dataSfarsit, Integer TipPromotie) throws Exception;
 
 /**
  * Returneaza un pretul unui produs dupa aplicarea discounturilor specifice unei promotii.
@@ -164,4 +163,5 @@ public Promotie salveazaPromotie(Promotie promotie) throws Exception;
 public RaspunsChestionar salveazaRaspunsChestionar(RaspunsChestionar raspunsChestionar) throws Exception;
 public RaspunsIntrebare salveazaRaspunsIntrebare(RaspunsIntrebare raspunsIntrebare) throws Exception;
 public Responsabil salveazaResponsabil(Responsabil responsabil) throws Exception;
+public DummyProdus salveazaDummyProdus(DummyProdus produs) throws Exception;
 }

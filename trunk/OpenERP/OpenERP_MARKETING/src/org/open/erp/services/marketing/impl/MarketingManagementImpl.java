@@ -1,6 +1,7 @@
 package org.open.erp.services.marketing.impl;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -160,68 +161,21 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		// TODO creaza metoda pentru procesarea rezultatelor		
 	}
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Promotie definirePromotie(String denumire,
 			String mesajPromotional, Date dataInceput, Date dataSfarsit,
-			Integer tipPromotie, List<ProdusDiscount>  produseDiscount,
-			List<ProduseAditionale> listProduseAditionale)
+			Integer tipPromotie)
 					throws Exception {
-		Promotie  promotieNoua = new Promotie(1,denumire,mesajPromotional,dataInceput,dataSfarsit,tipPromotie);
-		DummyProdus				produs;
-		Discount			discount;
-		ProdusDiscount		prodDisc;
-		ProduseAditionale	prodAdd;
-		Iterator<ProdusDiscount>			iteratorDisc;
-		Iterator<ProduseAditionale>			iteratorProdAdd;
-		String				tipDiscount;
-		List<DummyProdus>		produseAditionale;
-		logger.debug("Promotia " + denumire + " a fost creata.");
-		if ( tipPromotie == Promotie.DISCOUNT) 
-		{
-			logger.debug("Tip Promotie: Discount");
-			promotieNoua.setListaProduseDiscount(produseDiscount);
-		}
-		else
-		{
-			logger.debug("Tip Promotie: Produs Aditional");
-			promotieNoua.setListProduseAditionale(listProduseAditionale);
-		}
-		logger.debug(mesajPromotional);
-		logger.debug("Produse calificate");
+		Promotie  promotieNoua = new Promotie();
+		promotieNoua.setDenumirePromotie(denumire);
+		promotieNoua.setMesajPromotional(mesajPromotional);
+		promotieNoua.setDataStart(dataInceput);
+		promotieNoua.setDataSfarsit(dataSfarsit);
+		promotieNoua.setTipPromotie(tipPromotie);
 		
-		if ( tipPromotie == Promotie.DISCOUNT) 
-		{
-			logger.debug("Produs         Tip discount          Valoare");
-			iteratorDisc = produseDiscount.iterator();
-			while (iteratorDisc.hasNext())
-			{
-				prodDisc = (ProdusDiscount) iteratorDisc.next();
-				discount = prodDisc.getDiscount();
-				produs = prodDisc.getProdus();
-				if (discount.getTipDiscount() == Discount.PROCENT)
-					tipDiscount = "Procent";
-				else
-					tipDiscount = "Valoare neta";
-				logger.debug(produs.getDenumire() + "      -      " + tipDiscount + "       -        " + discount.getValoare().toString());
-			}
-		}
-		else
-		{
-			logger.debug("Produs         Tip discount");
-			logger.debug("             Se mai primesc si produsele:");
-			iteratorProdAdd = listProduseAditionale.iterator();
-			while (iteratorProdAdd.hasNext())
-			{
-				prodAdd = (ProduseAditionale)iteratorProdAdd.next();
-				produseAditionale = (List<DummyProdus>) prodAdd.getProduseAditionale();
-				produs = prodAdd.getProdus();
-				for (int p = 1; p < produseAditionale.size(); p++)
-				{
-					
-					logger.debug(produseAditionale.get(p).getId() + "       " + produseAditionale.get(p).getDenumire());
-				}
-			}
-			
-		}
+		logger.debug(mesajPromotional);		
+		promotieNoua.setListProduseAditionale((List)new ArrayList<ProdusDiscount>());
+		promotieNoua.setListProduseAditionale((List)new ArrayList<ProduseAditionale>());
 		promotieNoua = this.salveazaPromotie(promotieNoua);
 		return promotieNoua;
 	}
@@ -435,6 +389,24 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		}
 		return result;
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaDummyProdus(org.open.erp.services.marketing.DummyProdus)
+	 */
+	@Override
+	public DummyProdus salveazaDummyProdus(DummyProdus produs) throws Exception {
+		logger.debug(">>>>>>Start salveaza produs");
+		DummyProdus result = new DummyProdus();
+		if (produs == null){	
+			sessionContext.setRollbackOnly();
+			logger.debug(">>>>>>Tranzactie Anulata");
+		}
+		else{			
+			result = this.registruMarketing.salveazaProdus(produs);
+			logger.debug(">>>>>>End salveaza produs");
+		}
+		return result;
 	}
 	
 }

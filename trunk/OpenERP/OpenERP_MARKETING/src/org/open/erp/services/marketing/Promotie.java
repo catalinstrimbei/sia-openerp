@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -37,16 +39,10 @@ public class Promotie implements Serializable {
 	
 	
 	//Map<Produs,Discount>		listaProduse = new HashMap<Produs, Discount>();
-	@OneToMany
-	@JoinTable(name="ProdusDiscount",
-	joinColumns = @JoinColumn (name="idProdusDiscount"),
-	inverseJoinColumns = @JoinColumn(name = "idPromotie"))
+	@OneToMany(mappedBy = "promotie", cascade = CascadeType.ALL)
 	List<ProdusDiscount> listaProduseDiscount =  new ArrayList<ProdusDiscount>();	
 	
-	@OneToMany
-	@JoinTable(name="ProduseAditionale",
-	joinColumns = @JoinColumn (name="idCombinatie"),
-	inverseJoinColumns = @JoinColumn(name = "idPromotie"))
+	@OneToMany(mappedBy = "promotie", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	List<ProduseAditionale>	listProduseAditionale = new ArrayList<ProduseAditionale>();
 	public Promotie() {
 		super();

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 //import org.open.erp.services.nomgen.Produs;
@@ -24,6 +25,9 @@ public class ProdusDiscount implements Serializable {
 	@OneToOne
 	@JoinColumn(name="IdProdus")
 	DummyProdus	produs;
+	
+	@ManyToOne @JoinColumn(name = "idPromotie")
+	Promotie	promotie;
 	private static final long serialVersionUID = 1L;
 	public ProdusDiscount() {
 		super();
@@ -57,6 +61,18 @@ public class ProdusDiscount implements Serializable {
 		this.idProdusDiscount = idProdusDiscount;
 		this.discount = discount;
 		this.produs = produs;
+	}
+	/**
+	 * @return the promotie
+	 */
+	public Promotie getPromotie() {
+		return promotie;
+	}
+	/**
+	 * @param promotie the promotie to set
+	 */
+	public void setPromotie(Promotie promotie) {
+		this.promotie = promotie;
 	}
 
 	
