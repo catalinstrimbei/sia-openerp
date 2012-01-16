@@ -2,13 +2,13 @@ package org.open.erp.services.achizitii;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.Entity;
 import org.open.erp.services.nomgen.Material;
 
 /**
@@ -84,6 +84,9 @@ public class LinieComanda implements Serializable  {
 	}
 	public void setArticol(Material articol) {
 		this.articol = articol;
+	}
+	public LinieComanda() {
+		super();
 	}
 		
 

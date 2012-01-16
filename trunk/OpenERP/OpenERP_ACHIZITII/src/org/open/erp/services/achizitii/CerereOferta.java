@@ -134,6 +134,10 @@ public CerereOferta(long id_CerereOferta, Date dataCerere) {
 	this.dataCerere = dataCerere;
 }
 
+public CerereOferta() {
+	super();
+}
+
 
 
   

@@ -43,7 +43,7 @@ public class Comanda implements Serializable {
 	@OneToOne(mappedBy="comanda")
 	private Factura factura;
 	
-	@OneToMany(mappedBy = "comanda")
+	@OneToMany(mappedBy = "comanda",targetEntity=LinieComanda.class)
 	private List<LinieComanda> liniiComanda=new LinkedList<LinieComanda>();
 	
 	 public void addLinii(LinieComanda li) {
@@ -111,6 +111,10 @@ public class Comanda implements Serializable {
 
 	public void setFactura(Factura factura) {
 		this.factura = factura;
+	}
+
+	public Comanda() {
+		super();
 	}
 	
 	

@@ -1,6 +1,7 @@
 package org.open.erp.services.achizitii;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -8,6 +9,8 @@ import javax.persistence.OneToOne;
 
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.nomgen.Persoana;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 
@@ -117,6 +120,9 @@ public class Factura extends Document implements Serializable {
 		this.status = status;
 		this.comanda = comanda;
 		this.tipFact = tipFact;
+	}
+	public Factura() {
+		super();
 	}
 	
 }

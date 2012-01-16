@@ -19,6 +19,7 @@
 		<class>org.open.erp.services.achizitii.Furnizor</class>
 		<class>org.open.erp.services.achizitii.Comanda</class>
 		<class>org.open.erp.services.achizitii.CerereOferta</class>
+		<class>org.open.erp.services.achizitii.LinieComanda</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>		
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
