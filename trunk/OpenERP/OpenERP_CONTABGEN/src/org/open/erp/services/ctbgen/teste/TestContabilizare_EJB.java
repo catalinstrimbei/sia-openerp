@@ -62,7 +62,7 @@ public class TestContabilizare_EJB {
 
 	@Before
 	public void setUp() throws Exception {
-		instantaCtbGen=  ContabilizareDummyFactory.getContabilizareSrv();
+		//instantaCtbGen=  ContabilizareDummyFactory.getContabilizareSrv();
 		//nomenclatorInstance = ContabilizareDummyFactory.getNomenclatoareSrv();
 		regSablonNC = RegSablonNC.instantiaza();
 		regConturi = RegConturi.instantiaza();

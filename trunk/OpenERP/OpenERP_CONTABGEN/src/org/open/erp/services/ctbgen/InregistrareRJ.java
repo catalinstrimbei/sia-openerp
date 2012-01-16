@@ -17,10 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import static javax.persistence.TemporalType.DATE;
-import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.EAGER;
-import javax.persistence.Inheritance;
-import static javax.persistence.InheritanceType.JOINED;
+
 
 
 /**

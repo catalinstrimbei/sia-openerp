@@ -28,6 +28,7 @@ import org.open.erp.services.ctbgen.RegArticoCtb;
 import org.open.erp.services.ctbgen.RegBalanta;
 import org.open.erp.services.ctbgen.RegInregistrareRJ;
 import org.open.erp.services.ctbgen.RegTipuriContabile;
+import org.open.erp.services.ctbgen.Registru;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.TipContabil;
 import org.open.erp.services.ctbgen.TipIncasare;
@@ -42,6 +43,7 @@ import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.RegSablonNC;
 import org.open.erp.services.nomgen.LinieDocument;
 
+
 /**
  * 
  *@author Echipa9 Irimia, Iftimii, Sarbu, Ricea, Chiriac
@@ -50,13 +52,13 @@ import org.open.erp.services.nomgen.LinieDocument;
  * 
  */
 
-@Stateful(name = "ContabilizareSrv", mappedName = "ContabilizareSrv")
+@Stateful(name = "ContabilizareSrv") //, mappedName = "ContabilizareSrv")
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class ContabilizareSrvImpl implements ContabilizareSrvLocal, ContabilizareSrvRemote {
 		
 	//--------------------
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ContabilizareSrvImpl.class.getName());
-	
+	private Registru  registru;
 	
 	@PersistenceContext(unitName="OpenERP_CONTABGEN")
 	private EntityManager em;
@@ -70,7 +72,8 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 	
 	@PostConstruct
 	public void init(){
-		logger.debug("EntityManager: " + em);		
+		logger.debug("EntityManager: " + em);
+		registru.em =em;
 	
 	}
 	

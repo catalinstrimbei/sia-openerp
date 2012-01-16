@@ -3,17 +3,15 @@ package org.open.erp.services.ctbgen;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
+
 import javax.persistence.ManyToOne;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
-
 import static javax.persistence.GenerationType.AUTO;
-import static javax.persistence.CascadeType.ALL;
 import javax.persistence.JoinColumn;
-import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.CascadeType.ALL;
+
 
 
 
@@ -40,10 +38,10 @@ public class ArticolCtb  implements Serializable{
 	private InregistrareRJ inregRJ;
 	private String denArt;
 	@ManyToOne
-	@JoinColumn(name = "idCont")
+	@JoinColumn(name = "contDebit_idCont", referencedColumnName = "idCont")
 	private Cont contDebit;
 	@ManyToOne
-	@JoinColumn(name = "idCont")
+	@JoinColumn(name = "contCredit_idCont", referencedColumnName = "idCont")
 	private Cont contCredit;
 	
 	private Double sumaDC;

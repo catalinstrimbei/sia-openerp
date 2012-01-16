@@ -27,13 +27,13 @@ import org.open.erp.services.ctbgen.TipPlata;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
-import org.open.erp.services.nomgen.NomenclatoareSrv;
+
 
 public class TestContabilizareSrvImpl {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizareSrvImpl.class.getName());
 	
 	ContabilizareSrv instantaCtbGen;
-	NomenclatoareSrv nomenclatorInstance;
+	//NomenclatoareSrv nomenclatorInstance;
 	RegSablonNC regSablonNC;
 	RegConturi regConturi;
 	RegLuniLucru regLuniConturi;
@@ -46,7 +46,7 @@ public class TestContabilizareSrvImpl {
 	@Before
 	public void setUp() throws Exception {
 		instantaCtbGen=  ContabilizareDummyFactory.getContabilizareSrv();
-		nomenclatorInstance = ContabilizareDummyFactory.getNomenclatoareSrv();
+		//nomenclatorInstance = ContabilizareDummyFactory.getNomenclatoareSrv();
 		regSablonNC = RegSablonNC.instantiaza();
 		regConturi = RegConturi.instantiaza();
 		regLuniConturi = RegLuniLucru.instantiaza();

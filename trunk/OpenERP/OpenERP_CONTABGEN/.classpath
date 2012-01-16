@@ -16,6 +16,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="E:/31eclipse/objectdb-2.3.4_05/bin/objectdb.jar"/>
+	<classpathentry kind="lib" path="E:/4eclipse/postgresql-8.3-607.jdbc4.jar"/>
+	<classpathentry kind="lib" path="E:/31eclipse/cs_proiect/OpenERP_CONTABGEN/lib/ojdbc14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

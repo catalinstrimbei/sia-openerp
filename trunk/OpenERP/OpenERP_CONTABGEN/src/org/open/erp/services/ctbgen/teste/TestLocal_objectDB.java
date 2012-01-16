@@ -13,7 +13,7 @@ import org.open.erp.services.ctbgen.Balanta;
 import org.open.erp.services.ctbgen.Cont;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.LunaLucru;
-import org.open.erp.services.ctbgen.LunaLucru.StatusLuna;
+
 import org.open.erp.services.ctbgen.RegBalanta;
 import org.open.erp.services.ctbgen.RegConturi;
 import org.open.erp.services.ctbgen.RegLuniLucru;
@@ -30,7 +30,7 @@ import org.open.erp.services.ctbgen.Cont.TipCont;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
-import org.open.erp.services.nomgen.NomenclatoareSrv;
+
 
 public class TestLocal_objectDB {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizareSrvImpl.class.getName());
