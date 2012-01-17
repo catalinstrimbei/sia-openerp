@@ -1,4 +1,4 @@
-package org.open.erp.services.acizitii.registri;
+package org.open.erp.services.achizitii.registri;
 
 import java.util.List;
 
