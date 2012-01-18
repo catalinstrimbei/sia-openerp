@@ -16,17 +16,19 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class PersoanaFizica extends Persoana implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String  nume;
 	private String  prenume;
 	private String  formaAdresare;
 	private char    gen;
 	private String  cnp;
-	@OneToOne @JoinColumn(name= "id")
+	//@OneToOne @JoinColumn(name= "id")
 	private Persoana p;
-	
-	private List<String> telefoane;
-	
-	private List<String> emailuri;
+
+
 	
 	
 	/**
@@ -104,21 +106,7 @@ public class PersoanaFizica extends Persoana implements Serializable{
 	}
 
 
-	public List<String> getTelefoane() {
-		return telefoane;
-	}
 
-	public void setTelefoane(List<String> telefoane) {
-		this.telefoane = telefoane;
-	}
-
-	public List<String> getEmailuri() {
-		return emailuri;
-	}
-
-	public void setEmailuri(List<String> emailuri) {
-		this.emailuri = emailuri;
-	}
 
 	public Persoana getP() {
 		return p;
@@ -129,9 +117,9 @@ public class PersoanaFizica extends Persoana implements Serializable{
 	}
 
 	public PersoanaFizica(Integer id, Departament dep, String adresa,
-			List<String> telefoane, List<String> emailuri, String nume,
+			 String nume,
 			String prenume, String formaAdresare, char gen, String cnp,
-			Persoana p, List<String> telefoane2, List<String> emailuri2) {
+			Persoana p) {
 		super(id, dep, adresa, telefoane, emailuri);
 		this.nume = nume;
 		this.prenume = prenume;
@@ -139,8 +127,7 @@ public class PersoanaFizica extends Persoana implements Serializable{
 		this.gen = gen;
 		this.cnp = cnp;
 		this.p = p;
-		telefoane = telefoane2;
-		emailuri = emailuri2;
+	
 	}
 
 	public PersoanaFizica(Integer id, String adresa,String nume, String prenume, String formaAdresare, char gen, String cnp) {

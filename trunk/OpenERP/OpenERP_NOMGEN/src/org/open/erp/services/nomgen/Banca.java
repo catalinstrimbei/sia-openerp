@@ -17,6 +17,10 @@ import javax.persistence.OneToOne;
 @Entity
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Banca extends PersoanaJuridica implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@OneToOne@JoinColumn(name= "marca")
 	PersoanaJuridica pj;
 	private String CapSocial;

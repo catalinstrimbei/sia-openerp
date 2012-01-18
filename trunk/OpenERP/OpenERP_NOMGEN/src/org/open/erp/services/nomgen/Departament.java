@@ -8,10 +8,13 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 
@@ -24,34 +27,39 @@ import javax.persistence.OneToMany;
 @Entity
 
 public class Departament implements Serializable{
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer Id;
+	
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	
+	private Integer Idd;
     
 	private String Denumire;
 	private String Atributii;
 	@OneToMany(mappedBy="IdDepartament", cascade = CascadeType.ALL)
+	//@JoinColumn(referencedColumnName="Idd")
 	private Collection<Divizie> DivDepartament;
 	
 	
 	@OneToMany(mappedBy="dep", cascade = CascadeType.ALL)
 	private Collection<Persoana> pers;
-	private static final long serialVersionUID = 1L;
 	
-	private List<String> Telefoane;
-	
-	private List<String> Emailuri;
+	@SuppressWarnings("unused")
+	private String Telefoane;
+	//@SuppressWarnings("unused")
+	//private List<String> Emailuri;
 	/**
 	 * @return the id
 	 */
 	
 	public Integer getId() {
-		return Id;
+		return Idd;
 	}
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(Integer id) {
-		Id = id;
+		Idd = id;
 	}
 	/**
 	 * @return the denumire
@@ -77,18 +85,18 @@ public class Departament implements Serializable{
 	public void setAtributii(String atributii) {
 		Atributii = atributii;
 	}
-	public List<String> getTelefoane() {
+	public String getTelefoane() {
 		return Telefoane;
 	}
-	public void setTelefoane(List<String> telefoane) {
+	public void setTelefoane(String telefoane) {
 		Telefoane = telefoane;
 	}
-	public List<String> getEmailuri() {
+	/*public List<String> getEmailuri() {
 		return Emailuri;
 	}
 	public void setEmailuri(List<String> emailuri) {
 		Emailuri = emailuri;
-	}
+	}*/
 	/**
 	 * @return the idContact
 	 */
@@ -97,7 +105,7 @@ public class Departament implements Serializable{
 	public Departament(Integer id, String denumire, String atributii) {
 		super();
 		
-		Id = id;
+		Idd = id;
 		Denumire = denumire;
 		Atributii = atributii;
 		
@@ -106,4 +114,29 @@ public class Departament implements Serializable{
 	public Departament() {
 		super();	
 	}
+	public Departament(Integer id, String denumire, String atributii,
+			Collection<Divizie> divDepartament, Collection<Persoana> pers,
+			String telefoane) {
+		super();     //List<String> emailuri
+		Idd = id;
+		Denumire = denumire;
+		Atributii = atributii;
+		setDivDepartament(divDepartament);
+		this.setPers(pers);
+		Telefoane = telefoane;
+		//Emailuri = emailuri;
+	}
+	public Collection<Persoana> getPers() {
+		return pers;
+	}
+	public void setPers(Collection<Persoana> pers) {
+		this.pers = pers;
+	}
+	public Collection<Divizie> getDivDepartament() {
+		return DivDepartament;
+	}
+	public void setDivDepartament(Collection<Divizie> divDepartament) {
+		DivDepartament = divDepartament;
+	}
+	
 }

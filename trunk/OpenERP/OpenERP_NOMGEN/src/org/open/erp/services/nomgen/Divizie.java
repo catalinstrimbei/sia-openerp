@@ -4,16 +4,12 @@
 package org.open.erp.services.nomgen;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  * @author Echipa NomGen
@@ -23,30 +19,34 @@ import javax.persistence.OneToMany;
 @Entity
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Divizie extends Departament implements Serializable{
-	 @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer Id;
-	 @ManyToOne @JoinColumn(name = "Id")
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	//private Integer Id;
+	 @ManyToOne @JoinColumn(name = "DivDepartament")
+	// @Column(name="IdDepartament")
 	private Departament IdDepartament;
+	 
 	private String denumire;
 	private String atributii;
 	
-	private List<String> telefoane;
 	
-	private List<String> emailuri;
 	
 	/**
 	 * @return the id
 	 */
 	//@Id
-	public Integer getId() {
-		return Id;
-	}
+	//public Integer getId() {
+		//return Id;
+	//}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
-		Id = id;
-	}
+	//public void setId(Integer id) {
+		//Id = id;
+	//}
 	/**
 	 * @return the idDepartament
 	 */
@@ -86,16 +86,16 @@ public class Divizie extends Departament implements Serializable{
 	
 	
 	
-	public Divizie(Integer id, String denumire, String atributii, Persoana idContact) {
+	public Divizie( String denumire, String atributii, Persoana idContact) {
 		super();
 		
 	}
 	
-	public Divizie(Integer id, Departament dep, String denumire,
+	public Divizie( Departament dep, String denumire,
 			String atributii) {
 		super();
 		
-		this.Id = id;
+		//this.Id = id;
 		
 		this.denumire = denumire;
 		this.atributii = atributii;

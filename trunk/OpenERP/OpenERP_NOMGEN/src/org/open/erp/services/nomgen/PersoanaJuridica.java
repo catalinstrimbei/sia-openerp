@@ -14,12 +14,15 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class PersoanaJuridica extends Persoana implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String  denumire;
 	private String  codFiscal;
 	private String  nrInmatriculareFiscala;
 	private String  atributFiscal;
-	private List<String> telefoane;
-	private List<String> emailuri;
+
 	
 	@OneToOne @JoinColumn(name= "id")
 	private Persoana p;
@@ -84,21 +87,7 @@ public class PersoanaJuridica extends Persoana implements Serializable{
 		this.atributFiscal = atributFiscal;
 	}
 	
-	public List<String> getTelefoane() {
-		return telefoane;
-	}
 
-	public void setTelefoane(List<String> telefoane) {
-		this.telefoane = telefoane;
-	}
-
-	public List<String> getEmailuri() {
-		return emailuri;
-	}
-
-	public void setEmailuri(List<String> emailuri) {
-		this.emailuri = emailuri;
-	}
 
 	public Persoana getP() {
 		return p;
@@ -119,17 +108,15 @@ public class PersoanaJuridica extends Persoana implements Serializable{
 	
 	
 	public PersoanaJuridica(Integer id, Departament dep, String adresa,
-			List<String> telefoane, List<String> emailuri, String denumire,
+			 String denumire,
 			String codFiscal, String nrInmatriculareFiscala,
-			String atributFiscal, List<String> telefoane2,
-			List<String> emailuri2, Persoana p) {
+			String atributFiscal,  Persoana p) {
 		super(id, dep, adresa, telefoane, emailuri);
 		this.denumire = denumire;
 		this.codFiscal = codFiscal;
 		this.nrInmatriculareFiscala = nrInmatriculareFiscala;
 		this.atributFiscal = atributFiscal;
-		telefoane = telefoane2;
-		emailuri = emailuri2;
+
 		this.p = p;
 	}
 

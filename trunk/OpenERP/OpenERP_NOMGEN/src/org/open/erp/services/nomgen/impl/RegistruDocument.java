@@ -1,10 +1,14 @@
-package org.open.erp.services.nomgen;
+package org.open.erp.services.nomgen.impl;
 
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 import javax.persistence.EntityManager;
+
+import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.nomgen.Material;
 
 
 public class RegistruDocument {

@@ -15,9 +15,15 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class MateriePrima extends Material implements Serializable{
-//@Id @GeneratedValue
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//@Id @GeneratedValue
 	private Integer id;
-	private String  denumire;
+  
+	private String  denumireMateriePrima;
+    
 	private String  unitateMasura;
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
@@ -54,14 +60,14 @@ public class MateriePrima extends Material implements Serializable{
 	 * @return the denumire
 	 */
 	public String getDenumire() {
-		return denumire;
+		return denumireMateriePrima;
 	}
 
 	/**
 	 * @param denumire the denumire to set
 	 */
 	public void setDenumire(String denumire) {
-		this.denumire = denumire;
+		this.denumireMateriePrima = denumire;
 	}
 
 	
@@ -114,7 +120,7 @@ public class MateriePrima extends Material implements Serializable{
 		super();
 		
 		this.id = id;
-		this.denumire = denumire;
+		this.denumireMateriePrima = denumire;
 		this.unitateMasura = unitateMasura;
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;

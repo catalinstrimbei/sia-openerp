@@ -1,4 +1,4 @@
-package org.open.erp.services.nomgen;
+package org.open.erp.services.nomgen.impl;
 
 
 import java.util.ArrayList;
@@ -8,6 +8,11 @@ import java.util.Random;
 import java.util.TreeSet;
 
 import javax.persistence.EntityManager;
+
+import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.nomgen.MateriePrima;
+import org.open.erp.services.nomgen.MijlocFix;
+import org.open.erp.services.nomgen.Produs;
 
 
 public class RegistruProdus {

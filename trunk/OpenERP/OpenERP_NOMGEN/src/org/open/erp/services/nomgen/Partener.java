@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import javax.persistence.Id;
-
 /**
  * @author Echipa NomGen
  * @BusinessObject(Entity)
@@ -18,6 +16,10 @@ import javax.persistence.Id;
 
 @Entity
 public class Partener extends Persoana implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//@Id @GeneratedValue
 	//private Integer id;
 	@OneToOne @JoinColumn(name= "id")
@@ -93,7 +95,7 @@ public class Partener extends Persoana implements Serializable{
 		this.p = p;
 	}
 	public Partener(Integer id, Departament dep, String adresa,
-			List<String> telefoane, List<String> emailuri, Integer id2,
+			 Integer id2,
 			Persoana p, Date dataAfilierii, Integer durataAfilierii) {
 		super(id, dep, adresa, telefoane, emailuri);
 		id = id2;

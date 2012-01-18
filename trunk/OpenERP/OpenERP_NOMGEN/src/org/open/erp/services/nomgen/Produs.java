@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Produs extends Material implements Serializable{
 	private Integer id;
-	private String  denumire;
+	private String  denProd;
 	private String  unitateMasura;
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
@@ -23,7 +23,7 @@ public class Produs extends Material implements Serializable{
 	private Float procentTVA;
 	private static final long serialVersionUID = 1L;
 	
-	 @ManyToOne @JoinColumn(name = "idMaterial")
+	 @ManyToOne @JoinColumn(name = "prod")
 	 private Material mat;
 	public Float getProcentTVA() {
 		return procentTVA;
@@ -52,14 +52,14 @@ public class Produs extends Material implements Serializable{
 	 * @return the denumire
 	 */
 	public String getDenumire() {
-		return denumire;
+		return denProd;
 	}
 
 	/**
 	 * @param denumire the denumire to set
 	 */
-	public void setDenumire(String denumire) {
-		this.denumire = denumire;
+	public void setDenumire(String den) {
+		this.denProd = den;
 	}
 
 	
@@ -124,11 +124,11 @@ public class Produs extends Material implements Serializable{
 		this.mat = mat;
 	}
 
-	public Produs(Integer id, String denumire, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate) {
+	public Produs(Integer id, String den, String unitateMasura, Date dataFabricatiei, Integer termenValabilitate) {
 		super();
 		
 		this.id = id;
-		this.denumire = denumire;
+		this.denProd = den;
 		this.unitateMasura = unitateMasura;
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;
@@ -138,10 +138,10 @@ public class Produs extends Material implements Serializable{
 		super();
 	}
 
-	public Produs(Integer id, String denumire, String uM, Date dataFabricatiei, Integer termenValabilitate, Float procentTVA, Double pretVanzare){
+	public Produs(Integer id, String den, String uM, Date dataFabricatiei, Integer termenValabilitate, Float procentTVA, Double pretVanzare){
 		super();
 		this.id = id;
-		this.denumire = denumire;
+		this.denProd = den;
 		this.unitateMasura = uM;
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;
@@ -154,7 +154,7 @@ public class Produs extends Material implements Serializable{
 			float f, float g, String string3, double d) {
 		super();
 		this.id = id;
-		this.denumire = denumire;
+		this.denProd = denProd;
 		//this.unitateMasura = uM;
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;
@@ -162,14 +162,14 @@ public class Produs extends Material implements Serializable{
 		this.pretVanzare = pretVanzare;
 	}
 
-	public Produs(Integer idMaterial, String denumire, String categorie,
-			String uM, String tipContabil, Integer id, String denumire2,
+	public Produs(Integer idMaterial, String denn, String categorie,
+			String uM, String tipContabil, Integer id, String den,
 			String unitateMasura, Date dataFabricatiei,
 			Integer termenValabilitate, Double pretVanzare, Float procentTVA,
 			Material mat) {
-		super(idMaterial, denumire, categorie, uM, tipContabil);
+		super(idMaterial, denn, categorie, uM, tipContabil);
 		this.id = id;
-		denumire = denumire2;
+		this.denProd = den;
 		this.unitateMasura = unitateMasura;
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;

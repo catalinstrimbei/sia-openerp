@@ -10,7 +10,14 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre6"/>
 	<classpathentry exported="true" kind="lib" path="Resources/ojdbc14.jar"/>
-	<classpathentry kind="lib" path="lib/javax.persistence_2.0.0.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-entitymanager-3.5.0-Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/javax.persistence_2.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hibernate-entitymanager-3.5.0-Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/APTDemo.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

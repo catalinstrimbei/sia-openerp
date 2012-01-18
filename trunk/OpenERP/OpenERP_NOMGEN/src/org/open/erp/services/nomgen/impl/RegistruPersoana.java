@@ -1,10 +1,15 @@
-package org.open.erp.services.nomgen;
+package org.open.erp.services.nomgen.impl;
 
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 import javax.persistence.EntityManager;
+
+import org.open.erp.services.nomgen.Partener;
+import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.nomgen.PersoanaJuridica;
 
 
 

@@ -1,17 +1,11 @@
 package org.open.erp.services.nomgen;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
-
-
-import org.hibernate.annotations.Fetch;
 /*
  * @author Echipa NomGen
  * @BusinessObject(Entity)
@@ -21,6 +15,10 @@ import java.util.*;
 @Entity
 
 public class Document implements Serializable{  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private Integer nrDocument;         
 	private Date dataDocument; 
@@ -31,7 +29,7 @@ public class Document implements Serializable{
 	private String observatie;   
 	
 	@OneToMany(mappedBy="document", cascade = CascadeType.ALL)
-	private List<LinieDocument> liniiDocument = new ArrayList<LinieDocument>();
+	private Collection<LinieDocument> liniiDocument;
 	
 	
 
@@ -56,25 +54,23 @@ public class Document implements Serializable{
 	public void addLinie(LinieDocument linieDocument) {
 		liniiDocument.add(linieDocument);
 	}
-	@Transient
+	
 	public int getLiniiDocumentCount() {
 		return liniiDocument.size();
 	}
 	
 
 	
-	public List<LinieDocument> getLiniiDocument(){
+	public Collection<LinieDocument> getLiniiDocument(){
 		return liniiDocument;
 	}
 	
 	
-	public void setLiniiDocument(List<LinieDocument> liniiDocument) {
+	public void setLiniiDocument(Collection<LinieDocument> liniiDocument) {
 		this.liniiDocument = liniiDocument;
 	}
 
-	public LinieDocument getLinieDocumentAt(int index) {
-		return liniiDocument.get(index);
-	}
+
 	
 	public void removeLinieDocument(LinieDocument linieDocument) {
 		liniiDocument.remove(linieDocument);
@@ -85,7 +81,7 @@ public class Document implements Serializable{
 	}
 	
 	
-    @Id
+   
 	public Integer getNrDoc() {               
 		return nrDocument;          
 		}         

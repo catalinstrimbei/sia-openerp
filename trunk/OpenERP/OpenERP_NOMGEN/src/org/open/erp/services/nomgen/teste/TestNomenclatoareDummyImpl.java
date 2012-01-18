@@ -2,7 +2,6 @@ package org.open.erp.services.nomgen.teste;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -13,7 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
-import javax.ejb.TransactionManagement;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -26,10 +24,7 @@ import org.open.erp.services.nomgen.MateriePrima;
 import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.Partener;
 import org.open.erp.services.nomgen.Departament;
-import org.open.erp.services.nomgen.Divizie;
-
 import org.open.erp.services.nomgen.Banca;
-import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
 import org.open.erp.services.nomgen.logger.NomgenLogger;
 
 
@@ -43,14 +38,19 @@ public class TestNomenclatoareDummyImpl{
 
 	@Before
 	public void setUp() throws Exception {
-		logger = new NomgenLogger();
-		instance = new NomenclatoareDummyImpl();
-		assertNotNull(instance);		
-		assertTrue(instance instanceof NomenclatoareDummyImpl);
+		//logger = new NomgenLogger();
+	//	instance = new NomenclatoareDummyImpl();
+	//	assertNotNull(instance);		
+		//assertTrue(instance instanceof NomenclatoareDummyImpl);
 		
+		//InitialContext ctx = initJBossJNDICtx();
+	//	instance = (NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
+		//logger.logINFO("test initial" + instance);
+		
+		logger = new NomgenLogger();
 		InitialContext ctx = initJBossJNDICtx();
-		instance = (NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
-		logger.logINFO("test initial" + instance);
+		instance = (NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");		
+		logger.logINFO("initTest " + instance);
 	}
 	
 	private static InitialContext initJBossJNDICtx() throws NamingException{

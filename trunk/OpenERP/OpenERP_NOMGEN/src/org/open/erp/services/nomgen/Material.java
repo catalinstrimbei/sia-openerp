@@ -2,14 +2,15 @@ package org.open.erp.services.nomgen;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 
 import javax.persistence.Id;
+
+import org.hibernate.annotations.CollectionOfElements;
 
 
 /*
@@ -19,9 +20,12 @@ import javax.persistence.Id;
 @Entity
 
 public class Material implements Serializable{ 
-	@Id @GeneratedValue
+	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idMaterial; 
-	private String denumire; 
+	
+	private String denumireMaterial; 
 	private String categorie;  
 	private String UM; 
 	
@@ -29,20 +33,19 @@ public class Material implements Serializable{
 	private String tipContabil;
 	private static final long serialVersionUID = 1L;
 	@OneToMany(mappedBy="mat", cascade = CascadeType.ALL)
-	private List<Produs> prod;
+	@CollectionOfElements
+	private Collection<Produs> prod;
 	
 	public Material (Integer idMaterial, String denumire, 
 			    String categorie, String uM, String tipContabil) {   
 		super();      
 		this.idMaterial = idMaterial;       
-		this.denumire = denumire;        
+		this.denumireMaterial = denumire;        
 		this.categorie = categorie;      
 		UM = uM;       
 		//this.stocCurent = stocCurent; 
 		this.tipContabil = tipContabil;
 	
-		
-		
 		}  
 	
 	
@@ -55,28 +58,28 @@ public class Material implements Serializable{
 	public Material(Integer idMaterial, String denumire, String uM) {
 		super();
 		this.idMaterial = idMaterial;
-		this.denumire = denumire;
+		this.denumireMaterial = denumire;
 		UM = uM;
 	}
 	
 	public Material(Integer idMaterial, String denumire, String categorie,
-			String uM, String tipContabil, List<Produs> prod) {
+			String uM, String tipContabil, Collection<Produs> prod) {
 		super();
 		this.idMaterial = idMaterial;
-		this.denumire = denumire;
+		this.denumireMaterial = denumire;
 		this.categorie = categorie;
 		UM = uM;
 		this.tipContabil = tipContabil;
 		this.prod = prod;
 	}
 
-
-	public List<Produs> getProd() {
+	//@CollectionOfElements 
+	public Collection<Produs> getProd() {
 		return prod;
 	}
 
 
-	public void setProd(List<Produs> prod) {
+	public void setProd(Collection<Produs> prod) {
 		this.prod = prod;
 	}
 
@@ -89,7 +92,7 @@ public class Material implements Serializable{
         return tipContabil;
     }
 
-	@Id
+
 	public Integer getIdMaterial() {     
 		return idMaterial; 
 		}  
@@ -97,10 +100,10 @@ public class Material implements Serializable{
 		this.idMaterial = idMaterial;  
 		}  
 	public String getDenumire() {      
-		return denumire;
+		return denumireMaterial;
 		} 
-	public void setDenumire(String denumire) {    
-		this.denumire = denumire;  
+	public void setDenumire(String denumireM) {    
+		this.denumireMaterial = denumireM;  
 		} 
 	public String getCategorie() {   
 		return categorie; 
