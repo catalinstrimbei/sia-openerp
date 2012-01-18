@@ -22,7 +22,7 @@ public class RegistruLinieOfertaAchizitie extends Registru{
 	
 	@Override
 	public <T> List<T> getListaByClasa(Class<T> clasa) {
-		return em.createQuery(SQL_DEFAULT + "INNER JOIN  OfertaAchizitie o ON lo.id_OfertaAchizitie = o.id_OfertaAchizitie WHERE o.statusOferta:=0" ).getResultList();
+		return em.createQuery(SQL_DEFAULT + "OfertaAchizitie o WHERE lo.id_OfertaAchizitie = o.id_OfertaAchizitie AND o.statusOferta:=0" ).getResultList();
 	}
 
 }

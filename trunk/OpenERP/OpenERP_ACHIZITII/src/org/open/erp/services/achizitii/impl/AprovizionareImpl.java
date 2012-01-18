@@ -1,10 +1,11 @@
 package org.open.erp.services.achizitii.impl;
 
+
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
@@ -30,6 +31,15 @@ import org.open.erp.services.achizitii.LiniePlanAprovizionare;
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
+import org.open.erp.services.achizitii.registri.RegistruArticol;
+import org.open.erp.services.achizitii.registri.RegistruComanda;
+import org.open.erp.services.achizitii.registri.RegistruFactura;
+import org.open.erp.services.achizitii.registri.RegistruLinieComanda;
+import org.open.erp.services.achizitii.registri.RegistruLinieOfertaAchizitie;
+import org.open.erp.services.achizitii.registri.RegistruLiniePlanAprovizionare;
+import org.open.erp.services.achizitii.registri.RegistruOfertaAchizitie;
+import org.open.erp.services.achizitii.registri.RegistruPlanAprovizionare;
+import org.open.erp.services.achizitii.teste.TestAprovizionareImpl;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
@@ -50,25 +60,143 @@ import com.sun.xml.ws.developer.Stateful;
 
 @Stateful
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class AprovizionareImpl implements AprovizionareSrv,
-		PropertyChangeListener, AprovizionareSrvLocal, AprovizionareSrvRemote {
-
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
-			.getLogger(AprovizionareImpl.class.getName());
-	
+public class AprovizionareImpl implements AprovizionareSrv, AprovizionareSrvLocal, AprovizionareSrvRemote {
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestAprovizionareImpl.class.getName());
 	@EJB(mappedName = "ContabilizareSrvImpl/local")
 	 private ContabilizareSrv contabilizareSrv;
 	
 	@EJB(mappedName = "StocuriSrvImpl/local")
 	 private StocuriSrv stocuriSrv;
 	
+	
+	
 	@PersistenceContext(unitName = "OpenERP_Achizitii")
-	 private EntityManager entityManager;
+	 private EntityManager em;
 	
 	@Resource
 	 private SessionContext sessionContext;
+	 private org.open.erp.services.achizitii.registri.RegistruArticol registruArticol;
+	 private org.open.erp.services.achizitii.registri.RegistruComanda registruComanda;
+	 private org.open.erp.services.achizitii.registri.RegistruFactura registruFactura;
+	 private org.open.erp.services.achizitii.registri.RegistruLinieComanda registruLinieComanda;
+	 private org.open.erp.services.achizitii.registri.RegistruLinieOfertaAchizitie registruLinieOfertaAchizitie;
+	 private org.open.erp.services.achizitii.registri.RegistruLiniePlanAprovizionare registruLiniePlanAprovizionare;
+	 private org.open.erp.services.achizitii.registri.RegistruOfertaAchizitie registruOfertaAchizitie;
+	 private org.open.erp.services.achizitii.registri.RegistruPlanAprovizionare registruPlanAprovizionare;
 	
 	public AprovizionareImpl() {
+	}
+		
+	@PostConstruct
+	public void init(){
+		logger.debug("<<< EM >>> = " + em);		
+				
+		if (this.registruArticol == null)
+			registruArticol = new RegistruArticol(em);
+		
+		if (this.registruComanda == null)
+			registruComanda = new RegistruComanda(em);
+		
+		if (this.registruFactura == null)
+			registruFactura = new RegistruFactura(em);
+		
+		if (this.registruLinieComanda == null)
+			registruLinieComanda = new RegistruLinieComanda(em);
+		
+		if (this.registruLinieOfertaAchizitie == null)
+			registruLinieOfertaAchizitie = new RegistruLinieOfertaAchizitie(em);
+		
+		if (this.registruLiniePlanAprovizionare == null)
+			registruLiniePlanAprovizionare = new RegistruLiniePlanAprovizionare(em);
+		
+		if (this.registruOfertaAchizitie == null)
+			registruOfertaAchizitie = new RegistruOfertaAchizitie(em);
+		
+		if (this.registruPlanAprovizionare == null)
+			registruPlanAprovizionare = new RegistruPlanAprovizionare(em);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	@Override

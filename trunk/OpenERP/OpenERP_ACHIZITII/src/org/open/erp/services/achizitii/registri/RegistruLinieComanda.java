@@ -24,7 +24,7 @@ public class RegistruLinieComanda extends Registru{
 		
 		@Override
 		public <T> List<T> getListaByClasa(Class<T> clasa) {
-			return em.createQuery(SQL_DEFAULT + "INNER JOIN  Comanda o ON lo.id_Comanda = o.id_LinieComanda WHERE o.statusComanda:=0" ).getResultList();
+			return em.createQuery(SQL_DEFAULT + ", Comanda o WHERE lo.id_Comanda = o.id_LinieComanda AND o.statusComanda:=0" ).getResultList();
 		}
 
 }
