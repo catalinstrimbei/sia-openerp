@@ -167,4 +167,5 @@ public DummyProdus salveazaDummyProdus(DummyProdus produs) throws Exception;
 public Promotie getPromotie(Integer idPromotie);
 public DummyProdus getProdus(Integer idProdus);
 Discount getDiscount(Integer idDiscount);
+Chestionar getChestionar(Integer idChestionar);
 }

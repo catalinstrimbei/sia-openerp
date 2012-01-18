@@ -113,6 +113,11 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 //		return null;
 	}	
 	@Override
+	public Chestionar getChestionar(Integer idChestionar) {
+		return registruMarketing.getChestionar(idChestionar);
+//		return null;
+	}	
+	@Override
 	public PersoanaTinta getPersoanaTinta(Integer idPersoana) {
 		return registruMarketing.getPersoanaTinta(idPersoana);
 //		return null;

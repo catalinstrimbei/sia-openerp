@@ -57,6 +57,21 @@ public class RegistruMarketing {
 			}
 			return campanie;
 		}
+		
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+		public Chestionar getChestionar(Integer id){
+			Chestionar chestionar;
+			chestionar = entityManager.find(Chestionar.class, id);
+			try
+			{
+				chestionar.setListaIntrebari(this.getIntrebariByChestionar(chestionar));
+			}
+			catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+			}
+			return chestionar;
+		}
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
 		public DummyProdus getprodus(Integer id){
 			DummyProdus produs;
@@ -359,6 +374,23 @@ public class RegistruMarketing {
 				throw ex;
 			}
 			return persoaneTinta;
+		}
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+		public List<Intrebare> getIntrebariByChestionar(Chestionar chestionar) throws Exception{
+			
+			List<Intrebare> intrebari = new ArrayList<Intrebare>();
+			try{
+				intrebari = entityManager.createQuery("SELECT i FROM Intrebari i where i.idChestionar= :chestionar")
+												.setParameter("chestionar", chestionar)
+												.getResultList();
+				Hibernate.initialize(intrebari);
+				intrebari.size();
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return intrebari;
 		}
 	}
 

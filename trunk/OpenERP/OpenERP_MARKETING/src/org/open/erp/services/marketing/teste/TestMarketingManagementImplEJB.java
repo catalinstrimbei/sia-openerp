@@ -13,8 +13,10 @@ import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.marketing.Campanie;
+import org.open.erp.services.marketing.Chestionar;
 import org.open.erp.services.marketing.Discount;
 import org.open.erp.services.marketing.DummyProdus;
+import org.open.erp.services.marketing.Intrebare;
 import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.MarketingManagementSrvRemote;
@@ -22,6 +24,7 @@ import org.open.erp.services.marketing.PersoanaTinta;
 import org.open.erp.services.marketing.ProdusDiscount;
 import org.open.erp.services.marketing.ProduseAditionale;
 import org.open.erp.services.marketing.Promotie;
+import org.open.erp.services.marketing.RaspunsIntrebare;
 import org.open.erp.services.marketing.Responsabil;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 import org.open.erp.services.personal.Angajat;
@@ -186,6 +189,62 @@ public class TestMarketingManagementImplEJB {
 			logger.debug("Pretul final este " + pretFinal);
 			
 			logger.debug(">>>End test Get pret final by promotie");
+		}
+		
+		@Test
+		public void testdefinireChestionar() throws Exception{
+			Chestionar chestionar= new Chestionar();
+			
+			chestionar.setDenumireChestionar("Primul chestionar");
+			chestionar.setNumarIntrebari(3);
+			chestionar.setScopChestionar("Produs nou");
+			chestionar = marketingInstance.salveazaChestionar(chestionar);
+					
+			Intrebare	intrebare;
+			intrebare = new Intrebare();
+			intrebare.setTextIntrebare("Ce parere aveti despre noul produs?");
+			intrebare.setTipIntrebare("Un singur raspuns");
+			intrebare.setChestionar(chestionar);
+			intrebare = marketingInstance.salveazaIntrebare(intrebare);
+			RaspunsIntrebare raspuns;
+			raspuns = new RaspunsIntrebare(intrebare,"Foarte proasta");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			raspuns = new RaspunsIntrebare(intrebare, "Proasta");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			raspuns = new RaspunsIntrebare(intrebare, "Buna");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			raspuns = new RaspunsIntrebare(intrebare, "Foarte buna");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			
+			intrebare = new Intrebare();
+			intrebare.setTextIntrebare("Cat ati fi dispus sa platiti pentru noul produs?");
+			intrebare.setTipIntrebare("Un singur raspuns");
+			intrebare.setChestionar(chestionar);
+			intrebare = marketingInstance.salveazaIntrebare(intrebare);
+			raspuns = new RaspunsIntrebare(intrebare,"mai putin de 500 RON");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			raspuns = new RaspunsIntrebare(intrebare, "intre 500 - 600 RON");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			raspuns = new RaspunsIntrebare(intrebare, "intre 600 - 700 RON");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			raspuns = new RaspunsIntrebare(intrebare, "peste 700 RON");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			
+			intrebare = new Intrebare();
+			intrebare.setTextIntrebare("Ce credeti ca ar trebui imbunatatit la produs?");
+			intrebare.setTipIntrebare("Un singur raspuns");
+			intrebare.setChestionar(chestionar);
+			intrebare = marketingInstance.salveazaIntrebare(intrebare);
+			raspuns = new RaspunsIntrebare(intrebare,"Functionalitatea");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			raspuns = new RaspunsIntrebare(intrebare, "Aspectul");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			raspuns = new RaspunsIntrebare(intrebare, "");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			raspuns = new RaspunsIntrebare(intrebare, "peste 700 RON");
+			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
+			
+			chestionar = marketingInstance.getChestionar(1);
 		}
 		/* Test creare proiect: 
 		 * - procesare persistenta cu 2JPA-PU

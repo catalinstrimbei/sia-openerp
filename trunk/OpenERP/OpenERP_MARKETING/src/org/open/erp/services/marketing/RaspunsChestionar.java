@@ -26,11 +26,11 @@ public class RaspunsChestionar implements Serializable {
 	@Temporal(javax.persistence.TemporalType.DATE)
 	Date					dataRaspuns;
 	Chestionar				chestionar;
-	@OneToMany
-	@JoinTable(name="RaspunsIntrebare",
-	joinColumns = @JoinColumn (name="IdRaspunsIntrebare"),
-	inverseJoinColumns = @JoinColumn(name = "IdRaspuns"))
-	List<RaspunsIntrebare> raspunsuri = new ArrayList<RaspunsIntrebare>();
+	//@OneToMany(optional = true)
+	//@JoinTable(name="RaspunsIntrebare",
+	//joinColumns = @JoinColumn (name="IdRaspunsIntrebare"),
+	//inverseJoinColumns = @JoinColumn(name = "IdRaspuns"))
+	//List<RaspunsIntrebare> raspunsuri = new ArrayList<RaspunsIntrebare>();
 	//Map<Integer, List<String>>	raspunsuri = new HashMap<Integer, List<String>>();
 	
 	public RaspunsChestionar() {
@@ -96,16 +96,16 @@ public class RaspunsChestionar implements Serializable {
 	/**
 	 * @return the raspunsuri
 	 */
-	public List<RaspunsIntrebare> getRaspunsuri() {
-		return raspunsuri;
-	}
+	//public List<RaspunsIntrebare> getRaspunsuri() {
+	//	return raspunsuri;
+	//}
 
 	/**
 	 * @param raspunsuri the raspunsuri to set
 	 */
-	public void setRaspunsuri(List<RaspunsIntrebare> raspunsuri) {
-		this.raspunsuri = raspunsuri;
-	}
+	//public void setRaspunsuri(List<RaspunsIntrebare> raspunsuri) {
+	//	this.raspunsuri = raspunsuri;
+	//}
 	
 
 }
