@@ -4,11 +4,14 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
 			
-		<!--<jar-file>OpenERP_CONTABGEST.jar</jar-file>	-->
+
+
+		<jar-file>OpenERP_PERSONAL.jar</jar-file>	
+		<jar-file>OpenERP_PRODUCTIE.jar</jar-file>
+		
 		<class>org.open.erp.services.contabgest.ActivitateCentruCost</class>
 		<class>org.open.erp.services.contabgest.CentruCost</class>
 		<class>org.open.erp.services.contabgest.CosturiPrimare</class>
-		<class>org.open.erp.services.contabgest.InregistrareGestiune</class>
 		<class>org.open.erp.services.contabgest.LinieCost</class>
 		<class>org.open.erp.services.contabgest.Responsabil</class>
 		<class>org.open.erp.services.personal.Angajat</class>
