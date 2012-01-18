@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.open.erp.services.productie.ComandaProductie;
+
 /**
  * 
  * @author andreea.andronic, marius.borsan, andreea.zaharia, anca.zavate
@@ -14,7 +16,7 @@ import javax.persistence.Id;
  * 
  */
 @Entity
-public class CosturiPrimare implements Serializable {
+public class CosturiPrimare extends ComandaProductie implements Serializable {
 	/**
 	 * 
 	 */
@@ -24,7 +26,7 @@ public class CosturiPrimare implements Serializable {
 	@GeneratedValue
 	private Integer idCostPrimar;
 	
-	private String tipCost; // de tip comanda sau din stocuri
+	private String tipCost; 
 	private Double valoareCost;
 
 	// /luam din comenzi si stocuri
@@ -88,6 +90,7 @@ public class CosturiPrimare implements Serializable {
 	}
 
 	public void setValoareCost(Double valoareCost) {
+		
 		this.valoareCost = valoareCost;
 	}
 

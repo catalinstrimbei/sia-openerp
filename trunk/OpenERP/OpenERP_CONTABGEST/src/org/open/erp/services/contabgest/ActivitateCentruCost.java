@@ -55,6 +55,7 @@ public class ActivitateCentruCost extends LinieCost implements Serializable, Act
 	private Double costActivitate;
 	
 	@ManyToOne
+	@JoinColumn(name="marca")
 	private Angajat responsabil;
 	
 	@Temporal(TIMESTAMP)

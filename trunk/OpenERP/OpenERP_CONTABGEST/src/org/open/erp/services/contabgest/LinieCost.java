@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -29,6 +30,7 @@ public class LinieCost implements Serializable {
 	protected Integer idLinieCost;
 	
 	@ManyToOne
+	@JoinColumn(name="idCostPrimar")
 	protected CosturiPrimare costuriPrimare;
 	protected Double valoareAprovizionareExterna; // comanda
 	protected Double valoareAprovizionareInterna; // val consumata--consum

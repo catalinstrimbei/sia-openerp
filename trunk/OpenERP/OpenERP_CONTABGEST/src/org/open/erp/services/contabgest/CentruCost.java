@@ -13,6 +13,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -61,9 +62,10 @@ public class CentruCost implements Serializable {
 	
 	// Costuri primare
 	@ManyToOne
+	@JoinColumn(name="idCostPrimar")
 	private CosturiPrimare costuriPrimare;
 	
-	@OneToMany (mappedBy = "centruCost", targetEntity = ActivitateCentruCost.class, cascade=ALL)
+	@OneToMany (mappedBy = "centruCost", targetEntity = ActivitateCentruCost.class)
 	List <Activitate> activitati = new ArrayList<Activitate>();
 
 	
