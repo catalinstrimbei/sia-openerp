@@ -8,6 +8,7 @@
 
 		<jar-file>OpenERP_PERSONAL.jar</jar-file>	
 		<jar-file>OpenERP_PRODUCTIE.jar</jar-file>
+		<jar-file> OpenERP_ACHIZITII.jar</jar-file>
 		
 		<class>org.open.erp.services.contabgest.ActivitateCentruCost</class>
 		<class>org.open.erp.services.contabgest.CentruCost</class>
