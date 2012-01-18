@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.nomgen.PersoanaFizica;
 
 /**
  * 
@@ -35,7 +36,7 @@ public class BiletLaOrdin extends Incasare implements Serializable{
 	private static Long intervalValabilitate;
 	
 	@ManyToOne
-	private Persoana garant;
+	private PersoanaFizica garant;
 	private String stare;
 
 	public Date getDataScadenta() {

@@ -15,7 +15,7 @@
 		<class>org.open.erp.services.incasari.Incasare</class>
 		<class>org.open.erp.services.vanzari.FacturaEmisa</class>
 		<class>org.open.erp.services.personal.Angajat</class>
-		<class>org.open.erp.services.nomgen.Persoana</class>
+		<class>org.open.erp.services.nomgen.PersoanaFizica</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<!--<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" 

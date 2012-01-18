@@ -55,9 +55,49 @@ public abstract class Incasare implements Serializable{
 
 	private String sumaInLitere;
 
-      @ManyToMany
+    @ManyToMany
 	@JoinTable(name = "Incasari_Facturi", joinColumns = @JoinColumn(name = "idIncasare"), inverseJoinColumns = @JoinColumn(name = "idFactura"))
 	private List<FacturaEmisa> facturi = new ArrayList<FacturaEmisa>();
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((dataInregistrarii == null) ? 0 : dataInregistrarii
+						.hashCode());
+		result = prime * result + ((numar == null) ? 0 : numar.hashCode());
+		result = prime * result + ((seria == null) ? 0 : seria.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Incasare other = (Incasare) obj;
+		if (dataInregistrarii == null) {
+			if (other.dataInregistrarii != null)
+				return false;
+		} else if (!dataInregistrarii.equals(other.dataInregistrarii))
+			return false;
+		if (numar == null) {
+			if (other.numar != null)
+				return false;
+		} else if (!numar.equals(other.numar))
+			return false;
+		if (seria == null) {
+			if (other.seria != null)
+				return false;
+		} else if (!seria.equals(other.seria))
+			return false;
+		return true;
+	}
 
 	public String getMoneda() {
 		return moneda;

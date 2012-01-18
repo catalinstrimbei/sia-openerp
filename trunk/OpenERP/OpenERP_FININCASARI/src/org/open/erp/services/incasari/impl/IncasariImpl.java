@@ -97,7 +97,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 
 		// Se efectueaza inregistrarea platii in contabilitate pe baza chitantei
 		// Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o
-		// noua chitanta pe baza unei facturi
+		// noua chitanta pe baza unei sau a mai multor facturi
 		if (sumaIncasata == null || sumaIncasata == 0.00) {
 			throw new IncasariException("Suma incasarii nu poate fi nula!");
 		}
