@@ -105,14 +105,13 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 
 		List<FacturaEmisa> facturiSelectate = new ArrayList<FacturaEmisa>(0);
 
-		Calendar currentDate = Calendar.getInstance();
-		Date dataInregistrarii = currentDate.getTime();
+		Date dataInregistrarii = new Date();
 
 		chitanta = new Chitanta(dataEmiterii, avans, dataInregistrarii,
 				sumaIncasata, sumaIncasataLitere, seria, numar, locatie, casier);
 
 		if (facturi.size() == 0) {
-			facturi = vanzariSrv.getFacturiClient(client);
+			 facturi = vanzariSrv.getFacturiClient(client);
 		}
 		if (!moneda.equals("RON")) {
 			sumaIncasata = getSumaRON(moneda, sumaIncasata, curs);
@@ -133,22 +132,12 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 
 		// inregistrarea in contabilitate a platii se face in functie de tipul
 		// incasarii
+		TipIncasare tipIncasare = TipIncasare.CASA;
 		try {
 			if (avans) {
-
-				ctbSrv.jurnalizareIncasare(dataInregistrarii, sumaIncasata,
-						numar, TipIncasare.AVANSC, client.getId(), 401,
-						StareDocument.NOU, null);
-
+				tipIncasare = TipIncasare.AVANSC;
 			}
-
-			else {
-
-				ctbSrv.jurnalizareIncasare(dataInregistrarii, sumaIncasata,
-						numar, TipIncasare.CASA, client.getId(), 401,
-						StareDocument.NOU, null);
-
-			}
+			jurnalizareIncasareNoua(chitanta, tipIncasare, 401);
 
 		} catch (Exception e) {
 			throw new IncasariException(e.getMessage());
@@ -170,43 +159,30 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		// Jurnalizeaza notele contabile aferente efectuarii unei plati, in
 		// functie de
 		// documentul de plata(cec sau bilet la ordin)
-		Calendar currentDate = Calendar.getInstance();
-		Date dataInregistrarii = currentDate.getTime();
+
+		TipIncasare tipIncasare = null;
 
 		if (doc instanceof Cec) {
 
 			((Cec) doc).setStare("incasat");
-			if (sessionContext.getRollbackOnly() == true) {
-				logger.debug("FAILED TRANSACTION");
-			} else {
-				try {
-					doc = (Cec) this.registru.salveazaIncasare(doc);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			ctbSrv.jurnalizareIncasare(dataInregistrarii, doc.getSuma(),
-					doc.getNumar(), TipIncasare.CEC, doc.getFacturi().get(0)
-							.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
-
+			tipIncasare = TipIncasare.CEC;
 		} else if (doc instanceof BiletLaOrdin) {
 
 			((BiletLaOrdin) doc).setStare("incasat");
-
-			if (sessionContext.getRollbackOnly() == true) {
-				logger.debug("FAILED TRANSACTION");
-			} else {
-				try {
-					doc = (BiletLaOrdin) this.registru.salveazaIncasare(doc);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			ctbSrv.jurnalizareIncasare(dataInregistrarii, doc.getSuma(),
-					doc.getNumar(), TipIncasare.BO, doc.getFacturi().get(0)
-							.getClient().getId(), 0, StareDocument.MODIFICAT, 0);
+			tipIncasare = TipIncasare.BO;
 		}
+
+		if (sessionContext.getRollbackOnly() == true) {
+			logger.debug("FAILED TRANSACTION");
+		} else {
+			try {
+				this.registru.salveazaIncasare(doc);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		jurnalizareIncasareModificata(doc, tipIncasare, 0);
 
 	}
 
@@ -217,33 +193,25 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	@Override
 	public void confirmareDepunereLaBanca(Incasare doc) {
 		// Jurnalizarea depunerii cec-ului sau biletului la ordin
+
 		if (doc instanceof Cec) {
+
 			((Cec) doc).setStare("depus");
-			if (sessionContext.getRollbackOnly() == true) {
-				logger.debug("FAILED TRANSACTION");
-			} else {
-				try {
-					doc = (BiletLaOrdin) this.registru.salveazaIncasare(doc);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
 		} else if (doc instanceof BiletLaOrdin) {
-			((BiletLaOrdin) doc).setStare("depus");
-			// Se schimba starea documentului in "depus"
 
-			if (sessionContext.getRollbackOnly() == true) {
-				logger.debug("FAILED TRANSACTION");
-			} else {
-				try {
-					doc = (BiletLaOrdin) this.registru.salveazaIncasare(doc);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+			((BiletLaOrdin) doc).setStare("depus");
+		}
+		// Se schimba starea documentului in "depus"
+
+		if (sessionContext.getRollbackOnly() == true) {
+			logger.debug("FAILED TRANSACTION");
+		} else {
+			try {
+				this.registru.salveazaIncasare(doc);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
-
 	}
 
 	/**
@@ -287,26 +255,21 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		// Se constata imposibilitatea de plata a clientului, daca starea
 		// cec-ului sau biletului la ordin este "refuzat"
 		if (doc instanceof Cec) {
+
 			((Cec) doc).setStare("refuzat");
-			if (sessionContext.getRollbackOnly() == true) {
-				logger.debug("FAILED TRANSACTION");
-			} else {
-				try {
-					doc = (Cec) this.registru.salveazaIncasare(doc);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
 		} else if (doc instanceof BiletLaOrdin) {
+
 			((BiletLaOrdin) doc).setStare("refuzat");
-			if (sessionContext.getRollbackOnly() == true) {
-				logger.debug("FAILED TRANSACTION");
-			} else {
-				try {
-					doc = (BiletLaOrdin) this.registru.salveazaIncasare(doc);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		}
+		// Se schimba starea documentului in "refuzat"
+
+		if (sessionContext.getRollbackOnly() == true) {
+			logger.debug("FAILED TRANSACTION");
+		} else {
+			try {
+				this.registru.salveazaIncasare(doc);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -343,8 +306,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		}
 		Cec cec;
 		List<FacturaEmisa> facturiSelectate;
-		Calendar currentDate = Calendar.getInstance();
-		Date dataInregistrarii = currentDate.getTime();
+		Date dataInregistrarii = new Date();
 
 		if (!moneda.equals("RON")) {
 			suma = getSumaRON(moneda, suma, curs);
@@ -353,7 +315,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 				sumaInLitere, seria, numar, locatie, stare);
 
 		if (facturi.size() == 0) {
-			facturi = vanzariSrv.getFacturiClient(client);
+			 facturi = vanzariSrv.getFacturiClient(client);
 		}
 		facturiSelectate = compensariIncasariFacturi(facturi, suma);
 
@@ -381,7 +343,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 	public BiletLaOrdin inregistrareBiletLaOrdin(Date dataEmiterii,
 			Boolean avans, Client client, String seria, Integer numar,
 			String locatie, String stare, List<FacturaEmisa> facturi,
-			Persoana garant, Date dataScadenta, Double suma,
+			PersoanaFizica garant, Date dataScadenta, Double suma,
 			String sumaInLitere, String moneda, Double curs)
 			throws IncasariException {
 		// Se efectueaza inregistrarea platii in contabilitate pe baza unui
@@ -394,8 +356,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		}
 		BiletLaOrdin bo;
 		List<FacturaEmisa> facturiSelectate;
-		Calendar currentDate = Calendar.getInstance();
-		Date dataInregistrarii = currentDate.getTime();
+		Date dataInregistrarii = new Date();
 
 		if (!moneda.equals("RON")) {
 			suma = getSumaRON(moneda, suma, curs);
@@ -406,7 +367,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 				stare);
 
 		if (facturi.size() == 0) {
-			facturi = vanzariSrv.getFacturiClient(client);
+			 facturi = vanzariSrv.getFacturiClient(client);
 		}
 		facturiSelectate = compensariIncasariFacturi(facturi, suma);
 
@@ -447,8 +408,7 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		}
 		ExtrasCont extrasCont;
 		List<FacturaEmisa> facturiSelectate;
-		Calendar currentDate = Calendar.getInstance();
-		Date dataInregistrarii = currentDate.getTime();
+		Date dataInregistrarii = new Date();
 
 		if (!moneda.equals("RON")) {
 			suma = getSumaRON(moneda, suma, curs);
@@ -476,5 +436,23 @@ public class IncasariImpl implements IncasariSrvLocal, IncasariSrvRemote {
 		}
 
 		return extrasCont;
+	}
+	
+	
+	void jurnalizareIncasareNoua(Incasare incasare, TipIncasare tipIncasare,
+			Integer cont) {
+		ctbSrv.jurnalizareIncasare(incasare.getDataInregistrarii(),
+				incasare.getSuma(), incasare.getNumar(), tipIncasare, incasare
+						.getFacturi().get(0).getClient().getIdClient(), cont,
+				StareDocument.NOU, null);
+	}
+
+	void jurnalizareIncasareModificata(Incasare incasare,
+			TipIncasare tipIncasare, Integer cont) {
+		ctbSrv.jurnalizareIncasare(incasare.getDataInregistrarii(),
+				incasare.getSuma(), incasare.getNumar(), tipIncasare, incasare
+						.getFacturi().get(0).getClient().getIdClient(), cont,
+				StareDocument.MODIFICAT, null);
+
 	}
 }

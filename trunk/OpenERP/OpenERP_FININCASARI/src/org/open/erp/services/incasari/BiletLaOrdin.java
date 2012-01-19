@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
-import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
 
 /**
@@ -66,7 +65,7 @@ public class BiletLaOrdin extends Incasare implements Serializable{
 	public BiletLaOrdin(Date dataEmiterii, Boolean avans,
 			Date dataInregistrarii, Double suma, String sumaInLitere,
 			String seria, Integer numar, String locatie,
-			 Date dataScadenta, Persoana garant,
+			 Date dataScadenta, PersoanaFizica garant,
 			String stare) {
 		super(dataEmiterii, avans, dataInregistrarii, suma, sumaInLitere,
 				seria, numar, locatie);
@@ -78,7 +77,7 @@ public class BiletLaOrdin extends Incasare implements Serializable{
 	public BiletLaOrdin(Integer idIncasare, Date dataEmiterii, Boolean avans,
 			Date dataInregistrarii, Double suma, String sumaInLitere,
 			String seria, Integer numar, String locatie, Date dataScadenta,
-			Persoana garant, String stare) {
+			PersoanaFizica garant, String stare) {
 		super(idIncasare, dataEmiterii, avans, dataInregistrarii, suma,
 				sumaInLitere, seria, numar, locatie);
 		this.dataScadenta = dataScadenta;
@@ -86,11 +85,11 @@ public class BiletLaOrdin extends Incasare implements Serializable{
 		this.stare = stare;
 	}
 
-	public Persoana getGarant() {
+	public PersoanaFizica getGarant() {
 		return garant;
 	}
 
-	public void setGarant(Persoana garant) {
+	public void setGarant(PersoanaFizica garant) {
 		this.garant = garant;
 	}
 
