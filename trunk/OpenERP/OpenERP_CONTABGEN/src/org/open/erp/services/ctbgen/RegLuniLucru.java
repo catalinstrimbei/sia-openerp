@@ -104,19 +104,35 @@ public class RegLuniLucru extends Registru{
 	
 
 	
-	public void addLuna(LunaLucru luna) {
-		if (em.contains(luna))
-			em.merge(luna);
-		else
-			em.persist(luna);
+	public LunaLucru addLuna(LunaLucru luna) {
+		try{
+			if (luna.getIdLuna() == null || 
+				em.find(luna.getClass(), luna.getIdLuna()) == null)
+			{
+				em.persist(luna);
+				//System.out.println("add "+cont.getSimbolCont());
+			}
+			else{
+				em.merge(luna);
+				//System.out.println("merge "+cont.getSimbolCont());
+				}
+			
+		}catch(Exception ex){
+			System.out.println("EROARE PERSISTENTA *****add luna "+ ex.getMessage());
+			//ex.printStackTrace();
+		
+		}
 	
-		synchronize();
+	return luna;
 	}
+	
+	
+	
+	
 
 	public void removeLuna(LunaLucru luna) {
 		em.remove(luna);
 		
-		synchronize();
 	}
 	
 	public LunaLucru getLunaAnLuna(int luna, int an){
@@ -184,7 +200,7 @@ public class RegLuniLucru extends Registru{
 				 l.anuleazaInchidere();
 		}
 		
-		synchronize();
+		//synchronize();
 	}
 	
 	public void inchideLunaLucru (int idd){
@@ -194,7 +210,7 @@ public class RegLuniLucru extends Registru{
 				listaLuni.get(i).inchideLuna();
 			}
 				
-		synchronize();
+		//synchronize();
 	}
 	
 	//TODO: remove me

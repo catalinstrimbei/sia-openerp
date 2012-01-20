@@ -36,17 +36,40 @@ public class RegBalanta extends Registru{
 	
 	public List<Balanta> getBalanteLuna(LunaLucru luna) {
 		@SuppressWarnings("unchecked")
-		List<Balanta> result = em.createQuery("SELECT b FROM Balanta b where  b.lunaB = :lunn").setParameter("lunn", luna ).getResultList();
+		List<Balanta> result = em.createQuery(this.sqlDefaultText + " where  b.lunaB = :lunn").setParameter("lunn", luna ).getResultList();
 		return result;
 	}
 	
-	public void addBalanta(Balanta balanta) {
-		if (em.contains(balanta))
-				em.merge(balanta);
-		else
-			em.persist(balanta);
+	public Balanta getBalantaLunaCont(LunaLucru luna, Cont cont) {
 		
-		synchronize();
+		Balanta result =  (Balanta) em.createQuery("SELECT b FROM Balanta b where  b.lunaB = :lunn and b.contB = :contt").setParameter("lunn", luna ).setParameter("contt",cont).getSingleResult();
+//		if  (result!=null)
+//				return (Balanta) result;
+//		else
+		
+		return result;
+	}
+	
+	
+	public Balanta addBalanta(Balanta balanta) {
+		try{
+			if (balanta.getId() == null || 
+				em.find(balanta.getClass(), balanta.getId()) == null)
+			{
+				em.persist(balanta);
+				//System.out.println("add "+cont.getSimbolCont());
+			}
+			else{
+				em.merge(balanta);
+				//System.out.println("merge "+cont.getSimbolCont());
+				}
+			
+		}catch(Exception ex){
+			System.out.println("EROARE PERSISTENTA *****add bal "+ ex.getMessage());
+			//ex.printStackTrace();
+		
+		}
+		return balanta;
 	}
 	
 	public void addAll(List<Balanta> listBal){
@@ -57,13 +80,13 @@ public class RegBalanta extends Registru{
 				em.persist(b);
 		}
 		
-		synchronize();
+	
 	}
 
-	void removeBalanta(Balanta balanta) {
+	public void removeBalanta(Balanta balanta) {
 		em.remove(balanta);
 		
-		synchronize();
+	
 	}
 	
 	void removeBalanta(int id) {

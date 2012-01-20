@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
+
+import static javax.persistence.GenerationType.AUTO;
+
 
 /**
  * 
@@ -13,8 +18,10 @@ import javax.persistence.JoinColumn;
  * 
  */
 @Entity
+//@Table(name="Balante_cont")
 public class Balanta implements Comparable<Balanta> {
 	@Id
+	@GeneratedValue(strategy = AUTO)
 	private int id;
 	@ManyToOne
 	@JoinColumn(name = "lunaB_idLuna", referencedColumnName = "idLuna")
@@ -82,7 +89,7 @@ public class Balanta implements Comparable<Balanta> {
 		super();
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

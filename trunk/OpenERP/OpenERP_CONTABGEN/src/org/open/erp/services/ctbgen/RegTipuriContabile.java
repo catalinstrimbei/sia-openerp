@@ -30,19 +30,36 @@ public class RegTipuriContabile extends Registru{
 		return result;
 	}
 	
-	public void addTipContabil(TipContabil tip) {
-		if (em.contains(tip))
-			em.merge(tip);
-		else
-			em.persist(tip);
 
-		synchronize();
-	}
+	
+	
+	public TipContabil addTipContabil(TipContabil tip) {
+		try{
+			if (tip.getIdTipContabil() == null || 
+				em.find(tip.getClass(), tip.getIdTipContabil()) == null)
+			{
+				em.persist(tip);
+				//System.out.println("add "+tip.getDenumireTip());
+			}
+			else{
+				em.merge(tip);
+				//System.out.println("merge "+tip.getDenumireTip());
+				}
+			
+		}catch(Exception ex){
+			System.out.println("EROARE PERSISTENTA *****add TIP "+ ex.getMessage());
+			//ex.printStackTrace();
+			
+		}
+
+	
+	return tip;
+}
 
 	public void removeTipContabil(TipContabil tip) {
 		em.remove(tip);
 		
-		synchronize();
+		
 	}
 	
 	// TODO: La majoritatea astea mergea si cu JSQL

@@ -30,10 +30,17 @@ import org.open.erp.services.ctbgen.Cont.TipCont;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
-
+/**
+ * 
+ *Test local pentru verificarea adnotarilor si maparilor 
+ *pentru persistenta pe o baza de date obiectuala
+ *
+ *Se poate rula doar cu adaugarea jar aferent pe statia locala dar cu Srv initial fara context si rollback
+ *
+ */
 
 public class TestLocal_objectDB {
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizareSrvImpl.class.getName());
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestLocal_objectDB.class.getName());
 	
 	static ContabilizareSrv instantaCtbGen;
 	//static NomenclatoareSrv nomenclatorInstance;
@@ -264,7 +271,7 @@ public class TestLocal_objectDB {
 		Calendar cal = Calendar.getInstance();
 		 Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizareIncasare(data,1200.0, 503, TipIncasare.EXTRAS, 50, 401, StareDocument.NOU, null);
+			instantaCtbGen.jurnalizareIncasare(data,1200.0, 503, TipIncasare.EXTRAS, 50, "401", StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare incasare nu s-a efectuat "+ e.getLocalizedMessage());
 		}
@@ -281,7 +288,7 @@ public class TestLocal_objectDB {
 		Calendar cal = Calendar.getInstance();
 		 Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizarePlata(data,1200.0, 504, TipPlata.BANCA, 50, 628, StareDocument.NOU, null);
+			instantaCtbGen.jurnalizarePlata(data,1200.0, 504, TipPlata.BANCA, 50, "628", StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare plata nu s-a efectuat "+ e.getLocalizedMessage());
 		}

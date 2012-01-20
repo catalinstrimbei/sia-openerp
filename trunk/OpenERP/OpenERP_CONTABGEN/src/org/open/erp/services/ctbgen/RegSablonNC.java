@@ -74,19 +74,34 @@ public class RegSablonNC extends Registru{
 		return null;
 	}
 
-	public void addSablon(SablonNC sabl) {
-		if (em.contains(sabl))
-			em.merge(sabl);
-		else
-			em.persist(sabl);
+
 	
-		synchronize();
-	}
+	public SablonNC addSablon(SablonNC sabl) {
+		try{
+			if (sabl.getIdSablon() == null || 
+				em.find(sabl.getClass(), sabl.getIdSablon()) == null)
+			{
+				em.persist(sabl);
+				//System.out.println("add "+sabl.getNrSablon());
+			}
+			else{
+				em.merge(sabl);
+				//System.out.println("merge "+sabl.getNrSablon());
+				}
+			
+		}catch(Exception ex){
+			System.out.println("EROARE PERSISTENTA *****add cont "+ ex.getMessage());
+			//ex.printStackTrace();
+			
+		}
+	
+	return sabl;
+}
 
 	public void removeSablon(SablonNC sabl) {
 		em.remove(sabl);
 		
-		synchronize();
+
 	}
 
 	// TODO: remove me

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 
@@ -25,7 +26,7 @@ public class Cont implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = AUTO)
-	private int idCont;
+	private Integer idCont;
 	private String denCont;
 	private String simbolCont;
 	private String clasaCont;
@@ -38,7 +39,7 @@ public class Cont implements Serializable{
 	
 	public enum TipCont { PASIV, ACTIV };
 
-	public int getIdCont() {
+	public Integer getIdCont() {
 		return idCont;
 	}
 
@@ -149,7 +150,7 @@ public class Cont implements Serializable{
 		}
 		
 		Cont cont = (Cont) obj;
-		if(cont.getIdCont()==this.idCont)
+		if(cont.getSimbolCont().equals(this.simbolCont))
 			return true;
 		return false;
 	}

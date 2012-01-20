@@ -17,19 +17,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import static javax.persistence.TemporalType.DATE;
+import static javax.persistence.FetchType.EAGER;
 
 
 
 /**
  * 
- * @author Echipa ContaGen
+ * @author Echipa ContabGen
  * 
  * @BusinessObject(Entity)
  * 
  */
 
 @Entity
-@Table(name="InregistrariJurnal")
+//@Table(name="Inregistrari_Jurnal")
 public class InregistrareRJ implements Comparable<InregistrareRJ>, Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -38,7 +39,7 @@ public class InregistrareRJ implements Comparable<InregistrareRJ>, Serializable{
 	private Integer idInregRJ;
 	@Temporal(DATE)
 	private Date dataInregRJ;
-	@OneToMany(mappedBy = "inregRJ", cascade =CascadeType. ALL)
+	@OneToMany(mappedBy = "inregRJ", cascade =CascadeType. ALL, fetch = EAGER)
 	private List <ArticolCtb> articoleRJ;
 	private Integer nrDocLeg;
 	@ManyToOne

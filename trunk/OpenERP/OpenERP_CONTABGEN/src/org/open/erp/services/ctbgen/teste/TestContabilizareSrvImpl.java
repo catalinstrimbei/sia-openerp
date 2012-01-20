@@ -27,7 +27,17 @@ import org.open.erp.services.ctbgen.TipPlata;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
-
+/**
+ * 
+ * Test initial pentru Obiecte POJO
+ * 
+ * Nu mai poate fi rulat pe aceasta versiune deoarece metodele se bazau pe Registri 
+ * care au fost modificati(rescrisi) sa lucreze cu  persistenta iar obiectele au acum id generat de secventa
+ * si nu se mai potrivesc cu id create la pojo
+ * 
+ * Se poate verifica doar pe versiunea R332 /
+ *
+ */
 
 public class TestContabilizareSrvImpl {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizareSrvImpl.class.getName());
@@ -250,7 +260,7 @@ public class TestContabilizareSrvImpl {
 		Calendar cal = Calendar.getInstance();
 		 Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizareIncasare(data,1200.0, 501, TipIncasare.EXTRAS, 50, 401, StareDocument.NOU, null);
+			instantaCtbGen.jurnalizareIncasare(data,1200.0, 501, TipIncasare.EXTRAS, 50, "401", StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare incasare nu s-a efectuat "+ e.getLocalizedMessage());
 		}
@@ -267,7 +277,7 @@ public class TestContabilizareSrvImpl {
 		Calendar cal = Calendar.getInstance();
 		 Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizarePlata(data,1200.0, 501, TipPlata.BANCA, 50, 628, StareDocument.NOU, null);
+			instantaCtbGen.jurnalizarePlata(data,1200.0, 501, TipPlata.BANCA, 50, "628", StareDocument.NOU, null);
 		} catch (CtbException e) {
 			logger.error("Jurnalizare plata nu s-a efectuat "+ e.getLocalizedMessage());
 		}

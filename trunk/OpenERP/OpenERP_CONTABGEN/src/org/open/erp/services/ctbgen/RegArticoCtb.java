@@ -75,20 +75,33 @@ public class RegArticoCtb extends Registru{
 	}
 	
 
-	public void addArticol(ArticolCtb art) {
-		if (em.contains(art))
-			em.merge(art);
-		else
-			em.persist(art);
+	public ArticolCtb addArticol(ArticolCtb art) {
+		
+		try{
+			if (art.getIdArt() == null || 
+				em.find(art.getClass(), art.getIdArt()) == null)
+			{
+				em.persist(art);
+				//System.out.println("add "+art.getSimbolCont());
+			}
+			else{
+				em.merge(art);
+				//System.out.println("merge "+art.getSimbolCont());
+				}
+			
+		}catch(Exception ex){
+			System.out.println("EROARE PERSISTENTA *****add art "+ ex.getMessage());
+			//ex.printStackTrace();
+		
+		}
 	
-		synchronize();
-	}
+	return art;
+}
 
 	public void removeArticol(ArticolCtb art) {
 		em.remove(art);
 		
-		synchronize();
-	}
+		}
 
 	
 

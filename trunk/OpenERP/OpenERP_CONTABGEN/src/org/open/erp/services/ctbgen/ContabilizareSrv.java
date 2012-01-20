@@ -1,6 +1,6 @@
 package org.open.erp.services.ctbgen;
 
-import java.util.Date; //vlad
+import java.util.Date; 
 import java.util.List;
 
 import org.open.erp.services.ctbgen.Cont.StatusSintetic;
@@ -11,7 +11,7 @@ import org.open.erp.services.nomgen.LinieDocument;
 
 /**
  * 
- * @author Echipa9 Irimia, Iftimii, Sarbu, Ricea, Chiriac
+ * @author Echipa ContabGEN: Irimia, Iftimie, Sarbu, Ricea, Chiriac
  * 
  * @ApplicationServiceFacade(ServiceAPI):
  * 
@@ -93,7 +93,7 @@ public interface ContabilizareSrv {
 	 * @return Returneaza idInregistrarii  necesar pentru update sau delete document ulterior.
 	 * 
 	 */
-	public Integer  jurnalizareIncasare(Date data, Double valInc, Integer nrDoc, TipIncasare tipIncasare,Integer idPartener, Integer idCont, 
+	public Integer  jurnalizareIncasare(Date data, Double valInc, Integer nrDoc, TipIncasare tipIncasare,Integer idPartener, String simbolCont, 
 			StareDocument stareDocument,Integer idInreg) throws CtbException;
 	
 	
@@ -112,7 +112,7 @@ public interface ContabilizareSrv {
 	 * @return Returneaza idInregistrarii  necesar pentru update sau delete document ulterior.
 	 * 
 	 */
-	public Integer jurnalizarePlata(Date data, Double valInc, Integer nrDoc, TipPlata tipPlata,Integer idPartener, Integer idCont, 
+	public Integer jurnalizarePlata(Date data, Double valInc, Integer nrDoc, TipPlata tipPlata,Integer idPartener, String simbolCont, 
 			StareDocument stareDocument, Integer idInreg) throws CtbException;
 	
 	
@@ -205,7 +205,8 @@ public interface ContabilizareSrv {
 	
 	public void inchideLuna(LunaLucru luna) throws CtbException ;
 	public void anuleazaInchidere(LunaLucru luna);
-	
+	public Cont getContDupaSimbol(String simbol);
+	public LunaLucru getOrCreateLuna(Date data);
 	public List<FisaCont> creazaFisaCont(Cont cont);
 	public List<FisaCont> creazaFisaContPartener (Cont cont, Integer idPart);
 	
@@ -213,8 +214,6 @@ public interface ContabilizareSrv {
 	RegConturi getPlanConturi();
 	int getIdCont(Cont cont);
 	
-	
-	
-	
+		
 	
 }

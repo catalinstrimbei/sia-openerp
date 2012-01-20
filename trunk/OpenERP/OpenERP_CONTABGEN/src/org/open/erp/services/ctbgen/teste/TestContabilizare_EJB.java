@@ -15,10 +15,6 @@ import org.junit.Test;
 import org.open.erp.services.ctbgen.Cont;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.LunaLucru;
-import org.open.erp.services.ctbgen.RegConturi;
-import org.open.erp.services.ctbgen.RegLuniLucru;
-import org.open.erp.services.ctbgen.RegSablonNC;
-import org.open.erp.services.ctbgen.RegTipuriContabile;
 import org.open.erp.services.ctbgen.SablonNC;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.TipContabil;
@@ -32,15 +28,15 @@ import org.open.erp.services.nomgen.Material;
 
 
 public class TestContabilizare_EJB {
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizareSrvImpl.class.getName());
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestContabilizare_EJB.class.getName());
 	
     private static ContabilizareSrv instantaCtbGen;
     //private static NomenclatoareSrv nomenclatorInstance;
 	
-	RegSablonNC regSablonNC;
-	RegConturi regConturi;
-	RegLuniLucru regLuniConturi;
-	RegTipuriContabile regTipContabile;
+//	RegSablonNC regSablonNC;
+//	RegConturi regConturi;
+//	RegLuniLucru regLuniConturi;
+//	RegTipuriContabile regTipContabile;
 	
 	/*--- InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
@@ -58,132 +54,143 @@ public class TestContabilizare_EJB {
 				
 		logger.info("initTest " + instantaCtbGen);
 		
+	
+		//instantaCtbGen=  ContabilizareDummyFactory.getContabilizareSrv();
+		//nomenclatorInstance = ContabilizareDummyFactory.getNomenclatoareSrv();
+//		regSablonNC = RegSablonNC.instantiaza();
+//		regConturi = RegConturi.instantiaza();
+//		regLuniConturi = RegLuniLucru.instantiaza();
+//		regTipContabile = RegTipuriContabile.instantiaza();
+//		
+		//Cont c301=instantaCtbGen.crearePlanCont("Materii prime","301","3",StatusSintetic.SINTETIC,null, TipCont.ACTIV);
+		
+		Cont c301 =instantaCtbGen.crearePlanCont("Materii prime","301","3",StatusSintetic.SINTETIC,null, TipCont.ACTIV);
+		Cont c303 =instantaCtbGen.crearePlanCont("Materiale ob inv","303","3",StatusSintetic.SINTETIC,null, TipCont.ACTIV);
+		Cont c307 =instantaCtbGen.crearePlanCont("Marfuri","307","3",StatusSintetic.SINTETIC,null,TipCont.ACTIV);
+		Cont c601 =instantaCtbGen.crearePlanCont("Chelt materii prime","601","6",StatusSintetic.SINTETIC,null, TipCont.ACTIV);
+		Cont c603 =instantaCtbGen.crearePlanCont("Chelt mat ob inv","603","6",StatusSintetic.SINTETIC,null, TipCont.ACTIV);
+		Cont c607 =instantaCtbGen.crearePlanCont("Chelt marfuri","607","6",StatusSintetic.SINTETIC,null, TipCont.ACTIV);
+		Cont c707 =instantaCtbGen.crearePlanCont("Vanzari marfuri","707","7",StatusSintetic.SINTETIC,null, TipCont.PASIV);
+		Cont c401 =instantaCtbGen.crearePlanCont("Furnizori","401","4",StatusSintetic.SINTETIC,null, TipCont.PASIV);
+		Cont c411 =instantaCtbGen.crearePlanCont("Clienti","411","4",StatusSintetic.SINTETIC,null,TipCont.PASIV);
+		Cont c628 =instantaCtbGen.crearePlanCont("servicii prestate de terti","628","6",StatusSintetic.SINTETIC,null, TipCont.ACTIV);
+		Cont c531 =instantaCtbGen.crearePlanCont("casa","531","5",StatusSintetic.SINTETIC,null,TipCont.ACTIV);
+		Cont c512 =instantaCtbGen.crearePlanCont("banca","512","5",StatusSintetic.SINTETIC,null,TipCont.ACTIV);
+		Cont c345 =instantaCtbGen.crearePlanCont("produse finite","345","3",StatusSintetic.SINTETIC,null,TipCont.ACTIV);
+		Cont c711 =instantaCtbGen.crearePlanCont("Variatia stocurilor","711","7",StatusSintetic.SINTETIC,null,TipCont.PASIV);
+		Cont c641 =instantaCtbGen.crearePlanCont("Ch salarii","641","6",StatusSintetic.SINTETIC,null,TipCont.ACTIV);
+		Cont c645 =instantaCtbGen.crearePlanCont("Ch contributii","645","3",StatusSintetic.SINTETIC,null,TipCont.ACTIV);
+		Cont c421 =instantaCtbGen.crearePlanCont("Salarii personal","421","4",StatusSintetic.SINTETIC,null, TipCont.PASIV);
+		Cont c4311 =instantaCtbGen.crearePlanCont("CAS firma","4311","4",StatusSintetic.ANALITIC,null, TipCont.PASIV);
+		Cont c4312 =instantaCtbGen.crearePlanCont("CAS angajat","4312","4",StatusSintetic.ANALITIC,null, TipCont.PASIV);
+		Cont c4313 =instantaCtbGen.crearePlanCont("Sanatate firma","4313","4",StatusSintetic.ANALITIC,null,TipCont.PASIV);
+		Cont c4314 =instantaCtbGen.crearePlanCont("Sanatate angajat","4314","4",StatusSintetic.ANALITIC,null,TipCont.PASIV);
+		Cont c4315=instantaCtbGen.crearePlanCont("Fond Risc","4315","4",StatusSintetic.ANALITIC,null,TipCont.PASIV);
+		Cont c4316 =instantaCtbGen.crearePlanCont("Concedii medicale","4316","4",StatusSintetic.ANALITIC,null,TipCont.PASIV);
+		Cont c4371 =instantaCtbGen.crearePlanCont("Somaj firma","4371","4",StatusSintetic.ANALITIC,null,TipCont.PASIV);
+		Cont c4372 =instantaCtbGen.crearePlanCont("Somaj Angajat","4372","4",StatusSintetic.ANALITIC,null,TipCont.PASIV);
+		Cont c4373 =instantaCtbGen.crearePlanCont("Fond garantare","4373","4",StatusSintetic.ANALITIC,null,TipCont.PASIV);
+		Cont c444 =instantaCtbGen.crearePlanCont("Impozit salarii","444","4",StatusSintetic.SINTETIC,null,TipCont.PASIV);
+		
+//		regConturi.addCont(c301);
+//		regConturi.addCont(c307);
+//		regConturi.addCont(c607);
+//		regConturi.addCont(c707);
+//		regConturi.addCont(c401);
+//		regConturi.addCont(c411);
+//		regConturi.addCont(c628);
+//		regConturi.addCont(c531);
+//		regConturi.addCont(c512);
+//		regConturi.addCont(c345);
+//		regConturi.addCont(c711);
+//		
+//		regConturi.addCont(c641);
+//		regConturi.addCont(c645);
+//		regConturi.addCont(c421);
+//		regConturi.addCont(c4311);
+//		regConturi.addCont(c4312);
+//		regConturi.addCont(c4313);
+//		regConturi.addCont(c4314);
+//		regConturi.addCont(c4315);
+//		regConturi.addCont(c4316);
+//		regConturi.addCont(c4371);
+//		regConturi.addCont(c4372);
+//		regConturi.addCont(c4373);
+//		regConturi.addCont(c444);
+		//----------------------
+		SablonNC sab0= instantaCtbGen.creareSablonNC(3,instantaCtbGen.getContDupaSimbol("345"),instantaCtbGen.getContDupaSimbol("711"));
+		SablonNC sabl= instantaCtbGen.creareSablonNC(5,c607,c301);
+		SablonNC sab2= instantaCtbGen.creareSablonNC(4,c411,c707);
+		SablonNC sab3= instantaCtbGen.creareSablonNC(6,c628,c401);
+		SablonNC sab4= instantaCtbGen.creareSablonNC(6,c301,c401);
+		SablonNC sab7= instantaCtbGen.creareSablonNC(9,null,c531);
+		SablonNC sab8= instantaCtbGen.creareSablonNC(10,null,c512);
+		SablonNC sab9= instantaCtbGen.creareSablonNC(7,c531,null);
+		SablonNC sab10= instantaCtbGen.creareSablonNC(8,c512,null);
+		
+		
+		SablonNC sab11= instantaCtbGen.creareSablonNC(11,c641,c421);
+		SablonNC sab12= instantaCtbGen.creareSablonNC(12,c421,c4314);
+		SablonNC sab13= instantaCtbGen.creareSablonNC(13,c421,c4372);
+		SablonNC sab14= instantaCtbGen.creareSablonNC(14,c421,c4312);
+		SablonNC sab15= instantaCtbGen.creareSablonNC(15,c421,c444);
+		SablonNC sab16= instantaCtbGen.creareSablonNC(16,c645,c4313);
+		SablonNC sab17= instantaCtbGen.creareSablonNC(17,c645,c4371);
+		SablonNC sab18= instantaCtbGen.creareSablonNC(18,c645,c4311);
+		SablonNC sab19= instantaCtbGen.creareSablonNC(19,c645,c4315);
+		SablonNC sab20= instantaCtbGen.creareSablonNC(20,c645,c4316);
+		
+//		regSablonNC.addSablon(sab0);
+//		regSablonNC.addSablon(sabl);
+//		regSablonNC.addSablon(sab2);
+//		regSablonNC.addSablon(sab3);
+//		regSablonNC.addSablon(sab4);
+//		regSablonNC.addSablon(sab7);
+//		regSablonNC.addSablon(sab8);
+//		regSablonNC.addSablon(sab9);
+//		regSablonNC.addSablon(sab10);
+//		
+//		regSablonNC.addSablon(sab11);
+//		regSablonNC.addSablon(sab12);
+//		regSablonNC.addSablon(sab13);
+//		regSablonNC.addSablon(sab14);
+//		regSablonNC.addSablon(sab15);
+//		regSablonNC.addSablon(sab16);
+//		regSablonNC.addSablon(sab17);
+//		regSablonNC.addSablon(sab18);
+//		regSablonNC.addSablon(sab19);
+//		regSablonNC.addSablon(sab20);
+		//----------------------am scos id de la tip/// NU EXISTA 303 603 601
+		
+		TipContabil tipContabil = instantaCtbGen.creareTipMaterial(null, "Materii prime",instantaCtbGen.getContDupaSimbol("301"), 
+				instantaCtbGen.getContDupaSimbol("401"), instantaCtbGen.getContDupaSimbol("601"));	
+		
+		TipContabil tipContabil2 = instantaCtbGen.creareTipMaterial(null, "Materiale", c303, 
+               c401,  c603);
+		TipContabil tipContabil3 = instantaCtbGen.creareTipMaterial(null,"Cheltuieli cu terti", c628, 
+				         c401,  c628);
+		TipContabil tipContabi4 = instantaCtbGen.creareTipMaterial(null,"Marfuri", c307, 
+               c401,  c607);	
+		
+		TipContabil tipContabil5 = instantaCtbGen.creareTipMaterial(null,"Produse finite", c345, 
+                c711,  c711);	
+		
+//		regTipContabile.addTipContabil(tipContabil);
+//		regTipContabile.addTipContabil(tipContabil2);
+//		regTipContabile.addTipContabil(tipContabil3);
+//		regTipContabile.addTipContabil(tipContabi4);
+//		regTipContabile.addTipContabil(tipContabil5);
+		
+		//-----------------------------
+		
+		
+		LunaLucru luna=instantaCtbGen.getOrCreateLuna(Calendar.getInstance().getTime());
+		//RegBalanta regBalante= instantaCtbGen.
+		//regBalante.addBalanta(new Balanta(luna,instantaCtbGen.getContDupaSimbol("301"),100.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,false));
 	}
 
 	@Before
-	public void setUp() throws Exception {
-		//instantaCtbGen=  ContabilizareDummyFactory.getContabilizareSrv();
-		//nomenclatorInstance = ContabilizareDummyFactory.getNomenclatoareSrv();
-		regSablonNC = RegSablonNC.instantiaza();
-		regConturi = RegConturi.instantiaza();
-		regLuniConturi = RegLuniLucru.instantiaza();
-		regTipContabile = RegTipuriContabile.instantiaza();
-		
-		Cont c301 =new Cont(301,"Materii prime","301","3",StatusSintetic.SINTETIC,TipCont.ACTIV);
-		Cont c307 =new Cont(307,"Marfuri","307","3",StatusSintetic.SINTETIC,TipCont.ACTIV);
-		Cont c607 =new Cont(607,"Chelt marfuri","607","6",StatusSintetic.SINTETIC, TipCont.ACTIV);
-		Cont c707 =new Cont(707,"Vanzari marfuri","707","7",StatusSintetic.SINTETIC, TipCont.PASIV);
-		Cont c401 =new Cont(401,"Furnizori","401","4",StatusSintetic.SINTETIC, TipCont.PASIV);
-		Cont c411 =new Cont(411,"Clienti","411","4",StatusSintetic.SINTETIC,TipCont.PASIV);
-		Cont c628 =new Cont(628,"servicii prestate de terti","628","6",StatusSintetic.SINTETIC,TipCont.ACTIV);
-		Cont c531 =new Cont(531,"casa","531","5",StatusSintetic.SINTETIC,TipCont.ACTIV);
-		Cont c512 =new Cont(512,"banca","512","5",StatusSintetic.SINTETIC,TipCont.ACTIV);
-		Cont c345 =new Cont(345,"produse finite","345","3",StatusSintetic.SINTETIC,TipCont.ACTIV);
-		Cont c711 =new Cont(711,"Variatia stocurilor","711","7",StatusSintetic.SINTETIC,TipCont.PASIV);
-		Cont c641 =new Cont(641,"Ch salarii","641","6",StatusSintetic.SINTETIC,TipCont.ACTIV);
-		Cont c645 =new Cont(645,"Ch contributii","645","3",StatusSintetic.SINTETIC,TipCont.ACTIV);
-		Cont c421 =new Cont(421,"Salarii personal","421","4",StatusSintetic.SINTETIC, TipCont.PASIV);
-		Cont c4311 =new Cont(4311,"CAS firma","4311","4",StatusSintetic.ANALITIC, TipCont.PASIV);
-		Cont c4312 =new Cont(4312,"CAS angajat","4312","4",StatusSintetic.ANALITIC, TipCont.PASIV);
-		Cont c4313 =new Cont(4313,"Sanatate firma","4313","4",StatusSintetic.ANALITIC,TipCont.PASIV);
-		Cont c4314 =new Cont(4314,"Sanatate angajat","4314","4",StatusSintetic.ANALITIC,TipCont.PASIV);
-		Cont c4315=new Cont(4315,"Fond Risc","4315","4",StatusSintetic.ANALITIC,TipCont.PASIV);
-		Cont c4316 =new Cont(4316,"Concedii medicale","4316","4",StatusSintetic.ANALITIC,TipCont.PASIV);
-		Cont c4371 =new Cont(4371,"Somaj firma","4371","4",StatusSintetic.ANALITIC,TipCont.PASIV);
-		Cont c4372 =new Cont(4372,"Somaj Angajat","4372","4",StatusSintetic.ANALITIC,TipCont.PASIV);
-		Cont c4373 =new Cont(4373,"Fond garantare","4373","4",StatusSintetic.ANALITIC,TipCont.PASIV);
-		Cont c444 =new Cont(444,"Impozit salarii","444","4",StatusSintetic.SINTETIC,TipCont.PASIV);
-		
-		regConturi.addCont(c301);
-		regConturi.addCont(c307);
-		regConturi.addCont(c607);
-		regConturi.addCont(c707);
-		regConturi.addCont(c401);
-		regConturi.addCont(c411);
-		regConturi.addCont(c628);
-		regConturi.addCont(c531);
-		regConturi.addCont(c512);
-		regConturi.addCont(c345);
-		regConturi.addCont(c711);
-		
-		regConturi.addCont(c641);
-		regConturi.addCont(c645);
-		regConturi.addCont(c421);
-		regConturi.addCont(c4311);
-		regConturi.addCont(c4312);
-		regConturi.addCont(c4313);
-		regConturi.addCont(c4314);
-		regConturi.addCont(c4315);
-		regConturi.addCont(c4316);
-		regConturi.addCont(c4371);
-		regConturi.addCont(c4372);
-		regConturi.addCont(c4373);
-		regConturi.addCont(c444);
-		//----------------------
-		SablonNC sab0= new SablonNC(1000,3,c345,c711);
-		SablonNC sabl= new SablonNC(1001,5,c607,c301);
-		SablonNC sab2= new SablonNC(1002,4,c411,c707);
-		SablonNC sab3= new SablonNC(1003,6,c628,c401);
-		SablonNC sab4= new SablonNC(1004,6,c301,c401);
-		SablonNC sab7= new SablonNC(1005,9,null,c531);
-		SablonNC sab8= new SablonNC(1006,10,null,c512);
-		SablonNC sab9= new SablonNC(1007,7,c531,null);
-		SablonNC sab10= new SablonNC(1008,8,c512,null);
-		
-		
-		SablonNC sab11= new SablonNC(1011,11,c641,c421);
-		SablonNC sab12= new SablonNC(1012,12,c421,c4314);
-		SablonNC sab13= new SablonNC(1013,13,c421,c4372);
-		SablonNC sab14= new SablonNC(1014,14,c421,c4312);
-		SablonNC sab15= new SablonNC(1015,15,c421,c444);
-		SablonNC sab16= new SablonNC(1016,16,c645,c4313);
-		SablonNC sab17= new SablonNC(1017,17,c645,c4371);
-		SablonNC sab18= new SablonNC(1018,18,c645,c4311);
-		SablonNC sab19= new SablonNC(1019,19,c645,c4315);
-		SablonNC sab20= new SablonNC(1020,20,c645,c4316);
-		
-		regSablonNC.addSablon(sab0);
-		regSablonNC.addSablon(sabl);
-		regSablonNC.addSablon(sab2);
-		regSablonNC.addSablon(sab3);
-		regSablonNC.addSablon(sab4);
-		regSablonNC.addSablon(sab7);
-		regSablonNC.addSablon(sab8);
-		regSablonNC.addSablon(sab9);
-		regSablonNC.addSablon(sab10);
-		
-		regSablonNC.addSablon(sab11);
-		regSablonNC.addSablon(sab12);
-		regSablonNC.addSablon(sab13);
-		regSablonNC.addSablon(sab14);
-		regSablonNC.addSablon(sab15);
-		regSablonNC.addSablon(sab16);
-		regSablonNC.addSablon(sab17);
-		regSablonNC.addSablon(sab18);
-		regSablonNC.addSablon(sab19);
-		regSablonNC.addSablon(sab20);
-		//----------------------am scos id de la tip
-		
-		TipContabil tipContabil = new TipContabil( "Materii prime", regConturi.getContDupaId(301), 
-                regConturi.getContDupaId(401),  regConturi.getContDupaId(601));	
-		
-		TipContabil tipContabil2 = new TipContabil( "Materiale", regConturi.getContDupaId(303), 
-                regConturi.getContDupaId(401),   regConturi.getContDupaId(603));
-		TipContabil tipContabil3 = new TipContabil( "Cheltuieli cu terti", regConturi.getContDupaId(628), 
-				         regConturi.getContDupaId(401),  regConturi.getContDupaId(628));
-		TipContabil tipContabi4 = new TipContabil( "Marfuri", regConturi.getContDupaId(307), 
-                regConturi.getContDupaId(401),  regConturi.getContDupaId(607));	
-		
-		TipContabil tipContabil5 = new TipContabil( "Produse finite", regConturi.getContDupaId(345), 
-                regConturi.getContDupaId(711),  regConturi.getContDupaId(711));	
-		regTipContabile.addTipContabil(tipContabil);
-		regTipContabile.addTipContabil(tipContabil2);
-		regTipContabile.addTipContabil(tipContabil3);
-		regTipContabile.addTipContabil(tipContabi4);
-		regTipContabile.addTipContabil(tipContabil5);
-		
-		//-----------------------------
-		regLuniConturi.getOrCreateLunaLucru(Calendar.getInstance().getTime());
+	public void setUp() throws Exception {	
 		logger.info("Intiere Test");		
 	}
  
@@ -210,8 +217,9 @@ public class TestContabilizare_EJB {
 		//creare matrice listMatVal
 		
 		//transmite sa faca o metoda publica in NomSrv, nu este,
-		 Material mat1= new Material();
-		 mat1.setTipContabil("Materii prime");
+		
+		Material mat1= new Material();
+		mat1.setTipContabil("Materii prime");
 		LinieDocument lmv1=new LinieDocument(1,null,mat1,10.0,5.0,0.0);
 		List<LinieDocument> listaMat = new ArrayList <LinieDocument>();
 		listaMat.add(lmv1);
@@ -223,7 +231,9 @@ public class TestContabilizare_EJB {
 		try {
 			instantaCtbGen.jurnalizareVanzare(data, 1200.0,0.0, 501, 1001, listaMat, StareDocument.NOU, null);
 		} catch (CtbException e) {
-			logger.error("Jurnalizare vanzari nu s-a efectuat "+ e.getLocalizedMessage());
+			logger.error("Jurnalizare vanzari nu s-a efectuat "+ e.getMessage());
+			
+			System.out.println(e.getMessage());
 		}
 		
 		logger.info("End test: TestjurnalizareVanzare");
@@ -252,7 +262,7 @@ public class TestContabilizare_EJB {
 		try {
 			instantaCtbGen.jurnalizareAchizitie(data, 370.0,0.0, 501, 1001, listaMat, StareDocument.NOU, null);
 		} catch (CtbException e) {
-			logger.error("Jurnalizare achizitie nu s-a efectuat "+ e.getLocalizedMessage());
+			logger.error("Jurnalizare achizitie nu s-a efectuat "+ e.getMessage());
 		}
 		
 		logger.info("End test: TestjurnalizareAchizitie");
@@ -267,9 +277,9 @@ public class TestContabilizare_EJB {
 		Calendar cal = Calendar.getInstance();
 		 Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizareIncasare(data,1200.0, 501, TipIncasare.EXTRAS, 50, 401, StareDocument.NOU, null);
+			instantaCtbGen.jurnalizareIncasare(data,1200.0, 501, TipIncasare.EXTRAS, 50, "401", StareDocument.NOU, null);
 		} catch (CtbException e) {
-			logger.error("Jurnalizare incasare nu s-a efectuat "+ e.getLocalizedMessage());
+			logger.error("Jurnalizare incasare nu s-a efectuat "+ e.getMessage());
 		}
 		
 		logger.info("End test: TestJurnalizareIncasare");
@@ -284,9 +294,9 @@ public class TestContabilizare_EJB {
 		Calendar cal = Calendar.getInstance();
 		 Date data= cal.getTime();
 		try {
-			instantaCtbGen.jurnalizarePlata(data,1200.0, 501, TipPlata.BANCA, 50, 628, StareDocument.NOU, null);
+			instantaCtbGen.jurnalizarePlata(data,1200.0, 501, TipPlata.BANCA, 50, "628", StareDocument.NOU, null);
 		} catch (CtbException e) {
-			logger.error("Jurnalizare plata nu s-a efectuat "+ e.getLocalizedMessage());
+			logger.error("Jurnalizare plata nu s-a efectuat "+ e.getMessage());
 		}
 		
 		logger.info("End test: TestJurnalizarePlata");
@@ -312,7 +322,7 @@ public class TestContabilizare_EJB {
 		try {
 			instantaCtbGen.jurnalizareConsum(data,  501,  listaMat, StareDocument.NOU, null);
 		} catch (CtbException e) {
-			logger.error("Jurnalizare consum nu s-a efectuat "+ e.getLocalizedMessage());
+			logger.error("Jurnalizare consum nu s-a efectuat "+ e.getMessage());
 		}
 		
 		logger.info("End test: TestJurnalizareConsum");
@@ -337,7 +347,7 @@ public class TestContabilizare_EJB {
 		try {
 			instantaCtbGen.jurnalizareProductie(data,  475,  listaMat, StareDocument.NOU, null);
 		} catch (CtbException e) {
-			logger.error("Jurnalizare productie nu s-a efectuat "+ e.getLocalizedMessage());
+			logger.error("Jurnalizare productie nu s-a efectuat "+ e.getMessage());
 		}
 		
 		logger.info("End test: TestJurnalizareProductie");
@@ -354,7 +364,7 @@ public class TestContabilizare_EJB {
 		try {
 			instantaCtbGen.jurnalizareSalarii(data,  8, 1500.0,150.0,10.0,240.0,200.0,145.0,10.0,500.0,30.0,80.0, StareDocument.NOU, null);
 		} catch (CtbException e) {
-			logger.error("Jurnalizare salarii nu s-a efectuat "+ e.getLocalizedMessage());
+			logger.error("Jurnalizare salarii nu s-a efectuat "+ e.getMessage());
 		}
 		
 		logger.info("End test: TestJurnalizareSalarii");
@@ -366,11 +376,13 @@ public class TestContabilizare_EJB {
 	public void TestInchideLuna(){
 		logger.info("Begin test: TestInchideLuna");
 		
-		LunaLucru luna=regLuniConturi .getLunaLucruDupa(Calendar .getInstance().getTime());
+		LunaLucru luna=instantaCtbGen.getOrCreateLuna(Calendar .getInstance().getTime());
+		//System.out.print(luna.toString());
 		try {
 			instantaCtbGen.inchideLuna(luna);
 		} catch (CtbException e) {
-			logger.error("Inchidere luna nu s-a efectuat "+ e.getLocalizedMessage());
+			logger.error("Inchidere luna nu s-a efectuat "+ e.getMessage());
+			System.out.println(e.getMessage());
 		}
 		//RegBalanta.instantiaza().printAll();		
 		logger.info("End test: TestInchideLuna");
@@ -393,7 +405,8 @@ public class TestContabilizare_EJB {
 	public void TestAnuleazaInchidere(){
 		logger.info("Begin test: TestAnuleazaInchidere");
 		
-		LunaLucru luna=regLuniConturi .getLunaLucruDupa(Calendar .getInstance().getTime());
+		LunaLucru luna=instantaCtbGen.getOrCreateLuna(Calendar .getInstance().getTime());
+		luna.anuleazaInchidere();
 	    instantaCtbGen.anuleazaInchidere(luna);
 	    
 	    logger.debug("Luna pentru " +Calendar .getInstance().getTime().toString()+" este: "+luna.getStatus().toString());

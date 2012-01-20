@@ -16,7 +16,7 @@ public class RegInregistrareRJ extends Registru{
 	private static RegInregistrareRJ singleReference;
 
 	private RegInregistrareRJ() {
-		sqlDefaultText = "SELECT o FROM InregistrariJurnal o";
+		sqlDefaultText = "SELECT x FROM InregistrareRJ x";
 	}
 
 	public static RegInregistrareRJ instantiaza() {
@@ -25,20 +25,47 @@ public class RegInregistrareRJ extends Registru{
 		return singleReference;
 	}
 	
-	public void addInregistrareRJ(InregistrareRJ inregistrareRJ) {
-		if (em.contains(inregistrareRJ))
-			em.merge(inregistrareRJ);
-		else
-			em.persist(inregistrareRJ);
 	
-		synchronize();
+	   public List<InregistrareRJ> getListaInreg(){
+		   @SuppressWarnings("unchecked")
+			List<InregistrareRJ> result = em.createQuery(this.sqlDefaultText).getResultList();
+			return result;
+	}
+	
+	public InregistrareRJ addInregistrareRJ(InregistrareRJ inregistrareRJ) {
+		try{
+			if (inregistrareRJ.getIdInregRJ() == null || 
+				em.find(inregistrareRJ.getClass(), inregistrareRJ.getIdInregRJ()) == null)
+			{
+				em.persist(inregistrareRJ);
+				//System.out.println("add "+tip.getDenumireTip());
+			}
+			else{
+				em.merge(inregistrareRJ);
+				//System.out.println("merge "+tip.getDenumireTip());
+				}
+			
+		}catch(Exception ex){
+			System.out.println("EROARE PERSISTENTA *****add TIP "+ ex.getMessage());
+			//ex.printStackTrace();
+			
+		}
+
+	
+	return inregistrareRJ;
 	}
 
 	public void removeInregistrareRJ(InregistrareRJ inregistrareRJ) {
 		em.remove(inregistrareRJ);
 		
-		synchronize();
 	}
+	
+	   public List<InregistrareRJ> getInregLuna(LunaLucru luna){
+		   @SuppressWarnings("unchecked")
+			List<InregistrareRJ> result = em.createQuery(this.sqlDefaultText+" WHERE x.lunaCurs = :luna").setParameter("luna", luna ).getResultList();
+			return result;
+	}
+	
 	
 	public List<InregistrareRJ> getInregistrariLunaDeInchis(LunaLucru luna){
 		List<InregistrareRJ> rez = new ArrayList<InregistrareRJ>();
@@ -52,17 +79,8 @@ public class RegInregistrareRJ extends Registru{
 		Collections.sort(rez);
 		return rez;
 	}
-    public List<InregistrareRJ> getListaInreg(){
-        List<InregistrareRJ> rez = new ArrayList<InregistrareRJ>();
-        List<InregistrareRJ> inregistrariRJ = getListaInreg();
-        
-        for(int i=0;i<inregistrariRJ.size();i++){
-                rez.add(inregistrariRJ.get(i));
-        }
-        
-        Collections.sort(rez);
-        return rez;
-}
+	
+ 
 
 	public void  anuleazaIregRJ(Integer id){
 		List<InregistrareRJ> inregistrariRJ = getListaInreg();
@@ -73,7 +91,7 @@ public class RegInregistrareRJ extends Registru{
 			}
 		}
 		
-		synchronize();//pt ca au fost facute modificari la un/mai multe managed objects
+		//synchronize();//pt ca au fost facute modificari la un/mai multe managed objects
 	}
 	
 	

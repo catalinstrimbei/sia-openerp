@@ -3,6 +3,8 @@ package org.open.erp.services.ctbgen;
 
 import java.util.List;
 
+
+
 /**
  * 
  * @author Echipa ContaGen
@@ -18,6 +20,7 @@ public class RegConturi extends Registru{
 	private RegConturi() {
 		sqlDefaultText = "SELECT o FROM Cont o";
 	}
+
 
 	public static RegConturi instantiaza() {
 		if (singleReference == null)
@@ -35,31 +38,62 @@ public class RegConturi extends Registru{
 
 	void setPlanConturi(List<Cont> planConturi) {//TODO: le adaug adica sterg to si adaug + nu cred ca mai ai nevoie
 		for(int i=0;i<planConturi.size();i++){
-			addCont(planConturi.get(i)); //aici e syncronise
+			try {
+				addCont(planConturi.get(i));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} //aici e syncronise
 		}
 	}
 	
-	//private static int contorId = 1;
 	
-	public void addCont(Cont cont) {
-		if (em.contains(cont))
-			em.merge(cont);
-		else
-			em.persist(cont);
-	
-		synchronize();
-	}
 
-	void removeCont(Cont cont) { //TODO: de ce se cheama asa? lucreaza cu conturi
+	
+	public Cont addCont(Cont cont)  {
+		try{
+			if (cont.getIdCont() == null || 
+				em.find(cont.getClass(), cont.getIdCont()) == null)
+			{
+				em.persist(cont);
+				//System.out.println("add "+cont.getSimbolCont());
+			}
+			else{
+				em.merge(cont);
+				//System.out.println("merge "+cont.getSimbolCont());
+				}
+			
+		}catch(Exception ex){
+			System.out.println("EROARE PERSISTENTA *****add cont "+ ex.getMessage());
+			//ex.printStackTrace();
+		
+		}
+	
+	return cont;
+}
+
+	void removeCont(Cont cont) {
 		em.remove(cont);
 		
-		synchronize();
-	}
+			}
+	
+	
+	
 
 	public Cont getContDupaId(Integer idCont) {
 		List<Cont> planConturi = this.getPlanConturi();
 		for (Cont c : planConturi) {
 			if (idCont == c.getIdCont()) {
+				return c;
+			}
+		}
+		return null;
+	}
+	
+	public Cont getContDupaSimbol(String simbol) {
+		List<Cont> planConturi = this.getPlanConturi();
+		for (Cont c : planConturi) {
+			if (simbol.equals(c.getSimbolCont())) {
 				return c;
 			}
 		}

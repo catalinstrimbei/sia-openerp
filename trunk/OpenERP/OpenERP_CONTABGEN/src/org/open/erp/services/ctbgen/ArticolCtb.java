@@ -10,14 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.JoinColumn;
-import static javax.persistence.CascadeType.ALL;
-
-
-
 
 /**
  * 
- * @author Echipa ContaGen
+ * @author Echipa ContabGEN
  * 
  * @BusinessObject(Entity)
  * 
