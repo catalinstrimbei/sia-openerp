@@ -3,9 +3,7 @@
 	<persistence-unit name="OpenERP_ACHIZITII">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
-		<jar-file>OpenERP_NOMGEN.jar</jar-file>
-		<jar-file>OpenERP_CONTABGEN.jar</jar-file>
-		<jar-file>OpenERP_STOCURI.jar</jar-file>		
+		<jar-file>OpenERP_NOMGEN.jar</jar-file>		
 		<class>org.open.erp.services.achizitii.LinieCerereOferta</class>
 		 
 		<class>org.open.erp.services.achizitii.LinieNIR</class>
@@ -21,10 +19,6 @@
 		<class>org.open.erp.services.achizitii.Comanda</class>
 		<class>org.open.erp.services.achizitii.CerereOferta</class>
 		<class>org.open.erp.services.achizitii.LinieComanda</class>
-		<class>org.open.erp.services.nomgen.Material</class>
-		<class>org.open.erp.services.nomgen.LinieDocument</class>
-		<class>org.open.erp.services.nomgen.Document</class>
-		<class>org.open.erp.services.nomgen.Persoana</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>		
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
