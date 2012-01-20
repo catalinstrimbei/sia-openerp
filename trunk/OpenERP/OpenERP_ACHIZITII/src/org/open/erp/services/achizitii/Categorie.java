@@ -1,6 +1,7 @@
 package org.open.erp.services.achizitii;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,7 +32,7 @@ public class Categorie implements Serializable {
 private long id_cat;
 private String denumire;
 @OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL,targetEntity=Furnizor.class)
-private List<Furnizor> furnizoriCategorie=new ArrayList<Furnizor>();
+private Collection<Furnizor> furnizoriCategorie;
 
 @OneToMany(cascade = CascadeType.ALL, mappedBy = "categorieArticol")
 private List<Articol> articole = new ArrayList<Articol>();
@@ -76,7 +77,7 @@ public String getDenumire() {
 public void setDenumire(String denumire) {
 	this.denumire = denumire;
 }
-public List<Furnizor> getFurnizoriCategorie() {
+public Collection<Furnizor> getFurnizoriCategorie() {
 	return furnizoriCategorie;
 }
 public void setFurnizoriCategorie(List<Furnizor> furnizoriCategorie) {

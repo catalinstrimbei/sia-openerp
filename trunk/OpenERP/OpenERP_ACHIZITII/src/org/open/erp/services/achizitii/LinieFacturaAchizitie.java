@@ -19,7 +19,7 @@ import org.open.erp.services.nomgen.LinieDocument;
  * 
  */
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+
 public class LinieFacturaAchizitie extends LinieDocument implements Serializable{
 	/**
 	 * 

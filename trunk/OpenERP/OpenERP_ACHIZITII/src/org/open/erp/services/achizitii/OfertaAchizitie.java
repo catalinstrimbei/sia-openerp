@@ -1,14 +1,19 @@
 package org.open.erp.services.achizitii;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
+
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,13 +35,15 @@ public class OfertaAchizitie implements Serializable {
 	public static final Integer IN_CURS = 0;	
 	@Temporal(TemporalType.DATE)
 	private Date dataOferta;	
-	private Integer statusOferta;	
+	private Integer statusOferta;
+	@ManyToOne
 	private Furnizor furnizor;
 	private Double valTotal;
 	private Integer nrZile;	
 	@OneToOne(mappedBy="ofertaAchizitie")
 	private CerereOferta cerereOferta;	
-	private List<LinieOfertaAchizitie> liniiOferta = new LinkedList<LinieOfertaAchizitie>();
+	@OneToMany(mappedBy = "oferta", targetEntity = org.open.erp.services.achizitii.LinieOfertaAchizitie.class, fetch = LAZY, cascade = ALL)
+	private Collection<LinieOfertaAchizitie> liniiOferta;
 	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(OfertaAchizitie.class.getName());
 	public Double getValTotal() {
 		return valTotal;
@@ -54,11 +61,11 @@ public class OfertaAchizitie implements Serializable {
 		super();
 	}
 
-	public List<LinieOfertaAchizitie> getLiniiOferta() {
+	public Collection<LinieOfertaAchizitie> getLiniiOferta() {
 		return liniiOferta;
 	}
 
-	public void setLiniiOferta(List<LinieOfertaAchizitie> liniiOferta) {
+	public void setLiniiOferta(LinkedList<LinieOfertaAchizitie> liniiOferta) {
 		this.liniiOferta = liniiOferta;
 	}
 
@@ -78,7 +85,7 @@ public class OfertaAchizitie implements Serializable {
 		this.cerereOferta = cerereOferta;
 	}
 	public OfertaAchizitie(Date dataOferta, Integer statusOferta,
-			Furnizor furnizor, List<LinieOfertaAchizitie> liniiOferta) {
+			Furnizor furnizor, LinkedList<LinieOfertaAchizitie> liniiOferta) {
 		super();
 		this.dataOferta = dataOferta;
 		this.statusOferta = statusOferta;

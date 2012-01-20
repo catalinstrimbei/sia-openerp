@@ -1,14 +1,16 @@
 package org.open.erp.services.achizitii;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -35,6 +37,7 @@ public class Comanda implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)	
     private Integer idComanda;	
+	@ManyToOne@JoinColumn(name="idFurnizor")
 	private Furnizor furnizor;
 	@Temporal(TemporalType.DATE)
 	private Date dataComanda;
@@ -44,7 +47,7 @@ public class Comanda implements Serializable {
 	private Factura factura;
 	
 	@OneToMany(mappedBy = "comanda",targetEntity=LinieComanda.class)
-	private List<LinieComanda> liniiComanda=new LinkedList<LinieComanda>();
+	private Collection<LinieComanda> liniiComanda;
 	
 	 public void addLinii(LinieComanda li) {
 	        this.getLiniiComanda().add(li);	       
@@ -68,7 +71,7 @@ public class Comanda implements Serializable {
 		this.dataComanda = dataComanda;
 		this.statusComanda = statusComanda;
 	}
-	public List<LinieComanda> getLiniiComanda() {
+	public Collection<LinieComanda> getLiniiComanda() {
 		return liniiComanda;
 	}
 	public void setLiniiComanda(List<LinieComanda> liniiComanda) {

@@ -3,12 +3,14 @@ package org.open.erp.services.achizitii.impl;
 
 import java.beans.PropertyChangeEvent;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
+import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
@@ -16,7 +18,6 @@ import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.AprovizionareSrvLocal;
 import org.open.erp.services.achizitii.AprovizionareSrvRemote;
 import org.open.erp.services.achizitii.Articol;
@@ -39,7 +40,6 @@ import org.open.erp.services.achizitii.registri.RegistruLinieOfertaAchizitie;
 import org.open.erp.services.achizitii.registri.RegistruLiniePlanAprovizionare;
 import org.open.erp.services.achizitii.registri.RegistruOfertaAchizitie;
 import org.open.erp.services.achizitii.registri.RegistruPlanAprovizionare;
-import org.open.erp.services.achizitii.teste.TestAprovizionareImpl;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
@@ -50,27 +50,29 @@ import org.open.erp.services.stocuri.CerereAprovizionare;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.Procesare;
 
-import com.sun.xml.ws.developer.Stateful;
-
 /**
  * 
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
 
-@Stateful
+@Stateful (name= "AprovizionareSrv")
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class AprovizionareImpl implements AprovizionareSrv, AprovizionareSrvLocal, AprovizionareSrvRemote {
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestAprovizionareImpl.class.getName());
-	@EJB(mappedName = "ContabilizareSrvImpl/local")
+ 
+public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSrvRemote {
+
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
+			.getLogger(AprovizionareImpl.class.getName());	
+
+	@EJB(mappedName = "ContabilizareSrv/local")
 	 private ContabilizareSrv contabilizareSrv;
 	
-	@EJB(mappedName = "StocuriSrvImpl/local")
+	@EJB(mappedName = "StocuriSrv/local")
 	 private StocuriSrv stocuriSrv;
 	
 	
 	
-	@PersistenceContext(unitName = "OpenERP_Achizitii")
+	@PersistenceContext(unitName = "OpenERP_ACHIZITII")
 	 private EntityManager em;
 	
 	@Resource
@@ -114,89 +116,6 @@ public class AprovizionareImpl implements AprovizionareSrv, AprovizionareSrvLoca
 		
 		if (this.registruPlanAprovizionare == null)
 			registruPlanAprovizionare = new RegistruPlanAprovizionare(em);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 	@Override
@@ -289,7 +208,7 @@ public class AprovizionareImpl implements AprovizionareSrv, AprovizionareSrvLoca
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	// se inregistreaza Oferta de Achizitie primita de la furnizor
 	public OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,
-			Date data, Furnizor furnizor, List<LinieOfertaAchizitie> linii) {
+			Date data, Furnizor furnizor, LinkedList<LinieOfertaAchizitie> linii) {
 
 		cerereOferta.setStatusCerereOferta(CerereOferta.PRIMITA);
 		return new OfertaAchizitie(data, OfertaAchizitie.IN_CURS, furnizor,
@@ -312,7 +231,7 @@ public class AprovizionareImpl implements AprovizionareSrv, AprovizionareSrvLoca
 			pragOferta = 0.8 * valTotal + 0.2 * oferta.getNrZile();
 			if (pragOferta <= prag) {
 				prag = pragOferta;
-				ofertaPrag = oferta;
+				ofertaPrag = oferta; 
 			}
 		}
 		logger.fatal(ofertaPrag.getNrZile());
@@ -382,8 +301,8 @@ public class AprovizionareImpl implements AprovizionareSrv, AprovizionareSrvLoca
 				+ factura.getNrFact());
 		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc(),
 				((Factura) factura).getValFact(),
-				((Factura) factura).getTVATotal(), factura.getNrDoc(),
-				((Factura) factura).getFurnizor().getId(),
+				((Factura) factura).getTVATotal(), (int) factura.getNrDoc(),
+				 ((Factura) factura).getFurnizor().getIdFurnizor(),
 				factura.getLiniiDocument(), StareDocument.NOU, 1);
 
 	}
@@ -392,8 +311,8 @@ public class AprovizionareImpl implements AprovizionareSrv, AprovizionareSrvLoca
 		this.returMateriale(facturaRetur);
 		return contabilizareSrv.jurnalizareAchizitie(facturaRetur.getDataDoc(),
 				((Factura) facturaRetur).getValFact(), ((Factura) facturaRetur)
-						.getTVATotal(), facturaRetur.getNrDoc(),
-				((Factura) facturaRetur).getFurnizor().getId(), facturaRetur
+						.getTVATotal(), (int) facturaRetur.getNrDoc(),
+				((Factura) facturaRetur).getFurnizor().getIdFurnizor(), facturaRetur
 						.getLiniiDocument(), StareDocument.NOU, 1);
 	}
 
@@ -433,6 +352,14 @@ public class AprovizionareImpl implements AprovizionareSrv, AprovizionareSrvLoca
 	public String toString() {
 		// TODO Auto-generated method stub
 		return super.toString();
+	}
+
+	public SessionContext getSessionContext() {
+		return sessionContext;
+	}
+
+	public void setSessionContext(SessionContext sessionContext) {
+		this.sessionContext = sessionContext;
 	}
 
 }

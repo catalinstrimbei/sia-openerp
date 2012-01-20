@@ -2,19 +2,14 @@ package org.open.erp.services.achizitii;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import org.open.erp.services.nomgen.Departament;
-import org.open.erp.services.nomgen.Persoana;
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
 
 /**
  * 
@@ -24,21 +19,23 @@ import javax.persistence.Column;
  * 
  */
 @Entity
-@AttributeOverride(name = "id", column = @Column(table = "Furnizor", name = "furnizor_id"))
-public class Furnizor extends Persoana implements Serializable {
+
+public class Furnizor implements Serializable {
 
 
 /**
 	 * 
 	 */
 	private static final long serialVersionUID = 2019369183120390764L;
+	@Id@GeneratedValue
+	private int idFurnizor;
 @OneToMany(mappedBy="furnizor")
 private List<Factura> facturiFurnizor=new ArrayList<Factura>();
 private Integer cont;
 private String CUI;
 private String denumire;
-private String adresa;
 private String telefon;
+private String adresa;
 
 @ManyToOne@JoinColumn(name="id_cat")
 private Categorie categorieArticol;
@@ -91,13 +88,7 @@ public void setDenumire(String denumire) {
 	this.denumire = denumire;
 }
 
-public String getAdresa() {
-	return adresa;
-}
 
-public void setAdresa(String adresa) {
-	this.adresa = adresa;
-}
 
 public String getTelefon() {
 	return telefon;
@@ -107,27 +98,25 @@ public void setTelefon(String telefon) {
 	this.telefon = telefon;
 }
 
-
-
-public Furnizor(Integer id, Departament dep, String adresa,
-		List<String> telefoane, List<String> emailuri, String cUI,
-		String denumire, String adresa2, String telefon) {
-	super(id, dep, adresa, telefoane, emailuri);
-	CUI = cUI;
-	this.denumire = denumire;
-	adresa = adresa2;
-	this.telefon = telefon;
-}
-
-
-
-public Furnizor( Integer cont,String cUI, String denumire, String adresa, String telefon) {
+public Furnizor(Integer cont,
+		String cUI, String denumire, String telefon) {
 	super();
 	this.cont = cont;
 	CUI = cUI;
 	this.denumire = denumire;
-	adresa = adresa;
 	this.telefon = telefon;
 }
+
+public int getIdFurnizor() {
+	return idFurnizor;
+}
+
+public void setIdFurnizor(Integer idFurnizor) {
+	this.idFurnizor = idFurnizor;
+}
+
+
+
+
 
 }

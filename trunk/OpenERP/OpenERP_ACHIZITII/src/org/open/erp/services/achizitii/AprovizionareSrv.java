@@ -1,6 +1,8 @@
-package org.open.erp.services.achizitii;
+ package org.open.erp.services.achizitii;
 
+import java.beans.PropertyChangeListener;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.open.erp.services.ctbgen.exceptii.CtbException;
@@ -13,11 +15,11 @@ import org.open.erp.services.nomgen.Document;
  * 
  * @author AchizitiiTeam
  * 
- * @Depinde: NomenclatoareSrv,  ContabilitateSrv, StocuriSrv
+ * @Depinde: NomenclatoareSrv,  ContabilitateSrv, StocuriSrv 
  * 
  * @EntitatiNomGen: Partener, Persoana, Material, Document, LinieDocument
  * 
- * @EntitatiAlteSrv:CerereAprovizionare 
+ * @EntitatiAlteSrv:CerereAprovizionare  
  * 
  * @EntitatiLocale:Articol, Categorie, CerereOferta, LinieCerereOferta, Comanda, LinieComanda,Contract, Furnizor,
  * FacturaAchizitie, LinieFacturaAchizitie, NIR, LinieNIR, PlanAprovizionare, LiniePlanAprovizionare, OfertaAchizitie, LinieOfertaAchizitie
@@ -33,11 +35,11 @@ import org.open.erp.services.nomgen.Document;
  * 8. Inregistrare Facturi furnizor
  * 9. Retur materiale
  * 
- *  
+ *   
  *  
  */
 
-public interface AprovizionareSrv {
+public interface AprovizionareSrv extends PropertyChangeListener{
 	/**
 	 * Scop Inregistreaza cererile de aprovizionare intr-un plan de aprovizionare
 	 * 
@@ -70,7 +72,7 @@ public interface AprovizionareSrv {
   	 * @return Oferta de achizitie noua
   	 * 
   	 */ 
-    OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,Date data,Furnizor furnizor,List<LinieOfertaAchizitie> linii);
+    OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,Date data,Furnizor furnizor,LinkedList<LinieOfertaAchizitie> linii);
     
     /**
   	 * Analiza oferte de achizitie

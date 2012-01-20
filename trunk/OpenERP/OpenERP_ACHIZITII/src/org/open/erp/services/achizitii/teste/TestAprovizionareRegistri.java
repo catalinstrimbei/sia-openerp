@@ -52,9 +52,9 @@ import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.exceptions.StocuriExceptions;
 import org.open.erp.services.stocuri.impl.Procesare;
 
-public class TestAprovizionareImpl {
+public class TestAprovizionareRegistri {
 	
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestAprovizionareImpl.class.getName());
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestAprovizionareRegistri.class.getName());
 	static StocuriSrv stocuriInstance;
 	static AprovizionareSrv aprovizionareInstance;
 	static NomenclatoareSrv nomenclatorInstance;
@@ -77,7 +77,7 @@ public class TestAprovizionareImpl {
         return new InitialContext(props);
 	}
 	
-
+/*
 	@Before
 	public void setUp() throws Exception {		
 		aprovizionareInstance= AprovizionareFactory.getAprovizionareSrv();
@@ -86,7 +86,7 @@ public class TestAprovizionareImpl {
 		stocuriInstance=AprovizionareFactory.getStocuriSrv();		
 		logger.info("initTest");	
 	}
-
+*/
 	@Test
 	public void testCrearePlanAprovizionare() {
 		logger.info("@Begin test: Inregistrare Cerere Aprovizionare");
@@ -97,7 +97,8 @@ public class TestAprovizionareImpl {
 			PlanAprovizionare plan2;
 			plan2 = aprovizionareInstance.inregistrareCerereAprovizionare(cerere);	
 			assertEquals("Singleton failed",plan1,plan2);	
-	    logger.info(plan2.getStatusPlan()+" "+plan2.getAn()+" "+plan2.getSaptAn()+" "+plan2.getDataStart()+" "+plan2.getDataFinal());
+	    logger.info("plan2: "+plan2.getStatusPlan()+" "+plan2.getAn()+" "+plan2.getSaptAn()+" "+plan2.getDataStart()+" "+plan2.getDataFinal());
+	    logger.info("plan1: "+plan1.getStatusPlan()+" "+plan1.getAn()+" "+plan1.getSaptAn()+" "+plan1.getDataStart()+" "+plan1.getDataFinal());
 		}
 		catch(Exception e){
 		logger.error("Exceptie "+ e.getMessage());
@@ -126,7 +127,7 @@ public class TestAprovizionareImpl {
         regSablonNC.addSablon(sab4);
        
         Persoana persoana = new Persoana();        
-        Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Adresa","Telefon");       
+        Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Telefon");       
 		Factura fact = new Factura(600.0,200.0,"fact1",furnizor);	
 		fact.setDataDoc(new Date());
 		fact.setNrDoc(11);
@@ -173,7 +174,7 @@ public class TestAprovizionareImpl {
 		gestiuni.add(gst2);
 		Procesare procesareTest = new Procesare(gestiuni,null);	
 		 Persoana persoana = new Persoana();        
-	        Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Adresa","Telefon");    
+	        Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Telefon");    
 			Categorie cat=new Categorie(1,"Categorie1");
 			cat.addFurnizor(furnizor);
 			logger.error("-Creat categorie articol-");
@@ -214,7 +215,7 @@ public class TestAprovizionareImpl {
 		gestiuni.add(gst2);
 		Procesare procesareTest = new Procesare(gestiuni,null);	
         Persoana persoana = new Persoana();        
-        Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Adresa","Telefon");     
+        Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Telefon");     
         
 		Factura fact = new Factura(600.0,200.0,"fact1",furnizor);	
 		fact.setDataDoc(new Date());

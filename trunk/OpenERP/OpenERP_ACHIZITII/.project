@@ -27,4 +27,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>log4j</name>
+			<type>2</type>
+			<location>J:/OpenERP/OpenERP_ACHIZITII/log4j</location>
+		</link>
+	</linkedResources>
 </projectDescription>

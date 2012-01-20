@@ -1,9 +1,8 @@
 package org.open.erp.services.achizitii;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -47,15 +47,15 @@ private Integer statusCerereOferta;
 private OfertaAchizitie ofertaAchizitie;
 
 @OneToMany(mappedBy = "cerereOferta", cascade = CascadeType.ALL)
-private List<LinieCerereOferta> liniiCerereOferta= new LinkedList<LinieCerereOferta>();
-
+private Collection<LinieCerereOferta> liniiCerereOferta;
+@ManyToOne@JoinColumn(name="idPersoana")
 private Persoana persona;
 
 @ManyToMany
 @JoinTable(name="CereriOfertaFurnizori",
 		joinColumns=@JoinColumn(name="cerereOferta_fk"), 
 		inverseJoinColumns=@JoinColumn(name="furnizor_fk"))
-private List<Furnizor> trimisaLaFurnizori = new ArrayList<Furnizor>();
+private Collection<Furnizor> trimisaLaFurnizori;
 
 public long getId_CerereOferta() {
 	return id_CerereOferta;
@@ -73,15 +73,15 @@ public void setOfertaAchizitie(OfertaAchizitie ofertaAchizitie) {
 	this.ofertaAchizitie = ofertaAchizitie;
 }
 
-public List<LinieCerereOferta> getLiniiCerereOferta() {
+public Collection<LinieCerereOferta> getLiniiCerereOferta() {
 	return liniiCerereOferta;
 }
 
-public void setLiniiCerereOferta(List<LinieCerereOferta> liniiCerereOferta) {
+public void setLiniiCerereOferta(Collection<LinieCerereOferta> liniiCerereOferta) {
 	this.liniiCerereOferta = liniiCerereOferta;
 }
 
-public List<Furnizor> getTrimisaLaFurnizori() {
+public Collection<Furnizor> getTrimisaLaFurnizori() {
 	return trimisaLaFurnizori;
 }
 
@@ -114,7 +114,7 @@ public Integer getStatusCerereOferta() {
 public void setStatusCerereOferta(Integer statusCerereOferta) {
 	this.statusCerereOferta = statusCerereOferta;
 }
-public List<LinieCerereOferta> getLinii() {
+public Collection<LinieCerereOferta> getLinii() {
 	return liniiCerereOferta;
 }
 public void setLinii(List<LinieCerereOferta> linii) {

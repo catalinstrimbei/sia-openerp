@@ -35,7 +35,7 @@ public class Articol extends Material implements Serializable {
 	public Articol() {
 		super();
 	}
-
+ 
 	public Double getPretAchizitie() {
 		return pretAchizitie;
 	}

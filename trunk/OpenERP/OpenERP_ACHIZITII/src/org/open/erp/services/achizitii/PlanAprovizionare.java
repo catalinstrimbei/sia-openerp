@@ -48,7 +48,7 @@ public class PlanAprovizionare implements Serializable  {
 	private Date dataStart;
 	@Temporal(TemporalType.DATE)
 	private Date dataFinal;
-	@OneToOne@JoinColumn(name="id")
+	@OneToOne@JoinColumn(name="idPersoana")
 	private Persoana persoana;
 	private Integer statusPlan;
 	@OneToMany(mappedBy="planAprovizionare")

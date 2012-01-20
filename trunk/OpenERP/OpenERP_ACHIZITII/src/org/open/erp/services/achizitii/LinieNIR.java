@@ -33,18 +33,13 @@ public class LinieNIR extends LinieDocument implements Serializable{
 	public LinieNIR() {
 		super();
 	}
-	public Double getPret() {
-		return pret;
-	}
-	public void setPret(Double pret) {
-		this.pret = pret;
-	}
+	  
 	public Double getDiferentaCantitate() {
 		return diferentaCantitate;
 	}
 	private void setDiferentaCantitate(Double diferentaCantitate) {
 		this.diferentaCantitate = diferentaCantitate;
-	}
+	} 
 	public Double getCantitateFacturata() {
 		return cantitateFacturata;
 	}
