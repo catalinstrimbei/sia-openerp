@@ -37,7 +37,17 @@ public class Departament implements Serializable{
 	private static final long serialVersionUID = 6469826877523712262L;
 	@Id @GeneratedValue//(strategy = GenerationType.AUTO)
 	private Integer Id;
-	
+	private String Denumire;
+	private String Atributii;
+	@OneToMany(mappedBy="IdDepartament", cascade = CascadeType.ALL)
+	//@JoinColumn(referencedColumnName="Idd")
+	private Collection<Divizie> DivDepartament;	
+	@ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
+	private ArrayList<String> Telefoane=new ArrayList<String>();
+	@ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
+	private ArrayList<String> Emailuri=new ArrayList<String>();
+	@OneToMany(mappedBy="dep", cascade = CascadeType.ALL)
+	private Collection<Persoana> pers;
 
 	public Integer getId() {
 		return Id;
@@ -78,18 +88,7 @@ public class Departament implements Serializable{
 	public void setEmailuri(ArrayList<String> emailuri) {
 		Emailuri = emailuri;
 	}
-	private String Denumire;
-	private String Atributii;
-	@OneToMany(mappedBy="IdDepartament", cascade = CascadeType.ALL)
-	//@JoinColumn(referencedColumnName="Idd")
-	private Collection<Divizie> DivDepartament;
-	
-	@ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
-	private ArrayList<String> Telefoane=new ArrayList<String>();
-	@ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
-	private ArrayList<String> Emailuri=new ArrayList<String>();
-	@OneToMany(mappedBy="dep", cascade = CascadeType.ALL)
-	private Collection<Persoana> pers;
+
 	
 
 
