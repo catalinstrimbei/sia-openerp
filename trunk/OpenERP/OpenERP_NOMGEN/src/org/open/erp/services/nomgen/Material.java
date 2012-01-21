@@ -1,16 +1,18 @@
 package org.open.erp.services.nomgen;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
-
 import javax.persistence.Id;
-
-import org.hibernate.annotations.CollectionOfElements;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import static javax.persistence.CascadeType.ALL;
 
 
 /*
@@ -18,34 +20,35 @@ import org.hibernate.annotations.CollectionOfElements;
  * @BusinessObject(Entity)
  */
 @Entity
-
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Material implements Serializable{ 
-	
-	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idMaterial; 
-	
-	private String denumireMaterial; 
-	private String categorie;  
-	private String UM; 
+	@Id @GeneratedValue
+	protected Integer idMaterial; 
+	protected String denumire; 
+	protected String categorie;  
+	protected String UM; 
 	
 	//public Integer stocCurent;  
-	private String tipContabil;
+	protected String tipContabil;
 	private static final long serialVersionUID = 1L;
 	@OneToMany(mappedBy="mat", cascade = CascadeType.ALL)
-	@CollectionOfElements
-	private Collection<Produs> prod;
+	private List <Produs> prod=new ArrayList<Produs>();
+	
+	@OneToMany(mappedBy="material",targetEntity=LinieDocument.class, cascade = ALL)
+	private List<LinieDocument> liniiDocumente=new ArrayList<LinieDocument>();
 	
 	public Material (Integer idMaterial, String denumire, 
 			    String categorie, String uM, String tipContabil) {   
 		super();      
 		this.idMaterial = idMaterial;       
-		this.denumireMaterial = denumire;        
+		this.denumire = denumire;        
 		this.categorie = categorie;      
 		UM = uM;       
 		//this.stocCurent = stocCurent; 
 		this.tipContabil = tipContabil;
 	
+		
+		
 		}  
 	
 	
@@ -58,28 +61,28 @@ public class Material implements Serializable{
 	public Material(Integer idMaterial, String denumire, String uM) {
 		super();
 		this.idMaterial = idMaterial;
-		this.denumireMaterial = denumire;
+		this.denumire = denumire;
 		UM = uM;
 	}
 	
 	public Material(Integer idMaterial, String denumire, String categorie,
-			String uM, String tipContabil, Collection<Produs> prod) {
+			String uM, String tipContabil, List<Produs> prod) {
 		super();
 		this.idMaterial = idMaterial;
-		this.denumireMaterial = denumire;
+		this.denumire = denumire;
 		this.categorie = categorie;
 		UM = uM;
 		this.tipContabil = tipContabil;
 		this.prod = prod;
 	}
 
-	//@CollectionOfElements 
+
 	public Collection<Produs> getProd() {
 		return prod;
 	}
 
 
-	public void setProd(Collection<Produs> prod) {
+	public void setProd(List<Produs> prod) {
 		this.prod = prod;
 	}
 
@@ -92,7 +95,7 @@ public class Material implements Serializable{
         return tipContabil;
     }
 
-
+	
 	public Integer getIdMaterial() {     
 		return idMaterial; 
 		}  
@@ -100,10 +103,10 @@ public class Material implements Serializable{
 		this.idMaterial = idMaterial;  
 		}  
 	public String getDenumire() {      
-		return denumireMaterial;
+		return denumire;
 		} 
-	public void setDenumire(String denumireM) {    
-		this.denumireMaterial = denumireM;  
+	public void setDenumire(String denumire) {    
+		this.denumire = denumire;  
 		} 
 	public String getCategorie() {   
 		return categorie; 
@@ -116,6 +119,16 @@ public class Material implements Serializable{
 			}  
 	public void setUM(String uM) { 
 		UM = uM;  
-		} 
+		}
+
+
+	public List<LinieDocument> getLiniiDocumente() {
+		return liniiDocumente;
+	}
+
+
+	public void setLiniiDocumente(ArrayList<LinieDocument> liniiDocumente) {
+		this.liniiDocumente = liniiDocumente;
+	} 
 	
 	}  

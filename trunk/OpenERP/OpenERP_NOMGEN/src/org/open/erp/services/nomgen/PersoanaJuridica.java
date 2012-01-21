@@ -107,16 +107,17 @@ public class PersoanaJuridica extends Persoana implements Serializable{
 	}
 	
 	
+
+
 	public PersoanaJuridica(Integer id, Departament dep, String adresa,
-			 String denumire,
+			List<String> telefoane2, List<String> emailuri2, String denumire,
 			String codFiscal, String nrInmatriculareFiscala,
-			String atributFiscal,  Persoana p) {
-		super(id, dep, adresa, telefoane, emailuri);
+			String atributFiscal, Persoana p) {
+		super(id, dep, adresa, telefoane2, emailuri2);
 		this.denumire = denumire;
 		this.codFiscal = codFiscal;
 		this.nrInmatriculareFiscala = nrInmatriculareFiscala;
 		this.atributFiscal = atributFiscal;
-
 		this.p = p;
 	}
 

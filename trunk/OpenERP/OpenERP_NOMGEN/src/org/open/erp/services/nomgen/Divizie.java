@@ -5,9 +5,7 @@ package org.open.erp.services.nomgen;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -22,31 +20,17 @@ public class Divizie extends Departament implements Serializable{
 	 /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	//@GeneratedValue(strategy = GenerationType.AUTO)
-	//private Integer Id;
-	 @ManyToOne @JoinColumn(name = "DivDepartament")
-	// @Column(name="IdDepartament")
+	private static final long serialVersionUID = 2294138000681103079L;
+	
+	 @ManyToOne @JoinColumn(name = "IdDep")
 	private Departament IdDepartament;
-	 
 	private String denumire;
-	private String atributii;
-	
-	
-	
+	private String atributii;	
+	 
 	/**
 	 * @return the id
 	 */
-	//@Id
-	//public Integer getId() {
-		//return Id;
-	//}
-	/**
-	 * @param id the id to set
-	 */
-	//public void setId(Integer id) {
-		//Id = id;
-	//}
+	
 	/**
 	 * @return the idDepartament
 	 */
@@ -95,7 +79,7 @@ public class Divizie extends Departament implements Serializable{
 			String atributii) {
 		super();
 		
-		//this.Id = id;
+		
 		
 		this.denumire = denumire;
 		this.atributii = atributii;
@@ -105,4 +89,5 @@ public class Divizie extends Departament implements Serializable{
 	public Divizie() {
 		super();	
 	}
+	
 }

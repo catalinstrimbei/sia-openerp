@@ -6,6 +6,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 
@@ -15,6 +16,7 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
+@Table(name="Banca")
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Banca extends PersoanaJuridica implements Serializable {
 	/**

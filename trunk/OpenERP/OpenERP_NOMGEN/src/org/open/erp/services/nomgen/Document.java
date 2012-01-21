@@ -1,38 +1,44 @@
 package org.open.erp.services.nomgen;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-/*
- * @author Echipa NomGen
- * @BusinessObject(Entity)
- */
-import java.io.Serializable;
-import java.util.*;
+import javax.persistence.Transient;
+import static javax.persistence.CascadeType.ALL;
+import javax.persistence.OrderBy;
+import javax.persistence.OrderColumn;
 @Entity
-
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Document implements Serializable{  
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	private Integer nrDocument;         
-	private Date dataDocument; 
-	@OneToOne @JoinColumn(name= "id")
-	private Persoana persoana;//responsabil    
-    
-    
-	private String observatie;   
+	@Id//@GeneratedValue(strategy = GenerationType.AUTO)
+	//@Column(name="id")
+	protected int nrDocument;         
+	protected Date dataDocument; 
+	@OneToOne @JoinColumn(name= "idPersoana")
+	protected Persoana persoana;//responsabil    
+     
+     
+	protected String observatie;   
 	
-	@OneToMany(mappedBy="document", cascade = CascadeType.ALL)
-	private Collection<LinieDocument> liniiDocument;
-	
-	
-
+	@OneToMany(mappedBy="documentParinte",targetEntity=LinieDocument.class, cascade = ALL)
+	protected List<LinieDocument> liniiDocument  =new ArrayList<LinieDocument>();
 	
 	public Document(Integer nrDocument, Date dataDocument, Persoana persoana,
 			String observatie) {
@@ -42,9 +48,9 @@ public class Document implements Serializable{
 		this.persoana = persoana;
 		this.observatie = observatie;
 	}
-	
+	 
 	public Document(){
-		super();
+		
 	}
 	
 	public Document(Integer nrDocument,Date dataDocument){ // adaugare constructor pt Stocuri
@@ -54,23 +60,25 @@ public class Document implements Serializable{
 	public void addLinie(LinieDocument linieDocument) {
 		liniiDocument.add(linieDocument);
 	}
-	
+	@Transient
 	public int getLiniiDocumentCount() {
 		return liniiDocument.size();
 	}
 	
 
 	
-	public Collection<LinieDocument> getLiniiDocument(){
+	public List<LinieDocument> getLiniiDocument(){
 		return liniiDocument;
 	}
 	
 	
-	public void setLiniiDocument(Collection<LinieDocument> liniiDocument) {
+	public void setLiniiDocument(List<LinieDocument> liniiDocument) {
 		this.liniiDocument = liniiDocument;
 	}
 
-
+	public LinieDocument getLinieDocumentAt(int index) {
+		return liniiDocument.get(index);
+	}
 	
 	public void removeLinieDocument(LinieDocument linieDocument) {
 		liniiDocument.remove(linieDocument);
@@ -81,8 +89,8 @@ public class Document implements Serializable{
 	}
 	
 	
-   
-	public Integer getNrDoc() {               
+    
+	public long getNrDoc() {               
 		return nrDocument;          
 		}         
 	
@@ -92,6 +100,7 @@ public class Document implements Serializable{
 	
 	public Date getDataDoc() {                 
 		return dataDocument;         
+		
 		}       
 	
 	public void setDataDoc(Date dataDocument) {        
@@ -113,7 +122,7 @@ public class Document implements Serializable{
 	public void setDataDocument(Date dataDocument) {      
 		this.dataDocument = dataDocument;        
 		}         
-	@OneToOne
+	
 	public Persoana getPersoana() {               
 		return persoana;          
 		}    

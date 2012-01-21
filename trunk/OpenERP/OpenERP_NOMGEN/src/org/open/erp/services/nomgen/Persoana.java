@@ -1,9 +1,12 @@
 package org.open.erp.services.nomgen;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -18,32 +21,33 @@ import javax.persistence.Transient;
  * @BusinessObject(Entity)
  */
 @Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Persoana implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue
-	private Integer id;
-	 @ManyToOne @JoinColumn(name = "pers")
-	private Departament  dep;
+	protected Integer id;
+	 @ManyToOne @JoinColumn(name = "Id")
+	protected Departament  dep;
 	 
-	private String  adresa;
-	@SuppressWarnings("unused")
-	protected static String telefoane;
-	@SuppressWarnings("unused")
-	protected static String emailuri;
+    protected String  adresa;
+    @ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
+    protected ArrayList<String> telefoane=new ArrayList<String>();
+    @ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
+	protected ArrayList<String> emailuri=new ArrayList<String>();
 	
+	protected static final long serialVersionUID = 1L;
 
 	
 	
 	public Persoana(Integer id, Departament dep, String adresa,
-			String telefoane, String emailuri) {
+			List<String> telefoane2, List<String> emailuri2) {
 		super();
 		this.id = id;
 		this.dep = dep;
 		this.adresa = adresa;
-		this.telefoane = telefoane;
-		this.emailuri = emailuri;
+		this.telefoane = (ArrayList<String>) telefoane2;
+		this.emailuri = (ArrayList<String>) emailuri2;
 		
 	
 	}
@@ -91,19 +95,19 @@ public class Persoana implements Serializable {
 
 
 	@Transient 
-	public String getTelefoane() {
+	public List<String> getTelefoane() {
 		return telefoane;
 	}
 
-	public void setTelefoane(String telefoane) {
+	public void setTelefoane(ArrayList<String> telefoane) {
 		this.telefoane = telefoane;
 	}
 	@Transient 
-	public String getEmailuri() {
+	public List<String> getEmailuri() {
 		return emailuri;
 	}
 
-	public void setEmailuri(String emailuri) {
+	public void setEmailuri(ArrayList<String> emailuri) {
 		this.emailuri = emailuri;
 	}
 

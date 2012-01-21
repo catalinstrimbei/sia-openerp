@@ -19,16 +19,15 @@ public class PersoanaFizica extends Persoana implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6694004163196858228L;
 	private String  nume;
 	private String  prenume;
 	private String  formaAdresare;
 	private char    gen;
 	private String  cnp;
-	//@OneToOne @JoinColumn(name= "id")
+	@OneToOne @JoinColumn(name= "id")
 	private Persoana p;
-
-
+	
 	
 	
 	/**
@@ -106,7 +105,9 @@ public class PersoanaFizica extends Persoana implements Serializable{
 	}
 
 
+	
 
+	
 
 	public Persoana getP() {
 		return p;
@@ -116,19 +117,7 @@ public class PersoanaFizica extends Persoana implements Serializable{
 		this.p = p;
 	}
 
-	public PersoanaFizica(Integer id, Departament dep, String adresa,
-			 String nume,
-			String prenume, String formaAdresare, char gen, String cnp,
-			Persoana p) {
-		super(id, dep, adresa, telefoane, emailuri);
-		this.nume = nume;
-		this.prenume = prenume;
-		this.formaAdresare = formaAdresare;
-		this.gen = gen;
-		this.cnp = cnp;
-		this.p = p;
 	
-	}
 
 	public PersoanaFizica(Integer id, String adresa,String nume, String prenume, String formaAdresare, char gen, String cnp) {
 	    super(id, adresa);

@@ -196,7 +196,7 @@ public class TestNomenclatoareDummyImpl{
 		
 		assertTrue(produs instanceof Produs);
 		
-		assertEquals((Integer)1, produs.getId());
+		assertEquals((Integer)1, produs.getIdMaterial());
 		
 	}
 

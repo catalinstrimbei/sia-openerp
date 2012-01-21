@@ -262,7 +262,7 @@ public class RegistruProdus {
 	/* (v) Probleme de interogare 1 (operatii de cautare simpla in colectii) */
 	public Produs getProdus(Integer idProdus) throws Exception {
 		Produs p = new Produs();
-		p.setId(idProdus);
+		p.setIdMaterial(idProdus);
 		Integer pIndex = produse.indexOf(p);
 		if (pIndex >= 0)
 			return this.produse.get(pIndex);
