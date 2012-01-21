@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 
 import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.Persoana;
 /**
  * 
  * @author echipa.stocuri
@@ -32,6 +33,12 @@ public class CerereAprovizionare extends Document  {
 
 	public void setLivrarePartiala(String livrarePartiala) {
 		this.livrarePartiala = livrarePartiala;
+	}
+
+
+
+	public CerereAprovizionare() {
+		super();
 	}
 	
 

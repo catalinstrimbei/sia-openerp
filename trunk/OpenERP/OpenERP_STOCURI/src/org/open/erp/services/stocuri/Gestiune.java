@@ -25,6 +25,10 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQuery(name = "getGestiuneByDepozit", query = "Select g from Gestiune g where g.depozit.idDepozit := idDepozit")
 public class Gestiune implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idGestiune;
@@ -33,7 +37,7 @@ public class Gestiune implements Serializable {
 	@JoinColumn(name = "idDepozit")
 	private Depozit depozit;
 	@OneToMany(mappedBy = "gestiune", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private final List<ArticolStoc> articole = new ArrayList<ArticolStoc>();
+	private  List<ArticolStoc> articole = new ArrayList<ArticolStoc>();
 
 	public Gestiune() {
 		super();

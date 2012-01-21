@@ -10,6 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.Persoana;
 
 /**
  * 
@@ -66,6 +67,9 @@ public class BonTransfer extends Document {
 	}
 	public void setResponsabil(Gestionar responsabil) {
 		this.responsabil = responsabil;
+	}
+	public BonTransfer() {
+		super();
 	}
 	
 	

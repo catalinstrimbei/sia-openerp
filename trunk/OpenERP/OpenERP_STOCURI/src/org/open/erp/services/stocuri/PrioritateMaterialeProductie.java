@@ -67,4 +67,8 @@ public class PrioritateMaterialeProductie extends Document {
 		this.inchisa = inchisa;
 	}
 
+	public PrioritateMaterialeProductie() {
+		super();
+	}
+
 }
