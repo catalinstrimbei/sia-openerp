@@ -490,4 +490,13 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	public void stergeCentralizator(CentralizatorStatSalarii centralizator){
 		registru.stergeCentralizator(centralizator);
 	}
+	
+	public List<Spor> getSporuriGenerale() throws Exception {
+		List<Spor> sporuri = registru.getSporuriGenerale();
+		return sporuri;
+	}
+	
+	public void stergeSpor(Spor spor){
+		registru.stergeSpor(spor);
+	}
 }

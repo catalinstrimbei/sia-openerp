@@ -204,6 +204,8 @@ public class RegistruSalarizare {
 	}
 	
 	public void stergeSpor(Spor spor){
+		spor = entityManager.find(spor.getClass(), spor.getIdSpor());
+		if(spor!=null)
 		entityManager.remove(spor);
 	}
 	
@@ -224,6 +226,8 @@ public class RegistruSalarizare {
 	}
 	
 	public void stergeRetinere(Retinere retinere){
+		retinere = entityManager.find(retinere.getClass(), retinere.getIdRetinere());
+		if(retinere!=null)
 		entityManager.remove(retinere);
 	}
 	
@@ -269,6 +273,22 @@ public class RegistruSalarizare {
 		entityManager.remove(centralizator);
 	}
 
+
+	public List<Spor> getSporuriGenerale() throws Exception{
+		List<Spor> sporuri= new ArrayList<Spor>();
+
+		try{
+		sporuri = entityManager.createQuery("SELECT s FROM Spor s " +
+				"WHERE s.angajat.id is null ")
+				//.setParameter("id", null)
+				.getResultList();
+		}
+		catch(Exception ex){
+			logger.logINFO("Eroare incarcare sporuri generale:");
+			return null;
+		}
+		return sporuri;
+	}
 
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){

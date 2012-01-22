@@ -354,4 +354,23 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	void stergeCentralizator(CentralizatorStatSalarii centralizator) throws Exception;
+	
+	/**
+	 * returneaza sporurile generale care nu sunt legate de un angajat   
+	 * @return  List<Spor>
+	 * @throws Exception 
+	 * 
+	 */
+	List<Spor> getSporuriGenerale() throws Exception;
+	
+
+	/**
+	 * sterge un spor pornind de la id 
+	 * @param idSpor   id-ul sporului care se doreste a fi sters 				I
+	 * 
+	 * @return  
+	 * @throws Exception 
+	 * 
+	 */
+	void stergeSpor(Spor spor) throws Exception;
 }
