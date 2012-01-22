@@ -9,6 +9,7 @@ import java.util.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -32,9 +33,9 @@ public class ComandaProductie extends Document implements Serializable{
 	
 	Integer idComanda;
 	
-	@ManyToMany (targetEntity=DummyProdus.class)
-	
-	DummyProdus produs;
+	@ManyToMany (targetEntity=Produs.class)
+	@JoinColumn (name="id")
+	Produs produs;
 	
 	Integer cantitate;
 	
@@ -42,7 +43,7 @@ public class ComandaProductie extends Document implements Serializable{
 	Date dataComanda;
 	
 	
-	public ComandaProductie(Integer idComanda, DummyProdus produs,
+	public ComandaProductie(Integer idComanda, Produs produs,
 			Integer cantitate, Date dataComanda) {
 		super();
 		this.idComanda = idComanda;
@@ -59,10 +60,10 @@ public class ComandaProductie extends Document implements Serializable{
 	public void setIdComanda(Integer idComanda) {
 		this.idComanda = idComanda;
 	}
-	public DummyProdus getProdus() {
+	public Produs getProdus() {
 		return produs;
 	}
-	public void setProdus(DummyProdus produs) {
+	public void setProdus(Produs produs) {
 		this.produs = produs;
 	}
 	public Integer getCantitate() {
@@ -77,6 +78,4 @@ public class ComandaProductie extends Document implements Serializable{
 	public void setDataComanda(Date dataComanda) {
 		this.dataComanda = dataComanda;
 	}
-	
-	
 }

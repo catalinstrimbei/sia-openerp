@@ -14,9 +14,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/CommonERP/OpenERP_PRODUCTIE/Resources/ojdbc14.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_STOCURI"/>
+	<classpathentry kind="lib" path="Resources/ojdbc14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

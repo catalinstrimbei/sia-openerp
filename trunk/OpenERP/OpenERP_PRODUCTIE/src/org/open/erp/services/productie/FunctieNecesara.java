@@ -72,7 +72,5 @@ public class FunctieNecesara extends Functie implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	
-		
+	}	
 }

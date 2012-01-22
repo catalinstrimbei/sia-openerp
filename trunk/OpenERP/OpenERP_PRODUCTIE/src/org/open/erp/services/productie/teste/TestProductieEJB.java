@@ -26,10 +26,6 @@ import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.CriteriuCalitate;
-import org.open.erp.services.productie.DummyDivizie;
-import org.open.erp.services.productie.DummyMaterial;
-import org.open.erp.services.productie.DummyMijlocFix;
-import org.open.erp.services.productie.DummyProdus;
 import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.FunctieNecesara;
@@ -48,7 +44,7 @@ import org.open.erp.services.stocuri.StocuriSrv;
 public class TestProductieEJB {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestProductie.class.getName());
 	private static ProductieSrv productie;
-	//private static NomenclatoareSrv nomenclatoare;
+	private static NomenclatoareSrv nomenclatoare;
 	//private static StocuriSrv stocuri;
 	
 	@BeforeClass
@@ -72,7 +68,7 @@ public class TestProductieEJB {
 
 			logger.info("Begin test: definireFlux");
 		 
-		 DummyProdus produs = new DummyProdus();
+		 Produs produs = new Produs();
 		 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		 produs.setDenumire("produs");
 		 
@@ -95,7 +91,7 @@ public class TestProductieEJB {
 		 
 		 logger.info("Begin test: definireFaza");
 		 
-		 DummyProdus produs = new DummyProdus();
+		 Produs produs = new Produs();
 		 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		 produs.setDenumire("produs");
 		 
@@ -110,21 +106,21 @@ public class TestProductieEJB {
 			assertNotNull("Nu exista flux nou!", flux);
 			logger.info("End test: definireFlux");
 						
-			DummyMijlocFix mf;
+			MijlocFix mf;
 			FazaProductie fz;
 			Utilaj u;
 			Double timp;
 			ArrayList<FunctieNecesara> functiiNecesare;
 			ArrayList<Angajat> angajati;
-			ArrayList <DummyMaterial> materialeReteta;
-			ArrayList <DummyMaterial> materialeSemifabricat;
+			ArrayList <Material> materialeReteta;
+			ArrayList <Material> materialeSemifabricat;
 			Semifabricat semifabricatContinut;
 			Semifabricat semifabricatReteta;
-			DummyProdus pDorit;
+			Produs pDorit;
 			Semifabricat sDorit;
 					
 					//setez un mijloc fix;
-					mf=new DummyMijlocFix();
+					mf=new MijlocFix();
 					mf.setId(1);
 					mf.setDenumire("Utilaj");
 					mf.setAdresa(null);
@@ -140,7 +136,7 @@ public class TestProductieEJB {
 					timp= 10.00;
 				
 					//selectez sectia in care se desfasoara faza curenta
-					DummyDivizie sectie= new DummyDivizie();
+					Divizie sectie= new Divizie();
 					sectie.setId(1);				
 					sectie.setDenumire("Sectie Productie");
 					sectie.setIdDepartament(null);
@@ -181,9 +177,9 @@ public class TestProductieEJB {
 				//lista materialelor pe care le-am luat din baza de date
 				//sau in cazul de fata, lista materialelor definite local
 				//lista materialelor din reteta
-					materialeReteta = new ArrayList<DummyMaterial>();
-					DummyMaterial m3=new DummyMaterial();
-					DummyMaterial m4=new DummyMaterial();
+					materialeReteta = new ArrayList<Material>();
+					Material m3=new Material();
+					Material m4=new Material();
 					
 					m3.setIdMaterial(1);
 					m3.setDenumire("material1");
@@ -204,9 +200,9 @@ public class TestProductieEJB {
 					
 						sDorit=new Semifabricat();
 						String denSemifabricatDorit = "semifabricat";
-						ArrayList<DummyMaterial> materialeSemifabricatDorit = new ArrayList<DummyMaterial>();
-						DummyMaterial m7=new DummyMaterial();
-						DummyMaterial m8=new DummyMaterial();
+						ArrayList<Material> materialeSemifabricatDorit = new ArrayList<Material>();
+						Material m7=new Material();
+						Material m8=new Material();
 						m7.setIdMaterial(3);
 						m7.setDenumire("material3");
 						m7.setCategorie(null);
@@ -230,8 +226,8 @@ public class TestProductieEJB {
 						logger.info("Semifabricatul dorit este: " + sDorit);
 						
 					
-						pDorit=new DummyProdus();
-						pDorit.setId(1);
+						pDorit=new Produs();
+						pDorit.setIdMaterial(1);
 						pDorit.setDenumire("Produs nou");
 						pDorit.setDataFabricatiei(null);
 						pDorit.setTermenValabilitate(null);
@@ -247,9 +243,9 @@ public class TestProductieEJB {
 			
 	 public void testComandaMateriale() throws Exception{
 		logger.info("----START test: comandaMateriale ---");
-		 DummyProdus produs = new DummyProdus();
-		 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
-		 produs.setDenumire("produs");
+		 Produs produs = new Produs();
+		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		 //produs.setDenumire("produs");
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
 		 
@@ -262,21 +258,21 @@ public class TestProductieEJB {
 			assertNotNull("Nu exista flux nou!", flux);
 			logger.info("End test: definireFlux");
 						
-			DummyMijlocFix mf;
+			MijlocFix mf;
 			FazaProductie fz;
 			Utilaj u;
 			Double timp;
 			ArrayList<FunctieNecesara> functiiNecesare;
 			ArrayList<Angajat> angajati;
-			ArrayList<DummyMaterial> materialeReteta;
+			ArrayList<Material> materialeReteta;
 			ArrayList <Material> materialeSemifabricat;
 			Semifabricat semifabricatContinut;
 			Semifabricat semifabricatReteta;
-			DummyProdus pDorit;
+			Produs pDorit;
 			Semifabricat sDorit;
 					
 					//setez un mijloc fix;
-					mf=new DummyMijlocFix();
+					mf=new MijlocFix();
 					mf.setId(1);
 					mf.setDenumire("Utilaj");
 					mf.setAdresa(null);
@@ -292,7 +288,7 @@ public class TestProductieEJB {
 					timp= 10.00;
 				
 					//selectez sectia in care se desfasoara faza curenta
-					DummyDivizie sectie= new DummyDivizie();
+					Divizie sectie= new Divizie();
 					sectie.setId(1);				
 					sectie.setDenumire("Sectie Productie");
 					sectie.setIdDepartament(null);
@@ -333,9 +329,9 @@ public class TestProductieEJB {
 				//lista materialelor pe care le-am luat din baza de date
 				//sau in cazul de fata, lista materialelor definite local
 				//lista materialelor din reteta
-					materialeReteta = new ArrayList<DummyMaterial>();
-					DummyMaterial m3=new DummyMaterial();
-					DummyMaterial m4=new DummyMaterial();
+					materialeReteta = new ArrayList<Material>();
+					Material m3=new Material();
+					Material m4=new Material();
 					
 					m3.setIdMaterial(1);
 					m3.setDenumire("material1");
@@ -356,9 +352,9 @@ public class TestProductieEJB {
 					
 						sDorit=new Semifabricat();
 						String denSemifabricatDorit = "semifabricat";
-						ArrayList<DummyMaterial> materialeSemifabricatDorit = new ArrayList<DummyMaterial>();
-						DummyMaterial m7=new DummyMaterial();
-						DummyMaterial m8=new DummyMaterial();
+						ArrayList<Material> materialeSemifabricatDorit = new ArrayList<Material>();
+						Material m7=new Material();
+						Material m8=new Material();
 						m7.setIdMaterial(3);
 						m7.setDenumire("material3");
 						m7.setCategorie(null);
@@ -382,8 +378,8 @@ public class TestProductieEJB {
 						logger.info("Semifabricatul dorit este: " + sDorit);
 						
 					
-						pDorit=new DummyProdus();
-						pDorit.setId(1);
+						pDorit=new Produs();
+						pDorit.setIdMaterial(1);
 						pDorit.setDenumire("Produs nou");
 						pDorit.setDataFabricatiei(null);
 						pDorit.setTermenValabilitate(null);
@@ -405,8 +401,9 @@ public class TestProductieEJB {
 	 
 	public void testFabricareProdus() throws Exception {
 		logger.info("----START test: fabricareProdus ---");
-		 DummyProdus produs = new DummyProdus();
-		 produs.setDenumire("produs");
+		 Produs produs = new Produs();
+		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		 //produs.setDenumire("produs");
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
 		 
@@ -429,9 +426,9 @@ public class TestProductieEJB {
 		
 		
 			logger.info("----INCEPERE TEST CONSUM RESURSE----");
-			 DummyProdus produs = new DummyProdus();
-			 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
-			 produs.setDenumire("produs");
+			 Produs produs = new Produs();
+			 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+			 //produs.setDenumire("produs");
 			 
 			 FluxProductie flux = productie.definireFluxProductie(1, produs);
 			 
@@ -444,21 +441,21 @@ public class TestProductieEJB {
 				assertNotNull("Nu exista flux nou!", flux);
 				
 			 
-				DummyMijlocFix mf;
+				MijlocFix mf;
 				FazaProductie fz;
 				Utilaj u;
 				Double timp;
 				ArrayList<FunctieNecesara> functiiNecesare;
 				ArrayList<Angajat> angajati;
-				ArrayList <DummyMaterial> materialeReteta;
-				ArrayList <DummyMaterial> materialeSemifabricat;
+				ArrayList <Material> materialeReteta;
+				ArrayList <Material> materialeSemifabricat;
 				Semifabricat semifabricatContinut;
 				Semifabricat semifabricatReteta;
-				DummyProdus pDorit;
+				Produs pDorit;
 				Semifabricat sDorit;
 						
 						//setez un mijloc fix;
-						mf=new DummyMijlocFix();
+						mf=new MijlocFix();
 						mf.setId(1);
 						mf.setDenumire("Utilaj");
 						mf.setAdresa(null);
@@ -474,7 +471,7 @@ public class TestProductieEJB {
 						timp= 10.00;
 					
 						//selectez sectia in care se desfasoara faza curenta
-						DummyDivizie sectie= new DummyDivizie();
+						Divizie sectie= new Divizie();
 						sectie.setId(1);				
 						sectie.setDenumire("Sectie Productie");
 						sectie.setIdDepartament(null);
@@ -515,9 +512,9 @@ public class TestProductieEJB {
 					//lista materialelor pe care le-am luat din baza de date
 					//sau in cazul de fata, lista materialelor definite local
 					//lista materialelor din reteta
-						materialeReteta = new ArrayList<DummyMaterial>();
-						DummyMaterial m3=new DummyMaterial();
-						DummyMaterial m4=new DummyMaterial();
+						materialeReteta = new ArrayList<Material>();
+						Material m3=new Material();
+						Material m4=new Material();
 						
 						m3.setIdMaterial(1);
 						m3.setDenumire("material1");
@@ -538,9 +535,9 @@ public class TestProductieEJB {
 						
 							sDorit=new Semifabricat();
 							String denSemifabricatDorit = "semifabricat";
-							ArrayList<DummyMaterial> materialeSemifabricatDorit = new ArrayList<DummyMaterial>();
-							DummyMaterial m7=new DummyMaterial();
-							DummyMaterial m8=new DummyMaterial();
+							ArrayList<Material> materialeSemifabricatDorit = new ArrayList<Material>();
+							Material m7=new Material();
+							Material m8=new Material();
 							m7.setIdMaterial(3);
 							m7.setDenumire("material3");
 							m7.setCategorie(null);
@@ -564,8 +561,8 @@ public class TestProductieEJB {
 							logger.info("Semifabricatul dorit este: " + sDorit);
 							
 						
-							pDorit=new DummyProdus();
-							pDorit.setId(1);
+							pDorit=new Produs();
+							pDorit.setIdMaterial(1);
 							pDorit.setDenumire("Produs nou");
 							pDorit.setDataFabricatiei(null);
 							pDorit.setTermenValabilitate(null);
@@ -584,9 +581,9 @@ public class TestProductieEJB {
 	{
 		logger.info("INCEPERE TEST CONTROL CALITATE");
 		
-		DummyProdus produs = new DummyProdus();
-		//produs=nomenclatoare.CautareProdusDupaDenumire("produs");
-		produs.setDenumire("denumire");
+		Produs produs = new Produs();
+		produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		//produs.setDenumire("denumire");
 		productie.controlCalitate(produs);
 	
 		logger.info("---END TEST CONTROL CALITATE");
@@ -597,9 +594,9 @@ public class TestProductieEJB {
 public void testLivrareProdus() throws Exception{
 	logger.info("INCEPERE TEST LIVRARE PRODUS");
 	
-	DummyProdus produs = new DummyProdus();
-	//produs=nomenclatoare.CautareProdusDupaDenumire("produs");
-	produs.setDenumire("produs");
+	Produs produs = new Produs();
+	produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+	//produs.setDenumire("produs");
 	ComandaProductie comanda = new ComandaProductie();
 	Integer cantitateProdus = comanda.getCantitate();
 	

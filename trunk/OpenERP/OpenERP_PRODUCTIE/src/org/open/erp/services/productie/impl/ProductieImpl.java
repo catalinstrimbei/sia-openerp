@@ -17,17 +17,11 @@ import javax.persistence.PersistenceContext;
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
-import org.open.erp.services.nomgen.Material;
-import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.personal.PersonalSrv;
+//import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.CriteriuCalitate;
-import org.open.erp.services.productie.DummyAngajat;
-import org.open.erp.services.productie.DummyDivizie;
-import org.open.erp.services.productie.DummyMaterial;
-import org.open.erp.services.productie.DummyProdus;
 import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.FunctieNecesara;
@@ -44,13 +38,13 @@ import org.open.erp.services.stocuri.*;
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
-@Stateful
+@Stateful (name="ProductieSrv")
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, ProductieSrvRemote {
+public class ProductieImpl implements ProductieSrvLocal, ProductieSrvRemote {
 	
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductieImpl.class.getName());
 
-	private static PersonalSrv personal;
+	//private static PersonalSrv personal;
 	private static ProductieSrv productie;
 	private static StocuriSrv stocuri;
 	
@@ -73,15 +67,15 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	ArrayList<FazaProductie> fazeFlux;
 	Integer cantitateProdusFinal = 0;
 	Integer cantitateDeseu =0 ;
-	ArrayList<DummyMaterial> listaMateriale;
-	ArrayList<DummyAngajat> listaAngajati;
+	ArrayList<Material> listaMateriale;
+	ArrayList<Angajat> listaAngajati;
 	ArrayList<Utilaj> listaUtilaje;
 	ArrayList<Integer> cantitati;
 	ArrayList<Object> resurse;
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public FluxProductie definireFluxProductie(Integer idFlux, DummyProdus produs) throws Exception{
+	public FluxProductie definireFluxProductie(Integer idFlux, Produs produs) throws Exception{
 		
 		// creez un flux pentru produsul 'produs' (pe care il primesc ca parametru), fara a adauga faze		
 		
@@ -112,7 +106,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 			CerereAprovizionare cerere = new CerereAprovizionare(1, new Date(), null, null);
 			logger.debug(">>>>>>>>>>>> START cerere aprovizionare");
 			LinieDocument linie;
-			ArrayList<DummyMaterial> listaMateriale = new ArrayList<DummyMaterial>();
+			ArrayList<Material> listaMateriale = new ArrayList<Material>();
 			listaMateriale = faza.getMaterialeReteta();
 			for (int i=0; i<listaMateriale.size(); i++){
 				linie = new LinieDocument();
@@ -130,9 +124,9 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	@Override
 	public FazaProductie definireFazaProductie(String faza, FluxProductie flux,
 			Utilaj utilaj, Double timpFolosire, ArrayList<FunctieNecesara> functiiNecesare,
-			ArrayList<DummyMaterial> materialeReteta,
-			Semifabricat semifabricatDorit, DummyProdus produsDorit,
-			DummyDivizie sectie, Integer nrOrdine, Boolean isFinal) throws Exception {
+			ArrayList<Material> materialeReteta,
+			Semifabricat semifabricatDorit, Produs produsDorit,
+			Divizie sectie, Integer nrOrdine, Boolean isFinal) throws Exception {
 		
 		logger.debug(">>>>>>>>>>>> START Creare faza >>>>>>>>>>>>>>> ");	
 		
@@ -141,12 +135,12 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	    flux.adaugaFaza(fazaProductie);
 	    fazaProductie.setFlux(flux);
 		
-	    ArrayList<DummyAngajat> listaAngajati = new ArrayList<DummyAngajat>();
+	    ArrayList<Angajat> listaAngajati = new ArrayList<Angajat>();
 	    for (int f=0;f<functiiNecesare.size();f++){
 			int nrAngajati=functiiNecesare.get(f).getNrAngajatiFunctie();
 			
 			for(int a=1;a<=nrAngajati;a++){
-				DummyAngajat angajat =new DummyAngajat();
+				Angajat angajat =new Angajat();
 					
 				//ar trebui o metoda 'get angajat by functie'
 				//angajat=personal.getAngajatById(a);
@@ -219,7 +213,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public DummyProdus lansareComandaProductie(ComandaProductie comanda, DummyProdus produs)  throws Exception{
+	public Produs lansareComandaProductie(ComandaProductie comanda, Produs produs)  throws Exception{
 		  // cautare faze pentru produsul x in baza de date;
 		   //de lamurit cu comanda productie - modulul stocuri
 		 //  definireFluxProductie(idFlux, produs);
@@ -229,11 +223,11 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public ArrayList<Object> consumResursa(FazaProductie faza, DummyProdus produs)  throws Exception{
+	public ArrayList<Object> consumResursa(FazaProductie faza, Produs produs)  throws Exception{
 		 	  
-		  listaMateriale = new ArrayList<DummyMaterial>();
+		  listaMateriale = new ArrayList<Material>();
 		  listaUtilaje = new ArrayList<Utilaj>();
-		  listaAngajati = new ArrayList<DummyAngajat>();
+		  listaAngajati = new ArrayList<Angajat>();
 
 
 		  for(int i=0;i<faza.getMaterialeReteta().size(); i++){
@@ -255,7 +249,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public ArrayList<Integer> controlCalitate(DummyProdus produs)  throws Exception {
+	public ArrayList<Integer> controlCalitate(Produs produs)  throws Exception {
 		  Boolean trecut;
 		  ComandaProductie comanda;
 		  
@@ -286,12 +280,12 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public Integer livrareProdus(Integer cantitateProdus, DummyProdus produs)  throws Exception{
+	public Integer livrareProdus(Integer cantitateProdus, Produs produs)  throws Exception{
 		  ArticolStoc stocProduse;
 		  stocProduse=new ArticolStoc();
 		  cantitateProdus=cantitati.get(0);
 		  stocProduse.getCatitateStocPeGestiune();
-		  if (stocProduse.getIdArticolStoc() == produs.getId()){
+		  if (stocProduse.getIdArticolStoc() == produs.getIdMaterial()){
 		   return cantitateProdus;
 		  }
 		  
@@ -305,7 +299,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza,DummyProdus produs)  throws Exception{
+	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza,Produs produs)  throws Exception{
 		consumResursa(faza, produs);
 		return resurse;
 		
@@ -313,7 +307,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public ArrayList<Integer> inregistrareGestiuneProductie(DummyProdus produs) throws Exception{
+	public ArrayList<Integer> inregistrareGestiuneProductie(Produs produs) throws Exception{
 		controlCalitate(produs);
 		return cantitati;
 	}
@@ -327,7 +321,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public void fabricare(DummyProdus produs, Integer idFlux) throws Exception{
+	public void fabricare(Produs produs, Integer idFlux) throws Exception{
 
 		FluxProductie fluxPr = productie.getFlux(idFlux);
 		
@@ -343,10 +337,5 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 			fazePr.get(n - 1).procesareProdus();
 			logger.info("Procesare produs: " +fazeFlux.get(n - 1).procesareProdus());
 		}
-		
-		
-		
 	}
-
-
 }

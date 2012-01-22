@@ -37,7 +37,7 @@ public class ReceptieComandaProductie implements MessageListener {
 	 * @see MessageListener#onMessage(Message)
 	 */
 		@Override
-	public void onMessage(Message message) {/*
+	public void onMessage(Message message) {
 		ObjectMessage oMsg = (ObjectMessage) message;
 		Document docIn = (Document) oMsg;
 		// voi aveti comanda productie... care ar trebui sa mosteneasca
@@ -55,6 +55,6 @@ public class ReceptieComandaProductie implements MessageListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}*/
+		}
 	}
 }

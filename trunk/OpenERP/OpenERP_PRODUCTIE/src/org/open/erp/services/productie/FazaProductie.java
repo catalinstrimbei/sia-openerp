@@ -41,6 +41,7 @@ public class FazaProductie implements Serializable {
 	String faza;
 	
 	@ManyToOne
+	//@JoinColumn(name="idFlux")
 	FluxProductie flux;
 	
 	@ManyToOne
@@ -51,13 +52,13 @@ public class FazaProductie implements Serializable {
 	@OneToMany (targetEntity=FunctieNecesara.class, mappedBy="faza")
 	ArrayList <FunctieNecesara> functiiNecesare;
 		
-	@ManyToOne (targetEntity=DummyAngajat.class)
+	@ManyToOne (targetEntity=Angajat.class)
 	@JoinColumn(name="marca")
-	ArrayList<DummyAngajat> angajati;
+	ArrayList<Angajat> angajati;
 	
-	@ManyToOne (targetEntity=DummyMaterial.class)
+	@ManyToOne (targetEntity=Material.class)
 	@JoinColumn(name = "idMaterial")
-	ArrayList<DummyMaterial> materialeReteta;
+	ArrayList<Material> materialeReteta;
 	
 	@ManyToOne 
 	@JoinColumn(name = "idSemifabricat")
@@ -67,28 +68,24 @@ public class FazaProductie implements Serializable {
 	@JoinColumn(name = "idSemifabricat")
 	Semifabricat semifabricatDorit;
 	
-	@ManyToOne (targetEntity=DummyProdus.class)
+	@ManyToOne (targetEntity=Produs.class)
 	@JoinColumn(name = "id")
-	
-	DummyProdus produsDorit;
+	Produs produsDorit;
 	
 	@ManyToOne
 	@JoinColumn(name = "idSemifabricat")
 	Semifabricat semifabricatObtinut;
 	
-	@ManyToOne (targetEntity=DummyProdus.class)
+	@ManyToOne (targetEntity=Produs.class)
 	@JoinColumn(name = "id")
-	DummyProdus produsObtinut;
+	Produs produsObtinut;
 	
-	@ManyToOne  (targetEntity=DummyDivizie.class)
+	@ManyToOne  (targetEntity=Divizie.class)
 	@JoinColumn(name = "id")
-	DummyDivizie sectie;
+	Divizie sectie;
 	
 	Integer nrOrdine;
 	Boolean isFinal;
-	
-
-	
 	
 		
 	public Integer getNrOrdine() {
@@ -129,9 +126,9 @@ public class FazaProductie implements Serializable {
 
 	public FazaProductie(String faza,  Utilaj utilaj, Double timpFolosire,
 			ArrayList<FunctieNecesara> functiiNecesare,
-			ArrayList<DummyMaterial> materialeReteta,
+			ArrayList<Material> materialeReteta,
 			 Semifabricat semifabricatDorit,
-			DummyProdus produsDorit, DummyDivizie sectie, Integer nrOrdine, Boolean isFinal) {
+			 Produs produsDorit, Divizie sectie, Integer nrOrdine, Boolean isFinal) {
 		super();
 		this.faza = faza;
 		this.utilaj = utilaj;
@@ -170,19 +167,19 @@ public class FazaProductie implements Serializable {
 		this.timpFolosire = timpFolosire;
 	}
 
-	public ArrayList<DummyAngajat> getAngajati() {
+	public ArrayList<Angajat> getAngajati() {
 		return angajati;
 	}
 
-	public void setAngajati(ArrayList<DummyAngajat> angajati) {
+	public void setAngajati(ArrayList<Angajat> angajati) {
 		this.angajati = angajati;
 	}
 
-	public ArrayList<DummyMaterial> getMaterialeReteta() {
+	public ArrayList<Material> getMaterialeReteta() {
 		return materialeReteta;
 	}
 
-	public void addMaterialeReteta(DummyMaterial materialReteta) {
+	public void addMaterialeReteta(Material materialReteta) {
 		this.materialeReteta.add(materialReteta);
 	}
 
@@ -202,21 +199,21 @@ public class FazaProductie implements Serializable {
 		this.semifabricatDorit = semifabricatDorit;
 	}
 
-	public DummyProdus getProdusDorit() {
+	public Produs getProdusDorit() {
 		return produsDorit;
 	}
 
-	public void setProdusDorit(DummyProdus produsDorit) {
+	public void setProdusDorit(Produs produsDorit) {
 		this.produsDorit = produsDorit;
 	}
 
 	
 
-	public DummyDivizie getSectie() {
+	public Divizie getSectie() {
 		return sectie;
 	}
 
-	public void setSectie(DummyDivizie sectie) {
+	public void setSectie(Divizie sectie) {
 		this.sectie = sectie;
 	}
 
@@ -238,7 +235,7 @@ public class FazaProductie implements Serializable {
 		
 	}
 	
-	 public DummyProdus procesareProdus(){
+	 public Produs procesareProdus(){
 	     
 	     utilaj.setStatus("ocupat");
 	     if(semifabricatDorit.semifabricat==produsDorit.getDenumire())

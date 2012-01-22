@@ -8,21 +8,18 @@
 		<class>org.open.erp.services.productie.FunctieNecesara</class>
 		<class>org.open.erp.services.productie.FluxProductie</class>
 		<class>org.open.erp.services.productie.FazaProductie</class>
-		<class>org.open.erp.services.productie.DummyProdus</class>
-		<class>org.open.erp.services.productie.DummyMijlocFix</class>
-		<class>org.open.erp.services.productie.DummyMaterial</class>
-		<class>org.open.erp.services.productie.DummyDivizie</class>
-		<class>org.open.erp.services.productie.DummyAngajat</class>
 		<class>org.open.erp.services.productie.CriteriuCalitate</class>
 		<class>org.open.erp.services.productie.ComandaProductie</class>	
-		<!--jar-file>OpenERP_NOMGEN.jar</jar-file!-->
-		<!--jar-file>OpenERP_PERSONAL.jar</jar-file-->
-		<!--jar-file>OpenERP_STOCURI.jar</jar-file!-->
- 			<!--class>org.open.erp.services.nomgen.MateriePrima</class-->
- 			<!--class>org.open.erp.services.nomgen.Material</class-->
- 			<!--class>org.open.erp.services.nomgen.MijlocFix</class--> 
- 			<!--class>org.open.erp.services.nomgen.LinieDocument</class-->
- 			<!--class>org.open.erp.services.personal.Angajat</class-->
+		<!-- jar-file>OpenERP_NOMGEN.jar</jar-file>
+		<jar-file>OpenERP_PERSONAL.jar</jar-file>
+		<jar-file>OpenERP_STOCURI.jar</jar-file-->
+ 			<class>org.open.erp.services.nomgen.MateriePrima</class>
+ 			<class>org.open.erp.services.nomgen.Material</class>
+ 			<class>org.open.erp.services.nomgen.MijlocFix</class> 
+ 			<class>org.open.erp.services.nomgen.LinieDocument</class>
+ 			<class>org.open.erp.services.personal.Angajat</class>
+ 			<class>org.open.erp.services.stocuri.CerereAprovizionare</class>
+ 			<class>org.open.erp.services.stocuri.ArticolStoc</class>
 	    <properties>
 	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
 	        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>

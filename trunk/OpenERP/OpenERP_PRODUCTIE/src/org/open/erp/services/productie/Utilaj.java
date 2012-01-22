@@ -25,14 +25,14 @@ public class Utilaj implements Serializable{
 	@Id @GeneratedValue
 	Integer idUtilaj;
 	
-	@OneToOne (targetEntity=DummyMijlocFix.class)
-	private DummyMijlocFix utilaj;
+	@OneToOne (targetEntity=MijlocFix.class)
+	private MijlocFix utilaj;
 	
 	String status;
 	
 	
 	
-	public Utilaj(Integer idUtilaj, DummyMijlocFix utilaj, String status) {
+	public Utilaj(Integer idUtilaj, MijlocFix utilaj, String status) {
 		super();
 		this.utilaj = utilaj;
 		this.status = status;
@@ -47,10 +47,10 @@ public class Utilaj implements Serializable{
 	public Utilaj() {
 		super();
 	}
-	public DummyMijlocFix getUtilaj() {
+	public MijlocFix getUtilaj() {
 		return utilaj;
 	}
-	public void setUtilaj(DummyMijlocFix utilaj) {
+	public void setUtilaj(MijlocFix utilaj) {
 		this.utilaj = utilaj;
 	}
 	public String getStatus() {

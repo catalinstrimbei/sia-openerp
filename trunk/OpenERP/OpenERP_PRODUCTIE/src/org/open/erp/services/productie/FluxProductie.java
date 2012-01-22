@@ -27,14 +27,14 @@ public class FluxProductie implements Serializable{
 	@Id @GeneratedValue
 	Integer idFlux;
 	
-	@ManyToOne (targetEntity=DummyProdus.class)
+	@ManyToOne (targetEntity=Produs.class)
 	@JoinColumn(name="id")
-	DummyProdus produs;
+	Produs produs;
 	
 	@OneToMany (targetEntity=FazaProductie.class)
 	ArrayList <FazaProductie> faze;
 	
-	public FluxProductie(Integer idFlux, DummyProdus produs) {
+	public FluxProductie(Integer idFlux, Produs produs) {
 		super();
 		this.produs = produs;
 		
@@ -50,10 +50,10 @@ public class FluxProductie implements Serializable{
 	public void setIdFlux(Integer idFlux) {
 		this.idFlux = idFlux;
 	}
-	public DummyProdus getProdus() {
+	public Produs getProdus() {
 		return produs;
 	}
-	public void setProdus(DummyProdus produs) {
+	public void setProdus(Produs produs) {
 		this.produs = produs;
 	}
 	public ArrayList<FazaProductie> getFaze() {
@@ -63,9 +63,4 @@ public class FluxProductie implements Serializable{
 	public void adaugaFaza(FazaProductie faza){
 		this.faze.add(faza);
 	}
-	
-	
-	
-	
-	
 }
