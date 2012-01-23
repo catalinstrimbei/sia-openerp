@@ -86,7 +86,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		
 		return p;
 	}
-
+ 
 	@Interceptors({SalarizareInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
@@ -102,7 +102,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		Integer idPontaj = 999999999;
 		//parcurgem si setam pontajul (adica salvam in DB)
 		for (Angajat angajat:angajati){
-			this.inregistrarePontaj(idPontaj, angajat, an, luna, Configurare.NUMAR_ORE_LUCRATOARE_LUNA, 0.0, 0.0);
+			this.inregistrarePontaj(null, angajat, an, luna, Configurare.NUMAR_ORE_LUCRATOARE_LUNA, 0.0, 0.0);
 		}
 		if (sessionContext.getRollbackOnly() == true){
 			logger.logINFO("END creare pontaj luna - FAILED TRANSACTION");

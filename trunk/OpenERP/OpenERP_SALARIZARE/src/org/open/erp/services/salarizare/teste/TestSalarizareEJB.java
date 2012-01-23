@@ -61,7 +61,7 @@ public class TestSalarizareEJB {
 		logger.info("Begin test: inregistrarePontaj");
 		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
-		Pontaj pontaj = salarizareSrvInstance.inregistrarePontaj(99999999,angajat, 2011, 11, 160.0, 0.0, 0.0);
+		Pontaj pontaj = salarizareSrvInstance.inregistrarePontaj(null,angajat, 2011, 11, 160.0, 0.0, 0.0);
 		logger.info("A fost creat pontajul cu id-ul: "+pontaj.getIdPontaj());
 		
 		assertNotNull("Metoda de creere a pontajului nu a functionat!", pontaj.getIdPontaj());

@@ -162,9 +162,13 @@ public class RegistruSalarizare {
 	/* persistenta */
 	public Pontaj salveazaPontaj(Pontaj pontaj) throws Exception{
 		try{
+			logger.logINFO("<<<<<<OBIECT PONTAJ"+pontaj);
+			logger.logINFO("<<<<<<OBIECT PONTAJ CLASS"+pontaj.getClass());
+			logger.logINFO("<<<<<<OBIECT PONTAJ CU ID"+pontaj.getIdPontaj());
 			if (pontaj.getIdPontaj() == null 
-				//	|| !entityManager.contains(pontaj)
-				//entityManager.find(pontaj.getClass(), pontaj.getIdPontaj()) == null
+				||	
+					//!entityManager.contains(pontaj)
+				entityManager.find(pontaj.getClass(), pontaj.getIdPontaj()) == null
 				)
 			{
 				logger.logINFO("Inainte de persist ***** " + pontaj.getAngajat().getId());
@@ -172,6 +176,7 @@ public class RegistruSalarizare {
 				logger.logINFO("Dupa persist ******** ");
 			}
 			else
+				logger.logINFO("Am facut merge ******** ");
 				entityManager.merge(pontaj);
 			
 		}catch(Exception ex){
