@@ -9,13 +9,14 @@ package org.open.erp.services.vanzari;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import org.open.erp.services.nomgen.Partener;
 
 @Entity
-public class Client extends Partener implements Serializable {
-	//@Id @GeneratedValue
-	//Integer idClient;
+public class Client implements Serializable {
+	@Id @GeneratedValue
+	Integer idClient;
 	String nume;
 	String adresa;
 	String adresaEmail;
@@ -25,13 +26,21 @@ public class Client extends Partener implements Serializable {
 	
 	public Client(){ super(); }
 	
-	public Client(Integer _id, Integer _idPersoana , Integer _durataAfilierii, String _nume,  String _adresaEmail, String _telefon, String _codUnic, Double _soldClient){
-		super(_id, _idPersoana, _durataAfilierii);
+	public Client(Integer _id, String _nume,  String _adresaEmail, String _telefon, String _codUnic, Double _soldClient){
+		this.idClient = _id;
 		this.nume = _nume;
 		this.adresaEmail = _adresaEmail;
 		this.telefon = _telefon;
 		this.codUnic = _codUnic;
 		this.soldClient = _soldClient;
+	}
+	
+	public Integer getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(Integer idClient) {
+		this.idClient = idClient;
 	}
 
 	public String getNume() {

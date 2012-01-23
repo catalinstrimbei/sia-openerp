@@ -35,7 +35,7 @@ import org.open.erp.services.stocuri.impl.StocuriImpl;
 import org.open.erp.services.vanzari.*;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
-@Stateful
+@Stateful (name= "VanzariSrv")
 public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	
 	/* Dependente proprii */
