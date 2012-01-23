@@ -8,10 +8,15 @@
 		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Formular
 		Pontaj</div>
 	<h:form id="formPontajForm">
-		<h:selectOneMenu id="cboLuna" value="#{formPontaj.mapLuni}" converter="#{formPontaj}">
+		<h:selectOneMenu id="cboLuna" value="#{formPontaj.luna}" converter="#{formPontaj}">
 			<f:selectItems value="#{formPontaj.mapLuni}"></f:selectItems>
 			<f:ajax render="@form"></f:ajax>
 		</h:selectOneMenu>
+		<h:selectOneMenu id="cboAn" value="#{formPontaj.an}" converter="#{formPontaj}">
+			<f:selectItems value="#{formPontaj.listAni}"></f:selectItems>
+			<f:ajax render="@form"></f:ajax>
+		</h:selectOneMenu>
+		
 
 	</h:form>
 </body>
