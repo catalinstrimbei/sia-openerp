@@ -9,10 +9,14 @@ import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.event.ActionEvent;
+import javax.faces.validator.ValidatorException;
 
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.salarizare.SalarizareSrvLocal;
@@ -23,6 +27,8 @@ import com.google.common.base.Functions;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Ordering;
 
+@ManagedBean(name="formSpor")
+@SessionScoped
 public class FormSpor implements Converter{
 	private Spor spor;
 	private Angajat angajat;
@@ -82,24 +88,34 @@ public class FormSpor implements Converter{
 	/* Implementare operatii CRUD */
 	public void adaugareSpor(ActionEvent evt){
 		this.spor = new Spor();
-		this.spor.setIdSpor(999);
-		this.spor.setDenumire("Spor Nou");
+		this.spor.setIdSpor(9999);
+		this.spor.setDenumire("");
 		this.sporuri.add(this.spor);
-	}
-	
+		logger.logINFO("Sunt in bean, incercam sa adaugam un sporul" );
+		//return "FormSpor";
+	} 
+	  
 	public void stergereSpor(ActionEvent evt) throws Exception{
 		this.sporuri.remove(this.spor);
-		salarizareSrv.stergeSpor(spor);
-		
+		logger.logINFO("Sunt in bean, incercam sa stergem sporul cu id: "+spor.getIdSpor());
+		salarizareSrv.stergeSpor(this.spor);
+		 
 		if (!this.sporuri.isEmpty())
 			this.spor = this.sporuri.get(0);
 		else
 			this.spor = null;
-	}
-	
+		
+		//return "FormSpor";
+	} 
+	 
 	public void salvareSpor(ActionEvent evt) throws Exception{
-		salarizareSrv.inregistrareSpor(spor.getDenumire(), spor.getTip(), spor.getAn(), spor.getLuna(), spor.getAngajat()
+		this.sporuri.remove(this.spor);
+		
+		this.spor = salarizareSrv.inregistrareSpor(spor.getIdSpor(),spor.getDenumire(), spor.getTip(), spor.getAn(), spor.getLuna(), spor.getAngajat()
 				, spor.getModCalcul(), spor.getValoare());
+		logger.logINFO("Dupa salvare am sporID: " + spor.getIdSpor());
+		this.sporuri.add(this.spor);
+	//	return "FormSpor";
 	}
 	
 	/* Implementare suport pentru navigare-selectie lista combinata*/
@@ -120,15 +136,19 @@ public class FormSpor implements Converter{
 			this.em.refresh(this.client);
 	}
 	*/
-
+ 
 	//operatie invocata la selectie din lista, dar inainte de setSpor
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent uiComp, String uiValue) {
 		// TODO Auto-generated method stub
-		Spor uiSporTemplate = new Spor(Integer.valueOf(uiValue), null, null, null, null, null, null, null);
-		int idx = this.sporuri.indexOf(uiSporTemplate);
-		logger.logINFO("Id-ul din array este:"+idx);
-		return this.sporuri.get(idx); 
+		if (uiComp.getId().equals("cboSpor")){
+			Spor uiSporTemplate = new Spor(Integer.valueOf(uiValue), null, null, null, null, null, null, null);
+			int idx = this.sporuri.indexOf(uiSporTemplate);
+			logger.logINFO("Id-ul din array este:"+idx);
+			return this.sporuri.get(idx); 
+		}
+		
+		return null;
 	}
 
 	// operatie invocata la generare elemente pentru lista, 
@@ -136,8 +156,14 @@ public class FormSpor implements Converter{
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent uiComp, Object uiValue) {
 		// TODO Auto-generated method stub
-		Spor uiSpor = (Spor)uiValue;
-		return uiSpor.getIdSpor().toString();
+		if (uiComp.getId().equals("cboSpor")){
+			logger.logINFO("getAsString uiValue:"+uiValue.toString());
+			Spor uiSpor = (Spor)uiValue;
+			logger.logINFO("getAsString uiValue 2:"+uiSpor.getIdSpor());
+			if (uiSpor.getIdSpor()!=null) //poate veni null din click Add
+				return uiSpor.getIdSpor().toString();
+		}
+		return null;
 	}
 
 	public Map<String, Integer> getMapLuni() {
@@ -160,7 +186,7 @@ public class FormSpor implements Converter{
 		
 		return ImmutableSortedMap.copyOf(mapLuni, Ordering.natural().onResultOf(Functions.forMap(mapLuni)));
 
-		
+	 	 
 		//return mapLuni;
 	}
 
@@ -188,6 +214,22 @@ public class FormSpor implements Converter{
 		this.mapTip = mapTip;
 	}
 	
-	
+	public void validate(FacesContext arg0, UIComponent uiComponent, Object uiValue)
+			throws ValidatorException {
+		logger.logINFO("Validam");
+		if ("spor_denumire".equals(uiComponent.getId())){
+			String denumire = uiValue.toString();
+			logger.logINFO("Validam denumire " + denumire);
+			FacesMessage mesaj = null;
+			if (denumire == null || denumire.isEmpty()){
+				mesaj = new FacesMessage("Numele sporului trebuie completat!");
+			}
+			
+			if (mesaj != null){
+				throw new ValidatorException(mesaj);
+			}
+		}
+		
+	}	
 }
 

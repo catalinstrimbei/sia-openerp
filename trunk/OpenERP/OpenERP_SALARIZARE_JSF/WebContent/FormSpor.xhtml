@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://java.sun.com/jsf/core">
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <body>
 	<div
 		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Sporuri</div>
@@ -11,7 +13,7 @@
 			<p:facet name="header">
 				<h:outputText value="Navigare:"></h:outputText>
 			</p:facet>
-			<h:selectOneMenu id="cboSpor" value="#{formSpor.spor}" converter="#{formSpor}">
+			<h:selectOneMenu id="cboSpor" value="#{formSpor.spor}" converter="#{formSpor}" disabled="false">
 				<p:selectItems value="#{formSpor.sporuri}"></p:selectItems>
 				<p:ajax render="spor_denumire cboModCalcul cboLuna spor_valoare spor_an spor_idSpor optTip"></p:ajax>
 			</h:selectOneMenu>
@@ -24,7 +26,7 @@
 			
 			<h:message></h:message>
 			<h:outputText value="Denumire:"></h:outputText>
-			<h:inputText id="spor_denumire" value="#{formSpor.spor.denumire}"></h:inputText>
+			<h:inputText id="spor_denumire" value="#{formSpor.spor.denumire}" validator="#{formSpor.validate}"></h:inputText>
 			<h:message for="spor_denumire"></h:message>
 			
 			
@@ -34,42 +36,49 @@
 				<p:selectItems value="#{formSpor.mapModCalcul}"></p:selectItems>
 			</h:selectOneMenu>
 
-			<h:message for="spor_modCalcul" rendered="true"></h:message>
+			<h:message for="cboModCalcul" rendered="true"></h:message>
 			<h:outputText value="Valoare:"></h:outputText>
 			<h:inputText id="spor_valoare" value="#{formSpor.spor.valoare}"></h:inputText>
 
 
 
 
-			<h:message rendered="true"></h:message>
+			<h:message for="spor_valoare" rendered="true"></h:message>
 			<h:outputText value="Tip:"></h:outputText>
 			<h:selectOneRadio id="optTip" value="#{formSpor.spor.tip}"
 				layout="pageDirection">
 				<p:selectItems value="#{formSpor.mapTip}"></p:selectItems>
 			</h:selectOneRadio>
 
-			<h:message for="spor_tip"></h:message>
+			<h:message for="optTip"></h:message>
 			<h:outputText value="Luna:"></h:outputText>
 			<h:selectOneMenu id="cboLuna" value="#{formSpor.spor.luna}">
 				<p:selectItems value="#{formSpor.mapLuni}"></p:selectItems>
 			</h:selectOneMenu>
 
-			<h:message for="spor_luna"></h:message>
+			<h:message for="cboLuna"></h:message>
 			<h:outputText value="An:"></h:outputText>
 			<h:inputText id="spor_an" value="#{formSpor.spor.an}"></h:inputText>
 			<h:message for="spor_an"></h:message>
 			<h:outputText value="Id Spor:"></h:outputText>
 			<h:inputText id="spor_idSpor" value="#{formSpor.spor.idSpor}"></h:inputText>
 			<h:message for="spor_idSpor"></h:message>
-			<h:panelGrid columns="3" border="1">
+			<h:panelGrid columns="3" border="1"> 
 				<h:commandButton id="cmdAdd"
-					actionListener="#{formSpor.adaugareSpor}" value="Add"></h:commandButton>
+					actionListener="#{formSpor.adaugareSpor}" value="Add"> 
+					<p:ajax render="@form" execute="@form"></p:ajax>
+				</h:commandButton>
 				<h:commandButton id="cmdSterg"
-					actionListener="#{formSpor.stergereSpor}" value="Delete"></h:commandButton>
+					actionListener="#{formSpor.stergereSpor}" value="Delete">
+					<p:ajax render="@form" execute="@form"></p:ajax>
+				</h:commandButton>
 				<h:commandButton id="cmdSave"
-					actionListener="#{formSpor.salvareSpor}" value="Save"></h:commandButton>
+					actionListener="#{formSpor.salvareSpor}" value="Save">
+					<p:ajax render="@form" execute="@form"></p:ajax>
+				</h:commandButton>
 			</h:panelGrid>
 		</h:panelGrid>
+		<h:messages layout="list" style="color: red" />
 	</h:form>
 </body>
 </html>
