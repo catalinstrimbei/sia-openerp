@@ -70,11 +70,11 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public Pontaj inregistrarePontaj(Angajat angajat, Integer an, Integer luna,
+	public Pontaj inregistrarePontaj(Integer idPontaj, Angajat angajat, Integer an, Integer luna,
 			Double oreLucrate, Double oreSuplimentare, Double oreConcediu) throws Exception {
 		
 		logger.logINFO("START creare pontaj angajat");
-		Pontaj p = new Pontaj(angajat,an,luna,oreLucrate,oreSuplimentare,oreConcediu);
+		Pontaj p = new Pontaj(idPontaj, an,luna, angajat, oreLucrate,oreSuplimentare,oreConcediu);
 		
 		if (sessionContext.getRollbackOnly() == true){
 			logger.logINFO("END creare pontaj angajat - FAILED TRANSACTION");
@@ -99,10 +99,10 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		angajati.addAll(this.personalSrv.getListaAngajati());
 		
 		logger.logINFO("Creare pontaj pentru toti angajatii");
-		
+		Integer idPontaj = 999999999;
 		//parcurgem si setam pontajul (adica salvam in DB)
 		for (Angajat angajat:angajati){
-			this.inregistrarePontaj(angajat, an, luna, Configurare.NUMAR_ORE_LUCRATOARE_LUNA, 0.0, 0.0);
+			this.inregistrarePontaj(idPontaj, angajat, an, luna, Configurare.NUMAR_ORE_LUCRATOARE_LUNA, 0.0, 0.0);
 		}
 		if (sessionContext.getRollbackOnly() == true){
 			logger.logINFO("END creare pontaj luna - FAILED TRANSACTION");

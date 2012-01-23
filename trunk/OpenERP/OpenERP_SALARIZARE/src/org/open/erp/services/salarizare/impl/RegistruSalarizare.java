@@ -162,8 +162,10 @@ public class RegistruSalarizare {
 	/* persistenta */
 	public Pontaj salveazaPontaj(Pontaj pontaj) throws Exception{
 		try{
-			if (pontaj.getIdPontaj() == null || 
-				entityManager.find(pontaj.getClass(), pontaj.getIdPontaj()) == null)
+			if (pontaj.getIdPontaj() == null 
+				//	|| !entityManager.contains(pontaj)
+				//entityManager.find(pontaj.getClass(), pontaj.getIdPontaj()) == null
+				)
 			{
 				logger.logINFO("Inainte de persist ***** " + pontaj.getAngajat().getId());
 				entityManager.persist(pontaj);

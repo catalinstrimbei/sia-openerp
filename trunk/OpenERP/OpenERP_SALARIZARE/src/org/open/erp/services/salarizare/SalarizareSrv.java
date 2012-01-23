@@ -56,6 +56,7 @@ public interface SalarizareSrv {
 	/**
 	 * Inregistreaza un pontaj pentru un anumit Angajat
 	 * 
+	 * @param idPontaj			id-ul pontajului
 	 * @param angajat			Angajatul pentru care se creeaza pontajul
 	 * @param an 				Anul pentru care se realizeaza pontajul
 	 * @param luna 				Luna pentru care se realizeaza pontajul
@@ -67,7 +68,7 @@ public interface SalarizareSrv {
 	 * @throws Exception 
 	 * 
 	 */
-	Pontaj inregistrarePontaj(Angajat angajat, Integer an, Integer luna, Double oreLucrate, Double oreSuplimentare, Double oreConcediu) throws Exception;
+	Pontaj inregistrarePontaj(Integer idPontaj, Angajat angajat, Integer an, Integer luna, Double oreLucrate, Double oreSuplimentare, Double oreConcediu) throws Exception;
 	/**
 	 * Inregistreaza pontajele tuturor angajatilor pornind de la numarul de ore lucratoare din luna
 	 * 
