@@ -15,7 +15,7 @@
 			</p:facet>
 			<h:selectOneMenu id="cboSpor" value="#{formSpor.spor}" converter="#{formSpor}" disabled="false">
 				<p:selectItems value="#{formSpor.sporuri}"></p:selectItems>
-				<p:ajax render="spor_denumire cboModCalcul cboLuna spor_valoare spor_an spor_idSpor optTip"></p:ajax>
+				<p:ajax render="spor_denumire cboModCalcul cboLuna spor_valoare spor_an optTip"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="2" border="1">
 				<h:commandButton id="cmdPrev"
@@ -60,9 +60,9 @@
 			<h:outputText value="An:"></h:outputText>
 			<h:inputText id="spor_an" value="#{formSpor.spor.an}"></h:inputText>
 			<h:message for="spor_an"></h:message>
-			<h:outputText value="Id Spor:"></h:outputText>
-			<h:inputText id="spor_idSpor" value="#{formSpor.spor.idSpor}"></h:inputText>
-			<h:message for="spor_idSpor"></h:message>
+			
+			
+			
 			<h:panelGrid columns="3" border="1"> 
 				<h:commandButton id="cmdAdd"
 					actionListener="#{formSpor.adaugareSpor}" value="Add"> 

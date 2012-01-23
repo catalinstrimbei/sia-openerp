@@ -2,73 +2,91 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	
 <body>
 	<div
 		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Formular
 		Pontaj</div>
 	<h:form id="formPontajForm">
 		<h:selectOneMenu id="cboLuna" value="#{formPontaj.luna}" converter="#{formPontaj}">
-			<f:selectItems value="#{formPontaj.mapLuni}"></f:selectItems>
-			<f:ajax render="@form"></f:ajax>
+			<p:selectItems value="#{formPontaj.mapLuni}"></p:selectItems>
+			<p:ajax render="@form"></p:ajax>
 		</h:selectOneMenu>
 		<h:selectOneMenu id="cboAn" value="#{formPontaj.an}" converter="#{formPontaj}">
-			<f:selectItems value="#{formPontaj.listAni}"></f:selectItems>
-			<f:ajax render="@form"></f:ajax>
+			<p:selectItems value="#{formPontaj.listAni}"></p:selectItems>
+			<p:ajax render="@form"></p:ajax>
 		</h:selectOneMenu><br /><br /><br />
+		<h:panelGrid columns="1" border="1">
+			<h:commandButton id="cmdGenereaza" value="Genereaza pontaj" actionListener="#{formPontaj.generarePontaj}">
+				<p:ajax render="@form" execute="@form"></p:ajax>
+			</h:commandButton>
+		</h:panelGrid>
+
 		<h:dataTable var="liniePontaj" value="#{formPontaj.pontaje}"
 			border="1">
 			<h:column>
-				<f:facet name="header">
+				<p:facet name="header">
 					<h:outputText value="Id Pontaj"></h:outputText>
-				</f:facet>
+				</p:facet>
 				<h:outputText id="idPontaj" value="#{liniePontaj.idPontaj}"></h:outputText>
 			</h:column>
 			<h:column>
-				<f:facet name="header">
+				<p:facet name="header">
 					<h:outputText value="Luna"></h:outputText>
-				</f:facet>
+				</p:facet>
 				<h:outputText id="luna" value="#{liniePontaj.luna}"></h:outputText>
 			</h:column>
 			<h:column>
-				<f:facet name="header">
+				<p:facet name="header">
 					<h:outputText value="An"></h:outputText>
-				</f:facet>
+				</p:facet>
 				<h:outputText id="an" value="#{liniePontaj.an}"></h:outputText>
 			</h:column>
 			<h:column>
-				<h:selectOneMenu id="cboAngajat" value="#{liniePontaj.angajat}" converter="#{formPontaj}">
-					<f:selectItems value="#{formPontaj.angajati}"></f:selectItems>
+				<h:selectOneMenu id="cboAngajat" value="#{liniePontaj.angajat}" converter="#{formPontaj}" readonly="true">
+					<p:selectItems value="#{formPontaj.angajati}"></p:selectItems>
+				
 				</h:selectOneMenu>
-				<f:facet name="header">
+				<p:facet name="header">
 					<h:outputText value="Angajat"></h:outputText>
-				</f:facet>
+				</p:facet>
 				
 			</h:column>
 			
 			<h:column>
 				<h:inputText id="txtOreLucrate" value="#{liniePontaj.oreLucrate}"></h:inputText>
-				<f:facet name="header">
+				<p:facet name="header">
 					<h:outputText value="Ore Lucrate"></h:outputText>
-				</f:facet>
+				</p:facet>
 				
 			</h:column>
 			<h:column>
 				<h:inputText id="txtOreConcediu" value="#{liniePontaj.oreConcediu}"></h:inputText>
-				<f:facet name="header">
+				<p:facet name="header">
 					<h:outputText value="Ore Concediu"></h:outputText>
-				</f:facet>
+				</p:facet>
 				
 			</h:column>
 			<h:column>
 				<h:inputText id="txtOreSuplimentare"
 					value="#{liniePontaj.oreSuplimentare}"></h:inputText>
-				<f:facet name="header">
+				<p:facet name="header">
 					<h:outputText value="Ore Suplimentare"></h:outputText>
-				</f:facet>
+				</p:facet>
 				
 			</h:column>
 		</h:dataTable>
+		<h:panelGrid columns="3" border="1">
+			
+			
+			
+
+		</h:panelGrid>
+		<br />
 
 
 	</h:form>
