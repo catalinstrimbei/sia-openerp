@@ -110,6 +110,7 @@ public interface SalarizareSrv {
 	/**
 	 * Adauga spor pentru un angajat sau pt toti angajatii (practic e un create din CRUD)
 	 * 
+	 * @param id				Id-ul Sporului
 	 * @param denumire			Denumirea Sporului
 	 * @param tip				1=>La nivel de angajat, 2=>pt toti angajatii (angajat va fi trimis null)
 	 * @param an 				Anul pentru care se adauga sporul
@@ -121,7 +122,7 @@ public interface SalarizareSrv {
 	 * @throws Exception 
 	 * 
 	 */
-	Spor inregistrareSpor(String denumire, Integer tip, Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception;
+	Spor inregistrareSpor(Integer id, String denumire, Integer tip, Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception;
 	
 	/**
 	 * Calculeaza sporuri pentru un angajat (poate avea mai multe intr-o luna) si le insumeaza 

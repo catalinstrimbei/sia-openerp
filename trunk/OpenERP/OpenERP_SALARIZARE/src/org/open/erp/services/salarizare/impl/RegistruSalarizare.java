@@ -187,8 +187,12 @@ public class RegistruSalarizare {
 	
 	public Spor salveazaSpor(Spor spor) throws Exception{
 		try{
-			if (spor.getIdSpor() == null || 
-				entityManager.find(spor.getClass(), spor.getIdSpor()) == null)
+			logger.logINFO("salvam SPORUL cu id-ul: ***** " + spor.getIdSpor());
+			if (spor.getIdSpor() == null 
+					//|| 
+				//entityManager.find(spor.getClass(), spor.getIdSpor()) == null ||
+				//!entityManager.contains(spor) 
+				)
 			{
 				entityManager.persist(spor);
 			}
@@ -205,6 +209,7 @@ public class RegistruSalarizare {
 	
 	public void stergeSpor(Spor spor){
 		spor = entityManager.find(spor.getClass(), spor.getIdSpor());
+		logger.logINFO("Se sterge sporul cu id-ul:" + spor.getIdSpor());
 		if(spor!=null)
 		entityManager.remove(spor);
 	}

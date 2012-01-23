@@ -144,10 +144,10 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public Spor inregistrareSpor(String denumire, Integer tip, Integer an,
+	public Spor inregistrareSpor(Integer id, String denumire, Integer tip, Integer an,
 			Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception {
 		logger.logINFO("START creare spor angajat");
-		Spor spor = new Spor(denumire, tip, an, luna, angajat, modCalcul, valoare);
+		Spor spor = new Spor(id, denumire, tip, an, luna, angajat, modCalcul, valoare);
 		
 		if (sessionContext.getRollbackOnly() == true){
 			logger.logINFO("END creare spor angajat - FAILED TRANSACTION");

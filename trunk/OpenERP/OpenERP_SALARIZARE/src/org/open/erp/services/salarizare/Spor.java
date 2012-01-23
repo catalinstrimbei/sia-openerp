@@ -55,8 +55,8 @@ public class Spor implements Serializable{
 	}
 	
 	
-	public Spor(Integer idSpor, String denumire, Integer tip, Angajat angajat,
-			Integer an, Integer luna, Integer modCalcul, Double valoare) {
+	public Spor(Integer idSpor, String denumire, Integer tip, 
+			Integer an, Integer luna, Angajat angajat,Integer modCalcul, Double valoare) {
 		super();
 		this.idSpor = idSpor;
 		this.denumire = denumire;

@@ -161,7 +161,7 @@ public class TestSalarizareImpl {
 	public void testInregistrareSpor() throws Exception {
 		logger.info("Begin test: inregistrareSpor");
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
-		Spor spor = salarizareSrvInstance.inregistrareSpor("Bonus", 1, 2011, 11, angajat, 1, 100.0);
+		Spor spor = salarizareSrvInstance.inregistrareSpor(555,"Bonus", 1, 2011, 11, angajat, 1, 100.0);
 		assertNotNull("Metoda de creare a sporului nu a functionat!", spor);
 		
 		logger.info("End test: inregistrareSpor");
