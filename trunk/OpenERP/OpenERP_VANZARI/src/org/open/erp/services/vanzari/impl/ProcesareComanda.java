@@ -18,7 +18,6 @@ import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.productie.ComandaProductie;
-import org.open.erp.services.productie.DummyProdus;
 //import org.open.erp.services.productie.ProductieSrv;
 import org.open.erp.services.productie.ProductieSrvLocal;
 import org.open.erp.services.productie.impl.ProductieImpl;
@@ -120,9 +119,9 @@ public class ProcesareComanda {
 		else{
 			// lansare Comanda daca prod nu e in stoc 
 			try{
-				DummyProdus dummyProd = new DummyProdus(produs.getId(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
-				ComandaProductie comprod = new ComandaProductie(1, dummyProd, cantitate.intValue(), new Date());
-				prodSrv.lansareComandaProductie(comprod, dummyProd);
+				//DummyProdus dummyProd = new DummyProdus(produs.getId(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
+				ComandaProductie comprod = new ComandaProductie(1, produs, cantitate.intValue(), new Date());
+				prodSrv.lansareComandaProductie(comprod, produs);
 			} catch(Exception ex){
 				
 			}
@@ -133,7 +132,7 @@ public class ProcesareComanda {
 	public Double getPretProdusFinal(Produs produs) throws ValoareNegativa{
 		Double pretFinal = 0.0;
 		//pretFinal = (double) mkSrv.getPretFinalByProdus(produs);
-		org.open.erp.services.marketing.DummyProdus dummyProd = new org.open.erp.services.marketing.DummyProdus(produs.getId(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
+		org.open.erp.services.marketing.DummyProdus dummyProd = new org.open.erp.services.marketing.DummyProdus(produs.getIdMaterial(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
 		//pretFinal = mkSrv.getPretFinalByProdus(dummyProd);
 		mkSrv.getPretFinalByProdus(dummyProd);
 		if( pretFinal <= 0)

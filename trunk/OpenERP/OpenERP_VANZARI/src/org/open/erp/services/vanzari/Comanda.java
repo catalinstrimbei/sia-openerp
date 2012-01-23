@@ -29,11 +29,12 @@ public class Comanda implements Serializable {
 	Integer nrComanda;
 	Date dataComanada;
 	Client client;
-	//Double valoareComanda;
-	//Double tvaComanada;
+	Double valoareComanda;
+	Double tvaComanada;
 	//Double discountTotal;
 	//Double reduceriTotale;
 	char stareComanda; // P, C, X
+	
 	@OneToMany(targetEntity=LinieComanda.class, cascade=ALL)
 	ArrayList<LinieComanda> produseComandate;
 	// !!!!!!!!!!
@@ -85,6 +86,22 @@ public class Comanda implements Serializable {
 		return suma;
 	}
 				
+	public Double getValoareComanda() {
+		return valoareComanda;
+	}
+
+	public void setValoareComanda(Double valoareComanda) {
+		this.valoareComanda = valoareComanda;
+	}
+
+	public Double getTvaComanada() {
+		return tvaComanada;
+	}
+
+	public void setTvaComanada(Double tvaComanada) {
+		this.tvaComanada = tvaComanada;
+	}
+
 	public Integer getNrComanda() {
 		return nrComanda;
 	}

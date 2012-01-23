@@ -164,7 +164,7 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 		Integer result = 0;
 		try{
 			//ArrayList<LinieDocument> liniiDoc = (ArrayList<LinieFacturaEmisa>) factura.getProduseFacturate();
-			result = contabilizareSrv.jurnalizareVanzare(factura.getDataDoc(), factura.getValoareTotalaFactura(), factura.getValoareTva(), factura.getNrDoc(), factura.getClient().getId(), factura.getLiniiDocument() , StareDocument.NOU, 1);
+			result = contabilizareSrv.jurnalizareVanzare(factura.getDataDoc(), factura.getValoareTotalaFactura(), factura.getValoareTva(), factura.getNrDoc(), factura.getClient().getIdClient(), factura.getLiniiDocument() , StareDocument.NOU, 1);
 		} catch(CtbException e){	
 		}
 		return result;

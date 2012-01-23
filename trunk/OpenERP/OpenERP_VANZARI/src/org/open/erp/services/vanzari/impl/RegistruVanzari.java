@@ -78,7 +78,7 @@ public class RegistruVanzari {
 	
 	public Client salveazaClient(Client client) throws Exception{
 		try{
-			if(client.getId() == null || em.find(client.getClass(), client.getId()) == null)
+			if(client.getIdClient() == null || em.find(client.getClass(), client.getIdClient()) == null)
 				em.persist(client);
 			else
 				em.merge(client);
