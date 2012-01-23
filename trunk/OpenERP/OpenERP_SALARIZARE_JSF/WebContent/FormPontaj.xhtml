@@ -15,8 +15,61 @@
 		<h:selectOneMenu id="cboAn" value="#{formPontaj.an}" converter="#{formPontaj}">
 			<f:selectItems value="#{formPontaj.listAni}"></f:selectItems>
 			<f:ajax render="@form"></f:ajax>
-		</h:selectOneMenu>
-		
+		</h:selectOneMenu><br /><br /><br />
+		<h:dataTable var="liniePontaj" value="#{formPontaj.pontaje}"
+			border="1">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Id Pontaj"></h:outputText>
+				</f:facet>
+				<h:outputText id="idPontaj" value="#{liniePontaj.idPontaj}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Luna"></h:outputText>
+				</f:facet>
+				<h:outputText id="luna" value="#{liniePontaj.luna}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="An"></h:outputText>
+				</f:facet>
+				<h:outputText id="an" value="#{liniePontaj.an}"></h:outputText>
+			</h:column>
+			<h:column>
+				<h:selectOneMenu id="cboAngajat" value="#{liniePontaj.angajat}" converter="#{formPontaj}">
+					<f:selectItems value="#{formPontaj.angajati}"></f:selectItems>
+				</h:selectOneMenu>
+				<f:facet name="header">
+					<h:outputText value="Angajat"></h:outputText>
+				</f:facet>
+				
+			</h:column>
+			
+			<h:column>
+				<h:inputText id="txtOreLucrate" value="#{liniePontaj.oreLucrate}"></h:inputText>
+				<f:facet name="header">
+					<h:outputText value="Ore Lucrate"></h:outputText>
+				</f:facet>
+				
+			</h:column>
+			<h:column>
+				<h:inputText id="txtOreConcediu" value="#{liniePontaj.oreConcediu}"></h:inputText>
+				<f:facet name="header">
+					<h:outputText value="Ore Concediu"></h:outputText>
+				</f:facet>
+				
+			</h:column>
+			<h:column>
+				<h:inputText id="txtOreSuplimentare"
+					value="#{liniePontaj.oreSuplimentare}"></h:inputText>
+				<f:facet name="header">
+					<h:outputText value="Ore Suplimentare"></h:outputText>
+				</f:facet>
+				
+			</h:column>
+		</h:dataTable>
+
 
 	</h:form>
 </body>

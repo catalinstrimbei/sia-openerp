@@ -69,6 +69,14 @@ public class FormPontaj implements Converter{
 		this.pontaj = pontaj;
 	}
 	
+	public List<Pontaj> getPontaje() {
+		return pontaje;
+	}
+
+	public void setPontaje(List<Pontaj> pontaje) {
+		this.pontaje = pontaje;
+	}
+
 	public Map<String, Integer> getMapLuni() {
 		mapLuni.put("Ianuarie", 1);
 		mapLuni.put("Februarie", 2);
