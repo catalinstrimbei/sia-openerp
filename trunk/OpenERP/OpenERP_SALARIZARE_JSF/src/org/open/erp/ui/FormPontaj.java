@@ -7,6 +7,9 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrvLocal;
@@ -19,7 +22,7 @@ import com.google.common.base.Functions;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Ordering;
 
-public class FormPontaj {
+public class FormPontaj implements Converter{
 
 	private Pontaj pontaj;
 	private List<Pontaj> pontaje = new ArrayList<Pontaj>();
@@ -86,5 +89,32 @@ public class FormPontaj {
 	
 	public List<Angajat> getAngajatiList(){
 		return this.angajati;
+	}
+
+	//operatie invocata la selectie din lista, dar inainte de setSpor
+	@Override
+	public Object getAsObject(FacesContext arg0, UIComponent uiComp, String uiValue) {
+		if (uiComp.getId().equals("cboAngajat")){
+			Angajat uiAngajatTemplate = new Angajat();
+			uiAngajatTemplate.setId(Integer.valueOf(uiValue));
+			//logger.logINFO("Id-ul din array este:"+idx);
+			return this.angajati.get(this.angajati.indexOf(uiAngajatTemplate));
+		}
+		
+		return null;
+	}
+
+	// operatie invocata la generare elemente pentru lista, 
+	// dupa getAngajati, dar inainte de popularea listei
+	@Override
+	public String getAsString(FacesContext arg0, UIComponent uiComp, Object uiValue) {
+		if (uiComp.getId().equals("cboAngajat")){
+			//logger.logINFO("getAsString uiValue:"+uiValue.toString());
+			Angajat uiAngajat = (Angajat)uiValue;
+			//logger.logINFO("getAsString uiValue 2:"+uiSpor.getIdSpor());
+			if (uiAngajat.getId()!=null) //poate veni null din click Add
+				return uiAngajat.getId().toString();
+		}
+		return null;
 	}
 }
