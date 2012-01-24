@@ -31,7 +31,7 @@
 			<attribute name="owner.project.facets" value="jst.jstl"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_SALARIZARE"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
