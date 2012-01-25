@@ -95,13 +95,13 @@ public class FormMenu {
 		logger.debug("V4-2: Change form request: " + this.formCurent);
 		return "menuv4/FormMenuV4";
 	}	
-
+ 
 	
 	/* Reporting */
 	public void showRaport(ActionEvent evt){
 		String srcRaport = evt.getComponent().getAttributes().get("srcRaport").toString();
 		logger.debug("START Loading report ... " + srcRaport);
-		WebReportRunner.runReport(srcRaport + ".rptdesign");
+		WebReportRunner.runReport("centralizator_salarii.rptdesign");
 		logger.debug("END Loading report ... " + srcRaport);
 	}	
 
