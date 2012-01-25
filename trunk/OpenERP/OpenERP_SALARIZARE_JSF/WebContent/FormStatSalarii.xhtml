@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Formular Salarii</div>
+	<h:form id="formStatSalariiForm">
+		<h:selectOneMenu id="cboLuna" value="#{formPontaj.luna}" converter="#{formPontaj}">
+			<p:selectItems value="#{formPontaj.mapLuni}"></p:selectItems>
+			<p:ajax render="@form"></p:ajax>
+		</h:selectOneMenu>
+		<h:selectOneMenu id="cboAn" value="#{formPontaj.an}" converter="#{formPontaj}">
+			<p:selectItems value="#{formPontaj.listAni}"></p:selectItems>
+			<p:ajax render="@form"></p:ajax>
+		</h:selectOneMenu><br /><br /><br />
+		<h:panelGrid columns="1" border="1">
+			<h:commandButton id="cmdGenereaza" value="Calculeaza salarii"
+				actionListener="#{formStatSalarii.generareStatSalarii}">
+				<p:ajax render="@form" execute="@form"></p:ajax>
+			</h:commandButton>
+		</h:panelGrid>
+		
+		<br />
+		<h:dataTable var="linieStatSalarii"
+			value="#{formStatSalarii.stateSalarii}" border="1">
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Id Stat Salarii"></h:outputText>
+				</p:facet>
+				<h:outputText id="idStatSalarii"
+					value="#{linieStatSalarii.idStatSalarii}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Luna"></h:outputText>
+				</p:facet>
+				<h:outputText id="pontaj_luna"
+					value="#{linieStatSalarii.pontaj.luna}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="An"></h:outputText>
+				</p:facet>
+				<h:outputText id="pontaj_an" value="#{linieStatSalarii.pontaj.an}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Nume"></h:outputText>
+				</p:facet>
+				<h:outputText id="pontaj_angajat_nume"
+					value="#{linieStatSalarii.pontaj.angajat.nume}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Angajat"></h:outputText>
+				</p:facet>
+				<h:outputText id="pontaj_angajat"
+					value="#{linieStatSalarii.pontaj.angajat}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Alte Sporuri"></h:outputText>
+				</p:facet>
+				<h:outputText id="alteSporuri"
+					value="#{linieStatSalarii.alteSporuri}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Salar Brut"></h:outputText>
+				</p:facet>
+				<h:outputText id="salarBrut" value="#{linieStatSalarii.salarBrut}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Cas"></h:outputText>
+				</p:facet>
+				<h:outputText id="cas" value="#{linieStatSalarii.cas}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Cass"></h:outputText>
+				</p:facet>
+				<h:outputText id="cass" value="#{linieStatSalarii.cass}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Somaj"></h:outputText>
+				</p:facet>
+				<h:outputText id="somaj" value="#{linieStatSalarii.somaj}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Alte Retineri"></h:outputText>
+				</p:facet>
+				<h:outputText id="alteRetineri"
+					value="#{linieStatSalarii.alteRetineri}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Impozit"></h:outputText>
+				</p:facet>
+				<h:outputText id="impozit" value="#{linieStatSalarii.impozit}"></h:outputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Salar Net"></h:outputText>
+				</p:facet>
+				<h:outputText id="salarNet" value="#{linieStatSalarii.salarNet}"></h:outputText>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</body>
+</html>
