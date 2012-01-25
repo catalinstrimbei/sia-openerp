@@ -3,7 +3,9 @@ package org.open.erp.services.productie;
 import java.io.Serializable;
 import java.util.*;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -25,13 +27,13 @@ public class Semifabricat extends Produs implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue
+	@GeneratedValue
 	Integer idSemifabricat;
 	
 	String semifabricat;
 	
-	@ManyToOne (targetEntity=Material.class)
-	@JoinColumn(name="id")
+	//@ManyToOne (targetEntity=Material.class)@JoinColumn(name="id")
+	@ElementCollection(fetch = FetchType.LAZY,targetClass=Material.class)
 	ArrayList <Material> listaMateriale;
 	
 	Semifabricat semifabricatContinut;

@@ -25,7 +25,7 @@ public class Utilaj implements Serializable{
 	@Id @GeneratedValue
 	Integer idUtilaj;
 	
-	@OneToOne (targetEntity=MijlocFix.class)
+	//@OneToOne (targetEntity=MijlocFix.class)
 	private MijlocFix utilaj;
 	
 	String status;

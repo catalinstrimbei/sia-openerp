@@ -1,7 +1,9 @@
 package org.open.erp.services.productie;
 
 import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
+import org.open.erp.services.personal.Functie;
 
 import java.io.Serializable;
 import java.util.*;
@@ -11,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -29,11 +32,11 @@ public class ComandaProductie extends Document implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue
+	@ManyToOne (targetEntity=Document.class)
+	@JoinColumn(name = "nrDocument", insertable=false, updatable=false)
+	private Document idComanda;
 	
-	Integer idComanda;
-	
-	@ManyToMany (targetEntity=Produs.class)
+	@ManyToOne (targetEntity=Produs.class)
 	@JoinColumn (name="id")
 	Produs produs;
 	
@@ -43,10 +46,9 @@ public class ComandaProductie extends Document implements Serializable{
 	Date dataComanda;
 	
 	
-	public ComandaProductie(Integer idComanda, Produs produs,
+	public ComandaProductie(Produs produs,
 			Integer cantitate, Date dataComanda) {
 		super();
-		this.idComanda = idComanda;
 		this.produs = produs;
 		this.cantitate = cantitate;
 		this.dataComanda = dataComanda;
@@ -54,10 +56,10 @@ public class ComandaProductie extends Document implements Serializable{
 	public ComandaProductie() {
 		super();
 	}
-	public Integer getIdComanda() {
+	public Document getIdComanda() {
 		return idComanda;
 	}
-	public void setIdComanda(Integer idComanda) {
+	public void setIdComanda(Document idComanda) {
 		this.idComanda = idComanda;
 	}
 	public Produs getProdus() {

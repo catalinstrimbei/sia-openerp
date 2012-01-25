@@ -11,7 +11,7 @@ import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.stocuri.BonConsum;
+//import org.open.erp.services.stocuri.BonConsum;
 
 /**
  * 
@@ -46,7 +46,7 @@ import org.open.erp.services.stocuri.BonConsum;
  *2. calcul produse finale si deseuri 
  *
  */
-//@Remote
+@Remote
 public interface ProductieSrv {
 
 	/**

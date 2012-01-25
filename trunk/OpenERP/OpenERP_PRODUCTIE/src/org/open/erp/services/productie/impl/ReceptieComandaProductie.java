@@ -1,4 +1,4 @@
-package org.open.erp.services.productie.impl;
+/*package org.open.erp.services.productie.impl;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.EJB;
@@ -17,6 +17,7 @@ import org.open.erp.services.productie.ProductieSrvLocal;
  * Message-Driven Bean implementation class for: ReceptieComandaProductie
  * 
  */
+/*
 @MessageDriven(name = "MyQueue", activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/coadaProductie")
@@ -29,23 +30,22 @@ public class ReceptieComandaProductie implements MessageListener {
 	/**
 	 * Default constructor.
 	 */
-	public ReceptieComandaProductie() {
+	/*public ReceptieComandaProductie() {
 
 	}
 
 	/**
 	 * @see MessageListener#onMessage(Message)
 	 */
-		@Override
-	public void onMessage(Message message) {
+		//@Override
+		/*public void onMessage(Message message) {
 		ObjectMessage oMsg = (ObjectMessage) message;
 		Document docIn = (Document) oMsg;
 		// voi aveti comanda productie... care ar trebui sa mosteneasca
 		// Document(de la nomgen)
 		// dak nu vreti sa o extindeti faceti o mapare din Document in
 		for (LinieDocument l : docIn.getLiniiDocument()) {
-			ComandaProductie c = new ComandaProductie(null,
-					(Produs) l.getMaterial(), l.getCantitate().intValue(),
+			ComandaProductie c = new ComandaProductie((Produs) l.getMaterial(), l.getCantitate().intValue(),
 					docIn.getDataDoc());
 
 			try {
@@ -56,5 +56,6 @@ public class ReceptieComandaProductie implements MessageListener {
 				e.printStackTrace();
 			}
 		}
-	}
-}
+	}*/
+
+		

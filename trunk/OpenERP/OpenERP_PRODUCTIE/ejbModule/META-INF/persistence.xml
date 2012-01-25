@@ -17,11 +17,35 @@
  			<class>org.open.erp.services.nomgen.Material</class>
  			<class>org.open.erp.services.nomgen.MijlocFix</class> 
  			<class>org.open.erp.services.nomgen.LinieDocument</class>
- 			<class>org.open.erp.services.personal.Angajat</class>
- 			<class>org.open.erp.services.stocuri.CerereAprovizionare</class>
- 			<class>org.open.erp.services.stocuri.ArticolStoc</class>
+ 			<class>org.open.erp.services.nomgen.Document</class>
+ 			<class>org.open.erp.services.nomgen.Produs</class>
+ 			<class>org.open.erp.services.nomgen.Divizie</class>
+ 			<class>org.open.erp.services.nomgen.Departament</class>
+ 			<class>org.open.erp.services.nomgen.Persoana</class>
+ 			<class>org.open.erp.services.personal.RezultatProbaEvaluare</class>
+			<class>org.open.erp.services.personal.ProbaEvaluare</class>
+			<class>org.open.erp.services.personal.InterviuCandidat</class>
+			<class>org.open.erp.services.personal.Interviu</class>
+			<class>org.open.erp.services.personal.Instructor</class>
+			<class>org.open.erp.services.personal.Functie</class>
+			<class>org.open.erp.services.personal.Eveniment</class>
+			<class>org.open.erp.services.personal.DummyPersoanaFizica</class>
+			<class>org.open.erp.services.personal.DummyPersoana</class>
+			<class>org.open.erp.services.personal.DummyDepartament</class>
+			<class>org.open.erp.services.personal.DosarAngajat</class>
+			<class>org.open.erp.services.personal.ContractMunca</class>
+			<class>org.open.erp.services.personal.CerereDemisie</class>
+			<class>org.open.erp.services.personal.Candidat</class>
+			<class>org.open.erp.services.personal.CV</class>
+			<class>org.open.erp.services.personal.AnuntLocMunca</class>
+			<class>org.open.erp.services.personal.Angajat</class>
+			<class>org.open.erp.services.personal.ActivitateTraining</class>
+			<class>org.open.erp.services.personal.ActivitateTeamBuilding</class>
+			<class>org.open.erp.services.personal.Activitate</class>		
+ 			<!--  <class>org.open.erp.services.stocuri.CerereAprovizionare</class>
+ 			<class>org.open.erp.services.stocuri.ArticolStoc</class> -->
 	    <properties>
-	        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
+	        <!--property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/-->
 	        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
 	        <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 	    </properties>		

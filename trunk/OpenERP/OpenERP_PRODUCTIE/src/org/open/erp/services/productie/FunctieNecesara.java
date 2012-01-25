@@ -5,8 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.personal.Functie;
 
 /**
@@ -20,18 +22,27 @@ public class FunctieNecesara extends Functie implements Serializable{
 
 	/**
 	 * 
-	 */
-	//@Id @GeneratedValue
+	 */	
 	private static final long serialVersionUID = 1L;
-	@Id @GeneratedValue
-	Integer id;
+	@ManyToOne (targetEntity=Functie.class)
+	@JoinColumn(name = "idFunctie", insertable=false, updatable=false)
+	private Functie id;
 	
+	
+
 	Integer nrAngajatiFunctie;
 	
 	@ManyToOne
 	private FazaProductie faza;
 	
-	
+
+	public Functie getId() {
+		return id;
+	}
+
+	public void setIdFunctie(Functie id) {
+		this.id = id;
+	}
 	public FunctieNecesara(Integer id, String denumire) {
 		super(id, denumire);
 	}
@@ -66,11 +77,4 @@ public class FunctieNecesara extends Functie implements Serializable{
 		return serialVersionUID;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}	
 }

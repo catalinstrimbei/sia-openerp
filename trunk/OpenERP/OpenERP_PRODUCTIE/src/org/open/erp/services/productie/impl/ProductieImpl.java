@@ -30,7 +30,7 @@ import org.open.erp.services.productie.ProductieSrvRemote;
 import org.open.erp.services.productie.Utilaj;
 import org.open.erp.services.productie.ProductieSrv;
 import org.open.erp.services.productie.Semifabricat;
-import org.open.erp.services.stocuri.*;
+
 
 
 
@@ -40,15 +40,15 @@ import org.open.erp.services.stocuri.*;
  */
 @Stateful (name="ProductieSrv")
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class ProductieImpl implements ProductieSrvLocal, ProductieSrvRemote {
+public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, ProductieSrvRemote {
 	
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductieImpl.class.getName());
 
 	//private static PersonalSrv personal;
 	private static ProductieSrv productie;
-	private static StocuriSrv stocuri;
+	//private static StocuriSrv stocuri;
 	
-	@PersistenceContext(unitName="OpenERP_Productie")
+	@PersistenceContext(unitName="OpenERP_PRODUCTIE")
 	private EntityManager em;
 	
 	@Resource
@@ -101,9 +101,9 @@ public class ProductieImpl implements ProductieSrvLocal, ProductieSrvRemote {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void comandaMateriale(FazaProductie faza, FluxProductie flux){
-		
+		/*
 		logger.debug(">>>>>>>>>>>> Start comandaMateriale");
-			CerereAprovizionare cerere = new CerereAprovizionare(1, new Date(), null, null);
+		 CerereAprovizionare cerere = new CerereAprovizionare(1, new Date(), null, null);
 			logger.debug(">>>>>>>>>>>> START cerere aprovizionare");
 			LinieDocument linie;
 			ArrayList<Material> listaMateriale = new ArrayList<Material>();
@@ -118,7 +118,7 @@ public class ProductieImpl implements ProductieSrvLocal, ProductieSrvRemote {
 			logger.debug(">>>>>>>>>>>> END cerere aprovizionare");
 			stocuri.consumProductie(cerere);
 			
-		logger.debug(">>>>>>>>>>>> END comandaMateriale");
+		logger.debug(">>>>>>>>>>>> END comandaMateriale");*/
 	}
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
@@ -259,7 +259,7 @@ public class ProductieImpl implements ProductieSrvLocal, ProductieSrvRemote {
 		  criteriuCalitate = new CriteriuCalitate(1, "criteriu 1");
 		  criteriuCalitate.getCriteriu();
 		  
-		  comanda=new ComandaProductie(1, produs, 10, null);  
+		  comanda=new ComandaProductie(produs, 10, null);  
 		  cantitate=comanda.getCantitate();  
 		 
 		  for (int i=0; i<cantitate; i++){
@@ -281,7 +281,7 @@ public class ProductieImpl implements ProductieSrvLocal, ProductieSrvRemote {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Integer livrareProdus(Integer cantitateProdus, Produs produs)  throws Exception{
-		  ArticolStoc stocProduse;
+		  /*ArticolStoc stocProduse;
 		  stocProduse=new ArticolStoc();
 		  cantitateProdus=cantitati.get(0);
 		  stocProduse.getCatitateStocPeGestiune();
@@ -291,10 +291,10 @@ public class ProductieImpl implements ProductieSrvLocal, ProductieSrvRemote {
 		  
 		  else{
 		   
-		   System.out.println("Nu exista comanda pentru produsul");
+		   System.out.println("Nu exista comanda pentru produsul");}*/
 		   return 0; 
 		   
-		  }
+		  
 		 }
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)

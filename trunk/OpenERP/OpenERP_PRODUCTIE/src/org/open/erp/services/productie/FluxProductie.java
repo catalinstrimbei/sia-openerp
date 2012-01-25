@@ -2,13 +2,18 @@ package org.open.erp.services.productie;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
 
 /**
@@ -31,8 +36,10 @@ public class FluxProductie implements Serializable{
 	@JoinColumn(name="id")
 	Produs produs;
 	
-	@OneToMany (targetEntity=FazaProductie.class)
+	//@OneToMany (targetEntity=FazaProductie.class)
+	@ElementCollection(fetch = FetchType.LAZY,targetClass=FazaProductie.class)
 	ArrayList <FazaProductie> faze;
+	
 	
 	public FluxProductie(Integer idFlux, Produs produs) {
 		super();

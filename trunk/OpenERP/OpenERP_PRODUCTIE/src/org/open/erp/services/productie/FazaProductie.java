@@ -7,7 +7,9 @@ import java.util.Collection;
 
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -17,6 +19,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
@@ -41,47 +44,46 @@ public class FazaProductie implements Serializable {
 	String faza;
 	
 	@ManyToOne
-	//@JoinColumn(name="idFlux")
 	FluxProductie flux;
 	
 	@ManyToOne
-	@JoinColumn(name = "id")
 	Utilaj utilaj;
 	Double timpFolosire;
 	
-	@OneToMany (targetEntity=FunctieNecesara.class, mappedBy="faza")
+	
+	@ElementCollection(fetch = FetchType.LAZY,targetClass=FunctieNecesara.class)
 	ArrayList <FunctieNecesara> functiiNecesare;
 		
-	@ManyToOne (targetEntity=Angajat.class)
-	@JoinColumn(name="marca")
+	
+	@ElementCollection(fetch = FetchType.LAZY,targetClass=Angajat.class)
 	ArrayList<Angajat> angajati;
 	
-	@ManyToOne (targetEntity=Material.class)
-	@JoinColumn(name = "idMaterial")
+	
+	@ElementCollection(fetch = FetchType.LAZY,targetClass=Material.class)
 	ArrayList<Material> materialeReteta;
 	
 	@ManyToOne 
-	@JoinColumn(name = "idSemifabricat")
+	@JoinColumn(name = "idSemReteta")
 	Semifabricat semifabricatReteta;
 	
 	@ManyToOne
-	@JoinColumn(name = "idSemifabricat")
+	@JoinColumn(name = "idSemDorit")
 	Semifabricat semifabricatDorit;
 	
 	@ManyToOne (targetEntity=Produs.class)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "idDorit")
 	Produs produsDorit;
 	
 	@ManyToOne
-	@JoinColumn(name = "idSemifabricat")
+	@JoinColumn(name = "idSemObtinut")
 	Semifabricat semifabricatObtinut;
 	
 	@ManyToOne (targetEntity=Produs.class)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "idObtinut")
 	Produs produsObtinut;
 	
 	@ManyToOne  (targetEntity=Divizie.class)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "idDivizie")
 	Divizie sectie;
 	
 	Integer nrOrdine;

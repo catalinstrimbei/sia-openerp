@@ -32,9 +32,9 @@ import org.open.erp.services.productie.FunctieNecesara;
 import org.open.erp.services.productie.ProductieSrv;
 import org.open.erp.services.productie.Semifabricat;
 import org.open.erp.services.productie.Utilaj;
-import org.open.erp.services.stocuri.ArticolStoc;
-import org.open.erp.services.stocuri.CerereAprovizionare;
-import org.open.erp.services.stocuri.StocuriSrv;
+//import org.open.erp.services.stocuri.ArticolStoc;
+//import org.open.erp.services.stocuri.CerereAprovizionare;
+//import org.open.erp.services.stocuri.StocuriSrv;
 
 /**
  * @author Echipa Productie
