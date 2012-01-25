@@ -7,12 +7,14 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.validator.ValidatorException;
 
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrvLocal;
@@ -39,12 +41,14 @@ public class FormStatSalarii implements Converter{
 	private Map<String, Integer> mapLuni = new HashMap<String, Integer>();
 	private Map<String, Integer> mapAni = new HashMap<String, Integer>();
 	
+	private List<Pontaj> pontaje = new ArrayList<Pontaj>();
+	
 	private static SalarizareLogger logger;
 	
-	@EJB(mappedName="SalarizareImpl/remote", name="SalarizareImpl/remote") 
+	@EJB(mappedName="SalarizareImpl/local", name="SalarizareImpl/local") 
 	private SalarizareSrvLocal salarizareSrv;
 	
-	@EJB(mappedName="PersonalSrv/remote", name="PersonalSrv/remote") 
+	@EJB(mappedName="PersonalSrv/local", name="PersonalSrv/local") 
 	private PersonalSrvLocal personalSrv;
 	
 	@PostConstruct
@@ -134,6 +138,8 @@ public class FormStatSalarii implements Converter{
 			try {
 				//if (pontaje.isEmpty()){
 					stateSalarii = salarizareSrv.getStatAnLuna(this.an, this.luna);
+					for(StatSalarii s:stateSalarii)
+						logger.logINFO("stat salarii:" + s.getIdStatSalarii());
 			//		logger.logINFO("<<<<<<< Am incarcat pontajele cu succes luna");
 				//}
 			} catch (Exception e) {
@@ -153,7 +159,7 @@ public class FormStatSalarii implements Converter{
 				//}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				logger.logINFO("<<<<<<< FAIL incarcare pontaje an");
+				logger.logINFO("<<<<<<< FAIL incarcare stat salarii");
 				e.printStackTrace();
 			}
 			return an;
@@ -253,10 +259,51 @@ public class FormStatSalarii implements Converter{
 	*/
 	public void generareStatSalarii(ActionEvent evt) throws Exception{
 		logger.logINFO("<<<<<Sunt in generare:");
+		FacesMessage mesaj = null;
+		mesaj = new FacesMessage("Nu exista pontaje pentru anul selectat: " + this.an+
+				" si luna selectate: " + this.luna + "!");
+		FacesContext.getCurrentInstance().addMessage("Validare esuta",mesaj);
 		
+		try {
+			pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if (pontaje == null || pontaje.isEmpty()){
+			logger.logINFO("<<<<<pontajul este gol") ;
+			FacesContext.getCurrentInstance().renderResponse();
+			
+		}
 		salarizareSrv.inregistrarStatSalariiLuna(this.an, this.luna);
 		stateSalarii = salarizareSrv.getStatAnLuna(this.an, this.luna);					
 		logger.logINFO("<<<<<am generat salariile") ;
 		
 	}
+	
+	public void validate(FacesContext arg0, UIComponent uiComponent, Object uiValue)
+			throws ValidatorException {
+		logger.logINFO("Validam");
+		if (uiComponent.getId().equals("cmdGenereaza")){
+			try {
+				pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			logger.logINFO("Validam pontaje " );
+			FacesMessage mesaj = null;
+			if (pontaje == null || pontaje.isEmpty()){
+				mesaj = new FacesMessage("Nu exista pontaje pentru anul: " + this.an+
+						" si luna: " + this.luna + "!");
+			}
+			
+			if (mesaj != null){
+				throw new ValidatorException(mesaj);
+			}
+		}
+		
+	}	
 }
