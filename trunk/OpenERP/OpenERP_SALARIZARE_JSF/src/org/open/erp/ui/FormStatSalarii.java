@@ -229,19 +229,20 @@ public class FormStatSalarii implements Converter{
 		this.an = an;
 	}
 	
-	public void adaugaLiniePontaj(ActionEvent evt){
+	public void adaugaStatSalarii(ActionEvent evt){
 		logger.logINFO("<<<<<Sunt in adaugare:");
-		Pontaj p = new Pontaj(9999, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
-		logger.logINFO("<<<<<Pontajul a fost initializat:");
-		pontaje.add(p);
+		StatSalarii s = new StatSalarii(null, this.pontaj, 0.0,0.0, 0.0, 0.0, 0.0,0.0, 0.0, 0.0);
+				
+		logger.logINFO("<<<<<StatSalarii a fost initializat:");
+		stateSalarii.add(s);
 		
 	}
- 	
-	public void salvareLiniiPontaj(ActionEvent evt) throws Exception{
+ 	/* void salvareLiniiStateSalarii(ActionEvent evt) throws Exception{
 		logger.logINFO("<<<<<Sunt in salvare:");
-		for(Pontaj p:pontaje){
-			logger.logINFO("<<<<<am intrat in for la salvare si am ajuns la pontaj id:" + p.getIdPontaj());
-			salarizareSrv.inregistrarePontaj(p.getIdPontaj(), p.getAngajat(), p.getAn()
+		for(StatSalarii s:stateSalarii){
+			logger.logINFO("<<<<<am intrat in for la salvare si am ajuns la Salarii id:" + s.getIdStatSalarii());
+			salarizareSrv.i
+			inregistrarePontaj(p.getIdPontaj(), p.getAngajat(), p.getAn()
 					, p.getLuna(), p.getOreLucrate(), p.getOreSuplimentare(), p.getOreConcediu());
 			logger.logINFO("<<<<<am salvat pontaj id:" + p.getIdPontaj());
 		}
@@ -249,13 +250,13 @@ public class FormStatSalarii implements Converter{
 		//pontaje.add(p);
 		 
 	}
-	
-	public void generarePontaj(ActionEvent evt) throws Exception{
+	*/
+	public void generareStatSalarii(ActionEvent evt) throws Exception{
 		logger.logINFO("<<<<<Sunt in generare:");
 		
-		salarizareSrv.inregistrarePontajLuna(this.an, this.luna);
-		pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);					
-		logger.logINFO("<<<<<am generat pontajele:") ;
+		salarizareSrv.inregistrarStatSalariiLuna(this.an, this.luna);
+		stateSalarii = salarizareSrv.getStatAnLuna(this.an, this.luna);					
+		logger.logINFO("<<<<<am generat salariile") ;
 		
 	}
 }
