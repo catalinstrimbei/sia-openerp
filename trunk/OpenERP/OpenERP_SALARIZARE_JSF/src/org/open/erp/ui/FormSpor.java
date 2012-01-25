@@ -26,7 +26,7 @@ import org.open.erp.services.salarizare.impl.SalarizareLogger;
 import com.google.common.base.Functions;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Ordering;
-
+ 
 @ManagedBean(name="formSpor")
 @SessionScoped
 public class FormSpor implements Converter{
