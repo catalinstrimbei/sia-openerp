@@ -38,6 +38,12 @@
 					<f:attribute name="srcForm" value="FormPontajAngajat">
 					</f:attribute>
 				</rich:menuItem>
+				<rich:menuItem label="Stat salarii"
+					actionListener="#{formMenu.actionSrcChangeForm}"
+					action="#{formMenu.changeRichSrcFormCurent}" >
+					<f:attribute name="srcForm" value="FormStatSalarii">
+					</f:attribute>
+				</rich:menuItem>
 				<rich:menuItem label="FormRaport"
 					actionListener="#{formMenu.actionSrcChangeForm}"
 					action="#{formMenu.changeRichSrcFormCurent}" >
