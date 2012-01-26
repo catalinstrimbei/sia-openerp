@@ -182,5 +182,15 @@ public class Produs extends Material implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Produs(Integer idMaterial, String denumire, String um, Date dataFabricatiei, Integer termenValabilitate, Float procentTVA, Double pretVanzare){
+		super(idMaterial, denumire, um);
+		this.denumire = denumire;
+		this.unitateMasura = um;
+		this.dataFabricatiei = dataFabricatiei;
+		this.termenValabilitate = termenValabilitate;
+		this.pretVanzare = pretVanzare;
+		this.procentTVA = procentTVA;
+	}
+	
 	
 }
