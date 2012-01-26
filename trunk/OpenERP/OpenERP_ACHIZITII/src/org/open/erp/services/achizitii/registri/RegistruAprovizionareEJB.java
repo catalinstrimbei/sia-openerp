@@ -33,6 +33,7 @@ public class RegistruAprovizionareEJB {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Collection<Articol> getArticolePeCategorii(Categorie categorie_) throws Exception{
 		try{
 			return entityManager.createQuery("SELECT a FROM Articol a where a.categorieArticol = :categorie")
@@ -44,6 +45,7 @@ public class RegistruAprovizionareEJB {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Collection<Categorie> getCategoriiPeFurnizori(Furnizor furnizor_) throws Exception{
 		try{
 			return entityManager.createQuery("SELECT c FROM Categorie c where c.furnizoriCategorie = :furnizor")
@@ -55,6 +57,7 @@ public class RegistruAprovizionareEJB {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Collection<CerereOferta> getCereriOfertaPeStatus(Integer statusCerereOferta_) throws Exception{
 		try{
 			return entityManager.createQuery("SELECT co FROM CerereOferta co where co.statusCerereOferta = :status")
@@ -66,6 +69,7 @@ public class RegistruAprovizionareEJB {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Collection<Comanda> getcomenziPeFurnizor(Furnizor furnizor_) throws Exception{
 		try{
 			return entityManager.createQuery("SELECT c FROM Comanda c where c.furnizor = :furnizor")
@@ -77,6 +81,7 @@ public class RegistruAprovizionareEJB {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Collection<Comanda> getComenziPeStatus(Integer statusComanda_) throws Exception{
 		try{
 			return entityManager.createQuery("SELECT c FROM Comanda c where c.statusComanda = :status")
