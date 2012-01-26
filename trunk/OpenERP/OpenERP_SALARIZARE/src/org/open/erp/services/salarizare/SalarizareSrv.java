@@ -394,6 +394,6 @@ public interface SalarizareSrv {
 	 * @throws Exception 
 	 * 
 	 */
-	void stergePontaj(StatSalarii statSalarii) throws Exception;
+	void stergeStatSalarii(StatSalarii statSalarii) throws Exception;
 	
 }

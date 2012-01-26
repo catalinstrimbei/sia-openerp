@@ -503,7 +503,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		registru.stergePontaj(pontaj);
 	}
 	
-	public void stergePontaj(StatSalarii statSalarii){
+	public void stergeStatSalarii(StatSalarii statSalarii){
 		registru.stergeStatSalarii(statSalarii);
 	}
 }
