@@ -43,16 +43,16 @@ Dupa fabricare, podusul obtinut trebuie sa fie livrat catre modului de Stocuri.
 
   <h3> II. Partea tehnica</h3>
 <h4><u>1. Dependente</u></h4>
-Modulul depinde direct de urmatoarele module pentru a putea utiliza entitatile de care acestea dispun:<br/>
-<b>Nomenclatoare:</b> Divizie, Departament,MateriePrima, Material, MijlocFix, Persoana, Produs, Document, LinieDocument;<br/>
-<b>Personal:</b> Angajat, Functie;<br/>
-<b>Stocuri:</b> ArticolStoc, CerereAprovizionare.<br/>
+Modulul depinde direct de urmatoarele module pentru a putea utiliza entitatile de care acestea dispun: <br/>
+<b>Nomenclatoare:</b> Divizie, Departament,MateriePrima, Material, MijlocFix, Persoana, Produs, Document, LinieDocument; <br/>
+<b>Personal:</b> Angajat, Functie; <br/>
+<b>Stocuri:</b> ArticolStoc, CerereAprovizionare. <br/>
 <br/>
 <h4><u>2. Entitati locale</u></h4>
-ComandaProductie<br/>
-CriteriuCalitate<br/>
-FazaProductie<br/>
-FluxProductie<br/>
-FunctieNecesara<br/>
-Semifabricat<br/>
-Utilaj<br/>
+ComandaProductie <br/>
+CriteriuCalitate <br/>
+FazaProductie <br/>
+FluxProductie <br/>
+FunctieNecesara <br/>
+Semifabricat <br/>
+Utilaj <br/>
