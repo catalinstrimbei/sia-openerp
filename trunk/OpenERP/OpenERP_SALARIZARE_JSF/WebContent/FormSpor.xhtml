@@ -15,7 +15,7 @@
 			</p:facet>
 			<h:selectOneMenu id="cboSpor" value="#{formSpor.spor}" converter="#{formSpor}" disabled="false">
 				<p:selectItems value="#{formSpor.sporuri}"></p:selectItems>
-				<p:ajax render="spor_denumire cboModCalcul cboLuna spor_valoare spor_an optTip"></p:ajax>
+				<p:ajax render="spor_denumire cboAngajat cboModCalcul cboLuna spor_valoare spor_an optTip"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="2" border="1">
 				<h:commandButton id="cmdPrev"
@@ -26,7 +26,9 @@
 			
 			<h:message></h:message>
 			<h:outputText value="Denumire:"></h:outputText>
-			<h:inputText id="spor_denumire" value="#{formSpor.spor.denumire}" validator="#{formSpor.validate}"></h:inputText>
+			<h:inputText id="spor_denumire" value="#{formSpor.spor.denumire}" validator="#{formSpor.validate}">
+				<p:ajax render="spor_denumire"></p:ajax>
+			</h:inputText>
 			<h:message for="spor_denumire"></h:message>
 			
 			
@@ -49,8 +51,14 @@
 				layout="pageDirection">
 				<p:selectItems value="#{formSpor.mapTip}"></p:selectItems>
 			</h:selectOneRadio>
-
+			
 			<h:message for="optTip"></h:message>
+			<h:outputText value="Angajat:"></h:outputText>
+				<h:selectOneMenu id="cboAngajat" value="#{formSpor.spor.angajat}" converter="#{formSpor}" >
+				<p:selectItems value="#{formSpor.angajati}"></p:selectItems>
+				<p:ajax></p:ajax>
+			</h:selectOneMenu>
+			<h:message></h:message>
 			<h:outputText value="Luna:"></h:outputText>
 			<h:selectOneMenu id="cboLuna" value="#{formSpor.spor.luna}">
 				<p:selectItems value="#{formSpor.mapLuni}"></p:selectItems>

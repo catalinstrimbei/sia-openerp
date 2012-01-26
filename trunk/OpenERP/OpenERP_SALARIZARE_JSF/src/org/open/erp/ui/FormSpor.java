@@ -175,7 +175,7 @@ public class FormSpor implements Converter{
 			uiAngajatTemplate.setId(Integer.valueOf(uiValue));
 			Integer idx = this.angajati.indexOf(uiAngajatTemplate);
 			logger.logINFO("Id-ul angajatului din array este:"+angajati.get(idx).getNume());
-			
+		//	spor.setAngajat(uiAngajatTemplate);
 			return this.angajati.get(idx);
 		}
 		 
