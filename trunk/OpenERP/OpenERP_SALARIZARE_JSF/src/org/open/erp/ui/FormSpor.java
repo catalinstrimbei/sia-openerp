@@ -251,8 +251,8 @@ public class FormSpor implements Converter{
 
 	public void setMapTip(Map<String, Integer> mapTip) {
 		this.mapTip = mapTip;
-	}
-	
+	} 
+	 
 	public void validate(FacesContext arg0, UIComponent uiComponent, Object uiValue)
 			throws ValidatorException {
 		logger.logINFO("Validam");
@@ -261,7 +261,9 @@ public class FormSpor implements Converter{
 			logger.logINFO("Validam denumire " + denumire);
 			FacesMessage mesaj = null;
 			if (denumire == null || denumire.isEmpty()){
+				logger.logINFO("Denumirea este goala " + denumire);
 				mesaj = new FacesMessage("Numele sporului trebuie completat!");
+				//FacesContext.getCurrentInstance().addMessage("Validare esuata",mesaj);
 			}
 			
 			if (mesaj != null){
@@ -269,7 +271,7 @@ public class FormSpor implements Converter{
 			}
 		}
 		
-	}
+	} 
 
 	public Angajat getAngajat() {
 		return angajat;
