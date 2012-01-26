@@ -58,7 +58,8 @@
 			</h:column>
 			
 			<h:column>
-				<h:inputText id="txtOreLucrate" value="#{liniePontaj.oreLucrate}"></h:inputText>
+				<h:inputText id="txtOreLucrate" value="#{liniePontaj.idPontaj}"
+					converter="#{formPontaj}"></h:inputText>
 				<p:facet name="header">
 					<h:outputText value="Ore Lucrate"></h:outputText>
 				</p:facet>
@@ -79,11 +80,22 @@
 				</p:facet>
 				
 			</h:column>
+			<h:column>
+				<h:commandButton id="cmdStergere" value="Stergere linie" actionListener="#{formPontaj.stergeLiniePontaj}"><p:attribute name="selectedId" value="#{liniePontaj.idPontaj}"></p:attribute></h:commandButton>
+				<p:facet name="header">
+					
+				</p:facet>
+			</h:column>
 		</h:dataTable>
 		<h:panelGrid columns="3" border="1">
-			
-			
-			
+			<h:commandButton id="cmdAdd"
+				actionListener="#{formPontaj.adaugaLiniePontaj}" immediate="false"
+				value="Adauga Linie"></h:commandButton>
+			<h:commandButton id="cmdSave"
+				actionListener="#{formPontaj.salvareLiniiPontaj}"
+				value="Salveaza Modificari" immediate="false">
+				
+			</h:commandButton>
 
 		</h:panelGrid>
 		<br />

@@ -118,7 +118,7 @@ public class FormPontaj implements Converter{
 	public Map<String, Angajat> getAngajati(){
 		Map<String, Angajat> mapAngajati = new HashMap<String, Angajat>();
 		for (Angajat a: angajati){
-			logger.logINFO("<<<<<<Map getAngajati:" + a.getNume());
+			//logger.logINFO("<<<<<<Map getAngajati:" + a.getNume());
 			mapAngajati.put(a.getNume() + " " + a.getPrenume() + " | " + a.getMarca(), a);
 		}
 		return mapAngajati;
@@ -177,18 +177,24 @@ public class FormPontaj implements Converter{
 					Pontaj p = new Pontaj();
 					p.setIdPontaj(this.idPontaj);
 					Integer idx = pontaje.indexOf(p);
-					logger.logINFO("<<<<< Get AsObject txtOrelucrate uiValue " + Double.valueOf(uiValue) + " si id pontaj: " + idx);
+					logger.logINFO("<<<<< Get AsObject txtOrelucrate uiValue " + Double.valueOf(uiValue) );
 					
+					if (this.isAddMode==1){
+						Pontaj p1 = new Pontaj(null, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
+						logger.logINFO("<<<<<Pontajul a fost initializat in get AsObject :");
+						pontaje.add(p1);
+						this.isAddMode = 0;
+					}
 					//iteram prin map si actualizam in array pontaje modificarile facute de user
 					//for(Pontaj p1:pontaje){
 						//p1.setOreLucrate(Double.valueOf(uiValue));
-					//}
+					//} 
 					
 					pontaje.get(i).setOreLucrate(Double.valueOf(uiValue));
 					i +=1;
 					if (i==pontaje.size())
 							i=0;
-					logger.logINFO("<<<<< faces context");
+					logger.logINFO("<<<<< faces context i:" + i);
 					//this.pontaje.get(idx).setOreLucrate(Double.valueOf(uiValue));				
 					//pontaje.get(idx).setOreLucrate(oreLucrate)
 					//return pontaje.get(idx).getOreLucrate().toString();
@@ -278,19 +284,17 @@ public class FormPontaj implements Converter{
 	
 	public void adaugaLiniePontaj(ActionEvent evt){
 		logger.logINFO("<<<<<Sunt in adaugare:");
-		Pontaj p = new Pontaj(9999, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
+		Pontaj p = new Pontaj(null, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
 		logger.logINFO("<<<<<Pontajul a fost initializat:");
 		pontaje.add(p);
+		//i +=1;
 		this.isAddMode = 1;
 		
 	}
  	
 	public void salvareLiniiPontaj(ActionEvent evt) throws Exception{
 		logger.logINFO("<<<<<Sunt in salvare:");
-		if (this.isAddMode==1){
-			this.adaugaLiniePontaj(evt);
-			this.isAddMode = 0;
-		}
+		
 		for(Pontaj p:pontaje){
 			logger.logINFO("<<<<<am intrat in for la salvare si am ajuns la pontaj id:" + p.getIdPontaj() + "ore lucrate:"+p.getOreLucrate());
 			salarizareSrv.inregistrarePontaj(p.getIdPontaj(), p.getAngajat(), p.getAn()
@@ -318,5 +322,12 @@ public class FormPontaj implements Converter{
 	public void setIdPontaj(Integer idPontaj) {
 		this.idPontaj = idPontaj;
 	}
-	
+ 
+	public void stergeLiniePontaj(ActionEvent evt){
+		Integer selectedId = Integer.valueOf(evt.getComponent().getAttributes().get("selectedId").toString());
+		logger.logINFO("<<<<<selectedId:" + selectedId + "    " + evt.getComponent().getAttributes().get("ccc")) ;
+		Pontaj p = new Pontaj();
+		p.setIdPontaj(selectedId);
+		pontaje.remove(p);
+	}
 }
