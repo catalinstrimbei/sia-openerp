@@ -50,7 +50,8 @@ public class FormStatSalarii implements Converter{
 	
 	@EJB(mappedName="PersonalSrv/local", name="PersonalSrv/local") 
 	private PersonalSrvLocal personalSrv;
-	
+
+	private Integer i = 0; 
 	@PostConstruct
 	public void initFormPontaj() throws Exception{
 		logger = new SalarizareLogger();
@@ -172,8 +173,25 @@ public class FormStatSalarii implements Converter{
 			if (idx>=0)
 				return this.angajati.get(idx);
 		}
+		
+		if (uiComp.getId().equals("txtSalarNet")){
+			logger.logINFO("<<<<< Get AsObject txtSalarNet uiValue " + Double.valueOf(uiValue));
+			if (uiValue!=null){
+				
+				stateSalarii.get(i).setSalarNet(Double.valueOf(uiValue));
+				i +=1;
+				if (i==stateSalarii.size())
+						i=0;
+				logger.logINFO("<<<<< faces context i:" + i);
+				//this.pontaje.get(idx).setOreLucrate(Double.valueOf(uiValue));				
+				//pontaje.get(idx).setOreLucrate(oreLucrate)
+				//return pontaje.get(idx).getOreLucrate().toString();
+				return null;
+			}
+		}
+		
 		return null;
-	}
+	} 
 
 	// operatie invocata la generare elemente pentru lista, 
 	// dupa getAngajati, dar inainte de popularea listei
@@ -200,6 +218,10 @@ public class FormStatSalarii implements Converter{
 			if (uiValue!=null)
 				return uiValue.toString();
 		}
+		if (uiComp.getId().equals("txtSalarNet")){
+				return uiValue.toString();
+		}
+			
 		return null;
 	}
 	/*
@@ -322,5 +344,18 @@ public class FormStatSalarii implements Converter{
 		stateSalarii = salarizareSrv.getStatAnLuna(this.an, this.luna);					
 		logger.logINFO("<<<<<am generat salariile") ;
 		
+	}
+	
+	public void salvareLiniiStat(ActionEvent evt) throws Exception{
+		logger.logINFO("<<<<<Sunt in salvare:");
+		
+		for(StatSalarii s:stateSalarii){
+			logger.logINFO("<<<<<am intrat in for la salvare si am ajuns la salar id:" + s.getIdStatSalarii() + "ore lucrate:"+s.getSalarNet());
+			salarizareSrv.salveazaStatSalarii(s);
+			logger.logINFO("<<<<<am salvat salar id:" + s.getIdStatSalarii());
+		}
+		logger.logINFO("<<<<<Salariile au fost salvate:");
+		//pontaje.add(p);
+		 
 	}
 }

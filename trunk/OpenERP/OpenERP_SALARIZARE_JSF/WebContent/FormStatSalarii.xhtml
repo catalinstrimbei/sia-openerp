@@ -102,15 +102,17 @@
 				<h:outputText id="impozit" value="#{linieStatSalarii.impozit}"></h:outputText>
 			</h:column>
 			<h:column>
+				<h:inputText id="txtSalarNet" converter="#{formStatSalarii}"
+					value="#{linieStatSalarii.salarNet}"></h:inputText>
 				<p:facet name="header">
 					<h:outputText value="Salar Net"></h:outputText>
 				</p:facet>
-				<h:outputText id="salarNet" value="#{linieStatSalarii.salarNet}"></h:outputText>
+				
 			</h:column>
 		</h:dataTable>
 	</h:form>
 	<h:panelGrid columns="1" border="1">
-		<h:commandButton id="cmdSalveaza" value="Salveaza modificari"></h:commandButton>
+		<h:commandButton id="cmdSalveaza" value="Salveaza modificari" actionListener="#{formStatSalarii.salvareLiniiStat}"></h:commandButton>
 	</h:panelGrid>
 </body>
 </html>
