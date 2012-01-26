@@ -73,6 +73,8 @@ public class FormPontaj implements Converter{
 	}
 
 	Integer i=0;
+	Integer j=0;
+	Integer k=0;
 	public void setPontaj(Pontaj pontaj) {
 		this.pontaj = pontaj;
 	}
@@ -201,7 +203,7 @@ public class FormPontaj implements Converter{
 					return null;
 				}
 			}
-		
+		 
 		if (uiComp.getId().equals("txtOreConcediu")){
 			logger.logINFO("<<<<< Get AsObject txtOreConcediu uiValue " + Double.valueOf(uiValue));
 			if (uiValue!=null){
@@ -222,17 +224,50 @@ public class FormPontaj implements Converter{
 					//p1.setOreLucrate(Double.valueOf(uiValue));
 				//} 
 				
-				pontaje.get(i).setOreConcediu(Double.valueOf(uiValue));
-				//i +=1;
-				if (i==pontaje.size())
-						i=0;
-				logger.logINFO("<<<<< faces context i:" + i);
+				pontaje.get(j).setOreConcediu(Double.valueOf(uiValue));
+				j +=1;
+				if (j==pontaje.size())
+						j=0;
+				logger.logINFO("<<<<< faces context j:" + j);
 				//this.pontaje.get(idx).setOreLucrate(Double.valueOf(uiValue));				
 				//pontaje.get(idx).setOreLucrate(oreLucrate)
 				//return pontaje.get(idx).getOreLucrate().toString();
 				return null;
 			}
 		}
+		
+		if (uiComp.getId().equals("txtOreSuplimentare")){
+			logger.logINFO("<<<<< Get AsObject txtOreSuplimentare uiValue " + Double.valueOf(uiValue));
+			if (uiValue!=null){
+				//cautam pontajul si modificam orele lucrate
+				Pontaj p = new Pontaj();
+				p.setIdPontaj(this.idPontaj);
+				Integer idx = pontaje.indexOf(p);
+				logger.logINFO("<<<<< Get AsObject txtOreSuplimentare uiValue " + Double.valueOf(uiValue) );
+				
+				if (this.isAddMode==1){
+					Pontaj p1 = new Pontaj(null, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
+					logger.logINFO("<<<<<Pontajul a fost initializat in get AsObject txtOreSuplimentare:");
+					pontaje.add(p1);
+					this.isAddMode = 0;
+				}
+				//iteram prin map si actualizam in array pontaje modificarile facute de user
+				//for(Pontaj p1:pontaje){
+					//p1.setOreLucrate(Double.valueOf(uiValue));
+				//} 
+				
+				pontaje.get(k).setOreSuplimentare(Double.valueOf(uiValue));
+				k +=1;
+				if (k==pontaje.size())
+						k=0;
+				logger.logINFO("<<<<< faces context k:" + k);
+				//this.pontaje.get(idx).setOreLucrate(Double.valueOf(uiValue));				
+				//pontaje.get(idx).setOreLucrate(oreLucrate)
+				//return pontaje.get(idx).getOreLucrate().toString();
+				return null;
+			}
+		}
+
 		return null;
 	}
 

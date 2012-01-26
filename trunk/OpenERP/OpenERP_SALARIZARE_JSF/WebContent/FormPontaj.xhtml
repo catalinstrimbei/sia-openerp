@@ -66,8 +66,8 @@
 				
 			</h:column>
 			<h:column>
-				<h:inputText id="txtOreConcediu" value="#{liniePontaj.oreConcediu}"
-					converter=""></h:inputText>
+				<h:inputText id="txtOreConcediu" value="#{liniePontaj.idPontaj}"
+					converter="#{formPontaj}"></h:inputText>
 				<p:facet name="header">
 					<h:outputText value="Ore Concediu"></h:outputText>
 				</p:facet>
@@ -75,7 +75,7 @@
 			</h:column>
 			<h:column>
 				<h:inputText id="txtOreSuplimentare"
-					value="#{liniePontaj.oreSuplimentare}"></h:inputText>
+					value="#{liniePontaj.idPontaj}" converter="#{formPontaj}"></h:inputText>
 				<p:facet name="header">
 					<h:outputText value="Ore Suplimentare"></h:outputText>
 				</p:facet>
