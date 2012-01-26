@@ -73,10 +73,19 @@ public class TestProductieEJB {
 		logger.info("Begin test: definireFlux");
 		 
 		 Produs produs = new Produs();
-		 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		 logger.info("fluxul va fi creat pentru produsul:" + produs.getDenumire());
 		 
-
-		 FluxProductie flux = productie.definireFluxProductie(1, produs);
+		 
+		/* produs.setIdMaterial(1);
+		 produs.setDenumire("Produs nou");
+		 produs.setUnitateMasura(null);
+		 produs.setDataFabricatiei(null);
+		 produs.setTermenValabilitate(null);*/
+		 
+		 FluxProductie flux = new FluxProductie();
+		 
+		 flux =productie.definireFluxProductie(1, produs);
 		 
 		 logger.info("Fluxul cu id: " + flux.getIdFlux() + " a fost creat!");
 			
@@ -90,14 +99,14 @@ public class TestProductieEJB {
 	
 		}
 
-	/* @Test
+ @Test
 	 public void testDefinireFazaProductie () throws Exception{
 		 
 		 logger.info("Begin test: definireFaza");
 		 
 		 Produs produs = new Produs();
-		 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
-		 produs.setDenumire("produs");
+		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		 logger.info("Flux creat pentru produsul:" + produs.getDenumire());
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
 		 
@@ -125,12 +134,13 @@ public class TestProductieEJB {
 					
 					//setez un mijloc fix;
 					mf=new MijlocFix();
-					mf.setId(1);
+					/*mf.setId(1);
 					mf.setDenumire("Utilaj");
 					mf.setAdresa(null);
 					mf.setTermenExploatare(null);
-					mf.setValoare(null);
-					logger.info("Mijlocul fix a fost creat " + mf.getDenumire());
+					mf.setValoare(null);*/
+					nomenclatoare.getMFDupaCod(1);
+					logger.info("Mijlocul fix a fost incarcat " + mf.getDenumire());
 					//Setez utilajul;
 					u =new Utilaj();
 					u.setUtilaj(mf);
@@ -144,7 +154,7 @@ public class TestProductieEJB {
 					sectie.setId(1);				
 					sectie.setDenumire("Sectie Productie");
 					sectie.setIdDepartament(null);
-					sectie.setAtributii(null);
+					sectie.setAtributii(null);				
 					logger.info("Sectia a fost creata " + sectie.getDenumire());
 					
 					
@@ -626,6 +636,6 @@ public void testInregistrareGestiuneProductie() throws Exception{
 	testControlCalitate();
 	logger.info("Produsele au fost inregistrate");
 	logger.info("SFARSIT TEST INREGISTRARE GESTIUNE PRODUCTIE");
-	}*/
+	}
 }
 
