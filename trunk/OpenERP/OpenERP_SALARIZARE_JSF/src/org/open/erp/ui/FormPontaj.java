@@ -29,6 +29,7 @@ public class FormPontaj implements Converter{
 	private Integer luna;
 	private Integer an;
 	private Pontaj pontaj;
+	private Integer idPontaj;
 	private List<Pontaj> pontaje = new ArrayList<Pontaj>();
 	private List<Angajat> angajati = new ArrayList<Angajat>();
 	
@@ -37,6 +38,9 @@ public class FormPontaj implements Converter{
 	private Map<String, Integer> mapLuni = new HashMap<String, Integer>();
 	private Map<String, Integer> mapAni = new HashMap<String, Integer>();
 	
+	public List<Pontaj> oreLucrate = new ArrayList<Pontaj>();
+	
+	private Integer isAddMode = 0;
 	private static SalarizareLogger logger;
 	
 	@EJB(mappedName="SalarizareImpl/local", name="SalarizareImpl/local") 
@@ -68,6 +72,7 @@ public class FormPontaj implements Converter{
 		return pontaj;
 	}
 
+	Integer i=0;
 	public void setPontaj(Pontaj pontaj) {
 		this.pontaj = pontaj;
 	}
@@ -109,7 +114,7 @@ public class FormPontaj implements Converter{
 	public void setListAni(List<Integer> listAni) {
 		this.listAni = listAni;
 	}
-
+	
 	public Map<String, Angajat> getAngajati(){
 		Map<String, Angajat> mapAngajati = new HashMap<String, Angajat>();
 		for (Angajat a: angajati){
@@ -132,7 +137,7 @@ public class FormPontaj implements Converter{
 			try {
 				//if (pontaje.isEmpty()){
 					pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);
-			//		logger.logINFO("<<<<<<< Am incarcat pontajele cu succes luna");
+					logger.logINFO("<<<<<<< Am incarcat pontajele cu succes luna");
 				//}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -164,6 +169,32 @@ public class FormPontaj implements Converter{
 			if (idx>=0)
 				return this.angajati.get(idx);
 		}
+		
+		if (uiComp.getId().equals("txtOreLucrate")){
+				logger.logINFO("<<<<< Get AsObject txtOrelucrate uiValue " + Double.valueOf(uiValue));
+				if (uiValue!=null){
+					//cautam pontajul si modificam orele lucrate
+					Pontaj p = new Pontaj();
+					p.setIdPontaj(this.idPontaj);
+					Integer idx = pontaje.indexOf(p);
+					logger.logINFO("<<<<< Get AsObject txtOrelucrate uiValue " + Double.valueOf(uiValue) + " si id pontaj: " + idx);
+					
+					//iteram prin map si actualizam in array pontaje modificarile facute de user
+					//for(Pontaj p1:pontaje){
+						//p1.setOreLucrate(Double.valueOf(uiValue));
+					//}
+					
+					pontaje.get(i).setOreLucrate(Double.valueOf(uiValue));
+					i +=1;
+					if (i==pontaje.size())
+							i=0;
+					logger.logINFO("<<<<< faces context");
+					//this.pontaje.get(idx).setOreLucrate(Double.valueOf(uiValue));				
+					//pontaje.get(idx).setOreLucrate(oreLucrate)
+					//return pontaje.get(idx).getOreLucrate().toString();
+					return null;
+				}
+			}
 		return null;
 	}
 
@@ -172,16 +203,16 @@ public class FormPontaj implements Converter{
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent uiComp, Object uiValue) {
 		if (uiComp.getId().equals("cboAngajat")){
-			logger.logINFO("<<<<<<<<<< getAsString uiValue angajat:"+uiValue);
+			//logger.logINFO("<<<<<<<<<< getAsString uiValue angajat:"+uiValue);
 			if (uiValue != null){
-				
 				Angajat uiAngajat = (Angajat)uiValue;
-				logger.logINFO("<<<<<<<<<< getAsString uiValue angajat:"+uiAngajat.getNume());
+				//logger.logINFO("<<<<<<<<<< getAsString uiValue angajat:"+uiAngajat.getNume());
 				//logger.logINFO("getAsString uiValue 2:"+uiSpor.getIdSpor());
 				if (uiAngajat.getId()!=null) //poate veni null din click Add
 					return uiAngajat.getId().toString();
 			}	
 		}
+		
 		if (uiComp.getId().equals("cboLuna")){
 		//	logger.logINFO("<<<<<<<< getAsString uiValue Luna:"+uiValue);
 			if (uiValue!=null)
@@ -192,6 +223,24 @@ public class FormPontaj implements Converter{
 			if (uiValue!=null)
 				return uiValue.toString();
 		}
+		
+		if (uiComp.getId().equals("txtOreLucrate")){
+			//	logger.logINFO("<<<<<<<< getAsString uiValue An:"+uiValue);
+				if (uiValue!=null){
+					//cautam pontajul si facem display la orele lucrate
+					Pontaj p = new Pontaj();
+					p.setIdPontaj((Integer)uiValue);
+					
+					logger.logINFO("<<<<< txtOrelucrate uiValue " + (Integer)uiValue);
+					Integer idx = this.pontaje.indexOf(p);
+					p.setOreLucrate(pontaje.get(idx).getOreLucrate());
+					//de asemene ne punem intr-un map toate valorile (folosite in getAsObject pt a modifica 
+					//array-ul de pontaje
+					//oreLucrate.add(p);
+					this.idPontaj = (Integer)uiValue;
+					return pontaje.get(idx).getOreLucrate().toString();
+				}
+			}
 		return null;
 	}
 	/*
@@ -232,13 +281,18 @@ public class FormPontaj implements Converter{
 		Pontaj p = new Pontaj(9999, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
 		logger.logINFO("<<<<<Pontajul a fost initializat:");
 		pontaje.add(p);
+		this.isAddMode = 1;
 		
 	}
  	
 	public void salvareLiniiPontaj(ActionEvent evt) throws Exception{
 		logger.logINFO("<<<<<Sunt in salvare:");
+		if (this.isAddMode==1){
+			this.adaugaLiniePontaj(evt);
+			this.isAddMode = 0;
+		}
 		for(Pontaj p:pontaje){
-			logger.logINFO("<<<<<am intrat in for la salvare si am ajuns la pontaj id:" + p.getIdPontaj());
+			logger.logINFO("<<<<<am intrat in for la salvare si am ajuns la pontaj id:" + p.getIdPontaj() + "ore lucrate:"+p.getOreLucrate());
 			salarizareSrv.inregistrarePontaj(p.getIdPontaj(), p.getAngajat(), p.getAn()
 					, p.getLuna(), p.getOreLucrate(), p.getOreSuplimentare(), p.getOreConcediu());
 			logger.logINFO("<<<<<am salvat pontaj id:" + p.getIdPontaj());
@@ -256,4 +310,13 @@ public class FormPontaj implements Converter{
 		logger.logINFO("<<<<<am generat pontajele:") ;
 		
 	}
+
+	public Integer getIdPontaj() {
+		return idPontaj;
+	}
+
+	public void setIdPontaj(Integer idPontaj) {
+		this.idPontaj = idPontaj;
+	}
+	
 }
