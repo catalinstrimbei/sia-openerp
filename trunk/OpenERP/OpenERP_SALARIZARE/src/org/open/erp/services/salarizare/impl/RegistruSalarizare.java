@@ -262,11 +262,11 @@ public class RegistruSalarizare {
 		}
 		return statSalarii;
 	}
-	
+	/*
 	public void stergeStatSalarii(StatSalarii statSalarii){
 		entityManager.remove(statSalarii);
 	}
-	
+	*/
 	public CentralizatorStatSalarii salveazaCentralizator(CentralizatorStatSalarii centralizator) throws Exception{
 		try{
 			if (centralizator.getIdCentralizator() == null || 
@@ -289,6 +289,11 @@ public class RegistruSalarizare {
 		entityManager.remove(centralizator);
 	}
 
+	public void stergeStatSalarii(StatSalarii statSalarii){
+		statSalarii = entityManager.find(statSalarii.getClass(), statSalarii.getIdStatSalarii());
+		if(statSalarii!=null)
+		entityManager.remove(statSalarii);
+	}
 
 	public List<Spor> getSporuriGenerale() throws Exception{
 		List<Spor> sporuri= new ArrayList<Spor>();

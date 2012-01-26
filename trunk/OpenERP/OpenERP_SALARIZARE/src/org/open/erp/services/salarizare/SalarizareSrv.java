@@ -386,4 +386,14 @@ public interface SalarizareSrv {
 	 */
 	void stergePontaj(Pontaj pontaj) throws Exception;
 	
+	/**
+	 * sterge un stat salarii  
+	 * @param StatSalarii   
+	 * 
+	 * @return  
+	 * @throws Exception 
+	 * 
+	 */
+	void stergePontaj(StatSalarii statSalarii) throws Exception;
+	
 }
