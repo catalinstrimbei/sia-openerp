@@ -16,11 +16,12 @@
 			<p:selectItems value="#{formStatSalarii.listAni}"></p:selectItems>
 			<p:ajax render="@form"></p:ajax>
 		</h:selectOneMenu><br /><br /><br />
-		<h:panelGrid columns="1" border="1">
+		<h:panelGrid columns="2" border="1">
 			<h:commandButton id="cmdGenereaza" value="Calculeaza salarii"
 				actionListener="#{formStatSalarii.generareStatSalarii}">
 				<p:ajax render="@form" execute="@form"></p:ajax>
 			</h:commandButton>
+			<h:commandButton id="cmdRegenereaza" value="Regenereaza stat salarii" actionListener="#{formStatSalarii.regenerareStatSalarii}"></h:commandButton>
 		</h:panelGrid>
 		<h:messages></h:messages>
 
@@ -108,5 +109,8 @@
 			</h:column>
 		</h:dataTable>
 	</h:form>
+	<h:panelGrid columns="1" border="1">
+		<h:commandButton id="cmdSalveaza" value="Salveaza modificari"></h:commandButton>
+	</h:panelGrid>
 </body>
 </html>

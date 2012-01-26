@@ -309,5 +309,18 @@ public class FormStatSalarii implements Converter{
 			}
 		}
 		
-	}	
+	}
+	
+	public void regenerareStatSalarii(ActionEvent evt) throws Exception{
+		logger.logINFO("<<<<<Sunt in regenerare:");
+		
+		for(StatSalarii s: stateSalarii){
+			salarizareSrv.stergeStatSalarii(s);
+		}
+		
+		salarizareSrv.inregistrarStatSalariiLuna(this.an, this.luna);
+		stateSalarii = salarizareSrv.getStatAnLuna(this.an, this.luna);					
+		logger.logINFO("<<<<<am generat salariile") ;
+		
+	}
 }
