@@ -1,5 +1,7 @@
 package org.open.erp.services.achizitii.registri;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
@@ -8,6 +10,10 @@ import org.open.erp.services.achizitii.Articol;
 import org.open.erp.services.achizitii.Categorie;
 import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.Comanda;
+import org.open.erp.services.achizitii.Factura;
+import org.open.erp.services.achizitii.Furnizor;
+import org.open.erp.services.achizitii.LinieCerereOferta;
+import org.open.erp.services.achizitii.LinieComanda;
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
@@ -434,18 +440,274 @@ public class RegistruAprovizionare {
 			}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			Factura				getFacturaById(Integer idActivitate_) throws Exception 
+			{
+				try
+				{
+					return entityManager.find(Factura.class, idActivitate_);
+				}
+				catch(Exception ex)
+				{
+				
+					logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+					ex.printStackTrace(); 
+					throw ex;
+				}
+			}
+				
+			Collection<Factura>	getListaFactura() throws Exception 
+			{
+				try
+				{
+					return entityManager.createQuery("SELECT x FROM Factura x").getResultList();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+					ex.printStackTrace();   
+					throw ex;
+				}
+			}
+			
+			
+			
+			Factura				salveazaFactura(Factura factura_) throws Exception 
+			{
+				try
+				{		
+					if (factura_.getNrFact() == null ||
+						entityManager.find(factura_.getClass(), factura_.getNrFact()) == null)
+						entityManager.persist(factura_);
+					else
+						entityManager.merge(factura_);	
+				}
+				catch(Exception ex)
+				{
+					logger.error("eroare in metoda salveazafactura");
+					ex.printStackTrace();   
+					throw ex;
+				}
+				return factura_;
+			}
+
+			
+			
+			void								stergeFactura(Factura factura_) throws Exception
+			{
+				try
+				{
+					entityManager.remove(factura_);
+				}
+				catch(Exception ex)
+				{
+					logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+					ex.printStackTrace();  
+					throw ex;
+				}
+			}
+			
+		
+			Furnizor				getFurnizorById(Integer id_) throws Exception
+			{
+				try
+				{
+					return (Furnizor) entityManager.createQuery("SELECT x FROM Furnizor x WHERE x.id == :idFurnizor AND rownum <= 1").setParameter("idFurnizor", id_).getSingleResult();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+					logger.error("eroare in metoda getFurnizorbyId");
+					ex.printStackTrace();   
+					throw ex;
+				}
+			}
+			
+			Collection<Furnizor>				getListaFurnizor() throws Exception
+			{
+				try
+				{
+					return entityManager.createQuery("SELECT x FROM Furnizor x").getResultList();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+					logger.error("eroare in metoda getListaFurnizor");
+					ex.printStackTrace();   
+					throw ex;
+				}
+			}
+			
+			Furnizor							salveazaFurnizor(Furnizor furnizor_) throws Exception
+			{
+				logger.info("Am intrat pe  salveazaFurnizor in RegistruAprovizionare" );
+				try
+				{		
+					logger.info("Am intrat pe  try in salveazaFurnizor in RegistruAprovizionare" );
+					if(furnizor_ == null)
+						logger.info(" furnizor_ is null");
+					else if ((Integer)(furnizor_.getIdFurnizor())!= null)
+						logger.info(" furnizor_.getIdFurnizor() = " + furnizor_.getIdFurnizor());
+					else
+						logger.info(" furnizor_.getIdFurnizor() = 0");
+					
+					if ((Integer)furnizor_.getIdFurnizor() == null ||
+						entityManager.find(furnizor_.getClass(), furnizor_.getIdFurnizor()) == null)
+						
+						{
+						logger.info("Am intrat pe  if" );
+						entityManager.persist(furnizor_);
+						}
+					else
+						entityManager.merge(furnizor_);
+				}
+				catch(Exception ex)
+				{
+					logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+					logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+					ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.error("<< Stack Trace >>" + st.toString());
+					throw ex;
+				}
+				return furnizor_;
+			}
+			
+			
+			LinieCerereOferta				getLinieCerereOfertaById(Integer idliniecerereoferta_) throws Exception 
+			{
+				try
+				{
+					return entityManager.find(LinieCerereOferta.class, idliniecerereoferta_);
+				}
+				catch(Exception ex)
+				{
+				
+					logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+					ex.printStackTrace(); 
+					throw ex;
+				}
+			}
+			
+				
+			Collection<LinieCerereOferta>	getLinieCerereOferta() throws Exception 
+			{
+				try
+				{
+					return entityManager.createQuery("SELECT x FROM LinieCerereOferta x").getResultList();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+					ex.printStackTrace();   
+					throw ex;
+				}
+			}
+			
+			
+			
+			LinieCerereOferta			salveazaLinieCerereOferta(LinieCerereOferta liniecerereoferta_) throws Exception 
+			{
+				try
+				{		
+					if (Long.valueOf(liniecerereoferta_.getIdLinieCerereOferta()) == null ||
+						entityManager.find(liniecerereoferta_.getClass(), liniecerereoferta_.getIdLinieCerereOferta()) == null)
+						entityManager.persist(liniecerereoferta_);
+					else
+						entityManager.merge(liniecerereoferta_);	
+				}
+				catch(Exception ex)
+				{
+					logger.error("eroare in metoda salveazaLinieCerereOferta");
+					ex.printStackTrace();   
+					throw ex;
+				}
+				return liniecerereoferta_;
+			}
+
+			
+			
+			void								stergeLinieCerereOferta(LinieCerereOferta liniecerereoferta_) throws Exception
+			{
+				try
+				{
+					entityManager.remove(liniecerereoferta_);
+				}
+				catch(Exception ex)
+				{
+					logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+					ex.printStackTrace();  
+					throw ex;
+				}
+			}	
+			
+			
+			LinieComanda				getLinieComandaById(Integer idliniecomanda_) throws Exception 
+			{
+				try
+				{
+					return entityManager.find(LinieComanda.class, idliniecomanda_);
+				}
+				catch(Exception ex)
+				{
+				
+					logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+					ex.printStackTrace(); 
+					throw ex;
+				}
+			}
+			
+				
+			Collection<LinieComanda>	getLinieComanda() throws Exception 
+			{
+				try
+				{
+					return entityManager.createQuery("SELECT x FROM LinieComanda x").getResultList();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+					ex.printStackTrace();   
+					throw ex;
+				}
+			}
+			
+			
+			
+			LinieComanda			salveazaLinieComanda(LinieComanda liniecomanda_) throws Exception 
+			{
+				try
+				{		
+					if (Long.valueOf(liniecomanda_.getIdLinieComanda()) == null ||
+						entityManager.find(liniecomanda_.getClass(), liniecomanda_.getIdLinieComanda()) == null)
+						entityManager.persist(liniecomanda_);
+					else
+						entityManager.merge(liniecomanda_);	
+				}
+				catch(Exception ex)
+				{
+					logger.error("eroare in metoda salveazaLinieComanda");
+					ex.printStackTrace();   
+					throw ex;
+				}
+				return liniecomanda_;
+			}
+
+			
+			
+			void								stergeLinieComanda(LinieComanda liniecomanda_) throws Exception
+			{
+				try
+				{
+					entityManager.remove(liniecomanda_);
+				}
+				catch(Exception ex)
+				{
+					logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+					ex.printStackTrace();  
+					throw ex;
+				}
+			}	
+			
+			
+			
 	
 		
 }
