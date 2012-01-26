@@ -50,7 +50,7 @@
 				<h:outputText id="an" value="#{liniePontaj.an}"></h:outputText>
 			</h:column>
 			<h:column>
-				<h:selectOneMenu id="cboAngajat" value="#{liniePontaj.angajat}" converter="#{formPontaj}" readonly="true">
+				<h:selectOneMenu id="cboAngajat" value="#{liniePontaj.angajat}" converter="#{formPontaj}" >
 					<p:selectItems value="#{formPontaj.angajati}"></p:selectItems>
 				
 				</h:selectOneMenu>

@@ -5,6 +5,7 @@
 	xmlns:p="http://java.sun.com/jsf/core"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head></h:head>
 <body>
 	<div
 		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Sporuri</div>
@@ -26,8 +27,9 @@
 			
 			<h:message></h:message>
 			<h:outputText value="Denumire:"></h:outputText>
-			<h:inputText id="spor_denumire" value="#{formSpor.spor.denumire}" validator="#{formSpor.validate}">
-				<p:ajax render="spor_denumire"></p:ajax>
+			<h:inputText id="spor_denumire" value="#{formSpor.spor.denumire}"
+				validator="#{formSpor.validate}" required="false">
+
 			</h:inputText>
 			<h:message for="spor_denumire"></h:message>
 			
