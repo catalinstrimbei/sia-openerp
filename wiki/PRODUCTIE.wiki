@@ -1,8 +1,9 @@
 #summary Pagina modulului PRODUCTIE
+Modulul Productie
 
 = Introduction =
 <br />
-Modulul Productie
+Se ocupa cu realizarea ciclului de productie a produselor
 <br />
 
 = Details =
