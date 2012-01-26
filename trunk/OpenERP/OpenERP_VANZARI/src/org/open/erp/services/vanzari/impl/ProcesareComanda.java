@@ -120,7 +120,7 @@ public class ProcesareComanda {
 			// lansare Comanda daca prod nu e in stoc 
 			try{
 				//DummyProdus dummyProd = new DummyProdus(produs.getId(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
-				ComandaProductie comprod = new ComandaProductie(1, produs, cantitate.intValue(), new Date());
+				ComandaProductie comprod = new ComandaProductie(produs, cantitate.intValue(), new Date());
 				prodSrv.lansareComandaProductie(comprod, produs);
 			} catch(Exception ex){
 				
