@@ -259,10 +259,7 @@ public class FormStatSalarii implements Converter{
 	*/
 	public void generareStatSalarii(ActionEvent evt) throws Exception{
 		logger.logINFO("<<<<<Sunt in generare:");
-		FacesMessage mesaj = null;
-		mesaj = new FacesMessage("Nu exista pontaje pentru anul selectat: " + this.an+
-				" si luna selectate: " + this.luna + "!");
-		FacesContext.getCurrentInstance().addMessage("Validare esuta",mesaj);
+		
 		
 		try {
 			pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);
@@ -273,7 +270,13 @@ public class FormStatSalarii implements Converter{
 		
 		if (pontaje == null || pontaje.isEmpty()){
 			logger.logINFO("<<<<<pontajul este gol") ;
-			FacesContext.getCurrentInstance().renderResponse();
+			FacesMessage mesaj = null;
+			mesaj = new FacesMessage("Nu exista pontaje pentru anul selectat: " + this.an+
+					" si luna selectate: " + this.luna + "!");
+			FacesContext.getCurrentInstance().addMessage("Validare esuata",mesaj);
+			
+		}
+		else{
 			
 		}
 		salarizareSrv.inregistrarStatSalariiLuna(this.an, this.luna);
@@ -284,9 +287,10 @@ public class FormStatSalarii implements Converter{
 	
 	public void validate(FacesContext arg0, UIComponent uiComponent, Object uiValue)
 			throws ValidatorException {
-		logger.logINFO("Validam");
+		logger.logINFO("Validam pontaj an si luna " + this.luna + " " + this.an);
 		if (uiComponent.getId().equals("cmdGenereaza")){
 			try {
+				
 				pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
