@@ -19,6 +19,7 @@ import javax.faces.event.ActionEvent;
 import javax.faces.validator.ValidatorException;
 
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.PersonalSrvLocal;
 import org.open.erp.services.salarizare.SalarizareSrvLocal;
 import org.open.erp.services.salarizare.Spor;
 import org.open.erp.services.salarizare.impl.SalarizareLogger;
@@ -40,6 +41,7 @@ public class FormSpor implements Converter{
 	
 	private Map<String, Integer> mapTip = new HashMap<String, Integer>();
 	
+	private List<Angajat> angajati = new ArrayList<Angajat>();
 	private static SalarizareLogger logger;
 	
 	@PostConstruct
@@ -49,10 +51,30 @@ public class FormSpor implements Converter{
 		sporuri = salarizareSrv.getSporuriGenerale();
 		if (!sporuri.isEmpty())
 			spor = sporuri.get(0);
+		
+		angajati = (List<Angajat>) personalSrv.getListaAngajati();
+		//if (!angajati.isEmpty())
+			//angajat = angajati.get(0);
 	}
 	
 	@EJB(mappedName="SalarizareImpl/local", name="SalarizareImpl/local") 
 	private SalarizareSrvLocal salarizareSrv;
+
+	@EJB(mappedName="PersonalSrv/local", name="PersonalSrv/local") 
+	private PersonalSrvLocal personalSrv;
+	
+	public Map<String, Angajat> getAngajati(){
+		Map<String, Angajat> mapAngajati = new HashMap<String, Angajat>();
+		for (Angajat a: angajati){
+			//logger.logINFO("<<<<<<Map getAngajati:" + a.getNume());
+			mapAngajati.put(a.getNume() + " " + a.getPrenume() + " | " + a.getMarca(), a);
+		}
+		return mapAngajati;
+	}
+	
+	public List<Angajat> getAngajatiList(){
+		return this.angajati;
+	}
 
 	public Spor getSpor() {
 		return spor;
@@ -144,24 +166,41 @@ public class FormSpor implements Converter{
 		if (uiComp.getId().equals("cboSpor")){
 			Spor uiSporTemplate = new Spor(Integer.valueOf(uiValue), null, null, null, null, null, null, null);
 			int idx = this.sporuri.indexOf(uiSporTemplate);
-			logger.logINFO("Id-ul din array este:"+idx);
+			//logger.logINFO("Id-ul din array este:"+idx);
 			return this.sporuri.get(idx); 
 		}
 		
+		if (uiComp.getId().equals("cboAngajat")){
+			Angajat uiAngajatTemplate = new Angajat();
+			uiAngajatTemplate.setId(Integer.valueOf(uiValue));
+			Integer idx = this.angajati.indexOf(uiAngajatTemplate);
+			logger.logINFO("Id-ul angajatului din array este:"+angajati.get(idx).getNume());
+			
+			return this.angajati.get(idx);
+		}
+		 
 		return null;
 	}
-
+   
 	// operatie invocata la generare elemente pentru lista, 
 	// dupa getSporuri, dar inainte de popularea listei
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent uiComp, Object uiValue) {
 		// TODO Auto-generated method stub
 		if (uiComp.getId().equals("cboSpor")){
-			logger.logINFO("getAsString uiValue:"+uiValue.toString());
+			//logger.logINFO("getAsString uiValue:"+uiValue.toString());
 			Spor uiSpor = (Spor)uiValue;
-			logger.logINFO("getAsString uiValue 2:"+uiSpor.getIdSpor());
+			//logger.logINFO("getAsString uiValue 2:"+uiSpor.getIdSpor());
 			if (uiSpor.getIdSpor()!=null) //poate veni null din click Add
 				return uiSpor.getIdSpor().toString();
+		}
+		 
+		if (uiComp.getId().equals("cboAngajat")){
+			if (uiValue != null){
+				Angajat uiAngajat = (Angajat)uiValue;
+				logger.logINFO("<<<<<<<<<< getAsString uiValue angajat:"+uiAngajat.getNume());
+				return uiAngajat.getId().toString();
+			}	
 		}
 		return null;
 	}
@@ -230,6 +269,16 @@ public class FormSpor implements Converter{
 			}
 		}
 		
-	}	
+	}
+
+	public Angajat getAngajat() {
+		return angajat;
+	}
+
+	public void setAngajat(Angajat angajat) {
+		this.angajat = angajat;
+	}
+	
+	
 }
 
