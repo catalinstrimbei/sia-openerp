@@ -1,13 +1,28 @@
 #summary Pagina modulului PRODUCTIE
-Modulul Productie
+<h3>Modulul OpenERP_Productie</h3>
 
 = Introduction =
-<br />
-Se ocupa cu realizarea ciclului de productie a produselor
+<h4>Acest modul se ocupa cu realizarea si gestionarea ciclului de productie a produselor.</h4>
+
 <br />
 
-= Details =
+= Detalii =
 <br />
+  == I. Partea functionala ==
+<br/>
+==Modulul cuprinde urmatoarele procese:==
+
+<h4><u>1. Crearea unui flux de productie pentru un anumit produs.</u></h4>
+Acest proces presupune definirea mai multor faze de productie care sa se desfasoare in cadrul fluxului.
+Fazele de productie reprezinta stadii in care anumite materiale si semifabricate sunt prelucrate cu ajutorul unor utilaje de catre anumiti angajati, pentru ca in final sa se obtina un semifabricat sau produsul final.
+Pentru fiecare faza sunt necesare o serie de resurse:
+   * o lista de materiale care sunt cuprinse in reteta;
+   * un semifabricat cuprins in reteta (de regula semifabricatul obtinut in faza anterioara);
+   * o lista de functii de personal pentru a efectua operatiile necesare;
+   * o lista de angajati pe baza functiilor necesare;
+   * un utilaj care sa realizeze anumite operatii intr-un anumit timp;
+   * o sectie (divizie) in care sa se desfasoare intreaga activitate.
+
 Vizeaza procesul de productie - Serviciul ProductieSrv <br />
 <br />
 1.Creaza un flux de productie pentru produs.<br />
