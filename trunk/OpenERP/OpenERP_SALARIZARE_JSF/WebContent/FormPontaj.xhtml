@@ -20,10 +20,13 @@
 			<p:selectItems value="#{formPontaj.listAni}"></p:selectItems>
 			<p:ajax render="@form"></p:ajax>
 		</h:selectOneMenu><br /><br /><br />
-		<h:panelGrid columns="1" border="1">
+		<h:panelGrid columns="2" border="1">
 			<h:commandButton id="cmdGenereaza" value="Genereaza pontaj" actionListener="#{formPontaj.generarePontaj}">
 				<p:ajax render="@form" execute="@form"></p:ajax>
 			</h:commandButton>
+			<h:commandButton id="cmdRegenereaza"
+				actionListener="#{formPontaj.regenerarePontaj}"
+				value="Regenereaza pontaj"></h:commandButton>
 		</h:panelGrid>
 
 		<h:dataTable var="liniePontaj" value="#{formPontaj.pontaje}"

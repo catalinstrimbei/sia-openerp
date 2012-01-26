@@ -18,6 +18,7 @@ import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrvLocal;
 import org.open.erp.services.salarizare.Pontaj;
 import org.open.erp.services.salarizare.SalarizareSrvLocal;
+import org.open.erp.services.salarizare.StatSalarii;
 import org.open.erp.services.salarizare.impl.SalarizareLogger;
 
 import com.google.common.base.Functions;
@@ -418,6 +419,18 @@ public class FormPontaj implements Converter{
 		
 	}
 
+	public void regenerarePontaj(ActionEvent evt) throws Exception{
+		logger.logINFO("<<<<<Sunt in regenerare:");
+		
+		for(Pontaj p: pontaje){
+			salarizareSrv.stergePontaj(p);
+		}
+		
+		salarizareSrv.inregistrarePontajLuna(this.an, this.luna);
+		pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);					
+		logger.logINFO("<<<<<am generat pontajele:") ;
+		
+	}
 	public Integer getIdPontaj() {
 		return idPontaj;
 	}
