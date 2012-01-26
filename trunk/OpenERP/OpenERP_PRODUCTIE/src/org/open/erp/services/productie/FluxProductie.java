@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Produs;
@@ -40,6 +41,9 @@ public class FluxProductie implements Serializable{
 	@ElementCollection(fetch = FetchType.LAZY,targetClass=FazaProductie.class)
 	ArrayList <FazaProductie> faze;
 	
+	@OneToOne
+	FazaProductie faza;
+	
 	
 	public FluxProductie(Integer idFlux, Produs produs) {
 		super();
@@ -63,11 +67,15 @@ public class FluxProductie implements Serializable{
 	public void setProdus(Produs produs) {
 		this.produs = produs;
 	}
+	
+	
+	public void adaugaFaza(FazaProductie faza){
+		this.faza=faza;
+	}
+	
 	public ArrayList<FazaProductie> getFaze() {
+		faze.add(faza);
 		return this.faze;
 	}
 	
-	public void adaugaFaza(FazaProductie faza){
-		this.faze.add(faza);
-	}
 }

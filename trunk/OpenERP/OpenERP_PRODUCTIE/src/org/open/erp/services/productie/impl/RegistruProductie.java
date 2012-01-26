@@ -45,8 +45,8 @@ public class RegistruProductie {
 	public FluxProductie salveazaFlux(FluxProductie flux) throws Exception{
 		try{
 
-			if (flux.getIdFlux() == null || 
-				entityManager.find(flux.getClass(), flux.getIdFlux()) == null)
+			if (flux.getIdFlux() == null) //|| 
+				///entityManager.find(flux.getClass(), flux.getIdFlux()) == null)
 				entityManager.persist(flux);
 			else
 				entityManager.merge(flux);

@@ -51,7 +51,11 @@ public class TestProductieEJB {
 	 public static void setUpBeforeClass() throws Exception {
 		InitialContext ctx = initJBossJNDICtx();
 		productie = (ProductieSrv)ctx.lookup("ProductieSrv/remote");
-		logger.info("initTest " + productie);
+		nomenclatoare=(NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
+		
+		
+		logger.info("initTest: " + productie);
+		logger.info("initTest: "+ nomenclatoare);
 		
 	 }
 
@@ -66,12 +70,12 @@ public class TestProductieEJB {
 	 @Test
 	 public void testDefinireFluxProductie () throws Exception{
 
-			logger.info("Begin test: definireFlux");
+		logger.info("Begin test: definireFlux");
 		 
 		 Produs produs = new Produs();
 		 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
-		 produs.setDenumire("produs");
 		 
+
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
 		 
 		 logger.info("Fluxul cu id: " + flux.getIdFlux() + " a fost creat!");
@@ -85,8 +89,8 @@ public class TestProductieEJB {
 		 
 	
 		}
-	 
-	 @Test
+
+	/* @Test
 	 public void testDefinireFazaProductie () throws Exception{
 		 
 		 logger.info("Begin test: definireFaza");
@@ -622,6 +626,6 @@ public void testInregistrareGestiuneProductie() throws Exception{
 	testControlCalitate();
 	logger.info("Produsele au fost inregistrate");
 	logger.info("SFARSIT TEST INREGISTRARE GESTIUNE PRODUCTIE");
-	}
+	}*/
 }
 

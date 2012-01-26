@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
@@ -17,8 +18,12 @@ import javax.persistence.PersistenceContext;
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
+import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.personal.PersonalSrvLocal;
 //import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.CriteriuCalitate;
@@ -216,7 +221,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	public Produs lansareComandaProductie(ComandaProductie comanda, Produs produs)  throws Exception{
 		  // cautare faze pentru produsul x in baza de date;
 		   //de lamurit cu comanda productie - modulul stocuri
-		 //  definireFluxProductie(idFlux, produs);
+		  //definireFluxProductie(idFlux, produs);
 		   
 		   return produs;
 		 }
@@ -316,7 +321,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	@Override
 	public FluxProductie getFlux(Integer idFlux)  throws Exception{
 		return registru.getFluxProductie(idFlux);
-//			return null;
+
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -337,5 +342,27 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 			fazePr.get(n - 1).procesareProdus();
 			logger.info("Procesare produs: " +fazeFlux.get(n - 1).procesareProdus());
 		}
+	}
+	
+	@EJB(mappedName="PersonalSrv/local") 
+	private PersonalSrvLocal personalSrv;
+	
+	public PersonalSrv getPersonalSrv() {
+		return personalSrv;
+	}
+
+	public void setPersonalSrv(PersonalSrv personalSrv) {
+		this.personalSrv = (PersonalSrvLocal) personalSrv;
+	}
+
+	@EJB(mappedName="NomenclatoareSrv/local") 
+	private NomenclatoareSrvLocal nomenclatoareSrv;
+	
+	public NomenclatoareSrv getNomenclatoareSrv() {
+		return nomenclatoareSrv;
+	}
+
+	public void setNomenclatoareSrv(NomenclatoareSrv nomenclatoareSrv) {
+		this.nomenclatoareSrv = (NomenclatoareSrvLocal) nomenclatoareSrv;
 	}
 }

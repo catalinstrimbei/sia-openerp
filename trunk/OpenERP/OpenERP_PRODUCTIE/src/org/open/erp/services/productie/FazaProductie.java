@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Divizie;
@@ -86,6 +87,12 @@ public class FazaProductie implements Serializable {
 	@JoinColumn(name = "idDivizie")
 	Divizie sectie;
 	
+	@OneToOne
+	FunctieNecesara functieNecesare;
+	
+	@OneToOne
+	Material materialReteta;
+	
 	Integer nrOrdine;
 	Boolean isFinal;
 	
@@ -119,11 +126,12 @@ public class FazaProductie implements Serializable {
 	}
 
 	public ArrayList<FunctieNecesara> getFunctiiNecesare() {
+		functiiNecesare.add(functieNecesare);
 		return functiiNecesare;
 	}
 
 	public void adaugaFunctieNecesara(FunctieNecesara functieNecesare) {
-		this.functiiNecesare.add(functieNecesare);
+		this.functieNecesare=functieNecesare;
 	}
 
 	public FazaProductie(String faza,  Utilaj utilaj, Double timpFolosire,
@@ -177,12 +185,14 @@ public class FazaProductie implements Serializable {
 		this.angajati = angajati;
 	}
 
-	public ArrayList<Material> getMaterialeReteta() {
-		return materialeReteta;
+	
+	public void addMaterialeReteta(Material materialReteta) {
+		this.materialReteta = materialReteta;
 	}
 
-	public void addMaterialeReteta(Material materialReteta) {
-		this.materialeReteta.add(materialReteta);
+	public ArrayList<Material> getMaterialeReteta() {
+		materialeReteta.add(materialReteta);
+		return materialeReteta;
 	}
 
 	public Semifabricat getSemifabricatReteta() {
