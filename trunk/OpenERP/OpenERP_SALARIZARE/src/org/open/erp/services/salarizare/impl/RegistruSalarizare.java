@@ -299,8 +299,9 @@ public class RegistruSalarizare {
 		List<Spor> sporuri= new ArrayList<Spor>();
 
 		try{
-		sporuri = entityManager.createQuery("SELECT s FROM Spor s " +
-				"WHERE s.angajat.id is null ")
+		sporuri = entityManager.createQuery("SELECT s FROM Spor s " 
+		//+"WHERE s.angajat.id is null "
+				)
 				//.setParameter("id", null)
 				.getResultList();
 		}
