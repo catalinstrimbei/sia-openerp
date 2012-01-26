@@ -2,7 +2,7 @@
 <h3>Modulul OpenERP_Productie</h3>
 
 = Introduction =
-<h4>Acest modul se ocupa cu realizarea si gestionarea ciclului de productie a produselor.</h4>
+Acest modul se ocupa cu realizarea si gestionarea ciclului de productie a produselor.
 
 <br />
 
@@ -14,6 +14,9 @@
 
 <h4><u>1. Crearea unui flux de productie pentru un anumit produs.</u></h4>
 Acest proces presupune definirea mai multor faze de productie care sa se desfasoare in cadrul fluxului.
+
+
+<h4><u>2. Crearea unei faze de productie.</u></h4>
 Fazele de productie reprezinta stadii in care anumite materiale si semifabricate sunt prelucrate cu ajutorul unor utilaje de catre anumiti angajati, pentru ca in final sa se obtina un semifabricat sau produsul final.
 Pentru fiecare faza sunt necesare o serie de resurse:
    * o lista de materiale care sunt cuprinse in reteta;
@@ -23,12 +26,17 @@ Pentru fiecare faza sunt necesare o serie de resurse:
    * un utilaj care sa realizeze anumite operatii intr-un anumit timp;
    * o sectie (divizie) in care sa se desfasoare intreaga activitate.
 
-Vizeaza procesul de productie - Serviciul ProductieSrv <br />
-<br />
-1.Creaza un flux de productie pentru produs.<br />
-2.Apeleaza fluxul de productie si creaza produsul pentru care s-a facut comanda.<br />
-3.Contorizeaza consumul de resurse.<br />
-4.Realizeaza controlul calitatii pentru fiecare unitate de produs.<br />
-5.Trimite cantitatea de produs final obtinut catre modulul de stocuri.<br />
-6.Gestioneaza consumul de resurse pentru a fi preluat de contabilitatea de gestiune.<br />
-7.Gestioneaza cantitatea de produse obtinute.<br />
+<h4><u>3. Lansarea in productie a unei comenzi.</u></h4>
+Pe baza comenzii primite de la modulul de stocuri, se apeleaza fluxul de productie definit pentru produs si se fabrica produsul pentru care s-a efectuat comanda
+
+<h4><u>3. Comanda de materiale de la stocuri.</u></h4>
+Pentru realizarea unui produs sunt necesare anumite materiale care se afla la Stocuri. Pentru fiecare faza se realizeaza o comanda de materiale catre modulul de stocuri.
+
+<h4><u>4. Contorizarea consumului de resurse.</u></h4>
+In fiecare faza a unui flux sunt consumate anumite resurse pe care modulul COntabilitate de Gestiune trebuie sa il inregistreze in contabilitate. Aceste resurse sunt: materiile prime, utilajele si angajatii.
+
+<h4><u>5. Realizarea controlului de calitate pentru fiecare unitate de produs.</u></h4>
+Dupa fabricare, fiecare unitate de produs trebuie sa treaca printr-un control de calitate. In urma acestui control, o anumita unitate de produs poate fi produs finit sau deseu.
+
+<h4><u>6. Livrarea produsului catre modului de Stocuri.</u></h4>
+Dupa fabricare, podusul obtinut trebuie sa fie livrat catre modului de Stocuri.
