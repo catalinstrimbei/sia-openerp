@@ -395,5 +395,15 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	void stergeStatSalarii(StatSalarii statSalarii) throws Exception;
+
+	/**
+	 * salveaza un stat salarii  
+	 * @param StatSalarii   
+	 * 
+	 * @return StatSalarii 
+	 * @throws Exception 
+	 * 
+	 */
+	StatSalarii salveazaStatSalarii(StatSalarii statSalarii) throws Exception;
 	
 }

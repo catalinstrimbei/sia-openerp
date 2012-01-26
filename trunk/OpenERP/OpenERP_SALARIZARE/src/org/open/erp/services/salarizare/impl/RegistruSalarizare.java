@@ -320,4 +320,21 @@ public class RegistruSalarizare {
 		return contract;
 	}
 	*/
+/*	
+	public StatSalarii salveazaStatSalarii(StatSalarii statSalarii) throws Exception{
+		try{
+			if (statSalarii.getIdStatSalarii() == null || 
+				entityManager.find(statSalarii.getClass(), statSalarii.getIdStatSalarii()) == null)
+				entityManager.persist(statSalarii);
+			else
+				entityManager.merge(statSalarii);
+			
+		}catch(Exception ex){
+			logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return centralizator;
+	}
+	*/
 }

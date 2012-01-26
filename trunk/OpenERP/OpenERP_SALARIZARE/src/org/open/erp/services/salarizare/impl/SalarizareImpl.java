@@ -506,4 +506,8 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	public void stergeStatSalarii(StatSalarii statSalarii){
 		registru.stergeStatSalarii(statSalarii);
 	}
+	
+	public StatSalarii salveazaStatSalarii(StatSalarii statSalarii) throws Exception{
+		return registru.salveazaStatSalarii(statSalarii);
+	}
 }
