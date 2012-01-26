@@ -121,6 +121,7 @@ public class RegistruSalarizare {
 	public List<StatSalarii> getStatAnLuna(Integer an, Integer luna) throws Exception{
 		List<StatSalarii> stat = new ArrayList<StatSalarii>();
 		try{
+			logger.logINFO("Incarcare stat salarii Luna:" + luna + an);
 		stat = entityManager.createQuery("SELECT s FROM StatSalarii s, Pontaj p WHERE s.pontaj.idPontaj = p.idPontaj AND p.an = :an AND p.luna = :luna" )
 				.setParameter("an", an)
 				.setParameter("luna", luna)
@@ -171,7 +172,7 @@ public class RegistruSalarizare {
 				entityManager.find(pontaj.getClass(), pontaj.getIdPontaj()) == null
 				)
 			{
-				logger.logINFO("Inainte de persist ***** " + pontaj.getAngajat().getId());
+				logger.logINFO("Inainte de persist angajat id ***** " + pontaj.getAngajat().getId() + " si idPontaj: " + pontaj.getIdPontaj());
 				entityManager.persist(pontaj);
 				logger.logINFO("Dupa persist ******** ");
 			}
@@ -189,6 +190,9 @@ public class RegistruSalarizare {
 	}
 	
 	public void stergePontaj(Pontaj pontaj){
+		pontaj = entityManager.find(pontaj.getClass(), pontaj.getIdPontaj());
+		logger.logINFO("Se sterge pontaj cu id-ul:" + pontaj.getIdPontaj());
+		if(pontaj!=null)
 		entityManager.remove(pontaj);
 	}
 	

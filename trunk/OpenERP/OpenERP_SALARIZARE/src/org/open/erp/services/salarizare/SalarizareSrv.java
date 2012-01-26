@@ -375,4 +375,15 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	void stergeSpor(Spor spor) throws Exception;
+	
+	/**
+	 * sterge un pontaj  
+	 * @param Pontaj   
+	 * 
+	 * @return  
+	 * @throws Exception 
+	 * 
+	 */
+	void stergePontaj(Pontaj pontaj) throws Exception;
+	
 }

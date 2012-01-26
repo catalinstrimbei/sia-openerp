@@ -18,6 +18,30 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Pontaj implements Serializable{
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idPontaj == null) ? 0 : idPontaj.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pontaj other = (Pontaj) obj;
+		if (idPontaj == null) {
+			if (other.idPontaj != null)
+				return false;
+		} else if (!idPontaj.equals(other.idPontaj))
+			return false;
+		return true;
+	}
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private Integer idPontaj;

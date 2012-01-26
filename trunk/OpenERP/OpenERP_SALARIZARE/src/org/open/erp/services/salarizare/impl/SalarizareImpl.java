@@ -499,4 +499,7 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 	public void stergeSpor(Spor spor){
 		registru.stergeSpor(spor);
 	}
+	public void stergePontaj(Pontaj pontaj){
+		registru.stergePontaj(pontaj);
+	}
 }
