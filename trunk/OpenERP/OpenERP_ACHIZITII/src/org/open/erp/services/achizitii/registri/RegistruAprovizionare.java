@@ -8,6 +8,9 @@ import org.open.erp.services.achizitii.Articol;
 import org.open.erp.services.achizitii.Categorie;
 import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.Comanda;
+import org.open.erp.services.achizitii.NIR;
+import org.open.erp.services.achizitii.OfertaAchizitie;
+import org.open.erp.services.achizitii.PlanAprovizionare;
 
 
 
@@ -250,7 +253,186 @@ public class RegistruAprovizionare {
 	}
 	
 	
+	//Metode NIR
 	
+			NIR				getNIRByIdId(long nrDocument_) throws Exception 
+			{
+				try
+				{
+					return entityManager.find(NIR.class, nrDocument_);
+				}
+				catch(Exception ex)
+				{				
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+				
+			}
+				
+			@SuppressWarnings("unchecked")
+			Collection<NIR>	getListaNIR() throws Exception 
+			{
+				try
+				{
+					return entityManager.createQuery("SELECT n FROM NIR n").getResultList();
+				}
+				catch(Exception ex)
+				{
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+			}
+			
+			NIR		salveazaNIR(NIR NIR_) throws Exception 
+			{
+				try
+				{		
+					if (Long.valueOf(NIR_.getNrDoc()) == null ||
+						entityManager.find(NIR_.getClass(), NIR_.getNrDoc()) == null)
+						entityManager.persist(NIR_);
+					else
+						entityManager.merge(NIR_);	
+				}
+				catch(Exception ex)
+				{
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+				return NIR_;
+			}
+
+			void	stergeNIR(NIR NIR_) throws Exception
+			{
+				try
+				{
+					entityManager.remove(NIR_);
+				}
+				catch(Exception ex)
+				{
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+			}
+			//Metode OfertaAchizitie
+			
+			OfertaAchizitie				getOfertaAchizitie(long id_OfertaAchizitie_) throws Exception 
+			{
+				try
+				{
+					return entityManager.find(OfertaAchizitie.class, id_OfertaAchizitie_);
+				}
+				catch(Exception ex)
+				{				
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+				
+			}
+				
+			@SuppressWarnings("unchecked")
+			Collection<OfertaAchizitie>	getListaOfertaAchizitie() throws Exception 
+			{
+				try
+				{
+					return entityManager.createQuery("SELECT oa FROM OfertaAchizitie oa").getResultList();
+				}
+				catch(Exception ex)
+				{
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+			}
+			
+			OfertaAchizitie		salveazaOfertaAchizitie(OfertaAchizitie OfertaAchizitie_) throws Exception 
+			{
+				try
+				{		
+					if (Long.valueOf(OfertaAchizitie_.getId_OfertaAchizitie()) == null ||
+						entityManager.find(OfertaAchizitie_.getClass(), OfertaAchizitie_.getId_OfertaAchizitie()) == null)
+						entityManager.persist(OfertaAchizitie_);
+					else
+						entityManager.merge(OfertaAchizitie_);	
+				}
+				catch(Exception ex)
+				{
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+				return OfertaAchizitie_;
+			}
+
+			void	stergeOfertaAchizitie(OfertaAchizitie OfertaAchizitie) throws Exception
+			{
+				try
+				{
+					entityManager.remove(OfertaAchizitie);
+				}
+				catch(Exception ex)
+				{
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+			}
+			//Metode PlanAprovizionare
+			PlanAprovizionare getPlanAprovizionareById(long idPlanAprovizionare_) throws Exception 
+			{
+				try
+				{
+					return entityManager.find(PlanAprovizionare.class, idPlanAprovizionare_);
+				}
+				catch(Exception ex)
+				{				
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+				
+			}
+				
+			@SuppressWarnings("unchecked")
+			Collection<PlanAprovizionare>	getListaPlanAprovizionare() throws Exception 
+			{
+				try
+				{
+					return entityManager.createQuery("SELECT pl FROM PlanAprovizionare pl").getResultList();
+				}
+				catch(Exception ex)
+				{
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+			}
+			
+			PlanAprovizionare		salveazaPlanAprovizionare(PlanAprovizionare PlanAprovizionare_) throws Exception 
+			{
+				try
+				{		
+					if (Long.valueOf(PlanAprovizionare_.getIdPlanAprovizionare()) == null ||
+						entityManager.find(PlanAprovizionare_.getClass(), PlanAprovizionare_.getIdPlanAprovizionare()) == null)
+						entityManager.persist(PlanAprovizionare_);
+					else
+						entityManager.merge(PlanAprovizionare_);	
+				}
+				catch(Exception ex)
+				{
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+				return PlanAprovizionare_;
+			}
+
+			void	stergePlanAprovizionare(PlanAprovizionare PlanAprovizionare_) throws Exception
+			{
+				try
+				{
+					entityManager.remove(PlanAprovizionare_);
+				}
+				catch(Exception ex)
+				{
+					logger.error("ERROR: "+ex.getMessage());
+					throw ex;
+				}
+			}
+
 	
 	
 	
