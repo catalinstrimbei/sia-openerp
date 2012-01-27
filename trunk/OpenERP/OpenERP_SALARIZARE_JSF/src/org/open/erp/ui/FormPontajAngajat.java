@@ -80,7 +80,7 @@ public class FormPontajAngajat implements Converter{
 		logger.logINFO("getAngajati : " + this.angajati.size());
 		Map<String, Angajat> mapAngajati = new HashMap<String, Angajat>();
 		for (Angajat a: angajati){
-			logger.logINFO("<<<<<<Map getAngajati:" + a.getNume());
+			//logger.logINFO("<<<<<<Map getAngajati:" + a.getNume());
 			mapAngajati.put(a.getNume() + " " + a.getPrenume() + " | " + a.getId(), a);
 		}
 		return mapAngajati;
@@ -141,7 +141,7 @@ public class FormPontajAngajat implements Converter{
 	/* Implementare operatii CRUD */
 	public void adaugareAngajat(ActionEvent evt){
 		this.angajat = new Angajat();
-		//angajat.setId(999);
+		angajat.setId(9999);
 		//angajat.setNume("");
 		this.angajati.add(this.angajat);
 		  
@@ -164,12 +164,18 @@ public class FormPontajAngajat implements Converter{
 	} 
 	 */
 	public void salvareAngajat(ActionEvent evt) throws Exception{
-		//this.angajati.remove(this.angajat);
+		this.angajati.remove(this.angajat);
+		if (this.angajat.getId()==9999){
+			this.angajat.setId(null);
+			this.angajat = personalSrv.salveazaAngajat(this.angajat);
+		}
+		else{
+			this.angajat = personalSrv.salveazaAngajat(this.angajat);	
+		}
 		
-		this.angajat = personalSrv.salveazaAngajat(this.angajat);
 		logger.logINFO("Dupa salvare am angajatID: " + angajat.getId());
 		this.angajati.add(this.angajat);
-	}
+	} 
 	
 	/*
 	public DataModel<Pontaj> getPontaje() {
