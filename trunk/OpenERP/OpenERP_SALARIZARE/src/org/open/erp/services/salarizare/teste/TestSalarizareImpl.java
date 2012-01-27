@@ -50,7 +50,7 @@ public class TestSalarizareImpl {
 		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
 //		Angajat angajat = new Angajat();
 //		angajat.setId(10001);
-		Pontaj pontaj = salarizareSrvInstance.inregistrarePontaj(99999999, angajat, 2011, 11, 160.0, 0.0, 0.0);
+		Pontaj pontaj = salarizareSrvInstance.inregistrarePontaj(null, angajat, 2011, 11, 160.0, 0.0, 0.0);
 		assertNotNull("Metoda de creere a pontajului nu a functionat!", pontaj);
 		
 		logger.info("End test: inregistrarePontaj");
