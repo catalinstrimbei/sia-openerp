@@ -21,7 +21,7 @@ public class Partener extends Persoana implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4218736973758096715L;
+	private static final long serialVersionUID = 1L;
 	//@Id @GeneratedValue
 	//private Integer id;
 	@OneToOne @JoinColumn(name= "id")

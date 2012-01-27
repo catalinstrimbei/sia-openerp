@@ -20,7 +20,7 @@ public class Divizie extends Departament implements Serializable{
 	 /**
 	 * 
 	 */
-	private static final long serialVersionUID = 2294138000681103079L;
+	private static final long serialVersionUID = 1L;
 	
 	 @ManyToOne @JoinColumn(name = "IdDep")
 	private Departament IdDepartament;

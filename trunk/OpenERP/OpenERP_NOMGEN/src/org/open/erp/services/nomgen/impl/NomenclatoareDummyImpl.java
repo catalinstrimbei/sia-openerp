@@ -159,7 +159,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 		return (PersoanaJuridica) p;
 	}
 	@Override
-	public void addPersoana(Persoana persoana) throws Exception {
+	public Persoana addPersoana(Persoana persoana) throws Exception {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Persoana p = new Persoana();
 		if(p==null)
@@ -174,6 +174,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 		}
 		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		;
+		return persoana;
 		
 	}
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -437,7 +438,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 	}
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public void addDocument(Document document) throws Exception {
+	public  Document addDocument(Document document) throws Exception {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		
 		Document d = new Document();
@@ -454,6 +455,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 		
 		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		 //rd.addDocument(document);
+		return d;
 	}
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
@@ -679,7 +681,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 	}
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public void addProdus(Produs p) throws Exception {
+	public Produs addProdus(Produs p) throws Exception {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Produs pr = new Produs();
 		if(pr==null)
@@ -695,6 +697,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 		
 		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		//rprod.addProdus(p);
+		return pr;
 	}
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
@@ -846,7 +849,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 	}
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public void addMaterial(Material m) throws Exception {
+	public Material addMaterial(Material m) throws Exception {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		Material pm = new Material();
 		if(pm==null)
@@ -862,6 +865,7 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 		
 		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		rprod.addMaterial(m);
+		return m;
 	}
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
@@ -1008,6 +1012,13 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 		Long  of = rdep.getCountDepartament();
 		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		return of;
+	}
+	@Override
+	public Set<Persoana> getPersoana() throws Exception {
+		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		List<Persoana> of = (List<Persoana>) rp.getPersoana();
+		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
+		return (Set<Persoana>) of ;
 	}
 	
 	}

@@ -31,9 +31,9 @@ public class Persoana implements Serializable {
 	protected Departament  dep;
 	 
     protected String  adresa;
-    @ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
+    
     protected ArrayList<String> telefoane=new ArrayList<String>();
-    @ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
+
 	protected ArrayList<String> emailuri=new ArrayList<String>();
 	
 	protected static final long serialVersionUID = 1L;

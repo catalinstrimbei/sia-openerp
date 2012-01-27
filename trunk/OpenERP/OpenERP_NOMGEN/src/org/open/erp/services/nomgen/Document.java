@@ -97,15 +97,9 @@ public class Document implements Serializable{
 	public void setNrDoc(Integer nrDocument) {              
 		this.nrDocument = nrDocument;       
 		}       
+   
 	
-	public Date getDataDoc() {                 
-		return dataDocument;         
-		
-		}       
-	
-	public void setDataDoc(Date dataDocument) {        
-		this.dataDocument = dataDocument;   
-		}           
+      
 	
 	public String getObservatie() {               
 		return observatie;       

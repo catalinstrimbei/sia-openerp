@@ -30,7 +30,7 @@ public interface NomenclatoareSrv {
 	 public Partener getPartenerDupaCodPersoana(String idPersoana) throws Exception;
 	 public Set<PersoanaJuridica> getPJ() throws Exception;
 	 public PersoanaJuridica getPJ(String idPersoana) throws Exception;
-	 public void addPersoana(Persoana persoana) throws Exception;
+	 public Persoana addPersoana(Persoana persoana) throws Exception;
 	 public void removePersoana(Persoana persoana) throws Exception;
 	 public void refreshPersoana(Persoana persoana) throws Exception;
 	 public void addPartener(Partener partener) throws Exception;
@@ -52,7 +52,7 @@ public interface NomenclatoareSrv {
 	 public Set<LinieDocument> getLinieDocument() throws Exception;
 	 public LinieDocument getLinieDocumentDupaCodDoc(String codDocument) throws Exception;
 	 public LinieDocument getLinieDocumentDupaMaterial(Material m) throws Exception;
-	  public void addDocument(Document document) throws Exception;
+	  public Document addDocument(Document document) throws Exception;
 	  public void addLinieDocument(LinieDocument ld) throws Exception;
 	  public void removeDocument(Document document) throws Exception;
 	  public void removeLinieDocument(LinieDocument ld) throws Exception;
@@ -72,7 +72,7 @@ public interface NomenclatoareSrv {
 	  public Material getMaterialDupaCod(Integer id) throws Exception;
 	  public Collection<MateriePrima> getMPOrdonatbyId() throws Exception;
 	  public MateriePrima getMPDupaCod(Integer id) throws Exception;
-	  public void addProdus(Produs p) throws Exception;
+	  public Produs addProdus(Produs p) throws Exception;
 	  public void removeProdus(Produs p) throws Exception;
 	  public void refreshProdus(Produs p) throws Exception;
 	  public void addMF(MijlocFix m) throws Exception;
@@ -81,13 +81,13 @@ public interface NomenclatoareSrv {
 	  public void addMP(MateriePrima mp) throws Exception;
 	  public void removeMP(MateriePrima mp) throws Exception;
 	  public void refreshMP(MateriePrima mp) throws Exception;
-	  public void addMaterial(Material m) throws Exception;
+	  public Material addMaterial(Material m) throws Exception;
 	  public void removeMaterial(Material m) throws Exception;
 	  public void refreshMaterial(Material m) throws Exception;
 	  public Produs getProdus(Integer idProdus) throws Exception;
 	  public void synchronize() throws Exception;
 	  
-	 
+	  public Set<Persoana> getPersoana() throws Exception;
 	
     
     
