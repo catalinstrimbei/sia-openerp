@@ -24,6 +24,11 @@
 					<p:attribute name="srcForm" value="Form2"></p:attribute>
 				</h:commandLink>
 				
+				<h:commandLink id="FormAngajati"
+					actionListener="#{formMenu.actionSrcChangeForm}" 
+					action="#{formMenu.changeSrcFormCurent}" value="Editare Angajati" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormAngajati"></p:attribute>
+				</h:commandLink>
 				
 				<h:commandLink id="Raport1"
 					actionListener="#{formMenu.showRaport}" value="Listare Raport1">
