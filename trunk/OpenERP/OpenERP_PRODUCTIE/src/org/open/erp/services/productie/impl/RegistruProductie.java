@@ -292,5 +292,19 @@ public class RegistruProductie {
 			throw ex;
 		}
 	}
+	
+	
+	public void stergeSemifabricat(Semifabricat semifabricat) throws Exception{
+		try 
+		{
+			entityManager.remove(semifabricat);
+		}
+		catch(Exception ex){
+			logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.error("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
 	}
 

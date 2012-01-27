@@ -455,4 +455,10 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
     	registru.stergeUtilaj(utilaj);
     }
 
+	@Override
+	public void stergeSemifabricat(Semifabricat semifabricat) throws Exception {
+		// TODO Auto-generated method stub
+		registru.stergeSemifabricat(semifabricat);
+	}
+
 }
