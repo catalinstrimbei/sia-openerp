@@ -31,5 +31,6 @@
 			<attribute name="owner.project.facets" value="jst.jstl"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_MARKETING"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
