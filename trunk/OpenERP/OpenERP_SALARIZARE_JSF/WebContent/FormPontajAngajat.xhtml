@@ -108,7 +108,18 @@
 					</p:facet>
 					
 				</h:column>
-			</h:dataTable>
+			<h:column>
+				<h:commandButton id="cmdSterge" value="Sterge"><p:attribute name="selectedId" value="#{liniePontaj.idPontaj}"></p:attribute></h:commandButton>
+				<p:facet name="header">
+					
+				</p:facet>
+			</h:column>
+		</h:dataTable>
+		<h:commandButton id="cmdAdaugaLinie"
+			actionListener="#{formPontajAngajat.adaugaLiniePontaj}"
+			value="Adauga linie pontaj">
+			<p:ajax render="@form"></p:ajax>
+		</h:commandButton>
 	</h:form>
 </body>
 </html>

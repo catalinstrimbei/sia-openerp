@@ -212,4 +212,23 @@ public class FormPontajAngajat implements Converter{
 		this.isAddMode = 1;
 		
 	}
+	
+	public void stergeLiniePontaj(ActionEvent evt){
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map requestMap = context.getExternalContext().getRequestParameterMap();
+		String value = (String)requestMap.get("id1");
+
+
+		Integer selectedId = Integer.valueOf(evt.getComponent().getAttributes().get("selectedId").toString());
+		logger.logINFO("<<<<<selectedId:" + selectedId + "    " + evt.getComponent().getAttributes().get("ccc")) ;
+		Pontaj p = new Pontaj();
+		p.setIdPontaj(selectedId);
+		pontaje.remove(p);
+		try {
+			salarizareSrv.stergePontaj(p);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
