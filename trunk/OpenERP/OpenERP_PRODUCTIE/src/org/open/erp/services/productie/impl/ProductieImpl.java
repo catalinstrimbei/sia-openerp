@@ -2,6 +2,7 @@ package org.open.erp.services.productie.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -364,5 +365,11 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 
 	public void setNomenclatoareSrv(NomenclatoareSrv nomenclatoareSrv) {
 		this.nomenclatoareSrv = (NomenclatoareSrvLocal) nomenclatoareSrv;
+	}
+
+	@Override
+	public List<FluxProductie> getListaFluxuri() throws Exception {
+		List<FluxProductie> fluxuri=this.registru.getListaFluxuri();
+		return fluxuri;
 	}
 }

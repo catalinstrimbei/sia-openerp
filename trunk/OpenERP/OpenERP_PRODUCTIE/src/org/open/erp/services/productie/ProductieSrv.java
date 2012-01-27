@@ -2,6 +2,7 @@ package org.open.erp.services.productie;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
@@ -185,5 +186,5 @@ public interface ProductieSrv {
 	 */
 	public void comandaMateriale(FazaProductie faza, FluxProductie flux) throws Exception;
 	
-	
+	public List<FluxProductie> getListaFluxuri() throws Exception;
 }
