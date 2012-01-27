@@ -76,6 +76,7 @@ public class FormPontaj implements Converter{
 	Integer i=0;
 	Integer j=0;
 	Integer k=0;
+	Integer l=0;
 	public void setPontaj(Pontaj pontaj) {
 		this.pontaj = pontaj;
 	}
@@ -169,6 +170,20 @@ public class FormPontaj implements Converter{
 			uiAngajatTemplate.setId(Integer.valueOf(uiValue));
 			Integer idx = this.angajati.indexOf(uiAngajatTemplate);
 			logger.logINFO("Id-ul angajatului din array este:"+idx);
+			
+			if (this.isAddMode==1){
+				Pontaj p1 = new Pontaj(null, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
+				logger.logINFO("<<<<<Pontajul a fost initializat in get AsObject :");
+				pontaje.add(p1);
+				this.isAddMode = 0;
+			}
+			
+			pontaje.get(l).setAngajat(this.angajati.get(idx));
+			l +=1;
+			if (l==pontaje.size())
+					l=0;
+			logger.logINFO("<<<<< faces context l:" + l);
+			
 			if (idx>=0)
 				return this.angajati.get(idx);
 		}
