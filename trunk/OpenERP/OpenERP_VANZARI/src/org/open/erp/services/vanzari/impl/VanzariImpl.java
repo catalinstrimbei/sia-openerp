@@ -106,7 +106,7 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 		
 		FacturaEmisa factura = new FacturaEmisa(1, client, vanzator, FacturaEmisa.NEPLATITA);
 		factura.setNrComanda(comanda.getNrComanda());
-		factura.setDataDoc(new Date());
+		factura.setDataDocument(new Date());
 		
 		//procesareFactura.setFactura(factura);
 		
@@ -164,7 +164,7 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 		Integer result = 0;
 		try{
 			//ArrayList<LinieDocument> liniiDoc = (ArrayList<LinieFacturaEmisa>) factura.getProduseFacturate();
-			result = contabilizareSrv.jurnalizareVanzare(factura.getDataDoc(), factura.getValoareTotalaFactura(), factura.getValoareTva(), factura.getIdFactura(), factura.getClient().getIdClient(), factura.getLiniiDocument() , StareDocument.NOU, 1);
+			result = contabilizareSrv.jurnalizareVanzare(factura.getDataDocument(), factura.getValoareTotalaFactura(), factura.getValoareTva(), factura.getIdFactura(), factura.getClient().getIdClient(), factura.getLiniiDocument() , StareDocument.NOU, 1);
 		} catch(CtbException e){	
 		}
 		return result;
