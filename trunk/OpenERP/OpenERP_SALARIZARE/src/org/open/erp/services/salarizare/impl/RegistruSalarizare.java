@@ -51,6 +51,21 @@ public class RegistruSalarizare {
 		return pontaje;
 	}
 
+	public List<Pontaj> getPontajAngajatAll(Angajat angajat) throws Exception{
+		List<Pontaj> pontaje = new ArrayList<Pontaj>();
+		try{
+		pontaje = entityManager.createQuery("SELECT p FROM Pontaj p " +
+				"WHERE p.angajat.id=:id")
+				.setParameter("id", angajat.getId())
+				.getResultList();
+		}
+		catch(Exception ex){
+			logger.logINFO("Eroare incarcare pontajAn gajatAll");
+			return null;
+		}
+		return pontaje;
+	}
+
 	public Pontaj getPontajByAngajat(Angajat angajat, Integer an, Integer luna) throws Exception{
 		Pontaj p = new Pontaj();
 		logger.logINFO("#### S-a incarcat pontajul pt angajatul cu id-ul:"+angajat.getId());

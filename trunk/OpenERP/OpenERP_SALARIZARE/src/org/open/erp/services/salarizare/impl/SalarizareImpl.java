@@ -467,6 +467,11 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return pontaje;
 	}
 	
+	public List<Pontaj> getPontajAngajatAll(Angajat angajat) throws Exception {
+		List<Pontaj> pontaje = registru.getPontajAngajatAll(angajat);
+		return pontaje;
+	}
+	
 	public List<Spor> getSporuriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception {
 		List<Spor> sporuri = registru.getSporuriAngajat(an, luna, angajat);
 		return sporuri;

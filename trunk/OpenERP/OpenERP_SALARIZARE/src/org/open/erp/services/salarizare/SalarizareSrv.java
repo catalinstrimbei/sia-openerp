@@ -424,4 +424,14 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	List<Retinere> getRetineriGenerale() throws Exception;
+	
+	/**
+	 * returneaza pontajul pentru un anumit angajat   
+	 * @param angajat			Angajatul pentru care se returneaza pontajul 
+	 * 
+	 * @return  List<Pontaj>
+	 * @throws Exception 
+	 * 
+	 */
+	List<Pontaj> getPontajAngajatAll(Angajat angajat) throws Exception;
 }
