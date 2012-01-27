@@ -131,7 +131,7 @@ public class FormPontaj implements Converter{
 	public List<Angajat> getAngajatiList(){
 		return this.angajati;
 	}
-
+ 
 	//operatie invocata la selectie din lista, dar inainte de setLuna, An, Angajat
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent uiComp, String uiValue) {

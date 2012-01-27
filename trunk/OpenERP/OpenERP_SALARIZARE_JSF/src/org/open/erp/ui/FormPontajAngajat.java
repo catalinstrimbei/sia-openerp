@@ -53,8 +53,10 @@ public class FormPontajAngajat implements Converter{
 			this.angajat = new Angajat();
 			angajat.setNume("Def angajat ...");
 		}
+		pontaje = salarizareSrv.getPontajAngajatAll(angajat);
 	}
 
+	Integer isAddMode = 0;
 	public Angajat getAngajat() {
 		return angajat;
 	}
@@ -62,6 +64,13 @@ public class FormPontajAngajat implements Converter{
 	public void setAngajat(Angajat angajat) {
 		logger.logINFO("<<<<<<setAngajat: " + angajat.getNume() + angajat.getId());
 		this.angajat = angajat;
+		try {
+			pontaje = salarizareSrv.getPontajAngajatAll(angajat);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//populareModelPontaje();
 	}
 	
 	public List<Pontaj> getPontaje() {
@@ -194,5 +203,13 @@ public class FormPontajAngajat implements Converter{
 			this.activitati = null;
 	}
 */
+	public void adaugaLiniePontaj(ActionEvent evt){
+		logger.logINFO("<<<<<Sunt in adaugare:");
+		Pontaj p = new Pontaj(null, 2011, 11, angajat,168.0,0.0,0.0);
+		logger.logINFO("<<<<<Pontajul a fost initializat:");
+		pontaje.add(p);
+		//i +=1;
+		this.isAddMode = 1;
 		
+	}
 }
