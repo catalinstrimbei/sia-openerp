@@ -245,7 +245,7 @@ public class FormSpor implements Converter{
 
 	public Map<String, Integer> getMapTip() {
 		mapTip.put("general", 1);
-		mapTip.put("angajat", 2);
+		mapTip.put("personal", 2);
 		return mapTip;
 	}
 

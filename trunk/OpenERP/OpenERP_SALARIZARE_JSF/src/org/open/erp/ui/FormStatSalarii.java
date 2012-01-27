@@ -289,7 +289,7 @@ public class FormStatSalarii implements Converter{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		 
 		if (pontaje == null || pontaje.isEmpty()){
 			logger.logINFO("<<<<<pontajul este gol") ;
 			FacesMessage mesaj = null;
