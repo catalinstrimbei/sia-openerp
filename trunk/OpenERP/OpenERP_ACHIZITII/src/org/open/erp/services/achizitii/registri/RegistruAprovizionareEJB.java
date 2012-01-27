@@ -10,6 +10,7 @@ import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.Comanda;
 import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.achizitii.OfertaAchizitie;
+import org.open.erp.services.achizitii.PlanAprovizionare;
 
 public class RegistruAprovizionareEJB {
 
@@ -86,6 +87,15 @@ public class RegistruAprovizionareEJB {
 		try{
 			return entityManager.createQuery("SELECT c FROM Comanda c where c.statusComanda = :status")
 											.setParameter("status", statusComanda_)
+											.getResultList();
+		}catch(Exception ex){
+			logger.error("ERROR "  + ex.getMessage());
+			throw ex;
+		}
+	}
+	public PlanAprovizionare getPlanAprovizionare() throws Exception{
+		try{
+			return (PlanAprovizionare) entityManager.createQuery("SELECT p FROM PlanAprovizionare p where p.statusPlan = 0")											
 											.getResultList();
 		}catch(Exception ex){
 			logger.error("ERROR "  + ex.getMessage());

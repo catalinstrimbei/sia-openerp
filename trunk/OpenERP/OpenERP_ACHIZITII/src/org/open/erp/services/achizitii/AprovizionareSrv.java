@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.open.erp.services.achizitii.exceptions.AchizitiiExceptions;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.Document;
 
@@ -41,14 +42,24 @@ import org.open.erp.services.nomgen.Document;
 
 public interface AprovizionareSrv extends PropertyChangeListener{
 	/**
+	 *Returneaza un planul existent sau un nou plan de aprovizionare
+	 * 
+	 * 
+	 * @return Plan de aprovizionare 
+	 * @throws AchizitiiExceptions 
+	 * 
+	 */
+	public PlanAprovizionare getPlanAprovizionare() throws AchizitiiExceptions;
+	/**
 	 * Scop Inregistreaza cererile de aprovizionare intr-un plan de aprovizionare
 	 * 
 	 * @param CerereAprovizionare  CerereAprovizionare de inregistrat 
 	 * @return Plan de aprovizionare actualizat 
+	 * @throws AchizitiiExceptions 
 	 * 
 	 */
 	
-	public PlanAprovizionare inregistrareCerereAprovizionare(Document cerereAprovizionare);
+	public PlanAprovizionare inregistrareCerereAprovizionare(PlanAprovizionare plan,Document cerereAprovizionare) throws AchizitiiExceptions;
 	
 	
     
@@ -70,9 +81,10 @@ public interface AprovizionareSrv extends PropertyChangeListener{
   	 * @param cerereOferta  cererea de oferta pentru care a fost primita oferta de la furnizor
   	 * @param furnizor furnizorul de la care s-a primit oferta de cumparare
   	 * @return Oferta de achizitie noua
+     * @throws AchizitiiExceptions 
   	 * 
   	 */ 
-    OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,Date data,Furnizor furnizor,LinkedList<LinieOfertaAchizitie> linii);
+    OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,Date data,Furnizor furnizor,LinkedList<LinieOfertaAchizitie> linii) throws AchizitiiExceptions;
     
     /**
   	 * Analiza oferte de achizitie

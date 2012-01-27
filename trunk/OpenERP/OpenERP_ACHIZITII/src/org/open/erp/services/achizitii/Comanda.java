@@ -42,7 +42,20 @@ public class Comanda implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dataComanda;
 	private Integer statusComanda;
-	
+	@OneToOne@JoinColumn(name="idOfertaAchizitie_")
+	private OfertaAchizitie ofertaAchizitie;
+	public OfertaAchizitie getOfertaAchizitie() {
+		return ofertaAchizitie;
+	}
+
+	public void setOfertaAchizitie(OfertaAchizitie ofertaAchizitie) {
+		this.ofertaAchizitie = ofertaAchizitie;
+	}
+
+	public void setLiniiComanda(Collection<LinieComanda> liniiComanda) {
+		this.liniiComanda = liniiComanda;
+	}
+
 	@OneToOne(mappedBy="comanda")
 	private Factura factura;
 	

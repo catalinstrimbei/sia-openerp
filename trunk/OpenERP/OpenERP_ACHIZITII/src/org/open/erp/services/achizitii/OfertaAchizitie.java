@@ -36,6 +36,8 @@ public class OfertaAchizitie implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dataOferta;	
 	private Integer statusOferta;
+	@OneToOne(mappedBy="ofertaAchizitie")
+	private Comanda comanda;
 	@ManyToOne
 	private Furnizor furnizor;
 	private Double valTotal;
@@ -52,7 +54,18 @@ public class OfertaAchizitie implements Serializable {
 	public long getId_OfertaAchizitie() {
 		return id_OfertaAchizitie;
 	}
+	public Comanda getComanda() {
+		return comanda;
+	}
 
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
+	}
+
+	public void setLiniiOferta(Collection<LinieOfertaAchizitie> liniiOferta) {
+		this.liniiOferta = liniiOferta;
+	}
+	
 	public void setId_OfertaAchizitie(long id_OfertaAchizitie) {
 		this.id_OfertaAchizitie = id_OfertaAchizitie;
 	}

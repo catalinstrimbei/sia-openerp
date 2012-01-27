@@ -2,6 +2,8 @@ package org.open.erp.services.achizitii.impl;
 
 
 import java.beans.PropertyChangeEvent;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,17 +34,13 @@ import org.open.erp.services.achizitii.LiniePlanAprovizionare;
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.OfertaAchizitie;
 import org.open.erp.services.achizitii.PlanAprovizionare;
-import org.open.erp.services.achizitii.registri.RegistruArticol;
-import org.open.erp.services.achizitii.registri.RegistruComanda;
-import org.open.erp.services.achizitii.registri.RegistruFactura;
-import org.open.erp.services.achizitii.registri.RegistruLinieComanda;
-import org.open.erp.services.achizitii.registri.RegistruLinieOfertaAchizitie;
-import org.open.erp.services.achizitii.registri.RegistruLiniePlanAprovizionare;
-import org.open.erp.services.achizitii.registri.RegistruOfertaAchizitie;
-import org.open.erp.services.achizitii.registri.RegistruPlanAprovizionare;
+import org.open.erp.services.achizitii.exceptions.AchizitiiExceptions;
+import org.open.erp.services.achizitii.registri.RegistruAprovizionare;
+import org.open.erp.services.achizitii.registri.RegistruAprovizionareEJB;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
+import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
@@ -60,12 +58,15 @@ import org.open.erp.services.stocuri.impl.Procesare;
 @TransactionManagement(TransactionManagementType.CONTAINER)
  
 public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSrvRemote {
-
+    public PlanAprovizionare planAprovizionare=null;
+    public CerereOferta cerereOf=null;
+    public List<LiniePlanAprovizionare> liniiPlanAprovizionareComanda=new ArrayList<LiniePlanAprovizionare>();
+    public List<LiniePlanAprovizionare> liniiPlanAprovizionareCerereOf=new ArrayList<LiniePlanAprovizionare>();
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
 			.getLogger(AprovizionareImpl.class.getName());	
 
 	@EJB(mappedName = "ContabilizareSrv/local")
-	 private ContabilizareSrv contabilizareSrv;
+	 private ContabilizareSrv contabilizareSrv=new ContabilizareSrvImpl();
 	
 	@EJB(mappedName = "StocuriSrv/local")
 	 private StocuriSrv stocuriSrv;
@@ -77,54 +78,72 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 	
 	@Resource
 	 private SessionContext sessionContext;
-	 private org.open.erp.services.achizitii.registri.RegistruArticol registruArticol;
-	 private org.open.erp.services.achizitii.registri.RegistruComanda registruComanda;
-	 private org.open.erp.services.achizitii.registri.RegistruFactura registruFactura;
-	 private org.open.erp.services.achizitii.registri.RegistruLinieComanda registruLinieComanda;
-	 private org.open.erp.services.achizitii.registri.RegistruLinieOfertaAchizitie registruLinieOfertaAchizitie;
-	 private org.open.erp.services.achizitii.registri.RegistruLiniePlanAprovizionare registruLiniePlanAprovizionare;
-	 private org.open.erp.services.achizitii.registri.RegistruOfertaAchizitie registruOfertaAchizitie;
-	 private org.open.erp.services.achizitii.registri.RegistruPlanAprovizionare registruPlanAprovizionare;
+	 public RegistruAprovizionare registru;
+	 public RegistruAprovizionareEJB registruEJB; 
+
 	
 	public AprovizionareImpl() {
-	}
-		
+	}		
+	
+
 	@PostConstruct
 	public void init(){
 		logger.debug("<<< EM >>> = " + em);		
 				
-		if (this.registruArticol == null)
-			registruArticol = new RegistruArticol(em);
+		if (this.registru == null)
+			registru = new RegistruAprovizionare(em);
 		
-		if (this.registruComanda == null)
-			registruComanda = new RegistruComanda(em);
-		
-		if (this.registruFactura == null)
-			registruFactura = new RegistruFactura(em);
-		
-		if (this.registruLinieComanda == null)
-			registruLinieComanda = new RegistruLinieComanda(em);
-		
-		if (this.registruLinieOfertaAchizitie == null)
-			registruLinieOfertaAchizitie = new RegistruLinieOfertaAchizitie(em);
-		
-		if (this.registruLiniePlanAprovizionare == null)
-			registruLiniePlanAprovizionare = new RegistruLiniePlanAprovizionare(em);
-		
-		if (this.registruOfertaAchizitie == null)
-			registruOfertaAchizitie = new RegistruOfertaAchizitie(em);
-		
-		if (this.registruPlanAprovizionare == null)
-			registruPlanAprovizionare = new RegistruPlanAprovizionare(em);
+		if (this.registruEJB == null)
+			registruEJB = new RegistruAprovizionareEJB(em);
 	}
-
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public PlanAprovizionare inregistrareCerereAprovizionare(Document cerereApr) {
+	public PlanAprovizionare getPlanAprovizionare() throws AchizitiiExceptions {
+		PlanAprovizionare plan;
+		try {
+		plan= this.registruEJB.getPlanAprovizionare();
+		
+		this.planAprovizionare=plan;
+		} catch (Exception e) {
+		   
+			throw new AchizitiiExceptions("Eroare la persistenta: "+e.getMessage());
+		}
+		PlanAprovizionare planNou = null;
+        if ((plan==null)||(Calendar.getInstance().get(Calendar.WEEK_OF_YEAR) != plan.getSaptAn())||           
+           (Calendar.getInstance().get(Calendar.YEAR) != plan.getAn()))
+          { 
+        	if (plan!=null){
+        		plan.setStatusPlan(PlanAprovizionare.FINALIZAT);
+        		try {
+					plan=this.registru.salveazaPlanAprovizionare(plan);
+				} catch (Exception e) {
+					throw new AchizitiiExceptions("Eroare la persistenta PlanAprovizionare: "+e.getMessage());
+				}
+        	}
+        	Calendar c = Calendar.getInstance();
+     	    Date date = new Date();
+     	    c.setTime(date);
+     	    c.setFirstDayOfWeek(Calendar.MONDAY);
+     	    c.set(Calendar.DAY_OF_WEEK,  Calendar.SUNDAY);
+     	   planNou = new PlanAprovizionare(Calendar.getInstance().get(Calendar.WEEK_OF_YEAR)					
+					,Calendar.getInstance().get(Calendar.YEAR)
+					,Calendar.getInstance().getTime()
+					,c.getTime());			
+     	  planNou.setStatusPlan(PlanAprovizionare.IN_CURS);
+     	  try {
+			planNou=this.registru.salveazaPlanAprovizionare(planNou);
+		       } catch (Exception e) {
+			throw new AchizitiiExceptions("Eroare la persistenta Plan Aprovizionare: "+e.getMessage());
+		       }
+     	  this.planAprovizionare=planNou;
+        }
+        return planNou;
+    }
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public PlanAprovizionare inregistrareCerereAprovizionare(PlanAprovizionare plan,Document cerereApr) throws AchizitiiExceptions {
 		// Vom crea un plan de aprovizionare nou daca suntem intr-o saptamana
 		// noua,
-		// altfel vom return planul de aprovizionare existent
-		PlanAprovizionare plan = PlanAprovizionare.getPlanAprovizionare();
+		// altfel vom return planul de aprovizionare existent		
 		CerereAprovizionare cerere = (CerereAprovizionare) cerereApr;
 		// Vom adauga in plan liniile din cerere. In cazul in care in plan nu
 		// exista produsele din liniile cererii vom
@@ -173,7 +192,7 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 		// Procesare apartinand modulului de Stocuri
 		// logger.debug("Metoda : propertyChange ");
 		try {
-			this.inregistrareCerereAprovizionare((CerereAprovizionare) evenimentCuCerereAprovizionare
+			this.inregistrareCerereAprovizionare(this.planAprovizionare,(CerereAprovizionare) evenimentCuCerereAprovizionare
 					.getNewValue());
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
@@ -200,6 +219,8 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 			liniePlan.setStatus(LiniePlanAprovizionare.EXISTA_CERERE_OFERTA);
 			cerere.addLinieCerere(linieCerereOferta);
 			linie++;
+   //---***--- Linii Plan Aprovizionare transformate in cerereOferta care trebuie salvate in BD dupa executarea acestei metode
+			this.liniiPlanAprovizionareCerereOf.add(liniePlan);			
 		}
 		return cerereOferta;
 	}
@@ -208,12 +229,13 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	// se inregistreaza Oferta de Achizitie primita de la furnizor
 	public OfertaAchizitie creareOfertaAchizitie(CerereOferta cerereOferta,
-			Date data, Furnizor furnizor, LinkedList<LinieOfertaAchizitie> linii) {
-
+			Date data, Furnizor furnizor, LinkedList<LinieOfertaAchizitie> linii) throws AchizitiiExceptions {
+        OfertaAchizitie ofertaAchizitie=new OfertaAchizitie(data, OfertaAchizitie.IN_CURS, furnizor,linii);
+        ofertaAchizitie.setCerereOferta(cerereOferta);
 		cerereOferta.setStatusCerereOferta(CerereOferta.PRIMITA);
-		return new OfertaAchizitie(data, OfertaAchizitie.IN_CURS, furnizor,
-				linii);
-
+		this.cerereOf=cerereOferta;
+   //---***--- Dupa crearea unei Oferte de achizitii trebuie salvata in BD si variabila privata CerereOf;
+		return ofertaAchizitie;
 	}
 
 	@Override
@@ -245,6 +267,24 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	// Comanda se realizeaza pe baza Ofertei de Achizitie primita
+	public Comanda creareComandaDinOferta(OfertaAchizitie oferta) {
+		Comanda comanda = new Comanda(oferta.getFurnizor(),
+				oferta.getDataOferta(), Comanda.IN_CURS);
+		Integer linie = comanda.getLiniiComanda().size();
+		for (LinieOfertaAchizitie linieOferta : oferta.getLiniiOferta()) {
+			LinieComanda linieComanda = new LinieComanda(linie + 1, comanda,
+					linieOferta.getArticol(), linieOferta.getCantitate(),
+					linieOferta.getPret());
+			comanda.addLinii(linieComanda);
+			linie++;
+		}
+		comanda.setOfertaAchizitie(oferta);
+		return comanda;
+	}
+	
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	// Comanda se realizeaza pe baza liniilor de Aprovizionare - in cazul
 	// comenzilor regulate
 	public Comanda adaugaLiniiComanda(Comanda comanda,
@@ -260,25 +300,10 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 			comandaAchizitie.addLinii(linieComanda);
 			liniePlan.setStatus(LiniePlanAprovizionare.CREAT_COMANDA);
 			linie++;
+	//---***--- Linii Plan Aprovizionare transformate in linii comanda care trebuie salvate in BD dupa executarea acestei metode
+			this.liniiPlanAprovizionareComanda.add(liniePlan);	
 		}
 		return comandaAchizitie;
-	}
-
-	@Override
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	// Comanda se realizeaza pe baza Ofertei de Achizitie primita
-	public Comanda creareComandaDinOferta(OfertaAchizitie oferta) {
-		Comanda comanda = new Comanda(oferta.getFurnizor(),
-				oferta.getDataOferta(), Comanda.IN_CURS);
-		Integer linie = comanda.getLiniiComanda().size();
-		for (LinieOfertaAchizitie linieOferta : oferta.getLiniiOferta()) {
-			LinieComanda linieComanda = new LinieComanda(linie + 1, comanda,
-					linieOferta.getArticol(), linieOferta.getCantitate(),
-					linieOferta.getPret());
-			comanda.addLinii(linieComanda);
-			linie++;
-		}
-		return comanda;
 	}
 
 	
@@ -286,9 +311,10 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 			throws CtbException {
 		NIR nirFact = nir;
 		nir.setLiniiDocument(liniiNIR);
-		this.inregistrareFactura(nir.getFactura());
+		//this.inregistrareFactura(nir.getFactura()); -- 1
 		logger.debug("S-a jurnalizat factura aferenta NIR-ului");
-		this.receptieMateriale(nir);
+		//this.receptieMateriale(nir); --2
+		// 1 si 2 se executa dupa ce se apeleaza metoda curenta 'adaugaLiniiNir'
 		logger.debug("S-au inregistrat pe stoc articolele din NIR");
 		return nirFact;
 
@@ -308,7 +334,7 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 	}
 
 	public int procesareFactRetur(Factura facturaRetur) throws CtbException {
-		this.returMateriale(facturaRetur);
+		//this.returMateriale(facturaRetur); -- se executa dupa apelarea metodei curente 'procesareFactRetur'
 		return contabilizareSrv.jurnalizareAchizitie(facturaRetur.getDataDoc(),
 				((Factura) facturaRetur).getValFact(), ((Factura) facturaRetur)
 						.getTVATotal(), (int) facturaRetur.getNrDoc(),

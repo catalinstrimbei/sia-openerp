@@ -7,13 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.Articol;
@@ -68,7 +63,8 @@ public class TestAprovizionare {
 		nomenclatorInstance=AprovizionareFactory.getNomenclatoareSrv();
 		contabgenInstance=AprovizionareFactory.getContabGenSrv();
 		stocuriInstance=AprovizionareFactory.getStocuriSrv();		
-		logger.info("initTest");	
+		logger.info("initTest");
+		
 	}
 
 	@Test
@@ -95,22 +91,24 @@ public class TestAprovizionare {
 	public void testInregistrareFactura() throws Throwable {
         logger.debug("@Begin test: Inregistrare Factura");   
                 //Initializare context ContabGen
-        RegSablonNC regSablonNC = RegSablonNC.instantiaza();
-        RegConturi regConturi = RegConturi.instantiaza();	
-	    RegTipuriContabile regTipContabile = RegTipuriContabile.instantiaza();
+        //RegSablonNC regSablonNC = RegSablonNC.instantiaza();
+       // RegConturi regConturi = RegConturi.instantiaza();	
+	    //RegTipuriContabile regTipContabile = RegTipuriContabile.instantiaza();
 	    Cont c401 =new Cont(401,"Furnizori","401","4",StatusSintetic.SINTETIC, TipCont.PASIV);
 		Cont c411 =new Cont(411,"Clienti","411","4",StatusSintetic.SINTETIC,TipCont.PASIV);
 	    Cont c301 =new Cont(301,"Materii prime","301","3",StatusSintetic.SINTETIC,TipCont.ACTIV);       
-        regConturi.addCont(c301); 
-        regConturi.addCont(c401);
-        regConturi.addCont(c411);
-        TipContabil tipContabil = new TipContabil(1, "Materii prime", regConturi.getContDupaId(301), 
-                regConturi.getContDupaId(401),  regConturi.getContDupaId(411));	
-        regTipContabile.addTipContabil(tipContabil);
-        SablonNC sab4= new SablonNC(1004,6,c301,c401);
-        regSablonNC.addSablon(sab4);
+       // regConturi.addCont(c301); 
+       // regConturi.addCont(c401);
+       //regConturi.addCont(c411);
+      /*  TipContabil tipContabil = new TipContabil(1, "Materii prime", regConturi.getContDupaId(301), 
+                regConturi.getContDupaId(401),  regConturi.getContDupaId(411));	*/
+        TipContabil tipContabil = new TipContabil( "Materii prime", c301, 
+                c401,  c411);	
+        //regTipContabile.addTipContabil(tipContabil);
+        //SablonNC sab4= new SablonNC(1004,6,c301,c401);
+       // regSablonNC.addSablon(sab4);
        
-        Persoana persoana = new Persoana();        
+          
         Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Telefon");       
 		Factura fact = new Factura(600.0,200.0,"fact1",furnizor);	
 		fact.setDataDoc(new Date());

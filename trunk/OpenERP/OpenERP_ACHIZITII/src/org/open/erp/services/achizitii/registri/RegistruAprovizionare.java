@@ -34,7 +34,7 @@ public class RegistruAprovizionare {
 		entityManager = em;
 	}
 
-	Articol getArticoleById(Integer idMaterial_) throws Exception {
+	public Articol getArticoleById(Integer idMaterial_) throws Exception {
 		try {
 			return entityManager.find(Articol.class, idMaterial_);
 		} catch (Exception ex) {
@@ -43,7 +43,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<Articol> getListaArticole() throws Exception {
+	public Collection<Articol> getListaArticole() throws Exception {
 		try {
 			return entityManager.createQuery("SELECT a FROM Articol a")
 					.getResultList();
@@ -53,7 +53,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Articol salveazaArticol(Articol articol_) throws Exception {
+	public Articol salveazaArticol(Articol articol_) throws Exception {
 		try {
 			if (articol_.getIdMaterial() == null
 					|| entityManager.find(articol_.getClass(),
@@ -68,7 +68,7 @@ public class RegistruAprovizionare {
 		return articol_;
 	}
 
-	void stergeArticol(Articol articol_) throws Exception {
+	public void stergeArticol(Articol articol_) throws Exception {
 		try {
 			entityManager.remove(articol_);
 		} catch (Exception ex) {
@@ -78,7 +78,7 @@ public class RegistruAprovizionare {
 	}
 
 	// ////////////////////////
-	Categorie getCategorieById(long id_cat_) throws Exception {
+	public Categorie getCategorieById(long id_cat_) throws Exception {
 		try {
 			return entityManager.find(Categorie.class, id_cat_);
 		} catch (Exception ex) {
@@ -87,7 +87,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<Categorie> getListaCategorii() throws Exception {
+	public Collection<Categorie> getListaCategorii() throws Exception {
 		try {
 			return entityManager.createQuery("SELECT c FROM Categorie c")
 					.getResultList();
@@ -97,7 +97,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Categorie salveazaCategorie(Categorie categorie_) throws Exception {
+	public Categorie salveazaCategorie(Categorie categorie_) throws Exception {
 		try {
 			if (Long.valueOf(categorie_.getId_cat()) == null
 					|| entityManager.find(categorie_.getClass(),
@@ -112,7 +112,7 @@ public class RegistruAprovizionare {
 		return categorie_;
 	}
 
-	void stergeCategorie(Categorie categorie_) throws Exception {
+	public void stergeCategorie(Categorie categorie_) throws Exception {
 		try {
 			entityManager.remove(categorie_);
 		} catch (Exception ex) {
@@ -122,7 +122,7 @@ public class RegistruAprovizionare {
 	}
 
 	// //////////
-	CerereOferta getCerereOfertaById(long id_CerereOferta_) throws Exception {
+	public CerereOferta getCerereOfertaById(long id_CerereOferta_) throws Exception {
 		try {
 			return entityManager.find(CerereOferta.class, id_CerereOferta_);
 		} catch (Exception ex) {
@@ -131,7 +131,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<CerereOferta> getListaCereriOferta() throws Exception {
+	public Collection<CerereOferta> getListaCereriOferta() throws Exception {
 		try {
 			return entityManager.createQuery("SELECT co FROM CerereOferta co")
 					.getResultList();
@@ -141,7 +141,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	CerereOferta salveazaCerereOferta(CerereOferta cerereOferta_)
+	public CerereOferta salveazaCerereOferta(CerereOferta cerereOferta_)
 			throws Exception {
 		try {
 			if (Long.valueOf(cerereOferta_.getId_CerereOferta()) == null
@@ -157,7 +157,7 @@ public class RegistruAprovizionare {
 		return cerereOferta_;
 	}
 
-	void stergeCerereOferta(CerereOferta cerereOferta_) throws Exception {
+	public void stergeCerereOferta(CerereOferta cerereOferta_) throws Exception {
 		try {
 			entityManager.remove(cerereOferta_);
 		} catch (Exception ex) {
@@ -167,7 +167,7 @@ public class RegistruAprovizionare {
 	}
 
 	// /////////////////
-	Comanda getComandaById(Integer idComanda_) throws Exception {
+	public Comanda getComandaById(Integer idComanda_) throws Exception {
 		try {
 			return entityManager.find(Comanda.class, idComanda_);
 		} catch (Exception ex) {
@@ -176,7 +176,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<Comanda> getListaComenzi() throws Exception {
+	public Collection<Comanda> getListaComenzi() throws Exception {
 		try {
 			return entityManager.createQuery("SELECT c FROM Comanda c")
 					.getResultList();
@@ -186,7 +186,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Comanda salveazaComanda(Comanda comanda_) throws Exception {
+	public Comanda salveazaComanda(Comanda comanda_) throws Exception {
 		try {
 			if (comanda_.getIdComanda() == null
 					|| entityManager.find(comanda_.getClass(),
@@ -201,7 +201,7 @@ public class RegistruAprovizionare {
 		return comanda_;
 	}
 
-	void stergeComanda(Comanda comanda_) throws Exception {
+	public void stergeComanda(Comanda comanda_) throws Exception {
 		try {
 			entityManager.remove(comanda_);
 		} catch (Exception ex) {
@@ -212,7 +212,7 @@ public class RegistruAprovizionare {
 
 	// Metode NIR
 
-	NIR getNIRByIdId(long nrDocument_) throws Exception {
+	public NIR getNIRByIdId(long nrDocument_) throws Exception {
 		try {
 			return entityManager.find(NIR.class, nrDocument_);
 		} catch (Exception ex) {
@@ -223,7 +223,7 @@ public class RegistruAprovizionare {
 	}
 
 	@SuppressWarnings("unchecked")
-	Collection<NIR> getListaNIR() throws Exception {
+	public Collection<NIR> getListaNIR() throws Exception {
 		try {
 			return entityManager.createQuery("SELECT n FROM NIR n")
 					.getResultList();
@@ -233,7 +233,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	NIR salveazaNIR(NIR NIR_) throws Exception {
+	public NIR salveazaNIR(NIR NIR_) throws Exception {
 		try {
 			if (Long.valueOf(NIR_.getNrDoc()) == null
 					|| entityManager.find(NIR_.getClass(), NIR_.getNrDoc()) == null)
@@ -247,7 +247,7 @@ public class RegistruAprovizionare {
 		return NIR_;
 	}
 
-	void stergeNIR(NIR NIR_) throws Exception {
+	public void stergeNIR(NIR NIR_) throws Exception {
 		try {
 			entityManager.remove(NIR_);
 		} catch (Exception ex) {
@@ -258,7 +258,7 @@ public class RegistruAprovizionare {
 
 	// Metode OfertaAchizitie
 
-	OfertaAchizitie getOfertaAchizitie(long id_OfertaAchizitie_)
+	public OfertaAchizitie getOfertaAchizitie(long id_OfertaAchizitie_)
 			throws Exception {
 		try {
 			return entityManager.find(OfertaAchizitie.class,
@@ -271,7 +271,7 @@ public class RegistruAprovizionare {
 	}
 
 	@SuppressWarnings("unchecked")
-	Collection<OfertaAchizitie> getListaOfertaAchizitie() throws Exception {
+	public Collection<OfertaAchizitie> getListaOfertaAchizitie() throws Exception {
 		try {
 			return entityManager.createQuery(
 					"SELECT oa FROM OfertaAchizitie oa").getResultList();
@@ -281,7 +281,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	OfertaAchizitie salveazaOfertaAchizitie(OfertaAchizitie OfertaAchizitie_)
+	public OfertaAchizitie salveazaOfertaAchizitie(OfertaAchizitie OfertaAchizitie_)
 			throws Exception {
 		try {
 			if (Long.valueOf(OfertaAchizitie_.getId_OfertaAchizitie()) == null
@@ -297,7 +297,7 @@ public class RegistruAprovizionare {
 		return OfertaAchizitie_;
 	}
 
-	void stergeOfertaAchizitie(OfertaAchizitie OfertaAchizitie)
+	public void stergeOfertaAchizitie(OfertaAchizitie OfertaAchizitie)
 			throws Exception {
 		try {
 			entityManager.remove(OfertaAchizitie);
@@ -308,7 +308,7 @@ public class RegistruAprovizionare {
 	}
 
 	// Metode PlanAprovizionare
-	PlanAprovizionare getPlanAprovizionareById(long idPlanAprovizionare_)
+	public PlanAprovizionare getPlanAprovizionareById(long idPlanAprovizionare_)
 			throws Exception {
 		try {
 			return entityManager.find(PlanAprovizionare.class,
@@ -321,7 +321,7 @@ public class RegistruAprovizionare {
 	}
 
 	@SuppressWarnings("unchecked")
-	Collection<PlanAprovizionare> getListaPlanAprovizionare() throws Exception {
+	public Collection<PlanAprovizionare> getListaPlanAprovizionare() throws Exception {
 		try {
 			return entityManager.createQuery(
 					"SELECT pl FROM PlanAprovizionare pl").getResultList();
@@ -331,7 +331,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	PlanAprovizionare salveazaPlanAprovizionare(
+	public PlanAprovizionare salveazaPlanAprovizionare(
 			PlanAprovizionare PlanAprovizionare_) throws Exception {
 		try {
 			if (Long.valueOf(PlanAprovizionare_.getIdPlanAprovizionare()) == null
@@ -347,7 +347,7 @@ public class RegistruAprovizionare {
 		return PlanAprovizionare_;
 	}
 
-	void stergePlanAprovizionare(PlanAprovizionare PlanAprovizionare_)
+	public void stergePlanAprovizionare(PlanAprovizionare PlanAprovizionare_)
 			throws Exception {
 		try {
 			entityManager.remove(PlanAprovizionare_);
@@ -357,7 +357,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Factura getFacturaById(Integer idActivitate_) throws Exception {
+	public Factura getFacturaById(Integer idActivitate_) throws Exception {
 		try {
 			return entityManager.find(Factura.class, idActivitate_);
 		} catch (Exception ex) {
@@ -370,7 +370,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<Factura> getListaFactura() throws Exception {
+	public Collection<Factura> getListaFactura() throws Exception {
 		try {
 			return entityManager.createQuery("SELECT x FROM Factura x")
 					.getResultList();
@@ -382,7 +382,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Factura salveazaFactura(Factura factura_) throws Exception {
+	public Factura salveazaFactura(Factura factura_) throws Exception {
 		try {
 			if (factura_.getNrFact() == null
 					|| entityManager.find(factura_.getClass(),
@@ -398,7 +398,7 @@ public class RegistruAprovizionare {
 		return factura_;
 	}
 
-	void stergeFactura(Factura factura_) throws Exception {
+	public void stergeFactura(Factura factura_) throws Exception {
 		try {
 			entityManager.remove(factura_);
 		} catch (Exception ex) {
@@ -409,7 +409,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Furnizor getFurnizorById(Integer id_) throws Exception {
+	public Furnizor getFurnizorById(Integer id_) throws Exception {
 		try {
 			return (Furnizor) entityManager
 					.createQuery(
@@ -424,7 +424,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<Furnizor> getListaFurnizor() throws Exception {
+	public Collection<Furnizor> getListaFurnizor() throws Exception {
 		try {
 			return entityManager.createQuery("SELECT x FROM Furnizor x")
 					.getResultList();
@@ -437,7 +437,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Furnizor salveazaFurnizor(Furnizor furnizor_) throws Exception {
+	public Furnizor salveazaFurnizor(Furnizor furnizor_) throws Exception {
 		logger.info("Am intrat pe  salveazaFurnizor in RegistruAprovizionare");
 		try {
 			logger.info("Am intrat pe  try in salveazaFurnizor in RegistruAprovizionare");
@@ -474,7 +474,7 @@ public class RegistruAprovizionare {
 		return furnizor_;
 	}
 
-	LinieCerereOferta getLinieCerereOfertaById(Integer idliniecerereoferta_)
+	public LinieCerereOferta getLinieCerereOfertaById(Integer idliniecerereoferta_)
 			throws Exception {
 		try {
 			return entityManager.find(LinieCerereOferta.class,
@@ -489,7 +489,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<LinieCerereOferta> getLinieCerereOferta() throws Exception {
+	public Collection<LinieCerereOferta> getLinieCerereOferta() throws Exception {
 		try {
 			return entityManager.createQuery(
 					"SELECT x FROM LinieCerereOferta x").getResultList();
@@ -501,7 +501,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	LinieCerereOferta salveazaLinieCerereOferta(
+	public LinieCerereOferta salveazaLinieCerereOferta(
 			LinieCerereOferta liniecerereoferta_) throws Exception {
 		try {
 			if (Long.valueOf(liniecerereoferta_.getIdLinieCerereOferta()) == null
@@ -518,7 +518,7 @@ public class RegistruAprovizionare {
 		return liniecerereoferta_;
 	}
 
-	void stergeLinieCerereOferta(LinieCerereOferta liniecerereoferta_)
+	public void stergeLinieCerereOferta(LinieCerereOferta liniecerereoferta_)
 			throws Exception {
 		try {
 			entityManager.remove(liniecerereoferta_);
@@ -530,7 +530,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	LinieComanda getLinieComandaById(Integer idliniecomanda_) throws Exception {
+	public LinieComanda getLinieComandaById(Integer idliniecomanda_) throws Exception {
 		try {
 			return entityManager.find(LinieComanda.class, idliniecomanda_);
 		} catch (Exception ex) {
@@ -543,7 +543,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<LinieComanda> getLinieComanda() throws Exception {
+	public Collection<LinieComanda> getLinieComanda() throws Exception {
 		try {
 			return entityManager.createQuery("SELECT x FROM LinieComanda x")
 					.getResultList();
@@ -555,7 +555,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	LinieComanda salveazaLinieComanda(LinieComanda liniecomanda_)
+	public LinieComanda salveazaLinieComanda(LinieComanda liniecomanda_)
 			throws Exception {
 		try {
 			if (Long.valueOf(liniecomanda_.getIdLinieComanda()) == null
@@ -572,7 +572,7 @@ public class RegistruAprovizionare {
 		return liniecomanda_;
 	}
 
-	void stergeLinieComanda(LinieComanda liniecomanda_) throws Exception {
+	public void stergeLinieComanda(LinieComanda liniecomanda_) throws Exception {
 		try {
 			entityManager.remove(liniecomanda_);
 		} catch (Exception ex) {
@@ -584,7 +584,7 @@ public class RegistruAprovizionare {
 	}
 
 	// ----------------LinieFacturaAchizitie--------------------------
-	LinieFacturaAchizitie getLinieFacturaAchizitieById(Integer linieDoc)
+	public LinieFacturaAchizitie getLinieFacturaAchizitieById(Integer linieDoc)
 			throws Exception {
 		try {
 			return entityManager.find(LinieFacturaAchizitie.class, linieDoc);
@@ -603,7 +603,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<LinieFacturaAchizitie> getLinieFacturaAchizitie()
+	public Collection<LinieFacturaAchizitie> getLinieFacturaAchizitie()
 			throws Exception {
 		try {
 			return entityManager.createQuery(
@@ -623,7 +623,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	LinieFacturaAchizitie salveazaLinieFacturaAchizitie(
+	public LinieFacturaAchizitie salveazaLinieFacturaAchizitie(
 			LinieFacturaAchizitie lfactAchiz_) throws Exception {
 		try {
 			if (lfactAchiz_.getLinieDoc() == null
@@ -648,7 +648,7 @@ public class RegistruAprovizionare {
 		return lfactAchiz_;
 	}
 
-	void stergeLinieFacturaAchizitie(LinieFacturaAchizitie lFactAchiz_)
+	public void stergeLinieFacturaAchizitie(LinieFacturaAchizitie lFactAchiz_)
 			throws Exception {
 		try {
 			entityManager.remove(lFactAchiz_);
@@ -668,7 +668,7 @@ public class RegistruAprovizionare {
 	}
 
 	// ------------------------linie nir---------------------
-	LinieNIR getLinieNIRById(Integer linieDoc) throws Exception {
+	public LinieNIR getLinieNIRById(Integer linieDoc) throws Exception {
 		try {
 			return entityManager.find(LinieNIR.class, linieDoc);
 		} catch (Exception ex) {
@@ -686,7 +686,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<LinieNIR> getLinieNIR() throws Exception {
+	public Collection<LinieNIR> getLinieNIR() throws Exception {
 		try {
 			return entityManager.createQuery("SELECT x FROM LinieNIR x")
 					.getResultList();
@@ -705,7 +705,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	LinieNIR salveazaLinieNIR(LinieNIR linieNir_) throws Exception {
+	public LinieNIR salveazaLinieNIR(LinieNIR linieNir_) throws Exception {
 		try {
 			if (linieNir_.getLinieDoc() == null
 					|| entityManager.find(linieNir_.getClass(),
@@ -729,7 +729,7 @@ public class RegistruAprovizionare {
 		return linieNir_;
 	}
 
-	void stergeLinieNIR(LinieNIR linieNir_) throws Exception {
+	public void stergeLinieNIR(LinieNIR linieNir_) throws Exception {
 		try {
 			entityManager.remove(linieNir_);
 		} catch (Exception ex) {
@@ -748,7 +748,7 @@ public class RegistruAprovizionare {
 	}
 
 	// --------Linie oferta achizitie----------
-	LinieOfertaAchizitie getLinieOfertaAchizitieById(Integer linieDoc)
+	public LinieOfertaAchizitie getLinieOfertaAchizitieById(Integer linieDoc)
 			throws Exception {
 		try {
 			return entityManager.find(LinieOfertaAchizitie.class, linieDoc);
@@ -767,7 +767,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<LinieOfertaAchizitie> getLinieOfertaAchizitie() throws Exception {
+	public Collection<LinieOfertaAchizitie> getLinieOfertaAchizitie() throws Exception {
 		try {
 			return entityManager.createQuery(
 					"SELECT x FROM LinieOfertaAchizitie x").getResultList();
@@ -786,7 +786,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	LinieOfertaAchizitie salveazaLinieOfertaAchizitie(
+	public LinieOfertaAchizitie salveazaLinieOfertaAchizitie(
 			LinieOfertaAchizitie lofertaAchiz_) throws Exception {
 		try {
 			if (Long.valueOf(lofertaAchiz_.getIdLinieOfertaAchizitie()) == null
@@ -811,7 +811,7 @@ public class RegistruAprovizionare {
 		return lofertaAchiz_;
 	}
 
-	void stergeLinieOfertaAchizitie(LinieOfertaAchizitie lofertaAchiz_)
+	public void stergeLinieOfertaAchizitie(LinieOfertaAchizitie lofertaAchiz_)
 			throws Exception {
 		try {
 			entityManager.remove(lofertaAchiz_);
@@ -831,7 +831,7 @@ public class RegistruAprovizionare {
 	}
 
 	// -----------------------linie plan aprovizionare-------------
-	LiniePlanAprovizionare getLiniePlanAprovizionareById(
+	public LiniePlanAprovizionare getLiniePlanAprovizionareById(
 			Integer idLiniePlanAprovizionare) throws Exception {
 		try {
 			return entityManager.find(LiniePlanAprovizionare.class,
@@ -851,7 +851,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	Collection<LiniePlanAprovizionare> getLiniePlanAprovizionare()
+	public Collection<LiniePlanAprovizionare> getLiniePlanAprovizionare()
 			throws Exception {
 		try {
 			return entityManager.createQuery(
@@ -871,7 +871,7 @@ public class RegistruAprovizionare {
 		}
 	}
 
-	LiniePlanAprovizionare salveazaLiniePlanAprovizionare(
+	public LiniePlanAprovizionare salveazaLiniePlanAprovizionare(
 			LiniePlanAprovizionare lofertaAprov_) throws Exception {
 		try {
 			if (Long.valueOf(lofertaAprov_.getIdLiniePlanAprovizionare()) == null
@@ -896,7 +896,7 @@ public class RegistruAprovizionare {
 		return lofertaAprov_;
 	}
 
-	void stergeLiniePlanAprovizionare(LiniePlanAprovizionare lofertaAprov_)
+	public void stergeLiniePlanAprovizionare(LiniePlanAprovizionare lofertaAprov_)
 			throws Exception {
 		try {
 			entityManager.remove(lofertaAprov_);

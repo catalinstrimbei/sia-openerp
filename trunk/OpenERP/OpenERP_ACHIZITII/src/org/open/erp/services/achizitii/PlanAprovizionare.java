@@ -36,10 +36,10 @@ public class PlanAprovizionare implements Serializable  {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idPlanAprovizionare;
 	
-	public static void setPlanAprovizionare(PlanAprovizionare planAprovizionare) {
+	/*public static void setPlanAprovizionare(PlanAprovizionare planAprovizionare) {
 		PlanAprovizionare.planAprovizionare = planAprovizionare;
-	}
-	private static PlanAprovizionare planAprovizionare;
+	}*/
+	/*private static PlanAprovizionare planAprovizionare;*/
 	public static final Integer FINALIZAT = 1;
 	public static final Integer IN_CURS = 0;
 	private Integer saptAn;	
@@ -64,7 +64,7 @@ public class PlanAprovizionare implements Serializable  {
 	public PlanAprovizionare() {
 		super();
 	}
-	private PlanAprovizionare(Integer saptAn, Integer an,Date dataStart,Date dataFinal) {
+	public PlanAprovizionare(Integer saptAn, Integer an,Date dataStart,Date dataFinal) {
 		super();
 		this.saptAn = saptAn;		
 		this.an = an;
@@ -72,7 +72,7 @@ public class PlanAprovizionare implements Serializable  {
 		this.dataFinal=dataFinal;
 	}
 	//Va exista cate un singur plan de aprovizionare de-a lungul unei saptamani din an.
-	public static  PlanAprovizionare getPlanAprovizionare() {
+	/*public static  PlanAprovizionare getPlanAprovizionare() {
         if ((planAprovizionare==null)||(Calendar.getInstance().get(Calendar.WEEK_OF_YEAR) != planAprovizionare.getSaptAn())||           
            (Calendar.getInstance().get(Calendar.YEAR) != planAprovizionare.getAn()))
           { 
@@ -91,7 +91,7 @@ public class PlanAprovizionare implements Serializable  {
 			planAprovizionare.setStatusPlan(IN_CURS);
         }
         return planAprovizionare;
-}
+}*/
     public void addLiniePlan(LiniePlanAprovizionare li) {
         this.getLiniiPlan().add(li);
         li.setPlanAprovizionare(this);

@@ -1,43 +1,11 @@
-(A1) 2012-01-20 03:08:31,049 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:31,079 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - @Begin test: Inregistrare Cerere Aprovizionare
-(A1) 2012-01-20 03:08:31,151 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - plan2: 0 2012 3 Fri Jan 20 03:08:31 EET 2012 Sun Jan 22 03:08:31 EET 2012
-(A1) 2012-01-20 03:08:31,152 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - plan1: 0 2012 3 Fri Jan 20 03:08:31 EET 2012 Sun Jan 22 03:08:31 EET 2012
-(A1) 2012-01-20 03:08:31,152 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: Plan unic de aprovizionare creat
-(A1) 2012-01-20 03:08:31,154 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:31,155 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Begin test: Inregistrare Factura
-(A1) 2012-01-20 03:08:31,420 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:31,420 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - Begin test: Inregistrare receptie comanda
-(A1) 2012-01-20 03:08:31,778 [main] DEBUG org.open.erp.services.stocuri.util.StocuriLogger - Creare obiect Procesare.-----
-(A1) 2012-01-20 03:08:31,849 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:31,849 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testReturMateriale
-(A1) 2012-01-20 03:08:31,849 [main] DEBUG org.open.erp.services.stocuri.util.StocuriLogger - Creare obiect Procesare.-----
-(A1) 2012-01-20 03:08:31,851 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:31,851 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: inregistrare cerere aprovizionare
-(A1) 2012-01-20 03:08:31,852 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
-(A1) 2012-01-20 03:08:31,852 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 0
-(A1) 2012-01-20 03:08:31,873 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
-(A1) 2012-01-20 03:08:31,873 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 1
-(A1) 2012-01-20 03:08:31,874 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Plan: 11 dataStart: Fri Jan 20 03:08:31 EET 2012 dataFinal: Sun Jan 22 03:08:31 EET 2012
-(A1) 2012-01-20 03:08:31,874 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 1 Material: Mat1 cantitate: 100.0
-(A1) 2012-01-20 03:08:31,874 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 2 Material: Mat2 cantitate: 100.0
-(A1) 2012-01-20 03:08:31,875 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - 2
-(A1) 2012-01-20 03:08:31,875 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: inregistrare cerere aprovizionare
-(A1) 2012-01-20 03:08:31,875 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:31,875 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testCreareCerereOferta
-(A1) 2012-01-20 03:08:31,876 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
-(A1) 2012-01-20 03:08:31,876 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 2
-(A1) 2012-01-20 03:08:31,876 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
-(A1) 2012-01-20 03:08:31,876 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 3
-(A1) 2012-01-20 03:08:31,907 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:31,907 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testCreareOfertaAchizitie
-(A1) 2012-01-20 03:08:31,908 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - ===to be continued...
-(A1) 2012-01-20 03:08:31,908 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: testCreareOfertaAchizitie
-(A1) 2012-01-20 03:08:31,908 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:31,909 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: Analiza oferte si creare comanda
-(A1) 2012-01-20 03:08:31,953 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - 
-(A1) 2012-01-20 03:08:31,991 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:31,991 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: Creare comanda din linii plan aprovizionare
-(A1) 2012-01-20 03:08:32,039 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
-(A1) 2012-01-20 03:08:32,039 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testCreareNir
-(A1) 2012-01-20 03:08:32,039 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - ===to be continued...
-(A1) 2012-01-20 03:08:32,039 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: testCreareNir
+(A1) 2012-01-27 00:07:54,927 [main] INFO  org.hibernate.cfg.annotations.Version - Hibernate Annotations 3.4.0.GA
+(A1) 2012-01-27 00:07:55,123 [main] INFO  org.hibernate.cfg.Environment - Hibernate 3.3.1.GA
+(A1) 2012-01-27 00:07:55,168 [main] INFO  org.hibernate.cfg.Environment - hibernate.properties not found
+(A1) 2012-01-27 00:07:55,205 [main] INFO  org.hibernate.cfg.Environment - Bytecode provider name : javassist
+(A1) 2012-01-27 00:07:55,246 [main] INFO  org.hibernate.cfg.Environment - using JDK 1.4 java.sql.Timestamp handling
+(A1) 2012-01-27 00:07:55,469 [main] INFO  org.hibernate.annotations.common.Version - Hibernate Commons Annotations 3.1.0.GA
+(A1) 2012-01-27 00:07:55,496 [main] INFO  org.hibernate.ejb.Version - Hibernate EntityManager 3.4.0.GA
+(A1) 2012-01-27 00:07:55,554 [main] DEBUG org.hibernate.ejb.Ejb3Configuration - Look up for persistence unit: OpenERP_ACHIZITII
+(A1) 2012-01-27 00:07:55,815 [main] DEBUG org.hibernate.util.DTDEntityResolver - trying to resolve system-id [http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd]
+(A1) 2012-01-27 00:07:57,467 [main] DEBUG org.hibernate.util.DTDEntityResolver - trying to resolve system-id [http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd]
+(A1) 2012-01-27 00:07:57,943 [main] DEBUG org.hibernate.util.DTDEntityResolver - trying to resolve system-id [http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd]
