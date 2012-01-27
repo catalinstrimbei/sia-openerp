@@ -109,7 +109,8 @@
 					
 				</h:column>
 			<h:column>
-				<h:commandButton id="cmdSterge" value="Sterge"><p:attribute name="selectedId" value="#{liniePontaj.idPontaj}"></p:attribute></h:commandButton>
+				<h:commandButton id="cmdSterge" value="Sterge" actionListener="#{formPontajAngajat.stergeLiniePontaj}"><p:attribute name="selectedId" value="#{liniePontaj.idPontaj}"></p:attribute></h:commandButton>
+				<h:inputHidden id="id1" value="#{liniePontaj.idPontaj}" />
 				<p:facet name="header">
 					
 				</p:facet>
