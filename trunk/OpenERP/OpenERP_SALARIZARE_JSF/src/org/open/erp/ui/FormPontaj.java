@@ -72,7 +72,7 @@ public class FormPontaj implements Converter{
 	public Pontaj getPontaj() {
 		return pontaj;
 	}
-
+ 
 	Integer i=0;
 	Integer j=0;
 	Integer k=0;
@@ -138,30 +138,34 @@ public class FormPontaj implements Converter{
 		if (uiComp.getId().equals("cboLuna")){
 			//logger.logINFO("<<<<<<< Luna din array este:"+uiValue);
 			luna = Integer.valueOf(uiValue);
-			try {
-				//if (pontaje.isEmpty()){
-					pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);
-					logger.logINFO("<<<<<<< Am incarcat pontajele cu succes luna");
-				//}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				logger.logINFO("<<<<<<< FAIL incarcare pontaje luna");
-				e.printStackTrace();
+			if (this.isAddMode==0){
+				try {
+					//if (pontaje.isEmpty()){
+						pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);
+						logger.logINFO("<<<<<<< Am incarcat pontajele cu succes luna");
+					//}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					logger.logINFO("<<<<<<< FAIL incarcare pontaje luna");
+					e.printStackTrace();
+				}
 			}
 			return luna;
 		}
 		if (uiComp.getId().equals("cboAn")){
 			//logger.logINFO("<<<<<<< Anul din array este:"+uiValue);
 			an = Integer.valueOf(uiValue);
-			try {
-				//if (pontaje.isEmpty()){
-					pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);
-				//	logger.logINFO("<<<<<<< Am incarcat pontajele cu succes an");
-				//}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				logger.logINFO("<<<<<<< FAIL incarcare pontaje an");
-				e.printStackTrace();
+			if (this.isAddMode==0){
+				try {
+					//if (pontaje.isEmpty()){
+						pontaje = salarizareSrv.getPontajAnLuna(this.an, this.luna);
+					//	logger.logINFO("<<<<<<< Am incarcat pontajele cu succes an");
+					//}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					logger.logINFO("<<<<<<< FAIL incarcare pontaje an");
+					e.printStackTrace();
+				}
 			}
 			return an;
 		}
@@ -170,14 +174,14 @@ public class FormPontaj implements Converter{
 			uiAngajatTemplate.setId(Integer.valueOf(uiValue));
 			Integer idx = this.angajati.indexOf(uiAngajatTemplate);
 			logger.logINFO("Id-ul angajatului din array este:"+idx);
-			
+			/*
 			if (this.isAddMode==1){
 				Pontaj p1 = new Pontaj(null, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
 				logger.logINFO("<<<<<Pontajul a fost initializat in get AsObject :");
 				pontaje.add(p1);
 				this.isAddMode = 0;
 			}
-			
+			*/
 			pontaje.get(l).setAngajat(this.angajati.get(idx));
 			l +=1;
 			if (l==pontaje.size())
@@ -196,13 +200,14 @@ public class FormPontaj implements Converter{
 					p.setIdPontaj(this.idPontaj);
 					Integer idx = pontaje.indexOf(p);
 					logger.logINFO("<<<<< Get AsObject txtOrelucrate uiValue " + Double.valueOf(uiValue) );
-					
+					/*
 					if (this.isAddMode==1){
 						Pontaj p1 = new Pontaj(null, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
 						logger.logINFO("<<<<<Pontajul a fost initializat in get AsObject :");
 						pontaje.add(p1);
 						this.isAddMode = 0;
 					}
+					*/
 					//iteram prin map si actualizam in array pontaje modificarile facute de user
 					//for(Pontaj p1:pontaje){
 						//p1.setOreLucrate(Double.valueOf(uiValue));
@@ -228,13 +233,14 @@ public class FormPontaj implements Converter{
 				p.setIdPontaj(this.idPontaj);
 				Integer idx = pontaje.indexOf(p);
 				logger.logINFO("<<<<< Get AsObject txtOreConcediu uiValue " + Double.valueOf(uiValue) );
-				
+				/*
 				if (this.isAddMode==1){
 					Pontaj p1 = new Pontaj(null, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
 					logger.logINFO("<<<<<Pontajul a fost initializat in get AsObject oreconcediu:");
 					pontaje.add(p1);
 					this.isAddMode = 0;
 				}
+				*/
 				//iteram prin map si actualizam in array pontaje modificarile facute de user
 				//for(Pontaj p1:pontaje){
 					//p1.setOreLucrate(Double.valueOf(uiValue));
@@ -260,13 +266,14 @@ public class FormPontaj implements Converter{
 				p.setIdPontaj(this.idPontaj);
 				Integer idx = pontaje.indexOf(p);
 				logger.logINFO("<<<<< Get AsObject txtOreSuplimentare uiValue " + Double.valueOf(uiValue) );
-				
+				/*
 				if (this.isAddMode==1){
 					Pontaj p1 = new Pontaj(null, this.an, this.luna, angajati.get(0),168.0,0.0,0.0);
 					logger.logINFO("<<<<<Pontajul a fost initializat in get AsObject txtOreSuplimentare:");
 					pontaje.add(p1);
 					this.isAddMode = 0;
 				}
+				*/
 				//iteram prin map si actualizam in array pontaje modificarile facute de user
 				//for(Pontaj p1:pontaje){
 					//p1.setOreLucrate(Double.valueOf(uiValue));
@@ -416,13 +423,25 @@ public class FormPontaj implements Converter{
 		
 		for(Pontaj p:pontaje){
 			logger.logINFO("<<<<<am intrat in for la salvare si am ajuns la pontaj id:" + p.getIdPontaj() + "ore lucrate:"+p.getOreLucrate());
+			
+			//daca id pontaj e 0 atunci il fac null pt a nu crapa la salvare
+			if(p.getIdPontaj()==0){//ca sa eliminm nullul si sa pun id-ul care vine din db inlocuiesc pontajul
+				pontaje.remove(p);
+				p.setIdPontaj(null);
+				p=salarizareSrv.inregistrarePontaj(p.getIdPontaj(), p.getAngajat(), p.getAn()
+						, p.getLuna(), p.getOreLucrate(), p.getOreSuplimentare(), p.getOreConcediu());
+				pontaje.add(p);
+				logger.logINFO("<<<<<am salvat pontaj id:" + p.getIdPontaj());
+			}
+			else{
 			salarizareSrv.inregistrarePontaj(p.getIdPontaj(), p.getAngajat(), p.getAn()
 					, p.getLuna(), p.getOreLucrate(), p.getOreSuplimentare(), p.getOreConcediu());
 			logger.logINFO("<<<<<am salvat pontaj id:" + p.getIdPontaj());
+			}
 		}
 		logger.logINFO("<<<<<Pontajele au fost salvate:");
 		//pontaje.add(p);
-		 
+		this.isAddMode = 0; 
 	}
 	
 	public void generarePontaj(ActionEvent evt) throws Exception{
