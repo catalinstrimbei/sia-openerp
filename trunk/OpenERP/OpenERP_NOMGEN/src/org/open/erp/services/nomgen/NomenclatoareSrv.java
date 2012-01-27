@@ -88,6 +88,8 @@ public interface NomenclatoareSrv {
 	  public void synchronize() throws Exception;
 	  
 	  public Set<Persoana> getPersoana() throws Exception;
+	PF crearePF(String nume, String prenume, String formaAdresare, char gen,
+			String cnp, Persoana p) throws Exception;
 	
     
     

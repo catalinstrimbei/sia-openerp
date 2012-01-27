@@ -3,6 +3,7 @@ package org.open.erp.services.nomgen.impl;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -17,6 +18,8 @@ import javax.interceptor.Interceptors;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.PersistenceContext;
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Document;
@@ -27,6 +30,7 @@ import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.nomgen.NomenclatoareSrvRemote;
+import org.open.erp.services.nomgen.PF;
 import org.open.erp.services.nomgen.Partener;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
@@ -34,6 +38,7 @@ import org.open.erp.services.nomgen.PersoanaJuridica;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.nomgen.logger.NomgenLogger;
 import org.open.erp.services.nomgen.impl.NomgenInterceptor;
+
 
 /**
  * @author Echipa NomGen
@@ -1020,6 +1025,50 @@ public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, Nomenclat
 		logger.logDEBUG(" End >> " + Thread.currentThread().getStackTrace()[2].getMethodName());
 		return (Set<Persoana>) of ;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public PF crearePF( String  nume, String  prenume, String  formaAdresare, char   gen, String  cnp, Persoana p) throws Exception {
+		
+		logger.logDEBUG(">>>>>>>>>>>> START Creare PF >>>>>>>>>>>>>>> ");	
+		
+		PersoanaFizica pf = new PersoanaFizica(nume, prenume,formaAdresare, gen, cnp);
+		p.adaugaPF(pf);
+		pf.setP(p);
+		
+		/* 1. Direct activitate */
+		//activitate = this.registruProiect.salveazaActivitateBugetata(activitate);
+		//logger.debug(">>>>>>>>>>>> Activitate salvata direct >>>>>>>>>>>>>>>");
+		
+		/* 2. Mod agregat - cascadare @OneoMany */
+		this.rp.addPersoana(p);
+		logger.logDEBUG(">>>>>>>>>>>> Activitate salvata in agregat proiect >>>>>>>>>>>>>>>");
+		
+		logger.logDEBUG(">>>>>>>>>>>> END Creare activitate >>>>>>>>>>>>>>>");
+		return pf;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	}
 
