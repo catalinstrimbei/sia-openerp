@@ -496,9 +496,19 @@ public class SalarizareImpl implements SalarizareSrvLocal, SalarizareSrvRemote {
 		return sporuri;
 	}
 	
+	public List<Retinere> getRetineriGenerale() throws Exception {
+		List<Retinere> retineri = registru.getRetineriGenerale();
+		return retineri;
+	}
+	
 	public void stergeSpor(Spor spor){
 		registru.stergeSpor(spor);
 	}
+	
+	public void stergeRetinere(Retinere retinere){
+		registru.stergeRetinere(retinere);
+	}
+	
 	public void stergePontaj(Pontaj pontaj){
 		registru.stergePontaj(pontaj);
 	}

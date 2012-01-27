@@ -405,5 +405,12 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	StatSalarii salveazaStatSalarii(StatSalarii statSalarii) throws Exception;
-	
+
+	/**
+	 * returneaza retinerile generale care nu sunt legate de un angajat   
+	 * @return  List<Retinere>
+	 * @throws Exception 
+	 * 
+	 */
+	List<Retinere> getRetineriGenerale() throws Exception;
 }

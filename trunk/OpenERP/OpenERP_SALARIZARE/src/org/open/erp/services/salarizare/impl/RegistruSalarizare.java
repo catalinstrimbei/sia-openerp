@@ -312,6 +312,23 @@ public class RegistruSalarizare {
 		return sporuri;
 	}
 
+	public List<Retinere> getRetineriGenerale() throws Exception{
+		List<Retinere> retineri= new ArrayList<Retinere>();
+
+		try{
+		retineri = entityManager.createQuery("SELECT s FROM Retinere s " 
+		//+"WHERE s.angajat.id is null "
+				)
+				//.setParameter("id", null)
+				.getResultList();
+		}
+		catch(Exception ex){
+			logger.logINFO("Eroare incarcare retineri generale:");
+			return null;
+		}
+		return retineri;
+	}
+
 	/*
 	public ContractMunca getContractActivAngajat(Angajat a){
 		ContractMunca contract = new ContractMunca();
