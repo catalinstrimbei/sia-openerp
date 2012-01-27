@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import org.eclipse.birt.core.framework.Platform;
+/*import org.eclipse.birt.core.framework.Platform;
 import org.eclipse.birt.report.engine.api.EngineConfig;
 import org.eclipse.birt.report.engine.api.EngineException;
 import org.eclipse.birt.report.engine.api.IRenderTask;
@@ -13,12 +13,12 @@ import org.eclipse.birt.report.engine.api.IReportEngine;
 import org.eclipse.birt.report.engine.api.IReportEngineFactory;
 import org.eclipse.birt.report.engine.api.IReportRunnable;
 import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
-import org.eclipse.birt.report.engine.api.RenderOption;
+import org.eclipse.birt.report.engine.api.RenderOption;*/
 
-public class StanAloneReportRunner {
+public class StanAloneReportRunner {/*
 
 	public static void main(String[] args) {
-		/* Classpath testing */
+		/* Classpath testing *//* 
 		String appPath = new File(ClassLoader.getSystemClassLoader()
 				.getResource("").getPath()).getPath();
 		String reportPath = appPath + "/org/comenzi/reports";
@@ -32,7 +32,7 @@ public class StanAloneReportRunner {
 
 		// Start the platform for a non-RCP application.
 		try {
-			/* Start Report Engine */
+			/* Start Report Engine *//* 
 			Platform.startup(config);
 			IReportEngineFactory factory = (IReportEngineFactory) Platform
 					.createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
@@ -44,7 +44,7 @@ public class StanAloneReportRunner {
 			IReportEngine engine = factory.createReportEngine(config);
 			System.out.println("Started BIRT Report Engine ...");
 
-			/* Open report design */
+			/* Open report design *//* 
 			String designName = reportPath + "/ReportClienti.rptdesign";
 			IReportRunnable runnable = null;
 			try {
@@ -58,7 +58,7 @@ public class StanAloneReportRunner {
 			String title = (String) runnable.getProperty(IReportRunnable.TITLE);
 			System.out.println("Open Report Design entitled " + title);
 
-			/* Generate report from design */
+			/* Generate report from design *//* 
 			// Create a run and render task object.
 			IRunAndRenderTask task = engine.createRunAndRenderTask(runnable);
 			// Set PDF Format
@@ -94,5 +94,5 @@ public class StanAloneReportRunner {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 }

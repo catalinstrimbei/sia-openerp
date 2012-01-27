@@ -376,4 +376,56 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	public void stergeFlux(FluxProductie flux)throws Exception{
 		registru.stergeFlux(flux);
 	}
+	
+	@Override
+	public List<Semifabricat> getListaSemifabricate() throws Exception {
+		List<Semifabricat> semifabricate=this.registru.getListaSemifabricate();
+		return semifabricate;
+	}
+	
+	@Override
+	public List<CriteriuCalitate> getCriteriiCalitate() throws Exception{
+		List<CriteriuCalitate> criterii = this.registru.getListaCriterii();
+		return criterii;
+	}
+	
+	public void stergeCriteriuCalitate(CriteriuCalitate criteriu)throws Exception{
+		registru.stergeCriteriuCalitate(criteriu);
+	}
+	
+public CriteriuCalitate salveazaCriteriuCalitate(Integer idCriteriu, String criteriu) throws Exception{
+		
+	
+			
+		CriteriuCalitate criteriuCalitate = new CriteriuCalitate(idCriteriu, criteriu);		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END salvare criteriu - TRANZACTIE ANULATA");
+			
+		}else{
+			criteriuCalitate = this.registru.salveazaCriteriuCalitate(criteriuCalitate);
+			//em.persist(proiectNou);
+		}
+		
+		return criteriuCalitate;
+				
+	}
+
+	@Override
+	public FazaProductie getFazaProductie(String faza) throws Exception {
+		FazaProductie fazaP=this.registru.getFazaProductie(faza);
+		return fazaP;
+	}
+	
+	@Override
+	public List<FazaProductie> getListaFaze() throws Exception{
+		List<FazaProductie> faze=this.registru.getListaFaze();
+		return faze;
+	}
+
+@Override
+	public void stergeFaza(FazaProductie faza) throws Exception{
+		registru.stergeFaza(faza);
+	}
+	
 }

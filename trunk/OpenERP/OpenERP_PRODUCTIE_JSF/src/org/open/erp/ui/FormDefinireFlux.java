@@ -56,7 +56,6 @@ public class FormDefinireFlux implements Converter {
 	
 	@PostConstruct
 	public void initFormDefinireFlux() throws Exception{
-		org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductieSrv.class.getName());
 		
 		fluxuri = productieSrv.getListaFluxuri();
 		if (!fluxuri.isEmpty())
@@ -99,13 +98,13 @@ public class FormDefinireFlux implements Converter {
 	
 	
 	/* --navigare-- */
-	public void previousSpor(ActionEvent evt){
+	public void previousFlux(ActionEvent evt){
 		Integer idxCurent = this.fluxuri.indexOf(flux);
 		if (idxCurent > 0)
 			this.flux = this.fluxuri.get(idxCurent - 1);
 	}
 
-	public void nextSpor(ActionEvent evt){
+	public void nextFlux(ActionEvent evt){
 		Integer idxCurent = this.fluxuri.indexOf(flux);
 		if ((idxCurent+1) < this.fluxuri.size())
 			this.flux = this.fluxuri.get(idxCurent + 1);
@@ -118,7 +117,7 @@ public class FormDefinireFlux implements Converter {
 		this.flux.setProdus(getProdus());
 		this.flux.adaugaFaza(faza);
 		logger.info("---adaugare flux----" );
-		//return "FormSpor";
+		
 	} 
 	  
 	public void stergereFlux(ActionEvent evt) throws Exception{
@@ -140,7 +139,7 @@ public class FormDefinireFlux implements Converter {
 		this.flux = productieSrv.definireFluxProductie(flux.getIdFlux(), flux.getProdus());
 		logger.info("--salvare flux---id " + flux.getIdFlux());
 		this.fluxuri.add(this.flux);
-	//	return "FormSpor";
+	
 	}
 	
 	/* Implementare suport pentru navigare-selectie lista combinata*/

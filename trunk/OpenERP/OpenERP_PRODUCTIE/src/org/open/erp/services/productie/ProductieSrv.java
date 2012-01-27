@@ -189,4 +189,18 @@ public interface ProductieSrv {
 	public List<FluxProductie> getListaFluxuri() throws Exception;
 	
 	void stergeFlux(FluxProductie flux) throws Exception;
+	
+	public List<Semifabricat> getListaSemifabricate() throws Exception;
+	
+	public List<CriteriuCalitate> getCriteriiCalitate() throws Exception;
+	
+	void stergeCriteriuCalitate(CriteriuCalitate criteriu) throws Exception;
+	
+	public CriteriuCalitate salveazaCriteriuCalitate(Integer idCriteriu, String criteriu) throws Exception;
+	
+	public FazaProductie getFazaProductie(String faza) throws Exception; 
+	
+	public List<FazaProductie> getListaFaze() throws Exception;
+	
+	public void stergeFaza(FazaProductie faza) throws Exception;
 }
