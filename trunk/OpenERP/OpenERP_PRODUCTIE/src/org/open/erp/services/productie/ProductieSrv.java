@@ -187,4 +187,6 @@ public interface ProductieSrv {
 	public void comandaMateriale(FazaProductie faza, FluxProductie flux) throws Exception;
 	
 	public List<FluxProductie> getListaFluxuri() throws Exception;
+	
+	void stergeFlux(FluxProductie flux) throws Exception;
 }

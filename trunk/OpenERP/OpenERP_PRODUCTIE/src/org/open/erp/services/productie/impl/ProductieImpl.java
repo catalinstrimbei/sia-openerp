@@ -372,4 +372,8 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 		List<FluxProductie> fluxuri=this.registru.getListaFluxuri();
 		return fluxuri;
 	}
+	
+	public void stergeFlux(FluxProductie flux)throws Exception{
+		registru.stergeFlux(flux);
+	}
 }

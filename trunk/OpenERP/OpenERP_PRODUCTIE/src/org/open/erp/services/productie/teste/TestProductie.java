@@ -740,7 +740,6 @@ public class TestProductie {
 		
 		Document doc = new Document();
 		doc.setNrDoc(12);
-		doc.setDataDoc(null);
 		doc.setDataDocument(null);
 		doc.setLiniiDocument(null);
 		doc.setObservatie("comanda productie");
@@ -810,7 +809,6 @@ public void testLivrareProdus(){
 	
 	Document doc = new Document();
 	doc.setNrDoc(12);
-	doc.setDataDoc(null);
 	doc.setDataDocument(null);
 	doc.setLiniiDocument(null);
 	doc.setObservatie("comanda productie");
