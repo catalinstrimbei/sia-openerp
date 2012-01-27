@@ -17,8 +17,8 @@
 			<p:facet name="header">
 				<h:outputText value="Navigare:"></h:outputText>
 			</p:facet>
-			<h:selectOneMenu id="txtIdCriteriu" value="#{formDefinireFlux.flux}" converter="#{formDefinireFlux}" disabled="true">
-				<p:selectItems value="#{formDefinireFlux.criterii}"></p:selectItems>
+			<h:selectOneMenu id="txtIdCriteriu" value="#{formCriteriuCalitate.flux}" converter="#{formCriteriuCalitate}" disabled="true">
+				<p:selectItems value="#{formCriteriuCalitate.criterii}"></p:selectItems>
 				<p:ajax render="txtIdCriteriu txtCriteriu"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="2" border="1">
@@ -38,7 +38,7 @@
 
 			<!--<h:message></h:message>-->
 			<h:outputText value="Criteriu:"></h:outputText>
-			<h:inputText id="Criteriu" value="#{formCriteriuCalitate.criteriuCalitate.criteriu}"></h:inputText>
+			<h:inputText id="txtCriteriu" value="#{formCriteriuCalitate.criteriuCalitate.criteriu}"></h:inputText>
 			<h:message></h:message>
 			
 			<h:message></h:message>

@@ -14,6 +14,7 @@ import org.open.erp.services.productie.CriteriuCalitate;
 import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.Semifabricat;
+import org.open.erp.services.productie.Utilaj;
 import org.open.erp.services.productie.teste.TestProductie;
 
 public class RegistruProductie {
@@ -122,6 +123,22 @@ public class RegistruProductie {
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.error("<< Stack Trace >>" + st.toString());
 			throw ex;
 		}
+	}
+	
+	public Semifabricat salveazaSemifabricat(Semifabricat semif) throws Exception{
+		try{
+
+			if (semif.getIdSemifabricat() == null || 
+				entityManager.find(semif.getClass(), semif.getIdSemifabricat()) == null)
+				entityManager.persist(semif);
+			else
+				entityManager.merge(semif);
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return semif;
 	}
 	
 	public FazaProductie getFazaProductie(Integer idFaza) throws Exception{
@@ -241,6 +258,32 @@ public class RegistruProductie {
 		try
 		{
 			entityManager.refresh(flux);
+		}
+		catch(Exception ex){
+			logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.error("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
+	
+	public List<Utilaj> getUtilaje() throws Exception{
+		try
+		{
+			return entityManager.createQuery("SELECT ut FROM Utilaj ut").getResultList();
+		}
+		catch(Exception ex){
+			logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.error("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
+	
+	public void stergeUtilaj(Utilaj utilaj) throws Exception{
+		try 
+		{
+			entityManager.remove(utilaj);
 		}
 		catch(Exception ex){
 			logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());

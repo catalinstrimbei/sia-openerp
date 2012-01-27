@@ -186,21 +186,116 @@ public interface ProductieSrv {
 	 */
 	public void comandaMateriale(FazaProductie faza, FluxProductie flux) throws Exception;
 	
+	/**
+	 * Metoda care returneaza lista tuturor fluxurilor
+	 * 
+	 * @return lista de fluxuri
+	 * @throws Exception
+	 */
 	public List<FluxProductie> getListaFluxuri() throws Exception;
 	
+	/**
+	 * Metoda care sterge un anumit flux de productie
+	 * 
+	 * @param flux	Fluxul de productie care se doreste a fi sters
+	 * @throws Exception
+	 */
 	void stergeFlux(FluxProductie flux) throws Exception;
 	
+	/**
+	 * Metoda care returneaza lista tuturor semifabricatelor
+	 * 
+	 * @return lista de semifabricae
+	 * @throws Exception
+	 */
 	public List<Semifabricat> getListaSemifabricate() throws Exception;
 	
+	/**
+	 * Metoda care sterge un anumit semifabricat
+	 * 
+	 * @param semifabricat	Semifabricatul care se doreste a fi sters
+	 * @throws Exception
+	 */
+	public void stergeSemifabricat(Semifabricat semifabricat) throws Exception;
+	
+	/**
+	 * Metoda care salveaza un anumit semifabricat
+	 * 
+	 * @param idSemifabricat	Id-ul semifabricatului
+	 * @param semifabricat		Denumirea semifabricatului
+	 * @param listaMateriale	Lista de materiale necesare crearii semifabricatului
+	 * @param semifabricatContinut	Un alt semifabricat necesar crearii semifabricatului curent
+	 * @return	Semifabricatul
+	 * @throws Exception
+	 */
+	public Semifabricat salveazaSemifabricat(Integer idSemifabricat, String semifabricat,
+			ArrayList<Material> listaMateriale,
+			Semifabricat semifabricatContinut) throws Exception;
+	
+	/**
+	 * Metoda care returneaza lista criteriile de calitate
+	 * 
+	 * @return	lista criteriilor de calitate
+	 * @throws Exception
+	 */
 	public List<CriteriuCalitate> getCriteriiCalitate() throws Exception;
 	
+	/**
+	 * Metdoda care sterge un criteriu de calitate
+	 * 
+	 * @param criteriu	Criteriul care se doreste a fi sters
+	 * @throws Exception
+	 */
 	void stergeCriteriuCalitate(CriteriuCalitate criteriu) throws Exception;
 	
+	/**
+	 * Metoda care salveaza un criteriu de calitate
+	 * 
+	 * @param idCriteriu	Id-ul criteriului
+	 * @param criteriu		Denumirea criteriului
+	 * @return		Criteriul de calitate
+	 * @throws Exception
+	 */
 	public CriteriuCalitate salveazaCriteriuCalitate(Integer idCriteriu, String criteriu) throws Exception;
 	
+	/**
+	 * Metoda care returneaza o anumita faza de productie
+	 * 
+	 * @param faza	Denumirea fazei
+	 * @return		Faza dorita
+	 * @throws Exception
+	 */
 	public FazaProductie getFazaProductie(String faza) throws Exception; 
 	
+	/**
+	 * Metoda care returneaza lista tuturor fazelor
+	 * 
+	 * @return	Lista de faze
+	 * @throws Exception
+	 */
 	public List<FazaProductie> getListaFaze() throws Exception;
 	
+	/**
+	 * Metoda care sterge o anumita faza
+	 * 
+	 * @param faza	Faza care se doreste a fi stearsa
+	 * @throws Exception
+	 */
 	public void stergeFaza(FazaProductie faza) throws Exception;
+	
+	/**
+	 * Metoda care returneaza lista tuturor utilaje
+	 * 
+	 * @return	lista de utilaje
+	 * @throws Exception
+	 */
+	public List<Utilaj> getUtilaje() throws Exception;
+	
+	/**
+	 * Metoda care sterge un anumit utilaj
+	 * 
+	 * @param utilaj	Utilajul care se doreste a fi sters
+	 * @throws Exception
+	 */
+	public void stergeUtilaj(Utilaj utilaj) throws Exception;
 }

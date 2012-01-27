@@ -383,6 +383,24 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 		return semifabricate;
 	}
 	
+	public Semifabricat salveazaSemifabricat(Integer idSemifabricat, String semifabricat,
+			ArrayList<Material> listaMateriale,
+			Semifabricat semifabricatContinut) throws Exception{
+			
+		Semifabricat semif = new Semifabricat(idSemifabricat, semifabricat, listaMateriale, semifabricatContinut);		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END salvare criteriu - TRANZACTIE ANULATA");
+			
+		}else{
+			semif = this.registru.salveazaSemifabricat(semif);
+			//em.persist(proiectNou);
+		}
+		
+		return semif;
+		
+	}
+	
 	@Override
 	public List<CriteriuCalitate> getCriteriiCalitate() throws Exception{
 		List<CriteriuCalitate> criterii = this.registru.getListaCriterii();
@@ -393,10 +411,8 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 		registru.stergeCriteriuCalitate(criteriu);
 	}
 	
-public CriteriuCalitate salveazaCriteriuCalitate(Integer idCriteriu, String criteriu) throws Exception{
-		
+	public CriteriuCalitate salveazaCriteriuCalitate(Integer idCriteriu, String criteriu) throws Exception{
 	
-			
 		CriteriuCalitate criteriuCalitate = new CriteriuCalitate(idCriteriu, criteriu);		
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true){
@@ -428,4 +444,15 @@ public CriteriuCalitate salveazaCriteriuCalitate(Integer idCriteriu, String crit
 		registru.stergeFaza(faza);
 	}
 	
+@Override
+    public List<Utilaj> getUtilaje() throws Exception {
+		List<Utilaj> utilaje=this.registru.getUtilaje();
+		return utilaje;
+	
+	}
+
+    public void stergeUtilaj(Utilaj utilaj) throws Exception{
+    	registru.stergeUtilaj(utilaj);
+    }
+
 }
