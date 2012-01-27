@@ -375,6 +375,16 @@ public interface SalarizareSrv {
 	 * 
 	 */
 	void stergeSpor(Spor spor) throws Exception;
+
+	/**
+	 * sterge o retinere 
+	 * @param Retinere
+	 * 
+	 * @return  
+	 * @throws Exception 
+	 * 
+	 */
+	void stergeRetinere(Retinere retinere) throws Exception;
 	
 	/**
 	 * sterge un pontaj  
