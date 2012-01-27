@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head></h:head>
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Retineri</div>
+	<h:form id="formRetinereForm">
+		<h:panelGrid columns="3" border="1">
+			<p:facet name="header">
+				<h:outputText value="Navigare:"></h:outputText>
+			</p:facet>
+			<h:selectOneMenu id="cboRetinere" value="#{formRetinere.retinere}" converter="#{formRetinere}" disabled="false">
+				<p:selectItems value="#{formRetinere.retineri}"></p:selectItems>
+				<p:ajax render="retinere_denumire cboAngajat cboModCalcul cboLuna retinere_valoare retinere_an optTip"></p:ajax>
+			</h:selectOneMenu>
+			<h:panelGrid columns="2" border="1">
+				<h:commandButton id="cmdPrev"
+					actionListener="#{formRetinere.previousRetinere}" value="Back"></h:commandButton>
+				<h:commandButton id="cmdNext" actionListener="#{formRetinere.nextRetinere}"
+					value="Next"></h:commandButton>
+			</h:panelGrid>
+			
+			<h:message></h:message>
+			<h:outputText value="Denumire:"></h:outputText>
+			<h:inputText id="retinere_denumire" value="#{formRetinere.retinere.denumire}"
+				validator="#{formRetinere.validate}" required="false">
+
+			</h:inputText>
+			<h:message for="retinere_denumire"></h:message>
+			
+			
+			
+			<h:outputText value="Mod Calcul:"></h:outputText>
+			<h:selectOneMenu id="cboModCalcul" value="#{formRetinere.retinere.modCalcul}">
+				<p:selectItems value="#{formRetinere.mapModCalcul}"></p:selectItems>
+			</h:selectOneMenu>
+
+			<h:message for="cboModCalcul" rendered="true"></h:message>
+			<h:outputText value="Valoare:"></h:outputText>
+			<h:inputText id="retinere_valoare" value="#{formRetinere.retinere.valoare}"></h:inputText>
+
+
+
+
+			<h:message for="retinere_valoare" rendered="true"></h:message>
+			<h:outputText value="Tip:"></h:outputText>
+			<h:selectOneRadio id="optTip" value="#{formRetinere.retinere.tip}"
+				layout="pageDirection">
+				<p:selectItems value="#{formRetinere.mapTip}"></p:selectItems>
+			</h:selectOneRadio>
+			
+			<h:message for="optTip"></h:message>
+			<h:outputText value="Angajat:"></h:outputText>
+				<h:selectOneMenu id="cboAngajat" value="#{formRetinere.retinere.angajat}" converter="#{formRetinere}" >
+				<p:selectItems value="#{formRetinere.angajati}"></p:selectItems>
+				<p:ajax></p:ajax>
+			</h:selectOneMenu>
+			<h:message></h:message>
+			<h:outputText value="Luna:"></h:outputText>
+			<h:selectOneMenu id="cboLuna" value="#{formRetinere.retinere.luna}">
+				<p:selectItems value="#{formRetinere.mapLuni}"></p:selectItems>
+			</h:selectOneMenu>
+
+			<h:message for="cboLuna"></h:message>
+			<h:outputText value="An:"></h:outputText>
+			<h:inputText id="retinere_an" value="#{formRetinere.retinere.an}"></h:inputText>
+			<h:message for="retinere_an"></h:message>
+			
+			
+			
+			<h:panelGrid columns="3" border="1"> 
+				<h:commandButton id="cmdAdd"
+					actionListener="#{formRetinere.adaugareRetinere}" value="Add"> 
+					<p:ajax render="@form" execute="@form"></p:ajax>
+				</h:commandButton>
+				<h:commandButton id="cmdSterg"
+					actionListener="#{formRetinere.stergereRetinere}" value="Delete">
+					<p:ajax render="@form" execute="@form"></p:ajax>
+				</h:commandButton>
+				<h:commandButton id="cmdSave"
+					actionListener="#{formRetinere.salvareRetinere}" value="Save">
+					<p:ajax render="@form" execute="@form"></p:ajax>
+				</h:commandButton>
+			</h:panelGrid>
+		</h:panelGrid>
+		<h:messages layout="list" style="color: red" />
+	</h:form>
+</body>
+</html>

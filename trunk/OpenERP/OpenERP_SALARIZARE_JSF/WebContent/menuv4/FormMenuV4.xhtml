@@ -26,6 +26,12 @@
 					<f:attribute name="srcForm" value="FormSpor">
 					</f:attribute>
 				</rich:menuItem>
+				<rich:menuItem label="Retineri" 
+					actionListener="#{formMenu.actionSrcChangeForm}"
+					action="#{formMenu.changeRichSrcFormCurent}" >
+					<f:attribute name="srcForm" value="FormRetinere">
+					</f:attribute>
+				</rich:menuItem>
 				<rich:menuItem label="Pontaj"
 					actionListener="#{formMenu.actionSrcChangeForm}"
 					action="#{formMenu.changeRichSrcFormCurent}" >
