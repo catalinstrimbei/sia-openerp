@@ -15,24 +15,17 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.event.ActionEvent;
-import javax.faces.event.ValueChangeEvent;
-import javax.faces.model.DataModel;
-import javax.faces.model.ListDataModel;
 import javax.faces.validator.ValidatorException;
 import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
-import org.open.erp.services.nomgen.PF;
 import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.nomgen.Produs;
 
-
-
-@ManagedBean(name="formPersoana")
+@ManagedBean(name="formProdus")
 @SessionScoped
-public class FormPersoana implements Converter{
-
+public class FormProdus implements Converter{
 	
 private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().getName());
 	
@@ -41,71 +34,39 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 	private NomenclatoareSrv nomgenInstance;
 	
 	/* Data Model */
-	private List<Persoana> persoane = new ArrayList<Persoana>();
-	private Persoana persoana;
+	private List<Produs> produse = new ArrayList<Produs>();
+	private Produs produs;
 	
-	public Persoana getPersoana() {
-		return persoana;
+	public Produs getProdus() {
+		return produs;
 	}
 
-	public void setPersoana(Persoana p) {
-		logger.debug("Changed persoana : " + p.getId() + " :: " + p.getAdresa());
-		this.persoana = p;
+	public void setProdus(Produs p) {
+		logger.debug("Changed proiect : " + p.getDenumire() + " :: " + p.getUnitateMasura());
+		this.produs = p;
 		//populareModelActivitati();
 	}
 	
 	
-	
-	public Map<String, Persoana> getPersoane(){
-		logger.debug("getPersoane : " + this.persoane.size());
-		Map<String, Persoana> mapPersoane = new HashMap<String, Persoana>();
-		for (Persoana p: this.persoane)
-			mapPersoane.put(p.getAdresa(), p);
-		return mapPersoane;
+	public Map<String, Produs> getProduse(){
+		logger.debug("getPersoane : " + this.produse.size());
+		Map<String, Produs> mapProduse = new HashMap<String, Produs>();
+		for (Produs p: this.produse)
+			mapProduse.put(p.getDenumire(), p);
+		return mapProduse;
 	}
-	
-	private PF pf;
-	private List<PF> pfe;
-	
-	
-	public PF getpf() {
-		
-		logger.debug("get cnp: " + ((pf!=null)? pf.getCnp() : "null") );
-		return pf;
-	}
-
-	public Map<String, PersoanaFizica> getPfe(){
-		logger.debug("getPersoaneFizice : " + this.pfe.size());
-		Map<String, PersoanaFizica> mapPF = new HashMap<String, PersoanaFizica>();
-		for (PF pf: this.pfe)
-			mapPF.put(pf.getNume(), (PersoanaFizica) pf);
-		return mapPF;
-	}
-	
-	
-	private void popularePF(){
-		if (persoana != null){
-			this.pfe = new ArrayList<PF>();
-			this.pfe.addAll(persoana.getPfe());
-			logger.debug("Popularepers fizica ... DEBUG ");
-		}else
-			this.pfe = null;
-	}
-
-	
-	
-	
 	
 	@Override
 	public Object getAsObject(FacesContext ctx, UIComponent uicomp, String uival) {
 		logger.debug("getAsObject:uicomp: " + uicomp.getId());
 		if (uicomp.getId().equals("cboPersoane")){
-			// StringId - to - persoana
-			Integer idPersoana = new Integer(uival);
-			Persoana p = new Persoana();
-			p.setId(idPersoana);
-			Integer idx = this.persoane.indexOf(p);
-			return this.persoane.get(idx);
+			// StringId - to - produs
+			String denumire = new String(uival);
+			//Integer idPersoana = new Integer(uival);
+			Produs p = new Produs();
+			p.setDenumire(denumire);
+			Integer idx = this.produse.indexOf(p);
+			return this.produse.get(idx);
 		}
 		return null;
 	}
@@ -113,79 +74,62 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent uicomp, Object uival) {
 		logger.debug("getAsString:uicomp: " + uicomp.getId());
-		if (uicomp.getId().equals("cboPersoane")){
-			// persoana - to - StringId
-			return ((Persoana)uival).getId().toString();
+		if (uicomp.getId().equals("cboProduse")){
+			// produs - to - StringId
+			return ((Produs)uival).getDenumire().toString();
 		}
 		return null;
 	}
 	
 	
 	/* Actiuni UI Controller */
-	public String nextPersoana(){
-		Integer idx = this.persoane.indexOf(this.persoana) + 1;
+	public String nextProdus(){
+		Integer idx = this.produse.indexOf(this.produs) + 1;
 		
-		logger.debug("Next persoana : " + idx + " | " + this.persoane.size());
+		logger.debug("Next produs : " + idx + " | " + this.produse.size());
 		
-		if (idx > 0 && idx < this.persoane.size()){
-			this.setPersoana(this.persoane.get(idx));
-			popularePF();
+		if (idx > 0 && idx < this.produse.size()){
+			this.setProdus(this.produse.get(idx));
+			//populareModelActivitati();
 		}
 		return "FormPersoana";
 	}
 	
-	public void nextPersoana(ActionEvent evt){
-		nextPersoana();
+	public void nextProdus(ActionEvent evt){
+		nextProdus();
 	}
 
-	public void previousPersoana(ActionEvent evt){
-		previousPersoana();
+	public void previousProdus(ActionEvent evt){
+		previousProdus();
 	}
 	
-	public String previousPersoana(){
-		Integer idx = this.persoane.indexOf(this.persoana) - 1;
+	public String previousProdus(){
+		Integer idx = this.produse.indexOf(this.produs) - 1;
 		
-		logger.debug("Previous persoana : " + idx + " | " + this.persoane.size());
+		logger.debug("Previous produs : " + idx + " | " + this.produse.size());
 		
-		if (idx >= 0 && idx < this.persoane.size()){
-			this.setPersoana(this.persoane.get(idx));
-			popularePF();
+		if (idx >= 0 && idx < this.produse.size()){
+			this.setProdus(this.produse.get(idx));
+			//populareModelActivitati();
 		}
 		
-		return "FormPersoana";
+		return "FormProdus";
 		
 	}	
-	
-
-	public void setPersoanaFizica(ValueChangeEvent evt){
-		
-		
-		
-		//if (this.pfe.isEmpty())
-	for (int idx=0; idx< pfe.size(); idx++)
-	{
-			
-logger.debug("setPFCurenta:: " + this.pfe.set(idx, pf).getNume());
-		this.pf = this.pfe.set(idx, pf);
-		}
-	}
-	
-	
-	
 	
 	
 	
 	/* Actiuni tranzactionale*/
-	public String adaugarePersoana(){
+	public String adaugareProdus(){
 		
-		this.persoana = new Persoana();
-		this.persoane.add(this.persoana);
+		this.produs = new Produs();
+		this.produse.add(this.produs);
 		
-		return "FormPersoana";
+		return "FormProdus";
 	}
 	
 	public boolean getDisableNext(){
-		if (this.persoane.indexOf(this.persoana) == this.persoane.size() - 1){
+		if (this.produse.indexOf(this.produs) == this.produse.size() - 1){
 			logger.debug("Disable Next");
 			return true;
 		}
@@ -195,12 +139,13 @@ logger.debug("setPFCurenta:: " + this.pfe.set(idx, pf).getNume());
 	}
 	
 	public String salvarePersoana() throws Exception{
-		logger.debug("LOGGER Salvare persoana: " + this.persoana.getAdresa() + "::" + this.persoana.getId());
-		this.persoane.remove(this.persoana);
-		this.persoana = nomgenInstance.addPersoana(persoana);
-		this.persoane.add(this.persoana);
-		return "FormPersoana";
+		logger.debug("LOGGER Salvare produs: " + this.produs.getDenumire() + "::" + this.produs.getUnitateMasura());
+		this.produse.remove(this.produs);
+		this.produs = (Produs) nomgenInstance.addProdus(produs);
+		this.produse.add(this.produs);
+		return "FormProdus";
 	}
+	
 	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws Exception{
@@ -216,15 +161,15 @@ logger.debug("setPFCurenta:: " + this.pfe.set(idx, pf).getNume());
 	/*Strategia 1: Injectare privata EJB - referinta EJB nepartajata */
 	@PostConstruct // Referinta EJB injectata este disponibila numai abua in handlerul PostConstruct, si nu la nivelul constructorului
 	private void initForm() throws Exception{
-		logger.debug("PostConstruct FORM Persoane local-proman: ..." + this.nomgenInstance);
+		logger.debug("PostConstruct FORM PRODUSE local-nomgen: ..." + this.nomgenInstance);
 
-		this.persoane = (List<Persoana>) nomgenInstance.getPersoana();
-		if (!persoane.isEmpty())
-			this.persoana = persoane.get(0);
+		this.produse = (List<Produs>) nomgenInstance.getProduse();
+		if (!produse.isEmpty())
+			this.produs = produse.get(0);
 		else{
 			System.out.println("No person available!");
-			this.persoana = new Persoana();
-			persoana.setAdresa("Adresa....");
+			this.produs = new Produs();
+			produs.setDenumire("Denumire....");
 		}
 		
 	}
@@ -267,6 +212,4 @@ logger.debug("setPFCurenta:: " + this.pfe.set(idx, pf).getNume());
 	
 	
 	
-	
-
 }
