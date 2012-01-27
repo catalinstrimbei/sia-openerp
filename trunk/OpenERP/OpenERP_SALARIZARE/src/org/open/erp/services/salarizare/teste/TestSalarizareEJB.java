@@ -190,7 +190,7 @@ public class TestSalarizareEJB {
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
 		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
 		
-		Retinere retinere = salarizareSrvInstance.inregistrareRetinere("Penalizare", 1, 2011, 11, angajat, 1, 100.0);
+		Retinere retinere = salarizareSrvInstance.inregistrareRetinere(555,"Penalizare", 1, 2011, 11, angajat, 1, 100.0);
 		logger.info("A fost creat sporul cu id-ul: "+retinere.getIdRetinere());
 		assertNotNull("Metoda de creare a retinerii nu a functionat!", retinere);
 		

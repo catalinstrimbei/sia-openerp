@@ -227,8 +227,10 @@ public class RegistruSalarizare {
 	
 	public Retinere salveazaRetinere(Retinere retinere) throws Exception{
 		try{
-			if (retinere.getIdRetinere() == null || 
-				entityManager.find(retinere.getClass(), retinere.getIdRetinere()) == null)
+			if (retinere.getIdRetinere() == null 
+					//|| 
+				//entityManager.find(retinere.getClass(), retinere.getIdRetinere()) == null
+				)
 				entityManager.persist(retinere);
 			else
 				entityManager.merge(retinere);

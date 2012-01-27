@@ -171,7 +171,7 @@ public class TestSalarizareImpl {
 	public void testInregistrareRetinere() throws Exception {
 		logger.info("Begin test: inregistrareRetinere");
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
-		Retinere retinere = salarizareSrvInstance.inregistrareRetinere("Penalizare", 1, 2011, 11, angajat, 1, 100.0);
+		Retinere retinere = salarizareSrvInstance.inregistrareRetinere(555,"Penalizare", 1, 2011, 11, angajat, 1, 100.0);
 		assertNotNull("Metoda de creare a retinerii nu a functionat!", retinere);
 		
 		logger.info("End test: inregistrareRetinere");

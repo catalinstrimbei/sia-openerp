@@ -154,6 +154,7 @@ public interface SalarizareSrv {
 	/**
 	 * Adauga o retinere pentru un angajat sau pt toti angajatii (practic e un create din CRUD)
 	 * 
+	 * @param denumire			id retinere
 	 * @param denumire			Denumirea retinerii
 	 * @param tip				1=>La nivel de angajat, 2=>pt toti angajatii (angajat va fi trimis null)
 	 * @param an 				Anul pentru care se adauga sporul
@@ -165,7 +166,7 @@ public interface SalarizareSrv {
 	 * @throws Exception 
 	 * 
 	 */
-	Retinere inregistrareRetinere(String denumire, Integer tip, Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception;
+	Retinere inregistrareRetinere(Integer id, String denumire, Integer tip, Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception;
 	
 	/**
 	 * Calculeaza retinerile pentru un angajat (poate avea mai multe intr-o luna) si le insumeaza - mai putin retinerile obligatorii
