@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Lista Promotii</div>
+	<h:form id="listaPromotii">
+		<h:panelGrid columns="3" border="1">
+			<p:facet name="header">
+				<h:outputText value="Promotii"></h:outputText>
+			</p:facet>
+			<h:selectOneMenu id="cboPromotie" value="#{ListaPromotiiImpl.promotie}" converter="#{ListaPromotiiImpl}" style="width: 254px; ">
+				<p:selectItems value="#{ListaPromotiiImpl.promotii}"></p:selectItems>
+				<p:ajax render="@form"></p:ajax>
+			</h:selectOneMenu>
+			<h:panelGrid columns="2" border="1">
+				<h:commandButton id="cmdPrev"
+					actionListener="#{ListaPromotiiImpl.PromotieAnterioara}" value="Back"></h:commandButton>
+				<h:commandButton id="cmdNext"
+					actionListener="#{ListaPromotiiImpl.PromotieUrmatoare}" value="Next"></h:commandButton>
+
+			</h:panelGrid>
+			<h:message></h:message>
+			<h:outputText value="Denumire promotie"></h:outputText>
+			<h:inputText id="denumire_promotie"
+				value="#{ListaPromotiiImpl.promotie.denumirePromotie}"></h:inputText>
+			<h:message for="denumire_promotie"></h:message>
+			<h:outputText value="Mesaj promotional:"></h:outputText>
+			<h:inputText id="mesaj_promotional"
+				value="#{ListaPromotiiImpl.promotie.mesajPromotional}"></h:inputText>
+			<h:message for="mesaj_promotional"></h:message>
+			
+			
+			<h:outputText value="Id_Promotie"></h:outputText>
+			<h:inputText id="id_promotie"
+				value="#{ListaPromotiiImpl.promotie.idPromotie}"></h:inputText>
+			<h:message for="id_promotie"></h:message>
+			<h:panelGrid columns="3" border="1">
+				<h:commandButton id="cmdAddPromotie" value="Adauga promotie"
+					actionListener="#{ListaPromotiiImpl.adaugaPromotie}"
+					immediate="false">
+					<p:ajax execute="@none" render="@form"></p:ajax>
+				</h:commandButton>
+				<h:commandButton id="cmdSalveazaPromotie"
+					actionListener="#{ListaPromotiiImpl.salveazaPromotie}"
+					value="Salveaza promotie" immediate="true">
+
+				</h:commandButton>
+			</h:panelGrid>
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>
