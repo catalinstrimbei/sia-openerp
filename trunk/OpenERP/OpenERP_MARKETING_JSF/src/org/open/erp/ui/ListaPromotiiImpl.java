@@ -17,6 +17,7 @@ import javax.faces.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.MarketingManagementSrvLocal;
+import org.open.erp.services.marketing.MarketingManagementSrvRemote;
 import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 
@@ -31,9 +32,8 @@ public class ListaPromotiiImpl implements Converter{
 	
 	private Logger logger;
 	
-	
-	@EJB(mappedName="MarketingManagementSrv/local", name="MarketingManagementSrv/local") 
-	private MarketingManagementSrv marketingSrv;
+	@EJB(mappedName="MarketingManagementSrvRemote/local", name="MarketingManagementSrvRemote/local") 
+	private MarketingManagementSrvLocal marketingSrv;
 	
 	@PostConstruct
 	public void initListaPromotii() throws Exception{
