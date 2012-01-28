@@ -1,6 +1,4 @@
-#summary <br>
 <h2>Pagina modulului VANZARI.</h2>
-</br>
     <h3>Functionalitatile modulului VANZARI:</h3>
       # Crearea si gestionarea comenzilor
       # Crearea si gestionarea facturilor
