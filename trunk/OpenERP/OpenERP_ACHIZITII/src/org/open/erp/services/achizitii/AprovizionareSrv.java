@@ -1,6 +1,7 @@
  package org.open.erp.services.achizitii;
 
 import java.beans.PropertyChangeListener;
+import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -162,6 +163,87 @@ public interface AprovizionareSrv extends PropertyChangeListener{
    	 */   
 	NIR adaugareLiniiNir(NIR nir, List<LinieDocument> liniiNIR)
 			throws CtbException;
+	Articol getArticoleById(Integer idMaterial_) throws Exception;
+	Collection<Articol> getListaArticole() throws Exception;
+	Articol salveazaArticol(Articol articol_) throws Exception;
+	void stergeArticol(Articol articol_) throws Exception;
+	Categorie getCategorieById(long id_cat_) throws Exception;
+	Collection<Categorie> getListaCategorii() throws Exception;
+	Categorie salveazaCategorie(Categorie categorie_) throws Exception;
+	void stergeCategorie(Categorie categorie_) throws Exception;
+	CerereOferta getCerereOfertaById(long id_CerereOferta_) throws Exception;
+	Collection<CerereOferta> getListaCereriOferta() throws Exception;
+	CerereOferta salveazaCerereOferta(CerereOferta cerereOferta_)
+			throws Exception;
+	void stergeCerereOferta(CerereOferta cerereOferta_) throws Exception;
+	Comanda getComandaById(Integer idComanda_) throws Exception;
+	Collection<Comanda> getListaComenzi() throws Exception;
+	Comanda salveazaComanda(Comanda comanda_) throws Exception;
+	void stergeComanda(Comanda comanda_) throws Exception;
+	NIR getNIRByIdId(long nrDocument_) throws Exception;
+	Collection<NIR> getListaNIR() throws Exception;
+	NIR salveazaNIR(NIR NIR_) throws Exception;
+	void stergeNIR(NIR NIR_) throws Exception;
+	OfertaAchizitie getOfertaAchizitie(long id_OfertaAchizitie_)
+			throws Exception;
+	Collection<OfertaAchizitie> getListaOfertaAchizitie() throws Exception;
+	OfertaAchizitie salveazaOfertaAchizitie(OfertaAchizitie OfertaAchizitie_)
+			throws Exception;
+	void stergeOfertaAchizitie(OfertaAchizitie OfertaAchizitie)
+			throws Exception;
+	PlanAprovizionare getPlanAprovizionareById(long idPlanAprovizionare_)
+			throws Exception;
+	Collection<PlanAprovizionare> getListaPlanAprovizionare() throws Exception;
+	PlanAprovizionare salveazaPlanAprovizionare(
+			PlanAprovizionare PlanAprovizionare_) throws Exception;
+	void stergePlanAprovizionare(PlanAprovizionare PlanAprovizionare_)
+			throws Exception;
+	Factura getFacturaById(Integer idActivitate_) throws Exception;
+	Collection<Factura> getListaFactura() throws Exception;
+	Factura salveazaFactura(Factura factura_) throws Exception;
+	void stergeFactura(Factura factura_) throws Exception;
+	Furnizor getFurnizorById(Integer id_) throws Exception;
+	Collection<Furnizor> getListaFurnizor() throws Exception;
+	Furnizor salveazaFurnizor(Furnizor furnizor_) throws Exception;
+	LinieCerereOferta getLinieCerereOfertaById(Integer idliniecerereoferta_)
+			throws Exception;
+	Collection<LinieCerereOferta> getLinieCerereOferta() throws Exception;
+	LinieCerereOferta salveazaLinieCerereOferta(
+			LinieCerereOferta liniecerereoferta_) throws Exception;
+	void stergeLinieCerereOferta(LinieCerereOferta liniecerereoferta_)
+			throws Exception;
+	LinieComanda getLinieComandaById(Integer idliniecomanda_) throws Exception;
+	Collection<LinieComanda> getLinieComanda() throws Exception;
+	LinieComanda salveazaLinieComanda(LinieComanda liniecomanda_)
+			throws Exception;
+	void stergeLinieComanda(LinieComanda liniecomanda_) throws Exception;
+	LinieFacturaAchizitie getLinieFacturaAchizitieById(Integer linieDoc)
+			throws Exception;
+	Collection<LinieFacturaAchizitie> getLinieFacturaAchizitie()
+			throws Exception;
+	LinieFacturaAchizitie salveazaLinieFacturaAchizitie(
+			LinieFacturaAchizitie lfactAchiz_) throws Exception;
+	void stergeLinieFacturaAchizitie(LinieFacturaAchizitie lFactAchiz_)
+			throws Exception;
+	LinieNIR getLinieNIRById(Integer linieDoc) throws Exception;
+	Collection<LinieNIR> getLinieNIR() throws Exception;
+	LinieNIR salveazaLinieNIR(LinieNIR linieNir_) throws Exception;
+	void stergeLinieNIR(LinieNIR linieNir_) throws Exception;
+	LinieOfertaAchizitie getLinieOfertaAchizitieById(Integer linieDoc)
+			throws Exception;
+	Collection<LinieOfertaAchizitie> getLinieOfertaAchizitie() throws Exception;
+	LinieOfertaAchizitie salveazaLinieOfertaAchizitie(
+			LinieOfertaAchizitie lofertaAchiz_) throws Exception;
+	void stergeLinieOfertaAchizitie(LinieOfertaAchizitie lofertaAchiz_)
+			throws Exception;
+	LiniePlanAprovizionare getLiniePlanAprovizionareById(
+			Integer idLiniePlanAprovizionare) throws Exception;
+	LiniePlanAprovizionare salveazaLiniePlanAprovizionare(
+			LiniePlanAprovizionare lofertaAprov_) throws Exception;
+	void stergeLiniePlanAprovizionare(LiniePlanAprovizionare lofertaAprov_)
+			throws Exception;
+	Collection<LiniePlanAprovizionare> getLiniePlanAprovizionare()
+			throws Exception;
   	
     
     }
