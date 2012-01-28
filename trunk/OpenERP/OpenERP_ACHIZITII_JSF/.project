@@ -3,6 +3,7 @@
 	<name>OpenERP_ACHIZITII_JSF</name>
 	<comment></comment>
 	<projects>
+		<project>OpenERP_ACHIZITII</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
