@@ -1,131 +1,68 @@
 package org.open.erp.services.contabgest;
 
-import static javax.persistence.TemporalType.TIMESTAMP;
-
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.CascadeType;
 
 
-import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.productie.FazaProductie;
-
-/**
- * 
- * @author andreea.andronic, marius.borsan, andreea.zaharia, anca.zavate
- * 
- * @BusinessObject(Entity)
- * 
- */
 @Entity
-public class CentruCost implements Serializable {
+public class CentruCost implements Serializable{
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue
+	@Id@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idCentruCost;
+	private String denCentruCost;
+	@Temporal(javax.persistence.TemporalType.DATE)
+	private Date startCentruCost;
+	@Temporal(javax.persistence.TemporalType.DATE)
+	private Date sfarsitCentruCost;
 	
-	private String denumireCentruCost;
-	private FazaProductie faza;
+	@ManyToOne @JoinColumn(name = "idResponsabilCentruCost")
+	private ResponabilCentruCost responabilCentruCost;
 	
-	@Temporal(TIMESTAMP)
-	private Date dataStart = new Date();
-	
-	@Temporal(TIMESTAMP)
-	private Date dataSfarsit;
-	
-	private Double sumaCentruCost;
-	
-	private Integer status = CentruCost.IN_ALOCARE;
-	
-	@ManyToOne
-	private Angajat responsabil;
-	
-	// Costuri primare
-	@ManyToOne
-	@JoinColumn(name="idCostPrimar")
-	private CosturiPrimare costuriPrimare;
-	
-	@OneToMany (mappedBy = "centruCost", targetEntity = ActivitateCentruCost.class)
-	List <Activitate> activitati = new ArrayList<Activitate>();
+	@ManyToOne @JoinColumn(name = "idFazaProductie")
+	private DummyFazaProductie dummyFazaProductie;
 
+	@ManyToOne @JoinColumn(name = "idProces")
+	private ProceseTehnicoEconomice proceseTehnicoEconomice;
 	
-
-
+	@ManyToOne @JoinColumn(name = "idProdusFinit")
+	private ProdusFinit produsfinit;
 	
-	public static final Integer IN_ALOCARE = -1;
-	public static final Integer ALOCAT = 0;
-	public static final Integer IN_CURS = 1;
-	public static final Integer FINALIZAT = 2;
-
-	//
+	@ManyToOne @JoinColumn(name = "idCheltVariabile")
+	private CheltuieliVariabile cheltuieliVariabile;
+	
+	@ManyToOne @JoinColumn(name = "idCheltFix")
+	private CheltuieliFixe cheltuieliFixe;
+	
+	
 
 	public CentruCost() {
 		super();
 	}
 
-	public CentruCost(Integer idCentruCost, String denumireCentruCost,
-			FazaProductie faza, Date dataStart, Date dataSfarsit,
-			Double sumaCentruCost, Integer status, Angajat responsabil,
-			CosturiPrimare costuriPrimare, List<Activitate> activitati) {
+
+
+	public CentruCost(Integer idCentruCost, String denCentruCost,
+			Date startCentruCost, Date sfarsitCentruCost) {
 		super();
 		this.idCentruCost = idCentruCost;
-		this.denumireCentruCost = denumireCentruCost;
-		this.faza = faza;
-		this.dataStart = dataStart;
-		this.dataSfarsit = dataSfarsit;
-		this.sumaCentruCost = sumaCentruCost;
-		this.status = status;
-		this.responsabil = responsabil;
-		this.costuriPrimare = costuriPrimare;
-		this.activitati = activitati;
-	}
-	
-	
-	public CentruCost(Integer idCentruCost, String denumireCentruCost,
-			Date dataStart, Date dataSfarsit, Double sumaCentruCost,
-			Angajat responsabil) {
-		super();
-		this.idCentruCost = idCentruCost;
-		this.denumireCentruCost = denumireCentruCost;
-		this.dataStart = dataStart;
-		this.dataSfarsit = dataSfarsit;
-		this.sumaCentruCost = sumaCentruCost;
-		this.responsabil = responsabil;
+		this.denCentruCost = denCentruCost;
+		this.startCentruCost = startCentruCost;
+		this.sfarsitCentruCost = sfarsitCentruCost;
 	}
 
-	
-	
 
-	public CentruCost(String denumireCentruCost, FazaProductie faza,
-			Angajat responsabil, Date dataStart, Date dataSfarsit,
-			Double sumaCentruCost) {
-		super();
-		this.denumireCentruCost = denumireCentruCost;
-		this.dataStart = dataStart;
-		this.dataSfarsit = dataSfarsit;
-		this.sumaCentruCost = sumaCentruCost;
-		this.responsabil = responsabil;
-	}
 
 	public Integer getIdCentruCost() {
 		return idCentruCost;
@@ -135,108 +72,46 @@ public class CentruCost implements Serializable {
 		this.idCentruCost = idCentruCost;
 	}
 
-	public String getDenumireCentruCost() {
-		return denumireCentruCost;
+	public String getDenCentruCost() {
+		return denCentruCost;
 	}
 
-	public void setDenumireCentruCost(String denumireCentruCost) {
-		this.denumireCentruCost = denumireCentruCost;
+	public void setDenCentruCost(String denCentruCost) {
+		this.denCentruCost = denCentruCost;
 	}
 
-	public Date getDataStart() {
-		return dataStart;
+	public Date getStartCentruCost() {
+		return startCentruCost;
 	}
 
-	public void setDataStart(Date dataStart) {
-		this.dataStart = dataStart;
+	public void setStartCentruCost(Date startCentruCost) {
+		this.startCentruCost = startCentruCost;
 	}
 
-	public Date getDataSfarsit() {
-		return dataSfarsit;
+	public Date getSfarsitCentruCost() {
+		return sfarsitCentruCost;
 	}
 
-	public void setDataSfarsit(Date dataSfarsit) {
-		this.dataSfarsit = dataSfarsit;
+	public void setSfarsitCentruCost(Date sfarsitCentruCost) {
+		this.sfarsitCentruCost = sfarsitCentruCost;
 	}
 
-	public Double getSumaCentruCost() {
-		return sumaCentruCost;
-	}
 
-	public void setSumaCentruCost(Double sumaCentruCost) {
-		this.sumaCentruCost = sumaCentruCost;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public Angajat getAngajat() {
-		return responsabil;
-	}
-
-	public void setAngajat(Angajat responsabil) {
-		this.responsabil = responsabil;
-	}
-
-	public CosturiPrimare getCosturiPrimare() {
-		return costuriPrimare;
-	}
-
-	public void setCosturiPrimare(CosturiPrimare costuriPrimare) {
-		this.costuriPrimare = costuriPrimare;
-	}
-
-	public List<Activitate> getActivitati() {
-		return activitati;
-	}
-
-	public FazaProductie getFaza() {
-		return faza;
-	}
-
-	public void setFaza(FazaProductie faza) {
-		this.faza = faza;
-	}
-
-	//public void setActivitati(Map<Activitate, LinieCost> activitati) {
-	//	this.activitati = activitati;
-	//}
-
-	public void adaugaActivitate(Activitate activitate) {
-		this.activitati.add(activitate);
-	}
 
 	
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((idCentruCost == null) ? 0 : idCentruCost.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CentruCost other = (CentruCost) obj;
-		if (idCentruCost == null) {
-			if (other.idCentruCost != null)
-				return false;
-		} else if (!idCentruCost.equals(other.idCentruCost))
-			return false;
-		return true;
-	}
+	
 
+
+
+	
+
+
+
+	
+
+
+	
+	
 }

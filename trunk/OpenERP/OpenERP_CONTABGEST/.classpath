@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="/OpenERP_PERSONAL"/>
-	<classpathentry kind="src" path="/OpenERP_NOMGEN"/>
-	<classpathentry kind="src" path="/OpenERP_CONTABGEN"/>
-	<classpathentry kind="src" path="/OpenERP_PRODUCTIE"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/junit-4.10.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.16.jar"/>
@@ -20,5 +16,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/OpenERP_PERSONAL.jar"/>
+	<classpathentry kind="lib" path="E:/_jboss-5.0.1.GA/jboss-5.0.1.GA/common/lib/ejb3-persistence.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

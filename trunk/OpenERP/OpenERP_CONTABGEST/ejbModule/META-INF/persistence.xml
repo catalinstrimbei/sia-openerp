@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="OpenERP_CONTABGEST" transaction-type="JTA">
+	<persistence-unit name="OpenERP_CONTABGEST">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
-			
-
-
-		<jar-file>OpenERP_PERSONAL.jar</jar-file>	
-		<jar-file>OpenERP_PRODUCTIE.jar</jar-file>
-		<jar-file> OpenERP_ACHIZITII.jar</jar-file>
-		
-		<class>org.open.erp.services.contabgest.ActivitateCentruCost</class>
+		<jta-data-source>java:jdbc/FeaaORCL_XA</jta-data-source>
+		<jar-file>OpenERP_PERSONAL.jar</jar-file>
+		<class>org.open.erp.services.contabgest.DummyFazaProductie</class>
+		<class>org.open.erp.services.contabgest.ResponabilCentruCost</class>
+		<class>org.open.erp.services.contabgest.ProceseTehnicoEconomice</class>
+		<class>org.open.erp.services.contabgest.TipCheltuieli</class>
+		<class>org.open.erp.services.contabgest.CheltuieliFixe</class>
+		<class>org.open.erp.services.contabgest.CheltuieliVariabile</class>
 		<class>org.open.erp.services.contabgest.CentruCost</class>
-		<class>org.open.erp.services.contabgest.CosturiPrimare</class>
-		<class>org.open.erp.services.contabgest.LinieCost</class>
-		<class>org.open.erp.services.contabgest.Responsabil</class>
+		<class>org.open.erp.services.contabgest.ProdusFinit</class>
 		<class>org.open.erp.services.personal.Angajat</class>
-		
 		
 		
 		<properties>
