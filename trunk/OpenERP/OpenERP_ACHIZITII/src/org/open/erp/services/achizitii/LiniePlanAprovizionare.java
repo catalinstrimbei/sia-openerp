@@ -25,7 +25,7 @@ public class LiniePlanAprovizionare implements Serializable{
 	 */
 	private static final long serialVersionUID = 5202104811994461383L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private long idLiniePlanAprovizionare;
 	@ManyToOne@JoinColumn(name="idPlanAprovizionare")	
 	private PlanAprovizionare planAprovizionare;

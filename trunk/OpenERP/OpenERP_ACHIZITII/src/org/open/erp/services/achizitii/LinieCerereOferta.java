@@ -26,7 +26,7 @@ public class LinieCerereOferta implements Serializable {
 	private static final long serialVersionUID = 4172749872241504774L;
 
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
+//@GeneratedValue(strategy = GenerationType.AUTO)
 private long idLinieCerereOferta;
 
 public long getIdLinieCerereOferta() {

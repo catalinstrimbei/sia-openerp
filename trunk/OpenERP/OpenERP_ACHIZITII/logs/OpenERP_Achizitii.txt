@@ -1,47 +1,63 @@
-(A2) 2012-01-28 03:37:30,436 [main] DEBUG org.jnp.interfaces.TimedSocketFactory - createSocket, hostAddr: localhost/127.0.0.1, port: 1099, localAddr: null, localPort: 0, timeout: 0
-(A2) 2012-01-28 03:37:31,300 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for StocuriSrv/remote
-(A2) 2012-01-28 03:37:31,767 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-28 03:37:31,769 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-28 03:37:31,769 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-28 03:37:31,791 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] connected
-(A2) 2012-01-28 03:37:31,898 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-28 03:37:32,180 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-28 03:37:32,180 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-28 03:37:32,181 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=49908].a1d1f4] closing socket
-(A2) 2012-01-28 03:37:32,182 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=49908].a1d1f4] closed socket
-(A2) 2012-01-28 03:37:32,182 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy7 for EJB3 Business Interface: org.open.erp.services.stocuri.StocuriSrvRemote
-(A2) 2012-01-28 03:37:32,189 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for AprovizionareSrv/remote
-(A2) 2012-01-28 03:37:32,190 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[16e1fb1, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-28 03:37:32,190 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[16e1fb1, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-28 03:37:32,190 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-28 03:37:32,191 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[16e1fb1, socket://127.0.0.1:3873] connected
-(A2) 2012-01-28 03:37:32,204 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-28 03:37:32,774 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[16e1fb1, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-28 03:37:32,774 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[16e1fb1, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-28 03:37:32,774 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=49909].bdb503] closing socket
-(A2) 2012-01-28 03:37:32,775 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=49909].bdb503] closed socket
-(A2) 2012-01-28 03:37:32,775 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy9 for EJB3 Business Interface: org.open.erp.services.achizitii.AprovizionareSrvRemote
-(A2) 2012-01-28 03:37:32,849 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for NomenclatoareSrv/remote
-(A2) 2012-01-28 03:37:32,850 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[7f4ec, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-28 03:37:32,850 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[7f4ec, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-28 03:37:32,850 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-28 03:37:32,850 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[7f4ec, socket://127.0.0.1:3873] connected
-(A2) 2012-01-28 03:37:32,864 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-28 03:37:34,049 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[7f4ec, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-28 03:37:34,049 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[7f4ec, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-28 03:37:34,050 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=49913].18b3364] closing socket
-(A2) 2012-01-28 03:37:34,050 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=49913].18b3364] closed socket
-(A2) 2012-01-28 03:37:34,051 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy11 for EJB3 Business Interface: org.open.erp.services.nomgen.NomenclatoareSrvRemote
-(A2) 2012-01-28 03:37:34,066 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for ContabilizareSrv/remote
-(A2) 2012-01-28 03:37:34,067 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[29e357, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-28 03:37:34,068 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[29e357, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-28 03:37:34,068 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-28 03:37:34,068 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[29e357, socket://127.0.0.1:3873] connected
-(A2) 2012-01-28 03:37:34,080 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-28 03:37:34,421 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[29e357, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-28 03:37:34,422 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[29e357, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-28 03:37:34,422 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=49914].142bece] closing socket
-(A2) 2012-01-28 03:37:34,422 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=49914].142bece] closed socket
-(A2) 2012-01-28 03:37:34,423 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy13 for EJB3 Business Interface: org.open.erp.services.ctbgen.ContabilizareSrvRemote
-(A2) 2012-01-28 03:37:34,452 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareEJBLogic - Begin test: Insert-uri
-(A2) 2012-01-28 03:37:34,468 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareEJBLogic - End test: Insert-uri
+(A2) 2012-01-28 04:46:03,440 [main] DEBUG org.jnp.interfaces.TimedSocketFactory - createSocket, hostAddr: localhost/127.0.0.1, port: 1099, localAddr: null, localPort: 0, timeout: 0
+(A2) 2012-01-28 04:46:03,692 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for StocuriSrv/remote
+(A2) 2012-01-28 04:46:03,838 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] constructed
+(A2) 2012-01-28 04:46:03,839 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] connecting
+(A2) 2012-01-28 04:46:03,840 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
+(A2) 2012-01-28 04:46:03,842 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] connected
+(A2) 2012-01-28 04:46:03,889 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
+(A2) 2012-01-28 04:46:03,994 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] from registry
+(A2) 2012-01-28 04:46:03,994 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[4f80d6, socket://127.0.0.1:3873] disconnecting ...
+(A2) 2012-01-28 04:46:03,994 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52427].a1d1f4] closing socket
+(A2) 2012-01-28 04:46:03,995 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52427].a1d1f4] closed socket
+(A2) 2012-01-28 04:46:03,995 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy7 for EJB3 Business Interface: org.open.erp.services.stocuri.StocuriSrvRemote
+(A2) 2012-01-28 04:46:04,003 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for AprovizionareSrv/remote
+(A2) 2012-01-28 04:46:04,004 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[16bd8ea, socket://127.0.0.1:3873] constructed
+(A2) 2012-01-28 04:46:04,004 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[16bd8ea, socket://127.0.0.1:3873] connecting
+(A2) 2012-01-28 04:46:04,004 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
+(A2) 2012-01-28 04:46:04,004 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[16bd8ea, socket://127.0.0.1:3873] connected
+(A2) 2012-01-28 04:46:04,019 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
+(A2) 2012-01-28 04:46:04,573 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[16bd8ea, socket://127.0.0.1:3873] from registry
+(A2) 2012-01-28 04:46:04,573 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[16bd8ea, socket://127.0.0.1:3873] disconnecting ...
+(A2) 2012-01-28 04:46:04,573 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52428].19360e2] closing socket
+(A2) 2012-01-28 04:46:04,574 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52428].19360e2] closed socket
+(A2) 2012-01-28 04:46:04,574 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy9 for EJB3 Business Interface: org.open.erp.services.achizitii.AprovizionareSrvRemote
+(A2) 2012-01-28 04:46:04,592 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for NomenclatoareSrv/remote
+(A2) 2012-01-28 04:46:04,593 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[181ed9e, socket://127.0.0.1:3873] constructed
+(A2) 2012-01-28 04:46:04,593 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[181ed9e, socket://127.0.0.1:3873] connecting
+(A2) 2012-01-28 04:46:04,593 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
+(A2) 2012-01-28 04:46:04,593 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[181ed9e, socket://127.0.0.1:3873] connected
+(A2) 2012-01-28 04:46:04,607 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
+(A2) 2012-01-28 04:46:04,880 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[181ed9e, socket://127.0.0.1:3873] from registry
+(A2) 2012-01-28 04:46:04,880 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[181ed9e, socket://127.0.0.1:3873] disconnecting ...
+(A2) 2012-01-28 04:46:04,880 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52431].16dadf9] closing socket
+(A2) 2012-01-28 04:46:04,880 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52431].16dadf9] closed socket
+(A2) 2012-01-28 04:46:04,881 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy11 for EJB3 Business Interface: org.open.erp.services.nomgen.NomenclatoareSrvRemote
+(A2) 2012-01-28 04:46:04,909 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for ContabilizareSrv/remote
+(A2) 2012-01-28 04:46:04,910 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1aaf0b3, socket://127.0.0.1:3873] constructed
+(A2) 2012-01-28 04:46:04,910 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1aaf0b3, socket://127.0.0.1:3873] connecting
+(A2) 2012-01-28 04:46:04,910 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
+(A2) 2012-01-28 04:46:04,910 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1aaf0b3, socket://127.0.0.1:3873] connected
+(A2) 2012-01-28 04:46:04,931 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
+(A2) 2012-01-28 04:46:05,158 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[181ed9e, socket://127.0.0.1:3873] disconnecting ...
+(A2) 2012-01-28 04:46:05,158 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[181ed9e, socket://127.0.0.1:3873] disconnecting ...
+(A2) 2012-01-28 04:46:05,158 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[16bd8ea, socket://127.0.0.1:3873] disconnecting ...
+(A2) 2012-01-28 04:46:05,158 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[16bd8ea, socket://127.0.0.1:3873] disconnecting ...
+(A2) 2012-01-28 04:46:05,169 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[1aaf0b3, socket://127.0.0.1:3873] from registry
+(A2) 2012-01-28 04:46:05,170 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1aaf0b3, socket://127.0.0.1:3873] disconnecting ...
+(A2) 2012-01-28 04:46:05,170 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52432].1f297e7] closing socket
+(A2) 2012-01-28 04:46:05,171 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52432].1f297e7] closed socket
+(A2) 2012-01-28 04:46:05,171 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy13 for EJB3 Business Interface: org.open.erp.services.ctbgen.ContabilizareSrvRemote
+(A2) 2012-01-28 04:46:05,194 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareEJBLogic - Begin test: Insert-uri
+(A2) 2012-01-28 04:46:05,197 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@18bf072: Current invocation "public abstract org.open.erp.services.achizitii.Categorie org.open.erp.services.achizitii.AprovizionareSrv.salveazaCategorie(org.open.erp.services.achizitii.Categorie) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@18bf072
+(A2) 2012-01-28 04:46:05,231 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaCategorie(org.open.erp.services.achizitii.Categorie); using hash: 8696217084160920473
+(A2) 2012-01-28 04:46:05,285 [main] DEBUG org.jboss.security.SecurityAssociation - Using ThreadLocal: false
+(A2) 2012-01-28 04:46:05,389 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[17494c8, socket://127.0.0.1:3873] constructed
+(A2) 2012-01-28 04:46:05,389 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[17494c8, socket://127.0.0.1:3873] connecting
+(A2) 2012-01-28 04:46:05,389 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
+(A2) 2012-01-28 04:46:05,390 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[17494c8, socket://127.0.0.1:3873] connected
+(A2) 2012-01-28 04:46:05,408 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
+(A2) 2012-01-28 04:46:12,931 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[17494c8, socket://127.0.0.1:3873] from registry
+(A2) 2012-01-28 04:46:12,932 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[17494c8, socket://127.0.0.1:3873] disconnecting ...
+(A2) 2012-01-28 04:46:12,932 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52433].1e57e8f] closing socket
+(A2) 2012-01-28 04:46:12,932 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=52433].1e57e8f] closed socket
+(A2) 2012-01-28 04:46:12,932 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareEJBLogic - End test: Insert-uri

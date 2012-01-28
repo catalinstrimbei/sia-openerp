@@ -36,7 +36,7 @@ public class Comanda implements Serializable {
 	public static final Integer ANULATA = -1;
 	public static final Integer IN_CURS = 0;
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)	
+    //@GeneratedValue(strategy = GenerationType.AUTO)	
     private Integer idComanda;	
 	@ManyToOne@JoinColumn(name="idFurnizor")
 	private Furnizor furnizor;

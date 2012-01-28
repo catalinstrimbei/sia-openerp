@@ -62,7 +62,13 @@ public class TestAprovizionareRegistri {
 		@SuppressWarnings("unused")
 		List<Categorie> listCategorii =new ArrayList<Categorie>();	
 		Categorie cat = new Categorie(1,"Categorie1");
-		//this.aprovizionareInstance.registru.salveazaCategorie(cat);
+		try{
+			this.aprovizionareInstance.salveazaCategorie(cat);
+		}
+		catch(Exception ex){
+			logger.debug("ERROR: "+ex.getMessage());
+		}
+		
 			
 			logger.debug("End test: Insert-uri");
 		}

@@ -39,7 +39,7 @@ public static final Integer TRIMISA = 0;
 public static final Integer PRIMITA = 1;
 public static final Integer ANULATA =-1;
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
+//@GeneratedValue(strategy = GenerationType.AUTO)
 private long id_CerereOferta;
 @Temporal(TemporalType.DATE)
 private Date dataCerere;

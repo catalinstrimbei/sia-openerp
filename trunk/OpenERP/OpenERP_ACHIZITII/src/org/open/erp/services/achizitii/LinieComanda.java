@@ -33,7 +33,7 @@ public class LinieComanda implements Serializable  {
 		this.idLinieComanda = idLinieComanda;
 	}
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private long idLinieComanda;
 	private Integer linieComanda;
 	

@@ -1172,6 +1172,75 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 			throw ex;
 		}
 	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public Collection<OfertaAchizitie> getOferteAchizitiePerFurnizor(Furnizor furnizor_) throws Exception{
+		try{
+			return registruEJB.getOferteAchizitiePerFurnizor(furnizor_);
+		}catch(Exception ex){
+			logger.error("ERROR: "+ex.getMessage());
+			throw ex;
+		}
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public Collection<Articol> getArticolePeCategorii(Categorie categorie_) throws Exception{
+		try{
+			return registruEJB.getArticolePeCategorii(categorie_);
+		}catch(Exception ex){
+			logger.error("ERROR "  + ex.getMessage());
+			throw ex;
+		}
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public Collection<Categorie> getCategoriiPeFurnizori(Furnizor furnizor_) throws Exception{
+		try{
+			return registruEJB.getCategoriiPeFurnizori(furnizor_);
+		}catch(Exception ex){
+			logger.error("ERROR "  + ex.getMessage());
+			throw ex;
+		}
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public Collection<CerereOferta> getCereriOfertaPeStatus(Integer statusCerereOferta_) throws Exception{
+		try{
+			return registruEJB.getCereriOfertaPeStatus(statusCerereOferta_);
+		}catch(Exception ex){
+			logger.error("ERROR "  + ex.getMessage());
+			throw ex;
+		}
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public Collection<Comanda> getcomenziPeFurnizor(Furnizor furnizor_) throws Exception{
+		try{
+			return registruEJB.getcomenziPeFurnizor(furnizor_);
+		}catch(Exception ex){
+			logger.error("ERROR "  + ex.getMessage());
+			throw ex;
+		}
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public Collection<Comanda> getComenziPeStatus(Integer statusComanda_) throws Exception{
+		try{
+			return registruEJB.getComenziPeStatus(statusComanda_);
+		}catch(Exception ex){
+			logger.error("ERROR "  + ex.getMessage());
+			throw ex;
+		}
+	}
+	@Override
+	public PlanAprovizionare getPlanAprovizionareRegistru() throws Exception{
+		try{
+			return (PlanAprovizionare) registruEJB.getPlanAprovizionare();
+		}catch(Exception ex){
+			logger.error("ERROR "  + ex.getMessage());
+			throw ex;
+		}
+	}
 
 
 }

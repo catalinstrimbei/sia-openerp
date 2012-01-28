@@ -244,6 +244,19 @@ public interface AprovizionareSrv extends PropertyChangeListener{
 			throws Exception;
 	Collection<LiniePlanAprovizionare> getLiniePlanAprovizionare()
 			throws Exception;
+	Collection<OfertaAchizitie> getOferteAchizitiePerFurnizor(Furnizor furnizor_)
+			throws Exception;
+	Collection<Articol> getArticolePeCategorii(Categorie categorie_)
+			throws Exception;
+	Collection<Categorie> getCategoriiPeFurnizori(Furnizor furnizor_)
+			throws Exception;
+	Collection<CerereOferta> getCereriOfertaPeStatus(Integer statusCerereOferta_)
+			throws Exception;
+	Collection<Comanda> getcomenziPeFurnizor(Furnizor furnizor_)
+			throws Exception;
+	Collection<Comanda> getComenziPeStatus(Integer statusComanda_)
+			throws Exception;
+	PlanAprovizionare getPlanAprovizionareRegistru() throws Exception;
   	
     
     }

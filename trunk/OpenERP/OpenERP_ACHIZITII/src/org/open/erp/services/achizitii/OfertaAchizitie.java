@@ -29,7 +29,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class OfertaAchizitie implements Serializable {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private long id_OfertaAchizitie;
 	public static final Integer TRANSFORMATA = 1;
 	public static final Integer RESPINSA = -1;

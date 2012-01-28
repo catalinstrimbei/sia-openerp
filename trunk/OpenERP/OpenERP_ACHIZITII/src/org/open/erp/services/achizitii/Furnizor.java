@@ -27,7 +27,7 @@ public class Furnizor implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2019369183120390764L;
-	@Id@GeneratedValue
+	@Id//@GeneratedValue
 	private int idFurnizor;
 @OneToMany(mappedBy="furnizor")
 private List<Factura> facturiFurnizor=new ArrayList<Factura>();
