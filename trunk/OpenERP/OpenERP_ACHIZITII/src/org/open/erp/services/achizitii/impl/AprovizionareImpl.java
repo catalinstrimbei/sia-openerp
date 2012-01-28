@@ -58,7 +58,7 @@ import org.open.erp.services.stocuri.impl.Procesare;
 @TransactionManagement(TransactionManagementType.CONTAINER)
  
 public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSrvRemote {
-    public PlanAprovizionare planAprovizionare=null;
+    public PlanAprovizionare planAprovizionare;
     public CerereOferta cerereOf=null;
     public List<LiniePlanAprovizionare> liniiPlanAprovizionareComanda=new ArrayList<LiniePlanAprovizionare>();
     public List<LiniePlanAprovizionare> liniiPlanAprovizionareCerereOf=new ArrayList<LiniePlanAprovizionare>();
@@ -306,7 +306,7 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 		return comandaAchizitie;
 	}
 
-	
+	@Override
 	public NIR adaugareLiniiNir(NIR nir, List<LinieDocument> liniiNIR)
 			throws CtbException {
 		NIR nirFact = nir;

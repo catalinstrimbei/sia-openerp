@@ -32,7 +32,7 @@ public class Categorie implements Serializable {
 private long id_cat;
 private String denumire;
 @OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL,targetEntity=Furnizor.class)
-private Collection<Furnizor> furnizoriCategorie;
+private Collection<Furnizor> furnizoriCategorie = new ArrayList<Furnizor>();
 
 @OneToMany(cascade = CascadeType.ALL, mappedBy = "categorieArticol")
 private List<Articol> articole = new ArrayList<Articol>();

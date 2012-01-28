@@ -151,6 +151,16 @@ public class PlanAprovizionare implements Serializable  {
 	public void setIdPlanAprovizionare(long idPlanAprovizionare) {
 		this.idPlanAprovizionare = idPlanAprovizionare;
 	}
+	public PlanAprovizionare(long idPlanAprovizionare, Integer saptAn,
+			Integer an, Date dataStart, Date dataFinal, Integer statusPlan) {
+		super();
+		this.idPlanAprovizionare = idPlanAprovizionare;
+		this.saptAn = saptAn;
+		this.an = an;
+		this.dataStart = dataStart;
+		this.dataFinal = dataFinal;
+		this.statusPlan = statusPlan;
+	}
 	
 
 }

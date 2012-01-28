@@ -1,11 +1,61 @@
-(A2) 2012-01-27 00:07:54,927 [main] INFO  org.hibernate.cfg.annotations.Version - Hibernate Annotations 3.4.0.GA
-(A2) 2012-01-27 00:07:55,123 [main] INFO  org.hibernate.cfg.Environment - Hibernate 3.3.1.GA
-(A2) 2012-01-27 00:07:55,168 [main] INFO  org.hibernate.cfg.Environment - hibernate.properties not found
-(A2) 2012-01-27 00:07:55,205 [main] INFO  org.hibernate.cfg.Environment - Bytecode provider name : javassist
-(A2) 2012-01-27 00:07:55,246 [main] INFO  org.hibernate.cfg.Environment - using JDK 1.4 java.sql.Timestamp handling
-(A2) 2012-01-27 00:07:55,469 [main] INFO  org.hibernate.annotations.common.Version - Hibernate Commons Annotations 3.1.0.GA
-(A2) 2012-01-27 00:07:55,496 [main] INFO  org.hibernate.ejb.Version - Hibernate EntityManager 3.4.0.GA
-(A2) 2012-01-27 00:07:55,554 [main] DEBUG org.hibernate.ejb.Ejb3Configuration - Look up for persistence unit: OpenERP_ACHIZITII
-(A2) 2012-01-27 00:07:55,815 [main] DEBUG org.hibernate.util.DTDEntityResolver - trying to resolve system-id [http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd]
-(A2) 2012-01-27 00:07:57,467 [main] DEBUG org.hibernate.util.DTDEntityResolver - trying to resolve system-id [http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd]
-(A2) 2012-01-27 00:07:57,943 [main] DEBUG org.hibernate.util.DTDEntityResolver - trying to resolve system-id [http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd]
+(A2) 2012-01-28 02:55:40,740 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-28 02:55:40,742 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: inregistrare cerere aprovizionare
+(A2) 2012-01-28 02:55:40,760 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2012-01-28 02:55:40,761 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 0
+(A2) 2012-01-28 02:55:40,763 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2012-01-28 02:55:40,769 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 1
+(A2) 2012-01-28 02:55:40,771 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Plan: 1 dataStart: Sat Jan 28 02:55:40 EET 2012 dataFinal: null
+(A2) 2012-01-28 02:55:40,771 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 1 Material: Mat1 cantitate: 100.0
+(A2) 2012-01-28 02:55:40,771 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 2 Material: Mat2 cantitate: 100.0
+(A2) 2012-01-28 02:55:40,771 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - 2
+(A2) 2012-01-28 02:55:40,772 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: inregistrare cerere aprovizionare
+(A2) 2012-01-28 02:55:40,773 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-28 02:55:40,773 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testCreareCerereOferta
+(A2) 2012-01-28 02:55:40,773 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2012-01-28 02:55:40,774 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 0
+(A2) 2012-01-28 02:55:40,774 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2012-01-28 02:55:40,774 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 1
+(A2) 2012-01-28 02:55:40,776 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - NrLiniiPlan: 2
+(A2) 2012-01-28 02:55:40,778 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Cererea de oferta creata: 101 are 2 linii create;
+(A2) 2012-01-28 02:55:40,787 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie Cerere Oferta: 1 Mat1 100.0
+(A2) 2012-01-28 02:55:40,787 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie Cerere Oferta: 2 Mat2 100.0
+(A2) 2012-01-28 02:55:40,787 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Plan: 1 dataStart: Sat Jan 28 02:55:40 EET 2012 dataFinal: null
+(A2) 2012-01-28 02:55:40,788 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 1 -1
+(A2) 2012-01-28 02:55:40,788 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 2 -1
+(A2) 2012-01-28 02:55:40,788 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: testCreareCerereOferta
+(A2) 2012-01-28 02:55:40,789 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-28 02:55:40,789 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testCreareOfertaAchizitie
+(A2) 2012-01-28 02:55:40,794 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Nr Linii Oferta Achizitie: 2
+(A2) 2012-01-28 02:55:40,794 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Cerere Oferta-ofAchizitie: 10
+(A2) 2012-01-28 02:55:40,794 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Status Cerere Oferta: 1
+(A2) 2012-01-28 02:55:40,794 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: testCreareOfertaAchizitie
+(A2) 2012-01-28 02:55:40,795 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-28 02:55:40,795 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: Analiza oferte si creare comanda
+(A2) 2012-01-28 02:55:40,795 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - OfertaAchizitie
+(A2) 2012-01-28 02:55:40,796 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Oferte
+(A2) 2012-01-28 02:55:40,796 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - 2
+(A2) 2012-01-28 02:55:40,796 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 2
+(A2) 2012-01-28 02:55:40,796 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 1 Mat1 100.0 50.0
+(A2) 2012-01-28 02:55:40,796 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 2 Mat2 100.0 60.0
+(A2) 2012-01-28 02:55:40,796 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 3 Mat3 100.0 55.9
+(A2) 2012-01-28 02:55:40,799 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Comanda creata: null Sat Jan 28 02:55:40 EET 2012
+(A2) 2012-01-28 02:55:40,799 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie: 1 Mat1 50.0 100.0
+(A2) 2012-01-28 02:55:40,800 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie: 2 Mat2 60.0 100.0
+(A2) 2012-01-28 02:55:40,800 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie: 3 Mat3 55.9 100.0
+(A2) 2012-01-28 02:55:40,801 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: Analiza oferte si creare comanda
+(A2) 2012-01-28 02:55:40,804 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-28 02:55:40,804 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: Creare comanda din linii plan aprovizionare
+(A2) 2012-01-28 02:55:40,804 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - 0
+(A2) 2012-01-28 02:55:40,804 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - LiniePlan1: 2
+(A2) 2012-01-28 02:55:40,805 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - LiniePlan2: 2
+(A2) 2012-01-28 02:55:40,805 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - LiniePlan3: 2
+(A2) 2012-01-28 02:55:40,805 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - ----------------------------------
+(A2) 2012-01-28 02:55:40,807 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionare - LinieComanda: 1 Mat1 100.0 null
+(A2) 2012-01-28 02:55:40,807 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionare - LinieComanda: 2 Mat2 100.0 null
+(A2) 2012-01-28 02:55:40,807 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionare - LinieComanda: 3 Mat3 100.0 null
+(A2) 2012-01-28 02:55:40,807 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: Creare comanda din linii plan aprovizionare; Legenda: 2=CREAT_COMANDA
+(A2) 2012-01-28 02:55:40,808 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-28 02:55:40,808 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testCreareNir
+(A2) 2012-01-28 02:55:40,810 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - S-a jurnalizat factura aferenta NIR-ului
+(A2) 2012-01-28 02:55:40,810 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - S-au inregistrat pe stoc articolele din NIR
+(A2) 2012-01-28 02:55:40,810 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: testCreareNir

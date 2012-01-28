@@ -1,6 +1,7 @@
 package org.open.erp.services.achizitii;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -60,7 +61,7 @@ public class Comanda implements Serializable {
 	private Factura factura;
 	
 	@OneToMany(mappedBy = "comanda",targetEntity=LinieComanda.class)
-	private Collection<LinieComanda> liniiComanda;
+	private Collection<LinieComanda> liniiComanda = new ArrayList<LinieComanda>();
 	
 	 public void addLinii(LinieComanda li) {
 	        this.getLiniiComanda().add(li);	       

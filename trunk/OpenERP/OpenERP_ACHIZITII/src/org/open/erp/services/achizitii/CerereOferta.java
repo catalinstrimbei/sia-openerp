@@ -1,6 +1,7 @@
 package org.open.erp.services.achizitii;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -47,7 +48,7 @@ private Integer statusCerereOferta;
 private OfertaAchizitie ofertaAchizitie;
 
 @OneToMany(mappedBy = "cerereOferta", cascade = CascadeType.ALL)
-private Collection<LinieCerereOferta> liniiCerereOferta;
+private Collection<LinieCerereOferta> liniiCerereOferta=new ArrayList<LinieCerereOferta>();
 @ManyToOne@JoinColumn(name="idPersoana")
 private Persoana persona;
 
@@ -55,7 +56,7 @@ private Persoana persona;
 @JoinTable(name="CereriOfertaFurnizori",
 		joinColumns=@JoinColumn(name="cerereOferta_fk"), 
 		inverseJoinColumns=@JoinColumn(name="furnizor_fk"))
-private Collection<Furnizor> trimisaLaFurnizori;
+private Collection<Furnizor> trimisaLaFurnizori = new ArrayList<Furnizor>();
 
 public long getId_CerereOferta() {
 	return id_CerereOferta;

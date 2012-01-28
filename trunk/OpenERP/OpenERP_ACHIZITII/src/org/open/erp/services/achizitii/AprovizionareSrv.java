@@ -8,6 +8,7 @@ import java.util.List;
 import org.open.erp.services.achizitii.exceptions.AchizitiiExceptions;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.LinieDocument;
 
 /**
  * Returneaza o interfata a serviciului Aprovizionare
@@ -150,6 +151,17 @@ public interface AprovizionareSrv extends PropertyChangeListener{
    
     
     public void returMateriale(Document facturaRetur);
+    
+    /**
+   	 *Adauga linii in NIR
+   	 * 
+   	 * @param NIR unde se vor adauga liniile
+   	 * @param liniiNIR lista linii
+   	 * @return Creare NIR actualizat
+   	 * 
+   	 */   
+	NIR adaugareLiniiNir(NIR nir, List<LinieDocument> liniiNIR)
+			throws CtbException;
   	
     
     }
