@@ -22,6 +22,7 @@
  			<class>org.open.erp.services.nomgen.Divizie</class>
  			<class>org.open.erp.services.nomgen.Departament</class>
  			<class>org.open.erp.services.nomgen.Persoana</class>
+ 			<class>org.open.erp.services.nomgen.PersoanaFizica</class>
  			<class>org.open.erp.services.personal.RezultatProbaEvaluare</class>
 			<class>org.open.erp.services.personal.ProbaEvaluare</class>
 			<class>org.open.erp.services.personal.InterviuCandidat</class>
