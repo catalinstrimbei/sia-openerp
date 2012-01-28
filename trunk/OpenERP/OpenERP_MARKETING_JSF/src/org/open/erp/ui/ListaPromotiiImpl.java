@@ -32,7 +32,7 @@ public class ListaPromotiiImpl implements Converter{
 	private Logger logger;
 	
 	
-	@EJB(mappedName="MarketingManagementSrv/Remote", name="MarketingManagementSrv/Remote") 
+	@EJB(mappedName="MarketingManagementSrv/local", name="MarketingManagementSrv/local") 
 	private MarketingManagementSrv marketingSrv;
 	
 	@PostConstruct
