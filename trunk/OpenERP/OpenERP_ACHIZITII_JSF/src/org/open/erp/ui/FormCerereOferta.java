@@ -43,8 +43,68 @@ public class FormCerereOferta implements Converter{
 	public void setCerereOferta(CerereOferta cerereOferta) {
 		logger.debug("Changed CerereOferta : " + cerereoferta.getId_CerereOferta());
 		this.cerereoferta = cerereoferta;
+		populareModelLinii();
 	}
 	
+	
+	public Map<String, CerereOferta> getCerereOferta(){
+		logger.debug("getCerereOferta : " + this.cerereoferta.size());
+		Map<String, CerereOferta> mapCereriOferta = new HashMap<String, CerereOferta>();
+		for (CerereOferta c: this.cereri)
+			mapCereriOferta.put(c.geArticol(), c);
+		return mapCereriOferta;
+	}
+	
+	private DataModel<LinieCerereOferta> linii;
+	private LinieCerereOferta linie;
+	
+	public LinieCerereOferta getALinieCerereOferta() {
+		
+		logger.debug("get id: " + ((liniecerereoferta!=null)? liniecerereoferta.getIdLinieCerereOferta() : "null") );
+		return liniecerereoferta;
+	}
+
+	public DataModel<LinieCerereOferta> getLiniii() {
+		logger.debug("Check model linii ... ");
+		if (this.linii == null)
+			populareModelLinii();
+		return linii;
+	}
+	
+	private void populareModelLinii(){
+		if (cerereoferta!= null){
+			this.linii = new ListDataModel<CerereOferta>();
+			this.linii.setWrappedData(cerereoferta.getLinii());
+			logger.debug("Populare model linii ... DEBUG ");
+		}else
+			this.linii = null;
+	}
+
+	
+	/* Logica Convertor*/
+	@Override
+	public Object getAsObject(FacesContext ctx, UIComponent uicomp, String uival) {
+		logger.debug("getAsObject:uicomp: " + uicomp.getId());
+		if (uicomp.getId().equals("cboCerereOferta")){
+			// StringId - to - Proiect
+			Integer idCerereOferta = new Integer(uival);
+			CerereOferta c = new CerereOferta();
+			c.setIdCerereOferta(idCerereOferta);
+			Integer idx = this.cereri.indexOf(c);
+			return this.cereri.get(idx);
+		}
+		return null;
+	}
+
+	@Override
+	public String getAsString(FacesContext ctx, UIComponent uicomp, Object uival) {
+		logger.debug("getAsString:uicomp: " + uicomp.getId());
+		if (uicomp.getId().equals("cboCerereOferta")){
+			// Proiect - to - StringId
+			return ((CerereOferta)uival).getIdCerereOferta().toString();
+		}
+		return null;
+	}		
 	/* Actiuni UI Controller */
 	public String nextCerereOferta(){
 		Integer idx = this.cereri.indexOf(this.cerereoferta) + 1;
