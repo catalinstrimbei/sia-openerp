@@ -6,48 +6,90 @@
 	xmlns:rich="http://richfaces.org/rich">
 <h:head></h:head>
 <body>
-<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Registru Angajati</div>
-	<h:form id="formAngajati">
-		<h:panelGrid columns="3" border="1" style="height: 424px; ">
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Contracte  Angajati</div>
+	<h:form id="formContracteAngajati">
+		<h:panelGrid columns="3" border="0" style="height: 424px; ">
 			<p:facet name="header">
-				<h:outputText value="Angajati"></h:outputText>
+				<h:outputText value="Selectati un angajat"></h:outputText>
 			</p:facet>
-			<h:selectOneMenu id="cboAngajat" value="#{formAngajatiImpl.angajat}" converter="#{formAngajatiImpl}" style="width: 254px; ">
-				<p:selectItems value="#{formAngajatiImpl.angajati}"></p:selectItems>
+			<h:selectOneMenu id="cboAngajat" value="#{formContracteAngajatiImpl.angajat}" converter="#{formAngajatiImpl}" style="width: 254px; ">
+				<p:selectItems value="#{formContracteAngajatiImpl.angajati}"></p:selectItems>
 				<p:ajax render="@form"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="2" border="1">
 				<h:commandButton id="cmdPrev"
-					actionListener="#{formAngajatiImpl.previousAngajat}" value="Back"></h:commandButton>
+					actionListener="#{formContracteAngajatiImpl.previousAngajat}" value="Back"></h:commandButton>
 				<h:commandButton id="cmdNext"
-					actionListener="#{formAngajatiImpl.nextAngajat}" value="Next"></h:commandButton>
+					actionListener="#{formContracteAngajatiImpl.nextAngajat}" value="Next"></h:commandButton>
 
 			</h:panelGrid>
 			<h:message></h:message>
 				
 			
-			<h:dataTable var="linieContracte"
-			value="#{formContracteAngajati.contracte}" border="1">
+			<h:dataTable 
+			id="ContracteTable"
+			var="linieContracte"
+			value="#{formContracteAngajatiImpl.contracte}" border="1"			
+    		binding ="#{formContracteAngajatiImpl.contracteTable}"
+    		styleClass="order-table"
+    		headerClass="order-table-header"
+    		rowClasses="order-table-odd-row,order-table-even-row"
+			>
 			<h:column>
 				<p:facet name="header">
 					<h:outputText value="Nr Contract"></h:outputText>
-				</p:facet>
-				<h:outputText id="nrContract"
-					value="#{linieContracte.nrContract}"></h:outputText>
+				</p:facet>				
+    			<h:outputText value="#{linieContracte.nrContract}" />				
 			</h:column>
 			<h:column>
 				<p:facet name="header">
-					<h:outputText value="DataInceput"></h:outputText>
+					<h:outputText value="Salar Baza"></h:outputText>
 				</p:facet>
-				<h:outputText id="dataInceput"
-					value="#{linieContracte.dataInceput}"></h:outputText>
-			</h:column>			
+				<h:inputText value="#{linieContracte.salarBaza}" size="10" rendered="#{linieContracte.editable}" />
+    			<h:outputText value="#{linieContracte.salarBaza}" rendered="#{not linieContracte.editable}" />								
+			</h:column>	
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Tarif Orar"></h:outputText>
+				</p:facet>
+				<h:inputText value="#{linieContracte.tarifOrar}" size="10" rendered="#{linieContracte.editable}" />
+    			<h:outputText value="#{linieContracte.tarifOrar}" rendered="#{not linieContracte.editable}" />								
+			</h:column>
+			<!-- 	
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Functie"></h:outputText>
+				</p:facet>				
+    			<h:outputText value="#{linieContracte.functie.idFunctie}" />								
+			</h:column>	 -->
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Editable"></h:outputText>
+				</p:facet>
+				<h:inputText value="#{linieContracte.editable}" size="10" rendered="#{linieContracte.editable}" />
+    			<h:outputText value="#{linieContracte.editable}" rendered="#{not linieContracte.editable}" />								
+			</h:column>
+			<h:column>
+     			<p:facet name="header">Action</p:facet>
+     			<h:commandLink value="Edit" action="#{formContracteAngajatiImpl.editAction}" 
+                                       rendered="#{not linieContracte.editable}" />
+                                       
+                <h:commandLink value="Delete" action="#{formContracteAngajatiImpl.deleteAction}" 
+                                       rendered="#{not linieContracte.editable}" />
+                                       
+				<h:commandLink value="Save" action="#{formContracteAngajatiImpl.saveAction}" 
+                                       rendered="#{linieContracte.editable}" />                                       
+ 
+    	     </h:column>	  
 		</h:dataTable>
 		<h:message></h:message><h:message></h:message><h:panelGrid columns="3" border="1">
-				<h:commandButton id="cmdAddAngajat" value="Adauga angajat" actionListener="#{formAngajatiImpl.adaugareAngajat}" immediate="false">
+				<h:commandButton id="cmdAddContract" value="Adauga Contract" actionListener="#{formContracteAngajatiImpl.adaugareContract}" immediate="false">
 					<p:ajax execute="@none" render="@form"></p:ajax>
 				</h:commandButton>
-				<h:commandButton id="cmdSalveazaAngajat" actionListener="#{formAngajatiImpl.salvareAngajat}" value="Salveaza angajat" immediate="true">
+				<h:commandButton id="cmdSalveazaAngajat" actionListener="#{formContracteAngajatiImpl.salvareContracte}" value="Salveaza Contracte" immediate="true">
+
+				</h:commandButton>
+				<h:commandButton id="cmdModificaContracte" actionListener="#{formContracteAngajatiImpl.modificaContracte}" value="Modifica Contracte" immediate="true">
 
 				</h:commandButton>
 			</h:panelGrid>

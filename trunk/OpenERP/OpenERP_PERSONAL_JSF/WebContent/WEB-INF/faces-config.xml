@@ -17,7 +17,7 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>formContracteAngajati</managed-bean-name>
+		<managed-bean-name>formContracteAngajatiImpl</managed-bean-name>
 		<managed-bean-class>org.open.erp.ui.FormContracteAngajatiImpl</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>	

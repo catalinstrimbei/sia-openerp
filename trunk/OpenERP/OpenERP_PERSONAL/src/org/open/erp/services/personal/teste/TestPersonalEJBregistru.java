@@ -126,7 +126,12 @@ public class TestPersonalEJBregistru {
 			ContractMunca	contract = test.contract1;
 			contract.setAngajat(angajat);
 			contract.setFunctie(functie);
-			contract = personalInstance.salveazaContractMunca(contract);	
+			contract = personalInstance.salveazaContractMunca(contract);
+			
+			ContractMunca	contract2 = test.contract2;
+			contract2.setAngajat(angajat);
+			contract2.setFunctie(functie);
+			contract2 = personalInstance.salveazaContractMunca(contract2);
 			
 			CerereDemisie		cerereDemisie = test.cerereDemisie1;
 			cerereDemisie.setContract(contract);

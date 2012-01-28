@@ -1030,6 +1030,16 @@ public class RegistruPersonal {
 			throw ex;
 		}
 	}
+	public ContractMunca getContractMuncaByNr(Integer nrContract) throws Exception{
+		try{
+			return (ContractMunca) entityManager.createQuery("SELECT x FROM ContractMunca x WHERE x.nrContract == :nrContract AND rownum <= 1").setParameter("nrContract", nrContract).getSingleResult();
+		}catch(Exception ex){
+			logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.logERROR("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}	
 	
 	public Collection<ContractMunca> getListaContracteMunca() throws Exception{
 		try{

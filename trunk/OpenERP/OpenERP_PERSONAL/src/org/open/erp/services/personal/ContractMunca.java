@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -42,8 +43,15 @@ public class ContractMunca implements Serializable{
 	private Date	dataTerminare;
 	private Integer	durataContract = durataNelimitata;
 	private String	motivIncheiere;
+	private Boolean editable;
 	
 	
+	public Boolean getEditable() {
+		return editable;
+	}
+	public void setEditable(Boolean editable) {
+		this.editable = editable;
+	}
 	public String getMotivIncheiere() {
 		return motivIncheiere;
 	}
