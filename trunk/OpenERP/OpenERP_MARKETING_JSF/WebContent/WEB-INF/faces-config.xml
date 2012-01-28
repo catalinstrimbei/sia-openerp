@@ -11,11 +11,6 @@
 			<default-locale>en</default-locale>
 		</locale-config>
 	</application>
-	<managed-bean>
-		<managed-bean-name>ListaPromotiiImpl</managed-bean-name>
-		<managed-bean-class>org.open.erp.ui.ListaPromotiiImpl</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
 	
 	<lifecycle>
 		<phase-listener>org.open.erp.ui.PhaseTracker</phase-listener>

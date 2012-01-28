@@ -57,7 +57,8 @@ public class FormMenu {
 	public FormMenu(){
 		formulare.put("Editare Form1", "Form1");
 		formulare.put("Editare Form2", "Form2");
-		formulare.put("Lista Raport1", "FormRaport");		
+		formulare.put("Lista Raport1", "FormRaport");	
+		formulare.put("Lista Promotii" , "ListaPromotiiImpl");
 	}
 	public List<String> getFormulare() {
 		logger.debug("V3: Get Formulare");

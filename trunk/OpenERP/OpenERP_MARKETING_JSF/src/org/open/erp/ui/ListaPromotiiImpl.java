@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -19,16 +20,18 @@ import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 
 
-
+@ManagedBean(name="formPromotii")
 @SessionScoped
 public class ListaPromotiiImpl implements Converter{
 
+	
 	private Promotie promotie;
 	private List<Promotie> promotii = new ArrayList<Promotie>();
 	
 	private Logger logger;
-		
-	@EJB(mappedName="MarketingManagementSrvRemote/remote", name="MarketingManagementSrvRemote/remote") 
+	
+	
+	@EJB(mappedName="MarketingManagementSrvLocal/local", name="MarketingManagementSrvLocal/local") 
 	private MarketingManagementSrv marketingSrv;
 	
 	@PostConstruct
@@ -84,7 +87,7 @@ public class ListaPromotiiImpl implements Converter{
 			this.promotie = this.promotii.get(idxCurent + 1);
 	}	
 
-	//operatie invocata la selectie din lista, dar inainte de setLuna, An, Angajat
+	//operatie invocata la selectie din lista, dar inainte de setLuna
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent uiComp, String uiValue) {
 		logger.info("<<<<<<<uiValue este:"+uiValue);
@@ -94,7 +97,6 @@ public class ListaPromotiiImpl implements Converter{
 			uipromotieTemplate.setIdPromotie(Integer.valueOf(uiValue));
 			//in personal nu am metoda equals
 			Integer idx = this.promotii.indexOf(uipromotieTemplate);
-			logger.info("<<<<<<<getAsObject: Id-ul angajatului din array este:"+idx);
 			return this.promotii.get(idx);
 		} 
 		//}
@@ -102,13 +104,12 @@ public class ListaPromotiiImpl implements Converter{
 	}
 
 	// operatie invocata la generare elemente pentru lista, 
-	// dupa getAngajati, dar inainte de popularea listei
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent uiComp, Object uiValue) {
 		//if (uiValue!=null){
 			
 		
-		if (uiComp.getId().equals("cboAngajat")){
+		if (uiComp.getId().equals("cboPromotie")){
 			//logger.logINFO("<<<<<<<<<< getAsString uiValue angajat:"+uiValue);
 			Promotie uiPromotie = (Promotie)uiValue;
 			logger.info("<<<<<<<<<< getAsString uiValue promotie:"+uiPromotie.getDenumirePromotie() + " id: " + uiPromotie.getIdPromotie());
@@ -122,51 +123,21 @@ public class ListaPromotiiImpl implements Converter{
 	/* Implementare operatii CRUD */
 	public void adaugarePromotie(ActionEvent evt){
 		this.promotie = new Promotie();
-		//angajat.setId(999);
-		//angajat.setNume("");
 		this.promotii.add(this.promotie);
 		  
-		//return "FormPontajAngajat";
-		//logger.logINFO("Sunt in bean, incercam sa adaugam un sporul" );
-		//return "FormSpor";
 	}  
 	  /*
-	public void stergereSpor(ActionEvent evt) throws Exception{
-		this.sporuri.remove(this.spor);
-		logger.logINFO("Sunt in bean, incercam sa stergem sporul cu id: "+spor.getIdSpor());
-		salarizareSrv.stergeSpor(this.spor);
-		 
-		if (!this.sporuri.isEmpty())
-			this.spor = this.sporuri.get(0);
-		else
-			this.spor = null;
-		
-		//return "FormSpor";
-	} 
+
 	 */
-	public void salvareAngajat(ActionEvent evt) throws Exception{
-		//this.angajati.remove(this.angajat);
+	public void salvarePromotie(ActionEvent evt) throws Exception{
 		
 		this.promotie = marketingSrv.salveazaPromotie(this.promotie);
 		this.promotii.add(this.promotie);
 	}
-	
-	/*
-	public DataModel<Pontaj> getPontaje() {
-		logger.logINFO("Check model pontaje ... ");
-		if (this.pontaje == null)
-			populareModelPontaje();
-		return pontaje;
+
+	public ListaPromotiiImpl() {
+		super();
 	}
 	
-	private void populareModelPontaje(){
-		if (luna != null){
-			this.activitati = new ListDataModel<Activitate>();
-			this.activitati.setWrappedData(proiect.getActivitati());
-			logger.debug("Populare model activitati ... DEBUG ");
-		}else
-			this.activitati = null;
-	}
-*/
 		
 }
