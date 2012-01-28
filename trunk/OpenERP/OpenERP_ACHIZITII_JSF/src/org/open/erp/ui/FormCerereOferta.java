@@ -2,9 +2,8 @@ package org.open.erp.ui;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import java.util.Properties;
-import java.util.logging.Logger;
 import java.util.List;
+import java.util.Properties;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -15,8 +14,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.naming.InitialContext;
 
+import org.apache.log4j.Logger;
 import org.open.erp.services.achizitii.AprovizionareSrv;
-import org.open.erp.services.achizitii.Categorie;
 import org.open.erp.services.achizitii.CerereOferta;
 
 
@@ -25,7 +24,9 @@ import org.open.erp.services.achizitii.CerereOferta;
 @SessionScoped
 public class FormCerereOferta implements Converter{
 
-	private static Logger logger = Logger.getLogger(FormCerereOferta.class.getPackage().getName());
+/*	private static Logger logger = Logger.getLogger(FormCerereOferta.class.getPackage().getName());
+*/	private static Logger logger = Logger.getLogger(FormCerereOferta.class.getPackage().getName());
+
 	
 	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
 	@EJB(name="AprovizionareSrv", mappedName="AprovizionareSrv")
