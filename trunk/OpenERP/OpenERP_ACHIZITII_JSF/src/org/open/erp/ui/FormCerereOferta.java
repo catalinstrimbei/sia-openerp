@@ -2,7 +2,9 @@ package org.open.erp.ui;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
@@ -12,11 +14,14 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.CerereOferta;
+import org.open.erp.services.achizitii.LinieCerereOferta;
 
 
 
@@ -36,35 +41,32 @@ public class FormCerereOferta implements Converter{
 	private List<CerereOferta> cereri = new ArrayList<CerereOferta>();
 	private CerereOferta cerereoferta;
 	
-	public CerereOferta getCerereOferta() {
-		return cerereoferta;
-	}
 	
 	public void setCerereOferta(CerereOferta cerereOferta) {
 		logger.debug("Changed CerereOferta : " + cerereoferta.getId_CerereOferta());
 		this.cerereoferta = cerereoferta;
-		populareModelLinii();
+		/*populareModelLinii();*/
 	}
 	
 	
 	public Map<String, CerereOferta> getCerereOferta(){
-		logger.debug("getCerereOferta : " + this.cerereoferta.size());
+		logger.debug("getCerereOferta : " + this.cerereoferta.getLinii().size());
 		Map<String, CerereOferta> mapCereriOferta = new HashMap<String, CerereOferta>();
 		for (CerereOferta c: this.cereri)
-			mapCereriOferta.put(c.geArticol(), c);
+			mapCereriOferta.put(c.getLinii().toString(), c);
 		return mapCereriOferta;
 	}
 	
-	private DataModel<LinieCerereOferta> linii;
+	
 	private LinieCerereOferta linie;
 	
-	public LinieCerereOferta getALinieCerereOferta() {
+	/*public LinieCerereOferta getALinieCerereOferta() {
 		
 		logger.debug("get id: " + ((liniecerereoferta!=null)? liniecerereoferta.getIdLinieCerereOferta() : "null") );
 		return liniecerereoferta;
-	}
+	}*/
 
-	public DataModel<LinieCerereOferta> getLiniii() {
+/*	public DataModel<LinieCerereOferta> getLiniii() {
 		logger.debug("Check model linii ... ");
 		if (this.linii == null)
 			populareModelLinii();
@@ -78,7 +80,7 @@ public class FormCerereOferta implements Converter{
 			logger.debug("Populare model linii ... DEBUG ");
 		}else
 			this.linii = null;
-	}
+	}*/
 
 	
 	/* Logica Convertor*/
@@ -89,7 +91,7 @@ public class FormCerereOferta implements Converter{
 			// StringId - to - Proiect
 			Integer idCerereOferta = new Integer(uival);
 			CerereOferta c = new CerereOferta();
-			c.setIdCerereOferta(idCerereOferta);
+			/*c.setIdCerereOferta(idCerereOferta);*/
 			Integer idx = this.cereri.indexOf(c);
 			return this.cereri.get(idx);
 		}
@@ -101,7 +103,7 @@ public class FormCerereOferta implements Converter{
 		logger.debug("getAsString:uicomp: " + uicomp.getId());
 		if (uicomp.getId().equals("cboCerereOferta")){
 			// Proiect - to - StringId
-			return ((CerereOferta)uival).getIdCerereOferta().toString();
+			return ((CerereOferta)uival).getClass().toString();
 		}
 		return null;
 	}		
@@ -190,21 +192,8 @@ public class FormCerereOferta implements Converter{
 			cerereoferta.setId_CerereOferta(0);
 		}
 		
-	}
+	}	
 	
-	
-	@Override
-	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
 
 
