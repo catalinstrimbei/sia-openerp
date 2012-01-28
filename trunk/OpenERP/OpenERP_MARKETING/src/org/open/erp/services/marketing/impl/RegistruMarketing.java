@@ -3,6 +3,7 @@ package org.open.erp.services.marketing.impl;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -23,6 +24,7 @@ import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.RaspunsChestionar;
 import org.open.erp.services.marketing.RaspunsIntrebare;
 import org.open.erp.services.marketing.Responsabil;
+import org.open.erp.services.personal.Angajat;
 
 
 
@@ -392,9 +394,21 @@ public class RegistruMarketing {
 			}
 			return intrebari;
 		}
+	List<Promotie>				getListaPromotii() throws Exception
+	{
+		try
+		{
+			return entityManager.createQuery("SELECT x FROM Promotie x").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.info("EROARE PERSISTENTA *****");
+			ex.printStackTrace();  
+			throw ex;
+		}
 	}
 
-
+}
 	/*
 
 

@@ -2,6 +2,7 @@ package org.open.erp.services.marketing.impl;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -34,6 +35,7 @@ import org.open.erp.services.marketing.RaspunsIntrebare;
 import org.open.erp.services.marketing.Responsabil;
 //import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 //import org.open.erp.services.nomgen.Produs;
+import org.open.erp.services.personal.Angajat;
 
 
 
@@ -446,6 +448,15 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 			result = this.registruMarketing.salveazaProdus(produs);
 			logger.debug(">>>>>>End salveaza produs");
 		}
+		return result;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public List<Promotie> getListaPromotii() throws Exception{
+		logger.debug(" Start getListaPromotii");
+		List<Promotie> result = this.registruMarketing.getListaPromotii();
+		logger.debug(">>>>>>End getListaPromotii");
 		return result;
 	}
 	
