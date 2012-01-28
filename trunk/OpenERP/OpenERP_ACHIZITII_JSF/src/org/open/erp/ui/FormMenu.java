@@ -11,7 +11,6 @@ import javax.faces.component.UICommand;
 import javax.faces.event.ActionEvent;
 
 import org.apache.log4j.Logger;
-import org.open.erp.ui.reports.WebReportRunner;
 
 
 @ManagedBean(name="formMenu")
@@ -101,7 +100,7 @@ public class FormMenu {
 	public void showRaport(ActionEvent evt){
 		String srcRaport = evt.getComponent().getAttributes().get("srcRaport").toString();
 		logger.debug("START Loading report ... " + srcRaport);
-		WebReportRunner.runReport(srcRaport + ".rptdesign");
+	//	WebReportRunner.runReport(srcRaport + ".rptdesign");
 		logger.debug("END Loading report ... " + srcRaport);
 	}	
 

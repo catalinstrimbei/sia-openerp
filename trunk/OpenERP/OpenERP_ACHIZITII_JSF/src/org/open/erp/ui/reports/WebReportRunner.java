@@ -1,4 +1,4 @@
-package org.open.erp.ui.reports;
+/*package org.open.erp.ui.reports;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +25,7 @@ import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 public class WebReportRunner {
 	
 	public static void runReport(String reportName) {
-		/* Classpath */
+		 Classpath 
 		//String reportPath = "./";
 		FacesContext faces = FacesContext.getCurrentInstance();
 		ServletContext servletContext = (ServletContext) 
@@ -35,11 +35,11 @@ public class WebReportRunner {
 		System.out.println("servletContext.getRealPath()=" + servletContext.getRealPath(""));
 		String reportPath = servletContext.getRealPath("") + "/";
 		
-		/* Create an EngineConfig object. */
+		 Create an EngineConfig object. 
 		EngineConfig config = new EngineConfig();
 		// Start the platform for a non-RCP application.
 		try {
-			/* Start Report Engine */
+			 Start Report Engine 
 			config.setBIRTHome("");
 			//config.setBIRTHome("E:/Professional/Programare_OO/Projects/Exemple_WKS/libraries/BIRTReportEngine");
 			IPlatformContext context = new PlatformServletContext(servletContext);
@@ -49,11 +49,11 @@ public class WebReportRunner {
 					.createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
 			IReportEngine engine = factory.createReportEngine(config);
 			
-			/* Open report design */
+			 Open report design 
 			String designName = reportPath + reportName;
 			IReportRunnable runnable = engine.openReportDesign(designName);
 
-			/* Generate report from design */
+			 Generate report from design 
 			// Create a run and render task object.
 			IRunAndRenderTask task = engine.createRunAndRenderTask(runnable);
 			// Set PDF Format
@@ -69,7 +69,7 @@ public class WebReportRunner {
 			System.out.println("Created Report " + outputName + ".");
 			task.close();
 
-			/* Render as PDF */
+			 Render as PDF 
 			// read PDF generate
 			File pdfFile = new File(outputName);
 			FileInputStream doc = new FileInputStream(pdfFile);
@@ -88,4 +88,4 @@ public class WebReportRunner {
 			e.printStackTrace();
 		}
 	}
-}
+}*/
