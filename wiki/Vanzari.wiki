@@ -1,3 +1,4 @@
+#labels PaginamodululuiVanzari
 <h2>Pagina modulului VANZARI.</h2>
     <h3>Functionalitatile modulului VANZARI:</h3>
       # Crearea si gestionarea comenzilor
@@ -12,45 +13,41 @@
 
 <b>CREAREA UNEI NOI COMENZI</b><br>
 Datele necesare:
-  <br>* Vector de produse ce vor face parte din comanda</br>
+      * Vector de produse ce vor face parte din comanda
       * Vector de cantitati aferente fiecarui produs
-  <br>* Clientul pentru care se inregistreaza comanda </br>
+      * Clientul pentru care se inregistreaza comanda
 </br>  
 
 <b> CREAREA UNEI NOI FACTURI.</b><br>
 Datele necesare:
-  <br>* O comanda inregistrata</br>
+      * O comanda inregistrata
       * Clientul pentru care se factureaza produsele
-  <br>* Vanzatorul care realizeaza factura</br>
+      * Vanzatorul care realizeaza factura
 </br> 
 
 <b>INREGISTRAREA UNEI FACTURI</b><br>
 Datele necesare:
-  <br>* Factura pentru care se realizeaza inregistrarea</br>
-</br> 
+     * Factura pentru care se realizeaza inregistrarea
  
 <b>ACTUALIZAREA STOCULUI IN MOMENTUL EMITERII FACTURII</b><br>
 Datele necesare:
-  <br>* Tipul actualizarii: intrare sau iesire din gestiune</br>
+      * Tipul actualizarii: intrare sau iesire din gestiune
       * Factura cu produsele ce vor fi actualizate
 </br>
 <br></br>
 <b>MODIFICAREA SOLDULUI CLIENTULUI DUPA EMITEREA UNEI NOI FACTURI</b><br>
 Datele necesare:
-  <br>* Factura din care se va prelua valoarea</br>
+      * Factura din care se va prelua valoarea
       * Clientul pentru care se va modifica soldul
 </br>
 <br></br>
 <b>AFISAREA UNEI LISTE CU FACTURI EMISE UNUI CLIENT</b><br>
 Datele necesare:
-  <br>* Clientul pentru care se cauta lista de facturi</br>
-<br>
-</br>
+      * Clientul pentru care se cauta lista de facturi
 
-<b>REALIZARE RETUR PRODUSE</b><br>
+<b>REALIZARE RETUR PRODUSE</b>
 Datele necesare:
-  <br>* Factura cu produsele ce vor fi returnate</br>
-</br>
+      * Factura cu produsele ce vor fi returnate
 
 <UL>
 <li>
