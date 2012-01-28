@@ -16,11 +16,12 @@ import javax.faces.event.ActionEvent;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.marketing.MarketingManagementSrv;
+import org.open.erp.services.marketing.MarketingManagementSrvLocal;
 import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.impl.MarketingManagementImpl;
 
 
-@ManagedBean(name="formPromotii")
+//@ManagedBean(name="formPromotii")
 @SessionScoped
 public class ListaPromotiiImpl implements Converter{
 
@@ -31,7 +32,7 @@ public class ListaPromotiiImpl implements Converter{
 	private Logger logger;
 	
 	
-	@EJB(mappedName="MarketingManagementSrvLocal/local", name="MarketingManagementSrvLocal/local") 
+	@EJB(mappedName="MarketingManagementSrv/Remote", name="MarketingManagementSrv/Remote") 
 	private MarketingManagementSrv marketingSrv;
 	
 	@PostConstruct

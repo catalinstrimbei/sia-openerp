@@ -12,40 +12,40 @@
 			<p:facet name="header">
 				<h:outputText value="Promotii"></h:outputText>
 			</p:facet>
-			<h:selectOneMenu id="cboPromotie" value="#{formPromotii.promotie}" converter="#{formPromotii}" style="width: 254px; ">
-				<p:selectItems value="#{formPromotii.promotii}"></p:selectItems>
+			<h:selectOneMenu id="cboPromotie" value="#{listaPromotiiImpl.promotie}" converter="#{listaPromotiiImpl}" style="width: 254px; ">
+				<p:selectItems value="#{listaPromotiiImpl.promotii}"></p:selectItems>
 				<p:ajax render="@form"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="2" border="1">
 				<h:commandButton id="cmdPrev"
-					actionListener="#{formPromotii.PromotieAnterioara}" value="Back"></h:commandButton>
+					actionListener="#{listaPromotiiImpl.PromotieAnterioara}" value="Back"></h:commandButton>
 				<h:commandButton id="cmdNext"
-					actionListener="#{formPromotii.PromotieUrmatoare}" value="Next"></h:commandButton>
+					actionListener="#{listaPromotiiImpl.PromotieUrmatoare}" value="Next"></h:commandButton>
 
 			</h:panelGrid>
 			<h:message></h:message>
 			<h:outputText value="Denumire promotie"></h:outputText>
 			<h:inputText id="denumire_promotie"
-				value="#{formPromotii.promotie.denumirePromotie}"></h:inputText>
+				value="#{listaPromotiiImpl.promotie.denumirePromotie}"></h:inputText>
 			<h:message for="denumire_promotie"></h:message>
 			<h:outputText value="Mesaj promotional:"></h:outputText>
 			<h:inputText id="mesaj_promotional"
-				value="#{formPromotii.promotie.mesajPromotional}"></h:inputText>
+				value="#{listaPromotiiImpl.promotie.mesajPromotional}"></h:inputText>
 			<h:message for="mesaj_promotional"></h:message>
 			
 			
 			<h:outputText value="Id_Promotie"></h:outputText>
 			<h:inputText id="id_promotie"
-				value="#{formPromotii.promotie.idPromotie}"></h:inputText>
+				value="#{listaPromotiiImpl.promotie.idPromotie}"></h:inputText>
 			<h:message for="id_promotie"></h:message>
 			<h:panelGrid columns="3" border="1">
 				<h:commandButton id="cmdAddPromotie" value="Adauga promotie"
-					actionListener="#{formPromotii.adaugaPromotie}"
+					actionListener="#{listaPromotiiImpl.adaugaPromotie}"
 					immediate="false">
 					<p:ajax execute="@none" render="@form"></p:ajax>
 				</h:commandButton>
 				<h:commandButton id="cmdSalveazaPromotie"
-					actionListener="#{formPromotii.salveazaPromotie}"
+					actionListener="#{listaPromotiiImpl.salveazaPromotie}"
 					value="Salveaza promotie" immediate="true">
 
 				</h:commandButton>
