@@ -17,6 +17,12 @@
 					action="#{formMenu.changeSrcFormCurent}" value="Editare Form1" style="color: #FFFFFF">
 					<p:attribute name="srcForm" value="Form1"></p:attribute>
 				</h:commandLink>
+				 
+				<h:commandLink id="FormCandidati"
+					actionListener="#{formMenu.actionSrcChangeForm}" 
+					action="#{formMenu.changeSrcFormCurent}" value="Editare Candidati" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormCandidati"></p:attribute>
+				</h:commandLink>
 				
 				<h:commandLink id="FormContracteAngajati"
 					actionListener="#{formMenu.actionSrcChangeForm}" 
@@ -29,6 +35,13 @@
 					action="#{formMenu.changeSrcFormCurent}" value="Editare Angajati" style="color: #FFFFFF">
 					<p:attribute name="srcForm" value="FormAngajati"></p:attribute>
 				</h:commandLink>
+				
+				<h:commandLink id="FormFunctii"
+					actionListener="#{formMenu.actionSrcChangeForm}" 
+					action="#{formMenu.changeSrcFormCurent}" value="Editare Functii" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormFunctii"></p:attribute>
+				</h:commandLink>
+				
 				
 				<h:commandLink id="Raport1"
 					actionListener="#{formMenu.showRaport}" value="Listare Raport1">
