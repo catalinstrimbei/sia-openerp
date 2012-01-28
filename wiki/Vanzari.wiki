@@ -5,7 +5,7 @@
       # Crearea si gestionarea comenzilor
       # Crearea si gestionarea facturilor
       # Actualizarea stocului
-  <br># Modificarea soldului clientului</br>
+      # Modificarea soldului clientului
       # Realizarea returului produselor
  
 
@@ -64,6 +64,6 @@ Datele necesare:
      <a href ="http://sia-openerp.googlecode.com/svn/trunk/OpenERP/OpenERP_CONTABGEN/src/org/open/erp/services/ctbgen/ContabilizareSrv.java">Contabilitate generala</a><br><br>
 <li><b>Business Objects</b></LI> 
       * Client
-  <br>* FacturaEmisa</br>
+      * FacturaEmisa
       * Comanda
-  <br>* Vanzator</br>
+      * Vanzator
