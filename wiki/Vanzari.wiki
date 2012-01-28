@@ -3,7 +3,7 @@
 </br>
     <h3>Functionalitatile modulului VANZARI:</h3>
       # Crearea si gestionarea comenzilor
-  <br># Crearea si gestionarea facturilor</br>
+      # Crearea si gestionarea facturilor
       # Actualizarea stocului
   <br># Modificarea soldului clientului</br>
       # Realizarea returului produselor
