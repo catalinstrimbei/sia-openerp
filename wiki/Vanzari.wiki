@@ -1,0 +1,69 @@
+#summary <br>
+<h2>Pagina modulului VANZARI.</h2>
+</br>
+    <h3>Functionalitatile modulului VANZARI:</h3>
+      # Crearea si gestionarea comenzilor
+  <br># Crearea si gestionarea facturilor</br>
+      # Actualizarea stocului
+  <br># Modificarea soldului clientului</br>
+      # Realizarea returului produselor
+ 
+
+<h3>Descrierea detaliata a modulului  </h3>
+<b>Operatiuni specifice modulului VANZARI: <br></br></b>
+
+<b>CREAREA UNEI NOI COMENZI</b><br>
+Datele necesare:
+  <br>* Vector de produse ce vor face parte din comanda</br>
+      * Vector de cantitati aferente fiecarui produs
+  <br>* Clientul pentru care se inregistreaza comanda </br>
+</br>  
+
+<b> CREAREA UNEI NOI FACTURI.</b><br>
+Datele necesare:
+  <br>* O comanda inregistrata</br>
+      * Clientul pentru care se factureaza produsele
+  <br>* Vanzatorul care realizeaza factura</br>
+</br> 
+
+<b>INREGISTRAREA UNEI FACTURI</b><br>
+Datele necesare:
+  <br>* Factura pentru care se realizeaza inregistrarea</br>
+</br> 
+ 
+<b>ACTUALIZAREA STOCULUI IN MOMENTUL EMITERII FACTURII</b><br>
+Datele necesare:
+  <br>* Tipul actualizarii: intrare sau iesire din gestiune</br>
+      * Factura cu produsele ce vor fi actualizate
+</br>
+<br></br>
+<b>MODIFICAREA SOLDULUI CLIENTULUI DUPA EMITEREA UNEI NOI FACTURI</b><br>
+Datele necesare:
+  <br>* Factura din care se va prelua valoarea</br>
+      * Clientul pentru care se va modifica soldul
+</br>
+<br></br>
+<b>AFISAREA UNEI LISTE CU FACTURI EMISE UNUI CLIENT</b><br>
+Datele necesare:
+  <br>* Clientul pentru care se cauta lista de facturi</br>
+<br>
+</br>
+
+<b>REALIZARE RETUR PRODUSE</b><br>
+Datele necesare:
+  <br>* Factura cu produsele ce vor fi returnate</br>
+</br>
+
+<UL>
+<li>
+<h3>Descriere tehnica  </h3></li></ul>
+<ol>
+<li><b>Dependente </b></LI>
+     <a href ="http://sia-openerp.googlecode.com/svn/trunk/OpenERP/OpenERP_STOCURI/src/org/open/erp/services/stocuri/StocuriSrv.java"> Stocuri </a> <br><br>
+     <a href ="http://sia-openerp.googlecode.com/svn/trunk/OpenERP/OpenERP_NOMGEN/src/org/open/erp/services/nomgen/NomenclatoareSrv.java"> Nomenclatoare generale</a> <br><br>
+     <a href ="http://sia-openerp.googlecode.com/svn/trunk/OpenERP/OpenERP_CONTABGEN/src/org/open/erp/services/ctbgen/ContabilizareSrv.java">Contabilitate generala</a><br><br>
+<li><b>Business Objects</b></LI> 
+      * Client
+  <br>* FacturaEmisa</br>
+      * Comanda
+  <br>* Vanzator</br>
