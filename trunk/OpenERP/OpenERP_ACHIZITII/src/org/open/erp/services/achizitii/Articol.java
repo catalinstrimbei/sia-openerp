@@ -49,6 +49,15 @@ public class Articol extends Material implements Serializable {
 		super(id, denumire, unitateMasura);
 		this.categorieArticol = categorieArticol;
 	}
+	
+
+	public Articol(Integer idMaterial, String denumire, String categorie,
+			String uM, String tipContabil, Categorie categorieArticol,
+			Double pretAchizitie) {
+		super(idMaterial, denumire, categorie, uM, tipContabil);
+		this.categorieArticol = categorieArticol;
+		this.pretAchizitie = pretAchizitie;
+	}
 
 	public Categorie getCategorieArticol() {
 		return categorieArticol;

@@ -9,7 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.nomgen.Material;
 
 /**
  * 
@@ -24,7 +26,11 @@ public class LinieFacturaAchizitie extends LinieDocument implements Serializable
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = -828654688266809711L;
+	public LinieFacturaAchizitie() {
+		
+	}
 	private Double valoareLinie;
 	public Double getValoareLinie() {
 		return valoareLinie;
@@ -38,4 +44,11 @@ public class LinieFacturaAchizitie extends LinieDocument implements Serializable
 	public void setTVA(Double tVA) {
 		TVA = tVA;
 	}
+	public LinieFacturaAchizitie(Integer linieDoc, Document document,
+			Material material, Double cantitate, Double pret, Double tVA,
+			Double valoareLinie) {
+		super(linieDoc, document, material, cantitate, pret, tVA);
+		this.valoareLinie = valoareLinie;
+	}
+	
 }
