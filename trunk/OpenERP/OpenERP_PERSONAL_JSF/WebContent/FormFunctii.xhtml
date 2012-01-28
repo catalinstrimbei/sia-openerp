@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Functie</div>
+	<h:form id="formFunctii">
+		<h:panelGrid columns="3" border="1">
+			<p:facet name="header">
+				<h:outputText value="Navigare:"></h:outputText>
+			</p:facet>
+			<h:selectOneMenu id="cboFunctie" value="#{formFunctiiImpl.functie}" converter="#{formFunctiiImpl}" style="width: 254px; ">
+				<p:selectItems value="#{formFunctiiImpl.functii}"></p:selectItems>
+				<p:ajax render="@form"></p:ajax>
+				<!--  <p:ajax render="spor_denumire cboModCalcul cboLuna spor_valoare spor_an optTip"></p:ajax>-->
+			</h:selectOneMenu>
+			
+			<h:panelGrid columns="2" border="1">
+				<h:commandButton id="cmdPrev"
+					actionListener="#{formFunctiiImpl.previousFunctie}" value="Back"></h:commandButton>
+				<h:commandButton id="cmdNext"
+					actionListener="#{formFunctiiImpl.nextFunctie}" value="Next"></h:commandButton>
+			</h:panelGrid>
+			
+			
+			
+			<h:message></h:message>
+			
+			<h:outputText value="Id functie:"></h:outputText>
+			<h:inputText id="functie_id"
+				value="#{formFunctiiImpl.functie.idFunctie}"></h:inputText>
+			<h:message for="functie_id"></h:message>
+			
+			<h:outputText value="Nume functie:"></h:outputText>
+			<h:inputText id="functie_nume"
+				value="#{formFunctiiImpl.functie.numeFunctie}"></h:inputText>
+			<h:message for="functie_nume"></h:message>
+			
+			<h:outputText value="Pozitie in COR:"></h:outputText>
+			<h:inputText id="functie_pozCor"
+				value="#{formFunctiiImpl.functie.pozitiaInCOR}"></h:inputText>
+			<h:message for="functie_pozCor"></h:message>
+			
+			
+			 <!-- 
+			<h:outputText value="Departament:"></h:outputText>
+			<h:inputText id="functie_departament"
+				value="#{formFunctiiImpl.functie.departament}"></h:inputText>
+			<h:message for="functie_departament"></h:message>
+			-->
+			
+			<h:panelGrid columns="3" border="1">
+				<h:commandButton id="cmdAddFunctie" value="Adauga functie"
+					actionListener="#{formFunctiiImpl.adaugareFunctie}"
+					immediate="false">
+					<p:ajax execute="@none" render="@form"></p:ajax>
+				</h:commandButton>
+				<h:commandButton id="cmdSalveazaFunctie"
+					actionListener="#{formFunctiiImpl.salvareFunctie}"
+					value="Salveaza functie" immediate="true">
+
+				</h:commandButton>
+			</h:panelGrid>
+		</h:panelGrid>
+		<h:messages layout="list" style="color: red" />
+	</h:form>
+</body>
+</html>
