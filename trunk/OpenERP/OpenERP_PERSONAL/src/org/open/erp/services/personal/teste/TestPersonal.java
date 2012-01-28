@@ -35,7 +35,7 @@ public class TestPersonal {
 	PersonalImpl personalService = new PersonalImpl();
 	PersonalLogger logger = new PersonalLogger();
 	
-	void vizualizareRecrutare2(TestPersonalImpl test) 
+	void vizualizareRecrutare2(TestPersonalImplSimplu test) 
 	{		
 		//this.generareAnunturi();
 		test.generareCandidati();
@@ -75,7 +75,7 @@ public class TestPersonal {
 		}	
 	}
 	
-	void vizualizareListaAnunturiCurente(TestPersonalImpl test) {
+	void vizualizareListaAnunturiCurente(TestPersonalImplSimplu test) {
 		test.generareAnunturi();
 		Iterator<AnuntLocMunca> iterator = test.ListaAnunturi2.iterator();
 		//System.out.println("AM AJUNS AICI" + ListaAnunturi2.size());
@@ -92,7 +92,7 @@ public class TestPersonal {
 		}	
 		
 	}
-	void vizualizareProbeEvaluarePeDepartament(TestPersonalImpl test)
+	void vizualizareProbeEvaluarePeDepartament(TestPersonalImplSimplu test)
 	{
 		test.generareDepartamente();
 		test.generareProbeEvaluare();
@@ -120,7 +120,7 @@ public class TestPersonal {
 		}
 	}
 	
-	void vizualizareRezultateProbeEvaluare(TestPersonalImpl test)
+	void vizualizareRezultateProbeEvaluare(TestPersonalImplSimplu test)
 	{
 		test.generareProbeEvaluare();
 		test.generareListaRezultate();
@@ -160,7 +160,7 @@ public class TestPersonal {
 	
 	@Test
 	public void testRecrutare() {
-		TestPersonalImpl test = new TestPersonalImpl();
+		TestPersonalImplSimplu test = new TestPersonalImplSimplu();
 		vizualizareListaAnunturiCurente(test);
 		System.out.println("FAZA 2");
 		vizualizareRecrutare2(test);
@@ -169,28 +169,28 @@ public class TestPersonal {
 	
 	@Test
 	public void testDemisionare() {
-		TestPersonalImpl test = new TestPersonalImpl();
+		TestPersonalImplSimplu test = new TestPersonalImplSimplu();
 		personalService.demisionare(test.cerereDemisie1);
 		//fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testConcediere() {
-		TestPersonalImpl test = new TestPersonalImpl();
+		TestPersonalImplSimplu test = new TestPersonalImplSimplu();
 		personalService.concediere(test.contract1);
 		//fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testAngajare(){
-		TestPersonalImpl test = new TestPersonalImpl();	
+		TestPersonalImplSimplu test = new TestPersonalImplSimplu();	
 		personalService.angajare(test.candidat2);
 		System.out.println("Candidatul " + test.candidat1.getNume() + " " + test.candidat1.getPrenume() + " a fost angajat");
 	}
 	
 	@Test
 	public void testGetContractAngajatActiv() {
-		TestPersonalImpl test = new TestPersonalImpl();	
+		TestPersonalImplSimplu test = new TestPersonalImplSimplu();	
 		test.ListaAngajati();
 		test.ListaContracte();
 		personalService.getContractAngajatActiv(test.angajat1);
@@ -202,7 +202,7 @@ public class TestPersonal {
 	
 	@Test
 	public void testActivareAngajati() {
-		TestPersonalImpl test = new TestPersonalImpl();	
+		TestPersonalImplSimplu test = new TestPersonalImplSimplu();	
 		test.ListaAngajati();
 		test.ListaContracte();
 		test.ListaDosare();
@@ -213,19 +213,20 @@ public class TestPersonal {
 	
 	@Test
 	public void testEvaluare(){
-		TestPersonalImpl test = new TestPersonalImpl();
+		TestPersonalImplSimplu test = new TestPersonalImplSimplu();
 		vizualizareProbeEvaluarePeDepartament(test);
 		vizualizareRezultateProbeEvaluare(test);
 	}
+	/*
 	@Test
 	public void testRelocalizare_promovare(){
-		TestPersonalImpl test = new TestPersonalImpl();
+		TestPersonalImplSimplu test = new TestPersonalImplSimplu();
 		personalService.relocalizare_promovare(10001, test.functie2, null, true, 1200.00, 8.00);
 	}
-	
+	*/
 	@Test
 	public void testAdaugareFunctie(){
-		TestPersonalImpl test = new TestPersonalImpl();
+		TestPersonalImplSimplu test = new TestPersonalImplSimplu();
 		personalService.adaugareFunctie("Functie1", 1,null, null, null, null, null, test.departament1);
 		System.out.println("Functia a fost creta");
 	}
@@ -234,7 +235,7 @@ public class TestPersonal {
 	public void testEvenimente(){//Test Narcisa
 		try
 		{
-			TestPersonalImpl test = new TestPersonalImpl();
+			TestPersonalImplSimplu test = new TestPersonalImplSimplu();
 			test.initEvenimenteActivitati();
 			Iterator<Eveniment> evenimente = personalService.getEvenimenteAnuale(0).iterator();
 			while(evenimente.hasNext())
@@ -268,7 +269,7 @@ public class TestPersonal {
 	{
 		try
 		{
-			TestPersonalImpl test = new TestPersonalImpl();
+			TestPersonalImplSimplu test = new TestPersonalImplSimplu();
 			test.initEvenimenteActivitati();
 			personalService.aprobareEveniment(test.eveniment1);
 		}

@@ -525,24 +525,6 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public ContractMunca getContractMuncaByNr(Integer nrContractMunca_)
-			throws Exception {
-		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
-		ContractMunca result = new ContractMunca();
-		if (nrContractMunca_ == null){					
-			sessionContext.setRollbackOnly();
-			logger.logDEBUG(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
-		}
-		else{			
-			result = this.registruPersonal.getContractMuncaByNr(nrContractMunca_);
-			
-			logger.logDEBUG(">>>>>>End getCerereDemisieById");
-		}
-		return result;
-	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	@Override
 	public Collection<ContractMunca> getListaContracteMunca() throws Exception {
 		logger.logDEBUG(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Collection<ContractMunca> result = this.registruPersonal.getListaContracteMunca();
@@ -1499,8 +1481,8 @@ public class PersonalImpl implements PersonalSrvLocal, PersonalSrvRemote{
 		angajat = new Angajat (candidat_.getId(), candidat_.getAdresa(), candidat_.getNume(), candidat_.getPrenume(),
 				candidat_.getFormaAdresare(), candidat_.getGen(), candidat_.getCnp(), candidat_.getIdCandidat(), candidat_.getTipCandidat(),
 				3// va fi modificat odata cu baza de date
-				, null, 0);
-		em.persist(angajat);
+				, true, 0);
+		//em.persist(angajat);
 		/*
 		CV cv = getCVByCandidat(candidat_);
 		

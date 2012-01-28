@@ -146,6 +146,30 @@ public class Functie implements Serializable {
 	public void setCVuri(Collection<CV> cVuri) {
 		CVuri = cVuri;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idFunctie == null) ? 0 : idFunctie.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Functie other = (Functie) obj;
+		if (idFunctie == null) {
+			if (other.idFunctie != null)
+				return false;
+		} else if (!idFunctie.equals(other.idFunctie))
+			return false;
+		return true;
+	}
 	
 	
 }

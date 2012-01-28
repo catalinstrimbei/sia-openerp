@@ -74,8 +74,30 @@ public class Candidat extends DummyPersoanaFizica implements Serializable{
 	public void setInterviuri(Collection<InterviuCandidat> interviuri) {
 		this.interviuri = interviuri;
 	}
-	
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ ((idCandidat == null) ? 0 : idCandidat.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Candidat other = (Candidat) obj;
+		if (idCandidat == null) {
+			if (other.idCandidat != null)
+				return false;
+		} else if (!idCandidat.equals(other.idCandidat))
+			return false;
+		return true;
+	}
 	
 	
 }

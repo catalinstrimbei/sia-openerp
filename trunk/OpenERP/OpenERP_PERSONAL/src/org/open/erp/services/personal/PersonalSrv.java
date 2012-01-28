@@ -777,7 +777,7 @@ public interface PersonalSrv {
 		 * @return Obiectul de tip ContractMunca 
 		 * 
 		 */
-		
+		/*
 		ContractMunca							getContractMuncaByNr(Integer nrContractMunca_) throws Exception;
 		/**
 		 * Scop  Returneaza datele despre un contract de munca dupa precizarea id-ului
