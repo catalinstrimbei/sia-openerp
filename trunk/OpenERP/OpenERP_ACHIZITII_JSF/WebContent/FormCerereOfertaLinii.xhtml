@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">FORM
+Cerere Oferta Linii</div>
+
+	<h:form id="formCerereOfertaLinii">
+		<h:panelGrid columns="2" border="0">
+			<p:facet name="header">
+				<h:outputText value="MASTER cerereoferta" style="color: #FF0000"></h:outputText>
+			</p:facet>
+
+			<h:selectOneMenu id="cboCerereOferta" value="#{formCerereOferta.cerereoferta}"
+				converter="#{formCerereOferta}">
+				<p:selectItems value="#{formCerereOferta.oferte}"></p:selectItems>
+				<p:ajax render="dataCerere statusCerereOferta tblLinii"></p:ajax>
+			</h:selectOneMenu>
+			<h:panelGrid columns="3" border="0">
+				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
+					actionListener="#{formCerereOferta.previousCerereOferta}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+				<h:commandButton id="cmdNext" value="&gt;&gt;"
+					disabled="#{formCerereOferta.disableNext}"
+					actionListener="#{formCerereOferta.nextCerereOferta}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+			</h:panelGrid>
+
+	
+			<h:outputText value="DataCerere:"></h:outputText>
+			<h:inputText id="dataCerere" value="#{formCerereOferta.cerereoferta.dataCerere}">
+				<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
+			</h:inputText>
+
+
+			<h:outputText value="Status Cerere Oferta:"></h:outputText>
+			<h:inputText id="status"
+				value="#{formCerereOferta.cerereoferta.statusCerereOferta}" >
+			</h:inputText>
+
+			<p:facet name="footer">
+				<h:panelGrid columns="4" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare"
+						action="#{formCerereOferta.adaugareCerereOferta}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Abandon">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						action="#{formCerereOferta.salvareCerereProiect}">
+						<p:ajax render="@form" execute="@form"></p:ajax>
+					</h:commandButton>
+				</h:panelGrid>
+			</p:facet>
+		</h:panelGrid>
+		<h:messages style="color: #FF0000"></h:messages>
+		<h:dataTable id="tblLinii" var="linie"
+			value="#{formCerereOferta.linii}" border="1">
+			<p:facet name="header">
+				<h:outputText value="LINII cerere oferta"
+					style="color: #FF0000"></h:outputText>
+			</p:facet>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Articol"></h:outputText>
+				</p:facet>
+				<h:inputText id="articol" value="#{liniecerereoferta.articol}"></h:inputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Cantitate"></h:outputText>
+				</p:facet>
+				<h:inputText id="cantitate" value="#{liniecerereoferta.cantitate}">
+				</h:inputText>
+			</h:column>
+			<h:column>
+				<h:selectOneRadio id="selectLinieCurenta"
+					valueChangeListener="#{formCerereOferta.setLinieCurenta}"
+					value="1"
+					style="#{(linie.idlinie == formCerereOferta.linie.idlinie) ? 'background-color:red' : 'background-color:blue'}">
+					<p:selectItem
+						itemValue='${(linie.idlinie == formCerereOferta.linie.idlinie) ? "1" : "0" }'
+						itemLabel=" "></p:selectItem>
+
+					<p:ajax render="tbllinie"></p:ajax>
+				</h:selectOneRadio>
+				<p:facet name="header">
+					<h:outputText value="Select linie"></h:outputText>
+				</p:facet>
+
+			</h:column>
+		</h:dataTable>
+	</h:form>
+
+</body>
+</html>
