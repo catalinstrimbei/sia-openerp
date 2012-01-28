@@ -15,8 +15,8 @@ import javax.faces.event.ActionEvent;
 import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
+import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.Categorie;
-import org.open.erp.services.achizitii.impl.AprovizionareImpl;
 
 @ManagedBean(name="formCategorie")
 @SessionScoped
@@ -26,7 +26,7 @@ public class FormCategorie implements Converter{
 	
 	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
 	@EJB(name="AprovizionareSrv", mappedName="AprovizionareSrv")
-	private AprovizionareImpl achizitiiInstance;
+	private AprovizionareSrv achizitiiInstance;
 	
 	/* Data Model */
 	private List<Categorie> categorii = new ArrayList<Categorie>();
@@ -99,7 +99,7 @@ public class FormCategorie implements Converter{
 	public String salvareCategorie() throws Exception{
 		logger.debug("LOGGER Salvare categorie: " + this.categorie.getDenumire() );
 		this.categorii.remove(this.categorie);
-		this.categorie = achizitiiInstance.registru.salveazaCategorie(this.categorie);
+		this.categorie = achizitiiInstance.salveazaCategorie(this.categorie);
 		this.categorii.add(this.categorie);
 		return "FormCategorie";
 	}
@@ -119,7 +119,7 @@ public class FormCategorie implements Converter{
 	private void initForm() throws Exception{
 		logger.debug("PostConstruct FORM Categorie local-achizitii: ..." + this.achizitiiInstance);
 
-		this.categorii = (List<Categorie>) achizitiiInstance.registru.getListaCategorii();
+		this.categorii = (List<Categorie>) achizitiiInstance.getListaCategorii();
 		if (!categorii.isEmpty())
 			this.categorie = categorii.get(0);
 		else{
