@@ -213,6 +213,9 @@ public interface ContabilizareSrv {
 	Integer getidLunaDoc(Date data);
 	RegConturi getPlanConturi();
 	int getIdCont(Cont cont);
+	public RegInregistrareRJ getRegInregistrari();
+	public InregistrareRJ salvareInreg(InregistrareRJ inreg);
+	
 	
 		
 	

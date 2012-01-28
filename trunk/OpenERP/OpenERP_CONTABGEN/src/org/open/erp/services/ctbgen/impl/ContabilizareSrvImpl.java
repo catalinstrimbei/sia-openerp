@@ -962,6 +962,10 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 	public RegLuniLucru getRegLuniLucru(){
 		return RegLuniLucru.instantiaza();
 	}
+	@Override
+	public RegInregistrareRJ getRegInregistrari(){
+		return RegInregistrareRJ.instantiaza();
+	}
 	
 	@Override
 	public Cont getContDupaSimbol(String simbol){
@@ -977,6 +981,12 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		}
 		return null;
 	}
+	
+	@Override
+	public InregistrareRJ salvareInreg(InregistrareRJ inreg){
+		return regInregRJ.addInregistrareRJ(inreg);
+	}
+	
 	
 	//------------------------------------------
 	
