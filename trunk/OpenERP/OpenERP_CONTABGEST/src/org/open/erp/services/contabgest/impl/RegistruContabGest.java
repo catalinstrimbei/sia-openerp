@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
 //import org.open.erp.services.contabgest.DummyPersoana;
+import org.open.erp.services.contabgest.CheltuieliFixe;
 import org.open.erp.services.contabgest.ProdusFinit;
 import org.open.erp.services.contabgest.exceptions.ContabGestLogger;
 
@@ -38,6 +39,24 @@ public class RegistruContabGest {
 		}
 		return produsFinit;
 	}
+	
+	
+	public CheltuieliFixe salveazaCheltuieliFixe(CheltuieliFixe cheltuieliFixe) throws Exception{
+		try{
+			if (cheltuieliFixe.getIdTipCheltuieli() == null || 
+				entityManager.find(cheltuieliFixe.getClass(), cheltuieliFixe.getIdTipCheltuieli()) == null)
+				entityManager.persist(cheltuieliFixe);
+			else
+				entityManager.merge(cheltuieliFixe);
+			
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return cheltuieliFixe;
+	}
+	
 	
 	/* interogari */
 	/*
