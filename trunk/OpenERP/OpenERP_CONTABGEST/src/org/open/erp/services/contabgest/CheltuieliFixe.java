@@ -22,7 +22,7 @@ public class CheltuieliFixe extends TipCheltuieli implements Serializable{
 	 */
 	private static final long serialVersionUID = -3625117143467117943L;
 
-	private Integer idCheltFix;
+	//private Integer idCheltFix;
 	private String denCheltuiala;
 	private String delatiiCheltuiala;
 	@ManyToOne @JoinColumn(name = "idCentruCost")
@@ -43,22 +43,22 @@ public class CheltuieliFixe extends TipCheltuieli implements Serializable{
 		super();
 	}
 
-	public CheltuieliFixe(Integer idCheltFix, String denCheltuiala,
+	public CheltuieliFixe(String denCheltuiala,
 			String delatiiCheltuiala) {
 		super();
-		this.idCheltFix = idCheltFix;
+		//this.idCheltFix = idCheltFix;
 		this.denCheltuiala = denCheltuiala;
 		this.delatiiCheltuiala = delatiiCheltuiala;
 	
 	}
 
-	public Integer getIdCheltFix() {
-		return idCheltFix;
-	}
+	//public Integer getIdCheltFix() {
+	//	return idCheltFix;
+	//}
 
-	public void setIdCheltFix(Integer idCheltFix) {
-		this.idCheltFix = idCheltFix;
-	}
+	//public void setIdCheltFix(Integer idCheltFix) {
+	//	this.idCheltFix = idCheltFix;
+	//}
 
 	public String getDenCheltuiala() {
 		return denCheltuiala;
@@ -74,6 +74,18 @@ public class CheltuieliFixe extends TipCheltuieli implements Serializable{
 
 	public void setDelatiiCheltuiala(String delatiiCheltuiala) {
 		this.delatiiCheltuiala = delatiiCheltuiala;
+	}
+
+	public CheltuieliFixe(String denCheltuiala, String delatiiCheltuiala,
+			CentruCost centrucost) {
+		super();
+		this.denCheltuiala = denCheltuiala;
+		this.delatiiCheltuiala = delatiiCheltuiala;
+		this.centrucost = centrucost;
+	}
+	
+	public CheltuieliFixe(Integer 	idTipCheltuieli, String tipCheltuieli) {
+		super(idTipCheltuieli, tipCheltuieli);
 	}
 
 
