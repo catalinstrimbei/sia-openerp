@@ -460,4 +460,13 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		return result;
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public List<Campanie> getListaCampanii() throws Exception{
+		logger.debug(" Start getListaCampanii");
+		List<Campanie> result = this.registruMarketing.getListaCampanii();
+		logger.debug(">>>>>>End getListaCampanii");
+		return result;
+	}
+	
 }

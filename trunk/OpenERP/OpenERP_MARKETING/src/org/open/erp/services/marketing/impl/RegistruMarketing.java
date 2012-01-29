@@ -407,6 +407,20 @@ public class RegistruMarketing {
 			throw ex;
 		}
 	}
+	
+	List<Campanie>				getListaCampanii() throws Exception
+	{
+		try
+		{
+			return entityManager.createQuery("SELECT x FROM Campanie as x").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.info("EROARE PERSISTENTA *****");
+			ex.printStackTrace();  
+			throw ex;
+		}
+	}
 
 }
 	/*
