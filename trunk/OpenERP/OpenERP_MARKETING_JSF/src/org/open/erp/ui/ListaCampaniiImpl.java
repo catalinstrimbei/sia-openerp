@@ -26,7 +26,9 @@ public class ListaCampaniiImpl implements Converter{
 
 	private Campanie campanie;
 	private List<Campanie> campanii = new ArrayList<Campanie>();
+	private Map<String, Integer> statusuriCampanie = new HashMap<String, Integer>();
 	private Logger logger;
+	private Integer statusCampanie = 1;
 	
 	@EJB(mappedName="MarketingManagementSrvRemote/local", name="MarketingManagementSrvRemote/local") 
 	private MarketingManagementSrvLocal marketingSrv;
@@ -48,6 +50,10 @@ public class ListaCampaniiImpl implements Converter{
 	public Campanie getCampanie() {
 		return campanie;
 	}
+	
+	public void setStatusCampanie(Integer statusCampanie) {
+		this.statusCampanie = statusCampanie;
+	}
 
 	public void setCampanie(Campanie campanie) {
 		this.campanie = campanie;
@@ -63,6 +69,22 @@ public class ListaCampaniiImpl implements Converter{
 		return mapCampanii;
 	}
 	
+	/**
+	 * @return the statusCampanie
+	 */
+	public Map<String, Integer> getStatusuriCampanie() {
+		statusuriCampanie.put("Initial",1);
+		statusuriCampanie.put("In curs",2);
+		statusuriCampanie.put("Terminata",3);
+		return statusuriCampanie;
+	}
+
+	/**
+	 * @param tipuriPromotie the tipuriPromotie to set
+	 */
+	public void setStatusuriCampanie(Map<String, Integer> statusuriCampanie) {
+		this.statusuriCampanie = statusuriCampanie;
+	}
 	
 	public void setCampanii(List<Campanie> _campanii) {
 		this.campanii = _campanii;
