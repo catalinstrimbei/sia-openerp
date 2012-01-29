@@ -16,19 +16,23 @@
 	</div>	
 		<!-- <rich:calendar datePattern="dd/MM/yyyy hh:mm:ss" /> -->
 		 <h:form id="formConturi">
-		<h:panelGrid columns="3" border="1">
+		<h:panelGrid columns="1" border="1">
+		<h:panelGrid columns="3">
 			<p:facet name="header">
 				<h:outputText value="Navigare:"></h:outputText>
 			</p:facet>
-			<h:selectOneMenu id="cboSpor" value="#{formConturi.contCurent}" converter="#{formConturi}" >
+			<h:selectOneMenu id="cboConturi" value="#{formConturi.contCurent}" converter="#{formConturi}" style="width: 113px; ">
 				<p:selectItems value="#{formConturi.conturi}"></p:selectItems>
 				<p:ajax render="ccid cccl ccsb ccdn cctp ccst "></p:ajax>
 			</h:selectOneMenu>
 			
 			<h:panelGrid columns="2" border="1">
-				<h:commandButton id="previous" value="&lt;&lt;" actionListener="#{formConturi.previous}"/>
-				
-					<h:commandButton id="next" value="&gt;&gt;" actionListener="#{formConturi.next}"/>
+				<h:commandButton id="previous" value="&lt;&lt;" actionListener="#{formConturi.previous}">
+				<p:ajax render="@form"></p:ajax>
+   				 </h:commandButton>
+				<h:commandButton id="next" value="&gt;&gt;" actionListener="#{formConturi.next}">
+				<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
 			</h:panelGrid>
 			
 			<h:message></h:message>
@@ -65,7 +69,7 @@
 				value="#{formConturi.contCurent.tipSintetic}"></h:inputText>
 			<h:message for="ccst"></h:message>
 				
-			
+	</h:panelGrid>		
 			
 			
 			<h:panelGrid columns="4" border="1"> 
@@ -85,8 +89,9 @@
 						actionListener="#{formConturi.salveaza}">
 					</h:commandButton>
 			</h:panelGrid>
+			<h:panelGroup><h:messages  for="formConturi" layout="list" style="color: red" /></h:panelGroup>
 		</h:panelGrid>
-		<h:messages layout="list" style="color: red" />
+		
 	</h:form>
 		
 		

@@ -46,9 +46,10 @@ public class FormConturi implements Converter{
 		rc = contabSrv.getPlanConturi();
 		conturi = rc.getPlanConturi();
 		if (!conturi.isEmpty())
-			this.contCurent = conturi.get(0);
-//		else
-//			this.contCurent = new Cont();	
+			this.contCurent = conturi.get(3);
+		else
+			this.contCurent = new Cont();
+		this.contCurent.setDenCont("Cont nou...");
 	}
 
 //	public Integer getConturiCount() {
@@ -74,33 +75,44 @@ public class FormConturi implements Converter{
 		this.contCurent = contCurent;
 	}
 
-	public void next(ActionEvent p0) {
-		logger.debug("Conturi_form - next()");
-		if (this.conturi.isEmpty())
-			return;
+	public String previous2() {
 		
-		int idCurrentItem = this.conturi.indexOf(contCurent);
+		Integer idCurrentItem = this.conturi.indexOf(contCurent);
 		if (idCurrentItem > 0)
-			this.contCurent = this.conturi.get(idCurrentItem - 1);
+			this.contCurent = this.conturi.get(idCurrentItem -1 );
+		return "Form";
 	}
 
-	public void previous(ActionEvent p0) {
-		logger.debug("Conturi_form - previous()");
-		if (this.conturi.isEmpty())
-			return;
+	public String next2() {
 		
-		int idCurrentItem = this.conturi.indexOf(contCurent);
+		Integer idCurrentItem = this.conturi.indexOf(contCurent);
 		if (idCurrentItem + 1 < this.conturi.size())
 			this.contCurent = this.conturi.get(idCurrentItem + 1);
+		return "Form";
+	}
+//////////////////////////////////////////////////////
+	
+	/* Actiuni UI Controller */
+
+	
+	public void next(ActionEvent evt){
+		next2();
 	}
 
+	public void previous(ActionEvent evt){
+		previous2();
+	}
+
+	
+/////////////////////////////////////////////////////////////////	
 	public void adaugare(ActionEvent p0) {
 		logger.debug("Conturi_form - adaugare()");
 		contCurent = new Cont();
 //		contCurent.setIdCont(9999);
-		contCurent.setSimbolCont("XXXX");
+		contCurent.setSimbolCont("Nou XXXX");
 //		contCurent.setTipCont(TipCont.ACTIV);
 //		contCurent.setTipSintetic(StatusSintetic.ANALITIC);
+		this.conturi.add(contCurent);
 	}
 
 	public void stergere(ActionEvent p0) {
@@ -120,9 +132,14 @@ public class FormConturi implements Converter{
 	}
 
 	public void salveaza(ActionEvent p0) {
-		logger.debug("Conturi_form - salveaza()");
-		this.rc.addCont(this.contCurent);
+//		logger.debug("Conturi_form - salveaza()");
+//		this.rc.addCont(this.contCurent);
+//		this.conturi.add(this.contCurent);
+		
+		this.conturi.remove(this.contCurent);
+		this.contCurent = contabSrv.salveazaCont(this.contCurent);
 		this.conturi.add(this.contCurent);
+		//return "FormProiecte";
 	}
 
     @Override
@@ -141,10 +158,10 @@ public class FormConturi implements Converter{
     @Override
     public String getAsString(FacesContext arg0, UIComponent uiComp, Object uiValue) {              
             if (uiComp.getId().equals("cboConturi")){
-            	Cont uiInreg = (Cont)uiValue;
+            	Cont contStr = (Cont)uiValue;
                    
-                    if (uiInreg.getIdCont()!=null)
-                            return uiInreg.getIdCont().toString();
+                    if (contStr.getIdCont()!=null)
+                            return contStr.getIdCont().toString();
             }
             return null;
     }

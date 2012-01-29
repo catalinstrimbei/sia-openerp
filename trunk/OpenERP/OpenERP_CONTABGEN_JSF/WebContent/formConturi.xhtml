@@ -17,16 +17,19 @@
 				<h:outputText value="Creare conturi " style="color: #FF0000"></h:outputText>
 			</p:facet>
 
-			<h:selectOneMenu id="cboProiecte" value="#{formConturi.contCurent}"
+			<h:selectOneMenu id="cboConturi" value="#{formConturi.contCurent}"
 				converter="#{formConturi}" style="width: 156px; ">
 				<p:ajax render="@form"></p:ajax>
 				<p:selectItems value="#{formConturi.conturi}"></p:selectItems>
 			</h:selectOneMenu>
 			
 			<h:panelGrid columns="4" border="0">
-					<h:commandButton id="previous" value="&lt;&lt;" actionListener="#{formConturi.previous}"/>
-				
-					<h:commandButton id="next" value="&gt;&gt;" actionListener="#{formConturi.next}"/>
+					<h:commandButton id="previous" value="&lt;&lt;" actionListener="#{formConturi.previous}">
+					<p:ajax render="@form"></p:ajax>
+    						</h:commandButton>
+					<h:commandButton id="next" value="&gt;&gt;" actionListener="#{formConturi.next}">
+					<p:ajax render="@form"></p:ajax>
+					</h:commandButton>
 					
 				 	
 			</h:panelGrid>
@@ -70,19 +73,19 @@
 				<h:panelGrid columns="4" border="0">
 					<h:commandButton id="cmdAdaugare" value="Adaugare"
 						actionListener="#{formConturi.adaugare}">
-						
+						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
 					<h:commandButton id="cmdStergere" value="Stergere"
 						actionListener="#{formConturi.stergere}">
-						
+						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
 					<h:commandButton id="cmdAbandon" value="Abandon"
 						actionListener="#{formConturi.abandon}">
-						
+						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
 					<h:commandButton id="cmdSalvare" value="Salvare"
 						actionListener="#{formConturi.salveaza}">
-						
+						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
 				</h:panelGrid>
 			</p:facet>
