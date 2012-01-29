@@ -110,5 +110,18 @@ public class TestContabGestEJB {
         props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
         return new InitialContext(props);
 	}	
+   
+   
+		@Test
+		public void testProdusById() throws Exception
+		{
+			ProdusFinit produsFinit = contabGestInstance.getProdusFinit(2);
+			if(produsFinit != null)
+				System.out.println("Denumire produs: " + produsFinit.getDenProdusFinit().toString());
+			else
+			{
+				System.out.println("Nu exista produsul cu acest id.");
+			}
+		}
 
 }
