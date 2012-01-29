@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 
+import org.open.erp.services.contabgest.CheltuieliFixe;
 import org.open.erp.services.contabgest.ContabGestSrv;
 //import org.open.erp.services.contabgest.DummyPersoana;
 import org.open.erp.services.contabgest.ProdusFinit;
@@ -82,6 +83,23 @@ public class TestContabGestEJB {
 			
 			assertNotNull("Nu exista produs finit nou nou!", produsFinit);
 			logger.info("End test: creareProdusFinit");
+		}
+		
+		@Test
+		public void testCreareCheltuieliFixe() throws Exception{
+			
+			logger.info("Begin test: creareCheltuieliFixe");
+			
+			//Double valoareBugetata = 2555.0;
+			CheltuieliFixe cheltuieliFixe = contabGestInstance.defCheltuieliFixe("FIXA", "Cheltuiala fixa 1", "Detalii 1");
+			logger.info("Cheltuiala fixa cu id: " + cheltuieliFixe.getIdTipCheltuieli() + " a fost creata!");
+			
+			assertNotNull("Cheltuiala fixa ne-validat!", cheltuieliFixe.getIdTipCheltuieli());
+			
+			//dummyPersoana = contabGestInstance.defDummyPersoana(id, nume, prenume, formaAdresare, gen, cnp)(proiect.getIdProiect());
+			
+			assertNotNull("Nu exista Cheltuiala fixa noua!", cheltuieliFixe);
+			logger.info("End test: crearecheltuieliFixe");
 		}
 	
 	private static InitialContext initJBossJNDICtx() throws NamingException
