@@ -11,7 +11,7 @@
 		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Form
 	Cerere Oferta</div>
 	<h:form id="formCerereOferta">
-		<h:panelGrid columns="2" border="0">
+		<h:panelGrid columns="2" border="0" style="width: 594px; ">
 			<p:facet name="header">
 				<h:outputText value="Selectati o cerere de oferta" style="color: #0000A0"></h:outputText>
 			</p:facet>
@@ -53,10 +53,10 @@
 						action="#{formCerereOferta.adaugareCerereOferta}">
 						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
+					
 					<h:commandButton id="cmdStergere" value="Stergere">
 						<p:ajax render="@form" execute="@none"></p:ajax>
-					</h:commandButton>
-					<h:commandButton id="cmdAbandon" value="Abandon">
+					</h:commandButton><h:commandButton id="cmdAbandon" value="Abandon">
 						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
 					<h:commandButton id="cmdSalvare" value="Salvare"
