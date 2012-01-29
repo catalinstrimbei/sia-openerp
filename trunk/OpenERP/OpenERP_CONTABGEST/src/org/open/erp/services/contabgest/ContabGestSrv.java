@@ -12,4 +12,9 @@ public interface ContabGestSrv {
 	/*
 	public DummyPersoana getPersoanaId(Integer idPersoana) throws Exception;
 	*/
+
+
+	public 	CheltuieliFixe defCheltuieliFixe(String tipCheltuiala,
+			String denCheltuiala, String delatiiCheltuiala) throws Exception;
+	
 }
