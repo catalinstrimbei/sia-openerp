@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -15,11 +14,9 @@ import javax.faces.convert.Converter;
 import javax.faces.event.ActionEvent;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.marketing.MarketingManagementSrv;
 import org.open.erp.services.marketing.MarketingManagementSrvLocal;
-import org.open.erp.services.marketing.MarketingManagementSrvRemote;
 import org.open.erp.services.marketing.Promotie;
-import org.open.erp.services.marketing.impl.MarketingManagementImpl;
+
 
 
 //@ManagedBean(name="formPromotii")
