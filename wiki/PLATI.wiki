@@ -2,7 +2,7 @@
 = Introduction =
 Echipa FinPlati
 = Details =
-1. Confirmarea unei plati
+1. Confirmarea unei plati 
 
 2. Inregistrare chitanta
 
