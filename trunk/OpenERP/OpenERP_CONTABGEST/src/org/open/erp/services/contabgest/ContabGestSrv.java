@@ -1,5 +1,7 @@
 package org.open.erp.services.contabgest;
 
+import java.util.Date;
+
 public interface ContabGestSrv {
 	
 	/*
@@ -9,6 +11,7 @@ public interface ContabGestSrv {
 											) throws Exception;
 	*/
 	public ProdusFinit defProdusFinit(String den, Double procProfit) throws Exception;
+	public ProdusFinit getProdusFinit(Integer idProdusFinit) throws Exception;
 	/*
 	public DummyPersoana getPersoanaId(Integer idPersoana) throws Exception;
 	*/

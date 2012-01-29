@@ -39,6 +39,20 @@ public class RegistruContabGest {
 		}
 		return produsFinit;
 	}
+
+	public ProdusFinit getProdusFinitIdR(Integer idProdusFinit) throws Exception
+	{
+		try{
+			return entityManager.find(ProdusFinit.class, idProdusFinit);
+		}
+		catch(Exception ex)
+		{
+			logger2.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger2.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger2.logERROR("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}	
 	
 	
 	public CheltuieliFixe salveazaCheltuieliFixe(CheltuieliFixe cheltuieliFixe) throws Exception{
