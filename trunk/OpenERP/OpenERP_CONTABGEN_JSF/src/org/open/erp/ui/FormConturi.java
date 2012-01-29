@@ -25,9 +25,9 @@ public class FormConturi implements Converter{
 	private Cont contCurent;// = null;
 	private RegConturi rc;
 		
-//	public List<Cont> getConturi() {
-//		return conturi;
-//	}
+	public List<Cont> getConturi() {
+		return conturi;
+	}
 	
 
 	public void setConturi(List<Cont> conturi) {
