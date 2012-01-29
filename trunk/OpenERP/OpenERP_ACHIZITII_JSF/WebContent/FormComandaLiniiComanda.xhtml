@@ -8,12 +8,12 @@
 <body>
 	<div
 		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">FORM
-		Comenzi-LiniiComenzi 1.0 JSF2</div>
+		Comenzi-LiniiComenzi</div>
 
 	<h:form id="formComenziLiniiComenzi">
 		<h:panelGrid columns="2" border="0">
 			<p:facet name="header">
-				<h:outputText value="MASTER comenzi" style="color: #FF0000"></h:outputText>
+				<h:outputText value="Selectati o comanda" style="color: #0000A0"></h:outputText>
 			</p:facet>
 
 			<h:selectOneMenu id="cboComenzi" value="#{formComandaLiniiComanda.comanda}"
@@ -69,8 +69,8 @@
 		<h:dataTable id="tblLiniiComenzi" var="linieComanda"
 			value="#{formComandaLiniiComand.linieComanda" border="1">
 			<p:facet name="header">
-				<h:outputText value="DETALII Linii Comenzi"
-					style="color: #FF0000"></h:outputText>
+				<h:outputText value="DETALII COMANDA"
+					style="color: #0000A0"></h:outputText>
 			</p:facet>
 			<h:column>
 				<p:facet name="header">
