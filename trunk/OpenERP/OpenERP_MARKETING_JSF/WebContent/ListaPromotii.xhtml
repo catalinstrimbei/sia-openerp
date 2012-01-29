@@ -16,14 +16,17 @@
 				<p:selectItems value="#{Promotii.promotii}"></p:selectItems>
 				<p:ajax render="@form"></p:ajax>
 			</h:selectOneMenu>
-			<h:panelGrid columns="2" border="1">
+			<h:panelGrid columns="2" border="1">		
 				<h:commandButton id="cmdPrev"
 					actionListener="#{Promotii.PromotieAnterioara}" value="Back"></h:commandButton>
 				<h:commandButton id="cmdNext"
 					actionListener="#{Promotii.PromotieUrmatoare}" value="Next"></h:commandButton>
-
-			</h:panelGrid>
+			</h:panelGrid>			
 			<h:message></h:message>
+			<h:outputText value="Id Promotie"></h:outputText>
+			<h:inputText id="id_promotie"
+				value="#{Promotii.promotie.idPromotie}"></h:inputText>
+			<h:message for="id_promotie"></h:message>
 			<h:outputText value="Denumire promotie"></h:outputText>
 			<h:inputText id="denumire_promotie"
 				value="#{Promotii.promotie.denumirePromotie}"></h:inputText>
@@ -31,16 +34,24 @@
 			<h:outputText value="Mesaj promotional:"></h:outputText>
 			<h:inputText id="mesaj_promotional"
 				value="#{Promotii.promotie.mesajPromotional}"></h:inputText>
-			<h:message for="mesaj_promotional"></h:message>
+			<h:message for="mesaj_promotional"></h:message>			
 			
-			
-			<h:outputText value="Id_Promotie"></h:outputText>
-			<h:inputText id="id_promotie"
-				value="#{Promotii.promotie.idPromotie}"></h:inputText>
-			<h:message for="id_promotie"></h:message>
+			<h:outputText value="Tip Promotie"></h:outputText>
+			<h:selectOneMenu id="cboTipPromotie" value="#{Promotii.promotie.tipPromotie}" converter="#{Promotii}" style="width: 254px; ">		
+				<p:selectItem itemLabel="Discount" itemValue="1"></p:selectItem>
+				<p:selectItem itemLabel="Produse Aditionale" itemValue="2"></p:selectItem></h:selectOneMenu>
+			<h:message for="cboTipPromotie"></h:message>
+			<h:outputText value="Data inceput"></h:outputText>
+			<h:inputText id="dataInceput"
+				value="#{Promotii.promotie.dataStart}"></h:inputText>
+			<h:message for="dataInceput"></h:message>
+			<h:outputText value="Data final"></h:outputText>
+			<h:inputText id="dataSfarsit"
+				value="#{Promotii.promotie.dataSfarsit}"></h:inputText>
+			<h:message for="Data final"></h:message>
 			<h:panelGrid columns="3" border="1">
 				<h:commandButton id="cmdAddPromotie" value="Adauga promotie"
-					actionListener="#{Promotii.adaugaPromotie}"
+					actionListener="#{Promotii.adaugarePromotie}"
 					immediate="false">
 					<p:ajax execute="@none" render="@form"></p:ajax>
 				</h:commandButton>

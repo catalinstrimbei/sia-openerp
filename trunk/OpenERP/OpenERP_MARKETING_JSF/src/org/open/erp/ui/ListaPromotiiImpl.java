@@ -29,8 +29,9 @@ public class ListaPromotiiImpl implements Converter{
 	
 	private Promotie promotie;
 	private List<Promotie> promotii = new ArrayList<Promotie>();
-	
+	private Map<String, Integer> tipuriPromotie = new HashMap<String, Integer>();
 	private Logger logger;
+	private Integer tipPromotie = 1;
 	
 	@EJB(mappedName="MarketingManagementSrvRemote/local", name="MarketingManagementSrvRemote/local") 
 	private MarketingManagementSrvLocal marketingSrv;
@@ -53,6 +54,13 @@ public class ListaPromotiiImpl implements Converter{
 		return promotie;
 	}
 
+	/**
+	 * @param tipPromotie the tipPromotie to set
+	 */
+	public void setTipPromotie(Integer tipPromotie) {
+		this.tipPromotie = tipPromotie;
+	}
+
 	public void setPromotie(Promotie promotie) {
 		this.promotie = promotie;
 	}
@@ -70,6 +78,21 @@ public class ListaPromotiiImpl implements Converter{
 		}
 		return mapPromotii;
 	} 
+	/**
+	 * @return the tipuriPromotie
+	 */
+	public Map<String, Integer> getTipuriPromotie() {
+		tipuriPromotie.put("Discount",1);
+    	tipuriPromotie.put("ProduseAditionale",2);
+		return tipuriPromotie;
+	}
+
+	/**
+	 * @param tipuriPromotie the tipuriPromotie to set
+	 */
+	public void setTipuriPromotie(Map<String, Integer> tipuriPromotie) {
+		this.tipuriPromotie = tipuriPromotie;
+	}
 
 	public void setPromotii(List<Promotie> _promotii) {
 		this.promotii = _promotii;
@@ -77,12 +100,14 @@ public class ListaPromotiiImpl implements Converter{
 
 	/* Implementare navigare */
 	public void PromotieAnterioara(ActionEvent evt){
+		logger.info("am intrat in anterioara");
 		Integer idxCurent = this.promotii.indexOf(promotie);
 		if (idxCurent > 0)
 			this.promotie = this.promotii.get(idxCurent - 1);
 	}
 
 	public void PromotieUrmatoare(ActionEvent evt){
+		logger.info("am intrat in urmatoare");
 		Integer idxCurent = this.promotii.indexOf(promotie);
 		if ((idxCurent+1) < this.promotii.size())
 			this.promotie = this.promotii.get(idxCurent + 1);
@@ -94,10 +119,28 @@ public class ListaPromotiiImpl implements Converter{
 		logger.info("<<<<<<<uiValue este:"+uiValue);
 		//if (uiValue!=null){
 		if (uiComp.getId().equals("cboPromotie")){
+			logger.info("Am itrat in index");
+			Integer idx = 0;
 			Promotie uipromotieTemplate= new Promotie();
 			uipromotieTemplate.setIdPromotie(Integer.valueOf(uiValue));
 			//in personal nu am metoda equals
-			Integer idx = this.promotii.indexOf(uipromotieTemplate);
+//			for (Promotie p : promotii)
+//			{
+//				if (p.getIdPromotie().toString().matches(uiValue))//equals(Integer.parseInt(uiValue)))
+//				{
+//					idx = this.promotii.indexOf(p);
+//				}
+//			}
+			if (promotii.contains(uipromotieTemplate))
+			{
+				idx = this.promotii.indexOf(uipromotieTemplate);	
+			}
+			else
+			{
+				logger.info("Nu s-a gasit promotia");
+				idx = this.promotii.indexOf(promotie);
+			}
+			logger.info("Id promotie noua este : " + idx);
 			return this.promotii.get(idx);
 		} 
 		//}
