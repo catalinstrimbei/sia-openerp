@@ -23,7 +23,7 @@
 					actionListener="#{Promotii.PromotieUrmatoare}" value="Next"></h:commandButton>
 			</h:panelGrid>			
 			<h:message></h:message>
-			<h:outputText value="Id Promotie"></h:outputText>
+			<h:outputText value="Id promotie"></h:outputText>
 			<h:inputText id="id_promotie"
 				value="#{Promotii.promotie.idPromotie}"></h:inputText>
 			<h:message for="id_promotie"></h:message>
@@ -36,7 +36,7 @@
 				value="#{Promotii.promotie.mesajPromotional}"></h:inputText>
 			<h:message for="mesaj_promotional"></h:message>			
 			
-			<h:outputText value="Tip Promotie"></h:outputText>
+			<h:outputText value="Tip promotie"></h:outputText>
 			<h:selectOneMenu id="cboTipPromotie" value="#{Promotii.promotie.tipPromotie}" converter="#{Promotii}" style="width: 254px; ">		
 				<p:selectItem itemLabel="Discount" itemValue="1"></p:selectItem>
 				<p:selectItem itemLabel="Produse Aditionale" itemValue="2"></p:selectItem></h:selectOneMenu>
