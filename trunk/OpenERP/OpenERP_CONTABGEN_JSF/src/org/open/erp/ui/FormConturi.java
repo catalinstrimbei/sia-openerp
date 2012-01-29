@@ -25,7 +25,7 @@ public class FormConturi implements Converter{
 	private Cont contCurent;// = null;
 	private RegConturi rc;
 		
-	public List<Cont> getConturi() {
+	public List<Cont> getConturiList() {
 		return conturi;
 	}
 	
@@ -47,15 +47,15 @@ public class FormConturi implements Converter{
 		conturi = rc.getPlanConturi();
 		if (!conturi.isEmpty())
 			this.contCurent = conturi.get(0);
-		else
-			this.contCurent = new Cont();	
+//		else
+//			this.contCurent = new Cont();	
 	}
 
 //	public Integer getConturiCount() {
 //		return conturi.size();
 //	}
 
-	public Map<String, Cont> getConturiMap() {
+	public Map<String, Cont> getConturi() {
 		Map<String, Cont> conturiMap = new LinkedHashMap<String, Cont>();
 		if (this.conturi != null && !this.conturi.isEmpty()) {
 			for (Cont c : this.conturi) {
@@ -68,6 +68,7 @@ public class FormConturi implements Converter{
 	public Cont getContCurent() {
 		return contCurent;
 	}
+	
 
 	public void setContCurent(Cont contCurent) {
 		this.contCurent = contCurent;

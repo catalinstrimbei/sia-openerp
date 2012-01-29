@@ -12,9 +12,84 @@
 	
 	<h:body>
 	<div style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">
-		Form_2
+		Form_2_Cont
 	</div>	
-		<rich:calendar datePattern="dd/MM/yyyy hh:mm:ss" />
+		<!-- <rich:calendar datePattern="dd/MM/yyyy hh:mm:ss" /> -->
+		 <h:form id="formConturi">
+		<h:panelGrid columns="3" border="1">
+			<p:facet name="header">
+				<h:outputText value="Navigare:"></h:outputText>
+			</p:facet>
+			<h:selectOneMenu id="cboSpor" value="#{formConturi.contCurent}" converter="#{formConturi}" >
+				<p:selectItems value="#{formConturi.conturi}"></p:selectItems>
+				<p:ajax render="ccid cccl ccsb ccdn cctp ccst "></p:ajax>
+			</h:selectOneMenu>
+			
+			<h:panelGrid columns="2" border="1">
+				<h:commandButton id="previous" value="&lt;&lt;" actionListener="#{formConturi.previous}"/>
+				
+					<h:commandButton id="next" value="&gt;&gt;" actionListener="#{formConturi.next}"/>
+			</h:panelGrid>
+			
+			<h:message></h:message>
+			
+			
+			
+			<h:outputText value="Id Cont:"></h:outputText>
+			<h:inputText id="ccid"
+				value="#{formConturi.contCurent.idCont}"></h:inputText>
+			<h:message for="ccid"></h:message>
+			
+			<h:outputText value="Clasa Cont:"></h:outputText>
+			<h:inputText id="cccl"
+				value="#{formConturi.contCurent.clasaCont}"></h:inputText>
+			<h:message for="cccl"></h:message>
+			
+			<h:outputText value="Simbol Cont:"></h:outputText>
+			<h:inputText id="ccsb"
+				value="#{formConturi.contCurent.simbolCont}"></h:inputText>
+			<h:message for="ccsb"></h:message>
+			
+			<h:outputText value="Den Cont:"></h:outputText>
+			<h:inputText id="ccdn"
+				value="#{formConturi.contCurent.denCont}"></h:inputText>
+			<h:message for="ccdn"></h:message>
+			
+				<h:outputText value="Tip Cont:"></h:outputText>
+			<h:inputText id="cctp"
+				value="#{formConturi.contCurent.tipCont}"></h:inputText>
+			<h:message for="cctp"></h:message>
+			
+			<h:outputText value="Tip Sintetic:"></h:outputText>
+			<h:inputText id="ccst"
+				value="#{formConturi.contCurent.tipSintetic}"></h:inputText>
+			<h:message for="ccst"></h:message>
+				
+			
+			
+			
+			<h:panelGrid columns="4" border="1"> 
+				<h:commandButton id="cmdAdaugare" value="Adaugare"
+						actionListener="#{formConturi.adaugare}">
+						
+					</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere"
+						actionListener="#{formConturi.stergere}">
+						
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Abandon"
+						actionListener="#{formConturi.abandon}">
+						
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						actionListener="#{formConturi.salveaza}">
+					</h:commandButton>
+			</h:panelGrid>
+		</h:panelGrid>
+		<h:messages layout="list" style="color: red" />
+	</h:form>
+		
+		
 	</h:body>
 
 </html>
