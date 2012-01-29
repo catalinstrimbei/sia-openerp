@@ -31,6 +31,7 @@ public class LinieFacturaAchizitie extends LinieDocument implements Serializable
 	public LinieFacturaAchizitie() {
 		
 	}
+	private Integer nrLinie;
 	private Double valoareLinie;
 	public Double getValoareLinie() {
 		return valoareLinie;
@@ -46,9 +47,18 @@ public class LinieFacturaAchizitie extends LinieDocument implements Serializable
 	}
 	public LinieFacturaAchizitie(Integer linieDoc, Document document,
 			Material material, Double cantitate, Double pret, Double tVA,
-			Double valoareLinie) {
+			Integer nrLinie, Double valoareLinie) {
 		super(linieDoc, document, material, cantitate, pret, tVA);
+		this.nrLinie = nrLinie;
 		this.valoareLinie = valoareLinie;
 	}
+	public Integer getNrLinie() {
+		return nrLinie;
+	}
+	public void setNrLinie(Integer nrLinie) {
+		this.nrLinie = nrLinie;
+	}
+
+	
 	
 }

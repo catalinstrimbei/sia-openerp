@@ -27,8 +27,8 @@ public class LinieCerereOferta implements Serializable {
 	private static final long serialVersionUID = 4172749872241504774L;
 
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private long idLinieCerereOferta_gen;
+/*@GeneratedValue(strategy = GenerationType.AUTO)
+private long idLinieCerereOferta_gen;*/
 private long idLinieCerereOferta;
 
 public long getIdLinieCerereOferta() {
@@ -39,7 +39,7 @@ public void setIdLinieCerereOferta(long idLinieCerereOferta) {
 }
 private Integer nrLinie;
 
-@ManyToOne(cascade = ALL)@JoinColumn(name="id_CerereOferta")
+@ManyToOne/*(cascade = ALL)*/@JoinColumn(name="id_CerereOferta")
 private CerereOferta cerereOferta;
 
 @ManyToOne@JoinColumn(name="idMaterial")
@@ -77,6 +77,15 @@ public void setCantitate(Double cantitate) {
 public LinieCerereOferta(Integer nrLinie, CerereOferta cerereOferta,
 		Material articol, Double cantitate) {
 	super();
+	this.nrLinie = nrLinie;
+	this.cerereOferta = cerereOferta;
+	this.articol = articol;
+	this.cantitate = cantitate;
+}
+public LinieCerereOferta(long idLinieCerereOferta, Integer nrLinie,
+		CerereOferta cerereOferta, Material articol, Double cantitate) {
+	super();
+	this.idLinieCerereOferta = idLinieCerereOferta;
 	this.nrLinie = nrLinie;
 	this.cerereOferta = cerereOferta;
 	this.articol = articol;

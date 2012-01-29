@@ -28,14 +28,14 @@ public class Categorie implements Serializable {
 	 */
 	private static final long serialVersionUID = 4766008004517409356L;
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private long id_cat_generat;
+/*@GeneratedValue(strategy = GenerationType.AUTO)
+private long id_cat_generat;*/
 private long id_cat;
 private String denumire;
-@OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL,targetEntity=Furnizor.class)
+@OneToMany(mappedBy = "categorieArticol", targetEntity=Furnizor.class)
 private Collection<Furnizor> furnizoriCategorie = new ArrayList<Furnizor>();
 
-@OneToMany(cascade = CascadeType.ALL, mappedBy = "categorieArticol")
+@OneToMany(/*cascade = CascadeType.ALL,*/ mappedBy = "categorieArticol")
 private List<Articol> articole = new ArrayList<Articol>();
 
 public void addFurnizor(Furnizor furn) {
@@ -97,5 +97,13 @@ public Categorie(long id_cat, String denumire) {
 	this.denumire = denumire;
 }
 
+/*public long getId_cat_generat() {
+	return id_cat_generat;
+}
+
+public void setId_cat_generat(long id_cat_generat) {
+	this.id_cat_generat = id_cat_generat;
+}
+*/
 
 }

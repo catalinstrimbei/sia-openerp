@@ -35,7 +35,7 @@ public class Factura extends Document implements Serializable {
 	public static final Integer FACTURA_RETUR = 2;
 	public static final Integer FACTURA_ACHIZITIE = 3;
 	
-	@ManyToOne(cascade = ALL)@JoinColumn(name="furnizor_id")
+	@ManyToOne/*(cascade = ALL)*/@JoinColumn(name="furnizor_id")
 	private Furnizor furnizor;
 	
 	private String nrFact;
@@ -43,12 +43,12 @@ public class Factura extends Document implements Serializable {
 	private Double TVATotal;
 	private Integer status;
 	
-	@OneToOne(cascade = ALL)@JoinColumn(name="idComanda")
+	@OneToOne/*(cascade = ALL)*/@JoinColumn(name="idComanda")
 	private Comanda comanda;
 	
 	private Integer tipFact;
 	
-	@OneToOne(mappedBy="factura", cascade = ALL)
+	@OneToOne(mappedBy="factura"/*, cascade = ALL*/)
 	private NIR nir;
 	
 	public Integer getTipFact() {
@@ -124,6 +124,16 @@ public class Factura extends Document implements Serializable {
 	}
 	public Factura() {
 		super();
+	}
+	public Factura(Integer nrDocument, Date dataDocument, Persoana persoana,
+			String observatie, String nrFact, Double valFact, Double tVATotal,
+			Integer status, Integer tipFact) {
+		super(nrDocument, dataDocument, persoana, observatie);
+		this.nrFact = nrFact;
+		this.valFact = valFact;
+		TVATotal = tVATotal;
+		this.status = status;
+		this.tipFact = tipFact;
 	}
 	
 }

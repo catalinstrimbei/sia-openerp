@@ -40,13 +40,13 @@ public static final Integer TRIMISA = 0;
 public static final Integer PRIMITA = 1;
 public static final Integer ANULATA =-1;
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private long id_CerereOferta_generat;
+/*@GeneratedValue(strategy = GenerationType.AUTO)
+private long id_CerereOferta_generat;*/
 private long id_CerereOferta;
 @Temporal(TemporalType.DATE)
 private Date dataCerere;
 private Integer statusCerereOferta;
-@OneToOne(cascade = ALL)@JoinColumn(name="id_OfertaAchizitie")
+@OneToOne/*(cascade = ALL)*/@JoinColumn(name="id_OfertaAchizitie")
 private OfertaAchizitie ofertaAchizitie;
 
 @OneToMany(mappedBy = "cerereOferta", cascade = CascadeType.ALL)

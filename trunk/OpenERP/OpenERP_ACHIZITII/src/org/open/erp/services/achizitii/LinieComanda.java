@@ -39,7 +39,7 @@ public class LinieComanda implements Serializable  {
     private long idLinieComanda;
 	private Integer linieComanda;
 	
-	@ManyToOne(cascade = ALL)@JoinColumn(name="idComanda")	
+	@ManyToOne/*(cascade = ALL)*/@JoinColumn(name="idComanda")	
 	private Comanda comanda;
 	
 	@ManyToOne@JoinColumn(name="idMaterial")

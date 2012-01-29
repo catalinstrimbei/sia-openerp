@@ -26,10 +26,10 @@ public class LiniePlanAprovizionare implements Serializable{
 	 */
 	private static final long serialVersionUID = 5202104811994461383L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	private long idLiniePlanAprovizionare_gen;
+   /* @GeneratedValue(strategy = GenerationType.AUTO)
+	private long idLiniePlanAprovizionare_gen;*/
     private long idLiniePlanAprovizionare;
-	@ManyToOne(cascade = ALL)@JoinColumn(name="idPlanAprovizionare")	
+	@ManyToOne/*(cascade = ALL)*/@JoinColumn(name="idPlanAprovizionare")	
 	private PlanAprovizionare planAprovizionare;
 	
 	@ManyToOne@JoinColumn(name="idMaterial")	
@@ -92,6 +92,18 @@ public class LiniePlanAprovizionare implements Serializable{
 	}
 	public void setLinie(Integer linie) {
 		this.linie = linie;
+	}
+
+	public LiniePlanAprovizionare(long idLiniePlanAprovizionare,
+			PlanAprovizionare planAprovizionare, Material articol,
+			Double cantitate, Integer linie, Integer status) {
+		super();
+		this.idLiniePlanAprovizionare = idLiniePlanAprovizionare;
+		this.planAprovizionare = planAprovizionare;
+		this.articol = articol;
+		this.cantitate = cantitate;
+		this.linie = linie;
+		this.status = status;
 	}
 	
 

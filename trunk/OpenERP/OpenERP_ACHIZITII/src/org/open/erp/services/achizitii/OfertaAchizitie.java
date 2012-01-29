@@ -29,8 +29,8 @@ import javax.persistence.TemporalType;
 @Entity
 public class OfertaAchizitie implements Serializable {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	private long id_OfertaAchizitie_gen;
+   /* @GeneratedValue(strategy = GenerationType.AUTO)
+	private long id_OfertaAchizitie_gen;*/
     private long id_OfertaAchizitie;
 	public static final Integer TRANSFORMATA = 1;
 	public static final Integer RESPINSA = -1;
@@ -38,15 +38,15 @@ public class OfertaAchizitie implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dataOferta;	
 	private Integer statusOferta;
-	@OneToOne(mappedBy="ofertaAchizitie", cascade = ALL)
+	@OneToOne(mappedBy="ofertaAchizitie"/*, cascade = ALL*/)
 	private Comanda comanda;
-	@ManyToOne
+	@ManyToOne/*(cascade = ALL)*/
 	private Furnizor furnizor;
 	private Double valTotal;
 	private Integer nrZile;	
-	@OneToOne(mappedBy="ofertaAchizitie", cascade = ALL)
+	@OneToOne(mappedBy="ofertaAchizitie"/*, cascade = ALL*/)
 	private CerereOferta cerereOferta;	
-	@OneToMany(mappedBy = "oferta", targetEntity = org.open.erp.services.achizitii.LinieOfertaAchizitie.class, fetch = LAZY, cascade = ALL)
+	@OneToMany(mappedBy = "oferta", /*targetEntity = org.open.erp.services.achizitii.LinieOfertaAchizitie.class, fetch = LAZY,*/ cascade = ALL)
 	private Collection<LinieOfertaAchizitie> liniiOferta = new ArrayList<LinieOfertaAchizitie>();
 	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(OfertaAchizitie.class.getName());
 	public Double getValTotal() {

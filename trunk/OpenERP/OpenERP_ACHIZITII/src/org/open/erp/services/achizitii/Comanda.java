@@ -40,13 +40,19 @@ public class Comanda implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idComanda_generat;	
     private Integer idComanda;	
-	@ManyToOne@JoinColumn(name="idFurnizor")
+	@ManyToOne/*(cascade = ALL)*/@JoinColumn(name="idFurnizor")
 	private Furnizor furnizor;
 	@Temporal(TemporalType.DATE)
 	private Date dataComanda;
 	private Integer statusComanda;
-	@OneToOne(cascade = ALL)@JoinColumn(name="idOfertaAchizitie_")
+	@OneToOne/*(cascade = ALL)*/@JoinColumn(name="idOfertaAchizitie_")
 	private OfertaAchizitie ofertaAchizitie;
+	@OneToOne(mappedBy="comanda")
+	private Factura factura;
+	
+	@OneToMany(mappedBy = "comanda",targetEntity=LinieComanda.class, cascade = ALL)
+	private Collection<LinieComanda> liniiComanda = new ArrayList<LinieComanda>();
+	
 	public OfertaAchizitie getOfertaAchizitie() {
 		return ofertaAchizitie;
 	}
@@ -58,12 +64,6 @@ public class Comanda implements Serializable {
 	public void setLiniiComanda(Collection<LinieComanda> liniiComanda) {
 		this.liniiComanda = liniiComanda;
 	}
-
-	@OneToOne(mappedBy="comanda")
-	private Factura factura;
-	
-	@OneToMany(mappedBy = "comanda",targetEntity=LinieComanda.class)
-	private Collection<LinieComanda> liniiComanda = new ArrayList<LinieComanda>();
 	
 	 public void addLinii(LinieComanda li) {
 	        this.getLiniiComanda().add(li);	       
@@ -134,6 +134,15 @@ public class Comanda implements Serializable {
 
 	public Comanda() {
 		super();
+	}
+
+	public Comanda(Integer idComanda, Furnizor furnizor, Date dataComanda,
+			Integer statusComanda) {
+		super();
+		this.idComanda = idComanda;
+		this.furnizor = furnizor;
+		this.dataComanda = dataComanda;
+		this.statusComanda = statusComanda;
 	}
 	
 	

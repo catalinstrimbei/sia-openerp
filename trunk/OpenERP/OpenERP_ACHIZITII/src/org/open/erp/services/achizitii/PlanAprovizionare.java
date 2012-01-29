@@ -34,8 +34,8 @@ public class PlanAprovizionare implements Serializable  {
 	 */
 	private static final long serialVersionUID = -9111074543290370000L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	private long idPlanAprovizionare_gen;
+   /* @GeneratedValue(strategy = GenerationType.AUTO)
+	private long idPlanAprovizionare_gen;*/
     private long idPlanAprovizionare;
 	
 	/*public static void setPlanAprovizionare(PlanAprovizionare planAprovizionare) {

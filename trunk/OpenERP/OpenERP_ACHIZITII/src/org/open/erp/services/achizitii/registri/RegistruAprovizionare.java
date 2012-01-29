@@ -36,7 +36,9 @@ public class RegistruAprovizionare {
 
 	public Articol getArticoleById(Integer idMaterial_) throws Exception {
 		try {
+			logger.error("getArticoleById");
 			return entityManager.find(Articol.class, idMaterial_);
+			
 		} catch (Exception ex) {
 			logger.error("ERROR " + ex.getMessage());
 			throw ex;
@@ -147,9 +149,14 @@ public class RegistruAprovizionare {
 			if (Long.valueOf(cerereOferta_.getId_CerereOferta()) == null
 					|| entityManager.find(cerereOferta_.getClass(),
 							cerereOferta_.getId_CerereOferta()) == null)
+			{
 				entityManager.persist(cerereOferta_);
-			else
+				logger.error("Persist CerereOferta");
+			}
+			else{
+				logger.error("Merge CerereOferta");
 				entityManager.merge(cerereOferta_);
+			}
 		} catch (Exception ex) {
 			logger.error("ERROR " + ex.getMessage());
 			throw ex;
@@ -235,9 +242,15 @@ public class RegistruAprovizionare {
 
 	public NIR salveazaNIR(NIR NIR_) throws Exception {
 		try {
-			if (Long.valueOf(NIR_.getNrDoc()) == null
-					|| entityManager.find(NIR_.getClass(), NIR_.getNrDoc()) == null)
+			if ((Integer)(NIR_.getNrDocument()) == null
+					|| entityManager.find(NIR_.getClass(), (Integer)(NIR_.getNrDocument())) == null)
+			{
+				if ((Integer)(NIR_.getNrDocument()) == 0){
+					logger.error("UUUPPPPSASSSSS--0---");
+				}
 				entityManager.persist(NIR_);
+				logger.error("Persist NIR");
+			}
 			else
 				entityManager.merge(NIR_);
 		} catch (Exception ex) {
@@ -287,7 +300,10 @@ public class RegistruAprovizionare {
 			if (Long.valueOf(OfertaAchizitie_.getId_OfertaAchizitie()) == null
 					|| entityManager.find(OfertaAchizitie_.getClass(),
 							OfertaAchizitie_.getId_OfertaAchizitie()) == null)
+			{
 				entityManager.persist(OfertaAchizitie_);
+				logger.error("Persist OfertaAchizitie");
+			}
 			else
 				entityManager.merge(OfertaAchizitie_);
 		} catch (Exception ex) {
@@ -337,7 +353,10 @@ public class RegistruAprovizionare {
 			if (Long.valueOf(PlanAprovizionare_.getIdPlanAprovizionare()) == null
 					|| entityManager.find(PlanAprovizionare_.getClass(),
 							PlanAprovizionare_.getIdPlanAprovizionare()) == null)
+			{
 				entityManager.persist(PlanAprovizionare_);
+				logger.error("Persist PlanAprovizionare");
+			}
 			else
 				entityManager.merge(PlanAprovizionare_);
 		} catch (Exception ex) {
@@ -384,10 +403,13 @@ public class RegistruAprovizionare {
 
 	public Factura salveazaFactura(Factura factura_) throws Exception {
 		try {
-			if (factura_.getNrFact() == null
+			if ((Integer)(factura_.getNrDocument()) == null
 					|| entityManager.find(factura_.getClass(),
-							factura_.getNrFact()) == null)
+							(Integer)(factura_.getNrDocument())) == null)
+			{
 				entityManager.persist(factura_);
+				logger.error("Persist Factura");
+			}
 			else
 				entityManager.merge(factura_);
 		} catch (Exception ex) {
@@ -629,7 +651,10 @@ public class RegistruAprovizionare {
 			if (lfactAchiz_.getLinieDoc() == null
 					|| entityManager.find(lfactAchiz_.getClass(),
 							lfactAchiz_.getLinieDoc()) == null)
+			{
 				entityManager.persist(lfactAchiz_);
+				logger.error("Persist LinieFacturaAchizitie");
+			}
 			else
 				entityManager.merge(lfactAchiz_);
 		} catch (Exception ex) {
@@ -710,7 +735,10 @@ public class RegistruAprovizionare {
 			if (linieNir_.getLinieDoc() == null
 					|| entityManager.find(linieNir_.getClass(),
 							linieNir_.getLinieDoc()) == null)
+			{
 				entityManager.persist(linieNir_);
+				logger.error("Persist LinieNIR");
+			}
 			else
 				entityManager.merge(linieNir_);
 		} catch (Exception ex) {
@@ -792,7 +820,10 @@ public class RegistruAprovizionare {
 			if (Long.valueOf(lofertaAchiz_.getIdLinieOfertaAchizitie()) == null
 					|| entityManager.find(lofertaAchiz_.getClass(),
 							lofertaAchiz_.getIdLinieOfertaAchizitie()) == null)
+			{
 				entityManager.persist(lofertaAchiz_);
+				logger.error("Persist LinieOfertaAchizitie");
+			}
 			else
 				entityManager.merge(lofertaAchiz_);
 		} catch (Exception ex) {
@@ -877,7 +908,10 @@ public class RegistruAprovizionare {
 			if (Long.valueOf(lofertaAprov_.getIdLiniePlanAprovizionare()) == null
 					|| entityManager.find(lofertaAprov_.getClass(),
 							lofertaAprov_.getIdLiniePlanAprovizionare()) == null)
+			{
 				entityManager.persist(lofertaAprov_);
+				logger.error("Persist LiniePlanAprovizionare");
+			}
 			else
 				entityManager.merge(lofertaAprov_);
 		} catch (Exception ex) {

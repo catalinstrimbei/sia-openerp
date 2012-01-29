@@ -25,11 +25,11 @@ public class LinieOfertaAchizitie implements Serializable {
 	private static final long serialVersionUID = 2811436293697742002L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	private long idLinieOfertaAchizitie_gen;
+   /* @GeneratedValue(strategy = GenerationType.AUTO)
+	private long idLinieOfertaAchizitie_gen;*/
     private long idLinieOfertaAchizitie;
 	
-	@ManyToOne(cascade = ALL)@JoinColumn(name="id_OfertaAchizitie")
+	@ManyToOne/*(cascade = ALL)*/@JoinColumn(name="id_OfertaAchizitie")
 	private OfertaAchizitie oferta;
 	
 	public long getIdLinieOfertaAchizitie() {
@@ -88,6 +88,17 @@ public class LinieOfertaAchizitie implements Serializable {
 	public LinieOfertaAchizitie(OfertaAchizitie oferta, Articol articol,
 			Double cantitate, Integer linie, Double pret) {
 		super();
+		this.oferta = oferta;
+		this.articol = articol;
+		this.cantitate = cantitate;
+		this.linie = linie;
+		this.pret = pret;
+	}
+	public LinieOfertaAchizitie(long idLinieOfertaAchizitie,
+			OfertaAchizitie oferta, Articol articol, Double cantitate,
+			Integer linie, Double pret) {
+		super();
+		this.idLinieOfertaAchizitie = idLinieOfertaAchizitie;
 		this.oferta = oferta;
 		this.articol = articol;
 		this.cantitate = cantitate;

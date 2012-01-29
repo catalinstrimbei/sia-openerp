@@ -29,10 +29,11 @@ public class Furnizor implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2019369183120390764L;
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private int idFurnizor_generat;
+	@Id 
+	/*@GeneratedValue(strategy = GenerationType.AUTO)
+	private int idFurnizor_generat;*/
 	private int idFurnizor;
-@OneToMany(mappedBy="furnizor", cascade = ALL)
+@OneToMany(mappedBy="furnizor"/*, cascade = ALL*/)
 private List<Factura> facturiFurnizor=new ArrayList<Factura>();
 private Integer cont;
 private String CUI;
