@@ -331,7 +331,7 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 	public int inregistrareFactura(Factura factura) throws CtbException {
 		logger.debug("Se incearca inregistrarea facturii "
 				+ factura.getNrFact());
-		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDoc(),
+		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDocument(),
 				((Factura) factura).getValFact(),
 				((Factura) factura).getTVATotal(), (int) factura.getNrDoc(),
 				 ((Factura) factura).getFurnizor().getIdFurnizor(),
@@ -341,7 +341,7 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 
 	public int procesareFactRetur(Factura facturaRetur) throws CtbException {
 		//this.returMateriale(facturaRetur); -- se executa dupa apelarea metodei curente 'procesareFactRetur'
-		return contabilizareSrv.jurnalizareAchizitie(facturaRetur.getDataDoc(),
+		return contabilizareSrv.jurnalizareAchizitie(facturaRetur.getDataDocument(),
 				((Factura) facturaRetur).getValFact(), ((Factura) facturaRetur)
 						.getTVATotal(), (int) facturaRetur.getNrDoc(),
 				((Factura) facturaRetur).getFurnizor().getIdFurnizor(), facturaRetur

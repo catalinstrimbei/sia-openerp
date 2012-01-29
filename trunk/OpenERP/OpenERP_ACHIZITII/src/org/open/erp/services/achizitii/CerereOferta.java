@@ -21,6 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.open.erp.services.nomgen.Persoana;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * 
@@ -39,12 +40,13 @@ public static final Integer TRIMISA = 0;
 public static final Integer PRIMITA = 1;
 public static final Integer ANULATA =-1;
 @Id
-//@GeneratedValue(strategy = GenerationType.AUTO)
+@GeneratedValue(strategy = GenerationType.AUTO)
+private long id_CerereOferta_generat;
 private long id_CerereOferta;
 @Temporal(TemporalType.DATE)
 private Date dataCerere;
 private Integer statusCerereOferta;
-@OneToOne@JoinColumn(name="id_OfertaAchizitie")
+@OneToOne(cascade = ALL)@JoinColumn(name="id_OfertaAchizitie")
 private OfertaAchizitie ofertaAchizitie;
 
 @OneToMany(mappedBy = "cerereOferta", cascade = CascadeType.ALL)
@@ -52,7 +54,7 @@ private Collection<LinieCerereOferta> liniiCerereOferta=new ArrayList<LinieCerer
 @ManyToOne@JoinColumn(name="idPersoana")
 private Persoana persona;
 
-@ManyToMany
+@ManyToMany(cascade = ALL)
 @JoinTable(name="CereriOfertaFurnizori",
 		joinColumns=@JoinColumn(name="cerereOferta_fk"), 
 		inverseJoinColumns=@JoinColumn(name="furnizor_fk"))

@@ -6,10 +6,12 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * 
@@ -27,9 +29,10 @@ public class Furnizor implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2019369183120390764L;
-	@Id//@GeneratedValue
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private int idFurnizor_generat;
 	private int idFurnizor;
-@OneToMany(mappedBy="furnizor")
+@OneToMany(mappedBy="furnizor", cascade = ALL)
 private List<Factura> facturiFurnizor=new ArrayList<Factura>();
 private Integer cont;
 private String CUI;
@@ -113,6 +116,30 @@ public int getIdFurnizor() {
 
 public void setIdFurnizor(Integer idFurnizor) {
 	this.idFurnizor = idFurnizor;
+}
+
+public String getAdresa() {
+	return adresa;
+}
+
+public void setAdresa(String adresa) {
+	this.adresa = adresa;
+}
+
+public void setIdFurnizor(int idFurnizor) {
+	this.idFurnizor = idFurnizor;
+}
+
+public Furnizor(int idFurnizor, Integer cont, String cUI, String denumire,
+		String telefon, String adresa, Categorie categorieArticol) {
+	super();
+	this.idFurnizor = idFurnizor;
+	this.cont = cont;
+	CUI = cUI;
+	this.denumire = denumire;
+	this.telefon = telefon;
+	this.adresa = adresa;
+	this.categorieArticol = categorieArticol;
 }
 
 

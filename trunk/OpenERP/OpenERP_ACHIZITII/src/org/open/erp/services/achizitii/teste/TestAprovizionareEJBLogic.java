@@ -117,7 +117,7 @@ public class TestAprovizionareEJBLogic {
           
         Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Telefon");       
 		Factura fact = new Factura(600.0,200.0,"fact1",furnizor);	
-		fact.setDataDoc(new Date());
+		fact.setDataDocument(new Date());
 		fact.setNrDoc(11);
 		Categorie cat=new Categorie(1,"Categorie1");
 		cat.addFurnizor(furnizor);
@@ -206,7 +206,7 @@ public class TestAprovizionareEJBLogic {
         Furnizor furnizor = new Furnizor(1111,"CUI","Denumire","Telefon");     
         
 		Factura fact = new Factura(600.0,200.0,"fact1",furnizor);	
-		fact.setDataDoc(new Date());
+		fact.setDataDocument(new Date());
 		fact.setNrDoc(11);
 		Categorie cat=new Categorie(1,"Categorie1");
 		cat.addFurnizor(furnizor);

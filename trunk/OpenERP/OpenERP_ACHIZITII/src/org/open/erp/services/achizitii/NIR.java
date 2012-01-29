@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * 
@@ -25,7 +26,7 @@ public class NIR extends Document implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5673330387759089744L;
-	@OneToOne@JoinColumn(name="idFactura")
+	@OneToOne(cascade = ALL)@JoinColumn(name="idFactura")
 	private Factura factura;
 
 	public NIR() {

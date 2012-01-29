@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * 
@@ -24,10 +25,11 @@ public class LinieOfertaAchizitie implements Serializable {
 	private static final long serialVersionUID = 2811436293697742002L;
 
 	@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private long idLinieOfertaAchizitie_gen;
     private long idLinieOfertaAchizitie;
 	
-	@ManyToOne@JoinColumn(name="id_OfertaAchizitie")
+	@ManyToOne(cascade = ALL)@JoinColumn(name="id_OfertaAchizitie")
 	private OfertaAchizitie oferta;
 	
 	public long getIdLinieOfertaAchizitie() {

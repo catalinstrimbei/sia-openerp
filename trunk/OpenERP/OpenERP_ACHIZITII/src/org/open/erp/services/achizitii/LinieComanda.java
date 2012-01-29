@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.open.erp.services.nomgen.Material;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * 
@@ -33,11 +34,12 @@ public class LinieComanda implements Serializable  {
 		this.idLinieComanda = idLinieComanda;
 	}
 	@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	 private long idLinieComanda_gen;
     private long idLinieComanda;
 	private Integer linieComanda;
 	
-	@ManyToOne@JoinColumn(name="idComanda")	
+	@ManyToOne(cascade = ALL)@JoinColumn(name="idComanda")	
 	private Comanda comanda;
 	
 	@ManyToOne@JoinColumn(name="idMaterial")

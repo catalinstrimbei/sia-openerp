@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.open.erp.services.nomgen.Material;
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class LinieCerereOferta implements Serializable {
@@ -26,7 +27,8 @@ public class LinieCerereOferta implements Serializable {
 	private static final long serialVersionUID = 4172749872241504774L;
 
 @Id
-//@GeneratedValue(strategy = GenerationType.AUTO)
+@GeneratedValue(strategy = GenerationType.AUTO)
+private long idLinieCerereOferta_gen;
 private long idLinieCerereOferta;
 
 public long getIdLinieCerereOferta() {
@@ -37,7 +39,7 @@ public void setIdLinieCerereOferta(long idLinieCerereOferta) {
 }
 private Integer nrLinie;
 
-@ManyToOne@JoinColumn(name="id_CerereOferta")
+@ManyToOne(cascade = ALL)@JoinColumn(name="id_CerereOferta")
 private CerereOferta cerereOferta;
 
 @ManyToOne@JoinColumn(name="idMaterial")

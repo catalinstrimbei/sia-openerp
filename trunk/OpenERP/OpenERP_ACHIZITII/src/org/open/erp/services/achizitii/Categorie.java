@@ -28,7 +28,8 @@ public class Categorie implements Serializable {
 	 */
 	private static final long serialVersionUID = 4766008004517409356L;
 @Id
-//@GeneratedValue(strategy = GenerationType.AUTO)
+@GeneratedValue(strategy = GenerationType.AUTO)
+private long id_cat_generat;
 private long id_cat;
 private String denumire;
 @OneToMany(mappedBy = "categorieArticol", cascade = CascadeType.ALL,targetEntity=Furnizor.class)

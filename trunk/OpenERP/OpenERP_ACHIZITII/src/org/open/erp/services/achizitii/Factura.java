@@ -13,6 +13,7 @@ import org.open.erp.services.nomgen.Persoana;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * 
@@ -34,7 +35,7 @@ public class Factura extends Document implements Serializable {
 	public static final Integer FACTURA_RETUR = 2;
 	public static final Integer FACTURA_ACHIZITIE = 3;
 	
-	@ManyToOne@JoinColumn(name="furnizor_id")
+	@ManyToOne(cascade = ALL)@JoinColumn(name="furnizor_id")
 	private Furnizor furnizor;
 	
 	private String nrFact;
@@ -42,12 +43,12 @@ public class Factura extends Document implements Serializable {
 	private Double TVATotal;
 	private Integer status;
 	
-	@OneToOne@JoinColumn(name="idComanda")
+	@OneToOne(cascade = ALL)@JoinColumn(name="idComanda")
 	private Comanda comanda;
 	
 	private Integer tipFact;
 	
-	@OneToOne(mappedBy="factura")
+	@OneToOne(mappedBy="factura", cascade = ALL)
 	private NIR nir;
 	
 	public Integer getTipFact() {

@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Persoana;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * 
@@ -33,7 +34,8 @@ public class PlanAprovizionare implements Serializable  {
 	 */
 	private static final long serialVersionUID = -9111074543290370000L;
 	@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private long idPlanAprovizionare_gen;
     private long idPlanAprovizionare;
 	
 	/*public static void setPlanAprovizionare(PlanAprovizionare planAprovizionare) {
@@ -51,7 +53,7 @@ public class PlanAprovizionare implements Serializable  {
 	@OneToOne@JoinColumn(name="idPersoana")
 	private Persoana persoana;
 	private Integer statusPlan;
-	@OneToMany(mappedBy="planAprovizionare")
+	@OneToMany(mappedBy="planAprovizionare", cascade = ALL)
 	private List<LiniePlanAprovizionare> liniiPlan = new LinkedList<LiniePlanAprovizionare>();
 	
 	public Integer getSaptAn() {

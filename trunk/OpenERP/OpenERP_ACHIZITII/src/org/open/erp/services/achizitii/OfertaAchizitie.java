@@ -29,7 +29,8 @@ import javax.persistence.TemporalType;
 @Entity
 public class OfertaAchizitie implements Serializable {
 	@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private long id_OfertaAchizitie_gen;
     private long id_OfertaAchizitie;
 	public static final Integer TRANSFORMATA = 1;
 	public static final Integer RESPINSA = -1;
@@ -37,13 +38,13 @@ public class OfertaAchizitie implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dataOferta;	
 	private Integer statusOferta;
-	@OneToOne(mappedBy="ofertaAchizitie")
+	@OneToOne(mappedBy="ofertaAchizitie", cascade = ALL)
 	private Comanda comanda;
 	@ManyToOne
 	private Furnizor furnizor;
 	private Double valTotal;
 	private Integer nrZile;	
-	@OneToOne(mappedBy="ofertaAchizitie")
+	@OneToOne(mappedBy="ofertaAchizitie", cascade = ALL)
 	private CerereOferta cerereOferta;	
 	@OneToMany(mappedBy = "oferta", targetEntity = org.open.erp.services.achizitii.LinieOfertaAchizitie.class, fetch = LAZY, cascade = ALL)
 	private Collection<LinieOfertaAchizitie> liniiOferta = new ArrayList<LinieOfertaAchizitie>();

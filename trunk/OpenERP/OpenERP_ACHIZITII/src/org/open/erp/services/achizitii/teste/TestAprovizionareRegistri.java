@@ -87,6 +87,7 @@ public class TestAprovizionareRegistri {
 			this.aprovizionareInstance.salveazaCategorie(cat2);
 			this.aprovizionareInstance.salveazaCategorie(cat3);
 			/*this.aprovizionareInstance.stergeCategorie(cat3);*/
+			logger.error("---------Adaugat Categorii-------------- ");
 		}
 		catch(Exception ex){
 			logger.debug("ERROR Categorie: "+ex.getMessage());
@@ -101,31 +102,33 @@ public class TestAprovizionareRegistri {
 		logger.error("Categorie cu ID 2: "+aprovizionareInstance.getCategorieById(2).getDenumire());*/	
 		
 		////////////
-		Furnizor furn1=new Furnizor(1001,"cui1","Furn1","telef1");
-		Furnizor furn2=new Furnizor(1002,"cui2","Furn2","telef2");
-		Furnizor furn3=new Furnizor(1003,"cui3","Furn3","telef3");
+		Furnizor furn1=new Furnizor(1001,1001,"cui1","furn1","tel1","adresa1",cat1);
+		Furnizor furn2=new Furnizor(1002,1001,"cui1","furn1","tel1","adresa1",cat1);
+		Furnizor furn3=new Furnizor(1003,1001,"cui1","furn1","tel1","adresa1",cat1);
 		try{
 			this.aprovizionareInstance.salveazaFurnizor(furn1);
 			this.aprovizionareInstance.salveazaFurnizor(furn2);
 			this.aprovizionareInstance.salveazaFurnizor(furn3);
+			logger.error("---------Adaugat Furnizor-------------- ");
 		}
 		catch(Exception ex){
 			logger.debug("ERROR Furnizor: "+ex.getMessage());
 		}
 		//////////////
 		Articol art1 = new Articol(1001,"art1","cat1","um1","marfa",cat1,100.0);
-		Articol art2 = new Articol(1001,"art1","cat1","um1","marfa",cat2,100.0);
-		Articol art3 = new Articol(1001,"art1","cat1","um1","marfa",cat1,100.0);
+		Articol art2 = new Articol(1002,"art2","cat2","um1","marfa",cat2,100.0);
+		Articol art3 = new Articol(1003,"art3","cat1","um1","marfa",cat1,100.0);
 		try{
 			this.aprovizionareInstance.salveazaArticol(art1);
 			this.aprovizionareInstance.salveazaArticol(art2);
 			this.aprovizionareInstance.salveazaArticol(art3);
+			logger.error("---------Adaugat Articole-------------- ");
 		}
 		catch(Exception ex){
 			logger.error("ERROARE Articol: "+ex.getMessage());
 		}
 		/////////////
-		CerereOferta cerereOf=new CerereOferta(1,new Date());
+		/*CerereOferta cerereOf=new CerereOferta(1,new Date());
 		cerereOf.setStatusCerereOferta(CerereOferta.PRIMITA);
 		Collection<Furnizor> listaFurn=new ArrayList<Furnizor>();
 		Furnizor furn4=new Furnizor(1004,"cui4","Furn4","telef4");
@@ -229,7 +232,7 @@ public class TestAprovizionareRegistri {
 		liniePlan1.setStatus(LiniePlanAprovizionare.EXISTA_CERERE_OFERTA);
 		liniiPlan.add(liniePlan1);
 		liniiPlan.add(liniePlan2);
-		plan.setLiniiPlan((List<LiniePlanAprovizionare>) liniiPlan);
+		plan.setLiniiPlan((List<LiniePlanAprovizionare>) liniiPlan);*/
 			logger.debug("End test: Insert-uri");
 		}
 		

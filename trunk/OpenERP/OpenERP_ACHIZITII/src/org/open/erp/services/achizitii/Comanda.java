@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import static javax.persistence.CascadeType.ALL;
 
 
 
@@ -36,14 +37,15 @@ public class Comanda implements Serializable {
 	public static final Integer ANULATA = -1;
 	public static final Integer IN_CURS = 0;
 	@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)	
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer idComanda_generat;	
     private Integer idComanda;	
 	@ManyToOne@JoinColumn(name="idFurnizor")
 	private Furnizor furnizor;
 	@Temporal(TemporalType.DATE)
 	private Date dataComanda;
 	private Integer statusComanda;
-	@OneToOne@JoinColumn(name="idOfertaAchizitie_")
+	@OneToOne(cascade = ALL)@JoinColumn(name="idOfertaAchizitie_")
 	private OfertaAchizitie ofertaAchizitie;
 	public OfertaAchizitie getOfertaAchizitie() {
 		return ofertaAchizitie;
