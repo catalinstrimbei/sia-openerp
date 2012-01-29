@@ -7,21 +7,20 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 <h:head>
-	<title>Form_Report</title>
+	<title>BIRT Raport Balanta</title>
 </h:head>
 
 <h:body>
 
 	<div
 		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">
-		Form_Report
+		BIRT Raport Balanta
 	</div>
 		
 	<h:form id="FormRaport">
-		<rich:calendar datePattern="dd/MM/yyyy hh:mm:ss" />
-		<h:commandLink id="Raport1" actionListener="#{formMenu.showRaport}"
-			value="Listare Raport1">
-			<p:attribute name="srcRaport" value="Raport1" />
+		<h:commandLink id="balanta_report" actionListener="#{formMenu.showRaport}"
+			value="Listare Ultima Balanta">
+			<p:attribute name="srcRaport" value="balanta_report" />
 		</h:commandLink>
 	</h:form>
 

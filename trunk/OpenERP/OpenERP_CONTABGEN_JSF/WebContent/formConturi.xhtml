@@ -12,65 +12,75 @@
 		PLAN DE CONTURI</div>
 
 	<h:form id="formConturi">
-		<h:panelGrid columns="2" border="0" style="width: 589px; ">
+		<h:panelGrid columns="3" border="0" style="width: 589px; ">
 			<p:facet name="header">
-				<h:outputText value="CRUD PROIECTE 1.0 " style="color: #FF0000"></h:outputText>
+				<h:outputText value="Creare conturi " style="color: #FF0000"></h:outputText>
 			</p:facet>
 
-			<h:selectOneMenu id="cboProiecte" value="#{formProiecte.proiect}"
-				converter="#{formProiecte}" style="width: 46px; ">
-				<p:selectItems value="#{formProiecte.proiecte}"></p:selectItems>
-				<p:ajax render="nume dataStart dataSfarsit buget"></p:ajax>
+			<h:selectOneMenu id="cboProiecte" value="#{formConturi.contCurent}"
+				converter="#{formConturi}" style="width: 46px; ">
+				<p:ajax render="@form"></p:ajax>
+				<p:selectItems value="#{formConturi.conturi}"></p:selectItems>
 			</h:selectOneMenu>
-			<h:panelGrid columns="3" border="0">
-				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
-					actionListener="#{formProiecte.previousProiect}">
-					<p:ajax render="@form"></p:ajax>
-				</h:commandButton>
-
-				<h:commandButton id="cmdNext" value="&gt;&gt;"
-					disabled="#{formProiecte.disableNext}"
-					actionListener="#{formProiecte.nextProiect}">
-					<p:ajax render="@form"></p:ajax>
-				</h:commandButton>
-
+			
+			<h:panelGrid columns="4" border="0">
+					<h:commandButton id="previous" value="&lt;&lt;" actionListener="#{formConturi.previous}"/>
+				
+					<h:commandButton id="next" value="&gt;&gt;" actionListener="#{formConturi.next}"/>
+					
+				 	<!-- disabled="#{formProiecte.disableNext} -->
 			</h:panelGrid>
 
-			<h:outputText value="Nume:"></h:outputText>
-			<h:inputText id="nume" value="#{formProiecte.proiect.nume}"
-				validator="#{formProiecteActivitati.validate}"></h:inputText>
+			<h:message for="stupid"></h:message>
 
-			<h:outputText value="Data Start:"></h:outputText>
-			<h:inputText id="dataStart" value="#{formProiecte.proiect.dataStart}">
-				<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
-			</h:inputText>
-
-			<h:outputText value="Data Sfarsit:"></h:outputText>
-			<rich:calendar id="dataSfarsit" datePattern="dd/MM/yyyy" popup="true"
-				value="#{formProiecte.proiect.dataSfarsit}">
-			</rich:calendar>
-
-			<h:outputText value="Buget:"></h:outputText>
-			<h:inputText id="buget"
-				value="#{formProiecte.proiect.valoareBugetata}" validatorMessage="Bugetul nu poate fi negativ!">
-				<p:validateDoubleRange minimum="0"></p:validateDoubleRange>
-			</h:inputText>
+			<h:outputText value="Id Cont:"></h:outputText>
+			<h:inputText id="contCurent_idCont"
+				value="#{formConturi.contCurent.idCont}"></h:inputText>
+			<h:message for="contCurent_idCont"></h:message>
+			
+			<h:outputText value="Tip Cont:"></h:outputText>
+			<!-- <  h:inputText id="contCurent_tipCont"
+				value="#{formConturi.contCurent.tipCont}"></h:inputText>-->
+			<h:message for="contCurent_tipCont"></h:message>
+			<h:message for="contCurent_tipCont2"></h:message>
+			
+			<h:outputText value="Den Cont:"></h:outputText>
+			<h:inputText id="contCurent_denCont"
+				value="#{formConturi.contCurent.denCont}"></h:inputText>
+			<h:message for="contCurent_denCont"></h:message>
+			
+			<h:outputText value="Tip Sintetic:"></h:outputText>
+			<h:inputText id="contCurent_tipSintetic"
+				value="#{formConturi.contCurent.tipSintetic}"></h:inputText>
+			<h:message for="contCurent_tipSintetic"></h:message>
+			
+			<h:outputText value="Simbol Cont:"></h:outputText>
+			<h:inputText id="contCurent_simbolCont"
+				value="#{formConturi.contCurent.simbolCont}"></h:inputText>
+			<h:message for="contCurent_simbolCont"></h:message>
+			
+			<h:outputText value="Clasa Cont:"></h:outputText>
+			<h:inputText id="contCurent_clasaCont"
+				value="#{formConturi.contCurent.clasaCont}"></h:inputText>
+			<h:message for="contCurent_clasaCont"></h:message>
 
 			<p:facet name="footer">
 				<h:panelGrid columns="4" border="0">
 					<h:commandButton id="cmdAdaugare" value="Adaugare"
-						action="#{formProiecte.adaugareProiect}">
-						<p:ajax render="@form" execute="@none"></p:ajax>
+						actionListener="#{formConturi.adaugare}">
+						
 					</h:commandButton>
-					<h:commandButton id="cmdStergere" value="Stergere">
-						<p:ajax render="@form" execute="@none"></p:ajax>
+					<h:commandButton id="cmdStergere" value="Stergere"
+						actionListener="#{formConturi.stergere}">
+						
 					</h:commandButton>
-					<h:commandButton id="cmdAbandon" value="Abandon">
-						<p:ajax render="@form" execute="@none"></p:ajax>
+					<h:commandButton id="cmdAbandon" value="Abandon"
+						actionListener="#{formConturi.abandon}">
+						
 					</h:commandButton>
 					<h:commandButton id="cmdSalvare" value="Salvare"
-						action="#{formProiecte.salvareProiect}">
-						<p:ajax render="@form" execute="@form"></p:ajax>
+						actionListener="#{formConturi.salveaza}">
+						
 					</h:commandButton>
 				</h:panelGrid>
 			</p:facet>

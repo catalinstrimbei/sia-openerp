@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://java.sun.com/jsf/core"
+        xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Registru Jurnal -Inregistrari contabile</div>
+        <h:form id="formInregistrari">
+                <h:panelGrid columns="3" border="0" style="height: 424px; ">
+                        <p:facet name="header">
+                                <h:outputText value="Selectati o inregistrare"></h:outputText>
+                        </p:facet>
+                        <h:selectOneMenu id="cboAngajat" value="#{formJurnal.inregistrare}"  style="width: 254px; ">
+                                <p:selectItems value="#{formJurnal.inregistrari}"></p:selectItems>
+                                <p:ajax render="@form"></p:ajax>
+                        </h:selectOneMenu>
+                        <h:panelGrid columns="2" border="1">
+                                <h:commandButton id="cmdPrev"
+                                        actionListener="#{formJurnal.previousInreg}" value="Back"></h:commandButton>
+                                <h:commandButton id="cmdNext"
+                                        actionListener="#{formJurnal.nextInreg}" value="Next"></h:commandButton>
+
+                        </h:panelGrid>
+                        <h:message></h:message>
+                                
+                        
+                        <h:dataTable 
+                        id="ArticoleTable"
+                        var="linieArticole"
+                        value="#{formJurnal.Articole}" border="1"                       
+                binding ="#{formJurnal.ArticoleTable}"
+                styleClass="order-table"
+                headerClass="order-table-header"
+                rowClasses="order-table-odd-row,order-table-even-row"
+                        >
+                        <h:column>
+                                <p:facet name="header">
+                                        <h:outputText value="Nr Articol"></h:outputText>
+                                </p:facet>                              
+                        <h:outputText value="#{linieArticole.nrLinArt}" />                           
+                        </h:column>
+                        <h:column>
+                                <p:facet name="header">
+                                        <h:outputText value="Cont Debit"></h:outputText>
+                                </p:facet>
+                                <h:inputText value="#{linieArticole.contDebit}" size="10"  />
+                                                                                
+                        </h:column>     
+                        <h:column>
+                                <p:facet name="header">
+                                        <h:outputText value="Cont Creditor"></h:outputText>
+                                </p:facet>
+                                <h:inputText value="#{linieArticole.contCredit}" size="10"/>
+                                                                                  
+                        </h:column>
+               
+                        <h:column>
+                                <p:facet name="header">
+                                        <h:outputText value="Suma articol"></h:outputText>
+                                </p:facet>
+                                <h:inputText value="#{linieArticole.sumaDC}" size="10"  />
+                                                                                 
+                        </h:column>
+                        <h:column>
+                        <p:facet name="header">Action</p:facet>
+                        <h:commandLink value="Edit" action="#{formJurnal.editAction}" 
+                                       />
+                                       
+                <h:commandLink value="Delete" action="#{formJurnal.deleteAction}" 
+                                        />
+                                       
+                                <h:commandLink value="Save" action="#{formJurnal.saveAction}" 
+                                     />                                       
+ 
+             </h:column>          
+                </h:dataTable>
+                <h:message></h:message><h:message></h:message><h:panelGrid columns="3" border="1">
+                                <h:commandButton id="cmdAddArt" value="Adauga Articol" actionListener="#{formJurnal.adaugareArticol}" immediate="false">
+                                        <p:ajax execute="@none" render="@form"></p:ajax>
+                                </h:commandButton>
+                                <h:commandButton id="cmdSalveazaArt" actionListener="#{formJurnal.salvareArticolee}" value="Salveaza Articole" immediate="true">
+
+                                </h:commandButton>
+                                <h:commandButton id="cmdModificaArt" actionListener="#{formJurnal.modificaArticole}" value="Modifica Articole" immediate="true">
+
+                                </h:commandButton>
+                        </h:panelGrid>
+                </h:panelGrid>
+        </h:form>
+        
+        
+</body>
+</html>
