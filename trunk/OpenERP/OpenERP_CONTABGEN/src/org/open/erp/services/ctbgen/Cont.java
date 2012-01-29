@@ -142,21 +142,44 @@ public class Cont implements Serializable{
 
 	@Override
 	public boolean equals(Object obj) {
-		if(this == obj) {
-            return true;
-		}
-		if (!(obj instanceof Cont)) {
-            return false; 
-		}
-		
-		Cont cont = (Cont) obj;
-		if(cont.getSimbolCont().equals(this.simbolCont))
+		if (this == obj)
 			return true;
-		return false;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cont other = (Cont) obj;
+		if (idCont == null) {
+			if (other.idCont != null)
+				return false;
+		} else if (!idCont.equals(other.idCont))
+			return false;
+		return true;
+//		if(this == obj) {
+//            return true;
+//		}
+//		if (!(obj instanceof Cont)) {
+//            return false; 
+//		}
+//		
+//		Cont cont = (Cont) obj;
+//		if(cont.getSimbolCont().equals(this.simbolCont))
+//			return true;
+//		return false;
+		
+		
 	}
 	@Override
 	public String toString() {
 		return "Contul " + simbolCont;
+	}
+
+	public void setIdCont(Integer idCont) {
+		this.idCont = idCont;
+	}
+
+	public void setTipSintetic(String tipSintetic) {
+		this.tipSintetic = tipSintetic;
 	}
 
 	

@@ -72,7 +72,7 @@ public class RegConturi extends Registru{
 	return cont;
 }
 
-	void removeCont(Cont cont) {
+	public void removeCont(Cont cont) {
 		em.remove(cont);
 		
 			}

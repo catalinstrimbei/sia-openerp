@@ -1061,5 +1061,16 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 	public List<InregistrareRJ> getListaInreg() {
 		
 		return RegInregistrareRJ.instantiaza().getListaInreg();
-	};
+	}
+
+	@Override
+	public Cont  salveazaCont(Cont cont) {
+		return RegConturi.instantiaza().addCont(cont);
+		
+	}
+	@Override
+	public void stergeCont(Cont cont) {
+		RegConturi.instantiaza().removeCont(cont);
+		
+	}
 }
