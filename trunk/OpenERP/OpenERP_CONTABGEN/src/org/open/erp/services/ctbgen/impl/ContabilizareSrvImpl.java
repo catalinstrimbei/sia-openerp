@@ -1049,5 +1049,17 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		RegTipuriContabile regTipC =RegTipuriContabile.instantiaza();
 		return regTipC.getTipuriContabile();
 		//return null;//de pus get dun RegTipuriContabile
+	}
+
+	@Override
+	public List<ArticolCtb> getListArt(Integer idInreg) {
+		
+		return RegArticoCtb.instantiaza().getArticoleInreg(idInreg);
+	}
+
+	@Override
+	public List<InregistrareRJ> getListaInreg() {
+		
+		return RegInregistrareRJ.instantiaza().getListaInreg();
 	};
 }
