@@ -133,5 +133,21 @@ public class ContabGestImpl implements  ContabGestSrvLocal, ContabGestSrvRemote 
 		System.out.println("!>>>>>>>>>>>> END Creare cheltuiala ");
 		return cheltuieliFixeNou;
 	}
+  @Override
+	public ProdusFinit getProdusFinit(Integer idProdusFinit)
+			throws Exception {
+		logger.debug(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		ProdusFinit result = new ProdusFinit();
+		if (idProdusFinit == null){				
+			sessionContext.setRollbackOnly();
+			logger.debug(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		}
+		else{			
+			result = this.registruContabGest.getProdusFinitIdR(idProdusFinit); 
+			
+			logger.debug(">>>>>>End getPersonaID");
+		}
+		return result;
+	}
 
 }
