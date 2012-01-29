@@ -16,15 +16,21 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jstl">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.jstl;#system#"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/myfaces"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/richfaces"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_ACHIZITII"/>
-	<classpathentry kind="src" path=".apt_src">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/myfaces">
 		<attributes>
-			<attribute name="optional" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		    <attribute name="owner.project.facets" value="jst.jsf"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/richfaces">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+			<attribute name="owner.project.facets" value="jst.jsf"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_ACHIZITII"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
