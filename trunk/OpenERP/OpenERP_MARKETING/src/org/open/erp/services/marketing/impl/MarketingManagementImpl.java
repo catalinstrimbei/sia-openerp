@@ -469,4 +469,13 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		return result;
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public List<Discount> getListaDiscounturi() throws Exception{
+		logger.debug(" Start getListaDiscounturi");
+		List<Discount> result = this.registruMarketing.getListaDiscounturi();
+		logger.debug(">>>>>>End getListaDiscounturi");
+		return result;
+	}
+	
 }

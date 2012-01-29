@@ -421,6 +421,20 @@ public class RegistruMarketing {
 			throw ex;
 		}
 	}
+	
+	List<Discount>				getListaDiscounturi() throws Exception
+	{
+		try
+		{
+			return entityManager.createQuery("SELECT x FROM Discount as x").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.info("EROARE PERSISTENTA *****");
+			ex.printStackTrace();  
+			throw ex;
+		}
+	}
 
 }
 	/*
