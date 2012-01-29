@@ -11,6 +11,7 @@ import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.open.erp.services.contabgest.CheltuieliFixe;
 import org.open.erp.services.contabgest.ContabGestSrvLocal;
 import org.open.erp.services.contabgest.ContabGestSrvRemote;
 import org.open.erp.services.contabgest.ProdusFinit;
@@ -108,6 +109,29 @@ public class ContabGestImpl implements  ContabGestSrvLocal, ContabGestSrvRemote 
 		}	
 		logger.debug(">>>>>>>>>>>> END Creare produs finit");
 		return produFinitNou;
+	}
+	
+
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public CheltuieliFixe defCheltuieliFixe(String tipCheltuiala, String denCheltuiala,
+			String delatiiCheltuiala) throws Exception{
+		System.out.println("!>>>>>>>>>>>> START Creare cheltuiala ");
+		logger.debug(">>>>>>>>>>>> START tipcheltuiala");
+		//TipCheltuieli tipCheltuialaNou = new TipCheltuieli(tipCheltuiala);
+		CheltuieliFixe cheltuieliFixeNou = new CheltuieliFixe(denCheltuiala, delatiiCheltuiala);
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare cheltuiala fixa - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+		}else{
+			//tipCheltuialaNou= this.registruContabGest.salveazaTipCheltuiala(tipCheltuialaNou);
+			cheltuieliFixeNou = this.registruContabGest.salveazaCheltuieliFixe(cheltuieliFixeNou);
+			//em.persist(proiectNou);
+		}	
+		logger.debug(">>>>>>>>>>>> END Creare cheltuiala fixa");
+		System.out.println("!>>>>>>>>>>>> END Creare cheltuiala ");
+		return cheltuieliFixeNou;
 	}
 
 }
