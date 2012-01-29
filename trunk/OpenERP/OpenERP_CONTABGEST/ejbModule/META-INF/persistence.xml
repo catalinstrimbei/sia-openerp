@@ -6,6 +6,7 @@
 		<jar-file>OpenERP_PERSONAL.jar</jar-file>
 		<class>org.open.erp.services.contabgest.DummyFazaProductie</class>
 		<class>org.open.erp.services.contabgest.ResponabilCentruCost</class>
+		
 		<class>org.open.erp.services.contabgest.ProceseTehnicoEconomice</class>
 		<class>org.open.erp.services.contabgest.TipCheltuieli</class>
 		<class>org.open.erp.services.contabgest.CheltuieliFixe</class>
