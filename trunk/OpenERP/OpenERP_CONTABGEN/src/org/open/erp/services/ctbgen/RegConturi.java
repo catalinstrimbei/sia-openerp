@@ -18,7 +18,7 @@ public class RegConturi extends Registru{
 	private static RegConturi singleReference;
 
 	private RegConturi() {
-		sqlDefaultText = "SELECT o FROM Cont o";
+		sqlDefaultText = "SELECT o FROM Cont o ";
 	}
 
 
