@@ -1,8 +1,12 @@
 package org.open.erp.services.marketing;
 
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.ContractMunca;
 
 //import org.open.erp.services.nomgen.Produs;
 /**
@@ -171,4 +175,8 @@ Chestionar getChestionar(Integer idChestionar);
 List<Promotie> getListaPromotii() throws Exception;
 List<Campanie> getListaCampanii() throws Exception;
 List<Discount> getListaDiscounturi() throws Exception;
+Collection<Intrebare> getListaIntrebariChestionar(Chestionar chestionar_) throws Exception;
+Collection<Intrebare> getListaIntrebari() throws Exception;
+Intrebare getIntrebareById(Integer idIntrebare_) throws Exception;
+void stergeIntrebare(Intrebare intrebare_) throws Exception;
 }

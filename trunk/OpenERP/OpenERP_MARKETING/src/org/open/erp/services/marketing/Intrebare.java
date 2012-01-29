@@ -40,6 +40,7 @@ public class Intrebare implements Serializable {
 	@IndexColumn(name="IdRaspunsIntrebare")
 	List<RaspunsIntrebare> raspunsuri;
 	//Map<Integer, String> 	optiuniRaspuns = new HashMap<Integer,String>();
+	private Boolean editable;
 
 	public Intrebare() {
 		super();
@@ -84,6 +85,13 @@ public class Intrebare implements Serializable {
 	 */
 	public void setChestionar(Chestionar chestionar) {
 		this.chestionar = chestionar;
+	}
+	
+	public Boolean getEditable() {
+		return editable;
+	}
+	public void setEditable(Boolean editable) {
+		this.editable = editable;
 	}
 	
 	//public void adaugaRaspuns(Integer nrRaspuns, String textRaspuns){

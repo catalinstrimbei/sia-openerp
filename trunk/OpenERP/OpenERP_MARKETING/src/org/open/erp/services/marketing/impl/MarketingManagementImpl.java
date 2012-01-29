@@ -36,6 +36,7 @@ import org.open.erp.services.marketing.Responsabil;
 //import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 //import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.ContractMunca;
 
 
 
@@ -304,6 +305,7 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	/* (non-Javadoc)
 	 * @see org.open.erp.services.marketing.MarketingManagementSrv#salveazaIntrebare(org.open.erp.services.marketing.Intrebare)
 	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Intrebare salveazaIntrebare(Intrebare intrebare) throws Exception {
 		logger.debug(">>>>>>Start salveaza intrebare");
@@ -476,6 +478,62 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 		List<Discount> result = this.registruMarketing.getListaDiscounturi();
 		logger.debug(">>>>>>End getListaDiscounturi");
 		return result;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Intrebare getIntrebareById(Integer idIntrebare_)
+			throws Exception {
+		logger.info(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		Intrebare result = new Intrebare();
+		if (idIntrebare_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.info(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		}
+		else{			
+			result = this.registruMarketing.getIntrebareById(idIntrebare_);
+			
+			logger.info(">>>>>>End ");
+		}
+		return result;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<Intrebare> getListaIntrebari() throws Exception {
+		logger.info(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		Collection<Intrebare> result = this.registruMarketing.getListaIntrebari();
+		logger.info(">>>>>>End ");
+		return result;
+	}
+	
+
+
+	
+	
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void stergeIntrebare(Intrebare intrebare_)
+			throws Exception {
+		logger.info(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		if (intrebare_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.info(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		}
+		else{			
+			this.registruMarketing.stergeIntrebare(intrebare_);
+			logger.info(">>>>>>End ");
+		}	
+		
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<Intrebare> getListaIntrebariChestionar ( Chestionar chestionar_) throws Exception {	
+			logger.info(">>>>>>Start getListaContracteAngajatEJB din personal impl");
+			Collection<Intrebare> result = this.registruMarketing.getListaIntrebariChestionar(chestionar_);
+			logger.info(">>>>>>End ");
+			return result;
 	}
 	
 }

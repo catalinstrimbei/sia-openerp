@@ -25,6 +25,7 @@ import org.open.erp.services.marketing.RaspunsChestionar;
 import org.open.erp.services.marketing.RaspunsIntrebare;
 import org.open.erp.services.marketing.Responsabil;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.ContractMunca;
 
 
 
@@ -435,7 +436,56 @@ public class RegistruMarketing {
 			throw ex;
 		}
 	}
+	
+	public Collection<Intrebare> getListaIntrebariChestionar(Chestionar chestionar_) throws Exception {
+		try
+		{
+			return   entityManager.createQuery("SELECT i FROM  Intrebare i where i.chestionar = :chestionar_")
+					.setParameter("chestionar_", chestionar_)
+					.getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+			
+	}
 
+
+	public void stergeIntrebare(Intrebare intrebare) throws Exception{
+		try{
+			entityManager.remove(intrebare);
+		}catch(Exception ex){
+			logger.info("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.info("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
+	
+	public Collection<Intrebare> getListaIntrebari() throws Exception{
+		try{
+			return entityManager.createQuery("SELECT i FROM Intrebare i").getResultList();
+		}catch(Exception ex){
+			logger.info("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.info("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
+	
+	public Intrebare getIntrebareById(Integer id) throws Exception{
+		try{
+			return entityManager.find(Intrebare.class, id);
+		}catch(Exception ex){
+			logger.info("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.info("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
 }
 	/*
 
