@@ -39,11 +39,17 @@ public class CentruCost implements Serializable{
 	@ManyToOne @JoinColumn(name = "idProdusFinit")
 	private ProdusFinit produsfinit;
 	
-	@ManyToOne @JoinColumn(name = "idCheltVariabile")
-	private CheltuieliVariabile cheltuieliVariabile;
+	@OneToMany(mappedBy = "centrucost", cascade = CascadeType.ALL)
+	private Collection<CheltuieliVariabile> 	cheltuieliVariabile;
 	
-	@ManyToOne @JoinColumn(name = "idCheltFix")
-	private CheltuieliFixe cheltuieliFixe;
+	@OneToMany(mappedBy = "centrucost", cascade = CascadeType.ALL)
+	private Collection<CheltuieliFixe> 	cheltuieliFixe;
+	
+	//@ManyToOne @JoinColumn(name = "idCheltVariabile")
+	//private CheltuieliVariabile cheltuieliVariabile;
+	
+	//@ManyToOne @JoinColumn(name = "idCheltFix")
+	//private CheltuieliFixe cheltuieliFixe;
 	
 	
 

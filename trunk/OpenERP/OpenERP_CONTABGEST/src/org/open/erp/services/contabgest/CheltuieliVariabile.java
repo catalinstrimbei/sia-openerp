@@ -24,14 +24,16 @@ public class CheltuieliVariabile extends TipCheltuieli implements Serializable{
 	private Integer idCheltVariabile;
 	private String denCheltuialaV;
 	private String delatiiCheltuialaV;
+	@ManyToOne @JoinColumn(name = "idCentruCost")
+	private CentruCost 	centrucost;
 	
 	/*
 	@OneToMany(mappedBy = "cheltuielivariabile", cascade = CascadeType.ALL)
 	private Collection<TipCheltuieli> 	tipCheltuieli;
 	*/
 	
-	@OneToMany(mappedBy = "cheltuieliVariabile", cascade = CascadeType.ALL)
-	private Collection<CentruCost> centrucost;
+	//@OneToMany(mappedBy = "cheltuieliVariabile", cascade = CascadeType.ALL)
+	//private Collection<CentruCost> centrucost;
 
 	public CheltuieliVariabile() {
 		super();
