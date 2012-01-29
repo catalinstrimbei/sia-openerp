@@ -174,7 +174,10 @@ public class TestMarketingManagementImplEJB {
 			
 			
 		}
-		
+		@Test
+		public void testGetPromotii() throws Exception{
+			logger.debug(marketingInstance.getListaPromotii().size());
+		}
 		@Test
 		public void testGetPretByPromotie() throws Exception{
 			logger.debug(">>>Start test Get pret final by promotie");

@@ -398,7 +398,7 @@ public class RegistruMarketing {
 	{
 		try
 		{
-			return entityManager.createQuery("SELECT x FROM Promotie x").getResultList();
+			return entityManager.createQuery("SELECT x FROM Promotie as x").getResultList();
 		}
 		catch(Exception ex)
 		{
