@@ -18,7 +18,7 @@
 			</p:facet>
 
 			<h:selectOneMenu id="cboProiecte" value="#{formConturi.contCurent}"
-				converter="#{formConturi}" style="width: 46px; ">
+				converter="#{formConturi}" style="width: 156px; ">
 				<p:ajax render="@form"></p:ajax>
 				<p:selectItems value="#{formConturi.conturi}"></p:selectItems>
 			</h:selectOneMenu>
@@ -38,31 +38,33 @@
 				value="#{formConturi.contCurent.idCont}"></h:inputText>
 			<h:message for="contCurent_idCont"></h:message>
 			
-			<h:outputText value="Tip Cont:"></h:outputText>
-			<!-- <  h:inputText id="contCurent_tipCont"
-				value="#{formConturi.contCurent.tipCont}"></h:inputText>-->
-			<h:message for="contCurent_tipCont"></h:message>
-			<h:message for="contCurent_tipCont2"></h:message>
-			
-			<h:outputText value="Den Cont:"></h:outputText>
-			<h:inputText id="contCurent_denCont"
-				value="#{formConturi.contCurent.denCont}"></h:inputText>
-			<h:message for="contCurent_denCont"></h:message>
-			
-			<h:outputText value="Tip Sintetic:"></h:outputText>
-			<h:inputText id="contCurent_tipSintetic"
-				value="#{formConturi.contCurent.tipSintetic}"></h:inputText>
-			<h:message for="contCurent_tipSintetic"></h:message>
+			<h:outputText value="Clasa Cont:"></h:outputText>
+			<h:inputText id="contCurent_clasaCont"
+				value="#{formConturi.contCurent.clasaCont}"></h:inputText>
+			<h:message for="contCurent_clasaCont"></h:message>
 			
 			<h:outputText value="Simbol Cont:"></h:outputText>
 			<h:inputText id="contCurent_simbolCont"
 				value="#{formConturi.contCurent.simbolCont}"></h:inputText>
 			<h:message for="contCurent_simbolCont"></h:message>
 			
-			<h:outputText value="Clasa Cont:"></h:outputText>
-			<h:inputText id="contCurent_clasaCont"
-				value="#{formConturi.contCurent.clasaCont}"></h:inputText>
-			<h:message for="contCurent_clasaCont"></h:message>
+			<h:outputText value="Den Cont:"></h:outputText>
+			<h:inputText id="contCurent_denCont"
+				value="#{formConturi.contCurent.denCont}"></h:inputText>
+			<h:message for="contCurent_denCont"></h:message>
+			
+				<h:outputText value="Tip Cont:"></h:outputText>
+			<h:inputText id="contCurent_tipCont"
+				value="#{formConturi.contCurent.tipCont}"></h:inputText>
+			<h:message for="contCurent_tipCont"></h:message>
+			<h:outputText value="Tip Sintetic:"></h:outputText>
+			<h:inputText id="contCurent_tipSintetic"
+				value="#{formConturi.contCurent.tipSintetic}"></h:inputText>
+			<h:message for="contCurent_tipSintetic"></h:message>
+			
+			
+			
+			
 
 			<p:facet name="footer">
 				<h:panelGrid columns="4" border="0">

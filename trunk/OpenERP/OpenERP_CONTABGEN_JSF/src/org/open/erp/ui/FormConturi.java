@@ -23,11 +23,12 @@ public class FormConturi implements Converter{
 	private static org.apache.log4j.Logger logger;
 	private List<Cont> conturi = new ArrayList<Cont>();
 	private Cont contCurent;// = null;
-	
+	private RegConturi rc;
 		
-	public List<Cont> getConturi() {
-		return conturi;
-	}
+//	public List<Cont> getConturi() {
+//		return conturi;
+//	}
+	
 
 	public void setConturi(List<Cont> conturi) {
 		this.conturi = conturi;
@@ -36,7 +37,7 @@ public class FormConturi implements Converter{
 	@EJB(name = "ContabilizareSrv/local", mappedName="ContabilizareSrv/local")
 	private ContabilizareSrv contabSrv;
 	
-	private RegConturi rc;
+	
 	@PostConstruct
 	public void init() throws Exception{
 		logger = org.apache.log4j.Logger.getLogger(FormConturi.class.getName());
@@ -50,11 +51,11 @@ public class FormConturi implements Converter{
 			this.contCurent = new Cont();	
 	}
 
-	public Integer getConturiCount() {
-		return conturi.size();
-	}
+//	public Integer getConturiCount() {
+//		return conturi.size();
+//	}
 
-	public Map<String, Cont> getProduse() {
+	public Map<String, Cont> getConturiMap() {
 		Map<String, Cont> conturiMap = new LinkedHashMap<String, Cont>();
 		if (this.conturi != null && !this.conturi.isEmpty()) {
 			for (Cont c : this.conturi) {
@@ -96,7 +97,7 @@ public class FormConturi implements Converter{
 		logger.debug("Conturi_form - adaugare()");
 		contCurent = new Cont();
 //		contCurent.setIdCont(9999);
-//		contCurent.setSimbolCont("XXXX");
+		contCurent.setSimbolCont("XXXX");
 //		contCurent.setTipCont(TipCont.ACTIV);
 //		contCurent.setTipSintetic(StatusSintetic.ANALITIC);
 	}
