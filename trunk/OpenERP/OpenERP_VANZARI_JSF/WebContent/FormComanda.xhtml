@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">FORM
+		Comenzi</div>
+
+	<h:form id="formComanda">
+		<h:panelGrid columns="2" border="0" style="width: 522px; ">
+			<p:facet name="header">
+				<h:outputText value="Selectati o comanda" style="color: #0000A0"></h:outputText>
+			</p:facet>
+
+			<h:selectOneMenu id="cboComenzi" value="#{formComanda.comanda}"
+				converter="#{formComanda}">
+				<p:selectItems value="#{formComanda.comanda}"></p:selectItems>
+				<p:ajax render="nrComanda dataComanda stareComanda"></p:ajax>
+			</h:selectOneMenu>
+			<h:panelGrid columns="2" border="0">
+				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
+					disabled="#{formComanda.disablePrev}
+					actionListener="#{formComanda.previousComanda}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+				<h:commandButton id="cmdNext" value="&gt;&gt;"
+					disabled="#{formComanda.disableNext}"
+					actionListener="#{formComanda.nextComanda}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+			</h:panelGrid>
+
+			<h:outputText value="Client"></h:outputText>
+			<h:inputText id="client" value="#{formComanda.comanda.client}"></h:inputText>
+
+			<h:outputText value="Data Comanda:"></h:outputText>
+			<h:inputText id="dataComanda" value="#{formComanda.comanda.dataComanda}">
+				<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
+			</h:inputText>
+
+			<h:outputText value="Status Comanda:"></h:outputText>
+			<h:inputText id="statusComanda"	value="#{formComanda.comanda.stareComanda}">
+			</h:inputText>
+
+			
+			<p:facet name="footer">
+				<h:panelGrid columns="3" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare"
+						action="#{formComanda.adaugareComanda}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<!-- <h:commandButton id="cmdStergere" value="Stergere"
+						action="#{formComanda.stergereComanda}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton> 
+					<h:commandButton id="cmdAbandon" value="Abandon">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton> -->
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						action="#{formComanda.salvareComanda}">
+					</h:commandButton>
+				</h:panelGrid>
+			</p:facet>
+		</h:panelGrid>
+		<h:messages style="color: #FF0000"></h:messages>
+		<h:dataTable id="tblLiniiComenzi" var="linieComanda"
+			value="#{formComanda.linieComanda" border="1">
+			<p:facet name="header">
+				<h:outputText value="DETALII COMANDA"
+					style="color: #0000A0"></h:outputText>
+			</p:facet>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Nr. crt."></h:outputText>
+				</p:facet>
+				<h:inputText id="nrLinie"
+					value="#{linieComanda.nrLinie}"></h:inputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Produs"></h:outputText>
+				</p:facet>
+				<h:inputText id="produs" value="#{linieComanda.produs.denumire}">
+					<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
+				</h:inputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Cantitate"></h:outputText>
+				</p:facet>
+				<h:inputText id="cantitate"  value="#{linieComanda.cantitate}" />		
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Pret"></h:outputText>
+				</p:facet>
+				<h:inputText id="pret"
+					value="#{linieComanda.pretLinie}"></h:inputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="TVA"></h:outputText>
+				</p:facet>
+				<h:inputText id="tva"
+					value="#{linieComanda.tvaLinie}"></h:inputText>
+			</h:column>
+			
+			<h:column>
+				<h:commandButton id="cmdEdit" value="Editeaza" actionListener="#{formComanda.editeazaLinieComanda}">
+				<p:attribute name="selectedId" value="#{linieComanda.nrLinie}"></p:attribute></h:commandButton>
+				<!-- <h:inputHidden id="id1" value="#{liniePontaj.idPontaj}" />  -->
+				<p:facet name="header">
+					
+				</p:facet>
+			</h:column>
+			<h:column>
+				<h:commandButton id="cmdSterge" value="Sterge" actionListener="#{formComanda.stergeLinieComanda}">
+				<p:attribute name="selectedId" value="#{linieComanda.nrLinie}"></p:attribute></h:commandButton>
+				<!-- <h:inputHidden id="id1" value="#{liniePontaj.idPontaj}" />  -->
+				<p:facet name="header">
+					
+				</p:facet>
+			</h:column>
+			
+			<!-- <h:column>
+				<h:selectOneRadio id="selectLinieCurenta"
+					valueChangeListener="#{formComandaLiniiComand.setLinieCurenta}"
+					value="1"
+					style="#{(linieComanda.idLinieComanda == formComandaLiniiComand.linieComanda.idLinieComanda) ? 'background-color:red' : 'background-color:blue'}">
+					<p:selectItem
+						itemValue='${(linieComanda.idLinieComanda == formComandaLiniiComand.linieComanda.idLinieComanda) ? "1" : "0" }'
+						itemLabel=" "></p:selectItem>
+
+					<p:ajax render="tblLiniiComenzi"></p:ajax>
+				</h:selectOneRadio>
+				<p:facet name="header">
+					<h:outputText value="Select linie"></h:outputText>
+				</p:facet>
+
+			</h:column> -->
+		</h:dataTable>
+		<h:commandButton id="cmdAdaugaLinie"
+			actionListener="#{formComanda.adaugaLinieComanda}"
+			value="Adauga linie comanda">
+			<p:ajax render="@form"></p:ajax>
+		</h:commandButton>
+	</h:form>
+
+</body>
+</html>
