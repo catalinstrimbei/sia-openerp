@@ -23,9 +23,10 @@
    === *Module dependente:* === 
 
 || *Nr* || *Modul * || *Entitati utilizate* || 
-|| 1 || ACHIZITII  ||Factura, Client ||
+|| 1 || ACHIZITII  ||Factura ||
 || 2 || PERSONAL  || Angajat ||
-|| 3 || NOMGEN || PersoanaFizica||
+|| 3 || NOMGEN || Partener||
+|| 4 || CTBGEN || StareDocument, TipPlata ||
 
    === * Entitati: * ===
 
