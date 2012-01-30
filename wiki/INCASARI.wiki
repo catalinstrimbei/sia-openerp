@@ -21,7 +21,7 @@ Modul FININCASARI
 
 === Detalii ===
 
-  *I.Detalii functionale:* 
+  *Detalii functionale* 
 
 Asigura urmatoarele metode de jurnalizare si transfer informatii
 
@@ -33,7 +33,7 @@ Asigura urmatoarele metode de jurnalizare si transfer informatii
     * Se verifica daca starea cecului sau a biletului la ordin este "refuzat"
     * Se efectueaza inregistrarea platii in contabilitate pe baza unui extras de cont.
 
-  ====II. Detalii tehnice====
+  *Detalii tehnice*
   * _Dependente:_
 - Modulul FININCASARI depinde de modulele: 
 
