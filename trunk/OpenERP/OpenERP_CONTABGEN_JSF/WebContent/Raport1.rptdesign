@@ -5,6 +5,322 @@
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="bidiLayoutOrientation">ltr</property>
     <property name="imageDPI">96</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="pg" id="10">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5432/postgres</property>
+            <property name="odaUser">postgres</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">cG9zdGdyZXM=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="DSproc" id="11">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">idcont</property>
+                    <text-property name="displayName">idcont</text-property>
+                    <text-property name="heading">idcont</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">clasacont</property>
+                    <text-property name="displayName">clasacont</text-property>
+                    <text-property name="heading">clasacont</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">dencont</property>
+                    <text-property name="displayName">dencont</text-property>
+                    <text-property name="heading">dencont</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">simbolcont</property>
+                    <text-property name="displayName">simbolcont</text-property>
+                    <text-property name="heading">simbolcont</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">tipcont</property>
+                    <text-property name="displayName">tipcont</text-property>
+                    <text-property name="heading">tipcont</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">tipsintetic</property>
+                    <text-property name="displayName">tipsintetic</text-property>
+                    <text-property name="heading">tipsintetic</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">contparinte_idcont</property>
+                    <text-property name="displayName">contparinte_idcont</text-property>
+                    <text-property name="heading">contparinte_idcont</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">idcont</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">clasacont</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">dencont</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">simbolcont</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">tipcont</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">tipsintetic</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">contparinte_idcont</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">pg</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">idcont</property>
+                    <property name="nativeName">idcont</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">clasacont</property>
+                    <property name="nativeName">clasacont</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">dencont</property>
+                    <property name="nativeName">dencont</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">simbolcont</property>
+                    <property name="nativeName">simbolcont</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">tipcont</property>
+                    <property name="nativeName">tipcont</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">tipsintetic</property>
+                    <property name="nativeName">tipsintetic</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">contparinte_idcont</property>
+                    <property name="nativeName">contparinte_idcont</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select * 
+from cont order by simbolCont]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>idcont</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>idcont</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>idcont</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>clasacont</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>clasacont</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>clasacont</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>dencont</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>dencont</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>dencont</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>simbolcont</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>simbolcont</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>simbolcont</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>tipcont</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>tipcont</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>tipcont</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>tipsintetic</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>tipsintetic</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>tipsintetic</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>contparinte_idcont</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>contparinte_idcont</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>contparinte_idcont</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
     <styles>
         <style name="report" id="4">
             <property name="fontFamily">sans-serif</property>
@@ -51,7 +367,111 @@
     </page-setup>
     <body>
         <label id="7">
-            <text-property name="text">LISTA MODUL - RAPORT 1</text-property>
+            <property name="fontSize">14pt</property>
+            <text-property name="text">PLAN DE CONTURI</text-property>
         </label>
+        <data id="58"/>
+        <table id="59">
+            <property name="width">6.135416666666667in</property>
+            <property name="dataSet">DSproc</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">clasacont</property>
+                    <text-property name="displayName">clasacont</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["clasacont"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dencont</property>
+                    <text-property name="displayName">dencont</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dencont"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">simbolcont</property>
+                    <text-property name="displayName">simbolcont</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["simbolcont"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">tipcont</property>
+                    <text-property name="displayName">tipcont</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["tipcont"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <column id="75">
+                <property name="width">1.6666666666666667in</property>
+            </column>
+            <column id="76">
+                <property name="width">1.8020833333333333in</property>
+            </column>
+            <column id="77">
+                <property name="width">1.4583333333333333in</property>
+            </column>
+            <column id="78">
+                <property name="width">1.2083333333333333in</property>
+            </column>
+            <header>
+                <row id="60">
+                    <cell id="61">
+                        <property name="paddingLeft">20pt</property>
+                    </cell>
+                    <cell id="62">
+                        <property name="paddingLeft">20pt</property>
+                    </cell>
+                    <cell id="63">
+                        <property name="paddingLeft">20pt</property>
+                    </cell>
+                    <cell id="64">
+                        <property name="paddingLeft">20pt</property>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="65">
+                    <cell id="66">
+                        <property name="paddingLeft">20pt</property>
+                        <data id="79">
+                            <property name="resultSetColumn">clasacont</property>
+                        </data>
+                    </cell>
+                    <cell id="67">
+                        <property name="paddingLeft">20pt</property>
+                        <data id="81">
+                            <property name="resultSetColumn">simbolcont</property>
+                        </data>
+                    </cell>
+                    <cell id="68">
+                        <property name="paddingLeft">20pt</property>
+                        <data id="80">
+                            <property name="resultSetColumn">dencont</property>
+                        </data>
+                    </cell>
+                    <cell id="69">
+                        <property name="paddingLeft">20pt</property>
+                        <data id="82">
+                            <property name="resultSetColumn">tipcont</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="70">
+                    <cell id="71">
+                        <property name="paddingLeft">20pt</property>
+                    </cell>
+                    <cell id="72">
+                        <property name="paddingLeft">20pt</property>
+                    </cell>
+                    <cell id="73">
+                        <property name="paddingLeft">20pt</property>
+                    </cell>
+                    <cell id="74">
+                        <property name="paddingLeft">20pt</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
     </body>
 </report>

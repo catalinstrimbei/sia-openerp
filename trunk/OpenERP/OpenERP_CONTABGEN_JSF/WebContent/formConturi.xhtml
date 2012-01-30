@@ -5,13 +5,16 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://java.sun.com/jsf/core"
 	xmlns:rich="http://richfaces.org/rich">
-<h:head></h:head>
+<h:head>
+<title>Pagina Creare Conturi</title> 
+</h:head>
 <body style="background-color: Beige">
 	<div
-		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: Azure; text-align: center; font-style: normal; background-position: center">Formular
-		PLAN DE CONTURI</div>
+		style="width: 100%; font-size: 22px; line-height: 48px; background-color: navy; color: Azure; text-align: center; font-style: normal; background-position: center">Formular
+		CREARE CONTURI</div>
 
 	<h:form id="formConturi">
+	<h:panelGrid columns="1" border="1">
 		<h:panelGrid columns="3" border="0" style="width: 589px; ">
 			<p:facet name="header">
 				<h:outputText value="Creare conturi " style="color: #FF0000"></h:outputText>
@@ -34,7 +37,7 @@
 				 	
 			</h:panelGrid>
 
-			<h:message for="stupid"></h:message>
+			<h:message></h:message>
 
 			<h:outputText value="Id Cont:"></h:outputText>
 			<h:inputText id="contCurent_idCont"
@@ -64,13 +67,13 @@
 			<h:inputText id="contCurent_tipSintetic"
 				value="#{formConturi.contCurent.tipSintetic}"></h:inputText>
 			<h:message for="contCurent_tipSintetic"></h:message>
-			
+		</h:panelGrid>	
 			
 			
 			
 
 			<p:facet name="footer">
-				<h:panelGrid columns="4" border="0">
+				<h:panelGrid columns="5" border="0">
 					<h:commandButton id="cmdAdaugare" value="Adaugare"
 						actionListener="#{formConturi.adaugare}">
 						<p:ajax render="@form" execute="@none"></p:ajax>
@@ -87,12 +90,17 @@
 						actionListener="#{formConturi.salveaza}">
 						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
+					
+					<h:commandLink id="Raport1"
+					actionListener="#{formMenu.showRaport}" value="  vezi PlanConturi " style="color: #000000;background-color: #D4D0C8;;">
+					<p:attribute name="srcRaport" value="Raport1"/>
+				</h:commandLink>
 				</h:panelGrid>
 			</p:facet>
 			<h:messages layout="table" style="color: red"></h:messages>
 		
-		</h:panelGrid>
 		
+	</h:panelGrid>	
 	</h:form>
 
 

@@ -575,12 +575,6 @@ from OPENERP.BALANTA where  OPENERP.BALANTA.LUNAB_IDLUNA=(SELECT max(idluna) fro
                     <property name="dataType">decimal</property>
                 </structure>
                 <structure>
-                    <property name="name">ANULAT</property>
-                    <text-property name="displayName">ANULAT</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["ANULAT"]</expression>
-                    <property name="dataType">decimal</property>
-                </structure>
-                <structure>
                     <property name="name">SLODFINC</property>
                     <text-property name="displayName">SLODFINC</text-property>
                     <expression name="expression" type="javascript">dataSetRow["SLODFINC"]</expression>
@@ -606,9 +600,10 @@ from OPENERP.BALANTA where  OPENERP.BALANTA.LUNAB_IDLUNA=(SELECT max(idluna) fro
                 </structure>
                 <structure>
                     <property name="name">CONTB_IDCONT</property>
-                    <text-property name="displayName">CONTB_IDCONT</text-property>
+                    <text-property name="displayName">Cont</text-property>
                     <expression name="expression" type="javascript">dataSetRow["CONTB_IDCONT"]</expression>
                     <property name="dataType">decimal</property>
+                    <property name="allowExport">true</property>
                 </structure>
                 <structure>
                     <property name="name">LUNAB_IDLUNA</property>
@@ -678,19 +673,23 @@ from OPENERP.BALANTA where  OPENERP.BALANTA.LUNAB_IDLUNA=(SELECT max(idluna) fro
                 </structure>
             </list-property>
             <column id="212"/>
-            <column id="213"/>
-            <column id="214"/>
+            <column id="213">
+                <property name="width">1.1875in</property>
+            </column>
+            <column id="214">
+                <property name="width">1.1875in</property>
+            </column>
             <column id="215"/>
             <column id="216"/>
             <column id="217"/>
             <column id="218"/>
             <column id="219"/>
             <column id="220"/>
-            <column id="221"/>
             <column id="222"/>
             <column id="223"/>
-            <column id="224"/>
-            <column id="225"/>
+            <column id="224">
+                <property name="width">0.6666666666666666in</property>
+            </column>
             <header>
                 <row id="139">
                     <property name="style">NewStyle</property>
@@ -730,16 +729,11 @@ from OPENERP.BALANTA where  OPENERP.BALANTA.LUNAB_IDLUNA=(SELECT max(idluna) fro
                         </label>
                     </cell>
                     <cell id="154">
-                        <label id="155">
-                            <text-property name="text">ANULAT</text-property>
-                        </label>
-                    </cell>
-                    <cell id="156">
                         <label id="157">
                             <text-property name="text">SLODFINC</text-property>
                         </label>
                     </cell>
-                    <cell id="158">
+                    <cell id="156">
                         <label id="159">
                             <text-property name="text">SLODFIND</text-property>
                         </label>
@@ -756,10 +750,10 @@ from OPENERP.BALANTA where  OPENERP.BALANTA.LUNAB_IDLUNA=(SELECT max(idluna) fro
                     </cell>
                     <cell id="164">
                         <label id="165">
-                            <text-property name="text">CONTB_IDCONT</text-property>
+                            <property name="fontSize">9pt</property>
+                            <text-property name="text">Cont</text-property>
                         </label>
                     </cell>
-                    <cell id="166"/>
                 </row>
             </header>
             <detail>
@@ -800,16 +794,11 @@ from OPENERP.BALANTA where  OPENERP.BALANTA.LUNAB_IDLUNA=(SELECT max(idluna) fro
                         </data>
                     </cell>
                     <cell id="183">
-                        <data id="184">
-                            <property name="resultSetColumn">ANULAT</property>
-                        </data>
-                    </cell>
-                    <cell id="185">
                         <data id="186">
                             <property name="resultSetColumn">SLODFINC</property>
                         </data>
                     </cell>
-                    <cell id="187">
+                    <cell id="185">
                         <data id="188">
                             <property name="resultSetColumn">SLODFIND</property>
                         </data>
@@ -829,7 +818,6 @@ from OPENERP.BALANTA where  OPENERP.BALANTA.LUNAB_IDLUNA=(SELECT max(idluna) fro
                             <property name="resultSetColumn">CONTB_IDCONT</property>
                         </data>
                     </cell>
-                    <cell id="195"/>
                 </row>
             </detail>
             <footer>
@@ -870,13 +858,12 @@ from OPENERP.BALANTA where  OPENERP.BALANTA.LUNAB_IDLUNA=(SELECT max(idluna) fro
                             <property name="resultSetColumn">_TOTALSUMD</property>
                         </data>
                     </cell>
-                    <cell id="205"/>
-                    <cell id="206">
+                    <cell id="205">
                         <data id="233">
                             <property name="resultSetColumn">_SLODFINC</property>
                         </data>
                     </cell>
-                    <cell id="207">
+                    <cell id="206">
                         <data id="234">
                             <property name="resultSetColumn">_SLODFIND</property>
                         </data>
@@ -892,7 +879,6 @@ from OPENERP.BALANTA where  OPENERP.BALANTA.LUNAB_IDLUNA=(SELECT max(idluna) fro
                         </data>
                     </cell>
                     <cell id="210"/>
-                    <cell id="211"/>
                 </row>
             </footer>
         </table>
