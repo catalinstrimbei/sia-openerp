@@ -15,7 +15,7 @@ import javax.faces.event.ActionEvent;
 import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.achizitii.AprovizionareSrvLocal;
+import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.Categorie;
 
 @ManagedBean(name="formCategorie")
@@ -24,11 +24,11 @@ public class FormCategorie implements Converter{
 
 	private static Logger logger = Logger.getLogger(FormCategorie.class.getPackage().getName());
 	
-	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
-	@EJB(name="AprovizionareSrv/local", mappedName="AprovizionareSrv/local")
-	private AprovizionareSrvLocal achizitiiInstance;
-	
-	/* Data Model */
+	 //Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss 
+	@EJB(name="AprovizionareSrv", mappedName="AprovizionareSrvRemote")
+	private AprovizionareSrv achizitiiInstance;
+	///
+	 //Data Model 
 	private List<Categorie> categorii = new ArrayList<Categorie>();
 	private Categorie categorie;
 	
@@ -42,7 +42,7 @@ public class FormCategorie implements Converter{
 		//populareModelActivitati();
 	}
 	
-	/* Actiuni UI Controller */
+	 //Actiuni UI Controller 
 	public String nextCategorie(){
 		Integer idx = this.categorii.indexOf(this.categorie) + 1;
 		
@@ -77,7 +77,7 @@ public class FormCategorie implements Converter{
 		
 	}
 	
-	/* Actiuni tranzactionale*/
+	// Actiuni tranzactionale
 	public String adaugareCategorie(){
 		
 		this.categorie = new Categorie();
@@ -112,9 +112,9 @@ public class FormCategorie implements Converter{
         return new InitialContext(props);
 	}
 	
-/* Initializare formularului*/	
+ //Initializare formularului	
 	
-	/*Strategia 1: Injectare privata EJB - referinta EJB nepartajata */
+	//Strategia 1: Injectare privata EJB - referinta EJB nepartajata 
 	@PostConstruct // Referinta EJB injectata este disponibila numai abua in handlerul PostConstruct, si nu la nivelul constructorului
 	private void initForm() throws Exception{
 		logger.debug("PostConstruct FORM Categorie local-achizitii: ..." + this.achizitiiInstance);

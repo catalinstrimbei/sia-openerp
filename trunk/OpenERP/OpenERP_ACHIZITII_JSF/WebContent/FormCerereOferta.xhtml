@@ -16,10 +16,10 @@
 				<h:outputText value="Selectati o cerere de oferta" style="color: #0000A0"></h:outputText>
 			</p:facet>
 
-			<h:selectOneMenu id="cboCerereOferta" value="#{formCerereOferta.cerereoferta}"
+			<h:selectOneMenu id="cboCerereOferta" value="#{formCerereOferta.cerereOferta}"
 				converter="#{formCerereOferta}">
-				<p:selectItems value="#{formCerereOferta.oferte}"></p:selectItems>
-				<p:ajax render="dataCerere cerereOferta getStatusCerereOferta"></p:ajax>
+				<p:selectItems value="#{formCerereOferta.cereri}"></p:selectItems>
+				<p:ajax render="dataCerere getStatusCerereOferta"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="3" border="0">
 				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
@@ -37,14 +37,14 @@
 
 	
 			<h:outputText value="DataCerere:"></h:outputText>
-			<h:inputText id="dataCerere" value="#{formCerereOferta.cerereoferta.dataCerere}">
+			<h:inputText id="dataCerere" value="#{formCerereOferta.cerereOferta.dataCerere}" style="width: 197px; ">
 				<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
 			</h:inputText>
 
 
 			<h:outputText value="Status Cerere Oferta:"></h:outputText>
 			<h:inputText id="status"
-				value="#{formCerereOferta.cerereoferta.statusCerereOferta}" >
+				value="#{formCerereOferta.cerereOferta.statusCerereOferta}" style="width: 198px; ">
 			</h:inputText>
 
 			<p:facet name="footer">

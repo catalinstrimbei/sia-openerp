@@ -1,4 +1,4 @@
-package org.open.erp.ui;
+/*package org.open.erp.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +24,11 @@ public class FormFurnizor implements Converter{
 
 	private static Logger logger = Logger.getLogger(FormFurnizor.class.getPackage().getName());
 	
-	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
+	 Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss 
 	@EJB(name="AprovizionareSrv/local", mappedName="AprovizionareSrv/local")
 	private AprovizionareSrvLocal achizitiiInstance;
 	
-	/* Data Model */
+	 Data Model 
 	private List<Furnizor> furnizori = new ArrayList<Furnizor>();
 	private Furnizor furnizor;
 	
@@ -42,7 +42,7 @@ public class FormFurnizor implements Converter{
 		
 	}
 	
-	/* Actiuni UI Controller */
+	 Actiuni UI Controller 
 	public String nextFurnizor(){
 		Integer idx = this.furnizori.indexOf(this.furnizor) + 1;
 		
@@ -75,7 +75,7 @@ public class FormFurnizor implements Converter{
 		
 	}
 	
-	/* Actiuni tranzactionale*/
+	 Actiuni tranzactionale
 	public String adaugareFurnizor(){
 		
 		this.furnizor = new Furnizor();
@@ -110,9 +110,9 @@ public class FormFurnizor implements Converter{
         return new InitialContext(props);
 	}
 	
-/* Initializare formularului*/	
+ Initializare formularului	
 	
-	/*Strategia 1: Injectare privata EJB - referinta EJB nepartajata */
+	Strategia 1: Injectare privata EJB - referinta EJB nepartajata 
 	@PostConstruct // Referinta EJB injectata este disponibila numai abua in handlerul PostConstruct, si nu la nivelul constructorului
 	private void initForm() throws Exception{
 		logger.debug("PostConstruct FORM Furnizor local-achizitii: ..." + this.achizitiiInstance);
@@ -142,3 +142,4 @@ public class FormFurnizor implements Converter{
 	}
 
 }
+*/
