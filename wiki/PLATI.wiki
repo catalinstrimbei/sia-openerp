@@ -53,9 +53,8 @@
 || salveazaPlata() || Se salveaza inregistrarea unei plati ||
 || salveazaBiletLaOrdin() || Se salveaza inregistrarea unui bilet la ordin ||
 || salveazaChitanta()	||  Se salveaza inregistrarea unei chitante ||
-|| StergeIncasare() ||  Are loc stergerea unei incasari ||
+|| StergePlata() ||  Are loc stergerea unei plati ||
 || getPlati() || Se interogheaza lista platilor ||
 || getFurnizor()	|| Se interogheaza lista clientilor ||
 || getFacturiDupaFurnizor() || Se interogheaza lista facturilor in functie de furnizor ||
 || getFacturaDupaId() || Se interogheaza lista facturilor in functie de id ||
-
