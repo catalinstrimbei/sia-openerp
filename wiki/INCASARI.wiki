@@ -10,7 +10,8 @@ Modul FININCASARI
 === Introducere ===
 
 *Obiectiv:* Implementeaza procesul de incasare inregistrand platile efectuate
-Functionalitati: 
+
+*Functionalitati:*
     * Gestioneaza incasarea sumelor in numerar 
     * Gestioneaza incasarea Facturilor emise in urma vanzarii, inclusiv incasarea partiala a acestora 
     * Gestioneaza incasarea cecurilor si a biletelor la ordin 
@@ -20,13 +21,13 @@ Functionalitati:
 === Detalii ===
 
   *I. Detalii functionale:* Asigura urmatoarele metode de jurnalizare si transfer informatii: 
-* Jurnalizeaza notele contabile aferente efectuarii unei plati;
-* Jurnalizeaza depunerea unui cec sau a unui bilet la ordin;
-* Calculeaza suma in funtie de moneda in care se efectueaza plata;
-* Calculeaza diferenta dintre suma totala a facturii si suma incasata;
-* Se efectueaza inregistrarea platii in contabilitate pe baza chitantei, a unui cec sau a unui bilet la ordin;
-* Se verifica daca starea cecului sau a biletului la ordin este "refuzat";
-* Se efectueaza inregistrarea platii in contabilitate pe baza unui extras de cont;
+    * Jurnalizeaza notele contabile aferente efectuarii unei plati;
+    * Jurnalizeaza depunerea unui cec sau a unui bilet la ordin;
+    * Calculeaza suma in funtie de moneda in care se efectueaza plata;
+    * Calculeaza diferenta dintre suma totala a facturii si suma incasata;
+    * Se efectueaza inregistrarea platii in contabilitate pe baza chitantei, a unui cec sau a unui bilet la ordin;
+    * Se verifica daca starea cecului sau a biletului la ordin este "refuzat";
+    * Se efectueaza inregistrarea platii in contabilitate pe baza unui extras de cont;
 
   ====II. Detalii tehnice====
   * _Dependente:_
