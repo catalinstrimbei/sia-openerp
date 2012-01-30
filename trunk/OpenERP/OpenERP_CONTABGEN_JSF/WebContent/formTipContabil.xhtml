@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head>
+<title>Pagina Creare Tipuri Contabile</title> 
+</h:head>
+<body style="background-color: Beige">
+<div style="width:100%;font-size:36px;line-height:48px;background-color: LightBlue; color: Black; text-align: center;">Formular creare
+Tipuri Contabile</div>
+
+	<h:form id="formTipContabil">
+		<h:panelGrid columns="1" border="1">
+		<h:panelGrid columns="3" border="0">
+			<p:facet name="header">
+				<h:outputText value="Tipuri contabile " style="color: #000000"></h:outputText>
+			</p:facet>
+
+			<h:selectOneMenu id="cboTipuri" value="#{formTipContabil.tipContabilCurent}"
+				converter="#{formTipContabil}" style="width: 156px; ">
+				<p:ajax render="@form"></p:ajax>
+				<p:selectItems value="#{formTipContabil.tipuriContabile}"></p:selectItems>
+			</h:selectOneMenu>
+			
+			<h:panelGrid columns="4" border="0">
+					<h:commandButton id="previous" value="&lt;&lt;" actionListener="#{formTipContabil.previous}">
+					<p:ajax render="@form"></p:ajax>
+    						</h:commandButton>
+					<h:commandButton id="next" value="&gt;&gt;" actionListener="#{formTipContabil.next}">
+					<p:ajax render="@form"></p:ajax>
+					</h:commandButton>
+					
+				 	
+			</h:panelGrid>
+			<h:message></h:message>
+			
+			
+			<h:outputText value="Denumire Tip:"></h:outputText>
+			<h:inputText id="tipContabilCurent_denumireTip"
+				value="#{formTipContabil.tipContabilCurent.denumireTip}"></h:inputText>
+			<h:message for="tipContabilCurent_denumireTip"></h:message>
+			
+			<h:outputText value="Id Tip Contabil:"></h:outputText>
+			<h:inputText id="tipContabilCurent_idTipContabil"
+				value="#{formTipContabil.tipContabilCurent.idTipContabil}"></h:inputText>
+			<h:message for="tipContabilCurent_idTipContabil"></h:message>
+			
+			<h:outputText value="Simbol Cont Tip:"></h:outputText>
+			<h:inputText id="tipContabilCurent_contProprietar_simbolCont"
+				value="#{formTipContabil.tipContabilCurent.contProprietar.simbolCont}"></h:inputText>
+			<h:message for="tipContabilCurent_contProprietar_simbolCont"></h:message>
+			
+			<h:outputText value="Simbol Cont Iesire:"></h:outputText>
+			<h:inputText id="tipContabilCurent_contIesire_simbolCont"
+				value="#{formTipContabil.tipContabilCurent.contIesire.simbolCont}"></h:inputText>
+			<h:message for="tipContabilCurent_contIesire_simbolCont"></h:message>
+			
+			<h:outputText value="Simbol Cont Intrare:"></h:outputText>
+			<h:inputText id="tipContabilCurent_contIntrare_simbolCont"
+				value="#{formTipContabil.tipContabilCurent.contIntrare.simbolCont}"></h:inputText>
+			<h:message for="tipContabilCurent_contIntrare_simbolCont"></h:message>
+			</h:panelGrid>
+			
+			
+			<p:facet name="footer">
+				<h:panelGrid columns="4" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare"
+						actionListener="#{formTipContabil.adaugare}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere"
+						actionListener="#{formTipContabil.stergere}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Abandon"
+						actionListener="#{formTipContabil.abandon}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						actionListener="#{formTipContabil.salveaza}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+				</h:panelGrid>
+			</p:facet>
+			<h:messages layout="table" style="color: red"></h:messages>
+		</h:panelGrid>
+	</h:form>
+
+</body>
+</html>

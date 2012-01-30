@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head>
+<title>Pagina Creare Sabloane</title> 
+</h:head>
+<body style="background-color: Beige">
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: LightBlue; color: Black; text-align: center;">Formular creare Sabloane Inregistrari</div>
+	<h:form id="formSablonNC">
+		<h:panelGrid columns="1" border="1">
+		<h:panelGrid columns="3" border="0">
+			<p:facet name="header">
+				<h:outputText value="Sabloane Inregi"></h:outputText>
+			</p:facet>
+			
+			
+			<h:selectOneMenu id="cboSabloane" value="#{formSablonNC.sablonCurent}"
+				converter="#{formSablonNC}" style="width: 156px; ">
+				<p:ajax render="@form"></p:ajax>
+				<p:selectItems value="#{formSablonNC.sabloane}"></p:selectItems>
+			</h:selectOneMenu>
+			
+			<h:panelGrid columns="4" border="0">
+					<h:commandButton id="previous" value="&lt;&lt;" actionListener="#{formSablonNC.previous}">
+						<p:ajax render="@form"></p:ajax>
+    				</h:commandButton>
+					<h:commandButton id="next" value="&gt;&gt;" actionListener="#{formConturi.next}">
+						<p:ajax render="@form"></p:ajax>
+					</h:commandButton>
+			</h:panelGrid>
+			
+			<h:message></h:message>
+			
+			<h:outputText value="Id Sablon:"></h:outputText>
+			<h:inputText id="sablonCurent_idSablon"
+				value="#{formSablonNC.sablonCurent.idSablon}"></h:inputText>
+			<h:message for="sablonCurent_idSablon"></h:message>
+			<h:outputText value="Nr Sablon:"></h:outputText>
+			<h:inputText id="sablonCurent_nrSablon"
+				value="#{formSablonNC.sablonCurent.nrSablon}"></h:inputText>
+			<h:message for="sablonCurent_nrSablon"></h:message>
+			
+			<h:outputText value="Simbol Cont Debit:"></h:outputText>
+			<h:inputText id="sablonCurent_contDebit_simbolCont"
+				value="#{formSablonNC.sablonCurent.contDebit.simbolCont}"></h:inputText>
+			<h:message for="sablonCurent_contDebit_simbolCont"></h:message>
+
+			<h:outputText value="Simbol Cont Credit:"></h:outputText>
+			<h:inputText id="sablonCurent_contCredit_simbolCont"
+				value="#{formSablonNC.sablonCurent.contCredit.simbolCont}"></h:inputText>
+			<h:message for="sablonCurent_contCredit_simbolCont"></h:message>
+
+			</h:panelGrid>
+			
+			<p:facet name="footer">
+				<h:panelGrid columns="4" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare"
+						actionListener="#{formSablonNC.adaugare}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere"
+						actionListener="#{formSablonNC.stergere}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Abandon"
+						actionListener="#{formSablonNC.abandon}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						actionListener="#{formSablonNC.salveaza}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+				</h:panelGrid>
+				
+			</p:facet>
+			<h:messages layout="table" style="color: red"></h:messages>
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head><title>Pagina Luni Lucru</title></h:head>
+<body style="background-color: Beige">
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px;background-color: LightBlue; color: Black; text-align: center;">Formular Luni Contabile</div>
+	<h:form id="formLunaForm">
+		<h:panelGrid columns="2" border="1">
+			<p:facet name="header">
+				<h:outputText value="Navigare:"></h:outputText>
+			</p:facet>
+			
+			
+				<h:commandButton id="cmdPrev"
+					actionListener="#{formLuna.previous}" value="Back"></h:commandButton>
+				<h:commandButton id="cmdNext" actionListener="#{formLuna.next}"
+					value="Next"></h:commandButton>
+			
+			<h:outputText value="ID:"></h:outputText>
+			<h:inputText id="id_luna" value="#{formLuna.lunaCurenta.idLuna}"></h:inputText>
+			
+			<h:outputText value="An:"></h:outputText>
+			<h:inputText id="an_luna" value="#{formLuna.lunaCurenta.an}"></h:inputText>
+			
+			<h:outputText value="Luna:"></h:outputText>
+			<h:inputText id="luna_luna" value="#{formLuna.lunaCurenta.luna}"></h:inputText>
+			
+			<h:outputText value="Status"></h:outputText>
+			<h:outputText id="status_luna" value="#{formLuna.lunaCurenta.status}"></h:outputText>
+
+			
+			</h:panelGrid>
+			</h:form>
+			
+
+</body>
+</html>

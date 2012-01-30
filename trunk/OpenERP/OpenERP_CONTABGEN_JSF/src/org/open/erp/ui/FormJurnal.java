@@ -12,6 +12,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.event.ActionEvent;
+
+import org.open.erp.services.ctbgen.ArticolCtb;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.InregistrareRJ;
 import org.open.erp.services.ctbgen.RegInregistrareRJ;
@@ -25,6 +27,7 @@ public class FormJurnal implements Converter{
 	private List<InregistrareRJ> inregistrari = new ArrayList<InregistrareRJ>();
 	private InregistrareRJ inregistrare;// = null;
 	private RegInregistrareRJ regInr;
+	private List<ArticolCtb> articole;
 	
 	
 	
@@ -71,7 +74,7 @@ public class FormJurnal implements Converter{
 		Map<String, InregistrareRJ> inregMap = new LinkedHashMap<String, InregistrareRJ>();
 		if (this.inregistrari != null && !this.inregistrari.isEmpty()) {
 			for (InregistrareRJ c : this.inregistrari) {
-				inregMap.put("Inreg. "+c.getIdInregRJ().toString()+"din"+c.getDataInregRJ().toString(), c);
+				inregMap.put(c.toString(), c);
 			}
 		}
 		return inregMap;
@@ -106,11 +109,11 @@ public class FormJurnal implements Converter{
 	/* Actiuni UI Controller */
 
 	
-	public void next(ActionEvent evt){
+	public void nextI(ActionEvent evt){
 		next2();
 	}
 
-	public void previous(ActionEvent evt){
+	public void previousI(ActionEvent evt){
 		previous2();
 	}
 
@@ -132,9 +135,9 @@ public class FormJurnal implements Converter{
 		//contabSrv.stergeCont(inreg);
 		FacesMessage mesaj = null;
 		mesaj = new FacesMessage("Am sters " + inregistrare.toString());
-		FacesContext.getCurrentInstance().addMessage("Stergere cont:",mesaj);	
+		FacesContext.getCurrentInstance().addMessage("Stergere inregistrare:",mesaj);	
 		if (!this.inregistrari.isEmpty())
-			this.inregistrare = this.inregistrari.get(0);
+			this.inregistrare = this.inregistrari.get(2);
 		else
 			this.inregistrare = null;
 	}
@@ -152,8 +155,8 @@ public class FormJurnal implements Converter{
 		this.inregistrari.add(this.inregistrare);
 		//return "FormProiecte";
 		FacesMessage mesaj = null;
-		mesaj = new FacesMessage("Am salvat contul " + inregistrare.toString());
-		FacesContext.getCurrentInstance().addMessage("Salvare cont:",mesaj);
+		mesaj = new FacesMessage("Am salvat " + inregistrare.toString());
+		FacesContext.getCurrentInstance().addMessage("Salvare inregistrare:",mesaj);
 	}
 
     @Override
@@ -179,6 +182,16 @@ public class FormJurnal implements Converter{
             }
             return null;
     }
+
+
+	public List<ArticolCtb> getArticole() {
+		return articole;
+	}
+
+
+	public void setArticole(List<ArticolCtb> articole) {
+		this.articole = articole;
+	}
 	
 	
 	
