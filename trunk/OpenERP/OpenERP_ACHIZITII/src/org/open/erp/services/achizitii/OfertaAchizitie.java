@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import static javax.persistence.FetchType.EAGER;
 
 /**
  * 
@@ -29,7 +30,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class OfertaAchizitie implements Serializable {
 	@Id
-   /* @GeneratedValue(strategy = GenerationType.AUTO)
+    /*@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_OfertaAchizitie_gen;*/
     private long id_OfertaAchizitie;
 	public static final Integer TRANSFORMATA = 1;
@@ -46,7 +47,7 @@ public class OfertaAchizitie implements Serializable {
 	private Integer nrZile;	
 	@OneToOne(mappedBy="ofertaAchizitie"/*, cascade = ALL*/)
 	private CerereOferta cerereOferta;	
-	@OneToMany(mappedBy = "oferta", /*targetEntity = org.open.erp.services.achizitii.LinieOfertaAchizitie.class, fetch = LAZY,*/ cascade = ALL)
+	@OneToMany(mappedBy = "oferta", /*targetEntity = org.open.erp.services.achizitii.LinieOfertaAchizitie.class, fetch = LAZY,*/ cascade = ALL, fetch = EAGER)
 	private Collection<LinieOfertaAchizitie> liniiOferta = new ArrayList<LinieOfertaAchizitie>();
 	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(OfertaAchizitie.class.getName());
 	public Double getValTotal() {

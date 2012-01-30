@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.Persoana;
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
 
 /**
  * 
@@ -53,7 +54,7 @@ public class PlanAprovizionare implements Serializable  {
 	@OneToOne@JoinColumn(name="idPersoana")
 	private Persoana persoana;
 	private Integer statusPlan;
-	@OneToMany(mappedBy="planAprovizionare", cascade = ALL)
+	@OneToMany(mappedBy="planAprovizionare", cascade = ALL, fetch = EAGER)
 	private List<LiniePlanAprovizionare> liniiPlan = new LinkedList<LiniePlanAprovizionare>();
 	
 	public Integer getSaptAn() {

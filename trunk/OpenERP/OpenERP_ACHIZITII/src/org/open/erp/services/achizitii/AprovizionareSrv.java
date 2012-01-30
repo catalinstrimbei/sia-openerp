@@ -10,6 +10,7 @@ import org.open.erp.services.achizitii.exceptions.AchizitiiExceptions;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.stocuri.impl.Procesare;
 
 /**
  * Returneaza o interfata a serviciului Aprovizionare
@@ -257,6 +258,12 @@ public interface AprovizionareSrv extends PropertyChangeListener{
 	Collection<Comanda> getComenziPeStatus(Integer statusComanda_)
 			throws Exception;
 	PlanAprovizionare getPlanAprovizionareRegistru() throws Exception;
+	void ascultaFurnizoriCerereriAprovizionare(Procesare procesare);
+	int procesareFactRetur(Factura facturaRetur) throws CtbException;
+	List<LiniePlanAprovizionare> getLiniiPlanAprovizionareCerereOf();
+	List<LiniePlanAprovizionare> getLiniiPlanAprovizionareComanda();
+	CerereOferta getCerereOf();
+	void setCerereOf(CerereOferta cerereOf);
   	
     
     }

@@ -1,6 +1,8 @@
 package org.open.erp.services.achizitii.registri;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -95,8 +97,13 @@ public class RegistruAprovizionareEJB {
 	}
 	public PlanAprovizionare getPlanAprovizionare() throws Exception{
 		try{
-			return (PlanAprovizionare) entityManager.createQuery("SELECT p FROM PlanAprovizionare p where p.statusPlan = 0")											
-											.getResultList();
+		    //List planuri =new ArrayList<PlanAprovizionare>();
+			PlanAprovizionare plan= (PlanAprovizionare) entityManager.createQuery("SELECT p FROM PlanAprovizionare p where p.statusPlan = 0")											
+											.getSingleResult();
+			logger.error("uiiiiiiiiiiiiiiiiiiiiiiiiii "+plan.getIdPlanAprovizionare());
+			return plan;
+			//return (PlanAprovizionare) planuri.get(0);
+			/*return new PlanAprovizionare(1,1,2008,new Date(),null,PlanAprovizionare.IN_CURS);*/
 		}catch(Exception ex){
 			logger.error("ERROR "  + ex.getMessage());
 			throw ex;

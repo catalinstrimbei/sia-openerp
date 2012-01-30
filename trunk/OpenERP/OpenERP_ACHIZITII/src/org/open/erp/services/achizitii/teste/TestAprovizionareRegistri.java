@@ -225,7 +225,7 @@ public class TestAprovizionareRegistri {
 		}
 		///////
 		NIR nir = new NIR();	
-		nir.setNrDocument(1001);
+		nir.setNrDocument(1006);
 		nir.setDataDocument(new Date());
 		nir.setFactura(fact1);		
 		Collection<LinieDocument> listaLiniiNIR=new ArrayList<LinieDocument>();
@@ -235,11 +235,11 @@ public class TestAprovizionareRegistri {
 		listaLiniiNIR.add(linieNIR2);
 		nir.setLiniiDocument((List<LinieDocument>) listaLiniiNIR);	
 		NIR nir3=new NIR();
-		nir3.setNrDocument(1003);
+		nir3.setNrDocument(1008);
 	
 		///---
 		NIR nir2 = new NIR();
-		nir2.setNrDocument(1002);
+		nir2.setNrDocument(1009);
 		nir2.setDataDocument(new Date());
 		nir2.setFactura(fact2);
 		Collection<LinieDocument> listaLiniiNIR2=new ArrayList<LinieDocument>();

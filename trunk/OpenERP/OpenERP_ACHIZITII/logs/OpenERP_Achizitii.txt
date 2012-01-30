@@ -1,300 +1,61 @@
-(A2) 2012-01-29 21:50:45,284 [main] DEBUG org.jnp.interfaces.TimedSocketFactory - createSocket, hostAddr: localhost/127.0.0.1, port: 1099, localAddr: null, localPort: 0, timeout: 0
-(A2) 2012-01-29 21:50:51,819 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for StocuriSrv/remote
-(A2) 2012-01-29 21:50:52,171 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[84da23, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:50:52,172 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[84da23, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:50:52,172 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:50:52,190 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[84da23, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:50:52,350 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:50:52,925 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[84da23, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:50:52,926 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[84da23, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:50:52,926 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35205].1fddc31] closing socket
-(A2) 2012-01-29 21:50:52,926 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35205].1fddc31] closed socket
-(A2) 2012-01-29 21:50:52,927 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy7 for EJB3 Business Interface: org.open.erp.services.stocuri.StocuriSrvRemote
-(A2) 2012-01-29 21:50:52,934 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for AprovizionareSrv/remote
-(A2) 2012-01-29 21:50:52,935 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[e5bbd6, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:50:52,935 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[e5bbd6, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:50:52,935 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:50:52,935 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[e5bbd6, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:50:52,994 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:50:53,625 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[e5bbd6, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:50:53,625 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[e5bbd6, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:50:53,625 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35207].11a75a2] closing socket
-(A2) 2012-01-29 21:50:53,626 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35207].11a75a2] closed socket
-(A2) 2012-01-29 21:50:53,626 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy9 for EJB3 Business Interface: org.open.erp.services.achizitii.AprovizionareSrvRemote
-(A2) 2012-01-29 21:50:53,657 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for NomenclatoareSrv/remote
-(A2) 2012-01-29 21:50:53,658 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[11978b, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:50:53,659 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[11978b, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:50:53,659 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:50:53,659 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[11978b, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:50:53,672 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:50:54,059 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[11978b, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:50:54,059 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[11978b, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:50:54,059 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35211].1309e87] closing socket
-(A2) 2012-01-29 21:50:54,060 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35211].1309e87] closed socket
-(A2) 2012-01-29 21:50:54,060 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy11 for EJB3 Business Interface: org.open.erp.services.nomgen.NomenclatoareSrvRemote
-(A2) 2012-01-29 21:50:54,073 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory - org.jboss.ejb3.proxy.objectfactory.ProxyObjectFactory servicing request for ContabilizareSrv/remote
-(A2) 2012-01-29 21:50:54,074 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[633e5e, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:50:54,074 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[633e5e, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:50:54,075 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:50:54,075 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[633e5e, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:50:54,087 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:50:54,258 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[11978b, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:50:54,269 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[633e5e, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:50:54,270 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[633e5e, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:50:54,271 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35212].11381e7] closing socket
-(A2) 2012-01-29 21:50:54,271 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35212].11381e7] closed socket
-(A2) 2012-01-29 21:50:54,272 [main] DEBUG org.jboss.ejb3.proxy.objectfactory.session.SessionProxyObjectFactory - Created Proxy of type $Proxy13 for EJB3 Business Interface: org.open.erp.services.ctbgen.ContabilizareSrvRemote
-(A2) 2012-01-29 21:50:54,287 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[11978b, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:50:54,288 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[e5bbd6, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:50:54,288 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[e5bbd6, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:50:54,297 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - Begin test: Insert-uri
-(A2) 2012-01-29 21:50:54,301 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Categorie org.open.erp.services.achizitii.AprovizionareSrv.salveazaCategorie(org.open.erp.services.achizitii.Categorie) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:50:54,351 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaCategorie(org.open.erp.services.achizitii.Categorie); using hash: 8696217084160920473
-(A2) 2012-01-29 21:50:54,413 [main] DEBUG org.jboss.security.SecurityAssociation - Using ThreadLocal: false
-(A2) 2012-01-29 21:50:54,576 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[7f5580, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:50:54,577 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[7f5580, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:50:54,577 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:50:54,577 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[7f5580, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:50:54,592 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:08,719 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[7f5580, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:08,720 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[7f5580, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:08,720 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35213].6f9b8e] closing socket
-(A2) 2012-01-29 21:51:08,720 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35213].6f9b8e] closed socket
-(A2) 2012-01-29 21:51:08,721 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Categorie org.open.erp.services.achizitii.AprovizionareSrv.salveazaCategorie(org.open.erp.services.achizitii.Categorie) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:08,721 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaCategorie(org.open.erp.services.achizitii.Categorie); using hash: 8696217084160920473
-(A2) 2012-01-29 21:51:08,726 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[ae3364, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:08,727 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[ae3364, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:08,727 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:08,727 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[ae3364, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:08,744 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:09,654 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[ae3364, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:09,654 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[ae3364, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:09,655 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35226].15f7107] closing socket
-(A2) 2012-01-29 21:51:09,655 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35226].15f7107] closed socket
-(A2) 2012-01-29 21:51:09,657 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Categorie org.open.erp.services.achizitii.AprovizionareSrv.salveazaCategorie(org.open.erp.services.achizitii.Categorie) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:09,657 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaCategorie(org.open.erp.services.achizitii.Categorie); using hash: 8696217084160920473
-(A2) 2012-01-29 21:51:09,658 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[6782a9, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:09,658 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[6782a9, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:09,658 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:09,659 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[6782a9, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:09,679 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:09,898 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[6782a9, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:09,898 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[6782a9, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:09,898 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35229].17200b4] closing socket
-(A2) 2012-01-29 21:51:09,898 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35229].17200b4] closed socket
-(A2) 2012-01-29 21:51:09,899 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - ---------Adaugat Categorii-------------- 
-(A2) 2012-01-29 21:51:09,900 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Furnizor org.open.erp.services.achizitii.AprovizionareSrv.salveazaFurnizor(org.open.erp.services.achizitii.Furnizor) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:09,901 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaFurnizor(org.open.erp.services.achizitii.Furnizor); using hash: -2363670867236683941
-(A2) 2012-01-29 21:51:09,902 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1b273cc, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:09,902 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1b273cc, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:09,902 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:09,902 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1b273cc, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:09,921 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:14,005 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[1b273cc, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:14,005 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1b273cc, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:14,006 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35231].1bbd7b2] closing socket
-(A2) 2012-01-29 21:51:14,006 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35231].1bbd7b2] closed socket
-(A2) 2012-01-29 21:51:14,007 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Furnizor org.open.erp.services.achizitii.AprovizionareSrv.salveazaFurnizor(org.open.erp.services.achizitii.Furnizor) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:14,012 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1b273cc, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:14,013 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1b273cc, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:14,014 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[6782a9, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:14,014 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[6782a9, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:14,014 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[ae3364, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:14,014 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[ae3364, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:14,014 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[7f5580, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:14,014 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[7f5580, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:14,013 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaFurnizor(org.open.erp.services.achizitii.Furnizor); using hash: -2363670867236683941
-(A2) 2012-01-29 21:51:14,017 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[13c6641, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:14,017 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[13c6641, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:14,017 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:14,017 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[13c6641, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:14,380 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:15,099 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[13c6641, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:15,099 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[13c6641, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:15,099 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35234].d507e9] closing socket
-(A2) 2012-01-29 21:51:15,099 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35234].d507e9] closed socket
-(A2) 2012-01-29 21:51:15,100 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Furnizor org.open.erp.services.achizitii.AprovizionareSrv.salveazaFurnizor(org.open.erp.services.achizitii.Furnizor) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:15,101 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaFurnizor(org.open.erp.services.achizitii.Furnizor); using hash: -2363670867236683941
-(A2) 2012-01-29 21:51:15,102 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1a6684f, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:15,102 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1a6684f, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:15,102 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:15,102 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1a6684f, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:15,114 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:15,145 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[1a6684f, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:15,145 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1a6684f, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:15,145 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35236].1ba6076] closing socket
-(A2) 2012-01-29 21:51:15,145 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35236].1ba6076] closed socket
-(A2) 2012-01-29 21:51:15,146 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - ---------Adaugat Furnizori-------------- 
-(A2) 2012-01-29 21:51:15,147 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Articol org.open.erp.services.achizitii.AprovizionareSrv.salveazaArticol(org.open.erp.services.achizitii.Articol) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:15,147 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaArticol(org.open.erp.services.achizitii.Articol); using hash: 1911974622750999177
-(A2) 2012-01-29 21:51:15,148 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[458f41, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:15,148 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[458f41, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:15,148 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:15,148 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[458f41, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:15,160 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:16,002 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[458f41, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:16,003 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[458f41, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:16,004 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35237].d75415] closing socket
-(A2) 2012-01-29 21:51:16,004 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35237].d75415] closed socket
-(A2) 2012-01-29 21:51:16,006 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Articol org.open.erp.services.achizitii.AprovizionareSrv.salveazaArticol(org.open.erp.services.achizitii.Articol) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:16,007 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaArticol(org.open.erp.services.achizitii.Articol); using hash: 1911974622750999177
-(A2) 2012-01-29 21:51:16,009 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[3caa4b, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:16,010 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[3caa4b, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:16,010 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:16,010 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[3caa4b, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:16,033 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:16,804 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[3caa4b, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:16,804 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[3caa4b, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:16,804 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35238].11f23e5] closing socket
-(A2) 2012-01-29 21:51:16,804 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35238].11f23e5] closed socket
-(A2) 2012-01-29 21:51:16,806 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Articol org.open.erp.services.achizitii.AprovizionareSrv.salveazaArticol(org.open.erp.services.achizitii.Articol) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:16,806 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaArticol(org.open.erp.services.achizitii.Articol); using hash: 1911974622750999177
-(A2) 2012-01-29 21:51:16,806 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[196f4b5, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:16,807 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[196f4b5, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:16,807 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:16,807 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[196f4b5, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:16,819 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:16,864 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[196f4b5, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:16,864 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[196f4b5, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:16,864 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35239].11db6bb] closing socket
-(A2) 2012-01-29 21:51:16,864 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35239].11db6bb] closed socket
-(A2) 2012-01-29 21:51:16,865 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - ---------Adaugat Articole-------------- 
-(A2) 2012-01-29 21:51:16,865 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.CerereOferta org.open.erp.services.achizitii.AprovizionareSrv.salveazaCerereOferta(org.open.erp.services.achizitii.CerereOferta) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:16,865 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaCerereOferta(org.open.erp.services.achizitii.CerereOferta); using hash: 6842249256070479688
-(A2) 2012-01-29 21:51:16,866 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[a4488, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:16,866 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[a4488, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:16,866 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:16,866 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[a4488, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:16,883 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:21,164 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[a4488, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:21,165 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[a4488, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:21,165 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35240].70be88] closing socket
-(A2) 2012-01-29 21:51:21,166 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35240].70be88] closed socket
-(A2) 2012-01-29 21:51:21,166 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - ---------Adaugat CerereOferta-------------- 
-(A2) 2012-01-29 21:51:21,167 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.OfertaAchizitie org.open.erp.services.achizitii.AprovizionareSrv.salveazaOfertaAchizitie(org.open.erp.services.achizitii.OfertaAchizitie) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:21,167 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaOfertaAchizitie(org.open.erp.services.achizitii.OfertaAchizitie); using hash: 6319191054170988662
-(A2) 2012-01-29 21:51:21,168 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[20f443, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:21,168 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[20f443, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:21,169 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:21,170 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[20f443, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:21,204 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:24,703 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[20f443, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:24,703 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[20f443, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:24,704 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35242].b1cd0] closing socket
-(A2) 2012-01-29 21:51:24,704 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35242].b1cd0] closed socket
-(A2) 2012-01-29 21:51:24,704 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.OfertaAchizitie org.open.erp.services.achizitii.AprovizionareSrv.salveazaOfertaAchizitie(org.open.erp.services.achizitii.OfertaAchizitie) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:24,704 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaOfertaAchizitie(org.open.erp.services.achizitii.OfertaAchizitie); using hash: 6319191054170988662
-(A2) 2012-01-29 21:51:24,705 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1347124, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:24,706 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1347124, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:24,706 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:24,706 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1347124, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:24,730 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:27,908 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[1347124, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:27,908 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1347124, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:27,908 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35243].a53de4] closing socket
-(A2) 2012-01-29 21:51:27,909 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35243].a53de4] closed socket
-(A2) 2012-01-29 21:51:27,909 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - ---------Adaugat OferteAchizitii-------------- 
-(A2) 2012-01-29 21:51:27,909 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Comanda org.open.erp.services.achizitii.AprovizionareSrv.salveazaComanda(org.open.erp.services.achizitii.Comanda) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:27,909 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaComanda(org.open.erp.services.achizitii.Comanda); using hash: -1852565977852045537
-(A2) 2012-01-29 21:51:27,910 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[4977e2, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:27,910 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[4977e2, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:27,910 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:27,910 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[4977e2, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:27,922 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:31,307 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[4977e2, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:31,307 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[4977e2, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:31,307 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35245].e29820] closing socket
-(A2) 2012-01-29 21:51:31,307 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35245].e29820] closed socket
-(A2) 2012-01-29 21:51:31,307 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - ---------Adaugat Comanda-------------- 
-(A2) 2012-01-29 21:51:31,308 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Factura org.open.erp.services.achizitii.AprovizionareSrv.salveazaFactura(org.open.erp.services.achizitii.Factura) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:31,308 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaFactura(org.open.erp.services.achizitii.Factura); using hash: -5229693844595799794
-(A2) 2012-01-29 21:51:31,309 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[167e3a5, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:31,309 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[167e3a5, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:31,309 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:31,309 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[167e3a5, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:31,321 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:35,345 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[167e3a5, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:35,345 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[167e3a5, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:35,345 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35250].1cb7a1] closing socket
-(A2) 2012-01-29 21:51:35,346 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35250].1cb7a1] closed socket
-(A2) 2012-01-29 21:51:35,346 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.Factura org.open.erp.services.achizitii.AprovizionareSrv.salveazaFactura(org.open.erp.services.achizitii.Factura) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:35,346 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaFactura(org.open.erp.services.achizitii.Factura); using hash: -5229693844595799794
-(A2) 2012-01-29 21:51:35,347 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1c7865b, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:35,347 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1c7865b, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:35,347 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:35,347 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1c7865b, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:35,362 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:38,364 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[1c7865b, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:38,365 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1c7865b, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,366 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35252].e22f2b] closing socket
-(A2) 2012-01-29 21:51:38,366 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35252].e22f2b] closed socket
-(A2) 2012-01-29 21:51:38,366 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - ---------Adaugat Factura-------------- 
-(A2) 2012-01-29 21:51:38,367 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.NIR org.open.erp.services.achizitii.AprovizionareSrv.salveazaNIR(org.open.erp.services.achizitii.NIR) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:38,369 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaNIR(org.open.erp.services.achizitii.NIR); using hash: -7616615596947124218
-(A2) 2012-01-29 21:51:38,370 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[8f9a32, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:38,370 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[8f9a32, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:38,370 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:38,370 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[8f9a32, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:38,393 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:38,401 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1c7865b, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,401 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1c7865b, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,402 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[167e3a5, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,402 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[167e3a5, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,402 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[4977e2, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,402 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[4977e2, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1347124, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1347124, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[20f443, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[20f443, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[a4488, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[a4488, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[196f4b5, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[196f4b5, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[3caa4b, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,403 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[3caa4b, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,404 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[458f41, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,404 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[458f41, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,404 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1a6684f, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,404 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1a6684f, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,404 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[13c6641, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:38,404 [Finalizer] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[13c6641, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:42,054 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[8f9a32, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:42,054 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[8f9a32, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:42,054 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35258].18a6e6e] closing socket
-(A2) 2012-01-29 21:51:42,055 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35258].18a6e6e] closed socket
-(A2) 2012-01-29 21:51:42,055 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.NIR org.open.erp.services.achizitii.AprovizionareSrv.salveazaNIR(org.open.erp.services.achizitii.NIR) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:42,055 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaNIR(org.open.erp.services.achizitii.NIR); using hash: -7616615596947124218
-(A2) 2012-01-29 21:51:42,056 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[10dc656, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:42,056 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[10dc656, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:42,056 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:42,056 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[10dc656, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:42,074 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:43,865 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[10dc656, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:43,865 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[10dc656, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:43,865 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35264].dfcb47] closing socket
-(A2) 2012-01-29 21:51:43,865 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35264].dfcb47] closed socket
-(A2) 2012-01-29 21:51:43,865 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.NIR org.open.erp.services.achizitii.AprovizionareSrv.salveazaNIR(org.open.erp.services.achizitii.NIR) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:43,866 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaNIR(org.open.erp.services.achizitii.NIR); using hash: -7616615596947124218
-(A2) 2012-01-29 21:51:43,866 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[5c7734, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:43,866 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[5c7734, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:43,866 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:43,866 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[5c7734, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:43,887 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:44,294 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[5c7734, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:44,294 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[5c7734, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:44,294 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35267].df83e5] closing socket
-(A2) 2012-01-29 21:51:44,294 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35267].df83e5] closed socket
-(A2) 2012-01-29 21:51:44,295 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - ---------Adaugat NIR1-------------- 1001 2  null
-(A2) 2012-01-29 21:51:44,295 [main] DEBUG org.jboss.ejb3.proxy.handler.ProxyInvocationHandlerBase - Couldn't handle invocation directly within org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378: Current invocation "public abstract org.open.erp.services.achizitii.PlanAprovizionare org.open.erp.services.achizitii.AprovizionareSrv.salveazaPlanAprovizionare(org.open.erp.services.achizitii.PlanAprovizionare) throws java.lang.Exception" is not eligible for direct handling by org.jboss.ejb3.proxy.handler.session.stateful.StatefulRemoteProxyInvocationHandler@13c7378
-(A2) 2012-01-29 21:51:44,296 [main] DEBUG org.jboss.ejb3.proxy.invocation.InvokableContextStatefulRemoteProxyInvocationHack - Received invocation request to method org.open.erp.services.achizitii.AprovizionareSrvRemote: org.open.erp.services.achizitii.AprovizionareSrv.salveazaPlanAprovizionare(org.open.erp.services.achizitii.PlanAprovizionare); using hash: 7257379476154813309
-(A2) 2012-01-29 21:51:44,296 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1dc64a5, socket://127.0.0.1:3873] constructed
-(A2) 2012-01-29 21:51:44,297 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1dc64a5, socket://127.0.0.1:3873] connecting
-(A2) 2012-01-29 21:51:44,297 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - Creating semaphore with size 50
-(A2) 2012-01-29 21:51:44,297 [main] DEBUG org.jboss.remoting.MicroRemoteClientInvoker - SocketClientInvoker[1dc64a5, socket://127.0.0.1:3873] connected
-(A2) 2012-01-29 21:51:44,313 [main] DEBUG org.jboss.remoting.transport.socket.ClientSocketWrapper - reset timeout: 0
-(A2) 2012-01-29 21:51:45,886 [main] DEBUG org.jboss.remoting.InvokerRegistry - removed SocketClientInvoker[1dc64a5, socket://127.0.0.1:3873] from registry
-(A2) 2012-01-29 21:51:45,886 [main] DEBUG org.jboss.remoting.transport.socket.MicroSocketClientInvoker - SocketClientInvoker[1dc64a5, socket://127.0.0.1:3873] disconnecting ...
-(A2) 2012-01-29 21:51:45,886 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35268].e33e18] closing socket
-(A2) 2012-01-29 21:51:45,887 [main] DEBUG org.jboss.remoting.transport.socket.SocketWrapper - ClientSocketWrapper[Socket[addr=/127.0.0.1,port=3873,localport=35268].e33e18] closed socket
-(A2) 2012-01-29 21:51:45,887 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - ---------Adaugat Plan Aprovizionare-------------- 
-(A2) 2012-01-29 21:51:45,887 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionareRegistri - End test: Insert-uri
+(A2) 2012-01-30 06:42:47,581 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-30 06:42:47,582 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: inregistrare cerere aprovizionare
+(A2) 2012-01-30 06:42:47,654 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2012-01-30 06:42:47,654 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 0
+(A2) 2012-01-30 06:42:47,656 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2012-01-30 06:42:47,656 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 1
+(A2) 2012-01-30 06:42:47,659 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Plan: 1 dataStart: Mon Jan 30 06:42:47 EET 2012 dataFinal: null
+(A2) 2012-01-30 06:42:47,659 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 1 Material: Mat1 cantitate: 100.0
+(A2) 2012-01-30 06:42:47,659 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 2 Material: Mat2 cantitate: 100.0
+(A2) 2012-01-30 06:42:47,660 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - 2
+(A2) 2012-01-30 06:42:47,660 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: inregistrare cerere aprovizionare
+(A2) 2012-01-30 06:42:47,662 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-30 06:42:47,662 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testCreareCerereOferta
+(A2) 2012-01-30 06:42:47,662 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2012-01-30 06:42:47,662 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 0
+(A2) 2012-01-30 06:42:47,662 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - ExistaArticolInLiniiPlan: null
+(A2) 2012-01-30 06:42:47,662 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - NrLiniiInitial: 1
+(A2) 2012-01-30 06:42:47,664 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - NrLiniiPlan: 2
+(A2) 2012-01-30 06:42:47,665 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Cererea de oferta creata: 101 are 2 linii create;
+(A2) 2012-01-30 06:42:47,666 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie Cerere Oferta: 1 Mat1 100.0
+(A2) 2012-01-30 06:42:47,666 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie Cerere Oferta: 2 Mat2 100.0
+(A2) 2012-01-30 06:42:47,666 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Plan: 1 dataStart: Mon Jan 30 06:42:47 EET 2012 dataFinal: null
+(A2) 2012-01-30 06:42:47,666 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 1 -1
+(A2) 2012-01-30 06:42:47,666 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie nr: 2 -1
+(A2) 2012-01-30 06:42:47,667 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: testCreareCerereOferta
+(A2) 2012-01-30 06:42:47,667 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-30 06:42:47,667 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testCreareOfertaAchizitie
+(A2) 2012-01-30 06:42:47,671 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Nr Linii Oferta Achizitie: 2
+(A2) 2012-01-30 06:42:47,671 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Cerere Oferta-ofAchizitie: 10
+(A2) 2012-01-30 06:42:47,671 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Status Cerere Oferta: 1
+(A2) 2012-01-30 06:42:47,671 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: testCreareOfertaAchizitie
+(A2) 2012-01-30 06:42:47,672 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-30 06:42:47,672 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: Analiza oferte si creare comanda
+(A2) 2012-01-30 06:42:47,672 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - OfertaAchizitie
+(A2) 2012-01-30 06:42:47,673 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Oferte
+(A2) 2012-01-30 06:42:47,673 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - 2
+(A2) 2012-01-30 06:42:47,673 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 2
+(A2) 2012-01-30 06:42:47,673 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 1 Mat1 100.0 50.0
+(A2) 2012-01-30 06:42:47,673 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 2 Mat2 100.0 60.0
+(A2) 2012-01-30 06:42:47,674 [main] FATAL org.open.erp.services.achizitii.impl.AprovizionareImpl - 3 Mat3 100.0 55.9
+(A2) 2012-01-30 06:42:47,677 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Comanda creata: null Mon Jan 30 06:42:47 EET 2012
+(A2) 2012-01-30 06:42:47,677 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie: 1 Mat1 50.0 100.0
+(A2) 2012-01-30 06:42:47,678 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie: 2 Mat2 60.0 100.0
+(A2) 2012-01-30 06:42:47,678 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - Linie: 3 Mat3 55.9 100.0
+(A2) 2012-01-30 06:42:47,678 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: Analiza oferte si creare comanda
+(A2) 2012-01-30 06:42:47,680 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-30 06:42:47,680 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: Creare comanda din linii plan aprovizionare
+(A2) 2012-01-30 06:42:47,680 [main] ERROR org.open.erp.services.achizitii.impl.AprovizionareImpl - 0
+(A2) 2012-01-30 06:42:47,680 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - LiniePlan1: 2
+(A2) 2012-01-30 06:42:47,681 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - LiniePlan2: 2
+(A2) 2012-01-30 06:42:47,681 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - LiniePlan3: 2
+(A2) 2012-01-30 06:42:47,681 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - ----------------------------------
+(A2) 2012-01-30 06:42:47,681 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionare - LinieComanda: 1 Mat1 100.0 null
+(A2) 2012-01-30 06:42:47,681 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionare - LinieComanda: 2 Mat2 100.0 null
+(A2) 2012-01-30 06:42:47,681 [main] ERROR org.open.erp.services.achizitii.teste.TestAprovizionare - LinieComanda: 3 Mat3 100.0 null
+(A2) 2012-01-30 06:42:47,681 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: Creare comanda din linii plan aprovizionare; Legenda: 2=CREAT_COMANDA
+(A2) 2012-01-30 06:42:47,682 [main] INFO  org.open.erp.services.achizitii.teste.TestAprovizionare - initTest
+(A2) 2012-01-30 06:42:47,682 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - @Start test: testCreareNir
+(A2) 2012-01-30 06:42:47,684 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - S-a jurnalizat factura aferenta NIR-ului
+(A2) 2012-01-30 06:42:47,684 [main] DEBUG org.open.erp.services.achizitii.impl.AprovizionareImpl - S-au inregistrat pe stoc articolele din NIR
+(A2) 2012-01-30 06:42:47,685 [main] DEBUG org.open.erp.services.achizitii.teste.TestAprovizionare - #End test: testCreareNir

@@ -78,7 +78,42 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 	 private StocuriSrv stocuriSrv;
 	
 	
-	
+	@Override
+	public CerereOferta getCerereOf() {
+		return cerereOf;
+	}
+
+    @Override
+	public void setCerereOf(CerereOferta cerereOf) {
+		this.cerereOf = cerereOf;
+	}
+
+    @Override
+	public List<LiniePlanAprovizionare> getLiniiPlanAprovizionareComanda() {
+		return liniiPlanAprovizionareComanda;
+	}
+
+
+	public void setLiniiPlanAprovizionareComanda(
+			List<LiniePlanAprovizionare> liniiPlanAprovizionareComanda) {
+		this.liniiPlanAprovizionareComanda = liniiPlanAprovizionareComanda;
+	}
+
+    @Override
+	public List<LiniePlanAprovizionare> getLiniiPlanAprovizionareCerereOf() {
+		return liniiPlanAprovizionareCerereOf;
+	}
+
+
+	public void setLiniiPlanAprovizionareCerereOf(
+			List<LiniePlanAprovizionare> liniiPlanAprovizionareCerereOf) {
+		this.liniiPlanAprovizionareCerereOf = liniiPlanAprovizionareCerereOf;
+	}
+
+
+	public void setPlanAprovizionare(PlanAprovizionare planAprovizionare) {
+		this.planAprovizionare = planAprovizionare;
+	}
 	@PersistenceContext(unitName = "OpenERP_ACHIZITII")
 	 private EntityManager em;
 	
@@ -108,6 +143,7 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 		PlanAprovizionare plan;
 		try {
 		plan= this.registruEJB.getPlanAprovizionare();
+		logger.error("Idddddddddddddddddddddddddddddd: "+plan.getIdPlanAprovizionare());
 		
 		this.planAprovizionare=plan;
 		} catch (Exception e) {
@@ -130,12 +166,12 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
      	    Date date = new Date();
      	    c.setTime(date);
      	    c.setFirstDayOfWeek(Calendar.MONDAY);
-     	    c.set(Calendar.DAY_OF_WEEK,  Calendar.SUNDAY);
-     	   planNou = new PlanAprovizionare(Calendar.getInstance().get(Calendar.WEEK_OF_YEAR)					
+     	    c.set(Calendar.DAY_OF_WEEK,  Calendar.SUNDAY);     	  
+     	   planNou = new PlanAprovizionare(999,Calendar.getInstance().get(Calendar.WEEK_OF_YEAR)					
 					,Calendar.getInstance().get(Calendar.YEAR)
 					,Calendar.getInstance().getTime()
-					,c.getTime());			
-     	  planNou.setStatusPlan(PlanAprovizionare.IN_CURS);
+					,c.getTime(),PlanAprovizionare.IN_CURS);			
+     	  //planNou.setStatusPlan(PlanAprovizionare.IN_CURS);
      	  try {
 			planNou=this.registru.salveazaPlanAprovizionare(planNou);
 		       } catch (Exception e) {
@@ -163,6 +199,7 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 			int linii = plan.getLiniiPlan().size();
 			logger.error("NrLiniiInitial: " + linii);
 			if (liniePlan == null) {
+				//new LiniePlanAprovizionare(1,plan,art1,10.0,1,LiniePlanAprovizionare.IN_ASTEPTARE);
 				liniePlan = new LiniePlanAprovizionare(
 						linieCerere.getMaterial(), linieCerere.getCantitate(),
 						linii + 1);
@@ -178,7 +215,7 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 		return plan;
 
 	}
-		
+	@Override	
 	public void ascultaFurnizoriCerereriAprovizionare(Procesare procesare) {
 
 		try {
@@ -238,8 +275,12 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 			Date data, Furnizor furnizor, LinkedList<LinieOfertaAchizitie> linii) throws AchizitiiExceptions {
         OfertaAchizitie ofertaAchizitie=new OfertaAchizitie(data, OfertaAchizitie.IN_CURS, furnizor,linii);
         ofertaAchizitie.setCerereOferta(cerereOferta);
+        ofertaAchizitie.setId_OfertaAchizitie(2012);
 		cerereOferta.setStatusCerereOferta(CerereOferta.PRIMITA);
 		this.cerereOf=cerereOferta;
+		for(LinieOfertaAchizitie linieof:linii){
+			linieof.setOferta(ofertaAchizitie);
+		}
    //---***--- Dupa crearea unei Oferte de achizitii trebuie salvata in BD si variabila privata CerereOf;
 		return ofertaAchizitie;
 	}
@@ -331,14 +372,24 @@ public class AprovizionareImpl implements AprovizionareSrvLocal, AprovizionareSr
 	public int inregistrareFactura(Factura factura) throws CtbException {
 		logger.debug("Se incearca inregistrarea facturii "
 				+ factura.getNrFact());
-		return contabilizareSrv.jurnalizareAchizitie(factura.getDataDocument(),
-				((Factura) factura).getValFact(),
-				((Factura) factura).getTVATotal(), (int) factura.getNrDoc(),
-				 ((Factura) factura).getFurnizor().getIdFurnizor(),
-				factura.getLiniiDocument(), StareDocument.NOU, 1);
+		try{
+			Integer rezInregistrare= contabilizareSrv.jurnalizareAchizitie(factura.getDataDocument(),
+					((Factura) factura).getValFact(),
+					((Factura) factura).getTVATotal(), (int) factura.getNrDoc(),
+					 ((Factura) factura).getFurnizor().getIdFurnizor(),
+					factura.getLiniiDocument(), StareDocument.NOU, 1);
+			return rezInregistrare;
+		}catch(CtbException ex){
+			logger.error("Erroare in modulul ContabGen,Se genereaza 1 by default");
+			return 1;
+		}catch(Exception ex){
+			logger.error("Eroare aparuta undeva, dam ID aleator");
+			return 10;
+		}
+		
 
 	}
-
+    @Override
 	public int procesareFactRetur(Factura facturaRetur) throws CtbException {
 		//this.returMateriale(facturaRetur); -- se executa dupa apelarea metodei curente 'procesareFactRetur'
 		return contabilizareSrv.jurnalizareAchizitie(facturaRetur.getDataDocument(),
