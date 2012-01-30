@@ -1,4 +1,4 @@
-/*package org.open.erp.ui;
+package org.open.erp.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +25,11 @@ public class FormComandaLiniiComanda implements Converter{
 
 	private static Logger logger = Logger.getLogger(FormComandaLiniiComanda.class.getPackage().getName());
 	
-	 Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss 
+	 //Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss 
 	@EJB(name="AprovizionareSrv/local", mappedName="AprovizionareSrv/local")
 	private AprovizionareSrvLocal achizitiiInstance;
 	
-	 Data Model 
+	 //Data Model 
 	private List<Comanda> comenzi = new ArrayList<Comanda>();
 	private Comanda comanda;
 	
@@ -45,7 +45,7 @@ public class FormComandaLiniiComanda implements Converter{
 		this.comanda = comanda;
 	}
 	
-	 Actiuni UI Controller 
+	// Actiuni UI Controller 
 	public String nextComanda(){
 		Integer idx = this.comenzi.indexOf(this.comanda) + 1;
 		
@@ -79,7 +79,7 @@ public class FormComandaLiniiComanda implements Converter{
 		
 	}
 	
-	 Actiuni tranzactionale
+	 //Actiuni tranzactionale
 	public String adaugareComanda(){
 		
 		this.comanda = new Comanda();
@@ -114,9 +114,9 @@ public class FormComandaLiniiComanda implements Converter{
         return new InitialContext(props);
 	}
 	
- Initializare formularului	
+ //Initializare formularului	
 	
-	Strategia 1: Injectare privata EJB - referinta EJB nepartajata 
+	//Strategia 1: Injectare privata EJB - referinta EJB nepartajata 
 	@PostConstruct // Referinta EJB injectata este disponibila numai abua in handlerul PostConstruct, si nu la nivelul constructorului
 	private void initForm() throws Exception{
 		logger.debug("PostConstruct FORM comenzi local-achizitii: ..." + this.achizitiiInstance);
@@ -147,4 +147,3 @@ public class FormComandaLiniiComanda implements Converter{
 	}
 
 }
-*/

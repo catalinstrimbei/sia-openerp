@@ -1,4 +1,4 @@
-/*package org.open.erp.ui;
+package org.open.erp.ui;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -8,16 +8,16 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.achizitii.AprovizionareSrv;
 import org.open.erp.services.achizitii.AprovizionareSrvLocal;
 import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.LinieCerereOferta;
@@ -29,7 +29,7 @@ import org.open.erp.services.achizitii.LinieCerereOferta;
 public class FormCerereOferta implements Converter{
 
 	private static Logger logger = Logger.getLogger(FormCerereOferta.class.getPackage().getName());
-	private static Logger logger = Logger.getLogger(FormCerereOferta.class.getPackage().getName());
+	//private static Logger logger = Logger.getLogger(FormCerereOferta.class.getPackage().getName());
 
 	
 	public FormCerereOferta() {
@@ -37,12 +37,12 @@ public class FormCerereOferta implements Converter{
 }
 
 
-	 Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss 
+	 //Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss 
 	//@EJB(name="AprovizionareImpl/local", mappedName="AprovizionareImpl/local")
 	private AprovizionareSrvLocal achizitiiInstance;
 	
 	
-	 Data Model 
+	// Data Model 
 	public List<CerereOferta> cereri = new ArrayList<CerereOferta>();
 	public CerereOferta cerereOferta;
 	 
@@ -50,7 +50,7 @@ public class FormCerereOferta implements Converter{
 	public void setCerereOferta(CerereOferta cerereOferta) {
 		logger.debug("Changed CerereOferta : " + cerereOferta.getId_CerereOferta());
 		this.cerereOferta = cerereOferta;
-		populareModelLinii();
+		//populareModelLinii();
 	}
 	
 	
@@ -68,20 +68,20 @@ public class FormCerereOferta implements Converter{
 	
 	private LinieCerereOferta linie;
 	
-	public LinieCerereOferta getALinieCerereOferta() {
+/*	public LinieCerereOferta getALinieCerereOferta() {
 		
 		logger.debug("get id: " + ((liniecerereoferta!=null)? liniecerereoferta.getIdLinieCerereOferta() : "null") );
 		return liniecerereoferta;
-	}
+	}*/
 
-	public DataModel<LinieCerereOferta> getLiniii() {
+	/*public DataModel<LinieCerereOferta> getLiniii() {
 		logger.debug("Check model linii ... ");
 		if (this.linii == null)
 			populareModelLinii();
 		return linii;
-	}
+	}*/
 	
-	private void populareModelLinii(){
+	/*private void populareModelLinii(){
 		if (cerereoferta!= null){
 			this.linii = new ListDataModel<CerereOferta>();
 			this.linii.setWrappedData(cerereoferta.getLinii());
@@ -89,9 +89,9 @@ public class FormCerereOferta implements Converter{
 		}else
 			this.linii = null;
 	}
-
+*/
 	
-	 Logica Convertor
+	// Logica Convertor
 	@Override
 	public Object getAsObject(FacesContext ctx, UIComponent uicomp, String uival) {
 		logger.debug("getAsObject:uicomp: " + uicomp.getId());
@@ -119,7 +119,7 @@ public class FormCerereOferta implements Converter{
 		}
 		return null;
 	}		
-	 Actiuni UI Controller 
+	 //Actiuni UI Controller 
 	public String nextCerereOferta(){
 		Integer idx = this.cereri.indexOf(this.cerereOferta) + 1;
 		
@@ -153,7 +153,7 @@ public class FormCerereOferta implements Converter{
 		
 	}
 	
-	 Actiuni tranzactionale
+	 //Actiuni tranzactionale
 	public String adaugareCerereOferta(){
 		
 		this.cerereOferta = new CerereOferta();
@@ -188,9 +188,9 @@ public class FormCerereOferta implements Converter{
         return new InitialContext(props);
 	}
 	
- Initializare formularului	
+ //Initializare formularului	
 	
-	Strategia 1: Injectare privata EJB - referinta EJB nepartajata 
+	//Strategia 1: Injectare privata EJB - referinta EJB nepartajata 
 	@PostConstruct // Referinta EJB injectata este disponibila numai abua in handlerul PostConstruct, si nu la nivelul constructorului
 	private void initForm() throws Exception{
 		InitialContext ctx = initJBossJNDICtx();		
@@ -213,4 +213,4 @@ public class FormCerereOferta implements Converter{
 
 
 
-	*/
+	

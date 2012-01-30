@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Form Plan Aprovizionare</div>
+	<h:form id="formCategorii">
+		<h:panelGrid columns="2" border="0" style="height: 239px; width: 605px; ">
+			<p:facet name="header">
+				<h:outputText value="Selectati Planul" style="color: #0000A0"></h:outputText>
+			</p:facet>
+
+			<h:selectOneMenu id="cboFurnizori" value="#{formFurnizori.furnizor}"
+				converter="#{formFurnizori}">
+				<p:selectItems value="#{formFurnizori.furnizori}"></p:selectItems>
+				<p:ajax render="idFurnizor cont CUI denumire telefon adresa"></p:ajax>
+			</h:selectOneMenu>
+			<h:panelGrid columns="3" border="0">
+				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
+					actionListener="#{formFurnizor.previousFurnizor}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+				<h:commandButton id="cmdNext" value="&gt;&gt;"
+					disabled="#{formFurnizor.disableNext}"
+					actionListener="#{formFurnizor.nextFurnizor}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+			</h:panelGrid>
+
+			<h:outputText value="ID PlanAprovizionare:"></h:outputText>
+			<h:inputText  value="#{formPlanAprovizionare.plan.idPlanAprovizionare}"/>
+
+			<h:outputText value="Data Start:"></h:outputText>
+			<h:inputText id="dataStart"	value="#{formPlanAprovizionare.plan.dataStart}"/>
+			
+			<h:outputText value="Data Final:"></h:outputText>
+			<h:inputText id="dataFinal"	value="#{formPlanAprovizionare.plan.dataFinal}"/>
+			
+			<h:outputText value="An Plan"></h:outputText>
+			<h:inputText id="an"	value="#{formPlanAprovizionare.plan.an}"/>	
+			
+			<h:outputText value="Saptamana An"></h:outputText>
+			<h:inputText id="saptAn"	value="#{formPlanAprovizionare.plan.saptAn}"/>	
+			
+			<h:outputText value="Status"></h:outputText>
+			<h:inputText id="status"	value="#{formPlanAprovizionare.plan.statusPlan}"/>	
+			
+			
+
+			<p:facet name="footer">
+				<h:panelGrid columns="4" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare"
+						action="#{formPlanAprovizionare.adaugarePlan}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Abandon">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						action="#{formPlanAprovizionare.salvarePlan}">
+						<p:ajax render="@form" execute="@form"></p:ajax>
+					</h:commandButton>
+				</h:panelGrid>
+			</p:facet>
+
+		</h:panelGrid>
+		<h:messages layout="table" style="color: red"></h:messages>
+	</h:form>
+
+</body>
+
+</html>

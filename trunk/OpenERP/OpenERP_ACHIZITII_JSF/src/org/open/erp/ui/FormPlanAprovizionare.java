@@ -17,77 +17,78 @@ import javax.naming.InitialContext;
 import org.apache.log4j.Logger;
 import org.open.erp.services.achizitii.AprovizionareSrvLocal;
 import org.open.erp.services.achizitii.Categorie;
+import org.open.erp.services.achizitii.PlanAprovizionare;
 
 @ManagedBean(name="formCategorie")
 @SessionScoped
-public class FormCategorie implements Converter{
+public class FormPlanAprovizionare implements Converter{
 
-	private static Logger logger = Logger.getLogger(FormCategorie.class.getPackage().getName());
+	private static Logger logger = Logger.getLogger(FormPlanAprovizionare.class.getPackage().getName());
 	
 	 //Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss 
 	@EJB(name="AprovizionareSrv", mappedName="AprovizionareSrv/local")
 	private AprovizionareSrvLocal achizitiiInstance;
 	///
 	 //Data Model 
-	private List<Categorie> categorii = new ArrayList<Categorie>();
-	private Categorie categorie;
+	private List<PlanAprovizionare> planuri = new ArrayList<PlanAprovizionare>();
+	private PlanAprovizionare plan;
 	
-	public Categorie getCategorie() {
-		return categorie;
+	public PlanAprovizionare getPlanAprovizionare() {
+		return plan;
 	}
 	
-	public void setCategorie(Categorie categorie) {
-		logger.debug("Changed categorie : " + categorie.getId_cat() + " :: " + categorie.getDenumire());
-		this.categorie = categorie;
+	public void setPlanAprovizionare(PlanAprovizionare plan) {
+		logger.debug("Changed categorie : " + plan.getIdPlanAprovizionare() + " :: " + plan.getStatusPlan());
+		this.plan = plan;
 		//populareModelActivitati();
 	}
 	
 	 //Actiuni UI Controller 
-	public String nextCategorie(){
-		Integer idx = this.categorii.indexOf(this.categorie) + 1;
+	public String nextPlan(){
+		Integer idx = this.planuri.indexOf(this.plan) + 1;
 		
-		logger.debug("Next categorie : " + idx + " | " + this.categorii.size());
+		logger.debug("Next plan : " + idx + " | " + this.planuri.size());
 		
-		if (idx > 0 && idx < this.categorii.size()){
-			this.setCategorie(this.categorii.get(idx));
+		if (idx > 0 && idx < this.planuri.size()){
+			this.setPlanAprovizionare(this.planuri.get(idx));
 			//populareModelActivitati();
 		}
-		return "FormCategorie";
+		return "FormPlanAprovizionare";
 	}
 	
-	public void nextCategorie(ActionEvent evt){
-		nextCategorie();
+	public void nextPlan(ActionEvent evt){
+		nextPlan();
 	}
 	
-	public void previousCategorie(ActionEvent evt){
-		previousCategorie();
+	public void previousPlan(ActionEvent evt){
+		previousPlan();
 	}
 	
-	public String previousCategorie(){
-		Integer idx = this.categorii.indexOf(this.categorie) - 1;
+	public String previousPlan(){
+		Integer idx = this.planuri.indexOf(this.plan) - 1;
 		
-		logger.debug("Previous categorie : " + idx + " | " + this.categorii.size());
+		logger.debug("Previous categorie : " + idx + " | " + this.planuri.size());
 		
-		if (idx >= 0 && idx < this.categorii.size()){
-			this.setCategorie(this.categorii.get(idx));
+		if (idx >= 0 && idx < this.planuri.size()){
+			this.setPlanAprovizionare(this.planuri.get(idx));
 			//populareModelActivitati();
 		}
 		
-		return "FormCategorie";
+		return "FormPlanAprovizionare";
 		
 	}
 	
 	// Actiuni tranzactionale
-	public String adaugareCategorie(){
+	public String adaugarePlan(){
 		
-		this.categorie = new Categorie();
-		this.categorii.add(this.categorie);
+		this.plan = new PlanAprovizionare();
+		this.planuri.add(this.plan);
 		
-		return "FormCategorie";
+		return "FormPlanAprovizionare";
 	}
 	
 	public boolean getDisableNext(){
-		if (this.categorii.indexOf(this.categorie) == this.categorii.size() - 1){
+		if (this.planuri.indexOf(this.plan) == this.planuri.size() - 1){
 			logger.debug("Disable Next");
 			return true;
 		}
@@ -96,12 +97,12 @@ public class FormCategorie implements Converter{
 		
 	}
 	
-	public String salvareCategorie() throws Exception{
-		logger.debug("LOGGER Salvare categorie: " + this.categorie.getDenumire() );
-		this.categorii.remove(this.categorie);
-		this.categorie = achizitiiInstance.salveazaCategorie(this.categorie);
-		this.categorii.add(this.categorie);
-		return "FormCategorie";
+	public String salvarePlan() throws Exception{
+		logger.debug("LOGGER Salvare Plan: " + this.plan.getIdPlanAprovizionare() );
+		this.planuri.remove(this.plan);
+		this.plan = achizitiiInstance.salveazaPlanAprovizionare(this.plan);
+		this.planuri.add(this.plan);
+		return "FormPlanAprovizionare";
 	}
 	
 	private static InitialContext initJBossJNDICtx() throws Exception{
@@ -119,13 +120,13 @@ public class FormCategorie implements Converter{
 	private void initForm() throws Exception{
 		logger.debug("PostConstruct FORM Categorie local-achizitii: ..." + this.achizitiiInstance);
 
-		this.categorii = (List<Categorie>) achizitiiInstance.getListaCategorii();
-		if (!categorii.isEmpty())
-			this.categorie = categorii.get(0);
+		this.planuri = (List<PlanAprovizionare>) achizitiiInstance.getListaPlanAprovizionare();
+		if (!planuri.isEmpty())
+			this.plan = planuri.get(0);
 		else{
 			System.out.println("No category available!");
-			this.categorie = new Categorie();
-			categorie.setDenumire("Def cat ...");
+			this.plan = new PlanAprovizionare();
+			plan.setIdPlanAprovizionare(0);
 		}
 		
 	}
