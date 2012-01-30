@@ -47,7 +47,7 @@
 || restPlataFactura() || Calculeaza diferenta dintre suma totala a facturii si suma platita; ||
 || inregistrareChitanta() || Se efectueaza inregistrarea platii in contabilitate pe baza chitantei, a unui cec sau a unui bilet la ordin; Se specifica, ca suma incasata sa nu fie nula, apoi se instantiaza o noua chitanta pe baza uneia sau a mai multor facturi ||
 || inregistrareCec() ||	Se verifica daca starea cecului sau a biletului la ordin este acceptata; ||
-|| inregistrareBiletLaOrdin() || Se efectueaza inregistrarea platii in contabilitate pe baza unui bilet la ordin ||
+|| inregistrareOrdinDePlata() || Se efectueaza inregistrarea platii in contabilitate pe baza unui ordin de plata ||
 || inregistrareExtrasCont() || Se efectueaza inregistrarea platii in contabilitate pe baza unui extras de cont; ||
 || compensariPlatiFacturi() ||  Verifica achitarea facturilor in ordine cronologica ||
 || salveazaCec()|| Se salveaza inregistrarea unui Cec ||
