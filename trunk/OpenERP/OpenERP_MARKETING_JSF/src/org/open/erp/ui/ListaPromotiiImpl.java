@@ -164,6 +164,12 @@ public class ListaPromotiiImpl implements Converter{
 	/* Implementare operatii CRUD */
 	public void adaugarePromotie(ActionEvent evt){
 		this.promotie = new Promotie();
+		try {
+			promotie = marketingSrv.salveazaPromotie(promotie);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.promotii.add(this.promotie);
 		  
 	}  
@@ -178,7 +184,5 @@ public class ListaPromotiiImpl implements Converter{
 
 	public ListaPromotiiImpl() {
 		super();
-	}
-	
-		
+	}		
 }

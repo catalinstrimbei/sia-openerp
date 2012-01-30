@@ -8,29 +8,28 @@
 <body>
 <div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Chestionar - Intrebari</div>
 	<h:form id="formChestinarIntrebari">
-		<h:panelGrid columns="3" border="0" style="height: 424px; ">
-			<p:facet name="header">
+		<h:panelGrid columns="3" border="0" style="height: 134px; ">
+			<p:facet name="header">		
 				<h:outputText value="Chestionar"></h:outputText>
 			</p:facet>
-			<h:selectOneMenu id="cboChestionar" value="#{ListaChestionareIntrebariImpl.chestionar}" style="width: 254px; ">
-				<p:selectItems value="#{ListaChestionareIntrebariImpl.chestionar}"></p:selectItems>
+			
+			<h:selectOneMenu id="cboChestionar" value="#{ChestionarIntrebari.chestionar}" style="width: 254px; ">
+				<p:selectItems value="#{ChestionarIntrebari.chestionare}"></p:selectItems>
 				<p:ajax render="@form"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="2" border="1">
 				<h:commandButton id="cmdPrev"
-					actionListener="#{ListaChestionareIntrebariImpl.previousChestionar}" value="Back"></h:commandButton>
+					actionListener="#{ChestionarIntrebari.previousChestionar}" value="Back"></h:commandButton>
 				<h:commandButton id="cmdNext"
-					actionListener="#{ListaChestionareIntrebariImpl.nextChestionar}" value="Next"></h:commandButton>
-
+					actionListener="#{ChestionarIntrebari.nextChestionar}" value="Next"></h:commandButton>
 			</h:panelGrid>
-			<h:message></h:message>
-				
+			<h:message></h:message>			
 			
 			<h:dataTable 
 			id="IntrebariTable"
 			var="linieIntrebari"
-			value="#{ListaChestionareIntrebariImpl.intrebari}" border="1"			
-    		binding ="#{ListaChestionareIntrebariImpl.intrebariTable}"
+			value="#{ChestionarIntrebari.intrebari}" border="1"			
+    		binding ="#{ChestionarIntrebari.intrebariTable}"
     		styleClass="order-table"
     		headerClass="order-table-header"
     		rowClasses="order-table-odd-row,order-table-even-row"
@@ -39,7 +38,7 @@
 				<p:facet name="header">
 					<h:outputText value="Nr intrebare"></h:outputText>
 				</p:facet>				
-    			<h:outputText value="#{linieIntrebari.IdIntrebare}" />				
+    			<h:outputText value="#{linieIntrebari.idIntrebare}" />				
 			</h:column>
 			<h:column>
 				<p:facet name="header">
@@ -57,13 +56,13 @@
 			</h:column>
 			<h:column>
      			<p:facet name="header">Actiune</p:facet>
-     			<h:commandLink value="Modifica" action="#{ListaChestionareIntrebariImpl.editAction}" 
+     			<h:commandLink value="Modifica" action="#{ChestionarIntrebari.editAction}" 
                                        rendered="#{not linieIntrebari.editable}" />
                                        
-                <h:commandLink value="Sterge" action="#{ListaChestionareIntrebariImpl.deleteAction}" 
+                <h:commandLink value="Sterge" action="#{ChestionarIntrebari.deleteAction}" 
                                        rendered="#{not linieIntrebari.editable}" />
                                        
-				<h:commandLink value="Salveaza" action="#{ListaChestionareIntrebariImpl.saveAction}" 
+				<h:commandLink value="Salveaza" action="#{ChestionarIntrebari.saveAction}" 
                                        rendered="#{linieIntrebari.editable}" />                                       
  
     	     </h:column>	  

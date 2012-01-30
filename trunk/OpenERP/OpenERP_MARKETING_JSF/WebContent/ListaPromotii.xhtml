@@ -38,16 +38,15 @@
 			
 			<h:outputText value="Tip promotie"></h:outputText>
 			<h:selectOneMenu id="cboTipPromotie" value="#{Promotii.promotie.tipPromotie}" converter="#{Promotii}" style="width: 254px; ">		
-				<p:selectItem itemLabel="Discount" itemValue="1"></p:selectItem>
-				<p:selectItem itemLabel="Produse Aditionale" itemValue="2"></p:selectItem></h:selectOneMenu>
+				<p:selectItems value="#{Promotii.tipuriPromotie}"></p:selectItems></h:selectOneMenu>
 			<h:message for="cboTipPromotie"></h:message>
 			<h:outputText value="Data inceput"></h:outputText>
 			<h:inputText id="dataInceput"
-				value="#{Promotii.promotie.dataStart}"></h:inputText>
+				value="#{Promotii.promotie.dataStart}" converter ="CustomDateConverter"></h:inputText>
 			<h:message for="dataInceput"></h:message>
 			<h:outputText value="Data final"></h:outputText>
 			<h:inputText id="dataSfarsit"
-				value="#{Promotii.promotie.dataSfarsit}"></h:inputText>
+				value="#{Promotii.promotie.dataSfarsit}" converter ="CustomDateConverter"></h:inputText>
 			<h:message for="Data final"></h:message>
 			<h:panelGrid columns="3" border="1">
 				<h:commandButton id="cmdAddPromotie" value="Adauga promotie"

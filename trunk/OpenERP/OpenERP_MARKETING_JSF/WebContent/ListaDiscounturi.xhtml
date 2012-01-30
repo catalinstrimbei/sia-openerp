@@ -13,8 +13,8 @@
 				<h:outputText value="Discounturi"></h:outputText>
 			</p:facet>
 			<h:selectOneMenu id="cboDiscount" value="#{Discounturi.discount}" converter="#{Discounturi}" style="width: 254px; ">
-				<p:selectItems value="#{Discounturi.discount}"></p:selectItems>
-				<p:ajax render="@form"></p:ajax>
+				<p:selectItems value="#{Discounturi.discounturi}"></p:selectItems>
+				<p:ajax render="cboTipDiscount denumire_discount valoare_discount"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="2" border="1">		
 				<h:commandButton id="cmdPrev"
@@ -34,8 +34,8 @@
 			
 			<h:outputText value="Tip discount"></h:outputText>
 			<h:selectOneMenu id="cboTipDiscount" value="#{Discounturi.discount.tipDiscount}" converter="#{Discounturi}" style="width: 254px; ">		
-				<p:selectItem itemLabel="Procent" itemValue="1"></p:selectItem>
-				<p:selectItem itemLabel="Valoare neta" itemValue="2"></p:selectItem></h:selectOneMenu>
+				<p:selectItems value="#{Discounturi.tipuriDiscount}"></p:selectItems>
+			</h:selectOneMenu>			
 			<h:message for="cboTipDiscount"></h:message>
 			<h:outputText value="Valoare"></h:outputText>
 			<h:inputText id="valoare_discount"

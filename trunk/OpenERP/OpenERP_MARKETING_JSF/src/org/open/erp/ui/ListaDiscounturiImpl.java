@@ -152,6 +152,12 @@ public class ListaDiscounturiImpl implements Converter {
 	/* Implementare operatii CRUD */
 	public void adaugareDiscount(ActionEvent evt){
 		this.discount = new Discount();
+		try {
+			discount = marketingSrv.salveazaDiscount(discount);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.discounturi.add(this.discount);
 		  
 	}  

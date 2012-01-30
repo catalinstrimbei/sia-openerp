@@ -58,11 +58,11 @@ public class ListaChestionareIntrebariImpl implements Converter{
 		logger = org.apache.log4j.Logger.getLogger(ListaChestionareIntrebariImpl.class.getName());
 
 		
-		chestionare = (List<Chestionar>) MarketingManagementSrv.getListaChestionare();
+		chestionare = (List<Chestionar>) marketingSrv.getListaChestionare();
 		if (!chestionare.isEmpty())
 		{
 			chestionar = chestionare.get(0);
-			intrebari = (List<Intrebare>) MarketingManagementSrv.getListaIntrebariChestionar(chestionar); 
+			intrebari = (List<Intrebare>) marketingSrv.getListaIntrebariChestionar(chestionar); 
 		}
 		else{
 			System.out.println("Nu exista chestionare!!!");
@@ -104,7 +104,7 @@ public class ListaChestionareIntrebariImpl implements Converter{
 		{
 			this.chestionar = this.chestionare.get(idxCurent - 1);
 			try {
-				intrebari = (List<Intrebare>) MarketingManagementSrv.getListaIntrebariChestionar(this.chestionar);
+				intrebari = (List<Intrebare>) marketingSrv.getListaIntrebariChestionar(this.chestionar);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -118,7 +118,7 @@ public class ListaChestionareIntrebariImpl implements Converter{
 		{
 			this.chestionar = this.chestionare.get(idxCurent + 1);
 			try {
-				intrebari = (List<Intrebare>) MarketingManagementSrv.getListaIntrebariChestionar(this.chestionar);
+				intrebari = (List<Intrebare>) marketingSrv.getListaIntrebariChestionar(this.chestionar);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -135,7 +135,7 @@ public class ListaChestionareIntrebariImpl implements Converter{
 			Integer idx = this.chestionare.indexOf(uiChestionarTemplate);
 			logger.info("Id-ul chestionarului curent:"+idx);
 			try {
-				intrebari = (List<Intrebare>) MarketingManagementSrv.getListaIntrebariChestionar(this.chestionar.get(idx));
+				intrebari = (List<Intrebare>) marketingSrv.getListaIntrebariChestionar(this.chestionare.get(idx));
 			} catch (Exception e) {				
 				e.printStackTrace();
 			} 
@@ -175,7 +175,7 @@ public class ListaChestionareIntrebariImpl implements Converter{
 		Intrebare intrebare_ = null;
 		intrebare_ = intrebari.get(intrebariTable.getRowIndex());
 		try {
-			intrebare_ = MarketingManagementSrv.getIntrebareById(intrebare_.getIdIntrebare());
+			intrebare_ = marketingSrv.getIntrebareById(intrebare_.getIdIntrebare());
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -185,7 +185,7 @@ public class ListaChestionareIntrebariImpl implements Converter{
 			if (intrebare_ != null)
 			{
 				logger.info("Suntem pe deleteAction si vom sterge intrebarea: " + intrebare_.getIdIntrebare());
-				MarketingManagementSrv.stergeIntrebare(intrebare_);
+				marketingSrv.stergeIntrebare(intrebare_);
 			}
 			else
 				logger.info("Suntem pe deleteAction si  intrebarea de sters este NULL");
@@ -203,7 +203,7 @@ public class ListaChestionareIntrebariImpl implements Converter{
 		logger.info("Suntem pe saveAction la intrebarea: " + intrebare_.getIdIntrebare());
 		try {
 			intrebare_.setEditable(false);
-			MarketingManagementSrv.salveazaIntrebare(intrebare_);			
+			marketingSrv.salveazaIntrebare(intrebare_);			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -228,7 +228,7 @@ public class ListaChestionareIntrebariImpl implements Converter{
 		{
 			logger.info("Salvam intrebarea:  " + ctrCurent.getIdIntrebare());
 			ctrCurent.setEditable(false);
-			this.intrebare = MarketingManagementSrv.salveazaIntrebare(ctrCurent);
+			this.intrebare = marketingSrv.salveazaIntrebare(ctrCurent);
 		}
 		return;
 		

@@ -152,6 +152,12 @@ public class ListaCampaniiImpl implements Converter{
 	/* Implementare operatii CRUD */
 	public void adaugareCampanie(ActionEvent evt){
 		this.campanie = new Campanie();
+		try {
+			campanie =  marketingSrv.salveazaCampanie(campanie);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.campanii.add(this.campanie);
 		  
 	}  

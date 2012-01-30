@@ -30,25 +30,20 @@
 			<h:outputText value="Denumire campanie"></h:outputText>
 			<h:inputText id="denumire_campanie"
 				value="#{Campanii.campanie.denumireCampanie}"></h:inputText>
-			<h:message for="denumire_campanie"></h:message>
-			<h:outputText value="Responsabil"></h:outputText>
-			<h:inputText id="id_responsabil"
-				value="#{Campanii.campanie.responsabil}"></h:inputText>
-			<h:message for="id_responsabil"></h:message>			
+			<h:message for="denumire_campanie"></h:message>		
 			
 			<h:outputText value="Status campanie"></h:outputText>
 			<h:selectOneMenu id="cboStatusCampanie" value="#{Campanii.campanie.status}" converter="#{Campanii}" style="width: 254px; ">		
-				<p:selectItem itemLabel="Initial" itemValue="1"></p:selectItem>
-				<p:selectItem itemLabel="In curs" itemValue="2"></p:selectItem>
-				<p:selectItem itemLabel="Terminata" itemValue="3"></p:selectItem></h:selectOneMenu>
+				<p:selectItems value="#{Campanii.statusuriCampanie}"></p:selectItems>
+				</h:selectOneMenu>
 			<h:message for="cboStatusCampanie"></h:message>
 			<h:outputText value="Data inceput"></h:outputText>
 			<h:inputText id="dataStart"
-				value="#{Campanii.campanie.dataStart}"></h:inputText>
+				value="#{Campanii.campanie.dataStart}" converter="CustomDateConverter"></h:inputText>
 			<h:message for="dataInceput"></h:message>
 			<h:outputText value="Data sfarsit"></h:outputText>
 			<h:inputText id="dataSfarsit"
-				value="#{Campanii.campanie.dataSfarsit}"></h:inputText>
+				value="#{Campanii.campanie.dataSfarsit}" converter="CustomDateConverter"></h:inputText>
 			<h:message for="Data sfarsit"></h:message>
 			<h:panelGrid columns="3" border="1">
 				<h:commandButton id="cmdAddCampanie" value="Adauga campanie"
