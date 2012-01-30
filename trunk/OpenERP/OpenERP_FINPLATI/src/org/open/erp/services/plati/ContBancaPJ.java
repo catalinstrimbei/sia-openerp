@@ -10,21 +10,23 @@ package org.open.erp.services.plati;
 
 import java.io.Serializable;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
-@Entity(name = "ContBancaPJ")
-@DiscriminatorValue("ContBancaPJ")
+@Entity
 public class ContBancaPJ implements Serializable{
-			@Id
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 			private Integer idContBancaPJ;
 			@ManyToOne
 	        private PersoanaJuridica banca;
-	        @ManyToOne
+			@ManyToOne
 	        private PersoanaJuridica titularCont;
 
 	        private String numarCont;

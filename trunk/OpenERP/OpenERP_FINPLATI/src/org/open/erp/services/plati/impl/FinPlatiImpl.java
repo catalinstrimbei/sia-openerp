@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.ejb.Stateful;
 
-import org.open.erp.services.achizitii.Furnizor;
+import org.open.erp.services.plati.DummyFurnizor;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.TipPlata;
@@ -24,14 +24,14 @@ import org.open.erp.services.plati.FinPlatiSrvRemote;
 import org.open.erp.services.plati.OrdinPlata;
 import org.open.erp.services.plati.Plata;
 //import org.open.erp.services.vanzari.VanzariSrv;
-import org.open.erp.services.achizitii.AprovizionareSrv;
+//import org.open.erp.services.achizitii.AprovizionareSrv;
 
 @Stateful
 public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 
 	//private VanzariSrv vanzariSrv;
 	private ContabilizareSrv ctbSrv;
-	private AprovizionareSrv aproSrv;
+	//private AprovizionareSrv aproSrv;
 	
 	/*public VanzariSrv getVanzariSrv() {
 		return vanzariSrv;
@@ -85,7 +85,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 	public Chitanta inregistrareChitanta(Angajat casier, Double sumaIncasata,
 			Boolean avans, List<FacturaPrimita> facturi, Date dataEmiterii,
 			String seria, Integer numar, String locatie, String moneda,
-			Furnizor furnizor, Double curs) throws PlatiExceptions,
+			DummyFurnizor furnizor, Double curs) throws PlatiExceptions,
 			CtbException {
 		// TODO Auto-generated method stub
 		
@@ -99,7 +99,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 		Calendar currentDate = Calendar.getInstance();
 		Date dataInregistrarii = currentDate.getTime();
 
-		chitanta = new Chitanta(dataEmiterii, avans, dataInregistrarii,
+		chitanta = new Chitanta(numar, dataEmiterii, avans, dataInregistrarii,
 				sumaIncasata, seria, numar, locatie, casier);
 
 		if (facturi.size() == 0) {
@@ -117,15 +117,15 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 
 				ctbSrv.jurnalizarePlata(dataInregistrarii,
 						sumaIncasata, numar, TipPlata.AVANSC,
-						furnizor.getId(), 401, StareDocument.NOU, null);
+						401, furnizor.getCUI(), StareDocument.NOU, null);
 
 			}
 
 			else {
 
 				ctbSrv.jurnalizarePlata(dataInregistrarii,
-						sumaIncasata, numar, TipPlata.CASA, furnizor.getId(),
-						401, StareDocument.NOU, null);
+						sumaIncasata, numar, TipPlata.CASA, 401,
+						furnizor.getCUI(), StareDocument.NOU, null);
 				
 			}
 
@@ -167,7 +167,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 
 	@Override
 	public CEC inregistrareCEC(Integer idPlata, Date dataEmiterii, Boolean avans,
-			Furnizor furnizor, String seria, Integer numar, String locatie,
+			DummyFurnizor furnizor, String seria, Integer numar, String locatie,
 			String stare, Double suma, List<FacturaPrimita> facturi,
 			String moneda, Double curs) throws PlatiExceptions {
 		// TODO Auto-generated method stub
@@ -197,7 +197,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 
 	@Override
 	public OrdinPlata inregistrareOrdinPlata(Integer idPlata, Date dataEmiterii, Boolean avans,
-			Furnizor furnizor, String seria, Integer numar, String locatie,
+			DummyFurnizor furnizor, String seria, Integer numar, String locatie,
 			String stare, Double suma, List<FacturaPrimita> facturi,
 			String moneda, Double curs) throws PlatiExceptions {
 		if (suma == null ||  suma == 0.00 ) {
@@ -226,7 +226,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 
 	@Override
 	public ExtrasCont inregistrareExtrasCont(Integer idPlata, Date dataEmiterii, Boolean avans,
-			Furnizor furnizor, String seria, Integer numar, String locatie,
+			DummyFurnizor furnizor, String seria, Integer numar, String locatie,
 			List<FacturaPrimita> facturi, Double suma, String moneda,
 			Double curs) throws PlatiExceptions {
 		if (suma == null ||  suma == 0.00 ) {
@@ -254,17 +254,17 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 		return extrasCont;
 	}
 	
-
+/*
 	public AprovizionareSrv getAproSrv() {
 		return aproSrv;
 	}
 
 	public void setAproSrv(AprovizionareSrv aproSrv) {
 		this.aproSrv = aproSrv;
-	}
+	}*/
 	
 	@Override
-	public ArrayList<FacturaPrimita> getFacturiFurnizor(Furnizor furnizor) {
+	public ArrayList<FacturaPrimita> getFacturiFurnizor(DummyFurnizor furnizor) {
 		
 		FacturaPrimita factura = new FacturaPrimita();
 		factura.getIdFactura();
@@ -292,15 +292,15 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 			((CEC) doc).setStare("platit");
 
 			ctbSrv.jurnalizarePlata(dataInregistrarii, doc.getSuma(),
-					doc.getNumar(), TipPlata.CEC, doc.getFacturi().get(0)
-							.getFurnizor().getId(), 0, StareDocument.MODIFICAT, 0);
+					doc.getNumar(), TipPlata.CEC, 0, doc.getFacturi().get(0)
+									.getFurnizor().getCUI(), StareDocument.MODIFICAT, 0);
 
 		} else if (doc instanceof OrdinPlata) {
 			((OrdinPlata) doc).setStare("platit");
 
 			ctbSrv.jurnalizarePlata(dataInregistrarii, doc.getSuma(),
-					doc.getNumar(), TipPlata.OrdinPlata, doc.getFacturi().get(0)
-							.getFurnizor().getId(), 0, StareDocument.MODIFICAT, 0);
+					doc.getNumar(), TipPlata.OrdinPlata, 0, doc.getFacturi().get(0)
+									.getFurnizor().getCUI(), StareDocument.MODIFICAT, 0);
 		}
 	}
 	

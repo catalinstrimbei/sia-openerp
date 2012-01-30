@@ -25,12 +25,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 import org.open.erp.services.nomgen.Document;
-import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.plati.LinieFacturaPrimita;
-import org.open.erp.services.vanzari.LinieFacturaEmisa;
 
-@Entity(name = "FacturaPrimita")
-@DiscriminatorValue("FacturaPrimita")
+@Entity
 public class FacturaPrimita extends Document implements Serializable{
 	public static final Boolean PLATITA = true;
 	public static final Boolean NEPLATITA = false;
@@ -48,7 +45,7 @@ public class FacturaPrimita extends Document implements Serializable{
 	Date dataLivrare;
 	Integer nrComanda;
 	@ManyToOne
-	Furnizor furnizor;
+	DummyFurnizor furnizor;
 	@OneToMany(targetEntity=LinieFacturaPrimita.class, cascade=ALL)
 	ArrayList<LinieFacturaPrimita> produseFacturate = new ArrayList<LinieFacturaPrimita>();
 	Integer idMetodaPlata;
@@ -68,7 +65,7 @@ public class FacturaPrimita extends Document implements Serializable{
 		this.idFactura = _idFactura;
 	}
 	
-	public FacturaPrimita(Integer _idFactura, Furnizor _furnizor, Boolean _platita){
+	public FacturaPrimita(Integer _idFactura, DummyFurnizor _furnizor, Boolean _platita){
 		this.idFactura = _idFactura;
 		this.valoareTotalaFactura = 0.0;
 		this.valoareTva = 0.0;
@@ -175,11 +172,11 @@ public class FacturaPrimita extends Document implements Serializable{
 		this.nrComanda = nrComanda;
 	}
 
-	public Furnizor getFurnizor() {
+	public DummyFurnizor getFurnizor() {
 		return furnizor;
 	}
 
-	public void setFurnizor(Furnizor furnizor) {
+	public void setFurnizor(DummyFurnizor furnizor) {
 		this.furnizor = furnizor;
 	}
 

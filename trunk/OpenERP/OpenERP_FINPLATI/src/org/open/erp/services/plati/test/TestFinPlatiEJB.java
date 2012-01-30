@@ -17,7 +17,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.achizitii.Furnizor;
+import org.open.erp.services.plati.DummyFurnizor;
 import org.open.erp.services.ctbgen.Cont;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.RegConturi;
@@ -66,13 +66,13 @@ public class TestFinPlatiEJB {
 			logger.info("initTest");
 			fact1 = new FacturaPrimita();
 			fact1.setIdFactura(1);
-			((Document) fact1).setDataDoc(dfm.parse("2011-01-01"));
+			((Document) fact1).setDataDocument(dfm.parse("2011-01-01"));
 			fact1.setValoareTotalaFactura(40.00);
 			fact1.setSumaPlatita(10.00);
 			fact1.setPlatita(false);
 			fact2 = new FacturaPrimita();
 			fact2.setIdFactura(2);
-			fact2.setDataDoc(dfm.parse("2010-01-01"));
+			fact2.setDataDocument(dfm.parse("2010-01-01"));
 			fact2.setValoareTotalaFactura(40.00);
 			fact2.setSumaPlatita(30.00);
 			fact2.setPlatita(false);
@@ -110,7 +110,7 @@ public class TestFinPlatiEJB {
 			}
 			Angajat casier = new Angajat();
 			
-			Furnizor furnizor = new Furnizor(1, 11, 3, 123, "301256", "Istbercom", "Iasi", "0232332244");
+			DummyFurnizor furnizor = new DummyFurnizor(1, "301256", "Istbercom", "Iasi");
 			
 			facturi = new ArrayList<FacturaPrimita>();
 

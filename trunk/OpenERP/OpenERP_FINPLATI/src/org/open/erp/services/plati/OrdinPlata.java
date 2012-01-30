@@ -11,12 +11,17 @@ package org.open.erp.services.plati;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Entity(name = "OrdinPlata")
-@DiscriminatorValue("OrdinPlata")
+@Entity
 public class OrdinPlata extends Plata implements Serializable{
+	/**
+	 * 
+	 */
+	private Integer idOrdinPlata;
 	private static Long intervalValabilitate;
 	private String stare;
 	private String reprezentand;
@@ -55,6 +60,14 @@ public class OrdinPlata extends Plata implements Serializable{
 	
 	public OrdinPlata() {
 		super();
+	}
+
+	public Integer getIdOrdinPlata() {
+		return idOrdinPlata;
+	}
+
+	public void setIdOrdinPlata(Integer idOrdinPlata) {
+		this.idOrdinPlata = idOrdinPlata;
 	}
 }
 

@@ -12,7 +12,6 @@ import org.open.erp.services.plati.Chitanta;
 import org.open.erp.services.plati.ExtrasCont;
 import org.open.erp.services.plati.Plata;
 import org.open.erp.services.plati.exceptions.PlatiExceptions;
-import org.open.erp.services.achizitii.Furnizor;
 import org.open.erp.services.plati.FacturaPrimita;
 import org.open.erp.services.personal.Angajat;
 
@@ -30,25 +29,25 @@ public interface FinPlatiSrv {
 	Chitanta inregistrareChitanta(Angajat casier, Double sumaIncasata,
 	Boolean avans,
 	List<FacturaPrimita> facturi, Date dataEmiterii, String seria,
-	Integer numar, String locatie, String moneda, Furnizor furnizor,
+	Integer numar, String locatie, String moneda, DummyFurnizor furnizor,
 	Double curs) throws PlatiExceptions, CtbException;
 
-	CEC inregistrareCEC(Integer idPlata, Date dataEmiterii, Boolean avans, Furnizor furnizor,
+	CEC inregistrareCEC(Integer idPlata, Date dataEmiterii, Boolean avans, DummyFurnizor furnizor,
 	String seria, Integer numar, String locatie, String stare,
 	Double suma, List<FacturaPrimita> facturi,
 	String moneda, Double curs) throws PlatiExceptions;
 
-	OrdinPlata inregistrareOrdinPlata(Integer idPlata, Date dataEmiterii, Boolean avans, Furnizor furnizor,
+	OrdinPlata inregistrareOrdinPlata(Integer idPlata, Date dataEmiterii, Boolean avans, DummyFurnizor furnizor,
 			String seria, Integer numar, String locatie, String stare,
 			Double suma, List<FacturaPrimita> facturi,
 			String moneda, Double curs) throws PlatiExceptions;
 
 	ExtrasCont inregistrareExtrasCont(Integer idPlata, Date dataEmiterii, Boolean avans,
-	Furnizor furnizor, String seria, Integer numar, String locatie,
+			DummyFurnizor furnizor, String seria, Integer numar, String locatie,
 	List<FacturaPrimita> facturi, Double suma,
 	String moneda, Double curs) throws PlatiExceptions;
 
-	ArrayList<FacturaPrimita> getFacturiFurnizor(Furnizor furnizor);
+	ArrayList<FacturaPrimita> getFacturiFurnizor(DummyFurnizor furnizor);
 	
 	public List<FacturaPrimita> compensariParteneri(
 			List<FacturaPrimita> facturi, Double suma) throws PlatiExceptions;

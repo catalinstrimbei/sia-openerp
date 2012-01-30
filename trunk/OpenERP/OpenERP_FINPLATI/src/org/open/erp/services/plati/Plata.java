@@ -16,27 +16,30 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
-
-@Entity(name = "Plata")
-public abstract class Plata implements Serializable{
+@MappedSuperclass
+public class Plata implements Serializable{
 	@Id
-	private Integer idPlata;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	protected Integer idPlata;
 	
-	private String moneda;
+	protected String moneda;
 	@Temporal(DATE)
-	private Date dataEmiterii;
-	private Boolean avans;
+	protected Date dataEmiterii;
+	protected Boolean avans;
 	@Temporal(DATE)
-	private Date dataInregistrarii;
-	private Double suma;
-	private String seria;
-	private Integer numar;
-	private String locatie;
+	protected Date dataInregistrarii;
+	protected Double suma;
+	protected String seria;
+	protected Integer numar;
+	protected String locatie;
 	@ManyToMany
-	private List<FacturaPrimita> facturi = new ArrayList<FacturaPrimita>();
+	protected List<FacturaPrimita> facturi = new ArrayList<FacturaPrimita>();
 	
 	public Plata(Integer idPlata, Date dataEmiterii, Boolean avans,
 			Date dataInregistrarii, Double suma,

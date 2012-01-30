@@ -12,7 +12,7 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.achizitii.Furnizor;
+import org.open.erp.services.plati.DummyFurnizor;
 import org.open.erp.services.ctbgen.Cont;
 import org.open.erp.services.ctbgen.RegConturi;
 import org.open.erp.services.ctbgen.RegSablonNC;
@@ -53,13 +53,13 @@ FinPlatiSrv platiSrvInstance;
 		logger.info("initTest");
 		f1 = new FacturaPrimita();
 		f1.setIdFactura(1);
-		((Document) f1).setDataDoc(df.parse("2012-01-01"));
+		((Document) f1).setDataDocument(df.parse("2012-01-01"));
 		f1.setValoareTotalaFactura(33.00);
 		f1.setSumaPlatita(13.00);
 		f1.setPlatita(false);
 		f2 = new FacturaPrimita();
 		f2.setIdFactura(2);
-		f2.setDataDoc(df.parse("2011-01-01"));
+		f2.setDataDocument(df.parse("2011-01-01"));
 		f2.setValoareTotalaFactura(44.00);
 		f2.setSumaPlatita(14.00);
 		f2.setPlatita(false);
@@ -91,8 +91,8 @@ FinPlatiSrv platiSrvInstance;
 			e.printStackTrace();
 		}
 		Angajat casier = new Angajat();
-		Furnizor furnizor = new Furnizor(null, null, null, null, null, null, null, null);
-		furnizor.setId(1);
+		DummyFurnizor furnizor = new DummyFurnizor(null, null, null, null);
+		furnizor.setCUI("1");
 		facturi = new ArrayList<FacturaPrimita>();
 
 		facturi.add(f1);
@@ -133,8 +133,8 @@ FinPlatiSrv platiSrvInstance;
 			e.printStackTrace();
 		}
 		Angajat casier = new Angajat();
-		Furnizor furnizor = new Furnizor(null, null, null, null, null, null, null, null);
-		furnizor.setId(1);
+		DummyFurnizor furnizor = new DummyFurnizor(null, null, null, null);
+		furnizor.setCUI("1");
 		facturi = new ArrayList<FacturaPrimita>();
 
 		facturi.add(f1);
@@ -159,8 +159,8 @@ FinPlatiSrv platiSrvInstance;
 			e.printStackTrace();
 		}
 		Angajat casier = new Angajat();
-		Furnizor furnizor = new Furnizor(null, null, null, null, null, null, null, null);
-		furnizor.setId(1);
+		DummyFurnizor furnizor = new DummyFurnizor(null, null, null, null);
+		furnizor.setCUI("1");
 		facturi = new ArrayList<FacturaPrimita>();
 
 		facturi.add(f1);
@@ -196,8 +196,8 @@ FinPlatiSrv platiSrvInstance;
 			e.printStackTrace();
 		}
 		
-		Furnizor furnizor = new Furnizor(null, null, null, null, null, null, null, null);
-		furnizor.setId(2);
+		DummyFurnizor furnizor = new DummyFurnizor(null, null, null, null);
+		furnizor.setCUI("2");
 		facturi = new ArrayList<FacturaPrimita>();
 
 		facturi.add(f1);
@@ -227,8 +227,8 @@ FinPlatiSrv platiSrvInstance;
 			e.printStackTrace();
 		}
 		
-		Furnizor furnizor = new Furnizor(null, null, null, null, null, null, null, null);
-		furnizor.setId(4);
+		DummyFurnizor furnizor = new DummyFurnizor(null, null, null, null);
+		furnizor.setCUI("4");
 		facturi = new ArrayList<FacturaPrimita>();
 
 		facturi.add(f1);
@@ -255,8 +255,8 @@ FinPlatiSrv platiSrvInstance;
 			e.printStackTrace();
 		}
 
-		Furnizor furnizor = new Furnizor(null, null, null, null, null, null, null, null);
-		furnizor.setId(1);
+		DummyFurnizor furnizor = new DummyFurnizor(null, null, null, null);
+		furnizor.setCUI("1");
 		facturi = new ArrayList<FacturaPrimita>();
 
 		facturi.add(f1);
@@ -281,8 +281,8 @@ FinPlatiSrv platiSrvInstance;
 			e.printStackTrace();
 		}
 		
-		Furnizor furnizor = new Furnizor(null, null, null, null, null, null, null, null);
-		furnizor.setId(4);
+		DummyFurnizor furnizor = new DummyFurnizor(null, null, null, null);
+		furnizor.setCUI("4");
 		facturi = new ArrayList<FacturaPrimita>();
 
 		facturi.add(f1);

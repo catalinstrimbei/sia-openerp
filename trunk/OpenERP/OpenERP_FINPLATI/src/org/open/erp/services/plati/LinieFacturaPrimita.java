@@ -1,5 +1,4 @@
 package org.open.erp.services.plati;
-
 /**
  * 
  * @author Echipa FINPLATI
@@ -12,18 +11,18 @@ import java.io.Serializable;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Produs;
 
-@Entity(name = "LinieFacturaPrimita")
-@DiscriminatorValue("LinieFacturaPrimita")
+@Entity
 public class LinieFacturaPrimita extends LinieDocument implements Serializable{
 	@Id
+	@GeneratedValue
 	Integer idLinieFactura;
-	@ManyToOne
+	
 	Produs produs;
 	Double pretUnitar;
 	Double pretLinie;

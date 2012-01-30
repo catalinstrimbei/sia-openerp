@@ -11,12 +11,29 @@ package org.open.erp.services.plati;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import org.open.erp.services.plati.Plata;
 import org.open.erp.services.personal.Angajat;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 
+@Entity
 public class Chitanta extends Plata implements Serializable{
+	/**
+	 * 
+	 */
+	protected Integer idChitanta;
+	public Integer getIdChitanta() {
+		return idChitanta;
+	}
+
+	public void setIdChitanta(Integer idChitanta) {
+		this.idChitanta = idChitanta;
+	}
 
 	public Angajat getCasier() {
 		return casier;
@@ -26,8 +43,12 @@ public class Chitanta extends Plata implements Serializable{
 		this.casier = casier;
 	}
 	
-	@ManyToOne
+
 	private Angajat casier;
+	
+	public Chitanta() {
+		super();
+	}
 
 	public Chitanta(Integer idPlata, Date dataEmiterii, Boolean avans, Date dataInregistrarii,
 			Double suma, String seria, Integer numar,

@@ -11,16 +11,16 @@ package org.open.erp.services.plati;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "CEC")
-@DiscriminatorValue("CEC")
+@Entity
 public class CEC extends Plata implements Serializable{
-	@Id
-	@GeneratedValue
+	/**
+	 * 
+	 */
 	private Integer idCEC;
 	private static Long intervalValabilitate;
 	private String stare;
