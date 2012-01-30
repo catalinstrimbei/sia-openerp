@@ -1,17 +1,12 @@
-#labels PaginamodululuiPLATI
-= Introduction =
-Echipa FinPlati
-= Details =
-1. Confirmarea unei plati 
+#labels PAGINAMODULULUIPLATI
+= Introducere =
 
-2. Inregistrare chitanta
 
-3. Inregistrare CEC
+= Functionalitati =
 
-4. Inregistrare Ordin de plata
+* Gestioneaza plata facturilor primite de la furnizori, inclusiv plata partiala a acestora
+* Gestioneaza plata cecurilor si a biletelor la ordin
+* Inregistreaza platile efectuate catre clienti
+* Gestioneaza platile in lei si in valuta
+* Actualizeaza sold furnizor si cont bancar
 
-5. Inregistrare Extras de cont
-	
-6. Compensari cu partenerii
-	
-7. Plata unui furnizor
