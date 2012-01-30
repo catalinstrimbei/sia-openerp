@@ -19,7 +19,7 @@ Functionalitati:
     * Inregistrarea platilor efectuate de clienti.
 === Detalii ===
 
-  ====I. Detalii functionale:==== Asigura urmatoarele metode de jurnalizare si transfer informatii: 
+  *I. Detalii functionale:* Asigura urmatoarele metode de jurnalizare si transfer informatii: 
 * Jurnalizeaza notele contabile aferente efectuarii unei plati;
 * Jurnalizeaza depunerea unui cec sau a unui bilet la ordin;
 * Calculeaza suma in funtie de moneda in care se efectueaza plata;
@@ -77,4 +77,3 @@ Functionalitati:
 || getFacturaDupaId() || Se interogheaza lista facturilor in functie de id ||
 || getClientDupaId() || Se interogheaza lista clientilor in functie de id ||
 || getChitante() || Se interogheaza lista chitantelor ||
-
