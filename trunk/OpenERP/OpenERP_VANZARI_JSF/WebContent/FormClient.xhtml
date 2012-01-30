@@ -6,10 +6,15 @@
 	xmlns:p="http://java.sun.com/jsf/core"
 	xmlns:rich="http://richfaces.org/rich">
 	
-	<h:head></h:head>
+	<h:head>
+		
+	</h:head>
 	
+
+
 <body>
-	<div style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Client</div>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Client</div>
 	<h:form id="formClient" style="color: blue">
 		<h:panelGrid columns="2" border="0">
 			<p:facet name="header">
@@ -41,12 +46,11 @@
 
 			<h:outputText value="Nume:"></h:outputText>
 			<h:inputText id="nume" value="#{formClient.client.nume}">
-				<p:convertDateTime ></p:convertDateTime>
 			</h:inputText>
 
 			<h:outputText value="Adresa:"></h:outputText>
 			<h:inputText id="adresa" value="#{formClient.client.adresa}">
-		</h:inputText>
+		    </h:inputText>
 
 			<h:outputText value="Adresa email:"></h:outputText>
 			<h:inputText id="adresaMail"
@@ -55,15 +59,15 @@
 			
 			<h:outputText value="Telefon:"></h:outputText>
 			<h:inputText id="telefon" value="#{formClient.client.telefon}">
-		</h:inputText>
+		    </h:inputText>
 
-		<h:outputText value="Cod unic:"></h:outputText>
+		    <h:outputText value="Cod unic:"></h:outputText>
 			<h:inputText id="codUnic" value="#{formClient.client.codUnic}">
-		</h:inputText>
+            </h:inputText>
 		
-		<h:outputText value="Sold client:"></h:outputText>
+		    <h:outputText value="Sold client:"></h:outputText>
 			<h:inputText id="soldClient" value="#{formClient.client.soldClient}">
-		</h:inputText>
+		    </h:inputText>
 		
 			<p:facet name="footer">
 				<h:panelGrid columns="4" border="0">

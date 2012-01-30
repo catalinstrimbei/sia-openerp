@@ -15,7 +15,7 @@
                         <p:facet name="header">
                                 <h:outputText value="Navigare:"></h:outputText>
                         </p:facet>
-                        <h:selectOneMenu id="cboClient" value="#{formVanzator.Vanzator}" converter="#{formVanzator}" disabled="false">
+                        <h:selectOneMenu id="cboVanzator" value="#{formVanzator.Vanzator}" converter="#{formVanzator}" disabled="false">
                                 <p:selectItems value="#{formVanzator.Vanzator}"></p:selectItems>
                                 <p:ajax render="vanzator_nume cboPrenume cboCodAcces"></p:ajax>
                         </h:selectOneMenu>
@@ -30,15 +30,13 @@
                         <h:outputText value="Nume:"></h:outputText>
                         <h:inputText id="vanzator_nume" value="#{formVanzator.Vanzator.nume}"
                                 validator="#{formVanzator.validate}" required="false">
-
-                        </h:inputText>
+						</h:inputText>
                         <h:message for="vanzator_nume"></h:message>
                         
 						<h:message></h:message>
                         <h:outputText value="Prenume:"></h:outputText>
                         <h:inputText id="cboPrenume" value="#{formVanzator.Vanzator.prenume}"
                                 validator="#{formVanzator.validate}" required="false">
-
                         </h:inputText>
                         <h:message for="cboPrenume"></h:message>
                         
@@ -46,11 +44,8 @@
                         <h:outputText value="Cod acces:"></h:outputText>
                         <h:inputText id="cboCodAcces" value="#{formVanzator.Vanzator.codAcces}"
                                 validator="#{formVanzator.validate}" required="false">
-
                         </h:inputText>
                         <h:message for="cboCodAcces"></h:message>
-                        
-                       
                         
                         <h:panelGrid columns="3" border="1"> 
                                 <h:commandButton id="cmdAdd"
