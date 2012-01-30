@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Produs;
-import org.open.erp.services.stocuri.StocuriSrv;
+//import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.Client;
 import org.open.erp.services.vanzari.Comanda;
 import org.open.erp.services.vanzari.FacturaEmisa;
@@ -26,7 +26,7 @@ import org.open.erp.services.vanzari.Vanzator;
 
 public class TestVanzari {
 	VanzariSrv vanzariInstance;
-	StocuriSrv stocuriInstance;
+	//StocuriSrv stocuriInstance;
 	NomenclatoareSrv nomenclatorInstance;
 	ContabilizareSrv contabgenInstance;
 
@@ -39,7 +39,7 @@ public class TestVanzari {
 		vanzariInstance = VanzariFactory.getVanzariSrv();
 		nomenclatorInstance = VanzariFactory.getNomenclatoareSrv();
 		contabgenInstance = VanzariFactory.getContabGenSrv();
-		stocuriInstance = VanzariFactory.getStocuriSrv();
+		//stocuriInstance = VanzariFactory.getStocuriSrv();
 	}
 	
 	@Test

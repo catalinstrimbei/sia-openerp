@@ -12,15 +12,15 @@ import javax.persistence.EntityManager;
 
 import org.open.erp.services.nomgen.Produs;
 //import org.open.erp.services.stocuri.StocuriSrv;
-import org.open.erp.services.stocuri.StocuriSrvLocal;
-import org.open.erp.services.stocuri.impl.StocuriImpl;
+//import org.open.erp.services.stocuri.StocuriSrvLocal;
+//import org.open.erp.services.stocuri.impl.StocuriImpl;
 import org.open.erp.services.vanzari.LinieFacturaEmisa;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
 public class ProcesareFacturaEmisa {
 
-	@EJB(mappedName="StocuriImpl/local")
-	public StocuriSrvLocal stocuriSrv = new StocuriImpl();
+	//@EJB(mappedName="StocuriImpl/local")
+	//public StocuriSrvLocal stocuriSrv = new StocuriImpl();
 	
 	//private EntityManager em;
 	//private RegistruVanzari registruVanzari;
@@ -88,7 +88,7 @@ public class ProcesareFacturaEmisa {
 	// produsul se afla sau nu in stoc
 	public boolean checkDisponibilitateProdus(Produs produs, Double cantitate){
 		// conversie Produs catre Material
-		Double cantDisponibila = stocuriSrv.verificareStocMaterial(produs);
+		Double cantDisponibila = 10.0; //stocuriSrv.verificareStocMaterial(produs);
 		if( cantDisponibila <= cantitate)
 			return true;
 		else

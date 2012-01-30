@@ -1,6 +1,8 @@
 package org.open.erp.services.vanzari;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.open.erp.services.nomgen.Produs;
 
 /**
@@ -80,4 +82,12 @@ public interface VanzariSrv {
 	public void returProduse(FacturaEmisa factura);
 	//public boolean livrareProduse();
 	//public void getVanzariLunare(String luna, String an);
+	
+	
+	public List<LinieComanda> getLiniiComanda(Comanda c) throws Exception;
+	
+	public Comanda salveazaComanda(Comanda comanda) throws Exception;
+	
+	public List<Comanda> getListaComenzi() throws Exception;
+	
 }

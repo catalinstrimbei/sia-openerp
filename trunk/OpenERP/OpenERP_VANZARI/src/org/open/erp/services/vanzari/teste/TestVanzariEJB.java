@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Produs;
-import org.open.erp.services.stocuri.StocuriSrv;
+//import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.Client;
 import org.open.erp.services.vanzari.Comanda;
 import org.open.erp.services.vanzari.FacturaEmisa;
@@ -27,7 +27,7 @@ import org.open.erp.services.vanzari.impl.VanzariImpl;
 public class TestVanzariEJB {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(VanzariImpl.class.getName());
 	private static VanzariSrv vanzariInstance;
-	private static StocuriSrv stocuriInstance;
+//	private static StocuriSrv stocuriInstance;
 	//NomenclatoareSrv nomenclatorInstance;
 	//ContabilizareSrv contabgenInstance;
 	
@@ -36,11 +36,11 @@ public class TestVanzariEJB {
 	public static void setUpBeforeClass() throws Exception {
 		InitialContext ctx = initJBossJNDICtx();
 		vanzariInstance = (VanzariSrv)ctx.lookup("VanzariSrv/remote");
-		stocuriInstance = (StocuriSrv)ctx.lookup("StocuriSrv/remote");
+		//stocuriInstance = (StocuriSrv)ctx.lookup("StocuriSrv/remote");
 		//nomenclatorInstance = (StocuriSrv)ctx.lookup("StocuriSrv/remote");
 		
 		logger.info("initTest " + vanzariInstance);
-		logger.info("initTest " + stocuriInstance);
+		//logger.info("initTest " + stocuriInstance);
 	}
 	
 	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/

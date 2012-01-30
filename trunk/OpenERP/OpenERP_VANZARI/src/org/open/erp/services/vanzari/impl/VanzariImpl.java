@@ -21,6 +21,7 @@ import javax.persistence.PersistenceContext;
 
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
@@ -30,8 +31,8 @@ import org.open.erp.services.ctbgen.exceptii.CtbException;
 import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
 import org.open.erp.services.nomgen.Produs;
 //import org.open.erp.services.stocuri.StocuriSrv;
-import org.open.erp.services.stocuri.StocuriSrvLocal;
-import org.open.erp.services.stocuri.impl.StocuriImpl;
+//import org.open.erp.services.stocuri.StocuriSrvLocal;
+//import org.open.erp.services.stocuri.impl.StocuriImpl;
 import org.open.erp.services.vanzari.*;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
@@ -46,8 +47,8 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	private ProcesareFacturaEmisa procesareFactura = new ProcesareFacturaEmisa();
 	
 	/* Dependente resurse injectate */
-	@EJB(mappedName="StocuriImpl/local")
-	public StocuriSrvLocal stocuriSrv = new StocuriImpl();
+	//@EJB(mappedName="StocuriImpl/local")
+	//public StocuriSrvLocal stocuriSrv = new StocuriImpl();
 	@EJB(mappedName="ContabilizareSrvImpl/local")
 	public ContabilizareSrvLocal contabilizareSrv = new ContabilizareSrvImpl();
 	
@@ -61,7 +62,7 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	@PostConstruct
 	public void init(){
 		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
-		logger.debug(">>>>>>>>>>>> Exista stocuriSrv? " + stocuriSrv);
+		//logger.debug(">>>>>>>>>>>> Exista stocuriSrv? " + stocuriSrv);
 		logger.debug(">>>>>>>>>>>> Exista caontabSrv? " + contabilizareSrv);
 		
 		if (this.registruVanzari == null)
@@ -105,7 +106,7 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 		logger.debug(">>>>>>>>>>>> START Creare factura");
 		
 		FacturaEmisa factura = new FacturaEmisa(1, client, vanzator, FacturaEmisa.NEPLATITA);
-		factura.setNrComanda(comanda.getNrComanda());
+		factura.setComanda(comanda);
 		factura.setDataDocument(new Date());
 		
 		//procesareFactura.setFactura(factura);
@@ -174,9 +175,11 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	public void actulizareStoc(Integer mod, FacturaEmisa factura){
 		switch(mod){
 		case 1:
-			stocuriSrv.iesireStoc(factura); break;
+			//stocuriSrv.iesireStoc(factura);
+			break;
 		case 2:
-			//stocuriSrv.intrareInStoc(factura); break;
+			//stocuriSrv.intrareInStoc(factura);
+			break;
 		}
 	}
 	
@@ -209,7 +212,23 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 		}
 	}
 
-
+	@Override
+	public List<LinieComanda> getLiniiComanda(Comanda c) throws Exception {
+		List<LinieComanda> lc = registruVanzari.getLiniiComanda(c); // ???
+		return lc;
+	}
+	
+	@Override
+	public Comanda salveazaComanda(Comanda comanda) throws Exception{
+		Comanda c = registruVanzari.salveazaComanda(comanda);
+		return c;
+	}
+	
+	@Override
+	public List<Comanda> getListaComenzi() throws Exception{
+		List<Comanda> comenzi = registruVanzari.getListaComenzi();
+		return comenzi;
+	}
 		
 	
 }

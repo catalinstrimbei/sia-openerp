@@ -22,16 +22,16 @@ import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.ProductieSrvLocal;
 import org.open.erp.services.productie.impl.ProductieImpl;
 //import org.open.erp.services.stocuri.StocuriSrv;
-import org.open.erp.services.stocuri.StocuriSrvLocal;
+//import org.open.erp.services.stocuri.StocuriSrvLocal;
 import org.open.erp.services.vanzari.Comanda;
 import org.open.erp.services.vanzari.LinieComanda;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
-import org.open.erp.services.stocuri.impl.StocuriImpl;
+//import org.open.erp.services.stocuri.impl.StocuriImpl;
 
 public class ProcesareComanda {
 
-	@EJB(mappedName="StocuriImpl/local")
-	public StocuriSrvLocal stocuriSrv = new StocuriImpl();
+	//@EJB(mappedName="StocuriImpl/local")
+	//public StocuriSrvLocal stocuriSrv = new StocuriImpl();
 	@EJB(mappedName="MarketingManagementImpl/local")
 	public MarketingManagementSrvLocal mkSrv = new MarketingManagementImpl();
 	@EJB(mappedName="ProductieImpl/local")
@@ -113,7 +113,7 @@ public class ProcesareComanda {
 	// produsul se afla sau nu in stoc
 	public boolean checkDisponibilitateProdus(Produs produs, Double cantitate){
 		// conversie Produs catre Material
-		Double cantDisponibila = stocuriSrv.verificareStocMaterial(produs);
+		Double cantDisponibila = 10.0; //stocuriSrv.verificareStocMaterial(produs);
 		if( cantDisponibila >= cantitate)
 			return true;
 		else{

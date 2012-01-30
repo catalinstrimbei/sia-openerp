@@ -1,11 +1,13 @@
 package org.open.erp.services.vanzari.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.vanzari.Client;
 import org.open.erp.services.vanzari.Comanda;
 import org.open.erp.services.vanzari.FacturaEmisa;
+import org.open.erp.services.vanzari.LinieComanda;
 
 import javax.persistence.EntityManager;
 
@@ -26,6 +28,8 @@ public class RegistruVanzari {
 		this.em = _em;
 	}
 	
+	
+	/* Comenzi */
 	public Comanda salveazaComanda(Comanda comanda) throws Exception{
 		try{
 			if(comanda.getNrComanda() == null || em.find(comanda.getClass(), comanda.getNrComanda()) == null)
@@ -44,8 +48,41 @@ public class RegistruVanzari {
 		em.remove(comanda);
 	}
 	
+	public List<Comanda> getListaComenzi() throws Exception{
+		List<Comanda> comanda = new ArrayList<Comanda>();
+		try{
+			comanda = em.createQuery("SELECT lc FROM LiniiComanda lc")
+					.getResultList();
+		} catch(Exception e){
+			logger.debug("Eroare incarcare comenzi");
+		}
+		return comanda;
+	}
+	
+	public List<LinieComanda> getLiniiComanda(Comanda comanda) throws Exception{
+		List<LinieComanda> liniiComanda = new ArrayList<LinieComanda>();
+		try{
+			liniiComanda = em.createQuery("SELECT lc FROM LiniiComanda lc " +
+				"WHERE lc.nrComanda=:id")
+				.setParameter("id", comanda.getNrComanda())
+				.getResultList();
+		}
+		catch(Exception e){
+			logger.info("Eroare incarcare linii comanda");
+		}
+		return liniiComanda;
+	}
+	
+	
+	/* Facturi*/
 	public FacturaEmisa getFactura(Integer idFactura){
 		return em.find(FacturaEmisa.class, idFactura);
+	}
+	
+	public List<FacturaEmisa> getFacturiClient(Integer idClient){
+		return em.createQuery("SELECT f FROM FacturaEmisa f WHERE f.client.id:=IdClient")
+				.setParameter("IdClient", idClient)
+				.getResultList();
 	}
 	
 	public FacturaEmisa salveazaFactura(FacturaEmisa factura) throws Exception{
@@ -66,6 +103,8 @@ public class RegistruVanzari {
 		em.remove(factura);
 	}
 	
+	
+	/* Clienti*/
 	public Client getClient(Integer idClient){
 		return em.find(Client.class, idClient);
 	}
@@ -89,11 +128,5 @@ public class RegistruVanzari {
 		}
 		return client;
 	}
-	
-	public List<FacturaEmisa> getFacturiClient(Integer idClient){
-		return em.createQuery("SELECT f FROM FacturaEmisa f WHERE f.client.id:=IdClient")
-				.setParameter("IdClient", idClient)
-				.getResultList();
-	}
-	
+		
 }
