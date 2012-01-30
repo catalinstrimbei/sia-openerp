@@ -40,7 +40,7 @@ public class FacturaEmisa extends Document implements Serializable {
 	@Temporal(TIMESTAMP)
 	Date dataLivrare;
 	
-	Integer nrComanda;
+	Comanda comanda;
 	@ManyToOne
 	Client client;
 	@OneToMany(targetEntity=LinieFacturaEmisa.class, cascade=ALL)
@@ -166,12 +166,12 @@ public class FacturaEmisa extends Document implements Serializable {
 		this.dataLivrare = dataLivrare;
 	}
 
-	public Integer getNrComanda() {
-		return nrComanda;
+	public Comanda getComanda() {
+		return comanda;
 	}
 
-	public void setNrComanda(Integer nrComanda) {
-		this.nrComanda = nrComanda;
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
 	}
 
 	public Client getClient() {

@@ -60,6 +60,26 @@ public LinieComanda(){
 		return tvaLinie;
 	}
 	
+	public Integer getNrLinie() {
+		return nrLinie;
+	}
+
+	public void setNrLinie(Integer nrLinie) {
+		this.nrLinie = nrLinie;
+	}
+
+	public Double getPretLinie() {
+		return pretLinie;
+	}
+
+	public void setPretLinie(Double pretLinie) {
+		this.pretLinie = pretLinie;
+	}
+
+	public void setTvaLinie(Double tvaLinie) {
+		this.tvaLinie = tvaLinie;
+	}
+
 	public Integer getStatus() {
 		return status;
 	}
