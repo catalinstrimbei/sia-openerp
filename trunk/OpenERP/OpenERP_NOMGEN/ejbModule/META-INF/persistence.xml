@@ -18,6 +18,7 @@
 	 	<class>org.open.erp.services.nomgen.Divizie</class>
 	 	<class>org.open.erp.services.nomgen.Departament</class>
 	 	<class>org.open.erp.services.nomgen.Banca</class>
+	 	<class>org.open.erp.services.nomgen.MijlocFix</class>
 	
 	     <!--    <jta-data-source>java:jdbc/feaaORCL_XA</jta-data-source>-->
 		<!--  <exclude-unlisted-classes>false</exclude-unlisted-classes> -->

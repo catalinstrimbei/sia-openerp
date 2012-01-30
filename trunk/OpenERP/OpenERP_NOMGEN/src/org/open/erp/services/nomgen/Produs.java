@@ -150,17 +150,7 @@ public class Produs extends Material implements Serializable{
 
 		}
 
-	public Produs(int i, String string, String string2, Date date, int j,
-			float f, float g, String string3, double d) {
-		super();
-		
-		this.denumire = denumire;
-		//this.unitateMasura = uM;
-		this.dataFabricatiei = dataFabricatiei;
-		this.termenValabilitate = termenValabilitate;
-		this.procentTVA = procentTVA;
-		this.pretVanzare = pretVanzare;
-	}
+
 
 	public Produs(Integer idMaterial, String denumire, String categorie,
 			String uM, String tipContabil, String denumire2,

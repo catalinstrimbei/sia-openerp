@@ -11,13 +11,10 @@ import javax.persistence.CascadeType;
 
 import javax.persistence.ElementCollection;
 
-import javax.persistence.Column;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 
@@ -31,71 +28,7 @@ import javax.persistence.OneToMany;
 
 public class Departament implements Serializable{
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((Atributii == null) ? 0 : Atributii.hashCode());
-		result = prime * result
-				+ ((Denumire == null) ? 0 : Denumire.hashCode());
-		result = prime * result
-				+ ((DivDepartament == null) ? 0 : DivDepartament.hashCode());
-		result = prime * result
-				+ ((Emailuri == null) ? 0 : Emailuri.hashCode());
-		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
-		result = prime * result
-				+ ((Telefoane == null) ? 0 : Telefoane.hashCode());
-		result = prime * result + ((pers == null) ? 0 : pers.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Departament other = (Departament) obj;
-		if (Atributii == null) {
-			if (other.Atributii != null)
-				return false;
-		} else if (!Atributii.equals(other.Atributii))
-			return false;
-		if (Denumire == null) {
-			if (other.Denumire != null)
-				return false;
-		} else if (!Denumire.equals(other.Denumire))
-			return false;
-		if (DivDepartament == null) {
-			if (other.DivDepartament != null)
-				return false;
-		} else if (!DivDepartament.equals(other.DivDepartament))
-			return false;
-		if (Emailuri == null) {
-			if (other.Emailuri != null)
-				return false;
-		} else if (!Emailuri.equals(other.Emailuri))
-			return false;
-		if (Id == null) {
-			if (other.Id != null)
-				return false;
-		} else if (!Id.equals(other.Id))
-			return false;
-		if (Telefoane == null) {
-			if (other.Telefoane != null)
-				return false;
-		} else if (!Telefoane.equals(other.Telefoane))
-			return false;
-		if (pers == null) {
-			if (other.pers != null)
-				return false;
-		} else if (!pers.equals(other.pers))
-			return false;
-		return true;
-	}
 	/**
 	 * 
 	 */
@@ -201,5 +134,82 @@ public class Departament implements Serializable{
 		DivDepartament = divDepartament;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((Atributii == null) ? 0 : Atributii.hashCode());
+		result = prime * result
+				+ ((Denumire == null) ? 0 : Denumire.hashCode());
+		result = prime * result
+				+ ((DivDepartament == null) ? 0 : DivDepartament.hashCode());
+		result = prime * result
+				+ ((Emailuri == null) ? 0 : Emailuri.hashCode());
+		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		result = prime * result
+				+ ((Telefoane == null) ? 0 : Telefoane.hashCode());
+		result = prime * result + ((pers == null) ? 0 : pers.hashCode());
+		return result;
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Departament other = (Departament) obj;
+		if (Atributii == null) {
+			if (other.Atributii != null)
+				return false;
+		} else if (!Atributii.equals(other.Atributii))
+			return false;
+		if (Denumire == null) {
+			if (other.Denumire != null)
+				return false;
+		} else if (!Denumire.equals(other.Denumire))
+			return false;
+		if (DivDepartament == null) {
+			if (other.DivDepartament != null)
+				return false;
+		} else if (!DivDepartament.equals(other.DivDepartament))
+			return false;
+		if (Emailuri == null) {
+			if (other.Emailuri != null)
+				return false;
+		} else if (!Emailuri.equals(other.Emailuri))
+			return false;
+		if (Id == null) {
+			if (other.Id != null)
+				return false;
+		} else if (!Id.equals(other.Id))
+			return false;
+		if (Telefoane == null) {
+			if (other.Telefoane != null)
+				return false;
+		} else if (!Telefoane.equals(other.Telefoane))
+			return false;
+		if (pers == null) {
+			if (other.pers != null)
+				return false;
+		} else if (!pers.equals(other.pers))
+			return false;
+		return true;
+	}
+
+	public Departament(Integer id, String denumire, String atributii,
+			Collection<Divizie> divDepartament, ArrayList<String> telefoane,
+			ArrayList<String> emailuri, Collection<Persoana> pers) {
+		super();
+		Id = id;
+		Denumire = denumire;
+		Atributii = atributii;
+		DivDepartament = divDepartament;
+		Telefoane = telefoane;
+		Emailuri = emailuri;
+		this.pers = pers;
+	}
 }

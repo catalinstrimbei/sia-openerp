@@ -6,6 +6,8 @@ package org.open.erp.services.nomgen;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -15,7 +17,7 @@ import javax.persistence.ManyToOne;
  */
 
 @Entity
-//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Divizie extends Departament implements Serializable{
 	 /**
 	 * 

@@ -4,6 +4,8 @@ package org.open.erp.services.nomgen;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -17,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Banca")
-//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Banca extends PersoanaJuridica implements Serializable {
 	/**
 	 * 

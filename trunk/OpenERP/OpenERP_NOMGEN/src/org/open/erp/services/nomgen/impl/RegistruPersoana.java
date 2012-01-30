@@ -71,7 +71,7 @@ public class RegistruPersoana {
          return parteneriOrdonate;
      }
 
-     public Partener getPartenerDupaCodPersoana(String idPersoana){
+     public Partener getPartenerDupaCodPersoana(Integer idPersoana){
     	 Partener p = this.entityManager.find(Partener.class, idPersoana);
      	this.entityManager.refresh(p);
      	return p;

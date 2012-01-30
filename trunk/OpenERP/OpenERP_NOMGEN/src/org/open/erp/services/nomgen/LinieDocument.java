@@ -11,10 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ForeignKey;
-import javax.persistence.JoinTable;
-import javax.persistence.Access;
-import static javax.persistence.AccessType.FIELD;
-import static javax.persistence.AccessType.PROPERTY;
 
 
 /*
@@ -22,8 +18,8 @@ import static javax.persistence.AccessType.PROPERTY;
  * @BusinessObject(Entity)
  */
 @Entity
-@Access(FIELD)
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+
+@Inheritance(strategy = InheritanceType.JOINED)
 public class LinieDocument implements Serializable { 
 	
 	/**

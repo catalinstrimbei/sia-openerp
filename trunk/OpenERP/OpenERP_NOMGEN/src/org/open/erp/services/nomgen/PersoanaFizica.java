@@ -1,12 +1,10 @@
 package org.open.erp.services.nomgen;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 
 /*
@@ -16,6 +14,7 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class PersoanaFizica extends Persoana implements Serializable, PF{
 	/**
 	 * 
@@ -203,16 +202,6 @@ public class PersoanaFizica extends Persoana implements Serializable, PF{
 	}
 	
 
-	public PersoanaFizica(Integer id, Departament dep, String adresa,
-			List<String> telefoane2, List<String> emailuri2, String nume,
-			String prenume, String formaAdresare, char gen, String cnp) {
-		super(id, dep, adresa, telefoane2, emailuri2);
-		this.nume = nume;
-		this.prenume = prenume;
-		this.formaAdresare = formaAdresare;
-		this.gen = gen;
-		this.cnp = cnp;
-	}
 
 	public PersoanaFizica(String nume, String prenume, String formaAdresare,
 			char gen, String cnp) {
@@ -222,6 +211,18 @@ public class PersoanaFizica extends Persoana implements Serializable, PF{
 		this.formaAdresare = formaAdresare;
 		this.gen = gen;
 		this.cnp = cnp;
+	}
+
+	public PersoanaFizica(Integer id, String adresa, String nume,
+			String prenume, String formaAdresare, char gen, String cnp,
+			Persoana p) {
+		super(id, adresa);
+		this.nume = nume;
+		this.prenume = prenume;
+		this.formaAdresare = formaAdresare;
+		this.gen = gen;
+		this.cnp = cnp;
+		this.p = p;
 	}
 	
 	

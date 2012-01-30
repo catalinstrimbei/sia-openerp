@@ -40,10 +40,11 @@ public class RegistruProdus {
 
 	public void generateRandomProduse(Integer nrProduse) {
 		Random randomPret = new Random();
+		@SuppressWarnings("unused")
 		Integer pret;
 		for (int i = 1; i <= nrProduse; i++) {
 			pret = 50 + randomPret.nextInt(1450);
-			produse.add(new Produs(i, "Produs_" + i, null, null, i, i, i, null, pret.doubleValue()));
+			produse.add(new Produs(i, "Produs_" + i, null, null, i));
 		}
 	}
 

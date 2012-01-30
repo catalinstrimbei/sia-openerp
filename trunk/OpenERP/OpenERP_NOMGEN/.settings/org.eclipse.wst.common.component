@@ -2,7 +2,6 @@
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="OpenERP_NOMGEN">
         <wb-resource deploy-path="/" source-path="/ejbModule"/>
-        <wb-resource deploy-path="/" source-path="/.apt_generated"/>
         <wb-resource deploy-path="/" source-path="/src"/>
         <property name="java-output-path" value="/OpenERP_NOMGEN/bin"/>
     </wb-module>

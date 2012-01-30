@@ -3,6 +3,7 @@ package org.open.erp.services.nomgen;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -12,7 +13,7 @@ import javax.persistence.Id;
  * @BusinessObject(Entity)
  */
  
-//@Entity
+@Entity
 public class MijlocFix  implements Serializable{
 	@Id @GeneratedValue
 	private Integer id;

@@ -9,8 +9,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import static javax.persistence.CascadeType.ALL;
 
@@ -20,7 +18,7 @@ import static javax.persistence.CascadeType.ALL;
  * @BusinessObject(Entity)
  */
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+
 public class Material implements Serializable{ 
 	@Id @GeneratedValue
 	protected Integer idMaterial; 

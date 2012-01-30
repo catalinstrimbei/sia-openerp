@@ -15,7 +15,7 @@ public interface NomenclatoareSrv {
 	
 	public Set<Departament> getDepartament() throws Exception;
 	public Departament getDepDupaCod(Integer codDep) throws Exception;
-	 public void addDepartament(Departament document) throws Exception;
+	 public Departament addDepartament(Departament document) throws Exception;
 	 public void removeDepartament(Departament document) throws Exception;
 	 public Departament getDepartamentDupaDenumire(String den) throws Exception;
 	 public Long getCountDepartament() throws Exception;
@@ -27,7 +27,7 @@ public interface NomenclatoareSrv {
 	public Set<PersoanaFizica> getPF() throws Exception;
 	 public PersoanaFizica getPF(String idPersoana) throws Exception;
 	 public Set<Partener> getPartener() throws Exception;
-	 public Partener getPartenerDupaCodPersoana(String idPersoana) throws Exception;
+	 public Partener getPartenerDupaCodPersoana(Integer idPersoana) throws Exception;
 	 public Set<PersoanaJuridica> getPJ() throws Exception;
 	 public PersoanaJuridica getPJ(String idPersoana) throws Exception;
 	 public Persoana addPersoana(Persoana persoana) throws Exception;
@@ -36,10 +36,10 @@ public interface NomenclatoareSrv {
 	 public void addPartener(Partener partener) throws Exception;
 	 public void removePartener(Partener partener) throws Exception;
 	 public void refreshPartener(Partener partener) throws Exception;
-	 public void addPersoanaFizica(PersoanaFizica pf) throws Exception;
+	 public PersoanaFizica addPersoanaFizica(PersoanaFizica pf) throws Exception;
 	 public void removePersoanaFizica(PersoanaFizica pf) throws Exception;
 	 public void refreshPersoanaFizica(PersoanaFizica pf) throws Exception;
-	 public void addPersoanaJuridica(PersoanaJuridica pj) throws Exception;
+	 public PersoanaJuridica addPersoanaJuridica(PersoanaJuridica pj) throws Exception;
 	 public void removePersoanaJuridica(PersoanaJuridica pj) throws Exception;
 	 public void refreshPersoanaJuridica(PersoanaJuridica pj) throws Exception;
 	 public Persoana getPersoanaDupaAdresa(String adresa) throws Exception;

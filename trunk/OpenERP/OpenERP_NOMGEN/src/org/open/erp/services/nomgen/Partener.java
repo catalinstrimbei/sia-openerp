@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
-import javax.persistence.Id;
 
 /**
  * @author Echipa NomGen
@@ -17,6 +17,7 @@ import javax.persistence.Id;
  */
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Partener extends Persoana implements Serializable{
 	/**
 	 * 
@@ -99,7 +100,7 @@ public class Partener extends Persoana implements Serializable{
 	public Partener(Integer id, Departament dep, String adresa,
 			List<String> telefoane, List<String> emailuri, Integer id2,
 			Persoana p, Date dataAfilierii, Integer durataAfilierii) {
-		super(id, dep, adresa, telefoane, emailuri);
+		super();
 		id = id2;
 		this.p = p;
 		this.dataAfilierii = dataAfilierii;

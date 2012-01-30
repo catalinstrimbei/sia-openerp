@@ -7,9 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -17,7 +15,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 
@@ -29,7 +26,7 @@ import javax.persistence.Transient;
  * @BusinessObject(Entity)
  */
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Persoana implements Serializable {
 	
 
@@ -51,13 +48,13 @@ public class Persoana implements Serializable {
 	List<PF> pfe = new ArrayList<PF>();
 	
 	public Persoana(Integer id, Departament dep, String adresa,
-			List<String> telefoane2, List<String> emailuri2) {
+			ArrayList<String> string, ArrayList<String> string2) {
 		super();
 		this.id = id;
 		this.dep = dep;
 		this.adresa = adresa;
-		this.telefoane = (ArrayList<String>) telefoane2;
-		this.emailuri = (ArrayList<String>) emailuri2;
+		this.telefoane =  string;
+		this.emailuri =  string2;
 		
 		
 	
