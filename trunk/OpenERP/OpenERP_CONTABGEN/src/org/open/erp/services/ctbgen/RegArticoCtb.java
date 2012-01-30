@@ -14,7 +14,7 @@ public class RegArticoCtb extends Registru{
 	private static RegArticoCtb singleReference;
 
 	private RegArticoCtb() {
-		sqlDefaultText = "SELECT o FROM Articole_Inregistrari o";
+		sqlDefaultText = "SELECT o FROM ArticolCtb o";
 	}
 
 	public static RegArticoCtb instantiaza() {

@@ -20,7 +20,7 @@ import javax.persistence.JoinColumn;
  */
 
 @Entity
-@Table(name="Articole_Inregistrari")
+//@Table(name="Articole_Inregistrari")
 public class ArticolCtb  implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
