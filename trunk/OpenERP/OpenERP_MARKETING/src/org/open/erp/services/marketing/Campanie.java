@@ -34,9 +34,9 @@ public  class Campanie implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static final Integer NE_PORNITA = -1; 
-	public static final Integer IN_CURS = 1;
-	public static final Integer TERMINATA = 2; 
+	public static final Integer NE_PORNITA =1; 
+	public static final Integer IN_CURS = 2;
+	public static final Integer TERMINATA = 3; 
 	
 	@Id @GeneratedValue
 	private Integer idCampanie;
@@ -137,4 +137,35 @@ public  class Campanie implements Serializable {
 	public void stergePersoaneTinta(PersoanaTinta persoanaTinta){
 		this.PersoaneTinta.remove(persoanaTinta);
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idCampanie == null) ? 0 : idCampanie.hashCode());
+		return result;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Campanie other = (Campanie) obj;
+		if (idCampanie == null) {
+			if (other.idCampanie != null)
+				return false;
+		} else if (!idCampanie.equals(other.idCampanie))
+			return false;
+		return true;
+	}
+	
 	}

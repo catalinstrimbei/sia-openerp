@@ -179,4 +179,5 @@ Collection<Intrebare> getListaIntrebariChestionar(Chestionar chestionar_) throws
 Collection<Intrebare> getListaIntrebari() throws Exception;
 Intrebare getIntrebareById(Integer idIntrebare_) throws Exception;
 void stergeIntrebare(Intrebare intrebare_) throws Exception;
+List<Chestionar> getListaChestionare() throws Exception;
 }

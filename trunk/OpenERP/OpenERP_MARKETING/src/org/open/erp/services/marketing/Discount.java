@@ -19,12 +19,48 @@ public class Discount implements Serializable {
 	
 	protected String	denumireDiscount;
 	protected Integer	tipDiscount = PROCENT;
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idDiscount == null) ? 0 : idDiscount.hashCode());
+		return result;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Discount other = (Discount) obj;
+		if (idDiscount == null) {
+			if (other.idDiscount != null)
+				return false;
+		} else if (!idDiscount.equals(other.idDiscount))
+			return false;
+		return true;
+	}
 	protected Float		valoare;
 	/**
 	 * @return idDiscount
 	 */
 	public Integer getIdDiscount() {
 		return idDiscount;
+	}
+	/**
+	 * @param denumireDiscount the denumireDiscount to set
+	 */
+	public void setDenumireDiscount(String denumireDiscount) {
+		this.denumireDiscount = denumireDiscount;
 	}
 	/**
 	 * @param idDiscount the idDiscount to set

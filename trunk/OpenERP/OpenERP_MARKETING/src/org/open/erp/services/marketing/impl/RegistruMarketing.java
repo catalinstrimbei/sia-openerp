@@ -437,7 +437,7 @@ public class RegistruMarketing {
 		}
 	}
 	
-	public Collection<Intrebare> getListaIntrebariChestionar(Chestionar chestionar_) throws Exception {
+	public List<Intrebare> getListaIntrebariChestionar(Chestionar chestionar_) throws Exception {
 		try
 		{
 			return   entityManager.createQuery("SELECT i FROM  Intrebare i where i.chestionar = :chestionar_")
@@ -483,6 +483,19 @@ public class RegistruMarketing {
 			logger.info("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
 			logger.info("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.info("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
+
+	public List<Chestionar> getListaChestionare() throws Exception {
+		try
+		{
+			return entityManager.createQuery("SELECT x FROM Chestionar as x").getResultList();
+		}
+		catch(Exception ex)
+		{
+			logger.info("EROARE PERSISTENTA *****");
+			ex.printStackTrace();  
 			throw ex;
 		}
 	}

@@ -150,6 +150,36 @@ public class Chestionar implements Serializable{
 	public Chestionar() {
 		super();
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idChestionar == null) ? 0 : idChestionar.hashCode());
+		return result;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chestionar other = (Chestionar) obj;
+		if (idChestionar == null) {
+			if (other.idChestionar != null)
+				return false;
+		} else if (!idChestionar.equals(other.idChestionar))
+			return false;
+		return true;
+	}
 
 	
 }

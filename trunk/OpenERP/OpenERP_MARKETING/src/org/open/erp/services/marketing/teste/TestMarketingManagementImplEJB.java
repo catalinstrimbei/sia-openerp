@@ -198,14 +198,14 @@ public class TestMarketingManagementImplEJB {
 		public void testdefinireChestionar() throws Exception{
 			Chestionar chestionar= new Chestionar();
 			
-			chestionar.setDenumireChestionar("Primul chestionar");
+			chestionar.setDenumireChestionar("alt chestionar");
 			chestionar.setNumarIntrebari(3);
 			chestionar.setScopChestionar("Produs nou");
 			chestionar = marketingInstance.salveazaChestionar(chestionar);
 					
 			Intrebare	intrebare;
 			intrebare = new Intrebare();
-			intrebare.setTextIntrebare("Ce parere aveti despre noul produs?");
+			intrebare.setTextIntrebare("Ce parere aveti despre noul nostru produs?");
 			intrebare.setTipIntrebare("Un singur raspuns");
 			intrebare.setChestionar(chestionar);
 			intrebare = marketingInstance.salveazaIntrebare(intrebare);
@@ -220,7 +220,7 @@ public class TestMarketingManagementImplEJB {
 			raspuns = marketingInstance.salveazaRaspunsIntrebare(raspuns);
 			
 			intrebare = new Intrebare();
-			intrebare.setTextIntrebare("Cat ati fi dispus sa platiti pentru noul produs?");
+			intrebare.setTextIntrebare("Cat ati fi dispus sa platiti pentru noul nostru produs?");
 			intrebare.setTipIntrebare("Un singur raspuns");
 			intrebare.setChestionar(chestionar);
 			intrebare = marketingInstance.salveazaIntrebare(intrebare);

@@ -529,11 +529,15 @@ public class MarketingManagementImpl implements  MarketingManagementSrvLocal,Mar
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
-	public Collection<Intrebare> getListaIntrebariChestionar ( Chestionar chestionar_) throws Exception {	
-			logger.info(">>>>>>Start getListaContracteAngajatEJB din personal impl");
-			Collection<Intrebare> result = this.registruMarketing.getListaIntrebariChestionar(chestionar_);
+	public List<Intrebare> getListaIntrebariChestionar ( Chestionar chestionar_) throws Exception {	
+			logger.info(">>>>>>Start ");
+			List<Intrebare> result = this.registruMarketing.getListaIntrebariChestionar(chestionar_);
 			logger.info(">>>>>>End ");
 			return result;
+	}
+	public List<Chestionar> getListaChestionare() throws Exception{
+		List<Chestionar> result = this.registruMarketing.getListaChestionare();
+		return result;
 	}
 	
 }
