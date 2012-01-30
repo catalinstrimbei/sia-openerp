@@ -35,17 +35,17 @@ Functionalitati:
 || *Nr* || *Modul * || *Entitati utilizate* || 
 || 1 || VANZARI  ||FacturaEmisa, Client ||
 || 2 || PERSONAL  || Angajat ||
-|| 3 || NOMGEN || PersoanaFizica ||
+|| 3 || NOMGEN || PersoanaFizica||
 
       * _Entitati locale:_
 || *Nr* || *Denumire entitate* ||   
-|| 1 || BiletLaOrdin ||
-|| 2 || Cec || 
-|| 3 || Chitanta || 
-|| 4 || ExtrasCont ||
+|| 1 || BiletLaOrdin||
+|| 2 || Cec|| 
+|| 3 || Chitanta|| 
+|| 4 || ExtrasCont||
 || 5 || Incasare||
-|| 6 || StareDocument || 
-|| 7 || TipIncasare ||
+|| 6 || StareDocument|| 
+|| 7 || TipIncasare||
 
 * _Operatiuni/Actiuni:_
 || *Metode/Procese* || *Observatii*  ||
@@ -77,8 +77,6 @@ Functionalitati:
 || getFacturaDupaId() || Se interogheaza lista facturilor in functie de id ||
 || getClientDupaId() || Se interogheaza lista clientilor in functie de id ||
 || getChitante() || Se interogheaza lista chitantelor ||
-
-
 
 
 
