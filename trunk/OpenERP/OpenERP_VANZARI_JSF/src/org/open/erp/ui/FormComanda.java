@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
@@ -13,11 +15,13 @@ import javax.faces.convert.Converter;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.vanzari.Comanda;
 import org.open.erp.services.vanzari.LinieComanda;
 import org.open.erp.services.vanzari.VanzariSrv;
+
 
 @ManagedBean(name="formComanda")
 public class FormComanda implements Converter {
@@ -133,6 +137,70 @@ public class FormComanda implements Converter {
 	}
 	
 	/* Implementare CRUD */
+	public void adaugareComanda(ActionEvent evt){
+		this.comanda = new Comanda();
+		this.comanda.setNrComanda(-1);
+		this.comanda.setStareComanda('P');
+		this.comenzi.add(comanda);
+	}
 	
+	public void salvareComanda(ActionEvent evt){
+		this.comenzi.remove(this.comanda);
+		if( this.comanda.getNrComanda() == -1){
+			this.comanda.setNrComanda(null);
+		} 
+		
+		try {
+			this.comanda = vnzInstance.salveazaComanda(this.comanda);
+		} catch(Exception e){
+			logger.debug("Eroare la salvare comanda");
+		}
+		
+		logger.info("Am salvat comanda cu nr: " + comanda.getNrComanda());
+		this.comenzi.add(this.comanda);
+	} 
+
+	
+	public void editeazaLinieComanda(ActionEvent evt){
+	
+	}
+	
+	public void stergeLinieComanda(ActionEvent evt){
+	
+	}
+	
+	public void adaugaLinieComanda(ActionEvent evt){
+	
+	}
+	
+	public void validate(FacesContext arg0, UIComponent uiComponent, Object uiValue){
+	
+	}
+	
+	
+	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
+	private static InitialContext initJBossJNDICtx() throws Exception{
+		Properties props = new Properties();
+        props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");		
+        props.put("java.naming.provider.url", "jnp://localhost:1099/");
+        props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
+        return new InitialContext(props);
+	}
+	
+	/* Initializare formularului*/	
+	@PostConstruct // Referinta EJB injectata este disponibila numai abua in handlerul PostConstruct, si nu la nivelul constructorului
+	private void initFormComanda() throws Exception{
+		logger.debug("PostConstruct FORM Comanda local: ..." + this.vnzInstance);
+
+		this.comenzi = vnzInstance.getListaComenzi();
+		if (!comenzi.isEmpty())
+			this.comanda = comenzi.get(0);
+		else{
+			System.out.println("Nici o comanda disponibila!");
+			this.comanda = new Comanda();
+		}
+		this.liniiComanda = vnzInstance.getLiniiComanda(comanda);
+	}
+
 
 }
