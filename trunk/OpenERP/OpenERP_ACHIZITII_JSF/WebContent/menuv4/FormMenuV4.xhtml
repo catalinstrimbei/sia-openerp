@@ -10,8 +10,7 @@
 
 <body>
 	<div
-		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">MODUL
-		MOD_OPENERP [menuV4]</div>
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">ACHIZITII_OPENERP [menuV4]</div>
 		
 	<h:form>
 		<rich:toolbar>
@@ -20,33 +19,40 @@
 				<f:facet name="label">
 					<h:outputText value="Operatiuni" />
 				</f:facet>				
-				<rich:menuItem label="Editare Form1" 
+				<rich:menuItem label="Editare Categorie" 
 					actionListener="#{formMenu.actionSrcChangeForm}"
 					action="#{formMenu.changeRichSrcFormCurent}" >
-					<f:attribute name="srcForm" value="Form1">
+					<f:attribute name="srcForm" value="FormCategorie">
 					</f:attribute>
 				</rich:menuItem>
-				<rich:menuItem label="Editare Form2"
+				<rich:menuItem label="Editare CerereOferta"
 					actionListener="#{formMenu.actionSrcChangeForm}"
 					action="#{formMenu.changeRichSrcFormCurent}" >
-					<f:attribute name="srcForm" value="Form2">
+					<f:attribute name="srcForm" value="FormCerereOferta">
 					</f:attribute>
 				</rich:menuItem>
-				<rich:menuItem label="FormRaport"
+				
+				<rich:menuItem label="Editare Detalii CerereOferta"
 					actionListener="#{formMenu.actionSrcChangeForm}"
 					action="#{formMenu.changeRichSrcFormCurent}" >
-					<f:attribute name="srcForm" value="FormRaport">
+					<f:attribute name="srcForm" value="FormCerereOfertaLinii">
 					</f:attribute>
-				</rich:menuItem>				
-			</rich:dropDownMenu>
-			
-			<rich:dropDownMenu label="Liste">
-				<f:facet name="label">
-					<h:outputText value="Liste"/>
-				</f:facet>			
-				<rich:menuItem label="Listare Raport1" actionListener="#{formMenu.showRaport}">
-					<f:attribute name="srcRaport" value="Raport1"/>
 				</rich:menuItem>
+				
+				<rich:menuItem label="Editare Detalii Comanda"
+					actionListener="#{formMenu.actionSrcChangeForm}"
+					action="#{formMenu.changeRichSrcFormCurent}" >
+					<f:attribute name="srcForm" value="FormComandaLiniiComanda">
+					</f:attribute>
+				</rich:menuItem>
+				
+				<rich:menuItem label="Editare Furnizor"
+					actionListener="#{formMenu.actionSrcChangeForm}"
+					action="#{formMenu.changeRichSrcFormCurent}" >
+					<f:attribute name="srcForm" value="FormFurnizor">
+					</f:attribute>
+				</rich:menuItem>
+				
 			</rich:dropDownMenu>
 			
 			<rich:dropDownMenu mode="ajax">
@@ -64,7 +70,7 @@
 	<rich:popupPanel id="modalPanel" autosized="true">
 		<h:panelGrid columns="1" border="0">
 			<h:graphicImage url="/img/erp_4.jpg"></h:graphicImage>
-			<a href="#" onclick="#{rich:component('modalPanel')}.hide()">About for MODUL ERP! [Click to Close]</a>		
+			<a href="#" onclick="#{rich:component('modalPanel')}.hide()">About  MODUL ERP! [Click to Close]</a>		
 		</h:panelGrid>
 	</rich:popupPanel>	
 

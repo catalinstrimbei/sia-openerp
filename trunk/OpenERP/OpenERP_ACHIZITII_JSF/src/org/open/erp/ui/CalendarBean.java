@@ -1,42 +1,5 @@
 package org.open.erp.ui;
 
-/*
-<rich:calendar value="#{calendarBean.selectedDate}"
-                       locale="#{calendarBean.locale}"
-                       popup="#{calendarBean.popup}"
-                       datePattern="#{calendarBean.pattern}"                      
-                       cellWidth="24px" cellHeight="22px" style="width:200px"/>
-
-
-	<listener>
-		<listener-class>org.apache.myfaces.webapp.StartupServletContextListener</listener-class>
-	</listener>
-	
-	
-	<!-- Rich Faces Config -->
-	<context-param>
-		<param-name>org.richfaces.SKIN</param-name>
-		<param-value>classic</param-value>
-	</context-param>
-	<context-param>
-		<param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>
-		<param-value>com.sun.facelets.FaceletViewHandler</param-value>
-	</context-param>
-	<filter>
-		<display-name>RichFaces Filter</display-name>
-		<filter-name>richfaces</filter-name>
-		<filter-class>org.ajax4jsf.Filter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>richfaces</filter-name>
-		<servlet-name>Faces Servlet</servlet-name>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>FORWARD</dispatcher>
-		<dispatcher>INCLUDE</dispatcher>
-	</filter-mapping>	
-
-*/
-
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;

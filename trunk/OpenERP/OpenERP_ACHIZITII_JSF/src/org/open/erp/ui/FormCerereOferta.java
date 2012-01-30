@@ -14,12 +14,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.model.DataModel;
-import javax.faces.model.ListDataModel;
 import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.achizitii.AprovizionareSrv;
+import org.open.erp.services.achizitii.AprovizionareSrvLocal;
 import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.LinieCerereOferta;
 
@@ -34,8 +32,8 @@ public class FormCerereOferta implements Converter{
 
 	
 	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
-	@EJB(name="AprovizionareSrv", mappedName="AprovizionareSrv")
-	private AprovizionareSrv achizitiiInstance;
+	@EJB(name="AprovizionareSrv/local", mappedName="AprovizionareSrv/local")
+	private AprovizionareSrvLocal achizitiiInstance;
 	
 	/* Data Model */
 	private List<CerereOferta> cereri = new ArrayList<CerereOferta>();

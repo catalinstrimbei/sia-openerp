@@ -15,7 +15,7 @@ import javax.faces.event.ActionEvent;
 import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.achizitii.AprovizionareSrv;
+import org.open.erp.services.achizitii.AprovizionareSrvLocal;
 import org.open.erp.services.achizitii.Categorie;
 
 @ManagedBean(name="formCategorie")
@@ -25,8 +25,8 @@ public class FormCategorie implements Converter{
 	private static Logger logger = Logger.getLogger(FormCategorie.class.getPackage().getName());
 	
 	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
-	@EJB(name="AprovizionareSrv", mappedName="AprovizionareSrv")
-	private AprovizionareSrv achizitiiInstance;
+	@EJB(name="AprovizionareSrv/local", mappedName="AprovizionareSrv/local")
+	private AprovizionareSrvLocal achizitiiInstance;
 	
 	/* Data Model */
 	private List<Categorie> categorii = new ArrayList<Categorie>();

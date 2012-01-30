@@ -15,9 +15,8 @@ import javax.faces.event.ActionEvent;
 import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.achizitii.Categorie;
+import org.open.erp.services.achizitii.AprovizionareSrvLocal;
 import org.open.erp.services.achizitii.Furnizor;
-import org.open.erp.services.achizitii.impl.AprovizionareImpl;
 
 @ManagedBean(name="formFurnizor")
 @SessionScoped
@@ -26,8 +25,8 @@ public class FormFurnizor implements Converter{
 	private static Logger logger = Logger.getLogger(FormFurnizor.class.getPackage().getName());
 	
 	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
-	@EJB(name="AprovizionareSrv", mappedName="AprovizionareSrv")
-	private AprovizionareImpl achizitiiInstance;
+	@EJB(name="AprovizionareSrv/local", mappedName="AprovizionareSrv/local")
+	private AprovizionareSrvLocal achizitiiInstance;
 	
 	/* Data Model */
 	private List<Furnizor> furnizori = new ArrayList<Furnizor>();
