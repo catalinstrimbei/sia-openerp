@@ -1,5 +1,4 @@
 #summary One-sentence summary of this page.
-#labels Nr,Modul,Entitatiutilizate,1,VANZARI,FacturaEmisaClient,2,PERSONAL,Angajat,3,NOMGEN,PersoanaFizica
 
 = Introduction =
 
