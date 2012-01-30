@@ -21,6 +21,10 @@ import org.open.erp.services.nomgen.PersoanaJuridica;
 
 @Entity
 public class ContBancaPF implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1783121756945660822L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idContBancaPF;

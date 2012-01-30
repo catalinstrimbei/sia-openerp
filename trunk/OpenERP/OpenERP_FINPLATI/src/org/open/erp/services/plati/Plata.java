@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
+//import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +24,11 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 @MappedSuperclass
 public class Plata implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5537476422569587421L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Integer idPlata;

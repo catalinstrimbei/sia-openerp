@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.open.erp.services.nomgen.Material;
-import javax.persistence.TableGenerator;
+//import javax.persistence.TableGenerator;
 /**
  * 
  * @author echipa.achizitii

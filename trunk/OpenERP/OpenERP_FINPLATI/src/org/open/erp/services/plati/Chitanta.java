@@ -11,18 +11,22 @@ package org.open.erp.services.plati;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+//import javax.persistence.DiscriminatorValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
+//import javax.persistence.ManyToOne;
 
 import org.open.erp.services.plati.Plata;
 import org.open.erp.services.personal.Angajat;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+//import javax.persistence.GeneratedValue;
 
 @Entity
 public class Chitanta extends Plata implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8553756025142218909L;
 	/**
 	 * 
 	 */

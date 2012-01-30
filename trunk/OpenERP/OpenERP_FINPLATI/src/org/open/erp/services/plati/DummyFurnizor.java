@@ -23,6 +23,10 @@ import static javax.persistence.CascadeType.ALL;
 @Entity
 public class DummyFurnizor implements Serializable {
 /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7847586831319450149L;
+/**
  * 
  */
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)

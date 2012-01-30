@@ -9,7 +9,7 @@ package org.open.erp.services.plati;
 
 import java.io.Serializable;
 
-import javax.persistence.DiscriminatorValue;
+//import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,6 +19,11 @@ import org.open.erp.services.nomgen.Produs;
 
 @Entity
 public class LinieFacturaPrimita extends LinieDocument implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6610341896147054558L;
+
 	@Id
 	@GeneratedValue
 	Integer idLinieFactura;

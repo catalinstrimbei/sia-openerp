@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
-import javax.persistence.DiscriminatorValue;
+//import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,6 +29,10 @@ import org.open.erp.services.plati.LinieFacturaPrimita;
 
 @Entity
 public class FacturaPrimita extends Document implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1632510256751685535L;
 	public static final Boolean PLATITA = true;
 	public static final Boolean NEPLATITA = false;
 	

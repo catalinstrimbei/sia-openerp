@@ -90,7 +90,7 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 		// TODO Auto-generated method stub
 		
 		if (sumaIncasata == null ||  sumaIncasata == 0.00 ) {
-			throw new PlatiExceptions("Suma incasarii nu poate fi nula!");
+			throw new PlatiExceptions("Suma platita nu poate fi nula!");
 		}
 		Chitanta chitanta;
 
