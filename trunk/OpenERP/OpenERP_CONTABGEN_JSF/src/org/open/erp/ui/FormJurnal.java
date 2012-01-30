@@ -1,7 +1,6 @@
 package org.open.erp.ui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,24 +8,14 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlDataTable;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.event.ActionEvent;
-
-
-
-import org.open.erp.services.ctbgen.Cont;
 import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.InregistrareRJ;
-import org.open.erp.services.ctbgen.ArticolCtb;
-import org.open.erp.services.ctbgen.RegConturi;
 import org.open.erp.services.ctbgen.RegInregistrareRJ;
-import org.open.erp.services.ctbgen.Cont.StatusSintetic;
-import org.open.erp.services.ctbgen.Cont.TipCont;
+
 
 //@ManagedBean(name="formJurnal")
 //@SessionScoped
@@ -36,7 +25,19 @@ public class FormJurnal implements Converter{
 	private List<InregistrareRJ> inregistrari = new ArrayList<InregistrareRJ>();
 	private InregistrareRJ inregistrare;// = null;
 	private RegInregistrareRJ regInr;
-		
+	
+	
+	
+	public InregistrareRJ getInregistrare() {
+		return inregistrare;
+	}
+
+
+	public void setInregistrare(InregistrareRJ inregistrare) {
+		this.inregistrare = inregistrare;
+	}
+
+
 	public List<InregistrareRJ> getInregistrariList() {
 		return inregistrari;
 	}
@@ -76,14 +77,14 @@ public class FormJurnal implements Converter{
 		return inregMap;
 	}
 
-	public InregistrareRJ getInreg() {
-		return inregistrare;
-	}
-	
-
-	public void setinreg(InregistrareRJ inreg) {
-		this.inregistrare = inreg;
-	}
+//	public InregistrareRJ getInreg() {
+//		return inregistrare;
+//	}
+//	
+//
+//	public void setinreg(InregistrareRJ inreg) {
+//		this.inregistrare = inreg;
+//	}
 
 	public String previous2() {
 		
