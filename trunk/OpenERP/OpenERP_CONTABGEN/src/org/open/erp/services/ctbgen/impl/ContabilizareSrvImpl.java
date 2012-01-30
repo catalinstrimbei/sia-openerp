@@ -1073,4 +1073,10 @@ public class ContabilizareSrvImpl implements ContabilizareSrvLocal, Contabilizar
 		RegConturi.instantiaza().removeCont(cont);
 		
 	}
+
+	@Override
+	public RegTipuriContabile getRegTipuriContabile() {
+		
+		return RegTipuriContabile.instantiaza();
+	}
 }

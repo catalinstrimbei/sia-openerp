@@ -135,7 +135,7 @@ public class InregistrareRJ implements Comparable<InregistrareRJ>, Serializable{
 
 	@Override
 	public String toString() {
-		return "InregistrareRJ [articolRJ=" + articoleRJ.toString() + "]";
+		return "Inreg-"+this.getIdInregRJ()+"/"+this.getDataInregRJ();
 	}
 
 	public void anuleazaInreg(){

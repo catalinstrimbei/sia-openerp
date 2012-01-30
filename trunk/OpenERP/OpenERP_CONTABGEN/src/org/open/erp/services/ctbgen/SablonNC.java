@@ -90,9 +90,7 @@ public class SablonNC implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "SablonNC [idSablon=" + idSablon + ", nrSablon=" + nrSablon
-				+ ", contDebit=" + contDebit + ", contCredit=" + contCredit
-				+ "]";
+		return "Sablon nr. "  + nrSablon;
 	}
 	
 

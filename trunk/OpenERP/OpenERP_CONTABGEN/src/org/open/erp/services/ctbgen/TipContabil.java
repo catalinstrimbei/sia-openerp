@@ -90,8 +90,7 @@ public class TipContabil implements Serializable{
 
 	@Override
 	public String toString() {
-		return "TipContabil [idTipContabil=" + idTipContabil + ", denumireTip=" + denumireTip + ", contProprietar=" + contProprietar
-				+ ", contIntrare=" + contIntrare + ", contIesire=" + contIesire + "]";
+		return "TipCtb-" + this.getDenumireTip();
 	}
 	
 }

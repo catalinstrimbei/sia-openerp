@@ -219,6 +219,8 @@ public interface ContabilizareSrv {
 	public List<InregistrareRJ>	getListaInreg();
 	public Cont salveazaCont(Cont cont);
 	public void stergeCont(Cont cont);
+
+	public RegTipuriContabile getRegTipuriContabile();
 	
 	
 		
