@@ -31,5 +31,14 @@
 			<attribute name="owner.project.facets" value="jst.jstl"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="/OpenERP_CONTABGEN"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="/OpenERP_ACHIZITII"/>
+	<classpathentry kind="src" path="/OpenERP_PERSONAL"/>
+	<classpathentry kind="src" path="/OpenERP_FINPLATI"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
