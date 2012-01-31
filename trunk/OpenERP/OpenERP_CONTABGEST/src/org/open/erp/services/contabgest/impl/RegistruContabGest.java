@@ -2,9 +2,11 @@ package org.open.erp.services.contabgest.impl;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.contabgest.CentruCost;
@@ -336,9 +338,32 @@ public class RegistruContabGest {
 		return dummyFazaProductieNoua;	}
 
 	
-
-	
-
+	public ArrayList<ProdusFinit> getProduseFInitte() {
+					Query q = entityManager.createQuery(
+						"SELECT c FROM ProdusFinit c "	);
+					@SuppressWarnings("unchecked")
+					ArrayList<ProdusFinit> produseFinite = (ArrayList<ProdusFinit>) q
+							.getResultList();
+					return produseFinite;
+				}
+				/* persistenta */
+				public ProdusFinit salveazaProdus(ProdusFinit produsFinit) throws Exception{
+					try{
+			
+						//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+						if (produsFinit.getIdProdusFinit() == null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+							entityManager.find(produsFinit.getClass(), produsFinit.getIdProdusFinit()) == null)
+							entityManager.persist(produsFinit);
+						else
+							entityManager.merge(produsFinit);
+		
+					}catch(Exception ex){
+						logger.info("EROARE PERSISTENTA ***** ");
+						ex.printStackTrace();
+						throw ex;
+					}
+					return produsFinit;
+				}
 	
 }
 
