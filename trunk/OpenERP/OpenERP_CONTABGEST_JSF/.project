@@ -33,4 +33,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>BIRTReportEngine</name>
+			<type>2</type>
+			<location>E:/_jboss-5.0.1.GA/jboss-5.0.1.GA/server/default/lib/BIRTReportEngine</location>
+		</link>
+	</linkedResources>
 </projectDescription>

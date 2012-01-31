@@ -1,5 +1,5 @@
 package org.open.erp.ui.reports;
-
+/*
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -14,12 +14,12 @@ import org.eclipse.birt.report.engine.api.IReportEngineFactory;
 import org.eclipse.birt.report.engine.api.IReportRunnable;
 import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
 import org.eclipse.birt.report.engine.api.RenderOption;
-
+*/
 public class StanAloneReportRunner {
-
+/*
 	public static void main(String[] args) {
 		/* Classpath testing */
-		String appPath = new File(ClassLoader.getSystemClassLoader()
+/*		String appPath = new File(ClassLoader.getSystemClassLoader()
 				.getResource("").getPath()).getPath();
 		String reportPath = appPath + "/org/comenzi/reports";
 		System.out.println(reportPath);
@@ -33,7 +33,7 @@ public class StanAloneReportRunner {
 		// Start the platform for a non-RCP application.
 		try {
 			/* Start Report Engine */
-			Platform.startup(config);
+	/*		Platform.startup(config);
 			IReportEngineFactory factory = (IReportEngineFactory) Platform
 					.createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
 			// Set up writing images or charts embedded in HTML output.
@@ -45,7 +45,7 @@ public class StanAloneReportRunner {
 			System.out.println("Started BIRT Report Engine ...");
 
 			/* Open report design */
-			String designName = reportPath + "/ReportClienti.rptdesign";
+	/*		String designName = reportPath + "/ReportClienti.rptdesign";
 			IReportRunnable runnable = null;
 			try {
 				runnable = engine.openReportDesign(designName);
@@ -60,7 +60,7 @@ public class StanAloneReportRunner {
 
 			/* Generate report from design */
 			// Create a run and render task object.
-			IRunAndRenderTask task = engine.createRunAndRenderTask(runnable);
+	/*		IRunAndRenderTask task = engine.createRunAndRenderTask(runnable);
 			// Set PDF Format
 			String outputName = reportPath + "/ReportClienti.pdf";
 			//PDFRenderOption pdfRenderOptions = new PDFRenderOption();
@@ -95,4 +95,5 @@ public class StanAloneReportRunner {
 			e.printStackTrace();
 		}
 	}
+	*/
 }

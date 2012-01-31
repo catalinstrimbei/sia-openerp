@@ -11,10 +11,54 @@
 	</h:head>
 	
 	<h:body>
-	<div style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">
-		Form_2
-	</div>	
-		<rich:calendar datePattern="dd/MM/yyyy hh:mm:ss" />
+	Detalii Centru Cost<h:form id="formCentruCost">
+		<h:panelGrid columns="2" border="0">
+			<p:facet name="header">
+				<h:outputText value="Procese Tehnico-Economice" style="color: #FF0000"></h:outputText>
+			</p:facet>
+
+			<h:selectOneMenu id="cboCentruCost">
+				<p:selectItems></p:selectItems>
+				</h:selectOneMenu>
+			<h:panelGrid columns="2" border="0">
+				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
+					>
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+				<h:commandButton id="cmdNext" value="&gt;&gt;">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+			</h:panelGrid>
+
+			<h:outputText value="Denumire Proces"></h:outputText>
+			<h:inputText id="nume" ></h:inputText>
+
+			<h:outputText value="Detalii Proces"></h:outputText>
+			<h:inputText id="detaliiProces">
+			</h:inputText>
+
+						<p:facet name="footer">
+				<h:panelGrid columns="4" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare">
+						</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Renunta">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare">
+					</h:commandButton>
+				</h:panelGrid>
+			</p:facet>
+		</h:panelGrid>
+		<h:messages style="color: #FF0000"></h:messages>
+		
+	</h:form>
+
+	
+	
 	</h:body>
 
 </html>

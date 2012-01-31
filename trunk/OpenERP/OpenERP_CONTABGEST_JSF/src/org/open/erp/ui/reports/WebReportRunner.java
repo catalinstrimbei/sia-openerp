@@ -1,5 +1,5 @@
 package org.open.erp.ui.reports;
-
+/*
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -21,13 +21,13 @@ import org.eclipse.birt.report.engine.api.RenderOption;
 
 import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 
-
+*/
 public class WebReportRunner {
-	
+	/*
 	public static void runReport(String reportName) {
 		/* Classpath */
 		//String reportPath = "./";
-		FacesContext faces = FacesContext.getCurrentInstance();
+/*		FacesContext faces = FacesContext.getCurrentInstance();
 		ServletContext servletContext = (ServletContext) 
 				FacesContext.getCurrentInstance().getExternalContext().getContext();		
 		
@@ -36,11 +36,11 @@ public class WebReportRunner {
 		String reportPath = servletContext.getRealPath("") + "/";
 		
 		/* Create an EngineConfig object. */
-		EngineConfig config = new EngineConfig();
+	/*	EngineConfig config = new EngineConfig();
 		// Start the platform for a non-RCP application.
 		try {
 			/* Start Report Engine */
-			config.setBIRTHome("");
+	/*		config.setBIRTHome("");
 			//config.setBIRTHome("E:/Professional/Programare_OO/Projects/Exemple_WKS/libraries/BIRTReportEngine");
 			IPlatformContext context = new PlatformServletContext(servletContext);
 			config.setPlatformContext(context);
@@ -50,12 +50,12 @@ public class WebReportRunner {
 			IReportEngine engine = factory.createReportEngine(config);
 			
 			/* Open report design */
-			String designName = reportPath + reportName;
+	/*		String designName = reportPath + reportName;
 			IReportRunnable runnable = engine.openReportDesign(designName);
 
 			/* Generate report from design */
 			// Create a run and render task object.
-			IRunAndRenderTask task = engine.createRunAndRenderTask(runnable);
+	/*		IRunAndRenderTask task = engine.createRunAndRenderTask(runnable);
 			// Set PDF Format
 			String outputName = reportPath + "ReportClienti.pdf";
 			// PDF Render option
@@ -71,7 +71,7 @@ public class WebReportRunner {
 
 			/* Render as PDF */
 			// read PDF generate
-			File pdfFile = new File(outputName);
+		/*	File pdfFile = new File(outputName);
 			FileInputStream doc = new FileInputStream(pdfFile);
 			byte[] pdf = new byte[(int) pdfFile.length()]; 
 			doc.read(pdf);
@@ -88,4 +88,5 @@ public class WebReportRunner {
 			e.printStackTrace();
 		}
 	}
+	*/
 }

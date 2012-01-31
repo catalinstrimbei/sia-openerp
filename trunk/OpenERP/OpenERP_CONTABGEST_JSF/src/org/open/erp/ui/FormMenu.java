@@ -101,7 +101,7 @@ public class FormMenu {
 	public void showRaport(ActionEvent evt){
 		String srcRaport = evt.getComponent().getAttributes().get("srcRaport").toString();
 		logger.debug("START Loading report ... " + srcRaport);
-		WebReportRunner.runReport(srcRaport + ".rptdesign");
+		//WebReportRunner.runReport(srcRaport + ".rptdesign");
 		logger.debug("END Loading report ... " + srcRaport);
 	}	
 

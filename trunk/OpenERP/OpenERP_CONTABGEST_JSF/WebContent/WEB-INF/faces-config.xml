@@ -16,6 +16,11 @@
 		<managed-bean-class>org.open.erp.ui.FormProiecte</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>formProdus1</managed-bean-name>
+		<managed-bean-class>org.open.erp.ui.FormProdus</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	
 	<lifecycle>
 		<phase-listener>org.open.erp.ui.PhaseTracker</phase-listener>
