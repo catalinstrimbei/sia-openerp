@@ -88,38 +88,8 @@ public class TestContabGestEJB {
 			logger.info("End test: creareProdusFinit");
 		}
 		
-		@Test
-		public void testCreareCheltuieliFixe() throws Exception{
-			
-			logger.info("Begin test: creareCheltuieliFixe");
-			
-			//Double valoareBugetata = 2555.0;
-			CheltuieliFixe cheltuieliFixe = contabGestInstance.defCheltuieliFixe("FIXA", "Cheltuiala fixa 1", "Detalii 1");
-			
-			logger.info("Cheltuiala fixa cu id: " + cheltuieliFixe.getIdTipCheltuieli() + " a fost creata!");
-			
-			assertNotNull("Cheltuiala fixa ne-validat!", cheltuieliFixe.getIdTipCheltuieli());
-			
-			//dummyPersoana = contabGestInstance.defDummyPersoana(id, nume, prenume, formaAdresare, gen, cnp)(proiect.getIdProiect());
-			
-			assertNotNull("Nu exista Cheltuiala fixa noua!", cheltuieliFixe);
-			logger.info("End test: crearecheltuieliFixe");
-		}
 		
-		@Test
-		public void testCreareCheltuieliVariabile() throws Exception{
-			
-			logger.info("Begin test: creareCheltuieliVariabile");
-			
-			CheltuieliVariabile cheltuieliVariabile = contabGestInstance.defCheltuieliVariabile(  "VARIABILA", "Cheltuiala variabila 1", "Detalii 1", 100);
-			
-			logger.info("Cheltuiala variabila cu id: " + cheltuieliVariabile.getIdTipCheltuieli() + " a fost creata!");
-			
-			assertNotNull("Cheltuiala variabila ne-validat!", cheltuieliVariabile.getIdTipCheltuieli());
-			
-			assertNotNull("Nu exista Cheltuiala variabila noua!", cheltuieliVariabile);
-			logger.info("End test: creare	CheltuieliVariabile");
-		}
+		
 		
 		@Test
 		public void testCreareProcesTehnicoEconomic() throws Exception{
@@ -168,11 +138,11 @@ public class TestContabGestEJB {
 			ProceseTehnicoEconomice proceseTehnicoEconomice;
 			responabilCentruCost = contabGestInstance.defResponabilCentruCost("Georgescu", "Ionel", "Dl.", 1, new Date("10/12/2010"), 
 					new Date("10/03/2011"), "Detalii 1");
-			responabilCentruCost = contabGestInstance.getResponabilCentruCostById(7);
+			responabilCentruCost = contabGestInstance.getResponabilCentruCostById(5);
 			System.out.println(responabilCentruCost);
 			dummyFazaProductie = contabGestInstance.defDummyFazaProductie("Faza Peoductie 1", new Date("10/12/2010"), new Date("10/03/2011"), 1000.00);
 			//dummyFazaProductie = new DummyFazaProductie("Faza Peoductie 1", new Date("10/12/2010"), new Date("10/03/2011"), 1000.00);
-			dummyFazaProductie = contabGestInstance.getDummyFazaProductieById(8);
+			dummyFazaProductie = contabGestInstance.getDummyFazaProductieById(4);
 			System.out.println(dummyFazaProductie);
 			
 			produsfinit = contabGestInstance.getProdusFinitById(2);
@@ -180,7 +150,7 @@ public class TestContabGestEJB {
 			
 			//proceseTehnicoEconomice =  contabGestInstance.defProceseTehnicoEconomice("Proces Tehnico-Economic 2", "Detalii 2");
 			//proceseTehnicoEconomice =  new ProceseTehnicoEconomice("Proces Tehnico-Economic 2", "Detalii 2");
-			proceseTehnicoEconomice = contabGestInstance.getProceseTehnicoEconomiceById(5);
+			proceseTehnicoEconomice = contabGestInstance.getProceseTehnicoEconomiceById(3);
 			System.out.println(proceseTehnicoEconomice);		
 			
 			
@@ -199,8 +169,44 @@ public class TestContabGestEJB {
 			logger.info("End test: creare	Centrul de Cost");
 		}
 		
-
+		@Test
+		public void testCreareCheltuieliFixe() throws Exception{
+			
+			logger.info("Begin test: creareCheltuieliFixe");
+			
+			CentruCost centruCost = contabGestInstance.getCentruCostById(12);
+			
+			//Double valoareBugetata = 2555.0;
+			CheltuieliFixe cheltuieliFixe = contabGestInstance.defCheltuieliFixe("FIXA", "Cheltuiala fixa 1", "Detalii 1", centruCost);
+			
+			logger.info("Cheltuiala fixa cu id: " + cheltuieliFixe.getIdTipCheltuieli() + " a fost creata!");
+			
+			assertNotNull("Cheltuiala fixa ne-validat!", cheltuieliFixe.getIdTipCheltuieli());
+			
+			//dummyPersoana = contabGestInstance.defDummyPersoana(id, nume, prenume, formaAdresare, gen, cnp)(proiect.getIdProiect());
+			
+			assertNotNull("Nu exista Cheltuiala fixa noua!", cheltuieliFixe);
+			logger.info("End test: crearecheltuieliFixe");
+		}
 		
+		
+
+		@Test
+		public void testCreareCheltuieliVariabile() throws Exception{
+			
+			logger.info("Begin test: creareCheltuieliVariabile");
+			
+			CentruCost centruCost = contabGestInstance.getCentruCostById(12);
+			
+			CheltuieliVariabile cheltuieliVariabile = contabGestInstance.defCheltuieliVariabile(  "VARIABILA", "Cheltuiala variabila 1", "Detalii 1", 100, centruCost);
+			
+			logger.info("Cheltuiala variabila cu id: " + cheltuieliVariabile.getIdTipCheltuieli() + " a fost creata!");
+			
+			assertNotNull("Cheltuiala variabila ne-validat!", cheltuieliVariabile.getIdTipCheltuieli());
+			
+			assertNotNull("Nu exista Cheltuiala variabila noua!", cheltuieliVariabile);
+			logger.info("End test: creare	CheltuieliVariabile");
+		}
 		
 	private static InitialContext initJBossJNDICtx() throws NamingException
 	{
