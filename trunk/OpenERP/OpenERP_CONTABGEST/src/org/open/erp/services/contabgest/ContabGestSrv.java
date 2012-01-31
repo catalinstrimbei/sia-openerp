@@ -14,9 +14,6 @@ public interface ContabGestSrv {
 											String  formaAdresare
 											) throws Exception;
 	public ProdusFinit defProdusFinit(String den, Double procProfit) throws Exception;
-   
-  ArrayList<ProdusFinit> getProduseFinite();
-	public ProdusFinit salvareProdus(ProdusFinit produsFinit) throws Exception;
 	
 	public DummyPersoana getPersoanaId(Integer idPersoana) throws Exception;
 	
@@ -33,12 +30,12 @@ public interface ContabGestSrv {
 			ProceseTehnicoEconomice proceseTehnicoEconomice, ProdusFinit produsfinit) throws Exception;
 	
 	public 	CheltuieliFixe defCheltuieliFixe(String tipCheltuiala,
-			String denCheltuiala, String delatiiCheltuiala) throws Exception;
+			String denCheltuiala, String delatiiCheltuiala, CentruCost centruCost) throws Exception;
 	
 	
 	public CheltuieliVariabile defCheltuieliVariabile(String tipCheltuiala,
 			String denCheltuiala, String delatiiCheltuiala,
-			Integer CantitateCheltuiala) throws Exception;
+			Integer CantitateCheltuiala, CentruCost centruCost) throws Exception;
 	
 	
 	//public ResponabilCentruCost getIdResponsabilCentruCostdupaId(int idResponsabilCentruCost);
@@ -56,7 +53,7 @@ public interface ContabGestSrv {
 	
 	public ProceseTehnicoEconomice getProceseTehnicoEconomiceById(Integer idProceseTehnicoEconomice_) throws Exception;
 	
-	
+	public CentruCost getCentruCostById(Integer idCentruCost_) throws Exception;
 	
 	public DummyFazaProductie defDummyFazaProductie(
 			String denumireFazaProductie, Date incepereFazaProductie,
