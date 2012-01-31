@@ -11,7 +11,7 @@ import javax.naming.NamingException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.ctbgen.ContabilizareSrv;
+//import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Produs;
 //import org.open.erp.services.stocuri.StocuriSrv;
@@ -34,8 +34,9 @@ public class TestVanzariEJB {
 	/* Set up */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		logger.debug("before ctx");
 		InitialContext ctx = initJBossJNDICtx();
-		vanzariInstance = (VanzariSrv)ctx.lookup("VanzariSrv/remote");
+		vanzariInstance = (VanzariSrv)ctx.lookup("VanzariImpl/remote");
 		//stocuriInstance = (StocuriSrv)ctx.lookup("StocuriSrv/remote");
 		//nomenclatorInstance = (StocuriSrv)ctx.lookup("StocuriSrv/remote");
 		

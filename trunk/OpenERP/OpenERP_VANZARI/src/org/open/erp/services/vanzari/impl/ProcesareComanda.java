@@ -8,21 +8,24 @@ package org.open.erp.services.vanzari.impl;
  */
 
 import java.util.Date;
+import java.util.Random;
+
 import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 
 import java.util.Iterator;
 
 //import org.open.erp.services.marketing.MarketingManagementSrv;
-import org.open.erp.services.marketing.MarketingManagementSrvLocal;
-import org.open.erp.services.marketing.impl.MarketingManagementImpl;
-import org.open.erp.services.nomgen.Produs;
-import org.open.erp.services.productie.ComandaProductie;
+//import org.open.erp.services.marketing.MarketingManagementSrvLocal;
+//import org.open.erp.services.marketing.impl.MarketingManagementImpl;
+//import org.open.erp.services.nomgen.Produs;
+//import org.open.erp.services.productie.ComandaProductie;
 //import org.open.erp.services.productie.ProductieSrv;
-import org.open.erp.services.productie.ProductieSrvLocal;
-import org.open.erp.services.productie.impl.ProductieImpl;
+//import org.open.erp.services.productie.ProductieSrvLocal;
+//import org.open.erp.services.productie.impl.ProductieImpl;
 //import org.open.erp.services.stocuri.StocuriSrv;
 //import org.open.erp.services.stocuri.StocuriSrvLocal;
+import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.vanzari.Comanda;
 import org.open.erp.services.vanzari.LinieComanda;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
@@ -32,10 +35,10 @@ public class ProcesareComanda {
 
 	//@EJB(mappedName="StocuriImpl/local")
 	//public StocuriSrvLocal stocuriSrv = new StocuriImpl();
-	@EJB(mappedName="MarketingManagementImpl/local")
+	/*@EJB(mappedName="MarketingManagementImpl/local")
 	public MarketingManagementSrvLocal mkSrv = new MarketingManagementImpl();
 	@EJB(mappedName="ProductieImpl/local")
-	public ProductieSrvLocal prodSrv = new ProductieImpl();
+	public ProductieSrvLocal prodSrv = new ProductieImpl();*/
 	
 	//private EntityManager em;
 	//private RegistruVanzari registruVanzari;
@@ -118,13 +121,13 @@ public class ProcesareComanda {
 			return true;
 		else{
 			// lansare Comanda daca prod nu e in stoc 
-			try{
+			/*try{
 				//DummyProdus dummyProd = new DummyProdus(produs.getId(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
 				ComandaProductie comprod = new ComandaProductie(produs, cantitate.intValue(), new Date());
 				prodSrv.lansareComandaProductie(comprod, produs);
 			} catch(Exception ex){
 				
-			}
+			}*/
 			return false;
 		}
 	}
@@ -132,9 +135,12 @@ public class ProcesareComanda {
 	public Double getPretProdusFinal(Produs produs) throws ValoareNegativa{
 		Double pretFinal = 0.0;
 		//pretFinal = (double) mkSrv.getPretFinalByProdus(produs);
-		org.open.erp.services.marketing.DummyProdus dummyProd = new org.open.erp.services.marketing.DummyProdus(produs.getIdMaterial(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
+		//org.open.erp.services.marketing.DummyProdus dummyProd = new org.open.erp.services.marketing.DummyProdus(produs.getIdMaterial(), produs.getDenumire(), produs.getUM(), new Date(), produs.getTermenValabilitate());
 		//pretFinal = mkSrv.getPretFinalByProdus(dummyProd);
-		mkSrv.getPretFinalByProdus(dummyProd);
+		//mkSrv.getPretFinalByProdus(dummyProd);
+		Random rand = new Random();
+		pretFinal = (double) rand.nextInt(1000)/10;
+		
 		if( pretFinal <= 0)
 			throw new ValoareNegativa();
 		return pretFinal;

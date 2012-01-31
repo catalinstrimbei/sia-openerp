@@ -7,7 +7,7 @@ import java.util.Date;
 import org.junit.BeforeClass;
 import org.junit.Before;
 import org.junit.Test;
-import org.open.erp.services.ctbgen.ContabilizareSrv;
+//import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Produs;
 //import org.open.erp.services.stocuri.StocuriSrv;
@@ -28,7 +28,7 @@ public class TestVanzari {
 	VanzariSrv vanzariInstance;
 	//StocuriSrv stocuriInstance;
 	NomenclatoareSrv nomenclatorInstance;
-	ContabilizareSrv contabgenInstance;
+	//ContabilizareSrv contabgenInstance;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -38,7 +38,7 @@ public class TestVanzari {
 	public void setUp() throws Exception {
 		vanzariInstance = VanzariFactory.getVanzariSrv();
 		nomenclatorInstance = VanzariFactory.getNomenclatoareSrv();
-		contabgenInstance = VanzariFactory.getContabGenSrv();
+		//contabgenInstance = VanzariFactory.getContabGenSrv();
 		//stocuriInstance = VanzariFactory.getStocuriSrv();
 	}
 	

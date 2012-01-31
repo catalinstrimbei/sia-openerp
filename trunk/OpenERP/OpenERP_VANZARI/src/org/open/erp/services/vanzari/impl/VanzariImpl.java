@@ -16,6 +16,8 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -24,11 +26,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.ctbgen.ContabilizareSrv;
+/*import org.open.erp.services.ctbgen.ContabilizareSrv;
 import org.open.erp.services.ctbgen.ContabilizareSrvLocal;
 import org.open.erp.services.ctbgen.StareDocument;
 import org.open.erp.services.ctbgen.exceptii.CtbException;
-import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;
+import org.open.erp.services.ctbgen.impl.ContabilizareSrvImpl;*/
 import org.open.erp.services.nomgen.Produs;
 //import org.open.erp.services.stocuri.StocuriSrv;
 //import org.open.erp.services.stocuri.StocuriSrvLocal;
@@ -36,7 +38,9 @@ import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.vanzari.*;
 import org.open.erp.services.vanzari.exceptions.ValoareNegativa;
 
-@Stateful (name= "VanzariSrv")
+//@Stateful (name= "VanzariSrv")
+@Stateful
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	
 	/* Dependente proprii */
@@ -49,8 +53,8 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	/* Dependente resurse injectate */
 	//@EJB(mappedName="StocuriImpl/local")
 	//public StocuriSrvLocal stocuriSrv = new StocuriImpl();
-	@EJB(mappedName="ContabilizareSrvImpl/local")
-	public ContabilizareSrvLocal contabilizareSrv = new ContabilizareSrvImpl();
+	//@EJB(mappedName="ContabilizareSrvImpl/local")
+	//public ContabilizareSrvLocal contabilizareSrv = new ContabilizareSrvImpl();
 	
 	@PersistenceContext(unitName="OpenERP_VANZARI")
 	private EntityManager em;
@@ -63,7 +67,7 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	public void init(){
 		logger.debug(">>>>>>>>>>>> Exista em? " + em);		
 		//logger.debug(">>>>>>>>>>>> Exista stocuriSrv? " + stocuriSrv);
-		logger.debug(">>>>>>>>>>>> Exista caontabSrv? " + contabilizareSrv);
+		//logger.debug(">>>>>>>>>>>> Exista caontabSrv? " + contabilizareSrv);
 		
 		if (this.registruVanzari == null)
 			registruVanzari = new RegistruVanzari(em);
@@ -163,11 +167,11 @@ public class VanzariImpl implements VanzariSrvLocal, VanzariSrvRemote{
 	@Override
 	public Integer inregistrareFactura(FacturaEmisa factura){
 		Integer result = 0;
-		try{
+		/*try{
 			//ArrayList<LinieDocument> liniiDoc = (ArrayList<LinieFacturaEmisa>) factura.getProduseFacturate();
 			result = contabilizareSrv.jurnalizareVanzare(factura.getDataDocument(), factura.getValoareTotalaFactura(), factura.getValoareTva(), factura.getIdFactura(), factura.getClient().getIdClient(), factura.getLiniiDocument() , StareDocument.NOU, 1);
 		} catch(CtbException e){	
-		}
+		}*/
 		return result;
 	}
 	
