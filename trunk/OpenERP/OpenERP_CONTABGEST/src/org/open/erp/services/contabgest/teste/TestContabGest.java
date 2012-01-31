@@ -3,7 +3,7 @@ package org.open.erp.services.contabgest.teste;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.contabgest.ContabGestSrv;
-//import org.open.erp.services.contabgest.DummyPersoana;
+import org.open.erp.services.contabgest.DummyPersoana;
 import static org.junit.Assert.assertNotNull;
 
 public class TestContabGest {
@@ -31,7 +31,7 @@ public class TestContabGest {
 			logger.info("initTest " + contabGestInstance);		
 		}
 		
-		/*
+		
 		@Test
 		public void testCrearePersoana() throws Exception {
 			logger.info("Begin test: crearePersoana");
@@ -42,6 +42,6 @@ public class TestContabGest {
 			
 			logger.info("End test: crearePersoana");
 		}
-*/
+
 
 }

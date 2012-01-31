@@ -1,5 +1,6 @@
 package org.open.erp.services.contabgest.teste;
 
+import java.util.Date;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -7,10 +8,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 
+import org.open.erp.services.contabgest.CentruCost;
 import org.open.erp.services.contabgest.CheltuieliFixe;
+import org.open.erp.services.contabgest.CheltuieliVariabile;
 import org.open.erp.services.contabgest.ContabGestSrv;
-//import org.open.erp.services.contabgest.DummyPersoana;
+import org.open.erp.services.contabgest.DummyFazaProductie;
+import org.open.erp.services.contabgest.DummyPersoana;
+import org.open.erp.services.contabgest.ProceseTehnicoEconomice;
 import org.open.erp.services.contabgest.ProdusFinit;
+import org.open.erp.services.contabgest.ResponabilCentruCost;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -36,7 +42,7 @@ public class TestContabGestEJB {
 	}
 	
 	
-/*
+
 	@Test
 	public void testFunctieById() throws Exception
 	{
@@ -48,8 +54,8 @@ public class TestContabGestEJB {
 			System.out.println("Nu exista persoana cu acest id.");
 		}
 	}
-	*/
-	/*
+	
+	
 		@Test
 		public void testCrearePersoana() throws Exception{
 			
@@ -61,13 +67,10 @@ public class TestContabGestEJB {
 			
 			assertNotNull("Persoana ne-validat!", dummyPersoana.getId());
 			
-			//dummyPersoana = contabGestInstance.defDummyPersoana(id, nume, prenume, formaAdresare, gen, cnp)(proiect.getIdProiect());
-			
 			assertNotNull("Nu exista proiect nou!", dummyPersoana);
 			logger.info("End test: crearePersoana");
 		}
-		*/
-	
+		
 		@Test
 		public void testCreareProdusFinit() throws Exception{
 			
@@ -92,6 +95,7 @@ public class TestContabGestEJB {
 			
 			//Double valoareBugetata = 2555.0;
 			CheltuieliFixe cheltuieliFixe = contabGestInstance.defCheltuieliFixe("FIXA", "Cheltuiala fixa 1", "Detalii 1");
+			
 			logger.info("Cheltuiala fixa cu id: " + cheltuieliFixe.getIdTipCheltuieli() + " a fost creata!");
 			
 			assertNotNull("Cheltuiala fixa ne-validat!", cheltuieliFixe.getIdTipCheltuieli());
@@ -101,7 +105,103 @@ public class TestContabGestEJB {
 			assertNotNull("Nu exista Cheltuiala fixa noua!", cheltuieliFixe);
 			logger.info("End test: crearecheltuieliFixe");
 		}
-	
+		
+		@Test
+		public void testCreareCheltuieliVariabile() throws Exception{
+			
+			logger.info("Begin test: creareCheltuieliVariabile");
+			
+			CheltuieliVariabile cheltuieliVariabile = contabGestInstance.defCheltuieliVariabile(  "VARIABILA", "Cheltuiala variabila 1", "Detalii 1", 100);
+			
+			logger.info("Cheltuiala variabila cu id: " + cheltuieliVariabile.getIdTipCheltuieli() + " a fost creata!");
+			
+			assertNotNull("Cheltuiala variabila ne-validat!", cheltuieliVariabile.getIdTipCheltuieli());
+			
+			assertNotNull("Nu exista Cheltuiala variabila noua!", cheltuieliVariabile);
+			logger.info("End test: creare	CheltuieliVariabile");
+		}
+		
+		@Test
+		public void testCreareProcesTehnicoEconomic() throws Exception{
+			
+			logger.info("Begin test: creareProcesTehnicoEconomic");
+			
+			ProceseTehnicoEconomice proceseTehnicoEconomice = contabGestInstance.defProceseTehnicoEconomice("ASAMBLARE 1", "Procesul de asamblare a tuturor produselor");
+			
+			logger.info("Procesul Tehnico-economic cu id: " + proceseTehnicoEconomice.getIdProces() + " a fost creat!");
+			
+			assertNotNull("Procesul Tehnico-economic ne-validat!", proceseTehnicoEconomice.getIdProces());
+			
+			assertNotNull("Nu exista Procesul Tehnico-economic nou!", proceseTehnicoEconomice);
+			logger.info("End test: creare	Proces Tehnico-economic");
+		}
+		
+		
+		@Test
+		public void testCreareDummyFazaProductie() throws Exception{
+			
+			logger.info("Begin test: creareDummyFazaProductie");
+			
+			DummyFazaProductie dummyFazaProductie = contabGestInstance.defDummyFazaProductie("Faza Peoductie 1", new Date("10/12/2010"), new Date("10/03/2011"), 1000.00);
+			
+			logger.info("DummyFazaProductie cu id: " + dummyFazaProductie.getIdFazaProductie() + " a fost creat!");
+			
+			assertNotNull("DummyFazaProductie ne-validat!", dummyFazaProductie.getIdFazaProductie());
+			
+			assertNotNull("Nu exista DummyFazaProductie nou!", dummyFazaProductie);
+			logger.info("End test: creare	DummyFazaProductie");
+		}
+		
+		
+		
+		@Test
+		public void testCreareCentruCost() throws Exception{
+			
+			logger.info("Begin test: creareCentruCost");
+			
+			ResponabilCentruCost responabilCentruCost;
+			
+			DummyFazaProductie dummyFazaProductie;
+			
+			ProdusFinit produsfinit;
+			
+			ProceseTehnicoEconomice proceseTehnicoEconomice;
+			responabilCentruCost = contabGestInstance.defResponabilCentruCost("Georgescu", "Ionel", "Dl.", 1, new Date("10/12/2010"), 
+					new Date("10/03/2011"), "Detalii 1");
+			responabilCentruCost = contabGestInstance.getResponabilCentruCostById(7);
+			System.out.println(responabilCentruCost);
+			dummyFazaProductie = contabGestInstance.defDummyFazaProductie("Faza Peoductie 1", new Date("10/12/2010"), new Date("10/03/2011"), 1000.00);
+			//dummyFazaProductie = new DummyFazaProductie("Faza Peoductie 1", new Date("10/12/2010"), new Date("10/03/2011"), 1000.00);
+			dummyFazaProductie = contabGestInstance.getDummyFazaProductieById(8);
+			System.out.println(dummyFazaProductie);
+			
+			produsfinit = contabGestInstance.getProdusFinitById(2);
+			System.out.println(produsfinit);
+			
+			//proceseTehnicoEconomice =  contabGestInstance.defProceseTehnicoEconomice("Proces Tehnico-Economic 2", "Detalii 2");
+			//proceseTehnicoEconomice =  new ProceseTehnicoEconomice("Proces Tehnico-Economic 2", "Detalii 2");
+			proceseTehnicoEconomice = contabGestInstance.getProceseTehnicoEconomiceById(5);
+			System.out.println(proceseTehnicoEconomice);		
+			
+			
+			
+			CentruCost centruCost = contabGestInstance.defCentruCost("Centru Cost 1", new Date("10/12/2010"), 
+					new Date("10/03/2011"), responabilCentruCost, dummyFazaProductie, 
+					proceseTehnicoEconomice, produsfinit);
+			
+			
+			
+			logger.info("Centrul de Cost cu id: " + centruCost.getIdCentruCost() + " a fost creat!");
+			
+			assertNotNull("Centrul de Cost ne-validat!", centruCost.getIdCentruCost());
+			
+			assertNotNull("Nu exista Centrul de Cost nou!", centruCost);
+			logger.info("End test: creare	Centrul de Cost");
+		}
+		
+
+		
+		
 	private static InitialContext initJBossJNDICtx() throws NamingException
 	{
 		Properties props = new Properties();
@@ -110,18 +210,5 @@ public class TestContabGestEJB {
         props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
         return new InitialContext(props);
 	}	
-   
-   
-		@Test
-		public void testProdusById() throws Exception
-		{
-			ProdusFinit produsFinit = contabGestInstance.getProdusFinit(2);
-			if(produsFinit != null)
-				System.out.println("Denumire produs: " + produsFinit.getDenProdusFinit().toString());
-			else
-			{
-				System.out.println("Nu exista produsul cu acest id.");
-			}
-		}
 
 }
