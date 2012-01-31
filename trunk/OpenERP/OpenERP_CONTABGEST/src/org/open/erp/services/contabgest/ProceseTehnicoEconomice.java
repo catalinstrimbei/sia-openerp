@@ -50,6 +50,15 @@ public class ProceseTehnicoEconomice implements Serializable{
 		this.denumireProces = denumireProces;
 		this.detaliiProces = detaliiProces;
 	}
+	
+	
+	
+
+	public ProceseTehnicoEconomice(String denumireProces, String detaliiProces) {
+		super();
+		this.denumireProces = denumireProces;
+		this.detaliiProces = detaliiProces;
+	}
 	public Integer getIdProces() {
 		return idProces;
 	}
