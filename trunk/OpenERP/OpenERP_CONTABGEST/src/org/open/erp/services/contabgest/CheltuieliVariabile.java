@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
+
 @Entity
 public class CheltuieliVariabile extends TipCheltuieli implements Serializable{
 	
@@ -24,7 +26,8 @@ public class CheltuieliVariabile extends TipCheltuieli implements Serializable{
 	//private Integer idCheltVariabile;
 	private String denCheltuialaV;
 	private String delatiiCheltuialaV;
-	private Integer CantitateCheltuialaV;
+	private Integer cantitateCheltuialaV;
+
 	@ManyToOne @JoinColumn(name = "idCentruCost")
 	private CentruCost 	centrucost;
 	
@@ -33,9 +36,11 @@ public class CheltuieliVariabile extends TipCheltuieli implements Serializable{
 	private Collection<TipCheltuieli> 	tipCheltuieli;
 	*/
 	
-	//@OneToMany(mappedBy = "cheltuieliVariabile", cascade = CascadeType.ALL)
-	//private Collection<CentruCost> centrucost;
+	//@ManyToOne(mappedBy = "cheltuieliVariabile", cascade = CascadeType.ALL)
+	//private CentruCost centrucost;
 
+	
+	
 	public CheltuieliVariabile() {
 		super();
 	}
@@ -43,10 +48,11 @@ public class CheltuieliVariabile extends TipCheltuieli implements Serializable{
 	public CheltuieliVariabile(String denCheltuialaV,
 			String delatiiCheltuialaV, Integer cantitateCheltuialaV) {
 		super();
-		//this.idCheltVariabile = idCheltVariabile;
+	//	this.idCheltVariabile = idCheltVariabile;
 		this.denCheltuialaV = denCheltuialaV;
 		this.delatiiCheltuialaV = delatiiCheltuialaV;
-		this.CantitateCheltuialaV = cantitateCheltuialaV;
+		this.cantitateCheltuialaV = cantitateCheltuialaV;
+		
 	
 	}
 
@@ -68,14 +74,6 @@ public class CheltuieliVariabile extends TipCheltuieli implements Serializable{
 
 	public String getDelatiiCheltuialaV() {
 		return delatiiCheltuialaV;
-	}
-
-	public Integer getCantitateCheltuialaV() {
-		return CantitateCheltuialaV;
-	}
-
-	public void setCantitateCheltuialaV(Integer cantitateCheltuialaV) {
-		CantitateCheltuialaV = cantitateCheltuialaV;
 	}
 
 	
