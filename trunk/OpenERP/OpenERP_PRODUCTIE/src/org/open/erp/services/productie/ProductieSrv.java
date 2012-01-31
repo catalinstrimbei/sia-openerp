@@ -48,7 +48,7 @@ import org.open.erp.services.personal.Angajat;
  *2. calcul produse finale si deseuri 
  *
  */
-@Remote
+//@Remote
 public interface ProductieSrv {
 
 	/**

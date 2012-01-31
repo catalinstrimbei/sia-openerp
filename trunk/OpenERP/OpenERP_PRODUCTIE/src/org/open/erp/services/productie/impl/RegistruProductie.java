@@ -170,13 +170,22 @@ public class RegistruProductie {
 	
 	/* persistenta */
 	public FluxProductie salveazaFlux(FluxProductie flux) throws Exception{
+		
 		try{
-
-			if (flux.getIdFlux() == null || 
-				entityManager.find(flux.getClass(), flux.getIdFlux()) == null)
+			logger.info("<<<<<<OBIECT Flux"+flux);
+			logger.info("<<<<<<OBIECT Flux CLASS: "+flux.getClass());
+			logger.info("<<<<<<OBIECT Flux CU ID: "+flux.getIdFlux());
+			if (flux.getIdFlux() == null)//|| 
+				//entityManager.find(flux.getClass(), flux.getIdFlux()) == null)
+				{
+				logger.info("se incearca persistarea fluxului");
 				entityManager.persist(flux);
+				logger.info("----IF-----fluxul a fost salvat");
+			}
+				
 			else
 				entityManager.merge(flux);
+				logger.info("-----ELSE----- fluxul a fost salvat");
 		}catch(Exception ex){
 			logger.info("EROARE PERSISTENTA ***** ");
 			ex.printStackTrace();

@@ -21,6 +21,7 @@ import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrvRemote;
 import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.ContractMunca;
@@ -30,6 +31,7 @@ import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.FunctieNecesara;
 import org.open.erp.services.productie.ProductieSrv;
+import org.open.erp.services.productie.ProductieSrvRemote;
 import org.open.erp.services.productie.Semifabricat;
 import org.open.erp.services.productie.Utilaj;
 //import org.open.erp.services.stocuri.ArticolStoc;
@@ -44,14 +46,14 @@ import org.open.erp.services.productie.Utilaj;
 public class TestProductieEJB {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TestProductie.class.getName());
 	private static ProductieSrv productie;
-	private static NomenclatoareSrv nomenclatoare;
+	private static NomenclatoareSrvRemote nomenclatoare;
 	//private static StocuriSrv stocuri;
 	
 	@BeforeClass
 	 public static void setUpBeforeClass() throws Exception {
 		InitialContext ctx = initJBossJNDICtx();
 		productie = (ProductieSrv)ctx.lookup("ProductieSrv/remote");
-		nomenclatoare=(NomenclatoareSrv)ctx.lookup("NomenclatoareSrv/remote");
+		nomenclatoare=(NomenclatoareSrvRemote)ctx.lookup("NomenclatoareSrv/remote");
 		
 		
 		logger.info("initTest: " + productie);
@@ -70,11 +72,22 @@ public class TestProductieEJB {
 	 @Test
 	 public void testDefinireFluxProductie () throws Exception{
 
-		logger.info("Begin test: definireFlux");
+			logger.info("!!!!!!!!!!!!!!Begin test: definireFluxProductie");
+			Produs produs = nomenclatoare.CautareProdusDupaDenumire("produs");
+			logger.info("!!!!!!!!!!A fost incarcat produsul:----  "+produs.getDenumire());
+			Integer idFlux=1;
+			logger.info("!!!!!!!!!!!!!!!id-ul fluxului va fi: " + idFlux);
+			FluxProductie flux = productie.definireFluxProductie(idFlux, produs);
+			logger.info("!!!!!!!A fost creat fluxul cu id-ul: "+flux.getIdFlux());
+			
+			assertNotNull("!!!!!!!!!!!Metoda de creare a fluxului nu a functionat!", flux.getIdFlux());
+			
+			logger.info("!!!!!!!!!!!!!!End test: definireFluxProductie");
+		 /*logger.info("************Begin test: definireFlux");
 		 
 		 Produs produs = new Produs();
 		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
-		 logger.info("fluxul va fi creat pentru produsul:" + produs.getDenumire());
+		 logger.info("***********Fluxul va fi creat pentru produsul: " + produs.getDenumire());
 		 
 		 
 		/* produs.setIdMaterial(1);
@@ -83,7 +96,9 @@ public class TestProductieEJB {
 		 produs.setDataFabricatiei(null);
 		 produs.setTermenValabilitate(null);*/
 		 
+		 /*logger.info("||----------------va fi definit un nou FLUX");
 		 FluxProductie flux = new FluxProductie();
+		 logger.info("||----------------s-a apelat constructorul pt un nou FLUX");
 		 
 		 flux =productie.definireFluxProductie(1, produs);
 		 
@@ -94,12 +109,11 @@ public class TestProductieEJB {
 			flux = productie.getFlux(flux.getIdFlux());
 				
 			assertNotNull("Nu exista flux nou!", flux);
-			logger.info("End test: definireFlux");
+			logger.info("End test: definireFlux");*/
 		 
 	
 		}
-
- @Test
+/* @Test
 	 public void testDefinireFazaProductie () throws Exception{
 		 
 		 logger.info("Begin test: definireFaza");
@@ -134,11 +148,11 @@ public class TestProductieEJB {
 					
 					//setez un mijloc fix;
 					mf=new MijlocFix();
-					/*mf.setId(1);
+					mf.setId(1);
 					mf.setDenumire("Utilaj");
 					mf.setAdresa(null);
 					mf.setTermenExploatare(null);
-					mf.setValoare(null);*/
+					mf.setValoare(null);
 					nomenclatoare.getMFDupaCod(1);
 					logger.info("Mijlocul fix a fost incarcat " + mf.getDenumire());
 					//Setez utilajul;
@@ -639,3 +653,4 @@ public void testInregistrareGestiuneProductie() throws Exception{
 	}
 }
 
+*/}

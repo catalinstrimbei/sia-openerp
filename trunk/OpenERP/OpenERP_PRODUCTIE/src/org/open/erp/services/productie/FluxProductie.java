@@ -48,7 +48,6 @@ public class FluxProductie implements Serializable{
 	public FluxProductie(Integer idFlux, Produs produs) {
 		super();
 		this.produs = produs;
-		
 		this.idFlux=idFlux;
 	}
 	public FluxProductie() {

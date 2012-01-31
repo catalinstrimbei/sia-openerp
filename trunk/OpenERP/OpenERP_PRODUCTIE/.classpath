@@ -17,5 +17,7 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry exported="true" kind="lib" path="Resources/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="D:/CommonERP-1/OpenERP_PRODUCTIE/lib/OpenERP_NOMGEN.jar"/>
+	<classpathentry kind="lib" path="D:/CommonERP-1/OpenERP_PRODUCTIE/lib/OpenERP_PERSONAL.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

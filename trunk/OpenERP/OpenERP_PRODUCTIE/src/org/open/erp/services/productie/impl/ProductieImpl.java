@@ -13,6 +13,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -25,6 +26,7 @@ import org.open.erp.services.nomgen.Produs;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.PersonalSrvLocal;
+import org.open.erp.services.personal.impl.PersonalInterceptor;
 //import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.CriteriuCalitate;
@@ -38,13 +40,12 @@ import org.open.erp.services.productie.ProductieSrv;
 import org.open.erp.services.productie.Semifabricat;
 
 
-
-
 /**
  * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
 @Stateful (name="ProductieSrv")
+@Interceptors({InterceptorProductie.class})
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, ProductieSrvRemote {
 	
@@ -84,14 +85,24 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 	public FluxProductie definireFluxProductie(Integer idFlux, Produs produs) throws Exception{
 		
 		// creez un flux pentru produsul 'produs' (pe care il primesc ca parametru), fara a adauga faze		
+		logger.info("---------START creare flux");
+		FluxProductie flux = new FluxProductie(idFlux, produs);
+		if (sessionContext.getRollbackOnly() == true){
+			logger.info("----END creare flux - FAILED TRANSACTION");
+		}else{
+			flux = this.registru.salveazaFlux(flux);
+		}
 		
-		System.out.println("!>>>>>>>>>>>> START definire flux");
+		logger.info("END Creare flux");
+		
+		return flux;
+		/*System.out.println("!>>>>>>>>>>>> START definire flux");
 		
 		logger.debug(">>>>>>>>>>>> START definire flux");		
 		FluxProductie flux = new FluxProductie(idFlux, produs);
 		
 		/* Actiune tranzactionala ... */
-		if (sessionContext.getRollbackOnly() == true){
+		/*if (sessionContext.getRollbackOnly() == true){
 			logger.debug(">>>>>>>>>>>> END Definire flux - TRANZACTIE ANULATA");
 			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
 		}else{
@@ -100,7 +111,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 		}
 		
 		logger.debug(">>>>>>>>>>>> END Definire Flux");
-		return flux;
+		return flux;*/
 				
 	}
 	
@@ -263,6 +274,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 		  CriteriuCalitate criteriuCalitate;
 		  ArrayList<Integer> cantitati = new ArrayList<Integer>();
 		  criteriuCalitate = new CriteriuCalitate(1, "criteriu 1");
+		  logger.info("---a fost creat criteriul de calitate: " + criteriuCalitate.getCriteriu());
 		  criteriuCalitate.getCriteriu();
 		  
 		  comanda=new ComandaProductie(produs, 10, null);  
@@ -280,6 +292,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 		  }
 		  cantitati.add(cantitateProdusFinal);
 		  cantitati.add(cantitateDeseu);
+		  logger.info("---cantitatile: " + cantitati.get(0)+ "||" + cantitati.get(1));
 		  return cantitati;
 		    
 }
