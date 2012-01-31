@@ -53,5 +53,7 @@ public interface FinPlatiSrv {
 			List<FacturaPrimita> facturi, Double suma) throws PlatiExceptions;
 	
 	public int acceptaPlataFurnizor(Partener partener,Double valoare, Date data);
+
+	List<DummyFurnizor> getfurnizor();
 		
 }

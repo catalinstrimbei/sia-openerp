@@ -61,7 +61,7 @@ public class FinPlatiLogger {
 						{
 							path = "E:\\";
 						}					
-						myAppender = new RollingFileAppender(layout, path + "LogFile_OpenERP_PERSONAL.log");
+						myAppender = new RollingFileAppender(layout, path + "LogFile_OpenERP_FINPLATI.log");
 						myAppender.setAppend(true);
 				        myAppender.setMaxFileSize("5MB");
 				        myAppender.setMaxBackupIndex(3);

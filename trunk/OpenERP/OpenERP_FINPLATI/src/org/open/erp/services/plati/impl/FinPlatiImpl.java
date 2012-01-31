@@ -307,4 +307,10 @@ public class FinPlatiImpl implements FinPlatiSrvLocal, FinPlatiSrvRemote {
 	public int acceptaPlataFurnizor(Partener partener,Double valoare, Date data){
 		return 1;		
 	}
+
+	@Override
+	public List<DummyFurnizor> getfurnizor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
