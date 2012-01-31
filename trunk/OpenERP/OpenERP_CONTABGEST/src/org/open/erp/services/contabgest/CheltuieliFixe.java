@@ -49,6 +49,14 @@ public class CheltuieliFixe extends TipCheltuieli implements Serializable{
 		this.delatiiCheltuiala = delatiiCheltuiala;
 	
 	}
+	
+	public CheltuieliFixe(String denCheltuiala, String delatiiCheltuiala,
+			CentruCost centrucost) {
+		super();
+		this.denCheltuiala = denCheltuiala;
+		this.delatiiCheltuiala = delatiiCheltuiala;
+		this.centrucost = centrucost;
+	}
 
 	//public Integer getIdCheltFix() {
 		//return idCheltFix;
@@ -74,13 +82,6 @@ public class CheltuieliFixe extends TipCheltuieli implements Serializable{
 		this.delatiiCheltuiala = delatiiCheltuiala;
 	}
 
-	public CheltuieliFixe(String denCheltuiala, String delatiiCheltuiala,
-			CentruCost centrucost) {
-		super();
-		this.denCheltuiala = denCheltuiala;
-		this.delatiiCheltuiala = delatiiCheltuiala;
-		this.centrucost = centrucost;
-	}
 	
 	public CheltuieliFixe(Integer 	idTipCheltuieli, String tipCheltuieli) {
 		super(idTipCheltuieli, tipCheltuieli);
