@@ -342,7 +342,29 @@ public class ContabGestImpl implements ContabGestSrv, ContabGestSrvLocal, Contab
 	}
 
 
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ArrayList<ProdusFinit> getProduseFinite() {
+		ArrayList<ProdusFinit> produseFinite = registruContabGest.getProduseFInitte();
+		return produseFinite;
+	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ProdusFinit salvareProdus(ProdusFinit produsFinit) throws Exception {
+		/* Actiune tranzactionala ... */
+		//if (sessionContext.getRollbackOnly() == true){
+		//	logger.debug(">>>>>>>>>>>> END Creare/salvare produs - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare produs - TRANZACTIE ANULATA");
+	//	}else{
+			produsFinit = this.registruContabGest.salveazaProdus(produsFinit);
+			//em.persist(produsFinit);
+	//	}
+		
+		logger.debug(">>>>>>>>>>>> END salvare produs");
+		return produsFinit;
+	
+	}
 	
 	/*
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
