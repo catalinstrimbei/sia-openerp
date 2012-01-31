@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+<div style="width:1%;font-size:36px;line-height:30px;background-color:SlateBlue;color:white">Furnizori </div>
+	<h:form id="formFurnizor">
+		<h:panelGrid columns="3" border="1">
+			<p:facet name="header">
+				<h:outputText value="Navigare:"></h:outputText>
+			</p:facet>
+			<h:selectOneMenu id="cboFurnizor" value="#{formFurnizor.furnizor}" converter="#{formFurnizor}">
+				<p:selectItems value="#{formFurnizor.furnizori}"></p:selectItems>
+				<p:ajax render="@form"></p:ajax>
+			</h:selectOneMenu>
+			<h:panelGrid columns="2" border="1">
+				<h:commandButton id="cmdPrev"
+					actionListener="#{formFurnizor.previousFurnizor}" value="Back">
+					<p:ajax  execute="@form" render="@form"></p:ajax>
+				</h:commandButton>
+				<h:commandButton id="cmdNext"
+					actionListener="#{formFurnizor.nextFurnizor}" value="Next">
+					<p:ajax  execute="@form" render="@form"></p:ajax>
+				</h:commandButton>
+
+			</h:panelGrid>
+			<h:message></h:message>
+			<h:outputText value="Cont:"></h:outputText>
+			<h:inputText id="furnizor_cont"
+				value="#{formFurnizor.furnizor.cont}"></h:inputText>
+			<h:message for="furnizor_cont"></h:message>
+			<h:outputText value="Denumire:"></h:outputText>
+			
+				
+			
+			
+			
+			<h:inputText id="furnizor_denumire"
+				value="#{formFurnizor.furnizor.denumire}"></h:inputText>
+			<h:message for="furnizor_denumire"></h:message>
+			
+			
+			
+			<h:outputText value="Telefon:"></h:outputText><h:inputText id="furnizor_telefon" value="#{formFurnizor.furnizor.nume}"></h:inputText>
+			
+			<h:message for="furnizor_nume"></h:message><h:outputText value="CUI:"></h:outputText><h:inputText id="furnizor_CUI" value="#{formFurnizor.furnizor.CUI}"></h:inputText><h:message for="furnizor_CUI"></h:message>
+			<h:outputText value="Adresa:"></h:outputText>
+			<h:inputText id="furnizor_adresa"
+				value="#{formFurnizor.furnizor.adresa}"></h:inputText>
+			<h:message for="furnizor_adresa"></h:message>
+			<h:panelGrid columns="2" border="1">
+				<h:commandButton id="cmdAddfurnizor" value="Adauga furnizor"
+					actionListener="#{formFurnizor.adaugarefurnizor}"
+					immediate="false">
+					<p:ajax  execute="@form" render="@form"></p:ajax>
+				</h:commandButton>
+				<h:commandButton id="cmdSalveazafurnizor"
+					actionListener="#{formFurnizor.salvarefurnizor}"
+					value="Salveaza furnizor" >
+
+				</h:commandButton>
+			</h:panelGrid><h:commandButton id="cmdAfiseazafacturi"
+					actionListener="#{formFurnizor.actionChangeForm}"
+					action="#{formFurnizor.changeFormCurent}" value="Listare facturi">
+
+				</h:commandButton><form>
+				
+			</form>
+			
+		</h:panelGrid>
+		
+	</h:form>
+</body>
+</html>
