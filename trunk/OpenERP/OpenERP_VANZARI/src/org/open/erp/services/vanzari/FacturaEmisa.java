@@ -4,6 +4,7 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -44,7 +45,7 @@ public class FacturaEmisa extends Document implements Serializable {
 	@ManyToOne
 	Client client;
 	@OneToMany(targetEntity=LinieFacturaEmisa.class, cascade=ALL)
-	ArrayList<LinieFacturaEmisa> produseFacturate = new ArrayList<LinieFacturaEmisa>();
+	Collection<LinieFacturaEmisa> produseFacturate = new ArrayList<LinieFacturaEmisa>();
 	@ManyToOne
 	Vanzator vanzator;
 	
@@ -182,11 +183,11 @@ public class FacturaEmisa extends Document implements Serializable {
 		this.client = client;
 	}
 
-	public ArrayList<LinieFacturaEmisa> getProduseFacturate() {
+	public Collection<LinieFacturaEmisa> getProduseFacturate() {
 		return produseFacturate;
 	}
 
-	public void setProduseFacturate(ArrayList<LinieFacturaEmisa> produseFacturate) {
+	public void setProduseFacturate(Collection<LinieFacturaEmisa> produseFacturate) {
 		this.produseFacturate = produseFacturate;
 	}
 

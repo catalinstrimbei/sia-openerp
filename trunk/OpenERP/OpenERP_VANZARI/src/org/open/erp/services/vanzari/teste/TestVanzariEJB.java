@@ -36,7 +36,7 @@ public class TestVanzariEJB {
 	public static void setUpBeforeClass() throws Exception {
 		logger.debug("before ctx");
 		InitialContext ctx = initJBossJNDICtx();
-		vanzariInstance = (VanzariSrv)ctx.lookup("VanzariImpl/remote");
+		vanzariInstance = (VanzariSrv)ctx.lookup("VanzariSrv/remote");
 		//stocuriInstance = (StocuriSrv)ctx.lookup("StocuriSrv/remote");
 		//nomenclatorInstance = (StocuriSrv)ctx.lookup("StocuriSrv/remote");
 		
@@ -55,6 +55,7 @@ public class TestVanzariEJB {
 	
 	@Test
 	public void testinregistrareComanda() {
+		logger.debug("prima met");
 		Produs[] p = new Produs[2];
 		p[0] = new Produs(1, "lapte batut", "buc", new Date(), 10, (float)0.24, 3.2); 
 		p[1] = new Produs();

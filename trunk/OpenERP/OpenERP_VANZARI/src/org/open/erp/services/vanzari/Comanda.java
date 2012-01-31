@@ -8,12 +8,15 @@ package org.open.erp.services.vanzari;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import static javax.persistence.CascadeType.ALL;
 
@@ -28,6 +31,7 @@ public class Comanda implements Serializable {
 	@Id @GeneratedValue
 	Integer nrComanda;
 	Date dataComanada;
+	@ManyToOne @JoinColumn(name="idClient")
 	Client client;
 	Double valoareComanda;
 	Double tvaComanada;
@@ -36,7 +40,7 @@ public class Comanda implements Serializable {
 	char stareComanda; // P, C, X
 	
 	@OneToMany(targetEntity=LinieComanda.class, cascade=ALL)
-	ArrayList<LinieComanda> produseComandate;
+	Collection<LinieComanda> produseComandate;
 	// !!!!!!!!!!
 	Integer idMetodaPlata;
 	Integer idModalitateLivrare;
@@ -171,13 +175,14 @@ public class Comanda implements Serializable {
 		this.adresaLivrare = adresaLivrare;
 	}
 
-	public ArrayList<LinieComanda> getProduseComandate() {
+	public Collection<LinieComanda> getProduseComandate() {
 		return produseComandate;
 	}
 
-	public void setProduseComandate(ArrayList<LinieComanda> produseComandate) {
+	public void setProduseComandate(Collection<LinieComanda> produseComandate) {
 		this.produseComandate = produseComandate;
 	}
+
 	
 	
 }
