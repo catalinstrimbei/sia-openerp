@@ -14,6 +14,9 @@ public interface ContabGestSrv {
 											String  formaAdresare
 											) throws Exception;
 	public ProdusFinit defProdusFinit(String den, Double procProfit) throws Exception;
+   
+  ArrayList<ProdusFinit> getProduseFinite();
+	public ProdusFinit salvareProdus(ProdusFinit produsFinit) throws Exception;
 	
 	public DummyPersoana getPersoanaId(Integer idPersoana) throws Exception;
 	
