@@ -23,9 +23,11 @@ import javax.naming.InitialContext;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.nomgen.PF;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.nomgen.logger.NomgenLogger;
 
 
 
@@ -34,11 +36,11 @@ import org.open.erp.services.nomgen.PersoanaFizica;
 public class FormPersoana implements Converter{
 
 	
-private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().getName());
+private NomgenLogger logger;
 	
 	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
-	@EJB(name="NomenclatoareSrv", mappedName="NomenclatoareSrv")
-	private NomenclatoareSrv nomgenInstance;
+	@EJB(name="NomenclatoareSrv/local", mappedName="NomenclatoareSrv/local")
+	private NomenclatoareSrvLocal nomgenInstance;
 	
 	/* Data Model */
 	private List<Persoana> persoane = new ArrayList<Persoana>();
@@ -49,7 +51,7 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 	}
 
 	public void setPersoana(Persoana p) {
-		logger.debug("Changed persoana : " + p.getId() + " :: " + p.getAdresa());
+		logger.logDEBUG("Changed persoana : " + p.getId() + " :: " + p.getAdresa());
 		this.persoana = p;
 		//populareModelActivitati();
 	}
@@ -57,7 +59,7 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 	
 	
 	public Map<String, Persoana> getPersoane(){
-		logger.debug("getPersoane : " + this.persoane.size());
+		logger.logDEBUG("getPersoane : " + this.persoane.size());
 		Map<String, Persoana> mapPersoane = new HashMap<String, Persoana>();
 		for (Persoana p: this.persoane)
 			mapPersoane.put(p.getAdresa(), p);
@@ -70,12 +72,12 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 	
 	public PF getpf() {
 		
-		logger.debug("get cnp: " + ((pf!=null)? pf.getCnp() : "null") );
+		logger.logDEBUG("get cnp: " + ((pf!=null)? pf.getCnp() : "null") );
 		return pf;
 	}
 
 	public Map<String, PersoanaFizica> getPfe(){
-		logger.debug("getPersoaneFizice : " + this.pfe.size());
+		logger.logDEBUG("getPersoaneFizice : " + this.pfe.size());
 		Map<String, PersoanaFizica> mapPF = new HashMap<String, PersoanaFizica>();
 		for (PF pf: this.pfe)
 			mapPF.put(pf.getNume(), (PersoanaFizica) pf);
@@ -87,7 +89,7 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 		if (persoana != null){
 			this.pfe = new ArrayList<PF>();
 			this.pfe.addAll(persoana.getPfe());
-			logger.debug("Popularepers fizica ... DEBUG ");
+			logger.logDEBUG("Popularepers fizica ... DEBUG ");
 		}else
 			this.pfe = null;
 	}
@@ -98,13 +100,14 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 	
 	@Override
 	public Object getAsObject(FacesContext ctx, UIComponent uicomp, String uival) {
-		logger.debug("getAsObject:uicomp: " + uicomp.getId());
+		logger.logINFO("getAsObject:uicomp: " + uicomp.getId());
 		if (uicomp.getId().equals("cboPersoane")){
 			// StringId - to - persoana
 			Integer idPersoana = new Integer(uival);
 			Persoana p = new Persoana();
 			p.setId(idPersoana);
 			Integer idx = this.persoane.indexOf(p);
+			logger.logINFO("<<<<<<<getAsObject: Id-ul persoanei din array este:"+idx);
 			return this.persoane.get(idx);
 		}
 		return null;
@@ -112,7 +115,7 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent uicomp, Object uival) {
-		logger.debug("getAsString:uicomp: " + uicomp.getId());
+		logger.logDEBUG("getAsString:uicomp: " + uicomp.getId());
 		if (uicomp.getId().equals("cboPersoane")){
 			// persoana - to - StringId
 			return ((Persoana)uival).getId().toString();
@@ -122,10 +125,10 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 	
 	
 	/* Actiuni UI Controller */
-	public String nextPersoana(){
+	public String nextPersoana1(){
 		Integer idx = this.persoane.indexOf(this.persoana) + 1;
 		
-		logger.debug("Next persoana : " + idx + " | " + this.persoane.size());
+		logger.logDEBUG("Next persoana : " + idx + " | " + this.persoane.size());
 		
 		if (idx > 0 && idx < this.persoane.size()){
 			this.setPersoana(this.persoane.get(idx));
@@ -135,17 +138,17 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 	}
 	
 	public void nextPersoana(ActionEvent evt){
-		nextPersoana();
+		nextPersoana1();
 	}
 
 	public void previousPersoana(ActionEvent evt){
-		previousPersoana();
+		previousPersoana1();
 	}
 	
-	public String previousPersoana(){
+	public String previousPersoana1(){
 		Integer idx = this.persoane.indexOf(this.persoana) - 1;
 		
-		logger.debug("Previous persoana : " + idx + " | " + this.persoane.size());
+		logger.logDEBUG("Previous persoana : " + idx + " | " + this.persoane.size());
 		
 		if (idx >= 0 && idx < this.persoane.size()){
 			this.setPersoana(this.persoane.get(idx));
@@ -165,7 +168,7 @@ private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().
 	for (int idx=0; idx< pfe.size(); idx++)
 	{
 			
-logger.debug("setPFCurenta:: " + this.pfe.set(idx, pf).getNume());
+logger.logDEBUG("setPFCurenta:: " + this.pfe.set(idx, pf).getNume());
 		this.pf = this.pfe.set(idx, pf);
 		}
 	}
@@ -186,7 +189,7 @@ logger.debug("setPFCurenta:: " + this.pfe.set(idx, pf).getNume());
 	
 	public boolean getDisableNext(){
 		if (this.persoane.indexOf(this.persoana) == this.persoane.size() - 1){
-			logger.debug("Disable Next");
+			logger.logDEBUG("Disable Next");
 			return true;
 		}
 		System.out.println("Enable Next");
@@ -195,14 +198,14 @@ logger.debug("setPFCurenta:: " + this.pfe.set(idx, pf).getNume());
 	}
 	
 	public String salvarePersoana() throws Exception{
-		logger.debug("LOGGER Salvare persoana: " + this.persoana.getAdresa() + "::" + this.persoana.getId());
-		this.persoane.remove(this.persoana);
+		
 		this.persoana = nomgenInstance.addPersoana(persoana);
+		logger.logINFO("LOGGER Salvare persoana: " + this.persoana.getAdresa() + "::" + this.persoana.getId());
 		this.persoane.add(this.persoana);
 		return "FormPersoana";
 	}
 	
-	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
+	/*--- Utils: InitialContext Client EJB-JDNI
 	private static InitialContext initJBossJNDICtx() throws Exception{
 		Properties props = new Properties();
         props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");		
@@ -211,13 +214,13 @@ logger.debug("setPFCurenta:: " + this.pfe.set(idx, pf).getNume());
         return new InitialContext(props);
 	}
 	
-	/* Initializare formularului*/	
+	Initializare formularului*/	
 	
 	/*Strategia 1: Injectare privata EJB - referinta EJB nepartajata */
-	@PostConstruct // Referinta EJB injectata este disponibila numai abua in handlerul PostConstruct, si nu la nivelul constructorului
+	@SuppressWarnings({ "unused", "unchecked" })
+	@PostConstruct 
 	private void initForm() throws Exception{
-		logger.debug("PostConstruct FORM Persoane local-proman: ..." + this.nomgenInstance);
-
+		logger = new NomgenLogger();
 		this.persoane = (List<Persoana>) nomgenInstance.getPersoana();
 		if (!persoane.isEmpty())
 			this.persoana = persoane.get(0);

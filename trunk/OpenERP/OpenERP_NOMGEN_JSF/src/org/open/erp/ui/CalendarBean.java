@@ -56,26 +56,7 @@ import org.open.erp.services.nomgen.Partener;
 @SessionScoped
 public class CalendarBean {
 
-	private List<Partener> parteneri;
-	private Partener partener;
-	
-	@EJB(name="NomenclatoareSrv", mappedName="NomenclatoareSrv")
-	private NomenclatoareSrv nomgenInstance;
-	// Referinta EJB injectata este disponibila numai abia
-	//in handlerul PostConstruct, si nu la nivelul constructorului
-	@SuppressWarnings("unchecked")
-	@PostConstruct
-	private void initForm() throws Exception{
-	this.parteneri = (List<Partener>) nomgenInstance.getPartener();
-	if (!parteneri.isEmpty())
-	this.partener = (Partener) parteneri.get(0);
-	else{
-	System.out.println("No project available!");
-	this.partener =  new Partener();
-	 partener.setId(1000);
-	}
-	}
-	
+
 	
 	
 	
@@ -97,26 +78,6 @@ public class CalendarBean {
    private boolean useCustomDayLabels;
 
    
-   
-   
-   
-   
- 
-public List<Partener> getParteneri() {
-	return parteneri;
-}
-
-public void setParteneri(List<Partener> parteneri) {
-	this.parteneri = parteneri;
-}
-
-public Partener getPartener() {
-	return partener;
-}
-
-public void setPartener(Partener partener) {
-	this.partener = partener;
-}
 
 public Locale getLocale() {
        return locale;

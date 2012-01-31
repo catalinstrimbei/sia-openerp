@@ -18,13 +18,21 @@
 					<p:attribute name="srcForm" value="FormPersoana"></p:attribute>
 				</h:commandLink>
 				
-				<h:commandLink id="Form2"
+				<h:commandLink id="FormMasterPersoanaFizica"
 					actionListener="#{formMenu.actionSrcChangeForm}" 
-					action="#{formMenu.changeSrcFormCurent}" value="Editare Form2" style="color: #FFFFFF">
-					<p:attribute name="srcForm" value="Form2"></p:attribute>
+					action="#{formMenu.changeSrcFormCurent}" value="Editare Master Detail Persoane Fizice" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormMasterPersoanaFizica"></p:attribute>
 				</h:commandLink>
-				
-				
+				<h:commandLink id="FormMaterial"
+					actionListener="#{formMenu.actionSrcChangeForm}" 
+					action="#{formMenu.changeSrcFormCurent}" value="Editare Materiale" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormMaterial"></p:attribute>
+				</h:commandLink>
+				<h:commandLink id="FormProdus"
+					actionListener="#{formMenu.actionSrcChangeForm}" 
+					action="#{formMenu.changeSrcFormCurent}" value="Editare Produse" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormProdus"></p:attribute>
+				</h:commandLink>
 				<h:commandLink id="Raport1"
 					actionListener="#{formMenu.showRaport}" value="Listare Raport1">
 					<p:attribute name="srcRaport" value="Raport1"/>

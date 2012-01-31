@@ -15,53 +15,53 @@
 <body>
 	<div
 		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Formular NomGen PERSOANA</div>
-	<h:form id="formPersoana" style="color: blue">
+	<h:form id="FormPersoana" style="color: blue">
 		<h:panelGrid columns="2" border="0">
 			<p:facet name="header">
 				<h:outputText value="CRUD Persoane 1.0 " style="color: #FF0000"></h:outputText>
 			</p:facet>
 
-			<h:selectOneMenu id="cboPersoane" value="#{formPersoana.persoana}"
-				converter="#{formPersoana}">
-				<p:selectItems value="#{formPersoana.persoane}"></p:selectItems>
+			<h:selectOneMenu id="cboPersoane" value="#{FormPersoana.persoana}"
+				converter="#{FormPersoana}">
+				<p:selectItems value="#{FormPersoana.persoane}"></p:selectItems>
 				<p:ajax render="Id Adresa Telefoane Email"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="3" border="0">
 				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
-					actionListener="#{formPersoana.previousPersoana}">
+					actionListener="#{FormPersoana.previousPersoana}">
 					<p:ajax render="@form"></p:ajax>
 				</h:commandButton>
 
 				<h:commandButton id="cmdNext" value="&gt;&gt;"
-					disabled="#{formPersoana.disableNext}"
-					actionListener="#{formPersoana.nextPersoana}">
+					disabled="#{FormPersoana.disableNext}"
+					actionListener="#{FormPersoana.nextPersoana}">
 					<p:ajax render="@form"></p:ajax>
 				</h:commandButton>
 
 			</h:panelGrid>
 
 			<h:outputText value="Id:"></h:outputText>
-			<h:inputText id="id" value="#{formPersoana.persoana.id}"
+			<h:inputText id="id" value="#{FormPersoana.persoana.id}"
 				></h:inputText>
 
 			<h:outputText value="Adresa:"></h:outputText>
-			<h:inputText id="adresa" value="#{formPersoana.persoana.adresa}">
+			<h:inputText id="adresa" value="#{FormPersoana.persoana.adresa}">
 				<p:convertDateTime ></p:convertDateTime>
 			</h:inputText>
 
 			<h:outputText value="Email"></h:outputText>
-			<h:inputText id="emailuri" value="#{formPersoana.persoana.emailuri}">
+			<h:inputText id="emailuri" value="#{FormPersoana.persoana.emailuri}">
 		</h:inputText>
 
 			<h:outputText value="Telefon:"></h:outputText>
 			<h:inputText id="telefoane"
-				value="#{formPersoana.persoana.telefoane}" >
+				value="#{FormPersoana.persoana.telefoane}" >
 			</h:inputText>
 
 			<p:facet name="footer">
 				<h:panelGrid columns="4" border="0">
 					<h:commandButton id="cmdAdaugare" value="Adaugare"
-						action="#{formPersoana.adaugarePersoana}">
+						action="#{FormPersoana.adaugarePersoana}">
 						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
 					<h:commandButton id="cmdStergere" value="Stergere">
@@ -71,7 +71,7 @@
 						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
 					<h:commandButton id="cmdSalvare" value="Salvare"
-						action="#{formPersoana.salvarePersoana}">
+						action="#{FormPersoana.salvarePersoana}">
 						<p:ajax render="@form" execute="@form"></p:ajax>
 					</h:commandButton>
 				</h:panelGrid>

@@ -32,5 +32,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMGEN"/>
+	<classpathentry kind="lib" path="C:/Users/Suzy/workspace_nou/libraries/ojdbc5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

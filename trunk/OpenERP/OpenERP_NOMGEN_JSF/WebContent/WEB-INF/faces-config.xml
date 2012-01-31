@@ -16,7 +16,21 @@
 		<managed-bean-class>org.open.erp.ui.FormPersoana</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	
+	<managed-bean>
+		<managed-bean-name>FormDocument</managed-bean-name>
+		<managed-bean-class>org.open.erp.ui.FormDocument</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>FormMaterial</managed-bean-name>
+		<managed-bean-class>org.open.erp.ui.FormMaterial</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>FormPersoana</managed-bean-name>
+		<managed-bean-class>org.open.erp.ui.FormPersoana</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<lifecycle>
 		<phase-listener>org.open.erp.ui.PhaseTracker</phase-listener>
 	</lifecycle>	

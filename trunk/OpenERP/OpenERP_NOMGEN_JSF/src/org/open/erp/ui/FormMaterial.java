@@ -21,6 +21,7 @@ import javax.naming.InitialContext;
 import org.apache.log4j.Logger;
 import org.open.erp.services.nomgen.Material;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.nomgen.Produs;
 
 
@@ -31,8 +32,8 @@ public class FormMaterial implements Converter{
 private static Logger logger = Logger.getLogger(FormPersoana.class.getPackage().getName());
 	
 	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
-	@EJB(name="NomenclatoareSrv", mappedName="NomenclatoareSrv")
-	private NomenclatoareSrv nomgenInstance;
+	@EJB(name="NomenclatoareSrv/local", mappedName="NomenclatoareSrv/local")
+	private NomenclatoareSrvLocal nomgenInstance;
 	
 	/* Data Model */
 	private List<Material> materiale = new ArrayList<Material>();

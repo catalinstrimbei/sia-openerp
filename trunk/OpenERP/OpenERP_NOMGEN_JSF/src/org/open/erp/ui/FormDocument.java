@@ -27,6 +27,7 @@ import javax.naming.InitialContext;
 import org.apache.log4j.Logger;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Document;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 
 
 
@@ -40,8 +41,8 @@ public class FormDocument implements Converter{
 private static Logger logger = Logger.getLogger(FormDocument.class.getPackage().getName());
 	
 	/* Inject EJB Service: trebuie mentionate ambele atribute name si mappedName epntru JBoss */
-	@EJB(name="NomenclatoareSrv", mappedName="NomenclatoareSrv")
-	private NomenclatoareSrv nomgenInstance;
+	@EJB(name="NomenclatoareSrv/local", mappedName="NomenclatoareSrv/local")
+	private NomenclatoareSrvLocal nomgenInstance;
 	
 	/* Data Model */
 	private List<Document> documente= new ArrayList<Document>();
