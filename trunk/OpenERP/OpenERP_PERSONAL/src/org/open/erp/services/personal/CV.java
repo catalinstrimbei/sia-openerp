@@ -40,6 +40,7 @@ public class CV implements Serializable{
 	private String   	studiiInCurs;
 	private String   	institutieInCurs;
 	private String[] 	limbiCunoscute = {"Engleza", "Franceza", "Italiana", "Spaniola", "Germana", "Altele"};
+	private Boolean editable;
 	public Integer getNrCV() {
 		return nrCV;
 	}
@@ -175,6 +176,12 @@ public class CV implements Serializable{
 		this.studiiInCurs = null;
 		this.institutieInCurs = null;
 		this.limbiCunoscute = null;
+	}
+	public Boolean getEditable() {
+		return editable;
+	}
+	public void setEditable(Boolean editable) {
+		this.editable = editable;
 	}
 	
 }

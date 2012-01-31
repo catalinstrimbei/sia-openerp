@@ -73,6 +73,13 @@ public class FormContracteAngajatiImpl implements Converter{
 	public void setAngajat(Angajat angajat) {
 		logger.logINFO("Am intrat pe setAngajat cu  Nume | Id : " + angajat.getNume() + angajat.getId());
 		this.angajat = angajat;
+		try {
+			//Integer idx = this.angajati.indexOf(this.angajat);
+			contracte = (List<ContractMunca>) personalSrv.getListaContracteAngajatEJB(this.angajat);
+		} catch (Exception e) {				
+			e.printStackTrace();
+		} 
+		
 	}
 	
 	public List<Angajat> getAngajatiList(){
@@ -130,11 +137,11 @@ public class FormContracteAngajatiImpl implements Converter{
 			uiAngajatTemplate.setId(Integer.valueOf(uiValue));
 			Integer idx = this.angajati.indexOf(uiAngajatTemplate);
 			logger.logINFO("Id-ul angajatului curent:"+idx);
-			try {
-				contracte = (List<ContractMunca>) personalSrv.getListaContracteAngajatEJB(this.angajati.get(idx));
-			} catch (Exception e) {				
-				e.printStackTrace();
-			} 
+//			try {
+//				contracte = (List<ContractMunca>) personalSrv.getListaContracteAngajatEJB(this.angajati.get(idx));
+//			} catch (Exception e) {				
+//				e.printStackTrace();
+//			} 
 			return this.angajati.get(idx);
 		} 
 		return null;
@@ -154,6 +161,13 @@ public class FormContracteAngajatiImpl implements Converter{
 	public void adaugareContract(ActionEvent evt){
 		this.contract = new ContractMunca();
 		this.contract.setEditable(true);
+		this.contract.setAngajat(angajat);
+		try {
+			this.contract.setFunctie(personalSrv.getFunctieById(3));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.contracte.add(this.contract);	  
 	} 
 	
@@ -207,12 +221,6 @@ public class FormContracteAngajatiImpl implements Converter{
 		return null;
 	}
 	
-	public String modificaContract(ContractMunca contract_){
-		logger.logINFO("Am intrat pe modificaContract cu NrContract: ");
-		contract_.setEditable(true);
-		return null;
-	}
-
 	public void modificaContracte(ActionEvent evt) throws Exception{		
 		for(ContractMunca ctrCurent : contracte)
 		{

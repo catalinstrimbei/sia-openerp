@@ -74,6 +74,7 @@ public class Candidat extends DummyPersoanaFizica implements Serializable{
 	public void setInterviuri(Collection<InterviuCandidat> interviuri) {
 		this.interviuri = interviuri;
 	}
+	/*
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -98,6 +99,6 @@ public class Candidat extends DummyPersoanaFizica implements Serializable{
 			return false;
 		return true;
 	}
-	
+	*/
 	
 }

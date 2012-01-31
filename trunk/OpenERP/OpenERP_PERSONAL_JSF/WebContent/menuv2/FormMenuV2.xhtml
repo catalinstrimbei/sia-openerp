@@ -10,25 +10,7 @@
 		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">PERSONAL_OPENERP [menu_V2]</div>
 	<h:panelGrid columns="1" border="1">
 		<h:form id="mainForm">
-			<h:panelGrid columns="4" border="0" style="color: #FFFFFF; background-color: #0000FF;;">
-
-				<h:commandLink id="Form1"
-					actionListener="#{formMenu.actionSrcChangeForm}"
-					action="#{formMenu.changeSrcFormCurent}" value="Editare Form1" style="color: #FFFFFF">
-					<p:attribute name="srcForm" value="Form1"></p:attribute>
-				</h:commandLink>
-				 
-				<h:commandLink id="FormCandidati"
-					actionListener="#{formMenu.actionSrcChangeForm}" 
-					action="#{formMenu.changeSrcFormCurent}" value="Editare Candidati" style="color: #FFFFFF">
-					<p:attribute name="srcForm" value="FormCandidati"></p:attribute>
-				</h:commandLink>
-				
-				<h:commandLink id="FormContracteAngajati"
-					actionListener="#{formMenu.actionSrcChangeForm}" 
-					action="#{formMenu.changeSrcFormCurent}" value="Editare Contracte" style="color: #FFFFFF">
-					<p:attribute name="srcForm" value="FormContracteAngajati"></p:attribute>
-				</h:commandLink>
+			<h:panelGrid columns="4" border="0" style="color: #FFFFFF; background-color: #0000FF;;">							 						
 				
 				<h:commandLink id="FormAngajati"
 					actionListener="#{formMenu.actionSrcChangeForm}" 
@@ -36,12 +18,22 @@
 					<p:attribute name="srcForm" value="FormAngajati"></p:attribute>
 				</h:commandLink>
 				
+					<h:commandLink id="FormContracteAngajati"
+					actionListener="#{formMenu.actionSrcChangeForm}" 
+					action="#{formMenu.changeSrcFormCurent}" value="Editare Contracte" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormContracteAngajati"></p:attribute>
+				</h:commandLink>
+				
 				<h:commandLink id="FormFunctii"
 					actionListener="#{formMenu.actionSrcChangeForm}" 
 					action="#{formMenu.changeSrcFormCurent}" value="Editare Functii" style="color: #FFFFFF">
 					<p:attribute name="srcForm" value="FormFunctii"></p:attribute>
 				</h:commandLink>
-				
+				<h:commandLink id="FormContracteCVFunctie"
+					actionListener="#{formMenu.actionSrcChangeForm}" 
+					action="#{formMenu.changeSrcFormCurent}" value="Vizualizare Contracte/Functii" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormContracteCVFunctie"></p:attribute>
+				</h:commandLink>
 				
 				<h:commandLink id="Raport1"
 					actionListener="#{formMenu.showRaport}" value="Listare Raport1">
