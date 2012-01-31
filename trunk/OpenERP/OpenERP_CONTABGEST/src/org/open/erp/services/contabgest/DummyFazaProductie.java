@@ -31,7 +31,7 @@ public class DummyFazaProductie implements Serializable{
 	private Date incepereFazaProductie;
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date sfarsitFazaProductie;
-	private double costFazaProductie;
+	private Double costFazaProductie;
 
 	@OneToMany(mappedBy = "dummyFazaProductie", cascade = CascadeType.ALL)
 	private Collection<CentruCost> centrucost;
@@ -41,7 +41,7 @@ public class DummyFazaProductie implements Serializable{
 	}
 	public DummyFazaProductie(Integer idFazaProductie,
 			String denumireFazaProductie, Date incepereFazaProductie,
-			Date sfarsitFazaProductie, double costFazaProductie) {
+			Date sfarsitFazaProductie, Double costFazaProductie) {
 		super();
 		this.idFazaProductie = idFazaProductie;
 		this.denumireFazaProductie = denumireFazaProductie;
@@ -49,6 +49,21 @@ public class DummyFazaProductie implements Serializable{
 		this.sfarsitFazaProductie = sfarsitFazaProductie;
 		this.costFazaProductie = costFazaProductie;
 	}
+	
+	
+	
+	public DummyFazaProductie(String denumireFazaProductie,
+			Date incepereFazaProductie, Date sfarsitFazaProductie,
+			Double costFazaProductie) {
+		super();
+		this.denumireFazaProductie = denumireFazaProductie;
+		this.incepereFazaProductie = incepereFazaProductie;
+		this.sfarsitFazaProductie = sfarsitFazaProductie;
+		this.costFazaProductie = costFazaProductie;
+		//this.centrucost = centrucost;
+	}
+	
+	
 	public Integer getIdFazaProductie() {
 		return idFazaProductie;
 	}
@@ -76,7 +91,7 @@ public class DummyFazaProductie implements Serializable{
 	public double getCostFazaProductie() {
 		return costFazaProductie;
 	}
-	public void setCostFazaProductie(double costFazaProductie) {
+	public void setCostFazaProductie(Double costFazaProductie) {
 		this.costFazaProductie = costFazaProductie;
 	}
 	
