@@ -39,12 +39,10 @@ public class TipCheltuieli implements Serializable {
 	public TipCheltuieli() {
 		
 	}
-	
 	public TipCheltuieli(String tipCheltuieli) {
 		super();
 		this.tipCheltuieli = tipCheltuieli;
 	}
-	
 	public TipCheltuieli(Integer idTipCheltuieli, String tipCheltuieli) {
 		super();
 		this.idTipCheltuieli = idTipCheltuieli;
