@@ -56,6 +56,18 @@ public class CheltuieliVariabile extends TipCheltuieli implements Serializable{
 	
 	}
 
+	
+	
+	public CheltuieliVariabile(String denCheltuialaV,
+			String delatiiCheltuialaV, Integer cantitateCheltuialaV,
+			CentruCost centrucost) {
+		super();
+		this.denCheltuialaV = denCheltuialaV;
+		this.delatiiCheltuialaV = delatiiCheltuialaV;
+		this.cantitateCheltuialaV = cantitateCheltuialaV;
+		this.centrucost = centrucost;
+	}
+
 	//public Integer getIdCheltVariabile() {
 	//	return idCheltVariabile;
 	//}
