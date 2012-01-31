@@ -15,12 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
-import org.open.erp.services.personal.Angajat;
-
-
-
 @Entity
-public class ResponabilCentruCost extends Angajat implements Serializable{
+public class ResponabilCentruCost extends DummyPersoana implements Serializable{
 	
 	/**
 	 * 
@@ -49,10 +45,32 @@ public class ResponabilCentruCost extends Angajat implements Serializable{
 	
 	
 	
+	public ResponabilCentruCost(String nume, String prenume,
+			String formaAdresare) {
+		super(nume, prenume, formaAdresare);
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+
+	public ResponabilCentruCost(String nume, String prenume,
+			String formaAdresare, Integer idResponsabilCentruCost, Date dataStartResponsabilitate,
+			Date dataSfarsitResponsabilitate, String detaliiResponsabilitati) {
+		super(nume, prenume, formaAdresare);
+		this.idResponsabilCentruCost = idResponsabilCentruCost;
+		this.dataStartResponsabilitate = dataStartResponsabilitate;
+		this.dataSfarsitResponsabilitate = dataSfarsitResponsabilitate;
+		this.detaliiResponsabilitati = detaliiResponsabilitati;
+	}
+
+
+
+
+
 	public Integer getIdResponsabilCentruCost() {
 		return idResponsabilCentruCost;
 	}
-	
 	public void setIdResponsabilCentruCost(Integer idResponsabilCentruCost) {
 		this.idResponsabilCentruCost = idResponsabilCentruCost;
 	}
