@@ -1,5 +1,7 @@
 package org.open.erp.services.productie.teste;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Properties;
@@ -11,6 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.logger.PersonalLogger;
+import org.open.erp.services.productie.CriteriuCalitate;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.ProductieSrv;
 
@@ -39,7 +42,7 @@ public class TestRegistru {
 
 	
 	@Test
-	public void testInserari() throws Exception {
+	/*public void testInserari() throws Exception {
 		try
 		{
 			logger.info("Begin test: Inserari");
@@ -53,13 +56,28 @@ public class TestRegistru {
 			logger.info("-------produs flux-----------"+flux.getProdus());
 			flux = productie.definireFluxProductie(1, null);
 			logger.info("-------salvare flux-----------"+flux.getIdFlux());
-		}
+		} 
 		catch(Exception ex)
 		{
 			logger.info("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
 			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.info("<< Stack Trace >>" + st.toString());
 		}
 		
+	}*/
+	public void testInserariCriteriuCalitate() throws Exception{
+		/*CriteriuCalitate criteriuCalitate = new CriteriuCalitate();
+		logger.info("-------nou criteriu calitate-----------");
+		criteriuCalitate.setIdCriteriu(1);
+		logger.info("-------id criteiru calitate-----------" + criteriuCalitate.getIdCriteriu());
+		criteriuCalitate.setCriteriu("criteriu nou");
+		logger.info("-------denumire criteriu calitate-----------" + criteriuCalitate.getCriteriu());*/
+		logger.info("-------nou criteriu calitate-----------");
+		CriteriuCalitate criteriuCalitate=productie.salveazaCriteriuCalitate(1,"criteriu");
+		logger.info("-------salvare criteriu calitate-----------"+criteriuCalitate.getIdCriteriu()); 
+		  
+		assertNotNull("Metoda de creare a criteirului nu a functionat!", criteriuCalitate.getIdCriteriu());
+		 
+		logger.info("End test: criteriu"); 
 	}
 	
 }

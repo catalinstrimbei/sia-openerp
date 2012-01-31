@@ -20,9 +20,9 @@ public class CriteriuCalitate implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue
-	Integer idCriteriu;
-	String criteriu;
+	@Id 
+	private Integer idCriteriu;
+	private String criteriu;
 	
 	
 	public CriteriuCalitate(Integer idCriteriu, String criteriu) {
@@ -44,6 +44,30 @@ public class CriteriuCalitate implements Serializable {
 	}
 	public CriteriuCalitate() {
 		super();
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idCriteriu == null) ? 0 : idCriteriu.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CriteriuCalitate other = (CriteriuCalitate) obj;
+		if (idCriteriu == null) {
+			if (other.idCriteriu != null)
+				return false;
+		} else if (!idCriteriu.equals(other.idCriteriu))
+			return false;
+		return true;
 	}
 	
 	

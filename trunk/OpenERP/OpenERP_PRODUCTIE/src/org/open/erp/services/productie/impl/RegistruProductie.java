@@ -97,7 +97,60 @@ public class RegistruProductie {
 	}
 	
 	public CriteriuCalitate salveazaCriteriuCalitate(CriteriuCalitate criteriu) throws Exception{
+		logger.info("----trycatch----");
+		
 		try{
+			logger.info("<<<<<<OBIECT CRIRERIU"+criteriu);
+			logger.info("<<<<<<OBIECT PONTAJ CLASS"+criteriu.getClass());
+			logger.info("<<<<<<OBIECT PONTAJ CU ID"+criteriu.getIdCriteriu());
+			if (criteriu.getIdCriteriu() == null || entityManager.find(criteriu.getClass(), criteriu.getIdCriteriu()) == null)
+			{
+				logger.info("Inainte de persist ***** "+ criteriu.getIdCriteriu());
+				//entityManager.getTransaction().begin();
+				entityManager.persist(criteriu);
+				//entityManager.getTransaction().commit();
+				logger.info("Dupa persist ******** ");
+			}
+			else
+				logger.info("Am facut merge ******** ");
+				entityManager.merge(criteriu);
+			
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			
+			ex.printStackTrace();
+			throw ex;
+		}
+		return criteriu;
+		/*try{
+			logger.info("------salveazaCriteriu------");
+			if(criteriu==null)
+				logger.info("criteriu is null");
+			else if (criteriu.getIdCriteriu()!=null)
+				logger.info("criteriu.getIdCriteriu() = " + criteriu.getIdCriteriu());
+			else 
+				logger.info("criteriu.getIdCriteriu() is null");
+			if (criteriu.getIdCriteriu() == null ||
+					entityManager.find(criteriu.getClass(), criteriu.getIdCriteriu()) == null)
+					
+					{
+					logger.info("Am intrat pe  if" );
+					entityManager.persist(criteriu);
+					}
+				else
+					entityManager.merge(criteriu);
+			}
+			catch(Exception ex)
+			{
+				logger.info("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+				logger.info("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+				ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); 
+				logger.info("<< Stack Trace >>" + st.toString());
+				throw ex;
+			}
+			return criteriu;}/*
+		}
+		/*try{
 
 			if (criteriu.getIdCriteriu() == null || 
 				entityManager.find(criteriu.getClass(), criteriu.getIdCriteriu()) == null)
@@ -109,7 +162,7 @@ public class RegistruProductie {
 			ex.printStackTrace();
 			throw ex;
 		}
-		return criteriu;
+		return criteriu; }*/
 	}
 	
 	public void stergeCriteriuCalitate(CriteriuCalitate criteriu) throws Exception{

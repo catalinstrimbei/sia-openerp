@@ -3,6 +3,8 @@
 	<persistence-unit name="OpenERP_PRODUCTIE">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
+		<jar-file>OpenERP_NOMGEN.jar</jar-file>
+		<jar-file>OpenERP_PERSONAL.jar</jar-file>
 		<!-- <jar-file>OpenERP_NOMGEN.jar</jar-file>
 		<jar-file>OpenERP_PERSONAL.jar</jar-file>-->
 		<class>org.open.erp.services.productie.Utilaj</class>

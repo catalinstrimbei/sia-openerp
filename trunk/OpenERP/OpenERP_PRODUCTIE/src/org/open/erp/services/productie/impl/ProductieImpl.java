@@ -424,17 +424,29 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal, Productie
 		registru.stergeCriteriuCalitate(criteriu);
 	}
 	
-	public CriteriuCalitate salveazaCriteriuCalitate(Integer idCriteriu, String criteriu) throws Exception{
 	
-		CriteriuCalitate criteriuCalitate = new CriteriuCalitate(idCriteriu, criteriu);		
-		/* Actiune tranzactionala ... */
-		if (sessionContext.getRollbackOnly() == true){
-			logger.debug(">>>>>>>>>>>> END salvare criteriu - TRANZACTIE ANULATA");
-			
-		}else{
-			criteriuCalitate = this.registru.salveazaCriteriuCalitate(criteriuCalitate);
-			//em.persist(proiectNou);
+	public CriteriuCalitate salveazaCriteriuCalitate(Integer idCriteriu, String criteriu) throws Exception{
+		logger.info("----begin test criteriu");
+		CriteriuCalitate criteriuCalitate = new CriteriuCalitate(idCriteriu, criteriu);	
+		
+		/*if (criteriuCalitate == null){
+			sessionContext.setRollbackOnly();
+			logger.info(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			}
+		else{
+			result = this.registru.salveazaCriteriuCalitate(criteriuCalitate);
+			logger.info(">>>>>>End salveazaCriteriu");
+			///em.persist(criteriuCalitate);
 		}
+		
+		return result;*/
+		if (sessionContext.getRollbackOnly() == true){
+			logger.info("----END creare flux - FAILED TRANSACTION");
+		}else{
+			this.registru.salveazaCriteriuCalitate(criteriuCalitate);
+		}
+		
+		logger.info("END Creare flux");
 		
 		return criteriuCalitate;
 				

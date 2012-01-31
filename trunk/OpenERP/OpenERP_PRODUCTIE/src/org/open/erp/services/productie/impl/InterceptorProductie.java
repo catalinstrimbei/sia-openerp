@@ -87,12 +87,104 @@ public class InterceptorProductie {
 		@SuppressWarnings("rawtypes")
 		Class targetBeanClass = ctx.getTarget().getClass();
 		String invokedMethodName = ctx.getMethod().getName();
+		ProductieImpl ejbean = (ProductieImpl) ctx.getTarget();
 		
 		logger.info("*** InterceptorProductie(logInvocationResult) : call method >>: " + targetBeanClass.getName() + "." + invokedMethodName);
+		
+		if (		
+				("definireFluxProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("definireFazaProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("lansareComandaProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("consumResursa".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("controlCalitate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||					
+				("livrareProdus".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("inregistrareGestiuneConsum".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("inregistrareGestiuneProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getFlux".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("fabricare".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("getFazaFlux".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("comandaMateriale".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getListaFluxuri".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("stergeFlux".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getListaSemifabricate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("stergeSemifabricat".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("salveazaSemifabricat".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getCriteriiCalitate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("stergeCriteriuCalitate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||					
+				
+				("salveazaCriteriuCalitate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getFazaProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getListaFaze".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("stergeFaza".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getUtilaje".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("stergeUtilaj".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))			
+			){
 		
 		Object invocationResult = ctx.proceed();
 		logger.info("*** InterceptorProductie(logInvocationResult) : result >>: " + invocationResult);
 		return invocationResult;
+		}
+		return ctx.proceed();
 	}
+	
+	
+	@AroundInvoke
+	public Object logEJBInjection(InvocationContext ctx) throws Exception{
+		// Decodifica informatii privind contextul de invocare
+		Class<? extends Object> targetBeanClass = ctx.getTarget().getClass();
+		String invokedMethodName = ctx.getMethod().getName();
+		ProductieImpl ejbean = (ProductieImpl) ctx.getTarget();
+		
+		logger.info("#### call of logEJBInjection: " + targetBeanClass.getName() + "." + invokedMethodName);
+		// Executa logica de interceptare pt fiecare metoda care foloseste personalSrv
+		if (		
+				("definireFluxProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("definireFazaProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("lansareComandaProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("consumResursa".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("controlCalitate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||					
+				("livrareProdus".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("inregistrareGestiuneConsum".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("inregistrareGestiuneProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getFlux".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("fabricare".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("getFazaFlux".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("comandaMateriale".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getListaFluxuri".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("stergeFlux".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getListaSemifabricate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("stergeSemifabricat".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("salveazaSemifabricat".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getCriteriiCalitate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("stergeCriteriuCalitate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||					
+				
+				("salveazaCriteriuCalitate".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getFazaProductie".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getListaFaze".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				
+				("stergeFaza".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("getUtilaje".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))||
+				("stergeUtilaj".equals(invokedMethodName) && ProductieImpl.class.equals(targetBeanClass))			
+			)
+		{
+			logger.info("#### personalSrv: " + (ejbean.getPersonalSrv()!=null? " is injected, ":" isn't injected, ")
+					);
+			logger.info("#### nomgenSrv: " + (ejbean.getNomenclatoareSrv()!=null? " is injected, ":" isn't injected, ")
+					);
+			//return null;
+		}
+		// executa metoda interceptata
+		return ctx.proceed();
+	}
+	
 	
 }

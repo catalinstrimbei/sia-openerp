@@ -92,7 +92,7 @@ public class TestProductieEJB {
 		 
 		/* produs.setIdMaterial(1);
 		 produs.setDenumire("Produs nou");
-		 produs.setUnitateMasura(null);
+		 produs.setUnitateMasura(null); 
 		 produs.setDataFabricatiei(null);
 		 produs.setTermenValabilitate(null);*/
 		 
@@ -113,7 +113,7 @@ public class TestProductieEJB {
 		 
 	
 		}
-/* @Test
+ @Test
 	 public void testDefinireFazaProductie () throws Exception{
 		 
 		 logger.info("Begin test: definireFaza");
@@ -652,5 +652,3 @@ public void testInregistrareGestiuneProductie() throws Exception{
 	logger.info("SFARSIT TEST INREGISTRARE GESTIUNE PRODUCTIE");
 	}
 }
-
-*/}
