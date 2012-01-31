@@ -1,5 +1,6 @@
 package org.open.erp.services.contabgest;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -58,6 +59,7 @@ public interface ContabGestSrv {
 	public DummyFazaProductie defDummyFazaProductie(
 			String denumireFazaProductie, Date incepereFazaProductie,
 			Date sfarsitFazaProductie, Double costFazaProductie)throws Exception;
-	
+	ArrayList<ProdusFinit> getProduseFinite();
+			public ProdusFinit salvareProdus(ProdusFinit produsFinit) throws Exception;
 	
 }
