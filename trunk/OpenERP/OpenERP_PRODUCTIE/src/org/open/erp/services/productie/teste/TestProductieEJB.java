@@ -73,8 +73,9 @@ public class TestProductieEJB {
 	 public void testDefinireFluxProductie () throws Exception{
 
 			logger.info("!!!!!!!!!!!!!!Begin test: definireFluxProductie");
-			Produs produs = nomenclatoare.CautareProdusDupaDenumire("produs");
-			logger.info("!!!!!!!!!!A fost incarcat produsul:----  "+produs.getDenumire());
+			//Produs produs = nomenclatoare.CautareProdusDupaDenumire("produs");
+			//logger.info("!!!!!!!!!!A fost incarcat produsul:----  "+produs.getDenumire());
+			Produs produs = new Produs();
 			Integer idFlux=1;
 			logger.info("!!!!!!!!!!!!!!!id-ul fluxului va fi: " + idFlux);
 			FluxProductie flux = productie.definireFluxProductie(idFlux, produs);
@@ -119,8 +120,8 @@ public class TestProductieEJB {
 		 logger.info("Begin test: definireFaza");
 		 
 		 Produs produs = new Produs();
-		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
-		 logger.info("Flux creat pentru produsul:" + produs.getDenumire());
+		 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		// logger.info("Flux creat pentru produsul:" + produs.getDenumire());
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
 		 
@@ -272,7 +273,7 @@ public class TestProductieEJB {
 	 public void testComandaMateriale() throws Exception{
 		logger.info("----START test: comandaMateriale ---");
 		 Produs produs = new Produs();
-		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		 //produs.setDenumire("produs");
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
@@ -430,7 +431,7 @@ public class TestProductieEJB {
 	public void testFabricareProdus() throws Exception {
 		logger.info("----START test: fabricareProdus ---");
 		 Produs produs = new Produs();
-		 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		 //produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		 //produs.setDenumire("produs");
 		 
 		 FluxProductie flux = productie.definireFluxProductie(1, produs);
@@ -455,19 +456,19 @@ public class TestProductieEJB {
 		
 			logger.info("----INCEPERE TEST CONSUM RESURSE----");
 			 Produs produs = new Produs();
-			 produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+			// produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 			 //produs.setDenumire("produs");
 			 
-			 FluxProductie flux = productie.definireFluxProductie(1, produs);
+			FluxProductie flux = productie.definireFluxProductie(1, produs);
 			 
-			 logger.info("Fluxul cu id: " + flux.getIdFlux() + " a fost creat!");
+			logger.info("Fluxul cu id: " + flux.getIdFlux() + " a fost creat!");
 				
 				assertNotNull("Flux ne-validat!", flux.getIdFlux());
 				
-				flux = productie.getFlux(flux.getIdFlux());
+			flux = productie.getFlux(flux.getIdFlux());
 					
 				assertNotNull("Nu exista flux nou!", flux);
-				
+				//FluxProductie flux = new FluxProductie();
 			 
 				MijlocFix mf;
 				FazaProductie fz;
@@ -610,7 +611,7 @@ public class TestProductieEJB {
 		logger.info("INCEPERE TEST CONTROL CALITATE");
 		
 		Produs produs = new Produs();
-		produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+		//produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 		//produs.setDenumire("denumire");
 		productie.controlCalitate(produs);
 	
@@ -623,7 +624,7 @@ public void testLivrareProdus() throws Exception{
 	logger.info("INCEPERE TEST LIVRARE PRODUS");
 	
 	Produs produs = new Produs();
-	produs=nomenclatoare.CautareProdusDupaDenumire("produs");
+	//produs=nomenclatoare.CautareProdusDupaDenumire("produs");
 	//produs.setDenumire("produs");
 	ComandaProductie comanda = new ComandaProductie();
 	Integer cantitateProdus = comanda.getCantitate();

@@ -86,7 +86,7 @@ public class FormDefinireFaza implements Converter {
 		@EJB(mappedName="ProductieSrv/local", name="ProductieSrv/local") 
 		private ProductieSrvLocal productieSrv;
 		
-		@EJB(mappedName="NomenclatoareImpl/local", name="NomenclatoareImpl/local") 
+		@EJB(mappedName="NomenclatoareSrv/local", name="NomenclatoareSrv/local") 
 		private NomenclatoareSrvLocal nomenclatoareSrv;
 		
 		@EJB(mappedName="PersonalSrv/local", name="PersonalSrv/local") 

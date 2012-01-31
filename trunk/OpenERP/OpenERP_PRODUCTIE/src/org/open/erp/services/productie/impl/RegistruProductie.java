@@ -228,8 +228,8 @@ public class RegistruProductie {
 			logger.info("<<<<<<OBIECT Flux"+flux);
 			logger.info("<<<<<<OBIECT Flux CLASS: "+flux.getClass());
 			logger.info("<<<<<<OBIECT Flux CU ID: "+flux.getIdFlux());
-			if (flux.getIdFlux() == null)//|| 
-				//entityManager.find(flux.getClass(), flux.getIdFlux()) == null)
+			if (flux.getIdFlux() == null || 
+				entityManager.find(flux.getClass(), flux.getIdFlux()) == null)
 				{
 				logger.info("se incearca persistarea fluxului");
 				entityManager.persist(flux);
@@ -265,9 +265,14 @@ public class RegistruProductie {
 			
 			if (faza.getFaza() == null || 
 				entityManager.find(faza.getClass(), faza.getFaza()) == null)
+			{
 				entityManager.persist(faza);
-			else
+				logger.info("----IF-----fluxul a fost salvat");
+				}
+			else{
+				logger.info("-----ELSE----- fluxul a fost salvat");
 				entityManager.merge(faza);
+				}
 			
 		}catch(Exception ex){
 			logger.info("EROARE PERSISTENTA ***** ");
