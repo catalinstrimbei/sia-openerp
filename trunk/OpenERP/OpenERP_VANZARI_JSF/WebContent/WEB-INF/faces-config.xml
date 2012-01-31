@@ -12,8 +12,26 @@
 		</locale-config>
 	</application>
 	<managed-bean>
-		<managed-bean-name>formProiecteActivitati</managed-bean-name>
-		<managed-bean-class>org.open.erp.ui.FormProiecte</managed-bean-class>
+		<managed-bean-name>formComanda</managed-bean-name>
+		<managed-bean-class>org.open.erp.ui.FormComanda</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>formClient</managed-bean-name>
+		<managed-bean-class>org.open.erp.ui.FormClient</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>formVanzator</managed-bean-name>
+		<managed-bean-class>org.open.erp.ui.FormVanzator</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>formFactura</managed-bean-name>
+		<managed-bean-class>org.open.erp.ui.FormFactura</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	

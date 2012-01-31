@@ -7,150 +7,122 @@
 <h:head></h:head>
 <body>
 	<div
-		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Factura</div>
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Comanda</div>
 
-	<h:form id="formFactura">
+	<h:form id="formComanda">
 		<h:panelGrid columns="2" border="0" style="width: 522px; ">
 			<p:facet name="header">
-				<h:outputText value="Selectati o factura" style="color: #0000A0"></h:outputText>
+				<h:outputText value="Selectati o comanda" style="color: #0000A0"></h:outputText>
 			</p:facet>
 
-			<h:selectOneMenu id="cboFactura" value="#{formFactura.factura}"
-				converter="#{formFactura}">
-				<p:selectItems value="#{formFactura.factura}"></p:selectItems>
-				<p:ajax render="idFactura stareFactura adresaFacturare dataLivrare idMetodaPlata idModalitateLivrare costLivrare adresaLivrare"></p:ajax>
+			<h:selectOneMenu id="cboComenzi" value="#{formComanda.comanda}"
+				converter="#{formComanda}">
+				<p:selectItems value="#{formComanda.comanda}"></p:selectItems>
+				<p:ajax render="nrComanda dataComanada stareComanda"></p:ajax>
 			</h:selectOneMenu>
 			<h:panelGrid columns="2" border="0">
 				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
-					actionListener="#{formFactura.previousFactura}">
+					actionListener="#{formComanda.previousComanda}">
 					<p:ajax render="@form"></p:ajax>
 				</h:commandButton>
 
 				<h:commandButton id="cmdNext" value="&gt;&gt;"
-					disabled="#{formFactura.disableNext}"
-					actionListener="#{formFactura.nextFactura}">
+					disabled="#{formComanda.disableNext}"
+					actionListener="#{formComanda.nextComanda}">
 					<p:ajax render="@form"></p:ajax>
 				</h:commandButton>
 			</h:panelGrid>
 
-			<h:outputText value="Id factura:"></h:outputText>
-			<h:inputText id="idFactura" value="#{formFactura.facturaEmisa.idFactura}"></h:inputText>
-			
-			<h:outputText value="Stare factura:"></h:outputText>
-			<h:inputText id="stareFactura"	value="#{formFactura.facturaEmisa.platita}">
-			</h:inputText>
-			
-			<h:outputText value="Adresa facturare:"></h:outputText>
-			<h:inputText id="adresaFacturare"	value="#{formFactura.facturaEmisa.adresaFacturare}">
-			</h:inputText>
-			
-			<h:outputText value="Data livrare:"></h:outputText>
-			<h:inputText id="dataLivrare" value="#{formFactura.facturaEmisa.dataLivrare}">
-			<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
-			</h:inputText>
-			
 			<h:outputText value="Client"></h:outputText>
-			<h:inputText id="client" value="#{formFactura.facturaEmisa.client}"></h:inputText>
+			<h:inputText id="client" value="#{formComanda.comanda.client}"></h:inputText>
 			
-			<h:outputText value="Comanda"></h:outputText>
-			<h:inputText id="comanda" value="#{formFactura.facturaEmisa.comanda}"></h:inputText>
-			
-			<h:outputText value="Vanzator"></h:outputText>
-			<h:inputText id="vanzator" value="#{formFactura.facturaEmisa.vanzator}"></h:inputText>
-			
-			<h:outputText value="Metoda plata:"></h:outputText>
-			<h:inputText id="idMetodaPlata"	value="#{formFactura.facturaEmisa.idMetodaPlata}">
+			<h:outputText value="Data Comanda:"></h:outputText>
+			<h:inputText id="dataComanda" value="#{formComanda.comanda.dataComanda}">
+				<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
 			</h:inputText>
 			
-			<h:outputText value="Modalitate livrare:"></h:outputText>
-			<h:inputText id="idModalitateLivrare"	value="#{formFactura.facturaEmisa.idModalitateLivrare}">
-			</h:inputText>
+			<h:outputText value="Stare comanda:"></h:outputText>
+			<h:inputText id="stareComanda"	value="#{formComanda.comanda.stareComanda}">
+			</h:inputText>			
 			
-            <h:outputText value="Cost livrare:"></h:outputText>
-			<h:inputText id="costLivrare"	value="#{formFactura.facturaEmisa.costLivrare}">
-			</h:inputText>
 			
-			<h:outputText value="Adresa livrare:"></h:outputText>
-			<h:inputText id="adresaLivrare"	value="#{formFactura.facturaEmisa.adresaLivrare}">
-			</h:inputText>
-
-
 			<p:facet name="footer">
 				<h:panelGrid columns="3" border="0">
 					<h:commandButton id="cmdAdaugare" value="Adaugare"
-						action="#{formFactura.adaugareFactura}">
+						action="#{formComanda.adaugareComanda}">
 						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton>
 					<!-- <h:commandButton id="cmdStergere" value="Stergere"
-						action="#{formFactura.stergereComanda}">
+						action="#{formComanda.stergereComanda}">
 						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton> 
 					<h:commandButton id="cmdAbandon" value="Abandon">
 						<p:ajax render="@form" execute="@none"></p:ajax>
 					</h:commandButton> -->
 					<h:commandButton id="cmdSalvare" value="Salvare"
-						action="#{formFactura.salvareFactura}">
+						action="#{formComanda.salvareComanda}">
 					</h:commandButton>
 				</h:panelGrid>
 			</p:facet>
 		</h:panelGrid>
 		<h:messages style="color: #FF0000"></h:messages>
-		<h:dataTable id="tblLiniiFactura" var="linieFacturaEmisa"
-			value="#{formFactura.linieFacturaEmisa" border="1">
+		<h:dataTable id="tblLiniiComanda" var="linieComanda"
+			value="#{formComanda.linieComanda}" border="1">
 			<p:facet name="header">
-				<h:outputText value="DETALII FACTURA"
+				<h:outputText value="DETALII COMANDA"
 					style="color: #0000A0"></h:outputText>
 			</p:facet>
+			
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Nr. Crt."></h:outputText>
+				</p:facet>
+				<h:inputText id="idLinieComanda" value="#{linieComanda.nrLinie}"></h:inputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Produs"></h:outputText>
+				</p:facet>
+				<h:inputText id="articol" value="#{linieComanda.produs.denumire}">
+					<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
+				</h:inputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Cantitate"></h:outputText>
+				</p:facet>
+				<h:inputText id="cantitate"  value="#{linieComanda.cantitate}" />		
+			</h:column>
+			
 			<h:column>
 				<p:facet name="header">
 					<h:outputText value="Pret linie:"></h:outputText>
 				</p:facet>
 				<h:inputText id="pretLinie"
-					value="#{linieFacturaEmisa.pretLinie}"></h:inputText>
+					value="#{linieComanda.pretLinie}"></h:inputText>
 			</h:column>
-            <h:column>
-                <p:facet name="header">
-                      <h:outputText value="Linie document nr.:"></h:outputText>
-                </p:facet>
-                    <h:inputText id="linieDoc" 
-                          value="#{linieFacturaEmisa.linieDoc}">
-                                        
-                    </h:inputText>
-            </h:column>
-            <h:column>
-                 <p:facet name="header">
-                     <h:outputText value="Cantitate"></h:outputText>
-                 </p:facet>
-                       <h:inputText id="cantitate"  
-					          value="#{linieFacturaEmisa.cantitate}" />               
-            </h:column>
-            <h:column>
-                 <p:facet name="header">
-                       <h:outputText value="Pret"></h:outputText>
-                 </p:facet>
-                       <h:inputText id="pret"
-                                value="#{linieFacturaEmisa.pret}"></h:inputText>
-            </h:column>
+           
             <h:column>
                   <p:facet name="header">
                        <h:outputText value="TVA"></h:outputText>
                   </p:facet>
                       <h:inputText id="tva"
-                            value="#{linieFacturaEmisa.tva}"></h:inputText>
+                            value="#{linieComanda.tvaLinie}"></h:inputText>
                         </h:column>
 			<h:column>
 			
 			</h:column>
-				<h:commandButton id="cmdEdit" value="Editeaza" actionListener="#{formFactura.editeazaLinieFacturaEmisa}">
-				<p:attribute name="selectedId" value="#{linieFacturaEmisa.pretLinie}"></p:attribute></h:commandButton>
+				<h:commandButton id="cmdEdit" value="Editeaza" actionListener="#{formComanda.editeazaLinieComanda}">
+				<p:attribute name="selectedId" value="#{linieComanda.nrComanda}"></p:attribute></h:commandButton>
 				<!-- <h:inputHidden id="id1" value="#{liniePontaj.idPontaj}" />  -->
 				<p:facet name="header">
 					
 				</p:facet>
 			</h:column>
+			
 			<h:column>
-				<h:commandButton id="cmdSterge" value="Sterge" actionListener="#{formFactura.stergeLinieFacturaEmisa}">
-				<p:attribute name="selectedId" value="#{linieFacturaEmisa.pretLinie}"></p:attribute></h:commandButton>
+				<h:commandButton id="cmdSterge" value="Sterge" actionListener="#{formComanda.stergeLinieComanda}">
+				<p:attribute name="selectedId" value="#{linieComandaEmisa.nrComanda}"></p:attribute></h:commandButton>
 				<!-- <h:inputHidden id="id1" value="#{liniePontaj.idPontaj}" />  -->
 				<p:facet name="header">
 					
@@ -159,11 +131,11 @@
 			
 			<!-- <h:column>
 				<h:selectOneRadio id="selectLinieCurenta"
-					valueChangeListener="#{formFacturaLiniiComand.setLinieCurenta}"
+					valueChangeListener="#{formComandaLiniiComand.setLinieCurenta}"
 					value="1"
-					style="#{(linieComanda.idLinieComanda == formFacturaLiniiComand.linieComanda.idLinieComanda) ? 'background-color:red' : 'background-color:blue'}">
+					style="#{(linieComanda.idLinieComanda == formComandaLiniiComand.linieComanda.idLinieComanda) ? 'background-color:red' : 'background-color:blue'}">
 					<p:selectItem
-						itemValue='${(linieComanda.idLinieComanda == formFacturaLiniiComand.linieComanda.idLinieComanda) ? "1" : "0" }'
+						itemValue='${(linieComanda.idLinieComanda == formComandaLiniiComand.linieComanda.idLinieComanda) ? "1" : "0" }'
 						itemLabel=" "></p:selectItem>
 
 					<p:ajax render="tblLiniiComenzi"></p:ajax>
@@ -177,7 +149,7 @@
         <p:facet name="footer">
 				<h:panelGrid columns="4" border="0">
 		<h:commandButton id="cmdAdaugaLinie" value="Adaugare linie"
-			action="#{formFactura.adaugaLinieFacturaEmisa}">
+			action="#{formComanda.adaugaLinieComanda}">
 			<p:ajax render="@form" execute="@none"></p:ajax>
 		</h:commandButton>
 		</h:panelGrid>
