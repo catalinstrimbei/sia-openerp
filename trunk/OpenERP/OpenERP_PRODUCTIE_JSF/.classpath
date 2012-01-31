@@ -32,5 +32,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PRODUCTIE"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMGEN"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

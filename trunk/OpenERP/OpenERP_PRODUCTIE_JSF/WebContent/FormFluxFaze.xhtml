@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">
+		Formular Flux - Faze</div>
+
+	<h:form id="formFluxFaze">
+		<h:panelGrid columns="2" border="0">
+			<p:facet name="header">
+				<h:outputText value="MASTER flux-faze" style="color: #FF0000"></h:outputText>
+			</p:facet>
+
+			<h:selectOneMenu id="cboFluxuri" value="#{formFluxFaze.flux}"
+				converter="formFluxFaze">
+				<p:selectItems value="#{formFluxFaze.flux}"></p:selectItems>
+				<p:ajax render="txtIdFlux cboProduse"></p:ajax>
+			</h:selectOneMenu>
+			<h:panelGrid columns="2" border="0">
+				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
+					actionListener="#{formFluxFaze.previousFlux}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+				<h:commandButton id="cmdNext" value="&gt;&gt;"
+					disabled="#{formFluxFaze.disableNext}"
+					actionListener="#{formFluxFaze.nextFlux}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+			</h:panelGrid>
+
+			<h:outputText value="Produs:"></h:outputText>
+			<h:inputText id="produs" value="#{formFluxFaze.flux.produs}"></h:inputText>
+
+			
+
+			<p:facet name="footer">
+				<h:panelGrid columns="4" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare"
+						action="#{formFluxFaze.adaugareFlux}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Abandon">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						action="#{formFluxFaze.salvareFlux}">
+					</h:commandButton>
+				</h:panelGrid>
+			</p:facet>
+		</h:panelGrid>
+		<h:messages style="color: #FF0000"></h:messages>
+		<h:dataTable id="tblFaze" var="faza"
+			value="#{formFluxFaze.faze}" border="1">
+			<p:facet name="header">
+				<h:outputText value="DETALII faze flux"
+					style="color: #FF0000"></h:outputText>
+			</p:facet>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Faza"></h:outputText>
+				</p:facet>
+				<h:inputText id="faza" value="#{faza.faza}"></h:inputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Utilaj"></h:outputText>
+				</p:facet>
+				<h:inputText id="utilaj" value="#{faza.utilaj}">
+				</h:inputText>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Timp folosire"></h:outputText>
+				</p:facet>
+				<h: inputText id="timp"  value="#{faza.timpFolosire}"></h:> </h:inputText>		
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Materiale reteta"></h:outputText>
+				</p:facet>
+				<h:inputTextarea id="materialeReteta"
+					value="#{faza.materialeReteta}"></h:inputTextarea>
+			</h:column>
+			<h:column>
+				<p:facet name="header">
+					<h:outputText value="Angajati"></h:outputText>
+				</p:facet>
+				<h:inputTextarea id="angajati"
+					value="#{faza.angajati}"></h:inputTextarea>
+			</h:column>
+			
+		</h:dataTable>
+	</h:form>
+
+</body>
+</html>
