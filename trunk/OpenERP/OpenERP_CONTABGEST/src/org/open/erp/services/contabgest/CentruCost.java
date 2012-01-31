@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 
+
+
 @Entity
 public class CentruCost implements Serializable{
 
@@ -39,11 +41,13 @@ public class CentruCost implements Serializable{
 	@ManyToOne @JoinColumn(name = "idProdusFinit")
 	private ProdusFinit produsfinit;
 	
+	
 	@OneToMany(mappedBy = "centrucost", cascade = CascadeType.ALL)
 	private Collection<CheltuieliVariabile> 	cheltuieliVariabile;
 	
 	@OneToMany(mappedBy = "centrucost", cascade = CascadeType.ALL)
 	private Collection<CheltuieliFixe> 	cheltuieliFixe;
+	
 	
 	//@ManyToOne @JoinColumn(name = "idCheltVariabile")
 	//private CheltuieliVariabile cheltuieliVariabile;
@@ -56,6 +60,25 @@ public class CentruCost implements Serializable{
 	public CentruCost() {
 		super();
 	}
+
+	
+
+
+	public CentruCost(String denCentruCost, Date startCentruCost,
+			Date sfarsitCentruCost, ResponabilCentruCost responabilCentruCost,
+			DummyFazaProductie dummyFazaProductie,
+			ProceseTehnicoEconomice proceseTehnicoEconomice,
+			ProdusFinit produsfinit) {
+		super();
+		this.denCentruCost = denCentruCost;
+		this.startCentruCost = startCentruCost;
+		this.sfarsitCentruCost = sfarsitCentruCost;
+		this.responabilCentruCost = responabilCentruCost;
+		this.dummyFazaProductie = dummyFazaProductie;
+		this.proceseTehnicoEconomice = proceseTehnicoEconomice;
+		this.produsfinit = produsfinit;
+	}
+
 
 
 
@@ -102,7 +125,7 @@ public class CentruCost implements Serializable{
 		this.sfarsitCentruCost = sfarsitCentruCost;
 	}
 
-
+	
 
 	
 
