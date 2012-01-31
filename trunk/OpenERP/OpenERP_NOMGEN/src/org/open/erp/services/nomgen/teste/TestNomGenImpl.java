@@ -16,7 +16,7 @@ import org.open.erp.services.nomgen.impl.NomenclatoareDummyImpl;
 
 
 @SuppressWarnings("deprecation")
-public class TestNomGenImpl{
+public class TestNomGenImpl {
 	
 DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 	

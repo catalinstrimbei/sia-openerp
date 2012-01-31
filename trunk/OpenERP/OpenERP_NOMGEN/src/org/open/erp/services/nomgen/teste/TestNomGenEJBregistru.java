@@ -60,16 +60,15 @@ private static NomgenLogger logger;
 						
 			
 			TestNomGenImpl test = new TestNomGenImpl();
-			test.generarePersoane();
-			test.generareListaParteneri();
-			test.AdaugarePersoanePF();
-			test.AdaugarePersoanePJ();
+			
 			
 			Persoana p = new Persoana();
 			p.setAdresa(test.persoana2.getAdresa());
+			p.setId(test.persoana2.getId());
 			p = NGInstance.addPersoana(test.persoana2);			
 			Persoana p2 = NGInstance.addPersoana(test.persoana3);
 			Persoana p3 = NGInstance.addPersoana(test.persoana4);
+			Persoana p4 = NGInstance.addPersoana(test.persoana5);
 			
 			
 			Departament d1 = NGInstance.addDepartament(test.dep2);

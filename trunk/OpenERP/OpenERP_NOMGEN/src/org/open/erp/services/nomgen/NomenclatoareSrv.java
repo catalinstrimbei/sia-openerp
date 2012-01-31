@@ -4,13 +4,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import javax.ejb.Remote;
+
 /**
  * 
  * @author Echipa NomGen
  * 
  * @ApplicationServiceFacade(ServiceDummyAPI)
  */
-
+@Remote
 public interface NomenclatoareSrv {
 	
 	public Set<Departament> getDepartament() throws Exception;

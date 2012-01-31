@@ -1,11 +1,10 @@
 package org.open.erp.services.nomgen.logger;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
 
-import org.apache.log4j.Appender;
+import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
@@ -47,7 +46,7 @@ public class NomgenLogger {
 					ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 					URL url = classLoader.getResource("");
 					String path = url.getPath().toString();
-					if(false || path.length() > 4)
+					if(path.length() > 4)
 					{
 						path = path.substring(1, path.length() - 4);					
 						path = path + "Resources/";					
@@ -56,7 +55,7 @@ public class NomgenLogger {
 					}
 					else
 					{
-						path = "T:\\";
+						path = "C:\\";
 					}
 					//path = "T:\\";
 					myAppender = new RollingFileAppender(layout, path + "LogFile_OpenERP_NOMGEN.log");
@@ -73,6 +72,27 @@ public class NomgenLogger {
 					logger.info("**************************************************************************************");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	}
+	
+	private void addConsoleAppender(Logger logger)
+	{
+				//Create the ConsoleAppender.
+		        PatternLayout layout = new PatternLayout();
+		        layout.setConversionPattern("%d %-5p [%c] %m%n");
+		        ConsoleAppender myAppender;
+				try {										
+					myAppender = new ConsoleAppender(layout, "System.out");					
+			        myAppender.setName("consoleAppender");
+			        myAppender.setFollow(true);
+				//Add the appender.
+			        logger.addAppender(myAppender);
+					logger.setLevel(Level.ALL);
+					logger.info("**************************************************************************************");
+					logger.info("LOG begins on " + Calendar.getInstance().getTime().toString());
+					logger.info("**************************************************************************************");
+				} catch (Exception e) {					
 					e.printStackTrace();
 				}
 	}
@@ -123,16 +143,22 @@ public class NomgenLogger {
 		 }
 		 logger= Logger.getLogger(NomgenLogger.class.getName());
 		 logger.setLevel(Level.ALL);
+		 /*
 		 if(logger.getAppender("fileAppender") == null)
 		 {
 			 this.addAppender(logger);
 		 }
+		 */
+		 if(logger.getAppender("consoleAppender") == null)
+		 {
+			 this.addConsoleAppender(logger);
+		 }
+		 
 	     logger.log(level, message_, t );
 	     if(level.equals(Level.ERROR) || level.equals(Level.FATAL)) 
 	     {
 	    	 
 	    	 
 	     }
-	 }    
-	
+	 }   
 }

@@ -27,6 +27,9 @@ public class TestNomGen {
 		{		
 			
 			test.generarePersoane();
+			test.generareListaParteneri();
+			test.AdaugarePersoanePF();
+			test.AdaugarePersoanePJ();
 			Iterator<Persoana> iterator = test.ListaPersoana.iterator();
 			Iterator<PersoanaFizica> IPF = test.ListaPF.iterator();
 			Iterator<PersoanaJuridica> IPJ = test.ListaPJ.iterator();
@@ -34,9 +37,7 @@ public class TestNomGen {
 			System.out.println("Persoane totale:" + test.ListaPersoana.size() + "din care Persoane fizice sunt:" + test.ListaPF.size());
 			System.out.println("Persoane juridice:" + test.ListaPJ.size() +"Iar parteneri sunt:" + test.ListaParteneri.size());
 
-		test.generareListaParteneri();
-		test.AdaugarePersoanePF();
-		test.AdaugarePersoanePJ();
+	
 		
 			while (iterator.hasNext()) 
 			{			
@@ -141,8 +142,6 @@ public class TestNomGen {
 		@Test
 		public void testPersoane() {
 			TestNomGenImpl test = new TestNomGenImpl();
-			
-			
 			vizualizarePersoane(test);
 			System.out.println("Test 1 persoane ");
 			vizualizareListaDepartaente(test);

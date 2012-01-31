@@ -45,7 +45,7 @@ import org.open.erp.services.nomgen.impl.NomgenInterceptor;
 @Interceptors({NomgenInterceptor.class})
 @TransactionManagement(TransactionManagementType.CONTAINER)
 //@Local(NomenclatoareSrv.class)
-public class NomenclatoareDummyImpl implements NomenclatoareSrvRemote, NomenclatoareSrvLocal {
+public class NomenclatoareDummyImpl implements  NomenclatoareSrvLocal, NomenclatoareSrvRemote {
 
 	final static long MILLIS_PER_DAY = 24 * 3600 * 1000;
 	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
