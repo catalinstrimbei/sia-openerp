@@ -3,7 +3,9 @@
 	<persistence-unit name="OpenERP_FINPLATI">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jdbc/LocalORCL_XA</jta-data-source>
-		
+		<jar-file>OpenERP_NOMGEN.jar</jar-file>
+		<jar-file>OpenERP_CONTABGEN.jar</jar-file>
+		<jar-file>OpenERP_PERSONAL.jar</jar-file>
 		<class>org.open.erp.services.plati.DummyFurnizor</class>
 		<class>org.open.erp.services.plati.DummyArticol</class>
 		<class>org.open.erp.services.plati.Plata</class>
@@ -16,7 +18,6 @@
 		<class>org.open.erp.services.plati.Chitanta</class>
 		<class>org.open.erp.services.plati.CEC</class>
 		<class>org.open.erp.services.plati.DummyCategorie</class>
-		<class>org.open.erp.services.achizitii.Furnizor</class>
 		<class>org.open.erp.services.nomgen.PersoanaFizica</class>
 		<class>org.open.erp.services.nomgen.PersoanaJuridica</class>
 		<class>org.open.erp.services.personal.Angajat</class>

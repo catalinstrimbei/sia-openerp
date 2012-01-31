@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 
 import org.open.erp.services.plati.DummyFurnizor;
 import org.open.erp.services.ctbgen.ContabilizareSrv;

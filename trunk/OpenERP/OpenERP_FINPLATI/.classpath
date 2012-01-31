@@ -16,9 +16,10 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="E:/CommonERP/CommonERP/OpenERP_FINPLATI/lib/log4j-1.2.16.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adrian_Ilie/OpenERP/lib/OpenERP_ACHIZITII.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adrian_Ilie/OpenERP/lib/OpenERP_NOMGEN.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adrian_Ilie/OpenERP/lib/OpenERP_PERSONAL.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_CONTABGEN"/>
+	<classpathentry kind="lib" path="lib/OpenERP_NOMGEN.jar"/>
+	<classpathentry kind="lib" path="lib/OpenERP_CONTABGEN.jar"/>
+	<classpathentry kind="lib" path="lib/OpenERP_PERSONAL.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

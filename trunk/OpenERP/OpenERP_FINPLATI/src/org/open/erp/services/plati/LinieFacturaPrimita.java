@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Produs;
 
+
 @Entity
 public class LinieFacturaPrimita extends LinieDocument implements Serializable{
 	/**
@@ -24,8 +25,7 @@ public class LinieFacturaPrimita extends LinieDocument implements Serializable{
 	 */
 	private static final long serialVersionUID = 6610341896147054558L;
 
-	@Id
-	@GeneratedValue
+	
 	Integer idLinieFactura;
 	
 	Produs produs;

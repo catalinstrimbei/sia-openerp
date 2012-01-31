@@ -37,8 +37,7 @@ public class FacturaPrimita extends Document implements Serializable{
 	public static final Boolean NEPLATITA = false;
 	
 	public static final Integer ZILE_RETUR = 20;
-	@Id
-	@GeneratedValue
+	
 	Integer idFactura;
 	//Date dataFacturare;		
 	Double valoareTotalaFactura;
