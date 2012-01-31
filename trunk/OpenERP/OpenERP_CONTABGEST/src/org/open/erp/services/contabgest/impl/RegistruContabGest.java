@@ -226,6 +226,23 @@ public class RegistruContabGest {
 		}
 	}
 	
+	public CentruCost getCentruCostById(Integer idCentruCost) throws Exception{
+		try{
+			//return entityManager.find(ProdusFinit.class, id);
+			//return (ProdusFinit) entityManager.createQuery("SELECT c FROM ProdusFinit c WHERE c.idProdusFinit = :id")
+			//		.setParameter("idProdusFinit", id)
+			//		.getSingleResult();
+			
+			return  (CentruCost) entityManager.createQuery("SELECT c FROM CentruCost c WHERE c.idCentruCost =:idCentruCost").setParameter("idCentruCost", idCentruCost).getSingleResult();
+			
+		}catch(Exception ex){
+			logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.error("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
+	
 	
 	public DummyFazaProductie getDummyFazaProductieById(Integer idFazaProductie) throws Exception{
 		try{
@@ -319,33 +336,9 @@ public class RegistruContabGest {
 		return dummyFazaProductieNoua;	}
 
 	
-public ArrayList<ProdusFinit> getProduseFInitte() {
-		Query q = entityManager.createQuery(
-				"SELECT c FROM ProdusFinit c "	);
-		@SuppressWarnings("unchecked")
-		ArrayList<ProdusFinit> produseFinite = (ArrayList<ProdusFinit>) q
-				.getResultList();
-		return produseFinite;
-	}
-	/* persistenta */
-	public ProdusFinit salveazaProdus(ProdusFinit produsFinit) throws Exception{
-		try{
-			
-			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
-			if (produsFinit.getIdProdusFinit() == null || /* proiect.getIdProiect() pentru proiect cu id generat*/
-				entityManager.find(produsFinit.getClass(), produsFinit.getIdProdusFinit()) == null)
-				entityManager.persist(produsFinit);
-			else
-				entityManager.merge(produsFinit);
-			
-		}catch(Exception ex){
-			logger.info("EROARE PERSISTENTA ***** ");
-			ex.printStackTrace();
-			throw ex;
-		}
-		return produsFinit;
-	}
+
 	
 
 	
 }
+
