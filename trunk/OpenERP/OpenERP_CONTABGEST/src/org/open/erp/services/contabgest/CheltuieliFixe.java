@@ -28,7 +28,6 @@ public class CheltuieliFixe extends TipCheltuieli implements Serializable{
 	@ManyToOne @JoinColumn(name = "idCentruCost")
 	private CentruCost 	centrucost;
 	
-	
 /*
 	@OneToMany(mappedBy = "cheltuielifixe", cascade = CascadeType.ALL)
 	private Collection<TipCheltuieli> 	tipCheltuieli;
@@ -36,7 +35,6 @@ public class CheltuieliFixe extends TipCheltuieli implements Serializable{
 	
 	//@OneToMany(mappedBy = "cheltuieliFixe", cascade = CascadeType.ALL)
 	//private Collection<CentruCost> centrucost;
-	
 	
 
 	public CheltuieliFixe() {
@@ -53,11 +51,11 @@ public class CheltuieliFixe extends TipCheltuieli implements Serializable{
 	}
 
 	//public Integer getIdCheltFix() {
-	//	return idCheltFix;
+		//return idCheltFix;
 	//}
 
 	//public void setIdCheltFix(Integer idCheltFix) {
-	//	this.idCheltFix = idCheltFix;
+		//this.idCheltFix = idCheltFix;
 	//}
 
 	public String getDenCheltuiala() {
@@ -87,6 +85,16 @@ public class CheltuieliFixe extends TipCheltuieli implements Serializable{
 	public CheltuieliFixe(Integer 	idTipCheltuieli, String tipCheltuieli) {
 		super(idTipCheltuieli, tipCheltuieli);
 	}
+
+	public CentruCost getCentrucost() {
+		return centrucost;
+	}
+
+	public void setCentrucost(CentruCost centrucost) {
+		this.centrucost = centrucost;
+	}
+	
+	
 
 
 	
