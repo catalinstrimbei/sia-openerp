@@ -89,6 +89,33 @@ public class ProdusFinit implements Serializable {
 		this.procentProfit = procentProfit;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idProdusFinit == null) ? 0 : idProdusFinit.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProdusFinit other = (ProdusFinit) obj;
+		if (idProdusFinit == null) {
+			if (other.idProdusFinit != null)
+				return false;
+		} else if (!idProdusFinit.equals(other.idProdusFinit))
+			return false;
+		return true;
+	}
 
 
 	
