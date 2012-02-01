@@ -130,6 +130,35 @@ public class CentruCost implements Serializable{
 
 	
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idCentruCost == null) ? 0 : idCentruCost.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CentruCost other = (CentruCost) obj;
+		if (idCentruCost == null) {
+			if (other.idCentruCost != null)
+				return false;
+		} else if (!idCentruCost.equals(other.idCentruCost))
+			return false;
+		return true;
+	}
+
+
 
 
 	
