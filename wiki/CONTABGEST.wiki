@@ -43,7 +43,7 @@ Aplicatia are urmatoarele cazuri de utilizare: <br><br>
 <br>
 <li><b>Operatiile/ Actiunile/ Application Service</b></LI>
 
-|| *Procese/Metode* || *Descriere/Observatii* || 
+|| _Procese/Metode_ || _Descriere/Observatii_ || 
 || 'N/A' || _N/A_ ||
 || 'N/A' || _N/A_ ||
 || 'N/A' || _N/A_ ||
