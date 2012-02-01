@@ -1,6 +1,7 @@
 package org.open.erp.services.contabgest.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -32,7 +33,9 @@ import org.open.erp.services.contabgest.exceptions.ContabGestLogger;
 
 
 
-@Stateful
+
+@Stateless (name="ContabGestSrv")
+//@Stateful
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class ContabGestImpl implements ContabGestSrv, ContabGestSrvLocal, ContabGestSrvRemote {
 
@@ -408,8 +411,24 @@ public class ContabGestImpl implements ContabGestSrv, ContabGestSrvLocal, Contab
 	}
 	*/
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<CentruCost> getListaCentreCostProcesEJB ( ProceseTehnicoEconomice proceseTehnicoEconomic) throws Exception {	
+			//logger.logDEBUG(">>>>>>Start getListaContracteAngajatEJB din personal impl");
+			Collection<CentruCost> result = this.registruContabGest.getListaProceseCentruEJB(proceseTehnicoEconomic);
+			//logger.logDEBUG(">>>>>>End getListaContracteAngajatEJB din personal impl");
+			return result;
+	}	
+		
 	
-	
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<ProceseTehnicoEconomice> getListaProceseTehnicoEconomice()
+			throws Exception {
+		logger.debug(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		Collection<ProceseTehnicoEconomice> result = this.registruContabGest.getListaProceseTehnicoEconomice();
+		logger.debug(">>>>>>End getListaProceseTehnicoEconomice");
+		return result;
+	}
 
 }
