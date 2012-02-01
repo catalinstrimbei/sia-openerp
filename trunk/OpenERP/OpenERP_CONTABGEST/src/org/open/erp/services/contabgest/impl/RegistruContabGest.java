@@ -3,6 +3,7 @@ package org.open.erp.services.contabgest.impl;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -19,6 +20,7 @@ import org.open.erp.services.contabgest.ProdusFinit;
 import org.open.erp.services.contabgest.ResponabilCentruCost;
 import org.open.erp.services.contabgest.TipCheltuieli;
 import org.open.erp.services.contabgest.exceptions.ContabGestLogger;
+
 
 
 
@@ -364,6 +366,40 @@ public class RegistruContabGest {
 					}
 					return produsFinit;
 				}
-	
+				
+				public Collection<CentruCost> getListaProceseCentruEJB(
+						ProceseTehnicoEconomice proceseTehnicoEconomic) throws Exception{
+					try
+					{
+						return   entityManager.createQuery("SELECT c FROM  CentruCost c where c.proceseTehnicoEconomice = :proceseTehnicoEconomic")
+								.setParameter("proceseTehnicoEconomic",proceseTehnicoEconomic)
+								.getResultList();
+					}
+					catch(Exception ex)
+					{
+						//logger.logINFO("EROARE PERSISTENTA ***** ");
+						ex.printStackTrace();
+						throw ex;
+					}
+				
+				}
+				
+		Collection<ProceseTehnicoEconomice>	getListaProceseTehnicoEconomice() throws Exception
+				{
+					try
+					{
+						return entityManager.createQuery("SELECT x FROM ProceseTehnicoEconomice x").getResultList();
+					}
+					catch(Exception ex)
+					{
+						logger.error("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+						logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+						ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.error("<< Stack Trace >>" + st.toString());
+						throw ex;
+					}
+				}
+
+		
+				
 }
 
