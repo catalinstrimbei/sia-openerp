@@ -1,6 +1,10 @@
 package org.open.erp.services.contabgest.teste;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -17,6 +21,8 @@ import org.open.erp.services.contabgest.DummyPersoana;
 import org.open.erp.services.contabgest.ProceseTehnicoEconomice;
 import org.open.erp.services.contabgest.ProdusFinit;
 import org.open.erp.services.contabgest.ResponabilCentruCost;
+
+
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -174,7 +180,7 @@ public class TestContabGestEJB {
 			
 			logger.info("Begin test: creareCheltuieliFixe");
 			
-			CentruCost centruCost = contabGestInstance.getCentruCostById(12);
+			CentruCost centruCost = contabGestInstance.getCentruCostById(7);
 			
 			//Double valoareBugetata = 2555.0;
 			CheltuieliFixe cheltuieliFixe = contabGestInstance.defCheltuieliFixe("FIXA", "Cheltuiala fixa 1", "Detalii 1", centruCost);
@@ -196,7 +202,7 @@ public class TestContabGestEJB {
 			
 			logger.info("Begin test: creareCheltuieliVariabile");
 			
-			CentruCost centruCost = contabGestInstance.getCentruCostById(12);
+			CentruCost centruCost = contabGestInstance.getCentruCostById(7);
 			
 			CheltuieliVariabile cheltuieliVariabile = contabGestInstance.defCheltuieliVariabile(  "VARIABILA", "Cheltuiala variabila 1", "Detalii 1", 100, centruCost);
 			
@@ -206,6 +212,73 @@ public class TestContabGestEJB {
 			
 			assertNotNull("Nu exista Cheltuiala variabila noua!", cheltuieliVariabile);
 			logger.info("End test: creare	CheltuieliVariabile");
+		}
+		
+		@Test
+		public void testResponsabilCentruCostById() throws Exception {
+			ResponabilCentruCost responsabil = contabGestInstance.getResponabilCentruCostById(5);
+			if(responsabil != null)
+				System.out.println("Numele Responsabilului pentru Centrul De Cost selectat este : " + responsabil.getNume().toString());
+		}
+		
+		@Test
+		public void testCentruCostById() throws Exception {
+			CentruCost centruCost = contabGestInstance.getCentruCostById(7);
+			if(centruCost != null)
+				System.out.println("Denumirea Centrului de Cost selectat este : " + centruCost.getDenCentruCost().toString());
+		}
+		
+		@Test
+		public void testDummyFazaProductieById() throws Exception {
+			DummyFazaProductie faza = contabGestInstance.getDummyFazaProductieById(4);
+			if(faza != null)
+				System.out.println("Denumirea Fazei de Productie selectate este : " + faza.getDenumireFazaProductie().toString());
+		}
+		
+		
+		@Test
+		public void testProdusFinitById() throws Exception {
+			ProdusFinit produsFinit = contabGestInstance.getProdusFinitById(2);
+			if(produsFinit != null)
+				System.out.println("Denumirea Produsului Finit selectat este : " + produsFinit.getDenProdusFinit().toString());
+		}
+		
+		@Test
+		public void testProcesTehnicoEconomicById() throws Exception {
+			ProceseTehnicoEconomice proces = contabGestInstance.getProceseTehnicoEconomiceById(3);
+			if(proces != null)
+				System.out.println("Denumirea Procesului Tehnico-Economic selectat este : " + proces.getDenumireProces().toString());
+		}
+		
+		
+		@Test
+		public void TESTgetListaCentreCostProcesEJB(){//
+			try{
+				logger.info("Start test: TESTgetListaCentreCostProcesEJB");
+				Collection<ProceseTehnicoEconomice> proceseTehnicoEconomice = contabGestInstance.getListaProceseTehnicoEconomice();
+				Iterator<ProceseTehnicoEconomice> iteratorProceseTehnicoEconomice = proceseTehnicoEconomice.iterator();
+				ProceseTehnicoEconomice	proceseTehnicoEconomiceCurent;
+				
+				while (iteratorProceseTehnicoEconomice.hasNext()){				
+					proceseTehnicoEconomiceCurent = iteratorProceseTehnicoEconomice.next();
+					
+					Collection<CentruCost> colectie = contabGestInstance.getListaCentreCostProcesEJB(proceseTehnicoEconomiceCurent);
+					if (colectie.size()>0)
+					{
+						System.out.println("Pentru Procesul Tehnico Economic   " + proceseTehnicoEconomiceCurent.getDenumireProces() + "   avem urmatoarea lista de Centre de Cost: ");
+						Iterator<CentruCost> iteratorCentruCost = colectie.iterator();
+						while (iteratorCentruCost.hasNext()){
+							System.out.println("--> Centrul de Cost cu Id-ul   " +  iteratorCentruCost.next().getIdCentruCost());
+						}
+					}
+					colectie.clear();
+				}
+				logger.info("End test: TESTgetListaCentreCostProcesEJB");
+			}
+			catch(Exception ex){
+				logger.error("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+				ex.printStackTrace();   StringWriter st = new StringWriter(); PrintWriter pt = new PrintWriter(st); ex.printStackTrace(pt); logger.error("<< Stack Trace >>" + st.toString());
+			}
 		}
 		
 	private static InitialContext initJBossJNDICtx() throws NamingException
