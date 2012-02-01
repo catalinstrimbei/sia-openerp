@@ -8,6 +8,9 @@ import javax.persistence.Temporal;
 
 
 
+
+
+
 public interface ContabGestSrv {
 	
 	public DummyPersoana defDummyPersoana(	String  nume,
@@ -61,5 +64,11 @@ public interface ContabGestSrv {
 			Date sfarsitFazaProductie, Double costFazaProductie)throws Exception;
 	ArrayList<ProdusFinit> getProduseFinite();
 			public ProdusFinit salvareProdus(ProdusFinit produsFinit) throws Exception;
+	
+	Collection<CentruCost> getListaCentreCostProcesEJB(ProceseTehnicoEconomice proceseTehnicoEconomic) throws Exception;
+	
+	Collection<ProceseTehnicoEconomice>	getListaProceseTehnicoEconomice() throws Exception;
+	
+	
 	
 }
