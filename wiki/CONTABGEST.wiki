@@ -3,11 +3,11 @@
 = Introducere =
 
 Functionalitate Modul Contabilitate Gestiune:
-   1. Creaza instanta Centru de Cost
-   2. Fiecarui centru de cost i se asociaza un responsabil
-   3. Unui proces tehnico-economic (Executie, Asamblare, Finisare, Ambalare) i se atribuie mai multe centre de cost
-   4. Inregistreaza soldul pentru un Centru de Cost
-   5. Evidentierea centrelor de cost in realizarea unui produs
+   * Creaza instanta Centru de Cost
+   * Fiecarui centru de cost i se asociaza un responsabil
+   * Unui proces tehnico-economic (Executie, Asamblare, Finisare, Ambalare) i se atribuie mai multe centre de cost
+   * Inregistreaza soldul pentru un Centru de Cost
+   * Evidentierea centrelor de cost in realizarea unui produs
 
 = Details =
 <UL>
