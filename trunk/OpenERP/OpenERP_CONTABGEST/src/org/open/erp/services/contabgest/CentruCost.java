@@ -15,8 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 
-
-
 @Entity
 public class CentruCost implements Serializable{
 
