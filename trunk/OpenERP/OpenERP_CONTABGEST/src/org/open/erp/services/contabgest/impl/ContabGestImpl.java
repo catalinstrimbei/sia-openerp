@@ -130,11 +130,11 @@ public class ContabGestImpl implements ContabGestSrv, ContabGestSrvLocal, Contab
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CheltuieliFixe defCheltuieliFixe(String tipCheltuiala, String denCheltuiala,
-			String delatiiCheltuiala) throws Exception{
+			String delatiiCheltuiala, CentruCost centruCost) throws Exception{
 		System.out.println("!>>>>>>>>>>>> START Creare cheltuiala ");
 		logger.debug(">>>>>>>>>>>> START tipcheltuiala");
 		//TipCheltuieli tipCheltuialaNou = new TipCheltuieli(tipCheltuiala);
-		CheltuieliFixe cheltuieliFixeNou = new CheltuieliFixe(denCheltuiala, delatiiCheltuiala);
+		CheltuieliFixe cheltuieliFixeNou = new CheltuieliFixe(denCheltuiala, delatiiCheltuiala, centruCost);
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true){
 			logger.debug(">>>>>>>>>>>> END Creare cheltuiala fixa - TRANZACTIE ANULATA");
@@ -153,11 +153,11 @@ public class ContabGestImpl implements ContabGestSrv, ContabGestSrvLocal, Contab
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public CheltuieliVariabile defCheltuieliVariabile(String tipCheltuiala, String denCheltuialaV,
-			String delatiiCheltuialaV, Integer cantitateCheltuialaV) throws Exception{
+			String delatiiCheltuialaV, Integer cantitateCheltuialaV, CentruCost centruCost) throws Exception{
 		System.out.println("!>>>>>>>>>>>> START Creare cheltuiala ");
 		logger.debug(">>>>>>>>>>>> START tipcheltuiala");
 		//TipCheltuieli tipCheltuialaNou = new TipCheltuieli(tipCheltuiala);
-		CheltuieliVariabile cheltuieliVariabileNou = new CheltuieliVariabile(denCheltuialaV, delatiiCheltuialaV, cantitateCheltuialaV);
+		CheltuieliVariabile cheltuieliVariabileNou = new CheltuieliVariabile(denCheltuialaV, delatiiCheltuialaV, cantitateCheltuialaV, centruCost);
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true){
 			logger.debug(">>>>>>>>>>>> END Creare cheltuiala fixa - TRANZACTIE ANULATA");
@@ -366,6 +366,22 @@ public class ContabGestImpl implements ContabGestSrv, ContabGestSrvLocal, Contab
 		logger.debug(">>>>>>>>>>>> END salvare produs");
 		return produsFinit;
 	
+	}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public CentruCost getCentruCostById(Integer idCentruCost_) throws Exception {
+		logger.debug(" Start >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		CentruCost result = new CentruCost();
+		if (idCentruCost_ == null){					
+			sessionContext.setRollbackOnly();
+			logger.debug(" Transaction Canceled in >> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		}
+		else{			
+			result = this.registruContabGest.getCentruCostById(idCentruCost_);
+			
+			logger.debug(">>>>>>End getProdusFinitById");
+		}
+		return result;
 	}
 	
 	/*
