@@ -77,7 +77,30 @@ public class ProceseTehnicoEconomice implements Serializable{
 	public void setDetaliiProces(String detaliiProces) {
 		this.detaliiProces = detaliiProces;
 	}
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idProces == null) ? 0 : idProces.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProceseTehnicoEconomice other = (ProceseTehnicoEconomice) obj;
+		if (idProces == null) {
+			if (other.idProces != null)
+				return false;
+		} else if (!idProces.equals(other.idProces))
+			return false;
+		return true;
+	}
 	
 	
 
