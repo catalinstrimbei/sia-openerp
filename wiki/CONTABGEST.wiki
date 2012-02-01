@@ -16,10 +16,10 @@ Functionalitate Modul Contabilitate Gestiune:
 
 Aplicatia are urmatoarele cazuri de utilizare: <br><br>
 <b>Creaza instanta CentruCost </b>
-<br> - Fiecare Centru de Cost primeste un responsabil.
-<br> - Inregistrarea chestuielilor pe fiecare Centru de Cost se faca in functie de cheltuielei (Cheltuieli Fixe si Cheltuieli Variabile)<br><br>
+<br>         - Fiecare Centru de Cost primeste un responsabil.
+<br>         - Inregistrarea chestuielilor pe fiecare Centru de Cost se faca in functie de cheltuielei (Cheltuieli Fixe si Cheltuieli Variabile)<br><br>
 <b>Inregistreaza soldul pentru un Centru de Cost </b>
-<br> - Dupa ce cheltuielile au fost repartizate pe centre de cost se calculeaza valoarea acestora.<br><br>
+<br>         - Dupa ce cheltuielile au fost repartizate pe centre de cost se calculeaza valoarea acestora.<br><br>
 
 
 <UL>
