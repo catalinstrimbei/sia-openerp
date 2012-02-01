@@ -42,13 +42,13 @@ Aplicatia are urmatoarele cazuri de utilizare: <br><br>
 
 <br>
 <li><b>Operatiile/ Actiunile/ Application Service</b></LI>
-
-|| _Procese/Metode_ || _Descriere/Observatii_ || 
-|| 'N/A' || _N/A_ ||
-|| 'N/A' || _N/A_ ||
-|| 'N/A' || _N/A_ ||
-|| 'N/A' || _N/A_ ||
-|| 'N/A' || _N/A_ ||
-|| 'N/A' || _N/A_ ||
-|| 'N/A' || _N/A_ || 
+<br>
+|| *Procese/Metode* || *Descriere/Observatii* || 
+|| N/A || N/A ||
+|| N/A || N/A ||
+|| N/A || N/A ||
+|| N/A || N/A ||
+|| N/A || N/A ||
+|| N/A || N/A ||
+|| N/A || N/A || 
  
