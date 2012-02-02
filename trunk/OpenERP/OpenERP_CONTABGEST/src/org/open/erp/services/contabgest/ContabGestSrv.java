@@ -69,6 +69,12 @@ public interface ContabGestSrv {
 	
 	Collection<ProceseTehnicoEconomice>	getListaProceseTehnicoEconomice() throws Exception;
 	
+	ArrayList<ProceseTehnicoEconomice> getProceTeh();
 	
+	public ProceseTehnicoEconomice salvareProces(ProceseTehnicoEconomice produsFinit) throws Exception;
+	
+	Collection<ProceseTehnicoEconomice>		getListaProcese() throws Exception;
+	
+	Collection<CentruCost> getListaCentreCostProduseEJB(ProdusFinit produsFinite)  throws Exception;
 	
 }
