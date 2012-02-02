@@ -14,17 +14,30 @@
 
 				<h:commandLink id="Form1"
 					actionListener="#{formMenu.actionSrcChangeForm}"
-					action="#{formMenu.changeSrcFormCurent}" value="Editare Produse" style="color: #FFFFFF">
+					action="#{formMenu.changeSrcFormCurent}" value="Editare Produse Finite" style="color: #FFFFFF">
 					<p:attribute name="srcForm" value="Form1"></p:attribute>
 				</h:commandLink>
 				
 				<h:commandLink id="Form2"
 					actionListener="#{formMenu.actionSrcChangeForm}" 
-					action="#{formMenu.changeSrcFormCurent}" value="Editare Centru Cost" style="color: #FFFFFF">
+					action="#{formMenu.changeSrcFormCurent}" value="Editare Procese Tehnico-Economice" style="color: #FFFFFF">
 					<p:attribute name="srcForm" value="Form2"></p:attribute>
 				</h:commandLink>
 				
-				
+				<h:commandLink id="Form3"
+					actionListener="#{formMenu.actionSrcChangeForm}" 
+					action="#{formMenu.changeSrcFormCurent}" value="Procese - Centre de Cost" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="Form3"></p:attribute>
+				</h:commandLink>
+
+				<h:commandLink id="Form4"
+					actionListener="#{formMenu.actionSrcChangeForm}"
+					action="#{formMenu.changeSrcFormCurent}"
+					value="Produse - Centre de Cost" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="Form4"></p:attribute>
+				</h:commandLink>
+
+
 				<h:commandLink id="Raport1"
 					actionListener="#{formMenu.showRaport}" value="Listare Raport1">
 					<p:attribute name="srcRaport" value="Raport1"/>
