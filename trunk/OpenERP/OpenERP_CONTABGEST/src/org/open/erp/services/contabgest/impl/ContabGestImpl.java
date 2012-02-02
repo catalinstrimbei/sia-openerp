@@ -431,4 +431,39 @@ public class ContabGestImpl implements ContabGestSrv, ContabGestSrvLocal, Contab
 		return result;
 	}
 
+
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ArrayList<ProceseTehnicoEconomice> getProceTeh() {
+		ArrayList<ProceseTehnicoEconomice> proces = registruContabGest.getProceseTehnic();
+		return proces;
+	}
+   
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public ProceseTehnicoEconomice salvareProces(ProceseTehnicoEconomice produsFinit) throws Exception {
+
+			produsFinit = this.registruContabGest.salveazaProces(produsFinit);
+
+		logger.debug(">>>>>>>>>>>> END salvare produs");
+		return produsFinit;
+	
+	}
+   
+   @TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<ProceseTehnicoEconomice> getListaProcese() throws Exception{
+
+		Collection<ProceseTehnicoEconomice> result = this.registruContabGest.getListaProcese();
+
+		return result;
+	}
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
+	public Collection<CentruCost> getListaCentreCostProduseEJB(ProdusFinit produsFinite) throws Exception {
+		Collection<CentruCost> result = this.registruContabGest.getListaProduseCentruCostEJB(produsFinite);
+		return result;
+	}
+
+
 }
