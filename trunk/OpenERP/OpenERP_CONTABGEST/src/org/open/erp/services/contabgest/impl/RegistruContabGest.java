@@ -398,8 +398,66 @@ public class RegistruContabGest {
 						throw ex;
 					}
 				}
+	public ArrayList<ProceseTehnicoEconomice> getProceseTehnic() {
+		Query q = entityManager.createQuery(
+				"SELECT c FROM ProceseTehnicoEconomice c "	);
+		@SuppressWarnings("unchecked")
+		ArrayList<ProceseTehnicoEconomice> proces = (ArrayList<ProceseTehnicoEconomice>) q
+				.getResultList();
+		return proces;
+	}
 
 		
+	public ProceseTehnicoEconomice salveazaProces(ProceseTehnicoEconomice produsFinit) throws Exception{
+		try{
+			
+			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+			if (produsFinit.getIdProces() == null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+				entityManager.find(produsFinit.getClass(), produsFinit.getIdProces()) == null)
+				entityManager.persist(produsFinit);
+			else
+				entityManager.merge(produsFinit);
+			
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+		return produsFinit;
+	}
+Collection<ProceseTehnicoEconomice>				getListaProcese() throws Exception
+	{
+		try
+		{
+			return entityManager.createQuery("SELECT x FROM ProceseTehnicoEconomice x").getResultList();
+		}
+		catch(Exception ex)
+		{
+			//logger.logERROR("Persistence Error in method >> "  + Thread.currentThread().getStackTrace()[1].getMethodName());
+			//logger.logERROR("Class >> " + ex.getClass().toString() + "<< StackTrace >> " + ex.getStackTrace().toString() + "<< Error >> " + ex.getMessage().toString());
+			ex.printStackTrace();   
+			StringWriter st = new StringWriter();
+			PrintWriter pt = new PrintWriter(st);
+			ex.printStackTrace(pt);
+			//logger.logERROR("<< Stack Trace >>" + st.toString());
+			throw ex;
+		}
+	}
+   
+   public Collection<CentruCost> getListaProduseCentruCostEJB (ProdusFinit produsFinit) throws Exception{
+		try
+		{
+			return   entityManager.createQuery("SELECT c FROM  CentruCost c where c.produsfinit =:produsFinit")
+					.setParameter("produsFinit",produsFinit)
+					.getResultList();
+		}
+		catch(Exception ex)
+		{
+			//logger.logINFO("EROARE PERSISTENTA ***** ");
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
 				
 }
 
