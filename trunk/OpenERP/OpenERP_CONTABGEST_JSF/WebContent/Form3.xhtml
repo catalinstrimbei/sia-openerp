@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Procese Tehnico-Economice - Centre de Cost</div>
+	<h:form id="fromProceseCentruCost">
+		<h:panelGrid columns="3" border="0" style="height: 424px; ">
+			<p:facet name="header">
+				<h:outputText value="Selectati un proces"></h:outputText>
+			</p:facet>
+			<h:selectOneMenu id="cboAngajat" value="#{fromProceseCentruCost.proceseTehnicoEconomic}" converter="#{fromProceseCentruCost}" style="width: 254px; ">
+				<p:selectItems value="#{fromProceseCentruCost.proceseTehnicoEconomice}"></p:selectItems>
+				<p:ajax render="@form"></p:ajax>
+			</h:selectOneMenu>
+			<h:panelGrid columns="2" border="1">
+				<h:commandButton id="cmdPrev"
+					actionListener="#{fromProceseCentruCost.previousProces}" value="Back"></h:commandButton>
+				<h:commandButton id="cmdNext"
+					actionListener="#{fromProceseCentruCost.nextProdus1}" value="Next"></h:commandButton>
+
+			</h:panelGrid>
+			<h:message></h:message>
+
+
+			<h:dataTable id="CentreTable" var="linieCentre"
+				value="#{fromProceseCentruCost.centreCost}" border="1"
+				binding="#{fromProceseCentruCost.centreTable}"
+				styleClass="order-table" headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row">
+				<h:column>
+					<p:facet name="header">
+						<h:outputText value="Denumire Centru Cost"></h:outputText>
+					</p:facet>
+					<h:inputText value="#{linieCentre.denCentruCost}" size="10"/>
+					
+				</h:column>
+				<h:column>
+					<p:facet name="header">
+						<h:outputText value="Data Start"></h:outputText>
+					</p:facet>
+					<h:inputText value="#{linieCentre.startCentruCost}" size="10" >
+					<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
+					</h:inputText>
+					
+					
+					
+				</h:column>
+				<h:column>
+					<p:facet name="header">
+						<h:outputText value="Data Sfarsit"></h:outputText>
+					</p:facet>
+					<h:inputText value="#{linieCentre.sfarsitCentruCost}" size="10">
+					<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
+					</h:inputText>
+					
+				</h:column>
+				
+				<h:column>
+					<p:facet name="header">
+						<h:outputText value="Cost Centru"/>
+					</p:facet>
+					<h:inputText value="#{linieCentre.cost}" size="10"/>
+					
+				</h:column>
+					
+					<!-- 
+					<h:column>
+					<p:facet name="header">
+						<h:outputText value="Editable"></h:outputText>
+					</p:facet>
+					<h:inputText value="#{linieCentre.editable}" size="10"
+						rendered="#{linieCentre.editable}" />
+					<h:outputText value="#{linieCentre.editable}"
+						rendered="#{not linieCentre.editable}" />
+				</h:column>
+				 -->
+				 
+				<!-- 
+				<h:column>
+					<p:facet name="header">Action</p:facet>
+					<h:commandLink value="Edit"
+						action="#{fromProceseCentruCost.editAction}"
+						rendered="#{not linieCentre.editable}" />
+
+					<h:commandLink value="Delete"
+						action="#{FromProceseCentruCost.deleteAction}"
+						rendered="#{not linieCentre.editable}" />
+
+					<h:commandLink value="Save"
+						action="#{fromProceseCentruCost.saveAction}"
+						rendered="#{linieCentre.editable}" />
+
+				</h:column>
+				 -->
+				 
+			</h:dataTable>
+			<h:message></h:message><h:message></h:message><h:panelGrid columns="3" border="1">
+				<h:commandButton id="cmdAddContract" value="Adauga">
+					<p:ajax execute="@none" render="@form"></p:ajax>
+				</h:commandButton>
+				<h:commandButton id="cmdSalveazaAngajat" value="Salveaza">
+
+				</h:commandButton>
+				
+			</h:panelGrid>
+		</h:panelGrid>
+	</h:form>
+	
+	
+</body>
+</html>
