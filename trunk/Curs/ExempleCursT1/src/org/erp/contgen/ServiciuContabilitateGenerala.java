@@ -1,5 +1,5 @@
 package org.erp.contgen;
 
 public interface ServiciuContabilitateGenerala {
-	void contabilizareVinzare();
+	void contabilizareVinzare(Long nrFactura, Double valoare);
 }

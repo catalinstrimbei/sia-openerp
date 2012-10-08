@@ -1,5 +1,5 @@
 package org.erp.vinzari;
 
 public interface ServiciuVinzari {
-	void factureazaVinzare();
+	void factureazaVinzare(Vanzare v);
 }

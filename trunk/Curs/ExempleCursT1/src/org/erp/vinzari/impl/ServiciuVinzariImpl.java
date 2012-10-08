@@ -1,19 +1,19 @@
 package org.erp.vinzari.impl;
 
-import org.erp.contgen.ServiciuContabilitateGenerala;
 import org.erp.vinzari.ServiciuVinzari;
+import org.erp.vinzari.Vanzare;
 
 public class ServiciuVinzariImpl implements ServiciuVinzari{
-	ServiciuContabilitateGenerala srvContabilitate;
+	ServiciuContabilizare srvContabilitate;
 	
-	public ServiciuVinzariImpl(ServiciuContabilitateGenerala srvContab) {
+	public ServiciuVinzariImpl(ServiciuContabilizare srvContab) {
 		srvContabilitate = srvContab;
 	}
 
 	@Override
-	public void factureazaVinzare() {
+	public void factureazaVinzare(Vanzare v) {
 		System.out.println("Facturare vizare");
-		srvContabilitate.contabilizareVinzare();
+		srvContabilitate.contabilizareVanzare(v);
 	}
 	
 }
