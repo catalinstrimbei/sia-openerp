@@ -5,13 +5,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestModSrv {
+public class TestAdministrareSrv {
 	private static Logger logger;
 	
 	
 	@BeforeClass
 	public static void initLocalJavaLogger(){
-		logger =  Logger.getLogger(TestModSrv.class.getName());	
+		logger =  Logger.getLogger(TestAdministrareSrv.class.getName());	
 	}
 	
 	@Before public void initServices(){	
