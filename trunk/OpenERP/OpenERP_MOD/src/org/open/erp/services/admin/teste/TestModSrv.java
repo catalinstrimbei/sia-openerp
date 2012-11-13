@@ -1,4 +1,4 @@
-package org.open.erp.services.mod.teste;
+package org.open.erp.services.admin.teste;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;
