@@ -1,5 +1,5 @@
 package org.open.erp.services.admin;
 
-public class ModSrv {
+public class AdministrareSrv {
 
 }

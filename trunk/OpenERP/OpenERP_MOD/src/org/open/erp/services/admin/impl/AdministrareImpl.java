@@ -1,5 +1,5 @@
 package org.open.erp.services.admin.impl;
 
-public class ModImpl {
+public class AdministrareImpl {
 
 }
