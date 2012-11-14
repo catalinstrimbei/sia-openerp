@@ -24,7 +24,8 @@ public class ProjectManagementSrvFactory {
 	public static BugetareSrv getProjectBugetareSrv(){
 		logger.info("Creare dummy instance of BugetareSrv from BugetareSrvFactory!");
 		// Dummmy Implementation of BugetareSrv
-		return new BugetareSrv(){
+		return new BugetareSrv()
+		{
 			@Override
 			public Buget creareBuget(Double valoareBuget) {
 				logger.info("1.2 Stabilire buget proiect");
