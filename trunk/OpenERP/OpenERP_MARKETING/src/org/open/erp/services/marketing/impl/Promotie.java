@@ -26,6 +26,9 @@ public class Promotie {
 	}
 	public int getPretPromotional() {
 		return pretPromotional;
+		
+		
+		
 	}
 	public void setPretPromotional(int pretPromotional) {
 		this.pretPromotional = pretPromotional;
