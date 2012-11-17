@@ -1,6 +1,8 @@
-package org.open.erp.services.marketing.impl;
+package org.open.erp.services.marketing;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.open.erp.services.marketing.nomgen.Angajat;
 
@@ -12,6 +14,7 @@ public class CampaniePromovare {
 	Angajat promoter;
 	CanalDistributie canalDistributie;
 	int buget;
+	Set<Promotie> promotiiCampanie = new HashSet<Promotie>();
 	
 	public long getId() {
 		return id;
@@ -48,5 +51,11 @@ public class CampaniePromovare {
 	}
 	public void setBuget(int buget) {
 		this.buget = buget;
+	}
+	public Set<Promotie> getPromotiiCampanie() {
+		return promotiiCampanie;
+	}
+	public void setPromotiiCampanie(Set<Promotie> promotiiCampanie) {
+		this.promotiiCampanie = promotiiCampanie;
 	}
 }

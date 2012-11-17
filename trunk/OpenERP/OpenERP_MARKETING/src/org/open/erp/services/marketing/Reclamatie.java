@@ -1,4 +1,4 @@
-package org.open.erp.services.marketing.impl;
+package org.open.erp.services.marketing;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ public class Reclamatie {
 	Date data;
 	String text;
 	String raspuns;
-	StatusReclamatie status; //NOU, ASTEPTARE, REZOLVAT
+	StatusReclamatie status;
 	
 	public long getId() {
 		return id;

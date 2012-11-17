@@ -1,4 +1,4 @@
-package org.open.erp.services.marketing.impl;
+package org.open.erp.services.marketing;
 
 import java.util.Date;
 
@@ -10,7 +10,6 @@ public class Promotie {
 	int pretPromotional;
 	Date dataStart;
 	Date dataFinal;
-	CampaniePromovare campaniePromovare;
 	
 	public long getId() {
 		return id;
@@ -25,10 +24,7 @@ public class Promotie {
 		this.produsPromotie = produsPromotie;
 	}
 	public int getPretPromotional() {
-		return pretPromotional;
-		
-		
-		
+		return pretPromotional;	
 	}
 	public void setPretPromotional(int pretPromotional) {
 		this.pretPromotional = pretPromotional;
@@ -44,11 +40,5 @@ public class Promotie {
 	}
 	public void setDataFinal(Date dataFinal) {
 		this.dataFinal = dataFinal;
-	}
-	public CampaniePromovare getCampaniePromovare() {
-		return campaniePromovare;
-	}
-	public void setCampaniePromovare(CampaniePromovare campaniePromovare) {
-		this.campaniePromovare = campaniePromovare;
 	}
 }
