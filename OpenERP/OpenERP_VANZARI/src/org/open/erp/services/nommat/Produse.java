@@ -1,6 +1,6 @@
 package org.open.erp.services.nommat;
 
-public class NomMat {
+public class Produse {
 	Integer idProdus;
 	String denumire;
 	Integer codProdus;

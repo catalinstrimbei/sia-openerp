@@ -1,6 +1,6 @@
 package org.open.erp.services.nomgen;
 
-public class NomGen {
+public class Clienti {
 Integer idPartener;
 String denumire;
 String nume;
