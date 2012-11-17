@@ -93,32 +93,11 @@ public interface StocuriSrv {
 	
 	public void creareLot(Produs produs, Gestiune gestiune);
 	
-	
-	/**
-	 * Returneaza void
-	 * 
-	 * @param Material 		Denumirea materialului intrat
-	 * @param LoturiIntrari 	Lotul de intrare
-	 * @param Gestiune 	Gestiunea pentru care se realizeaza intararea
-	
-	 * 
-	 * @return instanta intrareInStoc nou creata 
-	 * 
-	 */
+
 	
 	void alertaStoc();
 	
-	/**
-	 * Returneaza void
-	 * 
-	 * @param Material 		Denumirea materialului intrat
-	 * @param LoturiIntrari 	Lotul de intrare
-	 * @param Gestiune 	Gestiunea pentru care se realizeaza intararea
 	
-	 * 
-	 * @return instanta intrareInStoc nou creata 
-	 * 
-	 */
 	
 	void casareLot();
 	
