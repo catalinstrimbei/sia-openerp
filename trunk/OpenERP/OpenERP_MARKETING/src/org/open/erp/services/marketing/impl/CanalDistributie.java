@@ -9,13 +9,7 @@ public enum CanalDistributie {
         this.value = value;
     }
 
-	public String getValue() {
+	public String toValue() {
 		return value;
 	}
-	
-	@Override
-	public String toString() {
-		return this.getValue();
-	}
-
 }
