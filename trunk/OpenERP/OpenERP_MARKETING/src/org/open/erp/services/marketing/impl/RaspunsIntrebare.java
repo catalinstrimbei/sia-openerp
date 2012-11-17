@@ -1,10 +1,9 @@
 package org.open.erp.services.marketing.impl;
 
-
-public class Intrebare{
+public class RaspunsIntrebare{
 	long id;
 	String text;
-	Chestionar chestionar;
+	Intrebare intrebare;
 	
 	public long getId() {
 		return id;
@@ -18,10 +17,10 @@ public class Intrebare{
 	public void setText(String text) {
 		this.text = text;
 	}
-	public Chestionar getChestionar() {
-		return chestionar;
+	public Intrebare getIntrebare() {
+		return intrebare;
 	}
-	public void setChestionar(Chestionar chestionar) {
-		this.chestionar = chestionar;
+	public void setIntrebare(Intrebare intrebare) {
+		this.intrebare = intrebare;
 	}
 }
