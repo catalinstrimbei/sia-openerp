@@ -17,8 +17,7 @@ public class TestMarketingSrv {
 	}
 	
 	@Before public void initServices(){	
-//		logger.info("Marketing Service intiated for Test!");
-		System.out.println("tesst");
+		logger.info("Marketing Service intiated for Test!");
 	}
 	
 	@Test
