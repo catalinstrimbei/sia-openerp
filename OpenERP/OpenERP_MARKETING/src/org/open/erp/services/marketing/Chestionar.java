@@ -1,6 +1,8 @@
-package org.open.erp.services.marketing.impl;
+package org.open.erp.services.marketing;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.open.erp.services.marketing.nomgen.Persoana;
 
@@ -9,7 +11,7 @@ public class Chestionar {
 	Date data;
 	String titlu;
 	Persoana persoanaChestionata;
-	CercetarePiata cercetarePiata;
+	Set<Intrebare> intrebariChestionar = new HashSet<Intrebare>();
 	
 	public long getId() {
 		return id;
@@ -35,10 +37,10 @@ public class Chestionar {
 	public void setPersoanaChestionata(Persoana persoanaChestionata) {
 		this.persoanaChestionata = persoanaChestionata;
 	}
-	public CercetarePiata getCercetarePiata() {
-		return cercetarePiata;
+	public Set<Intrebare> getIntrebariChestionar() {
+		return intrebariChestionar;
 	}
-	public void setCercetarePiata(CercetarePiata cercetarePiata) {
-		this.cercetarePiata = cercetarePiata;
+	public void setIntrebariChestionar(Set<Intrebare> intrebariChestionar) {
+		this.intrebariChestionar = intrebariChestionar;
 	}
 }
