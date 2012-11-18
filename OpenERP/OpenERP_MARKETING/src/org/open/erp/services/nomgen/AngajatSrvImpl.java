@@ -1,10 +1,9 @@
 package org.open.erp.services.nomgen;
 
-import org.apache.log4j.Logger;
 
 public class AngajatSrvImpl implements AngajatSrv {
 	
-	private static Logger logger;
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(AngajatSrvImpl.class.getName());
 	
 	public AngajatSrvImpl(){
 		
@@ -12,7 +11,7 @@ public class AngajatSrvImpl implements AngajatSrv {
 
 	@Override
 	public Angajat creareAngajat() {
-		//logger.debug("1.1 Initiere/Creare angajat nou");
+		logger.debug("1.1 Initiere/Creare angajat nou");
 		
 		Angajat angajatNou = new Angajat(1, "nume", "prenume", "rol");
 		return angajatNou;
