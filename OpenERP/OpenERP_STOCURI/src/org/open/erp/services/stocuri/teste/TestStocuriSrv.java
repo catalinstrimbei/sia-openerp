@@ -35,62 +35,39 @@ public class TestStocuriSrv {
 	@Test
 	public void testIntrareStoc() throws Exception {
 
-		// 2.1. Preluare date produs
-
-		logger.info("START creare date de test------ ");
-
-		logger.info("START creare produse----- ");
+		logger.info("-----START creare date de test Intrare in stoc------ ");
 		Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
 		Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
 		Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
 		Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
-		logger.info("FINAL creare produse----- ");
 
-		logger.info("START creare gestiuni----- ");
 		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
 		Gestiune gest2 = new Gestiune(2, "Gestiune 2", new Depozit(2, "Bacau"));
-		logger.info("FINAL creare gestiuni----- ");
+		logger.info("-----FINAL creare date de test Intrare in stoc------ ");
 
-		logger.info("Start caz de utilizare instrare in stoc----- ");
+		logger.info("-----START caz de utilizare Intrare in stoc----- ");
 
+		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
 		stocuriInstance.intrareStoc(produs3, gest2);
+		logger.info(">>>>>>>>>>>>2. Intrare in stoc a unui produs existent <<<<<<<<<<<<");
 		stocuriInstance.intrareStoc(produs3, gest2);
-
-		// 2.2. Verificare date identificare lot
-
-		// 2.3. Modificare/crestere stoc curent
-
-		// 2.4 Confirmare stoc curent
-
+		logger.info("-----FINAL caz de utilizare istrare in stoc----- ");
 	}
 
 	@Test
 	public void testVerificareStocCurent() throws Exception {
-
-		// 4.1. Preluare date produs
-
-		logger.info("START creare date de test Verificare Stoc Curent------ ");
-
-		logger.info("START creare produse----- ");
+		logger.info("-----START creare date de test Verificare Stoc Curent------ ");
 		Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
 		Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
 		Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
 		Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
-		logger.info("FINAL creare produse----- ");
-
-		logger.info("START creare gestiuni----- ");
 		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
 		Gestiune gest2 = new Gestiune(2, "Gestiune 2", new Depozit(2, "Bacau"));
-		logger.info("FINAL creare gestiuni----- ");
-
-		logger.info("START creare articole----- ");
 		Articol art1 = new Articol(1, 0.00, gest1, produs1,
 				new ArrayList<Loturi>());
 		Articol art2 = new Articol(2, 0.00, gest1, produs2,
 				new ArrayList<Loturi>());
-		logger.info("FINAL creare articole----- ");
 
-		logger.info("START creare loturi----- ");
 		Loturi lot1 = new Loturi(1, produs1.getCantitate(),
 				produs1.getPretIntrare(), new Date());
 		Loturi lot2 = new Loturi(2, produs1.getCantitate(),
@@ -105,79 +82,90 @@ public class TestStocuriSrv {
 		art2.addLot(lot4);
 		gest1.addArticole(art1);
 		gest1.addArticole(art2);
-		logger.info("FINAL creare loturi----- ");
+		logger.info("-----FINAL creare date de test Verificare Stoc Curent------ ");
 
-		// 4.2. Verificare disponibilitate produs
-		logger.info("Start caz de utilizare verificare stoc curent----- ");
-		logger.info("Verificare disponibilitate produs in gestiune----- ");
+		logger.info("-----START caz de utilizare Verificare stoc curent----- ");
+
+		logger.info("4.1. Introducere date specifice produsului cautat: id-ul produsul: "
+				+ produs1.getIdProd());
+		logger.info("4.2. Verificare disponibilitate produs in gestiune.");
 		Double val = stocuriInstance.verificareStoc(produs1, gest1);
-
-		// 4.3. Returnare/Afisare Rezultat Cautat
-		logger.info("Returnare valoare cantitate produs in gestiunea dorita----- ");
 		if (val != null) {
-			logger.info("Valoarea cantitatii produsului: "
-					+ produs1.getNumeProdus() + " este de: " + val);
+			logger.info("4.3.Returnare valoare cantitate produs in gestiunea dorita. Stocul produsul: "
+					+ produs1.getIdProd() + " este: " + val);
 		} else {
-			logger.info("Produsului: " + produs1.getNumeProdus()
-					+ " nu a fost gasit.");
+			logger.info("4.3.Returnare valoare cantitate produs in gestiunea dorita. Produsul: "
+					+ produs1.getIdProd() + " este: " + val);
 		}
-
+		logger.info("-----FINAL caz de utilizare Verificare stoc curent----- ");
 	}
 
 	@Test
 	public void testIesireStoc() throws Exception {
-		
+		logger.info("-----START creare date de test Iesire din stoc------ ");
 		Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
 		Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
 		Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
 		Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
-		
+
 		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
 		Gestiune gest2 = new Gestiune(2, "Gestiune 2", new Depozit(2, "Bacau"));
+		logger.info("-----FINAL creare date de test Iesire din stoc------ ");
 		
+		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
 		stocuriInstance.intrareStoc(produs3, gest2);
+		logger.info(">>>>>>>>>>>>2. Intrare in stoc a unui produs existent <<<<<<<<<<<<");
 		stocuriInstance.intrareStoc(produs3, gest2);
-		
+
+		logger.info("-----START caz de utilizare Iesire din stoc----- ");
 		stocuriInstance.iesireStoc(produs3, gest2, 12.00);
+		logger.info("-----FINAL caz de utilizare Iesire din stoc----- ");
 	}
-	
+
 	@Test
 	public void testTransfer() throws Exception {
+		logger.info("-----START creare date de test Iesire din stoc------ ");
 		Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
 		Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
 		Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
 		Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
-		
+
 		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
 		Gestiune gest2 = new Gestiune(2, "Gestiune 2", new Depozit(2, "Bacau"));
+		logger.info("-----FINAL creare date de test Iesire din stoc------ ");
+		
+		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
+		stocuriInstance.intrareStoc(produs3, gest2);
+		logger.info(">>>>>>>>>>>>2. Intrare in stoc a unui produs existent <<<<<<<<<<<<");
+		stocuriInstance.intrareStoc(produs3, gest2);
 		
 		produs3.setCantitate(5.00);
-		
-		stocuriInstance.intrareStoc(produs3, gest2);
-		stocuriInstance.intrareStoc(produs3, gest2);
-		
+		logger.info("-----START caz de utilizare Transfer intre gestiuni----- ");
 		stocuriInstance.transfer(produs3, gest2, gest1);
+		logger.info("-----FINAL caz de utilizare Transfer intre gestiuni----- ");
 	}
-	
+
 	@Test
 	public void testAlertaStoc() throws Exception {
-		
+		logger.info("-----START creare date de test Alerta stoc------ ");
 		Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
 		Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
 		Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
 		Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
-		
+
 		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
 		Gestiune gest2 = new Gestiune(2, "Gestiune 2", new Depozit(2, "Bacau"));
-		
-		//produs3.setCantitate(5.00);
-		
+
+		logger.info("-----FINAL creare date de test Alerta stoc------ ");
+
+		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
 		stocuriInstance.intrareStoc(produs3, gest2);
+		logger.info(">>>>>>>>>>>>2. Intrare in stoc a unui produs existent <<<<<<<<<<<<");
 		stocuriInstance.intrareStoc(produs3, gest2);
 		
+		logger.info("-----START caz de utilizare Alerta stoc----- ");
 		stocuriInstance.iesireStoc(produs3, gest2, 18.00);
+		logger.info("-----FINAL caz de utilizare Alerta stoc----- ");
 	}
-	
-	
 
 }
