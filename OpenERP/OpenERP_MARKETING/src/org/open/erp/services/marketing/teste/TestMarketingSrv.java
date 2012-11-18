@@ -26,11 +26,11 @@ import org.open.erp.services.productie.ProdusSrv;
 
 public class TestMarketingSrv {
 	private static Logger logger;
-	private MarketingSrv marketingInstance;
+	MarketingSrv marketingInstance;
 	
-	private ProdusSrv produsSrv;
-	private AngajatSrv angajatSrv;
-	private PersoanaSrv persoanaSrv;
+	ProdusSrv produsSrv;
+	AngajatSrv angajatSrv;
+	PersoanaSrv persoanaSrv;
 
 	@BeforeClass
 	public static void initLocalJavaLogger() {
@@ -48,11 +48,18 @@ public class TestMarketingSrv {
 		logger.setLevel(Level.DEBUG);
 		logger.info("Begin test TestMarketingSrv!");
 ////////////////////////
-		Produs produsPromotie = produsSrv.creareProdus();
+		//Produs produsPromotie = produsSrv.creareProdus();
+	
+		System.out.println("aaaa");
+		Produs produs1 = new Produs(1, "p1");
+		
 		int pretPromotional = 10;
 		Date dataStart = new Date();
 		Date dataFinal = new Date();
-		Promotie promotieNoua = marketingInstance.crearePromotie(produsPromotie, pretPromotional, dataStart, dataFinal);
+		System.out.println("aaaa");
+		//Promotie promotieNoua = new Promotie(1, produs1, pretPromotional, dataStart, dataFinal);
+		Promotie promotieNoua = marketingInstance.crearePromotie(produs1, pretPromotional, dataStart, dataFinal);
+		System.out.println("aaaa");
 ////////////////////////		
 		TipPromovare tipPromovare = TipPromovare.FLYERE;
 		Date data = new Date();	
@@ -75,6 +82,7 @@ public class TestMarketingSrv {
 		StatusReclamatie status = StatusReclamatie.NOU;
 		Reclamatie reclamatieNoua = marketingInstance.creareReclamatie(data, "reclamatie", "raspuns", status);
 ////////////////////////	
+		logger.info("End test TestMarketingSrv");
 	}
 	
 }

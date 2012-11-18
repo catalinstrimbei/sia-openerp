@@ -10,7 +10,7 @@ public class ProdusSrvImpl implements ProdusSrv {
 	public Produs creareProdus() {
 		logger.debug("1.1 Initiere/Creare produs nou");
 
-		Produs produsNou = new Produs();
+		Produs produsNou = new Produs(1, "produs1");
 		return produsNou;
 	}
 
