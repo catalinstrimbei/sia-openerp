@@ -3,6 +3,13 @@ package org.open.erp.services.stocuri;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author echipa.stocuri
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
 public class Gestiune {
 	
 	private Integer idGest;

@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import org.open.erp.services.achizitii.Produs;
 
+/**
+ * 
+ * @author echipa.stocuri
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
 public class Articol {
 	private Integer idArticol;
 	private Double cantPeGestiune;
@@ -13,7 +20,7 @@ public class Articol {
 	
 	public void addLot(Loturi lot){
 		this.loturiArticole.add(lot);
-		//cantPeGestiune += lot.getCantitate();
+		cantPeGestiune += lot.getCantitate();
 		//lot.setArticol(this);
 	}
 

@@ -1,5 +1,11 @@
 package org.open.erp.services.stocuri;
-
+/**
+ * 
+ * @author echipa.stocuri
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
 import java.util.Date;
 
 public class Loturi {

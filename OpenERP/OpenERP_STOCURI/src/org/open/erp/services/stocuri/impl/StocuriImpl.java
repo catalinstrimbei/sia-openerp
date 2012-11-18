@@ -2,7 +2,6 @@ package org.open.erp.services.stocuri.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.Produs;
@@ -11,6 +10,10 @@ import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.Loturi;
 import org.open.erp.services.stocuri.StocuriSrv;
 
+/**
+ * @ApplicationServiceImplementation
+ * 
+ */
 public class StocuriImpl implements StocuriSrv{
 	
 	private AchizitiiSrv achizitiiSrv;
@@ -22,25 +25,23 @@ public class StocuriImpl implements StocuriSrv{
 	
 	@Override
 	
-	public void intrareStoc(Produs produs, Gestiune gestiune) {
-		
-		
-		logger.info("Verifica daca exista articole");
+	public void intrareStoc(Produs produs, Gestiune gestiune) 
+	{
+		logger.info("Verifica daca exista articol");
 		Articol art = this.getArticolByGestiune(produs, gestiune);
-		
 		if(art != null)
 		{	
 			logger.info("Articolul exista: " + art.getIdArticol());
 			logger.info("Se creeza un lot nou pentru articolul gasit");
-			art.addLot(new Loturi(1, produs.getCantitate(), produs.getPretIntrare(), new Date()));	
 			logger.info("Se creste cantitatea pentru articolul gasit, cantitate veche: " + art.getCantPeGestiune());
-			art.cresteCantitateArticolPeGestiune(produs.getCantitate());
+			art.addLot(new Loturi(1, produs.getCantitate(), produs.getPretIntrare(), new Date()));	
+			//art.cresteCantitateArticolPeGestiune(produs.getCantitate());
 			logger.info("Cantitate noua: "+ art.getCantPeGestiune());
 		}
 		else
 		{
 			logger.info("Articolul nu exista");
-			logger.info("Se adauga un articol nou pentru produsul primit ca parametru");
+			logger.info("Se adauga un articol nou pentru produs.");
 			this.creareLot(produs, gestiune);
 		}
 		
@@ -55,47 +56,36 @@ public class StocuriImpl implements StocuriSrv{
 			{
 				//exista loturi
 				return true;
-			}
-			
+			}	
 		}
 		return false;
 	}*/
 	
 	@Override
-	public Articol getArticolByGestiune(Produs produs, Gestiune gestiune){
-		// TODO Auto-generated method stub
+	public Articol getArticolByGestiune(Produs produs, Gestiune gestiune)
+	{
 		for(Articol art: gestiune.getArticole())
 		{
 			if(art.getProdus().equals(produs))
-			{
-				
-				return art;
-				
+			{	
+				return art;	
 			}
 		}
-		
 		return null;
 	}
 	
 	@Override
-	public void creareLot(Produs produs, Gestiune gestiune){
+	public void creareLot(Produs produs, Gestiune gestiune)
+	{
+		//se adauga un articol pentru produs
 		gestiune.addArticole(new Articol(1, 0.00, gestiune, produs, new ArrayList<Loturi>()));
 		Articol art = this.getArticolByGestiune(produs, gestiune);
 		logger.info("Se creeaza lotul pentru articolul nou creat: " + art.getIdArticol());
-		//List<Loturi> lot = new ArrayList<Loturi>();
+		logger.info("Se creste cantitate pentru articolul creat, cantitate veche: " + art.getCantPeGestiune());
 		Loturi lot = new Loturi(2, produs.getCantitate(), produs.getPretIntrare(), new Date());
-		
-		logger.info("!!!!!!!!!!!!!!!Lot pentru articolul nou");
-		
-		//for (Loturi l : lot){
-			art.addLot(lot);
-			
-			logger.info("Se creste cantitate pentru articolul creat, cantitate veche: " + art.getCantPeGestiune());
-			art.cresteCantitateArticolPeGestiune(produs.getCantitate());
-			logger.info("Noua cantitate este " + art.getCantPeGestiune() );
-		//}
-		
-		
+		art.addLot(lot);
+		//art.cresteCantitateArticolPeGestiune(produs.getCantitate());
+		logger.info("Cantitate noua " + art.getCantPeGestiune() );
 	}
 	
 	

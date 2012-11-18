@@ -1,5 +1,12 @@
 package org.open.erp.services.stocuri;
 
+/**
+ * 
+ * @author echipa.stocuri
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
 public class Depozit {
 
 	private Integer idDepozit;
