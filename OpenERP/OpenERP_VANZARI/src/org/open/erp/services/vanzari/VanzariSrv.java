@@ -54,12 +54,12 @@ public interface VanzariSrv {
 	 * 		Scop 						Asociaza o oferta de pret unui client.
 	 * 
 	 * @param idProdus					Id-ul produsului din nommat pentru care se realizeaza oferta.
-	 * @param idClient					Id-ul clientului din nomgen pentru care se realizeaza oferta. 
+	 *. 
 	 * @param dataValabilitate			Data valabilitatii ofertei de pret
 	 * @param observatii				Observatii cu privire la ofertele de pret
 	 * @return	oferta nou creata.			
 	 */
-	OfertePret creareOfertePret(Produse produs, Clienti client, Date dataValabilitate, String observatii);
+	OfertePret creareOfertePret(Produse produs, Date dataValabilitate, String observatii);
 	/**
 	 * 		Scop						Creaza o comanda unui client
 	 * 
