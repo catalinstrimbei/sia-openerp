@@ -2,7 +2,7 @@ package org.open.erp.services.stocuri;
 
 /**
  * 
- * @author stocuri
+ * @author echipa.stocuri
  * 
  * @BusinessObject(Entity)
  * 

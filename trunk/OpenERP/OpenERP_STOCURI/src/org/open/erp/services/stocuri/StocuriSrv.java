@@ -4,6 +4,10 @@ import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.Produs;
 
 /**
+ * @author echipa.stocuri
+ * 
+ * @ApplicationServiceFacade
+ * 
  * 
  * @Dependente: Achizitii, Vanzari, Productie
  * 
