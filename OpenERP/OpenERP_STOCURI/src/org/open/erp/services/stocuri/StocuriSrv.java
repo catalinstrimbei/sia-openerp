@@ -92,7 +92,7 @@ public interface StocuriSrv {
 	
 	void transfer(Produs produs, Gestiune gestiuneIesire, Gestiune gestiuneIntrare);
 	
-	void alertaStoc();
+	void alertaStoc(Articol articol);
 	
 	
 	
