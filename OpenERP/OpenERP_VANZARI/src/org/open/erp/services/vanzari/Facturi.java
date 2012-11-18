@@ -1,13 +1,18 @@
 package org.open.erp.services.vanzari;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Facturi {
 
 	Integer idFactura;
 	Date data;
 	Responsabil responsabil;
-	Integer avizCorespondent;
+	Avize avizCorespondent;
+	Comenzi comanda;
+	List<LiniiFactura> liniiFactura = new ArrayList<LiniiFactura>();
+	
 	public Integer getIdFactura() {
 		return idFactura;
 	}
@@ -26,44 +31,50 @@ public class Facturi {
 	public void setResponsabil(Responsabil responsabil) {
 		this.responsabil = responsabil;
 	}
-	public Integer getAvizCorespondent() {
+	public Avize getAvizCorespondent() {
 		return avizCorespondent;
 	}
-	public void setAvizCorespondent(Integer avizCorespondent) {
+	public void setAvizCorespondent(Avize avizCorespondent) {
 		this.avizCorespondent = avizCorespondent;
 	}
+	public Comenzi getComanda() {
+		return comanda;
+	}
+	public void setComanda(Comenzi comanda) {
+		this.comanda = comanda;
+	}
+	public List<LiniiFactura> getLiniiFactura() {
+		return liniiFactura;
+	}
+	public void setLiniiFactura(List<LiniiFactura> liniiFactura) {
+		this.liniiFactura = liniiFactura;
+	}
 	public Facturi(Integer idFactura, Date data, Responsabil responsabil,
-			Integer avizCorespondent) {
+			Avize avizCorespondent, Comenzi comanda,
+			List<LiniiFactura> liniiFactura) {
 		super();
 		this.idFactura = idFactura;
 		this.data = data;
 		this.responsabil = responsabil;
 		this.avizCorespondent = avizCorespondent;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((idFactura == null) ? 0 : idFactura.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Facturi other = (Facturi) obj;
-		if (idFactura == null) {
-			if (other.idFactura != null)
-				return false;
-		} else if (!idFactura.equals(other.idFactura))
-			return false;
-		return true;
+		this.comanda = comanda;
+		this.liniiFactura = liniiFactura;
 	}
 	
+	public Double getValoareFactura(){
+					
+			Double valoare = 0.0;
+			for (LiniiFactura linie: liniiFactura){
+				valoare = valoare + linie.valoareLinieFactura();
+			}
+			
+			return valoare;
+		}
 	
+
+	public void adaugaLinieFactura( LiniiFactura linieFactura){
+		
+		this.liniiFactura.add(linieFactura);
+	}
+
 }

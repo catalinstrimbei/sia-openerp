@@ -79,7 +79,7 @@ public interface VanzariSrv {
  * @return		document nou creat.		
  */
 	
-	Documente creareDocument(Responsabil responsabil, Produse produs, Comenzi comanda);
+	Facturi creareFactura(Responsabil responsabil, Produse produs, Comenzi comanda);
 	
 
 	
