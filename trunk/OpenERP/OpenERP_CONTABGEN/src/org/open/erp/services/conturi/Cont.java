@@ -30,5 +30,13 @@ public class Cont {
 	}
 	public void setTipCont(String tipCont) {
 		this.tipCont = tipCont;
-	}	
+	}
+	public Cont(Integer idCont, Integer codCont, String denumireCont,
+			String tipCont) {
+		super();
+		this.idCont = idCont;
+		this.codCont = codCont;
+		this.denumireCont = denumireCont;
+		this.tipCont = tipCont;
+	}
 }
