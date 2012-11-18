@@ -4,11 +4,11 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.marketing.impl.MarketingImpl;
+import org.open.erp.services.marketing.impl.MarketingSrvImpl;
 
 public class TestMarketingSrv {
 	private static Logger logger;
-	private MarketingImpl  marketingInstance;
+	private MarketingSrvImpl  marketingInstance;
 	
 	
 	@BeforeClass
