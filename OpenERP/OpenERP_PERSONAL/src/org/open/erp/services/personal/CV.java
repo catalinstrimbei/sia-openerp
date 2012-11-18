@@ -11,12 +11,15 @@ public class CV {
 	
 	public CV (Candidat titular,Tuple<String,Date,Date> studiiAbs,Tuple<String,Date,Date>functiiOcp, DoubleParam<String,String>limbiStr, String apt){
 		titularCV = titular;
+		studiileAbsolvite = new Tuple<String,Date,Date>();
 		studiileAbsolvite.denInstitutie = studiiAbs.denInstitutie;
 		studiileAbsolvite.dataInceput = studiiAbs.dataInceput;
 		studiileAbsolvite.dataSfarsit = studiiAbs.dataSfarsit;
+		functiiOcupate = new Tuple<String,Date,Date>();
 		functiiOcupate.denInstitutie = functiiOcp.denInstitutie;
 		functiiOcupate.dataInceput = functiiOcp.dataInceput;
 		functiiOcupate.dataSfarsit = functiiOcp.dataSfarsit;
+		limbiStraine = new DoubleParam<String,String>();
 		limbiStraine.limbaStraina = limbiStr.limbaStraina;
 		limbiStraine.nivelulDeCunoastere = limbiStr.nivelulDeCunoastere;
 		aptitudini = apt;

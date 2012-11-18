@@ -110,6 +110,22 @@ public interface PersonalSrv {
 	List<Candidat> selectareCandidati(List<CV> listaCVCandidati,Anunt anuntPostLiber);
 	
 	/**
+	 * Se creaza o proba de evaluare ca va fi folosita la un interviu
+	 * 
+	 * @param numeProba Numele testului efectuat
+	 * 
+	 * @return instanta ProbaEvaluare nou creata
+	 */	
+	ProbaEvaluare creareProbaEvaluare(String numeProba);
+	
+	/**
+	 * Se creaza un angajat nou
+	 * 
+	 * @return instanta Angajat nou creata
+	 */	
+	Angajat creareAngajat();
+	
+	/**
 	 * Crearea unui tip nou de interviu
 	 * 
 	 * @param numePost         Functia pentru care e sustinut interviul
@@ -145,10 +161,7 @@ public interface PersonalSrv {
 	 * 
 	 * @return instanta Cerere nou creata
 	 * 
-	 */
-	 
-			
-		
+	 */		
 	CerereConcediu creareCerereConcediu (Integer nrInregistrare, ContractMunca contract, Date dataCerere, Date dataAprobare, Integer perioadaConcediu, String tipConcediu,
 			String status);
 	
@@ -161,8 +174,6 @@ public interface PersonalSrv {
 	 * 
 	 */
 	CerereConcediu creareCerereConcediu (CerereConcediu CerereConcediuNou);
-	
-	
 	
 	
 	
@@ -179,10 +190,7 @@ public interface PersonalSrv {
 	 * 
 	 * @return instanta Cerere nou creata
 	 * 
-	 */
-	 
-			
-		
+	 */		
 	CerereEveniment creareCerereEveniment (Integer nrInregistrare, ContractMunca contract, Date dataCerere, Date dataAprobare, Integer perioadaEveniment, String tipEveniment,
 			String status);
 	
