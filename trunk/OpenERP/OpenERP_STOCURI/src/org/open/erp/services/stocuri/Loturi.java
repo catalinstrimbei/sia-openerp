@@ -31,7 +31,7 @@ public class Loturi {
 	}
 	
 	public void scadeCantitatea(Double cantitate){
-		//this.cantitate -= cantitate;
+		this.cantitate -= cantitate;
 		//this.articol.scadeCantitateArticolPeGestiune(cantitate);
 	}
 	

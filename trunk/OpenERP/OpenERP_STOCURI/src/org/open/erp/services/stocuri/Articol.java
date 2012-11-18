@@ -24,7 +24,7 @@ public class Articol {
 		//lot.setArticol(this);
 	}
 
-	public void removeLotIntrare(Loturi lot){
+	public void removeLot(Loturi lot){
 		this.loturiArticole.remove(lot);
 		cantPeGestiune -= lot.getCantitate();
 	}
