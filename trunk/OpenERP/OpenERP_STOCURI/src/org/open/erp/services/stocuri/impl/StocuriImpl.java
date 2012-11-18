@@ -138,6 +138,7 @@ public class StocuriImpl implements StocuriSrv{
 					l.scadeCantitatea(cantitate);
 					//logger.info("Se scade cantitatea de: " + cantitate + " din gestiune a articolului " +  art.getIdArticol());
 					art.scadeCantitateArticolPeGestiune(cantitate);
+					
 					break;
 				}
 				else if(l.getCantitate() == cantitate)
@@ -167,9 +168,12 @@ public class StocuriImpl implements StocuriSrv{
 			}
 		}
 		logger.info("Cantitatea ramasa in gestiunea: " + gestiune.getIdGest() + " " + gestiune.getDenumireGest() + " este " + art.getCantPeGestiune());
+		
+		this.alertaStoc(art);
+		
 		if(this.verificareStoc(produs, gestiune) == 0.0)
 		{
-			logger.info("Articolul " + art.getIdArticol() + "are cantitatea egala cu 0 si este sters.");
+			logger.info("Articolul " + art.getIdArticol() + " are cantitatea egala cu 0 si este sters.");
 			gestiune.removeArticole(art);
 			logger.info("Articolul s-a sters.");
 		}
@@ -193,9 +197,12 @@ public class StocuriImpl implements StocuriSrv{
 	}
 
 	@Override
-	public void alertaStoc() {
-		// TODO Auto-generated method stub
-		
+	public void alertaStoc(Articol articol) {
+		Double pragStoc =2.00;
+		if(articol.getCantPeGestiune() <= pragStoc)
+		{
+			logger.info("Alerta!!! Articolul " + articol.getIdArticol() + " are cantitatea sub pragul stabilit pentru stocul acestuia");
+		}
 	}
 
 	@Override

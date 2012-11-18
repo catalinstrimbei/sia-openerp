@@ -159,6 +159,25 @@ public class TestStocuriSrv {
 		stocuriInstance.transfer(produs3, gest2, gest1);
 	}
 	
+	@Test
+	public void testAlertaStoc() throws Exception {
+		
+		Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
+		Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
+		Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
+		Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
+		
+		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
+		Gestiune gest2 = new Gestiune(2, "Gestiune 2", new Depozit(2, "Bacau"));
+		
+		//produs3.setCantitate(5.00);
+		
+		stocuriInstance.intrareStoc(produs3, gest2);
+		stocuriInstance.intrareStoc(produs3, gest2);
+		
+		stocuriInstance.iesireStoc(produs3, gest2, 18.00);
+	}
+	
 	
 
 }
