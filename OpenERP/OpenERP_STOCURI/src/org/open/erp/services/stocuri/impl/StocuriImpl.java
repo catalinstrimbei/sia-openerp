@@ -2,6 +2,7 @@ package org.open.erp.services.stocuri.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.Produs;
@@ -113,9 +114,65 @@ public class StocuriImpl implements StocuriSrv{
 		return null;
 	}
 
+	
 	@Override
-	public void iesireStoc(Produs produs, Integer cantitate) {
-		// TODO Auto-generated method stub
+	public void iesireStoc(Produs produs, Gestiune gestiune, Double cantitate) 
+	{
+		Articol art;
+		List<Loturi> listaLoturiDeSters = new ArrayList<Loturi>();
+		art = this.getArticolByGestiune(produs, gestiune);
+		if(this.verificareStoc(produs, gestiune) < cantitate)
+		{
+			logger.info("Nu exista in gestiunea " + gestiune.getDenumireGest() + "suficienta cantitate pentru produsul " + produs.getIdProd());
+		}
+		else
+		{
+			//listaLoturiDeSters = art.getLoturiArticole();
+			for(Loturi l : art.getLoturiArticole())
+			{
+				logger.info("Lotul: " +l.getIdLot());
+				
+				if(l.getCantitate() > cantitate)
+				{
+					logger.info("Se scade cantitatea: " + cantitate + " din lotul " +  l.getIdLot());
+					l.scadeCantitatea(cantitate);
+					//logger.info("Se scade cantitatea de: " + cantitate + " din gestiune a articolului " +  art.getIdArticol());
+					art.scadeCantitateArticolPeGestiune(cantitate);
+					break;
+				}
+				else if(l.getCantitate() == cantitate)
+				{
+					logger.info("Se sterge lotul: " + l.getIdLot() + " din gestiune pentru articolul: " + art.getIdArticol());
+					logger.info("Se scade cantitatea din gestiune a articolului " +  art.getIdArticol());
+					//art.removeLot(l);
+					listaLoturiDeSters.add(l);
+				
+					break;
+				}
+				else
+				{
+					logger.info("Se scade cantitatea: " + l.getCantitate() + " din lotul: "  + l.getIdLot());
+					cantitate = cantitate - l.getCantitate();
+					//logger.info("Se sterge lotul "  + l.getIdLot());
+					logger.info("Cantitatea care ramane de cautat dupa scoaterea din primul lot este: " + cantitate);
+					//art.removeLot(l);
+					listaLoturiDeSters.add(l);
+	
+				}
+			
+			}
+			for(Loturi lot : listaLoturiDeSters)
+			{
+				art.removeLot(lot);
+			}
+		}
+		logger.info("Cantitatea ramasa in gestiunea: " + gestiune.getIdGest() + " " + gestiune.getDenumireGest() + " este " + art.getCantPeGestiune());
+		if(this.verificareStoc(produs, gestiune) == 0.0)
+		{
+			logger.info("Articolul " + art.getIdArticol() + "are cantitatea egala cu 0 si este sters.");
+			gestiune.removeArticole(art);
+			logger.info("Articolul s-a sters.");
+		}
 		
 	}
 

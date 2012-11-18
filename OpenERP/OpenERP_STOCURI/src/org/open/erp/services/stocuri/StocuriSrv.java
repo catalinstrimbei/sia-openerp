@@ -19,17 +19,19 @@ import org.open.erp.services.achizitii.Produs;
  * 
  * @EntitatiLocale: Lot sau Stoc
  * 
- * @UseCase("1. Intrare in stoc"):
+ * @UseCase("1. Creare lot nou"):
  * 
- * @UseCase("2. Iesire din stoc")
+ * @UseCase("2. Intrare in stoc"):
  * 
- * @UseCase("3. Verificare stoc curent"):
+ * @UseCase("3. Iesire din stoc")
+ * 
+ * @UseCase("4. Verificare stoc curent"):
  *
- * @UseCase("4. Transfer intre gestiuni"):
+ * @UseCase("5. Transfer intre gestiuni"):
  * 
- * @UseCase("5. Alerta stoc curent"):
+ * @UseCase("6. Alerta stoc curent"):
  * 
- * @UseCase("6. Casare/Eliminare lot"):
+ * @UseCase("7. Casare/Eliminare lot"):
  * 
  */
 
@@ -73,7 +75,7 @@ public interface StocuriSrv {
 	 */
 	
 	
-	void iesireStoc(Produs produs, Integer cantitate);
+	void iesireStoc(Produs produs, Gestiune gestiune, Double cantitate);
 	
 	/** 4. Transfer intre getsiuni
 	 * Returneaza void
