@@ -11,10 +11,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.nomgen.Clienti;
 import org.open.erp.services.nommat.Produse;
+import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
 import org.open.erp.services.vanzari.Comenzi;
 import org.open.erp.services.vanzari.Facturi;
+import org.open.erp.services.vanzari.LiniiFactura;
 import org.open.erp.services.vanzari.OfertePret;
 import org.open.erp.services.vanzari.Responsabil;
 import org.open.erp.services.vanzari.VanzariSrv;
@@ -129,9 +131,13 @@ public class TestVanzariSrv {
 		ArticolComanda articolComanda2=new ArticolComanda(2, ofertaPret1, 101.00, 101.00);
 		logger.info(articolComanda2.calcValoare());
 		
+		comanda.adauga(articolComanda1);
+		comanda.adauga(articolComanda2);
+	
+		
 		logger.info("START creare aviz----- ");
 		Avize aviz = new Avize(1, new Date(), responsabil );
-		logger.info("FINAL creare comanda----- ");
+		logger.info("FINAL creare aviz----- ");
 		
 		logger.info("Start caz de utilizare creare factura----- ");
 		Facturi factura = vanzariInstance.creareFactura(responsabil, produs1, comanda);
@@ -140,12 +146,23 @@ public class TestVanzariSrv {
 		//
 				
 		logger.debug("1.7 Afisare liniile facturii (cantitateaAcceptata>0)");
-		for (ArticolComanda articol: articole) {
-			
-			valoare = valoare + articol.calcValoare();
+		Integer i=1;
+		for (ArticolComanda articol: factura.getComanda().getArticole()) {
+	
+			if(articol.getCantitateAcceptata()> 0){
+				
+				LiniiFactura linieFactura = new LiniiFactura(i, articol);
+				factura.adaugaLinieFactura(linieFactura);
+				i=i+1;
+			}
 		}
 		
-		logger.debug("Status proiect: " + factura.getComanda().getCantitateAcceptata());
+		logger.debug("Afisare linii factura" );
+		for (LiniiFactura linie : factura.getLiniiFactura()) {
+			
+			logger.info (linie.getArticol().getCantitateAcceptata());
+			
+		}
 		//--------
 		logger.info("End Test TestVanzariSrv!");
 		

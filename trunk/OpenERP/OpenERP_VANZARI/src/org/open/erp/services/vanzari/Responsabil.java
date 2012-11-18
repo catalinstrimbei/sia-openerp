@@ -21,6 +21,11 @@ public class Responsabil extends Personal{
 		Observatii = observatii;
 	}
 
+	public Responsabil() {
+		super();
+	}
+
+	
 	
 	
 

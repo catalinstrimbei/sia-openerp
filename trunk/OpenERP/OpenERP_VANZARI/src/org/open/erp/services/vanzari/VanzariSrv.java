@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.open.erp.services.nomgen.Clienti;
 import org.open.erp.services.nommat.Produse;
+import org.open.erp.services.personal.PersonalSrv;
 
 
 /**
@@ -81,6 +82,7 @@ public interface VanzariSrv {
 	
 	Facturi creareFactura(Responsabil responsabil, Produse produs, Comenzi comanda);
 	
+	void setPersonalSrv(PersonalSrv personalSrv);
 
 	
 }
