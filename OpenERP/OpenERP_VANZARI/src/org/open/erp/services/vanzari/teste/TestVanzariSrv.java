@@ -37,6 +37,8 @@ public class TestVanzariSrv {
 	}
 	
 	@Before public void initServices(){	
+		vanzariInstance= VanzariSrvFactory.getVanzariSrv();
+		logger.info("Initializare VanzariSRV pentru TESTARE!");
 
 	}
 		
@@ -60,7 +62,8 @@ public class TestVanzariSrv {
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
 		
 		logger.info("1.2 START creare oferta de pret ");
-		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+	
+		OfertePret ofertaPret1= vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
 		
 		logger.info("FINAL creare produse/clienti/oferte de pret ");
 		
@@ -87,10 +90,10 @@ public class TestVanzariSrv {
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
 		
 		logger.info("1.1 Start creare oferta de pret");
-		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
 		
 		logger.info("2.1 START creare comenzi");		
-		Comenzi comanda = new Comenzi(1, new Date(), new ArrayList<ArticolComanda>());
+		Comenzi comanda = vanzariInstance.creareComanda(1, new Date(), new ArrayList<ArticolComanda>());
 		
 		logger.info("FINAL creare produse/clienti/oferte de pret/comada ");
 		
@@ -129,10 +132,10 @@ public class TestVanzariSrv {
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
 		
 		logger.info("1.1START creare oferta de pret");
-		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
 		
 		logger.info("2.1 START creare comenzi");		
-		Comenzi comanda = new Comenzi(1, new Date(), new ArrayList<ArticolComanda>());
+		Comenzi comanda = vanzariInstance.creareComanda(1, new Date(), new ArrayList<ArticolComanda>());
 			
 		logger.info("FINAL creare produse/clienti/oferte de pret/comada ");
 		
@@ -149,7 +152,7 @@ public class TestVanzariSrv {
 	
 		
 		logger.info("3.1 START creare Dispozitie de Livrare ");
-		DispozitiiLivrare dispozitie = new DispozitiiLivrare(1, new Date(),responsabil, comanda, new ArrayList<LiniiDispozitieLivrare>());
+		DispozitiiLivrare dispozitie = vanzariInstance.creareDispozitieLivrare(1, new Date(),responsabil, comanda, new ArrayList<LiniiDispozitieLivrare>());
 		logger.info("FINAL creare dispozitie de plata ");
 		
 		logger.debug("Afisare liniile dispozitie (cantitateaAcceptata>0)----");
@@ -198,10 +201,10 @@ public class TestVanzariSrv {
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
 		
 		logger.info("1.1 START creare oferta de pret");
-		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
 		
 		logger.info("2.1 START creare comenzi");		
-		Comenzi comanda = new Comenzi(1, new Date(), new ArrayList<ArticolComanda>());
+		Comenzi comanda = vanzariInstance.creareComanda(1, new Date(), new ArrayList<ArticolComanda>());
 		
 		logger.info("FINAL creare produse/clienti/oferte de pret/comada ");
 		
@@ -218,7 +221,7 @@ public class TestVanzariSrv {
 	
 		
 		logger.info("4.1 START creare avize ");
-		Avize aviz = new Avize(1, new Date(), responsabil, comanda, new ArrayList<LiniiAviz>());
+		Avize aviz = vanzariInstance.creareAviz(1, new Date(), responsabil, comanda, new ArrayList<LiniiAviz>());
 		logger.info("FINAL creare aviz ");
 		
 		logger.debug("4.4 Afisare linii aviz (cantitateaAcceptata>0)");
@@ -261,15 +264,17 @@ public class TestVanzariSrv {
 		
 		logger.info("1.2 START creare produse");
 		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
+		Produse produs2 = new Produse(2, "Produs 2", 67892, 2.00, 122.00 );
 		
 		logger.info("2.2 START creare clienti");
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
 		
 		logger.info("1.1 START creare oferta de pret");
-		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret2=vanzariInstance.creareOfertePret(200, produs2,dateFormat.parse("31/11/2012"), dataEmitere,"altceva");
 		
 		logger.info("2.1 START creare comenzi");		
-		Comenzi comanda = new Comenzi(1, new Date(), new ArrayList<ArticolComanda>());
+		Comenzi comanda = vanzariInstance.creareComanda(1, new Date(), new ArrayList<ArticolComanda>());
 			
 		logger.info("FINAL creare produse/clienti/oferte de pret/comada ");
 		
@@ -281,12 +286,17 @@ public class TestVanzariSrv {
 		ArticolComanda articolComanda2=new ArticolComanda(2, ofertaPret1, 101.00, 101.00);
 		logger.info(articolComanda2.calcValoare());
 		
+		logger.info("2.3 Adaugare aritcol3 comanda");
+		ArticolComanda articolComanda3=new ArticolComanda(3, ofertaPret2, 202.00, 202.00);
+		logger.info(articolComanda3.calcValoare());
+		
 		comanda.adauga(articolComanda1);
 		comanda.adauga(articolComanda2);
+		comanda.adauga(articolComanda3);
 	
 		
 		logger.info("4.1 START creare avize ");
-		Avize aviz = new Avize(1, new Date(), responsabil, comanda, new ArrayList<LiniiAviz>());
+		Avize aviz =vanzariInstance.creareAviz(1, new Date(), responsabil, comanda, new ArrayList<LiniiAviz>());
 		logger.info("FINAL creare aviz ");
 		
 		logger.debug("4.4 Afisare liniile aviz (cantitateaAcceptata>0)");
@@ -304,13 +314,13 @@ public class TestVanzariSrv {
 		logger.debug("Afisare linii aviz" );
 		for (LiniiAviz linie : aviz.getLiniiAviz()) {
 			
-			logger.info (linie.getArticol().getCantitateAcceptata());
+			logger.info (linie.getArticol()/*.getCantitateAcceptata()*/);
 			
 		}
 		
 		logger.info("5.1 Start caz de utilizare creare factura ");
-		//Facturi factura = vanzariInstance.creareFactura(responsabil, produs1, comanda);
-		Facturi factura=new Facturi(1, new Date(), responsabil, aviz, comanda, new ArrayList<LiniiFactura>());
+		Facturi factura = vanzariInstance.creareFactura(1, new Date(), responsabil, aviz, comanda, new ArrayList<LiniiFactura>());
+		//Facturi factura=new Facturi(1, new Date(), responsabil, aviz, comanda, new ArrayList<LiniiFactura>());
 		//assertNotNull("Nu exista factura noua!", factura);
 		//
 				

@@ -1,6 +1,6 @@
 package org.open.erp.services.vanzari.teste;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 import org.open.erp.services.personal.Personal;
 import org.open.erp.services.personal.PersonalSrv;
