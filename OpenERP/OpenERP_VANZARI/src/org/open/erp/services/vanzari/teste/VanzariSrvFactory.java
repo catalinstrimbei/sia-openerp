@@ -14,7 +14,8 @@ public class VanzariSrvFactory {
 	public static VanzariSrv getVanzariSrv(){
 		VanzariSrv vanzari = new VanzariImpl();
 		logger.info("Creare instanta VanzariSRV din VanzariSrvFactory!");
-		
+		PersonalSrv personalSrv=VanzariSrvFactory.getPersonalSrv();
+		vanzari.setPersonalSrv(personalSrv);
 		return vanzari;
 		
 	}
@@ -23,14 +24,14 @@ public class VanzariSrvFactory {
 		logger.info("Creaza Dummy PERSONAL SRV----");
 		return new PersonalSrv()
 		{
-			
+
 			@Override
-			//sa luam un responsabil disponibil
-			public Personal preluarePersoana(Personal persoana) {
+			public Personal preluarePersoana() {
 				logger.info("5.1 a) Am delegat persoana responsabila");
 				return new Personal();
 			}
-
+			
+			
 		};
 	}
 
