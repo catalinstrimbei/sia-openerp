@@ -1,13 +1,19 @@
 package org.open.erp.services.vanzari.impl;
 
 
-import java.util.Date;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import org.hamcrest.core.Is;
 import org.open.erp.services.nomgen.Clienti;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.nommat.Produse;
 import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Comenzi;
 import org.open.erp.services.vanzari.Documente;
 import org.open.erp.services.vanzari.OfertePret;
@@ -43,21 +49,25 @@ public class VanzariImpl implements VanzariSrv{
 	@Override
 	public OfertePret creareOfertePret(Produse produs, Clienti client,
 			Date dataValabilitate, String observatii)  {
-		Date data= new Date();
+		Date dataEmitere=new Date(System.currentTimeMillis());
 		
 		logger.debug("1.1 Creare oferta de pret");
-		OfertePret ofertaPret=new OfertePret(1, produs, client, data, dataValabilitate, observatii);
+		
+		
+		OfertePret ofertaPret= new OfertePret(1, produs, client, new Date(), dataEmitere, observatii);
+	
 		return ofertaPret;
-	}
+	}	
+
+	
 
 	@Override
-	public Comenzi creareComanda(Produse produs, OfertePret ofertePret,
-			Date data, Double cantitateComandata, Double cantitateAcceptata) {
-		logger.debug("1.2 Creare comanda");
-		double valoare=0;
+	public Comenzi creareComanda(Date data, List<ArticolComanda> articole) {
+		logger.debug("2.1 Creare comanda");
+				
+		Comenzi creareComanda=new Comenzi(1, new Date(), articole);
 		
-		Comenzi creareComanda= new Comenzi(1, produs, ofertePret, data, cantitateComandata, cantitateAcceptata, valoare);
-		return null;
+		return creareComanda;
 	}
 
 	@Override

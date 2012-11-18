@@ -1,13 +1,14 @@
 package org.open.erp.services.vanzari;
 
 import java.util.Date;
+import java.util.List;
 
 import org.open.erp.services.nomgen.Clienti;
 import org.open.erp.services.nommat.Produse;
 
 
 /**
- * @author mihalescu.ionela
+ * @author echipa.vanzari
  * 
  * @ApplicationServiceFacade
  * 
@@ -67,7 +68,7 @@ public interface VanzariSrv {
 	 * @param cantitateAcceptata		Cantitatea care a fost acceptata de producator.
 	 * @return	comanda nou creata.
 	 */
-	Comenzi creareComanda( Produse produs, OfertePret ofertePret, Date data, Double cantitateComandata, Double cantitateAcceptata);
+	Comenzi creareComanda( Date data, List<ArticolComanda> articole);
 
 /**
  * 		Scop							Crearea documentelor corespunzatoare comenzii.
@@ -81,4 +82,5 @@ public interface VanzariSrv {
 	Documente creareDocument(Responsabil responsabil, Produse produs, Comenzi comanda);
 	
 
+	
 }

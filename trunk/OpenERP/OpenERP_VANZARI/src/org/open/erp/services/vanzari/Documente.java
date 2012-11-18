@@ -9,37 +9,49 @@ public class Documente {
 	Responsabil responsabil;
 	Date data;
 	Produse produs;
-	Comenzi comanda;
+	String um;
+	Double cantitate;
+	Double pretUnitar;
+	Double valoareTVA;
 	Double valoare;
+	
 	public Integer getIdDocument() {
 		return idDocument;
 	}
 	public void setIdDocument(Integer idDocument) {
 		this.idDocument = idDocument;
 	}
-	public Responsabil getResponsabil() {
-		return responsabil;
-	}
-	public void setResponsabil(Responsabil responsabil) {
-		this.responsabil = responsabil;
-	}
+	
 	public Date getData() {
 		return data;
 	}
 	public void setData(Date data) {
 		this.data = data;
 	}
-	public Produse getProdus() {
-		return produs;
+	
+	public String getUm() {
+		return um;
 	}
-	public void setProdus(Produse produs) {
-		this.produs = produs;
+	public void setUm(String um) {
+		this.um = um;
 	}
-	public Comenzi getComanda() {
-		return comanda;
+	public Double getCantitate() {
+		return cantitate;
 	}
-	public void setComanda(Comenzi comanda) {
-		this.comanda = comanda;
+	public void setCantitate(Double cantitate) {
+		this.cantitate = cantitate;
+	}
+	public Double getPretUnitar() {
+		return pretUnitar;
+	}
+	public void setPretUnitar(Double pretUnitar) {
+		this.pretUnitar = pretUnitar;
+	}
+	public Double getValoareTVA() {
+		return valoareTVA;
+	}
+	public void setValoareTVA(Double valoareTVA) {
+		this.valoareTVA = valoareTVA;
 	}
 	public Double getValoare() {
 		return valoare;
@@ -47,14 +59,30 @@ public class Documente {
 	public void setValoare(Double valoare) {
 		this.valoare = valoare;
 	}
+	public Responsabil getResponsabil() {
+		return responsabil;
+	}
+	public void setResponsabil(Responsabil responsabil) {
+		this.responsabil = responsabil;
+	}
+	public Produse getProdus() {
+		return produs;
+	}
+	public void setProdus(Produse produs) {
+		this.produs = produs;
+	}
 	public Documente(Integer idDocument, Responsabil responsabil, Date data,
-			Produse produs, Comenzi comanda, Double valoare) {
+			Produse produs, String um, Double cantitate, Double pretUnitar,
+			Double valoareTVA, Double valoare) {
 		super();
 		this.idDocument = idDocument;
 		this.responsabil = responsabil;
 		this.data = data;
 		this.produs = produs;
-		this.comanda = comanda;
+		this.um = um;
+		this.cantitate = cantitate;
+		this.pretUnitar = pretUnitar;
+		this.valoareTVA = valoareTVA;
 		this.valoare = valoare;
 	}
 	@Override

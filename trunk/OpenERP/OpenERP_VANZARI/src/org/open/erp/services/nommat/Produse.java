@@ -37,6 +37,15 @@ public class Produse {
 	public void setCantitate(Double cantitate) {
 		this.cantitate = cantitate;
 	}
+	public Produse(Integer idProdus, String denumire, Integer codProdus,
+			Double cost, Double cantitate) {
+		super();
+		this.idProdus = idProdus;
+		this.denumire = denumire;
+		this.codProdus = codProdus;
+		this.cost = cost;
+		this.cantitate = cantitate;
+	}
 	
 
 }
