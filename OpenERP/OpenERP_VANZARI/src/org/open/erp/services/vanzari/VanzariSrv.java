@@ -78,7 +78,7 @@ public interface VanzariSrv {
  * @param responsabil					Persoana responsabila cu livrarea produselor.
  * @param produs						Produsele de livrat catre client.
  * @param comanda						Sunt selectate cantiatea acceptata.
- * @return		document nou creat.		
+ * @return		factura nou creata.		
  */
 	
 	Facturi creareFactura(Responsabil responsabil,Avize aviz, Comenzi comanda, List<LiniiFactura> liniiFactura);
@@ -88,9 +88,23 @@ public interface VanzariSrv {
 	 * @param personalSrv	
 	 */
 	void setPersonalSrv(PersonalSrv personalSrv);
+	
+	/**
+	 * 		Scop						Crearea unui aviz nou corespunzator unei comenzi.
+	 * @param responsabil				Persoana responsabila sa faca livarea comenzii.
+	 * @param comanda					Comanda pentru care se intocmeste un aviz.
+	 * @param liniiAviz					Liniile unui aviz, sunt trecute toate produsele ce urmeaza a fi livrate.
+	 * @return		aviz nou creat.
+	 */
 		
 	Avize creareAviz(Responsabil responsabil, Comenzi comanda, List<LiniiAviz>liniiAviz);
-	
+	/**
+	 *  Scop							Crearea unei dispozitii de livarer corespunzatoare unei comenzi.
+	 * @param responsabil				Persoana responsabila sa faca livarea comenzii.
+	 * @param comanda					Comanda pentru care se intocmeste un dispozitia de livrare.
+	 * @param liniiDispozitieLivrare	Liniile unei dispozitii de livarer, sunt trecute toate produsele ce urmeaza a fi livrate.
+	 * @return		dispozitie de livare nou creata.
+	 */
 	DispozitiiLivrare creareDispozitieLivrare(Responsabil responsabil, Comenzi comanda, List<LiniiDispozitieLivrare>liniiDispozitieLivrare);
 }
 
