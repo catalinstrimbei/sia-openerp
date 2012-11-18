@@ -178,8 +178,17 @@ public class StocuriImpl implements StocuriSrv{
 
 	@Override
 	public void transfer(Produs produs, Gestiune gestiuneIesire,
-			Gestiune gestiuneIntrare, Integer cantitate) {
-		// TODO Auto-generated method stub
+			Gestiune gestiuneIntrare) {
+		
+		// identificam lotul din care scoatem din gestiune
+		
+		logger.info("Se scoate din gestiunea " + gestiuneIesire.getIdGest() + " cantitatea " + produs.getCantitate());
+		this.iesireStoc(produs, gestiuneIesire, produs.getCantitate());
+		logger.info("S-a scos din gestiune " + gestiuneIesire.getIdGest() + " produsul " + produs.getIdProd());
+		
+		logger.info("Se introduce in gestiunea " + gestiuneIntrare.getIdGest() + " cantitatea " + produs.getCantitate());
+		this.intrareStoc(produs, gestiuneIntrare);
+		logger.info("A intrat in gestiune " + gestiuneIntrare.getIdGest() + " produsul " + produs.getIdProd() + " cu cantitatea " + produs.getCantitate());
 		
 	}
 
