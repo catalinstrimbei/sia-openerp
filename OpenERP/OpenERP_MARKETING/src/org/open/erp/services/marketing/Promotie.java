@@ -2,7 +2,7 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 
-import org.open.erp.services.marketing.productie.Produs;
+import org.open.erp.services.productie.Produs;
 
 public class Promotie {
 	long id;

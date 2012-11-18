@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.open.erp.services.marketing.nomgen.Persoana;
+import org.open.erp.services.nomgen.Persoana;
 
 public class Chestionar {
 	long id;
