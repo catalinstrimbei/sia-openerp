@@ -1,5 +1,7 @@
 package org.open.erp.services.marketing.teste;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.Date;
 
 import org.apache.log4j.Level;
@@ -25,6 +27,7 @@ import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.ProdusSrv;
 
 public class TestMarketingSrv {
+	
 	private static Logger logger;
 	MarketingSrv marketingInstance;
 	
@@ -40,26 +43,25 @@ public class TestMarketingSrv {
 	@Before
 	public void initServices() {
 		marketingInstance = MarketingSrvFactory.getMarketingSrv();
+		produsSrv=MarketingSrvFactory.getProjectProdusSrv();
+		angajatSrv=MarketingSrvFactory.getProjectAngajatSrv();
+		persoanaSrv=MarketingSrvFactory.getProjectPersoanaSrv();
+		
 		logger.info("Marketing Service intiated for Test!");
 	}
 
 	@Test
-	public void testCreareProiect() throws Exception {
+	public void testCrearePromotie() throws Exception {
 		logger.setLevel(Level.DEBUG);
 		logger.info("Begin test TestMarketingSrv!");
 ////////////////////////
-		//Produs produsPromotie = produsSrv.creareProdus();
 	
-		System.out.println("aaaa");
-		Produs produs1 = new Produs(1, "p1");
-		
-		int pretPromotional = 10;
 		Date dataStart = new Date();
 		Date dataFinal = new Date();
-		System.out.println("aaaa");
 		//Promotie promotieNoua = new Promotie(1, produs1, pretPromotional, dataStart, dataFinal);
-		Promotie promotieNoua = marketingInstance.crearePromotie(produs1, pretPromotional, dataStart, dataFinal);
-		System.out.println("aaaa");
+		Promotie promotieNoua = marketingInstance.crearePromotie(10, new Date(), new Date());
+		assertNotNull("Nu exista promotie!", promotieNoua);
+		
 ////////////////////////		
 		TipPromovare tipPromovare = TipPromovare.FLYERE;
 		Date data = new Date();	
@@ -81,7 +83,8 @@ public class TestMarketingSrv {
 ////////////////////////
 		StatusReclamatie status = StatusReclamatie.NOU;
 		Reclamatie reclamatieNoua = marketingInstance.creareReclamatie(data, "reclamatie", "raspuns", status);
-////////////////////////	
+////////////////////////
+		System.out.println("aaaaa");
 		logger.info("End test TestMarketingSrv");
 	}
 	
