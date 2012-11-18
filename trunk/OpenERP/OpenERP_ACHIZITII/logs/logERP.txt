@@ -1,7 +1,6 @@
-(A2) 2012-11-18 22:27:20,881 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 1.1 Creare cerere noua
-(A2) 2012-11-18 22:27:20,886 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 1.1 Initiere/Creare cerere de aprovizionare noua
-(A2) 2012-11-18 22:27:20,888 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - Creare plan nou
-(A2) 2012-11-18 22:27:20,889 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl -  Adaugare linie plan
-(A2) 2012-11-18 22:27:20,915 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 1.1 Initiere/Creare cerere de aprovizionare noua
-(A2) 2012-11-18 22:27:20,916 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 1.2 Adaugare linie intr-o Cerere Aprovizionare
-(A2) 2012-11-18 22:27:20,916 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 1.2 Adaugare linie intr-o Cerere Aprovizionare
+(A2) 2012-11-18 22:46:46,864 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 1.1 Initiere/Creare cerere de aprovizionare noua
+(A2) 2012-11-18 22:46:46,870 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 1.2 Adaugare linie intr-o Cerere Aprovizionare
+(A2) 2012-11-18 22:46:46,872 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 1.2 Adaugare linie intr-o Cerere Aprovizionare
+(A2) 2012-11-18 22:46:46,874 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 3.1 Creare cerere oferta noua
+(A2) 2012-11-18 22:46:46,875 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl -  2.1 Creare plan nou
+(A2) 2012-11-18 22:46:46,877 [main] DEBUG org.open.erp.services.achizitii.impl.AchizitiiImpl - 2.2 Adaugare linie plan

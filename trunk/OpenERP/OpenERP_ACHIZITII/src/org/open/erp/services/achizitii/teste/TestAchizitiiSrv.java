@@ -36,31 +36,8 @@ public class TestAchizitiiSrv {
 		achizitiiInstance= AchizitiiSrvFactory.getAchizitiiSrv();
 		logger.info("AchizitiiSrv Service intiated for Test!");
 	}
-	
 	@Test
-	public void testCreareCerereOferta() throws Exception{
-		logger.setLevel(Level.DEBUG);
-		logger.info("Begin test TestAchizitiiSrv!");
-		
-		Calendar calendarStart = Calendar.getInstance();
-		calendarStart.setTime(new Date());
-		
-		CerereOferta cerereOferta = achizitiiInstance.creareCerereOferta(1, calendarStart.getTime());
-		assertNotNull("Nu exista cerere noua!", cerereOferta);
-		
-		org.open.erp.services.nommat.Materiale mat = new org.open.erp.services.nommat.Materiale();
-		CerereAprov cerere = achizitiiInstance.creareCerereAprov(1, calendarStart.getTime(), mat);
-		PlanAprov planAprov=achizitiiInstance.crearePlanAprov(1, 2012, 07, 2);
-		assertNotNull("Nu exista cerereAprovizionare noua!", cerere);
-		
-		LiniiPlanAprov liniePlan=achizitiiInstance.creareLiniePlan(1, planAprov, mat, 1.1);
-		org.open.erp.services.nommat.Materiale material=achizitiiInstance.stabilireMaterial(liniePlan);
-		LiniiCerereOferta linie1 = achizitiiInstance.creareLinie(1, 5.0, material, cerereOferta);
-		
-		
-	}
-	@Test
-	public void testCreareProiect() throws Exception{
+	public void testCerereAprovizionare() throws Exception{
 		logger.setLevel(Level.DEBUG);
 		
 		logger.info("Begin test TestAchizitiiSrv!");
@@ -84,7 +61,34 @@ public class TestAchizitiiSrv {
 	
 				
 				//--------
-				logger.info("End Test TestAchizitiiSrv!");
+				logger.info("End Test CerereAprovizionare!");
 		
 	}
+	
+	@Test
+	public void testCreareCerereOferta() throws Exception{
+		logger.setLevel(Level.DEBUG);
+		logger.info("Begin test TestAchizitiiSrv!");
+		
+		Calendar calendarStart = Calendar.getInstance();
+		calendarStart.setTime(new Date());
+		
+		CerereOferta cerereOferta = achizitiiInstance.creareCerereOferta(1, calendarStart.getTime());
+		assertNotNull("Nu exista cerere noua!", cerereOferta);
+		
+		org.open.erp.services.nommat.Materiale mat = new org.open.erp.services.nommat.Materiale();
+		//CerereAprov cerere = achizitiiInstance.creareCerereAprov(1, calendarStart.getTime(), mat);
+		PlanAprov planAprov=achizitiiInstance.crearePlanAprov(1, 2012, 07, 2);
+		//assertNotNull("Nu exista cerereAprovizionare noua!", cerere);
+		LiniiPlanAprov liniePlan=achizitiiInstance.creareLiniePlan(1, planAprov, mat, 1.1);
+		Materiale mat2=achizitiiInstance.stabilireMaterial(liniePlan);
+		LiniiCerereOferta linieOferta=achizitiiInstance.creareLinie(2,3.3,mat2,cerereOferta);
+
+
+		//org.open.erp.services.nommat.Materiale material=achizitiiInstance.stabilireMaterial(liniePlan);
+		LiniiCerereOferta linie1 = achizitiiInstance.creareLinie(1, 5.0, mat2, cerereOferta);
+		
+		
+	}
+	
 }

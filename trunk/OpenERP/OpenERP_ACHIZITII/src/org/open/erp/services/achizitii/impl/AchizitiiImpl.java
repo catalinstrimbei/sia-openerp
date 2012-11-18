@@ -49,7 +49,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	
 	public CerereOferta creareCerereOferta(Integer nrCerereOferta, Date dataCerereOferta)
 	{
-		logger.debug("1.1 Creare cerere noua");
+		logger.debug("3.1 Creare cerere oferta noua");
 		CerereOferta cerereNoua=new CerereOferta(nrCerereOferta, dataCerereOferta);
 		
 		return cerereNoua;
@@ -60,7 +60,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	public LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Materiale material, CerereOferta cerereOferta){
-		logger.debug("2.2 Adaugare linie in cerere");
+		logger.debug("3.2 Adaugare linie in cerere oferta");
 		
 		LiniiCerereOferta linieOferta=new LiniiCerereOferta(nrLinie, cantitate, material, cerereOferta);
 		cerereOferta.adaugaLinie(linieOferta);
@@ -69,7 +69,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	public Materiale stabilireMaterial(LiniiPlanAprov liniePlan){
-		logger.debug("2.3 Stabilire material linie ");
+		logger.debug("3.3 Stabilire material linie ");
 		Materiale material=liniePlan.getMaterial();
 		return material;
 	}
@@ -101,13 +101,13 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	
 	public PlanAprov crearePlanAprov(Integer nrPlan, Integer an, Integer luna, Integer saptamana)
 	{
-		logger.debug("Creare plan nou");
+		logger.debug(" 2.1 Creare plan nou");
 		PlanAprov planNou=new PlanAprov(nrPlan, an, luna, saptamana);
 		return planNou;
 	}
 	
 	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Materiale material, Double cantitate){
-		logger.debug(" Adaugare linie plan");
+		logger.debug("2.2 Adaugare linie plan");
 		
 		LiniiPlanAprov liniePlan=new LiniiPlanAprov(nrLiniePlanAprov, planAprov, material, cantitate);
 		planAprov.adaugaLinie(liniePlan);
