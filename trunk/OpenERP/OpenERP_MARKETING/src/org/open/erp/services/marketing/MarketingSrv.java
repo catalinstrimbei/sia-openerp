@@ -16,7 +16,7 @@ public interface MarketingSrv {
 	
 	public void setAngajatSrv(AngajatSrv angajatSrv);
 
-	public Promotie crearePromotie(Produs produsPromotie, int pretPromotional,
+	public Promotie crearePromotie(int pretPromotional,
 			Date dataStart, Date dataFinal);
 
 	public CampaniePromovare creareCampaniePromovare(TipPromovare tipPromovare,

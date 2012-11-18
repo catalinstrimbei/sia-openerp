@@ -1,8 +1,6 @@
 package org.open.erp.services.nomgen;
 
 public class Angajat extends Persoana {
-	long id;
-	String nume;
 	String prenume;
 	String rol;
 
@@ -38,15 +36,15 @@ public class Angajat extends Persoana {
 		this.rol = rol;
 	}
 
-	public Angajat() {
-
+	public Angajat(long id, String nume) {
+		super(id, nume);
+		// TODO Auto-generated constructor stub
 	}
 
 	public Angajat(long id, String nume, String prenume, String rol) {
-		super();
-		this.id = id;
-		this.nume = nume;
+		super(id, nume);
 		this.prenume = prenume;
 		this.rol = rol;
 	}
+
 }
