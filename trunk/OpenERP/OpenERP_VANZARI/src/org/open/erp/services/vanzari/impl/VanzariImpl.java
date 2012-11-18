@@ -51,56 +51,59 @@ public class VanzariImpl implements VanzariSrv{
 		this.personalSrv = personalSrv;
 	}
 
-	@Override
-	public OfertePret creareOfertePret(Produse produs,Date dataValabilitate, String observatii)  {
-		Date dataEmitere=new Date(System.currentTimeMillis());
-		
-		logger.debug("1.1 Creare oferta de pret");
-		
-		
-		OfertePret ofertaPret= new OfertePret(1, produs, new Date(), dataEmitere, observatii);
-	 
-		return ofertaPret;
-	}	
-
 	
 
 	@Override
-	public Comenzi creareComanda(Date data, List<ArticolComanda> articole) {
-		logger.debug("2.1 Creare comanda");
-				
+	public OfertePret creareOfertePret(Integer idOfertaPret, Produse produs,
+			Date dataValabilitate, Date dataeminiteri, String observatii) {
+logger.debug("I.1 Creare oferta de pret");
+		
+		OfertePret ofertaPret= new OfertePret(1, produs, new Date(), new Date(), observatii);
+	 
+		return ofertaPret;
+	}
+
+	@Override
+	public Comenzi creareComanda(Integer idComanda, Date data,
+			List<ArticolComanda> articole) {
+		logger.debug("II.1 Creare comanda");
+		
 		Comenzi creareComanda=new Comenzi(1, new Date(), articole);
 		
 		return creareComanda;
 	}
 
-	
-
 
 	@Override
-	public Facturi creareFactura(Responsabil responsabil, Avize aviz,
-			Comenzi comanda, List<LiniiFactura> liniiFactura) {
-		logger.debug("5.1 Creare factura");
+	public Facturi creareFactura(Integer idFactura, Date data,
+			Responsabil responsabil, Avize aviz, Comenzi comanda,
+			List<LiniiFactura> liniiFactura) {
+		logger.debug("V.1 Creare factura");
 		Facturi factura=new Facturi(1,new Date(), responsabil, aviz, comanda, liniiFactura);
 		
 		return factura;
 	}
 
+	
+
 	@Override
-	public Avize creareAviz(Responsabil responsabil, Comenzi comanda,
-			List<LiniiAviz> liniiAviz) {
-		logger.debug("4.1 Creare comanda");
+	public Avize creareAviz(Integer idAviz, Date date, Responsabil responsabil,
+			Comenzi comanda, List<LiniiAviz> liniiAviz) {
+		logger.debug("IV.1 Creare aviz");
 		Avize aviz=new Avize(1, new Date(), responsabil, comanda, liniiAviz);
 		return aviz;
 	}
 
 	@Override
-	public DispozitiiLivrare creareDispozitieLivrare(Responsabil responsabil,
+	public DispozitiiLivrare creareDispozitieLivrare(
+			Integer idDispozitieLivrare, Date data, Responsabil responsabil,
 			Comenzi comanda, List<LiniiDispozitieLivrare> liniiDispozitieLivrare) {
-		logger.debug("3.1 Creare comanda");
+		logger.debug("III.1 Creare dispozitie livrare");
 		DispozitiiLivrare dispozitie=new DispozitiiLivrare(1, new Date(), responsabil, comanda, liniiDispozitieLivrare);
-		return null;
+		return dispozitie;
 	}
+
+	
 
 	
 

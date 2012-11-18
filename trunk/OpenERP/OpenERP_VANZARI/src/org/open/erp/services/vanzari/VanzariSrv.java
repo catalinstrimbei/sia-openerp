@@ -59,7 +59,8 @@ public interface VanzariSrv {
 	 * @param observatii				Observatii cu privire la ofertele de pret
 	 * @return	oferta nou creata.			
 	 */
-	OfertePret creareOfertePret(Produse produs, Date dataValabilitate, String observatii);
+	
+	OfertePret creareOfertePret(Integer idOfertaPret, Produse produs, Date dataValabilitate,Date dataeminiteri, String observatii);
 	/**
 	 * 		Scop						Creaza o comanda unui client
 	 * 
@@ -70,7 +71,8 @@ public interface VanzariSrv {
 	 * @param cantitateAcceptata		Cantitatea care a fost acceptata de producator.
 	 * @return	comanda nou creata.
 	 */
-	Comenzi creareComanda( Date data, List<ArticolComanda> articole);
+	
+	Comenzi creareComanda(Integer idComanda, Date data, List<ArticolComanda> articole);
 
 /**
  * 		Scop							Crearea documentelor corespunzatoare comenzii.
@@ -81,7 +83,8 @@ public interface VanzariSrv {
  * @return		factura nou creata.		
  */
 	
-	Facturi creareFactura(Responsabil responsabil,Avize aviz, Comenzi comanda, List<LiniiFactura> liniiFactura);
+	
+	Facturi creareFactura(Integer idFactura,Date data,Responsabil responsabil,Avize aviz, Comenzi comanda, List<LiniiFactura> liniiFactura);
 	
 	/**	
 	 * 		Scop									Selectia persoanei responsabile de livrarea produselor
@@ -97,7 +100,8 @@ public interface VanzariSrv {
 	 * @return		aviz nou creat.
 	 */
 		
-	Avize creareAviz(Responsabil responsabil, Comenzi comanda, List<LiniiAviz>liniiAviz);
+	
+	Avize creareAviz(Integer idAviz,Date date,Responsabil responsabil, Comenzi comanda, List<LiniiAviz>liniiAviz);
 	/**
 	 *  Scop							Crearea unei dispozitii de livarer corespunzatoare unei comenzi.
 	 * @param responsabil				Persoana responsabila sa faca livarea comenzii.
@@ -105,6 +109,8 @@ public interface VanzariSrv {
 	 * @param liniiDispozitieLivrare	Liniile unei dispozitii de livarer, sunt trecute toate produsele ce urmeaza a fi livrate.
 	 * @return		dispozitie de livare nou creata.
 	 */
-	DispozitiiLivrare creareDispozitieLivrare(Responsabil responsabil, Comenzi comanda, List<LiniiDispozitieLivrare>liniiDispozitieLivrare);
+	
+	
+	DispozitiiLivrare creareDispozitieLivrare(Integer idDispozitieLivrare,Date data,Responsabil responsabil, Comenzi comanda, List<LiniiDispozitieLivrare>liniiDispozitieLivrare);
 }
 
