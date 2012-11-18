@@ -16,6 +16,7 @@ import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Comenzi;
 import org.open.erp.services.vanzari.Documente;
+import org.open.erp.services.vanzari.Facturi;
 import org.open.erp.services.vanzari.OfertePret;
 import org.open.erp.services.vanzari.Responsabil;
 import org.open.erp.services.vanzari.VanzariSrv;
@@ -71,11 +72,12 @@ public class VanzariImpl implements VanzariSrv{
 	}
 
 	@Override
-	public Documente creareDocument(Responsabil responsabil, Produse produs,
+	public Facturi creareFactura(Responsabil responsabil, Produse produs,
 			Comenzi comanda) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	
 	
 }
