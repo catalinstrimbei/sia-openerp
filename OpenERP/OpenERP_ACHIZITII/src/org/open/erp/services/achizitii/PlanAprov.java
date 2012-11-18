@@ -8,6 +8,10 @@ public class PlanAprov {
 	private Integer luna;
 	private Integer saptamana;
 	private List<LiniiPlanAprov> liniiPlanAprov;
+	
+	public void adaugaLinie(LiniiPlanAprov linie){
+		this.liniiPlanAprov.add(linie);
+	}
 	public Integer getNrPlanAprov() {
 		return nrPlanAprov;
 	}
@@ -39,13 +43,14 @@ public class PlanAprov {
 		this.liniiPlanAprov = liniiPlanAprov;
 	}
 	public PlanAprov(Integer nrPlanAprov, Integer an, Integer luna,
-			Integer saptamana, List<LiniiPlanAprov> liniiPlanAprov) {
+			Integer saptamana)//, List<LiniiPlanAprov> liniiPlanAprov)
+			{
 		super();
 		this.nrPlanAprov = nrPlanAprov;
 		this.an = an;
 		this.luna = luna;
 		this.saptamana = saptamana;
-		this.liniiPlanAprov = liniiPlanAprov;
+		//this.liniiPlanAprov = liniiPlanAprov;
 	}
 	public PlanAprov() {
 		super();

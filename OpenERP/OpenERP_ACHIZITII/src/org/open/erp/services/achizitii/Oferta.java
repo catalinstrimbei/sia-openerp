@@ -12,6 +12,18 @@ public class Oferta {
 	private Furnizori funrizor;
 	private List<LiniiOferta> linieOferta;
 	private Double valoareTotala;
+	private CerereOferta cerereOferta;
+	
+	public void adaugaLinie(LiniiOferta linie){
+		this.linieOferta.add(linie);
+	}
+	
+	public CerereOferta getCerereOferta() {
+		return cerereOferta;
+	}
+	public void setCerereOferta(CerereOferta cerereOferta) {
+		this.cerereOferta = cerereOferta;
+	}
 	public Integer getNrOferta() {
 		return nrOferta;
 	}
@@ -61,6 +73,15 @@ public class Oferta {
 	}
 	public Oferta() {
 		super();
+	}
+	public Oferta(Integer nrOferta, Date dataOferta, Date dataLivrare,
+			Furnizori funrizor, CerereOferta cerereOferta) {
+		super();
+		this.nrOferta = nrOferta;
+		this.dataOferta = dataOferta;
+		this.dataLivrare = dataLivrare;
+		this.funrizor = funrizor;
+		this.cerereOferta = cerereOferta;
 	}
 	
 	

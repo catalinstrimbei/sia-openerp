@@ -1,5 +1,6 @@
 package org.open.erp.services.achizitii;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,44 +10,66 @@ import org.open.erp.services.nommat.Materiale;
 public class CerereOferta {
 	private Integer nrCerereOferta;
 	private Date dataCerereOferta;
-	private List<Furnizori> furnizor;
-	private List<LiniiCerereOferta> linieCerereOferta;
+	private Furnizori furnizor;
+	private List<LiniiCerereOferta> linieCerereOferta= new ArrayList<LiniiCerereOferta>();
+	
+	public void adaugaLinie(LiniiCerereOferta linie){
+		this.linieCerereOferta.add(linie);
+	}
+	
 	public Integer getNrCerereOferta() {
 		return nrCerereOferta;
 	}
+
+
 	public void setNrCerereOferta(Integer nrCerereOferta) {
 		this.nrCerereOferta = nrCerereOferta;
 	}
+
+
 	public Date getDataCerereOferta() {
 		return dataCerereOferta;
 	}
+
+
 	public void setDataCerereOferta(Date dataCerereOferta) {
 		this.dataCerereOferta = dataCerereOferta;
 	}
-	public List<Furnizori> getFurnizor() {
+
+
+	
+
+	public Furnizori getFurnizor() {
 		return furnizor;
 	}
-	public void setFurnizor(List<Furnizori> furnizor) {
+
+	public void setFurnizor(Furnizori furnizor) {
 		this.furnizor = furnizor;
 	}
+
 	public List<LiniiCerereOferta> getLinieCerereOferta() {
 		return linieCerereOferta;
 	}
+
+
 	public void setLinieCerereOferta(List<LiniiCerereOferta> linieCerereOferta) {
 		this.linieCerereOferta = linieCerereOferta;
 	}
-	
+
+
 	public CerereOferta() {
 		super();
 	}
 	
-	public CerereOferta(Integer nrCerereOferta, Date dataCerereOferta,
-			List<Furnizori> furnizor, List<LiniiCerereOferta> linieCerereOferta) {
+
+	public CerereOferta(Integer nrCerereOferta, Date dataCerereOferta
+			//List<Furnizori> furnizor, //List<LiniiCerereOferta> linieCerereOferta
+			) {
 		super();
 		this.nrCerereOferta = nrCerereOferta;
 		this.dataCerereOferta = dataCerereOferta;
-		this.furnizor = furnizor;
-		this.linieCerereOferta = linieCerereOferta;
+		//this.furnizor = furnizor;
+//		this.linieCerereOferta = linieCerereOferta;
 	}
 	@Override
 	public int hashCode() {
