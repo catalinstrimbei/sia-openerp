@@ -52,15 +52,14 @@ public class VanzariImpl implements VanzariSrv{
 	}
 
 	@Override
-	public OfertePret creareOfertePret(Produse produs, Clienti client,
-			Date dataValabilitate, String observatii)  {
+	public OfertePret creareOfertePret(Produse produs,Date dataValabilitate, String observatii)  {
 		Date dataEmitere=new Date(System.currentTimeMillis());
 		
 		logger.debug("1.1 Creare oferta de pret");
 		
 		
-		OfertePret ofertaPret= new OfertePret(1, produs, client, new Date(), dataEmitere, observatii);
-	
+		OfertePret ofertaPret= new OfertePret(1, produs, new Date(), dataEmitere, observatii);
+	 
 		return ofertaPret;
 	}	
 

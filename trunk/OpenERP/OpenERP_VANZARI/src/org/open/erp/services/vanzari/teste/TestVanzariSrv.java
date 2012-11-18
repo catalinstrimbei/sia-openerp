@@ -55,7 +55,7 @@ public class TestVanzariSrv {
 		logger.info("START creare produse----- ");
 		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
-		OfertePret ofertaPret1=new OfertePret(100, produs1, client1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
 		
 		logger.info("FINAL creare produse----- ");
 		
@@ -79,7 +79,7 @@ public class TestVanzariSrv {
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
 		
 		logger.info("Adaugare oferta");
-		OfertePret ofertaPret1=new OfertePret(100, produs1, client1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
 		
 		logger.info("Adaugare comanda");		
 		Comenzi comanda = new Comenzi(1, new Date(), new ArrayList<ArticolComanda>());
@@ -118,7 +118,7 @@ public class TestVanzariSrv {
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
 		
 		logger.info("Adaugare oferta");
-		OfertePret ofertaPret1=new OfertePret(100, produs1, client1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
 		
 		logger.info("Adaugare comanda");		
 		Comenzi comanda = new Comenzi(1, new Date(), new ArrayList<ArticolComanda>());
@@ -207,7 +207,7 @@ public class TestVanzariSrv {
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
 		
 		logger.info("Adaugare oferta");
-		OfertePret ofertaPret1=new OfertePret(100, produs1, client1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
 		
 		logger.info("Adaugare comanda");		
 		Comenzi comanda = new Comenzi(1, new Date(), new ArrayList<ArticolComanda>());
@@ -271,7 +271,7 @@ public class TestVanzariSrv {
 		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
 		
 		logger.info("Adaugare oferta");
-		OfertePret ofertaPret1=new OfertePret(100, produs1, client1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret1=new OfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
 		
 		logger.info("Adaugare comanda");		
 		Comenzi comanda = new Comenzi(1, new Date(), new ArrayList<ArticolComanda>());

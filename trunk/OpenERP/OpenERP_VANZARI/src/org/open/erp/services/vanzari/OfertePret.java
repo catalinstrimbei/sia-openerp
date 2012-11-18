@@ -8,7 +8,6 @@ import org.open.erp.services.nommat.Produse;
 public class OfertePret {
 	Integer idOfertaPret;
 	Produse produs;
-	Clienti client;
 	Date dataValabilitate;
 	Date dataEmitere=new Date(System.currentTimeMillis());
 	String observatii;
@@ -43,14 +42,7 @@ public class OfertePret {
 		this.produs = produs;
 	}
 
-	public Clienti getClient() {
-		return client;
-	}
-
-	public void setClient(Clienti client) {
-		this.client = client;
-	}
-
+	
 	public Date getDataValabilitate() {
 		return dataValabilitate;
 	}
@@ -75,12 +67,10 @@ public class OfertePret {
 		this.observatii = observatii;
 	}
 
-	public OfertePret(Integer idOfertaPret, Produse produs, Clienti client,
-			Date dataValabilitate, Date dataEmitere, String observatii) {
+	public OfertePret(Integer idOfertaPret, Produse produs, Date dataValabilitate, Date dataEmitere, String observatii) {
 		super();
 		this.idOfertaPret = idOfertaPret;
 		this.produs = produs;
-		this.client = client;
 		this.dataValabilitate = dataValabilitate;
 		this.dataEmitere = dataEmitere;
 		this.observatii = observatii;
