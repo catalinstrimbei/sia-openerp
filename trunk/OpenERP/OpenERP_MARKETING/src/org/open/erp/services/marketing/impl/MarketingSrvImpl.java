@@ -28,10 +28,26 @@ public class MarketingSrvImpl implements MarketingSrv {
 	private AngajatSrv angajatSrv;
 	private PersoanaSrv persoanaSrv;
 
+	public void setProdusSrv(ProdusSrv produsSrv) {
+		this.produsSrv = produsSrv;
+	}
+
+	public void setPersoanaSrv(PersoanaSrv persoanaSrv) {
+		this.persoanaSrv = persoanaSrv;
+	}
+
+	public void setAngajatSrv(AngajatSrv angajatSrv) {
+		this.angajatSrv = angajatSrv;
+	}
+
+	public MarketingSrvImpl() {
+
+	}
+
 	@Override
 	public Promotie crearePromotie(Produs produsPromotie, int pretPromotional,
 			Date dataStart, Date dataFinal) {
-		logger.info("1.1 Initiere/Creare promotie noua");
+		logger.debug("1.1 Initiere/Creare promotie noua");
 
 		Promotie promotieNoua = new Promotie(1, produsPromotie,
 				pretPromotional, dataStart, dataFinal);
@@ -44,7 +60,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 	@Override
 	public CampaniePromovare creareCampaniePromovare(TipPromovare tipPromovare,
 			Date data, CanalDistributie canalDistributie, int buget) {
-		logger.info("1.1 Initiere/Creare campanie promovare noua");
+		logger.debug("1.1 Initiere/Creare campanie promovare noua");
 
 		CampaniePromovare campaniePromovareNoua = new CampaniePromovare(1,
 				tipPromovare, data, canalDistributie, buget);
@@ -61,7 +77,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 
 	@Override
 	public RaspunsIntrebare creareRaspunsIntrebare(String textRaspuns) {
-		logger.info("1.1 Initiere/Creare raspuns nou");
+		logger.debug("1.1 Initiere/Creare raspuns nou");
 
 		RaspunsIntrebare raspunsIntrebare = new RaspunsIntrebare(1, textRaspuns);
 
@@ -70,7 +86,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 
 	@Override
 	public Intrebare creareIntrebare(String textIntrebare) {
-		logger.info("1.1 Initiere/Creare intrebare noua");
+		logger.debug("1.1 Initiere/Creare intrebare noua");
 
 		Intrebare intrebareNoua = new Intrebare(1, textIntrebare);
 		String textRaspuns = "";
@@ -83,7 +99,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 	@Override
 	public Chestionar creareChestionar(Date data, String titlu,
 			Persoana persoanaChestionata) {
-		logger.info("1.1 Initiere/Creare chestionar nou");
+		logger.debug("1.1 Initiere/Creare chestionar nou");
 
 		Chestionar chestionarNou = new Chestionar(1, data, titlu,
 				persoanaChestionata);
@@ -97,7 +113,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 	@Override
 	public CercetarePiata creareCercetarePiata(Date dataStart, Date dataFinal,
 			int buget) {
-		logger.info("1.1 Initiere/Creare cercetare de piata noua");
+		logger.debug("1.1 Initiere/Creare cercetare de piata noua");
 
 		Angajat responsabilCercetarePiata = angajatSrv.creareAngajat();
 		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart,
@@ -115,7 +131,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 	@Override
 	public Reclamatie creareReclamatie(Date data, String text, String raspuns,
 			StatusReclamatie status) {
-		logger.info("1.1 Initiere/Creare reclamatie noua");
+		logger.debug("1.1 Initiere/Creare reclamatie noua");
 
 		Persoana persoanaReclamanta = persoanaSrv.crearePersoanaReclamanta();
 		Reclamatie reclamatieNoua = new Reclamatie(1, persoanaReclamanta, data,
