@@ -2,7 +2,6 @@ package org.open.erp.services.marketing.impl;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
 import org.open.erp.services.marketing.CampaniePromovare;
 import org.open.erp.services.marketing.CanalDistributie;
 import org.open.erp.services.marketing.CercetarePiata;
@@ -22,7 +21,7 @@ import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.ProdusSrv;
 
 public class MarketingSrvImpl implements MarketingSrv {
-	private static Logger logger;
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingSrvImpl.class.getName());
 
 	private ProdusSrv produsSrv;
 	private AngajatSrv angajatSrv;
@@ -47,22 +46,19 @@ public class MarketingSrvImpl implements MarketingSrv {
 	@Override
 	public Promotie crearePromotie(int pretPromotional,
 			Date dataStart, Date dataFinal) {
-		//logger.info("1.1 Initiere/Creare promotie noua");
+		logger.info("1.1 Initiere/Creare promotie noua");
 		
 		Promotie promotieNoua = new Promotie(1, null, pretPromotional, dataStart, dataFinal);
 		Produs produsNou = produsSrv.creareProdus();
 		promotieNoua.setProdusPromotie(produsNou);
-
-		/*Promotie promotieNoua = new Promotie(1, produsPromotie,
-				pretPromotional, dataStart, dataFinal);
-	*/
+		
 		return promotieNoua;
 	}
 
 	@Override
 	public CampaniePromovare creareCampaniePromovare(TipPromovare tipPromovare,
 			Date data, CanalDistributie canalDistributie, int buget) {
-		//logger.debug("1.1 Initiere/Creare campanie promovare noua");
+		logger.debug("1.1 Initiere/Creare campanie promovare noua");
 
 		CampaniePromovare campaniePromovareNoua = new CampaniePromovare(1,
 				tipPromovare, data, canalDistributie, buget);
@@ -79,7 +75,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 
 	@Override
 	public RaspunsIntrebare creareRaspunsIntrebare(String textRaspuns) {
-		//logger.debug("1.1 Initiere/Creare raspuns nou");
+		logger.debug("1.1 Initiere/Creare raspuns nou");
 
 		RaspunsIntrebare raspunsIntrebare = new RaspunsIntrebare(1, textRaspuns);
 
@@ -88,7 +84,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 
 	@Override
 	public Intrebare creareIntrebare(String textIntrebare) {
-		//logger.debug("1.1 Initiere/Creare intrebare noua");
+		logger.debug("1.1 Initiere/Creare intrebare noua");
 
 		Intrebare intrebareNoua = new Intrebare(1, textIntrebare);
 		String textRaspuns = "";
@@ -101,7 +97,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 	@Override
 	public Chestionar creareChestionar(Date data, String titlu,
 			Persoana persoanaChestionata) {
-		//logger.debug("1.1 Initiere/Creare chestionar nou");
+		logger.debug("1.1 Initiere/Creare chestionar nou");
 
 		Chestionar chestionarNou = new Chestionar(1, data, titlu,
 				persoanaChestionata);
@@ -115,7 +111,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 	@Override
 	public CercetarePiata creareCercetarePiata(Date dataStart, Date dataFinal,
 			int buget) {
-		//logger.debug("1.1 Initiere/Creare cercetare de piata noua");
+		logger.debug("1.1 Initiere/Creare cercetare de piata noua");
 
 		Angajat responsabilCercetarePiata = angajatSrv.creareAngajat();
 		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart,
@@ -133,7 +129,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 	@Override
 	public Reclamatie creareReclamatie(Date data, String text, String raspuns,
 			StatusReclamatie status) {
-		//logger.debug("1.1 Initiere/Creare reclamatie noua");
+		logger.debug("1.1 Initiere/Creare reclamatie noua");
 
 		Persoana persoanaReclamanta = persoanaSrv.crearePersoanaReclamanta();
 		Reclamatie reclamatieNoua = new Reclamatie(1, persoanaReclamanta, data,
