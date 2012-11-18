@@ -50,14 +50,15 @@ public interface StocuriSrv {
 	
 	
 	/** 2. Verificare stoc
-	 * Returneaza stocul unui produs
+	 * Returneaza stocul unui produs dintr-o gestiune
 	 * 
 	 * @param Produs		Produsului pentru care dorim sa aflam stocul
+	 * @param Gestiune		Gestiunea in care dorim sa aflam stocul
 	 * @return 				Valoarea reprezentand stocul produsului		
 	 * 
 	 */
 	
-	Integer verificareStoc(Produs produs);
+	Double verificareStoc(Produs produs,Gestiune gestiune);
 	
 	
 	/** 3. Iesire din stoc
