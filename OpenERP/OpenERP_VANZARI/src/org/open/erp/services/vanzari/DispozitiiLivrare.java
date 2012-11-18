@@ -1,6 +1,8 @@
 package org.open.erp.services.vanzari;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.open.erp.services.nomgen.Clienti;
 
@@ -8,7 +10,9 @@ public class DispozitiiLivrare {
 	Integer idDispozitieLivrare;
 	Date data;
 	Responsabil responsabil;
-	Clienti client;
+	Comenzi comanda;
+	List<LiniiDispozitieLivrare> liniiDispozitieLivare = new ArrayList<LiniiDispozitieLivrare>();
+	
 	public Integer getIdDispozitieLivrare() {
 		return idDispozitieLivrare;
 	}
@@ -27,47 +31,44 @@ public class DispozitiiLivrare {
 	public void setResponsabil(Responsabil responsabil) {
 		this.responsabil = responsabil;
 	}
-	public Clienti getClient() {
-		return client;
+	public Comenzi getComanda() {
+		return comanda;
 	}
-	public void setClient(Clienti client) {
-		this.client = client;
+	public void setComanda(Comenzi comanda) {
+		this.comanda = comanda;
+	}
+	public List<LiniiDispozitieLivrare> getLiniiDispozitieLivare() {
+		return liniiDispozitieLivare;
+	}
+	public void setLiniiDispozitieLivare(
+			List<LiniiDispozitieLivrare> liniiDispozitieLivare) {
+		this.liniiDispozitieLivare = liniiDispozitieLivare;
 	}
 	public DispozitiiLivrare(Integer idDispozitieLivrare, Date data,
-			Responsabil responsabil, Clienti client) {
+			Responsabil responsabil, Comenzi comanda,
+			List<LiniiDispozitieLivrare> liniiDispozitieLivare) {
 		super();
 		this.idDispozitieLivrare = idDispozitieLivrare;
 		this.data = data;
 		this.responsabil = responsabil;
-		this.client = client;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime
-				* result
-				+ ((idDispozitieLivrare == null) ? 0 : idDispozitieLivrare
-						.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DispozitiiLivrare other = (DispozitiiLivrare) obj;
-		if (idDispozitieLivrare == null) {
-			if (other.idDispozitieLivrare != null)
-				return false;
-		} else if (!idDispozitieLivrare.equals(other.idDispozitieLivrare))
-			return false;
-		return true;
+		this.comanda = comanda;
+		this.liniiDispozitieLivare = liniiDispozitieLivare;
 	}
 	
+public Double getValoareDispozotie(){
+		
+		Double valoare = 0.0;
+		for (LiniiDispozitieLivrare linie: liniiDispozitieLivare){
+			valoare = valoare + linie.valoareLinieDispozitie();
+		}
+		
+		return valoare;
+	}
+
+
+public void adaugaLinieDispozitie( LiniiDispozitieLivrare linieDispozitie){
 	
+	this.liniiDispozitieLivare.add(linieDispozitie);
+}
 
 }

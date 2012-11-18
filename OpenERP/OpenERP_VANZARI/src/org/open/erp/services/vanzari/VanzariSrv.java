@@ -1,5 +1,6 @@
 package org.open.erp.services.vanzari;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -80,9 +81,16 @@ public interface VanzariSrv {
  * @return		document nou creat.		
  */
 	
-	Facturi creareFactura(Responsabil responsabil, Produse produs, Comenzi comanda);
+	Facturi creareFactura(Responsabil responsabil,Avize aviz, Comenzi comanda, List<LiniiFactura> liniiFactura);
 	
+	/**	
+	 * 		Scop									Selectia persoanei responsabile de livrarea produselor
+	 * @param personalSrv	
+	 */
 	void setPersonalSrv(PersonalSrv personalSrv);
-
+		
+	Avize creareAviz(Responsabil responsabil, Comenzi comanda, List<LiniiAviz>liniiAviz);
 	
+	DispozitiiLivrare creareDispozitieLivrare(Responsabil responsabil, Comenzi comanda, List<LiniiDispozitieLivrare>liniiDispozitieLivrare);
 }
+
