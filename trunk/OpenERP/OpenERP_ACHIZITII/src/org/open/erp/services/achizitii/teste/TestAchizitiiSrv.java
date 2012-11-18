@@ -41,7 +41,7 @@ public class TestAchizitiiSrv {
 	public void testCreareCerereOferta() throws Exception{
 		logger.setLevel(Level.DEBUG);
 		logger.info("Begin test TestAchizitiiSrv!");
-		/*
+		
 		Calendar calendarStart = Calendar.getInstance();
 		calendarStart.setTime(new Date());
 		
@@ -85,6 +85,6 @@ public class TestAchizitiiSrv {
 				
 				//--------
 				logger.info("End Test TestAchizitiiSrv!");
-		*/
+		
 	}
 }
