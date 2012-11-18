@@ -1,13 +1,24 @@
 package org.open.erp.services.achizitii;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import org.open.erp.services.nommat.Materiale;
+
+
 
 
 public class CerereAprov {
 		private Integer nrCerereAprov;
 		private Date dataCerereAprov;
-		private List<LiniiCerereAprov> liniiCerereAprov;
+		private List<LiniiCerereAprov> liniiCerereAprov=new ArrayList<LiniiCerereAprov>();
+		private Materiale material;
+		
+		public void addLinie(LiniiCerereAprov linie){
+			this.liniiCerereAprov.add(linie);
+		}
+				
 		public Integer getNrCerereAprov() {
 			return nrCerereAprov;
 		}
@@ -27,14 +38,15 @@ public class CerereAprov {
 			this.liniiCerereAprov = liniiCerereAprov;
 		}
 		
+		
+		
 		public CerereAprov(Integer nrCerereAprov, Date dataCerereAprov,
-				List<LiniiCerereAprov> liniiCerereAprov) {
+				Materiale material) {
 			super();
 			this.nrCerereAprov = nrCerereAprov;
 			this.dataCerereAprov = dataCerereAprov;
-			this.liniiCerereAprov = liniiCerereAprov;
+			this.material = material;
 		}
-		
 		public CerereAprov() {
 			super();
 		}
@@ -83,6 +95,15 @@ public class CerereAprov {
 			} else if (!nrCerereAprov.equals(other.nrCerereAprov))
 				return false;
 			return true;
+		}
+
+		public void setMaterial(Materiale material2) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void adaugaLinieCerereAprov(LiniiCerereAprov linieCerereAprov) {
+				this.liniiCerereAprov.add(linieCerereAprov);
 		}
 		
 		

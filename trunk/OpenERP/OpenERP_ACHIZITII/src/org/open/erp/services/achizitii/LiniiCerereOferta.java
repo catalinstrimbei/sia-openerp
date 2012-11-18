@@ -7,6 +7,8 @@ public class LiniiCerereOferta {
 	private Double cantitate;
 	private Materiale material;
 	private CerereOferta cerereOferta;
+	
+	
 	public Integer getNrLinie() {
 		return nrLinie;
 	}

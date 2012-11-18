@@ -7,6 +7,7 @@ public class LiniiCerereAprov {
 	private Integer nrLinieCerereAprov;
 	private Materiale material;
 	private Double cantitate;
+	
 	public CerereAprov getCerereAprov() {
 		return cerereAprov;
 	}
