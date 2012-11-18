@@ -90,8 +90,26 @@ public class StocuriImpl implements StocuriSrv{
 	
 	
 	@Override
-	public Integer verificareStoc(Produs produs) {
+	public Double verificareStoc(Produs produs,Gestiune gestiune) {
 		// TODO Auto-generated method stub
+		if (produs == null){
+			logger.info ("Valoarea produsului oferit ca parametru trebuie sa fie diferita de null");
+			return null;
+		}
+		if (gestiune == null){
+			logger.info ("Valoarea gestiunii oferita ca parametru trebuie sa fie diferita de null");
+			return null;
+		}
+		
+		for(Articol art: gestiune.getArticole())
+		{
+			if(art.getProdus().equals(produs))
+			{
+				logger.info("Se verifica in cadrul metodei verificare stoc existenta produsului cautat");
+				return art.getCantPeGestiune();
+				
+			}
+		}
 		return null;
 	}
 
