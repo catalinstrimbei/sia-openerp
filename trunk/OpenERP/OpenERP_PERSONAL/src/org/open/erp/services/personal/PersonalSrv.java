@@ -8,19 +8,29 @@ import java.util.List;
 * 
 * @EntitatiNomGen: Persoana, Departament
 * 
-* @EntitatiLocale: Candidat, AnuntLocMunca, CV, Interviu
+* @EntitatiLocale: Candidat, Anunt, CV, Interviu
 * 
-* Recrutare personal:
+* @UseCase("Recrutare personal"):
 * 
-* @UseCase("1.Creare anunturi pentru loc de munca")
+* 1.Creare anunturi pentru loc de munca
+* 2.Primire CV-uri
+* 3.Selectie candidati
+* 4.Sustinere interviuri
+* 5.Stabilirea listei de angajati
+
+ @UseCase("Stabilire concedii"):
 * 
-* @UseCase("2.Primire CV-uri")
+* 1.Solicitare concediu
+* 2. Analizare cerere
+* 3. Luare decizie
+* 4. Inregistrare concediu
+
+@UseCase("Cheltuieli ocazionale cu personalul"):
 * 
-* @UseCase("3.Selectie candidati")
-*
-* @UseCase("4.Sustinere interviuri")
-* 
-* @UseCase("5.Stabilirea listei de angajati")
+* 1.Solicitare cheltuiala
+* 2. Analizare cerere
+* 3. Luare decizie
+* 4. Inregistrare cheltuiala
 *
 */
 public interface PersonalSrv {
@@ -121,4 +131,68 @@ public interface PersonalSrv {
 	 * 
 	 */
 	Candidat stabilireAngajatiNoi (List<Interviu> interviuriEfectuate);
+	
+	/**
+	 * Returneaza o cerere de concediu 
+	 * 
+	 * @param nrInregistrare      Numar cerere
+	 * @param contract        Numarul de contract al angajatului ce solicita cererea
+	 * @param dataCerere     Data depunerii cererii	
+	 * @param dataAprobare    Data la care cererea a fost aprobata
+	 * @param perioadaConcediu     Perioada de concediu
+	 * @param tipConcediu		Tipul de concediu (de odihna/medical/maternal etc)
+	 * @param status	Statusul cererii (aprobata/in curs de aprobare/ refuzata)
+	 * 
+	 * @return instanta Cerere nou creata
+	 * 
+	 */
+	 
+			
+		
+	CerereConcediu creareCerereConcediu (Integer nrInregistrare, ContractMunca contract, Date dataCerere, Date dataAprobare, Integer perioadaConcediu, String tipConcediu,
+			String status);
+	
+	/**
+	 * Se creaza o cerere noua pe baza uneia existente
+	 * 
+	 * @param CerereConcediu Concediul deja inregistrat
+	 * 
+	 * @return instanta Cerere nou creata
+	 * 
+	 */
+	CerereConcediu creareCerereConcediu (CerereConcediu CerereConcediuNou);
+	
+	
+	
+	
+	
+	/**
+	 * Returneaza o cerere de eveniment
+	 * 
+	 * @param nrInregistrare      Numar cerere
+	 * @param contract        Numarul de contract al angajatului ce solicita cererea
+	 * @param dataCerere     Data depunerii cererii	
+	 * @param dataAprobare    Data la care cererea a fost aprobata
+	 * @param perioadaEveniment     Perioada evenimentului
+	 * @param tipEveniment		Tipul de eveniment (training / teambuiding etc.)
+	 * @param status	Statusul cererii (aprobata/in curs de aprobare/ refuzata)
+	 * 
+	 * @return instanta Cerere nou creata
+	 * 
+	 */
+	 
+			
+		
+	CerereEveniment creareCerereEveniment (Integer nrInregistrare, ContractMunca contract, Date dataCerere, Date dataAprobare, Integer perioadaEveniment, String tipEveniment,
+			String status);
+	
+	/**
+	 * Se creaza o cerere noua pe baza uneia existente
+	 * 
+	 * @param CerereEveniment Evenimentul deja inregistrat
+	 * 
+	 * @return instanta Cerere nou creata
+	 * 
+	 */
+	CerereEveniment creareCerereEveniment (CerereEveniment CerereEvenimentNou);
 }
