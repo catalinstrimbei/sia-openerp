@@ -2,7 +2,7 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 
-import org.open.erp.services.marketing.nomgen.Persoana;
+import org.open.erp.services.nomgen.Persoana;
 
 public class Reclamatie {
 	long id;
