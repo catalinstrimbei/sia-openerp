@@ -113,5 +113,17 @@ public class PersonalImpl implements PersonalSrv{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ProbaEvaluare creareProbaEvaluare(String numeProba) {
+		 ProbaEvaluare proba = new ProbaEvaluare(numeProba);
+		return proba;
+	}
+
+	@Override
+	public Angajat creareAngajat() {
+		Angajat angajatNou = new Angajat();
+		return angajatNou;
+	}
 	
 }

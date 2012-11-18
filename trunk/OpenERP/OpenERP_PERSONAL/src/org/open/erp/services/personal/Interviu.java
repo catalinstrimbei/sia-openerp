@@ -70,7 +70,7 @@ public class Interviu {
 	 * @param candidatInterviu Candidatul ales pentru interviu
 	 * 
 	 */
-	void adaugareCandidat (Candidat candidatInterviu){
+	public void adaugareCandidat (Candidat candidatInterviu){
 		candidatiEvaluati.add(candidatInterviu);
 		for (ProbaEvaluare p : probeEval){
 			candidatInterviu.addProbaDeEvaluare(p);
@@ -83,7 +83,7 @@ public class Interviu {
 	 * @param candidat           Persoana care a participat la interviu
 	 * @param rezultataEvaluare  Rezultatul obtinut la proba de evaluare
 	 */
-	void stabilireRezultateInterviu(Candidat candidat, ProbaEvaluare testEfectuat, Integer rezultatEvaluare){
+	public void stabilireRezultateInterviu(Candidat candidat, ProbaEvaluare testEfectuat, Integer rezultatEvaluare){
 		candidat.addRezultatEvaluare(testEfectuat, rezultatEvaluare);
 	}
 	
