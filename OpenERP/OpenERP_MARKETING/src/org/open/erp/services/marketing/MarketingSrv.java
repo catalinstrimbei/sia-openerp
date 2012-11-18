@@ -2,11 +2,19 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 
-import org.open.erp.services.nomgen.Angajat;
+import org.open.erp.services.nomgen.AngajatSrv;
 import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.nomgen.PersoanaSrv;
 import org.open.erp.services.productie.Produs;
+import org.open.erp.services.productie.ProdusSrv;
 
 public interface MarketingSrv {
+	
+	public void setProdusSrv(ProdusSrv produsSrv);
+	
+	public void setPersoanaSrv(PersoanaSrv persoanaSrv);
+	
+	public void setAngajatSrv(AngajatSrv angajatSrv);
 
 	public Promotie crearePromotie(Produs produsPromotie, int pretPromotional,
 			Date dataStart, Date dataFinal);
