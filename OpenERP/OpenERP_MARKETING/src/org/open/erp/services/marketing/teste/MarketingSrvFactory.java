@@ -38,12 +38,12 @@ public class MarketingSrvFactory {
 		return new ProdusSrvImpl();
 	}
 
-	private static AngajatSrv getProjectAngajatSrv() {
+	public static AngajatSrv getProjectAngajatSrv() {
 		logger.info("Creare dummy instance of AngajatSrv from MarketingSrvFactory!");
 		return new AngajatSrvImpl();
 	}
 
-	private static PersoanaSrv getProjectPersoanaSrv() {
+	public static PersoanaSrv getProjectPersoanaSrv() {
 		logger.info("Creare dummy instance of PersoanaSrv from MarketingSrvFactory!");
 		return new PersoanaSrvImpl();
 	}
