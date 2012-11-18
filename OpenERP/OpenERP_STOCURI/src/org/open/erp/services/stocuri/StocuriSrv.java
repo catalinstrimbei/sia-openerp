@@ -90,23 +90,21 @@ public interface StocuriSrv {
 	 * 
 	 */
 	
-	void transfer(Produs produs, Gestiune gestiuneIesire, Gestiune gestiuneIntrare, Integer cantitate);
-	
-	
-	// verifica daca exista un lot pentru un produs si o gestiune, folosit la instrare in stoc
-	//boolean existaArticol(Produs produs, Gestiune gestiune);
-	
-	public Articol getArticolByGestiune(Produs produs, Gestiune gestiune);
-	
-	public void creareLot(Produs produs, Gestiune gestiune);
-	
-
+	void transfer(Produs produs, Gestiune gestiuneIesire, Gestiune gestiuneIntrare);
 	
 	void alertaStoc();
 	
 	
 	
 	void casareLot();
+	
+	// verifica daca exista un lot pentru un produs si o gestiune, folosit la instrare in stoc
+		//boolean existaArticol(Produs produs, Gestiune gestiune);
+		
+		
+		public Articol getArticolByGestiune(Produs produs, Gestiune gestiune);
+		
+		public void creareLot(Produs produs, Gestiune gestiune);
 	
 	void setAchizitiiSrv(AchizitiiSrv achizitiiSrv);
 }
