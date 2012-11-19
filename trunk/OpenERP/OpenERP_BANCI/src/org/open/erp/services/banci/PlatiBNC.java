@@ -1,129 +1,116 @@
 package org.open.erp.services.banci;
 
-import static org.junit.Assert.*;
+import java.util.Date;
+import java.util.List;
 
-import org.junit.Test;
+import org.open.erp.services.nomgen.Clienti;
 
 public class PlatiBNC {
-
-	@Test
-	public void testTestObject() {
-		fail("Not yet implemented");
+	private Integer contPlata;
+	private Integer contDestinatar;
+	private Integer tipplata;
+	private Integer moneda;
+	private Date datatranzactiei;
+	private Clienti client;
+	private Double valsoldePlatainitial;
+	private Double valsoldePlatadupavirament;
+	private Double valNumerar;
+	private Double comisiontrz;
+	private List<LiniiPlati> liniePlata;
+	
+	public Integer getContPlata() {
+		return contPlata;
 	}
-
-	@Test
-	public void testTestGetClass() {
-		fail("Not yet implemented");
+	public void setContPlata(Integer contPlata) {
+		this.contPlata = contPlata;
 	}
-
-	@Test
-	public void testTestHashCode() {
-		fail("Not yet implemented");
+	
+	public Integer getContDestinatar() {
+		return contDestinatar;
 	}
-
-	@Test
-	public void testTestEquals() {
-		fail("Not yet implemented");
+	public void setContDestinatar(Integer contDestinatar) {
+		this.contDestinatar = contDestinatar;
 	}
-
-	@Test
-	public void testTestClone() {
-		fail("Not yet implemented");
+	
+	public Integer getTipplata() {
+		return tipplata;
 	}
-
-	@Test
-	public void testTestToString() {
-		fail("Not yet implemented");
+	public void setTipplata(Integer tipplata) {
+		this.tipplata = tipplata;
 	}
-
-	@Test
-	public void testTestNotify() {
-		fail("Not yet implemented");
+	
+	public Integer getMoneda() {
+		return moneda;
 	}
-
-	@Test
-	public void testTestNotifyAll() {
-		fail("Not yet implemented");
+	public void setMoneda(Integer moneda) {
+		this.moneda = moneda;
 	}
-
-	@Test
-	public void testTestWaitLong() {
-		fail("Not yet implemented");
+	
+	public Date getdatatranzactiei() {
+		return datatranzactiei;
 	}
-
-	@Test
-	public void testTestWaitLongInt() {
-		fail("Not yet implemented");
+	public void setdatatranzactiei(Date datatranzactiei) {
+		this.datatranzactiei = datatranzactiei;
 	}
-
-	@Test
-	public void testTestWait() {
-		fail("Not yet implemented");
+	
+	public Clienti getClient() {
+		return client;
 	}
-
-	@Test
-	public void testTestFinalize() {
-		fail("Not yet implemented");
+	public void setClient(Clienti client) {
+		this.client = client;
+	}				
+	
+	public Double getValsoldePlatainitial() {
+		return valsoldePlatainitial;
 	}
-
-	@Test
-	public void testObject() {
-		fail("Not yet implemented");
+	public void setValsoldePlatainitial(Double valsoldePlatainitial) {
+		this.valsoldePlatainitial = valsoldePlatainitial;
 	}
-
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
+	public Double getValsoldePlatadupavirament() {
+		return valsoldePlatadupavirament;
 	}
-
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
+	public void setValsoldePlatadupavirament(Double valsoldePlatadupavirament) {
+		this.valsoldePlatadupavirament = valsoldePlatadupavirament;
 	}
-
-	@Test
-	public void testEquals() {
-		fail("Not yet implemented");
+	
+	public Double getValNumerar() {
+		return valNumerar;
 	}
-
-	@Test
-	public void testClone() {
-		fail("Not yet implemented");
+	public void setValNumerar(Double valNumerar) {
+		this.valNumerar = valNumerar;
 	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
+	public Double getcomisiontrz() {
+		return comisiontrz;
 	}
-
-	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
+	public void setcomisiontrz(Double comisiontrz) {
+		this.comisiontrz = comisiontrz;
+	}	
+	public List<LiniiPlati> getliniePlata() {
+		return liniePlata;
 	}
-
-	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
+	public void setliniePlata(List<LiniiPlati> liniePlata) {
+		this.liniePlata = liniePlata;
+	
 	}
-
-	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
+	public PlatiBNC(Integer contPlata,Integer contDestinatar,Integer tipplata,Integer moneda,Date datatranzactiei,Clienti client,Double valsoldePlatainitial,Double valsoldePlatadupavirament,Double valNumerar,Double comisiontrz,List<LiniiPlati> liniePlata) {
+		super();
+		this.contPlata = contPlata;
+		this.contDestinatar = contDestinatar;
+		this.tipplata = tipplata;
+		this.moneda = moneda;
+		this.datatranzactiei = datatranzactiei;
+		this.client = client;
+		this.valsoldePlatainitial = valsoldePlatainitial;
+		this.valsoldePlatadupavirament = valsoldePlatadupavirament;
+		this.valNumerar = valNumerar;
+		this.comisiontrz = comisiontrz;
+		this.liniePlata = liniePlata;
+		
+	}	
+	
+	public PlatiBNC() {
+		super();
 	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
-	}
-
+	
 }
+	

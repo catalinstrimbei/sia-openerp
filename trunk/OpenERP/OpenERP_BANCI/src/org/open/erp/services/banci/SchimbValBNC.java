@@ -1,189 +1,97 @@
 package org.open.erp.services.banci;
 
-import static org.junit.Assert.*;
+import java.util.Date;
+import java.util.List;
 
-import org.junit.Test;
+import org.open.erp.services.nomgen.Clienti;
 
 public class SchimbValBNC {
+	private Clienti client;
+	private Date datatranz;
+	private Integer monedacurenta;
+	private Double valmoncurenta;
+	private Integer monedaschimb;
+	private Double valmondupaschimb;
+	private Integer cursval;
+	private Double comisionscb;
+	private List<LiniiPlati> liniePlata;
 
-	@Test
-	public void testTestTestObject() {
-		fail("Not yet implemented");
+	public Clienti getClient() {
+		return client;
 	}
-
-	@Test
-	public void testTestTestGetClass() {
-		fail("Not yet implemented");
+	public void setClient(Clienti client) {
+		this.client = client;
+	}				
+	public Date getDatatranz() {
+		return datatranz;
 	}
-
-	@Test
-	public void testTestTestHashCode() {
-		fail("Not yet implemented");
+	public void setDatatranz(Date datatranz) {
+		this.datatranz = datatranz;
 	}
-
-	@Test
-	public void testTestTestEquals() {
-		fail("Not yet implemented");
+	public Integer getMonedacurenta() {
+		return monedacurenta;
 	}
-
-	@Test
-	public void testTestTestClone() {
-		fail("Not yet implemented");
+	public void setMonedacurenta(Integer monedacurenta) {
+		this.monedacurenta = monedacurenta;
 	}
-
-	@Test
-	public void testTestTestToString() {
-		fail("Not yet implemented");
+	
+	public Double getValmoncurenta() {
+		return valmoncurenta;
 	}
-
-	@Test
-	public void testTestTestNotify() {
-		fail("Not yet implemented");
+	public void setValmoncurenta(Double valmoncurenta) {
+		this.valmoncurenta = valmoncurenta;
 	}
-
-	@Test
-	public void testTestTestNotifyAll() {
-		fail("Not yet implemented");
+	
+	public Integer getMonedaschimb() {
+		return  monedaschimb;
 	}
-
-	@Test
-	public void testTestTestWaitLong() {
-		fail("Not yet implemented");
+	public void setMonedaschimb(Integer  monedaschimb) {
+		this.monedaschimb =  monedaschimb;
 	}
-
-	@Test
-	public void testTestTestWaitLongInt() {
-		fail("Not yet implemented");
+	
+	public Double getValmondupaschimb() {
+		return valmondupaschimb;
 	}
-
-	@Test
-	public void testTestTestWait() {
-		fail("Not yet implemented");
+	public void setValmondupaschimb(Double valmondupaschimb) {
+		this.valmondupaschimb = valmondupaschimb;
 	}
-
-	@Test
-	public void testTestTestFinalize() {
-		fail("Not yet implemented");
+	
+	public Integer getCursval() {
+		return  cursval;
 	}
-
-	@Test
-	public void testTestObject() {
-		fail("Not yet implemented");
+	public void setCursval(Integer  cursval) {
+		this. cursval =  cursval;
 	}
-
-	@Test
-	public void testTestGetClass() {
-		fail("Not yet implemented");
+	public Double getComisionscb() {
+		return comisionscb;
 	}
-
-	@Test
-	public void testTestHashCode() {
-		fail("Not yet implemented");
+	public void setComisionscb(Double comisionscb) {
+		this.comisionscb = comisionscb;
 	}
-
-	@Test
-	public void testTestEquals() {
-		fail("Not yet implemented");
+		
+		public List<LiniiPlati> getliniePlata() {
+			return liniePlata;
+		}
+		public void setliniePlata(List<LiniiPlati> liniePlata) {
+			this.liniePlata = liniePlata;
+		
 	}
-
-	@Test
-	public void testTestClone() {
-		fail("Not yet implemented");
+		
+	public SchimbValBNC(Clienti client,Date datatranz,Integer monedacurenta,Double valmoncurenta,Integer monedaschimb,Double valmondupaschimb,Integer cursval,Double comisionscb, List<LiniiPlati> liniePlata) {
+		super();
+		this.client = client;
+		this.datatranz = datatranz;
+		this.monedacurenta = monedacurenta;
+		this.valmoncurenta = valmoncurenta;
+		this.monedaschimb =  monedaschimb;
+		this.valmondupaschimb = valmondupaschimb;
+		this. cursval =  cursval;
+		this.comisionscb = comisionscb;
+		this.liniePlata = liniePlata;
+	}	
+	
+	public SchimbValBNC() {
+		super();
 	}
-
-	@Test
-	public void testTestToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestFinalize() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEquals() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClone() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
-	}
-
+	
 }

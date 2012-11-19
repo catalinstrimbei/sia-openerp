@@ -1,249 +1,146 @@
 package org.open.erp.services.banci;
 
-import static org.junit.Assert.*;
+import java.util.Date;
+import java.util.List;
 
-import org.junit.Test;
+import org.open.erp.services.nomgen.Clienti;
 
 public class CarduriBNC {
-
-	@Test
-	public void testTestTestTestObject() {
-		fail("Not yet implemented");
+	private Integer contCard;
+	private Date dataprimeiretrageri;
+	private Date dataultimeiretrageri;
+	private Date dataretrageriicurente;
+	private Date dataprimeialimetaricard;
+	private Date dataultimeialimentaricard;
+	private Date datacurentaalimentarecard;
+	private Date dataeliberarii; //cand se preda clientului
+	private Date dataexpirarii;
+	private Clienti client;
+	private List<LiniiRetrageri> linieretragere;
+	private List<LiniiAlimentare> liniealimentare;
+	private Double valsoldinitial;
+	private Double valsoldcurent;
+	private Double comision;
+	
+	public Integer getContCard() {
+		return contCard;
 	}
-
-	@Test
-	public void testTestTestTestGetClass() {
-		fail("Not yet implemented");
+	public void setContCard(Integer contCard) {
+		this.contCard = contCard;
 	}
-
-	@Test
-	public void testTestTestTestHashCode() {
-		fail("Not yet implemented");
+	public Date getDataprimeiretrageri() {
+		return  dataprimeiretrageri;
 	}
-
-	@Test
-	public void testTestTestTestEquals() {
-		fail("Not yet implemented");
+	public void setDataprimeiretrageri(Date dataprimeiretrageri) {
+		this.dataprimeiretrageri = dataprimeiretrageri;
 	}
-
-	@Test
-	public void testTestTestTestClone() {
-		fail("Not yet implemented");
+	public Date getDataultimeiretrageri() {
+		return  dataultimeiretrageri;
 	}
-
-	@Test
-	public void testTestTestTestToString() {
-		fail("Not yet implemented");
+	public void setDataultimeiretrageri(Date dataultimeiretrageri) {
+		this.dataultimeiretrageri = dataultimeiretrageri;
 	}
-
-	@Test
-	public void testTestTestTestNotify() {
-		fail("Not yet implemented");
+	public Date getDataretrageriicurente() {
+		return  dataretrageriicurente;
 	}
-
-	@Test
-	public void testTestTestTestNotifyAll() {
-		fail("Not yet implemented");
+	public void setDataretrageriicurente(Date dataretrageriicurente) {
+		this.dataretrageriicurente = dataretrageriicurente;
 	}
-
-	@Test
-	public void testTestTestTestWaitLong() {
-		fail("Not yet implemented");
+	public Date getDataprimeialimetaricard() {
+		return  dataprimeialimetaricard;
 	}
-
-	@Test
-	public void testTestTestTestWaitLongInt() {
-		fail("Not yet implemented");
+	public void setDataprimeialimetaricard(Date dataprimeialimetaricard) {
+		this.dataprimeialimetaricard = dataprimeialimetaricard;
 	}
-
-	@Test
-	public void testTestTestTestWait() {
-		fail("Not yet implemented");
+	public Date getDataultimeialimentaricard() {
+		return  dataultimeialimentaricard;
 	}
-
-	@Test
-	public void testTestTestTestFinalize() {
-		fail("Not yet implemented");
+	public void setDataultimeialimentaricard(Date dataultimeialimentaricard) {
+		this.dataultimeialimentaricard = dataultimeialimentaricard;
+	}	
+	public Date getDatacurentaalimentarecard() {
+		return  datacurentaalimentarecard;
 	}
-
-	@Test
-	public void testTestTestObject() {
-		fail("Not yet implemented");
+	public void setDatacurentaalimentarecard(Date datacurentaalimentarecard) {
+		this.datacurentaalimentarecard = datacurentaalimentarecard;	
 	}
-
-	@Test
-	public void testTestTestGetClass() {
-		fail("Not yet implemented");
+	
+	public Date getDataeliberarii() {
+		return  dataeliberarii;
 	}
-
-	@Test
-	public void testTestTestHashCode() {
-		fail("Not yet implemented");
+	public void setdataeliberarii(Date dataeliberarii) {
+		this.dataeliberarii = dataeliberarii;	
 	}
-
-	@Test
-	public void testTestTestEquals() {
-		fail("Not yet implemented");
+		
+	public Date getDataexpirarii() {
+		return   dataexpirarii;
 	}
-
-	@Test
-	public void testTestTestClone() {
-		fail("Not yet implemented");
+	public void setDataexpirarii(Date  dataexpirarii) {
+		this.dataexpirarii =  dataexpirarii;	
+	}				
+		
+	public Clienti getClient() {
+		return client;
 	}
-
-	@Test
-	public void testTestTestToString() {
-		fail("Not yet implemented");
+	public void setClient(Clienti client) {
+		this.client = client;
+	}				
+	
+	public List<LiniiRetrageri> getlinieretragere() {
+		return linieretragere;
 	}
-
-	@Test
-	public void testTestTestNotify() {
-		fail("Not yet implemented");
+	public void setlinieretragere(List<LiniiRetrageri> linieretragere) {
+		this.linieretragere = linieretragere;
 	}
-
-	@Test
-	public void testTestTestNotifyAll() {
-		fail("Not yet implemented");
+	public List<LiniiAlimentare> getliniealimentare() {
+		return liniealimentare;
 	}
-
-	@Test
-	public void testTestTestWaitLong() {
-		fail("Not yet implemented");
+	public void setliniealimentare(List<LiniiAlimentare> liniealimentare) {
+		this.liniealimentare = liniealimentare;
 	}
-
-	@Test
-	public void testTestTestWaitLongInt() {
-		fail("Not yet implemented");
+	
+	public Double getValsoldinitial() {
+		return valsoldinitial;
 	}
-
-	@Test
-	public void testTestTestWait() {
-		fail("Not yet implemented");
+	public void setValsoldinitial(Double valsoldinitial) {
+		this.valsoldinitial = valsoldinitial;
 	}
-
-	@Test
-	public void testTestTestFinalize() {
-		fail("Not yet implemented");
+	
+	public Double getValsoldcurent() {
+		return valsoldcurent;
 	}
-
-	@Test
-	public void testTestObject() {
-		fail("Not yet implemented");
+	public void setValsoldcurent(Double valsoldcurent) {
+		this.valsoldcurent = valsoldcurent;
 	}
-
-	@Test
-	public void testTestGetClass() {
-		fail("Not yet implemented");
+	
+	public Double getComision() {
+		return comision;
 	}
-
-	@Test
-	public void testTestHashCode() {
-		fail("Not yet implemented");
+	public void setComision(Double comision) {
+		this.comision = comision;
 	}
-
-	@Test
-	public void testTestEquals() {
-		fail("Not yet implemented");
+	
+	public CarduriBNC(Integer contCard,Date dataprimeiretrageri,Date dataultimeiretrageri,Date dataretrageriicurente,Date dataprimeialimetaricard,Date dataultimeialimentaricard,Date datacurentaalimentarecard, Date dataeliberarii,Date dataexpirarii,Clienti client,List<LiniiRetrageri> linieretragere,List<LiniiAlimentare> liniealimentare,Double valsoldinitial,Double valsoldcurent,Double comision) {
+		super();
+		this.contCard = contCard;
+		this.dataprimeiretrageri = dataprimeiretrageri;
+		this.dataultimeiretrageri = dataultimeiretrageri;
+		this.dataretrageriicurente = dataretrageriicurente;
+		this.dataprimeialimetaricard = dataprimeialimetaricard;
+		this.dataultimeialimentaricard = dataultimeialimentaricard;
+		this.datacurentaalimentarecard = datacurentaalimentarecard;	
+		this.dataeliberarii = dataeliberarii;
+		this.dataexpirarii =  dataexpirarii;	
+		this.client = client;
+		this.linieretragere = linieretragere;
+		this.liniealimentare = liniealimentare;
+		this.valsoldinitial = valsoldinitial;
+		this.valsoldcurent = valsoldcurent;
+		this.comision = comision;
 	}
-
-	@Test
-	public void testTestClone() {
-		fail("Not yet implemented");
+	
+	public CarduriBNC() {
+		super();
 	}
-
-	@Test
-	public void testTestToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTestFinalize() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEquals() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClone() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
-	}
-
+	
 }
