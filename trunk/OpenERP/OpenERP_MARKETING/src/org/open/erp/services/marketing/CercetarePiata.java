@@ -58,21 +58,19 @@ public class CercetarePiata {
 		return chestionareCercetarePiata;
 	}
 
-	public void setChestionareCercetarePiata(
-			Set<Chestionar> chestionareCercetarePiata) {
+	public void setChestionareCercetarePiata(Set<Chestionar> chestionareCercetarePiata) {
 		this.chestionareCercetarePiata = chestionareCercetarePiata;
 	}
-	
+
 	public void adaugaChestionar(Chestionar chestionar) {
 		this.chestionareCercetarePiata.add(chestionar);
 	}
-	
-	public CercetarePiata(){
-		
+
+	public CercetarePiata() {
+
 	}
 
-	public CercetarePiata(long id, Date dataStart, Date dataFinal, int buget,
-			Angajat responsabilCercetarePiata) {
+	public CercetarePiata(long id, Date dataStart, Date dataFinal, int buget, Angajat responsabilCercetarePiata) {
 		super();
 		this.id = id;
 		this.dataStart = dataStart;

@@ -27,10 +27,10 @@ import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.ProdusSrv;
 
 public class TestMarketingSrv {
-	
+
 	private static Logger logger;
 	MarketingSrv marketingInstance;
-	
+
 	ProdusSrv produsSrv;
 	AngajatSrv angajatSrv;
 	PersoanaSrv persoanaSrv;
@@ -43,10 +43,10 @@ public class TestMarketingSrv {
 	@Before
 	public void initServices() {
 		marketingInstance = MarketingSrvFactory.getMarketingSrv();
-		produsSrv=MarketingSrvFactory.getProjectProdusSrv();
-		angajatSrv=MarketingSrvFactory.getProjectAngajatSrv();
-		persoanaSrv=MarketingSrvFactory.getProjectPersoanaSrv();
-		
+		produsSrv = MarketingSrvFactory.getProjectProdusSrv();
+		angajatSrv = MarketingSrvFactory.getProjectAngajatSrv();
+		persoanaSrv = MarketingSrvFactory.getProjectPersoanaSrv();
+
 		logger.info("Marketing Service intiated for Test!");
 	}
 
@@ -54,38 +54,39 @@ public class TestMarketingSrv {
 	public void testCrearePromotie() throws Exception {
 		logger.setLevel(Level.DEBUG);
 		logger.info("Begin test TestMarketingSrv!");
-////////////////////////
-	
+		////////////////////////
+
 		Date dataStart = new Date();
 		Date dataFinal = new Date();
-		//Promotie promotieNoua = new Promotie(1, produs1, pretPromotional, dataStart, dataFinal);
+		// Promotie promotieNoua = new Promotie(1, produs1, pretPromotional,
+		// dataStart, dataFinal);
 		Promotie promotieNoua = marketingInstance.crearePromotie(10, new Date(), new Date());
 		assertNotNull("Nu exista promotie!", promotieNoua);
-		
-////////////////////////		
+
+		// //////////////////////
 		TipPromovare tipPromovare = TipPromovare.FLYERE;
-		Date data = new Date();	
+		Date data = new Date();
 		CanalDistributie canalDistributie = CanalDistributie.PRESA_SCRISA;
-		int buget = 11;	
+		int buget = 11;
 		CampaniePromovare campanieNoua = marketingInstance.creareCampaniePromovare(tipPromovare, data, canalDistributie, buget);
 		campanieNoua.getPromotiiCampanie().add(promotieNoua);
-////////////////////////
+		// //////////////////////
 		RaspunsIntrebare raspunsIntrebareNou = marketingInstance.creareRaspunsIntrebare("raspuns corect");
-////////////////////////		
+		// //////////////////////
 		Intrebare intrebareNoua = marketingInstance.creareIntrebare("intrebare");
 		intrebareNoua.getRaspunsuriIntrebare().add(raspunsIntrebareNou);
-////////////////////////
+		// //////////////////////
 		Persoana persoanaChestionata = persoanaSrv.crearePersoanaChestionata();
 		Chestionar chestionarNou = marketingInstance.creareChestionar(data, "Chestionar1", persoanaChestionata);
 		chestionarNou.getIntrebariChestionar().add(intrebareNoua);
-////////////////////////
+		// //////////////////////
 		CercetarePiata cercetarePiataNoua = marketingInstance.creareCercetarePiata(dataStart, dataFinal, buget);
-////////////////////////
+		// //////////////////////
 		StatusReclamatie status = StatusReclamatie.NOU;
 		Reclamatie reclamatieNoua = marketingInstance.creareReclamatie(data, "reclamatie", "raspuns", status);
-////////////////////////
+		// //////////////////////
 		System.out.println("aaaaa");
 		logger.info("End test TestMarketingSrv");
 	}
-	
+
 }

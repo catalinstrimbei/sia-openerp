@@ -9,30 +9,24 @@ import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.ProdusSrv;
 
 public interface MarketingSrv {
-	
+
 	public void setProdusSrv(ProdusSrv produsSrv);
-	
+
 	public void setPersoanaSrv(PersoanaSrv persoanaSrv);
-	
+
 	public void setAngajatSrv(AngajatSrv angajatSrv);
 
-	public Promotie crearePromotie(int pretPromotional,
-			Date dataStart, Date dataFinal);
+	public Promotie crearePromotie(int pretPromotional, Date dataStart, Date dataFinal);
 
-	public CampaniePromovare creareCampaniePromovare(TipPromovare tipPromovare,
-			Date data, CanalDistributie canalDistributie,
-			int buget);
+	public CampaniePromovare creareCampaniePromovare(TipPromovare tipPromovare, Date data, CanalDistributie canalDistributie, int buget);
 
 	public RaspunsIntrebare creareRaspunsIntrebare(String textRaspuns);
 
 	public Intrebare creareIntrebare(String textIntrebare);
 
-	public Chestionar creareChestionar(Date data, String titlu,
-			Persoana persoanaChestionata);
+	public Chestionar creareChestionar(Date data, String titlu, Persoana persoanaChestionata);
 
-	public CercetarePiata creareCercetarePiata(Date dataStart,
-			Date dataFinal, int buget);
+	public CercetarePiata creareCercetarePiata(Date dataStart, Date dataFinal, int buget);
 
-	public Reclamatie creareReclamatie(Date data,
-			String text, String raspuns, StatusReclamatie status);
+	public Reclamatie creareReclamatie(Date data, String text, String raspuns, StatusReclamatie status);
 }

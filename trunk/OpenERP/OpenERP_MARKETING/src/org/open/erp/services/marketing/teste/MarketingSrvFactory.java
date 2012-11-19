@@ -12,8 +12,7 @@ import org.open.erp.services.productie.ProdusSrvImpl;
 
 public class MarketingSrvFactory {
 
-	private static Logger logger = Logger.getLogger(MarketingSrvFactory.class
-			.getName());
+	private static Logger logger = Logger.getLogger(MarketingSrvFactory.class.getName());
 
 	public static MarketingSrv getMarketingSrv() {
 
@@ -22,11 +21,11 @@ public class MarketingSrvFactory {
 		ProdusSrv produsSrv = MarketingSrvFactory.getProjectProdusSrv();
 		AngajatSrv angajatSrv = MarketingSrvFactory.getProjectAngajatSrv();
 		PersoanaSrv persoanaSrv = MarketingSrvFactory.getProjectPersoanaSrv();
-		
+
 		marketingSrv.setProdusSrv(produsSrv);
 		marketingSrv.setAngajatSrv(angajatSrv);
 		marketingSrv.setPersoanaSrv(persoanaSrv);
-		
+
 		logger.info("Creare MarketingSrv instance from MarketingSrvFactory!");
 
 		return marketingSrv;
@@ -47,6 +46,5 @@ public class MarketingSrvFactory {
 		logger.info("Creare dummy instance of PersoanaSrv from MarketingSrvFactory!");
 		return new PersoanaSrvImpl();
 	}
-
 
 }
