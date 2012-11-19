@@ -55,8 +55,7 @@ public class Promotie {
 
 	}
 
-	public Promotie(long id, Produs produsPromotie, int pretPromotional,
-			Date dataStart, Date dataFinal) {
+	public Promotie(long id, Produs produsPromotie, int pretPromotional, Date dataStart, Date dataFinal) {
 		super();
 		this.id = id;
 		this.produsPromotie = produsPromotie;

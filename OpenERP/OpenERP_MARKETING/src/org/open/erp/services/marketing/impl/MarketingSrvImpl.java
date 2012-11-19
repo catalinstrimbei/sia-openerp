@@ -44,24 +44,21 @@ public class MarketingSrvImpl implements MarketingSrv {
 	}
 
 	@Override
-	public Promotie crearePromotie(int pretPromotional,
-			Date dataStart, Date dataFinal) {
+	public Promotie crearePromotie(int pretPromotional, Date dataStart, Date dataFinal) {
 		logger.info("5.1 Initiere/Creare promotie noua");
-		
+
 		Promotie promotieNoua = new Promotie(1, null, pretPromotional, dataStart, dataFinal);
 		Produs produsNou = produsSrv.creareProdus();
 		promotieNoua.setProdusPromotie(produsNou);
-		
+
 		return promotieNoua;
 	}
 
 	@Override
-	public CampaniePromovare creareCampaniePromovare(TipPromovare tipPromovare,
-			Date data, CanalDistributie canalDistributie, int buget) {
+	public CampaniePromovare creareCampaniePromovare(TipPromovare tipPromovare, Date data, CanalDistributie canalDistributie, int buget) {
 		logger.debug("3.1 Initiere/Creare campanie promovare noua");
 
-		CampaniePromovare campaniePromovareNoua = new CampaniePromovare(1,
-				tipPromovare, data, canalDistributie, buget);
+		CampaniePromovare campaniePromovareNoua = new CampaniePromovare(1, tipPromovare, data, canalDistributie, buget);
 
 		Angajat angajatPromoter = angajatSrv.creareAngajat();
 		campaniePromovareNoua.setPromoter(angajatPromoter);
@@ -95,12 +92,10 @@ public class MarketingSrvImpl implements MarketingSrv {
 	}
 
 	@Override
-	public Chestionar creareChestionar(Date data, String titlu,
-			Persoana persoanaChestionata) {
+	public Chestionar creareChestionar(Date data, String titlu, Persoana persoanaChestionata) {
 		logger.debug("2.1 Initiere/Creare chestionar nou");
 
-		Chestionar chestionarNou = new Chestionar(1, data, titlu,
-				persoanaChestionata);
+		Chestionar chestionarNou = new Chestionar(1, data, titlu, persoanaChestionata);
 		String textIntrebare = "";
 		Intrebare intrebareNoua = creareIntrebare(textIntrebare);
 		chestionarNou.adaugaIntrebare(intrebareNoua);
@@ -109,31 +104,26 @@ public class MarketingSrvImpl implements MarketingSrv {
 	}
 
 	@Override
-	public CercetarePiata creareCercetarePiata(Date dataStart, Date dataFinal,
-			int buget) {
+	public CercetarePiata creareCercetarePiata(Date dataStart, Date dataFinal, int buget) {
 		logger.debug("1.1 Initiere/Creare cercetare de piata noua");
 
 		Angajat responsabilCercetarePiata = angajatSrv.creareAngajat();
-		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart,
-				dataFinal, buget, responsabilCercetarePiata);
+		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart, dataFinal, buget, responsabilCercetarePiata);
 
 		String titlu = "";
 		Persoana persoanaChestionata = persoanaSrv.crearePersoanaChestionata();
-		Chestionar chestionarNou = creareChestionar(dataStart, titlu,
-				persoanaChestionata);
+		Chestionar chestionarNou = creareChestionar(dataStart, titlu, persoanaChestionata);
 		cercetarePiataNoua.adaugaChestionar(chestionarNou);
 
 		return cercetarePiataNoua;
 	}
 
 	@Override
-	public Reclamatie creareReclamatie(Date data, String text, String raspuns,
-			StatusReclamatie status) {
+	public Reclamatie creareReclamatie(Date data, String text, String raspuns, StatusReclamatie status) {
 		logger.debug("5.1 Initiere/Creare reclamatie noua");
 
 		Persoana persoanaReclamanta = persoanaSrv.crearePersoanaReclamanta();
-		Reclamatie reclamatieNoua = new Reclamatie(1, persoanaReclamanta, data,
-				text, raspuns, status);
+		Reclamatie reclamatieNoua = new Reclamatie(1, persoanaReclamanta, data, text, raspuns, status);
 
 		return reclamatieNoua;
 	}

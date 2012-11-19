@@ -56,13 +56,12 @@ public class Chestionar {
 	public void adaugaIntrebare(Intrebare intrebare) {
 		this.intrebariChestionar.add(intrebare);
 	}
-	
-	public Chestionar(){
-		
+
+	public Chestionar() {
+
 	}
 
-	public Chestionar(long id, Date data, String titlu,
-			Persoana persoanaChestionata) {
+	public Chestionar(long id, Date data, String titlu, Persoana persoanaChestionata) {
 		super();
 		this.id = id;
 		this.data = data;

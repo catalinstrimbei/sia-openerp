@@ -64,8 +64,7 @@ public class Reclamatie {
 
 	}
 
-	public Reclamatie(long id, Persoana persoanaReclamanta, Date data,
-			String text, String raspuns, StatusReclamatie status) {
+	public Reclamatie(long id, Persoana persoanaReclamanta, Date data, String text, String raspuns, StatusReclamatie status) {
 		super();
 		this.id = id;
 		this.persoanaReclamanta = persoanaReclamanta;

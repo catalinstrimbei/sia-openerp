@@ -1,12 +1,11 @@
 package org.open.erp.services.productie;
 
-
 public class ProdusSrvImpl implements ProdusSrv {
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProdusSrvImpl.class.getName());
-	
-	public ProdusSrvImpl(){
-		
+
+	public ProdusSrvImpl() {
+
 	}
 
 	@Override

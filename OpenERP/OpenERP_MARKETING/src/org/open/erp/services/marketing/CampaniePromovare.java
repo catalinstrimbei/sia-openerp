@@ -79,8 +79,7 @@ public class CampaniePromovare {
 	public CampaniePromovare() {
 	}
 
-	public CampaniePromovare(long id, TipPromovare tipPromovare, Date data,
-			CanalDistributie canalDistributie, int buget) {
+	public CampaniePromovare(long id, TipPromovare tipPromovare, Date data, CanalDistributie canalDistributie, int buget) {
 		super();
 		this.id = id;
 		this.tipPromovare = tipPromovare;
