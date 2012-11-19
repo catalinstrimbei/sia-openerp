@@ -1,29 +1,26 @@
 package org.open.erp.services.banci;
 
-
-
-
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.achizitii.LiniiComanda;
 import org.open.erp.services.nomgen.Clienti;
 
-public class CrediteBNC<LiniiPlatirate> {
-	private Integer CodCredit;
+public class CrediteBNC {
+	private Integer contCredit;
 	private Date datascandentaprimarata;
 	private Date datascadentaultimarata;
 	private Date datascadentalunacurenta;
 	private Date datasemcontr; //cand se semeneaza contractul cu banca
 	private Clienti client;
 	private List<LiniiPlatirate> liniePlatarata;
-	private Double Valoarecredit;
-	private Double Ratadob;
-	public Integer getcodCredit() {
-		return CodCredit;
+	private Double valoarecredit;
+	private Double ratadob;
+	
+	public Integer getcontCredit() {
+		return contCredit;
 	}
-	public void setcodCredit(Integer codCredit) {
-		this.CodCredit = codCredit;
+	public void setcontCredit(Integer contCredit) {
+		this.contCredit = contCredit;
 	}
 	public Date getDatascadentaprimarata() {
 		return  datascandentaprimarata;
@@ -64,10 +61,40 @@ public class CrediteBNC<LiniiPlatirate> {
 		this.liniePlatarata = liniePlatarata;
 	}
 	
+	public Double getValoarecredit() {
+		return valoarecredit;
+	}
+	public void setValoarecredit(Double valoarecredit) {
+		this.valoarecredit = valoarecredit;
+	}
+	public Double getRatadob() {
+		return ratadob;
+	}
+	public void setRatadob(Double ratadob) {
+		this.ratadob = ratadob;
+	}
 	
+	public CrediteBNC(Integer contCredit, Date datascandentaprimarata, Date datascadentaultimarata,Date datascadentalunacurenta,
+			Date datasemcontr, Clienti client,List<LiniiPlatirate> liniePlatarata,Double valoarecredit,Double ratadob) {
+		super();
+		this.contCredit = contCredit;
+		this.datascandentaprimarata = datascandentaprimarata;
+		this.datascadentaultimarata = datascadentaultimarata;
+		this.datascadentalunacurenta = datascadentalunacurenta;
+		this.datasemcontr = datasemcontr;
+		this.client = client;
+		this.liniePlatarata = liniePlatarata;
+		this.valoarecredit = valoarecredit;
+		this.ratadob = ratadob;
+	}
+	
+	public CrediteBNC() {
+		super();
+	}
+
+	
+	
+}
 		
-		
-		
-		
-		
+	
 	
