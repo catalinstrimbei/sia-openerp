@@ -27,6 +27,11 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		this.materialeSrv=matSrv;
 	}
 	
+	public AchizitiiImpl()
+	{
+		
+	}
+
 	public CerereAprov creareCerereAprov(Integer nr, Date data, Materiale material) {
 		logger.debug("1.1 Initiere/Creare cerere de aprovizionare noua");
 		
@@ -47,20 +52,33 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		
 	}
 	
+	public PlanAprov crearePlanAprov(Integer nrPlan, Integer an, Integer luna, Integer saptamana)
+	{
+		logger.debug(" 1.2.1 Creare plan nou");
+		PlanAprov planNou=new PlanAprov(nrPlan, an, luna, saptamana);
+		return planNou;
+	}
+	
+	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Materiale material, Double cantitate){
+		logger.debug("1.2.2 Adaugare linie plan");
+		
+		LiniiPlanAprov liniePlan=new LiniiPlanAprov(nrLiniePlanAprov, planAprov, material, cantitate);
+		planAprov.adaugaLinie(liniePlan);
+		liniePlan.setPlanAProv(planAprov);
+		return liniePlan;
+	}
+	
+	
 	public CerereOferta creareCerereOferta(Integer nrCerereOferta, Date dataCerereOferta)
 	{
-		logger.debug("3.1 Creare cerere oferta noua");
+		logger.debug("2.1.1 Creare cerere oferta noua");
 		CerereOferta cerereNoua=new CerereOferta(nrCerereOferta, dataCerereOferta);
-		
 		return cerereNoua;
 	}
 	
-	public AchizitiiImpl(){
 		
-	}
-	
 	public LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Materiale material, CerereOferta cerereOferta){
-		logger.debug("3.2 Adaugare linie in cerere oferta");
+		logger.debug("2.1.2 Adaugare linie in cerere oferta");
 		
 		LiniiCerereOferta linieOferta=new LiniiCerereOferta(nrLinie, cantitate, material, cerereOferta);
 		cerereOferta.adaugaLinie(linieOferta);
@@ -69,51 +87,35 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	public Materiale stabilireMaterial(LiniiPlanAprov liniePlan){
-		logger.debug("3.3 Stabilire material linie ");
+		logger.debug("2.1.3 Stabilire material linie ");
 		Materiale material=liniePlan.getMaterial();
 		return material;
 	}
 	
+	
 	public void stabilireFurnizor(CerereOferta cerereOferta, Furnizori furnizor){
-		logger.debug("Setare furnizor");
+		logger.debug("2.2 Identificare furnizor");
 		cerereOferta.setFurnizor(furnizor);
 	}
 
 	public void trimitereOferta(CerereOferta cerereOferta, Furnizori furnizor){
-		logger.debug("S-a trimis oferta");
+		logger.debug("2.3 S-a trimis cererea de oferta");
 	}
 	
 	public Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare, Furnizori furnizor, CerereOferta cerereOferta){
-		logger.debug(" Creare oferta noua");
+		logger.debug("3.1.1 Primire oferte de la furnizori (Creare ferta noua)");
 		Oferta ofertaNoua=new Oferta(nrOferta, dataOferta, dataLivrare, furnizor, cerereOferta);
 		return ofertaNoua;
 	}
 	
 	public LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Materiale material, Double cantitate, Oferta oferta){
-		logger.debug("Adaugare linie in oferta");
+		logger.debug("3.1.2 Adaugare linie in oferta primita");
 		
 		LiniiOferta linieOferta=new LiniiOferta(nrLinie, pret, material, cantitate, oferta);
 		oferta.adaugaLinie(linieOferta);
 		linieOferta.setOferta(oferta);
 		return linieOferta;
 	}
-	
-	
-	public PlanAprov crearePlanAprov(Integer nrPlan, Integer an, Integer luna, Integer saptamana)
-	{
-		logger.debug(" 2.1 Creare plan nou");
-		PlanAprov planNou=new PlanAprov(nrPlan, an, luna, saptamana);
-		return planNou;
-	}
-	
-	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Materiale material, Double cantitate){
-		logger.debug("2.2 Adaugare linie plan");
-		
-		LiniiPlanAprov liniePlan=new LiniiPlanAprov(nrLiniePlanAprov, planAprov, material, cantitate);
-		planAprov.adaugaLinie(liniePlan);
-		liniePlan.setPlanAProv(planAprov);
-		return liniePlan;
-	}
-	
+
 	
 }
