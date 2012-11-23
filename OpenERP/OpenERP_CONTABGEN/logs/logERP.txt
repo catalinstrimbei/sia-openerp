@@ -1,0 +1,4 @@
+(A2) 2012-11-23 19:18:59,804 [main] INFO  org.open.erp.services.contabgen.impl.ContabilitateGeneralaImpl - 1.1 Creare cont: Capital smecher
+(A2) 2012-11-23 19:18:59,804 [main] INFO  org.open.erp.services.contabgen.impl.ContabilitateGeneralaImpl - 1.2 Verificare existenta clasa de conturi cu codul: 1
+(A2) 2012-11-23 19:18:59,805 [main] INFO  org.open.erp.services.contabgen.impl.ContabilitateGeneralaImpl - 1.3 Verific daca exista contul: Capital smecher, codul: 1011
+(A2) 2012-11-23 19:18:59,805 [main] INFO  org.open.erp.services.contabgen.impl.ContabilitateGeneralaImpl - 1.4 Contul nu exista. Il adaugam
