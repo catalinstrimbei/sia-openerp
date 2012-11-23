@@ -1,6 +1,11 @@
 package org.open.erp.services.contabgen;
 
+import org.open.erp.services.conturi.Clasa;
+import org.open.erp.services.conturi.Cont;
 import org.open.erp.services.conturi.PlanConturi;
+import org.open.erp.services.rapoarte.BilantContabil;
+import org.open.erp.services.sabloane.Sablon;
+import org.open.erp.services.tranzactii.Tranzactie;
 
 /**
  * @author ContaGen
@@ -29,11 +34,39 @@ import org.open.erp.services.conturi.PlanConturi;
 public interface ContabilitateGeneralaSrv {
 	
 	/**
-	 * Returneaza planul de conturi
+	 * Returneaza TRUE/FALSE
 	 * 
-	 * @return instanta Proiect nou creata. 
+	 * @param Cont 		Detaliile contului
+	 * @param codClasa	Clasa din care va face parte contul
+	 * 
+	 * @return boolean
 	 * 
 	 */
-	PlanConturi crearePlanConturi();
+	boolean adaugaCont(Cont cont, Integer codClasa);
+	
+	/**
+	 * Returneaza o tranzactie
+	 * 
+	 * @return instanta Tranzactie nou creata. 
+	 * 
+	 */
+	Tranzactie creareTranzactie();
+	
+	/**
+	 * Returneaza un sablon
+	 * 
+	 * @return instanta Sablon nou creat 
+	 * 
+	 */
+	Sablon creareSablon();
+	
+	
+	/**
+	 * Returneaza bilantul contabil
+	 * 
+	 * @return instanta bilant contabil 
+	 * 
+	 */
+	BilantContabil creareBilantContabil();
 
 }
