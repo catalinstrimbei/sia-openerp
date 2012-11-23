@@ -1,7 +1,9 @@
-(A2) 2012-11-18 21:57:08,083 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 1. Creare adresa
-(A2) 2012-11-18 21:57:08,084 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 1. Creare persoana fizica
-(A2) 2012-11-18 21:57:08,088 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 1. Creare Departament
-(A2) 2012-11-18 21:57:08,091 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 2. Creare Subdepartament
-(A2) 2012-11-18 21:57:08,092 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 3. Creare Divizie
-(A2) 2012-11-18 21:57:08,093 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 1. Creare adresa
-(A2) 2012-11-18 21:57:08,093 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 2. Creare persoana juridica
+(A2) 2012-11-22 22:56:28,123 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 1. Creare adresa
+(A2) 2012-11-22 22:56:28,128 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 2. Creare persoana fizica
+(A2) 2012-11-22 22:56:28,132 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 1. Creare adresa
+(A2) 2012-11-22 22:56:28,135 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 1. Creare Departament
+(A2) 2012-11-22 22:56:28,136 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 1. Creare adresa
+(A2) 2012-11-22 22:56:28,136 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 2. Creare persoana juridica
+(A2) 2012-11-22 22:56:28,141 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 1. Creare Departament
+(A2) 2012-11-22 22:56:28,141 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 2. Creare Subdepartament
+(A2) 2012-11-22 22:56:28,148 [main] DEBUG org.open.erp.services.nomgen.impl.NomenclatoareImpl - 3. Creare Divizie
