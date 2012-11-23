@@ -21,7 +21,7 @@ public class NomenclatoareImpl implements NomenclatoareSrv {
 	public PersoanaFizica crearePF(Integer id, String nume, String sex,
 			String mail, String statutInCompanie, String stareCivila,
 			String dataNastere, String telefon, Adresa adresa) {
-		logger.debug("1. Creare persoana fizica");
+		logger.debug("2. Creare persoana fizica");
 		PersoanaFizica persF = new PersoanaFizica (id, nume, sex, mail, statutInCompanie, stareCivila, dataNastere, telefon, adresa);
 		return persF;
 	}

@@ -28,6 +28,17 @@ public class TestNomenclatoareSrv {
 	}
 	
 	
+	
+	@Test
+	public void testCreareAdresa() throws Exception{
+		Adresa adr = nomenInstance.creareAdresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");		
+		logger.debug("++ Afisare adresa: " + adr.getStrada() + " " + adr.getCodPostal() + " "
+				+ adr.getLocalitate() + " " + adr.getJudet() + " " +adr.getTara());
+		
+	}
+	
+	
+
 	@Test
 	public void testCrearePersoanaFizica() throws Exception{
 		Adresa adr = nomenInstance.creareAdresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");		
@@ -45,9 +56,17 @@ public class TestNomenclatoareSrv {
 		logger.debug("++++ Afisare adresa: " + adr.getStrada() + " " + adr.getCodPostal() + " "
 				+ adr.getLocalitate() + " " + adr.getJudet() + " " +adr.getTara());
 			}
+   
+    @Test
+    
+	public void testCreareDepart() throws Exception{
+		Departament dep = nomenInstance.creareDepart("1", "Dep1");
+		logger.debug("++ Afisare departament: " +  dep.getDenumire() );
+}
 
+    
 @Test
-	public void testCrearDivizieNoua() throws Exception{
+	public void testCreareDivizieNoua() throws Exception{
 		Departament dep = nomenInstance.creareDepart("1", "Dep1");
 		Subdepartament sub = nomenInstance.creareSubDep("1", "Sub1", "test",dep);
 		Divizie div = nomenInstance.creareDivizie("1", "Div", "test", dep, " ", sub);
