@@ -1,7 +1,9 @@
 package org.open.erp.services.contabgen;
 
+import org.open.erp.exceptii.ExceptieTipContInvalid;
 import org.open.erp.services.conturi.Clasa;
 import org.open.erp.services.conturi.Cont;
+import org.open.erp.services.conturi.Cont.Tip;
 import org.open.erp.services.conturi.PlanConturi;
 import org.open.erp.services.rapoarte.BilantContabil;
 import org.open.erp.services.sabloane.Sablon;
@@ -68,5 +70,7 @@ public interface ContabilitateGeneralaSrv {
 	 * 
 	 */
 	BilantContabil creareBilantContabil();
+	
+	Cont creazaCont(Tip tip) throws ExceptieTipContInvalid;
 
 }

@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.open.erp.services.conturi.Cont;
-import org.open.erp.services.tranzactii.TipOperatiune;
 
 public class Sablon {
 	
 	Integer idSablon;
 	String denumireSablon;
-	TipOperatiune tipOperatiune;
 	
 	List<Cont> conturiDebitoare = new ArrayList<Cont>();
 	List<Cont> conturiCreditoare = new ArrayList<Cont>();
@@ -44,13 +42,6 @@ public class Sablon {
 	}
 	public void setDenumireSablon(String denumireSablon) {
 		this.denumireSablon = denumireSablon;
-	}
-	public TipOperatiune getTipOperatiune() {
-		return tipOperatiune;
-	}
-	public void setTipOperatiune(TipOperatiune tipOperatiune) {
-		this.tipOperatiune = tipOperatiune;
-	}
-	
+	}	
 	
 }

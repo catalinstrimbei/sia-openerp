@@ -16,7 +16,7 @@ public class Clasa {
 	public void setCodClasa(Integer codClasa) {
 		this.codClasa = codClasa;
 	}
-	
+
 	public String getDenumireClasa() {
 		return denumireClasa;
 	}
@@ -29,11 +29,11 @@ public class Clasa {
 		return conturi;
 	}
 
-	public void addCont( Cont cont) {
+	public void addCont(Cont cont) {
 		this.conturi.add(cont);
 	}
-	
-	public void removeCont( Cont cont ){
+
+	public void removeCont(Cont cont) {
 		this.conturi.remove(cont);
 	}
 
@@ -41,16 +41,14 @@ public class Clasa {
 		super();
 		this.denumireClasa = denumireClasa;
 	}
-	
-	public Cont getContByCod(Integer cod){
-		for(Cont c : this.conturi)
-		{
-			if(c.getCodCont() == cod)
+
+	public Cont getContByCod(Integer cod) {
+		for (Cont c : this.conturi) {
+			if (c.getCodCont() == cod)
 				return c;
 		}
-		
+
 		return null;
 	}
-	
-	
+
 }
