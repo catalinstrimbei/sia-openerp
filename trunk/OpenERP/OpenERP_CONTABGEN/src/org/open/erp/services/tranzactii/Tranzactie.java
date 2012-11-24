@@ -10,7 +10,7 @@ public class Tranzactie {
 	Date dataTranzactie;
 	String tipTranzactie;
 	String descriereTranzactie;
-	List<Operatiune> operatiuni = new ArrayList<Operatiune>();
+	List<OperatiuneContabila> operatiuni = new ArrayList<OperatiuneContabila>();
 	Document document;
 	
 	public Integer getIdTranzactie() {
@@ -37,13 +37,13 @@ public class Tranzactie {
 	public void setDescriereTranzactie(String descriereTranzactie) {
 		this.descriereTranzactie = descriereTranzactie;
 	}
-	public List<Operatiune> getOperatiuni() {
+	public List<OperatiuneContabila> getOperatiuni() {
 		return operatiuni;
 	}
-	public void addOperatiune(Operatiune operatiune) {
+	public void addOperatiune(OperatiuneContabila operatiune) {
 		this.operatiuni.add(operatiune);
 	}
-	public void removeOperatiune(Operatiune operatiune) {
+	public void removeOperatiune(OperatiuneContabila operatiune) {
 		this.operatiuni.remove(operatiune);
 	}
 	public Document getDocument() {
