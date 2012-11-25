@@ -1,11 +1,19 @@
 package org.open.erp.services.tranzactii;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.apache.log4j.Logger;
+import org.open.erp.exceptii.CodEroare;
 import org.open.erp.exceptii.ExceptieContNetranzactionabil;
 import org.open.erp.services.conturi.Cont;
 
 public class InregistrareOperatiuneContabila {
+
+	private static Logger logger = Logger
+			.getLogger(InregistrareOperatiuneContabila.class.getName());
+
 	Integer idOperatiune;
 	Date dataOperatiune;
 	String tipOperatiune;
@@ -13,7 +21,7 @@ public class InregistrareOperatiuneContabila {
 	Document document;
 
 	protected double suma;
-	
+
 	protected InregistrareOperatiune debit;
 	protected InregistrareOperatiune credit;
 
@@ -85,16 +93,16 @@ public class InregistrareOperatiuneContabila {
 		this(new Date(), null, "", 0.0);
 	}
 
-	public InregistrareOperatiuneContabila(Date data, Document document, String descriere,
-			double suma) {
+	public InregistrareOperatiuneContabila(Date data, Document document,
+			String descriere, double suma) {
 		this(data, document, descriere, suma, new InregistrareOperatiune(null,
 				null, InregistrareOperatiune.Tip.DEBIT, 0.0),
 				new InregistrareOperatiune(null, null,
 						InregistrareOperatiune.Tip.CREDIT, 0.0));
 	}
 
-	public InregistrareOperatiuneContabila(Date data, Document document, String descriere,
-			double suma, InregistrareOperatiune intrareDebit,
+	public InregistrareOperatiuneContabila(Date data, Document document,
+			String descriere, double suma, InregistrareOperatiune intrareDebit,
 			InregistrareOperatiune intrareCredit) {
 		adaugaProprietati(data, document, descriere, suma, intrareDebit,
 				intrareCredit);
@@ -108,11 +116,12 @@ public class InregistrareOperatiuneContabila {
 		return tran;
 	}
 
-	public static InregistrareOperatiuneContabila creazaOperatiune(Date data, Document document,
-			String descriere, double suma, InregistrareOperatiune intrareDebit,
+	public static InregistrareOperatiuneContabila creazaOperatiune(Date data,
+			Document document, String descriere, double suma,
+			InregistrareOperatiune intrareDebit,
 			InregistrareOperatiune intrareCredit) {
-		InregistrareOperatiuneContabila tran = new InregistrareOperatiuneContabila(data, document, descriere, suma,
-				intrareDebit, intrareCredit);
+		InregistrareOperatiuneContabila tran = new InregistrareOperatiuneContabila(
+				data, document, descriere, suma, intrareDebit, intrareCredit);
 		tran.debit.setInregistrare(tran);
 		tran.debit.setInregistrare(tran);
 
@@ -162,6 +171,65 @@ public class InregistrareOperatiuneContabila {
 
 	protected void ataseazaIntrariConturilor()
 			throws ExceptieContNetranzactionabil {
+		getDebitCont().adaugaIntrare(debit);
+		getContCredit().adaugaIntrare(credit);
+	}
+
+	public Map<String, CodEroare> modificaInregOpCtb(Date data,
+			Document document, String descriere, double suma, Cont debitCont,
+			Cont creditCont) {
+		Map<String, CodEroare> rErrors = valideazaInregistrareOpCtb(suma,
+				debitCont, creditCont);
+
+		if (rErrors.isEmpty()) {
+			try {
+				if (getContCredit() != null && getDebitCont() != null) {
+					renuntaLaInreg();
+				}
+
+				adaugaProprietati(data, document, descriere, suma);
+				debit.setTransferCont(creditCont);
+				credit.setTransferCont(debitCont);
+				ataseazaInreg();
+
+			} catch (ExceptieContNetranzactionabil ex) {
+
+				logger.error(InregistrareOperatiuneContabila.class.getName());
+			}
+		}
+
+		return rErrors;
+	}
+
+	public static Map<String, CodEroare> valideazaInregistrareOpCtb(
+			double amount, Cont debitCont, Cont creditCont) {
+		Map<String, CodEroare> rErrors = new HashMap<String, CodEroare>();
+
+		if (amount < 0)
+			rErrors.put("suma", CodEroare.SUMA_TRANZATIE_NEGATIVA);
+		if (!debitCont.isTranzactionabil())
+			rErrors.put("debitCont", CodEroare.CONT_NETRANZACTIONABIL);
+		if (!creditCont.isTranzactionabil())
+			rErrors.put("creditCont", CodEroare.CONT_NETRANZACTIONABIL);
+
+		return rErrors;
+	}
+
+	public void ataseazaInreg() throws ExceptieContNetranzactionabil {
+		adaugaIntrari();
+	}
+
+	public void renuntaLaInreg() throws ExceptieContNetranzactionabil {
+		stergeInregistrarileAferenteConturilor();
+	}
+
+	protected void stergeInregistrarileAferenteConturilor()
+			throws ExceptieContNetranzactionabil {
+		getDebitCont().stergeIntrare(debit);
+		getContCredit().stergeIntrare(credit);
+	}
+
+	protected void adaugaIntrari() throws ExceptieContNetranzactionabil {
 		getDebitCont().adaugaIntrare(debit);
 		getContCredit().adaugaIntrare(credit);
 	}

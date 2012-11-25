@@ -35,7 +35,7 @@ public abstract class Cont {
 	 */
 	protected boolean tranzactionabil;
 
-	protected List<InregistrareOperatiune> intrari;
+	protected List<InregistrareOperatiune> intrari=new ArrayList<InregistrareOperatiune>();
 
 	protected Cont() {
 		this(-1, "", "", 0.0, true);
