@@ -170,7 +170,7 @@ public interface FinanciarPlatiSrv {
 	 * 
 	 */
 	
-	Chitanta primireChitanta(Double valoarePlata);
+	ChitantaPlata primireChitanta(Double valoarePlata);
 	/**
 	 * Daca furnizorul a primit plata, ofera chitanta
 	 * 
@@ -204,6 +204,18 @@ public interface FinanciarPlatiSrv {
 	 *  Calculam soldul final prin scaderea datoriilor din buget.
 	 * 
 	 */
+
+
+	double getBugetDatorii();
+
+
+	SituatieFinanciara getSituatieFinanciara();
+
+
+	void setSituatieFinanciara(SituatieFinanciara sitFit);
+
+
+	Contract cautaContractFurnizor(Integer idContract);
 	
 	
 }

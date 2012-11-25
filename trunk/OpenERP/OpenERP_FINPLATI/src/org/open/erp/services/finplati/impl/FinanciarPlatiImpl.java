@@ -23,6 +23,16 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	}
 
 	@Override
+	public SituatieFinanciara getSituatieFinanciara() {
+		return sitFit;
+	}
+	
+	@Override
+	public void setSituatieFinanciara(SituatieFinanciara sitFit) {
+		this.sitFit = sitFit;
+	}
+	
+	@Override
 	public Double getSumePlatite(Date cDate) {
 		logger.debug("1.1. Gestionare sume platite prin banca");
 		return sitFit.getTotalPlati(cDate);
@@ -55,6 +65,13 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 		sitFit.adaugareContract(contract);
 		
 		return contract;
+	}
+	@Override
+	public Contract cautaContractFurnizor(Integer idContract) {
+		if (sitFit.getContracte().containsKey(idContract))
+			return sitFit.getContracte().get(idContract);
+		else	
+			return null;
 	}
 	
 	@Override
@@ -162,7 +179,7 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	}
 	
 	@Override
-	public Chitanta primireChitanta(Double valoarePlata) {
+	public ChitantaPlata primireChitanta(Double valoarePlata) {
 		logger.debug("4.2. Primire chitanta");
 		Plata plata = new Plata();
 		plata.setDataPlatii(new Date());
@@ -225,5 +242,10 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 		
 		Double sold = sitFit.getBugetDatorii() - afisareDatorii();
 		return sold;
+	}
+
+	@Override
+	public double getBugetDatorii() {
+		return this.sitFit.getBugetDatorii();
 	}
 }

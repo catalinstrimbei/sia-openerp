@@ -24,7 +24,7 @@ public class SituatieFinanciara implements Serializable{
 	Map<Integer,Factura> facturi;
 	Map<Integer,Contract> contracte;
 	Map<Integer,Persoana> personal;
-	Responsabil	responsabil;
+	Responsabil responsabil;
 	
 	public SituatieFinanciara() {
 		plati = new HashMap<Integer,Plata>();
@@ -75,10 +75,10 @@ public class SituatieFinanciara implements Serializable{
 	public void setPlati(Map<Integer,Plata> plati) {
 		this.plati = plati;
 	}
-	public Chitanta adaugarePlata(Plata plata) {
+	public ChitantaPlata adaugarePlata(Plata plata) {
 		plati.put(plata.getId(), plata);
 		
-		Chitanta chitanta = new Chitanta(plata);
+		ChitantaPlata chitanta = new ChitantaPlata(plata);
 		return chitanta;
 	}
 	public void adaugareFactura(Factura fact) {
@@ -94,7 +94,7 @@ public class SituatieFinanciara implements Serializable{
 		return responsabil;
 	}
 	public void setResponsabil(Persoana persoana) {
-		this.responsabil = (Responsabil) persoana;
+		this.responsabil = new Responsabil(persoana);
 	}
 	public Double getTotalPlati(Date... reqDate) {
 		Date dateVal;

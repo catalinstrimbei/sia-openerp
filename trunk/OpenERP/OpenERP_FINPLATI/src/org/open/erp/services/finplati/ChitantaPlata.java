@@ -12,14 +12,14 @@ import java.io.Serializable;
  * @DummyObject
  *
  */
-public class Chitanta implements Serializable {
+public class ChitantaPlata implements Serializable {
 
 	private static int nextIdChitanta = 1;
 	
 	Plata plata;
 	Integer idChitanta;
 	
-	public Chitanta(Plata plata) {
+	public ChitantaPlata(Plata plata) {
 		idChitanta = nextIdChitanta++;
 		this.plata = plata;
 	}

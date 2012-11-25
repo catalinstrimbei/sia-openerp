@@ -28,4 +28,11 @@ public class Responsabil extends Persoana{
 		super();
 	}	
 	
+	public Responsabil(Persoana p) {
+		super();
+		this.idPersoana = p.idPersoana;
+		this.nume = p.nume;
+		this.prenume = p.prenume;
+		this.scorAptitudini = p.scorAptitudini;
+	}
 }
