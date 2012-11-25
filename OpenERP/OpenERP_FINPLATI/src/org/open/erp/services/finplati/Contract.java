@@ -1,6 +1,7 @@
 package org.open.erp.services.finplati;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,12 @@ public class Contract {
 	Double discountContract;
 	Map<Integer, Plata> plati;
 	StatusContract statusContract;
+	
+	private static int nextIdContract = 1;
+
+	public Contract() {
+		idContract = nextIdContract++;
+	}
 	
 	public Integer getIdContract() {
 		return idContract;
@@ -52,6 +59,8 @@ public class Contract {
 		this.plati = plati;
 	}
 	public void adaugaPlata(Plata plata) {
+		if (plati == null)
+			plati = new HashMap<Integer, Plata>();
 		plati.put(plata.getId(), plata);
 	}
 	public Double getTotalPlati() {
@@ -68,6 +77,6 @@ public class Contract {
 		this.discountContract = discountContract;
 	}
 	public Double getDiscountContract() {
-		return this.discountContract;
+		return (this.discountContract == null ? 0.0 : this.discountContract);
 	}
 }
