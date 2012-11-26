@@ -30,10 +30,12 @@ import org.open.erp.services.finplati.Contract;
 import org.open.erp.services.finplati.Factura;
 import org.open.erp.services.finplati.FinanciarPlatiSrv;
 import org.open.erp.services.finplati.Furnizor;
+import org.open.erp.services.finplati.ModPlata;
 import org.open.erp.services.finplati.Persoana;
 import org.open.erp.services.finplati.Plata;
 import org.open.erp.services.finplati.Responsabil;
 import org.open.erp.services.finplati.SituatieFinanciara;
+import org.open.erp.services.finplati.TipPlata;
 
 public class TestFinanciarPlatiSrv {
 	private static Logger logger;
@@ -83,12 +85,31 @@ public class TestFinanciarPlatiSrv {
 		factura1.setDataFactura(dataFact);
 		factura1.setValoareTotal(1000.0);
 		sitFit.adaugareFactura(factura1);
+		 
+		Plata plata1 = new Plata();
+		Date dataPlata = new Date();
+		plata1.setDataPlatii(dataPlata);
+		plata1.setId(5);
+		plata1.setValoarePlata(120.0);
+		plata1.setTipPlata(TipPlata.DATORIE);
+		plata1.setModPlata(ModPlata.CEC);
+		plata1.setConfirmarePlata(null);
+		
+		Plata plata2 = new Plata();
+		plata2.setDataPlatii(new Date());
+		plata2.setValoarePlata(250.0);
+		plata2.setTipPlata(TipPlata.ALTTIP);
+		plata2.setModPlata(ModPlata.CASH);
+		 
+		sitFit.adaugarePlata(plata1);
+		sitFit.adaugarePlata(plata2);
+		
+		
 		
 		Double sitfit = finplatiInstance.getSumePlatite(new Date());
 		assertNotNull("Nu exista sume platite noua!", sitfit);
 
-//		BugetDatorii buget1 = finplatiInstance.setBugetDatorii(123.4);
-//		assertNotNull("Nu exista buget nou!", buget1);
+		
 		logger.info("1.2. Alocare buget pentru datorii");
 		finplatiInstance.setBugetDatorii(20000.0);
 		double buget = finplatiInstance.getBugetDatorii();
@@ -119,7 +140,7 @@ public class TestFinanciarPlatiSrv {
 	    
 	    logger.info("2.3. Discountul acordat");
 	    testCtr.setDiscountContract(0.2);
-	    double dsc = testCtr.getDiscountContract();
+	    Double dsc = testCtr.getDiscountContract();
 	    assertNotNull("Nu exista nici un discount inregistrat", dsc);
 	    assertTrue("Valoarea discountului nu este corecta", dsc==0.2);
 	    
