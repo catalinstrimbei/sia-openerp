@@ -2,11 +2,14 @@ package org.open.erp.services.nomgen;
 
 public class Persoana {
 
-	
+	String numePers;
 
-	public void setIdpersoana(int i) {
-		// TODO Auto-generated method stub
-		
+	public String getNumePers() {
+		return numePers;
 	}
 
+	public void setNumePers(String numePers) {
+		this.numePers = numePers;
+	}
+	
 }

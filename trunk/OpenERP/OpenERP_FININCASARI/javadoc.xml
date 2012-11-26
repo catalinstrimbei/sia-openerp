@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="javadoc">
-    <target name="javadoc">
-        <javadoc access="public" author="true" classpath="C:\Users\Isabela\Desktop\eclipse\plugins\org.hamcrest.core_1.1.0.v20090501071000.jar;C:\Users\Isabela\Desktop\eclipse\plugins\org.junit_4.10.0.v4_10_0_v20120426-0900\junit.jar;lib/log4j-1.2.16.jar;lib/ejb3-persistence.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="org.open.erp.services.vanzari.impl,org.open.erp.services.finincasari.teste,org.open.erp.services.finincasari.impl,org.open.erp.services.contabgen,org.open.erp.services.finincasari,org.open.erp.services.contabgen.impl,org.open.erp.services.nomgen,org.open.erp.services.finincasari.exception,org.open.erp.services.contagen.exception,org.open.erp.services.vanzari,org.open.erp.services.personal" source="1.7" sourcepath="src" splitindex="true" use="true" version="true"/>
-    </target>
-</project>

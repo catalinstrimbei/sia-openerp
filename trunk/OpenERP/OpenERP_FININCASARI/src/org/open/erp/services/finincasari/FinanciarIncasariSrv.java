@@ -1,65 +1,50 @@
 package org.open.erp.services.finincasari;
 
-
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Date;
-import org.open.erp.services.vanzari.FacturaEmisa;
-import org.open.erp.services.vanzari.VanzariSrv;
-import org.open.erp.services.contagen.exception.ContaException;
-import org.open.erp.services.finincasari.exception.FinanciarIncasariException;
 
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.vanzari.Client;
+import org.open.erp.services.vanzari.Factura;
+import org.open.erp.services.vanzari.VanzariSrv;
+
+/**
+ * @author Isabela
+ *
+ */
 
 public interface FinanciarIncasariSrv {
 
-	void confirmareIncasare(FinIncasari doc) throws FinanciarIncasariException, NumberFormatException, ContaException;
-	
-	void confirmareDepunereLaBanca(FinIncasari doc);
-	
-	Double getSumaRON (String moneda, Double suma, Double cursValutar);
-	
-	Double restIncasareFact (FacturaEmisa factura);
-	
+double getSuma (String moneda, Double suma, Double cursValutar);
 
-	
+double restIncasareFactura(Factura factura);
+	//inregistrarea incasarii pe  baza  Bilet la Ordine
 
-	void confiramreImposibilitateplata (FinIncasari doc);
-	
-
-	Chitanta inregistrareChitanta(Angajat casier, Double valueOf,
-			String string, boolean b, List<FacturaEmisa> facturi,
-			Date dataEmitere, String string2, int i, String string3,
-			String string4, Client client, Object object);
+//BiletOrdine incasareBO (String localitate, Date dataEmiterii, Double suma,
+	//	String moneda, String sumaLitere, String contBancar) throws Exception;
 
 
-	
-	ExtrasCont inregistrareExtrasCont(Date dataEmitere, Boolean avans,
-			Client client, String seria, Integer numar, String locatie,
-			List<FacturaEmisa> facturi, Double suma, String sumaInLitere,
-			String moneda, Double curs) throws FinanciarIncasariException;
-
-	CEC inregistrareCEC(Date dataEmitere, boolean b, Client client,
-			String string, int i, String string2, String string3,
-			Double valueOf, String string4, List<FacturaEmisa> facturi,
-			String string5, Object object);
-
-	BiletLaOrdine inregistrareBiletLaOrdine(Date dataEmitere, boolean b,
-			Client client, String string, int i, String string2,
-			String string3, List<FacturaEmisa> facturi, Persoana garant,
-			Date dataScadenta, Double valueOf, String string4, String string5,
-			Object object);
-
-	void setContabilitateGeneralaSrv(Object contabilitateGeneralaSrv);
-
-	void setVanzariSrv(VanzariSrv vanzariSrv);
-
-	
+CEC incasareCec(String localitate, Date dataEmiterii, Double suma,
+			String moneda, String sumaLitere, String contBancar,ArrayList<Factura>factura) throws Exception;
 
 
-	
-	
+Chitanta inregistrareCt (String localitate, Date dataEmiterii, Double suma,
+			String moneda, String sumaLitere, String contBancar, ArrayList<Factura>factura,Angajat angajat) throws Exception;	
+
+ExtrasDeCont incasareEC(String localitate, Date dataEmiterii, Double suma,
+			String moneda, String sumaLitere, String contBancar,ArrayList<Factura>factura) throws Exception;
+
+OrdinDePlata incasareOP(String localitate, Date dataEmiterii, Double suma,
+			String moneda, String sumaLitere, String contBancar,
+			Integer numarOrdinPlata, String cF,ArrayList<Factura>factura) throws Exception;
+
+void setVanzariSrv(VanzariSrv vanzariSrv);
+
+
+BiletOrdine incasareBO(String localitate, Date dataEmiterii, Double suma,
+		String moneda, String sumaLitere, String contBancar, ArrayList<Factura> factura, Angajat angajat, Persoana persoana) throws Exception;
+
+
 	
  
 }
