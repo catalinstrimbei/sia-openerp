@@ -46,7 +46,7 @@ public class TestFinanciarIncasariSrv {
 		
 	}
 		
-	@SuppressWarnings("unused")
+	@Test
 	public void testCreareFinanciarIncasari() throws Exception {
 		 
 		logger.setLevel(Level.DEBUG);
@@ -76,7 +76,7 @@ public class TestFinanciarIncasariSrv {
 		
 	}
 	
-     @SuppressWarnings("unused")
+	@Test
 	public void testIncasareBiletOrdine() throws Exception{
     	 SimpleDateFormat dataFormat = new SimpleDateFormat("dd-mm-yyyy");
     	 Date dataEmiterii = new Date(System.currentTimeMillis());
@@ -107,7 +107,8 @@ public class TestFinanciarIncasariSrv {
      
     
 
-	@SuppressWarnings("unused")
+	
+	@Test
 	public void testIncasareCEC() throws Exception{
     	 
     	 SimpleDateFormat dataFormat = new SimpleDateFormat("dd-mm-yyyy");
@@ -136,6 +137,7 @@ public class TestFinanciarIncasariSrv {
      }
 	
 	@SuppressWarnings("unused")
+	@Test
 	public void testIncasareOrdinDePlata() throws Exception{
    	 
    	 SimpleDateFormat dataFormat = new SimpleDateFormat("dd-mm-yyyy");
