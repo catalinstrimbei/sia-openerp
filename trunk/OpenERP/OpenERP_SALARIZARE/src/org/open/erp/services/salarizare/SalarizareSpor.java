@@ -1,5 +1,7 @@
 package org.open.erp.services.salarizare;
 
+import java.util.Date;
+
 public class SalarizareSpor {
 	Integer codspor;
 	String tipspor;
@@ -47,3 +49,4 @@ public class SalarizareSpor {
 	public void setmarimespor(Double marimespor) {
 		this.marimespor = marimespor;
 	}
+}
