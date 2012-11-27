@@ -1,8 +1,5 @@
 package org.open.erp.services.banci.teste;
 
-public class BanciSrvFactory{
-
-}
 import org.open.erp.services.banci.CarduriBNC;
 import org.open.erp.services.banci.CrediteBNC;
 import org.open.erp.services.banci.DepoziteBNC;
