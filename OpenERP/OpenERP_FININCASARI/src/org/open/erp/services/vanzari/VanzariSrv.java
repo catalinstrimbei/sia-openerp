@@ -1,7 +1,11 @@
 package org.open.erp.services.vanzari;
 
-import java.util.ArrayList;
 
+
+/**
+ * @author Isabela
+ *
+ */
 public interface VanzariSrv {
 
 

@@ -1,10 +1,16 @@
 package org.open.erp.services.finincasari;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.vanzari.Factura;
 
+/**
+ * @author Isabela
+ *
+ */
 public class Chitanta extends FinanciarIncasari implements Serializable {
 	
 	/**
@@ -37,6 +43,11 @@ public class Chitanta extends FinanciarIncasari implements Serializable {
 			String moneda, String sumaLitere, String contBancar) {
 		super(localitate, dataEmiterii, suma, moneda, sumaLitere, contBancar);
 		// TODO Auto-generated constructor stub
+	}
+
+	public static ArrayList<Factura> getFactura() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

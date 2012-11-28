@@ -2,6 +2,10 @@ package org.open.erp.services.vanzari;
 
 import java.util.Date;
 
+/**
+ * @author Isabela
+ *
+ */
 public class Factura {
 
 	Integer IDFact;

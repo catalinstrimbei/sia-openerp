@@ -6,6 +6,10 @@ import org.open.erp.services.finincasari.impl.FinanciarIncasariImpl;
 import org.open.erp.services.vanzari.VanzariSrv;
 
 
+/**
+ * @author Isabela
+ *
+ */
 public class FinanciarIncasariSrvFactory {
 	
 	private static Logger logger = Logger.getLogger(FinanciarIncasariSrvFactory.class.getName());

@@ -1,5 +1,7 @@
 package org.open.erp.services.finincasari.teste;
 
+
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +12,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.finincasari.BiletOrdine;
 import org.open.erp.services.finincasari.CEC;
+import org.open.erp.services.finincasari.Chitanta;
+import org.open.erp.services.finincasari.ExtrasDeCont;
 import org.open.erp.services.finincasari.FinanciarIncasariSrv;
 import org.open.erp.services.finincasari.OrdinDePlata;
 import org.open.erp.services.nomgen.Persoana;
@@ -46,6 +50,7 @@ public class TestFinanciarIncasariSrv {
 		
 	}
 		
+	@SuppressWarnings("unused")
 	@Test
 	public void testCreareFinanciarIncasari() throws Exception {
 		 
@@ -76,6 +81,7 @@ public class TestFinanciarIncasariSrv {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void testIncasareBiletOrdine() throws Exception{
     	 SimpleDateFormat dataFormat = new SimpleDateFormat("dd-mm-yyyy");
@@ -99,15 +105,15 @@ public class TestFinanciarIncasariSrv {
     	 
        	BiletOrdine BO =  incasareInstance.incasareBO("bc", dataEmiterii,
     			Double.valueOf(23.00), "RON", "douazeci si trei", "RO125468SC785",factura,angajat,persoana);
-       	logger.debug(BO);
+      
+       	logger.info("1.Incasare prin Bilet Ordine");
     
     
 	}
 
-     
     
-
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void testIncasareCEC() throws Exception{
     	 
@@ -133,8 +139,9 @@ public class TestFinanciarIncasariSrv {
     	 
     	 
     	 CEC Cec = incasareInstance.incasareCec("is", dataEmiterii,23.00 , "RON", "douazeci si trei", "RO125468SC78545",null);
-    	 logger.debug(Cec);
+    	 logger.info("2.Incasare utilizand CEC");
      }
+	
 	
 	@SuppressWarnings("unused")
 	@Test
@@ -163,10 +170,8 @@ public class TestFinanciarIncasariSrv {
    	 
    	 OrdinDePlata OP = incasareInstance.incasareOP("bucuresti", dataEmiterii, 50.00, "RON", 
    			 "cincizeci", "RO12548BUC89", 1205, "xc108", factura);
-   	 logger.debug(OP);
+   	 logger.info("3.Incasare prin Ordin de Plata");
     }
-	
-	
 	
 	
 	@Test
@@ -176,6 +181,68 @@ public class TestFinanciarIncasariSrv {
 		logger.debug(suma);
 		
 	}
-}
+	
+	
+	
+	
+	@SuppressWarnings("unused")
+	@Test
+	public void testinregistrareChitanta() throws Exception {
+		 
+		SimpleDateFormat dataFormat = new SimpleDateFormat("dd-mm-yyyy");
+	    	
+	   	 Date dataEmiterii = new Date(System.currentTimeMillis());
+	   	 dataEmiterii = dataFormat.parse("05-04-2012");
+	   
+	   	 Angajat angajat = new Angajat();
+	   	 angajat.setIDangajat(1);
+	   	 angajat.setNumeAngajat("Ion");
+	   	 
+	   	 Persoana persoana = new Persoana();
+	   	 persoana.setNumePers("Marian");
+	   	 
+	   	 factura = new ArrayList<Factura>();
+	   	 factura.add(factura1);
+	   	 factura.add(factura2);
+	   	 
+	   	 Chitanta CT = incasareInstance.inregistrareCt("bacau", dataEmiterii, 50.00, "RON", "cincizeci", "RO458721bc568", factura, angajat);
+	   	 
+	 	 logger.info("6.Emiterea chitantei pentru suma incasata");
+	  
+	}
+	
+	@Test
+	@SuppressWarnings("unused")
+	public void testIncasareExtrasCont() throws Exception{
+   	 
+   	 SimpleDateFormat dataFormat = new SimpleDateFormat("dd-mm-yyyy");
+    	
+   	 Date dataEmiterii = new Date(System.currentTimeMillis());
+   
+   	 dataEmiterii = dataFormat.parse("05-04-2012");
+   	
+   	 Angajat angajat = new Angajat();
+   	 angajat.setIDangajat(1);
+   	 angajat.setNumeAngajat("Ion");
+   	 
+   	 Persoana persoana = new Persoana();
+   	 persoana.setNumePers("Marian");
+   	 
+   	 factura = new ArrayList<Factura>();
+   	 factura.add(factura1);
+   	 factura.add(factura2);
+   	 
+   	 
+   	ExtrasDeCont ec = incasareInstance.incasareEC("cluj", dataEmiterii, 23.00, "RON", "douazeci si trei", "Ro5879453cl45", factura);
+   	 logger.info("5. Extras de cont");
+   	 
+   	 logger.info("End Test TestFinanciarIncasariSrv!");
+    }
+	 	
+		
+	}
+	
+
+
 
 	
