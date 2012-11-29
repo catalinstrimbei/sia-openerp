@@ -55,8 +55,8 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaSrv {
 
 	@Override
 	public Tranzactie creareTranzactie() {
-		// TODO Auto-generated method stub
-		return null;
+		Tranzactie tran = new Tranzactie();
+		return tran;
 	}
 
 	@Override
@@ -67,8 +67,8 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaSrv {
 
 	@Override
 	public BilantContabil creareBilantContabil() {
-		// TODO Auto-generated method stub
-		return null;
+		BilantContabil bilant = new BilantContabil();
+		return bilant;
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaSrv {
 
 	}
 
-	public static Cont createAccount(int codCont, String denumireCont,
+	public static Cont creazaCont(int codCont, String denumireCont,
 			String descriere, double sold, Tip tip,
 			List<InregistrareOperatiune> intrari, boolean tranzactionabil)
 			throws ExceptieTipContInvalid {
