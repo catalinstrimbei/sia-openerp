@@ -1,5 +1,6 @@
 package org.open.erp.services.contabgen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.open.erp.exceptii.ExceptieTipContInvalid;
@@ -72,7 +73,7 @@ public interface ContabilitateGeneralaSrv {
 	 * @return instanta bilant contabil 
 	 * 
 	 */
-	BilantContabil creareBilantContabil();
+	BilantContabil creareBilantContabil(ArrayList<Cont> conturi);
 	
 	Cont creazaCont(Tip tip) throws ExceptieTipContInvalid;
 

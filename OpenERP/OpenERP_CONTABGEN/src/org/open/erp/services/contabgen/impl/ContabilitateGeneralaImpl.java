@@ -1,5 +1,6 @@
 package org.open.erp.services.contabgen.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.open.erp.exceptii.ExceptieTipContInvalid;
@@ -78,8 +79,8 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaSrv {
 	}
 
 	@Override
-	public BilantContabil creareBilantContabil() {
-		BilantContabil bilant = new BilantContabil();
+	public BilantContabil creareBilantContabil(ArrayList<Cont> conturi) {
+		BilantContabil bilant = new BilantContabil(conturi);
 		return bilant;
 	}
 

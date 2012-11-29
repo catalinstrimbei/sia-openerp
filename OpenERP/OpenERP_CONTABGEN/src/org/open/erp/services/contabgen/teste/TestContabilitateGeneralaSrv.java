@@ -1,23 +1,32 @@
 package org.open.erp.services.contabgen.teste;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.contabgen.ContabilitateGeneralaSrv;
 import org.open.erp.services.conturi.Clasa;
 import org.open.erp.services.conturi.Cont;
 import org.open.erp.services.conturi.ContActiv;
 import org.open.erp.services.conturi.ContPasiv;
 import org.open.erp.services.conturi.PlanConturi;
+import org.open.erp.services.rapoarte.BilantContabil;
 import org.open.erp.services.sabloane.Sablon;
-import org.open.erp.services.tranzactii.Document;
 import org.open.erp.services.tranzactii.InregistrareOperatiune;
 import org.open.erp.services.tranzactii.InregistrareOperatiuneContabila;
 import org.open.erp.services.tranzactii.OperatiuneContabila;
 
+/**
+ * testul corespunzator tranzactiei se gaseste in clasa TestInregistrareOperatiuneContabila
+ *
+ */
 public class TestContabilitateGeneralaSrv {
 	private static Logger logger;
 
@@ -85,7 +94,7 @@ public class TestContabilitateGeneralaSrv {
 		contCreditFurnizori.setTransferCont(contFurnizori);
 		
 		InregistrareOperatiuneContabila inregOpCtb_1 = new InregistrareOperatiuneContabila(new Date(),
-				new Document(), "Descriere", 0.0, contDebitMarfuri, contCreditFurnizori);
+				new Factura(), "Descriere", 0.0, contDebitMarfuri, contCreditFurnizori);
 		
 		logger.info("-- creare inregistrare contabila 2 -- ");
 		InregistrareOperatiune contDebitTVA = new InregistrareOperatiune(null, null,
@@ -96,7 +105,7 @@ public class TestContabilitateGeneralaSrv {
 		contDebitTVA.setTransferCont(contTVA);
 		
 		InregistrareOperatiuneContabila inregOpCtb_2 = new InregistrareOperatiuneContabila(new Date(),
-				new Document(), "Descriere", 0.0, contDebitTVA, contCreditFurnizori);
+				new Factura(), "Descriere", 0.0, contDebitTVA, contCreditFurnizori);
 		
 		
 		logger.info("-- creare operatiune contabila -- ");
@@ -109,5 +118,31 @@ public class TestContabilitateGeneralaSrv {
 		Sablon sablon_vanzare = contabInstance.creareSablon("Sablon 1", opCont);
 		
 		logger.info("-- Sablonul: <<" + sablon_vanzare.getDenumireSablon() + ">> a fost creat" );
+	}
+	
+	@Test
+	public void testCreareBilant() throws Exception {
+		logger.info("----- START creare bilant ------");
+	
+	ArrayList<Cont> conturi=new ArrayList<Cont>();
+	
+	Cont contFurnizori = new ContPasiv(401, "Furnizori", "", 12.0, true);
+	Cont contFurnizoriImobilizari = new ContPasiv(404,
+			"Furnizori imobilizari", "", 12.0, true);
+	Cont contClienti = new ContActiv(4111, "Clienti", "", 24.0, true);
+	
+	conturi.add(contFurnizori);
+	conturi.add(contFurnizoriImobilizari);
+	conturi.add(contClienti);
+	
+	BilantContabil bilant = ContabilitateGeneralaSrvFactory.
+			getContabilitateGeneralaSrv().creareBilantContabil(conturi);
+	
+	logger.info("----- total activ : ------"+bilant.getTotalActiv());
+	logger.info("----- total pasiv : ------"+bilant.getTotalPasiv());
+	
+	assertEquals(bilant.getTotalActiv(), bilant.getTotalPasiv());
+	
+
 	}
 }

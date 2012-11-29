@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.open.erp.exceptii.CodEroare;
 import org.open.erp.exceptii.ExceptieContNetranzactionabil;
+import org.open.erp.services.achizitii.Document;
 import org.open.erp.services.conturi.Cont;
 
 public class InregistrareOperatiuneContabila {
