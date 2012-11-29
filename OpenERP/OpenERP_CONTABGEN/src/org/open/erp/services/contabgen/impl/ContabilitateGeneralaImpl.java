@@ -15,6 +15,7 @@ import org.open.erp.services.conturi.PlanConturi;
 import org.open.erp.services.rapoarte.BilantContabil;
 import org.open.erp.services.sabloane.Sablon;
 import org.open.erp.services.tranzactii.InregistrareOperatiune;
+import org.open.erp.services.tranzactii.InregistrareOperatiuneContabila;
 import org.open.erp.services.tranzactii.OperatiuneContabila;
 import org.open.erp.services.tranzactii.Tranzactie;
 
@@ -60,9 +61,20 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaSrv {
 	}
 
 	@Override
-	public Sablon creareSablon() {
-		// TODO Auto-generated method stub
-		return null;
+	public Sablon creareSablon(String denumire, OperatiuneContabila opCont) {
+		logger.info("3.1 Creare sablon: " + denumire);	
+		logger.info("3.2. Selectare operatiune contabila: " + opCont.getDescriereOperatiune());
+		
+		logger.info("3.3. Specificare inregistrari: ");
+		
+		for(InregistrareOperatiuneContabila op : opCont.getInregistrari())
+		{
+			logger.info("3.3.1 Cont debitor: " + op.getDebitCont().getDenumireCont());
+			logger.info("3.3.2 Cont creditor: " + op.getContCredit().getDenumireCont());
+		}
+		
+		logger.info("3.4 Salvare sablon");
+		return new Sablon(denumire, opCont);
 	}
 
 	@Override

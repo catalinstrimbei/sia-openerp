@@ -1,5 +1,7 @@
 package org.open.erp.services.contabgen;
 
+import java.util.List;
+
 import org.open.erp.exceptii.ExceptieTipContInvalid;
 import org.open.erp.services.conturi.Clasa;
 import org.open.erp.services.conturi.Cont;
@@ -7,6 +9,7 @@ import org.open.erp.services.conturi.Cont.Tip;
 import org.open.erp.services.conturi.PlanConturi;
 import org.open.erp.services.rapoarte.BilantContabil;
 import org.open.erp.services.sabloane.Sablon;
+import org.open.erp.services.tranzactii.OperatiuneContabila;
 import org.open.erp.services.tranzactii.Tranzactie;
 
 /**
@@ -60,7 +63,7 @@ public interface ContabilitateGeneralaSrv {
 	 * @return instanta Sablon nou creat 
 	 * 
 	 */
-	Sablon creareSablon();
+	Sablon creareSablon(String denumire, OperatiuneContabila opCont);
 	
 	
 	/**

@@ -1,5 +1,7 @@
 package org.open.erp.services.contabgen.teste;
 
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -10,6 +12,11 @@ import org.open.erp.services.conturi.Cont;
 import org.open.erp.services.conturi.ContActiv;
 import org.open.erp.services.conturi.ContPasiv;
 import org.open.erp.services.conturi.PlanConturi;
+import org.open.erp.services.sabloane.Sablon;
+import org.open.erp.services.tranzactii.Document;
+import org.open.erp.services.tranzactii.InregistrareOperatiune;
+import org.open.erp.services.tranzactii.InregistrareOperatiuneContabila;
+import org.open.erp.services.tranzactii.OperatiuneContabila;
 
 public class TestContabilitateGeneralaSrv {
 	private static Logger logger;
@@ -56,5 +63,51 @@ public class TestContabilitateGeneralaSrv {
 		contabInstance.adaugaCont(contTest, 1);
 
 		logger.info("-----FINAL caz de utilizare creare plan de conturi ----- ");
+	}
+	
+	@Test
+	public void testCreateSablon() throws Exception {
+		logger.info("----- START creare sablon ------");
+		
+		String denumire = "Sablon ABC";
+		logger.info("-- denumire sablon: " + denumire);
+		
+		logger.info("-- creare inregistrare contabila 1 -- ");
+		InregistrareOperatiune contDebitMarfuri = new InregistrareOperatiune(null, null,
+				InregistrareOperatiune.Tip.DEBIT, 0.0);
+		InregistrareOperatiune contCreditFurnizori = new InregistrareOperatiune(null, null,
+				InregistrareOperatiune.Tip.CREDIT, 0.0);
+			
+		Cont contMarfuri = new ContActiv(371, "Marfuri", "", 0, true);
+		Cont contFurnizori = new ContPasiv(401, "Furnizori", "", 0, true);
+		
+		contDebitMarfuri.setTransferCont(contMarfuri);
+		contCreditFurnizori.setTransferCont(contFurnizori);
+		
+		InregistrareOperatiuneContabila inregOpCtb_1 = new InregistrareOperatiuneContabila(new Date(),
+				new Document(), "Descriere", 0.0, contDebitMarfuri, contCreditFurnizori);
+		
+		logger.info("-- creare inregistrare contabila 2 -- ");
+		InregistrareOperatiune contDebitTVA = new InregistrareOperatiune(null, null,
+				InregistrareOperatiune.Tip.DEBIT, 0.0);
+			
+		Cont contTVA = new ContActiv(4426, "TVA deductibil", "", 0, true);
+		
+		contDebitTVA.setTransferCont(contTVA);
+		
+		InregistrareOperatiuneContabila inregOpCtb_2 = new InregistrareOperatiuneContabila(new Date(),
+				new Document(), "Descriere", 0.0, contDebitTVA, contCreditFurnizori);
+		
+		
+		logger.info("-- creare operatiune contabila -- ");
+		OperatiuneContabila opCont = new OperatiuneContabila(new Date(), "Cumparare marfuri", "desc");
+		
+		opCont.addInregistrare(inregOpCtb_1);
+		opCont.addInregistrare(inregOpCtb_2);
+		
+		logger.info("-- creare sablon -- ");
+		Sablon sablon_vanzare = contabInstance.creareSablon("Sablon 1", opCont);
+		
+		logger.info("-- Sablonul: <<" + sablon_vanzare.getDenumireSablon() + ">> a fost creat" );
 	}
 }
