@@ -1,9 +1,11 @@
 package org.open.erp.services.tranzactii;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.open.erp.exceptii.ExceptieContNetranzactionabil;
+import org.open.erp.services.conturi.Clasa;
 import org.open.erp.services.conturi.Cont;
 
 public class OperatiuneContabila {
@@ -13,7 +15,7 @@ public class OperatiuneContabila {
 	String tipOperatiune;
 	String descriereOperatiune;
 	
-    private List<InregistrareOperatiuneContabila> inregistrari;
+    private List<InregistrareOperatiuneContabila> inregistrari = new ArrayList<InregistrareOperatiuneContabila>();
 	
 	public void setIdOperatiune(Integer idOperatiune) {
 		this.idOperatiune = idOperatiune;
@@ -54,6 +56,20 @@ public class OperatiuneContabila {
 	public Integer getIdOperatiune() {
 		return idOperatiune;
 	}
+	
+	public void addInregistrare(InregistrareOperatiuneContabila inregCont){
+		this.inregistrari.add(inregCont);
+	}
+
+	public OperatiuneContabila(Date dataOperatiune, String tipOperatiune,
+			String descriereOperatiune) {
+		super();
+		this.dataOperatiune = dataOperatiune;
+		this.tipOperatiune = tipOperatiune;
+		this.descriereOperatiune = descriereOperatiune;
+	}
+	
+	
 	
 
 }

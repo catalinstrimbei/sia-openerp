@@ -4,33 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.open.erp.services.conturi.Cont;
+import org.open.erp.services.tranzactii.OperatiuneContabila;
 
 public class Sablon {
 	
 	Integer idSablon;
 	String denumireSablon;
+	OperatiuneContabila opCont;
 	
-	List<Cont> conturiDebitoare = new ArrayList<Cont>();
-	List<Cont> conturiCreditoare = new ArrayList<Cont>();
+	public Sablon(String denumireSablon, OperatiuneContabila opCont) {
+		super();
+		this.denumireSablon = denumireSablon;
+		this.opCont = opCont;
+	}
 	
-	public List<Cont> getConturiDebitoare() {
-		return conturiDebitoare;
+	public OperatiuneContabila getOpCont() {
+		return opCont;
 	}
-	public void addContDebitor(Cont contDebitor) {
-		this.conturiDebitoare.add(contDebitor);
+	public void setOpCont(OperatiuneContabila opCont) {
+		this.opCont = opCont;
 	}
-	public void removeContDebitor(Cont contDebitor) {
-		this.conturiDebitoare.remove(contDebitor);
-	}
-	public List<Cont> getConturiCreditoare() {
-		return conturiCreditoare;
-	}
-	public void addContCreditor(Cont contCreditor) {
-		this.conturiCreditoare.add(contCreditor);
-	}
-	public void removeContCreditor(Cont contCreditor) {
-		this.conturiCreditoare.remove(contCreditor);
-	}
+	
 	public Integer getIdSablon() {
 		return idSablon;
 	}
