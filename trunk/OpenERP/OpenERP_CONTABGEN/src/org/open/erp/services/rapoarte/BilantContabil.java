@@ -19,11 +19,11 @@ public class BilantContabil extends Raport {
 	public BilantContabil() {
 	}
 	
-	public BilantContabil(List<Cont> conturi, int totalActiv, int totalPasiv) {
+	
+	
+	public BilantContabil(List<Cont> conturi) {
 		this.conturi = conturi;
-		this.totalActiv = totalActiv;
-		this.totalPasiv = totalPasiv;
-		
+	
 		if(conturi != null && !conturi.isEmpty()){
 			for(Cont cont:conturi){
 				

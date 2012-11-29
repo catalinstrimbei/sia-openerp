@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.open.erp.services.nomgen.Furnizori;
 
-public class Factura {
+public class Factura extends Document{
 	private Integer nrFactura;
 	private Date dataFactura;
 	private Date dataScadenta;  //data pana la care se poate plati factura
@@ -42,6 +42,9 @@ public class Factura {
 	public void setLinieFactura(List<LiniiFactura> linieFactura) {
 		this.linieFactura = linieFactura;
 	}
+	/**
+	 * necesar pentru inregistrarea in contabilitate
+	 */
 	public Double getValoareTotala() {
 		return valoareTotala;
 	}
