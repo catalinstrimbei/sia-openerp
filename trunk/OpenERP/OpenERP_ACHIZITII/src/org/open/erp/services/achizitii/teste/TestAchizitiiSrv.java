@@ -29,9 +29,11 @@ import org.open.erp.services.nommat.Materiale;
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.CerereAprov;
 import org.open.erp.services.achizitii.CerereOferta;
+import org.open.erp.services.achizitii.Comanda;
 import org.open.erp.services.achizitii.Furnizori;
 import org.open.erp.services.achizitii.LiniiCerereAprov;
 import org.open.erp.services.achizitii.LiniiCerereOferta;
+import org.open.erp.services.achizitii.LiniiComanda;
 import org.open.erp.services.achizitii.LiniiOferta;
 import org.open.erp.services.achizitii.LiniiPlanAprov;
 import org.open.erp.services.achizitii.Oferta;
@@ -111,28 +113,51 @@ public class TestAchizitiiSrv {
 		logger.info("Begin test CreareOferta!");
 		
 		Furnizori furnizor1 = new Furnizori("Furnizor1", "Ion");
+
 		Oferta oferta = achizitiiInstance.creareOferta(111, calendarStart.getTime(), calendarStart.getTime(),123.00, furnizor1, cerereOferta);
+
 		assertNotNull("Nu exista oferta noua!", oferta);
-		LiniiOferta linieOferta = achizitiiInstance.creareLinieOferta(1, 20.00, linieCerereOferta1.getMaterial(), 7.00, oferta);
+
+		//LiniiOferta linieOferta = achizitiiInstance.creareLinieOferta(1, 20.00, linieCerereOferta1.getMaterial(), 7.00, oferta);
+		LiniiOferta linieOferta = achizitiiInstance.creareLinieOferta(1, 20.00, mat2, 7.00, oferta);
+
+		logger.info("S a introdus linia " + linieOferta.getNrLinie() + " pentru oferta " + oferta.getNrOferta());
 		
 		Oferta oferta2 = achizitiiInstance.creareOferta(112, calendarStart.getTime(), calendarStart.getTime(),127.00, furnizor1, cerereOferta);
 		assertNotNull("Nu exista oferta noua!", oferta);
-		
-		
+		  
+		  
+		  logger.info("Oferta finala" );
+		  
+		  List<Oferta> oferte= new ArrayList<Oferta>();
+		  oferte.add(oferta);
+		  oferte.add(oferta2);
+		  Oferta ofertaAleasa = oferte.get(1);
+		   for (int i=1; i< oferte.size(); i++)
+		   {
+		    Oferta ofertaFinala = achizitiiInstance.comparare(ofertaAleasa, oferte.get(i));
+		     ofertaAleasa = ofertaFinala;
+		   }
+		   
+		   Oferta ofertaFinala = achizitiiInstance.comparare(oferta,oferta2);
+		   logger.info("Oferta finala " + ofertaFinala.getNrOferta());
+		   
+		   logger.info("Begin Test Comanda!");
+			Comanda comanda1 = achizitiiInstance.creareComanda(1, calendarStart.getTime(), furnizor1, ofertaFinala, ofertaFinala.getValoareTotala());
+			assertNotNull("Nu exista cerereAprovizionare noua!", comanda1);
+			//
+			LiniiComanda linieComanda1 = achizitiiInstance.creareLinieComanda(1, 10.00, mat2, 50.00, comanda1, linieOferta);
+			logger.info("S a introdus linia " + linieComanda1.getNrLinie() + " pentru comanda " + comanda1.getNrComanda());
+
+			achizitiiInstance.salveazaComanda(comanda1);
+			achizitiiInstance.trimitereComanda(comanda1, furnizor1);
+			
+			logger.info("End Test Comanda!");
+
+			//
+		   
 		logger.info("Oferta finala" );
-		
-		List<Oferta> oferte= new ArrayList<Oferta>();
-		oferte.add(oferta);
-		oferte.add(oferta2);
-		Oferta ofertaAleasa = oferte.get(1);
-		 for (int i=1; i< oferte.size(); i++)
-		 {
-			 Oferta ofertaFinala = achizitiiInstance.comparare(ofertaAleasa, oferte.get(i));
-			  ofertaAleasa = ofertaFinala;
-		 }
-		 
-		 Oferta ofertaFinala = achizitiiInstance.comparare(oferta,oferta2);
-		 logger.info("Oferta finala" + ofertaFinala);
+
 	}
 	
 	

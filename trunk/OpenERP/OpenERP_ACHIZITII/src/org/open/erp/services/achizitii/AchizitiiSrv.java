@@ -27,22 +27,13 @@ public interface AchizitiiSrv {
 	 public Oferta  comparare(Oferta oferta1, Oferta oferta2 );
 	 
 	public   void  addOferta(Oferta oferta1);
-	/* lista cu oferta
-	 * 
-	 */
-	
+
 	public void stabilireFurnizor(CerereOferta cerereOferta, Furnizori furnizor);
-	
-	
-	
+
 	public void trimitereOferta(CerereOferta cerereOferta, Furnizori furnizor);
-	
-	
-	
+
 	public Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare, Double valoareTotala, Furnizori furnizor, CerereOferta cerereOferta);
-	
-	
-	
+
 	public LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Materiale material, Double cantitate, Oferta oferta);
 	
 	
@@ -56,5 +47,9 @@ public interface AchizitiiSrv {
 	
 	
 	public PlanAprov crearePlanAprov(Integer nrPlan, Integer an, Integer luna, Integer saptamana);
-	
+	public Comanda creareComanda(Integer nrComanda, Date dataComanda, Furnizori furnizor, Oferta oferta, Double valoareTotalaComanda);	
+	public LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Materiale material, Double cantitate, Comanda comanda, LiniiOferta linieO);
+	public Comanda salveazaComanda(Comanda comanda);
+	public void trimitereComanda(Comanda comanda, Furnizori furnizor);
+
 }

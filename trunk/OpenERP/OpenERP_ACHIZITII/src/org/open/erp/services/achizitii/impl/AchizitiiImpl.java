@@ -1,5 +1,7 @@
 package org.open.erp.services.achizitii.impl;
 
+
+import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -8,9 +10,11 @@ import java.util.List;
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.CerereAprov;
 import org.open.erp.services.achizitii.CerereOferta;
+import org.open.erp.services.achizitii.Comanda;
 import org.open.erp.services.achizitii.Furnizori;
 import org.open.erp.services.achizitii.LiniiCerereAprov;
 import org.open.erp.services.achizitii.LiniiCerereOferta;
+import org.open.erp.services.achizitii.LiniiComanda;
 import org.open.erp.services.achizitii.LiniiOferta;
 import org.open.erp.services.achizitii.LiniiPlanAprov;
 import org.open.erp.services.achizitii.Oferta;
@@ -28,6 +32,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		this.materialeSrv=matSrv;
 	}
 	
+
 	public AchizitiiImpl()
 	{
 		
@@ -103,6 +108,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		logger.debug("2.3 S-a trimis cererea de oferta");
 	}
 	
+
 	public Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare,Double valoareTotala, Furnizori furnizor, CerereOferta cerereOferta){
 		logger.debug("3.1.1 Primire oferte de la furnizori (Creare ferta noua)");
 		Oferta ofertaNoua=new Oferta(nrOferta, dataOferta, dataLivrare,valoareTotala, furnizor, cerereOferta);
@@ -112,27 +118,56 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	public LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Materiale material, Double cantitate, Oferta oferta){
 		logger.debug("3.1.2 Adaugare linie in oferta primita");
 		
-		LiniiOferta linieOferta=new LiniiOferta(nrLinie, pret, material, cantitate, oferta);
-		oferta.adaugaLinie(linieOferta);
-		linieOferta.setOferta(oferta);
+		LiniiOferta linieOferta = new LiniiOferta(nrLinie, pret, material, cantitate, oferta);
+		//oferta.adaugaLinie(linieOferta);
+		linieOferta.setOferta(oferta); 
 		return linieOferta;
 	}
      
+
+	//comparareOferta
 	public   void  addOferta(Oferta oferta1){
-		List<Oferta> oferte=  new ArrayList<Oferta>();
-	   oferte.add(oferta1);
+		  List<Oferta> oferte=  new ArrayList<Oferta>();
+		    oferte.add(oferta1);
+		 }
+		 
+	public Oferta  comparare(Oferta oferta1, Oferta oferta2 )
+	  {
+	   logger.debug("3.2 Comparare oferta " + oferta1.getNrOferta()+ " cu oferta "+ oferta2.getNrOferta());
+	   
+	  if (oferta1.getValoareTotala() > oferta2.getValoareTotala() )
+	   return oferta1;
+	 
+	  else
+	   return oferta2;
+	  }
+	//salvareOferta
+	
+	public LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Materiale material, Double cantitate, Comanda comanda, LiniiOferta linieO){
+		logger.debug("4.1 Adaugare linie in Comanda " );
+		
+		LiniiComanda linieComanda = new LiniiComanda(nrLinie, pret, linieO.getMaterial(), cantitate, comanda);
+		//comanda.adaugaLinieComanda(linieComanda);
+		linieComanda.setComanda(comanda);
+		return linieComanda;
 	}
 	
-	 public Oferta  comparare(Oferta oferta1, Oferta oferta2 )
-	 {
-		 logger.debug("3.2 Comparare oferta" + oferta1.getNrOferta()+ "cu oferta"+ oferta2.getNrOferta());
-		 
-	 if (oferta1.getValoareTotala() > oferta2.getValoareTotala() )
-	  return oferta1;
+	public Comanda creareComanda(Integer nrComanda, Date dataComanda, Furnizori furnizor, Oferta oferta, Double valoareTotalaComanda){
+		logger.debug("4.2 Creare Comanda " + nrComanda);
+		
+		Comanda comanda = new Comanda(nrComanda, dataComanda, oferta.getFunrizor(), valoareTotalaComanda);
+		return comanda;
+	}
+		
+	public Comanda salveazaComanda(Comanda comanda){
+    	if (comanda.getNrComanda() == null)
+    		throw new RuntimeException("Trebuie introdusa neaparat nrComanda ");	    	
+    	logger.info("4.3 SALVARE comanda : " + comanda);
+		return comanda;
+    }
 	
-	 else
-		 return oferta2;
-	 }
-	 
-	 }
+	public void trimitereComanda(Comanda comanda, Furnizori furnizor){
+		logger.debug("4.4 S-a trimis comanda la furnizorul " + furnizor);
+	}
+}
 
