@@ -49,7 +49,8 @@ public class TestAchizitiiSrv {
 		logger =  Logger.getLogger(TestAchizitiiSrv.class.getName());	
 	}
 	
-	@Before public void initServices(){	
+	@Before 
+	public void initServices(){	
 		achizitiiInstance= AchizitiiSrvFactory.getAchizitiiSrv();
 		logger.info("AchizitiiSrv Service intiated for Test!");
 	}

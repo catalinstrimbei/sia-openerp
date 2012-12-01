@@ -1,5 +1,6 @@
 package org.open.erp.services.achizitii;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlanAprov {
@@ -7,7 +8,7 @@ public class PlanAprov {
 	private Integer an;
 	private Integer luna;
 	private Integer saptamana;
-	private List<LiniiPlanAprov> liniiPlanAprov;
+	private List<LiniiPlanAprov> liniiPlanAprov = new ArrayList<LiniiPlanAprov>();
 	
 	public void adaugaLinie(LiniiPlanAprov linie){
 		this.liniiPlanAprov.add(linie);
