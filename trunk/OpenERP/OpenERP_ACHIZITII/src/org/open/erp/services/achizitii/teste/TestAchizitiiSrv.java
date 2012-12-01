@@ -3,8 +3,10 @@ package org.open.erp.services.achizitii.teste;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.log4j.Level;
 import static org.junit.Assert.assertNotNull;
@@ -109,14 +111,28 @@ public class TestAchizitiiSrv {
 		logger.info("Begin test CreareOferta!");
 		
 		Furnizori furnizor1 = new Furnizori("Furnizor1", "Ion");
-		Oferta oferta = achizitiiInstance.creareOferta(111, calendarStart.getTime(), calendarStart.getTime(), furnizor1, cerereOferta);
+		Oferta oferta = achizitiiInstance.creareOferta(111, calendarStart.getTime(), calendarStart.getTime(),123.00, furnizor1, cerereOferta);
 		assertNotNull("Nu exista oferta noua!", oferta);
-		
 		LiniiOferta linieOferta = achizitiiInstance.creareLinieOferta(1, 20.00, linieCerereOferta1.getMaterial(), 7.00, oferta);
 		
+		Oferta oferta2 = achizitiiInstance.creareOferta(112, calendarStart.getTime(), calendarStart.getTime(),127.00, furnizor1, cerereOferta);
+		assertNotNull("Nu exista oferta noua!", oferta);
 		
 		
+		logger.info("Oferta finala" );
 		
+		List<Oferta> oferte= new ArrayList<Oferta>();
+		oferte.add(oferta);
+		oferte.add(oferta2);
+		Oferta ofertaAleasa = oferte.get(1);
+		 for (int i=1; i< oferte.size(); i++)
+		 {
+			 Oferta ofertaFinala = achizitiiInstance.comparare(ofertaAleasa, oferte.get(i));
+			  ofertaAleasa = ofertaFinala;
+		 }
+		 
+		 Oferta ofertaFinala = achizitiiInstance.comparare(oferta,oferta2);
+		 logger.info("Oferta finala" + ofertaFinala);
 	}
 	
 	

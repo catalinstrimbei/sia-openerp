@@ -1,5 +1,7 @@
 package org.open.erp.services.achizitii.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -101,9 +103,9 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		logger.debug("2.3 S-a trimis cererea de oferta");
 	}
 	
-	public Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare, Furnizori furnizor, CerereOferta cerereOferta){
+	public Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare,Double valoareTotala, Furnizori furnizor, CerereOferta cerereOferta){
 		logger.debug("3.1.1 Primire oferte de la furnizori (Creare ferta noua)");
-		Oferta ofertaNoua=new Oferta(nrOferta, dataOferta, dataLivrare, furnizor, cerereOferta);
+		Oferta ofertaNoua=new Oferta(nrOferta, dataOferta, dataLivrare,valoareTotala, furnizor, cerereOferta);
 		return ofertaNoua;
 	}
 	
@@ -115,6 +117,22 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		linieOferta.setOferta(oferta);
 		return linieOferta;
 	}
-
+     
+	public   void  addOferta(Oferta oferta1){
+		List<Oferta> oferte=  new ArrayList<Oferta>();
+	   oferte.add(oferta1);
+	}
 	
-}
+	 public Oferta  comparare(Oferta oferta1, Oferta oferta2 )
+	 {
+		 logger.debug("3.2 Comparare oferta" + oferta1.getNrOferta()+ "cu oferta"+ oferta2.getNrOferta());
+		 
+	 if (oferta1.getValoareTotala() > oferta2.getValoareTotala() )
+	  return oferta1;
+	
+	 else
+		 return oferta2;
+	 }
+	 
+	 }
+
