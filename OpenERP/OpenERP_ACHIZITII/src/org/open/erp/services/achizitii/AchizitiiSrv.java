@@ -2,8 +2,6 @@ package org.open.erp.services.achizitii;
 
 
 import java.util.Date;
-
-import org.open.erp.services.nomgen.Furnizori;
 import org.open.erp.services.nommat.Materiale;
 import org.open.erp.services.nommat.NomenclatorGeneralSrv;
 

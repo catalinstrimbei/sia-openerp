@@ -1,21 +1,38 @@
 package org.open.erp.services.achizitii.teste;
 
+
+import static org.junit.Assert.*;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import org.apache.log4j.Level;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.log4j.Level;
+
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import org.open.erp.services.achizitii.AchizitiiSrv;
+import org.open.erp.services.achizitii.CerereAprov;
+import org.open.erp.services.achizitii.LiniiCerereAprov;
+import org.open.erp.services.nommat.Materiale;
+
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.CerereAprov;
 import org.open.erp.services.achizitii.CerereOferta;
+import org.open.erp.services.achizitii.Furnizori;
 import org.open.erp.services.achizitii.LiniiCerereAprov;
 import org.open.erp.services.achizitii.LiniiCerereOferta;
+import org.open.erp.services.achizitii.LiniiOferta;
 import org.open.erp.services.achizitii.LiniiPlanAprov;
+import org.open.erp.services.achizitii.Oferta;
 import org.open.erp.services.achizitii.PlanAprov;
 import org.open.erp.services.nommat.Materiale;
 
@@ -24,6 +41,8 @@ public class TestAchizitiiSrv {
 	private static Logger logger;
 
 	AchizitiiSrv achizitiiInstance;
+
+
 	
 	@BeforeClass
 	public static void initLocalJavaLogger(){
@@ -64,12 +83,7 @@ public class TestAchizitiiSrv {
 				//--------
 				logger.info("End Test CerereAprovizionare!");
 		
-/*	}
-	
-	@Test
-	public void testCreareCerereOferta() throws Exception{
-		
-		logger.setLevel(Level.DEBUG);*/
+
 		logger.info("Begin test Test CreareCerereOferta!");
 		
 	/*	Calendar calendarStart = Calendar.getInstance();
@@ -80,15 +94,32 @@ public class TestAchizitiiSrv {
 		
 		
 		Materiale mat2=achizitiiInstance.stabilireMaterial(liniePlan);
-		LiniiCerereOferta linieOferta=achizitiiInstance.creareLinie(2, 3.3, mat2, cerereOferta);
+		LiniiCerereOferta linieCerereOferta1=achizitiiInstance.creareLinie(2, 3.3, mat2, cerereOferta);
 
 
 		//org.open.erp.services.nommat.Materiale material=achizitiiInstance.stabilireMaterial(liniePlan);
-		LiniiCerereOferta linieCerere = achizitiiInstance.creareLinie(1, 5.0, mat2, cerereOferta);
+		LiniiCerereOferta linieCerereOferta2 = achizitiiInstance.creareLinie(1, 5.0, mat2, cerereOferta);
 		
 		
-		logger.info("End Test CreareCerereOferta!");
+		logger.info("End Test CreareCerereOferta!");	
+		
+		
+		
+		logger.info("Begin test CreareOferta!");
+		
+		Furnizori furnizor1 = new Furnizori("Furnizor1", "Ion");
+		Oferta oferta = achizitiiInstance.creareOferta(111, calendarStart.getTime(), calendarStart.getTime(), furnizor1, cerereOferta);
+		assertNotNull("Nu exista oferta noua!", oferta);
+		
+		LiniiOferta linieOferta = achizitiiInstance.creareLinieOferta(1, 20.00, linieCerereOferta1.getMaterial(), 7.00, oferta);
+		
+		
+		
 		
 	}
+	
+	
+	
+	
 	
 }
