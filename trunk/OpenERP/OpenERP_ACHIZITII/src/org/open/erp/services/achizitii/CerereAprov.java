@@ -3,22 +3,21 @@ package org.open.erp.services.achizitii;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.open.erp.services.nommat.Materiale;
-
-
+import org.open.erp.services.nommat.Materiale;
 
 
 public class CerereAprov {
 		private Integer nrCerereAprov;
 		private Date dataCerereAprov;
-		private List<LiniiCerereAprov> liniiCerereAprov=new ArrayList<LiniiCerereAprov>();
+		private List<LiniiCerereAprov> liniiCerereAprov = new ArrayList<LiniiCerereAprov>();
 		private Materiale material;
+
 		
 		public void addLinie(LiniiCerereAprov linie){
 			this.liniiCerereAprov.add(linie);
 		}
-				
+
 		public Integer getNrCerereAprov() {
 			return nrCerereAprov;
 		}
@@ -37,8 +36,21 @@ public class CerereAprov {
 		public void setLiniiCerereAprov(List<LiniiCerereAprov> liniiCerereAprov) {
 			this.liniiCerereAprov = liniiCerereAprov;
 		}
+
+		public void adaugaLinieCerereAprov(LiniiCerereAprov liniiCerereAprov){
+			this.liniiCerereAprov.add(liniiCerereAprov);
+		}
 		
+		public void adaugaLinie(List<LiniiCerereAprov> linii){
+			this.liniiCerereAprov.addAll(linii);
+		}
 		
+		public Materiale getMaterial() {
+			return material;
+		}
+		public void setMaterial(Materiale material) {
+			this.material = material;
+		}
 		
 		public CerereAprov(Integer nrCerereAprov, Date dataCerereAprov,
 				Materiale material) {
@@ -96,16 +108,5 @@ public class CerereAprov {
 				return false;
 			return true;
 		}
-
-		public void setMaterial(Materiale material2) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void adaugaLinieCerereAprov(LiniiCerereAprov linieCerereAprov) {
-				this.liniiCerereAprov.add(linieCerereAprov);
-		}
-		
-		
 
 }

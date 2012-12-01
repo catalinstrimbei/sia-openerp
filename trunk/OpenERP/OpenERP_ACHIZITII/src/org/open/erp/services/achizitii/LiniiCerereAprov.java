@@ -13,6 +13,7 @@ public class LiniiCerereAprov {
 	}
 	public void setCerereAprov(CerereAprov cerereAprov) {
 		this.cerereAprov = cerereAprov;
+		this.setMaterial(cerereAprov.getMaterial());
 	}
 	public Integer getNrLinieCerereAprov() {
 		return nrLinieCerereAprov;
@@ -36,6 +37,16 @@ public class LiniiCerereAprov {
 			Integer nrLinieCerereAprov, Materiale material, Double cantitate) {
 		super();
 		this.cerereAprov = cerereAprov;
+		this.nrLinieCerereAprov = nrLinieCerereAprov;
+		this.material = material;
+		this.cantitate = cantitate;
+	}
+	
+	
+	
+	public LiniiCerereAprov(Integer nrLinieCerereAprov, Materiale material,
+			Double cantitate) {
+		super();
 		this.nrLinieCerereAprov = nrLinieCerereAprov;
 		this.material = material;
 		this.cantitate = cantitate;

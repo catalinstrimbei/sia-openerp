@@ -1,19 +1,18 @@
 package org.open.erp.services.achizitii.impl;
 
-
 import java.util.Date;
 import java.util.List;
 
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.CerereAprov;
 import org.open.erp.services.achizitii.CerereOferta;
+import org.open.erp.services.achizitii.Furnizori;
 import org.open.erp.services.achizitii.LiniiCerereAprov;
 import org.open.erp.services.achizitii.LiniiCerereOferta;
 import org.open.erp.services.achizitii.LiniiOferta;
 import org.open.erp.services.achizitii.LiniiPlanAprov;
 import org.open.erp.services.achizitii.Oferta;
 import org.open.erp.services.achizitii.PlanAprov;
-import org.open.erp.services.nomgen.Furnizori;
 import org.open.erp.services.nommat.Materiale;
 import org.open.erp.services.nommat.NomenclatorGeneralSrv;
 
@@ -36,7 +35,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		logger.debug("1.1 Initiere/Creare cerere de aprovizionare noua");
 		
 		CerereAprov cerereNoua = new CerereAprov(nr, data, material);
-		Materiale mat = materialeSrv.creareMateriale(material);
+		Materiale mat = materialeSrv.creareMaterial(material);
 		cerereNoua.setMaterial(material);
 		return cerereNoua;
 		
