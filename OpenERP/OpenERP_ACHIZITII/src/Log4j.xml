@@ -21,11 +21,11 @@
   
   
 	<!-- Loggers --> 
-	<logger name="org.open.erp.services.achizitii.impl.AchizitiiImpl">
+	<logger name="org.open.erp.services.proman.impl.ProjectManagementImpl">
 		<level value="debug"/> 
 		<appender-ref ref="A2" />
 	</logger>
-	<logger name="org.open.erp.services.achizitii.impl">
+	<logger name="org.open.erp.services.proman.impl">
 		<level value="info"/> 
 	</logger>  
 	<!-- Root Logger -->
