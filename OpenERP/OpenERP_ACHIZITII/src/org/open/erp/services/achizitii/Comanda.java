@@ -64,6 +64,17 @@ public class Comanda {
 		super();
 	}
 
+	public Comanda(Integer nrComanda, Date dataComanda, Furnizori funrizor,
+			Double valoareTotalaComanda) {
+		super();
+		this.nrComanda = nrComanda;
+		this.dataComanda = dataComanda;
+		this.funrizor = funrizor;
+		this.valoareTotala = valoareTotala;
+	}
 	
+	public void adaugaLinieComanda(LiniiComanda linie){
+		this.linieComanda.add(linie);
+	}
 	
 }

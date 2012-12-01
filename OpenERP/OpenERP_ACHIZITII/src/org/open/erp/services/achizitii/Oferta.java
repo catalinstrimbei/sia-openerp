@@ -73,6 +73,7 @@ public class Oferta {
 	public Oferta() {
 		super();
 	}
+
 	public Oferta(Integer nrOferta, Date dataOferta, Date dataLivrare,Double valoareTotala,
 			Furnizori funrizor, CerereOferta cerereOferta) {
 		super();
@@ -82,6 +83,7 @@ public class Oferta {
 		this.valoareTotala = valoareTotala;
 		this.funrizor = funrizor;
 		this.cerereOferta = cerereOferta;
+		this.valoareTotala = valoareTotala;
 	}
 	
 	
