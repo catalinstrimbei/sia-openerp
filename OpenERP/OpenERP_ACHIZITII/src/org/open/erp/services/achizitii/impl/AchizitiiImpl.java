@@ -26,7 +26,6 @@ import org.open.erp.services.achizitii.PlanAprov;
 import org.open.erp.services.nommat.Materiale;
 import org.open.erp.services.nommat.NomenclatorGeneralSrv;
 
-
 public class AchizitiiImpl implements AchizitiiSrv {
 	
 	private NomenclatorGeneralSrv materialeSrv;
@@ -36,21 +35,21 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		this.materialeSrv=matSrv;
 	}
 	
-
 	public AchizitiiImpl()
-	{
+							{
 		
-	}
+							}
 
-	public CerereAprov creareCerereAprov(Integer nr, Date data, Materiale material) {
+	public CerereAprov creareCerereAprov(Integer nr, Date data) //, Materiale material)
+		{
 		logger.debug("1.1 Initiere/Creare cerere de aprovizionare noua");
 		
-		CerereAprov cerereNoua = new CerereAprov(nr, data, material);
-		Materiale mat = materialeSrv.creareMaterial(material);
-		cerereNoua.setMaterial(material);
+		CerereAprov cerereNoua = new CerereAprov(nr, data);// material);
+		//Materiale mat = materialeSrv.creareMaterial(material);
+		//cerereNoua.setMaterial(material);
 		return cerereNoua;
 		
-	}
+		}
 			
 	public LiniiCerereAprov creareLinieCerereAprov(CerereAprov cerere, Integer nrLinie, Materiale material, Double cantitate){
 		logger.debug("1.2 Adaugare linie intr-o Cerere Aprovizionare");
@@ -213,8 +212,8 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	  if (factura.getValoareTotala() != comanda.getValoareTotala())
 		  logger.debug("Factura nu corespunde cu comanda."); //creare facturaRetur
 	  else		  
-		  logger.debug("Validare receptie"); //crestereStoc
-	  	
+		  logger.debug("Validare factura"); //crestereStoc
+	  
 	  }
 	
 	//LiniiFactura
@@ -241,6 +240,10 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
 		return linieNIr;
 	}
+
+
+	
+	 
 	
 	
 }
