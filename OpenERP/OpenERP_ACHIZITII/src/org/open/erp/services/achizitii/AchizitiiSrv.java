@@ -9,7 +9,7 @@ import org.open.erp.services.stocuri.StocuriSrv;
 
 
 /**
- * @author catalin.strimbei
+ * @author Borosu, Martinas, Negrut,Sandu,Sutu
  * 
  * @ApplicationServiceFacade
  * 
@@ -112,7 +112,7 @@ public interface AchizitiiSrv {
 	 * 
 	 */	
 	
-	
+	public void trimitereCerereOferta(CerereOferta cerereOferta, Furnizori furnizor);
 	
 	LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Materiale material, CerereOferta cerereOferta);
 	/**
@@ -205,42 +205,89 @@ public interface AchizitiiSrv {
  	 * 
  	 */	
      
+    public Comanda salveazaComanda(Comanda comanda);
     
     
+	public void trimitereComanda(Comanda comanda, Furnizori furnizor);
+  	
+
+	
+	
+  	Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala,Furnizori furnizor);
+  	
+  	/**
+	 * Scop				Creare factura	
+	 * @param nrFactura	
+	 * @param dataFactura
+	 * @param dataScadenta
+	 * @param valoareTotala
+	 * @param Furnizor
+	 * 
+	 * @return LiniePlan nou creata
+	 * 
+	 */	
+  	
+  	LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Materiale material, Double cantitate, Factura factura, LiniiComanda linieComanda);
+  	/**
+	 * Scop					Adaugarea unei linii la factura
+	 * @param nrCerereOferta	
+	 * @param dataCerereOferta  
+	 * 
+	 * @return LiniePlan nou creata
+	 * 
+	 */	
+  	
+
+	 NIR creareNIR(Integer nrNIR, Date data,Factura factura, Double valoareTotala);
+	 
+	 /**
+	 * Scop				 Creare NIR
+	 * @param nrNIR	
+	 * @param data
+	 * @param factura
+	 * @param valoareTotala
+	 *
+	 * @return Factura nou creata
+	 * 
+	 */	
+	  	
+	 
+	 LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie,
+			Materiale material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie);
+	 
+	 /**
+	 * Scop				 Aociere Linie Notei de receptie
+	 * @param nrNIR	
+	 * @param data
+	 * @param factura
+	 * @param valoareTotala
+	 *
+	 * @return Linia  Nou creata
+	 * 
+	 */	
+	 
+  	public void  comparareFacturaComanda(Factura factura, Comanda comanda);
+    
+	/**
+	 * Scop		Validarea facturii   daca aceasta este conform comenzii pentru a se inregistra intrarea in stoc
+	 * @param factura	
+	 * @param comanda  
+	 * 
+	 * 
+	 */	
     
     public Materiale stabilireMaterial(LiniiPlanAprov liniePlan);
 	
 	
-	 
 	public   void  addOferta(Oferta oferta1);
 
-
-
-	public void trimitereCerereOferta(CerereOferta cerereOferta, Furnizori furnizor);
-
-	
-
-	
-	
-	
-	
 	public void setMaterialSrv(NomenclatorGeneralSrv matSrv);
 	
 	
-	
-	public Comanda salveazaComanda(Comanda comanda);
-	public void trimitereComanda(Comanda comanda, Furnizori furnizor);
 
+  	public Furnizori creareFurnizor(String denumire);
 	
-	//FActura
-	public Furnizori creareFurnizor(String denumire);
-	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala, String denumireFurnizor);
-	public LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Materiale material, Double cantitate, Factura factura, LiniiComanda linieComanda);
-	public void  comparareFacturaComanda(Factura factura, Comanda comanda);
-	
-	
-	public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala);
-	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Materiale material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie);
+
 	
 
 }
