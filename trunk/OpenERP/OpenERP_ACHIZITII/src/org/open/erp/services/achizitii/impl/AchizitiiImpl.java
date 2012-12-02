@@ -184,20 +184,20 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	//Furnizori
-	public Furnizori creareFurnizor(String denumire){
+	public Furnizori creareFurnizor(Furnizori furnizori){
 		logger.debug("5.1.1 S-a introdus un nou Furnizor!!!");
 		
-		Furnizori furnizor = new Furnizori(denumire);
+		Furnizori furnizor = new Furnizori();
 		return furnizor;
 		
 	}
 	
-	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala, String denumireFurnizor){
+	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala,Furnizori furnizor){
 		logger.debug("5.1.2 S-a creat Factura!!!");
 		
 		Factura factura = new Factura(nrFactura, dataFactura, dataScadenta, valoareTotala);
-		Furnizori furnizorFact = creareFurnizor(denumireFurnizor);
-		factura.setFunrizor(furnizorFact);
+		//Furnizori furnizorFact = new Furnizori();
+		factura.setFunrizor(furnizor);
 		return factura;
 	}
 	
@@ -226,10 +226,10 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	//NIR
-	public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala){
+	public NIR creareNIR(Integer nrNIR, Date data, Factura factura, Double valoareTotala){
 	   logger.debug("5.2.1 Creare NIR " + nrNIR);
 	   
-	   NIR nir = new NIR (nrNIR, data, furnizor, valoareTotala);
+	   NIR nir = new NIR (nrNIR, data,factura, valoareTotala);
 	   return nir;
 	}
 		
@@ -240,6 +240,16 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
 		return linieNIr;
 	}
+
+	@Override
+	public Furnizori creareFurnizor(String denumire) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	
 
 
 	

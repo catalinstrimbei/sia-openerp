@@ -11,8 +11,14 @@ public class NIR extends Document{
 	private Furnizori furnizor;
 	private List<LiniiNIR> linieNir;
 	private Double valoareTotala;
+	private Factura factura;
 	
-	
+	public Factura getFactura() {
+		return factura;
+	}
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
 	public Integer getNrNIR() {
 		return nrNIR;
 	}
@@ -43,28 +49,26 @@ public class NIR extends Document{
 	public void setValoareTotala(Double valoareTotala) {
 		this.valoareTotala = valoareTotala;
 	}
-	public NIR(Integer nrNIR, Date data, Furnizori furnizor,
-			List<LiniiNIR> linieNir, Double valoareTotala) {
+	public NIR(Integer nrNIR, Date data, List<LiniiNIR> linieNir,
+			Double valoareTotala, Factura factura) {
 		super();
 		this.nrNIR = nrNIR;
 		this.data = data;
-		this.furnizor = furnizor;
 		this.linieNir = linieNir;
 		this.valoareTotala = valoareTotala;
+		this.factura = factura;
 	}
-		
 	public NIR() {
 		super();
 	}
-	public NIR(Integer nrNIR, Date data, Furnizori furnizor,
-			Double valoareTotala) {
+	public NIR(Integer nrNIR, Date data, Factura factura, Double valoareTotala) {
 		super();
 		this.nrNIR = nrNIR;
 		this.data = data;
-		this.furnizor = furnizor;
 		this.valoareTotala = valoareTotala;
+		this.factura = factura;
 	}
-
+	
 	
 
 }

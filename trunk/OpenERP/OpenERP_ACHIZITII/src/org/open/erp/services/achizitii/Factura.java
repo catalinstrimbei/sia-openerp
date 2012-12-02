@@ -11,6 +11,7 @@ public class Factura extends Document{
 	private Furnizori funrizor;
 	private List<LiniiFactura> linieFactura;
 	private Double valoareTotala;
+	
 	public Integer getNrFactura() {
 		return nrFactura;
 	}
