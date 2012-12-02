@@ -30,10 +30,11 @@ import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.CerereAprov;
 import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.Comanda;
+import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.achizitii.Furnizori;
-import org.open.erp.services.achizitii.LiniiCerereAprov;
 import org.open.erp.services.achizitii.LiniiCerereOferta;
 import org.open.erp.services.achizitii.LiniiComanda;
+import org.open.erp.services.achizitii.LiniiFactura;
 import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.achizitii.LiniiOferta;
 import org.open.erp.services.achizitii.LiniiPlanAprov;
@@ -156,20 +157,29 @@ public class TestAchizitiiSrv {
 			
 			logger.info("End Test Comanda!");
 
-			//
-			 logger.info("Begin Test NIR!");
-			 NIR nir1= achizitiiInstance.creareNIR(1, calendarStart.getTime(), furnizor1, 120.00);
-			 assertNotNull("Nu exista NIR nou!", nir1);
-			 
-			 //Adaugare linie in NIR
-			  LiniiNIR liniNir1=achizitiiInstance.creareLiniiNIR(nir1, 1, mat2, 12.00, 5.4, 64.8, 15.55);
-			  assertNotNull("Nu exista linieNir noua!", nir1);
-			 logger.info("End Test NIR!");
-			 
-				}
+			    
+	//Test Factura
+    logger.info("Begin Test Facura!");
+    Furnizori furnizorA = new Furnizori("Furnizor A SRL");
+    Factura factura1 = achizitiiInstance.creareFactura(1, calendarStart.getTime(), calendarStart.getTime(), 200.00, furnizorA.getDenumire());
+    assertNotNull("Nu exista Factura ", factura1);
+    
+    LiniiFactura lf1 = achizitiiInstance.creareLinieFactura(001, 1.00, linieComanda1.getMaterial(), 5.00, factura1, linieComanda1);
+    LiniiFactura lf2 = achizitiiInstance.creareLinieFactura(002, 2.00, linieComanda1.getMaterial(), 5.00, factura1, linieComanda1);
+    assertNotNull("Nu exista linieFactura ", lf1); 
+    logger.info("End Test Factura!");
 	
-	
-	
-	
-	
-}
+    //Test NIR
+	 logger.info("Begin Test NIR!");
+	    NIR nir1= achizitiiInstance.creareNIR(1, calendarStart.getTime(), furnizor1, 120.00);
+	    assertNotNull("Nu exista NIR nou!", nir1);
+	    
+	    //Adaugare linie in NIR
+	     LiniiNIR liniNir1=achizitiiInstance.creareLiniiNIR(nir1, 1, mat2, 12.00, 5.4, 64.8, 15.55);
+	     assertNotNull("Nu exista linieNir noua!", nir1);
+	    logger.info("End Test NIR!");
+	}
+
+	}
+
+
