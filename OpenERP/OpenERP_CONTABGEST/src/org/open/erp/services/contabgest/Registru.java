@@ -1,4 +1,4 @@
-package org.open.erp.services.contabgest.impl;
+package org.open.erp.services.contabgest;
 
 import java.util.ArrayList;
 
