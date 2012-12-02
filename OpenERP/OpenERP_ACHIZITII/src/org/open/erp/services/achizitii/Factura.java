@@ -61,6 +61,25 @@ public class Factura extends Document{
 		this.linieFactura = linieFactura;
 		this.valoareTotala = valoareTotala;
 	}
+	
+	public Factura(Integer nrFactura, Date dataFactura, Date dataScadenta,
+			Furnizori funrizor, Double valoareTotala) {
+		super();
+		this.nrFactura = nrFactura;
+		this.dataFactura = dataFactura;
+		this.dataScadenta = dataScadenta;
+		this.funrizor = funrizor;
+		this.valoareTotala = valoareTotala;
+	}
+	
+	public Factura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala) {
+		super();
+		this.nrFactura = nrFactura;
+		this.dataFactura = dataFactura;
+		this.dataScadenta = dataScadenta;
+		this.valoareTotala = valoareTotala;
+	}
+	
 	public Factura() {
 		super();
 	}

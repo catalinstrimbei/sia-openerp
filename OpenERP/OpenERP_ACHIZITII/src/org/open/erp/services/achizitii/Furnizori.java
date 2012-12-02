@@ -13,6 +13,12 @@ public class Furnizori extends PersoanaJuridica{
 	}
 
 
+	public Furnizori(String denumire) {
+		super();
+		this.denumire = denumire;
+	}
+
+
 	public Furnizori(String denumire, String persoanaContact) {
 		super();
 		this.denumire = denumire;

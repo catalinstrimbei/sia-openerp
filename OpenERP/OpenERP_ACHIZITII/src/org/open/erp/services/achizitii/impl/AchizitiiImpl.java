@@ -11,10 +11,12 @@ import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.CerereAprov;
 import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.Comanda;
+import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.achizitii.Furnizori;
 import org.open.erp.services.achizitii.LiniiCerereAprov;
 import org.open.erp.services.achizitii.LiniiCerereOferta;
 import org.open.erp.services.achizitii.LiniiComanda;
+import org.open.erp.services.achizitii.LiniiFactura;
 import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.achizitii.LiniiOferta;
 import org.open.erp.services.achizitii.LiniiPlanAprov;
@@ -106,17 +108,19 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		cerereOferta.setFurnizor(furnizor);
 	}
 
-	public void trimitereOferta(CerereOferta cerereOferta, Furnizori furnizor){
+	public void trimitereCerereOferta(CerereOferta cerereOferta, Furnizori furnizor){
 		logger.debug("2.3 S-a trimis cererea de oferta");
 	}
 	
 
+	//Oferta
 	public Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare,Double valoareTotala, Furnizori furnizor, CerereOferta cerereOferta){
 		logger.debug("3.1.1 Primire oferte de la furnizori (Creare ferta noua)");
 		Oferta ofertaNoua=new Oferta(nrOferta, dataOferta, dataLivrare,valoareTotala, furnizor, cerereOferta);
 		return ofertaNoua;
 	}
 	
+	//LinieOferta
 	public LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Materiale material, Double cantitate, Oferta oferta){
 		logger.debug("3.1.2 Adaugare linie in oferta primita");
 		
@@ -143,8 +147,15 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	  else
 	   return oferta2;
 	  }
-	//salvareOferta
 	
+	public Oferta salveazaOferta(Oferta oferta){
+    	if (oferta.getNrOferta() == null)
+    		throw new RuntimeException("Trebuie introdusa neaparat nrOferta ");	    	
+    	logger.info("4.3 SALVARE oferta : " + oferta);
+		return oferta;
+    }
+	
+	//LinieComanda
 	public LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Materiale material, Double cantitate, Comanda comanda, LiniiOferta linieO){
 		logger.debug("4.1 Adaugare linie in Comanda " );
 		
@@ -154,6 +165,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return linieComanda;
 	}
 	
+	//Comanda
 	public Comanda creareComanda(Integer nrComanda, Date dataComanda, Furnizori furnizor, Oferta oferta, Double valoareTotalaComanda){
 		logger.debug("4.2 Creare Comanda " + nrComanda);
 		
@@ -171,21 +183,65 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	public void trimitereComanda(Comanda comanda, Furnizori furnizor){
 		logger.debug("4.4 S-a trimis comanda la furnizorul " + furnizor);
 	}
-	 
-	 public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala){
-		 logger.debug("5.2.1 Creare NIR " + nrNIR);
-		 NIR nir = new NIR(nrNIR, data, furnizor, valoareTotala)	;
-		 return nir;
-	}
-	 
-	 public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Materiale material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie){
+	
+	//Furnizori
+	public Furnizori creareFurnizor(String denumire){
+		logger.debug("5.1.1 S-a introdus un nou Furnizor!!!");
 		
-		 logger.debug("5.2.2 Adaugare linie in NIR " + nir.getNrNIR()+ nrLInie);
+		Furnizori furnizor = new Furnizori(denumire);
+		return furnizor;
+		
+	}
+	
+	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala, String denumireFurnizor){
+		logger.debug("5.1.2 S-a creat Factura!!!");
+		
+		Factura factura = new Factura(nrFactura, dataFactura, dataScadenta, valoareTotala);
+		Furnizori furnizorFact = creareFurnizor(denumireFurnizor);
+		factura.setFunrizor(furnizorFact);
+		return factura;
+	}
+	
+	/*public void addOferta(Oferta oferta1){
+		  List<Oferta> oferte=  new ArrayList<Oferta>();
+		    oferte.add(oferta1);
+	  }*/
 		 
-		 LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
-
+	public void  comparareFacturaComanda(Factura factura, Comanda comanda){
+	   logger.debug("5.1.4 Comparare factura numarul" + factura.getNrFactura() + " cu comanda numarul " + comanda.getNrComanda());
+	   
+	  if (factura.getValoareTotala() != comanda.getValoareTotala())
+		  logger.debug("Factura nu corespunde cu comanda."); //creare facturaRetur
+	  else		  
+		  logger.debug("Validare receptie"); //crestereStoc
+	  	
+	  }
+	
+	//LiniiFactura
+	public LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Materiale material, Double cantitate, Factura factura, LiniiComanda linieComanda){
+		logger.debug("5.1.3 S-a introdus linia " + nrLinieLF + " pentru factura numraul " + factura.getNrFactura());
+		
+		LiniiFactura lf = new LiniiFactura(nrLinieLF, pret, linieComanda.getMaterial(), cantitate, factura);
+		lf.setFactura(factura);
+		return lf;
+	}
+	
+	//NIR
+	public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala){
+	   logger.debug("5.2.1 Creare NIR " + nrNIR);
+	   
+	   NIR nir = new NIR (nrNIR, data, furnizor, valoareTotala);
+	   return nir;
+	}
+		
+	//LiniiNIR
+	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Materiale material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie){  
+		logger.debug("5.2.2 Adaugare linie in NIR " + nir.getNrNIR()+ nrLInie);
+		   
+		LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
 		return linieNIr;
-	 }
-	 
+	}
+	
+	
 }
 

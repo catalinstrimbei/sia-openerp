@@ -30,7 +30,7 @@ public interface AchizitiiSrv {
 
 	public void stabilireFurnizor(CerereOferta cerereOferta, Furnizori furnizor);
 
-	public void trimitereOferta(CerereOferta cerereOferta, Furnizori furnizor);
+	public void trimitereCerereOferta(CerereOferta cerereOferta, Furnizori furnizor);
 
 	public Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare, Double valoareTotala, Furnizori furnizor, CerereOferta cerereOferta);
 
@@ -51,11 +51,17 @@ public interface AchizitiiSrv {
 	public LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Materiale material, Double cantitate, Comanda comanda, LiniiOferta linieO);
 	public Comanda salveazaComanda(Comanda comanda);
 	public void trimitereComanda(Comanda comanda, Furnizori furnizor);
+
 	
-    NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala);
-     
-     
-   LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Materiale material,
-			Double cantitate, Double pret, Double valoareLinie, Double tvaLinie);
+	//FActura
+	public Furnizori creareFurnizor(String denumire);
+	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala, String denumireFurnizor);
+	public LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Materiale material, Double cantitate, Factura factura, LiniiComanda linieComanda);
+	public void  comparareFacturaComanda(Factura factura, Comanda comanda);
+	
+	
+	public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala);
+	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Materiale material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie);
+
 
 }

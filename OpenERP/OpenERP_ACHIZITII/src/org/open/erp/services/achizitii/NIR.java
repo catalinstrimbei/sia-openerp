@@ -52,6 +52,7 @@ public class NIR extends Document{
 		this.linieNir = linieNir;
 		this.valoareTotala = valoareTotala;
 	}
+		
 	public NIR() {
 		super();
 	}
