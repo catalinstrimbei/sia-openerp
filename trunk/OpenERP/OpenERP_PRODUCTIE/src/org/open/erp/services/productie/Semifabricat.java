@@ -1,75 +1,134 @@
 package org.open.erp.services.productie;
 
-public class Semifabricat {
-	private Integer IdSemifabricat;
-	private String denumireSemifabricat;
-	private FazaProductie fazaProductie;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.open.erp.services.nomgen.LinieDocument;
+import org.open.erp.services.nommat.Material;
+import org.open.erp.services.nommat.Produs;
+
+public class Semifabricat extends Produs implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	Integer idSemifabricat;
+	
+	String semifabricat;
+	
+	private List<Material> listaMateriale = new ArrayList<Material>();
+	
+	Semifabricat semifabricatContinut;
+
 	public Integer getIdSemifabricat() {
-		return IdSemifabricat;
+		return idSemifabricat;
 	}
+
 	public void setIdSemifabricat(Integer idSemifabricat) {
-		IdSemifabricat = idSemifabricat;
+		this.idSemifabricat = idSemifabricat;
 	}
-	public String getDenumireSemifabricat() {
-		return denumireSemifabricat;
+
+	public String getSemifabricat() {
+		return semifabricat;
 	}
-	public void setDenumireSemifabricat(String denumireSemifabricat) {
-		this.denumireSemifabricat = denumireSemifabricat;
+
+	public void setSemifabricat(String semifabricat) {
+		this.semifabricat = semifabricat;
 	}
-	public FazaProductie getFazaProductie() {
-		return fazaProductie;
+
+	public List<Material> getListaMateriale() {
+		return listaMateriale;
 	}
-	public void setFazaProductie(FazaProductie fazaProductie) {
-		this.fazaProductie = fazaProductie;
+
+	public void setListaMateriale(List<Material> listaMateriale) {
+		this.listaMateriale = listaMateriale;
 	}
-	public Semifabricat(Integer idSemifabricat, String denumireSemifabricat,
-			FazaProductie fazaProductie) {
-		super();
-		IdSemifabricat = idSemifabricat;
-		this.denumireSemifabricat = denumireSemifabricat;
-		this.fazaProductie = fazaProductie;
+
+	public Semifabricat getSemifabricatContinut() {
+		return semifabricatContinut;
 	}
+
+	public void setSemifabricatContinut(Semifabricat semifabricatContinut) {
+		this.semifabricatContinut = semifabricatContinut;
+	}
+
+	public Semifabricat(Integer idProdus, String denumire, String categorie,
+			String unitateMasura, Date dataFabricatiei,
+			Integer termenValabilitate, Double pretVanzare, Float procentTVA,
+			List<LinieDocument> liniiDocumente, Integer idSemifabricat,
+			String semifabricat, List<Material> listaMateriale,
+			Semifabricat semifabricatContinut) {
+		super(idProdus, denumire, categorie, unitateMasura, dataFabricatiei,
+				termenValabilitate, pretVanzare, procentTVA, liniiDocumente);
+		this.idSemifabricat = idSemifabricat;
+		this.semifabricat = semifabricat;
+		this.listaMateriale = listaMateriale;
+		this.semifabricatContinut = semifabricatContinut;
+	}
+
 	public Semifabricat() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public Semifabricat(Integer idProdus, String denumire, String categorie,
+			String unitateMasura, Date dataFabricatiei,
+			Integer termenValabilitate, Double pretVanzare, Float procentTVA,
+			List<LinieDocument> liniiDocumente) {
+		super(idProdus, denumire, categorie, unitateMasura, dataFabricatiei,
+				termenValabilitate, pretVanzare, procentTVA, liniiDocumente);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result
-				+ ((IdSemifabricat == null) ? 0 : IdSemifabricat.hashCode());
+				+ ((idSemifabricat == null) ? 0 : idSemifabricat.hashCode());
+		result = prime * result
+				+ ((listaMateriale == null) ? 0 : listaMateriale.hashCode());
+		result = prime * result
+				+ ((semifabricat == null) ? 0 : semifabricat.hashCode());
 		result = prime
 				* result
-				+ ((denumireSemifabricat == null) ? 0 : denumireSemifabricat
+				+ ((semifabricatContinut == null) ? 0 : semifabricatContinut
 						.hashCode());
-		result = prime * result
-				+ ((fazaProductie == null) ? 0 : fazaProductie.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Semifabricat other = (Semifabricat) obj;
-		if (IdSemifabricat == null) {
-			if (other.IdSemifabricat != null)
+		if (idSemifabricat == null) {
+			if (other.idSemifabricat != null)
 				return false;
-		} else if (!IdSemifabricat.equals(other.IdSemifabricat))
+		} else if (!idSemifabricat.equals(other.idSemifabricat))
 			return false;
-		if (denumireSemifabricat == null) {
-			if (other.denumireSemifabricat != null)
+		if (listaMateriale == null) {
+			if (other.listaMateriale != null)
 				return false;
-		} else if (!denumireSemifabricat.equals(other.denumireSemifabricat))
+		} else if (!listaMateriale.equals(other.listaMateriale))
 			return false;
-		if (fazaProductie == null) {
-			if (other.fazaProductie != null)
+		if (semifabricat == null) {
+			if (other.semifabricat != null)
 				return false;
-		} else if (!fazaProductie.equals(other.fazaProductie))
+		} else if (!semifabricat.equals(other.semifabricat))
+			return false;
+		if (semifabricatContinut == null) {
+			if (other.semifabricatContinut != null)
+				return false;
+		} else if (!semifabricatContinut.equals(other.semifabricatContinut))
 			return false;
 		return true;
 	}

@@ -1,5 +1,5 @@
 package org.open.erp.services.stocuri;
 
-public class ComandaAprovizionare {
+public class Articol {
 
 }
