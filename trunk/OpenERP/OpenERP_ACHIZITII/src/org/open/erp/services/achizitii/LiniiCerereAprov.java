@@ -13,7 +13,7 @@ public class LiniiCerereAprov {
 	}
 	public void setCerereAprov(CerereAprov cerereAprov) {
 		this.cerereAprov = cerereAprov;
-		this.setMaterial(cerereAprov.getMaterial());
+		//this.setMaterial(cerereAprov.getMaterial());
 	}
 	public Integer getNrLinieCerereAprov() {
 		return nrLinieCerereAprov;

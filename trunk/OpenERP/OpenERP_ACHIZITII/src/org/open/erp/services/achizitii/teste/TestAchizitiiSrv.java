@@ -74,7 +74,7 @@ public class TestAchizitiiSrv {
 			
 				//
 				Materiale mat = new Materiale();
-				CerereAprov cerere = achizitiiInstance.creareCerereAprov(1, calendarStart.getTime(), mat);
+				CerereAprov cerere = achizitiiInstance.creareCerereAprov(1, calendarStart.getTime());//, mat);
 				assertNotNull("Nu exista cerereAprovizionare noua!", cerere);
 				//
  
