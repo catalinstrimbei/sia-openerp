@@ -1,16 +1,18 @@
 package org.open.erp.services.achizitii;
 
 import java.util.Date;
+import java.util.List;
 
 import org.open.erp.services.nommat.Materiale;
 
 public class NIR extends Document{
 	private Integer nrNIR;
 	private Date data;
-	private Furnizori funrizor;
-	private Materiale material;
-	private Double cantitate;
+	private Furnizori furnizor;
+	private List<LiniiNIR> linieNir;
 	private Double valoareTotala;
+	
+	
 	public Integer getNrNIR() {
 		return nrNIR;
 	}
@@ -24,22 +26,16 @@ public class NIR extends Document{
 		this.data = data;
 	}
 	public Furnizori getFunrizor() {
-		return funrizor;
+		return furnizor;
 	}
-	public void setFunrizor(Furnizori funrizor) {
-		this.funrizor = funrizor;
+	public void setFunrizor(Furnizori furnizor) {
+		this.furnizor = furnizor;
 	}
-	public Materiale getMaterial() {
-		return material;
+	public List<LiniiNIR> getLinieNir() {
+		return linieNir;
 	}
-	public void setMaterial(Materiale material) {
-		this.material = material;
-	}
-	public Double getCantitate() {
-		return cantitate;
-	}
-	public void setCantitate(Double cantitate) {
-		this.cantitate = cantitate;
+	public void setLinieNir(List<LiniiNIR> linieNir) {
+		this.linieNir = linieNir;
 	}
 	public Double getValoareTotala() {
 		return valoareTotala;
@@ -47,20 +43,27 @@ public class NIR extends Document{
 	public void setValoareTotala(Double valoareTotala) {
 		this.valoareTotala = valoareTotala;
 	}
-	public NIR(Integer nrNIR, Date data, Furnizori funrizor,
-			Materiale material, Double cantitate, Double valoareTotala) {
+	public NIR(Integer nrNIR, Date data, Furnizori furnizor,
+			List<LiniiNIR> linieNir, Double valoareTotala) {
 		super();
 		this.nrNIR = nrNIR;
 		this.data = data;
-		this.funrizor = funrizor;
-		this.material = material;
-		this.cantitate = cantitate;
+		this.furnizor = furnizor;
+		this.linieNir = linieNir;
 		this.valoareTotala = valoareTotala;
 	}
 	public NIR() {
 		super();
 	}
-	
+	public NIR(Integer nrNIR, Date data, Furnizori furnizor,
+			Double valoareTotala) {
+		super();
+		this.nrNIR = nrNIR;
+		this.data = data;
+		this.furnizor = furnizor;
+		this.valoareTotala = valoareTotala;
+	}
+
 	
 
 }

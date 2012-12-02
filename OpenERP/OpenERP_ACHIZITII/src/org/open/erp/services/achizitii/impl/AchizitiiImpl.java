@@ -15,8 +15,10 @@ import org.open.erp.services.achizitii.Furnizori;
 import org.open.erp.services.achizitii.LiniiCerereAprov;
 import org.open.erp.services.achizitii.LiniiCerereOferta;
 import org.open.erp.services.achizitii.LiniiComanda;
+import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.achizitii.LiniiOferta;
 import org.open.erp.services.achizitii.LiniiPlanAprov;
+import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.Oferta;
 import org.open.erp.services.achizitii.PlanAprov;
 import org.open.erp.services.nommat.Materiale;
@@ -169,5 +171,21 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	public void trimitereComanda(Comanda comanda, Furnizori furnizor){
 		logger.debug("4.4 S-a trimis comanda la furnizorul " + furnizor);
 	}
+	 
+	 public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala){
+		 logger.debug("5.2.1 Creare NIR " + nrNIR);
+		 NIR nir = new NIR(nrNIR, data, furnizor, valoareTotala)	;
+		 return nir;
+	}
+	 
+	 public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Materiale material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie){
+		
+		 logger.debug("5.2.2 Adaugare linie in NIR " + nir.getNrNIR()+ nrLInie);
+		 
+		 LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
+
+		return linieNIr;
+	 }
+	 
 }
 

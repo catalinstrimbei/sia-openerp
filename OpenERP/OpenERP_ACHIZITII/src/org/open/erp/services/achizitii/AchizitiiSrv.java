@@ -51,5 +51,11 @@ public interface AchizitiiSrv {
 	public LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Materiale material, Double cantitate, Comanda comanda, LiniiOferta linieO);
 	public Comanda salveazaComanda(Comanda comanda);
 	public void trimitereComanda(Comanda comanda, Furnizori furnizor);
+	
+    NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala);
+     
+     
+   LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Materiale material,
+			Double cantitate, Double pret, Double valoareLinie, Double tvaLinie);
 
 }

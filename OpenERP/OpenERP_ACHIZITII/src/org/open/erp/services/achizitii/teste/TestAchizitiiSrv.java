@@ -34,8 +34,10 @@ import org.open.erp.services.achizitii.Furnizori;
 import org.open.erp.services.achizitii.LiniiCerereAprov;
 import org.open.erp.services.achizitii.LiniiCerereOferta;
 import org.open.erp.services.achizitii.LiniiComanda;
+import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.achizitii.LiniiOferta;
 import org.open.erp.services.achizitii.LiniiPlanAprov;
+import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.Oferta;
 import org.open.erp.services.achizitii.PlanAprov;
 import org.open.erp.services.nommat.Materiale;
@@ -155,10 +157,16 @@ public class TestAchizitiiSrv {
 			logger.info("End Test Comanda!");
 
 			//
-		   
-		logger.info("Oferta finala" );
-
-	}
+			 logger.info("Begin Test NIR!");
+			 NIR nir1= achizitiiInstance.creareNIR(1, calendarStart.getTime(), furnizor1, 120.00);
+			 assertNotNull("Nu exista NIR nou!", nir1);
+			 
+			 //Adaugare linie in NIR
+			  LiniiNIR liniNir1=achizitiiInstance.creareLiniiNIR(nir1, 1, mat2, 12.00, 5.4, 64.8, 15.55);
+			  assertNotNull("Nu exista linieNir noua!", nir1);
+			 logger.info("End Test NIR!");
+			 
+				}
 	
 	
 	
