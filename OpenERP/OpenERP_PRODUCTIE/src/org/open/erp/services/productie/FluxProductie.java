@@ -1,53 +1,62 @@
 package org.open.erp.services.productie;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FluxProductie {
-	private Integer idflux;
-	private String denumireflux;
-	private Lot lot;
-	private List<FazaProductie> fazaproductie = new ArrayList<FazaProductie>();
+import org.open.erp.services.nommat.Produs;
+
+public class FluxProductie implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	Integer idFlux;
+	Produs produs;
+	private List<FazaProductie> fazaProductie  = new ArrayList<FazaProductie>();
 	
-	public Integer getIdflux() {
-		return idflux;
+	public Integer getIdFlux() {
+		return idFlux;
 	}
-	public void setIdflux(Integer idflux) {
-		this.idflux = idflux;
+	public void setIdFlux(Integer idFlux) {
+		this.idFlux = idFlux;
 	}
-	public String getDenumireflux() {
-		return denumireflux;
+	public Produs getProdus() {
+		return produs;
 	}
-	public void setDenumireflux(String denumireflux) {
-		this.denumireflux = denumireflux;
+	public void setProdus(Produs produs) {
+		this.produs = produs;
 	}
-	public List<FazaProductie> getFazaproductie() {
-		return fazaproductie;
+	public List<FazaProductie> getFazaProductie() {
+		return fazaProductie;
 	}
-	public void setFazaproductie(List<FazaProductie> fazaproductie) {
-		this.fazaproductie = fazaproductie;
+	public void setFazaProductie(List<FazaProductie> fazaProductie) {
+		this.fazaProductie = fazaProductie;
 	}
-	public FluxProductie(Integer idflux, String denumireflux,
-			List<FazaProductie> fazaproductie) {
+	
+	public FluxProductie(Integer idFlux, Produs produs,
+			List<FazaProductie> fazaProductie) {
 		super();
-		this.idflux = idflux;
-		this.denumireflux = denumireflux;
-		this.fazaproductie = fazaproductie;
+		this.idFlux = idFlux;
+		this.produs = produs;
+		this.fazaProductie = fazaProductie;
 	}
+	
 	public FluxProductie() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((denumireflux == null) ? 0 : denumireflux.hashCode());
-		result = prime * result
-				+ ((fazaproductie == null) ? 0 : fazaproductie.hashCode());
-		result = prime * result + ((idflux == null) ? 0 : idflux.hashCode());
-		result = prime * result + ((lot == null) ? 0 : lot.hashCode());
+				+ ((fazaProductie == null) ? 0 : fazaProductie.hashCode());
+		result = prime * result + ((idFlux == null) ? 0 : idFlux.hashCode());
+		result = prime * result + ((produs == null) ? 0 : produs.hashCode());
 		return result;
 	}
 	@Override
@@ -59,48 +68,23 @@ public class FluxProductie {
 		if (getClass() != obj.getClass())
 			return false;
 		FluxProductie other = (FluxProductie) obj;
-		if (denumireflux == null) {
-			if (other.denumireflux != null)
+		if (fazaProductie == null) {
+			if (other.fazaProductie != null)
 				return false;
-		} else if (!denumireflux.equals(other.denumireflux))
+		} else if (!fazaProductie.equals(other.fazaProductie))
 			return false;
-		if (fazaproductie == null) {
-			if (other.fazaproductie != null)
+		if (idFlux == null) {
+			if (other.idFlux != null)
 				return false;
-		} else if (!fazaproductie.equals(other.fazaproductie))
+		} else if (!idFlux.equals(other.idFlux))
 			return false;
-		if (idflux == null) {
-			if (other.idflux != null)
+		if (produs == null) {
+			if (other.produs != null)
 				return false;
-		} else if (!idflux.equals(other.idflux))
-			return false;
-		if (lot == null) {
-			if (other.lot != null)
-				return false;
-		} else if (!lot.equals(other.lot))
+		} else if (!produs.equals(other.produs))
 			return false;
 		return true;
 	}
-	public Lot getLot() {
-		return lot;
-	}
-	public void setLot(Lot lot) {
-		this.lot = lot;
-		
-	}
-	public FluxProductie(Lot lot) {
-		super();
-		this.lot = lot;
-		
-	}
-	
-	
-	
-	
 	
 	
 }
-	
-	
-	
-	

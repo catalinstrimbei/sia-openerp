@@ -1,50 +1,69 @@
 package org.open.erp.services.productie;
 
-import org.open.erp.services.nomgen.Divizie;
+import java.io.Serializable;
 
-public class Utilaj {
-	private Integer IdUtilaj;
-	private String denumireUtilaj;
-	private Divizie divizie;
+import org.open.erp.services.nomgen.MijlocFix;
+
+public class Utilaj implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	Integer idUtilaj;
+	
+	private MijlocFix utilaj;
+	
+	String status;
+
 	public Integer getIdUtilaj() {
-		return IdUtilaj;
+		return idUtilaj;
 	}
+
 	public void setIdUtilaj(Integer idUtilaj) {
-		IdUtilaj = idUtilaj;
+		this.idUtilaj = idUtilaj;
 	}
-	public String getDenumireUtilaj() {
-		return denumireUtilaj;
+
+	public MijlocFix getUtilaj() {
+		return utilaj;
 	}
-	public void setDenumireUtilaj(String denumireUtilaj) {
-		this.denumireUtilaj = denumireUtilaj;
+
+	public void setUtilaj(MijlocFix utilaj) {
+		this.utilaj = utilaj;
 	}
-	public Divizie getDivizie() {
-		return divizie;
+
+	public String getStatus() {
+		return status;
 	}
-	public void setDivizie(Divizie divizie) {
-		this.divizie = divizie;
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	public Utilaj(Integer idUtilaj, String denumireUtilaj, Divizie divizie) {
+
+	public Utilaj(Integer idUtilaj, MijlocFix utilaj, String status) {
 		super();
-		IdUtilaj = idUtilaj;
-		this.denumireUtilaj = denumireUtilaj;
-		this.divizie = divizie;
+		this.idUtilaj = idUtilaj;
+		this.utilaj = utilaj;
+		this.status = status;
 	}
+
 	public Utilaj() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((IdUtilaj == null) ? 0 : IdUtilaj.hashCode());
-		result = prime * result
-				+ ((denumireUtilaj == null) ? 0 : denumireUtilaj.hashCode());
-		result = prime * result + ((divizie == null) ? 0 : divizie.hashCode());
+				+ ((idUtilaj == null) ? 0 : idUtilaj.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((utilaj == null) ? 0 : utilaj.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -54,23 +73,23 @@ public class Utilaj {
 		if (getClass() != obj.getClass())
 			return false;
 		Utilaj other = (Utilaj) obj;
-		if (IdUtilaj == null) {
-			if (other.IdUtilaj != null)
+		if (idUtilaj == null) {
+			if (other.idUtilaj != null)
 				return false;
-		} else if (!IdUtilaj.equals(other.IdUtilaj))
+		} else if (!idUtilaj.equals(other.idUtilaj))
 			return false;
-		if (denumireUtilaj == null) {
-			if (other.denumireUtilaj != null)
+		if (status == null) {
+			if (other.status != null)
 				return false;
-		} else if (!denumireUtilaj.equals(other.denumireUtilaj))
+		} else if (!status.equals(other.status))
 			return false;
-		if (divizie == null) {
-			if (other.divizie != null)
+		if (utilaj == null) {
+			if (other.utilaj != null)
 				return false;
-		} else if (!divizie.equals(other.divizie))
+		} else if (!utilaj.equals(other.utilaj))
 			return false;
 		return true;
 	}
-
+	
 	
 }
