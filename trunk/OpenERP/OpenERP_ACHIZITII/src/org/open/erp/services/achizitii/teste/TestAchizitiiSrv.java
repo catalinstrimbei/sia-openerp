@@ -67,7 +67,7 @@ public class TestAchizitiiSrv {
 		
 		logger.info("Begin test TestCerereAprovizionare!");
 			//--------
-			
+		logger.info("1.Gestiune plan de aprovizionare");
 				//--------
 				Calendar calendarStart = Calendar.getInstance();
 				calendarStart.setTime(new Date());		
@@ -97,7 +97,8 @@ public class TestAchizitiiSrv {
 				logger.setLevel(Level.DEBUG);
 				
 				logger.info("Begin test Test CreareCerereOferta!");
-				
+				logger.info("2.Gestiune cereri de oferta");
+			
 				Calendar calendarStart = Calendar.getInstance();
 				calendarStart.setTime(new Date());
 			
@@ -122,6 +123,8 @@ public class TestAchizitiiSrv {
 				logger.setLevel(Level.DEBUG);
 				
 				logger.info("Begin test CreareOferta!");
+				
+				logger.info("3.Gestiune oferte de la furnizori");
 				
 				Calendar calendarStart = Calendar.getInstance();
 				calendarStart.setTime(new Date());
@@ -165,6 +168,8 @@ public class TestAchizitiiSrv {
 				
 			   logger.info("Begin Test Comanda!");
 			   
+			   logger.info("4.Gestiune Comenzii");
+			   
 			   	Calendar calendarStart = Calendar.getInstance();
 				calendarStart.setTime(new Date());
 				Furnizori furnizor1 =new Furnizori();
@@ -200,8 +205,10 @@ public class TestAchizitiiSrv {
 			public void testCreareFactura() throws Exception {
 				logger.setLevel(Level.DEBUG);
 				;
-				//Test Factura
-			    logger.info("Begin Test Facura!");
+				
+			    
+			    logger.info("4.Receptie materiale!");
+			    
 			    Calendar calendarStart = Calendar.getInstance();
 				calendarStart.setTime(new Date());
 			    Furnizori furnizorA = new Furnizori("Furnizor A SRL","");
@@ -212,17 +219,17 @@ public class TestAchizitiiSrv {
 			    LiniiFactura lf1 = achizitiiInstance.creareLinieFactura(001, 1.00, linieComanda1.getMaterial(), 5.00, factura1, linieComanda1);
 			    LiniiFactura lf2 = achizitiiInstance.creareLinieFactura(002, 2.00, linieComanda1.getMaterial(), 5.00, factura1, linieComanda1);
 			    assertNotNull("Nu exista linieFactura ", lf1); 
-			    logger.info("End Test Factura!");
+			  
 				
 			    //Test NIR
-				 logger.info("Begin Test NIR!");
-				    NIR nir1= achizitiiInstance.creareNIR(1, calendarStart.getTime(), factura1, 120.00);
-				    assertNotNull("Nu exista NIR nou!", nir1);
+				
+				 NIR nir1= achizitiiInstance.creareNIR(1, calendarStart.getTime(), factura1, 120.00);
+				 assertNotNull("Nu exista NIR nou!", nir1);
 				    
 				    //Adaugare linie in NIR
-				     LiniiNIR liniNir1=achizitiiInstance.creareLiniiNIR(nir1, 1, linieComanda1.getMaterial(), 12.00, 5.4, 64.8, 15.55);
-				     assertNotNull("Nu exista linieNir noua!", nir1);
-				    logger.info("End Test NIR!");
+				 LiniiNIR liniNir1=achizitiiInstance.creareLiniiNIR(nir1, 1, linieComanda1.getMaterial(), 12.00, 5.4, 64.8, 15.55);
+				 assertNotNull("Nu exista linieNir noua!", nir1);
+				  
 				}
 	
 		}

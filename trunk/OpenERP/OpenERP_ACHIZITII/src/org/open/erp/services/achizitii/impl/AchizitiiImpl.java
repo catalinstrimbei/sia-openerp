@@ -63,13 +63,13 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	
 	public PlanAprov crearePlanAprov(Integer nrPlan, Integer an, Integer luna, Integer saptamana)
 	{
-		logger.debug(" 1.2.1 Creare plan nou");
+		logger.debug(" 1.3.1 Creare plan nou");
 		PlanAprov planNou=new PlanAprov(nrPlan, an, luna, saptamana);
 		return planNou;
 	}
 	
 	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Materiale material, Double cantitate){
-		logger.debug("1.2.2 Adaugare linie plan");
+		logger.debug("1.3.2 Adaugare linie plan");
 		
 		LiniiPlanAprov liniePlan=new LiniiPlanAprov(nrLiniePlanAprov, planAprov, material, cantitate);
 		planAprov.adaugaLinie(liniePlan);
@@ -150,7 +150,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	public Oferta salveazaOferta(Oferta oferta){
     	if (oferta.getNrOferta() == null)
     		throw new RuntimeException("Trebuie introdusa neaparat nrOferta ");	    	
-    	logger.info("4.3 SALVARE oferta : " + oferta);
+    	logger.info("3.3 SALVARE oferta : " + oferta);
 		return oferta;
     }
 	
@@ -207,7 +207,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	  }*/
 		 
 	public void  comparareFacturaComanda(Factura factura, Comanda comanda){
-	   logger.debug("5.1.4 Comparare factura numarul" + factura.getNrFactura() + " cu comanda numarul " + comanda.getNrComanda());
+	   logger.debug("5.2.2 Comparare factura numarul" + factura.getNrFactura() + " cu comanda numarul " + comanda.getNrComanda());
 	   
 	  if (factura.getValoareTotala() != comanda.getValoareTotala())
 		  logger.debug("Factura nu corespunde cu comanda."); //creare facturaRetur
@@ -218,7 +218,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	
 	//LiniiFactura
 	public LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Materiale material, Double cantitate, Factura factura, LiniiComanda linieComanda){
-		logger.debug("5.1.3 S-a introdus linia " + nrLinieLF + " pentru factura numraul " + factura.getNrFactura());
+		logger.debug("5.2.1 S-a introdus linia " + nrLinieLF + " pentru factura numraul " + factura.getNrFactura());
 		
 		LiniiFactura lf = new LiniiFactura(nrLinieLF, pret, linieComanda.getMaterial(), cantitate, factura);
 		lf.setFactura(factura);
@@ -227,7 +227,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	
 	//NIR
 	public NIR creareNIR(Integer nrNIR, Date data, Factura factura, Double valoareTotala){
-	   logger.debug("5.2.1 Creare NIR " + nrNIR);
+	   logger.debug("5.3.1 Creare NIR " + nrNIR);
 	   
 	   NIR nir = new NIR (nrNIR, data,factura, valoareTotala);
 	   return nir;
@@ -235,7 +235,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		
 	//LiniiNIR
 	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Materiale material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie){  
-		logger.debug("5.2.2 Adaugare linie in NIR " + nir.getNrNIR()+ nrLInie);
+		logger.debug("5.3.2 Adaugare linie in NIR " + nir.getNrNIR()+ nrLInie);
 		   
 		LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
 		return linieNIr;
