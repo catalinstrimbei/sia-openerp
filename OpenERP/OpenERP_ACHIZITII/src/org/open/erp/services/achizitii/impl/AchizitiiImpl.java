@@ -26,6 +26,8 @@ import org.open.erp.services.achizitii.PlanAprov;
 import org.open.erp.services.nommat.Materiale;
 import org.open.erp.services.nommat.NomenclatorGeneralSrv;
 
+import org.open.erp.services.stocuri.Gestiune;
+
 public class AchizitiiImpl implements AchizitiiSrv {
 	
 	private NomenclatorGeneralSrv materialeSrv;
@@ -183,6 +185,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		logger.debug("4.4 S-a trimis comanda la furnizorul " + furnizor);
 	}
 	
+	
 	//Furnizori
 	public Furnizori creareFurnizor(Furnizori furnizori){
 		logger.debug("5.1.1 S-a introdus un nou Furnizor!!!");
@@ -212,10 +215,25 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	  if (factura.getValoareTotala() != comanda.getValoareTotala())
 		  logger.debug("Factura nu corespunde cu comanda."); //creare facturaRetur
 	  else		  
-		  logger.debug("Validare factura"); //crestereStoc
-	  
+		  logger.debug("Validare receptie"); //crestereStoc	  	
+
 	  }
 	
+	//crestere cantitate in Stoc in cazul receptiei materialelor
+	public Double crestereStoc(Materiale material, Gestiune gestiune, NIR nir, LiniiNIR lNIR){
+		Double cantitateStoc = 0.00;
+		//for(LiniiNIR lNIR : nir.getLinieNir()){
+			if(lNIR.getMaterial() == material){
+				cantitateStoc += lNIR.getCantitate();
+				logger.debug("Pentru materialul " + material.getNumeMaterial() + " cantitatea a crescut cu " + cantitateStoc);
+			}
+			else
+				logger.debug("Materialele primite nu corespund cu cele de pe NIR");
+		//}
+		return cantitateStoc;
+	}
+	
+		
 	//LiniiFactura
 	public LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Materiale material, Double cantitate, Factura factura, LiniiComanda linieComanda){
 		logger.debug("5.2.1 S-a introdus linia " + nrLinieLF + " pentru factura numraul " + factura.getNrFactura());
@@ -226,10 +244,11 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	//NIR
-	public NIR creareNIR(Integer nrNIR, Date data, Factura factura, Double valoareTotala){
-	   logger.debug("5.3.1 Creare NIR " + nrNIR);
+
+	public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala){
+	   logger.debug("5.2.1 Creare NIR " + nrNIR);
 	   
-	   NIR nir = new NIR (nrNIR, data,factura, valoareTotala);
+	   NIR nir = new NIR (nrNIR, data, furnizor, valoareTotala);
 	   return nir;
 	}
 		
