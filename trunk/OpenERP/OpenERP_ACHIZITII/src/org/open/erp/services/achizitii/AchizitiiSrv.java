@@ -4,6 +4,7 @@ package org.open.erp.services.achizitii;
 import java.util.Date;
 import org.open.erp.services.nommat.Materiale;
 import org.open.erp.services.nommat.NomenclatorGeneralSrv;
+import org.open.erp.services.stocuri.Gestiune;
 
 import org.open.erp.services.stocuri.StocuriSrv;
 
@@ -41,7 +42,7 @@ import org.open.erp.services.stocuri.StocuriSrv;
 
 public interface AchizitiiSrv {
 	
-	CerereAprov creareCerereAprov(Integer nr, Date data);//s, Materiale material);
+	CerereAprov creareCerereAprov(Integer nr, Date data); //, Materiale material);
 	/**
 	 * Scop					Creeaza Cerere de Aprovizionare care va fi inclusa intr-un plan de aprovizionare
 	 * 
@@ -211,10 +212,9 @@ public interface AchizitiiSrv {
 	public void trimitereComanda(Comanda comanda, Furnizori furnizor);
   	
 
+	public Furnizori creareFurnizor(String denumire);
 	
-	
-  	Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala,Furnizori furnizor);
-  	
+	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala,Furnizori furnizor);  	
   	/**
 	 * Scop				Creare factura	
 	 * @param nrFactura	
@@ -238,7 +238,7 @@ public interface AchizitiiSrv {
 	 */	
   	
 
-	 NIR creareNIR(Integer nrNIR, Date data,Factura factura, Double valoareTotala);
+  	public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala);
 	 
 	 /**
 	 * Scop				 Creare NIR
@@ -282,12 +282,7 @@ public interface AchizitiiSrv {
 	public   void  addOferta(Oferta oferta1);
 
 	public void setMaterialSrv(NomenclatorGeneralSrv matSrv);
-	
-	
 
-  	public Furnizori creareFurnizor(String denumire);
-	
-
-	
+	public Double crestereStoc(Materiale material, Gestiune gestiune, NIR nir, LiniiNIR lNIR);
 
 }
