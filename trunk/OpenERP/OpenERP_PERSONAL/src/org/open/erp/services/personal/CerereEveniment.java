@@ -18,9 +18,11 @@ public class CerereEveniment implements Serializable{
 	private  Date       	dataCerere;
 	
 	private  Date       	dataAprobare;
-	private  Integer    	perioadaEveniment;
+	private  Date       	dataInceputEveniment;	
+	private  Date       	dataSfarsitEveniment;
 	private  String   		tipEveniment;
 	private  String     	status;
+	private int 			sumaEveniment;
 	
 	public Integer getNrInregistrare() {
 		return nrInregistrare;
@@ -47,12 +49,6 @@ public class CerereEveniment implements Serializable{
 	public void setDataAprobare(Date dataAprobare) {
 		this.dataAprobare = dataAprobare;
 	}
-	public Integer getPerioadaEveniment() {
-		return perioadaEveniment;
-	}
-	public void setPerioadaEveniment(Integer perioadaEveniment) {
-		this.perioadaEveniment = perioadaEveniment;
-	}
 	
 	public String gettipEveniment() {
 		return tipEveniment;
@@ -68,19 +64,44 @@ public class CerereEveniment implements Serializable{
 		this.status = status;
 	}
 	public CerereEveniment(Integer nrInregistrare, ContractMunca contract,
-			Date dataCerere, Date dataAprobare, Integer perioadaEveniment, String tipEveniment,
-			String status) {
+			Date dataCerere, Date dataAprobare, Date dataInceputEveniment, Date dataSfarsitEveniment, String tipEveniment,
+			String status, int sumaEveniment) {
 		super();
 		this.nrInregistrare = nrInregistrare;
 		this.contract = contract;
 		this.dataCerere = dataCerere;
 		this.dataAprobare = dataAprobare;
-		this.perioadaEveniment = perioadaEveniment;
+		this.dataInceputEveniment =dataInceputEveniment;
+		this.dataSfarsitEveniment = dataSfarsitEveniment;
 		this.tipEveniment = tipEveniment;
 		this.status = status;
+		this.sumaEveniment= sumaEveniment;
 	}
 	public CerereEveniment() {
 		super();
+		dataCerere = new Date();
+		dataAprobare = new Date();
+		dataInceputEveniment = new Date();
+		dataSfarsitEveniment = new Date();
+		}
+	
+	public Date getDataInceputEveniment() {
+		return dataInceputEveniment;
+	}
+	public void setDataInceputEveniment(Date dataInceputEveniment) {
+		this.dataInceputEveniment = dataInceputEveniment;
+	}
+	public Date getDataSfarsitEveniment() {
+		return dataSfarsitEveniment;
+	}
+	public void setDataSfarsitEveniment(Date dataSfarsitEveniment) {
+		this.dataSfarsitEveniment = dataSfarsitEveniment;
+	}
+	public int getSumaEveniment() {
+		return sumaEveniment;
+	}
+	public void setSumaEveniment(int sumaEveniment) {
+		this.sumaEveniment = sumaEveniment;
 	}
 	
 	

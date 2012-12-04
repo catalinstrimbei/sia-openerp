@@ -13,23 +13,24 @@ public class CerereConcediu implements Serializable{
 	
 	private  Integer  		nrInregistrare;
 	
-	private	 ContractMunca 	contract;
+	private	 Angajat 	idAngajat;
 	
-	private  Date       	dataCerere;
-	
+	private  Date       	dataCerere;	
 	private  Date       	dataAprobare;
-	private  Integer    	perioadaConcediu;
+	private  Date       	dataInceputConcediu;	
+	private  Date       	dataSfarsitConcediu;
 	private  String   		tipConcediu;
-	private  String     	status;
+	private  String     	status = "In asteptare";
 	
+		 
 	public Integer getNrInregistrare() {
 		return nrInregistrare;
 	}
-	public ContractMunca getContract() {
-		return contract;
+	public Angajat getAngajat() {
+		return idAngajat;
 	}
-	public void setContract(ContractMunca contract) {
-		this.contract = contract;
+	public void setIdAngajat(Angajat idAngajat) {
+		this.idAngajat = idAngajat;
 	}
 	public void setNrInregistrare(Integer nrInregistrare) {
 		this.nrInregistrare = nrInregistrare;
@@ -47,12 +48,7 @@ public class CerereConcediu implements Serializable{
 	public void setDataAprobare(Date dataAprobare) {
 		this.dataAprobare = dataAprobare;
 	}
-	public Integer getPerioadaConcediu() {
-		return perioadaConcediu;
-	}
-	public void setPerioadaConcediu(Integer perioadaConcediu) {
-		this.perioadaConcediu = perioadaConcediu;
-	}
+	
 	
 	public String gettipConcediu() {
 		return tipConcediu;
@@ -66,21 +62,44 @@ public class CerereConcediu implements Serializable{
 	}
 	public void setStatus(String status) {
 		this.status = status;
+		if(this.status.equals("Aprobat") ){
+			//merg la salarii
+		}
 	}
-	public CerereConcediu(Integer nrInregistrare, ContractMunca contract,
-			Date dataCerere, Date dataAprobare, Integer perioadaConcediu, String tipConcediu,
+	public CerereConcediu(Integer nrInregistrare, Angajat idAngajat,
+			Date dataCerere, Date dataAprobare, Date dataInc, Date dataSf, String tipConcediu,
 			String status) {
 		super();
 		this.nrInregistrare = nrInregistrare;
-		this.contract = contract;
+		this.idAngajat = idAngajat;
 		this.dataCerere = dataCerere;
 		this.dataAprobare = dataAprobare;
-		this.perioadaConcediu = perioadaConcediu;
 		this.tipConcediu = tipConcediu;
+		this.dataInceputConcediu = dataInc;
+		this.dataSfarsitConcediu = dataSf;
 		this.status = status;
 	}
 	public CerereConcediu() {
 		super();
+		dataCerere = new Date();
+		dataAprobare = new Date();
+		dataInceputConcediu = new Date();
+		dataSfarsitConcediu = new Date();
+		tipConcediu = new String();
+		idAngajat = new Angajat();
+		
+	}
+	public Date getDataInceputConcediu() {
+		return dataInceputConcediu;
+	}
+	public void setDataInceputConcediu(Date dataInceputConcediu) {
+		this.dataInceputConcediu = dataInceputConcediu;
+	}
+	public Date getDataSfarsitConcediu() {
+		return dataSfarsitConcediu;
+	}
+	public void setDataSfarsitConcediu(Date dataSfarsitConcediu) {
+		this.dataSfarsitConcediu = dataSfarsitConcediu;
 	}
 	
 	

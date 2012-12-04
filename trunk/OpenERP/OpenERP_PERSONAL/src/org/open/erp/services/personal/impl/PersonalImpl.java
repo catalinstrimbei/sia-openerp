@@ -81,8 +81,9 @@ public class PersonalImpl implements PersonalSrv{
 	
 
 	@Override
-	public Candidat stabilireAngajatiNoi(List<Interviu> interviuriEfectuate) {
-		return null;
+	public void stabilireAngajatiNoi(Angajat angajatNou, ContractMunca cm, Post postAtribuit) {
+		//introducere angajat nou si un contract aferent;
+		
 	}
 
 	@Override

@@ -8,4 +8,7 @@ public class Post {
 		nivelStudii = studii;
 		salarMinim = salar;
 	}
+	public Post(){
+		
+	}
 }
