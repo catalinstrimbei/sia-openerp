@@ -1,17 +1,19 @@
 package org.open.erp.services.personal;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CV {
 	Candidat titularCV;
-	Tuple<String,Date,Date> studiileAbsolvite;
-	Tuple<String,Date,Date> functiiOcupate;
+	List<Tuple<String,Date,Date>> studiileAbsolvite;
+	List<Tuple<String,Date,Date>> functiiOcupate;
 	DoubleParam<String, String> limbiStraine;
 	String aptitudini;
 	
 	public CV (Candidat titular,Tuple<String,Date,Date> studiiAbs,Tuple<String,Date,Date>functiiOcp, DoubleParam<String,String>limbiStr, String apt){
 		titularCV = titular;
-		studiileAbsolvite = new Tuple<String,Date,Date>();
+		studiileAbsolvite = new ArrayList<Tuple<String,Date,Date>>();
 		studiileAbsolvite.denInstitutie = studiiAbs.denInstitutie;
 		studiileAbsolvite.dataInceput = studiiAbs.dataInceput;
 		studiileAbsolvite.dataSfarsit = studiiAbs.dataSfarsit;

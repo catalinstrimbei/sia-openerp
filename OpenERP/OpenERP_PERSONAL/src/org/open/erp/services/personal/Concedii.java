@@ -1,6 +1,7 @@
 package org.open.erp.services.personal;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 
@@ -11,33 +12,27 @@ public class Concedii implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private  Integer  		nrInregistrare;
-	
-	private	 ContractMunca 	contract;
-	private  Integer    	perioadaConcediu;
+	private	 Angajat 		idAngajat;
+	private  Date       	dataInceputConcediu;	
+	private  Date       	dataSfarsitConcediu;	
 	private  String   		tipConcediu;
 	
 	
 	public Integer getNrInregistrare() {
 		return nrInregistrare;
 	}
-	public ContractMunca getContract() {
-		return contract;
+	public Angajat getAngajat() {
+		return idAngajat;
 	}
-	public void setContract(ContractMunca contract) {
-		this.contract = contract;
+	public void setAngajat(Angajat idAngajat) {
+		this.idAngajat = idAngajat;
 	}
 	public void setNrInregistrare(Integer nrInregistrare) {
 		this.nrInregistrare = nrInregistrare;
 	}
 	
 	
-	public Integer getPerioadaConcediu() {
-		return perioadaConcediu;
-	}
-	public void setPerioadaConcediu(Integer perioadaConcediu) {
-		this.perioadaConcediu = perioadaConcediu;
-	}
-	
+
 	public String gettipConcediu() {
 		return tipConcediu;
 	}
@@ -46,17 +41,41 @@ public class Concedii implements Serializable{
 	}
 	
 	
-	public Concedii(Integer nrInregistrare, ContractMunca contract,
-			Integer perioadaConcediu, String tipConcediu) {
+	public Concedii(Integer nrInregistrare, Angajat idAngajat,Date dataInc, Date dataSf, String tipConcediu) {
 		super();
+		dataInceputConcediu = new Date();
+		dataSfarsitConcediu = new Date();
+		idAngajat = new Angajat();
 		this.nrInregistrare = nrInregistrare;
-		this.contract = contract;
-		this.perioadaConcediu = perioadaConcediu;
+		this.idAngajat = idAngajat;
+		this.dataInceputConcediu = dataInc;
+		this.dataSfarsitConcediu = dataSf;
 		this.tipConcediu = tipConcediu;
 		
 	}
 	public Concedii() {
 		super();
+		dataInceputConcediu = new Date();
+		dataSfarsitConcediu = new Date();
+		idAngajat = new Angajat();
+	}
+	public Angajat getIdAngajat() {
+		return idAngajat;
+	}
+	public void setIdAngajat(Angajat idAngajat) {
+		this.idAngajat = idAngajat;
+	}
+	public Date getDataInceputConcediu() {
+		return dataInceputConcediu;
+	}
+	public void setDataInceputConcediu(Date dataInceputConcediu) {
+		this.dataInceputConcediu = dataInceputConcediu;
+	}
+	public Date getDataSfarsitConcediu() {
+		return dataSfarsitConcediu;
+	}
+	public void setDataSfarsitConcediu(Date dataSfarsitConcediu) {
+		this.dataSfarsitConcediu = dataSfarsitConcediu;
 	}
 	
 	

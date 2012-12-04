@@ -146,7 +146,7 @@ public interface PersonalSrv {
 	 * @return candidatul care e propus pentru angajare
 	 * 
 	 */
-	Candidat stabilireAngajatiNoi (List<Interviu> interviuriEfectuate);
+	void stabilireAngajatiNoi (Angajat angajatNou, ContractMunca cm, Post postAtribuit);
 	
 	/**
 	 * Returneaza o cerere de concediu 
