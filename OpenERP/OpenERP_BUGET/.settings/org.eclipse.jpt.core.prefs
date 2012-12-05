@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+problem.TARGET_ENTITY_IS_NOT_AN_ENTITY=ignore
+problem.TARGET_ENTITY_NOT_DEFINED=ignore
+problem.VIRTUAL_ATTRIBUTE_TARGET_ENTITY_IS_NOT_AN_ENTITY=ignore
+problem.VIRTUAL_ATTRIBUTE_TARGET_ENTITY_NOT_DEFINED=ignore
+workspace_preferences_overriden=true
