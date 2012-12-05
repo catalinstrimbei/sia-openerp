@@ -29,7 +29,7 @@ public class ProjectManagementImpl implements ProjectManagementSrv{
 
 	@Override
 	public Proiect creareProiect(String nume, Responsabil responsabil,
-			Date dataStart, Date dataSfarsit, Double valoareBuget) {
+			Date dataStart, Date dataSfarsit, Double valoareBuget) throws Exception {
 		logger.debug("1.1 Initiere/Creare proiect nou");
 		
 		Proiect proiectNou = new Proiect(1, nume, dataStart, dataSfarsit, valoareBuget, responsabil);
@@ -71,7 +71,8 @@ public class ProjectManagementImpl implements ProjectManagementSrv{
 
 	/* ------------- */
 	@Override
-	public Proiect creareProiect(String numeProiect, Date dataStart, Date dataSfarsit, Double valoareBuget) {
+	public Proiect creareProiect(String numeProiect, Date dataStart, Date dataSfarsit, Double valoareBuget) 
+			throws Exception {
 		logger.debug("1.1 Initiere/Creare proiect nou");
 		Proiect proiectNou = new Proiect(1, numeProiect, dataStart, dataSfarsit, null, null);
 		Buget buget = bugetareSrv.creareBuget(valoareBuget);

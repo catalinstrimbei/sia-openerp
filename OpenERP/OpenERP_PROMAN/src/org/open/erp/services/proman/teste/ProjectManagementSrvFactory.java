@@ -3,6 +3,7 @@ package org.open.erp.services.proman.teste;
 import org.apache.log4j.Logger;
 import org.open.erp.services.buget.Buget;
 import org.open.erp.services.buget.BugetareSrv;
+import org.open.erp.services.buget.impl.BugetareImpl;
 import org.open.erp.services.nomgen.NomenclatoareGeneraleSrv;
 import org.open.erp.services.proman.ProjectManagementSrv;
 import org.open.erp.services.proman.impl.ProjectManagementImpl;
@@ -24,14 +25,7 @@ public class ProjectManagementSrvFactory {
 	public static BugetareSrv getProjectBugetareSrv(){
 		logger.info("Creare dummy instance of BugetareSrv from BugetareSrvFactory!");
 		// Dummmy Implementation of BugetareSrv
-		return new BugetareSrv()
-		{
-			@Override
-			public Buget creareBuget(Double valoareBuget) {
-				logger.info("1.2 Stabilire buget proiect");
-				return new Buget();
-			}
-		};
+		return new BugetareImpl();
 		// ----
 	}
 	

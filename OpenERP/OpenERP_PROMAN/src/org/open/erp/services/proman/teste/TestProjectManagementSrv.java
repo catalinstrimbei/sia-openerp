@@ -33,13 +33,15 @@ public class TestProjectManagementSrv {
 	}
 	
 	@Before public void initServices(){	
+		logger.setLevel(Level.DEBUG);
+		
 		promanInstance= ProjectManagementSrvFactory.getProjectManagementSrv();
 		logger.info("ProjectManagementSrv Service intiated for Test!");
 	}
 	
 	@Test
 	public void testCreareProiect() throws Exception{
-		logger.setLevel(Level.DEBUG);
+		
 		
 		logger.info("Begin test TestProjectManagementSrv!");
 		//--------
