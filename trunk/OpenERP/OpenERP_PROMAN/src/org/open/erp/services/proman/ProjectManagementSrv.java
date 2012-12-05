@@ -38,7 +38,7 @@ public interface ProjectManagementSrv{
 	 * @return instanta Proiect nou creata. 
 	 * 
 	 */
-	Proiect creareProiect(String numeProiect, Date dataStart, Date dataSfarsit, Double valoareBuget);
+	Proiect creareProiect(String numeProiect, Date dataStart, Date dataSfarsit, Double valoareBuget) throws Exception ;
 
 	/**
 	 * Scop					Creeaza activitate si o asociaza proiectului.
