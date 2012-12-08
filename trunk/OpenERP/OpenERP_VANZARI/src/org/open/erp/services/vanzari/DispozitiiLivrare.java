@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.nomgen.Clienti;
-
 public class DispozitiiLivrare {
 	Integer idDispozitieLivrare;
 	Date data;

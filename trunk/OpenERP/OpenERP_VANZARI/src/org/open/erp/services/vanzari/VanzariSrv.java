@@ -3,8 +3,6 @@ package org.open.erp.services.vanzari;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import org.open.erp.services.nomgen.Clienti;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.stocuri.StocuriSrv;
 

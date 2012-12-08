@@ -2,7 +2,6 @@ package org.open.erp.services.vanzari;
 
 import java.util.Date;
 
-import org.open.erp.services.nomgen.Clienti;
 
 
 public class OfertePret {

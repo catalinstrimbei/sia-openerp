@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.hamcrest.core.Is;
-import org.open.erp.services.nomgen.Clienti;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.stocuri.StocuriSrv;
