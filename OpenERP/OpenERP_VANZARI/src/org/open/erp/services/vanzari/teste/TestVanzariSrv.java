@@ -11,8 +11,12 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.open.erp.services.nomgen.Adresa;
 import org.open.erp.services.nomgen.Clienti;
-import org.open.erp.services.stocuri.Produse;
+import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.nommat.ListaCaracteristici;
+import org.open.erp.services.nommat.Material;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
@@ -23,6 +27,7 @@ import org.open.erp.services.vanzari.LiniiAviz;
 import org.open.erp.services.vanzari.LiniiDispozitieLivrare;
 import org.open.erp.services.vanzari.LiniiFactura;
 import org.open.erp.services.vanzari.OfertePret;
+import org.open.erp.services.vanzari.Produse;
 import org.open.erp.services.vanzari.Responsabil;
 import org.open.erp.services.vanzari.VanzariSrv;
 
@@ -65,7 +70,10 @@ public class TestVanzariSrv {
 		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
 		
 		logger.info("2.2 START creare clienti ");
-		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
+		
+		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
+		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
+		Clienti client1= new Clienti(pers, "PF");
 		
 		logger.info("1.2 START creare oferta de pret ");
 	
@@ -93,7 +101,9 @@ public class TestVanzariSrv {
 		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
 		
 		logger.info("2.2 START creare clienti");
-		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
+		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
+		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
+		Clienti client1= new Clienti(pers, "PF");
 		
 		logger.info("1.1 Start creare oferta de pret");
 		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
@@ -131,11 +141,19 @@ public class TestVanzariSrv {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
 		
+		ListaCaracteristici caract = new ListaCaracteristici("1", "Material Dur");
+		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, caract);
+		logger.debug("++++++ Afisare Material: " + mat.getDenumireMaterial() + "; "+ "Detalii: " + mat.getPretStandard() + ", " + mat.getCantitateStandard());
+		
 		logger.info("1.2 START creare produse");
-		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
+		Produse produs1 = new Produse(mat, 1, "Produs 1", 67890, 10.00, 13.00 );
 		
 		logger.info("3.2 START creare clienti");
-		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
+		
+		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
+		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
+		Clienti client1= new Clienti(pers, "PF");
+		
 		
 		logger.info("1.1START creare oferta de pret");
 		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
@@ -171,9 +189,8 @@ public class TestVanzariSrv {
 				dispozitie.adaugaLinieDispozitie(linieDispozitieLivrare);
 				i=i+1;
 				//apelare iesire din stoc a articolului
-				stocuriInstance.iesireStoc(articol.getOferta().getProdus(), articol.getCantitateAcceptata());
-				
-	
+				stocuriInstance.iesireStoc(articol.getOferta().getProdus().getMaterial(), articol.getCantitateAcceptata());
+				logger.debug("*****************************" +  articol.getOferta().getProdus().getMaterial().getDenumireMaterial());
 			}
 		}
 		
@@ -208,7 +225,9 @@ public class TestVanzariSrv {
 		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
 		
 		logger.info("2.2 START creare clienti");
-		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
+		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
+		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
+		Clienti client1= new Clienti(pers, "PF");
 		
 		logger.info("1.1 START creare oferta de pret");
 		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
@@ -277,7 +296,10 @@ public class TestVanzariSrv {
 		Produse produs2 = new Produse(2, "Produs 2", 67892, 2.00, 122.00 );
 		
 		logger.info("2.2 START creare clienti");
-		Clienti client1= new Clienti(10,null,"Popescu","Ion", "PF");
+		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
+		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
+		Clienti client1= new Clienti(pers, "PF");
+		logger.debug("_)_)_)_)_)_)_)_" + client1.getPersoana().getNume());
 		
 		logger.info("1.1 START creare oferta de pret");
 		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");

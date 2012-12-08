@@ -3,7 +3,7 @@ package org.open.erp.services.vanzari;
 import java.util.Date;
 
 import org.open.erp.services.nomgen.Clienti;
-import org.open.erp.services.stocuri.Produse;
+
 
 public class OfertePret {
 	Integer idOfertaPret;

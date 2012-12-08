@@ -12,7 +12,6 @@ import org.open.erp.services.nomgen.Clienti;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.stocuri.StocuriSrv;
-import org.open.erp.services.stocuri.Produse;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
 import org.open.erp.services.vanzari.Comenzi;
@@ -22,6 +21,7 @@ import org.open.erp.services.vanzari.LiniiAviz;
 import org.open.erp.services.vanzari.LiniiDispozitieLivrare;
 import org.open.erp.services.vanzari.LiniiFactura;
 import org.open.erp.services.vanzari.OfertePret;
+import org.open.erp.services.vanzari.Produse;
 import org.open.erp.services.vanzari.Responsabil;
 import org.open.erp.services.vanzari.VanzariSrv;
 
@@ -55,16 +55,6 @@ public class VanzariImpl implements VanzariSrv{
 		this.stocuriSrv = stocuriSrv;
 	}
 	
-
-	@Override
-	public OfertePret creareOfertePret(Integer idOfertaPret, Produse produs,
-			Date dataValabilitate, Date dataeminiteri, String observatii) {
-logger.debug("I.1 Creare oferta de pret");
-		
-		OfertePret ofertaPret= new OfertePret(1, produs, new Date(), new Date(), observatii);
-	 
-		return ofertaPret;
-	}
 
 	@Override
 	public Comenzi creareComanda(Integer idComanda, Date data,
@@ -118,10 +108,15 @@ logger.debug("I.1 Creare oferta de pret");
 		
 	}
 
+	@Override
+	public OfertePret creareOfertePret(Integer idOfertaPret, Produse produs,
+			Date dataValabilitate, Date dataeminiteri, String observatii) {
+			logger.debug("I.1 Creare oferta de pret");
 	
+			OfertePret ofertaPret= new OfertePret(1, produs, new Date(), new Date(), observatii);
+	 
+		return ofertaPret;
+	}
 
-	
-
-	
 	
 }

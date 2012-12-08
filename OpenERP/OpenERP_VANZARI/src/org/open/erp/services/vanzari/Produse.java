@@ -1,6 +1,9 @@
-package org.open.erp.services.stocuri;
+package org.open.erp.services.vanzari;
+
+import org.open.erp.services.nommat.Material;
 
 public class Produse {
+	Material material;
 	Integer idProdus;
 	String denumire;
 	Integer codProdus;
@@ -8,6 +11,20 @@ public class Produse {
 	Double cantitate;
 	Double stoc;
 	
+	
+	public Produse(Material material, Integer idProdus, String denumire,
+			Integer codProdus, Double cost, Double cantitate, Double stoc) {
+		super();
+		this.material = material;
+		this.idProdus = idProdus;
+		this.denumire = denumire;
+		this.codProdus = codProdus;
+		this.cost = cost;
+		this.cantitate = cantitate;
+		this.stoc = stoc;
+	}
+
+
 	public Produse(Integer idProdus, String denumire, Integer codProdus,
 			Double cost, Double cantitate) {
 		super();
@@ -62,6 +79,31 @@ public class Produse {
 	}
 	public void setStoc(Double stoc) {
 		this.stoc = stoc;
+	}
+
+
+
+	public Material getMaterial() {
+		return material;
+	}
+
+
+
+	public void setMaterial(Material material) {
+		this.material = material;
+	}
+
+
+	public Produse(Material material, Integer idProdus, String denumire,
+			Integer codProdus, Double cost, Double cantitate) {
+		super();
+		this.material = material;
+		this.idProdus = idProdus;
+		this.denumire = denumire;
+		this.codProdus = codProdus;
+		this.cost = cost;
+		this.cantitate = cantitate;
+		
 	}
 	
 	
