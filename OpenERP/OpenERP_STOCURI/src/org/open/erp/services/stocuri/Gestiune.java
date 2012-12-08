@@ -56,6 +56,13 @@ public class Gestiune {
 		this.articole = articole;
 	}
 
+	
+	public Gestiune(Integer idGest, String denumireGest) {
+		super();
+		this.idGest = idGest;
+		this.denumireGest = denumireGest;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
