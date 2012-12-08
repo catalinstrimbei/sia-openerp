@@ -1,7 +1,15 @@
 package org.open.erp.services.stocuri;
 
 import org.open.erp.services.achizitii.AchizitiiSrv;
-import org.open.erp.services.achizitii.Produs;
+//import org.open.erp.services.achizitii.Produs;
+
+import org.open.erp.services.achizitii.NIR;
+import org.open.erp.services.achizitii.LiniiNIR;
+import org.open.erp.services.nommat.Material;
+
+//
+import org.open.erp.services.nommat.Materiale;
+//
 
 /**
  * @author echipa.stocuri
@@ -48,7 +56,7 @@ public interface StocuriSrv {
 	 * 
 	 */
 	
-	void intrareStoc(Produs produs, Gestiune gestiunea);
+	void intrareStoc(NIR nir, Gestiune gestiunea);
 	
 	
 	/** 2. Verificare stoc
@@ -60,7 +68,7 @@ public interface StocuriSrv {
 	 * 
 	 */
 	
-	Double verificareStoc(Produs produs,Gestiune gestiune);
+	Double verificareStoc(Material produs,Gestiune gestiune);
 	
 	
 	/** 3. Iesire din stoc
@@ -75,7 +83,7 @@ public interface StocuriSrv {
 	 */
 	
 	
-	void iesireStoc(Produs produs, Gestiune gestiune, Double cantitate);
+	void iesireStoc(Material material,  Double cantitate, Gestiune gestiune);
 	
 	/** 4. Transfer intre getsiuni
 	 * Returneaza void
@@ -90,7 +98,8 @@ public interface StocuriSrv {
 	 * 
 	 */
 	
-	void transfer(Produs produs, Gestiune gestiuneIesire, Gestiune gestiuneIntrare);
+	void transfer(BonTransfer bonTransfer);
+	void intrareStoc(BonTransfer bonTransfer);
 	
 	void alertaStoc(Articol articol);
 	
@@ -102,9 +111,9 @@ public interface StocuriSrv {
 		//boolean existaArticol(Produs produs, Gestiune gestiune);
 		
 		
-		public Articol getArticolByGestiune(Produs produs, Gestiune gestiune);
+		public Articol getArticolByGestiune(Material produs, Gestiune gestiune);
 		
-		public void creareLot(Produs produs, Gestiune gestiune);
+		public void creareLot(LiniiNIR linie, Gestiune gestiune);
 	
 	void setAchizitiiSrv(AchizitiiSrv achizitiiSrv);
 }
