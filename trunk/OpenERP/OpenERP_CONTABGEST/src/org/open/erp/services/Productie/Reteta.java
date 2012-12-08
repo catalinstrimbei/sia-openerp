@@ -1,13 +1,11 @@
 package org.open.erp.services.Productie;
-
-
-import org.open.erp.services.NOMMAT.MateriePrima;
+import org.open.erp.services.nommat.Material;
 import org.open.erp.services.Productie.Produs;
 
 public class Reteta {
 	private Integer IdReteta;
 	private Produs produs;
-	private MateriePrima materiePrima;
+	private Material material;
 	private Semifabricat semifabricat;
 	private Double cantitateM;
 	private Double cantitateS;
@@ -37,12 +35,7 @@ public class Reteta {
 	public void setProdus(Produs produs) {
 		this.produs = produs;
 	}
-	public MateriePrima getMateriePrima() {
-		return materiePrima;
-	}
-	public void setMateriePrima(MateriePrima materiePrima) {
-		this.materiePrima = materiePrima;
-	}
+
 	public Semifabricat getSemifabricat() {
 		return semifabricat;
 	}
@@ -50,12 +43,12 @@ public class Reteta {
 		this.semifabricat = semifabricat;
 	}
 	
-	public Reteta(Integer idReteta, Produs produs, MateriePrima materiePrima,
+	public Reteta(Integer idReteta, Produs produs, Material materiePrima,
 			Semifabricat semifabricat, Double cantitateM,Double cantitateS) {
 		super();
 		IdReteta = idReteta;
 		this.produs = produs;
-		this.materiePrima = materiePrima;
+		this.material = materiePrima;
 		this.semifabricat = semifabricat;
 		this.cantitateM = cantitateM;
 		this.cantitateS=cantitateS;
@@ -117,4 +110,10 @@ public class Reteta {
 //	}
 //	
 //	
+	public Material getMaterial() {
+		return material;
+	}
+	public void setMaterial(Material material) {
+		this.material = material;
+	}
 }
