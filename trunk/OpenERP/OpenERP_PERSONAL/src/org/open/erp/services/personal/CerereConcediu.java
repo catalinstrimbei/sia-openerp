@@ -79,14 +79,14 @@ public class CerereConcediu implements Serializable{
 		this.dataSfarsitConcediu = dataSf;
 		this.status = status;
 	}
-	public CerereConcediu() {
+	public CerereConcediu(Angajat ang) {
 		super();
 		dataCerere = new Date();
 		dataAprobare = new Date();
 		dataInceputConcediu = new Date();
 		dataSfarsitConcediu = new Date();
 		tipConcediu = new String();
-		idAngajat = new Angajat();
+		idAngajat = ang;
 		
 	}
 	public Date getDataInceputConcediu() {

@@ -45,7 +45,6 @@ public class Concedii implements Serializable{
 		super();
 		dataInceputConcediu = new Date();
 		dataSfarsitConcediu = new Date();
-		idAngajat = new Angajat();
 		this.nrInregistrare = nrInregistrare;
 		this.idAngajat = idAngajat;
 		this.dataInceputConcediu = dataInc;
@@ -53,11 +52,11 @@ public class Concedii implements Serializable{
 		this.tipConcediu = tipConcediu;
 		
 	}
-	public Concedii() {
+	public Concedii(Angajat ang) {
 		super();
 		dataInceputConcediu = new Date();
 		dataSfarsitConcediu = new Date();
-		idAngajat = new Angajat();
+		idAngajat = ang;
 	}
 	public Angajat getIdAngajat() {
 		return idAngajat;
