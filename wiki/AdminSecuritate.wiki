@@ -1,2 +1,2 @@
-#labels Pagina,modulului,AdminSecuritate
+#labels PaginamodululuiAdminSecuritate
 Pagina modulului AdminSecuritate
