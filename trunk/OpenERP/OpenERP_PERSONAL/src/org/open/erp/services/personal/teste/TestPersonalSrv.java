@@ -12,10 +12,13 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.open.erp.services.nomgen.Adresa;
+import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.Anunt;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
+import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.DoubleParam;
 import org.open.erp.services.personal.Interviu;
 import org.open.erp.services.personal.PersonalSrv;
@@ -52,11 +55,12 @@ public class TestPersonalSrv {
 		cal.add(Calendar.DATE, 10);
 		Date dataExpirare = cal.getTime();
 		
-		Post postLiber = instantaPersonal.crearePost("Medii", 2000);
+		
+		Post postLiber = instantaPersonal.crearePost("Medii", 2000, new Departament("1","Finante"));
 		Anunt anuntNou = instantaPersonal.creareAnunt("Responsabil resurse umane", 122025, dataEmitere, dataExpirare, "Organizat, bune abilitati de comunicare", postLiber);
 		assertNotNull("Nu exista un anunt nou!", anuntNou);
 		
-		Candidat candidatNou = instantaPersonal.creareCandidat("Ionescu", "Daniel", "str. Prof. Irimescu nr. 8", "0232/115874", "danielIon@yahoo.com", new Date(), 'F');
+		Candidat candidatNou = instantaPersonal.creareCandidat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Candidat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"));
 		assertNotNull("Nu exista un candidat nou!", candidatNou);
 		
 		Calendar cal2 = Calendar.getInstance();
@@ -82,16 +86,23 @@ public class TestPersonalSrv {
 		limbiStraine.limbaStraina = "Franceza";
 		limbiStraine.nivelulDeCunoastere = "C1";
 		
-		CV cvCandidat = instantaPersonal.creareCV(candidatNou, studiiAbsolvite, functiiOcupate, limbiStraine, "organizat");
+		List<Tuple<String,Date,Date>> studiiAbs = new ArrayList<Tuple<String,Date,Date>>();
+		studiiAbs.add(studiiAbsolvite);
+		
+		List<Tuple<String,Date,Date>> functiiOcup = new ArrayList<Tuple<String,Date,Date>>();
+		studiiAbs.add(functiiOcupate);
+		
+		List<DoubleParam<String,String>> lStraine = new ArrayList<DoubleParam<String,String>>();
+		lStraine.add(limbiStraine);
+		
+		CV cvCandidat = instantaPersonal.creareCV(candidatNou, studiiAbs, functiiOcup, lStraine, "organizat");
 		assertNotNull("Nu exista un CV nou!", cvCandidat);
 		
-		logger.debug("Afisarea nivelului pentru limba straina");
-		logger.debug("Nivel: " + cvCandidat.getLimbiStraine().getNivelulDeCunoastere().toString());
-		
+				
 		ProbaEvaluare proba1 = instantaPersonal.creareProbaEvaluare("Proba1");
 		ProbaEvaluare proba2 = instantaPersonal.creareProbaEvaluare("Proba2");
 		
-		Angajat evaluator = instantaPersonal.creareAngajat();
+		Angajat evaluator = instantaPersonal.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
 		
 		List<Angajat> evaluatori = new ArrayList<Angajat>();
 		evaluatori.add(evaluator);
@@ -109,5 +120,40 @@ public class TestPersonalSrv {
 		logger.debug("Rezultat: " + candidatNou.getRezultatLaTeste().get(proba2));
 		
 		logger.info("Sfarsit Test TestPersonalSrv!");
+		
+		
+		Candidat candidatNou2 = instantaPersonal.creareCandidat(1235,"Ionescu Florin", "M", "danielIon@yahoo.com", "Candidat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"));
+		assertNotNull("Nu exista un candidat nou!", candidatNou2);
+		
+		Interviu interviuCandidati2 = instantaPersonal.creareInterviu(anuntNou, evaluatori, probeInterviu, new Date());
+		interviuCandidati2.adaugareCandidat(candidatNou2);
+		interviuCandidati2.stabilireRezultateInterviu(candidatNou2, proba1, 3);
+		interviuCandidati2.stabilireRezultateInterviu(candidatNou2, proba2, 4);
+		
+		List<Candidat> listacandidati=new ArrayList<Candidat>();
+		listacandidati.add(candidatNou);
+		listacandidati.add(candidatNou2);
+		
+		int notaMax = 0;
+		int rezultat1 =0;
+		int rezultat2 =0;
+		Candidat deAngajat = new Candidat(null,null,null,null,null,null,null,null,null);
+		for (Candidat c:listacandidati){
+			rezultat1 = c.getRezultatLaTeste().get(proba1);
+			if(rezultat1>notaMax){
+				notaMax = rezultat1;
+				deAngajat = c;
+			}
+			rezultat2 = c.getRezultatLaTeste().get(proba2);
+			if(rezultat2>notaMax){
+				notaMax = rezultat2;
+				deAngajat = c;
+			}
+		}
+		
+		Angajat angajatNou = instantaPersonal.creareAngajat(deAngajat.getId(),deAngajat.getNume(),deAngajat.getSex(),deAngajat.getMail(),deAngajat.getStatutInCompanie(),deAngajat.getStareCivila(),deAngajat.getDataNastere(),deAngajat.getTelefon(),deAngajat.getAdresa(),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
+		
+		
+		
 	}
 }

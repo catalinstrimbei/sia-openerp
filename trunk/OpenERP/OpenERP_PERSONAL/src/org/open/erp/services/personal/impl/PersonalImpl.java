@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.open.erp.services.nomgen.Adresa;
+import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.Anunt;
 import org.open.erp.services.personal.CV;
@@ -21,8 +23,8 @@ import org.open.erp.services.personal.Tuple;
 public class PersonalImpl implements PersonalSrv{
 
 	@Override
-	public Post crearePost(String nivelStudii, int salarMinim){
-		Post postLiber = new Post(nivelStudii, salarMinim);
+	public Post crearePost(String nivelStudii, int salarMinim, Departament dep){
+		Post postLiber = new Post(nivelStudii, salarMinim, dep);
 		return postLiber;
 	}
 	
@@ -42,16 +44,16 @@ public class PersonalImpl implements PersonalSrv{
 	}
 
 	@Override
-	public Candidat creareCandidat(String nume, String prenume, String adresa, String telefon, String email, Date dataNasterii,char sex){
-		Candidat angajatPosibil = new Candidat(nume, prenume, adresa,telefon, email, dataNasterii, sex);
+	public Candidat creareCandidat(Integer id, String nume, String sex, String mail,String statutInCompanie, String stareCivila, String dataNastere, String telefon, Adresa adresa){
+		Candidat angajatPosibil = new Candidat(id, nume, sex, mail, statutInCompanie, stareCivila, dataNastere, telefon,adresa);
 		return angajatPosibil;
 	}
 	
 	@Override
 	public CV creareCV(Candidat titular,
-			Tuple<String, Date, Date> studiiAbsolvite,
-			Tuple<String, Date, Date> functiiOcupate,
-			DoubleParam<String, String> limbiStraine, String aptitudini) {
+			List<Tuple<String, Date, Date>> studiiAbsolvite,
+			List<Tuple<String, Date, Date>> functiiOcupate,
+			List<DoubleParam<String, String>> limbiStraine, String aptitudini) {
 	
 		CV cvNouAdaugat = new CV(titular,studiiAbsolvite,functiiOcupate,limbiStraine,aptitudini);
 		return cvNouAdaugat;
@@ -122,8 +124,10 @@ public class PersonalImpl implements PersonalSrv{
 	}
 
 	@Override
-	public Angajat creareAngajat() {
-		Angajat angajatNou = new Angajat();
+	public Angajat creareAngajat(Integer id, String nume, String sex, String mail,
+			String statutInCompanie, String stareCivila, String dataNastere,
+			String telefon, Adresa adresa, ContractMunca cm) {
+		Angajat angajatNou = new Angajat(id, nume, sex, mail, statutInCompanie, stareCivila, dataNastere, telefon, adresa, cm);
 		return angajatNou;
 	}
 	
