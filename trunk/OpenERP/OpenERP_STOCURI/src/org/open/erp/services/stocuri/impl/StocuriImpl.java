@@ -32,10 +32,10 @@ public class StocuriImpl implements StocuriSrv{
 	
 	@Override
 	
-	public void intrareStoc(NIR nir, Gestiune gestiune) 
+	public void intrareStoc(LiniiNIR linie, Gestiune gestiune) 
 	{
-		for(LiniiNIR linie: nir.getLinieNir())
-		{
+		//for(LiniiNIR linie: nir.getLinieNir())
+		//{
 			//Cei de la achizitii acum obiectul MATERIALE declarat local, cand o sa implementeze clasa MATERIAL de la nom materiale atunci nu o sa mai dea eroare
 			logger.info("2.1. Preluare date specifice produsului: id-ul produsul: " + linie.getMaterial().getCodMaterial()+ ", cantitatea produsului: " + linie.getCantitate() + ", pretul de intrare: " + linie.getPret());
 			
@@ -60,7 +60,7 @@ public class StocuriImpl implements StocuriSrv{
 			}
 			
 			
-		}
+		//}
 		
 		
 	}
