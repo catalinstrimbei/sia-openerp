@@ -7,7 +7,9 @@ String cantitateStandard;
 String pretStandard;
 String procentTVACurent;
 String observatii;
+String um;
 ListaCaracteristici listaCaracteristici;
+
 
 public String getCantitateStandard() {
 	return cantitateStandard;
@@ -52,6 +54,13 @@ public void setObservatii(String observatii) {
 	this.observatii = observatii;
 }
 
+
+public Material(String codMaterial, String denumireMaterial, String um) {
+	super();
+	this.codMaterial = codMaterial;
+	this.denumireMaterial = denumireMaterial;
+	this.um=um;
+}
 
 public Material(String codMaterial, String denumireMaterial, String cantitateStandard, String pretStandard,
 		String procentTVACurent, String observatii, ListaCaracteristici listaCaracteristici) {
