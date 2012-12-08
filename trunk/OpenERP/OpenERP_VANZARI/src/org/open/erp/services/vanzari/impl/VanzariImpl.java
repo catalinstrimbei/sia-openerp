@@ -39,19 +39,21 @@ public class VanzariImpl implements VanzariSrv{
 	
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(VanzariImpl.class.getName());
 
+	
+
+	
+
+	public PersonalSrv getPersonalSrv() {
+		return personalSrv;
+	}
+
 	public void setNomencaltoareSrv(NomenclatoareSrv nomencaltoareSrv) {
 		this.nomencaltoareSrv = nomencaltoareSrv;
 	}
 
-	public void setNomenclatoareMaterialeSrv(
-			StocuriSrv nomenclatoareMaterialeSrv) {
+	public void setStocuriSrv(StocuriSrv stocuriSrv) {
 		this.stocuriSrv = stocuriSrv;
 	}
-
-	public void setPersonalSrv(PersonalSrv personalSrv) {
-		this.personalSrv = personalSrv;
-	}
-
 	
 
 	@Override
@@ -102,6 +104,18 @@ logger.debug("I.1 Creare oferta de pret");
 		logger.debug("III.1 Creare dispozitie livrare");
 		DispozitiiLivrare dispozitie=new DispozitiiLivrare(1, new Date(), responsabil, comanda, liniiDispozitieLivrare);
 		return dispozitie;
+	}
+
+	@Override
+	public void setPersonalSrv(PersonalSrv personalSrv) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setStocuri(StocuriSrv stocuriSrv) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

@@ -26,9 +26,12 @@ import org.open.erp.services.vanzari.OfertePret;
 import org.open.erp.services.vanzari.Responsabil;
 import org.open.erp.services.vanzari.VanzariSrv;
 
+
 public class TestVanzariSrv {
 	private static Logger logger;
 	VanzariSrv vanzariInstance;
+	StocuriSrv stocuriInstance;
+	
 	
 	
 	
@@ -39,7 +42,9 @@ public class TestVanzariSrv {
 	
 	@Before public void initServices(){	
 		vanzariInstance= VanzariSrvFactory.getVanzariSrv();
+		stocuriInstance=VanzariSrvFactory.getStocuriSrv();
 		logger.info("Initializare VanzariSRV pentru TESTARE!");
+		
 
 	}
 		
@@ -166,7 +171,9 @@ public class TestVanzariSrv {
 				dispozitie.adaugaLinieDispozitie(linieDispozitieLivrare);
 				i=i+1;
 				//apelare iesire din stoc a articolului
-				iesireStoc(articol.getOferta().getProdus().getIdProdus(),articol.getCantitateAcceptata());
+				stocuriInstance.iesireStoc(articol.getOferta().getProdus(), articol.getCantitateAcceptata());
+				
+	
 			}
 		}
 		

@@ -64,6 +64,7 @@ public class Produse {
 		this.stoc = stoc;
 	}
 	
+	
 
 
 }
