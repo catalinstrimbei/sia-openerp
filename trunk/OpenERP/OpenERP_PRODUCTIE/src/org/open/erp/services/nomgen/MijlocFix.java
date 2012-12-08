@@ -9,7 +9,7 @@ public class MijlocFix implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String  denumire;
-	private String  adresa;
+	private Integer  termenExploatare;
 	private Integer valoare;
 	
 	public Integer getId() {
@@ -24,24 +24,24 @@ public class MijlocFix implements Serializable {
 	public void setDenumire(String denumire) {
 		this.denumire = denumire;
 	}
-	public String getAdresa() {
-		return adresa;
-	}
-	public void setAdresa(String adresa) {
-		this.adresa = adresa;
-	}
 	public Integer getValoare() {
 		return valoare;
 	}
 	public void setValoare(Integer valoare) {
 		this.valoare = valoare;
+	}	
+	public Integer getTermenExploatare() {
+		return termenExploatare;
+	}
+	public void setTermenExploatare(Integer termenExploatare) {
+		this.termenExploatare = termenExploatare;
 	}
 	
-	public MijlocFix(Integer id, String denumire, String adresa, Integer valoare) {
+	public MijlocFix(Integer id, String denumire, Integer  termenExploatare, Integer valoare) {
 		super();
 		this.id = id;
 		this.denumire = denumire;
-		this.adresa = adresa;
+		this.termenExploatare = termenExploatare;
 		this.valoare = valoare;
 	}
 	
@@ -54,7 +54,7 @@ public class MijlocFix implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((adresa == null) ? 0 : adresa.hashCode());
+		result = prime * result + ((termenExploatare == null) ? 0 : termenExploatare.hashCode());
 		result = prime * result
 				+ ((denumire == null) ? 0 : denumire.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -70,10 +70,10 @@ public class MijlocFix implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		MijlocFix other = (MijlocFix) obj;
-		if (adresa == null) {
-			if (other.adresa != null)
+		if (termenExploatare == null) {
+			if (other.termenExploatare != null)
 				return false;
-		} else if (!adresa.equals(other.adresa))
+		} else if (!termenExploatare.equals(other.termenExploatare))
 			return false;
 		if (denumire == null) {
 			if (other.denumire != null)
