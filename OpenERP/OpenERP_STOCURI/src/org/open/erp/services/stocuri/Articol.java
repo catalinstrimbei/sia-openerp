@@ -2,7 +2,7 @@ package org.open.erp.services.stocuri;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.open.erp.services.achizitii.Produs;
+import org.open.erp.services.nommat.Material;
 
 /**
  * 
@@ -11,11 +11,11 @@ import org.open.erp.services.achizitii.Produs;
  * @BusinessObject(Entity)
  * 
  */
-public class Articol {
+public class Articol extends Material{
 	private Integer idArticol;
 	private Double cantPeGestiune;
 	private Gestiune gestiune;
-	private Produs produs;
+	private Material material;
 	private List<Loturi> loturiArticole = new ArrayList<Loturi>();
 	
 	public void addLot(Loturi lot){
@@ -55,11 +55,11 @@ public class Articol {
 	public void setGestiune(Gestiune gestiune) {
 		this.gestiune = gestiune;
 	}
-	public Produs getProdus() {
-		return produs;
+	public Material getMaterial() {
+		return material;
 	}
-	public void setProdus(Produs produs) {
-		this.produs = produs;
+	public void setMaterial(Material produs) {
+		this.material = produs;
 	}
 	public List<Loturi> getLoturiArticole() {
 		return loturiArticole;
@@ -68,12 +68,12 @@ public class Articol {
 		this.loturiArticole = loturiArticole;
 	}
 	public Articol(Integer idArticol, Double cantPeGestiune,
-			Gestiune gestiune, Produs produs, List<Loturi> loturiArticole) {
+			Gestiune gestiune, Material material, List<Loturi> loturiArticole) {
 		super();
 		this.idArticol = idArticol;
 		this.cantPeGestiune = cantPeGestiune;
 		this.gestiune = gestiune;
-		this.produs = produs;
+		this.material = material;
 		this.loturiArticole = loturiArticole;
 	}
 	

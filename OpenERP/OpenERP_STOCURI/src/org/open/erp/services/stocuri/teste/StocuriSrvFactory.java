@@ -9,6 +9,11 @@ import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 import org.open.erp.services.vanzari.VanzariSrv;
 
+import org.open.erp.services.nommat.ListaCaracteristici;
+import org.open.erp.services.nommat.Material;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.nommat.UnitateDeMasura;
+
 public class StocuriSrvFactory {
 	
 	private static Logger logger = Logger.getLogger(StocuriSrvFactory.class.getName());
@@ -16,8 +21,11 @@ public class StocuriSrvFactory {
 	public static StocuriSrv getStocuriSrv(){
 		StocuriSrv stocuri = new StocuriImpl();
 		AchizitiiSrv achizitiiSrv = StocuriSrvFactory.getAchizitiiSrv(); 
-		stocuri.setAchizitiiSrv(achizitiiSrv);
+	    stocuri.setAchizitiiSrv(achizitiiSrv);
 		logger.info("Crerare StocuriSrv instance from StocuriSrvFactory!");
+		
+		//NomenclatorMaterialeSrv nomenclatorMaterialeSrv = StocuriSrvFactory.getNomenclatoareMateriaelSrv();
+		//stocuri.setNomenclatoareGeneraleSrv(nomenclatorMaterialeSrv);
 		
 		return stocuri;
 		
@@ -48,4 +56,35 @@ public class StocuriSrvFactory {
 			// Null implementation
 		};
 	}
+
+
+public static NomenclatorMaterialeSrv getNomenclatoareMateriaelSrv(){
+	logger.info("Creaza Dummy NOMMAT SRV----");
+	return new NomenclatorMaterialeSrv(){
+
+		@Override
+		public Material introducereMaterial(String codMaterial,
+				String denumireMaterial, String cantitateStandard,
+				String pretStandard, String procentTVACurent,
+				String observatii, ListaCaracteristici listaCaracteristici) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public UnitateDeMasura incarcareUnitate(String id,
+				String unitateDeMasura) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public ListaCaracteristici incarcareLista(String id,
+				String listaCaracteristici) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		// Null implementation
+	};
+}
 }

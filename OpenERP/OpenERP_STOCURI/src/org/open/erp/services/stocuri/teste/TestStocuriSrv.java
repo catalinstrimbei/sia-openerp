@@ -8,7 +8,14 @@ import org.apache.log4j.Level;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.open.erp.services.achizitii.AchizitiiSrv;
+import org.open.erp.services.achizitii.LiniiNIR;
+import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.Produs;
+import org.open.erp.services.nommat.ListaCaracteristici;
+import org.open.erp.services.nommat.Material;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+//import org.open.erp.services.nommat.Materiale;
 import org.open.erp.services.stocuri.Articol;
 import org.open.erp.services.stocuri.Depozit;
 import org.open.erp.services.stocuri.Gestiune;
@@ -19,6 +26,7 @@ public class TestStocuriSrv {
 	private static Logger logger;
 
 	StocuriSrv stocuriInstance;
+	public NomenclatorMaterialeSrv nomenclatorMaterialeSrv;
 
 	@BeforeClass
 	public static void initLocalJavaLogger() {
@@ -34,36 +42,72 @@ public class TestStocuriSrv {
 
 	@Test
 	public void testIntrareStoc() throws Exception {
+		
+		//private StocuriSrvFactory stocuri;
+		//private NomenclatorMaterialeSrv nomenclatorMaterialeSrv;
+		
+		
 
 		logger.info("-----START creare date de test Intrare in stoc------ ");
-		Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
-		Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
-		Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
-		Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
+		//Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
+		//Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
+		//Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
+		//Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
 
 		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
 		Gestiune gest2 = new Gestiune(2, "Gestiune 2", new Depozit(2, "Bacau"));
+		
+		
+		NIR nir = new NIR(10, null, null, 100.00);
+		
+		
+		ListaCaracteristici caract = nomenclatorMaterialeSrv.incarcareLista("1", "Material Dur");
+		Material mat = nomenclatorMaterialeSrv.introducereMaterial("1", "fier", "20", "5"," 1.2", null, caract);
+		Material mat1 = nomenclatorMaterialeSrv.introducereMaterial("1", "fier", "20", "5"," 1.2", null, caract);
+			
+		//Material mat4 = new Material(4, "mat4", "", "", "", "");
+		//Material mat5 = new Material(5, "mat5", "buc");
+		
+		LiniiNIR linieNIR1 = new LiniiNIR(nir, 1, mat, 10.00, 10.00, 100.00, 24.00);
+		LiniiNIR linieNIR2 = new LiniiNIR(nir, 2, mat1, 10.00, 10.00, 100.00, 24.00);
+		
+		nir.getLinieNir().add(linieNIR1);
+		nir.getLinieNir().add(linieNIR2);
+		
 		logger.info("-----FINAL creare date de test Intrare in stoc------ ");
 
 		logger.info("-----START caz de utilizare Intrare in stoc----- ");
 
 		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
-		stocuriInstance.intrareStoc(produs3, gest2);
+		stocuriInstance.intrareStoc(nir, gest1);
 		logger.info(">>>>>>>>>>>>2. Intrare in stoc a unui produs existent <<<<<<<<<<<<");
-		stocuriInstance.intrareStoc(produs3, gest2);
+		stocuriInstance.intrareStoc(nir, gest2);
 		logger.info("-----FINAL caz de utilizare istrare in stoc----- ");
 	}
 
 	@Test
 	public void testVerificareStocCurent() throws Exception {
 		logger.info("-----START creare date de test Verificare Stoc Curent------ ");
-		Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
-		Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
-		Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
-		Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
+		//Produs produs1 = new Produs(1, "Produs 1", "produs finit", 2.2, 10.00);
+		//Produs produs2 = new Produs(2, "Produs 2", "produs finit", 2.5, 10.00);
+		//Produs produs3 = new Produs(3, "Produs 3", "produs finit", 2.7, 10.00);
+		//Produs produs4 = new Produs(4, "Produs 4", "produs finit", 3.2, 10.00);
+		
+			
+		
 		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
 		Gestiune gest2 = new Gestiune(2, "Gestiune 2", new Depozit(2, "Bacau"));
-		Articol art1 = new Articol(1, 0.00, gest1, produs1,
+		
+		NIR nir = new NIR(10, null, null, 100.00);
+		
+		Materiale mat4 = new Materiale(4, "mat4", "buc");
+		Materiale mat5 = new Materiale(5, "mat5", "buc");
+		LiniiNIR linieNIR1 = new LiniiNIR(nir, 1, mat4, 10.00, 10.00, 100.00, 24.00);
+		LiniiNIR linieNIR2 = new LiniiNIR(nir, 2, mat5, 10.00, 10.00, 100.00, 24.00);
+		
+		nir.getLinieNir().add(linieNIR1);
+		nir.getLinieNir().add(linieNIR2);
+		Articol art1 = new Articol(1, 0.00, gest1, mat4,
 				new ArrayList<Loturi>());
 		Articol art2 = new Articol(2, 0.00, gest1, produs2,
 				new ArrayList<Loturi>());
