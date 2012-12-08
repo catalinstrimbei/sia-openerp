@@ -4,46 +4,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.open.erp.services.personal.Angajat;
+
 public class DispozitiiLivrare {
 	Integer idDispozitieLivrare;
 	Date data;
-	Responsabil responsabil;
+	Angajat responsabil;
 	Comenzi comanda;
 	List<LiniiDispozitieLivrare> liniiDispozitieLivare = new ArrayList<LiniiDispozitieLivrare>();
 	
-	public Integer getIdDispozitieLivrare() {
-		return idDispozitieLivrare;
-	}
-	public void setIdDispozitieLivrare(Integer idDispozitieLivrare) {
-		this.idDispozitieLivrare = idDispozitieLivrare;
-	}
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
-	}
-	public Responsabil getResponsabil() {
-		return responsabil;
-	}
-	public void setResponsabil(Responsabil responsabil) {
-		this.responsabil = responsabil;
-	}
-	public Comenzi getComanda() {
-		return comanda;
-	}
-	public void setComanda(Comenzi comanda) {
-		this.comanda = comanda;
-	}
-	public List<LiniiDispozitieLivrare> getLiniiDispozitieLivare() {
-		return liniiDispozitieLivare;
-	}
-	public void setLiniiDispozitieLivare(
-			List<LiniiDispozitieLivrare> liniiDispozitieLivare) {
-		this.liniiDispozitieLivare = liniiDispozitieLivare;
-	}
-	public DispozitiiLivrare(Integer idDispozitieLivrare, Date data,
-			Responsabil responsabil, Comenzi comanda,
+	
+	
+	
+public DispozitiiLivrare(Integer idDispozitieLivrare, Date data,
+			Angajat responsabil, Comenzi comanda,
 			List<LiniiDispozitieLivrare> liniiDispozitieLivare) {
 		super();
 		this.idDispozitieLivrare = idDispozitieLivrare;
@@ -52,7 +26,70 @@ public class DispozitiiLivrare {
 		this.comanda = comanda;
 		this.liniiDispozitieLivare = liniiDispozitieLivare;
 	}
-	
+
+
+
+public Integer getIdDispozitieLivrare() {
+	return idDispozitieLivrare;
+}
+
+
+
+public void setIdDispozitieLivrare(Integer idDispozitieLivrare) {
+	this.idDispozitieLivrare = idDispozitieLivrare;
+}
+
+
+
+public Date getData() {
+	return data;
+}
+
+
+
+public void setData(Date data) {
+	this.data = data;
+}
+
+
+
+public Angajat getResponsabil() {
+	return responsabil;
+}
+
+
+
+public void setResponsabil(Angajat responsabil) {
+	this.responsabil = responsabil;
+}
+
+
+
+public Comenzi getComanda() {
+	return comanda;
+}
+
+
+
+public void setComanda(Comenzi comanda) {
+	this.comanda = comanda;
+}
+
+
+
+public List<LiniiDispozitieLivrare> getLiniiDispozitieLivare() {
+	return liniiDispozitieLivare;
+}
+
+
+
+public void setLiniiDispozitieLivare(
+		List<LiniiDispozitieLivrare> liniiDispozitieLivare) {
+	this.liniiDispozitieLivare = liniiDispozitieLivare;
+}
+
+
+
 public Double getValoareDispozotie(){
 		
 		Double valoare = 0.0;
