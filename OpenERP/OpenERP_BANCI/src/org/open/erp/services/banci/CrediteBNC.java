@@ -1,99 +1,130 @@
 package org.open.erp.services.banci;
 
 import java.util.Date;
-import java.util.List;
-
-import org.open.erp.services.nomgen.Clienti;
+import java.util.Vector;
 
 public class CrediteBNC {
-	private Integer contCredit;
-	private Date datascandentaprimarata;
-	private Date datascadentaultimarata;
-	private Date datascadentalunacurenta;
-	private Date datasemcontr; //cand se semeneaza contractul cu banca
-	private Clienti client;
-	private List<LiniiPlatirate> liniePlatarata;
-	private Double valoarecredit;
-	private Double ratadob;
+	/*
+	•	Nume companie
+	•	Nume banca/ Banci la care are contractat credite
+	•	Nume cont
+	•	Suma contractata
+	•	Perioada contractare
+	•	Data/date contractare
+	•	Data scadentei contractului
+	•	Data scadentei lunare
+	•	Suma de plata lunara
+	•	Rata dobanzii anuale
+	•	Plati intermediare
+		o	Data plata curenta
+		o	Suma plata curenta
+		o	Suma ramasa de plata
+
+	*/
+	private String numeCompanie;
+	private Vector<String> numeBanca;
+	private String numeCont;
+	private Double sumaContractata;
+	private Integer perioadaContractare; //zile
+	private Date datacontractare;
+	private Date datascadenteicontractului;
+	private Date datascadenteilunare;
+	private Double	sumaplatalunara;
+	private Double	ratadobanziianuale;
+	private Vector<LiniiPlati> platiintermediare;
 	
-	public Integer getcontCredit() {
-		return contCredit;
-	}
-	public void setcontCredit(Integer contCredit) {
-		this.contCredit = contCredit;
-	}
-	public Date getDatascadentaprimarata() {
-		return  datascandentaprimarata;
-	}
-	public void setDatascadentaprimarata(Date datascadentaprimarata) {
-		this.datascandentaprimarata = datascandentaprimarata;
-	}
-	public Date getDatascadentaultimarata() {
-		return  datascandentaprimarata;
-	}
-	public void setDatascadentaultimarata(Date datascadentaultimarata) {
-		this.datascadentaultimarata = datascadentaultimarata;
-	}
-	public Date getDatascadentalunacurenta() {
-		return  datascadentalunacurenta;
-	}
-	public void setDatascadentalunacurenta(Date datascadentalunacurenta) {
-		this.datascadentalunacurenta = datascadentalunacurenta;
-	}		
-	public Date getDatasemcontr() {
-		return  datasemcontr;
-	}
-	public void setdatasemcontr(Date datasemcontr) {
-		this.datasemcontr = datasemcontr;
-	}			
-		
-	public Clienti getClient() {
-		return client;
-	}
-	public void setClient(Clienti client) {
-		this.client = client;
-	}				
 	
-	public List<LiniiPlatirate> getliniePlatarata() {
-		return liniePlatarata;
+	//getter
+	public String getnumeCompanie(){
+		return numeCompanie;
 	}
-	public void setliniePlatarata(List<LiniiPlatirate> liniePlatarata) {
-		this.liniePlatarata = liniePlatarata;
+	public Vector<String> getnumeBanca(){
+		return numeBanca;
 	}
-	
-	public Double getValoarecredit() {
-		return valoarecredit;
+	public String getnumeCont(){
+		return numeCont;
 	}
-	public void setValoarecredit(Double valoarecredit) {
-		this.valoarecredit = valoarecredit;
+	public Double getsumaContractata(){
+		return sumaContractata;
 	}
-	public Double getRatadob() {
-		return ratadob;
+	public Integer getperioadaContractare(){
+		return perioadaContractare;
 	}
-	public void setRatadob(Double ratadob) {
-		this.ratadob = ratadob;
+	public Date getdatacontractare(){
+		return datacontractare;
+	}
+	public Date getdatascadenteicontractului(){
+		return datascadenteicontractului;
+	}
+	public Date getdatascadenteilunare(){
+		return datascadenteilunare;
+	}
+	public Double getsumaplatalunara(){
+		return sumaplatalunara;
+	}
+	public Double getratadobanziianuale(){
+		return ratadobanziianuale;
+	}
+	public Vector<LiniiPlati> getplatiintermediare(){
+		return platiintermediare;
 	}
 	
-	public CrediteBNC(Integer contCredit, Date datascandentaprimarata, Date datascadentaultimarata,Date datascadentalunacurenta,
-			Date datasemcontr, Clienti client,List<LiniiPlatirate> liniePlatarata,Double valoarecredit,Double ratadob) {
-		super();
-		this.contCredit = contCredit;
-		this.datascandentaprimarata = datascandentaprimarata;
-		this.datascadentaultimarata = datascadentaultimarata;
-		this.datascadentalunacurenta = datascadentalunacurenta;
-		this.datasemcontr = datasemcontr;
-		this.client = client;
-		this.liniePlatarata = liniePlatarata;
-		this.valoarecredit = valoarecredit;
-		this.ratadob = ratadob;
+	//setter
+	public void setnumeCompanie(String nume){
+		this.numeCompanie = nume;
+	}
+	public void setnumeBanca(String nume){
+		this.numeBanca.addElement(nume);
+	}
+	public void setnumeCont(String nume){
+		this.numeCont = nume;
+	}
+	public void setsumaContractata(Double suma){
+		this.sumaContractata = suma;
+	}
+	public void setperioadaContractare(Integer perioada){
+		this.perioadaContractare = perioada;
+	}
+	public void setdatacontractare(Date data){
+		this.datacontractare = data;
+	}
+	public void setdatascadenteicontractului(Date data){
+		this.datascadenteicontractului = data;
+	}
+	public void setdatascadenteilunare(Date data){
+		this.datascadenteilunare = data;
+	}
+	public void setsumaplatalunara(Double suma){
+		this.sumaplatalunara = suma;
+	}
+	public void setratadobanziianuale(Double rata){
+		this.ratadobanziianuale = rata;
+	}
+	public void setplatiintermediare(LiniiPlati plata){
+		this.platiintermediare.addElement(plata);
+	}
+	
+	public CrediteBNC(String numeCompa, String numeBan, String numeCon, Double sumaContract, Integer perioadaContract,
+			Date datacontract, Date datascadenteicontract, Date datascadenteiluna, Double sumaplataluna,
+			Double ratadobanziian, LiniiPlati platiintermed, Date dataplatacurent, Double sumaplatacurent, Double sumaramasadepla) {
+		this.numeCompanie = numeCompa;
+		this.numeBanca = new Vector<String>();
+		this.numeBanca.addElement(numeBan);
+		this.numeCont = numeCon;
+		this.sumaContractata = sumaContract;
+		this.perioadaContractare = perioadaContract;
+		this.datacontractare = datacontract;
+		this.datascadenteicontractului = datascadenteicontract;
+		this.datascadenteilunare = datascadenteiluna;
+		this.sumaplatalunara = sumaplataluna;
+		this.ratadobanziianuale = ratadobanziian;
+		this.platiintermediare = new Vector<LiniiPlati>();
+		this.platiintermediare.addElement(platiintermed);
 	}
 	
 	public CrediteBNC() {
 		super();
-	}
-
-	
-	
+	}	
 }
 		
 	
