@@ -1,142 +1,109 @@
 package org.open.erp.services.banci;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Vector;
 
-import org.open.erp.services.nomgen.Clienti;
+import org.open.erp.services.nomgen.*;
 
 public class CarduriBNC {
-	private Integer contCard;
-	private Date dataprimeiretrageri;
-	private Date dataultimeiretrageri;
-	private Date dataretrageriicurente;
-	private Date dataprimeialimetaricard;
-	private Date dataultimeialimentaricard;
-	private Date datacurentaalimentarecard;
+	/*
+	•	Nume companie
+	•	Nume cont, 
+	•	Nume banca
+	•	Tip cont (lei sau valuta)
+	•	data cand a fost emis cardul
+	•	Sold Initial cont pana la emiterea cardului
+	•	Retrageri sume cu cardul (rulaje)
+	o	Datele la care s-au retras sume cu cardul
+	o	Sumele retrase cu cardul  
+	o	Sold final cont dupa ultima retragere cu cardul
+	*/
+	
+	private Companie firma;
+	private Cont cont;
+	private Companie banca;
 	private Date dataeliberarii; //cand se preda clientului
 	private Date dataexpirarii;
-	private Clienti client;
-	private List<LiniiRetrageri> linieretragere;
-	private List<LiniiAlimentare> liniealimentare;
+	private Vector<LiniiPlati> linieretragere;
+	private Vector<LiniiPlati> liniealimentare;
 	private Double valsoldinitial;
-	private Double valsoldcurent;
-	private Double comision;
+	private Double valsoldfinal;
 	
-	public Integer getContCard() {
-		return contCard;
+	//setter
+	public void setFirma(Companie comp){
+		this.firma = comp;
 	}
-	public void setContCard(Integer contCard) {
-		this.contCard = contCard;
+	public void setCont(Cont cont){
+		this.cont = cont;
 	}
-	public Date getDataprimeiretrageri() {
-		return  dataprimeiretrageri;
+	public void setBanca(Companie comp){
+		this.banca = comp;
 	}
-	public void setDataprimeiretrageri(Date dataprimeiretrageri) {
-		this.dataprimeiretrageri = dataprimeiretrageri;
+	public void setdataeliberarii(Date data){
+		this.dataeliberarii = data;
 	}
-	public Date getDataultimeiretrageri() {
-		return  dataultimeiretrageri;
+	public void setdataexpirarii(Date data){
+		this.dataexpirarii = data;
 	}
-	public void setDataultimeiretrageri(Date dataultimeiretrageri) {
-		this.dataultimeiretrageri = dataultimeiretrageri;
+	public void setlinieretragere(LiniiPlati retragere){
+		this.linieretragere.addElement(retragere);
 	}
-	public Date getDataretrageriicurente() {
-		return  dataretrageriicurente;
+	public void setliniealimentare(LiniiPlati plati){
+		this.liniealimentare.addElement(plati);
 	}
-	public void setDataretrageriicurente(Date dataretrageriicurente) {
-		this.dataretrageriicurente = dataretrageriicurente;
+	public void setvalsoldinitial(Double sold){
+		this.valsoldinitial = sold;
 	}
-	public Date getDataprimeialimetaricard() {
-		return  dataprimeialimetaricard;
-	}
-	public void setDataprimeialimetaricard(Date dataprimeialimetaricard) {
-		this.dataprimeialimetaricard = dataprimeialimetaricard;
-	}
-	public Date getDataultimeialimentaricard() {
-		return  dataultimeialimentaricard;
-	}
-	public void setDataultimeialimentaricard(Date dataultimeialimentaricard) {
-		this.dataultimeialimentaricard = dataultimeialimentaricard;
-	}	
-	public Date getDatacurentaalimentarecard() {
-		return  datacurentaalimentarecard;
-	}
-	public void setDatacurentaalimentarecard(Date datacurentaalimentarecard) {
-		this.datacurentaalimentarecard = datacurentaalimentarecard;	
+	public void setvalsoldfinal(Double sold){
+		this.valsoldfinal = sold;
 	}
 	
-	public Date getDataeliberarii() {
-		return  dataeliberarii;
+	//Getter
+	public Companie getFirma(){
+		return firma;
 	}
-	public void setdataeliberarii(Date dataeliberarii) {
-		this.dataeliberarii = dataeliberarii;	
+	public Cont getCont(){
+		return cont;
 	}
-		
-	public Date getDataexpirarii() {
-		return   dataexpirarii;
+	public Companie getBanca(){
+		return banca;
 	}
-	public void setDataexpirarii(Date  dataexpirarii) {
-		this.dataexpirarii =  dataexpirarii;	
-	}				
-		
-	public Clienti getClient() {
-		return client;
+	public Date getdataeliberarii(){
+		return dataeliberarii;
 	}
-	public void setClient(Clienti client) {
-		this.client = client;
-	}				
-	
-	public List<LiniiRetrageri> getlinieretragere() {
+	public Date getdataexpirarii(){
+		return dataexpirarii;
+	}
+	public Vector<LiniiPlati> getlinieretragere(){
 		return linieretragere;
 	}
-	public void setlinieretragere(List<LiniiRetrageri> linieretragere) {
-		this.linieretragere = linieretragere;
-	}
-	public List<LiniiAlimentare> getliniealimentare() {
+	public Vector<LiniiPlati> getliniealimentare(){
 		return liniealimentare;
 	}
-	public void setliniealimentare(List<LiniiAlimentare> liniealimentare) {
-		this.liniealimentare = liniealimentare;
-	}
-	
-	public Double getValsoldinitial() {
+	public Double getvalsoldinitial(){
 		return valsoldinitial;
 	}
-	public void setValsoldinitial(Double valsoldinitial) {
-		this.valsoldinitial = valsoldinitial;
+	public Double getvalsoldfinal(){
+		return valsoldfinal;
 	}
 	
-	public Double getValsoldcurent() {
-		return valsoldcurent;
-	}
-	public void setValsoldcurent(Double valsoldcurent) {
-		this.valsoldcurent = valsoldcurent;
-	}
-	
-	public Double getComision() {
-		return comision;
-	}
-	public void setComision(Double comision) {
-		this.comision = comision;
-	}
-	
-	public CarduriBNC(Integer contCard,Date dataprimeiretrageri,Date dataultimeiretrageri,Date dataretrageriicurente,Date dataprimeialimetaricard,Date dataultimeialimentaricard,Date datacurentaalimentarecard, Date dataeliberarii,Date dataexpirarii,Clienti client,List<LiniiRetrageri> linieretragere,List<LiniiAlimentare> liniealimentare,Double valsoldinitial,Double valsoldcurent,Double comision) {
+		
+	public CarduriBNC(Companie firma, Cont cont, Companie banca, 
+			Date dataeliberarii, Date dataexpirarii, 
+			LiniiPlati linieretragere, LiniiPlati liniealimentare, 
+			Double valsoldinitial, Double valsoldfinal) {
 		super();
-		this.contCard = contCard;
-		this.dataprimeiretrageri = dataprimeiretrageri;
-		this.dataultimeiretrageri = dataultimeiretrageri;
-		this.dataretrageriicurente = dataretrageriicurente;
-		this.dataprimeialimetaricard = dataprimeialimetaricard;
-		this.dataultimeialimentaricard = dataultimeialimentaricard;
-		this.datacurentaalimentarecard = datacurentaalimentarecard;	
+		this.firma = firma;
+		this.cont = cont;
+		this.banca = banca;
 		this.dataeliberarii = dataeliberarii;
 		this.dataexpirarii =  dataexpirarii;	
-		this.client = client;
-		this.linieretragere = linieretragere;
-		this.liniealimentare = liniealimentare;
+		this.linieretragere = new Vector<LiniiPlati>();
+		this.linieretragere.addElement(linieretragere);		
+		this.liniealimentare = new Vector<LiniiPlati>();
+		this.liniealimentare.addElement(liniealimentare);		
 		this.valsoldinitial = valsoldinitial;
-		this.valsoldcurent = valsoldcurent;
-		this.comision = comision;
+		this.valsoldfinal = valsoldfinal;
 	}
 	
 	public CarduriBNC() {

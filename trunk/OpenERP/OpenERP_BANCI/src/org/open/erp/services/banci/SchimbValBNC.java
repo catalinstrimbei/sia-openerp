@@ -3,10 +3,10 @@ package org.open.erp.services.banci;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.nomgen.Clienti;
+import org.open.erp.services.nomgen.Companie;
 
 public class SchimbValBNC {
-	private Clienti client;
+	private Companie client;
 	private Date datatranz;
 	private Integer monedacurenta;
 	private Double valmoncurenta;
@@ -16,10 +16,10 @@ public class SchimbValBNC {
 	private Double comisionscb;
 	private List<LiniiPlati> liniePlata;
 
-	public Clienti getClient() {
+	public Companie getClient() {
 		return client;
 	}
-	public void setClient(Clienti client) {
+	public void setClient(Companie client) {
 		this.client = client;
 	}				
 	public Date getDatatranz() {
@@ -77,8 +77,7 @@ public class SchimbValBNC {
 		
 	}
 		
-	public SchimbValBNC(Clienti client,Date datatranz,Integer monedacurenta,Double valmoncurenta,Integer monedaschimb,Double valmondupaschimb,Integer cursval,Double comisionscb, List<LiniiPlati> liniePlata) {
-		super();
+	public SchimbValBNC(Companie client,Date datatranz,Integer monedacurenta,Double valmoncurenta,Integer monedaschimb,Double valmondupaschimb,Integer cursval,Double comisionscb, List<LiniiPlati> liniePlata) {
 		this.client = client;
 		this.datatranz = datatranz;
 		this.monedacurenta = monedacurenta;
