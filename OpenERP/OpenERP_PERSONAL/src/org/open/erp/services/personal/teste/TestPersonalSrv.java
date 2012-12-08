@@ -18,6 +18,9 @@ import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.Anunt;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
+import org.open.erp.services.personal.CerereConcediu;
+import org.open.erp.services.personal.CerereEveniment;
+import org.open.erp.services.personal.Concedii;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.DoubleParam;
 import org.open.erp.services.personal.Interviu;
@@ -135,7 +138,7 @@ public class TestPersonalSrv {
 		int notaMax = 0;
 		int rezultat1 =0;
 		int rezultat2 =0;
-		Candidat deAngajat = new Candidat(null,null,null,null,null,null,null,null,null);
+		Candidat deAngajat = null;
 		for (Candidat c:listacandidati){
 			rezultat1 = c.getRezultatLaTeste().get(proba1);
 			if(rezultat1>notaMax){
@@ -154,7 +157,48 @@ public class TestPersonalSrv {
 		logger.info("Angajat ales dupa interviuri:");
 		logger.info("Nume: "+angajatNou.getNume());
 		
+		
+		Calendar cal4 = Calendar.getInstance();
+		cal4.set(Calendar.DATE,25);
+		cal4.set(Calendar.MONTH, Calendar.OCTOBER);
+		cal4.set(Calendar.YEAR, 2013);
+		
+		Calendar cal5= Calendar.getInstance();
+		cal5.set(Calendar.DATE,25);
+		cal5.set(Calendar.MONTH, Calendar.OCTOBER);
+		cal5.set(Calendar.YEAR, 2013);
+		
+		CerereConcediu cerereNoua = new CerereConcediu(1005, angajatNou,new Date(), null, cal4.getTime(), cal5.getTime(), "Odihna","In asteptare");
+		
+		cerereNoua.setStatus("Acceptat");
+		cerereNoua.setDataAprobare(cal5.getTime());
+		
+		Concedii con = null;
+		if (cerereNoua.getStatus().equals("Acceptat")){
+			con = new Concedii(cerereNoua.getNrInregistrare(),cerereNoua.getAngajat(),cerereNoua.getDataInceputConcediu(), cerereNoua.getDataSfarsitConcediu(), cerereNoua.gettipConcediu());
+		}
+		
+		logger.info("Concediu inregistrat:");
+		logger.info("Tip concediu: "+ con.gettipConcediu());
+		
+		Calendar cal6= Calendar.getInstance();
+		cal6.set(Calendar.DATE,25);
+		cal6.set(Calendar.MONTH, Calendar.OCTOBER);
+		cal6.set(Calendar.YEAR, 2013);
+		
+		Calendar cal7= Calendar.getInstance();
+		cal7.set(Calendar.DATE,25);
+		cal7.set(Calendar.MONTH, Calendar.OCTOBER);
+		
+		CerereEveniment cerereEv = new CerereEveniment(2007, evaluator,	new Date(), null, cal6.getTime(),cal7.getTime(), "Party", "In steptare", 5000);
+		
+		cerereEv.setStatus("Acceptat");
+		
+		logger.info("Eveniment inregistrat:");
+		logger.info("Suma eveniment: "+ cerereEv.getSumaEveniment());
+		
 		logger.info("Sfarsit Test TestPersonalSrv!");
+		
 		
 	}
 }

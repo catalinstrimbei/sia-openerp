@@ -13,7 +13,7 @@ public class CerereEveniment implements Serializable{
 	
 	private  Integer  		nrInregistrare;
 	
-	private	 ContractMunca 	contract;
+	private	 Angajat 	contract;
 	
 	private  Date       	dataCerere;
 	
@@ -27,10 +27,10 @@ public class CerereEveniment implements Serializable{
 	public Integer getNrInregistrare() {
 		return nrInregistrare;
 	}
-	public ContractMunca getContract() {
+	public Angajat getContract() {
 		return contract;
 	}
-	public void setContract(ContractMunca contract) {
+	public void setContract(Angajat contract) {
 		this.contract = contract;
 	}
 	public void setNrInregistrare(Integer nrInregistrare) {
@@ -63,7 +63,9 @@ public class CerereEveniment implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public CerereEveniment(Integer nrInregistrare, ContractMunca contract,
+	
+	//@param angajat Angajatul ce a depus cererea
+	public CerereEveniment(Integer nrInregistrare, Angajat angajat,
 			Date dataCerere, Date dataAprobare, Date dataInceputEveniment, Date dataSfarsitEveniment, String tipEveniment,
 			String status, int sumaEveniment) {
 		super();

@@ -40,7 +40,7 @@ public class Concedii implements Serializable{
 		this.tipConcediu = tipConcediu;
 	}
 	
-	
+	//@param nrInregistrare Nr inregistrare cerere de concediu ce a fost aprobata
 	public Concedii(Integer nrInregistrare, Angajat idAngajat,Date dataInc, Date dataSf, String tipConcediu) {
 		super();
 		dataInceputConcediu = new Date();
