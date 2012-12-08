@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.nomgen.Clienti;
-import org.open.erp.services.nommat.Produse;
+import org.open.erp.services.stocuri.Produse;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
 import org.open.erp.services.vanzari.Comenzi;

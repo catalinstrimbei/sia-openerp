@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.nommat.Produse;
+import org.open.erp.services.stocuri.Produse;
 
 public class Comenzi {
 	Integer idComanda;
