@@ -21,9 +21,8 @@ import org.open.erp.services.marketing.Reclamatie;
 import org.open.erp.services.marketing.StatusReclamatie;
 import org.open.erp.services.marketing.TipPromovare;
 import org.open.erp.services.nomgen.AngajatSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.nomgen.PersoanaSrv;
-import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.ProdusSrv;
 
 public class TestMarketingSrv {
@@ -33,7 +32,7 @@ public class TestMarketingSrv {
 
 	ProdusSrv produsSrv;
 	AngajatSrv angajatSrv;
-	PersoanaSrv persoanaSrv;
+	NomenclatoareSrv nomgenSrv;
 
 	@BeforeClass
 	public static void initLocalJavaLogger() {
@@ -45,7 +44,7 @@ public class TestMarketingSrv {
 		marketingInstance = MarketingSrvFactory.getMarketingSrv();
 		produsSrv = MarketingSrvFactory.getProjectProdusSrv();
 		angajatSrv = MarketingSrvFactory.getProjectAngajatSrv();
-		persoanaSrv = MarketingSrvFactory.getProjectPersoanaSrv();
+		nomgenSrv = MarketingSrvFactory.getProjectNomgenSrv();
 
 		logger.info("Marketing Service intiated for Test!");
 	}
@@ -76,7 +75,7 @@ public class TestMarketingSrv {
 		Intrebare intrebareNoua = marketingInstance.creareIntrebare("intrebare");
 		intrebareNoua.getRaspunsuriIntrebare().add(raspunsIntrebareNou);
 		// //////////////////////
-		Persoana persoanaChestionata = persoanaSrv.crearePersoanaChestionata();
+		Persoana persoanaChestionata = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
 		Chestionar chestionarNou = marketingInstance.creareChestionar(data, "Chestionar1", persoanaChestionata);
 		chestionarNou.getIntrebariChestionar().add(intrebareNoua);
 		// //////////////////////
