@@ -252,6 +252,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	   logger.debug("5.2.1 Creare NIR " + nrNIR);
 	   
 	   NIR nir = new NIR (nrNIR, data, furnizor, valoareTotala);
+	   
 	   return nir;
 	}
 		

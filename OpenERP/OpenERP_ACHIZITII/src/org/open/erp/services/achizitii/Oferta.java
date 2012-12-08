@@ -12,7 +12,7 @@ public class Oferta {
 	private List<LiniiOferta> linieOferta;
 	private Double valoareTotala;
 	private CerereOferta cerereOferta;
-	
+		
 	public void adaugaLinie(LiniiOferta linie){
 		this.linieOferta.add(linie);
 	}

@@ -2,6 +2,8 @@ package org.open.erp.services.achizitii;
 
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
+
+
 public class Furnizori extends PersoanaJuridica{
 	
 	private String denumire;
