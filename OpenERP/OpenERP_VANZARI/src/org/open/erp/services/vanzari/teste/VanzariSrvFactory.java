@@ -17,7 +17,9 @@ public class VanzariSrvFactory {
 		VanzariSrv vanzari = new VanzariImpl();
 		logger.info("Creare instanta VanzariSRV din VanzariSrvFactory!");
 		PersonalSrv personalSrv=VanzariSrvFactory.getPersonalSrv();
+		StocuriSrv stocuriSrv=VanzariSrvFactory.getStocuriSrv();
 		vanzari.setPersonalSrv(personalSrv);
+		vanzari.setStocuri(stocuriSrv);
 		return vanzari;
 		
 	}
@@ -47,13 +49,13 @@ public class VanzariSrvFactory {
 
 			@Override
 			public Produse vizualizareProduse(Produse produs) {
-				logger.info(" Am vizualizat un produs");
+				logger.info(" ****Am vizualizat un produs");
 				return new Produse();
 			}
 
 			@Override
 			public String iesireStoc(Produse produs, Double cantitatea) {
-				logger.info(" Iesire din gestiune");
+				logger.info(" *****Iesire din gestiune");
 				return null;
 			}
 
