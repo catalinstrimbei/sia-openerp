@@ -1,11 +1,13 @@
 package org.open.erp.services.nomgen;
 
 public class Clienti {
+	
 Integer idPartener;
 String denumire;
 String nume;
 String prenume;
 String categorie;
+
 public Integer getIdPartener() {
 	return idPartener;
 }

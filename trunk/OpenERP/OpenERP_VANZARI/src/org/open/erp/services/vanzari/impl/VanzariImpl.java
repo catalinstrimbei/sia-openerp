@@ -33,8 +33,9 @@ import org.open.erp.services.vanzari.VanzariSrv;
 public class VanzariImpl implements VanzariSrv{
 
 	private NomenclatoareSrv nomencaltoareSrv;
-	private StocuriSrv nomenclatoareMaterialeSrv;
+	private StocuriSrv stocuriSrv;
 	private PersonalSrv personalSrv;
+	
 	
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(VanzariImpl.class.getName());
 
@@ -44,7 +45,7 @@ public class VanzariImpl implements VanzariSrv{
 
 	public void setNomenclatoareMaterialeSrv(
 			StocuriSrv nomenclatoareMaterialeSrv) {
-		this.nomenclatoareMaterialeSrv = nomenclatoareMaterialeSrv;
+		this.stocuriSrv = stocuriSrv;
 	}
 
 	public void setPersonalSrv(PersonalSrv personalSrv) {

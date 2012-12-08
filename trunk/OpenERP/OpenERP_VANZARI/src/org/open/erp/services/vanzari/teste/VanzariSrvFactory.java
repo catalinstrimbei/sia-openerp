@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 
 import org.open.erp.services.personal.Personal;
 import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.stocuri.Produse;
+import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.VanzariSrv;
 import org.open.erp.services.vanzari.impl.VanzariImpl;
 
@@ -25,8 +27,9 @@ public class VanzariSrvFactory {
 		return new PersonalSrv()
 		{
 
+
 			@Override
-			public Personal preluarePersoana() {
+			public Personal preluarePersoana(String ocupatie) {
 				logger.info("5.1 a) Am delegat persoana responsabila");
 				return new Personal();
 			}
@@ -35,5 +38,28 @@ public class VanzariSrvFactory {
 		};
 	}
 
+	
+	
+	public static StocuriSrv getStocuriSrv(){
+		logger.info("Creaza Dummy Stocuri SRV----");
+		return new StocuriSrv()
+		{
 
+			@Override
+			public Produse vizualizareProduse(Produse produs) {
+				logger.info(" Am vizualizat un produs");
+				return new Produse();
+			}
+
+			@Override
+			public String iesireStoc(Produse produs, Double cantitatea) {
+				logger.info(" Iesire din gestiune");
+				return null;
+			}
+
+			
+			
+			
+		};
+	}
 }
