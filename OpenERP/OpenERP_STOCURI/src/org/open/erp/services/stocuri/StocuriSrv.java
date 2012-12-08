@@ -56,7 +56,7 @@ public interface StocuriSrv {
 	 * 
 	 */
 	
-	void intrareStoc(NIR nir, Gestiune gestiunea);
+	void intrareStoc(LiniiNIR linie, Gestiune gestiunea);
 	
 	
 	/** 2. Verificare stoc
