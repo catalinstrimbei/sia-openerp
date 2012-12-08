@@ -8,7 +8,7 @@ import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.nommat.Material;
 
 //
-import org.open.erp.services.nommat.Materiale;
+import org.open.erp.services.nommat.Material;
 //
 
 /**
