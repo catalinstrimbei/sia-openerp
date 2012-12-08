@@ -1,11 +1,11 @@
 package org.open.erp.services.achizitii;
 
-import org.open.erp.services.nommat.Materiale;
+import org.open.erp.services.nommat.Material;
 
 public class LiniiComanda {
 	private Integer nrLinie;
 	private Double pret;
-	private Materiale material;
+	private Material material;
 	private Double cantitate;
 	private Comanda comanda;
 	public Integer getNrLinie() {
@@ -20,10 +20,10 @@ public class LiniiComanda {
 	public void setPret(Double pret) {
 		this.pret = pret;
 	}
-	public Materiale getMaterial() {
+	public Material getMaterial() {
 		return material;
 	}
-	public void setMaterial(Materiale material) {
+	public void setMaterial(Material material) {
 		this.material = material;
 	}
 	public Double getCantitate() {
@@ -38,7 +38,7 @@ public class LiniiComanda {
 	public void setComanda(Comanda comanda) {
 		this.comanda = comanda;
 	}
-	public LiniiComanda(Integer nrLinie, Double pret, Materiale material,
+	public LiniiComanda(Integer nrLinie, Double pret, Material material,
 			Double cantitate, Comanda comanda) {
 		super();
 		this.nrLinie = nrLinie;

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.nommat.Materiale;
-
 public class CerereOferta {
 	private Integer nrCerereOferta;
 	private Date dataCerereOferta;

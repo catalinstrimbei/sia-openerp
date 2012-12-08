@@ -24,7 +24,6 @@ import org.junit.Test;
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.CerereAprov;
 import org.open.erp.services.achizitii.LiniiCerereAprov;
-import org.open.erp.services.nommat.Materiale;
 
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.CerereAprov;
@@ -41,7 +40,7 @@ import org.open.erp.services.achizitii.LiniiPlanAprov;
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.Oferta;
 import org.open.erp.services.achizitii.PlanAprov;
-import org.open.erp.services.nommat.Materiale;
+import org.open.erp.services.nommat.Material;
 import org.open.erp.services.stocuri.Gestiune;
 
 
@@ -74,7 +73,7 @@ public class TestAchizitiiSrv {
 				calendarStart.setTime(new Date());		
 			
 				//
-				Materiale mat = new Materiale();
+				Material mat = new Material();
 				//CerereAprov cerere = achizitiiInstance.creareCerereAprov(1, calendarStart.getTime(), mat);
 				CerereAprov cerere = achizitiiInstance.creareCerereAprov(1, calendarStart.getTime());
 				assertNotNull("Nu exista cerereAprovizionare noua!", cerere);
@@ -85,7 +84,7 @@ public class TestAchizitiiSrv {
 
 				//
 	
-				org.open.erp.services.nommat.Materiale mat3 = new org.open.erp.services.nommat.Materiale();
+				Material mat3 = new Material();
 				//CerereAprov cerere = achizitiiInstance.creareCerereAprov(1, calendarStart.getTime(), mat);
 				PlanAprov planAprov=achizitiiInstance.crearePlanAprov(1, 2012, 07, 2);
 				//assertNotNull("Nu exista cerereAprovizionare noua!", cerere);
@@ -96,14 +95,14 @@ public class TestAchizitiiSrv {
 
 		logger.info("Begin test Test CreareCerereOferta!");
 		
-	/*	Calendar calendarStart = Calendar.getInstance();
-		calendarStart.setTime(new Date());
-		*/
+	/*	Calendar calendarStart1 = Calendar.getInstance();
+		calendarStart1.setTime(new Date());*/
+		
 		CerereOferta cerereOferta = achizitiiInstance.creareCerereOferta(1, calendarStart.getTime());
 		assertNotNull("Nu exista cerere noua!", cerereOferta);
 		
 		
-		Materiale mat2=achizitiiInstance.stabilireMaterial(liniePlan);
+		Material mat2=achizitiiInstance.stabilireMaterial(liniePlan);
 		LiniiCerereOferta linieCerereOferta1=achizitiiInstance.creareLinie(2, 3.3, mat2, cerereOferta);
 
 
@@ -186,8 +185,8 @@ public class TestAchizitiiSrv {
 	    logger.info("Begin Test crestere cantitate Stoc.");
 		Gestiune gestiune1 = new Gestiune(12345, "Gestiunea ABC");
 		NIR nir2 = new NIR(10, calendarStart.getTime(), furnizorA, 100.00);
-		Materiale mat4 = new Materiale(4, "mat4", "buc");
-		Materiale mat5 = new Materiale(5, "mat5", "buc");
+		Material mat4 = new Material("4", "mat4", "buc");
+		Material mat5 = new Material("5", "mat5", "buc");
 		LiniiNIR linieNIR1 = new LiniiNIR(nir2, 1, mat4, 10.00, 10.00, 100.00, 24.00); //daca materialul nu e instantiat aici nu il recunoaste, de ex daca in loc de mat4 scriu mat2
 		LiniiNIR linieNIR2 = new LiniiNIR(nir2, 2, mat5, 10.00, 10.00, 100.00, 24.00);
 		achizitiiInstance.crestereStoc(mat4, gestiune1, nir2, linieNIR1);

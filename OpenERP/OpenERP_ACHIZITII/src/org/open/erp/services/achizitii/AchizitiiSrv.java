@@ -2,8 +2,9 @@ package org.open.erp.services.achizitii;
 
 
 import java.util.Date;
-import org.open.erp.services.nommat.Materiale;
-import org.open.erp.services.nommat.NomenclatorGeneralSrv;
+
+import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nommat.Material;
 import org.open.erp.services.stocuri.Gestiune;
 
 import org.open.erp.services.stocuri.StocuriSrv;
@@ -52,7 +53,7 @@ public interface AchizitiiSrv {
 	 * @return CerereAprov nou creata
 	 * 
 	 */	
-	LiniiCerereAprov creareLinieCerereAprov(CerereAprov cerere, Integer nrLinie, Materiale material, Double cantitate);
+	LiniiCerereAprov creareLinieCerereAprov(CerereAprov cerere, Integer nrLinie, Material material, Double cantitate);
 	
 	/**
 	 * Scop		Adauga linii in cerera de aprovizionare
@@ -81,7 +82,7 @@ public interface AchizitiiSrv {
 	 */	
 	
 	
-	LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov, Materiale material, Double cantitate);
+	LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov, Material material, Double cantitate);
 	
 	/**
 	 * Scop					Asociere de  linii in planul de aprovizionare
@@ -115,7 +116,7 @@ public interface AchizitiiSrv {
 	
 	public void trimitereCerereOferta(CerereOferta cerereOferta, Furnizori furnizor);
 	
-	LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Materiale material, CerereOferta cerereOferta);
+	LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Material material, CerereOferta cerereOferta);
 	/**
 	 * Scop					Asociere de  linii  pentru o CerereDeOferta
 	 * @param nrLinie	
@@ -146,7 +147,7 @@ public interface AchizitiiSrv {
 	 */	
 	
 	
-    LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Materiale material, Double cantitate, Oferta oferta);
+    LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Material material, Double cantitate, Oferta oferta);
      
     /**
 	 * Scop				Asocierea de linii pentru o  oferta
@@ -192,7 +193,7 @@ public interface AchizitiiSrv {
 	 * 
 	 */	
     
-    LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Materiale material,
+    LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Material material,
     						Double cantitate, Comanda comanda, LiniiOferta linieO);
     /**
  	 * Scop				Asocierea de linii pentru o  comanda
@@ -227,7 +228,7 @@ public interface AchizitiiSrv {
 	 * 
 	 */	
   	
-  	LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Materiale material, Double cantitate, Factura factura, LiniiComanda linieComanda);
+  	LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Material material, Double cantitate, Factura factura, LiniiComanda linieComanda);
   	/**
 	 * Scop					Adaugarea unei linii la factura
 	 * @param nrCerereOferta	
@@ -253,7 +254,7 @@ public interface AchizitiiSrv {
 	  	
 	 
 	 LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie,
-			Materiale material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie);
+			Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie);
 	 
 	 /**
 	 * Scop				 Aociere Linie Notei de receptie
@@ -276,13 +277,13 @@ public interface AchizitiiSrv {
 	 * 
 	 */	
     
-    public Materiale stabilireMaterial(LiniiPlanAprov liniePlan);
+    public Material stabilireMaterial(LiniiPlanAprov liniePlan);
 	
 	
 	public   void  addOferta(Oferta oferta1);
 
-	public void setMaterialSrv(NomenclatorGeneralSrv matSrv);
+	public void setMaterialSrv(NomenclatoareSrv matSrv);
 
-	public Double crestereStoc(Materiale material, Gestiune gestiune, NIR nir, LiniiNIR lNIR);
+	public Double crestereStoc(Material material, Gestiune gestiune, NIR nir, LiniiNIR lNIR);
 
 }

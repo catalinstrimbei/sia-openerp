@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nommat.Material;
+import org.open.erp.services.stocuri.*;
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.CerereAprov;
 import org.open.erp.services.achizitii.CerereOferta;
@@ -23,18 +26,18 @@ import org.open.erp.services.achizitii.LiniiPlanAprov;
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.Oferta;
 import org.open.erp.services.achizitii.PlanAprov;
-import org.open.erp.services.nommat.Materiale;
-import org.open.erp.services.nommat.NomenclatorGeneralSrv;
+
 
 import org.open.erp.services.stocuri.Gestiune;
+import org.open.erp.services.stocuri.impl.StocuriImpl;
 
 public class AchizitiiImpl implements AchizitiiSrv {
 	
-	private NomenclatorGeneralSrv materialeSrv;
+	private NomenclatoareSrv MaterialSrv;
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(AchizitiiImpl.class.getName());
 	
-	public void setMaterialSrv(NomenclatorGeneralSrv matSrv){
-		this.materialeSrv=matSrv;
+	public void setMaterialSrv(NomenclatoareSrv matSrv){
+		this.MaterialSrv=matSrv;
 	}
 	
 	public AchizitiiImpl()
@@ -42,18 +45,18 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		
 							}
 
-	public CerereAprov creareCerereAprov(Integer nr, Date data) //, Materiale material)
+	public CerereAprov creareCerereAprov(Integer nr, Date data) //, Material material)
 		{
 		logger.debug("1.1 Initiere/Creare cerere de aprovizionare noua");
 		
 		CerereAprov cerereNoua = new CerereAprov(nr, data);// material);
-		//Materiale mat = materialeSrv.creareMaterial(material);
+		//Material mat = MaterialSrv.creareMaterial(material);
 		//cerereNoua.setMaterial(material);
 		return cerereNoua;
 		
 		}
 			
-	public LiniiCerereAprov creareLinieCerereAprov(CerereAprov cerere, Integer nrLinie, Materiale material, Double cantitate){
+	public LiniiCerereAprov creareLinieCerereAprov(CerereAprov cerere, Integer nrLinie, Material material, Double cantitate){
 		logger.debug("1.2 Adaugare linie intr-o Cerere Aprovizionare");
 		
 		LiniiCerereAprov linieCerereAprov = new LiniiCerereAprov(cerere, 1, material, cantitate);	
@@ -70,7 +73,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return planNou;
 	}
 	
-	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Materiale material, Double cantitate){
+	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Material material, Double cantitate){
 		logger.debug("1.3.2 Adaugare linie plan");
 		
 		LiniiPlanAprov liniePlan=new LiniiPlanAprov(nrLiniePlanAprov, planAprov, material, cantitate);
@@ -88,7 +91,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 		
-	public LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Materiale material, CerereOferta cerereOferta){
+	public LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Material material, CerereOferta cerereOferta){
 		logger.debug("2.1.2 Adaugare linie in cerere oferta");
 		
 		LiniiCerereOferta linieOferta=new LiniiCerereOferta(nrLinie, cantitate, material, cerereOferta);
@@ -97,9 +100,9 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return linieOferta;
 	}
 	
-	public Materiale stabilireMaterial(LiniiPlanAprov liniePlan){
+	public Material stabilireMaterial(LiniiPlanAprov liniePlan){
 		logger.debug("2.1.3 Stabilire material linie ");
-		Materiale material=liniePlan.getMaterial();
+		Material material=liniePlan.getMaterial();
 		return material;
 	}
 	
@@ -122,7 +125,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	//LinieOferta
-	public LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Materiale material, Double cantitate, Oferta oferta){
+	public LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Material material, Double cantitate, Oferta oferta){
 		logger.debug("3.1.2 Adaugare linie in oferta primita");
 		
 		LiniiOferta linieOferta = new LiniiOferta(nrLinie, pret, material, cantitate, oferta);
@@ -157,7 +160,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
     }
 	
 	//LinieComanda
-	public LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Materiale material, Double cantitate, Comanda comanda, LiniiOferta linieO){
+	public LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Material material, Double cantitate, Comanda comanda, LiniiOferta linieO){
 		logger.debug("4.1 Adaugare linie in Comanda " );
 		
 		LiniiComanda linieComanda = new LiniiComanda(nrLinie, pret, linieO.getMaterial(), cantitate, comanda);
@@ -219,23 +222,23 @@ public class AchizitiiImpl implements AchizitiiSrv {
 
 	  }
 	
-	//crestere cantitate in Stoc in cazul receptiei materialelor
-	public Double crestereStoc(Materiale material, Gestiune gestiune, NIR nir, LiniiNIR lNIR){
+	//crestere cantitate in Stoc in cazul receptiei Materiallor
+	public Double crestereStoc(Material material, Gestiune gestiune, NIR nir, LiniiNIR lNIR){
 		Double cantitateStoc = 0.00;
 		//for(LiniiNIR lNIR : nir.getLinieNir()){
 			if(lNIR.getMaterial() == material){
 				cantitateStoc += lNIR.getCantitate();
-				logger.debug("Pentru materialul " + material.getNumeMaterial() + " cantitatea a crescut cu " + cantitateStoc);
+				logger.debug("Pentru materialul " + material.getDenumireMaterial() + " cantitatea a crescut cu " + cantitateStoc);
 			}
 			else
-				logger.debug("Materialele primite nu corespund cu cele de pe NIR");
+				logger.debug("Materialle primite nu corespund cu cele de pe NIR");
 		//}
 		return cantitateStoc;
 	}
 	
 		
 	//LiniiFactura
-	public LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Materiale material, Double cantitate, Factura factura, LiniiComanda linieComanda){
+	public LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Material material, Double cantitate, Factura factura, LiniiComanda linieComanda){
 		logger.debug("5.2.1 S-a introdus linia " + nrLinieLF + " pentru factura numraul " + factura.getNrFactura());
 		
 		LiniiFactura lf = new LiniiFactura(nrLinieLF, pret, linieComanda.getMaterial(), cantitate, factura);
@@ -253,10 +256,10 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 		
 	//LiniiNIR
-	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Materiale material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie){  
+	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie){  
 		logger.debug("5.3.2 Adaugare linie in NIR " + nir.getNrNIR()+ nrLInie);
-		   
 		LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
+		
 		return linieNIr;
 	}
 

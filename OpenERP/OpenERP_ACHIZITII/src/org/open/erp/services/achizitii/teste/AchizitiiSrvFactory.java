@@ -91,9 +91,11 @@ package org.open.erp.services.achizitii.teste;
 import org.apache.log4j.Logger;
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.impl.AchizitiiImpl;
-import org.open.erp.services.nommat.Materiale;
-import org.open.erp.services.nommat.NomenclatorGeneralSrv;
-
+import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nommat.ListaCaracteristici;
+import org.open.erp.services.nommat.Material;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.nommat.UnitateDeMasura;
 
 public class AchizitiiSrvFactory {
 	private static Logger logger = Logger.getLogger(AchizitiiSrvFactory.class.getName());
@@ -101,7 +103,7 @@ public class AchizitiiSrvFactory {
 	public static AchizitiiSrv getAchizitiiSrv(){
 		
 		AchizitiiSrv achizitiiSrv = new AchizitiiImpl();
-		NomenclatorGeneralSrv nomGenSrv = AchizitiiSrvFactory.getAchizitiiMatSrv();
+		NomenclatoareSrv nomGenSrv = (NomenclatoareSrv) AchizitiiSrvFactory.getAchizitiiMatSrv();
 		//NomenclatorGeneralSrv nomGenServ = AchizitiiSrvFactory.getMaterialSrv();
 		achizitiiSrv.setMaterialSrv(nomGenSrv);		
 		logger.info("Crerare AchizitiiSrv instance from AchizitiiSrvFactory!");
@@ -110,21 +112,46 @@ public class AchizitiiSrvFactory {
 	}
 
 	
-	public static NomenclatorGeneralSrv getAchizitiiMatSrv(){
+	public static NomenclatorMaterialeSrv getAchizitiiMatSrv(){
 		logger.info("Creare dummy instance of NomenclatorGeneralSrv from MaterialeSrvFactory!");
 
-		return new NomenclatorGeneralSrv(){
+		return new NomenclatorMaterialeSrv() {
+			
 			@Override
-			public Materiale creareMaterial(Materiale material) {
+			public Material introducereMaterial(String codMaterial,
+					String denumireMaterial, String cantitateStandard,
+					String pretStandard, String procentTVACurent, String observatii,
+					ListaCaracteristici listaCaracteristici) 
+			{
+				// TODO Auto-generated method stub
 				logger.info("1.2 Stabilire material pe linie");
-				return new Materiale();
+				return new Material();			
+				}
+
+			@Override
+			public UnitateDeMasura incarcareUnitate(String id,
+					String unitateDeMasura) {
+				// TODO Auto-generated method stub
+				return null;
 			}
+
+			@Override
+			public ListaCaracteristici incarcareLista(String id,
+					String listaCaracteristici) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
 		};
 	}
+}	
+			
+		
+	
 	
 	
 	//mai trebuie facut si pentru furnizori
-}
 
 
+	
 
