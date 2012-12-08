@@ -13,8 +13,8 @@ import org.open.erp.services.marketing.RaspunsIntrebare;
 import org.open.erp.services.marketing.Reclamatie;
 import org.open.erp.services.marketing.StatusReclamatie;
 import org.open.erp.services.marketing.TipPromovare;
-import org.open.erp.services.nomgen.Angajat;
-import org.open.erp.services.nomgen.AngajatSrv;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.productie.Produs;
@@ -24,7 +24,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingSrvImpl.class.getName());
 
 	private ProdusSrv produsSrv;
-	private AngajatSrv angajatSrv;
+	private PersonalSrv personalSrv;
 	private NomenclatoareSrv nomgenSrv;
 
 	public void setProdusSrv(ProdusSrv produsSrv) {
@@ -37,8 +37,8 @@ public class MarketingSrvImpl implements MarketingSrv {
 		
 	}
 
-	public void setAngajatSrv(AngajatSrv angajatSrv) {
-		this.angajatSrv = angajatSrv;
+	public void setPersonalSrv(PersonalSrv personalSrv) {
+		this.personalSrv = personalSrv;
 	}
 
 	public MarketingSrvImpl() {
@@ -62,7 +62,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 
 		CampaniePromovare campaniePromovareNoua = new CampaniePromovare(1, tipPromovare, data, canalDistributie, buget);
 
-		Angajat angajatPromoter = angajatSrv.creareAngajat();
+		Angajat angajatPromoter = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
 		campaniePromovareNoua.setPromoter(angajatPromoter);
 
 		Produs produs = produsSrv.creareProdus();
@@ -109,7 +109,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 	public CercetarePiata creareCercetarePiata(Date dataStart, Date dataFinal, int buget) {
 		logger.debug("1.1 Initiere/Creare cercetare de piata noua");
 
-		Angajat responsabilCercetarePiata = angajatSrv.creareAngajat();
+		Angajat responsabilCercetarePiata = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
 		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart, dataFinal, buget, responsabilCercetarePiata);
 
 		String titlu = "";

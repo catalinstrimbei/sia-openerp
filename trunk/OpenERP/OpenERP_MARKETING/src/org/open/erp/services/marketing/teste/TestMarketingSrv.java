@@ -20,9 +20,9 @@ import org.open.erp.services.marketing.RaspunsIntrebare;
 import org.open.erp.services.marketing.Reclamatie;
 import org.open.erp.services.marketing.StatusReclamatie;
 import org.open.erp.services.marketing.TipPromovare;
-import org.open.erp.services.nomgen.AngajatSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.productie.ProdusSrv;
 
 public class TestMarketingSrv {
@@ -31,7 +31,7 @@ public class TestMarketingSrv {
 	MarketingSrv marketingInstance;
 
 	ProdusSrv produsSrv;
-	AngajatSrv angajatSrv;
+	PersonalSrv personalSrv;
 	NomenclatoareSrv nomgenSrv;
 
 	@BeforeClass
@@ -43,7 +43,7 @@ public class TestMarketingSrv {
 	public void initServices() {
 		marketingInstance = MarketingSrvFactory.getMarketingSrv();
 		produsSrv = MarketingSrvFactory.getProjectProdusSrv();
-		angajatSrv = MarketingSrvFactory.getProjectAngajatSrv();
+		personalSrv = MarketingSrvFactory.getProjectPersonalSrv();
 		nomgenSrv = MarketingSrvFactory.getProjectNomgenSrv();
 
 		logger.info("Marketing Service intiated for Test!");
