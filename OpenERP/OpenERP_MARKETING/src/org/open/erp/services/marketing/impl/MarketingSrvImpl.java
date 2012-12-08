@@ -15,8 +15,8 @@ import org.open.erp.services.marketing.StatusReclamatie;
 import org.open.erp.services.marketing.TipPromovare;
 import org.open.erp.services.nomgen.Angajat;
 import org.open.erp.services.nomgen.AngajatSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.nomgen.PersoanaSrv;
 import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.ProdusSrv;
 
@@ -25,14 +25,16 @@ public class MarketingSrvImpl implements MarketingSrv {
 
 	private ProdusSrv produsSrv;
 	private AngajatSrv angajatSrv;
-	private PersoanaSrv persoanaSrv;
+	private NomenclatoareSrv nomgenSrv;
 
 	public void setProdusSrv(ProdusSrv produsSrv) {
 		this.produsSrv = produsSrv;
 	}
 
-	public void setPersoanaSrv(PersoanaSrv persoanaSrv) {
-		this.persoanaSrv = persoanaSrv;
+	@Override
+	public void setNomgenSrv(NomenclatoareSrv nomgenSrv) {
+		this.nomgenSrv = nomgenSrv;
+		
 	}
 
 	public void setAngajatSrv(AngajatSrv angajatSrv) {
@@ -111,7 +113,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart, dataFinal, buget, responsabilCercetarePiata);
 
 		String titlu = "";
-		Persoana persoanaChestionata = persoanaSrv.crearePersoanaChestionata();
+		Persoana persoanaChestionata = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
 		Chestionar chestionarNou = creareChestionar(dataStart, titlu, persoanaChestionata);
 		cercetarePiataNoua.adaugaChestionar(chestionarNou);
 
@@ -122,9 +124,13 @@ public class MarketingSrvImpl implements MarketingSrv {
 	public Reclamatie creareReclamatie(Date data, String text, String raspuns, StatusReclamatie status) {
 		logger.debug("5.1 Initiere/Creare reclamatie noua");
 
-		Persoana persoanaReclamanta = persoanaSrv.crearePersoanaReclamanta();
+		Persoana persoanaReclamanta = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
 		Reclamatie reclamatieNoua = new Reclamatie(1, persoanaReclamanta, data, text, raspuns, status);
 
 		return reclamatieNoua;
 	}
+
+	
+
+
 }
