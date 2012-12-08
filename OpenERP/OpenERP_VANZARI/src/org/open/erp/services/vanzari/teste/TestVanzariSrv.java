@@ -13,6 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.nomgen.Clienti;
 import org.open.erp.services.stocuri.Produse;
+import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
 import org.open.erp.services.vanzari.Comenzi;
@@ -139,7 +140,7 @@ public class TestVanzariSrv {
 			
 		logger.info("FINAL creare produse/clienti/oferte de pret/comada ");
 		
-		logger.info("2.3 Adaugare aritcol comanda");			
+		logger.info("2.3 Adaugare articol comanda");			
 		ArticolComanda articolComanda1=new ArticolComanda(1, ofertaPret1, 10.00, 0.00);
 		logger.info(articolComanda1.calcValoare());
 		
@@ -164,6 +165,8 @@ public class TestVanzariSrv {
 				LiniiDispozitieLivrare linieDispozitieLivrare = new LiniiDispozitieLivrare(i, articol);
 				dispozitie.adaugaLinieDispozitie(linieDispozitieLivrare);
 				i=i+1;
+				//apelare iesire din stoc a articolului
+				iesireStoc(articol.getOferta().getProdus().getIdProdus(),articol.getCantitateAcceptata());
 			}
 		}
 		

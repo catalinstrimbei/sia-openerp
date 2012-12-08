@@ -6,7 +6,27 @@ public class Produse {
 	Integer codProdus;
 	Double cost;
 	Double cantitate;
+	Double stoc;
 	
+	public Produse(Integer idProdus, String denumire, Integer codProdus,
+			Double cost, Double cantitate) {
+		super();
+		this.idProdus = idProdus;
+		this.denumire = denumire;
+		this.codProdus = codProdus;
+		this.cost = cost;
+		this.cantitate = cantitate;
+		
+	}
+	
+	
+	
+	public Produse() {
+		super();
+	}
+
+
+
 	public Integer getIdProdus() {
 		return idProdus;
 	}
@@ -37,15 +57,13 @@ public class Produse {
 	public void setCantitate(Double cantitate) {
 		this.cantitate = cantitate;
 	}
-	public Produse(Integer idProdus, String denumire, Integer codProdus,
-			Double cost, Double cantitate) {
-		super();
-		this.idProdus = idProdus;
-		this.denumire = denumire;
-		this.codProdus = codProdus;
-		this.cost = cost;
-		this.cantitate = cantitate;
+	public Double getStoc() {
+		return stoc;
+	}
+	public void setStoc(Double stoc) {
+		this.stoc = stoc;
 	}
 	
+
 
 }
