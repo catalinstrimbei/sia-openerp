@@ -2,7 +2,7 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 
-import org.open.erp.services.nomgen.AngajatSrv;
+import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.productie.ProdusSrv;
@@ -13,7 +13,7 @@ public interface MarketingSrv {
 
 	public void setNomgenSrv(NomenclatoareSrv nomgenSrv);
 
-	public void setAngajatSrv(AngajatSrv angajatSrv);
+	public void setPersonalSrv(PersonalSrv personalSrv);
 
 	public Promotie crearePromotie(int pretPromotional, Date dataStart, Date dataFinal);
 
