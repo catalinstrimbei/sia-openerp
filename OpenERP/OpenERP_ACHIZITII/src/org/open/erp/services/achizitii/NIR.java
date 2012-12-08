@@ -3,14 +3,15 @@ package org.open.erp.services.achizitii;
 import java.util.Date;
 import java.util.List;
 
+import org.open.erp.services.stocuri.Gestiune;
+
 public class NIR extends Document{
 	private Integer nrNIR;
 	private Date data;
 	private Furnizori furnizor;
 	private List<LiniiNIR> linieNir;
 	private Double valoareTotala;
-	
-	
+		
 	public Integer getNrNIR() {
 		return nrNIR;
 	}
