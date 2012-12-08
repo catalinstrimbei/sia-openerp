@@ -17,9 +17,11 @@ public class CV {
 		for (Tuple<String,Date,Date> t: studiiAbs){
 			studiileAbsolvite.add(t);
 		}
+		functiiOcupate = new ArrayList<Tuple<String,Date,Date>>();
 		for (Tuple<String,Date,Date> t: functiiOcp){
 			functiiOcupate.add(t);
 		}
+		limbiStraine = new ArrayList<DoubleParam<String, String>>();
 		for (DoubleParam<String, String> d: limbiStr){
 			limbiStraine.add(d);
 		}

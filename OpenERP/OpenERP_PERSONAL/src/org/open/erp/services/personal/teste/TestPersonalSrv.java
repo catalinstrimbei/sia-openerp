@@ -119,9 +119,7 @@ public class TestPersonalSrv {
 		logger.debug("Afisarea rezultatului pentru "+proba2.getNumeTest());
 		logger.debug("Rezultat: " + candidatNou.getRezultatLaTeste().get(proba2));
 		
-		logger.info("Sfarsit Test TestPersonalSrv!");
-		
-		
+			
 		Candidat candidatNou2 = instantaPersonal.creareCandidat(1235,"Ionescu Florin", "M", "danielIon@yahoo.com", "Candidat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"));
 		assertNotNull("Nu exista un candidat nou!", candidatNou2);
 		
@@ -153,7 +151,10 @@ public class TestPersonalSrv {
 		
 		Angajat angajatNou = instantaPersonal.creareAngajat(deAngajat.getId(),deAngajat.getNume(),deAngajat.getSex(),deAngajat.getMail(),deAngajat.getStatutInCompanie(),deAngajat.getStareCivila(),deAngajat.getDataNastere(),deAngajat.getTelefon(),deAngajat.getAdresa(),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
 		
+		logger.info("Angajat ales dupa interviuri:");
+		logger.info("Nume: "+angajatNou.getNume());
 		
+		logger.info("Sfarsit Test TestPersonalSrv!");
 		
 	}
 }
