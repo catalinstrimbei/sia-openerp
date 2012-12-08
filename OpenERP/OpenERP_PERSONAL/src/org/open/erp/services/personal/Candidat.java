@@ -1,91 +1,46 @@
 package org.open.erp.services.personal;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class Candidat {
+import org.open.erp.services.nomgen.Adresa;
+import org.open.erp.services.nomgen.PersoanaFizica;
 
-	String nume = null, prenume = null ,adresa = null, telefon = null, email = null;
-	char sexCandidat = 'N';
-	Date dataNasterii = null;
+public class Candidat extends PersoanaFizica{
+
+	
 	List<ProbaEvaluare> testeEfectuate = null;
 	HashMap<ProbaEvaluare,Integer> rezultatLaTeste = null;
 	
-	public Candidat(String nume, String prenume, String adr, String tel, String email, Date dataDeNastere, char sex){
-		this.nume = nume;
-		this.prenume = prenume;
-		this.adresa = adr;
-		this.telefon = tel;
-		this.email = email;
-		this.dataNasterii = dataDeNastere;
-		this.sexCandidat = sex;
+	
+	public Candidat(Integer id, String nume, String sex, String mail,
+			String statutInCompanie, String stareCivila, String dataNastere,
+			String telefon, Adresa adresa, List<ProbaEvaluare> testeEfectuate,
+			HashMap<ProbaEvaluare, Integer> rezultatLaTeste) {
+		super(id, nume, sex, mail, statutInCompanie, stareCivila, dataNastere,
+				telefon, adresa);
+		this.testeEfectuate = testeEfectuate;
+		this.rezultatLaTeste = rezultatLaTeste;
+	}
+
+	public Candidat(Integer id, String nume, String sex, String mail,
+			String statutInCompanie, String stareCivila, String dataNastere,
+			String telefon, Adresa adresa ) {
+		super(id, nume, sex, mail, statutInCompanie, stareCivila, dataNastere,
+				telefon, adresa);
 		testeEfectuate = new ArrayList<ProbaEvaluare>();
 		rezultatLaTeste = new HashMap<ProbaEvaluare,Integer>();
+		
 	}
 	
+		
 	void addProbaDeEvaluare(ProbaEvaluare test){
 		testeEfectuate.add(test);
 		rezultatLaTeste.put(test, 0);
 	}
 	
-	public String getNume() {
-		return nume;
-	}
-
-	public void setNume(String nume) {
-		this.nume = nume;
-	}
-
-	public String getPrenume() {
-		return prenume;
-	}
-
-	public void setPrenume(String prenume) {
-		this.prenume = prenume;
-	}
-
-	public String getAdresa() {
-		return adresa;
-	}
-
-	public void setAdresa(String adresa) {
-		this.adresa = adresa;
-	}
-
-	public String getTelefon() {
-		return telefon;
-	}
-
-	public void setTelefon(String telefon) {
-		this.telefon = telefon;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public char getSexCandidat() {
-		return sexCandidat;
-	}
-
-	public void setSexCandidat(char sexCandidat) {
-		this.sexCandidat = sexCandidat;
-	}
-
-	public Date getDataNasterii() {
-		return dataNasterii;
-	}
-
-	public void setDataNasterii(Date dataNasterii) {
-		this.dataNasterii = dataNasterii;
-	}
-
+	
 	public List<ProbaEvaluare> getTesteEfectuate() {
 		return testeEfectuate;
 	}
