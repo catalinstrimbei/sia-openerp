@@ -1,6 +1,6 @@
 package org.open.erp.services.vanzari;
 
-import org.open.erp.services.nommat.Produse;
+import org.open.erp.services.stocuri.Produse;
 
 public class ArticolComanda {
 	Integer nrLinieComanda;

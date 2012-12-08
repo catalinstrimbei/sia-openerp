@@ -1,4 +1,4 @@
-package org.open.erp.services.nommat;
+package org.open.erp.services.stocuri;
 
 public class Produse {
 	Integer idProdus;
