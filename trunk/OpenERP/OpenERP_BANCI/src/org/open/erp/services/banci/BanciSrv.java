@@ -8,6 +8,8 @@ public interface BanciSrv {
 	public void creareExrasCont();
 	public void creareRaportCredite();
 	public void sumeRetrase(CarduriBNC card);
+	
+	
 	/*
 	1.	Obtinerea unui extras de cont pentru un cont anume la o banca cu care lucreaza o companie
 	2.	Obtinerea unui raport cu ce credite unei companii si la ce banci
