@@ -56,14 +56,10 @@ public class Semifabricat extends Produs implements Serializable {
 		this.semifabricatContinut = semifabricatContinut;
 	}
 
-	public Semifabricat(Integer idProdus, String denumire, String categorie,
-			String unitateMasura, Date dataFabricatiei,
-			Integer termenValabilitate, Double pretVanzare, Float procentTVA,
-			List<LinieDocument> liniiDocumente, Integer idSemifabricat,
+	public Semifabricat(Integer idSemifabricat,
 			String semifabricat, List<Material> listaMateriale,
 			Semifabricat semifabricatContinut) {
-		super(idProdus, denumire, categorie, unitateMasura, dataFabricatiei,
-				termenValabilitate, pretVanzare, procentTVA, liniiDocumente);
+		super();
 		this.idSemifabricat = idSemifabricat;
 		this.semifabricat = semifabricat;
 		this.listaMateriale = listaMateriale;

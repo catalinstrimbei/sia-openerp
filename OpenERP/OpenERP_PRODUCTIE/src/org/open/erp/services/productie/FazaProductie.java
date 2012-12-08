@@ -149,38 +149,63 @@ public class FazaProductie implements Serializable {
 		this.isFinal = isFinal;
 	}
 	
-	public FazaProductie(String faza, FluxProductie flux, Utilaj utilaj,
-			Double timpFolosire, List<FunctieNecesara> functiiNecesare,
-			List<Angajat> angajati, List<Material> materialeReteta,
-			Semifabricat semifabricatReteta, Semifabricat semifabricatDorit,
-			Produs produsDorit, Semifabricat semifabricatObtinut,
-			Produs produsObtinut, Divizie sectie,
-			FunctieNecesara functieNecesare, Material materialReteta,
-			Integer nrOrdine, Boolean isFinal) {
+	public FazaProductie(String faza,  Utilaj utilaj, Double timpFolosire,
+			ArrayList<FunctieNecesara> functiiNecesare,
+			ArrayList<Material> materialeReteta,
+			 Semifabricat semifabricatDorit,
+			 Produs produsDorit, Divizie sectie, Integer nrOrdine, Boolean isFinal) {
 		super();
 		this.faza = faza;
-		this.flux = flux;
 		this.utilaj = utilaj;
 		this.timpFolosire = timpFolosire;
 		this.functiiNecesare = functiiNecesare;
-		this.angajati = angajati;
 		this.materialeReteta = materialeReteta;
-		this.semifabricatReteta = semifabricatReteta;
+		
 		this.semifabricatDorit = semifabricatDorit;
 		this.produsDorit = produsDorit;
-		this.semifabricatObtinut = semifabricatObtinut;
-		this.produsObtinut = produsObtinut;
-		this.sectie = sectie;
-		this.functieNecesare = functieNecesare;
-		this.materialReteta = materialReteta;
-		this.nrOrdine = nrOrdine;
-		this.isFinal = isFinal;
+		this.sectie=sectie;
+		this.nrOrdine=nrOrdine;
+		this.isFinal=isFinal;
+		
 	}
 	
 	public FazaProductie() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+public Semifabricat procesareSemifabricat(){
+		
+		utilaj.setStatus("ocupat");
+		
+		if (semifabricatDorit.getListaMateriale()== materialeReteta && 
+				semifabricatDorit.getSemifabricatContinut()== semifabricatReteta){
+			
+			semifabricatObtinut=semifabricatDorit;
+			utilaj.setStatus("liber");
+				}
+		else{
+			semifabricatObtinut=null;
+			System.out.println("Lista materialelor nu corespunde");
+			}
+		return semifabricatObtinut;
+		
+	}
+	
+	 public Produs procesareProdus(){
+	     
+	     utilaj.setStatus("ocupat");
+	     if(semifabricatDorit.semifabricat==produsDorit.getDenumire())
+	     {produsObtinut=produsDorit;
+	      utilaj.setStatus("liber");
+	     }
+	     else {
+	      produsObtinut=null;
+	      System.out.println("Nu s-a obtinut produsul dorit");
+	     }
+	     return produsObtinut;
+	     
+	    }
 	
 	@Override
 	public int hashCode() {
