@@ -1,6 +1,6 @@
 package org.open.erp.services.nomgen;
 
-public interface NomenclatoareSrv{
-	public  Clienti vizualizareClienti(String nume, String prenume, String categorie);
+public interface NomenclatoareSrv {
 
+	public String cautaClient(String nume);
 }
