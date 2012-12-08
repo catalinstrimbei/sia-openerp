@@ -1,6 +1,6 @@
 package org.open.erp.services.vanzari;
 
-import org.open.erp.services.stocuri.Produse;
+
 
 public class LiniiDispozitieLivrare {
 	Integer nrLiniiAviz;

@@ -2,10 +2,11 @@ package org.open.erp.services.vanzari.teste;
 
 import org.apache.log4j.Logger;
 
+import org.open.erp.services.nommat.Material;
 import org.open.erp.services.personal.Personal;
 import org.open.erp.services.personal.PersonalSrv;
-import org.open.erp.services.stocuri.Produse;
 import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.vanzari.Produse;
 import org.open.erp.services.vanzari.VanzariSrv;
 import org.open.erp.services.vanzari.impl.VanzariImpl;
 
@@ -48,15 +49,16 @@ public class VanzariSrvFactory {
 		{
 
 			@Override
-			public Produse vizualizareProduse(Produse produs) {
-				logger.info(" ****Am vizualizat un produs");
-				return new Produse();
+			public Double verificareStoc(Material material) {
+				logger.info(" ****Am aflat stocul produsului");
+				return 0.00;
 			}
 
 			@Override
-			public String iesireStoc(Produse produs, Double cantitatea) {
+			public void iesireStoc(Material material, Double cantitatea) {
 				logger.info(" *****Iesire din gestiune");
-				return null;
+				
+				
 			}
 
 			

@@ -2,7 +2,7 @@ package org.open.erp.services.vanzari;
 
 import java.util.Date;
 
-import org.open.erp.services.stocuri.Produse;
+
 
 public class LiniiAviz {
 	Integer nrLiniiAviz;

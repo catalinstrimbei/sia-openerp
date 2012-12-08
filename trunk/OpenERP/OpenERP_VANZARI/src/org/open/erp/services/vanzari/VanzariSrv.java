@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.open.erp.services.nomgen.Clienti;
 import org.open.erp.services.personal.PersonalSrv;
-import org.open.erp.services.stocuri.Produse;
 import org.open.erp.services.stocuri.StocuriSrv;
 
 
