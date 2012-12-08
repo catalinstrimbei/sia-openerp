@@ -3,6 +3,9 @@ package org.open.erp.services.personal;
 import java.util.Date;
 import java.util.List;
 
+import org.open.erp.services.nomgen.Adresa;
+import org.open.erp.services.nomgen.Departament;
+
 /**
 * @Dependente: NomGenSrv
 * 
@@ -40,9 +43,10 @@ public interface PersonalSrv {
 	 * 
 	 * @param nivelStudii Nivelul minim de studii absolvite;
 	 * @param salarMinim  Nivelul minim salarial pentru acest post
+	 * @param dep Departamentul in care se creaza postul nou
 	 * @return instanta Post nou creata
 	 */
-	Post crearePost(String nivelStudii, int salarMinim);
+	Post crearePost(String nivelStudii, int salarMinim, Departament dep);
 	
 	/**
 	 * Returneaza un anunt pentru un loc de munca vacant
@@ -82,7 +86,9 @@ public interface PersonalSrv {
 	 * @return instanta Candidat nou creata
 	 */
 	
-	Candidat creareCandidat(String nume, String prenume, String adresa, String telefon, String email, Date dataNasterii,char sex);
+	Candidat creareCandidat(Integer id, String nume, String sex, String mail,
+			String statutInCompanie, String stareCivila, String dataNastere,
+			String telefon, Adresa adresa);
 	
 	/**
 	 * Creaza un CV nou atribuit unei persoane
@@ -96,7 +102,7 @@ public interface PersonalSrv {
 	 * @return instant CV nou creata
 	 * 
 	 */
-	CV creareCV (Candidat titular, Tuple<String,Date,Date> studiiAbsolvite, Tuple<String,Date,Date> functiiOcupate, DoubleParam<String,String> limbiStraine,String aptitudini);
+	CV creareCV (Candidat titular, List<Tuple<String,Date,Date>> studiiAbsolvite, List<Tuple<String,Date,Date>> functiiOcupate, List<DoubleParam<String,String>> limbiStraine,String aptitudini);
 
 	/**
 	 * Selectia candidatilor pentru interviu
@@ -123,7 +129,9 @@ public interface PersonalSrv {
 	 * 
 	 * @return instanta Angajat nou creata
 	 */	
-	Angajat creareAngajat();
+	Angajat creareAngajat(Integer id, String nume, String sex, String mail,
+			String statutInCompanie, String stareCivila, String dataNastere,
+			String telefon, Adresa adresa, ContractMunca cm);
 	
 	/**
 	 * Crearea unui tip nou de interviu
