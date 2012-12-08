@@ -10,11 +10,17 @@ public class Produs {
 	private String denumire;
 	private Reteta reteta;
 	
+	public Produs(int id, String denumire,Reteta reteta)
+	{
+		this.idProdus=id;
+		this.denumire=denumire;
+		this.reteta=reteta;
+		
+	}
 	public Produs(int id, String denumire)
 	{
 		this.idProdus=id;
 		this.denumire=denumire;
-		
 		
 	}
 	
