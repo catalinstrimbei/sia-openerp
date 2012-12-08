@@ -32,6 +32,14 @@ public class PersoanaJuridica extends Persoana {
 	public void setCodFiscal(String codFiscal) {
 		this.codFiscal = codFiscal;
 	}
+	
+	
+	
+	
+	public PersoanaJuridica( ) {
+		
+	}
+	
 	public PersoanaJuridica(Integer id, String nume, 
 			String denumireFirma, String tipFirma, String cUI, String codFiscal,Adresa adresa) {
 		super(id, nume);
