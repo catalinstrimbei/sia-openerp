@@ -138,4 +138,11 @@ public class Facturi {
 		this.liniiFactura.add(linieFactura);
 	}
 
+	public List<LiniiFactura> getLiniiFacturiByIdFactura(Integer id){
+		List<LiniiFactura> linii=null;
+		if(this.idFactura.equals(id)){
+			linii=this.getLiniiFactura();
+		}
+		return linii;
+	}
 }
