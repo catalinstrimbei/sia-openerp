@@ -55,10 +55,10 @@ public void setObservatii(String observatii) {
 	this.observatii = observatii;
 }
 
-public String getCantitateStandard() {
+public String getCategorieMaterial() {
 	return categorieMaterial;
 }
-public void setCantitateStandard(String categorieMaterial) {
+public void setCategorieMaterial(String categorieMaterial) {
 	this.categorieMaterial = categorieMaterial;
 }
 
