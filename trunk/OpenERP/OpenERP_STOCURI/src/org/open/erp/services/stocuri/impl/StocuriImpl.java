@@ -3,14 +3,11 @@ package org.open.erp.services.stocuri.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-
 import org.open.erp.services.stocuri.Articol;
 import org.open.erp.services.stocuri.BonTransfer;
 import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.Loturi;
 import org.open.erp.services.stocuri.StocuriSrv;
-
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.nommat.Material;

@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.achizitii.NIR;
-
 import org.open.erp.services.nommat.ListaCaracteristici;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
