@@ -68,7 +68,8 @@ public class NomenclatoareImpl implements NomenclatoareSrv {
 	}
 	public Integer cautaPersona(String nume)
 	{
-	return -1;
+		logger.debug("1. Cautare Persoana in baza de date");
+		return -1;
 	
 	}
 
