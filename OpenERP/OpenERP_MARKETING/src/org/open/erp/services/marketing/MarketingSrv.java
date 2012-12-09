@@ -5,11 +5,11 @@ import java.util.Date;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.productie.ProdusSrv;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 
 public interface MarketingSrv {
 
-	public void setProdusSrv(ProdusSrv produsSrv);
+	public void setNommatSrv(NomenclatorMaterialeSrv nommatSrv);
 
 	public void setNomgenSrv(NomenclatoareSrv nomgenSrv);
 

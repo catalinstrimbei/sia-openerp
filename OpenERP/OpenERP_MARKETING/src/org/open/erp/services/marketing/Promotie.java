@@ -2,11 +2,11 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 
-import org.open.erp.services.productie.Produs;
+import org.open.erp.services.nommat.Material;
 
 public class Promotie {
 	long id;
-	Produs produsPromotie;
+	Material produsPromotie;
 	int pretPromotional;
 	Date dataStart;
 	Date dataFinal;
@@ -19,11 +19,11 @@ public class Promotie {
 		this.id = id;
 	}
 
-	public Produs getProdusPromotie() {
+	public Material getProdusPromotie() {
 		return produsPromotie;
 	}
 
-	public void setProdusPromotie(Produs produsPromotie) {
+	public void setProdusPromotie(Material produsPromotie) {
 		this.produsPromotie = produsPromotie;
 	}
 
@@ -55,7 +55,7 @@ public class Promotie {
 
 	}
 
-	public Promotie(long id, Produs produsPromotie, int pretPromotional, Date dataStart, Date dataFinal) {
+	public Promotie(long id, Material produsPromotie, int pretPromotional, Date dataStart, Date dataFinal) {
 		super();
 		this.id = id;
 		this.produsPromotie = produsPromotie;
