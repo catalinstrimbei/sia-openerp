@@ -1,15 +1,8 @@
 package org.open.erp.services.stocuri;
 
-import org.open.erp.services.achizitii.AchizitiiSrv;
-//import org.open.erp.services.achizitii.Produs;
-
-import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.nommat.Material;
-
-//
-import org.open.erp.services.nommat.Material;
-//
+//import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.stocuri.ListaGestiuni;
 
 /**
@@ -59,6 +52,12 @@ public interface StocuriSrv {
 	
 	void intrareStoc(LiniiNIR linie, Gestiune gestiunea);
 	
+	void intrareStoc(BonTransfer bonTransfer, Double pret);
+	
+	public void intrareStoc(Material material, Gestiune gestiune, Double cantitate);
+	
+	public void creareLot(LiniiNIR linie, Gestiune gestiune);
+	
 	
 	/** 2. Verificare stoc
 	 * Returneaza stocul unui produs dintr-o gestiune
@@ -70,6 +69,10 @@ public interface StocuriSrv {
 	 */
 	
 	Double verificareStoc(Material produs,Gestiune gestiune);
+	
+	public Double verificareStoc(Material material, ListaGestiuni listagest);
+	
+	Double verificareStoc(Material material);
 	
 	
 	/** 3. Iesire din stoc
@@ -100,25 +103,17 @@ public interface StocuriSrv {
 	 */
 	
 	void transfer(BonTransfer bonTransfer);
-	void intrareStoc(BonTransfer bonTransfer, Double pret);
 	
 	void alertaStoc(Articol articol);
 	
-	public void intrareStoc(Material material, Gestiune gestiune, Double cantitate);
+	public Articol getArticolByGestiune(Material produs, Gestiune gestiune);
 	
-	 public ListaGestiuni GestiuniDisponibile ();
-	 
-	 public Double verificareStoc(Material material, ListaGestiuni listagest);
-	
-	void casareLot();
+	public ListaGestiuni GestiuniDisponibile ();
+		
 	
 	// verifica daca exista un lot pentru un produs si o gestiune, folosit la instrare in stoc
-		//boolean existaArticol(Produs produs, Gestiune gestiune);
-		
-		
-		public Articol getArticolByGestiune(Material produs, Gestiune gestiune);
-		
-		public void creareLot(LiniiNIR linie, Gestiune gestiune);
-	
+	//boolean existaArticol(Produs produs, Gestiune gestiune);
+	//void casareLot();
 	//void setAchizitiiSrv(AchizitiiSrv achizitiiSrv);
+	//void setNomenclatorMaterialeSrv(NomenclatorMaterialeSrv NomenclatorMaterialeSrv);
 }

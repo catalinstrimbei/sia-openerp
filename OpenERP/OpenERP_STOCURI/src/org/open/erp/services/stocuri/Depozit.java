@@ -11,6 +11,7 @@ public class Depozit {
 
 	private Integer idDepozit;
 	private String locatie;
+	
 	public Depozit() {
 		super();
 		// TODO Auto-generated constructor stub

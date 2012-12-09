@@ -2,6 +2,13 @@ package org.open.erp.services.stocuri;
 
 import org.open.erp.services.nommat.Material;
 
+/**
+ * 
+ * @author echipa.stocuri
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
 public class BonTransfer {
 	Material material;
 	Double cantitate;
