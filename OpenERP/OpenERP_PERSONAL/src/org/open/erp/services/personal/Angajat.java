@@ -18,6 +18,9 @@ public class Angajat extends PersoanaFizica {
 	public void setCm(ContractMunca cm) {
 		this.cm = cm;
 	}
+	public Angajat() {
+		super();
+	}
 	
 	
 	
