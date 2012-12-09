@@ -126,5 +126,6 @@ void  setStocuri(StocuriSrv stocuriSrv);
  * @return
  */
 double getValoareFact(Integer id);
+
 }
 

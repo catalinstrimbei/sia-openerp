@@ -123,27 +123,17 @@ public class VanzariImpl implements VanzariSrv{
 	@Override
 	public double getValoareFact(Integer id) {
 		Double valoare = 0.0;
-		List<LiniiFactura> liniiFactura = new ArrayList<LiniiFactura>();
+		Facturi factura = new Facturi();
+		
+		List<LiniiFactura> liniiFactura = factura.getLiniiFacturiByIdFactura(factura.getIdFactura());
 		
 		for (LiniiFactura linie: liniiFactura){
+			
 			valoare = valoare + linie.valoareLinieFactura();
 		}
 		
 		return valoare;
 	}
 
-	public Double valoareFaraTVA(){		
-		ArticolComanda articol=new ArticolComanda();
-		return articol.getOferta().getPretOferta(articol.getCantitateAcceptata()) ;
-	}
-	
-	public Double valoareTVA(Double valoareFaraTVA){
-		Double procTVA=0.24;
-
-		return valoareFaraTVA*procTVA;
-	}
-	
-	public Double valoareLinieFactura(){
-		return valoareFaraTVA()+valoareTVA(valoareFaraTVA());
-	}
+		
 }
