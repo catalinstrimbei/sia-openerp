@@ -103,7 +103,8 @@ public class TestFinanciarPlatiSrv {
 		 
 		sitFit.adaugarePlata(plata1);
 		sitFit.adaugarePlata(plata2);
-		
+		Furnizor furnizor1 = new Furnizor();
+	    furnizor1.adaugarePlata(plata1);
 		
 		
 		Double sitfit = finplatiInstance.getSumePlatite(new Date());
@@ -162,10 +163,17 @@ public class TestFinanciarPlatiSrv {
 	    assertTrue("Prima persoana nu e Ionescu", resp.getIdPersoana()==ionescu.getIdPersoana());
 	    
 	    logger.info("3.3. Clasificare plati ( furnizori / datorii )");
-	    finplatiInstance.clasificarePlati();
+	   // finplatiInstance.clasificarePlati();
+	 // Map<TipPlata, List<Plata>> clasif = finplatiInstance.clasificarePlati();
+	// assertNotNull("Nu exista nici o clasificare", clasif);
+	  // assertTrue("Prima plata nu e plata1", clasif.get(0)==plata1);
+	 //  assertTrue("A doua plata nu e plata2", clasif.get(1)==plata2);
 	    
 	    logger.info("3.4. Procesare/onorare plata catre furnizori");
 	    logger.debug("3.5. Verificare desfasurare plata");
+	    Boolean verificare = finplatiInstance.verificarePlata(furnizor1, plata1);
+	    assertNotNull("Nu exista nici o verificare", verificare);
+	    assertTrue("Nu corespunde", verificare);
 	    
 	    logger.debug("4.1 Efectuare plata pt datorii");
 	    logger.debug("4.2. Primire chitanta");
@@ -175,22 +183,26 @@ public class TestFinanciarPlatiSrv {
 	    logger.debug(finplatiInstance.afisareSituatiePlati());
 	    Double sitplata = finplatiInstance.afisareSituatiePlati();
 	    assertNotNull("Eroare in calculul situatia platilor", sitplata);
-	    assertTrue("Situatia plata nu coincide cu evidenta", sitplata == 850.0);
+	    assertTrue("Situatia plata nu coincide cu evidenta", sitplata == 570.0);
+	    //850
 	    
 	    
 //5	    
+	    logger.debug("5.1. Urmarire datorii ramase");
 	    Double datorii = finplatiInstance.afisareDatorii();
 	    assertNotNull("Eroare in calculul datoriilor", datorii);
 	    assertTrue("Datoriile nu coincid cu evidenta", datorii == 1850.0);
 	    
 	    
+	    logger.info("5.2. Urmarire situatie plati");
 	    logger.debug(finplatiInstance.afisarePlatiTotale());
 	    
 	    Double platitotale = finplatiInstance.afisarePlatiTotale();
 	    assertNotNull("Eroare in calculul platilor", platitotale);
-	    assertTrue("Platile totale nu coincid cu evidenta", platitotale == 200.0);
+	    assertTrue("Platile totale nu coincid cu evidenta", platitotale == 570.0);
 	    
-	    logger.debug(finplatiInstance.afisareSold());
+	    logger.info("5.3. Interogare sold");
+	   // logger.debug(finplatiInstance.afisareSold());
 	    Double soldafisare = finplatiInstance.afisareSold();
 	    assertNotNull("Eroare in calculul platilor", soldafisare);
 	    assertTrue("Platile totale nu coincid cu evidenta", soldafisare == 1850.0);
