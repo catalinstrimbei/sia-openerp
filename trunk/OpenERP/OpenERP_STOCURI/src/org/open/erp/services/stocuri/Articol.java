@@ -76,6 +76,12 @@ public class Articol extends Material{
 		this.material = material;
 		this.loturiArticole = loturiArticole;
 	}
+
+	public Articol() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
 	
 }

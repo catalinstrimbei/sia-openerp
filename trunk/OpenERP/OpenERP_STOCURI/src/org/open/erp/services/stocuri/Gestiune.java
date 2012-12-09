@@ -12,7 +12,6 @@ import org.open.erp.services.personal.Angajat;
  * 
  */
 public class Gestiune {
-	
 	private Integer idGest;
 	private String denumireGest;
 	private Depozit depozit;
@@ -27,6 +26,11 @@ public class Gestiune {
 		this.responsabilGestiune = responsabilGestiune;
 	}
 
+	public Gestiune() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Gestiune(Integer idGest, String denumireGest, Depozit depozit) {
 		super();
 		this.idGest = idGest;

@@ -2,7 +2,13 @@ package org.open.erp.services.stocuri;
 
 import java.util.ArrayList;
 import java.util.List;
- 
+/**
+ * 
+ * @author echipa.stocuri
+ * 
+ * @BusinessObject(Entity)
+ * 
+ */
 public class ListaGestiuni {
 	private Integer idLista;
     private List<Gestiune> gestiuni = new ArrayList<Gestiune>();
@@ -72,5 +78,10 @@ public class ListaGestiuni {
                  		return false;
              	return true;
     	}
+
+	public ListaGestiuni() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
                
 }
