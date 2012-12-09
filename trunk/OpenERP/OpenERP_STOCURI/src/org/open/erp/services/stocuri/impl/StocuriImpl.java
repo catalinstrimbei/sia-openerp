@@ -6,6 +6,8 @@ import java.util.List;
 import org.open.erp.services.stocuri.Articol;
 import org.open.erp.services.stocuri.BonTransfer;
 import org.open.erp.services.stocuri.Gestiune;
+import org.open.erp.services.stocuri.ListaGestiuni;
+import org.open.erp.services.stocuri.Depozit;
 import org.open.erp.services.stocuri.Loturi;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.achizitii.NIR;
@@ -376,6 +378,46 @@ public class StocuriImpl implements StocuriSrv{
 					// }
 		}	
 	
+		@Override
+	       public ListaGestiuni GestiuniDisponibile (){
+	            
+	             ListaGestiuni lista = new ListaGestiuni(1,null);
+	             Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
+	             Gestiune gest2 = new Gestiune(2, "Gestiune 2", new Depozit(2, "Bacau"));
+	             Gestiune gest3 = new Gestiune(3, "Gestiune 3", new Depozit(2, "Vaslui"));
+	             lista.addGestiune(gest1);
+	             lista.addGestiune(gest2);
+	             lista.addGestiune(gest3);
+	             return lista;
+	       }
+		
+		@Override
+	       public Double verificareStoc(Material material, ListaGestiuni listagest) {
+	             // TODO Auto-generated method stub
+	             if (material == null){
+	                    logger.info ("Valoarea produsului oferit ca parametru trebuie sa fie diferita de null");
+	                    return null;
+	             }
+	             if (listagest == null){
+	                    logger.info ("Valoarea listei de gestiuni oferita ca parametru trebuie sa fie diferita de null");
+	                    return null;
+	             }
+	             Double CantitateDeReturnat = 0.00;
+	            
+	             for(Gestiune g: listagest.getGestiuni())
+	             {
+	             for(Articol art: g.getArticole())
+	             {
+	                    if(art.getMaterial().equals(material))
+	                    {
+	                           CantitateDeReturnat = CantitateDeReturnat + art.getCantPeGestiune();
+	                    }
+	             }
+	             }
+	             return CantitateDeReturnat;
+	       }	
+		
+		
 	@Override
 	public void alertaStoc(Articol articol) {
 		logger.info("-------------Declansare alerta-------------");
