@@ -74,4 +74,10 @@ public class ArticolComanda {
 	public Double calcValoare(){
 		return getValoareArticol(oferta);
 	}
+
+
+	public ArticolComanda() {
+		super();
+	}
+	
 }

@@ -8,6 +8,11 @@ public class LiniiAviz {
 	Integer nrLiniiAviz;
 	ArticolComanda articol;
 	
+	
+	
+	public LiniiAviz() {
+		super();
+	}
 	public Integer getNrLiniiAviz() {
 		return nrLiniiAviz;
 	}

@@ -12,6 +12,7 @@ public class Produse {
 	Double stoc;
 	
 	
+
 	public Produse(Material material, Integer idProdus, String denumire,
 			Integer codProdus, Double cost, Double cantitate, Double stoc) {
 		super();

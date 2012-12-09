@@ -9,6 +9,11 @@ public class LiniiFactura {
 	Integer nrLiniiFactura;
 	ArticolComanda articol;
 	
+	
+	
+	public LiniiFactura() {
+		super();
+	}
 	public Integer getNrLiniiFactura() {
 		return nrLiniiFactura;
 	}

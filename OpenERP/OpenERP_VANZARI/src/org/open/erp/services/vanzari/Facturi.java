@@ -15,6 +15,14 @@ public class Facturi {
 	
 	
 	
+	
+	public Facturi() {
+		super();
+	}
+
+
+
+
 	public Facturi(Integer idFactura, Date data, Responsabil responsabil,
 			Avize avizCorespondent, Comenzi comanda,
 			List<LiniiFactura> liniiFactura) {

@@ -6,6 +6,12 @@ public class LiniiDispozitieLivrare {
 	Integer nrLiniiAviz;
 	ArticolComanda articol;
 	
+	
+	
+	public LiniiDispozitieLivrare() {
+		super();
+	}
+
 	public Integer getNrLiniiAviz() {
 		return nrLiniiAviz;
 	}

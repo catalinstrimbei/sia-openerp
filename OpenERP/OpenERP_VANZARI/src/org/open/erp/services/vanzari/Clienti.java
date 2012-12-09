@@ -27,6 +27,10 @@ public class Clienti {
 		this.persoana = persoana;
 		this.categorie = categorie;
 	}
+
+	public Clienti() {
+		super();
+	}
 	
 	
 

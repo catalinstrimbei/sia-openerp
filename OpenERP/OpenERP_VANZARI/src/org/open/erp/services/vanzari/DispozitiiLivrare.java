@@ -14,6 +14,14 @@ public class DispozitiiLivrare {
 	
 	
 	
+	
+	
+public DispozitiiLivrare() {
+		super();
+	}
+
+
+
 public DispozitiiLivrare(Integer idDispozitieLivrare, Date data,
 			Responsabil responsabil, Comenzi comanda,
 			List<LiniiDispozitieLivrare> liniiDispozitieLivare) {

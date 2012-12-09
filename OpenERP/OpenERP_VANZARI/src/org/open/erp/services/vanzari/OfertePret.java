@@ -13,7 +13,7 @@ public class OfertePret {
 
 	public OfertePret() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public Double getPretOferta(Double cantitate) { 
