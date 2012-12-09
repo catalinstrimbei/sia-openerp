@@ -17,6 +17,7 @@ public class NomenclatoareImpl implements NomenclatoareSrv {
 
 	
 
+		
 	@Override
 	public PersoanaFizica crearePF(Integer id, String nume, String sex,
 			String mail, String statutInCompanie, String stareCivila,
@@ -65,13 +66,13 @@ public class NomenclatoareImpl implements NomenclatoareSrv {
 		Divizie div = new  Divizie(id, denumire, descriere, parinte, dataInfiintarii, parinte2);
 		return div;
 	}
-
+	public Integer cautaPersona(String nume)
+	{
+	return -1;
 	
-
-
-
-
-
+	}
 
 
 }
+
+	

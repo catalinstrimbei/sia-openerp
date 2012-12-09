@@ -12,6 +12,9 @@ public class PersoanaFizica extends Persoana {
 	public String getSex() {
 		return sex;
 	}
+	public PersoanaFizica(Integer id, String nume) {
+		super(id, nume);
+	}
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
@@ -63,9 +66,11 @@ public class PersoanaFizica extends Persoana {
 		this.telefon = telefon;
 		this.adresa = adresa;
 	}
-	public PersoanaFizica(Integer id, String nume) {
-		super(id, nume);
+	public PersoanaFizica() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+	
 	 
 
 
