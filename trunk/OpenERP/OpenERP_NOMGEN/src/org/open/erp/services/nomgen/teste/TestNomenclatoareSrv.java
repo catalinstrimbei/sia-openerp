@@ -72,4 +72,10 @@ public class TestNomenclatoareSrv {
 		Divizie div = nomenInstance.creareDivizie("1", "Div", "test", dep, " ", sub);
 		logger.debug("1.7 Afisare divizie: " + div.getDenumire() + ", subdepartament: " + sub.getDenumire() + ", departament: " + dep.getDenumire() );
 }
+	public Integer cautaPersoana(String nume)
+	{
+		return -1;
+
+}
+
 }
