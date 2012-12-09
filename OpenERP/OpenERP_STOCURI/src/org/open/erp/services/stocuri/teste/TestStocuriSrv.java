@@ -8,10 +8,10 @@ import org.apache.log4j.Level;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.achizitii.AchizitiiSrv;
+
 import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.achizitii.NIR;
-import org.open.erp.services.achizitii.Produs;
+
 import org.open.erp.services.nommat.ListaCaracteristici;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
@@ -60,12 +60,12 @@ public class TestStocuriSrv {
 		
 		NIR nir = new NIR(10, null, null, 100.00);
 		
-		
 		ListaCaracteristici caract = nomenclatorMaterialeSrv.incarcareLista("1", "Material Dur");
 		Material mat = nomenclatorMaterialeSrv.introducereMaterial("1", "fier", "20", "5"," 1.2", null, caract);
 		Material mat1 = nomenclatorMaterialeSrv.introducereMaterial("1", "fier", "20", "5"," 1.2", null, caract);
 			
-		//Material mat4 = new Material(4, "mat4", "", "", "", "");
+		//Material mat2 = new Material("1", "fier", "20", "5"," 1.2", null, caract);
+		//Material mat4 = new Material(4, "mat4", "buc");
 		//Material mat5 = new Material(5, "mat5", "buc");
 		
 		LiniiNIR linieNIR1 = new LiniiNIR(nir, 1, mat, 10.00, 10.00, 100.00, 24.00);
