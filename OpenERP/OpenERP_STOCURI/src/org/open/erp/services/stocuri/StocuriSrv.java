@@ -10,6 +10,7 @@ import org.open.erp.services.nommat.Material;
 //
 import org.open.erp.services.nommat.Material;
 //
+import org.open.erp.services.stocuri.ListaGestiuni;
 
 /**
  * @author echipa.stocuri
@@ -104,6 +105,10 @@ public interface StocuriSrv {
 	void alertaStoc(Articol articol);
 	
 	public void intrareStoc(Material material, Gestiune gestiune, Double cantitate);
+	
+	 public ListaGestiuni GestiuniDisponibile ();
+	 
+	 public Double verificareStoc(Material material, ListaGestiuni listagest);
 	
 	void casareLot();
 	
