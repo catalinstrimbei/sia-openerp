@@ -12,8 +12,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.nomgen.Adresa;
+import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.nomgen.impl.NomenclatoareImpl;
 import org.open.erp.services.nommat.ListaCaracteristici;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.stocuri.StocuriSrv;
@@ -70,6 +72,10 @@ public class TestVanzariSrv {
 		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
 		
 		logger.info("2.2 START creare clienti ");
+		
+		//Integer idCl;
+		//NomenclatoareImpl nomenclatoareSrv;
+		//idCl=nomenclatoareSrv.cautaPersoana("Test");
 		
 		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
 		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
@@ -382,4 +388,114 @@ public class TestVanzariSrv {
 	}
 	
 	
+	
+	@Test
+	public void testCreareFactura2() throws Exception{
+		
+		logger.info("!!!!!!TEST!!!!!!");
+		logger.info("5.1 Facturi--->>>>");
+		
+		logger.info("5.4 START creare responsabil ");
+		Responsabil responsabil = new Responsabil(1, "Popescu", "Mihai", "SV","564789","Responsabil livrare", "are experienta" );
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
+		Date dataEmitere=new Date(System.currentTimeMillis());
+		
+		logger.info("1.2 START creare produse");
+		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
+		Produse produs2 = new Produse(2, "Produs 2", 67892, 2.00, 122.00 );
+		
+		logger.info("2.2 START creare clienti");
+		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
+		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
+		Clienti client1= new Clienti(pers, "PF");
+		logger.debug("_)_)_)_)_)_)_)_" + client1.getPersoana().getNume());
+		
+		logger.info("1.1 START creare oferta de pret");
+		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
+		OfertePret ofertaPret2=vanzariInstance.creareOfertePret(200, produs2,dateFormat.parse("31/11/2012"), dataEmitere,"altceva");
+		
+		logger.info("2.1 START creare comenzi");		
+		Comenzi comanda = vanzariInstance.creareComanda(1, new Date(), new ArrayList<ArticolComanda>());
+			
+		logger.info("FINAL creare produse/clienti/oferte de pret/comada ");
+		
+		logger.info("2.3 Adaugare aritcol1 comanda");			
+		ArticolComanda articolComanda1=new ArticolComanda(1, ofertaPret1, 10.00, 0.00);
+		logger.info(articolComanda1.calcValoare());
+		
+		logger.info("2.3 Adaugare aritcol2 comanda");
+		ArticolComanda articolComanda2=new ArticolComanda(2, ofertaPret1, 101.00, 101.00);
+		logger.info(articolComanda2.calcValoare());
+		
+		logger.info("2.3 Adaugare aritcol3 comanda");
+		ArticolComanda articolComanda3=new ArticolComanda(3, ofertaPret2, 202.00, 202.00);
+		logger.info(articolComanda3.calcValoare());
+		
+		comanda.adauga(articolComanda1);
+		comanda.adauga(articolComanda2);
+		comanda.adauga(articolComanda3);
+	
+		
+		logger.info("4.1 START creare avize ");
+		Avize aviz =vanzariInstance.creareAviz(1, new Date(), responsabil, comanda, new ArrayList<LiniiAviz>());
+		logger.info("FINAL creare aviz ");
+		
+		logger.debug("4.4 Afisare liniile aviz (cantitateaAcceptata>0)");
+		Integer i=1;
+		for (ArticolComanda articol: aviz.getComanda().getArticole()) {
+	
+			if(articol.getCantitateAcceptata()> 0){
+				
+				LiniiAviz linieAviz = new LiniiAviz(i, articol);
+				aviz.adaugaLinieAviz(linieAviz);
+				i=i+1;
+			}
+		}
+		
+		logger.debug("Afisare linii aviz" );
+		for (LiniiAviz linie : aviz.getLiniiAviz()) {
+			
+			logger.info (linie.getArticol()/*.getCantitateAcceptata()*/);
+			
+		}
+		
+		logger.info("5.1 Start caz de utilizare creare factura ");
+		Facturi factura = vanzariInstance.creareFactura(1, new Date(), responsabil, aviz, comanda, new ArrayList<LiniiFactura>());
+		//Facturi factura=new Facturi(1, new Date(), responsabil, aviz, comanda, new ArrayList<LiniiFactura>());
+		//assertNotNull("Nu exista factura noua!", factura);
+		//
+				
+		logger.debug("VAL totala factura");
+		Integer j=1;
+		for (ArticolComanda articol: factura.getComanda().getArticole()) {
+	
+			if(articol.getCantitateAcceptata()> 0){
+				
+				LiniiFactura linieFactura = new LiniiFactura(j, articol);
+				factura.adaugaLinieFactura(linieFactura);
+				j=j+1;
+			}
+		}
+		
+		logger.debug("Afisare linii factura" );
+		for (LiniiFactura linie : factura.getLiniiFactura()) {
+			
+			logger.info (linie.getArticol().getCantitateAcceptata());
+			
+		}
+		//---
+		logger.info("========================================================");
+		logger.info("End Test TestVanzariSrv!");
+		logger.info("========================================================");
+		logger.debug("!!!!TEST!!!!!!" );
+		for (LiniiFactura linie : factura.getLiniiFactura()) {
+			
+			logger.info (linie.getArticol().getOferta().getPretOferta(linie.getArticol().getCantitateAcceptata()));
+			
+		}
+		
+		logger.debug("!!!!TEST TOTAL!!!!!!" );
+		logger.info(factura.getValoareFactura(1));
+	}
 	}

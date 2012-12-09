@@ -1,9 +1,11 @@
 package org.open.erp.services.vanzari;
 
+import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.stocuri.StocuriSrv;
 
@@ -118,5 +120,11 @@ DispozitiiLivrare creareDispozitieLivrare(Integer idDispozitieLivrare,Date data,
  * @param stocuriSrv
  */
 void  setStocuri(StocuriSrv stocuriSrv);
+/**
+ * 
+ * @param id						Id-ul facturii pentru care se calculeaza valoarea facturii
+ * @return
+ */
+double getValoareFact(Integer id);
 }
 
