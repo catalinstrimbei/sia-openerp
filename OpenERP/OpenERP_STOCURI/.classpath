@@ -6,5 +6,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMMAT"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_ACHIZITII"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

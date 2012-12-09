@@ -2,6 +2,7 @@ package org.open.erp.services.stocuri;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.open.erp.services.personal.Angajat;
 
 /**
  * 
@@ -16,7 +17,16 @@ public class Gestiune {
 	private String denumireGest;
 	private Depozit depozit;
 	private List<Articol>  articole = new ArrayList<Articol>();
+	private Angajat responsabilGestiune;
 	
+	public Angajat getResponsabilGestiune() {
+		return responsabilGestiune;
+	}
+
+	public void setResponsabilGestiune(Angajat responsabilGestiune) {
+		this.responsabilGestiune = responsabilGestiune;
+	}
+
 	public Gestiune(Integer idGest, String denumireGest, Depozit depozit) {
 		super();
 		this.idGest = idGest;
