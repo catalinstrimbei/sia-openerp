@@ -26,7 +26,7 @@ public class DrepturiUtilizator {
 		return Observatie;
 	}
 	
-	public void setObservatie() {
+	public void setObservatie(String Observatie) {
 		this.Observatie = Observatie;
 	}
 	
