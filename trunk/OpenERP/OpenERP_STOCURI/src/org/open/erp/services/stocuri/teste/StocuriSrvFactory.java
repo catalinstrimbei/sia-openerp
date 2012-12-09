@@ -2,8 +2,8 @@ package org.open.erp.services.stocuri.teste;
 
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.achizitii.AchizitiiSrv;
-import org.open.erp.services.achizitii.Produs;
+
+
 import org.open.erp.services.productie.ProductieSrv;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
@@ -20,8 +20,8 @@ public class StocuriSrvFactory {
 	
 	public static StocuriSrv getStocuriSrv(){
 		StocuriSrv stocuri = new StocuriImpl();
-		AchizitiiSrv achizitiiSrv = StocuriSrvFactory.getAchizitiiSrv(); 
-	    stocuri.setAchizitiiSrv(achizitiiSrv);
+		//AchizitiiSrv achizitiiSrv = StocuriSrvFactory.getAchizitiiSrv(); 
+	    //stocuri.setAchizitiiSrv(achizitiiSrv);
 		logger.info("Crerare StocuriSrv instance from StocuriSrvFactory!");
 		
 		//NomenclatorMaterialeSrv nomenclatorMaterialeSrv = StocuriSrvFactory.getNomenclatoareMateriaelSrv();
@@ -31,7 +31,7 @@ public class StocuriSrvFactory {
 		
 	}
 	
-	public static AchizitiiSrv getAchizitiiSrv(){
+	/*public static AchizitiiSrv getAchizitiiSrv(){
 		logger.info("Creaza Dummy ACHIZITIONARE SRV----");
 		return new AchizitiiSrv()
 		{
@@ -41,7 +41,7 @@ public class StocuriSrvFactory {
 				return new Produs();
 			}
 		};
-	}
+	}*/
 
 	public static ProductieSrv getProductieSrv(){
 		logger.info("Creaza Dummy PRODUCTIE SRV----");

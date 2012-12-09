@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.achizitii.AchizitiiSrv;
-import org.open.erp.services.achizitii.Produs;
+
 import org.open.erp.services.stocuri.Articol;
 import org.open.erp.services.stocuri.BonTransfer;
 import org.open.erp.services.stocuri.Gestiune;
@@ -23,12 +22,12 @@ import org.open.erp.services.nommat.Material;
  */
 public class StocuriImpl implements StocuriSrv{
 	
-	private AchizitiiSrv achizitiiSrv;
+	//private AchizitiiSrv achizitiiSrv;
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(StocuriImpl.class.getName());
 
-	public void setAchizitiiSrv(AchizitiiSrv achizitiiSrv) {
-		this.achizitiiSrv = achizitiiSrv;
-	}
+	//public void setAchizitiiSrv(AchizitiiSrv achizitiiSrv) {
+	//	this.achizitiiSrv = achizitiiSrv;
+	//}
 	
 	@Override
 	
