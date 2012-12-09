@@ -94,7 +94,7 @@ public class StocuriImpl implements StocuriSrv{
 		logger.info("1.1. Se creeaza un lot nou pentru produsul" + linie.getMaterial().getCodMaterial());
 		gestiune.addArticole(new Articol(1, 0.00, gestiune, linie.getMaterial(), new ArrayList<Loturi>()));
 		Articol art = this.getArticolByGestiune(linie.getMaterial(), gestiune);
-		logger.info("1.2. Preluare date specifice produsului: id-ul produsului: " + linie.getMaterial().getCodMateriale + ", cantitatea produsului " + linie.getCantitate() + ", pretul de intrare " + linie.getPret());
+		logger.info("1.2. Preluare date specifice produsului: id-ul produsului: " + linie.getMaterial().getCodMaterial() + ", cantitatea produsului " + linie.getCantitate() + ", pretul de intrare " + linie.getPret());
 		Loturi lot = new Loturi(2, linie.getCantitate(), linie.getPret(), new Date());
 		logger.info("1.3. Adaugare date specifice produsului in noul lot");
 		art.addLot(lot);

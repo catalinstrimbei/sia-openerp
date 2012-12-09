@@ -99,7 +99,7 @@ public interface StocuriSrv {
 	 */
 	
 	void transfer(BonTransfer bonTransfer);
-	void intrareStoc(BonTransfer bonTransfer);
+	void intrareStoc(BonTransfer bonTransfer, Double pret);
 	
 	void alertaStoc(Articol articol);
 	
@@ -115,5 +115,5 @@ public interface StocuriSrv {
 		
 		public void creareLot(LiniiNIR linie, Gestiune gestiune);
 	
-	void setAchizitiiSrv(AchizitiiSrv achizitiiSrv);
+	//void setAchizitiiSrv(AchizitiiSrv achizitiiSrv);
 }
