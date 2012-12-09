@@ -4,20 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.personal.Angajat;
-
 public class Avize {
 
 	Integer idAviz;
 	Date data;
-	Angajat responsabil;
+	Responsabil responsabil;
 	Comenzi comanda;
 	List<LiniiAviz> liniiAviz=new ArrayList<LiniiAviz>();
 	
 	
 	
 	
-	public Avize(Integer idAviz, Date data, Angajat responsabil,
+	public Avize(Integer idAviz, Date data, Responsabil responsabil,
 			Comenzi comanda, List<LiniiAviz> liniiAviz) {
 		super();
 		this.idAviz = idAviz;
@@ -53,13 +51,13 @@ public class Avize {
 
 
 
-	public Angajat getResponsabil() {
+	public Responsabil getResponsabil() {
 		return responsabil;
 	}
 
 
 
-	public void setResponsabil(Angajat responsabil) {
+	public void setResponsabil(Responsabil responsabil) {
 		this.responsabil = responsabil;
 	}
 

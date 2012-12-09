@@ -3,10 +3,10 @@ package org.open.erp.services.vanzari.teste;
 import org.apache.log4j.Logger;
 
 import org.open.erp.services.nommat.Material;
-import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.Produse;
+import org.open.erp.services.vanzari.Responsabil;
 import org.open.erp.services.vanzari.VanzariSrv;
 import org.open.erp.services.vanzari.impl.VanzariImpl;
 
@@ -32,9 +32,9 @@ public class VanzariSrvFactory {
 
 
 			@Override
-			public Angajat preluarePersoana(String ocupatie) {
+			public Responsabil preluarePersoana(String ocupatie) {
 				logger.info("5.1 a) Am delegat persoana responsabila");
-				return new Angajat();
+				return new Responsabil();
 			}
 			
 			
