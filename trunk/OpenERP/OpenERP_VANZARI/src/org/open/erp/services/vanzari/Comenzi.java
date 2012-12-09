@@ -12,6 +12,12 @@ public class Comenzi {
 	 List<ArticolComanda> articole = new ArrayList<ArticolComanda>();
 
 	 
+	 
+	 
+	public Comenzi() {
+		super();
+	}
+
 	public Double getValoareComanda(){
 	//	if (articole.isEmpty())
 			//return null;

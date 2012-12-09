@@ -7,6 +7,8 @@ public class Responsabil extends Personal{
 		// Local: observatii
 	String Observatii;
 
+	
+
 	public String getObservatii() {
 		return Observatii;
 	}

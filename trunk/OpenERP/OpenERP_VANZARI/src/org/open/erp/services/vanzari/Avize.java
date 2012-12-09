@@ -15,6 +15,12 @@ public class Avize {
 	
 	
 	
+	public Avize() {
+		super();
+	}
+
+
+
 	public Avize(Integer idAviz, Date data, Responsabil responsabil,
 			Comenzi comanda, List<LiniiAviz> liniiAviz) {
 		super();

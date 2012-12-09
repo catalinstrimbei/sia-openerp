@@ -132,5 +132,18 @@ public class VanzariImpl implements VanzariSrv{
 		return valoare;
 	}
 
+	public Double valoareFaraTVA(){		
+		ArticolComanda articol=new ArticolComanda();
+		return articol.getOferta().getPretOferta(articol.getCantitateAcceptata()) ;
+	}
 	
+	public Double valoareTVA(Double valoareFaraTVA){
+		Double procTVA=0.24;
+
+		return valoareFaraTVA*procTVA;
+	}
+	
+	public Double valoareLinieFactura(){
+		return valoareFaraTVA()+valoareTVA(valoareFaraTVA());
+	}
 }
