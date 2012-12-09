@@ -11,9 +11,9 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 
 	@Override
 	public  Material introducereMaterial(String codMaterial, String denumireMaterial, String cantitateStandard, String pretStandard,
-			String procentTVACurent, String observatii, ListaCaracteristici caracteristici) {
+			String categorieMaterial, String procentTVACurent, String observatii, ListaCaracteristici caracteristici) {
 		logger.debug("1. Introducere Material");
-		Material material = new Material (codMaterial,denumireMaterial,cantitateStandard,pretStandard,procentTVACurent,observatii,caracteristici);
+		Material material = new Material (codMaterial,denumireMaterial,cantitateStandard,pretStandard,categorieMaterial,procentTVACurent,observatii,caracteristici);
 		return material;
 	}
 		
