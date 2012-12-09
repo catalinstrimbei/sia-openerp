@@ -17,18 +17,18 @@ import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.productie.Produs;
-import org.open.erp.services.productie.ProdusSrv;
+import org.open.erp.services.nommat.Material;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 
 public class MarketingSrvImpl implements MarketingSrv {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingSrvImpl.class.getName());
 
-	private ProdusSrv produsSrv;
+	private NomenclatorMaterialeSrv nommatSrv;
 	private PersonalSrv personalSrv;
 	private NomenclatoareSrv nomgenSrv;
 
-	public void setProdusSrv(ProdusSrv produsSrv) {
-		this.produsSrv = produsSrv;
+	public void setNommatSrv(NomenclatorMaterialeSrv nommatSrv) {
+		this.nommatSrv = nommatSrv;
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class MarketingSrvImpl implements MarketingSrv {
 		logger.info("5.1 Initiere/Creare promotie noua");
 
 		Promotie promotieNoua = new Promotie(1, null, pretPromotional, dataStart, dataFinal);
-		Produs produsNou = produsSrv.creareProdus();
+		Material produsNou = nommatSrv.introducereMaterial(null, null, null, null, null, null, null, null);
 		promotieNoua.setProdusPromotie(produsNou);
 
 		return promotieNoua;
@@ -65,8 +65,9 @@ public class MarketingSrvImpl implements MarketingSrv {
 		Angajat angajatPromoter = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
 		campaniePromovareNoua.setPromoter(angajatPromoter);
 
-		Produs produs = produsSrv.creareProdus();
+		Material produs = nommatSrv.introducereMaterial(null, null, null, null, null, null, null, null);
 		Promotie promotie = crearePromotie(11, data, data);
+		promotie.setProdusPromotie(produs);
 		campaniePromovareNoua.adaugaPromotie(promotie);
 
 		return campaniePromovareNoua;

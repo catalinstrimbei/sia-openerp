@@ -22,15 +22,15 @@ import org.open.erp.services.marketing.StatusReclamatie;
 import org.open.erp.services.marketing.TipPromovare;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.personal.PersonalSrv;
-import org.open.erp.services.productie.ProdusSrv;
 
 public class TestMarketingSrv {
 
 	private static Logger logger;
 	MarketingSrv marketingInstance;
 
-	ProdusSrv produsSrv;
+	NomenclatorMaterialeSrv nommatSrv;
 	PersonalSrv personalSrv;
 	NomenclatoareSrv nomgenSrv;
 
@@ -42,7 +42,7 @@ public class TestMarketingSrv {
 	@Before
 	public void initServices() {
 		marketingInstance = MarketingSrvFactory.getMarketingSrv();
-		produsSrv = MarketingSrvFactory.getProjectProdusSrv();
+		nommatSrv = MarketingSrvFactory.getProjectNommatSrv();
 		personalSrv = MarketingSrvFactory.getProjectPersonalSrv();
 		nomgenSrv = MarketingSrvFactory.getProjectNomgenSrv();
 
@@ -69,15 +69,7 @@ public class TestMarketingSrv {
 		int buget = 11;
 		CampaniePromovare campanieNoua = marketingInstance.creareCampaniePromovare(tipPromovare, data, canalDistributie, buget);
 		campanieNoua.getPromotiiCampanie().add(promotieNoua);
-		// //////////////////////
-		RaspunsIntrebare raspunsIntrebareNou = marketingInstance.creareRaspunsIntrebare("raspuns corect");
-		// //////////////////////
-		Intrebare intrebareNoua = marketingInstance.creareIntrebare("intrebare");
-		intrebareNoua.getRaspunsuriIntrebare().add(raspunsIntrebareNou);
-		// //////////////////////
-		Persoana persoanaChestionata = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
-		Chestionar chestionarNou = marketingInstance.creareChestionar(data, "Chestionar1", persoanaChestionata);
-		chestionarNou.getIntrebariChestionar().add(intrebareNoua);
+		
 		// //////////////////////
 		CercetarePiata cercetarePiataNoua = marketingInstance.creareCercetarePiata(dataStart, dataFinal, buget);
 		// //////////////////////
@@ -86,6 +78,23 @@ public class TestMarketingSrv {
 		// //////////////////////
 		System.out.println("aaaaa");
 		logger.info("End test TestMarketingSrv");
+	}
+	
+	@Test
+	public void testChestionar() throws Exception {
+		logger.setLevel(Level.DEBUG);
+		logger.info("Begin test testChestionar!");
+		
+		RaspunsIntrebare raspunsIntrebareNou = marketingInstance.creareRaspunsIntrebare("raspuns corect");
+		// //////////////////////
+		Intrebare intrebareNoua = marketingInstance.creareIntrebare("intrebare");
+		intrebareNoua.getRaspunsuriIntrebare().add(raspunsIntrebareNou);
+		// //////////////////////
+		Persoana persoanaChestionata = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
+		Chestionar chestionarNou = marketingInstance.creareChestionar(null, "Chestionar1", persoanaChestionata);
+		chestionarNou.getIntrebariChestionar().add(intrebareNoua);
+		
+		logger.info("End test testChestionar");
 	}
 
 }

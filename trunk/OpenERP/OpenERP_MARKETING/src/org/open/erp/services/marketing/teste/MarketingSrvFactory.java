@@ -5,10 +5,10 @@ import org.open.erp.services.marketing.MarketingSrv;
 import org.open.erp.services.marketing.impl.MarketingSrvImpl;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.impl.NomenclatoareImpl;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.nommat.impl.NomenclatorMaterialeImpl;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.impl.PersonalImpl;
-import org.open.erp.services.productie.ProdusSrv;
-import org.open.erp.services.productie.ProdusSrvImpl;
 
 public class MarketingSrvFactory {
 
@@ -18,11 +18,11 @@ public class MarketingSrvFactory {
 
 		MarketingSrv marketingSrv = new MarketingSrvImpl();
 
-		ProdusSrv produsSrv = MarketingSrvFactory.getProjectProdusSrv();
-		PersonalSrv personalSrv = MarketingSrvFactory.getProjectPersonalSrv();
-		NomenclatoareSrv nomgenSrv = MarketingSrvFactory.getProjectNomgenSrv();
+		NomenclatorMaterialeSrv nommatSrv 	= MarketingSrvFactory.getProjectNommatSrv();
+		PersonalSrv 			personalSrv = MarketingSrvFactory.getProjectPersonalSrv();
+		NomenclatoareSrv		nomgenSrv	= MarketingSrvFactory.getProjectNomgenSrv();
 
-		marketingSrv.setProdusSrv(produsSrv);
+		marketingSrv.setNommatSrv(nommatSrv);
 		marketingSrv.setPersonalSrv(personalSrv);
 		marketingSrv.setNomgenSrv(nomgenSrv);
 
@@ -32,9 +32,9 @@ public class MarketingSrvFactory {
 	}
 
 	//
-	public static ProdusSrv getProjectProdusSrv() {
+	public static NomenclatorMaterialeSrv getProjectNommatSrv() {
 		logger.info("Creare dummy instance of ProdusSrv from MarketingSrvFactory!");
-		return new ProdusSrvImpl();
+		return new NomenclatorMaterialeImpl();
 	}
 
 	public static PersonalSrv getProjectPersonalSrv() {
