@@ -8,6 +8,7 @@ String pretStandard;
 String procentTVACurent;
 String observatii;
 String um;
+String categorieMaterial;
 ListaCaracteristici listaCaracteristici;
 
 
@@ -54,6 +55,12 @@ public void setObservatii(String observatii) {
 	this.observatii = observatii;
 }
 
+public String getCantitateStandard() {
+	return categorieMaterial;
+}
+public void setCantitateStandard(String categorieMaterial) {
+	this.categorieMaterial = categorieMaterial;
+}
 
 public Material(String codMaterial, String denumireMaterial, String um) {
 	super();
@@ -62,13 +69,22 @@ public Material(String codMaterial, String denumireMaterial, String um) {
 	this.um=um;
 }
 
-public Material(String codMaterial, String denumireMaterial, String cantitateStandard, String pretStandard,
-		String procentTVACurent, String observatii, ListaCaracteristici listaCaracteristici) {
+public Material(String codMaterial, String denumireMaterial, String um, String categorieMaterial) {
+	super();
+	this.codMaterial = codMaterial;
+	this.denumireMaterial = denumireMaterial;
+	this.um=um;
+	this.categorieMaterial= categorieMaterial;
+}
+
+public Material(String codMaterial, String denumireMaterial, String cantitateStandard, String pretStandard, 
+		String categorieMaterial, String procentTVACurent, String observatii, ListaCaracteristici listaCaracteristici) {
 	super();
 	this.codMaterial = codMaterial;
 	this.denumireMaterial= denumireMaterial;
 	this.cantitateStandard= cantitateStandard;
 	this.pretStandard= pretStandard;
+	this.categorieMaterial= categorieMaterial;
 	this.procentTVACurent= procentTVACurent;
 	this.observatii= observatii;
 	
