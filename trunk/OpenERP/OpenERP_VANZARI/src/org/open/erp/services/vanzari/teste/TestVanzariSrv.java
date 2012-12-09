@@ -49,7 +49,6 @@ public class TestVanzariSrv {
 	
 	@Before public void initServices(){	
 		vanzariInstance= VanzariSrvFactory.getVanzariSrv();
-		stocuriInstance=VanzariSrvFactory.getStocuriSrv();
 		logger.info("Initializare VanzariSRV pentru TESTARE!");
 		
 
@@ -195,7 +194,7 @@ public class TestVanzariSrv {
 				dispozitie.adaugaLinieDispozitie(linieDispozitieLivrare);
 				i=i+1;
 				//apelare iesire din stoc a articolului
-				stocuriInstance.iesireStoc(articol.getOferta().getProdus().getMaterial(), articol.getCantitateAcceptata());
+				stocuriInstance.iesireStoc(articol.getOferta().getProdus().getMaterial(), articol.getCantitateAcceptata(),null);
 				logger.debug("*****************************" +  articol.getOferta().getProdus().getMaterial().getDenumireMaterial());
 			}
 		}

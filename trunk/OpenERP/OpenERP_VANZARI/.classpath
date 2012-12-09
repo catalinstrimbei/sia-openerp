@@ -7,5 +7,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMMAT"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_STOCURI"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
