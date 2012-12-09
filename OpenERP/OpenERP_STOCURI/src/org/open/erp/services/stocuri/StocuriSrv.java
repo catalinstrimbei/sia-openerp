@@ -103,7 +103,7 @@ public interface StocuriSrv {
 	
 	void alertaStoc(Articol articol);
 	
-	
+	public void intrareStoc(Material material, Gestiune gestiune, Double cantitate);
 	
 	void casareLot();
 	
