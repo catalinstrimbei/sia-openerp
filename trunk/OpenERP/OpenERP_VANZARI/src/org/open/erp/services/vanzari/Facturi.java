@@ -4,20 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.personal.Angajat;
-
 public class Facturi {
 
 	Integer idFactura;
 	Date data;
-	Angajat responsabil;
+	Responsabil responsabil;
 	Avize avizCorespondent;
 	Comenzi comanda;
 	List<LiniiFactura> liniiFactura = new ArrayList<LiniiFactura>();
 	
 	
 	
-	public Facturi(Integer idFactura, Date data, Angajat responsabil,
+	public Facturi(Integer idFactura, Date data, Responsabil responsabil,
 			Avize avizCorespondent, Comenzi comanda,
 			List<LiniiFactura> liniiFactura) {
 		super();
@@ -60,14 +58,14 @@ public class Facturi {
 
 
 
-	public Angajat getResponsabil() {
+	public Responsabil getResponsabil() {
 		return responsabil;
 	}
 
 
 
 
-	public void setResponsabil(Angajat responsabil) {
+	public void setResponsabil(Responsabil responsabil) {
 		this.responsabil = responsabil;
 	}
 

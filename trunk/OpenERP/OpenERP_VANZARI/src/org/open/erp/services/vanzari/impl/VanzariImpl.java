@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.hamcrest.core.Is;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
-import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.ArticolComanda;
@@ -22,6 +21,7 @@ import org.open.erp.services.vanzari.LiniiDispozitieLivrare;
 import org.open.erp.services.vanzari.LiniiFactura;
 import org.open.erp.services.vanzari.OfertePret;
 import org.open.erp.services.vanzari.Produse;
+import org.open.erp.services.vanzari.Responsabil;
 import org.open.erp.services.vanzari.VanzariSrv;
 
 /**
@@ -90,9 +90,12 @@ public class VanzariImpl implements VanzariSrv{
 		return ofertaPret;
 	}
 
+	
+	
+
 	@Override
 	public Facturi creareFactura(Integer idFactura, Date data,
-			Angajat responsabil, Avize aviz, Comenzi comanda,
+			Responsabil responsabil, Avize aviz, Comenzi comanda,
 			List<LiniiFactura> liniiFactura) {
 		logger.debug("V.1 Creare factura");
 		Facturi factura=new Facturi(1,new Date(), responsabil, aviz, comanda, liniiFactura);
@@ -101,16 +104,15 @@ public class VanzariImpl implements VanzariSrv{
 	}
 
 	@Override
-	public Avize creareAviz(Integer idAviz, Date date, Angajat responsabil,
+	public Avize creareAviz(Integer idAviz, Date date, Responsabil responsabil,
 			Comenzi comanda, List<LiniiAviz> liniiAviz) {
-		logger.debug("IV.1 Creare aviz");
 		Avize aviz=new Avize(1, new Date(), responsabil, comanda, liniiAviz);
 		return aviz;
 	}
 
 	@Override
 	public DispozitiiLivrare creareDispozitieLivrare(
-			Integer idDispozitieLivrare, Date data, Angajat responsabil,
+			Integer idDispozitieLivrare, Date data, Responsabil responsabil,
 			Comenzi comanda, List<LiniiDispozitieLivrare> liniiDispozitieLivrare) {
 		logger.debug("III.1 Creare dispozitie livrare");
 		DispozitiiLivrare dispozitie=new DispozitiiLivrare(1, new Date(), responsabil, comanda, liniiDispozitieLivrare);

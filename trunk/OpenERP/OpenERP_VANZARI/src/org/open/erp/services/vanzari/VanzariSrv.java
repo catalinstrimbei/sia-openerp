@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.stocuri.StocuriSrv;
 
@@ -84,7 +83,7 @@ public interface VanzariSrv {
  */
 	
 	
-	Facturi creareFactura(Integer idFactura,Date data,Angajat responsabil,Avize aviz, Comenzi comanda, List<LiniiFactura> liniiFactura);
+	Facturi creareFactura(Integer idFactura,Date data,Responsabil responsabil,Avize aviz, Comenzi comanda, List<LiniiFactura> liniiFactura);
 	
 	/**	
 	 * 		Scop									Selectia persoanei responsabile de livrarea produselor
@@ -101,7 +100,7 @@ public interface VanzariSrv {
 	 */
 		
 	
-	Avize creareAviz(Integer idAviz,Date date,Angajat responsabil, Comenzi comanda, List<LiniiAviz>liniiAviz);
+	Avize creareAviz(Integer idAviz,Date date,Responsabil responsabil, Comenzi comanda, List<LiniiAviz>liniiAviz);
 	/**
 	 *  Scop							Crearea unei dispozitii de livarer corespunzatoare unei comenzi.
 	 * @param responsabil				Persoana responsabila sa faca livarea comenzii.
@@ -112,7 +111,7 @@ public interface VanzariSrv {
 	
 	
 	
-DispozitiiLivrare creareDispozitieLivrare(Integer idDispozitieLivrare,Date data,Angajat responsabil, Comenzi comanda, List<LiniiDispozitieLivrare>liniiDispozitieLivrare);
+DispozitiiLivrare creareDispozitieLivrare(Integer idDispozitieLivrare,Date data,Responsabil responsabil, Comenzi comanda, List<LiniiDispozitieLivrare>liniiDispozitieLivrare);
 
 /**
  * 
