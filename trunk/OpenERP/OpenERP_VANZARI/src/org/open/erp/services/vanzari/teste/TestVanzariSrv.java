@@ -18,6 +18,7 @@ import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.nomgen.impl.NomenclatoareImpl;
 import org.open.erp.services.nommat.ListaCaracteristici;
 import org.open.erp.services.nommat.Material;
+import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
@@ -30,7 +31,6 @@ import org.open.erp.services.vanzari.LiniiDispozitieLivrare;
 import org.open.erp.services.vanzari.LiniiFactura;
 import org.open.erp.services.vanzari.OfertePret;
 import org.open.erp.services.vanzari.Produse;
-import org.open.erp.services.vanzari.Responsabil;
 import org.open.erp.services.vanzari.VanzariSrv;
 
 
@@ -142,7 +142,7 @@ public class TestVanzariSrv {
 		logger.info("3.1 Dispozitie de livrare--->>>>");
 		
 		logger.info("3.4 START creare responsabil ");
-		Responsabil responsabil = new Responsabil(1, "Popescu", "Mihai", "SV","564789","Responsabil livrare", "are experienta" );
+		Angajat responsabil = new Angajat(1, "Popescu Mihai", "M","popescuMihai@yahoo.com" ,"sofer","vaduv","23/12/1976", "0756890098",null,null );
 	
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
@@ -221,9 +221,8 @@ public class TestVanzariSrv {
 		
 		
 		logger.info("4.5 START creare responsabil ");
-		Responsabil responsabil = new Responsabil(1, "Popescu", "Mihai", "SV","564789","Responsabil livrare", "are experienta" );
-	
-		
+		Angajat responsabil = new Angajat(1, "Popescu Mihai", "M","popescuMihai@yahoo.com" ,"sofer","vaduv","23/12/1976", "0756890098",null,null );
+				
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
 		
@@ -292,7 +291,7 @@ public class TestVanzariSrv {
 		logger.info("5.1 Facturi--->>>>");
 		
 		logger.info("5.4 START creare responsabil ");
-		Responsabil responsabil = new Responsabil(1, "Popescu", "Mihai", "SV","564789","Responsabil livrare", "are experienta" );
+		Angajat responsabil = new Angajat(1, "Popescu Mihai", "M","popescuMihai@yahoo.com" ,"sofer","vaduv","23/12/1976", "0756890098",null,null );
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
@@ -396,7 +395,7 @@ public class TestVanzariSrv {
 		logger.info("5.1 Facturi--->>>>");
 		
 		logger.info("5.4 START creare responsabil ");
-		Responsabil responsabil = new Responsabil(1, "Popescu", "Mihai", "SV","564789","Responsabil livrare", "are experienta" );
+		Angajat responsabil = new Angajat(1, "Popescu Mihai", "M","popescuMihai@yahoo.com" ,"sofer","vaduv","23/12/1976", "0756890098",null,null );
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
