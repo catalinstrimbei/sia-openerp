@@ -21,6 +21,7 @@ public class VanzariSrvFactory {
 		StocuriSrv stocuriSrv=VanzariSrvFactory.getStocuriSrv();
 		vanzari.setPersonalSrv(personalSrv);
 		vanzari.setStocuri(stocuriSrv);
+				
 		return vanzari;
 		
 	}

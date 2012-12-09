@@ -114,7 +114,7 @@ public class Facturi {
 
 
 
-	public Double getValoareFactura(){
+	public Double getValoareFactura(Integer id){
 					
 			Double valoare = 0.0;
 			for (LiniiFactura linie: liniiFactura){

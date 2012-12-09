@@ -3,6 +3,7 @@ package org.open.erp.services.vanzari.impl;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -117,6 +118,18 @@ public class VanzariImpl implements VanzariSrv{
 		logger.debug("III.1 Creare dispozitie livrare");
 		DispozitiiLivrare dispozitie=new DispozitiiLivrare(1, new Date(), responsabil, comanda, liniiDispozitieLivrare);
 		return dispozitie;
+	}
+
+	@Override
+	public double getValoareFact(Integer id) {
+		Double valoare = 0.0;
+		List<LiniiFactura> liniiFactura = new ArrayList<LiniiFactura>();
+		
+		for (LiniiFactura linie: liniiFactura){
+			valoare = valoare + linie.valoareLinieFactura();
+		}
+		
+		return valoare;
 	}
 
 	
