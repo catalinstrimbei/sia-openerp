@@ -51,6 +51,7 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 			return returnMaterial;
 			}
 			}
+		return null;
 	}
 	
 
@@ -100,6 +101,7 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
           
             }
         }
+		return null;
 		
 	}
 	
@@ -112,8 +114,9 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
             	   	lista_materiale.remove(m.next());
             	
             	}	
+		return "Deleted";
 	}
 
-   return "Deleted";
+   
 
 }	
