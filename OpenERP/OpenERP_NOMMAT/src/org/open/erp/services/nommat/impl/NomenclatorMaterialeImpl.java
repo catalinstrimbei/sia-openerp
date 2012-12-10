@@ -39,68 +39,68 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	
 	@Override
 	public Material cautareMaterialDupaDenumire(String denumire) {
-		Iterator<Material> i=lista_materiale.iterator();
-		while (i.hasNext()){
-			if(i.next().getDenumireMaterial()=denumire){
-				System.out.println(i.next().getcodMaterial() + i.next().getCantitateStandard() + i.next().getDenumireMaterial() 
-						+ i.next().getPretStandard() + i.next().getProcentTVACurent() + i.next().getCategorieMaterial());
+		Iterator<Material> cmat=lista_materiale.iterator();
+		while (cmat.hasNext()){ 
+			if(cmat.next().getDenumireMaterial()==denumire){
+				System.out.println(cmat.next().getCodMaterial() + cmat.next().getCantitateStandard() + cmat.next().getDenumireMaterial() 
+						+ cmat.next().getPretStandard() + cmat.next().getProcentTVACurent() + cmat.next().getCategorieMaterial());
 			}
 		
 	return newMaterial;
 	}
 	
+
 	@Override
-	public Material modificareMaterial(String codMaterial,String newcodMaterial, String newdenumireMaterial, String newcantitateStandard, String newpretStandard,
-			String newcategorieMaterial, String newprocentTVACurent, String newobservatii, ListaCaracteristici newcaracteristici, BOOL overwrite) {
-		
-		Iterator<Material> i=lista_materiale.iterator();
-		while (i.hasNext()) {
-            if (i.next().getcodMaterial()==codMaterial) {
-            	if(overwrite==1){
+	public Material modificareMaterial(String codMaterial,
+			String newcodMaterial, String newdenumireMaterial,
+			String newcantitateStandard, String newpretStandard,
+			String newcategorieMaterial, String newprocentTVACurent,
+			String newobservatii, ListaCaracteristici newcaracteristici,
+			Boolean overwrite) {
+		Iterator<Material> mat=lista_materiale.iterator();
+		while (mat.hasNext()) {
+            if (mat.next().getCodMaterial()==codMaterial) {
+            	if(overwrite==true){
             	
-            	i.next().setCodMaterial(newcodMaterial);
-            	i.next().setCantitateStandard(newcantitateStandard);
-            	i.next().setDenumireMaterial(newdenumireMaterial);
-            	i.next().setPretStandard(pretStandard);
-            	i.next().setProcentTVACurent(newprocentTVACurent);
-            	i.next().setObservatii(newobservatii);
-            	i.next().setCategorieMaterial(newcategorieMaterial);
+            	mat.next().setCodMaterial(newcodMaterial);
+            	mat.next().setCantitateStandard(newcantitateStandard);
+            	mat.next().setDenumireMaterial(newdenumireMaterial);
+            	mat.next().setPretStandard(newpretStandard);
+            	mat.next().setProcentTVACurent(newprocentTVACurent);
+            	mat.next().setObservatii(newobservatii);
+            	mat.next().setCategorieMaterial(newcategorieMaterial);
             	}
             	else{
-            		i.next().setCodMaterial(newcodMaterial);
-            		newcantitateStandard=i.next().getCantitateStandard()+newcantitateStandard;
-                	i.next().setCantitateStandard(newcantitateStandard);
-            		newdenumireMaterial=i.next().getDenumireMaterial()+newdenumireMaterial;
-            		i.next().setDenumireMaterial(newdenumireMaterial);
-            		newpretStandard=i.next().getPretStandard() + newpretStandard;
-                	i.next().setPretStandard(newpretStandard);
-                	newprocentTVACurent=i.next().getProcentTVACurent()+newprocentTVACurent;
-                	i.next().setProcentTVACurent(newprocentTVACurent);
-                	newobservatii=i.next().getObservatii()+newobservatii;
-                	i.next().setObservatii(newobservatii);
-                	newcategorieMaterial= i.next().getCategorieMaterial() + newcategorieMaterial;
-                	i.next().setCategorieMaterial(newcategorieMaterial);
+            		mat.next().setCodMaterial(newcodMaterial);
+            		newcantitateStandard=mat.next().getCantitateStandard()+newcantitateStandard;
+                	mat.next().setCantitateStandard(newcantitateStandard);
+            		newdenumireMaterial=mat.next().getDenumireMaterial()+newdenumireMaterial;
+            		mat.next().setDenumireMaterial(newdenumireMaterial);
+            		newpretStandard=mat.next().getPretStandard() + newpretStandard;
+                	mat.next().setPretStandard(newpretStandard);
+                	newprocentTVACurent=mat.next().getProcentTVACurent()+newprocentTVACurent;
+                	mat.next().setProcentTVACurent(newprocentTVACurent);
+                	newobservatii=mat.next().getObservatii()+newobservatii;
+                	mat.next().setObservatii(newobservatii);
+                	newcategorieMaterial= mat.next().getCategorieMaterial() + newcategorieMaterial;
+                	mat.next().setCategorieMaterial(newcategorieMaterial);
             	}
             	
           
             }
         }
-	return newMaterial;
+		return newMaterial;
 	}
-		
-
-
+	
+	@Override
 	public void stergereMaterial(String codMaterial){
-		Iterator<Material> i=lista_materiale.iterator;
-		while (i.hasNext()) 
-            if (i.next().getCodMaterial()==codMaterial) {
-            	      	
-            	i.next().previous().next()=i.next().next();
-            	}
-            	
-            }
-           	
-       
+		Iterator<Material> m=lista_materiale.iterator();
+		while (m.hasNext()) 
+            if (m.next().getCodMaterial()==codMaterial) {      	
+            	m.next().previous().next()=i.next().next();
+            	}	
 	}
+
+
 
 }	
