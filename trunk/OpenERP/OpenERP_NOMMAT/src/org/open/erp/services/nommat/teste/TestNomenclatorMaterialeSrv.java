@@ -57,8 +57,9 @@ public class TestNomenclatorMaterialeSrv {
 		  String newobservatii="Se distribuie corect";
 		  ListaCaracteristici newcaracteristici=caract;
 		  Boolean overwrite=true;
-		  logger.debug("Modificare material Canepa:" + nomenInstance.modificareMaterial(codMaterial, newcodMaterial, newdenumireMaterial, newcantitateStandard, newpretStandard,
-					newcategorieMaterial,  newprocentTVACurent,  newobservatii, newcaracteristici, overwrite));
+		  nomenInstance.modificareMaterial(codMaterial, newcodMaterial, newdenumireMaterial, newcantitateStandard, newpretStandard,
+					newcategorieMaterial,  newprocentTVACurent,  newobservatii, newcaracteristici, overwrite);
+		  logger.debug("Modificare material Canepa:" + codMaterial + " cu " + newcodMaterial +" avand noua denumire "+ newdenumireMaterial);
 	}
 	@Test
 	public void testStergereMaterial() throws Exception{
