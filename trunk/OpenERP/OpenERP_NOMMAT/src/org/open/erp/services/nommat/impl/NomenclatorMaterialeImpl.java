@@ -47,11 +47,10 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 				/*System.out.println(cmat.next().getCodMaterial() + cmat.next().getCantitateStandard() + cmat.next().getDenumireMaterial() 
 						+ cmat.next().getPretStandard() + cmat.next().getProcentTVACurent() + cmat.next().getCategorieMaterial());
 				*/
-			
-		
-	 Material returnMaterial= new Material(cmat.next().getCodMaterial(),cmat.next().getCantitateStandard(),cmat.next().getDenumireMaterial(), 
+			Material returnMaterial= new Material(cmat.next().getCodMaterial(),cmat.next().getCantitateStandard(),cmat.next().getDenumireMaterial(), 
 				cmat.next().getPretStandard(),cmat.next().getProcentTVACurent(),cmat.next().getCategorieMaterial());
-	 return returnMaterial;
+			return returnMaterial;
+			}
 			}
 	}
 	
@@ -92,7 +91,7 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
                 	mat.next().setObservatii(newobservatii);
                 	newcategorieMaterial= mat.next().getCategorieMaterial() + newcategorieMaterial;
                 	mat.next().setCategorieMaterial(newcategorieMaterial);
-                	System.out.println("Material cod:" + mat.getcodMaterial() + "a fost modificat");
+                	System.out.println("Material cod:" + newcodMaterial + "a fost modificat");
             	}
             	
           
