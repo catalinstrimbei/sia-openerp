@@ -32,5 +32,15 @@ public class TestNomenclatorMaterialeSrv {
 		logger.debug("++++ Afisare ListaCaract: " + caract.getId() + " " + caract.getListaCaracteristici());
 		
 	}
+	
+	@Test
+	public void testCautareMaterial() throws Exception{
+		ListaCaracteristici caract = nomenInstance.incarcareLista("2", "Material Fin");
+		Material mat = nomenInstance.introducereMaterial("2", "Canepa", "20", "5"," 1.2", null, caract);
+		
+		logger.debug("Cautare material Canepa:" + nomenInstance.cautareMaterialDupaDenumire);
+		
+	}
+   
    
 }
