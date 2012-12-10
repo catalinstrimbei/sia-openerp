@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 
-import org.open.erp.services.contabgen.TipIncasare;
+import org.open.erp.services.finincasari.TipIncasare;
 import org.open.erp.services.finincasari.BiletOrdine;
 import org.open.erp.services.finincasari.CEC;
 import org.open.erp.services.finincasari.Chitanta;

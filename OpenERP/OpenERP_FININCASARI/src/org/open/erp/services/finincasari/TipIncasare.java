@@ -1,4 +1,4 @@
-package org.open.erp.services.contabgen;
+package org.open.erp.services.finincasari;
 
 /**
  * @author Isabela
