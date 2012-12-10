@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.open.erp.services.achizitii.Furnizori;
 import org.open.erp.services.proman.Proiect;
 
 /**
@@ -58,7 +59,7 @@ public interface FinanciarPlatiSrv {
 	 * @return datorii Double ce reprezinta diferenta dintra val. totala a facturilor si val. achitata.
 	 * 
 	 */
-	Double getSolduriFacturi();
+	Double getSolduriFactura();
 	
 	/**
 	 * Se va creea un contract nou cu un furnizor dat ca paramatru
@@ -72,7 +73,7 @@ public interface FinanciarPlatiSrv {
 	 * @return Contract		Entitate tip contract ce contine toate datele contractului
 	 * 
 	 */
-	Contract createContractFurnizor(Furnizor furnizor, Double total, Plata avans);
+	Contract createContractFurnizor(Furnizori furnizor, Double total, Plata avans);
 
 	/**
 	 * Se va adauga unui contract existent o plata in avans
@@ -138,7 +139,7 @@ public interface FinanciarPlatiSrv {
 	 * 
 	 */
 
-	void procesarePlata(Furnizor furnizor, Double valoarePlata);
+	void procesarePlata(Furnizori furnizor, Double valoarePlata);
 
 	/**
 	 * 
@@ -149,7 +150,7 @@ public interface FinanciarPlatiSrv {
 	 *Se va adauga o plata facuta de furnizor prin virament bancar, cer...
 	 * 
 	 */
-	Boolean verificarePlata(Furnizor furnizor, Plata plata);
+	Boolean verificarePlata(Furnizori furnizor, Plata plata);
 
 	/**
 	 * 

@@ -1,6 +1,7 @@
+/*TestFinanciarPlatiSrv*/
 
-
-/*
+/* 
+LArisa Lupu
 * @UseCase("1. Monitorizare datorii"):
  * 
  * @UseCase("2. Plati in avans"):
@@ -14,9 +15,11 @@
 
 package org.open.erp.services.finplati.teste;
 
+import org.open.erp.services.achizitii.Factura;
+import org.open.erp.services.achizitii.Furnizori;
+
 import static org.junit.Assert.*;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -27,9 +30,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.finplati.ChitantaPlata;
 import org.open.erp.services.finplati.Contract;
-import org.open.erp.services.finplati.Factura;
+// import org.open.erp.services.finplati.Factura;
 import org.open.erp.services.finplati.FinanciarPlatiSrv;
-import org.open.erp.services.finplati.Furnizor;
+//import org.open.erp.services.finplati.Furnizor;
 import org.open.erp.services.finplati.ModPlata;
 import org.open.erp.services.finplati.Persoana;
 import org.open.erp.services.finplati.Plata;
@@ -103,7 +106,7 @@ public class TestFinanciarPlatiSrv {
 		 
 		sitFit.adaugarePlata(plata1);
 		sitFit.adaugarePlata(plata2);
-		Furnizor furnizor1 = new Furnizor();
+		Furnizori furnizor1 = new Furnizori();
 	    furnizor1.adaugarePlata(plata1);
 		
 		
@@ -117,13 +120,13 @@ public class TestFinanciarPlatiSrv {
 		assertNotNull("Bugetul setat nu exista", buget);
 		assertTrue("Bugetul setat nu este corect", (buget==20000.0));
 //1.3		
-		Double soldfact = finplatiInstance.getSolduriFacturi();
+		Double soldfact = finplatiInstance.getSolduriFactura();
 	    assertNotNull("Nu exista sold nou!", soldfact);
 	    assertTrue("Valoarea soldului nu e corecta!", soldfact == 1000.0);
 //2	    
 	    logger.info("2.1. Incheiere contract cu furnizoruli");
 	    
-	    Furnizor furnizor = new Furnizor();
+	    Furnizori furnizor = new Furnizori();
 		Plata avans = new Plata();
 		avans.setDataPlatii(new Date());
 		avans.setValoarePlata(350.0);
