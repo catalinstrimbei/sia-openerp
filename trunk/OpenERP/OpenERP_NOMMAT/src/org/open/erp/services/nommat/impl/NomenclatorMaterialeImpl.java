@@ -107,8 +107,7 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 		Iterator<Material> m=lista_materiale.iterator();
 		while (m.hasNext()) 
             if (m.next().getCodMaterial() == codMaterial) {      	
-            	
-            	m.next()
+            	   	lista_materiale.remove(m.next());
             	
             	}	
 	}
