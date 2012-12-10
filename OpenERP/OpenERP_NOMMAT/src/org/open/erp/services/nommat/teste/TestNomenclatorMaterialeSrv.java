@@ -66,7 +66,7 @@ public class TestNomenclatorMaterialeSrv {
 		  Material mat = nomenInstance.introducereMaterial("2", "Canepa", "20", "5"," 1.2", null,"materie prima", caract);
 		  String codMat="2";
 		  logger.debug("Stergere material dupa cod" + codMat);
-		  stergereMaterial(codMat);
+		  nomenInstance.stergereMaterial(codMat);
 	}
 
 
