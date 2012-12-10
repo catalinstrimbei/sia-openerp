@@ -53,14 +53,13 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	
 
 	@Override
-	public voi modificareMaterial(String codMaterial,
+	public void modificareMaterial(String codMaterial,
 			String newcodMaterial, String newdenumireMaterial,
 			String newcantitateStandard, String newpretStandard,
 			String newcategorieMaterial, String newprocentTVACurent,
 			String newobservatii, ListaCaracteristici newcaracteristici,
 			Boolean overwrite) {
 		logger.debug("5. Editare Material");
-	}
 		Iterator<Material> mat=lista_materiale.iterator();
 		while (mat.hasNext()) {
             if (mat.next().getCodMaterial()==codMaterial) {
@@ -73,7 +72,7 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
             	mat.next().setProcentTVACurent(newprocentTVACurent);
             	mat.next().setObservatii(newobservatii);
             	mat.next().setCategorieMaterial(newcategorieMaterial);
-            	System.out.println("Material cod:" + mat.getcodMaterial() + "a fost modificat");
+            	System.out.println("Material cod:" + newcodMaterial + "a fost modificat");
             	}
             	else{
             		mat.next().setCodMaterial(newcodMaterial);
@@ -103,10 +102,12 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 		logger.debug("6. Stergere Material");
 		Iterator<Material> m=lista_materiale.iterator();
 		while (m.hasNext()) 
-            if (m.next().getCodMaterial() eq codMaterial) {      	
+            if (m.next().getCodMaterial() == codMaterial) {      	
             	m.next()=m.next().next();
             	m.next().next().previous() = m;
             	}	
 	}
+
+
 
 }	
