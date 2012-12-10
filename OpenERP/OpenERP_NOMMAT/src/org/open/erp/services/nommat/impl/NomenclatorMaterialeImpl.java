@@ -31,6 +31,16 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 		ListaCaracteristici listaCaract= new ListaCaracteristici(id,listaCaracteristici);
 		return listaCaract;
 	}
+	
+	
+	@Override
+	public Material cautareMaterialDupaDenumire(String denumire) {
+	Material newMaterial = new Material();
+	logger.debug("5. Cautare Material dupa denumire");
+	newMaterial.setDenumireMaterial(denumire);
+	return newMaterial;
+	}
+	
 }
 
 	
