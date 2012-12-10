@@ -8,7 +8,7 @@
 			<param name="ConversionPattern" value="(A1) %d [%t] %-5p %c -> %m%n"/> 
 	   </layout> 
 	</appender>
-	<appender name="A2" class="org.apache.log4j.FileAppender">
+	<appender name="A2" class="org.apache.log4j.FileAppender"> 
 		<!-- param name="file" value="${user.home}/log.out"/ -->
 		<param name="file" value="logs/logERP.txt"/>
 		<param name="threshold" value="debug"/>
