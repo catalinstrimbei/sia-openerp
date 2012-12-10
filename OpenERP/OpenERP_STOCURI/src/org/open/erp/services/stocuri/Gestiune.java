@@ -13,6 +13,7 @@ import org.open.erp.services.personal.Angajat;
  */
 public class Gestiune {
 	private Integer idGest;
+	private String  id;
 	private String denumireGest;
 	private Depozit depozit;
 	private List<Articol>  articole = new ArrayList<Articol>();
@@ -72,11 +73,14 @@ public class Gestiune {
 
 	
 	public Gestiune(Integer idGest, String denumireGest) {
-		super();
 		this.idGest = idGest;
 		this.denumireGest = denumireGest;
 	}
 
+	public Gestiune(String id, String denumireGest) {
+		this.id = id;
+		this.denumireGest = denumireGest;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
