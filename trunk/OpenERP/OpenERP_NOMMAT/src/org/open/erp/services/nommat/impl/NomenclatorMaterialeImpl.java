@@ -49,8 +49,8 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 				*/
 			
 		
-	 Material returnMaterial= new Material(cmat.next().getCodMaterial() + cmat.next().getCantitateStandard() + cmat.next().getDenumireMaterial() 
-				+ cmat.next().getPretStandard() + cmat.next().getProcentTVACurent() + cmat.next().getCategorieMaterial());
+	 Material returnMaterial= new Material(cmat.next().getCodMaterial(),cmat.next().getCantitateStandard(),cmat.next().getDenumireMaterial(), 
+				cmat.next().getPretStandard(),cmat.next().getProcentTVACurent(),cmat.next().getCategorieMaterial());
 	 return returnMaterial;
 			}
 	}
