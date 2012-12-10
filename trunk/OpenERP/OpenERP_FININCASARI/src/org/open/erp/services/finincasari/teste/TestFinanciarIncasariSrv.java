@@ -5,6 +5,7 @@ package org.open.erp.services.finincasari.teste;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -18,7 +19,8 @@ import org.open.erp.services.finincasari.FinanciarIncasariSrv;
 import org.open.erp.services.finincasari.OrdinDePlata;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.vanzari.Factura;
+import org.open.erp.services.vanzari.*;
+
 
 
 
@@ -32,9 +34,9 @@ public class TestFinanciarIncasariSrv {
 	private static Logger logger;
 	FinanciarIncasariSrv incasareInstance;
 	
-	 Factura factura1;
-	 Factura factura2;
-	 ArrayList<Factura> factura = new ArrayList<Factura>();
+	 Facturi Facturi1;
+	 Facturi Facturi2;
+	 ArrayList<Facturi> Facturi = new ArrayList<Facturi>();
 	
 	
 	
@@ -50,7 +52,7 @@ public class TestFinanciarIncasariSrv {
 		
 	}
 		
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "unused" })
 	@Test
 	public void testCreareFinanciarIncasari() throws Exception {
 		 
@@ -62,19 +64,19 @@ public class TestFinanciarIncasariSrv {
     	 Date dataFact = new Date(System.currentTimeMillis());
     	 
     
-    	 Factura factura1;
-    	 factura1 = new Factura();
-    	 factura1.setIDFact(11);
-    	 factura1.setSumaIncasare(23.00);
-    	 factura1.setValoareFact(123.00);
-    	 factura1.setDataFact(dataFormat.parse("12-05-2012"));
+    	// Facturi Facturi1 = null;
+    	// Facturi1 = new Facturi();
+    	//Facturi1.getIdFactura();
+    	 //Facturi1.setSumaIncasare(23.00);
+    	// Facturi1.setValoareFact(123.00);
+    	 //Facturi1.setDataFact(dataFormat.parse("12-05-2012"));
 
-    	 Factura factura2;
-    	 factura2 = new Factura();
-    	 factura2.setIDFact(12);
-    	 factura2.setSumaIncasare(50.00);
-    	 factura2.setValoareFact(200.00);
-    	 factura2.setDataFact(dataFormat.parse("10-09-2012"));
+    	 //Facturi Facturi2 = null;
+    	// Facturi2 = new Facturi();
+    	//Facturi2.setIdFactura(12);
+    	// Facturi2.setSumaIncasare(50.00);
+    	// Facturi2.setValoareFact(200.00);
+    	// Facturi2.setDataFact(dataFormat.parse("10-09-2012"));
     	
     	
     	
@@ -92,20 +94,21 @@ public class TestFinanciarIncasariSrv {
     	 dataEmiterii = dataFormat.parse("12-05-2012");
     	 dataScadenta = dataFormat.parse("30-08-2012");
     	 
-    	 Angajat angajat = new Angajat();
-    	 angajat.setIDangajat(1);
-    	 angajat.setNumeAngajat("Ion");
+    	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+    	// angajat.setIDangajat(1);
+    	// angajat.setNumeAngajat("Ion");
     	 
     	 Persoana persoana = new Persoana();
-    	 persoana.setNumePers("Marian");
+    	// persoana.setNume("Marian");
     	 
-    	 factura = new ArrayList<Factura>();
-    	 factura.add(factura1);
-		 factura.add(factura2);
+    	 Facturi = new ArrayList<Facturi>();
+    	 Facturi.add(Facturi1);
+		 Facturi.add(Facturi2);
     	 
        	BiletOrdine BO =  incasareInstance.incasareBO("bc", dataEmiterii,
-    			Double.valueOf(23.00), "RON", "douazeci si trei", "RO125468SC785",factura,angajat,persoana);
+    			Double.valueOf(23.00), "RON", "douazeci si trei",Facturi,angajat,persoana);
       
+       
        	logger.info("1.Incasare prin Bilet Ordine");
     
     
@@ -126,19 +129,20 @@ public class TestFinanciarIncasariSrv {
     	 dataEmiterii = dataFormat.parse("05-04-2012");
     	 dataScadenta = dataFormat.parse("30-08-2012");
 
-    	 Angajat angajat = new Angajat();
-    	 angajat.setIDangajat(1);
-    	 angajat.setNumeAngajat("Ion");
+    	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+    	// angajat.setIDangajat(1);
+    	// angajat.setNumeAngajat("Ion");
     	 
     	 Persoana persoana = new Persoana();
-    	 persoana.setNumePers("Marian");
+    	// persoana.setNume("Marian");
     	 
-    	 factura = new ArrayList<Factura>();
-    	 factura.add(factura1);
-    	 factura.add(factura2);
+    	 Facturi = new ArrayList<Facturi>();
+    	 Facturi.add(Facturi1);
+    	 Facturi.add(Facturi2);
     	 
     	 
-    	 CEC Cec = incasareInstance.incasareCec("is", dataEmiterii,23.00 , "RON", "douazeci si trei", "RO125468SC78545",null);
+    	 CEC Cec = incasareInstance.incasareCec("is", dataEmiterii,23.00 , "RON", "douazeci si trei", null);
+    	
     	 logger.info("2.Incasare utilizand CEC");
      }
 	
@@ -156,20 +160,21 @@ public class TestFinanciarIncasariSrv {
    	 dataEmiterii = dataFormat.parse("05-04-2012");
    	 dataScadenta = dataFormat.parse("30-08-2012");
 
-   	 Angajat angajat = new Angajat();
-   	 angajat.setIDangajat(1);
-   	 angajat.setNumeAngajat("Ion");
+   	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+   	// angajat.setIDangajat(1);
+   	// angajat.setNumeAngajat("Ion");
    	 
    	 Persoana persoana = new Persoana();
-   	 persoana.setNumePers("Marian");
+   	// persoana.setNume("Marian");
    	 
-   	 factura = new ArrayList<Factura>();
-   	 factura.add(factura1);
-   	 factura.add(factura2);
+   	 Facturi = new ArrayList<Facturi>();
+   	 Facturi.add(Facturi1);
+   	 Facturi.add(Facturi2);
    	 
    	 
    	 OrdinDePlata OP = incasareInstance.incasareOP("bucuresti", dataEmiterii, 50.00, "RON", 
-   			 "cincizeci", "RO12548BUC89", 1205, "xc108", factura);
+   			 "cincizeci",  1205, "xc108", Facturi);
+   	
    	 logger.info("3.Incasare prin Ordin de Plata");
     }
 	
@@ -194,20 +199,20 @@ public class TestFinanciarIncasariSrv {
 	   	 Date dataEmiterii = new Date(System.currentTimeMillis());
 	   	 dataEmiterii = dataFormat.parse("05-04-2012");
 	   
-	   	 Angajat angajat = new Angajat();
-	   	 angajat.setIDangajat(1);
-	   	 angajat.setNumeAngajat("Ion");
+	   	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+	   	 //angajat.setIDangajat(1);
+	   	// angajat.setNumeAngajat("Ion");
 	   	 
 	   	 Persoana persoana = new Persoana();
-	   	 persoana.setNumePers("Marian");
+	   	// persoana.setNume("Marian");
 	   	 
-	   	 factura = new ArrayList<Factura>();
-	   	 factura.add(factura1);
-	   	 factura.add(factura2);
+	   	 Facturi = new ArrayList<Facturi>();
+	   	 Facturi.add(Facturi1);
+	   	 Facturi.add(Facturi2);
 	   	 
-	   	 Chitanta CT = incasareInstance.inregistrareCt("bacau", dataEmiterii, 50.00, "RON", "cincizeci", "RO458721bc568", factura, angajat);
+	   	 Chitanta CT = incasareInstance.inregistrareCt("bacau", dataEmiterii, 50.00, "RON", "cincizeci",  Facturi, angajat);
 	   	 
-	 	 logger.info("6.Emiterea chitantei pentru suma incasata");
+	 	 logger.info("4.Emiterea chitantei pentru suma incasata");
 	  
 	}
 	
@@ -221,22 +226,22 @@ public class TestFinanciarIncasariSrv {
    
    	 dataEmiterii = dataFormat.parse("05-04-2012");
    	
-   	 Angajat angajat = new Angajat();
-   	 angajat.setIDangajat(1);
-   	 angajat.setNumeAngajat("Ion");
+   	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+   	// angajat.setIDangajat(1);
+   	// angajat.setNumeAngajat("Ion");
    	 
    	 Persoana persoana = new Persoana();
-   	 persoana.setNumePers("Marian");
+   	// persoana.setNume("Marian");
    	 
-   	 factura = new ArrayList<Factura>();
-   	 factura.add(factura1);
-   	 factura.add(factura2);
+   	 Facturi = new ArrayList<Facturi>();
+   	 Facturi.add(Facturi1);
+   	 Facturi.add(Facturi2);
    	 
    	 
-   	ExtrasDeCont ec = incasareInstance.incasareEC("cluj", dataEmiterii, 23.00, "RON", "douazeci si trei", "Ro5879453cl45", factura);
+   	ExtrasDeCont ec = incasareInstance.incasareEC("cluj", dataEmiterii, 23.00, "RON", "douazeci si trei", Facturi);
    	 logger.info("5. Extras de cont");
    	 
-   	 logger.info("End Test TestFinanciarIncasariSrv!");
+   	 logger.debug("End Test TestFinanciarIncasariSrv!");
     }
 	 	
 		

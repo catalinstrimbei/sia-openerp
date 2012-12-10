@@ -20,8 +20,8 @@ public class ExtrasDeCont extends FinanciarIncasari implements Serializable {
 	}
 
 	public ExtrasDeCont(String localitate, Date dataEmiterii, Double suma,
-			String moneda, String sumaLitere, String contBancar) {
-		super(localitate, dataEmiterii, suma, moneda, sumaLitere, contBancar);
+			String moneda, String sumaLitere) {
+		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		// TODO Auto-generated constructor stub
 	}
 	

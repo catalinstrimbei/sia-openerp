@@ -19,7 +19,8 @@ public class FinanciarIncasari implements Serializable{
 	private Double suma;
 	private String moneda;
 	private String sumaLitere;
-	private String contBancar;
+	//private String contBancar;
+	Double sumaIncasare;
 	
 	
 	
@@ -49,27 +50,35 @@ public class FinanciarIncasari implements Serializable{
 	public void setSumaLitere(String sumaLitere) {
 		this.sumaLitere = sumaLitere;
 	}
-	public String getContBancar() {
+	/*public String getContBancar() {
 		return contBancar;
 	}
 	public void setContBancar(String contBancar) {
 		this.contBancar = contBancar;
-	}
+	} */
 	public Date getDataEmiterii() {
 		return dataEmiterii;
 	}
 	public void setDataEmiterii(Date dataEmiterii) {
 		this.dataEmiterii = dataEmiterii;
 	}
+	
+	public Double getSumaIncasare() {
+		return sumaIncasare;
+	}
+	public void setSumaIncasare(Double sumaIncasare) {
+		this.sumaIncasare = sumaIncasare;
+	}
+	
 	public FinanciarIncasari(String localitate, Date dataEmiterii, Double suma,
-			String moneda, String sumaLitere, String contBancar) {
+			String moneda, String sumaLitere) {
 		super();
 		Localitate = localitate;
 		this.dataEmiterii = dataEmiterii;
 		this.suma = suma;
 		this.moneda = moneda;
 		this.sumaLitere = sumaLitere;
-		this.contBancar = contBancar;
+		//this.contBancar = contBancar;
 	}
 	public FinanciarIncasari() {
 		super();
@@ -81,8 +90,8 @@ public class FinanciarIncasari implements Serializable{
 		int result = 1;
 		result = prime * result
 				+ ((Localitate == null) ? 0 : Localitate.hashCode());
-		result = prime * result
-				+ ((contBancar == null) ? 0 : contBancar.hashCode());
+		//result = prime * result
+			//	+ ((contBancar == null) ? 0 : contBancar.hashCode());
 		result = prime * result
 				+ ((dataEmiterii == null) ? 0 : dataEmiterii.hashCode());
 		result = prime * result + ((moneda == null) ? 0 : moneda.hashCode());
@@ -105,11 +114,11 @@ public class FinanciarIncasari implements Serializable{
 				return false;
 		} else if (!Localitate.equals(other.Localitate))
 			return false;
-		if (contBancar == null) {
-			if (other.contBancar != null)
-				return false;
-		} else if (!contBancar.equals(other.contBancar))
-			return false;
+		//if (contBancar == null) {
+			//if (other.contBancar != null)
+			//	return false;
+		//} else if (!contBancar.equals(other.contBancar))
+		//	return false;
 		if (dataEmiterii == null) {
 			if (other.dataEmiterii != null)
 				return false;

@@ -7,7 +7,7 @@ package org.open.erp.services.contabgen;
 public class TipIncasare {
 
 	public static Boolean avans;
-	public Boolean furnizror;
+	//public Boolean furnizor;
 	public static Boolean casa;
 	public Boolean banca;
 }
