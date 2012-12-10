@@ -8,7 +8,7 @@ public interface NomenclatorMaterialeSrv {
 	 Material cautareMaterialDupaDenumire(String denumire);
 	 Material modificareMaterial(String codMaterial,String newcodMaterial, String newdenumireMaterial, String newcantitateStandard, String newpretStandard,
 				String newcategorieMaterial, String newprocentTVACurent, String newobservatii, ListaCaracteristici newcaracteristici, Boolean overwrite);
-	 Material stergereMaterial(String CodMaterial);
+	 String stergereMaterial(String CodMaterial);
 	 UnitateDeMasura incarcareUnitate(String id, String unitateDeMasura);
 	 ListaCaracteristici incarcareLista(String id, String listaCaracteristici);
 	}
