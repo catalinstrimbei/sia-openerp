@@ -39,6 +39,8 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	
 	@Override
 	public Material cautareMaterialDupaDenumire(String denumire) {
+		logger.debug("4. Cautare Material");
+	
 		Iterator<Material> cmat=lista_materiale.iterator();
 		while (cmat.hasNext()){ 
 			if(cmat.next().getDenumireMaterial()==denumire){
@@ -51,12 +53,14 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	
 
 	@Override
-	public Material modificareMaterial(String codMaterial,
+	public voi modificareMaterial(String codMaterial,
 			String newcodMaterial, String newdenumireMaterial,
 			String newcantitateStandard, String newpretStandard,
 			String newcategorieMaterial, String newprocentTVACurent,
 			String newobservatii, ListaCaracteristici newcaracteristici,
 			Boolean overwrite) {
+		logger.debug("5. Editare Material");
+	}
 		Iterator<Material> mat=lista_materiale.iterator();
 		while (mat.hasNext()) {
             if (mat.next().getCodMaterial()==codMaterial) {
@@ -69,6 +73,7 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
             	mat.next().setProcentTVACurent(newprocentTVACurent);
             	mat.next().setObservatii(newobservatii);
             	mat.next().setCategorieMaterial(newcategorieMaterial);
+            	System.out.println("Material cod:" + mat.getcodMaterial() + "a fost modificat");
             	}
             	else{
             		mat.next().setCodMaterial(newcodMaterial);
@@ -84,23 +89,24 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
                 	mat.next().setObservatii(newobservatii);
                 	newcategorieMaterial= mat.next().getCategorieMaterial() + newcategorieMaterial;
                 	mat.next().setCategorieMaterial(newcategorieMaterial);
+                	System.out.println("Material cod:" + mat.getcodMaterial() + "a fost modificat");
             	}
             	
           
             }
         }
-		return newMaterial;
+	
 	}
 	
 	@Override
 	public void stergereMaterial(String codMaterial){
+		logger.debug("6. Stergere Material");
 		Iterator<Material> m=lista_materiale.iterator();
 		while (m.hasNext()) 
             if (m.next().getCodMaterial()==codMaterial) {      	
-            	m.next().previous().next()=i.next().next();
+            	m.next().previous().next()=m.next().next();
+            	m.next().next().previous() = m.next().previous();
             	}	
 	}
-
-
 
 }	
