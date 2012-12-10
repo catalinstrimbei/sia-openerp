@@ -3,9 +3,17 @@ package org.open.erp.services.banci;
 public class Cont{
 	Integer id;
 	String nume;
-	Integer tipCont; //lei=1 sau valuta=2
+	String tipCont;
 	Integer tipCard;
  
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public String getNume() {
 		return nume;
 	}
@@ -22,15 +30,15 @@ public class Cont{
 		this.tipCard = tip;
 	}
 	
-	public Integer getTipCont() {
+	public String getTipCont() {
 		return tipCont;
 	}
 	
-	public void setTipCont(Integer tip) {
+	public void setTipCont(String tip) {
 		this.tipCont = tip;
 	}
 	
-	public Cont(Integer id, String nume, Integer tip_cont, Integer tip_card) {
+	public Cont(Integer id, String nume, String tip_cont, Integer tip_card) {
 		super();
 		this.id = id;
 		this.nume = nume;

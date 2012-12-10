@@ -22,16 +22,17 @@ public class CrediteBNC {
 
 	*/
 	private String numeCompanie;
-	private Vector<String> numeBanca;
+	private Vector<String> numeBanca = new Vector<String>();;
 	private String numeCont;
 	private Double sumaContractata;
+	private Double sumaramasadeplata;
 	private Integer perioadaContractare; //zile
 	private Date datacontractare;
 	private Date datascadenteicontractului;
 	private Date datascadenteilunare;
 	private Double	sumaplatalunara;
 	private Double	ratadobanziianuale;
-	private Vector<LiniiPlati> platiintermediare;
+	private Vector<LiniiPlati> platiintermediare = new Vector<LiniiPlati>();
 	
 	
 	//getter
@@ -64,6 +65,9 @@ public class CrediteBNC {
 	}
 	public Double getratadobanziianuale(){
 		return ratadobanziianuale;
+	}
+	public Double getsumaramasadeplata(){
+		return sumaramasadeplata;
 	}
 	public Vector<LiniiPlati> getplatiintermediare(){
 		return platiintermediare;
@@ -100,15 +104,23 @@ public class CrediteBNC {
 	public void setratadobanziianuale(Double rata){
 		this.ratadobanziianuale = rata;
 	}
+	public void setsumaramasadeplata(Double suma){
+		this.sumaramasadeplata = suma;
+	}
 	public void setplatiintermediare(LiniiPlati plata){
 		this.platiintermediare.addElement(plata);
 	}
 	
+	public void actualizarecredit(){
+		sumaramasadeplata = sumaContractata;
+		for(int i=0;i<platiintermediare.size();i++)
+			sumaramasadeplata -= (sumaplatalunara -ratadobanziianuale*(sumaplatalunara));
+	}
+	
 	public CrediteBNC(String numeCompa, String numeBan, String numeCon, Double sumaContract, Integer perioadaContract,
 			Date datacontract, Date datascadenteicontract, Date datascadenteiluna, Double sumaplataluna,
-			Double ratadobanziian, LiniiPlati platiintermed, Date dataplatacurent, Double sumaplatacurent, Double sumaramasadepla) {
+			Double ratadobanziian, LiniiPlati platiintermed) {
 		this.numeCompanie = numeCompa;
-		this.numeBanca = new Vector<String>();
 		this.numeBanca.addElement(numeBan);
 		this.numeCont = numeCon;
 		this.sumaContractata = sumaContract;
@@ -118,7 +130,6 @@ public class CrediteBNC {
 		this.datascadenteilunare = datascadenteiluna;
 		this.sumaplatalunara = sumaplataluna;
 		this.ratadobanziianuale = ratadobanziian;
-		this.platiintermediare = new Vector<LiniiPlati>();
 		this.platiintermediare.addElement(platiintermed);
 	}
 	
