@@ -103,9 +103,9 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 		logger.debug("6. Stergere Material");
 		Iterator<Material> m=lista_materiale.iterator();
 		while (m.hasNext()) 
-            if (m.next().getCodMaterial()==codMaterial) {      	
-            	m.next().previous().next()=m.next().next();
-            	m.next().next().previous() = m.next().previous();
+            if (m.next().getCodMaterial() eq codMaterial) {      	
+            	m.next()=m.next().next();
+            	m.next().next().previous() = m;
             	}	
 	}
 
