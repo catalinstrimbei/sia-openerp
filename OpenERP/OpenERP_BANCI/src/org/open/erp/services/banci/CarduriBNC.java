@@ -24,8 +24,8 @@ public class CarduriBNC {
 	private Companie banca;
 	private Date dataeliberarii; //cand se preda clientului
 	private Date dataexpirarii;
-	private Vector<LiniiPlati> linieretragere;
-	private Vector<LiniiPlati> liniealimentare;
+	private Vector<LiniiPlati> linieretragere = new Vector<LiniiPlati>();
+	private Vector<LiniiPlati> liniealimentare = new Vector<LiniiPlati>();
 	private Double valsoldinitial;
 	private Double valsoldfinal;
 	
@@ -87,23 +87,24 @@ public class CarduriBNC {
 		return valsoldfinal;
 	}
 	
+	public void actualizaresoldfinal(){
+		this.valsoldfinal = this.valsoldinitial; 
+		for(int i=0; i<this.liniealimentare.size(); i++)
+			this.valsoldfinal += this.liniealimentare.elementAt(i).getsumaplatita();
+		for(int i=0; i<this.linieretragere.size(); i++)
+			this.valsoldfinal -= this.linieretragere.elementAt(i).getsumaplatita();
+	}
 		
 	public CarduriBNC(Companie firma, Cont cont, Companie banca, 
 			Date dataeliberarii, Date dataexpirarii, 
-			LiniiPlati linieretragere, LiniiPlati liniealimentare, 
-			Double valsoldinitial, Double valsoldfinal) {
+			Double valsoldinitial) {
 		super();
 		this.firma = firma;
 		this.cont = cont;
 		this.banca = banca;
 		this.dataeliberarii = dataeliberarii;
-		this.dataexpirarii =  dataexpirarii;	
-		this.linieretragere = new Vector<LiniiPlati>();
-		this.linieretragere.addElement(linieretragere);		
-		this.liniealimentare = new Vector<LiniiPlati>();
-		this.liniealimentare.addElement(liniealimentare);		
+		this.dataexpirarii =  dataexpirarii;
 		this.valsoldinitial = valsoldinitial;
-		this.valsoldfinal = valsoldfinal;
 	}
 	
 	public CarduriBNC() {

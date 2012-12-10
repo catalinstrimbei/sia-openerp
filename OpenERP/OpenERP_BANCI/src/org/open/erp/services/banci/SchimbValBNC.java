@@ -59,7 +59,7 @@ public class SchimbValBNC {
 	public Integer getCursval() {
 		return  cursval;
 	}
-	public void setCursval(Integer  cursval) {
+	public void setCursval(Integer cursval) {
 		this. cursval =  cursval;
 	}
 	public Double getComisionscb() {
@@ -69,22 +69,22 @@ public class SchimbValBNC {
 		this.comisionscb = comisionscb;
 	}
 		
-		public List<LiniiPlati> getliniePlata() {
-			return liniePlata;
-		}
-		public void setliniePlata(List<LiniiPlati> liniePlata) {
-			this.liniePlata = liniePlata;
-		
+	public List<LiniiPlati> getliniePlata() {
+		return liniePlata;
+	}
+	
+	public void setliniePlata(List<LiniiPlati> liniePlata) {
+		this.liniePlata = liniePlata;	
 	}
 		
-	public SchimbValBNC(Companie client,Date datatranz,Integer monedacurenta,Double valmoncurenta,Integer monedaschimb,Double valmondupaschimb,Integer cursval,Double comisionscb, List<LiniiPlati> liniePlata) {
+	public SchimbValBNC(Companie client, Date datatranz, Integer monedacurenta, Double valmoncurenta, Integer monedaschimb, Double valmondupaschimb, Integer cursval,Double comisionscb, List<LiniiPlati> liniePlata) {
 		this.client = client;
 		this.datatranz = datatranz;
 		this.monedacurenta = monedacurenta;
 		this.valmoncurenta = valmoncurenta;
 		this.monedaschimb =  monedaschimb;
 		this.valmondupaschimb = valmondupaschimb;
-		this. cursval =  cursval;
+		this.cursval =  cursval;
 		this.comisionscb = comisionscb;
 		this.liniePlata = liniePlata;
 	}	
