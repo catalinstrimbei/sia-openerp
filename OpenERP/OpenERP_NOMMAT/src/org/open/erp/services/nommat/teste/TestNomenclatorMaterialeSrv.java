@@ -57,17 +57,17 @@ public class TestNomenclatorMaterialeSrv {
 		  String newobservatii="Se distribuie corect";
 		  ListaCaracteristici newcaracteristici=caract;
 		  Boolean overwrite=true;
-		  nomenInstance.modificareMaterial(codMaterial, newcodMaterial, newdenumireMaterial, newcantitateStandard, newpretStandard,
-					newcategorieMaterial,  newprocentTVACurent,  newobservatii, newcaracteristici, overwrite);
-		  logger.debug("Modificare material Canepa:" + codMaterial + " cu " + newcodMaterial +" avand noua denumire "+ newdenumireMaterial);
+		 
+		  logger.debug("Modificare material Canepa:" + codMaterial + " cu " + newcodMaterial +" avand noua denumire "+ newdenumireMaterial +  nomenInstance.modificareMaterial(codMaterial, newcodMaterial, newdenumireMaterial, newcantitateStandard, newpretStandard,
+					newcategorieMaterial,  newprocentTVACurent,  newobservatii, newcaracteristici, overwrite));
 	}
 	@Test
 	public void testStergereMaterial() throws Exception{
 		ListaCaracteristici caract = nomenInstance.incarcareLista("2", "Material Fin");
 		  Material mat = nomenInstance.introducereMaterial("2", "Canepa", "20", "5"," 1.2", null,"materie prima", caract);
 		  String codMat="2";
-		  logger.debug("Stergere material dupa cod" + codMat);
-		  nomenInstance.stergereMaterial(codMat);
+		  logger.debug("Stergere material dupa cod" +  nomenInstance.stergereMaterial(codMat));
+		 
 	}
 
 
