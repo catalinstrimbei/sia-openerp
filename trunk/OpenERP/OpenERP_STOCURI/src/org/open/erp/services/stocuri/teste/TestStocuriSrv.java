@@ -53,8 +53,8 @@ public class TestStocuriSrv {
 		
 		NIR nir = new NIR(10, null, null, 100.00);
 		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null);
-		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null);
+		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
+		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		
 		LiniiNIR linieNIR1 = new LiniiNIR(nir, 1, mat, 10.00, 10.00, 100.00, 24.00);
 		LiniiNIR linieNIR2 = new LiniiNIR(nir, 2, mat1, 10.00, 10.00, 100.00, 24.00);
@@ -83,8 +83,8 @@ public class TestStocuriSrv {
 		//Angajat responsabilGestiune = personalSrv.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
 		//gest1.setResponsabilGestiune(responsabilGestiune);
 		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null);
-		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null);
+		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
+		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		
 		logger.info("-----START creare date de test Verificare Stoc Curent------ ");
 		
@@ -129,8 +129,8 @@ public class TestStocuriSrv {
 		//Angajat responsabilGestiune = personalSrv.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
 		//gest1.setResponsabilGestiune(responsabilGestiune);
 		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null);
-		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null);
+		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
+		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		
 		NIR nir = new NIR(10, null, null, 100.00);
 		
@@ -168,8 +168,8 @@ public class TestStocuriSrv {
 		
 		NIR nir = new NIR(10, null, null, 100.00);
 		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null);
-		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null);
+		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
+		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		
 		LiniiNIR linieNIR1 = new LiniiNIR(nir, 1, mat, 10.00, 10.00, 100.00, 24.00);
 		LiniiNIR linieNIR2 = new LiniiNIR(nir, 2, mat1, 10.00, 10.00, 100.00, 24.00);
@@ -203,8 +203,8 @@ public class TestStocuriSrv {
 		//Angajat responsabilGestiune = personalSrv.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
 		//gest1.setResponsabilGestiune(responsabilGestiune);
 		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null);
-		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null);
+		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
+		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		
 		NIR nir = new NIR(10, null, null, 100.00);
 		
