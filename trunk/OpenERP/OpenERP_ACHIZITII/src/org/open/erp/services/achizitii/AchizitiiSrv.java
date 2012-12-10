@@ -3,6 +3,10 @@ package org.open.erp.services.achizitii;
 
 import java.util.Date;
 
+import org.open.erp.services.nommat.Material;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.stocuri.Articol;
+import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.stocuri.Gestiune;
@@ -43,7 +47,8 @@ import org.open.erp.services.stocuri.StocuriSrv;
 
 public interface AchizitiiSrv {
 	
-	CerereAprov creareCerereAprov(Integer nr, Date data); //, Materiale material);
+		
+	CerereAprov creareCerereAprov(Integer nr, Date data, Material material);
 	/**
 	 * Scop					Creeaza Cerere de Aprovizionare care va fi inclusa intr-un plan de aprovizionare
 	 * 
@@ -67,6 +72,94 @@ public interface AchizitiiSrv {
 	 * 
 	 */	
 	
+	CerereOferta creareCerereOferta(Integer nrCerereOferta, Date dataCerereOferta);
+	
+	/**
+	 * Scop					Crearea unei oferte
+	 * @param nrCerereOferta	
+	 * @param dataCerereOferta  
+	 * 
+	 * @return LiniePlan nou creata
+	 * 
+	 */	
+	
+	LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Material material, CerereOferta cerereOferta);
+	/**
+	 * Scop					Asociere de  linii  pentru o CerereDeOferta
+	 * @param nrLinie	
+	 * @param cantitate  
+	 * @param material  
+	 * @param cerereOferta
+	 * 
+	 * @return LinieCerereOferta nou creata
+	 * 
+	 */	
+	
+	public Material stabilireMaterial(LiniiPlanAprov liniePlan);
+
+    Oferta  comparare(Oferta oferta1, Oferta oferta2 );
+    
+    /**
+	 * Scop				Stabilirea celei mai potrivite oferte in functie de  pretul oferit
+	 * @param oferta1	
+	 * @param oferta2  
+	 * 
+	 * @return Oferta cea mai avantajoasa 
+	 * 
+	 */	
+    
+    public   void  addOferta(Oferta oferta1);
+	
+	public void stabilireFurnizor(CerereOferta cerereOferta, Furnizori furnizor);
+
+	public void trimitereCerereOferta(CerereOferta cerereOferta, Furnizori furnizor);
+
+	public Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare, Double valoareTotala, Furnizori furnizor, CerereOferta cerereOferta);
+	
+	/**
+	 * Scop				Gestionarea tuturor ofertelor care au fost primite pentru o cerere de Oferta
+	 * @param nrOferta	
+	 * @param dataOferta  
+	 * @param dataLivrare  
+	 * @param valoareTotala
+	 * @param dataOferta  
+	 * @param dataLivrare  
+	 * @param valoareTotala
+	 * @param furnizor  
+	 * @param cerereOferta  Cererea  de oferta pentru care  este oferta nou creata
+	 * 
+	 * @returnOferta nou creata
+	 * 
+	 */	
+
+    LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Material material, Double cantitate, Oferta oferta);
+    
+    /**
+	 * Scop				Asocierea de linii pentru o  oferta
+	 * @param nrLinie	
+	 * @param material  
+	 * @param pret  
+	 * @param cantitate
+	 * @param oferta   Oferta pentru care se asociaza noua Linie creata
+	 * 
+	 * @return LinieOferta nou  creata
+	 * 
+	 */	
+
+	public void setMaterialSrv(NomenclatorMaterialeSrv matSrv);
+
+	LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov, Material material, Double cantitate);
+	
+	/**
+	 * Scop					Asociere de  linii in planul de aprovizionare
+	 * @param nrLiniePlanAprov	
+	 * @param planAprov  Planul pentru care adaugam o linie
+	 * @param material  
+	 * @param cantitate
+	 * 
+	 * @return LiniePlan nou creata
+	 * 
+	 */
 	
 	PlanAprov crearePlanAprov(Integer nrPlan, Integer an, Integer luna, Integer saptamana);
 	
@@ -81,141 +174,29 @@ public interface AchizitiiSrv {
 	 * 
 	 */	
 	
+	public Comanda creareComanda(Integer nrComanda, Date dataComanda, Furnizori furnizor, Oferta oferta, Double valoareTotalaComanda);	
 	
-	LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov, Material material, Double cantitate);
-	
+	LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Material material,
+				Double cantitate, Comanda comanda, LiniiOferta linieO);
 	/**
-	 * Scop					Asociere de  linii in planul de aprovizionare
-	 * @param nrLiniePlanAprov	
-	 * @param planAprov  Planul pentru care adaugam o linie
-	 * @param material  
-	 * @param cantitate
-	 * 
-	 * @return LiniePlan nou creata
-	 * 
-	 */	
-	
-	CerereOferta creareCerereOferta(Integer nrCerereOferta, Date dataCerereOferta);
-	
-	/**
-	 * Scop					Crearea unei oferte
-	 * @param nrCerereOferta	
-	 * @param dataCerereOferta  
-	 * 
-	 * @return LiniePlan nou creata
-	 * 
-	 */	
-	  
-	public void stabilireFurnizor(CerereOferta cerereOferta, Furnizori furnizor);
-	/**
-	 * Scop					Adaugarea de furnizori pentru CerereaDeOferta
-	 * @param cerereOferta	
-	 * @param furnizor  
-	 * 
-	 */	
-	
-	public void trimitereCerereOferta(CerereOferta cerereOferta, Furnizori furnizor);
-	
-	LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Material material, CerereOferta cerereOferta);
-	/**
-	 * Scop					Asociere de  linii  pentru o CerereDeOferta
-	 * @param nrLinie	
-	 * @param cantitate  
-	 * @param material  
-	 * @param cerereOferta
-	 * 
-	 * @return LinieCerereOferta nou creata
-	 * 
-	 */	
-
-	Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare, Double valoareTotala, Furnizori furnizor, CerereOferta cerereOferta);
-	
-	/**
-	 * Scop				Gestionarea tuturor ofertelor care au fost primite pentru o cerere de Oferta
-	 * @param nrOferta	
-	 * @param dataOferta  
-	 * @param dataLivrare  
-	 * @param valoareTotala
-	 * @param dataOferta  
-	 * @param dataLivrare  
-	 * @param valoareTotala
-	 * @param furnizor  
-	 * @param cerereOferta  Cererea  de oferta pentru care  este oferta nou creata
-	 * 
-	 * @returnOferta nou creata
-	 * 
-	 */	
-	
-	
-    LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Material material, Double cantitate, Oferta oferta);
-     
-    /**
-	 * Scop				Asocierea de linii pentru o  oferta
+	 * Scop				Asocierea de linii pentru o  comanda
 	 * @param nrLinie	
 	 * @param material  
 	 * @param pret  
 	 * @param cantitate
-	 * @param oferta   Oferta pentru care se asociaza noua Linie creata
+	 * @param comanda   Comanda pentru care se asociaza noua Linie creata
+	 * @param linieO  Linia din oferta pentru care se creaza o comanda
+	 * @return LinieComanda nou  creata
 	 * 
-	 * @return LinieOferta nou  creata
-	 * 
-	 */	
-    
-
-     Oferta  comparare(Oferta oferta1, Oferta oferta2 );
-     
-     /**
- 	 * Scop				Stabilirea celei mai potrivite oferte in functie de  pretul oferit
- 	 * @param oferta1	
- 	 * @param oferta2  
- 	 * 
- 	 * @return Oferta cea mai avantajoasa 
- 	 * 
- 	 */	
-     
-    
-    Comanda creareComanda(Integer nrComanda, Date dataComanda, Furnizori furnizor, Oferta oferta, Double valoareTotalaComanda);
+	 */		
 	
+	public Comanda salveazaComanda(Comanda comanda);
     
-	/**
-	 * Scop				Gestionarea tuturor ofertelor care au fost primite pentru o cerere de Oferta
-	 * @param nrOferta	
-	 * @param dataOferta  
-	 * @param dataLivrare  
-	 * @param valoareTotala
-	 * @param dataOferta  
-	 * @param dataLivrare  
-	 * @param valoareTotala
-	 * @param furnizor  
-	 * @param cerereOferta  Cererea  de oferta pentru care  este oferta nou creata
-	 * 
-	 * @returnOferta nou creata
-	 * 
-	 */	
-    
-    LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Material material,
-    						Double cantitate, Comanda comanda, LiniiOferta linieO);
-    /**
- 	 * Scop				Asocierea de linii pentru o  comanda
- 	 * @param nrLinie	
- 	 * @param material  
- 	 * @param pret  
- 	 * @param cantitate
- 	 * @param comanda   Comanda pentru care se asociaza noua Linie creata
- 	 * @param linieO  Linia din oferta pentru care se creaza o comanda
- 	 * @return LinieComanda nou  creata
- 	 * 
- 	 */	
-     
-    public Comanda salveazaComanda(Comanda comanda);
-    
-    
-	public void trimitereComanda(Comanda comanda, Furnizori furnizor);
-  	
-
-	public Furnizori creareFurnizor(String denumire);
+  	public void trimitereComanda(Comanda comanda, Furnizori furnizor);
+		
+public Furnizori creareFurnizor(String denumire);
 	
-	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala,Furnizori furnizor);  	
+	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala,  String denumireFurnizor);  	
   	/**
 	 * Scop				Creare factura	
 	 * @param nrFactura	
@@ -238,8 +219,17 @@ public interface AchizitiiSrv {
 	 * 
 	 */	
   	
+	public void  comparareFacturaComanda(Factura factura, Comanda comanda);
 
-  	public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala);
+	/**
+	 * Scop		Validarea facturii   daca aceasta este conform comenzii pentru a se inregistra intrarea in stoc
+	 * @param factura	
+	 * @param comanda  
+	 * 
+	 * 
+	 */
+
+	public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala);
 	 
 	 /**
 	 * Scop				 Creare NIR
@@ -266,24 +256,17 @@ public interface AchizitiiSrv {
 	 * @return Linia  Nou creata
 	 * 
 	 */	
-	 
-  	public void  comparareFacturaComanda(Factura factura, Comanda comanda);
-    
-	/**
-	 * Scop		Validarea facturii   daca aceasta este conform comenzii pentru a se inregistra intrarea in stoc
-	 * @param factura	
-	 * @param comanda  
-	 * 
-	 * 
-	 */	
-    
-    public Material stabilireMaterial(LiniiPlanAprov liniePlan);
-	
-	
-	public   void  addOferta(Oferta oferta1);
-
-	public void setMaterialSrv(NomenclatoareSrv matSrv);
-
+	     
+	public void trimitereMaterialLaStoc2( LiniiNIR linieNir, Gestiune gest);
+		
 	public Double crestereStoc(Material material, Gestiune gestiune, NIR nir, LiniiNIR lNIR);
+	
+//	public void intrareStoc(LiniiNIR linie, Gestiune gestiune);
+//	
+//	public Articol getArticolByGestiune(Material material, Gestiune gestiune);
+	//public void creareLot(LiniiNIR linie, Gestiune gestiune);
+
+
+
 
 }

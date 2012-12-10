@@ -2,11 +2,13 @@ package org.open.erp.services.achizitii;
 
 import org.open.erp.services.nommat.Material;
 
+
 public class LiniiPlanAprov {
 	private Integer nrLiniePlanAprov;
 	private PlanAprov planAProv;
 	private Material material;
 	private Double cantitate;
+	
 	public Integer getNrLiniePlanAprov() {
 		return nrLiniePlanAprov;
 	}
