@@ -41,20 +41,20 @@ public class BiletOrdine extends FinanciarIncasari implements Serializable {
 		this.dataScadenta = dataScadenta;
 	}
 	public BiletOrdine(String localitate, Date dataEmiterii, Double suma,
-			String moneda, String sumaLitere, String contBancar,
+			String moneda, String sumaLitere,
 			String seriaBilet, Integer numarBilet, Date dataScadenta) {
-		super(localitate, dataEmiterii, suma, moneda, sumaLitere, contBancar);
+		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		this.seriaBilet = seriaBilet;
 		this.numarBilet = numarBilet;
 		this.dataScadenta = dataScadenta;
 	}
-	public BiletOrdine() {
+	public BiletOrdine(String localitate, Date dataEmiterii, Double suma, String moneda, String sumaLitere, Angajat angajat, Persoana persoana) {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public BiletOrdine(String localitate, Date dataEmiterii, Double suma,
 			String moneda, String sumaLitere, String contBancar, Angajat angajat, Persoana persoana) {
-		super(localitate, dataEmiterii, suma, moneda, sumaLitere, contBancar);
+		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		// TODO Auto-generated constructor stub
 	}
 	

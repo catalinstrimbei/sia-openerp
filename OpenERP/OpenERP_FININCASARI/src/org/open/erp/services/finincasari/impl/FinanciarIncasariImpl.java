@@ -14,8 +14,8 @@ import org.open.erp.services.finincasari.FinanciarIncasariSrv;
 import org.open.erp.services.finincasari.OrdinDePlata;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.vanzari.Factura;
-import org.open.erp.services.vanzari.VanzariSrv;
+import org.open.erp.services.vanzari.Facturi;
+//import org.open.erp.services.vanzari.VanzariSrv;
 
 
 /**
@@ -53,14 +53,13 @@ public  class FinanciarIncasariImpl implements FinanciarIncasariSrv {
 	}
 
 	@Override
-	public double restIncasareFactura(Factura factura) {
+	public double restIncasareFacturi(Facturi Facturi) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
 	public BiletOrdine incasareBO(String localitate, Date dataEmiterii,
-			Double suma, String moneda, String sumaLitere, String contBancar,  ArrayList<Factura>factura, Angajat angajat, Persoana persoana)
+			Double suma, String moneda, String sumaLitere,  ArrayList<Facturi>Facturi, Angajat angajat, Persoana persoana)
 			throws Exception {
 		// TODO Auto-generated method stub
 		;
@@ -74,16 +73,15 @@ public  class FinanciarIncasariImpl implements FinanciarIncasariSrv {
 			suma = getSuma(moneda, suma,cursValutar);
 		}
 		
-		BiletOrdine BO = new BiletOrdine(localitate, dataEmiterii,suma,  moneda, sumaLitere,  contBancar, null, null);
+		BiletOrdine BO = new BiletOrdine(localitate, dataEmiterii,suma,  moneda,  sumaLitere, angajat, persoana);
 		return BO;
 		
 	}
 
 	
-	@Override
 	public CEC incasareCec(String localitate, Date dataEmiterii, Double suma,
-			String moneda, String sumaLitere, String contBancar,
-			ArrayList<Factura> factura) throws Exception {
+			String moneda, String sumaLitere, 
+			ArrayList<Facturi> Facturi) throws Exception {
 		// TODO Auto-generated method stub
 	
 		
@@ -96,15 +94,14 @@ public  class FinanciarIncasariImpl implements FinanciarIncasariSrv {
 		}
 		
 	
-		CEC Cec = new CEC(localitate,dataEmiterii,suma,moneda,sumaLitere,contBancar);
+		CEC Cec = new CEC(localitate,dataEmiterii,suma,moneda,sumaLitere);
 	
 		return Cec;
 	}
 
-	@Override
 	public ExtrasDeCont incasareEC(String localitate, Date dataEmiterii,
-			Double suma, String moneda, String sumaLitere, String contBancar,
-			ArrayList<Factura> factura) throws Exception {
+			Double suma, String moneda, String sumaLitere, 
+			ArrayList<Facturi> Facturi) throws Exception {
 		// TODO Auto-generated method stub
 		
 		if (suma ==0.00) {
@@ -115,14 +112,13 @@ public  class FinanciarIncasariImpl implements FinanciarIncasariSrv {
 			suma = getSuma(moneda, suma,cursValutar);
 		}
 		
-		ExtrasDeCont EC = new ExtrasDeCont(localitate,dataEmiterii,suma,moneda,sumaLitere,contBancar);
+		ExtrasDeCont EC = new ExtrasDeCont(localitate,dataEmiterii,suma,moneda,sumaLitere);
 		return EC;
 	}
 
-	@Override
 	public OrdinDePlata incasareOP(String localitate, Date dataEmiterii,
-			Double suma, String moneda, String sumaLitere, String contBancar,
-			Integer numarOrdinPlata, String cF, ArrayList<Factura> factura) throws Exception {
+			Double suma, String moneda, String sumaLitere, 
+			Integer numarOrdinPlata, String cF, ArrayList<Facturi> Facturi) throws Exception {
 		// TODO Auto-generated method stub
 		
 		if (suma ==0.00) {
@@ -132,15 +128,14 @@ public  class FinanciarIncasariImpl implements FinanciarIncasariSrv {
 			Double cursValutar = 4.23;
 			suma = getSuma(moneda, suma,cursValutar);
 		}
-		OrdinDePlata OP = new OrdinDePlata(localitate,dataEmiterii,suma,moneda,sumaLitere,contBancar);
+		OrdinDePlata OP = new OrdinDePlata(localitate,dataEmiterii,suma,moneda,sumaLitere);
 		return OP;
 	}
 	
 	@SuppressWarnings("unused")
-	@Override
 	public Chitanta inregistrareCt(String localitate, Date dataEmiterii,
-			Double suma, String moneda, String sumaLitere, String contBancar,
-			ArrayList<Factura> factura, Angajat angajat) throws Exception {
+			Double suma, String moneda, String sumaLitere, 
+			ArrayList<Facturi> Facturi, Angajat angajat) throws Exception {
 		
 		// TODO Auto-generated method stub
 
@@ -153,7 +148,7 @@ public  class FinanciarIncasariImpl implements FinanciarIncasariSrv {
 			Double cursValutar = 4.23;
 			suma = getSuma(moneda, suma,cursValutar);
 		}
-		Chitanta ct = new Chitanta(localitate,dataEmiterii,suma,moneda,sumaLitere,contBancar,angajat);
+		Chitanta ct = new Chitanta(localitate,dataEmiterii,suma,moneda,sumaLitere,angajat);
 		
 		
 				Boolean tipIncasare = TipIncasare.casa;
@@ -173,11 +168,43 @@ public  class FinanciarIncasariImpl implements FinanciarIncasariSrv {
 	}
 
 	@Override
-	public void setVanzariSrv(VanzariSrv vanzariSrv) {
+	public CEC incasareCec(String string, Date dataEmiterii, double d,
+			String string2, String string3, Object object) throws Exception {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
+	@Override
+	public OrdinDePlata incasareOP(String string, Date dataEmiterii, double d,
+			String string2, String string3, int i, String string4,
+			ArrayList<Facturi> facturi) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Chitanta inregistrareCt(String string, Date dataEmiterii, double d,
+			String string2, String string3, ArrayList<Facturi> facturi,
+			Angajat angajat) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ExtrasDeCont incasareEC(String string, Date dataEmiterii, double d,
+			String string2, String string3, ArrayList<Facturi> facturi)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	//@Override
+	//public void setVanzariSrv(VanzariSrv vanzariSrv) {
+		// TODO Auto-generated method stub
+		
+	//}
+
+	
 
 
 	

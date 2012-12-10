@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.vanzari.Factura;
+import org.open.erp.services.vanzari.Facturi;
 
 /**
  * @author Isabela
@@ -29,8 +29,8 @@ public class Chitanta extends FinanciarIncasari implements Serializable {
 	}
 
 	public Chitanta(String localitate, Date dataEmiterii, Double suma,
-			String moneda, String sumaLitere, String contBancar, Angajat angajat) {
-		super(localitate, dataEmiterii, suma, moneda, sumaLitere, contBancar);
+			String moneda, String sumaLitere, Angajat angajat) {
+		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		this.angajat = angajat;
 	}
 
@@ -40,12 +40,12 @@ public class Chitanta extends FinanciarIncasari implements Serializable {
 	}
 
 	public Chitanta(String localitate, Date dataEmiterii, Double suma,
-			String moneda, String sumaLitere, String contBancar) {
-		super(localitate, dataEmiterii, suma, moneda, sumaLitere, contBancar);
+			String moneda, String sumaLitere) {
+		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		// TODO Auto-generated constructor stub
 	}
 
-	public static ArrayList<Factura> getFactura() {
+	public static ArrayList<Facturi> getFactura() {
 		// TODO Auto-generated method stub
 		return null;
 	}

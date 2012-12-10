@@ -33,17 +33,14 @@ public class OrdinDePlata extends FinanciarIncasari implements Serializable {
 	public OrdinDePlata(String localitate, Date dataEmiterii, Double suma,
 			String moneda, String sumaLitere, String contBancar,
 			Integer numarOrdinPlata, String cF) {
-		super(localitate, dataEmiterii, suma, moneda, sumaLitere, contBancar);
+		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		this.numarOrdinPlata = numarOrdinPlata;
 		CF = cF;
 	}
-	public OrdinDePlata() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	public OrdinDePlata(String localitate, Date dataEmiterii, Double suma,
-			String moneda, String sumaLitere, String contBancar) {
-		super(localitate, dataEmiterii, suma, moneda, sumaLitere, contBancar);
+			String moneda, String sumaLitere) {
+		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		// TODO Auto-generated constructor stub
 	}
 	
