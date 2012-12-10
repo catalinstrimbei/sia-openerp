@@ -5,10 +5,13 @@ import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.nommat.UnitateDeMasura;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(NomenclatorMaterialeImpl.class.getName());
 	private List<Material> lista_materiale=new ArrayList<Material>();
+	
 	@Override
 	public  Material introducereMaterial(String codMaterial, String denumireMaterial, String cantitateStandard, String pretStandard,
 			String categorieMaterial, String procentTVACurent, String observatii, ListaCaracteristici caracteristici) {
@@ -36,7 +39,7 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	
 	@Override
 	public Material cautareMaterialDupaDenumire(String denumire) {
-		Iterator<Material> i=lista_materiale.iterator;
+		Iterator<Material> i=lista_materiale.iterator();
 		while (i.hasNext()){
 			if(i.getDenumireMaterial()=denumire){
 				System.out.println(i.getcodMaterial() + i.getCantitateStandard() + i.getDenumireMaterial() 
@@ -47,10 +50,10 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	}
 	
 	@Override
-	public void modificareMaterial(String codMaterial,String newcodMaterial, String newdenumireMaterial, String newcantitateStandard, String newpretStandard,
+	public Material modificareMaterial(String codMaterial,String newcodMaterial, String newdenumireMaterial, String newcantitateStandard, String newpretStandard,
 			String newcategorieMaterial, String newprocentTVACurent, String newobservatii, ListaCaracteristici newcaracteristici, BOOL overwrite) {
 		
-		Iterator<Material> i=lista_materiale.iterator;
+		Iterator<Material> i=lista_materiale.iterator();
 		while (i.hasNext()) {
             if (i.getcodMaterial()==codMaterial) {
             	if(overwrite==1){
@@ -87,16 +90,12 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 		
 
 
-	public void stergereMaterial(String stergedupaCodMaterial){
-		
+	public void stergereMaterial(String codMaterial){
 		Iterator<Material> i=lista_materiale.iterator;
-		
 		while (i.hasNext()) 
-		
-            if (i.getcodMaterial()==codMaterial) {
+            if (i.getCodMaterial()==codMaterial) {
             	if (i.hasPrevious()){            	
             	i.previous().next()=i.next();
-            	     		
             	}
             	else{
             		i.next().previous()=null;
