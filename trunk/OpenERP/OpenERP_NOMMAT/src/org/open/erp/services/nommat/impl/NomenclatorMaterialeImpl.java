@@ -44,11 +44,14 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 		Iterator<Material> cmat=lista_materiale.iterator();
 		while (cmat.hasNext()){ 
 			if(cmat.next().getDenumireMaterial()==denumire){
-				System.out.println(cmat.next().getCodMaterial() + cmat.next().getCantitateStandard() + cmat.next().getDenumireMaterial() 
+				/*System.out.println(cmat.next().getCodMaterial() + cmat.next().getCantitateStandard() + cmat.next().getDenumireMaterial() 
 						+ cmat.next().getPretStandard() + cmat.next().getProcentTVACurent() + cmat.next().getCategorieMaterial());
+				*/
 			}
 		
-	return newMaterial;
+	 Material returnMaterial= new Material(cmat.next().getCodMaterial() + cmat.next().getCantitateStandard() + cmat.next().getDenumireMaterial() 
+				+ cmat.next().getPretStandard() + cmat.next().getProcentTVACurent() + cmat.next().getCategorieMaterial());
+	 return returnMaterial;
 	}
 	
 
