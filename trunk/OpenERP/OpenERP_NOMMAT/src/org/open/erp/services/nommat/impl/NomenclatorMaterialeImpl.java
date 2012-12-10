@@ -51,12 +51,11 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 			return returnMaterial;
 			}
 			}
-		return null;
 	}
 	
 
 	@Override
-	public void modificareMaterial(String codMaterial,
+	public Material modificareMaterial(String codMaterial,
 			String newcodMaterial, String newdenumireMaterial,
 			String newcantitateStandard, String newpretStandard,
 			String newcategorieMaterial, String newprocentTVACurent,
@@ -76,6 +75,8 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
             	mat.next().setObservatii(newobservatii);
             	mat.next().setCategorieMaterial(newcategorieMaterial);
             	System.out.println("Material cod:" + newcodMaterial + "a fost modificat");
+            	Material returnMaterial= new Material(mat.next().getCodMaterial(),mat.next().getDenumireMaterial(),mat.next().getCantitateStandard(),mat.next().getCategorieMaterial());
+        		return returnMaterial;
             	}
             	else{
             		mat.next().setCodMaterial(newcodMaterial);
@@ -92,16 +93,18 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
                 	newcategorieMaterial= mat.next().getCategorieMaterial() + newcategorieMaterial;
                 	mat.next().setCategorieMaterial(newcategorieMaterial);
                 	System.out.println("Material cod:" + newcodMaterial + "a fost modificat");
+                	Material returnMaterial= new Material(mat.next().getCodMaterial(),mat.next().getDenumireMaterial(),mat.next().getCantitateStandard(),mat.next().getCategorieMaterial());
+            		return returnMaterial;
             	}
             	
           
             }
         }
-	
+		
 	}
 	
 	@Override
-	public void stergereMaterial(String codMaterial){
+	public String stergereMaterial(String codMaterial){
 		logger.debug("6. Stergere Material");
 		Iterator<Material> m=lista_materiale.iterator();
 		while (m.hasNext()) 
@@ -111,6 +114,6 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
             	}	
 	}
 
-
+   return "Deleted";
 
 }	
