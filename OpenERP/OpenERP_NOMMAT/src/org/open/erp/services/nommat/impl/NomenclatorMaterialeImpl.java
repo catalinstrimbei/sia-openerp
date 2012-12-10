@@ -51,6 +51,7 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 			return returnMaterial;
 			}
 			}
+		return null;
 	}
 	
 
