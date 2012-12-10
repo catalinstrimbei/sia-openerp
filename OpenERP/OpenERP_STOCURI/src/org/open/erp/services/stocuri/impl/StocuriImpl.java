@@ -184,7 +184,7 @@ public class StocuriImpl implements StocuriSrv{
 	}
 	
 	//crearea si returnarea unei liste cu gestiunile existente in toata aplicatie si pe care le pot folosii cei care au nevoie
-	//@Override
+	@Override
 	public ListaGestiuni GestiuniDisponibile (){
 		ListaGestiuni lista = new ListaGestiuni(1,null);
 	    Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));
