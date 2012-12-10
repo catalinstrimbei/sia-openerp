@@ -24,6 +24,7 @@ import org.apache.log4j.Logger;
 import org.open.erp.services.finplati.*;
 import org.open.erp.services.finplati.impl.FinanciarPlatiImpl;
 
+
 public class FinanciarPlatiSrvFactory {
 private static Logger logger = Logger.getLogger(FinanciarPlatiSrvFactory.class.getName());
 	

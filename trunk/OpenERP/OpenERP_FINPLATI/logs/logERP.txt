@@ -1,18 +1,18 @@
-(A2) 2012-12-09 22:31:55,875 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 1.1. Gestionare sume platite prin banca
-(A2) 2012-12-09 22:31:55,875 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 1.2. Alocare buget pentru datorii
-(A2) 2012-12-09 22:31:55,875 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 1.3. Afisare solduri facturi
-(A2) 2012-12-09 22:31:55,876 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 2.1. Incheiere contract cu furnizorul
-(A2) 2012-12-09 22:31:55,877 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 2.4  Afisare situatie
-(A2) 2012-12-09 22:31:55,878 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 2.4  Afisare situatie
-(A2) 2012-12-09 22:31:55,878 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 3.1. Initiere efectuare plata
-(A2) 2012-12-09 22:31:55,878 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 3.2. Stabilire responsabil plata
-(A2) 2012-12-09 22:31:55,878 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 3.1. Initiere efectuare plata
-(A2) 2012-12-09 22:31:55,879 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 3.5. Verificare desfasurare plata
-(A2) 2012-12-09 22:31:55,879 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 4.2. Primire chitanta
-(A2) 2012-12-09 22:31:55,879 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 4.3. Afisare situatie
-(A2) 2012-12-09 22:31:55,880 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 4.3. Afisare situatie
-(A2) 2012-12-09 22:31:55,880 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.1. Urmarire datorii ramase
-(A2) 2012-12-09 22:31:55,880 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.2. Urmarire situatie plati
-(A2) 2012-12-09 22:31:55,880 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.2. Urmarire situatie plati
-(A2) 2012-12-09 22:31:55,880 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.3. Interogare sold
-(A2) 2012-12-09 22:31:55,881 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.1. Urmarire datorii ramase
+(A2) 2012-12-10 21:31:10,387 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 1.1. Gestionare sume platite prin banca
+(A2) 2012-12-10 21:31:10,388 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 1.2. Alocare buget pentru datorii
+(A2) 2012-12-10 21:31:10,388 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 1.3. Afisare solduri facturi
+(A2) 2012-12-10 21:31:10,388 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 2.1. Incheiere contract cu furnizorul
+(A2) 2012-12-10 21:31:10,389 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 2.4  Afisare situatie
+(A2) 2012-12-10 21:31:10,389 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 2.4  Afisare situatie
+(A2) 2012-12-10 21:31:10,390 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 3.1. Initiere efectuare plata
+(A2) 2012-12-10 21:31:10,390 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 3.2. Stabilire responsabil plata
+(A2) 2012-12-10 21:31:10,390 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 3.1. Initiere efectuare plata
+(A2) 2012-12-10 21:31:10,391 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 3.5. Verificare desfasurare plata
+(A2) 2012-12-10 21:31:10,391 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 4.2. Primire chitanta
+(A2) 2012-12-10 21:31:10,391 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 4.3. Afisare situatie
+(A2) 2012-12-10 21:31:10,391 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 4.3. Afisare situatie
+(A2) 2012-12-10 21:31:10,392 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.1. Urmarire datorii ramase
+(A2) 2012-12-10 21:31:10,392 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.2. Urmarire situatie plati
+(A2) 2012-12-10 21:31:10,392 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.2. Urmarire situatie plati
+(A2) 2012-12-10 21:31:10,392 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.3. Interogare sold
+(A2) 2012-12-10 21:31:10,392 [main] DEBUG org.open.erp.services.finplati.impl.FinanciarPlatiImpl - 5.1. Urmarire datorii ramase

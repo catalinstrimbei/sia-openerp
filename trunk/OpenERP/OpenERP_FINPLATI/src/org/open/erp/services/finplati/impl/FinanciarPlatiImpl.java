@@ -1,15 +1,18 @@
+/*FinanciarPlatiImpl    LArisa Lupu*/
+
 package org.open.erp.services.finplati.impl;
+
+import org.open.erp.services.achizitii.Factura;
+import org.open.erp.services.achizitii.Furnizori;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.open.erp.services.finplati.*;
-import org.open.erp.services.proman.impl.ProjectManagementImpl;
 
 public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 
@@ -45,13 +48,13 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	}
 
 	@Override
-	public Double getSolduriFacturi() {
+	public Double getSolduriFactura() {
 		logger.debug("1.3. Afisare solduri facturi");
-		return sitFit.getSolduriFacturi();
+		return sitFit.getSoldurifactura();
 	}
 
 	@Override
-	public Contract createContractFurnizor(Furnizor furnizor, Double total,
+	public Contract createContractFurnizor(Furnizori furnizor, Double total,
 			Plata avans) {
 		logger.debug("2.1. Incheiere contract cu furnizorul");
 		Contract contract = new Contract();
@@ -148,7 +151,7 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	}
 
 	@Override
-	public void procesarePlata(Furnizor furnizor, Double valoarePlata) {
+	public void procesarePlata(Furnizori furnizor, Double valoarePlata) {
 		logger.debug("3.4. Procesare/onorare plata catre furnizori");
 		Plata plata = new Plata();
 		plata.setDataPlatii(new Date());
@@ -161,7 +164,7 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	}
 	
 	@Override
-	public Boolean verificarePlata(Furnizor furnizor, Plata plata) {
+	public Boolean verificarePlata(Furnizori furnizor, Plata plata) {
 		logger.debug("3.5. Verificare desfasurare plata");
 		return furnizor.verificaPlata(plata);
 	}
@@ -206,7 +209,7 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	@Override
 	public Double afisareDatorii() {
 		logger.debug("5.1. Urmarire datorii ramase");
-		Iterator<Factura> iterFacturi = sitFit.getFacturi().values().iterator();
+		Iterator<Factura> iterFacturi = sitFit.getfactura().values().iterator();
 		Iterator<Contract> iterContracte = sitFit.getContracte().values().iterator();
 		
 		Double totalDatorii = 0.0;
