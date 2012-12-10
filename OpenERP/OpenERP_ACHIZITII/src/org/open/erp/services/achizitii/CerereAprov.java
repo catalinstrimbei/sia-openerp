@@ -5,12 +5,15 @@ import java.util.Date;
 import java.util.List;
 
 
+import org.open.erp.services.nommat.Material;
+
 
 public class CerereAprov {
 		private Integer nrCerereAprov;
 		private Date dataCerereAprov;
 		private List<LiniiCerereAprov> liniiCerereAprov = new ArrayList<LiniiCerereAprov>();
-		//private Materiale material;
+		private Material material;
+
 
 		
 		public void addLinie(LiniiCerereAprov linie){
@@ -43,21 +46,20 @@ public class CerereAprov {
 		public void adaugaLinie(List<LiniiCerereAprov> linii){
 			this.liniiCerereAprov.addAll(linii);
 		}
-		/*
-		public Materiale getMaterial() {
+		
+		public Material getMaterial() {
 			return material;
 		}
-		public void setMaterial(Materiale material) {
+		public void setMaterial(Material material) {
 			this.material = material;
 		}
-		*/
-		public CerereAprov(Integer nrCerereAprov, Date dataCerereAprov
-				//Materiale material
-				) {
+		
+		public CerereAprov(Integer nrCerereAprov, Date dataCerereAprov,
+				Material material) {
 			super();
 			this.nrCerereAprov = nrCerereAprov;
 			this.dataCerereAprov = dataCerereAprov;
-			//this.material = material;
+			this.material = material;
 		}
 		public CerereAprov() {
 			super();

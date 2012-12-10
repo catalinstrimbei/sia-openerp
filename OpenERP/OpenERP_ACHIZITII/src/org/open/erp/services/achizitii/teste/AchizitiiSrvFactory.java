@@ -91,11 +91,16 @@ package org.open.erp.services.achizitii.teste;
 import org.apache.log4j.Logger;
 import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.impl.AchizitiiImpl;
-import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nommat.ListaCaracteristici;
+import org.open.erp.services.nommat.Material;
+import org.open.erp.services.nommat.UnitateDeMasura;
+
 import org.open.erp.services.nommat.ListaCaracteristici;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.nommat.UnitateDeMasura;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+
 
 public class AchizitiiSrvFactory {
 	private static Logger logger = Logger.getLogger(AchizitiiSrvFactory.class.getName());
@@ -103,8 +108,8 @@ public class AchizitiiSrvFactory {
 	public static AchizitiiSrv getAchizitiiSrv(){
 		
 		AchizitiiSrv achizitiiSrv = new AchizitiiImpl();
-		NomenclatoareSrv nomGenSrv = (NomenclatoareSrv) AchizitiiSrvFactory.getAchizitiiMatSrv();
-		//NomenclatorGeneralSrv nomGenServ = AchizitiiSrvFactory.getMaterialSrv();
+		NomenclatorMaterialeSrv nomGenSrv = AchizitiiSrvFactory.getAchizitiiMatSrv();
+
 		achizitiiSrv.setMaterialSrv(nomGenSrv);		
 		logger.info("Crerare AchizitiiSrv instance from AchizitiiSrvFactory!");
 		
@@ -112,21 +117,26 @@ public class AchizitiiSrvFactory {
 	}
 
 	
+
 	public static NomenclatorMaterialeSrv getAchizitiiMatSrv(){
-		logger.info("Creare dummy instance of NomenclatorGeneralSrv from MaterialeSrvFactory!");
 
 		return new NomenclatorMaterialeSrv() {
 			
 			@Override
+			public Material creareMaterial(Material material) {
+
+				logger.info("1.2 Stabilire material pe linie");
+				return new Material();
+			}
+
+			@Override
 			public Material introducereMaterial(String codMaterial,
 					String denumireMaterial, String cantitateStandard,
-					String pretStandard, String procentTVACurent, String observatii,
-					ListaCaracteristici listaCaracteristici) 
-			{
+					String pretStandard, String procentTVACurent,
+					String observatii, ListaCaracteristici listaCaracteristici) {
 				// TODO Auto-generated method stub
-				logger.info("1.2 Stabilire material pe linie");
-				return new Material();			
-				}
+				return null;
+			}
 
 			@Override
 			public UnitateDeMasura incarcareUnitate(String id,
@@ -143,6 +153,8 @@ public class AchizitiiSrvFactory {
 			}
 			
 		};
+		
+			
 	}
 }	
 			
