@@ -41,9 +41,9 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	public Material cautareMaterialDupaDenumire(String denumire) {
 		Iterator<Material> i=lista_materiale.iterator();
 		while (i.hasNext()){
-			if(i.getDenumireMaterial()=denumire){
-				System.out.println(i.getcodMaterial() + i.getCantitateStandard() + i.getDenumireMaterial() 
-						+ i.getPretStandard() + i.getProcentTVACurent() + i.getCategorieMaterial());
+			if(i.next().getDenumireMaterial()=denumire){
+				System.out.println(i.next().getcodMaterial() + i.next().getCantitateStandard() + i.next().getDenumireMaterial() 
+						+ i.next().getPretStandard() + i.next().getProcentTVACurent() + i.next().getCategorieMaterial());
 			}
 		
 	return newMaterial;
@@ -55,31 +55,31 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 		
 		Iterator<Material> i=lista_materiale.iterator();
 		while (i.hasNext()) {
-            if (i.getcodMaterial()==codMaterial) {
+            if (i.next().getcodMaterial()==codMaterial) {
             	if(overwrite==1){
             	
-            	i.setCodMaterial(newcodMaterial);
-            	i.setCantitateStandard(newcantitateStandard);
-            	i.setDenumireMaterial(newdenumireMaterial);
-            	i.setPretStandard(pretStandard);
-            	i.setProcentTVACurent(newprocentTVACurent);
-            	i.setObservatii(newobservatii);
-            	i.setCategorieMaterial(newcategorieMaterial);
+            	i.next().setCodMaterial(newcodMaterial);
+            	i.next().setCantitateStandard(newcantitateStandard);
+            	i.next().setDenumireMaterial(newdenumireMaterial);
+            	i.next().setPretStandard(pretStandard);
+            	i.next().setProcentTVACurent(newprocentTVACurent);
+            	i.next().setObservatii(newobservatii);
+            	i.next().setCategorieMaterial(newcategorieMaterial);
             	}
             	else{
-            		i.setCodMaterial(newcodMaterial);
-            		newcantitateStandard=i.getCantitateStandard()+newcantitateStandard;
-                	i.setCantitateStandard(newcantitateStandard);
-            		newdenumireMaterial=i.getDenumireMaterial()+newdenumireMaterial;
-            		i.setDenumireMaterial(newdenumireMaterial);
-            		newpretStandard=i.getPretStandard() + newpretStandard;
-                	i.setPretStandard(newpretStandard);
-                	newprocentTVACurent=i.getProcentTVACurent()+newprocentTVACurent;
-                	i.setProcentTVACurent(newprocentTVACurent);
-                	newobservatii=i.getObservatii()+newobservatii;
-                	i.setObservatii(newobservatii);
-                	newcategorieMaterial= i.getCategorieMaterial() + newcategorieMaterial;
-                	i.setCategorieMaterial(newcategorieMaterial);
+            		i.next().setCodMaterial(newcodMaterial);
+            		newcantitateStandard=i.next().getCantitateStandard()+newcantitateStandard;
+                	i.next().setCantitateStandard(newcantitateStandard);
+            		newdenumireMaterial=i.next().getDenumireMaterial()+newdenumireMaterial;
+            		i.next().setDenumireMaterial(newdenumireMaterial);
+            		newpretStandard=i.next().getPretStandard() + newpretStandard;
+                	i.next().setPretStandard(newpretStandard);
+                	newprocentTVACurent=i.next().getProcentTVACurent()+newprocentTVACurent;
+                	i.next().setProcentTVACurent(newprocentTVACurent);
+                	newobservatii=i.next().getObservatii()+newobservatii;
+                	i.next().setObservatii(newobservatii);
+                	newcategorieMaterial= i.next().getCategorieMaterial() + newcategorieMaterial;
+                	i.next().setCategorieMaterial(newcategorieMaterial);
             	}
             	
           
@@ -93,13 +93,11 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	public void stergereMaterial(String codMaterial){
 		Iterator<Material> i=lista_materiale.iterator;
 		while (i.hasNext()) 
-            if (i.getCodMaterial()==codMaterial) {
-            	if (i.hasPrevious()){            	
-            	i.previous().next()=i.next();
+            if (i.next().getCodMaterial()==codMaterial) {
+            	      	
+            	i.next().previous().next()=i.next().next();
             	}
-            	else{
-            		i.next().previous()=null;
-               	}
+            	
             }
            	
        
