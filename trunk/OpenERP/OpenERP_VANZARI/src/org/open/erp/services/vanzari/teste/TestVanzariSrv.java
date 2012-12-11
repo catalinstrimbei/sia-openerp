@@ -145,9 +145,9 @@ public class TestVanzariSrv {
 	
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
-		
+
 		ListaCaracteristici caract = new ListaCaracteristici("1", "Material Dur");
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, caract);
+		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		logger.debug("++++++ Afisare Material: " + mat.getDenumireMaterial() + "; "+ "Detalii: " + mat.getPretStandard() + ", " + mat.getCantitateStandard());
 		
 		logger.info("1.2 START creare produse");
@@ -194,6 +194,7 @@ public class TestVanzariSrv {
 				dispozitie.adaugaLinieDispozitie(linieDispozitieLivrare);
 				i=i+1;
 				//apelare iesire din stoc a articolului
+				logger.debug("*****************************" );
 				stocuriInstance.iesireStoc(articol.getOferta().getProdus().getMaterial(), articol.getCantitateAcceptata(),null);
 				logger.debug("*****************************" +  articol.getOferta().getProdus().getMaterial().getDenumireMaterial());
 			}
