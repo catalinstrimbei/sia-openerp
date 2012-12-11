@@ -1,6 +1,5 @@
 package org.open.erp.services.stocuri;
 
-import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.nommat.Material;
 //import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.stocuri.ListaGestiuni;
@@ -50,13 +49,13 @@ public interface StocuriSrv {
 	 * 
 	 */
 	
-	void intrareStoc(LiniiNIR linie, Gestiune gestiunea);
+	void intrareStoc(Material material, Double cantitate, Double Pret, Gestiune gestiunea);
 	
 	void intrareStoc(BonTransfer bonTransfer, Double pret);
 	
 	public void intrareStoc(Material material, Gestiune gestiune, Double cantitate);
 	
-	public void creareLot(LiniiNIR linie, Gestiune gestiune);
+	public void creareLot(Material material, Double cantitate, Double pret , Gestiune gestiune);
 	
 	
 	/** 2. Verificare stoc
