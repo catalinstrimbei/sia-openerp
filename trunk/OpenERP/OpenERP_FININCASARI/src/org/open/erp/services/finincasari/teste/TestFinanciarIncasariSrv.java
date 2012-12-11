@@ -19,7 +19,7 @@ import org.open.erp.services.finincasari.FinanciarIncasariSrv;
 import org.open.erp.services.finincasari.OrdinDePlata;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.vanzari.*;
+import org.open.erp.services.vanzari.Facturi;
 
 
 
@@ -65,14 +65,14 @@ public class TestFinanciarIncasariSrv {
     	 
     
     	// Facturi Facturi1 = null;
-    	// Facturi1 = new Facturi();
+    	Facturi1 = new Facturi();
     	//Facturi1.getIdFactura();
     	 //Facturi1.setSumaIncasare(23.00);
     	// Facturi1.setValoareFact(123.00);
     	 //Facturi1.setDataFact(dataFormat.parse("12-05-2012"));
 
     	 //Facturi Facturi2 = null;
-    	// Facturi2 = new Facturi();
+    	Facturi2 = new Facturi();
     	//Facturi2.setIdFactura(12);
     	// Facturi2.setSumaIncasare(50.00);
     	// Facturi2.setValoareFact(200.00);
@@ -102,8 +102,9 @@ public class TestFinanciarIncasariSrv {
     	// persoana.setNume("Marian");
     	 
     	 Facturi = new ArrayList<Facturi>();
-    	 Facturi.add(Facturi1);
-		 Facturi.add(Facturi2);
+    	 Facturi1 = new Facturi();
+    	 Facturi2 = new Facturi();
+    	 
     	 
        	BiletOrdine BO =  incasareInstance.incasareBO("bc", dataEmiterii,
     			Double.valueOf(23.00), "RON", "douazeci si trei",Facturi,angajat,persoana);
@@ -137,8 +138,8 @@ public class TestFinanciarIncasariSrv {
     	// persoana.setNume("Marian");
     	 
     	 Facturi = new ArrayList<Facturi>();
-    	 Facturi.add(Facturi1);
-    	 Facturi.add(Facturi2);
+    	 Facturi1 = new Facturi();
+    	 Facturi2 = new Facturi();
     	 
     	 
     	 CEC Cec = incasareInstance.incasareCec("is", dataEmiterii,23.00 , "RON", "douazeci si trei", null);
@@ -168,9 +169,9 @@ public class TestFinanciarIncasariSrv {
    	// persoana.setNume("Marian");
    	 
    	 Facturi = new ArrayList<Facturi>();
-   	 Facturi.add(Facturi1);
-   	 Facturi.add(Facturi2);
-   	 
+   	 Facturi1 = new Facturi();
+	 Facturi2 = new Facturi();
+	 
    	 
    	 OrdinDePlata OP = incasareInstance.incasareOP("bucuresti", dataEmiterii, 50.00, "RON", 
    			 "cincizeci",  1205, "xc108", Facturi);
@@ -207,8 +208,9 @@ public class TestFinanciarIncasariSrv {
 	   	// persoana.setNume("Marian");
 	   	 
 	   	 Facturi = new ArrayList<Facturi>();
-	   	 Facturi.add(Facturi1);
-	   	 Facturi.add(Facturi2);
+	   	 Facturi1 = new Facturi();
+    	 Facturi2 = new Facturi();
+    	 
 	   	 
 	   	 Chitanta CT = incasareInstance.inregistrareCt("bacau", dataEmiterii, 50.00, "RON", "cincizeci",  Facturi, angajat);
 	   	 
@@ -234,9 +236,9 @@ public class TestFinanciarIncasariSrv {
    	// persoana.setNume("Marian");
    	 
    	 Facturi = new ArrayList<Facturi>();
-   	 Facturi.add(Facturi1);
-   	 Facturi.add(Facturi2);
-   	 
+   	 Facturi1 = new Facturi();
+	 Facturi2 = new Facturi();
+	 
    	 
    	ExtrasDeCont ec = incasareInstance.incasareEC("cluj", dataEmiterii, 23.00, "RON", "douazeci si trei", Facturi);
    	 logger.info("5. Extras de cont");
