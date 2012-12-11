@@ -232,16 +232,17 @@ public class TestAchizitiiSrv {
 			assertNotNull("Nu exista NIR nou!", nir1);
 	    
 			//Adaugare linie in NIR
-			Gestiune gestiune11 = new Gestiune(111, "Gestiune pentru Stocuri");
+			Gestiune gestiune11 = new Gestiune(2, "Gestiune pentru Stocuri");
 			Material mat01 = new Material("5", "mat8", "buc");
 			Material mat02 = new Material("5", "mat5", "buc");
-			LiniiNIR liniNir1=achizitiiInstance.creareLiniiNIR(nir1, 1, mat01, 12.00, 5.4, 64.8, 15.55);
-			LiniiNIR liniNir2=achizitiiInstance.creareLiniiNIR(nir1, 2, mat02, 2.00, 5.4, 64.8, 15.55);
+			LiniiNIR liniNir1=achizitiiInstance.creareLiniiNIR(nir1, 1, mat01, 12.00, 5.4, 64.8, 15.55, gestiune11);
+			LiniiNIR liniNir2=achizitiiInstance.creareLiniiNIR(nir1, 2, mat02, 2.00, 5.4, 64.8, 15.55, gestiune11);
 
 	      //liniNir1.add(nir1.getLinieNir());
 	      //nir1.getLinieNir().add(liniNir1);
-			achizitiiInstance.trimitereMaterialLaStoc2(liniNir1, gestiune11);
-			achizitiiInstance.trimitereMaterialLaStoc2(liniNir2, gestiune11);
+//			achizitiiInstance.trimitereMaterialLaStoc2(liniNir1, gestiune11);
+//			achizitiiInstance.trimitereMaterialLaStoc2(liniNir2, gestiune11);
+			achizitiiInstance.trimitereMaterialLaStoc2(mat01, 2.00, 2.00, gestiune11);
 		  //nir1.getLinieNir().add(liniNir1);
 		  //achizitiiInstance.creareLiniiNIR(nir1, 1, mat3, 2.00, 1.00, 3.00, 1.90, gestiune11);
 		  //achizitiiInstance.intrareStoc(nir1, gestiune11);
@@ -263,7 +264,7 @@ public class TestAchizitiiSrv {
 			
 			Furnizori furnizorA = new Furnizori("Furnizor A SRL");
 			Furnizori furnizor1 = new Furnizori("Furnizor1", "Ion");
-			Gestiune gestiune1 = new Gestiune(12345, "Gestiunea ABC");
+			Gestiune gestiune1 = new Gestiune(1, "Gestiunea ABC");
 			NIR nir1= new NIR(1, calendarStart.getTime(), furnizor1, 120.00);
 			NIR nir2 = new NIR(10, calendarStart.getTime(), furnizorA, 100.00);
 			Gestiune gestiune11 = new Gestiune(111, "Gestiune pentru Stocuri");
@@ -276,7 +277,7 @@ public class TestAchizitiiSrv {
 			//nir1.getLinieNir().add(linieNIR1);
 			achizitiiInstance.crestereStoc(mat01, gestiune11, nir1, linieNIR1);
 			achizitiiInstance.crestereStoc(mat5, gestiune1, nir2, linieNIR2);
-			logger.info("End Test crestere cantitate Stoc....");
+			logger.info("End Test crestere cantitate Stoc.....");
 		
 	}
 	
