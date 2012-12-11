@@ -27,7 +27,6 @@ import org.open.erp.services.achizitii.LiniiPlanAprov;
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.Oferta;
 import org.open.erp.services.achizitii.PlanAprov;
-import org.open.erp.services.achizitii.Produs;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.stocuri.Articol;
@@ -267,9 +266,18 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 		
 	//LiniiNIR
-	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie){  
-		logger.debug("5.3.2 Adaugare linie in NIR " + nir.getNrNIR()+ nrLInie);
+	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie, Gestiune gest){  
+		logger.debug("5.3.2 Adaugare linie " + nrLInie + " in NIR " + nir.getNrNIR());
 		LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
+		
+		 if (stocuriSrv != null) {
+			 stocuriSrv.intrareStoc(material, cantitate, pret, gest);
+			 } 
+		 else{
+			        System.out.println("StocuriSrv este null");
+			 }
+		
+		
 		logger.debug("Cantitatea materialului a crescut cu " + cantitate);
 		//this.intrareStoc(material, gestiune);
 		logger.debug("Materialul " + material.getDenumireMaterial() + " a intrat in stoc.");
@@ -293,9 +301,9 @@ public class AchizitiiImpl implements AchizitiiSrv {
 //
 //		}
 		
-		public void trimitereMaterialLaStoc2( LiniiNIR linieNir, Gestiune gest){
-			intrareStoc(linieNir, gest);
-			logger.debug("S-a trimis materialul  " + linieNir.getMaterial().getDenumireMaterial() + "in stoc");	
+		public void trimitereMaterialLaStoc2( Material material, Double cantitate, Double pret, Gestiune gestiune) {
+			stocuriSrv.intrareStoc(material, cantitate, pret, gestiune);
+			logger.debug("S-a trimis materialul  " + material.getDenumireMaterial() + "in stoc");	
 	}
 	
 	

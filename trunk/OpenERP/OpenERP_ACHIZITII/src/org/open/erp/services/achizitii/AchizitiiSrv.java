@@ -244,7 +244,7 @@ public Furnizori creareFurnizor(String denumire);
 	  	
 	 
 	 LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie,
-			Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie);
+			Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie, Gestiune gest);
 	 
 	 /**
 	 * Scop				 Aociere Linie Notei de receptie
@@ -257,7 +257,7 @@ public Furnizori creareFurnizor(String denumire);
 	 * 
 	 */	
 	     
-	public void trimitereMaterialLaStoc2( LiniiNIR linieNir, Gestiune gest);
+	public void trimitereMaterialLaStoc2( Material material, Double cantitate, Double pret, Gestiune gestiune);
 		
 	public Double crestereStoc(Material material, Gestiune gestiune, NIR nir, LiniiNIR lNIR);
 	
