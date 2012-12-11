@@ -10,7 +10,7 @@ import org.open.erp.services.stocuri.ListaGestiuni;
 import org.open.erp.services.stocuri.Depozit;
 import org.open.erp.services.stocuri.Loturi;
 import org.open.erp.services.stocuri.StocuriSrv;
-import org.open.erp.services.achizitii.LiniiNIR;
+//import org.open.erp.services.achizitii.LiniiNIR;
 import org.open.erp.services.nommat.Material;
 
 
@@ -26,23 +26,23 @@ public class StocuriImpl implements StocuriSrv{
 	
 	//intrarea in stoc pentru modulul achizitii
 	@Override
-	public void intrareStoc(LiniiNIR linie, Gestiune gestiune) 
+	public void intrareStoc(Material material, Double cantitate, Double pret, Gestiune gestiune) 
 	{
 		//for(LiniiNIR linie: nir.getLinieNir())
 		//{
 			//Cei de la achizitii acum obiectul MATERIALE declarat local, cand o sa implementeze clasa MATERIAL de la nom materiale atunci nu o sa mai dea eroare
-			logger.info("2.1. Preluare date specifice produsului: id-ul produsul: " + linie.getMaterial().getCodMaterial()+ ", cantitatea produsului: " + linie.getCantitate() + ", pretul de intrare: " + linie.getPret());
+			logger.info("2.1. Preluare date specifice produsului: id-ul produsul: " + material.getCodMaterial()+ ", cantitatea produsului: " + cantitate + ", pretul de intrare: " + pret);
 			
-			logger.info("2.2. Verifica daca exista produsul " + linie.getMaterial().getCodMaterial() + " in stoc");
-			Articol art = this.getArticolByGestiune(linie.getMaterial(), gestiune);
+			logger.info("2.2. Verifica daca exista produsul " + material.getCodMaterial() + " in stoc");
+			Articol art = this.getArticolByGestiune(material, gestiune);
 			if(art != null)
 			{	
 				logger.info("Produsul este deja inregistrat in stocuri.");
 				//logger.info("Se creeza un lot nou pentru articolul gasit");
 				//logger.info("Se creste cantitatea pentru articolul gasit, cantitate veche: " + art.getCantPeGestiune());
 				
-				logger.info("2.3. Se creste cantitatea existenta in stoc" + art.getCantPeGestiune() + " cu cantitatea noua" + linie.getCantitate());
-				art.addLot(new Loturi(1, linie.getCantitate(), linie.getPret(), new Date()));	
+				logger.info("2.3. Se creste cantitatea existenta in stoc" + art.getCantPeGestiune() + " cu cantitatea noua" + cantitate);
+				art.addLot(new Loturi(1, cantitate, pret, new Date()));	
 				//art.cresteCantitateArticolPeGestiune(produs.getCantitate());
 				logger.info("2.4. Confirmare/Modificare stoc curent, cantitatea dupa modificare este: "+ art.getCantPeGestiune());
 			}
@@ -50,12 +50,13 @@ public class StocuriImpl implements StocuriSrv{
 			{
 				logger.info("Produsul nu este inregistrat in stoc, deci se creeaza un lot nou.");
 				//logger.info("Se adauga un articol nou pentru produs.");
-				this.creareLot(linie, gestiune);
+				this.creareLot(material, cantitate, pret, gestiune);
 			}
 			
 			
 		}
 		
+	
 	//intrarea in stoc pentru transferul intre gestiuni
 	@Override
 	public void intrareStoc(BonTransfer bonTransfer, Double pret)
@@ -132,13 +133,13 @@ public class StocuriImpl implements StocuriSrv{
 		
 	//crearea unui art si lot nou la intrarea in gestiune
 	@Override
-	public void creareLot(LiniiNIR linie, Gestiune gestiune)
+	public void creareLot(Material material, Double cantitate, Double pret, Gestiune gestiune)
 	{
-		logger.info("1.1. Se creeaza un lot nou pentru produsul" + linie.getMaterial().getCodMaterial());
-		gestiune.addArticole(new Articol(1, 0.00, gestiune, linie.getMaterial(), new ArrayList<Loturi>()));
-		Articol art = this.getArticolByGestiune(linie.getMaterial(), gestiune);
-		logger.info("1.2. Preluare date specifice produsului: id-ul produsului: " + linie.getMaterial().getCodMaterial() + ", cantitatea produsului " + linie.getCantitate() + ", pretul de intrare " + linie.getPret());
-		Loturi lot = new Loturi(2, linie.getCantitate(), linie.getPret(), new Date());
+		logger.info("1.1. Se creeaza un lot nou pentru produsul" + material.getCodMaterial());
+		gestiune.addArticole(new Articol(1, 0.00, gestiune, material, new ArrayList<Loturi>()));
+		Articol art = this.getArticolByGestiune(material, gestiune);
+		logger.info("1.2. Preluare date specifice produsului: id-ul produsului: " + material.getCodMaterial() + ", cantitatea produsului " + cantitate + ", pretul de intrare " + pret);
+		Loturi lot = new Loturi(2, cantitate, pret, new Date());
 		logger.info("1.3. Adaugare date specifice produsului in noul lot");
 		art.addLot(lot);
 		
