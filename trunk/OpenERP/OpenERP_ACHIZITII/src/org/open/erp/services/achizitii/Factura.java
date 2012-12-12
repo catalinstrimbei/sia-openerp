@@ -10,19 +10,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.open.erp.services.finplati.Plata;
-
-
 public class Factura extends Document{
-	public Integer nrFactura;   /* public din private@LAR*/
-	public Date dataFactura;     /* public din private@LAR*/
+	private Integer nrFactura;   /* public din private@LAR*/
+	private Date dataFactura;     /* public din private@LAR*/
 	private Date dataScadenta;  //data pana la care se poate plati factura
 	private Furnizori funrizor;
 	private List<LiniiFactura> linieFactura;
-	public Double valoareTotala; /* public din private@LAR*/
-	//Integer NrFactura;
-	String numeFurnizor; /* adaugat@LAR*/
-	Map<Integer, Plata> plati; /* adaugat@LAR*/
+	private Double valoareTotala; /* public din private@LAR*/
+
 	
 	public Integer getNrFactura() {
 		return nrFactura;
@@ -92,43 +87,6 @@ public class Factura extends Document{
 		this.dataScadenta = dataScadenta;
 		this.valoareTotala = valoareTotala;
 	}
-	
-/*	public Factura() {
-		super();
-	}*/
-/* adaugat@LAR -----------------------------------------*/
-	public Factura() {
-		if (plati == null)
-			plati = new HashMap<Integer, Plata>();
-	}
-	
-	public void setNumeFurnizor(String numeFurnizor) {
-		this.numeFurnizor = numeFurnizor;
-	}
-	public String getNumeFurnizor() {
-		return this.numeFurnizor;
-	}
-	public void setValoareTotal(Double valoareTotala) {
-		this.valoareTotala = valoareTotala;
-	}
 
-	public Double getValoareAchitata() {
-		Double sumTotal = 0.0;
-		Iterator<Entry<Integer,Plata>> plataIter = plati.entrySet().iterator();
-		
-		while (plataIter.hasNext()) {
-			Plata p = plataIter.next().getValue();
-			sumTotal += p.getValoarePlata();
-		}
-		return sumTotal;
-	}
-	
-	public Integer getNrTranse() {
-		return this.plati.size();
-	}
-	
-	public void addPlata(Plata plata) {
-		plati.put(plata.getId(), plata);
-	}
-	/* adaugat@LAR -----------------------------------------*/
+
 }

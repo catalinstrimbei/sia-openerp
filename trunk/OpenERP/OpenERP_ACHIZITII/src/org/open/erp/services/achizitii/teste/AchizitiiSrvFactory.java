@@ -100,6 +100,8 @@ import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.nommat.UnitateDeMasura;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.impl.StocuriImpl;
 
 
 public class AchizitiiSrvFactory {
@@ -107,10 +109,14 @@ public class AchizitiiSrvFactory {
 
 	public static AchizitiiSrv getAchizitiiSrv(){
 		
-		AchizitiiSrv achizitiiSrv = new AchizitiiImpl();
+		AchizitiiImpl achizitiiSrv = new AchizitiiImpl();
 		NomenclatorMaterialeSrv nomGenSrv = AchizitiiSrvFactory.getAchizitiiMatSrv();
-
-		achizitiiSrv.setMaterialSrv(nomGenSrv);		
+		StocuriSrv stoc = new StocuriImpl();
+		
+		achizitiiSrv.setStocuriSrv(stoc);
+		
+		achizitiiSrv.setMaterialSrv(nomGenSrv);	
+		
 		logger.info("Crerare AchizitiiSrv instance from AchizitiiSrvFactory!");
 		
 		return achizitiiSrv;
