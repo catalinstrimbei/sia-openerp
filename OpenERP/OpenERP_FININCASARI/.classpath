@@ -7,6 +7,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMGEN"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_VANZARI"/>
-	<classpathentry kind="lib" path="F:/Master_SIA/an 2/sem 1/aplicatii client_server si web/openERP/openERP/OpenERP_FININCASARI/lib/ejb3-persistence-3.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
