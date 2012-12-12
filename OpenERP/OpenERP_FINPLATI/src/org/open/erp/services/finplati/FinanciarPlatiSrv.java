@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.Furnizori;
+import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.proman.Proiect;
 
 /**
@@ -13,7 +15,7 @@ import org.open.erp.services.proman.Proiect;
  * @ApplicationServiceFacade
  * 
  * 
- * @Dependente: BugetareSrv, ContabilitateGeneralaSrv
+ * @Dependente: BanciSrv, AchizitiiSrv
  * 
  * @EntitatiAlteSrv: Buget
  * 
@@ -42,6 +44,8 @@ public interface FinanciarPlatiSrv {
 	 * 
 	 */
 	Double getSumePlatite(Date cDate);
+	
+	
 
 
 	/**
@@ -59,6 +63,8 @@ public interface FinanciarPlatiSrv {
 	 * @return datorii Double ce reprezinta diferenta dintra val. totala a facturilor si val. achitata.
 	 * 
 	 */
+	
+// 	void setAchizitiiSrv(AchizitiiSrv achizitiisrv);
 	Double getSolduriFactura();
 	
 	/**
@@ -217,6 +223,9 @@ public interface FinanciarPlatiSrv {
 
 
 	Contract cautaContractFurnizor(Integer idContract);
+
+
+	void setAchizitii(AchizitiiSrv achizitiiSrv);
 	
 	
 }

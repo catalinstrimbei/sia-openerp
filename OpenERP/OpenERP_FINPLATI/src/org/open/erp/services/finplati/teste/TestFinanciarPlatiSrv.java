@@ -15,6 +15,8 @@ LArisa Lupu
 
 package org.open.erp.services.finplati.teste;
 
+
+import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.achizitii.Furnizori;
 
@@ -22,6 +24,7 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 import java.util.List;
+import javax.sound.midi.MidiDevice.Info;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -43,6 +46,8 @@ import org.open.erp.services.finplati.TipPlata;
 public class TestFinanciarPlatiSrv {
 	private static Logger logger;
 	FinanciarPlatiSrv finplatiInstance;
+	//AchizitiiSrv achizitiiInstance;
+	
 
 	
 	@BeforeClass

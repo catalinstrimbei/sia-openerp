@@ -2,6 +2,7 @@
 
 package org.open.erp.services.finplati.impl;
 
+import org.open.erp.services.achizitii.AchizitiiSrv;
 import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.achizitii.Furnizori;
 
@@ -14,15 +15,31 @@ import java.util.Map;
 
 import org.open.erp.services.finplati.*;
 
+
 public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
+	//private AchizitiiSrv achizitiiSrv;
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(FinanciarPlatiImpl.class.getName());
+	
+
+	//public AchizitiiSrv getAchizitiiSrv() {
+		//return achizitiiSrv;
+	//}
+
+	//public void setAchizitiiSrv(AchizitiiSrv achizitiiiSrv) {
+		//this.achizitiiSrv = achizitiiiSrv;
+	//}
 	
 	SituatieFinanciara sitFit;
 	
 	public FinanciarPlatiImpl() {
 		if (sitFit == null)
 			sitFit = new SituatieFinanciara();
+	}
+	
+	@Override
+	public void setAchizitii(AchizitiiSrv achizitiiSrv) {
+		
 	}
 
 	@Override
