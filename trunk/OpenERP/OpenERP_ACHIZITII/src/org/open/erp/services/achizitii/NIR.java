@@ -3,6 +3,8 @@ package org.open.erp.services.achizitii;
 import java.util.Date;
 import java.util.List;
 
+import org.open.erp.services.nomgen.Document;
+
 public class NIR extends Document{
 	private Integer nrNIR;
 	private Date data;
