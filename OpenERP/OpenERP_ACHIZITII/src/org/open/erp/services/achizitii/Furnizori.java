@@ -3,7 +3,6 @@ package org.open.erp.services.achizitii;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.open.erp.services.finplati.Plata;
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
 
@@ -12,10 +11,15 @@ import org.open.erp.services.nomgen.PersoanaJuridica;
 	private String denumire;
 	private String persoanaContact;
 	
+	private Integer idFurnizor;
+	private String numeFurnizor;
+	private String adresaFurnizor;
+	private String cuiFurnizor;
 	
-/*	public Furnizori() {
+	
+	public Furnizori() {
 		super();
-	}  */
+	}  
 
 
 	public Furnizori(String denumire) {
@@ -50,17 +54,7 @@ import org.open.erp.services.nomgen.PersoanaJuridica;
 	}
 	/* larisa lupu----------------------*/
 	
-	Integer idFurnizor;
-	String numeFurnizor;
-	String adresaFurnizor;
-	String cuiFurnizor;
 	
-	Map<Integer,Plata> plati;
-	
-	public Furnizori() {
-		plati = new HashMap<Integer, Plata>();
-	}
-
 	public Integer getIdFurnizor() {
 		return idFurnizor;
 	}
@@ -86,28 +80,7 @@ import org.open.erp.services.nomgen.PersoanaJuridica;
 		this.cuiFurnizor = cuiFurnizor;
 	}
 	
-	public Map<Integer,Plata> getPlati() {
-		return plati;
-	}
-	public void setPlati(Map<Integer,Plata> plati) {
-		this.plati = plati;
-	}
-	public void adaugarePlata(Plata plata1) {
-		plati.put(plata1.getId(), plata1);
-	}
-	
 
-	public Boolean verificaPlata(Plata plata) {
-			if (plati.containsKey(plata.getId())) {
-				Plata fPlata = plati.get(plata.getId());
-				if (fPlata.getDataPlatii().equals(plata.getDataPlatii()) && (fPlata.getValoarePlata().equals(plata.getValoarePlata())))
-					return true;
-				else
-					return false;
-			}
-			else
-				return false;
-	}
 }
 
 
