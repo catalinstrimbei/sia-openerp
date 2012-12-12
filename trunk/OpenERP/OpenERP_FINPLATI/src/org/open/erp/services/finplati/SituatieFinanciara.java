@@ -4,6 +4,7 @@ package org.open.erp.services.finplati;
 
 
 import org.open.erp.services.achizitii.Factura;
+import org.open.erp.services.achizitii.Furnizori;
 
 import java.io.Serializable;
 import java.util.ArrayList;
