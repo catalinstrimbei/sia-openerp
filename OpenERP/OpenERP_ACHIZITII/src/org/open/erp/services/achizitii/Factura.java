@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.open.erp.services.nomgen.Document;
+
 public class Factura extends Document{
 	private Integer nrFactura;   /* public din private@LAR*/
 	private Date dataFactura;     /* public din private@LAR*/
