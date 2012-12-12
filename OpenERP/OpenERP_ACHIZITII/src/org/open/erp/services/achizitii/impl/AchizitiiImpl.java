@@ -61,7 +61,6 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		{
 		logger.debug("1.1 Initiere/Creare cerere de aprovizionare noua");
 		CerereAprov cerereNoua = new CerereAprov(nr, data, material);
-		Material mat = materialeSrv.creareMaterial(material);
 		cerereNoua.setMaterial(material);
 		return cerereNoua;
 		

@@ -129,28 +129,38 @@ public class AchizitiiSrvFactory {
 		return new NomenclatorMaterialeSrv() {
 			
 			@Override
-			public Material creareMaterial(Material material) {
-
-				logger.info("1.2 Stabilire material pe linie");
-				return new Material();
+			public String stergereMaterial(String CodMaterial) {
+				// TODO Auto-generated method stub
+				return null;
 			}
-
+			
+			@Override
+			public Material modificareMaterial(String codMaterial,
+					String newcodMaterial, String newdenumireMaterial,
+					String newcantitateStandard, String newpretStandard,
+					String newcategorieMaterial, String newprocentTVACurent,
+					String newobservatii, ListaCaracteristici newcaracteristici,
+					Boolean overwrite) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
 			@Override
 			public Material introducereMaterial(String codMaterial,
 					String denumireMaterial, String cantitateStandard,
-					String pretStandard, String procentTVACurent,
-					String observatii, ListaCaracteristici listaCaracteristici) {
+					String pretStandard, String categorieMaterial,
+					String procentTVACurent, String observatii,
+					ListaCaracteristici listaCaracteristici) {
 				// TODO Auto-generated method stub
 				return null;
 			}
-
+			
 			@Override
-			public UnitateDeMasura incarcareUnitate(String id,
-					String unitateDeMasura) {
+			public UnitateDeMasura incarcareUnitate(String id, String unitateDeMasura) {
 				// TODO Auto-generated method stub
 				return null;
 			}
-
+			
 			@Override
 			public ListaCaracteristici incarcareLista(String id,
 					String listaCaracteristici) {
@@ -158,10 +168,48 @@ public class AchizitiiSrvFactory {
 				return null;
 			}
 			
+			@Override
+			public Material cautareMaterialDupaDenumire(String denumire) {
+				// TODO Auto-generated method stub
+				return null;
+			}
 		};
-		
-			
 	}
+//			
+//			@Override
+//			public Material creareMaterial(Material material) {
+//
+//				logger.info("1.2 Stabilire material pe linie");
+//				return new Material();
+//			}
+//
+//			@Override
+//			public Material introducereMaterial(String codMaterial,
+//					String denumireMaterial, String cantitateStandard,
+//					String pretStandard, String procentTVACurent,
+//					String observatii, ListaCaracteristici listaCaracteristici) {
+//				// TODO Auto-generated method stub
+//				return null;
+//			}
+//
+//			@Override
+//			public UnitateDeMasura incarcareUnitate(String id,
+//					String unitateDeMasura) {
+//				// TODO Auto-generated method stub
+//				return null;
+//			}
+//
+//			@Override
+//			public ListaCaracteristici incarcareLista(String id,
+//					String listaCaracteristici) {
+//				// TODO Auto-generated method stub
+//				return null;
+//			}
+//			
+//		};
+//		
+//			
+//	}
 }	
 			
 		
