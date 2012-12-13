@@ -16,24 +16,23 @@ import org.open.erp.services.achizitii.Factura;
 
 /**
  * @author paraschivgeanina
- * @param <implemets>
  *
  */
 public class FacturaStatus extends Factura{
 
-	Factura factura;
+	//Factura factura;
 	private Integer idFactura;
-    private Date dataFactura;
+   // private Date dataFactura;
 	private String numeFurnizor;
 	Double valoareTotala;
 	Map<Integer, Plata> plati;
 	
-	public Factura getFactura() {
-		return factura;
-	}
-	public void setFactura(Factura factura) {
-		this.factura = factura;
-	}
+	//public Factura getFactura() {
+		//return factura;
+	//}
+	//public void setFactura(Factura factura) {
+		//this.factura = factura;
+	//}
 	
 	public FacturaStatus() {
 		if (plati == null)
@@ -58,12 +57,12 @@ public class FacturaStatus extends Factura{
 	public String getNumeFurnizor() {
 	return this.numeFurnizor;
 	}
-	public void setValoareTotala(Double valoareTotala) {
-		this.valoareTotala = valoareTotala;
-	}
-	public Double getValoareTotala() {
-		return this.valoareTotala;
-	}
+	//public void setValoareTotala(Double valoareTotala) {
+		//this.valoareTotala = valoareTotala;
+	//}
+	//public Double getValoareTotala() {
+		//return this.valoareTotala;
+	//}
 	public Double getValoareAchitata() {
 		Double sumTotal = 0.0;
 		Iterator<Entry<Integer,Plata>> plataIter = plati.entrySet().iterator();
