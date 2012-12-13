@@ -1,7 +1,6 @@
-/*TestFinanciarPlatiSrv*/
 
-/* 
-LArisa Lupu
+
+/*
 * @UseCase("1. Monitorizare datorii"):
  * 
  * @UseCase("2. Plati in avans"):
@@ -15,16 +14,11 @@ LArisa Lupu
 
 package org.open.erp.services.finplati.teste;
 
-
-import org.open.erp.services.achizitii.AchizitiiSrv;
-import org.open.erp.services.achizitii.Factura;
-import org.open.erp.services.achizitii.Furnizori;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 import java.util.List;
-import javax.sound.midi.MidiDevice.Info;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -33,21 +27,19 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.finplati.ChitantaPlata;
 import org.open.erp.services.finplati.Contract;
-// import org.open.erp.services.finplati.Factura;
+import org.open.erp.services.finplati.Factura;
 import org.open.erp.services.finplati.FinanciarPlatiSrv;
-//import org.open.erp.services.finplati.Furnizor;
+import org.open.erp.services.finplati.FurnizorContract;
 import org.open.erp.services.finplati.ModPlata;
 import org.open.erp.services.finplati.Persoana;
 import org.open.erp.services.finplati.Plata;
-import org.open.erp.services.finplati.Responsabil;
+import org.open.erp.services.finplati.ResponsabilPlata;
 import org.open.erp.services.finplati.SituatieFinanciara;
 import org.open.erp.services.finplati.TipPlata;
 
 public class TestFinanciarPlatiSrv {
 	private static Logger logger;
 	FinanciarPlatiSrv finplatiInstance;
-	//AchizitiiSrv achizitiiInstance;
-	
 
 	
 	@BeforeClass
@@ -111,8 +103,11 @@ public class TestFinanciarPlatiSrv {
 		 
 		sitFit.adaugarePlata(plata1);
 		sitFit.adaugarePlata(plata2);
-		Furnizori furnizor1 = new Furnizori();
+		 
+	    FurnizorContract furnizor1 = new FurnizorContract();
 	    furnizor1.adaugarePlata(plata1);
+	    
+	    
 		
 		
 		Double sitfit = finplatiInstance.getSumePlatite(new Date());
@@ -125,13 +120,14 @@ public class TestFinanciarPlatiSrv {
 		assertNotNull("Bugetul setat nu exista", buget);
 		assertTrue("Bugetul setat nu este corect", (buget==20000.0));
 //1.3		
+		logger.info("1.3  Afisare solduri facturi");
 		Double soldfact = finplatiInstance.getSolduriFactura();
 	    assertNotNull("Nu exista sold nou!", soldfact);
 	    assertTrue("Valoarea soldului nu e corecta!", soldfact == 1000.0);
 //2	    
 	    logger.info("2.1. Incheiere contract cu furnizoruli");
 	    
-	    Furnizori furnizor = new Furnizori();
+	    FurnizorContract furnizor = new FurnizorContract();
 		Plata avans = new Plata();
 		avans.setDataPlatii(new Date());
 		avans.setValoarePlata(350.0);
@@ -164,26 +160,31 @@ public class TestFinanciarPlatiSrv {
 	    assertTrue("Prima persoana nu e Ionescu", listpers.get(0)==ionescu);
 	    assertTrue("A doua persoana nu e Popescu", listpers.get(1)==popescu);
 	    
-	    logger.info("3.2. Stabilire responsabil plata");
+	    logger.info("3.2. Stabilire responsabilPlata plata");
 	    finplatiInstance.stabilireResponsabilPlata();
-	    Responsabil resp = finplatiInstance.getSituatieFinanciara().getResponsabil();
-	    assertNotNull("Nu exista nici un responsabil inregistrat", resp);
+	    ResponsabilPlata resp = finplatiInstance.getSituatieFinanciara().getResponsabil();
+	    assertNotNull("Nu exista nici un responsabilPlata inregistrat", resp);
 	    assertTrue("Prima persoana nu e Ionescu", resp.getIdPersoana()==ionescu.getIdPersoana());
 	    
 	    logger.info("3.3. Clasificare plati ( furnizori / datorii )");
-	   // finplatiInstance.clasificarePlati();
-	 // Map<TipPlata, List<Plata>> clasif = finplatiInstance.clasificarePlati();
-	// assertNotNull("Nu exista nici o clasificare", clasif);
-	  // assertTrue("Prima plata nu e plata1", clasif.get(0)==plata1);
-	 //  assertTrue("A doua plata nu e plata2", clasif.get(1)==plata2);
-	    
+	   // Map<TipPlata, List<Plata>> clasif = finplatiInstance.clasificarePlati();
+	   // assertNotNull("Nu exista nici o clasificare", clasif);
+	    // assertTrue("Prima plata nu e plata1", clasif.get(0)==plata1);
+	   //  assertTrue("A doua plata nu e plata2", clasif.get(1)==plata2);
+	   
 	    logger.info("3.4. Procesare/onorare plata catre furnizori");
+	  // procesarePlata onorare = finplatiInstance.procesarePlata(furnizor1, 100.0);
+	   // assertNotNull("Nu are loc procesarea platii", onorare );
+	    //assertTrue(" Procesarea nu este", onorare);
+	   // Logger.debug(finplatiInstance.procesarePlata());
+	    
 	    logger.debug("3.5. Verificare desfasurare plata");
 	    Boolean verificare = finplatiInstance.verificarePlata(furnizor1, plata1);
 	    assertNotNull("Nu exista nici o verificare", verificare);
 	    assertTrue("Nu corespunde", verificare);
-	    
+	
 	    logger.debug("4.1 Efectuare plata pt datorii");
+	    
 	    logger.debug("4.2. Primire chitanta");
 	    ChitantaPlata chit = finplatiInstance.primireChitanta(200.0);
 	    assertNotNull("S-a facut primirea chitante", chit);
@@ -192,28 +193,28 @@ public class TestFinanciarPlatiSrv {
 	    Double sitplata = finplatiInstance.afisareSituatiePlati();
 	    assertNotNull("Eroare in calculul situatia platilor", sitplata);
 	    assertTrue("Situatia plata nu coincide cu evidenta", sitplata == 570.0);
-	    //850
 	    
 	    
 //5	    
-	    logger.debug("5.1. Urmarire datorii ramase");
+	    logger.info("5.1. Urmarire datorii ramase"); 
+	    logger.debug(finplatiInstance.afisareDatorii());
 	    Double datorii = finplatiInstance.afisareDatorii();
 	    assertNotNull("Eroare in calculul datoriilor", datorii);
 	    assertTrue("Datoriile nu coincid cu evidenta", datorii == 1850.0);
 	    
-	    
+	  
 	    logger.info("5.2. Urmarire situatie plati");
 	    logger.debug(finplatiInstance.afisarePlatiTotale());
-	    
 	    Double platitotale = finplatiInstance.afisarePlatiTotale();
 	    assertNotNull("Eroare in calculul platilor", platitotale);
 	    assertTrue("Platile totale nu coincid cu evidenta", platitotale == 570.0);
+	     
 	    
 	    logger.info("5.3. Interogare sold");
-	   // logger.debug(finplatiInstance.afisareSold());
+	    logger.debug(finplatiInstance.afisareSold());
 	    Double soldafisare = finplatiInstance.afisareSold();
 	    assertNotNull("Eroare in calculul platilor", soldafisare);
-	    assertTrue("Platile totale nu coincid cu evidenta", soldafisare == 1850.0);
+	    assertTrue("Platile totale nu coincid cu evidenta", soldafisare == 18150.0);
 	    
 	    	   
 	    logger.info("THe END!");

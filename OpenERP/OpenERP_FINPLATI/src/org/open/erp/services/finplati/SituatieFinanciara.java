@@ -1,10 +1,10 @@
-/*SituatieFinanciara LArisa Lupu*/
+
 
 package org.open.erp.services.finplati;
 
 
-import org.open.erp.services.achizitii.Factura;
-import org.open.erp.services.achizitii.Furnizori;
+import org.open.erp.services.finplati.Factura;
+import org.open.erp.services.finplati.FurnizorContract;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class SituatieFinanciara implements Serializable{
 	Map<Integer,Factura> factura;
 	Map<Integer,Contract> contracte;
 	Map<Integer,Persoana> personal;
-	Responsabil responsabil;
+	ResponsabilPlata responsabil;
 	
 	public SituatieFinanciara() {
 		plati = new HashMap<Integer,Plata>();
@@ -88,7 +88,7 @@ public class SituatieFinanciara implements Serializable{
 		return chitanta;
 	}
 	public void adaugareFactura(Factura fact) {
-		factura.put(fact.getNrFactura(), fact);
+		factura.put(fact.getIdFactura(), fact);
 	}
 	public void setfactura(Map<Integer,Factura> factura) {
 		this.factura = factura;
@@ -96,11 +96,11 @@ public class SituatieFinanciara implements Serializable{
 	public Map<Integer,Factura> getfactura() {
 		return this.factura;
 	}
-	public Responsabil getResponsabil() {
+	public ResponsabilPlata getResponsabil() {
 		return responsabil;
 	}
 	public void setResponsabil(Persoana persoana) {
-		this.responsabil = new Responsabil(persoana);
+		this.responsabil = new ResponsabilPlata(persoana);
 	}
 	public Double getTotalPlati(Date... reqDate) {
 		Date dateVal;
