@@ -27,7 +27,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.finplati.ChitantaPlata;
 import org.open.erp.services.finplati.Contract;
-import org.open.erp.services.finplati.Factura;
+//import org.open.erp.services.finplati.FacturaStatus;
+//import org.open.erp.services.finplati.FacturaStatus;
+import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FinanciarPlatiSrv;
 import org.open.erp.services.finplati.FurnizorContract;
 import org.open.erp.services.finplati.ModPlata;
@@ -36,6 +38,7 @@ import org.open.erp.services.finplati.Plata;
 import org.open.erp.services.finplati.ResponsabilPlata;
 import org.open.erp.services.finplati.SituatieFinanciara;
 import org.open.erp.services.finplati.TipPlata;
+import org.open.erp.services.achizitii.Factura;
 
 public class TestFinanciarPlatiSrv {
 	private static Logger logger;
@@ -77,13 +80,13 @@ public class TestFinanciarPlatiSrv {
 		sitFit.adaugarePersonal(popescu);
 		
 		
-		Factura factura1 = new Factura();
+		FacturaStatus factura1 = new FacturaStatus();
 		Date dataFact = new Date();
 		dataFact.setDate(25);
 		dataFact.setMonth(10);
 		dataFact.setYear(2012);
 		factura1.setDataFactura(dataFact);
-		factura1.setValoareTotal(1000.0);
+		factura1.setValoareTotala(1000.0);
 		sitFit.adaugareFactura(factura1);
 		 
 		Plata plata1 = new Plata();

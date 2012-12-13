@@ -3,6 +3,7 @@ package org.open.erp.services.finplati;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import org.open.erp.services.achizitii.Furnizori;
 
 public class FurnizorContract implements Serializable {
 	Integer idFurnizor;
@@ -17,14 +18,14 @@ public class FurnizorContract implements Serializable {
 	}
 
 	public Integer getIdFurnizor() {
-		return idFurnizor;
+	return idFurnizor;
 	}
 	public void setIdFurnizor(Integer idFurnizor) {
 		this.idFurnizor = idFurnizor;
 	}
 	public String getNumeFurnizor() {
-		return numeFurnizor;
-	}
+	return numeFurnizor;
+  }
 	public void setNumeFurnizor(String numeFurnizor) {
 		this.numeFurnizor = numeFurnizor;
 	}
