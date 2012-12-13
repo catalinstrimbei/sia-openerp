@@ -21,7 +21,7 @@ import org.open.erp.services.achizitii.Factura;
 public class FacturaStatus extends Factura{
 
 	//Factura factura;
-	private Integer idFactura;
+	//private Integer idFactura;
    // private Date dataFactura;
 	private String numeFurnizor;
 	Double valoareTotala;
@@ -39,12 +39,12 @@ public class FacturaStatus extends Factura{
 			plati = new HashMap<Integer, Plata>();
 	}
 	
-	public void setIdFactura(Integer idFactura) {
-		this.idFactura = idFactura;
-	}
-	public Integer getIdFactura() {
-		return this.idFactura;
-	}
+	//public void setIdFactura(Integer idFactura) {
+		//this.idFactura = idFactura;
+	//}
+	//public Integer getIdFactura() {
+		//return this.idFactura;
+	//}
 	//public void setDataFactura(Date dataFactura) {
 	//	this.dataFactura = dataFactura;
 	//}

@@ -89,7 +89,7 @@ public class SituatieFinanciara implements Serializable{
 		return chitanta;
 	}
 	public void adaugareFactura(FacturaStatus fact) {
-		factura.put(fact.getIdFactura(), fact);
+		factura.put(fact.getNrFactura(), fact);
 	}
 	public void setfactura(Map<Integer,FacturaStatus> factura) {
 		this.factura = factura;
