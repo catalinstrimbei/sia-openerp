@@ -6,8 +6,8 @@ package org.open.erp.services.finplati.teste;
 import org.apache.log4j.Logger;
 import org.open.erp.services.finplati.*;
 import org.open.erp.services.finplati.impl.FinanciarPlatiImpl;
-import org.open.erp.services.achizitii.Furnizori;
-import org.open.erp.services.achizitii.Factura;
+import org.open.erp.services.finplati.Factura;
+import org.open.erp.services.finplati.FurnizorContract;
 
 
 public class FinanciarPlatiSrvFactory {

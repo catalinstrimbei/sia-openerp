@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.open.erp.services.achizitii.AchizitiiSrv;
-import org.open.erp.services.achizitii.Furnizori;
+
 import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.proman.Proiect;
 
@@ -79,7 +79,7 @@ public interface FinanciarPlatiSrv {
 	 * @return Contract		Entitate tip contract ce contine toate datele contractului
 	 * 
 	 */
-	Contract createContractFurnizor(Furnizori furnizor, Double total, Plata avans);
+	Contract createContractFurnizor(FurnizorContract furnizor, Double total, Plata avans);
 
 	/**
 	 * Se va adauga unui contract existent o plata in avans
@@ -145,18 +145,18 @@ public interface FinanciarPlatiSrv {
 	 * 
 	 */
 
-	void procesarePlata(Furnizori furnizor, Double valoarePlata);
+	void procesarePlata(FurnizorContract furnizor, Double valoarePlata);
 
 	/**
 	 * 
-	 *@param furnizor
+	 *@param furnizor1
 	 *
 	 *@param valoarePlata
 	 *
 	 *Se va adauga o plata facuta de furnizor prin virament bancar, cer...
 	 * 
 	 */
-	Boolean verificarePlata(Furnizori furnizor, Plata plata);
+	Boolean verificarePlata(FurnizorContract furnizor1, Plata plata);
 
 	/**
 	 * 

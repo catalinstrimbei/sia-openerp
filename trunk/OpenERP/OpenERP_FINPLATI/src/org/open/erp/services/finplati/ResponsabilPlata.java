@@ -8,7 +8,7 @@ import org.open.erp.services.finplati.Persoana;
  * @author paraschivgeanina
  * 
  */
-public class Responsabil extends Persoana{
+public class ResponsabilPlata extends Persoana{
 
 	String obsExperienta;
 	public String getObsExperienta() {
@@ -19,16 +19,16 @@ public class Responsabil extends Persoana{
 		this.obsExperienta = obsExperienta;
 	}
 
-	public Responsabil(Integer idPersoana, String nume, String prenume,
+	public ResponsabilPlata(Integer idPersoana, String nume, String prenume,
 			String obsExperienta) {
 		this.obsExperienta = obsExperienta;
 	}
 
-	public Responsabil() {
+	public ResponsabilPlata() {
 		super();
 	}	
 	
-	public Responsabil(Persoana p) {
+	public ResponsabilPlata(Persoana p) {
 		super();
 		this.idPersoana = p.idPersoana;
 		this.nume = p.nume;

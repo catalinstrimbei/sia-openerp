@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.open.erp.services.achizitii.Furnizori;
+import org.open.erp.services.finplati.FurnizorContract;
 
 public class Contract {
 	Integer idContract;
-	Furnizori furnizor;
+	FurnizorContract furnizor;
 	Date dataContract;
 	Double valoareContract;
 	Double discountContract;
@@ -30,10 +30,10 @@ public class Contract {
 	public void setIdContract(Integer idContract) {
 		this.idContract = idContract;
 	}
-	public Furnizori getFurnizor() {
+	public FurnizorContract getFurnizor() {
 		return furnizor;
 	}
-	public void setFurnizor(Furnizori furnizor) {
+	public void setFurnizor(FurnizorContract furnizor) {
 		this.furnizor = furnizor;
 	}
 	public Date getDataContract() {
@@ -81,4 +81,5 @@ public class Contract {
 	public Double getDiscountContract() {
 		return (this.discountContract == null ? 0.0 : this.discountContract);
 	}
+
 }

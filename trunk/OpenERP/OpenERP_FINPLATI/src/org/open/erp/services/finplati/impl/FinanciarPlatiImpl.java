@@ -3,8 +3,8 @@
 package org.open.erp.services.finplati.impl;
 
 import org.open.erp.services.achizitii.AchizitiiSrv;
-import org.open.erp.services.achizitii.Factura;
-import org.open.erp.services.achizitii.Furnizori;
+import org.open.erp.services.finplati.Factura;
+import org.open.erp.services.finplati.FurnizorContract;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,7 +71,7 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	}
 
 	@Override
-	public Contract createContractFurnizor(Furnizori furnizor, Double total,
+	public Contract createContractFurnizor(FurnizorContract furnizor, Double total,
 			Plata avans) {
 		logger.debug("2.1. Incheiere contract cu furnizorul");
 		Contract contract = new Contract();
@@ -168,7 +168,7 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	}
 
 	@Override
-	public void procesarePlata(Furnizori furnizor, Double valoarePlata) {
+	public void procesarePlata(FurnizorContract furnizor, Double valoarePlata) {
 		logger.debug("3.4. Procesare/onorare plata catre furnizori");
 		Plata plata = new Plata();
 		plata.setDataPlatii(new Date());
@@ -181,7 +181,7 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	}
 	
 	@Override
-	public Boolean verificarePlata(Furnizori furnizor, Plata plata) {
+	public Boolean verificarePlata(FurnizorContract furnizor, Plata plata) {
 		logger.debug("3.5. Verificare desfasurare plata");
 		return furnizor.verificaPlata(plata);
 	}
@@ -226,12 +226,12 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	@Override
 	public Double afisareDatorii() {
 		logger.debug("5.1. Urmarire datorii ramase");
-		Iterator<Factura> iterFacturi = sitFit.getfactura().values().iterator();
+		Iterator<Factura> iterFactura = sitFit.getfactura().values().iterator();
 		Iterator<Contract> iterContracte = sitFit.getContracte().values().iterator();
 		
 		Double totalDatorii = 0.0;
-		while (iterFacturi.hasNext()) {
-			Factura f = iterFacturi.next();
+		while (iterFactura.hasNext()) {
+			Factura f = iterFactura.next();
 			totalDatorii += f.getValoareTotala() - f.getValoareAchitata();
 		}
 		
