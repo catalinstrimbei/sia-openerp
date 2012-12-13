@@ -12,7 +12,11 @@ import java.util.Map.Entry;
 
 import org.open.erp.services.nomgen.Document;
 
-public class Factura extends Document{
+public class Factura {
+	public Factura() {
+		//super();
+	}
+
 	private Integer nrFactura;   /* public din private@LAR*/
 	private Date dataFactura;     /* public din private@LAR*/
 	private Date dataScadenta;  //data pana la care se poate plati factura
