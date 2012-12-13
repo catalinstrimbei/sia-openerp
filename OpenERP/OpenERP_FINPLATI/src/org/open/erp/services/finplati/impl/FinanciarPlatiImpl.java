@@ -3,7 +3,7 @@
 package org.open.erp.services.finplati.impl;
 
 import org.open.erp.services.achizitii.AchizitiiSrv;
-import org.open.erp.services.finplati.Factura;
+import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FurnizorContract;
 
 import java.util.ArrayList;
@@ -226,12 +226,12 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	@Override
 	public Double afisareDatorii() {
 		logger.debug("5.1. Urmarire datorii ramase");
-		Iterator<Factura> iterFactura = sitFit.getfactura().values().iterator();
+		Iterator<FacturaStatus> iterFactura = sitFit.getfactura().values().iterator();
 		Iterator<Contract> iterContracte = sitFit.getContracte().values().iterator();
 		
 		Double totalDatorii = 0.0;
 		while (iterFactura.hasNext()) {
-			Factura f = iterFactura.next();
+			FacturaStatus f = iterFactura.next();
 			totalDatorii += f.getValoareTotala() - f.getValoareAchitata();
 		}
 		

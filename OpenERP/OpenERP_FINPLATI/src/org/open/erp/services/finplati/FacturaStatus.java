@@ -10,19 +10,32 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.open.erp.services.achizitii.Factura;
+//import org.open.erp.services.achizitii.Factura;
+
+
 /**
  * @author paraschivgeanina
+ * @param <implemets>
  *
  */
-public class Factura implements Serializable {
+public class FacturaStatus extends Factura{
 
-	Integer idFactura;
-	Date dataFactura;
-	String numeFurnizor;
+	Factura factura;
+	private Integer idFactura;
+    private Date dataFactura;
+	private String numeFurnizor;
 	Double valoareTotala;
 	Map<Integer, Plata> plati;
 	
-	public Factura() {
+	public Factura getFactura() {
+		return factura;
+	}
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+	
+	public FacturaStatus() {
 		if (plati == null)
 			plati = new HashMap<Integer, Plata>();
 	}
@@ -33,19 +46,19 @@ public class Factura implements Serializable {
 	public Integer getIdFactura() {
 		return this.idFactura;
 	}
-	public void setDataFactura(Date dataFactura) {
-		this.dataFactura = dataFactura;
-	}
-	public Date getDataFactura() {
-		return this.dataFactura;
-	}
+	//public void setDataFactura(Date dataFactura) {
+	//	this.dataFactura = dataFactura;
+	//}
+	//public Date getDataFactura() {
+		//return this.dataFactura;
+//	}
 	public void setNumeFurnizor(String numeFurnizor) {
 		this.numeFurnizor = numeFurnizor;
 	}
 	public String getNumeFurnizor() {
-		return this.numeFurnizor;
+	return this.numeFurnizor;
 	}
-	public void setValoareTotal(Double valoareTotala) {
+	public void setValoareTotala(Double valoareTotala) {
 		this.valoareTotala = valoareTotala;
 	}
 	public Double getValoareTotala() {
@@ -70,3 +83,4 @@ public class Factura implements Serializable {
 		plati.put(plata.getId(), plata);
 	}
 }
+

@@ -3,7 +3,8 @@
 package org.open.erp.services.finplati;
 
 
-import org.open.erp.services.finplati.Factura;
+import org.open.erp.services.achizitii.Factura;
+import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FurnizorContract;
 
 import java.io.Serializable;
@@ -27,14 +28,14 @@ public class SituatieFinanciara implements Serializable{
 	Double bugetDatorii;
 	
 	Map<Integer,Plata> plati;
-	Map<Integer,Factura> factura;
+	Map<Integer,FacturaStatus> factura;
 	Map<Integer,Contract> contracte;
 	Map<Integer,Persoana> personal;
 	ResponsabilPlata responsabil;
 	
 	public SituatieFinanciara() {
 		plati = new HashMap<Integer,Plata>();
-		factura = new HashMap<Integer, Factura>();
+		factura = new HashMap<Integer, FacturaStatus>();
 		contracte = new HashMap<Integer, Contract>();
 		personal = new HashMap<Integer, Persoana>();
 	}
@@ -87,13 +88,13 @@ public class SituatieFinanciara implements Serializable{
 		ChitantaPlata chitanta = new ChitantaPlata(plata);
 		return chitanta;
 	}
-	public void adaugareFactura(Factura fact) {
+	public void adaugareFactura(FacturaStatus fact) {
 		factura.put(fact.getIdFactura(), fact);
 	}
-	public void setfactura(Map<Integer,Factura> factura) {
+	public void setfactura(Map<Integer,FacturaStatus> factura) {
 		this.factura = factura;
 	}
-	public Map<Integer,Factura> getfactura() {
+	public Map<Integer,FacturaStatus> getfactura() {
 		return this.factura;
 	}
 	public ResponsabilPlata getResponsabil() {
@@ -124,10 +125,10 @@ public class SituatieFinanciara implements Serializable{
 	
 	public Double getSoldurifactura() {
 		Double sumTotal = 0.0;
-		Iterator<Entry<Integer,Factura>> factIter = factura.entrySet().iterator();
+		Iterator<Entry<Integer,FacturaStatus>> factIter = factura.entrySet().iterator();
 		
 		while (factIter.hasNext()) {
-			Factura f = factIter.next().getValue();
+			FacturaStatus f = factIter.next().getValue();
 			sumTotal += f.getValoareTotala() - f.getValoareAchitata();
 		}
 		return sumTotal;

@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 
 import org.open.erp.services.finplati.FurnizorContract;
 
+
 public class Contract {
 	Integer idContract;
 	FurnizorContract furnizor;
@@ -82,4 +83,6 @@ public class Contract {
 		return (this.discountContract == null ? 0.0 : this.discountContract);
 	}
 
-}
+	
+	}
+
