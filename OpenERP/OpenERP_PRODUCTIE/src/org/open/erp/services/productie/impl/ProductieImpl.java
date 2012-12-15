@@ -6,7 +6,6 @@ import java.util.List;
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nommat.Material;
-import org.open.erp.services.nommat.Produs;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.CriteriuCalitate;
@@ -14,6 +13,7 @@ import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.FunctieNecesara;
 import org.open.erp.services.productie.ProductieSrv;
+import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.Semifabricat;
 import org.open.erp.services.productie.Utilaj;
 

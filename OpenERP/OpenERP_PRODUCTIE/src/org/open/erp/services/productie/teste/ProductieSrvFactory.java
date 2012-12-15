@@ -1,12 +1,16 @@
 package org.open.erp.services.productie.teste;
 
 import org.apache.log4j.Logger;
+
 import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.impl.NomenclatoareImpl;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.nommat.impl.NomenclatorMaterialeImpl;
 import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.personal.impl.PersonalImpl;
 import org.open.erp.services.productie.ProductieSrv;
 import org.open.erp.services.productie.impl.ProductieImpl;
-import org.open.erp.services.stocuri.StocuriSrv;
+
 
 public class ProductieSrvFactory {
 
@@ -26,39 +30,19 @@ public class ProductieSrvFactory {
 	public static NomenclatoareSrv getNomenclatoareSrv(){
 		logger.info("Creare dummy instance of NomenclatoareSrv from NomenclatoareSrvFactory!");
 		// Dummmy Implementation of NomenclatoareSrv
-		return new NomenclatoareSrv(){
-			// Null implementation
-		};
-		// ----
-	}
-	
-	//
-	public static NomenclatorMaterialeSrv getNomenclatorMaterialeSrv(){
-		logger.info("Creare dummy instance of NomenclatorMaterialeSrv from NomenclatorMaterialeSrvFactory!");
-		// Dummmy Implementation of NomenclatorMaterialeSrv
-		return new NomenclatorMaterialeSrv(){
-			// Null implementation
-		};
-		// ----
-	}
-	
-	//
-	public static PersonalSrv getPersonalSrv(){
-		logger.info("Creare dummy instance of PersonalSrv from PersonalSrvFactory!");
-		// Dummmy Implementation of PersonalSrv
-		return new PersonalSrv(){
-			// Null implementation
-		};
-		// ----
+		return new NomenclatoareImpl();
+
 	}	
-	
 	//
-	public static StocuriSrv getStocuriSrv(){
-		logger.info("Creare dummy instance of StocuriSrv from StocuriSrvFactory!");
-		// Dummmy Implementation of StocuriSrv
-		return new StocuriSrv(){
-			// Null implementation
-		};
-		// ----
-	}	
+			public static NomenclatorMaterialeSrv getNomenclatoareMaterialeSrv(){
+				logger.info("Creaza Dummy NOMMAT SRV----");
+				return new NomenclatorMaterialeImpl();
+			}
+
+
+			public static PersonalSrv getPersonalSrv(){
+				logger.info("Creaza Dummy NOMMAT SRV----");
+				return new PersonalImpl();
+			}
+			
 }

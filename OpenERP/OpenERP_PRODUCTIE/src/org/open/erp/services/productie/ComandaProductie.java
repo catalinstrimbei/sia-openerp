@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import org.open.erp.services.nomgen.Document;
-import org.open.erp.services.nommat.Produs;
+
 
 public class ComandaProductie extends Document implements Serializable{
 

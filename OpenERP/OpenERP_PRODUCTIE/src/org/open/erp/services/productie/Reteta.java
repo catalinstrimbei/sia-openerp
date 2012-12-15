@@ -1,7 +1,7 @@
 package org.open.erp.services.productie;
 
 import org.open.erp.services.nommat.Material;
-import org.open.erp.services.nommat.Produs;
+
 
 public class Reteta {
 	private Integer IdReteta;

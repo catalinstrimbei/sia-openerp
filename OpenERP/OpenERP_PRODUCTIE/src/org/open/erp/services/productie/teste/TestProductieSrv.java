@@ -12,7 +12,6 @@ import org.open.erp.services.nomgen.MijlocFix;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
-import org.open.erp.services.nommat.Produs;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.CriteriuCalitate;
@@ -20,6 +19,7 @@ import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.FunctieNecesara;
 import org.open.erp.services.productie.ProductieSrv;
+import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.Semifabricat;
 import org.open.erp.services.productie.Utilaj;
 
@@ -28,8 +28,8 @@ public class TestProductieSrv {
 	private static Logger logger;
 	
 	ProductieSrv productie;
-	NomenclatoareSrv nomgeneral;
-	NomenclatorMaterialeSrv nommat;
+	//NomenclatoareSrv nomgeneral;
+	//NomenclatorMaterialeSrv nommat;
 	
 	@BeforeClass
 	public static void initLocalJavaLogger(){
@@ -129,18 +129,16 @@ public class TestProductieSrv {
 		Material m3=new Material();
 		Material m4=new Material();
 		
-		m3.setIdMaterial(1);
-		m3.setDenumire("material1");
-		m3.setCategorie(null);
-		m3.setLiniiDocumente(null);
-		m3.setUM(null);
+		m3.setCodMaterial("1");
+		m3.setDenumireMaterial("material1");
+		m3.setCategorieMaterial(null);
+		m3.setCantitateStandard(null);
 		logger.info("*****Materialul a fost creat " + m3);
 				
-		m4.setIdMaterial(2);
-		m4.setDenumire("material2");
-		m4.setCategorie(null);
-		m4.setLiniiDocumente(null);
-		m4.setUM(null);
+		m4.setCodMaterial("2");
+		m4.setDenumireMaterial("material2");
+		m4.setCategorieMaterial(null);
+		m4.setCantitateStandard(null);
 		logger.info("*****Materialul a fost creat " + m4);
 
 		materialeReteta.add(m3);
@@ -153,17 +151,15 @@ public class TestProductieSrv {
 		ArrayList<Material> materialeSemifabricatDorit = new ArrayList<Material>();
 		Material m7=new Material();
 		Material m8=new Material();
-		m7.setIdMaterial(3);
-		m7.setDenumire("material3");
-		m7.setCategorie(null);
-		m7.setLiniiDocumente(null);
-		m7.setUM(null);
+		m7.setCodMaterial("3");
+		m7.setDenumireMaterial("material3");
+		m7.setCategorieMaterial(null);
+		m7.setCantitateStandard(null);
 		
-		m8.setIdMaterial(4);
-		m8.setDenumire("material4");
-		m8.setCategorie(null);
-		m8.setLiniiDocumente(null);
-		m8.setUM(null);
+		m8.setCodMaterial("4");
+		m8.setDenumireMaterial("material4");
+		m8.setCategorieMaterial(null);
+		m8.setCantitateStandard(null);
 				
 		materialeSemifabricatDorit.add(m7);
 		materialeSemifabricatDorit.add(m8);
@@ -179,10 +175,10 @@ public class TestProductieSrv {
 		
 		//sectie
 		sectie= new Divizie();
-		sectie.setId(1);				
-		sectie.setDenumire("Sectie Productie");
-		sectie.setIdDepartament(null);
-		sectie.setAtributii(null);
+		sectie.setId("1");				
+		sectie.setDenumire("Departament Productie");
+		sectie.setDescriere(null);
+		sectie.setParinte(null);
 		logger.info("*****Sectia a fost creata " + sectie.getDenumire());
 		
 		nrOrdine =1;
@@ -332,19 +328,17 @@ public class TestProductieSrv {
 			materialeReteta = new ArrayList<Material>();
 			Material m3=new Material();
 			Material m4=new Material();
-			
-			m3.setIdMaterial(1);
-			m3.setDenumire("material1");
-			m3.setCategorie(null);
-			m3.setLiniiDocumente(null);
-			m3.setUM(null);
+						
+			m3.setCodMaterial("1");
+			m3.setDenumireMaterial("material1");
+			m3.setCategorieMaterial(null);
+			m3.setCantitateStandard(null);
 			logger.info("*****Materialul a fost creat " + m3);
 					
-			m4.setIdMaterial(2);
-			m4.setDenumire("material2");
-			m4.setCategorie(null);
-			m4.setLiniiDocumente(null);
-			m4.setUM(null);
+			m4.setCodMaterial("2");
+			m4.setDenumireMaterial("material2");
+			m4.setCategorieMaterial(null);
+			m4.setCantitateStandard(null);
 			logger.info("*****Materialul a fost creat " + m4);
 
 			materialeReteta.add(m3);
@@ -357,17 +351,15 @@ public class TestProductieSrv {
 			ArrayList<Material> materialeSemifabricatDorit = new ArrayList<Material>();
 			Material m7=new Material();
 			Material m8=new Material();
-			m7.setIdMaterial(3);
-			m7.setDenumire("material3");
-			m7.setCategorie(null);
-			m7.setLiniiDocumente(null);
-			m7.setUM(null);
+			m7.setCodMaterial("3");
+			m7.setDenumireMaterial("material3");
+			m7.setCategorieMaterial(null);
+			m7.setCantitateStandard(null);
 			
-			m8.setIdMaterial(4);
-			m8.setDenumire("material4");
-			m8.setCategorie(null);
-			m8.setLiniiDocumente(null);
-			m8.setUM(null);
+			m8.setCodMaterial("4");
+			m8.setDenumireMaterial("material4");
+			m8.setCategorieMaterial(null);
+			m8.setCantitateStandard(null);
 					
 			materialeSemifabricatDorit.add(m7);
 			materialeSemifabricatDorit.add(m8);
@@ -383,10 +375,10 @@ public class TestProductieSrv {
 			
 			//sectie
 			sectie= new Divizie();
-			sectie.setId(1);				
-			sectie.setDenumire("Sectie Productie");
-			sectie.setIdDepartament(null);
-			sectie.setAtributii(null);
+			sectie.setId("1");				
+			sectie.setDenumire("Departament Productie");
+			sectie.setDescriere(null);
+			sectie.setParinte(null);
 			logger.info("*****Sectia a fost creata " + sectie.getDenumire());
 			
 			nrOrdine =1;
@@ -547,18 +539,16 @@ public class TestProductieSrv {
 		Material m3=new Material();
 		Material m4=new Material();
 		
-		m3.setIdMaterial(1);
-		m3.setDenumire("material1");
-		m3.setCategorie(null);
-		m3.setLiniiDocumente(null);
-		m3.setUM(null);
+		m3.setCodMaterial("1");
+		m3.setDenumireMaterial("material1");
+		m3.setCategorieMaterial(null);
+		m3.setCantitateStandard(null);
 		logger.info("*****Materialul a fost creat " + m3);
-				
-		m4.setIdMaterial(2);
-		m4.setDenumire("material2");
-		m4.setCategorie(null);
-		m4.setLiniiDocumente(null);
-		m4.setUM(null);
+			
+		m4.setCodMaterial("2");
+		m4.setDenumireMaterial("material2");
+		m4.setCategorieMaterial(null);
+		m4.setCantitateStandard(null);
 		logger.info("*****Materialul a fost creat " + m4);
 
 		materialeReteta.add(m3);
@@ -571,17 +561,15 @@ public class TestProductieSrv {
 		ArrayList<Material> materialeSemifabricatDorit = new ArrayList<Material>();
 		Material m7=new Material();
 		Material m8=new Material();
-		m7.setIdMaterial(3);
-		m7.setDenumire("material3");
-		m7.setCategorie(null);
-		m7.setLiniiDocumente(null);
-		m7.setUM(null);
+		m7.setCodMaterial("3");
+		m7.setDenumireMaterial("material3");
+		m7.setCategorieMaterial(null);
+		m7.setCantitateStandard(null);
 		
-		m8.setIdMaterial(4);
-		m8.setDenumire("material4");
-		m8.setCategorie(null);
-		m8.setLiniiDocumente(null);
-		m8.setUM(null);
+		m8.setCodMaterial("4");
+		m8.setDenumireMaterial("material4");
+		m8.setCategorieMaterial(null);
+		m8.setCantitateStandard(null);
 				
 		materialeSemifabricatDorit.add(m7);
 		materialeSemifabricatDorit.add(m8);
@@ -597,10 +585,10 @@ public class TestProductieSrv {
 		
 		//sectie
 		sectie= new Divizie();
-		sectie.setId(1);				
-		sectie.setDenumire("Sectie Productie");
-		sectie.setIdDepartament(null);
-		sectie.setAtributii(null);
+		sectie.setId("1");				
+		sectie.setDenumire("Departament Productie");
+		sectie.setDescriere(null);
+		sectie.setParinte(null);
 		logger.info("*****Sectia a fost creata " + sectie.getDenumire());
 		
 		nrOrdine =1;
@@ -637,7 +625,7 @@ public class TestProductieSrv {
 	    int n=fazaProductie.getMaterialeReteta().size();
 			for(int i=0;i<n-1; i++){
 				listaMateriale.add(fazaProductie.getMaterialeReteta().get(i));
-				logger.info("*****Se adauga materialul: " + fazaProductie.getMaterialeReteta().get(i).getDenumire());
+				logger.info("*****Se adauga materialul: " + fazaProductie.getMaterialeReteta().get(i).getDenumireMaterial());
 			}
 			int m=fazaProductie.getAngajati().size();
 			for (int j=0; j<m-1; j++){
