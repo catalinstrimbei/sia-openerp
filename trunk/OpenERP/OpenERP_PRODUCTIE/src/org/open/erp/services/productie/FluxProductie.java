@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.open.erp.services.nommat.Produs;
+
 
 public class FluxProductie implements Serializable {
 

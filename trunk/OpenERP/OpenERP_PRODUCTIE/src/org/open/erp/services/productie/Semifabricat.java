@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nommat.Material;
-import org.open.erp.services.nommat.Produs;
+
 
 public class Semifabricat extends Produs implements Serializable {
 

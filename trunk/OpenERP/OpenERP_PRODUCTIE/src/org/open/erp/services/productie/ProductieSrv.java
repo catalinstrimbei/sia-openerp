@@ -6,7 +6,7 @@ import java.util.List;
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nommat.Material;
-import org.open.erp.services.nommat.Produs;
+
 
 /**
  * 

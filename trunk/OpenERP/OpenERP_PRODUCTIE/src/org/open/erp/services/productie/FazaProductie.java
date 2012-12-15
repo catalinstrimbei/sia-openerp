@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nommat.Material;
-import org.open.erp.services.nommat.Produs;
+
 import org.open.erp.services.personal.Angajat;
 
 public class FazaProductie implements Serializable {
