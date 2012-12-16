@@ -3,6 +3,9 @@ package org.open.erp.services.finplati;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.open.erp.services.banci.CompanieBanci;
+import org.open.erp.services.banci.Cont;
+
 public class Plata implements Serializable {
 
 	Integer idPlata;
@@ -11,11 +14,29 @@ public class Plata implements Serializable {
 	Date dataPlata;
 	Double valoarePlata;
 	String confirmarePlata;
+	Cont contBancar;
+	CompanieBanci banca;
 	
 	private static int nextIdPlata = 1;
 	
 	public Plata() {
 		idPlata = nextIdPlata++;
+	}
+	
+	public Cont getCont() {
+		return this.contBancar;
+	}
+	
+	public void setCont(Cont contBancar) {
+		this.contBancar = contBancar;
+	}
+	
+	public CompanieBanci getBanca() {
+		return this.banca;
+	}
+	
+	public void setBanca(CompanieBanci banca) {
+		this.banca = banca;
 	}
 	
 	public Double getValoarePlata() {

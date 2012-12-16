@@ -168,7 +168,7 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 	}
 
 	@Override
-	public void procesarePlata(FurnizorContract furnizor, Double valoarePlata) {
+	public Plata procesarePlata(FurnizorContract furnizor, Double valoarePlata) {
 		logger.debug("3.4. Procesare/onorare plata catre furnizori");
 		Plata plata = new Plata();
 		plata.setDataPlatii(new Date());
@@ -178,6 +178,8 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 		
 		sitFit.adaugarePlata(plata);
 		furnizor.adaugarePlata(plata);
+		
+		return plata;
 	}
 	
 	@Override
