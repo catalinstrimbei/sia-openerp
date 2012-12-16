@@ -145,7 +145,7 @@ public interface FinanciarPlatiSrv {
 	 * 
 	 */
 
-	void procesarePlata(FurnizorContract furnizor, Double valoarePlata);
+	Plata procesarePlata(FurnizorContract furnizor, Double valoarePlata);
 
 	/**
 	 * 

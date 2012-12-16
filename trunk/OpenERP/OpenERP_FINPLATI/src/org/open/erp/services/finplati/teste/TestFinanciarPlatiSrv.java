@@ -19,6 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -39,6 +40,8 @@ import org.open.erp.services.finplati.ResponsabilPlata;
 import org.open.erp.services.finplati.SituatieFinanciara;
 import org.open.erp.services.finplati.TipPlata;
 import org.open.erp.services.achizitii.Factura;
+import org.open.erp.services.banci.CompanieBanci;
+import org.open.erp.services.banci.Cont;
 
 public class TestFinanciarPlatiSrv {
 	private static Logger logger;
@@ -89,13 +92,26 @@ public class TestFinanciarPlatiSrv {
 		factura1.setValoareTotala(1000.0);
 		sitFit.adaugareFactura(factura1);
 		 
+		Cont contBancar = new Cont();
+		contBancar.setId(1);
+		contBancar.setNume("Dummy name");
+		contBancar.setTipCard(2);
+		contBancar.setTipCont("Dummy account type");
+		
+		CompanieBanci banca = new CompanieBanci();
+		banca.setCont(contBancar);
+		banca.setNumeBanca("Dummy Bank name");
+		banca.setNumeCompanie("Dummy Company name");
+		
 		Plata plata1 = new Plata();
 		Date dataPlata = new Date();
 		plata1.setDataPlatii(dataPlata);
 		plata1.setId(5);
 		plata1.setValoarePlata(120.0);
 		plata1.setTipPlata(TipPlata.DATORIE);
-		plata1.setModPlata(ModPlata.CEC);
+		plata1.setModPlata(ModPlata.VIRAMENTBANCAR);
+		plata1.setCont(contBancar);
+		plata1.setBanca(banca);
 		plata1.setConfirmarePlata(null);
 		
 		Plata plata2 = new Plata();
@@ -146,7 +162,7 @@ public class TestFinanciarPlatiSrv {
 	    assertNotNull("Nu exista nici un avans inregistrat", avansdbl);
 	    assertTrue("Valoarea avansului nu este corecta", avansdbl==350.0);
 	    
-	    logger.info("2.3. Discountul acordat");
+	   logger.info("2.3. Discountul acordat");
 	    testCtr.setDiscountContract(0.2);
 	    Double dsc = testCtr.getDiscountContract();
 	    assertNotNull("Nu exista nici un discount inregistrat", dsc);
@@ -163,58 +179,58 @@ public class TestFinanciarPlatiSrv {
 	    assertTrue("Prima persoana nu e Ionescu", listpers.get(0)==ionescu);
 	    assertTrue("A doua persoana nu e Popescu", listpers.get(1)==popescu);
 	    
-	    logger.info("3.2. Stabilire responsabilPlata plata");
-	    finplatiInstance.stabilireResponsabilPlata();
+	  //  logger.info("3.2. Stabilire responsabilPlata plata");
+	   finplatiInstance.stabilireResponsabilPlata();
 	    ResponsabilPlata resp = finplatiInstance.getSituatieFinanciara().getResponsabil();
 	    assertNotNull("Nu exista nici un responsabilPlata inregistrat", resp);
 	    assertTrue("Prima persoana nu e Ionescu", resp.getIdPersoana()==ionescu.getIdPersoana());
 	    
 	    logger.info("3.3. Clasificare plati ( furnizori / datorii )");
-	   // Map<TipPlata, List<Plata>> clasif = finplatiInstance.clasificarePlati();
-	   // assertNotNull("Nu exista nici o clasificare", clasif);
-	    // assertTrue("Prima plata nu e plata1", clasif.get(0)==plata1);
-	   //  assertTrue("A doua plata nu e plata2", clasif.get(1)==plata2);
+	    Map<TipPlata, List<Plata>> clasif = finplatiInstance.clasificarePlati();
+	    assertNotNull("Nu exista nici o clasificare", clasif);
+	    assertTrue("Prima plata nu e plata1", clasif.get(TipPlata.DATORIE).get(0)==plata1);
+	    assertTrue("A doua plata nu e plata2", clasif.get(TipPlata.ALTTIP).get(0)==plata2);
 	   
 	    logger.info("3.4. Procesare/onorare plata catre furnizori");
-	  // procesarePlata onorare = finplatiInstance.procesarePlata(furnizor1, 100.0);
-	   // assertNotNull("Nu are loc procesarea platii", onorare );
-	    //assertTrue(" Procesarea nu este", onorare);
-	   // Logger.debug(finplatiInstance.procesarePlata());
+	    Plata plataProcesata = finplatiInstance.procesarePlata(furnizor1, 100.0);
+	    assertNotNull("Plata nu a fost procesata (null)", plataProcesata);
+	    assertTrue("Plata nu a fost procesata", furnizor1.getPlati().containsKey(plataProcesata.getId()));
+
 	    
-	    logger.debug("3.5. Verificare desfasurare plata");
+	 //   logger.debug("3.5. Verificare desfasurare plata");
 	    Boolean verificare = finplatiInstance.verificarePlata(furnizor1, plata1);
 	    assertNotNull("Nu exista nici o verificare", verificare);
 	    assertTrue("Nu corespunde", verificare);
 	
 	    logger.debug("4.1 Efectuare plata pt datorii");
 	    
-	    logger.debug("4.2. Primire chitanta");
+	  //  logger.debug("4.2. Primire chitanta");
 	    ChitantaPlata chit = finplatiInstance.primireChitanta(200.0);
 	    assertNotNull("S-a facut primirea chitante", chit);
 	    
-	    logger.debug(finplatiInstance.afisareSituatiePlati());
+	   logger.debug(finplatiInstance.afisareSituatiePlati());
 	    Double sitplata = finplatiInstance.afisareSituatiePlati();
 	    assertNotNull("Eroare in calculul situatia platilor", sitplata);
-	    assertTrue("Situatia plata nu coincide cu evidenta", sitplata == 570.0);
+	    assertTrue("Situatia plata nu coincide cu evidenta", sitplata == 550.0);
 	    
 	    
 //5	    
-	    logger.info("5.1. Urmarire datorii ramase"); 
+	 //   logger.info("5.1. Urmarire datorii ramase"); 
 	    logger.debug(finplatiInstance.afisareDatorii());
 	    Double datorii = finplatiInstance.afisareDatorii();
 	    assertNotNull("Eroare in calculul datoriilor", datorii);
 	    assertTrue("Datoriile nu coincid cu evidenta", datorii == 1850.0);
 	    
 	  
-	    logger.info("5.2. Urmarire situatie plati");
+	 //   logger.info("5.2. Urmarire situatie plati");
 	    logger.debug(finplatiInstance.afisarePlatiTotale());
 	    Double platitotale = finplatiInstance.afisarePlatiTotale();
 	    assertNotNull("Eroare in calculul platilor", platitotale);
-	    assertTrue("Platile totale nu coincid cu evidenta", platitotale == 570.0);
+	    assertTrue("Platile totale nu coincid cu evidenta", platitotale == 550.0);
 	     
 	    
-	    logger.info("5.3. Interogare sold");
-	    logger.debug(finplatiInstance.afisareSold());
+	  //  logger.info("5.3. Interogare sold");
+	    //logger.debug(finplatiInstance.afisareSold());
 	    Double soldafisare = finplatiInstance.afisareSold();
 	    assertNotNull("Eroare in calculul platilor", soldafisare);
 	    assertTrue("Platile totale nu coincid cu evidenta", soldafisare == 18150.0);
