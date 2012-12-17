@@ -9,6 +9,7 @@ String procentTVACurent;
 String observatii;
 String um;
 String categorieMaterial;
+public Reteta reteta;
 ListaCaracteristici listaCaracteristici;
 
 
@@ -53,6 +54,13 @@ public String getObservatii() {
 }
 public void setObservatii(String observatii) {
 	this.observatii = observatii;
+}
+
+public String getReteta() {
+	return reteta;
+}
+public void setReteta(String reteta) {
+	this.reteta = reteta;
 }
 
 public String getCategorieMaterial() {
