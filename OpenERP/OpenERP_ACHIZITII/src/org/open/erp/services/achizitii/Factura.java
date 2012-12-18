@@ -12,7 +12,7 @@ import java.util.Map.Entry;
 
 import org.open.erp.services.nomgen.Document;
 
-public class Factura {
+public class Factura extends Document{
 	public Factura() {
 		//super();
 	}
