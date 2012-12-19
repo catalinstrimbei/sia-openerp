@@ -1,83 +1,102 @@
 package org.open.erp.services.contabgest.teste;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import org.open.erp.services.Productie.Produs;
-import org.open.erp.services.Productie.Reteta;
-import org.open.erp.services.Productie.Semifabricat;
+//AICI AM MODIFICAT---
 
-import org.open.erp.services.contabgest.Manopera;
-import org.open.erp.services.contabgest.impl.*;
-import org.open.erp.services.nommat.ListaCaracteristici;
+import java.util.Date;
+
+
 import org.open.erp.services.nommat.Material;
-import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.personal.ContractMunca;
-import org.open.erp.services.personal.Post;
+//import org.open.erp.services.contabgest.impl.Material;
+import org.open.erp.services.Productie.Reteta;
+import org.open.erp.services.contabgest.AnalizaRezultatelor;
+import org.open.erp.services.contabgest.CalculCost;
+import org.open.erp.services.contabgest.CheltuieliProdus;
+import org.open.erp.services.contabgest.RepartizareCheltuieli;
+import org.open.erp.services.contabgest.impl.*;
 
 public class ClasaTestare {
 
 	public static void main(String arg[])
 	{
-		//date care sa ne ajute
-		double x=0;
-		Adresa adresa=new Adresa();
-		Post post=new Post();
-		Date date2=new Date(94,3,12);
-		Date date1=new Date(94,3,15);
-		ListaCaracteristici l1=new ListaCaracteristici();
-		Material m1=new Material("1","soda","3","10","24","nici o observatie",l1);
-		Material m2=new Material("2","apa","3","101","24","nici o observatie",l1);
-		Material m3=new Material("3","clor","3","103","24","nici o observatie",l1);
-		Material m4=new Material("4","lemn","3","10","24","nici o observatie",l1);
 		
 		
-		Semifabricat sem1=new Semifabricat();
-		Semifabricat sem2=new Semifabricat();
-		Semifabricat sem3=new Semifabricat();
-		Semifabricat sem4=new Semifabricat();
-		
-		
-		Produs p1=new Produs(1,"sapun");
-		Produs p2=new Produs(2,"pizza");
-		Produs p3=new Produs(2,"soba");
-		
-		Reteta r1=new Reteta(1,p1,m1,sem1,10.0,10.0);
-		Reteta r2=new Reteta(2,p2,m2,sem2,7.0,6.0);
-		Reteta r3=new Reteta(3,p3,m3,sem4,8.0,4.0);
-		
-		ContractMunca con1=new ContractMunca(1,1,date1,"perioada",4,8,post,100);
-		
-		Angajat a1=new Angajat(1,"popescu","M","sdad@dada.com","status","casatorit","craciun","0990000",adresa,con1);
-		
-		
-		CalculCost c1=new CalculCost(1,p1,)
-		
-		
-		public ContractMunca (int salar, int idContract, Date dataAngajare, String perioadaContract,
-				int numarLuniContr, int normaZilnica, Post functie,int tarifOreSupl)
-		
-		
-		public CalculCost(int id, Produs produs, Manopera manopera)
-		
-		public Manopera(Produs produs, Map m)
-		{
-			this.produs=produs;
-			this.oreLucrateAngajati=m;
-		}
-		public Angajat(Integer id, String nume, String sex, String mail,
-				String statutInCompanie, String stareCivila, String dataNastere,
-				String telefon, Adresa adresa, ContractMunca cm)
-		
-//		public Reteta(Integer idReteta, Produs produs, Material materiePrima,
-//				Semifabricat semifabricat, Double cantitateM,Double cantitateS)
-//		public Material(String codMaterial, String denumireMaterial, String cantitateStandard, String pretStandard,
-//				String procentTVACurent, String observatii, ListaCaracteristici listaCaracteristici)
-//
-//		//responsabili
+	
+
+		//responsabili
 //		Persoana ionescu=new Persoana("Ionescu");
-//		
-//		//crearea unui produs cu activitatile aferente
+		
+		
+		
+		
+		//CREAREA DE  MATERIALE 
+		//primum material de categoria MATERIEPRIMA...care nu au nevoie de o reteta;
+		Material m1=new Material();
+		m1.setCodMaterial("1");
+		m1.setDenumireMaterial("lemn");
+		m1.setCategorieMaterial("materiePrima");
+		m1.setPretStandard("100");
+		
+		Material m2=new Material();
+		m2.setCodMaterial("2");
+		m2.setDenumireMaterial("fier");
+		m2.setCategorieMaterial("materiePrima");
+		m2.setPretStandard("230");
+		
+		Material m3=new Material();
+		m3.setCodMaterial("3");
+		m3.setDenumireMaterial("apa");
+		m3.setCategorieMaterial("materiePrima");
+		m3.setPretStandard("10");
+		
+		Material m4=new Material();
+		m4.setCodMaterial("4");
+		m4.setDenumireMaterial("grasime");
+		m4.setCategorieMaterial("materiePrima");
+		m4.setPretStandard("140");
+		
+		//CREAREA DE MATERIALE care nu sunt de categoria MATERIEPRIMA--aici calculam pretul...
+		
+		Material mc1=new Material();
+		mc1.setCodMaterial("5");
+		mc1.setDenumireMaterial("sapun");
+		mc1.setCategorieMaterial("complex");
+		Reteta r1=new Reteta();
+		r1.setIdReteta(1);
+		r1.setMaterial(mc1);
+		
+		r1.getMateriale().put(m3, 10);
+		r1.getMateriale().put(m4, 5);
+		mc1.setReteta(r1);
+		
+		CalculCost calc1=new CalculCost();
+		calc1.setId(5);
+		calc1.setMaterial(mc1);
+		System.out.println("Costul final al sapunului este de "+calc1.costFinal());
+			
+		
+		//pentru repartizarea cheltuielilor
+		CheltuieliProdus cheltmc1=new CheltuieliProdus();
+		cheltmc1.setMaterial(mc1);
+		cheltmc1.setCalculCost(calc1);
+		cheltmc1.setBugetEstimat(800);
+		
+		
+		//-----------------Bugetul total si repartizarea cheltuielilor
+		RepartizareCheltuieli centralizare=new RepartizareCheltuieli();
+		centralizare.setBugetActual(1000);
+		centralizare.alocaBugetInitial(cheltmc1, 500);
+		System.out.println("bugetul total mai are o valoare de "+centralizare.getBugetActual());
+		centralizare.alocaBugetComplet(cheltmc1);
+		System.out.println("bugetul total mai are o valoare de "+centralizare.getBugetActual());
+		
+		//-----------------Analiza rezultatelor----------------------------
+		AnalizaRezultatelor analiza1=new AnalizaRezultatelor(1,cheltmc1);
+		double costEroare=analiza1.calcDiferenta();
+		System.out.println("Diferenta dintre bugetul estimat si cel real este de "+costEroare);
+		
+		
+		
+		
+		
 //		Produs pizza=new Produs(1,"pizza","bucata",oLista);
 //		
 //		
@@ -85,8 +104,8 @@ public class ClasaTestare {
 //		Activitate a1 =new Activitate(1,"materiale",x,date1,date2,pizza, "neinceputa",x);
 //		a1.setResponsabil(ionescu);
 //		a1.setCostEstimat(150);
-//		
-//		
+		
+		
 //		Activitate a2 =new Activitate(2,"servicii",x,date1,date2,pizza, "neinceputa",x);
 //		a2.setResponsabil(ionescu);
 //		a2.setCostEstimat(100);
@@ -101,7 +120,7 @@ public class ClasaTestare {
 //		Activitate a4=new Activitate(4,"ambalare",x,date1,date2,pizza, "neinceputa",x);
 //		a4.setResponsabil(ionescu);
 //		a4.setCostEstimat(50);
-//	
+//		
 //		pizza.stagiiProductie.add(a1);
 //		pizza.stagiiProductie.add(a2);
 //		pizza.stagiiProductie.add(a3);
@@ -127,7 +146,7 @@ public class ClasaTestare {
 //		AnalizaRezultatelor analiza=new AnalizaRezultatelor(1,pizza);
 //		
 //		System.out.println(analiza.calcDiferenta());
-	
+//	
 		
 	
 		

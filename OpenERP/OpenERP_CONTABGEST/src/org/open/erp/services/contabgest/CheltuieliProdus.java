@@ -1,19 +1,15 @@
 package org.open.erp.services.contabgest;
 
-import org.open.erp.services.Productie.Produs;
+//import org.open.erp.services.contabgest.impl.Material;
+import org.open.erp.services.nommat.Material;
 
 public class CheltuieliProdus {
 
-	private Produs produs;
+	private Material material;
 	private double bugetEstimat;
 	private double bugetAlocat=0;
 	private CalculCost calculCost;
-	public Produs getProdus() {
-		return produs;
-	}
-	public void setProdus(Produs produs) {
-		this.produs = produs;
-	}
+
 	public double getBugetEstimat() {
 		return bugetEstimat;
 	}
@@ -31,5 +27,11 @@ public class CheltuieliProdus {
 	}
 	public void setCalculCost(CalculCost calculCost) {
 		this.calculCost = calculCost;
+	}
+	public Material getMaterial() {
+		return material;
+	}
+	public void setMaterial(Material material) {
+		this.material = material;
 	}
 }
