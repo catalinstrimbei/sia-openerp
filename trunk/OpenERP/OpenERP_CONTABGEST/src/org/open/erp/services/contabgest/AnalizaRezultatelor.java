@@ -1,19 +1,22 @@
 package org.open.erp.services.contabgest;
-
-import org.open.erp.services.Productie.Produs;
+//AM MODIFICAT SI AICI DOAR UN PIC
+import org.open.erp.services.nommat.Material;
 import org.open.erp.services.contabgest.CalculCost;
 
 public class AnalizaRezultatelor {
 
 	private int id;
-	private Produs produs;
+	private Material material;
 	private CalculCost calculCost;
 	private CheltuieliProdus cp;
 	
 	
-	public AnalizaRezultatelor(int id,Produs produs)
+	public AnalizaRezultatelor(int id,CheltuieliProdus c)
 	{
-		this.setProdus(produs);
+		this.id=id;
+		this.cp=c;
+		this.calculCost=c.getCalculCost();
+		this.material=c.getMaterial();
 	}
 	public double calcDiferenta()
 	{
@@ -22,17 +25,18 @@ public class AnalizaRezultatelor {
 		System.out.println("SumaEstimata este "+  cp.getBugetEstimat());
 		return  calculCost.costFinal()-cp.getBugetEstimat() ;
 	}
-	public Produs getProdus() {
-		return produs;
-	}
-	public void setProdus(Produs produs) {
-		this.produs = produs;
-	}
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Material getMaterial() {
+		return material;
+	}
+	public void setMaterial(Material material) {
+		this.material = material;
 	}
 }
 /*

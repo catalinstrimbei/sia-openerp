@@ -1,4 +1,6 @@
 package org.open.erp.services.contabgest;
+//AM MODIFICAT SI AICI--IMBUNATATI
+
 
 public class RepartizareCheltuieli {
 	
@@ -25,10 +27,17 @@ public class RepartizareCheltuieli {
 	}
 
 
-
-	public void alocaBuget(CheltuieliProdus cp)
+	public void alocaBugetInitial(CheltuieliProdus cp, int sumaAlocataInitial)
 	{
-		if(bugetActual!=0)
+		if(cp.getBugetAlocat()==0)
+		{
+			cp.setBugetAlocat(sumaAlocataInitial);
+			this.bugetActual=this.bugetActual-sumaAlocataInitial;
+		}
+	}
+	public void alocaBugetComplet(CheltuieliProdus cp)
+	{
+		if(bugetActual>0 && bugetActual>(cp.getCalculCost().costFinal()-cp.getBugetAlocat()))
 		if(cp.getBugetAlocat()<cp.getCalculCost().costFinal())
 		{
 			double suma=cp.getCalculCost().costFinal()-cp.getBugetAlocat();
@@ -36,10 +45,18 @@ public class RepartizareCheltuieli {
 			bugetActual=bugetActual-suma;
 			
 		}
-		else System.out.println("Bugetul este consumat");
-			
+		else System.out.println("Bugetul este consumat sau insuficient");
 	}
-
+	
+	public void alocaBugetPartial(CheltuieliProdus cp,double sumaPartialaAlocata)
+	{
+		if(bugetActual>0&& bugetActual>sumaPartialaAlocata)
+			if(cp.getBugetAlocat()<cp.getCalculCost().costFinal())
+			{
+				cp.setBugetAlocat(cp.getBugetAlocat()+sumaPartialaAlocata);
+			}
+			else System.out.println("Bugetul este consumat sau insuficient");
+	}
 
 	
 
