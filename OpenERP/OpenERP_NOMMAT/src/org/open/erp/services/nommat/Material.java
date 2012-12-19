@@ -1,5 +1,5 @@
 package org.open.erp.services.nommat;
-
+import org.open.erp.services.Productie.Reteta; //adaugat de ContabGest
 public class Material {
 String codMaterial;
 String denumireMaterial;
@@ -9,7 +9,7 @@ String procentTVACurent;
 String observatii;
 String um;
 String categorieMaterial;
-public Reteta reteta;
+ Reteta reteta;
 ListaCaracteristici listaCaracteristici;
 
 
@@ -56,11 +56,11 @@ public void setObservatii(String observatii) {
 	this.observatii = observatii;
 }
 
-public String getReteta() {
+public Reteta getReteta() {
 	return reteta;
 }
-public void setReteta(String reteta) {
-	this.reteta = reteta;
+public void setReteta(Reteta x) { //aici trebuie Reteta reteta ...nu String reteta
+	this.reteta = x;
 }
 
 public String getCategorieMaterial() {
@@ -100,6 +100,5 @@ public Material(String codMaterial, String denumireMaterial, String cantitateSta
 public Material() {
 	super();
 }
-
 
 }
