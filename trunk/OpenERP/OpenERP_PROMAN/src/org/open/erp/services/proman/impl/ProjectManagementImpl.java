@@ -3,137 +3,183 @@ package org.open.erp.services.proman.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.apache.log4j.Logger;
 import org.open.erp.services.buget.Buget;
-import org.open.erp.services.buget.BugetareSrv;
+import org.open.erp.services.buget.BugetareSrvLocal;
 import org.open.erp.services.proman.Activitate;
 import org.open.erp.services.proman.ActivitateBugetata;
 import org.open.erp.services.proman.Proiect;
 import org.open.erp.services.proman.ProjectManagementSrv;
+import org.open.erp.services.proman.ProjectManagementSrvLocal;
 import org.open.erp.services.proman.Responsabil;
 
 /**
- * @ApplicationServiceImplementation
+ * 
+ * @ApplicationServiceImplementation(ServiceAPI)
  * 
  */
+@Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class ProjectManagementImpl 
+	implements ProjectManagementSrv, ProjectManagementSrvLocal{
+	
+	/* Dependente resurse proprii */
+	private static Logger logger = Logger.getLogger(ProjectManagementImpl.class.getName());	
+	private RegistruProiect registruProiect;
 
-public class ProjectManagementImpl implements ProjectManagementSrv{
+	/* Dependente resurse injectate */
+	@PersistenceContext(unitName="OpenERP_PROMAN")
+	private EntityManager em;
 	
-	private BugetareSrv bugetareSrv;
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProjectManagementImpl.class.getName());
+	@Resource
+	private SessionContext sessionContext;	
+	
+	@EJB(lookup="java:global/OpenERP_BUGET/BugetareImpl!org.open.erp.services.buget.BugetareSrvLocal")
+	private BugetareSrvLocal bugetareSrv;
+	
+	/* Initializare */
+	public ProjectManagementImpl() { }	
+	@PostConstruct
+	public void init(){		
+		if (this.registruProiect == null)
+			registruProiect = new RegistruProiect(em);
+		
+	}	
 	
 	
-	
-	public void setBugetareSrv(BugetareSrv bugetareSrv) {
-		this.bugetareSrv = bugetareSrv;
-	}
-
+	/* implementare actiuni serviciu ProjectManagementSrv */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Proiect creareProiect(String nume, Responsabil responsabil,
 			Date dataStart, Date dataSfarsit, Double valoareBuget) throws Exception {
-		logger.debug("1.1 Initiere/Creare proiect nou");
 		
-		Proiect proiectNou = new Proiect(1, nume, dataStart, dataSfarsit, valoareBuget, responsabil);
-		Buget buget = bugetareSrv.creareBuget(valoareBuget);
-		proiectNou.setBuget(buget);		
+		logger.debug(">>>>>>>>>>>> START Creare proiect standadr");		
+		//Proiect proiectNou = new Proiect(1, nume, dataStart, dataSfarsit, valoareBuget, responsabil);
+		Proiect proiectNou = new Proiect(nume, dataStart, dataSfarsit, valoareBuget, responsabil);
+		
+		creareProiect(proiectNou);
+		
+		logger.debug(">>>>>>>>>>>> END Creare proiect standard");
 		return proiectNou;
 	}
-
-	public ProjectManagementImpl() {
-	}
-
+	
+	
 	@Override
-	public Activitate creareActivitate(Proiect proiect,
-			Responsabil responsabil, String titulatura, Date dataStart,
-			Date dataSfarsit, Double valoareBugetata) throws Exception {
-		logger.debug("1.3 Adaugare activitati in proiect");
+	public Activitate creareActivitate(Proiect proiect, Responsabil responsabil,
+			String titulatura, Date dataStart, Date dataSfarsit,
+			Double valoareBugetata) throws Exception {
+		
+		logger.debug(">>>>>>>>>>>> START Creare activitate >>>>>>>>>>>>>>> ");	
 		
 		ActivitateBugetata activitate = new ActivitateBugetata(titulatura, dataStart, dataSfarsit, valoareBugetata, responsabil);
 		proiect.adaugaActivitate(activitate);
 		activitate.setProiect(proiect);
 		
-		return activitate;
-	}
-	
-	@Override
-	public void stabilireResponsabilActivitate(Activitate activitate,
-			Responsabil responsabil) {
-		logger.debug("1.4 Stabilire responsabil activitate");
-		activitate.setResponsabil(responsabil);
-	}
-
-	@Override
-	public void stabilireLinieBugetara(Activitate activitate,
-			Double valoareBugetata) {
-		logger.debug("1.5 Stabilire linie bugetara");
-		((ActivitateBugetata)activitate).setValoareBugetata(valoareBugetata);
+		/* 1. Direct activitate */
+		//activitate = this.registruProiect.salveazaActivitateBugetata(activitate);
+		//logger.debug(">>>>>>>>>>>> Activitate salvata direct >>>>>>>>>>>>>>>");
 		
-	}
-
-	/* ------------- */
-	@Override
-	public Proiect creareProiect(String numeProiect, Date dataStart, Date dataSfarsit, Double valoareBuget) 
-			throws Exception {
-		logger.debug("1.1 Initiere/Creare proiect nou");
-		Proiect proiectNou = new Proiect(1, numeProiect, dataStart, dataSfarsit, null, null);
-		Buget buget = bugetareSrv.creareBuget(valoareBuget);
-		proiectNou.setBuget(buget);		
-		return proiectNou;
-	}
-
-	@Override
-	public Activitate creareActivitate(Proiect proiect, String titulatura,
-			Date dataStart, Date dataSfarsit) throws Exception {
-		logger.debug("1.3 Adaugare activitate in proiect");
+		/* 2. Mod agregat - cascadare @OneoMany */
+		this.registruProiect.salveazaProiect(proiect);
+		logger.debug(">>>>>>>>>>>> Activitate salvata in agregat proiect >>>>>>>>>>>>>>>");
 		
-		ActivitateBugetata activitate = new ActivitateBugetata(titulatura, dataStart, dataSfarsit,
-				null, null);
-		proiect.adaugaActivitate(activitate);
-		activitate.setProiect(proiect);
-		
+		logger.debug(">>>>>>>>>>>> END Creare activitate >>>>>>>>>>>>>>>");
 		return activitate;
 	}
 
-	//
-	@Override
-	public Double getSoldProiectInCurs(Integer idProiect, Date dataSold) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Proiect getProiect(Integer idProiect) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Proiect> getProiecte() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	@Override
 	public void startProiect(Proiect proiect) {
+		System.out.println("To start project ....");
 		// Schimba status proiect in started, schimba status prima activitate in started
-		
+		proiect.setStatus(Proiect.INITIALIZAT);
+		System.out.println("To project started ....");
+		Activitate primaActivitate = proiect.getActivitati().iterator().next();
+		System.out.println("activity started ....");
+		primaActivitate.setStatus(Activitate.IN_CURS);
+		System.out.println("Finish starting project ....");
 	}
 
 	@Override
 	public void progresActivitate(Activitate activitate, Double procent,
 			Double cost, Date dataActualizata) {
 		// Schimba status proiect in progress, actualizeaza activitate, actualizeaza linii de bugetare proiect
-		
+		if (activitate.getStatus().equals(Activitate.NE_PORNITA))
+			activitate.setStatus(activitate.IN_CURS);
+		activitate.setDataActualizare(dataActualizata);
+		activitate.setProcentRealizare(activitate.getProcentRealizare() + procent);
+		/* Actualizare buget ??? */
+		//bugetareSrv.actualizareBuget(activitate.getProiect().getLinieBugetara(activitate), cost);
 	}
 
+	@Override
+	public Double getSoldProiectInCurs(Integer idProiect, Date dataSold) {
+		Proiect proiect = registruProiect.getProiect(idProiect); 
+		ProcesorProiecte procesorProiecte = new ProcesorProiecte();
+		Double buget = procesorProiecte.getBugetProiectInCurs(proiect, dataSold);
+		Double cost = procesorProiecte.getCostProiectInCurs(proiect, dataSold);
+		
+		return buget - cost;
+//		return null;
+	}
+
+	@Override
+	public Proiect getProiect(Integer idProiect) {
+		return registruProiect.getProiect(idProiect);
+//		return null;
+	}
+	@Override
+	public List<Proiect> getProiecte() {
+		List<Proiect> proiecte = registruProiect.getToateProiectele();
+		if (proiecte.isEmpty())
+			logger.debug("Returner 000 proiecte!");
+		else
+			logger.debug("Returner " + proiecte.size() + " proiecte!");
+		return proiecte;
+	}
 	@Override
 	public Proiect creareProiect(Proiect proiectNou) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Proiect salvareProiect(Proiect proiect) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.debug(">>>>>>>>>>>> Cerere buget: " + bugetareSrv);		
+		Buget buget = bugetareSrv.creareBuget(proiectNou.getValoareBugetata());
+		proiectNou.setBuget(buget);
+		logger.debug("Buget proiect: " + buget.getValoareBuget());
+		
+		salvareProiect(proiectNou);
+		
+		logger.debug(">>>>>>>>>>>> END Creare proiect");
+		return proiectNou;
 	}
 	
+	@Override
+	public Proiect salvareProiect(Proiect proiect) throws Exception {
+		if (proiect.getBuget() == null){
+			logger.debug(">>>>>>>>>>>> Cerere buget: " + bugetareSrv);		
+			Buget buget = bugetareSrv.creareBuget(proiect.getValoareBugetata());
+			proiect.setBuget(buget);
+			logger.debug("Buget proiect: " + buget.getValoareBuget());			
+		}
+		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare/salvare proiect - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+		}else{
+			proiect = this.registruProiect.salveazaProiect(proiect);
+			//em.persist(proiectNou);
+		}
+		
+		logger.debug(">>>>>>>>>>>> END salvare proiect");
+		return proiect;
+	}	
 }
