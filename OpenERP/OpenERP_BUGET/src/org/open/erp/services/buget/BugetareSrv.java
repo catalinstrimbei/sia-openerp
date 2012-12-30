@@ -1,5 +1,6 @@
 package org.open.erp.services.buget;
 
+import javax.ejb.Remote;
 
 /**
  * 
