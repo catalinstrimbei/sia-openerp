@@ -2,16 +2,25 @@ package org.open.erp.services.buget;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+
 /*
  * 
  * @BusinessObject(DummyEntity)
  * 
  */
 
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class LinieBugetara implements Serializable{
-
+	@Id @GeneratedValue
 	protected Integer id;
-
+	@ManyToOne
 	protected Buget buget;
 	protected Double valoareBugetata;
 	protected Double valoareConsumata;

@@ -2,15 +2,19 @@ package org.open.erp.services.buget;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 
 /*
  * 
  * @BusinessObject(DummyEntity)
  * 
  */
-
+@Entity
 public class Buget implements Serializable{
-
+	@Id @GeneratedValue
 	Integer idBuget;
 	Double valoareBuget;
 
