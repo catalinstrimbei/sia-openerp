@@ -2,7 +2,9 @@ package org.open.erp.services.proman;
 
 import java.io.Serializable;
 
-import org.open.erp.services.nomgen.Persoana;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 /**
  * 
  * @author catalin.strimbei
@@ -10,10 +12,13 @@ import org.open.erp.services.nomgen.Persoana;
  * @BusinessObject(Entity)
  * 
  */
-public class Responsabil extends Persoana{
+@Entity
+public class Responsabil implements Serializable{
 	// Mosteneste: id, cnp, nume, prenume, adresa_email, adresa_postala(str_bloc_nr, codpostal, localitate, tara), adresa_web
 	// Local: observatii
 	String obsExperienta;
+	@Id
+	@GeneratedValue
 	private Integer idPersoana;
 	private String nume;
 	private String prenume;
@@ -87,3 +92,5 @@ public class Responsabil extends Persoana{
 	
 	
 }
+
+// Strategie de mostenire: JOINED_TABLES ?

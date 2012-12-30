@@ -2,13 +2,6 @@ package org.open.erp.services.proman;
 
 import java.util.Date;
 
-/**
- * 
- * @author catalin.strimbei
- * 
- * @BusinessObject(Interface)
- * 
- */
 public interface Activitate {
 
 	public static final Integer NE_PORNITA = -1;

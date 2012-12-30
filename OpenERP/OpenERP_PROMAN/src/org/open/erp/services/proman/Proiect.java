@@ -1,11 +1,22 @@
 package org.open.erp.services.proman;
 
+import static javax.persistence.TemporalType.TIMESTAMP;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+
 import org.open.erp.services.buget.Buget;
+import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * 
@@ -14,26 +25,37 @@ import org.open.erp.services.buget.Buget;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class Proiect implements Serializable{
 	public static final Integer IN_INITIALIZARE = -1;
 	public static final Integer INITIALIZAT = 0;
 	public static final Integer IN_CURS = 1;
 	public static final Integer TERMINAT = 2;
-
+	
+	@Id @GeneratedValue
 	Integer idProiect;
 	
 	String nume;
+	@Temporal(TIMESTAMP)
 	Date dataStart = new Date();
+	
+	@Temporal(TIMESTAMP)
 	Date dataSfarsit;
 	
 	Double valoareBugetata;
 	
 	Integer status = Proiect.IN_INITIALIZARE; /* NOT_STARTED, IN_PROGRESS, COMPLET, AMANAT, SUSPENDAT/IN_ASTEPTARE */ 
 	
+	@ManyToOne
 	Responsabil responsabil;
 	
+	@ManyToOne
 	Buget buget;
-
+	
+	/* targetEntity este absolut obligatorie pentru ca Activitate este o interfata */
+	@OneToMany(mappedBy = "proiect", 
+			targetEntity = ActivitateBugetata.class, 
+			cascade = ALL, fetch = EAGER)
 	List<Activitate> activitati = new ArrayList<Activitate>();
 	
 	/* :: categorie, prioritate, bugetTimp, observatii */
