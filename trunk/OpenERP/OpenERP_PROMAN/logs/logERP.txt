@@ -1,5 +1,5 @@
-(A2) 2012-12-05 17:41:16,055 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.1 Initiere/Creare proiect nou
-(A2) 2012-12-05 17:41:16,062 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.3 Adaugare activitate in proiect
-(A2) 2012-12-05 17:41:16,064 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.4 Stabilire responsabil activitate
-(A2) 2012-12-05 17:41:16,069 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.5 Stabilire linie bugetara
-(A2) 2012-12-05 17:41:16,069 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.3 Adaugare activitati in proiect
+(A2) 2012-12-05 18:36:16,374 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.1 Initiere/Creare proiect nou
+(A2) 2012-12-05 18:36:16,379 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.3 Adaugare activitate in proiect
+(A2) 2012-12-05 18:36:16,381 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.4 Stabilire responsabil activitate
+(A2) 2012-12-05 18:36:16,386 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.5 Stabilire linie bugetara
+(A2) 2012-12-05 18:36:16,386 [main] DEBUG org.open.erp.services.proman.impl.ProjectManagementImpl - 1.3 Adaugare activitati in proiect
