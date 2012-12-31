@@ -6,13 +6,11 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
 		
-			<jar-file>OpenERP_BUGET.jar</jar-file>
-			<class>org.open.erp.services.buget.Buget</class>
-			<class>org.open.erp.services.buget.LinieBugetara </class>
-			<class>org.open.erp.services.proman.Responsabil</class>
-			<class>org.open.erp.services.proman.Proiect</class>
-			<class>org.open.erp.services.proman.ActivitateBugetata</class>
-
+		<jar-file>OpenERP_BUGET.jar</jar-file>
+		<class>org.open.erp.services.proman.Responsabil</class>
+		<class>org.open.erp.services.proman.Proiect</class>
+		<class>org.open.erp.services.proman.ActivitateBugetata</class>
+		<class>org.open.erp.services.buget.Buget</class>
 		
       <properties>
          <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->

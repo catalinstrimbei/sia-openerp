@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-org.eclipse.jpt.core.platform=hibernate2_0
+org.eclipse.jpt.core.platform=generic2_0
 org.eclipse.jpt.jpa.core.discoverAnnotatedClasses=true
 problem.TARGET_ENTITY_IS_NOT_AN_ENTITY=ignore
 problem.TARGET_ENTITY_NOT_DEFINED=ignore

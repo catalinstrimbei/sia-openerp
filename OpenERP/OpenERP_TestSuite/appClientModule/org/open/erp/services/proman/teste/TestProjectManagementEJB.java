@@ -27,7 +27,8 @@ public class TestProjectManagementEJB {
 	/* Set up */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		promanInstance = ProjectManagementSrvFactory.getProjectManagementSrv();
+		promanInstance = 
+			ProjectManagementSrvFactory.getProjectManagementSrv();
 		logger.info("initTest " + promanInstance);
 	}
 
