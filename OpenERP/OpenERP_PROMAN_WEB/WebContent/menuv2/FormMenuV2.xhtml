@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://java.sun.com/jsf/core">
+<body>
+
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">MODUL PROMAN [menu_V2]</div>
+	<h:panelGrid columns="1" border="1">
+		<h:form id="mainForm">
+			<h:panelGrid columns="4" border="0" style="color: #FFFFFF; background-color: #0000FF;;">
+
+				<h:commandLink id="FormProiecte"
+					actionListener="#{formMenu.actionSrcChangeForm}"
+					action="#{formMenu.changeSrcFormCurent}" value="Editare proiecte" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormProiecte"></p:attribute>
+				</h:commandLink>
+				<h:commandLink id="FormProiecteActivitati"
+					actionListener="#{formMenu.actionSrcChangeForm}" 
+					action="#{formMenu.changeSrcFormCurent}" value="Editare proiecte activitati" style="color: #FFFFFF">
+					<p:attribute name="srcForm" value="FormProiecteActivitati"></p:attribute>
+				</h:commandLink>
+				
+				<h:commandLink id="FormResponsabili"
+					actionListener="#{formMenu.actionSrcChangeForm}"
+					action="#{formMenu.changeSrcFormCurent}" value="Editare responsabili" style="color: #FFFFFF">
+				</h:commandLink>
+				<h:commandLink id="RaportProiecte"
+					actionListener="#{formMenu.actionSrcChangeForm}"
+					action="#{formMenu.changeFormCurent}" value="Listare proiecte" style="color: #FFFFFF">
+				</h:commandLink>
+
+			</h:panelGrid>
+		</h:form>
+		<h:panelGrid columns="1" border="0">
+				<ui:include src="#{formMenu.srcCurentForm}"></ui:include>
+		</h:panelGrid>
+	</h:panelGrid>
+</body>
+</html>

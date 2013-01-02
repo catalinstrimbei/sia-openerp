@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:head></h:head>
+<body>
+	<div style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">
+		CALENDAR_2
+	</div>
+	
+	<rich:calendar datePattern="dd/MM/yyyy hh:mm:ss" />
+<h:form>
+		<rich:toolbar>
+			<rich:dropDownMenu mode="ajax" label="File">
+				<rich:menuItem label="New" />
+				<rich:menuItem label="Open File..." />
+				<rich:menuItem label="Close" />
+				<rich:menuItem label="Close All" />
+			</rich:dropDownMenu>
+			<rich:dropDownMenu mode="ajax">
+				<f:facet name="label">
+					<h:outputText value="Edit" />
+				</f:facet>
+				<rich:menuItem label="Undo" />
+			</rich:dropDownMenu>
+			<rich:dropDownMenu mode="ajax">
+				<f:facet name="label">
+					<h:outputText value="Help" />
+				</f:facet>
+				<rich:menuItem label="About" />
+			</rich:dropDownMenu>
+		</rich:toolbar>
+	</h:form>	
+	
+</body>
+</html>

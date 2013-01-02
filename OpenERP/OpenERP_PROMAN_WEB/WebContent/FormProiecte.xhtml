@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Form
+		PROIECTE JSF</div>
+	<h:form id="formProiecte">
+		<h:panelGrid columns="2" border="0">
+			<p:facet name="header">
+				<h:outputText value="CRUD PROIECTE 1.0 " style="color: #FF0000"></h:outputText>
+			</p:facet>
+
+			<h:selectOneMenu id="cboProiecte" value="#{formProiecte.proiect}"
+				converter="#{formProiecte}">
+				<p:selectItems value="#{formProiecte.proiecte}"></p:selectItems>
+				<p:ajax render="nume dataStart dataSfarsit buget"></p:ajax>
+			</h:selectOneMenu>
+			<h:panelGrid columns="3" border="0">
+				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
+					actionListener="#{formProiecte.previousProiect}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+				<h:commandButton id="cmdNext" value="&gt;&gt;"
+					disabled="#{formProiecte.disableNext}"
+					actionListener="#{formProiecte.nextProiect}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+			</h:panelGrid>
+
+			<h:outputText value="Nume:"></h:outputText>
+			<h:inputText id="nume" value="#{formProiecte.proiect.nume}"
+				validator="#{formProiecteActivitati.validate}"></h:inputText>
+
+			<h:outputText value="Data Start:"></h:outputText>
+			<h:inputText id="dataStart" value="#{formProiecte.proiect.dataStart}">
+				<p:convertDateTime pattern="dd/MM/yyyy"></p:convertDateTime>
+			</h:inputText>
+
+			<h:outputText value="Data Sfarsit:"></h:outputText>
+			<rich:calendar id="dataSfarsit" datePattern="dd/MM/yyyy" popup="true"
+				value="#{formProiecte.proiect.dataSfarsit}">
+			</rich:calendar>
+
+			<h:outputText value="Buget:"></h:outputText>
+			<h:inputText id="buget"
+				value="#{formProiecte.proiect.valoareBugetata}" validatorMessage="Bugetul nu poate fi negativ!">
+				<p:validateDoubleRange minimum="0"></p:validateDoubleRange>
+			</h:inputText>
+
+			<p:facet name="footer">
+				<h:panelGrid columns="4" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare"
+						action="#{formProiecte.adaugareProiect}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Abandon">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						action="#{formProiecte.salvareProiect}">
+						<p:ajax render="@form" execute="@form"></p:ajax>
+					</h:commandButton>
+				</h:panelGrid>
+			</p:facet>
+
+		</h:panelGrid>
+		<h:messages layout="table" style="color: red"></h:messages>
+	</h:form>
+
+</body>
+
+</html>

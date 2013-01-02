@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">MODUL
+		PROMAN RiCH-menu-V4</div>
+		
+	<h:form>
+		<rich:toolbar>
+			<rich:dropDownMenu label="Operatiuni Proiecte">
+				<f:facet name="label">
+					<h:outputText value="Operatiuni Proiecte" />
+				</f:facet>				
+				<rich:menuItem label="Editare proiecte" 
+					actionListener="#{formRichMenu.actionSrcChangeForm}"
+					action="#{formRichMenu.changeSrcFormCurent}" >
+					<f:attribute name="srcForm" value="FormProiecte">
+					</f:attribute>
+				</rich:menuItem>
+				<rich:menuItem label="Editare proiecte activitati"
+					actionListener="#{formRichMenu.actionSrcChangeForm}"
+					action="#{formRichMenu.changeSrcFormCurent}" >
+					<f:attribute name="srcForm" value="FormProiecteActivitati">
+					</f:attribute>
+				</rich:menuItem>
+				<rich:menuItem label="Editare responsabili" />
+			</rich:dropDownMenu>
+			<rich:dropDownMenu label="Liste proiecte">
+				<f:facet name="label">
+					<h:outputText value="Liste proiecte"/>
+				</f:facet>			
+				<rich:menuItem label="Listare proiecte" actionListener="#{formRichMenu.showReport}"/>
+			</rich:dropDownMenu>
+			<rich:dropDownMenu mode="ajax">
+				<f:facet name="label">
+					<h:outputText value="Help" />
+				</f:facet>			
+				<rich:menuItem label="About" onclick="#{rich:component('modalPanel')}.show()" />
+			</rich:dropDownMenu>
+		</rich:toolbar>
+	<h:panelGrid columns="1" border="1">
+			<ui:include src="#{formRichMenu.srcCurentForm}"></ui:include>
+	</h:panelGrid>			
+	</h:form>
+	
+	
+<rich:popupPanel id="modalPanel">
+	<h:outputText value="About for MODUL ERP!" />
+	<a href="#" onclick="#{rich:component('modalPanel')}.hide()">Close</a>
+</rich:popupPanel>	
+
+</body>
+</html>
