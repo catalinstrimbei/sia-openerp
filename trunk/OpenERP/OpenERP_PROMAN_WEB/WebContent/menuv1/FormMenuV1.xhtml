@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://java.sun.com/jsf/core">
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">MODUL PROMAN  menuV1</div>
+	<h:panelGrid columns="1" border="1">
+		<h:form id="mainForm">
+			<h:panelGrid columns="4" border="1">
+				<h:commandLink id="FormProiecte"
+					actionListener="#{formMenu.actionChangeForm}"
+					action="#{formMenu.changeFormCurent}" value="Editare proiecte">
+					<p:attribute name="srcForm" value="FormProiecteFacelet"></p:attribute>
+				</h:commandLink>
+				<h:commandLink id="FormProiecteActivitati"
+					actionListener="#{formMenu.actionChangeForm}"
+					action="#{formMenu.changeFormCurent}" value="Editare proiecte activitati">
+					<p:attribute name="srcForm" value="FormProiecteActivitatiFacelet"></p:attribute>
+				</h:commandLink>
+				<h:commandLink id="FormResponsabili"
+					actionListener="#{formMenu.actionChangeForm}"
+					action="#{formMenu.changeFormCurent}" value="Editare responsabili">
+				</h:commandLink>
+				<h:commandLink id="RaportProiecte"
+					actionListener="#{formMenu.actionChangeForm}"
+					action="#{formMenu.changeFormCurent}" value="Listare proiecte">
+				</h:commandLink>
+
+			</h:panelGrid>
+		</h:form>
+		<h:panelGrid columns="1" border="1">
+			<ui:insert name="formCurent">
+				INSERT CONTINUT FORM
+			</ui:insert>
+		</h:panelGrid>
+	</h:panelGrid>
+</body>
+</html>
