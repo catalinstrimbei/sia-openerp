@@ -4,16 +4,34 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.open.erp.services.personal.Angajat;
 
+@Entity
 public class CampaniePromovare {
-
+	
+	@Id @GeneratedValue
 	Long id;
+
 	TipPromovare tipPromovare;
+	
+	@Temporal(TemporalType.DATE)
 	Date data;
+	
+	@ManyToOne //da eroare deocamdata pentru ca modulul din care face parte entitatea nu a facut adnotarile deocamdata.
 	Angajat promoter;
+	
 	CanalDistributie canalDistributie;
 	int buget;
+	
+	@OneToMany // Trebuie vazut daca mai trebuie completat ceva.
 	Set<Promotie> promotiiCampanie = new HashSet<Promotie>();
 
 	public long getId() {

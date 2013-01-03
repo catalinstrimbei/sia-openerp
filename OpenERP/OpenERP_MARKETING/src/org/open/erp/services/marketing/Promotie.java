@@ -2,13 +2,30 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.open.erp.services.nommat.Material;
 
+@Entity
 public class Promotie {
+	
+	@Id @GeneratedValue
 	long id;
+	
+	@ManyToOne
 	Material produsPromotie;
+	
 	int pretPromotional;
+	
+	@Temporal(TemporalType.DATE)
 	Date dataStart;
+	
+	@Temporal(TemporalType.DATE)
 	Date dataFinal;
 
 	public long getId() {

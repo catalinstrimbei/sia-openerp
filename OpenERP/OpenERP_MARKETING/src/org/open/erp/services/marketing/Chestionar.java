@@ -4,13 +4,31 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.open.erp.services.nomgen.Persoana;
 
+@Entity
 public class Chestionar {
+	
+	@Id @GeneratedValue
 	long id;
+	
+	@Temporal(TemporalType.DATE)
 	Date data;
+	
 	String titlu;
+	
+	@ManyToOne
 	Persoana persoanaChestionata;
+	
+	@OneToMany // Trebuie vazut daca mai trebuie completat ceva.
 	Set<Intrebare> intrebariChestionar = new HashSet<Intrebare>();
 
 	public long getId() {

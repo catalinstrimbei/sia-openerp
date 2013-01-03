@@ -2,11 +2,14 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 
-import org.open.erp.services.personal.PersonalSrv;
+import javax.ejb.Remote;
+
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.personal.PersonalSrv;
 
+@Remote
 public interface MarketingSrv {
 
 	public void setNommatSrv(NomenclatorMaterialeSrv nommatSrv);
