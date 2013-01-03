@@ -222,7 +222,7 @@ public class TestAchizitiiSrv {
 		@Test
 		public void testNIR() throws Exception{
 			logger.setLevel(Level.DEBUG);
-		    logger.info("Begin Test NIR!");
+		    logger.info("Begin Test NIR!!!");
 
 			Calendar calendarStart = Calendar.getInstance();
 			calendarStart.setTime(new Date());
@@ -277,7 +277,7 @@ public class TestAchizitiiSrv {
 			//nir1.getLinieNir().add(linieNIR1);
 			achizitiiInstance.crestereStoc(mat01, gestiune11, nir1, linieNIR1);
 			achizitiiInstance.crestereStoc(mat5, gestiune1, nir2, linieNIR2);
-			logger.info("End Test crestere cantitate Stoc.....");
+			logger.info("End Test crestere cantitate Stoc....");
 		
 	}
 	
@@ -285,3 +285,6 @@ public class TestAchizitiiSrv {
 }
 
 
+//Transformare proiect in proiect java Beans. de pus adnotari @EJP si dat url-ul catre modulul celalalt pe care l am importat.
+//Java persistence API
+//jar pentru unitatea de persistenta in xml de pus
