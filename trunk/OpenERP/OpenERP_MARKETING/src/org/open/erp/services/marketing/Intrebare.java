@@ -3,9 +3,20 @@ package org.open.erp.services.marketing;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Intrebare {
+	
+	@Id @GeneratedValue
 	long id;
+	
 	String text;
+	
+	@OneToMany // Trebuie vazut daca mai trebuie completat ceva.
 	Set<RaspunsIntrebare> raspunsuriIntrebare = new HashSet<RaspunsIntrebare>();
 
 	public long getId() {

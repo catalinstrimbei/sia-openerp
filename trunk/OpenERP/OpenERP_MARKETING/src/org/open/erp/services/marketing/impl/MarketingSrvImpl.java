@@ -2,29 +2,39 @@ package org.open.erp.services.marketing.impl;
 
 import java.util.Date;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+
 import org.open.erp.services.marketing.CampaniePromovare;
 import org.open.erp.services.marketing.CanalDistributie;
 import org.open.erp.services.marketing.CercetarePiata;
 import org.open.erp.services.marketing.Chestionar;
 import org.open.erp.services.marketing.Intrebare;
 import org.open.erp.services.marketing.MarketingSrv;
+import org.open.erp.services.marketing.MarketingSrvLocal;
 import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.RaspunsIntrebare;
 import org.open.erp.services.marketing.Reclamatie;
 import org.open.erp.services.marketing.StatusReclamatie;
 import org.open.erp.services.marketing.TipPromovare;
-import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.PersonalSrv;
 
-public class MarketingSrvImpl implements MarketingSrv {
+@Stateless
+public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingSrvImpl.class.getName());
 
+	@EJB(lookup="java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrv")
 	private NomenclatorMaterialeSrv nommatSrv;
+	
+	@EJB(lookup="java:global/OpenERP_PERSONAL/PersonalImpl!org.open.erp.services.personal.PersonalSrv")
 	private PersonalSrv personalSrv;
+	
+	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.personal.NomenclatoareSrv")
 	private NomenclatoareSrv nomgenSrv;
 
 	public void setNommatSrv(NomenclatorMaterialeSrv nommatSrv) {

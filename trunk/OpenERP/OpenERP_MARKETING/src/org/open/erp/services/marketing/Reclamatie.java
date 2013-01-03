@@ -2,12 +2,27 @@ package org.open.erp.services.marketing;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.open.erp.services.nomgen.Persoana;
 
+@Entity
 public class Reclamatie {
+	
+	@Id @GeneratedValue
 	long id;
+	
+	@ManyToOne
 	Persoana persoanaReclamanta;
+	
+	@Temporal(TemporalType.DATE)
 	Date data;
+	
 	String text;
 	String raspuns;
 	StatusReclamatie status;
