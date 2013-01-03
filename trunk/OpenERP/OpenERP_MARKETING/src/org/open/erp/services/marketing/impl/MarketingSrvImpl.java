@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.open.erp.services.marketing.CampaniePromovare;
 import org.open.erp.services.marketing.CanalDistributie;
@@ -28,6 +30,12 @@ import org.open.erp.services.personal.PersonalSrv;
 public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MarketingSrvImpl.class.getName());
 
+	
+	///////////////////////////////////// trebuie verificat.
+	@PersistenceContext(unitName="OpenERP_MARKETING")
+	private EntityManager entityManager;
+	
+	
 	@EJB(lookup="java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrv")
 	private NomenclatorMaterialeSrv nommatSrv;
 	
@@ -52,7 +60,6 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 	}
 
 	public MarketingSrvImpl() {
-
 	}
 
 	@Override
@@ -63,6 +70,8 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		Material produsNou = nommatSrv.introducereMaterial(null, null, null, null, null, null, null, null);
 		promotieNoua.setProdusPromotie(produsNou);
 
+///////////////////////////////////// trebuie reverificat.
+		entityManager.persist(promotieNoua);
 		return promotieNoua;
 	}
 
@@ -140,8 +149,4 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 
 		return reclamatieNoua;
 	}
-
-	
-
-
 }
