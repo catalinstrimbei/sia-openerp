@@ -1,12 +1,26 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import org.open.erp.services.nommat.Material;
 
-
-public class LiniiNIR {
-	private NIR nir;
+@Entity
+public class LiniiNIR implements Serializable{
+	@Id @GeneratedValue
     private Integer  NrLInie;
+	
+	@ManyToOne
+	private NIR nir;
+	
+	@OneToOne
     private Material material;
+	
     private Double cantitate;
     private Double pret;
     private  Double  valoareLinie;

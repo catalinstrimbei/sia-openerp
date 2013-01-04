@@ -1,13 +1,30 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CerereOferta {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class CerereOferta implements Serializable{
+	@Id @GeneratedValue
 	private Integer nrCerereOferta;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCerereOferta;
+	
+	@ManyToOne
 	private Furnizori furnizor;
+	
+	@OneToMany
 	private List<LiniiCerereOferta> linieCerereOferta= new ArrayList<LiniiCerereOferta>();
 	
 	public void adaugaLinie(LiniiCerereOferta linie){

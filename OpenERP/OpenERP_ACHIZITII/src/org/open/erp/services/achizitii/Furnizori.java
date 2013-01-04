@@ -1,16 +1,23 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.open.erp.services.nomgen.PersoanaJuridica;
 
-
- public class Furnizori extends PersoanaJuridica{
-	
+@Entity
+ public class Furnizori extends PersoanaJuridica implements Serializable{
+	//in PersoanaJuridica de la modulul NOMGEN trebuie adaugata 
+		//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)  inainte de clasa
 	private String denumire;
 	private String persoanaContact;
 	
+	@Id @GeneratedValue
 	private Integer idFurnizor;
 	private String numeFurnizor;
 	private String adresaFurnizor;

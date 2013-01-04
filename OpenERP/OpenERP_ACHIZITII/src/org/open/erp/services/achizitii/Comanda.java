@@ -1,16 +1,36 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-public class Comanda {
+@Entity
+public class Comanda implements Serializable{
+	@Id @GeneratedValue
 	private Integer nrComanda;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataComanda;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataReceptionare; //cand vrem noi sa primim bunurile
+	
+	@ManyToOne
 	private Furnizori funrizor;
+	
+	@OneToMany
 	private List<LiniiComanda> linieComanda;
 	private Double valoareTotala;
+	
+	
 	public Integer getNrComanda() {
 		return nrComanda;
 	}

@@ -1,11 +1,24 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import org.open.erp.services.nommat.Material;
 
-
-public class LiniiPlanAprov {
+@Entity
+public class LiniiPlanAprov implements Serializable{	
+	@Id @GeneratedValue
 	private Integer nrLiniePlanAprov;
+	
+	@ManyToOne
 	private PlanAprov planAProv;
+	
+	@OneToOne
 	private Material material;
 	private Double cantitate;
 	
