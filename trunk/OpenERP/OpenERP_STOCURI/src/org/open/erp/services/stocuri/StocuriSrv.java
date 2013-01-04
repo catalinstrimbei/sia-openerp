@@ -1,5 +1,7 @@
 package org.open.erp.services.stocuri;
 
+import javax.ejb.Remote;
+
 import org.open.erp.services.nommat.Material;
 //import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.stocuri.ListaGestiuni;
@@ -36,6 +38,7 @@ import org.open.erp.services.stocuri.ListaGestiuni;
  * 
  */
 
+@Remote
 public interface StocuriSrv {
 	
 	/** 1. Intrare in stoc

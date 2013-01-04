@@ -1,5 +1,9 @@
 package org.open.erp.services.stocuri;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * 
  * @author echipa.stocuri
@@ -7,8 +11,9 @@ package org.open.erp.services.stocuri;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class Depozit {
-
+	@Id @ GeneratedValue
 	private Integer idDepozit;
 	private String locatie;
 	

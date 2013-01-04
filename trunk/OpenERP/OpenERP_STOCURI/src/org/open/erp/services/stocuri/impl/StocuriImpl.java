@@ -3,6 +3,11 @@ package org.open.erp.services.stocuri.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.open.erp.services.stocuri.Articol;
 import org.open.erp.services.stocuri.BonTransfer;
 import org.open.erp.services.stocuri.Gestiune;
@@ -10,7 +15,7 @@ import org.open.erp.services.stocuri.ListaGestiuni;
 import org.open.erp.services.stocuri.Depozit;
 import org.open.erp.services.stocuri.Loturi;
 import org.open.erp.services.stocuri.StocuriSrv;
-//import org.open.erp.services.achizitii.LiniiNIR;
+import org.open.erp.services.stocuri.StocuriSrvLocal;
 import org.open.erp.services.nommat.Material;
 
 
@@ -18,11 +23,18 @@ import org.open.erp.services.nommat.Material;
  * @ApplicationServiceImplementation
  * 
  */
-public class StocuriImpl implements StocuriSrv{
+@Stateless
+public class StocuriImpl implements StocuriSrv, StocuriSrvLocal{
 	
 	//private AchizitiiSrv achizitiiSrv;
 	//private NomenclatorMaterialeSrv nomenclatorMaterialeSrv;
+	
+	//Dependente resurse proprii
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(StocuriImpl.class.getName());
+	
+	//Dependente resurse injectate
+	@PersistenceContext(unitName="OpenERP_STOCURI")
+	private EntityManager em;
 	
 	//intrarea in stoc pentru modulul achizitii
 	@Override
