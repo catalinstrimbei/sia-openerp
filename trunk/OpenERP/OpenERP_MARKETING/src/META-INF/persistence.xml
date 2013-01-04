@@ -8,10 +8,6 @@
 		<jar-file>OpenERP_NOMGEN.jar</jar-file>
 		<jar-file>OpenERP_PERSONAL.jar</jar-file>
 		
-		<class>org.open.erp.services.nommat.Material</class>
-		<class>org.open.erp.services.nomgen.Persoana</class>
-		<class>org.open.erp.services.personal.Angajat</class>
-		
 		<class>org.open.erp.services.marketing.CampaniePromovare</class>
 		<class>org.open.erp.services.marketing.CercetarePiata</class>
 		<class>org.open.erp.services.marketing.Chestionar</class>
