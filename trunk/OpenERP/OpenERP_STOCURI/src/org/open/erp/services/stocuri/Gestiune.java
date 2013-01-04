@@ -87,6 +87,11 @@ public class Gestiune {
 		this.idGest = idGest;
 		this.denumireGest = denumireGest;
 	}
+	
+	public Gestiune(String denumireGest) {
+		//this.idGest = idGest;
+		this.denumireGest = denumireGest;
+	}
 
 	
 	@Override

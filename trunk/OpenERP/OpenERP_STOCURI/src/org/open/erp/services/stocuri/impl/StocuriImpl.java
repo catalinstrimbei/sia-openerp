@@ -36,6 +36,10 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal{
 	@PersistenceContext(unitName="OpenERP_STOCURI")
 	private EntityManager em;
 	
+	//Initializare
+	public StocuriImpl() { }
+	
+	
 	//intrarea in stoc pentru modulul achizitii
 	@Override
 	public void intrareStoc(Material material, Double cantitate, Double pret, Gestiune gestiune) 

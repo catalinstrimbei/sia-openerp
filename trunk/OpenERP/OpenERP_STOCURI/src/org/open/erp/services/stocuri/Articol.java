@@ -88,6 +88,16 @@ public class Articol extends Material{
 		this.material = material;
 		this.loturiArticole = loturiArticole;
 	}
+	
+	public Articol(Double cantPeGestiune,
+			Gestiune gestiune, Material material, List<Loturi> loturiArticole) {
+		super();
+		//this.idArticol = idArticol;
+		this.cantPeGestiune = cantPeGestiune;
+		this.gestiune = gestiune;
+		this.material = material;
+		this.loturiArticole = loturiArticole;
+	}
 
 	public Articol() {
 		super();
