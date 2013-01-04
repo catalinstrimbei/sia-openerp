@@ -3,6 +3,7 @@
 
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,17 +11,37 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.open.erp.services.nomgen.Document;
 
-public class Factura extends Document{
-	public Factura() {
-		//super();
-	}
-
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public class Factura extends Document implements Serializable{
+	//in Document de la modulul NOMGEN trebuie adaugata 
+		//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)  inainte de clasa
+	
+	@Id @GeneratedValue
 	private Integer nrFactura;   /* public din private@LAR*/
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFactura;     /* public din private@LAR*/
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataScadenta;  //data pana la care se poate plati factura
+	
+	@ManyToOne
 	private Furnizori funrizor;
+	
+	@OneToMany
 	private List<LiniiFactura> linieFactura;
 	private Double valoareTotala; /* public din private@LAR*/
 
@@ -64,6 +85,11 @@ public class Factura extends Document{
 	public void setValoareTotala(Double valoareTotala) {
 		this.valoareTotala = valoareTotala;
 	}
+	
+	public Factura() {
+		//super();
+	}
+	
 	public Factura(Integer nrFactura, Date dataFactura, Date dataScadenta,
 			Furnizori funrizor, List<LiniiFactura> linieFactura,
 			Double valoareTotala) {

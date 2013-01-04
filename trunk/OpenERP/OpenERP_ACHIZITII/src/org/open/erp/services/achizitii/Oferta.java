@@ -1,16 +1,38 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-public class Oferta {
+@Entity
+public class Oferta implements Serializable{
+	@Id @GeneratedValue
 	private Integer nrOferta;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataOferta;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataLivrare; //cand poate furnizorul sa ne livreze bunurile
+	
+	@ManyToOne
 	private Furnizori funrizor;
+	
+	@OneToMany
 	private List<LiniiOferta> linieOferta;
+	
 	private Double valoareTotala;
+	
+	@OneToOne
 	private CerereOferta cerereOferta;
 		
 	public void adaugaLinie(LiniiOferta linie){

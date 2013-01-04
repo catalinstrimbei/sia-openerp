@@ -1,14 +1,36 @@
 package org.open.erp.services.achizitii;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.enterprise.inject.New;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.open.erp.services.nomgen.Document;
 
-public class NIR extends Document{
+@Entity
+public class NIR extends Document implements Serializable{
+	//in Document de la modulul NOMGEN trebuie adaugata 
+	//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)  inainte de clasa
+	@Id @GeneratedValue
 	private Integer nrNIR;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
+	
+	@ManyToOne
 	private Furnizori furnizor;
+	
+	@OneToMany
 	private List<LiniiNIR> linieNir;
 	private Double valoareTotala;
 		
