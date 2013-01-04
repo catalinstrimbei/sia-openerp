@@ -3,6 +3,8 @@ package org.open.erp.services.achizitii;
 
 import java.util.Date;
 
+import javax.ejb.Remote;
+
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.stocuri.Articol;
@@ -17,8 +19,7 @@ import org.open.erp.services.stocuri.StocuriSrv;
 /**
  * @author Borosu, Martinas, Negrut,Sandu,Sutu
  * 
- * @ApplicationServiceFacade
- * 
+ * @ApplicationServiceFacade(ServiceAPI)
  * 
  * @Dependente: StocuriSrv, NomGenSrv, NomenclatoareSrv
  * 
@@ -26,11 +27,11 @@ import org.open.erp.services.stocuri.StocuriSrv;
  * 
  * @EntitatiStocuriSrv: Gestiune, Lot sau Stoc
  * 
- *  @EntitatiNomenclatoareSrv: PersoanaJuridica
+ * @EntitatiNomenclatoareSrv: PersoanaJuridica
  * 
  * @EntitatiLocale: CerereAprov, CerereOferta,Comanda,Factura, Furnizori, LiniiCerereAprov, LiniiCerereOferta, LiniiFactura, LiniiNIR
  * 
- *  @EntitatiLocale: LiniiOferta, LiniiPlanAprov, NIR, Oferta, PlanAprov;
+ * @EntitatiLocale: LiniiOferta, LiniiPlanAprov, NIR, Oferta, PlanAprov;
  * 
  * @UseCase("1.Gestiune plan de aprovizionare"):
  * 
@@ -45,6 +46,7 @@ import org.open.erp.services.stocuri.StocuriSrv;
  * 
  */
 
+@Remote
 public interface AchizitiiSrv {
 	
 		
@@ -132,6 +134,8 @@ public interface AchizitiiSrv {
 	 * 
 	 */	
 
+	public Oferta salveazaOferta(Oferta oferta);
+	
     LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Material material, Double cantitate, Oferta oferta);
     
     /**
@@ -194,7 +198,9 @@ public interface AchizitiiSrv {
     
   	public void trimitereComanda(Comanda comanda, Furnizori furnizor);
 		
-public Furnizori creareFurnizor(String denumire);
+  	public Furnizori creareFurnizor(String denumire);
+  	
+  	public Furnizori creareFurnizor(Furnizori furnizori);
 	
 	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala,  String denumireFurnizor);  	
   	/**

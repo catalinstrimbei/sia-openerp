@@ -2,16 +2,29 @@ package org.open.erp.services.achizitii.impl;
 
 
 import java.util.ArrayList;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.apache.log4j.Logger;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.stocuri.*;
 import org.open.erp.services.achizitii.AchizitiiSrv;
+import org.open.erp.services.achizitii.AchizitiiSrvLocal;
 import org.open.erp.services.achizitii.CerereAprov;
 import org.open.erp.services.achizitii.CerereOferta;
 import org.open.erp.services.achizitii.Comanda;
@@ -27,24 +40,39 @@ import org.open.erp.services.achizitii.LiniiPlanAprov;
 import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.Oferta;
 import org.open.erp.services.achizitii.PlanAprov;
-import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.stocuri.Articol;
 import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.Loturi;
 import org.open.erp.services.stocuri.StocuriSrv;
-
-
-import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 
-public class AchizitiiImpl implements AchizitiiSrv {
+/**
+ * 
+ * @ApplicationServiceImplementation(ServiceAPI)
+ * 
+ */
+@Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class AchizitiiImpl implements AchizitiiSrv, AchizitiiSrvLocal {
+		
+	/* Dependente resurse proprii */
+	private static Logger logger = Logger.getLogger(AchizitiiImpl.class.getName());
+	private RegistruAchizitii registruAchizitii;
 	
+	/* Dependente resurse injectate */
+	@PersistenceContext(unitName="OpenERP_ACHIZITII")
+	private EntityManager em;
+	
+	@Resource
+	private SessionContext sessionContext;
+	
+	@EJB(lookup="java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrv")
 	private NomenclatorMaterialeSrv materialeSrv;
-	private StocuriSrv stocuriSrv;
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(AchizitiiImpl.class.getName());
 	
-
+	@EJB(lookup="java:global/OpenERP_STOCURI/StocuriImpl!org.open.erp.services.stocuri.StocuriSrv")
+	private StocuriSrv stocuriSrv;
+	
 	public void setMaterialSrv(NomenclatorMaterialeSrv matSrv){
 		this.materialeSrv = matSrv;
 	}
@@ -53,10 +81,21 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		this.stocuriSrv = stocSrv;
 	}
 
+	/* Initializare */
 	public AchizitiiImpl(){
-		}
+		
+	}
+	
+	@PostConstruct
+	public void init() {
+		if(this.registruAchizitii == null) 
+			registruAchizitii = new RegistruAchizitii(em);
+	}
 
-
+		
+	/* implementare actiuni serviciu ProjectManagementSrv */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Override
 	public CerereAprov creareCerereAprov(Integer nr, Date data, Material material)
 		{
 		logger.debug("1.1 Initiere/Creare cerere de aprovizionare noua");
@@ -65,7 +104,8 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return cerereNoua;
 		
 		}
-			
+	
+	@Override
 	public LiniiCerereAprov creareLinieCerereAprov(CerereAprov cerere, Integer nrLinie, Material material, Double cantitate){
 		logger.debug("1.2 Adaugare linie intr-o Cerere Aprovizionare");
 		
@@ -76,6 +116,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		
 	}
 	
+	@Override
 	public PlanAprov crearePlanAprov(Integer nrPlan, Integer an, Integer luna, Integer saptamana)
 	{
 		logger.debug(" 1.3.1 Creare plan nou");
@@ -83,7 +124,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return planNou;
 	}
 	
-
+	@Override
 	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Material material, Double cantitate){
 		logger.debug("1.3.2 Adaugare linie plan");
 		LiniiPlanAprov liniePlan=new LiniiPlanAprov(nrLiniePlanAprov, planAprov, material, cantitate);
@@ -92,7 +133,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return liniePlan;
 	}
 	
-	
+	@Override
 	public CerereOferta creareCerereOferta(Integer nrCerereOferta, Date dataCerereOferta)
 	{
 		logger.debug("2.1.1 Creare cerere oferta noua");
@@ -100,7 +141,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return cerereNoua;
 	}
 	
-		
+	@Override
 	public LiniiCerereOferta creareLinie(Integer nrLinie, Double cantitate, Material material, CerereOferta cerereOferta){
 		logger.debug("2.1.2 Adaugare linie in cerere oferta");
 		
@@ -110,13 +151,14 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return linieOferta;
 	}
 	
+	@Override
 	public Material stabilireMaterial(LiniiPlanAprov liniePlan){
 		logger.debug("2.1.3 Stabilire material linie ");
 		Material material=liniePlan.getMaterial();
 		return material;
 	}
 	
-	
+	@Override
 	public void stabilireFurnizor(CerereOferta cerereOferta, Furnizori furnizor){
 		logger.debug("2.2 Identificare furnizor");
 		cerereOferta.setFurnizor(furnizor);
@@ -126,8 +168,8 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		logger.debug("2.3 S-a trimis cererea de oferta");
 	}
 	
-
 	//Oferta
+	@Override
 	public Oferta creareOferta(Integer nrOferta, Date dataOferta, Date dataLivrare,Double valoareTotala, Furnizori furnizor, CerereOferta cerereOferta){
 		logger.debug("3.1.1 Primire oferte de la furnizori (Creare ferta noua)");
 		Oferta ofertaNoua=new Oferta(nrOferta, dataOferta, dataLivrare,valoareTotala, furnizor, cerereOferta);
@@ -135,6 +177,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	//LinieOferta
+	@Override
 	public LiniiOferta creareLinieOferta(Integer nrLinie, Double pret, Material material, Double cantitate, Oferta oferta){
 		logger.debug("3.1.2 Adaugare linie in oferta primita");
 		
@@ -144,13 +187,14 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return linieOferta;
 	}
      
-
 	//comparareOferta
+	@Override
 	public   void  addOferta(Oferta oferta1){
 		  List<Oferta> oferte=  new ArrayList<Oferta>();
 		    oferte.add(oferta1);
 		 }
-		 
+	
+	@Override
 	public Oferta  comparare(Oferta oferta1, Oferta oferta2 )
 	  {
 	   logger.debug("3.2 Comparare oferta " + oferta1.getNrOferta()+ " cu oferta "+ oferta2.getNrOferta());
@@ -162,6 +206,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	   return oferta2;
 	  }
 	
+	@Override
 	public Oferta salveazaOferta(Oferta oferta){
     	if (oferta.getNrOferta() == null)
     		throw new RuntimeException("Trebuie introdusa neaparat nrOferta ");	    	
@@ -170,6 +215,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
     }
 	
 	//LinieComanda
+	@Override
 	public LiniiComanda creareLinieComanda(Integer nrLinie, Double pret, Material material, Double cantitate, Comanda comanda, LiniiOferta linieO){
 		logger.debug("4.1 Adaugare linie in Comanda " );
 		
@@ -180,6 +226,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	//Comanda
+	@Override
 	public Comanda creareComanda(Integer nrComanda, Date dataComanda, Furnizori furnizor, Oferta oferta, Double valoareTotalaComanda){
 		logger.debug("4.2 Creare Comanda " + nrComanda);
 		
@@ -187,6 +234,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return comanda;
 	}
 		
+	@Override
 	public Comanda salveazaComanda(Comanda comanda){
     	if (comanda.getNrComanda() == null)
     		throw new RuntimeException("Trebuie introdusa neaparat nrComanda ");	    	
@@ -194,20 +242,21 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		return comanda;
     }
 	
+	@Override
 	public void trimitereComanda(Comanda comanda, Furnizori furnizor){
 		logger.debug("4.4 S-a trimis comanda la furnizorul " + furnizor);
 	}
 	
-	
 	//Furnizori
+	@Override
 	public Furnizori creareFurnizor(Furnizori furnizori){
 		logger.debug("5.1.1 S-a introdus un nou Furnizor!!!");
 		
 		Furnizori furnizor = new Furnizori();
-		return furnizor;
-		
+		return furnizor;		
 	}
 	
+	@Override
 	public Factura creareFactura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala, String denumireFurnizor){
 		logger.debug("5.1.2 S-a creat Factura!!!");
 		
@@ -221,7 +270,8 @@ public class AchizitiiImpl implements AchizitiiSrv {
 		  List<Oferta> oferte=  new ArrayList<Oferta>();
 		    oferte.add(oferta1);
 	  }*/
-		 
+		
+	@Override
 	public void  comparareFacturaComanda(Factura factura, Comanda comanda){
 	   logger.debug("5.2.2 Comparare factura numarul" + factura.getNrFactura() + " cu comanda numarul " + comanda.getNrComanda());
 	   
@@ -233,6 +283,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	
 
 	//crestere cantitate in Stoc in cazul receptiei Materiallor
+	@Override
 	public Double crestereStoc(Material material, Gestiune gestiune, NIR nir, LiniiNIR lNIR){
 		Double cantitateStoc = 0.00;
 		//for(LiniiNIR lNIR : nir.getLinieNir()){
@@ -248,6 +299,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	
 		
 	//LiniiFactura
+	@Override
 	public LiniiFactura creareLinieFactura(Integer nrLinieLF, Double pret, Material material, Double cantitate, Factura factura, LiniiComanda linieComanda){
 		logger.debug("5.2.1 S-a introdus linia " + nrLinieLF + " pentru factura numraul " + factura.getNrFactura());
 		
@@ -257,6 +309,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 	
 	//NIR
+	@Override
 	public NIR creareNIR(Integer nrNIR, Date data, Furnizori furnizor, Double valoareTotala){
 	   logger.debug("5.2.1 Creare NIR " + nrNIR); 
 	   NIR nir = new NIR (nrNIR, data, furnizor, valoareTotala);
@@ -265,6 +318,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 	}
 		
 	//LiniiNIR
+	@Override
 	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie, Gestiune gest){  
 		logger.debug("5.3.2 Adaugare linie " + nrLInie + " in NIR " + nir.getNrNIR());
 		LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
@@ -274,9 +328,7 @@ public class AchizitiiImpl implements AchizitiiSrv {
 			 } 
 		 else{
 			        System.out.println("StocuriSrv este null");
-			 }
-		
-		
+			 }		
 		logger.debug("Cantitatea materialului a crescut cu " + cantitate);
 		//this.intrareStoc(material, gestiune);
 		logger.debug("Materialul " + material.getDenumireMaterial() + " a intrat in stoc.");
@@ -300,59 +352,11 @@ public class AchizitiiImpl implements AchizitiiSrv {
 //
 //		}
 		
-		public void trimitereMaterialLaStoc2( Material material, Double cantitate, Double pret, Gestiune gestiune) {
+	@Override
+	public void trimitereMaterialLaStoc2( Material material, Double cantitate, Double pret, Gestiune gestiune) {
 			stocuriSrv.intrareStoc(material, cantitate, pret, gestiune);
 			logger.debug("S-a trimis materialul  " + material.getDenumireMaterial() + "in stoc");	
 	}
-	
-	
-//	public void intrareStoc(LiniiNIR linie, Gestiune gestiune) 
-//	{
-//		//for(LiniiNIR linie: nir.getLinieNir())
-//		//{
-//			//Cei de la achizitii acum obiectul MATERIALE declarat local, cand o sa implementeze clasa MATERIAL de la nom materiale atunci nu o sa mai dea eroare
-//			logger.info("2.1. Preluare date specifice produsului: id-ul produsul: " + linie.getMaterial().getCodMaterial()+ ", cantitatea produsului: " + linie.getCantitate() + ", pretul de intrare: " + linie.getPret());
-//			
-//			logger.info("2.2. Verifica daca exista produsul " + linie.getMaterial().getCodMaterial() + " in stoc");
-//			Articol art = this.getArticolByGestiune(linie.getMaterial(), gestiune);
-//			if(art != null)
-//			{	
-//				logger.info("Produsul este deja inregistrat in stocuri.");
-//				//logger.info("Se creeza un lot nou pentru articolul gasit");
-//				//logger.info("Se creste cantitatea pentru articolul gasit, cantitate veche: " + art.getCantPeGestiune());
-//				
-//				logger.info("2.3. Se creste cantitatea existenta in stoc" + art.getCantPeGestiune() + " cu cantitatea noua" + linie.getCantitate());
-//				art.addLot(new Loturi(1, linie.getCantitate(), linie.getPret(), new Date()));	
-//				//art.cresteCantitateArticolPeGestiune(produs.getCantitate());
-//				logger.info("2.4. Confirmare/Modificare stoc curent, cantitatea dupa modificare este: "+ art.getCantPeGestiune());
-//			}
-//			else
-//			{
-//				logger.info("Produsul nu este inregistrat in stoc, deci se creeaza un lot nou.");
-//				//logger.info("Se adauga un articol nou pentru produs.");
-//				//this.creareLot(linie, gestiune);
-//			}
-//			
-//			
-//		//}
-//			
-//			
-//		
-//		
-//	}
-//	
-//	@Override
-//	public Articol getArticolByGestiune(Material material, Gestiune gestiune)
-//	{
-//		for(Articol art: gestiune.getArticole())
-//		{
-//			if(art.getMaterial().equals(material))
-//			{	
-//				return art;	
-//			}
-//		}
-//		return null;
-//	}
 	
 }	
 	
