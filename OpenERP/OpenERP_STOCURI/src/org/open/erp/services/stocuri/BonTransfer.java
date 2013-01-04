@@ -1,5 +1,9 @@
 package org.open.erp.services.stocuri;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.open.erp.services.nommat.Material;
 
 /**
@@ -9,11 +13,21 @@ import org.open.erp.services.nommat.Material;
  * @BusinessObject(Entity)
  * 
  */
+@Entity
 public class BonTransfer {
+	@Id @ GeneratedValue
+	Integer idBonTransfer;
 	Material material;
 	Double cantitate;
 	Gestiune gestiuneIntrare;
 	Gestiune gestiuneIesire;
+	
+	public Integer getIdBonTransfer() {
+		return idBonTransfer;
+	}
+	public void setIdBonTransfer(Integer idBonTransfer) {
+		this.idBonTransfer = idBonTransfer;
+	}
 	public Material getMaterial() {
 		return material;
 	}
@@ -42,15 +56,24 @@ public class BonTransfer {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BonTransfer(Material material, Double cantitate,
-			Gestiune gestiuneIntrare, Gestiune gestiuneIesire) {
+	
+	
+	public BonTransfer(Integer idBonTransfer, Material material,
+			Double cantitate, Gestiune gestiuneIntrare, Gestiune gestiuneIesire) {
 		super();
+		this.idBonTransfer = idBonTransfer;
 		this.material = material;
 		this.cantitate = cantitate;
 		this.gestiuneIntrare = gestiuneIntrare;
 		this.gestiuneIesire = gestiuneIesire;
 	}
 	
-	
-
+	public BonTransfer(Material material,
+			Double cantitate, Gestiune gestiuneIntrare, Gestiune gestiuneIesire) {
+		super();
+		this.material = material;
+		this.cantitate = cantitate;
+		this.gestiuneIntrare = gestiuneIntrare;
+		this.gestiuneIesire = gestiuneIesire;
+	}
 }

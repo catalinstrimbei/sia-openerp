@@ -154,7 +154,7 @@ public class TestStocuriSrv {
 		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
 		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
 		
-		BonTransfer bonTransfer = new BonTransfer(mat, 2.00, gest2, gest1);
+		BonTransfer bonTransfer = new BonTransfer(1,mat, 2.00, gest2, gest1);
 		
 		logger.info("-----START caz de utilizare Transfer intre gestiuni----- ");
 		stocuriInstance.transfer(bonTransfer);

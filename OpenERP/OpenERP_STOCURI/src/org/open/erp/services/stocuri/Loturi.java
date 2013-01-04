@@ -8,10 +8,19 @@ package org.open.erp.services.stocuri;
  */
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
+
+@Entity
 public class Loturi {
+	@Id @GeneratedValue
 	private	Integer idLot;
 	private Double cantitate;
 	private Double pretIntrare;
+	@Temporal(DATE)
 	private Date dataIntrare;
 	//private Articol articol;
 	
