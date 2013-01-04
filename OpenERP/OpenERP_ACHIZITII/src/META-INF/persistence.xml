@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="OpenERP_ACHIZITII">
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="OpenERP_ACHIZITII" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
+		
+		<jar-file>OpenERP_NOMGEN.jar</jar-file>
+		<jar-file>OpenERP_NOMMAT.jar</jar-file>
+		<jar-file>OpenERP_STOCURI.jar</jar-file>
+		
+		<class>org.open.erp.services.achizitii.PlanAprov</class>
+		<class>org.open.erp.services.achizitii.Oferta</class>
+		<class>org.open.erp.services.achizitii.NIR</class>
+		<class>org.open.erp.services.achizitii.LiniiPlanAprov</class>
+		<class>org.open.erp.services.achizitii.LiniiOferta</class>
+		<class>org.open.erp.services.achizitii.LiniiNIR</class>
+		<class>org.open.erp.services.achizitii.LiniiFactura</class>
+		<class>org.open.erp.services.achizitii.LiniiComanda</class>
+		<class>org.open.erp.services.achizitii.LiniiCerereOferta</class>
+		<class>org.open.erp.services.achizitii.LiniiCerereAprov</class>
+		<class>org.open.erp.services.achizitii.Furnizori</class>
+		<class>org.open.erp.services.achizitii.Factura</class>
+		<class>org.open.erp.services.achizitii.Comanda</class>
+		<class>org.open.erp.services.achizitii.CerereOferta</class>
+		<class>org.open.erp.services.achizitii.CerereAprov</class>
+		
+		<class>org.open.erp.services.nomgen.Document</class>
+		<class>org.open.erp.services.nomgen.PersoanaJuridica</class>
+		<class>org.open.erp.services.nommat.Material</class>
+	
+		
+		<properties>
+         	<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
+         	<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+         	<property name="hibernate.hbm2ddl.auto" value="update"/>
+      	</properties>	
 	</persistence-unit>
 </persistence>
