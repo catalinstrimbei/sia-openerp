@@ -57,7 +57,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal{
 				//logger.info("Se creeza un lot nou pentru articolul gasit");
 				//logger.info("Se creste cantitatea pentru articolul gasit, cantitate veche: " + art.getCantPeGestiune());
 				
-				logger.info("2.3. Se creste cantitatea existenta in stoc" + art.getCantPeGestiune() + " cu cantitatea noua" + cantitate);
+				logger.info("2.3. Se creste cantitatea existenta in stoc " + art.getCantPeGestiune() + " cu cantitatea noua " + cantitate);
 				art.addLot(new Loturi(1, cantitate, pret, new Date()));	
 				//art.cresteCantitateArticolPeGestiune(produs.getCantitate());
 				logger.info("2.4. Confirmare/Modificare stoc curent, cantitatea dupa modificare este: "+ art.getCantPeGestiune());
@@ -67,6 +67,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal{
 				logger.info("Produsul nu este inregistrat in stoc, deci se creeaza un lot nou.");
 				//logger.info("Se adauga un articol nou pentru produs.");
 				this.creareLot(material, cantitate, pret, gestiune);
+				
 			}
 			
 			
@@ -77,36 +78,36 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal{
 	@Override
 	public void intrareStoc(BonTransfer bonTransfer, Double pret)
     {
-        logger.info("2.1. Preluare date specifice produsului: id-ul produsul: " + bonTransfer.getMaterial().getCodMaterial()+ ", cantitatea produsului: " + bonTransfer.getCantitate());
+        //logger.info("2.1. Preluare date specifice produsului: id-ul produsul: " + bonTransfer.getMaterial().getCodMaterial()+ ", cantitatea produsului: " + bonTransfer.getCantitate());
                 
-        logger.info("2.2. Verifica daca exista produsul " + bonTransfer.getMaterial().getCodMaterial() + " in stoc");
+        //logger.info("2.2. Verifica daca exista produsul " + bonTransfer.getMaterial().getCodMaterial() + " in stoc");
         Articol art = this.getArticolByGestiune(bonTransfer.getMaterial(), bonTransfer.getGestiuneIntrare());
         if(art != null)
         {     
-        	logger.info("Produsul este deja inregistrat in stocuri.");
+        	//logger.info("Produsul este deja inregistrat in stocuri.");
             //logger.info("Se creeza un lot nou pentru articolul gasit");
             //logger.info("Se creste cantitatea pentru articolul gasit, cantitate veche: " + art.getCantPeGestiune());
                        
-            logger.info("2.3. Se creste cantitatea existenta in stoc" + art.getCantPeGestiune() + " cu cantitatea noua" + bonTransfer.getCantitate());
+            //logger.info("2.3. Se creste cantitatea existenta in stoc " + art.getCantPeGestiune() + " cu cantitatea noua " + bonTransfer.getCantitate());
             //nu avem deocamdata pretul
             art.addLot(new Loturi(1, bonTransfer.getCantitate(), pret, new Date())); 
             //art.cresteCantitateArticolPeGestiune(produs.getCantitate());
-            logger.info("2.4. Confirmare/Modificare stoc curent, cantitatea dupa modificare este: "+ art.getCantPeGestiune());
+            //logger.info("2.4. Confirmare/Modificare stoc curent, cantitatea dupa modificare este: "+ art.getCantPeGestiune());
         }
         else
         {
-        	logger.info("Produsul nu este inregistrat in stoc, deci se creeaza un lot nou.");
+        	//logger.info("Produsul nu este inregistrat in stoc, deci se creeaza un lot nou.");
             //logger.info("Se adauga un articol nou pentru produs.");
                        
-            logger.info("1.1. Se creeaza un lot nou pentru produsul" + bonTransfer.getMaterial().getCodMaterial());
+            //logger.info("1.1. Se creeaza un lot nou pentru produsul " + bonTransfer.getMaterial().getCodMaterial());
             bonTransfer.getGestiuneIntrare().addArticole(new Articol(1, 0.00, bonTransfer.getGestiuneIntrare(), bonTransfer.getMaterial(), new ArrayList<Loturi>()));
             Articol artNou = this.getArticolByGestiune(bonTransfer.getMaterial(), bonTransfer.getGestiuneIntrare());
-            logger.info("1.2. Preluare date specifice produsului: id-ul produsului: " + bonTransfer.getMaterial().getCodMaterial() + ", cantitatea produsului " + bonTransfer.getCantitate());
+            //logger.info("1.2. Preluare date specifice produsului: id-ul produsului: " + bonTransfer.getMaterial().getCodMaterial() + ", cantitatea produsului " + bonTransfer.getCantitate());
             Loturi lot = new Loturi(2, bonTransfer.getCantitate(),pret, new Date());
-            logger.info("1.3. Adaugare date specifice produsului in noul lot");
+            //logger.info("1.3. Adaugare date specifice produsului in noul lot");
             artNou.addLot(lot);
                        
-            logger.info("1.4 Confirmare/Adaugare lot nou " + lot.getIdLot());
+            //logger.info("1.4 Confirmare/Adaugare lot nou " + lot.getIdLot());
                        
             //this.creareLot(linie, gestiune);
         }
@@ -125,7 +126,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal{
 			// logger.info("Se creeza un lot nou pentru articolul gasit");
 			// logger.info("Se creste cantitatea pentru articolul gasit, cantitate veche: "+ art.getCantPeGestiune());
 
-			logger.info("2.3. Se creste cantitatea existenta in stoc " + art.getCantPeGestiune() + " cu cantitatea noua" + cantitate); 
+			logger.info("2.3. Se creste cantitatea existenta in stoc " + art.getCantPeGestiune() + " cu cantitatea noua " + cantitate); 
 					
 			art.addLot(new Loturi(1, cantitate, null, new Date()));  // Seteaza pretul preluandu-l de la modulul ContabilitateGestiune 
 			// art.cresteCantitateArticolPeGestiune(produs.getCantitate());
@@ -134,7 +135,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal{
 		else {
 			logger.info("Produsul nu este inregistrat in stoc, deci se creeaza un lot nou.");
 			// logger.info("Se adauga un articol nou pentru produs.");
-			logger.info("1.1. Se creeaza un lot nou pentru produsul" + material.getCodMaterial());
+			logger.info("1.1. Se creeaza un lot nou pentru produsul " + material.getCodMaterial());
 			gestiune.addArticole(new Articol(1, 0.00, gestiune,	material, new ArrayList<Loturi>()));
 			Articol artNou = this.getArticolByGestiune(material, gestiune);
 			logger.info("1.2. Preluare date specifice produsului: id-ul produsului: "+ material.getCodMaterial() + ", cantitatea produsului " + cantitate);
@@ -151,15 +152,20 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal{
 	@Override
 	public void creareLot(Material material, Double cantitate, Double pret, Gestiune gestiune)
 	{
-		logger.info("1.1. Se creeaza un lot nou pentru produsul" + material.getCodMaterial());
+		Double cantitateinitiala;
+		logger.info("1.1. Se creeaza un lot nou pentru produsul " + material.getCodMaterial());
 		gestiune.addArticole(new Articol(1, 0.00, gestiune, material, new ArrayList<Loturi>()));
 		Articol art = this.getArticolByGestiune(material, gestiune);
 		logger.info("1.2. Preluare date specifice produsului: id-ul produsului: " + material.getCodMaterial() + ", cantitatea produsului " + cantitate + ", pretul de intrare " + pret);
 		Loturi lot = new Loturi(2, cantitate, pret, new Date());
 		logger.info("1.3. Adaugare date specifice produsului in noul lot");
+		cantitateinitiala = art.getCantPeGestiune();
 		art.addLot(lot);
 		
 		logger.info("1.4 Confirmare/Adaugare lot nou " + lot.getIdLot());
+		
+		logger.info("2.3. Se creste cantitatea existenta in stoc " + cantitateinitiala + " cu cantitatea noua " + cantitate);
+		logger.info("2.4. Confirmare/Modificare stoc curent, cantitatea dupa modificare este: "+ art.getCantPeGestiune());
 	}
 	
 	
