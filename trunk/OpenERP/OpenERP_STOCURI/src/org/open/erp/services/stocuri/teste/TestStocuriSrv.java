@@ -45,16 +45,8 @@ public class TestStocuriSrv {
 		//Angajat responsabilGestiune = personalSrv.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
 		//gest1.setResponsabilGestiune(responsabilGestiune);
 		
-		//NIR nir = new NIR(10, null, null, 100.00);
-		
 		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		//Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		
-		//LiniiNIR linieNIR1 = new LiniiNIR(nir, 1, mat, 10.00, 10.00, 100.00, 24.00);
-		//LiniiNIR linieNIR2 = new LiniiNIR(nir, 2, mat1, 10.00, 10.00, 100.00, 24.00);
-		
-		//nir.getLinieNir().add(linieNIR1);
-		//nir.getLinieNir().add(linieNIR2);
 		
 		logger.info("-----FINAL creare date de test Intrare in stoc------ ");
 
@@ -134,7 +126,7 @@ public class TestStocuriSrv {
 	
 	@Test
 	public void testTransfer() throws Exception {
-		logger.info("-----START creare date de test Iesire din stoc------ ");
+		//logger.info("-----START creare date de test Iesire din stoc------ ");
 		//INCEPUT intrare in stoc
 		
 		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));		
@@ -147,11 +139,11 @@ public class TestStocuriSrv {
 		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		
-		logger.info("-----FINAL creare date de test Intrare in stoc------ ");
+		//logger.info("-----FINAL creare date de test Intrare in stoc------ ");
 
-		logger.info("-----START caz de utilizare Intrare in stoc----- ");
+		//logger.info("-----START caz de utilizare Intrare in stoc----- ");
 		
-		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
+		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou pt transfer <<<<<<<<<<<<");
 		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
 		
 		BonTransfer bonTransfer = new BonTransfer(1,mat, 2.00, gest2, gest1);
