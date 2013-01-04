@@ -26,5 +26,6 @@
 	<classpathentry kind="lib" path="lib/xnio-nio-3.0.3.GA.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PROMAN"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_MARKETING"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_STOCURI"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
