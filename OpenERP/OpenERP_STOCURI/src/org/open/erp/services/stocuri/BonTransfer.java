@@ -71,6 +71,7 @@ public class BonTransfer {
 	public BonTransfer(Material material,
 			Double cantitate, Gestiune gestiuneIntrare, Gestiune gestiuneIesire) {
 		super();
+		//this.idBonTransfer = idBonTransfer;
 		this.material = material;
 		this.cantitate = cantitate;
 		this.gestiuneIntrare = gestiuneIntrare;

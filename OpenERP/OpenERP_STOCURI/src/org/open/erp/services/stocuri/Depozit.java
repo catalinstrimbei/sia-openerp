@@ -26,6 +26,11 @@ public class Depozit {
 		this.idDepozit = idDepozit;
 		this.locatie = locatie;
 	}
+	public Depozit(String locatie) {
+		super();
+		//this.idDepozit = idDepozit;
+		this.locatie = locatie;
+	}
 	public Integer getIdDepozit() {
 		return idDepozit;
 	}

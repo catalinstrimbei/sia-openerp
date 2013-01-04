@@ -38,6 +38,15 @@ public class Loturi {
 		this.dataIntrare = dataIntrare;
 		//this.articol = articol;
 	}
+	public Loturi(Double cantitate, Double pretIntrare,
+			Date dataIntrare/*, Articol articol*/) {
+		super();
+		//this.idLot = idLot;
+		this.cantitate = cantitate;
+		this.pretIntrare = pretIntrare;
+		this.dataIntrare = dataIntrare;
+		//this.articol = articol;
+	}
 	
 	public void scadeCantitatea(Double cantitate){
 		this.cantitate -= cantitate;
