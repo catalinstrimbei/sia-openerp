@@ -1,5 +1,8 @@
 package org.open.erp.services.nomgen;
 
+import javax.ejb.Remote;
+
+@Remote
 public interface NomenclatoareSrv {
 
 	PersoanaFizica crearePF (Integer id, String nume,String sex,String mail,String statutInCompanie,String stareCivila,String dataNastere,String telefon,Adresa adresa);

@@ -1,6 +1,12 @@
 package org.open.erp.services.nomgen;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Departament {
+	@Id @GeneratedValue
 String id;
 String denumire;
 

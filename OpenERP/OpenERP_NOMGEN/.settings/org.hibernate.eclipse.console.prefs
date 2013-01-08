@@ -1,0 +1,4 @@
+#Sat Jan 05 02:33:43 EET 2013
+default.configuration=OpenERP_NOMGEN
+eclipse.preferences.version=1
+hibernate3.enabled=true

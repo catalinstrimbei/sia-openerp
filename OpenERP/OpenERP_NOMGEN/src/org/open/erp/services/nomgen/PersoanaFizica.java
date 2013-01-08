@@ -1,5 +1,8 @@
 package org.open.erp.services.nomgen;
 
+import javax.persistence.ManyToOne;
+
+
 public class PersoanaFizica extends Persoana {
 	 String sex;
 	 String mail;
@@ -7,6 +10,7 @@ public class PersoanaFizica extends Persoana {
 	 String stareCivila;
 	 String dataNastere;
 	 String telefon;
+	 @ManyToOne
 	 Adresa adresa;
 	 
 	public String getSex() {
