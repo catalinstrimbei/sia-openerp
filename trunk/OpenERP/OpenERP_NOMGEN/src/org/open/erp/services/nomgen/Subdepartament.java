@@ -1,7 +1,11 @@
 package org.open.erp.services.nomgen;
 
+
+import javax.persistence.OneToMany;
+
 public class Subdepartament extends Departament {
 	String descriere;
+	@OneToMany
 	Departament parinte;
 
 	public String getDescriere() {

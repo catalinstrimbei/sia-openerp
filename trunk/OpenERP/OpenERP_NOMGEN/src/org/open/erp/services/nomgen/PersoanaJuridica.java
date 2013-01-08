@@ -1,10 +1,14 @@
 package org.open.erp.services.nomgen;
 
+import javax.persistence.ManyToOne;
+
+
 public class PersoanaJuridica extends Persoana {
 
 	String tipFirma;
 	String CUI;
 	String codFiscal;
+	@ManyToOne
 	Adresa adresa;
 	
 	public Adresa getAdresa() {

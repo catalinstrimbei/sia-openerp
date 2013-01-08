@@ -1,6 +1,11 @@
 package org.open.erp.services.nomgen;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+@Entity
 public class Adresa {
+	@Id @GeneratedValue
 String id;
 String localitate;
 String judet;

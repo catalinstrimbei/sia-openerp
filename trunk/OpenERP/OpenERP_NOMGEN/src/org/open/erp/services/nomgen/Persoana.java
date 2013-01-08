@@ -1,6 +1,10 @@
 package org.open.erp.services.nomgen;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 public class Persoana {
+	@Id @GeneratedValue
  Integer id;
  String nume;
  

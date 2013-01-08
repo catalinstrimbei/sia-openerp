@@ -5,6 +5,8 @@ import java.io.Serializable;
 import org.open.erp.services.nommat.Material;
 
 
+
+
 public class LinieDocument implements Serializable {
 	/**
 	 * 
@@ -68,7 +70,6 @@ public class LinieDocument implements Serializable {
 	
 	public LinieDocument() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override

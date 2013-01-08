@@ -1,5 +1,13 @@
 package org.open.erp.services.nomgen.impl;
 
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.open.erp.services.nomgen.Adresa;
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Divizie;
@@ -10,14 +18,32 @@ import org.open.erp.services.nomgen.Subdepartament;
 
 
 
-
+@Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class NomenclatoareImpl implements NomenclatoareSrv {
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(NomenclatoareImpl.class.getName());
 
+	private RegistruPersoana registruPersoana;
+	/* Dependente resurse injectate */
+	@PersistenceContext(unitName="OpenERP_NOMGEN")
+	private EntityManager em;
 	
 
+	public NomenclatoareImpl() {
+		super();
+	}
+
+
+	public void init(){		
+		if (this.registruPersoana == null)
+			registruPersoana = new RegistruPersoana(em);
 		
+	}	
+	
+	
+	/* implementare actiuni serviciu ProjectManagementSrv */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public PersoanaFizica crearePF(Integer id, String nume, String sex,
 			String mail, String statutInCompanie, String stareCivila,
