@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.ejb.Stateless;
+
+@Stateless
 public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(NomenclatorMaterialeImpl.class.getName());
 	private List<Material> lista_materiale=new ArrayList<Material>();

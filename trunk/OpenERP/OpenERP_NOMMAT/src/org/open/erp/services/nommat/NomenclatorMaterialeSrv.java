@@ -1,7 +1,10 @@
 package org.open.erp.services.nommat;
 
+import javax.ejb.Remote;
+
 import org.open.erp.services.nommat.Material;
 
+@Remote
 public interface NomenclatorMaterialeSrv {
 	 Material introducereMaterial(String codMaterial, String denumireMaterial, String cantitateStandard, String pretStandard,
 			 	String categorieMaterial, String procentTVACurent, String observatii, ListaCaracteristici listaCaracteristici);
