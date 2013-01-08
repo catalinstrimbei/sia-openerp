@@ -27,5 +27,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PROMAN"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_MARKETING"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_STOCURI"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMMAT"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
