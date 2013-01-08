@@ -1,6 +1,16 @@
 package org.open.erp.services.nommat;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Material {
+
+@Id @GeneratedValue
 String codMaterial;
+
 String denumireMaterial;
 String cantitateStandard;
 String pretStandard;
@@ -8,7 +18,9 @@ String procentTVACurent;
 String observatii;
 String um;
 String categorieMaterial;
- String reteta;
+String reteta;
+
+@ManyToOne
 ListaCaracteristici listaCaracteristici;
 
 
