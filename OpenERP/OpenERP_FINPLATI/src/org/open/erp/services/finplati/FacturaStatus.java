@@ -10,20 +10,29 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 import org.open.erp.services.achizitii.Factura;
-//import org.open.erp.services.achizitii.Factura;
+
 
 
 /**
  * @author paraschivgeanina
  *
  */
-public class FacturaStatus extends Factura{
-
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public class FacturaStatus extends Factura implements Serializable{
+	//@Id @GeneratedValue
 	//Factura factura;
 	//private Integer idFactura;
    // private Date dataFactura;
 	private String numeFurnizor;
+	
 	Double valoareTotala;
 	Map<Integer, Plata> plati;
 	

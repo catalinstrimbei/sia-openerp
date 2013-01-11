@@ -3,14 +3,25 @@ package org.open.erp.services.finplati;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import org.open.erp.services.achizitii.Furnizori;
 
+@Entity
 public class FurnizorContract implements Serializable {
+@Id @GeneratedValue
 	Integer idFurnizor;
+
 	String numeFurnizor;
 	String adresaFurnizor;
 	String cuiFurnizor;
 	
+	@OneToMany
 	Map<Integer,Plata> plati;
 	
 	public FurnizorContract() {

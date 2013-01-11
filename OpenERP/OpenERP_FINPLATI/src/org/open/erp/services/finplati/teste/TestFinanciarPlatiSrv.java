@@ -45,6 +45,7 @@ import org.open.erp.services.banci.Cont;
 
 public class TestFinanciarPlatiSrv {
 	private static Logger logger;
+	
 	FinanciarPlatiSrv finplatiInstance;
 
 	
@@ -169,7 +170,7 @@ public class TestFinanciarPlatiSrv {
 	    assertTrue("Valoarea discountului nu este corecta", dsc==0.2);
 	    
 	    
-	    logger.info("2.4  Afisare situatie");
+	  //  logger.info("2.4  Afisare situatie");
 	    finplatiInstance.afisareSituatie(testCtr2);
 	    logger.debug(finplatiInstance.afisareSituatie(testCtr2));
 	    
@@ -208,7 +209,7 @@ public class TestFinanciarPlatiSrv {
 	    ChitantaPlata chit = finplatiInstance.primireChitanta(200.0);
 	    assertNotNull("S-a facut primirea chitante", chit);
 	    
-	   logger.debug(finplatiInstance.afisareSituatiePlati());
+	  // logger.debug(finplatiInstance.afisareSituatiePlati());
 	    Double sitplata = finplatiInstance.afisareSituatiePlati();
 	    assertNotNull("Eroare in calculul situatia platilor", sitplata);
 	    assertTrue("Situatia plata nu coincide cu evidenta", sitplata == 550.0);
@@ -216,7 +217,7 @@ public class TestFinanciarPlatiSrv {
 	    
 //5	    
 	 //   logger.info("5.1. Urmarire datorii ramase"); 
-	    logger.debug(finplatiInstance.afisareDatorii());
+	   // logger.debug(finplatiInstance.afisareDatorii());
 	    Double datorii = finplatiInstance.afisareDatorii();
 	    assertNotNull("Eroare in calculul datoriilor", datorii);
 	    assertTrue("Datoriile nu coincid cu evidenta", datorii == 1850.0);
@@ -230,13 +231,13 @@ public class TestFinanciarPlatiSrv {
 	     
 	    
 	  //  logger.info("5.3. Interogare sold");
-	    //logger.debug(finplatiInstance.afisareSold());
+	   // logger.debug(finplatiInstance.afisareSold());
 	    Double soldafisare = finplatiInstance.afisareSold();
 	    assertNotNull("Eroare in calculul platilor", soldafisare);
 	    assertTrue("Platile totale nu coincid cu evidenta", soldafisare == 18150.0);
 	    
 	    	   
-	    logger.info("THe END!");
+	    logger.info("THe END !!!!!!!");
 	    
 	}
 }

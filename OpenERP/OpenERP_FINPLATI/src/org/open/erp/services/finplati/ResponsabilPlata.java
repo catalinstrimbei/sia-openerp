@@ -2,15 +2,31 @@ package org.open.erp.services.finplati;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 import org.open.erp.services.finplati.Persoana;
 /**
  * 
  * @author paraschivgeanina
  * 
  */
-public class ResponsabilPlata extends Persoana{
+@Entity
+//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public class ResponsabilPlata extends Persoana implements Serializable{
+//	@Id @GeneratedValue
+	//private Integer idresponsabil;
+	 String obsExperienta;
+	//Integer getidresponsabil() {
+		//return idresponsabil;
+	//}
 
-	String obsExperienta;
+	//public void setId(Integer idresponsabil) {
+		//this.idresponsabil = idresponsabil;
+	//}
 	public String getObsExperienta() {
 		return obsExperienta;
 	}

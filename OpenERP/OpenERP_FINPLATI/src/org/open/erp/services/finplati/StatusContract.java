@@ -1,6 +1,15 @@
 package org.open.erp.services.finplati;
 
-public enum StatusContract {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+//@Entity
+public enum StatusContract implements Serializable {
+	//@Id
+	//@GeneratedValue
 	SEMNAT("Semnat"), AMANAT("Amanat"), ONORAT("Onorat"), NEACHITAT("Neachitat"), ACHITATAV("Achitat avans"), ANULAT("Anulat");
 	private String value;
 
