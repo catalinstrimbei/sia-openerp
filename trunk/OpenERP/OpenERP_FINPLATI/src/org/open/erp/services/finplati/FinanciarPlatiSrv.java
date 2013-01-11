@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.Remote;
+
 import org.open.erp.services.achizitii.AchizitiiSrv;
 
 import org.open.erp.services.achizitii.Factura;
@@ -32,7 +34,7 @@ import org.open.erp.services.achizitii.Factura;
  * @UseCase("5. Urmarire plati si datorii ramase"):
  *
  */
-
+@Remote
 public interface FinanciarPlatiSrv {
 	
 	/**

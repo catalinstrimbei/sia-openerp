@@ -1,8 +1,9 @@
-/*FinanciarPlatiImpl    LArisa Lupu*/
+
 
 package org.open.erp.services.finplati.impl;
 
 import org.open.erp.services.achizitii.AchizitiiSrv;
+import org.open.erp.services.banci.BanciSrv;
 import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FurnizorContract;
 
@@ -13,21 +14,60 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.open.erp.services.finplati.*;
+import org.open.erp.services.nomgen.NomenclatoareSrv;
 
 
-public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
+/**
+ * 
+ * @ApplicationServiceImplementation(ServiceAPI)
+ * 
+ */
+
+@Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvLocal {
 	//private AchizitiiSrv achizitiiSrv;
 
+	//Dependente resurse proprii
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(FinanciarPlatiImpl.class.getName());
 	
+	//Dependente resurse injectate
+			@PersistenceContext(unitName="OpenERP_FINPLATI")
+			private EntityManager em;
+		//public AchizitiiSrv getAchizitiiSrv() {
+			//return achizitiiSrv;
+		//}
+			
+			//Initializare
+		//	public FinanciarPlatiImpl() { }
+	
+	//@EJB(lookup="java:global/OpenERP_ACHIZITII/AchizitiiImpl!org.open.erp.services.achizitii.AchizitiiSrv")
+	//private AchizitiiSrv achizitiiSrv;
+	
+	//@EJB(lookup="java:global/OpenERP_BANCI/BanciImpl!org.open.erp.services.banci.BanciSrv")
+	//private BanciSrv banciSrv;
+	
+	//@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.personal.NomenclatoareSrv")
+	//private NomenclatoareSrv nomgenSrv;
+	
+	
+		//public void setNomgenSrv(NomenclatoareSrv nomgenSrv) {
+		//this.nomgenSrv = nomgenSrv;
+		//}
+	
 
-	//public AchizitiiSrv getAchizitiiSrv() {
-		//return achizitiiSrv;
-	//}
-
-	//public void setAchizitiiSrv(AchizitiiSrv achizitiiiSrv) {
-		//this.achizitiiSrv = achizitiiiSrv;
+ //public void setAchizitiiSrv(AchizitiiSrv achizitiiiSrv) {
+	//	this.achizitiiSrv = achizitiiSrv;
 	//}
 	
 	SituatieFinanciara sitFit;
@@ -52,6 +92,7 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv {
 		this.sitFit = sitFit;
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Double getSumePlatite(Date cDate) {
 		logger.debug("1.1. Gestionare sume platite prin banca");

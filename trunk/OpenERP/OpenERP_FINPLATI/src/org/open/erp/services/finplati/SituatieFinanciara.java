@@ -16,13 +16,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 /*
  * 
  * @BusinessObject(DummyEntity)
  * 
  */
+@Entity
 public class SituatieFinanciara implements Serializable{
-	
+	@Id
+	@GeneratedValue
 	Integer idSitFit;
 	Double valoarePlatiRestante;
 	Double bugetDatorii;
@@ -31,6 +38,8 @@ public class SituatieFinanciara implements Serializable{
 	Map<Integer,FacturaStatus> factura;
 	Map<Integer,Contract> contracte;
 	Map<Integer,Persoana> personal;
+	
+	//@OneToMany
 	ResponsabilPlata responsabil;
 	
 	public SituatieFinanciara() {

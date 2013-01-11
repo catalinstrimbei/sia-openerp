@@ -2,13 +2,20 @@ package org.open.erp.services.finplati;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * @author paraschivgeanina
  *
  */
-
-public class Persoana {
+@Entity
+public class Persoana implements Serializable{
+	@Id
+	@GeneratedValue
 	protected Integer idPersoana;
+	
 	protected String nume;
 	protected String prenume;
 	protected Integer scorAptitudini;

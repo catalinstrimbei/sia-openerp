@@ -6,17 +6,32 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import javax.persistence.Entity;
 
 import org.open.erp.services.finplati.FurnizorContract;
 
-
+@Entity
 public class Contract {
+	@Id @GeneratedValue
 	Integer idContract;
+	
+	//@OneToMany
 	FurnizorContract furnizor;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	Date dataContract;
+	
 	Double valoareContract;
 	Double discountContract;
+	
 	Map<Integer, Plata> plati;
+	//@OneToMany
 	StatusContract statusContract;
 	
 	private static int nextIdContract = 1;
@@ -66,6 +81,8 @@ public class Contract {
 			plati = new HashMap<Integer, Plata>();
 		plati.put(plata.getId(), plata);
 	}
+	
+	
 	public Double getTotalPlati() {
 		Double sumTotal = 0.0;
 		Iterator<Entry<Integer,Plata>> platiIter = plati.entrySet().iterator();

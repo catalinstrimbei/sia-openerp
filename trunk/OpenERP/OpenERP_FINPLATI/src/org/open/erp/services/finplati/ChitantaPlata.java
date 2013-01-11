@@ -5,6 +5,11 @@ package org.open.erp.services.finplati;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 /**
  * @author paraschivgeanina
  *
@@ -12,12 +17,16 @@ import java.io.Serializable;
  * @DummyObject
  *
  */
+//@Entity
 public class ChitantaPlata implements Serializable {
+	@Id @GeneratedValue
+Integer idChitanta;
+
+//@OneToMany
+Plata plata;
 
 	private static int nextIdChitanta = 1;
 	
-	Plata plata;
-	Integer idChitanta;
 	
 	public ChitantaPlata(Plata plata) {
 		idChitanta = nextIdChitanta++;
