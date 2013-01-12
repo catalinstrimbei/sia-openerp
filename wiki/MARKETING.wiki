@@ -1,67 +1,96 @@
 #summary Pagina modulului MARKETING.
 
-= Introduction =
+= Introducere=
 
-Aceasta pagina isi propune sa ofere informatiile necesare unei utilizari corecte a modulului de Marketing pentru aceasta aplicatie. 
+Aceasta pagina contine informatiile necesare unei utilizator care doreste sa intrebuinteze intr-un mod cat mai adecvat modulul de MARKETING ca parte a acestei aplicatii. 
 
-     Modulul de marketing ofera urmatoarele facilitati:
-  # Crearea si gestionarea campaniilor de promovare
-  # Crearea si gestionarea promotiilor
-  # Crearea si derularea de chestionare, precum si procesarea raspunsurilor obtinute.
+     Modulul de MARKETING ofera urmatoarele facilitati:
+  # Crearea si gestionarea cercetarilor de piata;
+  # Crearea si distribuirea de chestionare, precum si procesarea raspunsurilor obtinute in urma completarii acestora;
+  # Crearea si administrarea campaniilor de promovare prin canalele de distributie corespunzatoare;
+  # Stabilirea promotiilor;
+  # Primirea de reclamatii de la clienti, precum si rezolvarea acestora in timp util.
+  
 
-<h3>Descrierea detaliata a modulului  </h3>
+<h3>Descrierea detaliata a modulului MARKETING </h3>
 
-Modulul de Marketing permite urmatoare operatiuni <br><br>
-<b>DEFINIREA UNEI CAMPANII</b><br>
-Informatiile necesare pentru definirea unei campanii publicitare sunt:
-  * Numele campaniei
-  * Data inceput si data Sfarsit
-  * Responsabilul campaniei
-  * Lista persoanelor tinta.
+Modulul de MARKETING permite derularea urmatoarelor operatiuni: <br><br>
+<b>DEFINIREA UNEI CERCETARI DE PIATA</b><br>
+Informatiile necesare pentru definirea unei cercetari de piata sunt:
+  * Numarul cercetarii de piata;
+  * Data de start si data de final;
+  * Responsabilul cercetarii de piata;
+  * Bugetul aferent;
+  * Lista intrebarilor.
 
-Dependetele:
-  * PersonalSRV - avem nevoie de o instanta a clasei Angajat pentru a stabili un responsabil al campaniei;
-  * NomenclatorSRv - Persoana - pentru obtinerea listei Persoanelor tinta.
+Dependentele:
+  * PersonalSRV - avem nevoie de o instanta a clasei Angajat pentru a stabili un responsabil al cercetarii de piata.
+<br> 
+<b> INITIEREA UNEI CERCETARI DE PIATA.</b><br>
+In aceasta etapa, responsabilul campaniei aloca un buget cercetarii de piata pe care o are in vedere in perioada urmatoare. De asemenea, se va aloca un chestionar corespunzator.
 
-<b> INITIEREA UNEI CAMPANII.</b><br>
-In aceasta etapa, responsabilul campaniei schimba statusul acesteia in "In curs". Totodata, se trimit mail-urile de informare catre persoanele tinta.
-<br> <br>
+<br> 
 <b>DEFINIREA UNUI CHESTIONAR</b><br>
 Chestionarele sunt folosite pentru obtinerea unui feedback din partea clientilor sau pentru efectuarea unui studiu de piata pentru un produs ce urmeaza a fi lansat. Acestea pot contine mai multe tipuri de intrebari. Pentru definirea unui chestionar, avem nevoie de urmatoarele informatii:
-  * Denumirea chestionarului
-  * Responsabilul chestionarului
-  * Numarul de intrebari
-  * Scopul chestionarului
-  * Lista intrebarilor
+  * Denumirea chestionarului;
+  * Responsabilul chestionarului;
+  * Numarul de intrebari;
+  * Persoana chestionata;
+  * Lista intrebarilor;
+  * Raspunsurile aferente;
 
-Dependente:
+Dependentele:
  * PersonalSRV - avem nevoie de o instanta a clasei Angajat pentru a stabili un responsabil al chestionarului;
+  * NomenclatorSRv - Persoana Chestionata - pentru obtinerea listei Persoanelor tinta.
 
+<br>
 <b>DERULAREA UNUI CHESTIONAR</b><br>
 In aceasta etapa chestionarul este trimis prin email catre clienti. Raspunsurile la chestionar vor fi colectate pe durata a 2 saptamani<br>
 
+<br>
 <b>PROCESAREA REZULTATELOR UNUI CHESTIONAR</b><br>
 In aceasta etape sistemul analizeaza raspusurile colectate si afiseaza un raport cu rezultatele obtinute.
 
+<br>
+<b>DEFINIREA UNEI CAMPANII DE PROMOVARE</b><br>
+Informatiile necesare pentru definirea unei campanii de promovare sunt:
+  * Numarul campaniei;
+  * Tipurile alese de promovare;
+  * Data de inceput si data de Sfarsit;
+  * Bugetul campaniei;
+  * Responsabilul campaniei, numit Promoter;
+  * Canalele de distributie.
+
+Dependentele:
+  * PersonalSRV - avem nevoie de o instanta a clasei Angajat pentru a stabili un responsabil al campaniei de promovare.
+<br>
 <b>DEFINIREA UNEI PROMOTII</b><br>
 
-Promotiile sunt un mijloc excelent pentru atragerea de noi clienti, precum si de fidelizare a celor existenti. Definirea unei promotii presupune urmatoarele elemente:
-  * Denumirea promotiei
+Promotiile sunt un mijloc excelent pentru atragerea de noi clienti, precum si de fidelizare a celor existenti. 
+Definirea unei promotii presupune urmatoarele elemente:
+  * Numarul promotiei;
   * Mesaj promotional
-  * Data inceput si sfarsit
-  * Tip promotie
-  * Lista produse
-O promotie poate fi de 2 tipuri: 
-  * Discount
-  * Produse aditionale
+  * Data de inceput si  de sfarsit;
+  * Lista produselor;
+  *Preturile promotionale asociate produselor;
+  *Responsabil promotie;
 
-Promotia de tip "<b>Discount</b>" presupune acordarea unui discount pentru produsele care fac parte din promotia respectiva. Discount poate fi oferit atat sub forma de procent, cat si sub forma de valoare neta.
+Dependentele: 
+  * NomenclatorSRv - Produs- pentru obtinerea listei produselor ce fac parte din promotie;
+ * PersonalSRV - avem nevoie de o instanta a clasei Angajat pentru a stabili un responsabil al campaniei de promovare.
+<br>
 
-Promotia de tip "<b>Produse aditionale</b>" presupune acordarea unor produse aditionale la achizitionarea unui anumit produs ce face parte din acea promotie.
+<b>PRIMIREA UNEI RECLAMATII</b><br>
+Informatiile necesare pentru primirea si inregistrarea unei reclamatii sunt:
+  * Motivul reclamatiei;
+  * Statusul reclamatiei;
+  * Persoana reclamanta;
+  * Data primirii;
+  * Raspunsul acordat.
 
-Dependente: 
-  * NomenclatorSRv - Produs- pentru obtinerea listei produselor ce fac parte din promotie.
-
+Dependentele:
+  * PersonalSRV - avem nevoie de o instanta a clasei Angajat pentru a stabili un responsabil cu primirea reclamatiilor;
+  * NomenclatorSRv - Persoana - pentru obtinerea listei Persoanelor reclamante.
 
 <UL>
 <li>
@@ -69,16 +98,20 @@ Dependente:
 <ol>
 <li><b>Dependente </b></LI>
     Modulul MARKETING depinde de urmatoarele module: <br><br><b>
-     <a href ="http://code.google.com/p/sia-openerp/wiki/NOMGEN"> Nomenclatoare generale </a> <br><br>
-     <a href ="http://code.google.com/p/sia-openerp/wiki/PERSONAL"> Stocuri</a> <br><br>
+     <a href ="http://code.google.com/p/sia-openerp/wiki/NOMGEN"> Nomenclatoare generale </a> <br> <br>
+     <a href ="http://code.google.com/p/sia-openerp/wiki/PERSONAL"> Personal</a> <br>
+    Nomenclatoare Materiale. <br><br>
    
 <li><b>Business Objects</b></LI> 
-  * Campanie
-  * Chestionar
-  * Discount
-  * Intrebare
-  * Persoana Tinta
-  * Promotie
-  * Raspuns Chestionar
-  * Responsabil
+  * Campanie Promovare;
+  * Cercetare Piata
+  * Canal Distributie;
+  * Chestionar;
+  * Persoana Chestionata;
+  * Persoana Reclamanta;
+  * Promoter;
+  * Promotie;
+  * Raspuns Intrebare;
+  * Status Reclamatie;
+  * Tip Promovare;
 <br>
