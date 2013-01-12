@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+//nu se adnoteaza
+
 //@Entity
 public enum StatusContract implements Serializable {
 	//@Id

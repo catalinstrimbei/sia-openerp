@@ -15,7 +15,7 @@ import org.open.erp.services.finplati.Persoana;
  * 
  */
 @Entity
-//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class ResponsabilPlata extends Persoana implements Serializable{
 //	@Id @GeneratedValue
 	//private Integer idresponsabil;

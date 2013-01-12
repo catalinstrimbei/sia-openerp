@@ -15,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.open.erp.services.achizitii.Factura;
 
@@ -34,7 +36,15 @@ public class FacturaStatus extends Factura implements Serializable{
 	private String numeFurnizor;
 	
 	Double valoareTotala;
+	
+	@OneToMany
 	Map<Integer, Plata> plati;
+	
+	//exemplu pt mapare
+	
+	//@OneToMany(mappedBy="department")
+ //   private Set<Student> students = new HashSet<Student>(
+	
 	
 	//public Factura getFactura() {
 		//return factura;

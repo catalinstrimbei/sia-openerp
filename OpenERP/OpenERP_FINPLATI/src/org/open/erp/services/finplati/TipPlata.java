@@ -3,6 +3,7 @@ package org.open.erp.services.finplati;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+//enum nu se adnoteaza
 
 //@Entity
 public enum TipPlata {
