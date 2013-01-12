@@ -3,6 +3,8 @@ package org.open.erp.services.productie;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Remote;
+
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nommat.Material;
@@ -29,6 +31,7 @@ import org.open.erp.services.nommat.Material;
  * 
  */
 
+@Remote
 public interface ProductieSrv {
 
 	/**
