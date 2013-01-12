@@ -2,13 +2,24 @@ package org.open.erp.services.vanzari;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 
+@Entity
 public class LiniiFactura {
 
+	@Id @GeneratedValue
 	Integer nrLiniiFactura;
+	
+	@OneToOne(targetEntity = org.open.erp.services.vanzari.ArticolComanda.class)
 	ArticolComanda articol;
 	
+	@ManyToOne(targetEntity = org.open.erp.services.vanzari.Facturi.class)
+	private Facturi factura;
 	
 	
 	public LiniiFactura() {

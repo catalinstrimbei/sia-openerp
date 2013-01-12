@@ -1,10 +1,20 @@
 package org.open.erp.services.vanzari;
 
+import javax.persistence.Entity;
+
 import org.open.erp.services.nommat.Material;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.TableGenerator;
+@Entity
 public class Produse {
+	
 	Material material;
+	
+	@Id @GeneratedValue
 	Integer idProdus;
+	
 	String denumire;
 	Integer codProdus;
 	Double cost;

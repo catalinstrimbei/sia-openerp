@@ -1,10 +1,23 @@
 package org.open.erp.services.vanzari;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 
+@Entity
 public class LiniiDispozitieLivrare {
+	
+	@Id @GeneratedValue
 	Integer nrLiniiAviz;
+	
+	@OneToOne(targetEntity = org.open.erp.services.vanzari.ArticolComanda.class)
 	ArticolComanda articol;
+	
+	@ManyToOne(targetEntity = org.open.erp.services.vanzari.DispozitiiLivrare.class)
+	private DispozitiiLivrare dispozitie;
 	
 	
 	

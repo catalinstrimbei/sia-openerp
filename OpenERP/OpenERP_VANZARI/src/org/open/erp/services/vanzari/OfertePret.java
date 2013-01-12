@@ -2,13 +2,31 @@ package org.open.erp.services.vanzari;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.TableGenerator;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.TIMESTAMP;
 
 
+@Entity
 public class OfertePret {
+	@Id
+	@GeneratedValue
 	Integer idOfertaPret;
+	
+	@ManyToOne(targetEntity = org.open.erp.services.vanzari.Produse.class)
 	Produse produs;
+	
+	@Temporal(TIMESTAMP)
 	Date dataValabilitate;
+	
+	@Temporal(TIMESTAMP)
 	Date dataEmitere=new Date(System.currentTimeMillis());
+	
 	String observatii;
 
 	public OfertePret() {
