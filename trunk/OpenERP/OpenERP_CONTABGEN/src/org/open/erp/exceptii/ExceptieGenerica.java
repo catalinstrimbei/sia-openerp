@@ -1,5 +1,9 @@
 package org.open.erp.exceptii;
 
+import javax.ejb.ApplicationException;
+
+
+@ApplicationException(rollback=true)
 public class ExceptieGenerica extends Exception {
 	protected CodEroare cod;
 

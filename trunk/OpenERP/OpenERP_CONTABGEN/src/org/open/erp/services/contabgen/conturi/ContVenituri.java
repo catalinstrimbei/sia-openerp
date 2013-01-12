@@ -1,28 +1,29 @@
-package org.open.erp.services.conturi;
+package org.open.erp.services.contabgen.conturi;
 
 import java.util.List;
 
-import org.open.erp.services.conturi.Cont.Tip;
-import org.open.erp.services.tranzactii.InregistrareOperatiune;
+import javax.persistence.Entity;
 
-public class ContPasiv extends Cont {
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
 
-	public ContPasiv() {
+@Entity
+public class ContVenituri extends Cont {
+	public ContVenituri() {
 		super();
-		tip = Tip.PASIV;
+		tip = Tip.VENITURI;
 	}
 
-	public ContPasiv(int codCont, String denumire, String descriere,
+	public ContVenituri(int codCont, String denumire, String descriere,
 			double sold, boolean tranzactionabil) {
 		super(codCont, denumire, descriere, sold, tranzactionabil);
-		tip = Tip.PASIV;
+		tip = Tip.VENITURI;
 	}
 
-	public ContPasiv(int codCont, String denumire, String descriere,
+	public ContVenituri(int codCont, String denumire, String descriere,
 			double sold, boolean tranzactionabil,
 			List<InregistrareOperatiune> intrari) {
 		super(codCont, denumire, descriere, sold, tranzactionabil,
-				Tip.PASIV, intrari);
+				Tip.VENITURI, intrari);
 	}
 
 	protected void modificaDebit(double suma) {

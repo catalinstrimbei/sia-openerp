@@ -15,12 +15,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.exceptii.CodEroare;
 import org.open.erp.exceptii.ExceptieContNetranzactionabil;
-import org.open.erp.services.achizitii.Factura;
-import org.open.erp.services.conturi.Cont;
-import org.open.erp.services.conturi.ContActiv;
-import org.open.erp.services.conturi.ContPasiv;
-import org.open.erp.services.tranzactii.InregistrareOperatiune;
-import org.open.erp.services.tranzactii.InregistrareOperatiuneContabila;
+import org.open.erp.services.contabgen.conturi.Cont;
+import org.open.erp.services.contabgen.conturi.ContActiv;
+import org.open.erp.services.contabgen.conturi.ContPasiv;
+import org.open.erp.services.contabgen.conturi.Factura;
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila;
 
 public class TestInregistrareOperatiuneContabila {
 

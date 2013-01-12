@@ -1,9 +1,22 @@
-package org.open.erp.services.tranzactii;
+package org.open.erp.services.contabgen.tranzactii;
 
-import org.open.erp.services.conturi.Cont;
+import java.io.Serializable;
 
-public class InregistrareOperatiune{
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+import org.open.erp.services.contabgen.conturi.Cont;
+
+@Entity
+public class InregistrareOperatiune implements Serializable{
+
+	
+	@Id
+	@GeneratedValue
+	private Integer id;
 	public static enum Tip {
 		DEBIT, CREDIT
 	};
@@ -11,8 +24,10 @@ public class InregistrareOperatiune{
 	/**
 	 * celalalt cont folosit in cadrul operatiunii
 	 */
+	@OneToOne(cascade=CascadeType.ALL)
 	private Cont transferCont;
 
+	@OneToOne(cascade=CascadeType.ALL)
 	private InregistrareOperatiuneContabila Inregistrare;
 
 	private Tip tip;

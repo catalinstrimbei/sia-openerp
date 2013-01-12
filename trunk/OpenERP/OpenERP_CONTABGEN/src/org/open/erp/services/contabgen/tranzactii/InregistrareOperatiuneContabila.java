@@ -1,29 +1,48 @@
-package org.open.erp.services.tranzactii;
+package org.open.erp.services.contabgen.tranzactii;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.apache.log4j.Logger;
 import org.open.erp.exceptii.CodEroare;
 import org.open.erp.exceptii.ExceptieContNetranzactionabil;
-import org.open.erp.services.achizitii.Document;
-import org.open.erp.services.conturi.Cont;
+import org.open.erp.services.contabgen.conturi.Cont;
+import org.open.erp.services.contabgen.conturi.Document;
 
-public class InregistrareOperatiuneContabila {
+@Entity
+public class InregistrareOperatiuneContabila implements Serializable{
 
 	private static Logger logger = Logger
 			.getLogger(InregistrareOperatiuneContabila.class.getName());
 
+	@Id
+	@GeneratedValue
 	Integer idOperatiune;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	Date dataOperatiune;
 	String tipOperatiune;
 	String descriereOperatiune;
+	
+	@OneToOne(cascade=CascadeType.ALL)
 	Document document;
 
 	protected double suma;
 
+	@OneToOne(cascade=CascadeType.ALL)
 	protected InregistrareOperatiune debit;
+
+	@OneToOne(cascade=CascadeType.ALL)
 	protected InregistrareOperatiune credit;
 
 	public Integer getIdOperatiune() {

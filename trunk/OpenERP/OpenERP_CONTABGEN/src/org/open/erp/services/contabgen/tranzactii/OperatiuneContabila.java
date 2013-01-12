@@ -1,23 +1,35 @@
-package org.open.erp.services.tranzactii;
+package org.open.erp.services.contabgen.tranzactii;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.exceptii.ExceptieContNetranzactionabil;
-import org.open.erp.services.conturi.Clasa;
-import org.open.erp.services.conturi.Cont;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-public class OperatiuneContabila {
+@Entity
+public class OperatiuneContabila implements Serializable{
 
+	@Id
+	@GeneratedValue
 	Integer idOperatiune;
+	@Temporal(TemporalType.TIMESTAMP)
 	Date dataOperatiune;
 	String tipOperatiune;
 	String descriereOperatiune;
 	
-    private List<InregistrareOperatiuneContabila> inregistrari = new ArrayList<InregistrareOperatiuneContabila>();
+    @OneToMany(cascade=CascadeType.ALL)
+	private List<InregistrareOperatiuneContabila> inregistrari = new ArrayList<InregistrareOperatiuneContabila>();
 	
-	public void setIdOperatiune(Integer idOperatiune) {
+	public OperatiuneContabila() {
+	}
+    public void setIdOperatiune(Integer idOperatiune) {
 		this.idOperatiune = idOperatiune;
 	}
 
