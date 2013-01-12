@@ -1,14 +1,26 @@
-package org.open.erp.services.conturi;
+package org.open.erp.services.contabgen.conturi;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import org.open.erp.services.contabgen.impl.ContabilitateGeneralaImpl;
 
-public class PlanConturi {
+@Entity
+public class PlanConturi implements Serializable{
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(PlanConturi.class.getName());
 	
+	@Id
+	@GeneratedValue
+	private Integer id;
+	
+	@OneToMany
 	private List<Clasa> planConturi = new ArrayList<Clasa>();
 
 	public List<Clasa> getPlanConturi() {
@@ -46,4 +58,9 @@ public class PlanConturi {
 		this.addClasa(clasaTest2);
 		
 	}
+
+	public void setPlanConturi(List<Clasa> planConturi) {
+		this.planConturi = planConturi;
+	}
+	
 }

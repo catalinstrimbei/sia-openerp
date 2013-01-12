@@ -1,9 +1,12 @@
-package org.open.erp.services.conturi;
+package org.open.erp.services.contabgen.conturi;
 
 import java.util.List;
 
-import org.open.erp.services.tranzactii.InregistrareOperatiune;
+import javax.persistence.Entity;
 
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
+
+@Entity
 public class ContCheltuieli extends Cont{
 	public ContCheltuieli() {
 		super();

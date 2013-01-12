@@ -1,5 +1,6 @@
-package org.open.erp.services.conturi;
+package org.open.erp.services.contabgen.conturi;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,20 +8,37 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import org.apache.log4j.Logger;
 import org.open.erp.exceptii.CodEroare;
 import org.open.erp.exceptii.ExceptieContNetranzactionabil;
-import org.open.erp.services.tranzactii.InregistrareOperatiune;
-import org.open.erp.services.tranzactii.InregistrareOperatiuneContabila;
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila;
 
-public abstract class Cont {
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+public class Cont implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(Cont.class.getName());
 
 	public static enum Tip {
 		ACTIV, PASIV, CHELTUIELI, VENITURI
 	}
 
+	@Id
+	@GeneratedValue
 	private Integer idCont;
 	private Integer codCont;
 	private String denumireCont;
@@ -29,12 +47,16 @@ public abstract class Cont {
 	protected String descriere;
 	protected double sold;
 	protected Tip tip;
+	
+	@ManyToOne
+	private Clasa clasa;
 	/**
 	 * flag care indica daca soldul acestui cont poate fi modificat in cadrul
 	 * inregistrarilor
 	 */
 	protected boolean tranzactionabil;
 
+	@ManyToMany
 	protected List<InregistrareOperatiune> intrari=new ArrayList<InregistrareOperatiune>();
 
 	protected Cont() {
@@ -111,6 +133,16 @@ public abstract class Cont {
 
 	public void setIntrari(List<InregistrareOperatiune> intrari) {
 		this.intrari = intrari;
+	}
+
+	
+	
+	public Clasa getClasa() {
+		return clasa;
+	}
+
+	public void setClasa(Clasa clasa) {
+		this.clasa = clasa;
 	}
 
 	public Cont(Integer idCont, Integer codCont, String denumireCont,
@@ -247,9 +279,11 @@ public abstract class Cont {
 		intrare.setSoldCont(sold);
 	}
 
-	protected abstract void modificaDebit(double suma);
+	protected  void modificaDebit(double suma) {
+	}
 
-	protected abstract void modificaCredit(double suma);
+	protected  void modificaCredit(double suma) {
+	}
 
 	public void stergeIntrare(InregistrareOperatiune intrare)
 			throws ExceptieContNetranzactionabil {

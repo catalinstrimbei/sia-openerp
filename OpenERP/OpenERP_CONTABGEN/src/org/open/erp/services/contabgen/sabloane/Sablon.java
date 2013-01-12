@@ -1,17 +1,27 @@
-package org.open.erp.services.sabloane;
+package org.open.erp.services.contabgen.sabloane;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
-import org.open.erp.services.conturi.Cont;
-import org.open.erp.services.tranzactii.OperatiuneContabila;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-public class Sablon {
+import org.open.erp.services.contabgen.tranzactii.OperatiuneContabila;
+
+@Entity
+public class Sablon implements Serializable{
 	
+	@Id
+	@GeneratedValue
 	Integer idSablon;
 	String denumireSablon;
+	
+	@OneToOne
 	OperatiuneContabila opCont;
 	
+	public Sablon() {
+	}
 	public Sablon(String denumireSablon, OperatiuneContabila opCont) {
 		super();
 		this.denumireSablon = denumireSablon;

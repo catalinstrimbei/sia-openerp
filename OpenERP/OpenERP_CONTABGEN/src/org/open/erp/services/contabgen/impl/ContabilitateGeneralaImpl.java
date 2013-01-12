@@ -3,28 +3,40 @@ package org.open.erp.services.contabgen.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.open.erp.exceptii.ExceptieTipContInvalid;
-import org.open.erp.services.contabgen.ContabilitateGeneralaSrv;
-import org.open.erp.services.conturi.Clasa;
-import org.open.erp.services.conturi.Cont;
-import org.open.erp.services.conturi.Cont.Tip;
-import org.open.erp.services.conturi.ContActiv;
-import org.open.erp.services.conturi.ContCheltuieli;
-import org.open.erp.services.conturi.ContPasiv;
-import org.open.erp.services.conturi.ContVenituri;
-import org.open.erp.services.conturi.PlanConturi;
-import org.open.erp.services.rapoarte.BilantContabil;
-import org.open.erp.services.sabloane.Sablon;
-import org.open.erp.services.tranzactii.InregistrareOperatiune;
-import org.open.erp.services.tranzactii.InregistrareOperatiuneContabila;
-import org.open.erp.services.tranzactii.OperatiuneContabila;
-import org.open.erp.services.tranzactii.Tranzactie;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-public class ContabilitateGeneralaImpl implements ContabilitateGeneralaSrv {
+import org.open.erp.exceptii.ExceptieTipContInvalid;
+import org.open.erp.services.contabgen.ContabilitateGeneralaLocalSrv;
+import org.open.erp.services.contabgen.ContabilitateGeneralaSrv;
+import org.open.erp.services.contabgen.conturi.Clasa;
+import org.open.erp.services.contabgen.conturi.Cont;
+import org.open.erp.services.contabgen.conturi.Cont.Tip;
+import org.open.erp.services.contabgen.conturi.ContActiv;
+import org.open.erp.services.contabgen.conturi.ContCheltuieli;
+import org.open.erp.services.contabgen.conturi.ContPasiv;
+import org.open.erp.services.contabgen.conturi.ContVenituri;
+import org.open.erp.services.contabgen.conturi.PlanConturi;
+import org.open.erp.services.contabgen.rapoarte.BilantContabil;
+import org.open.erp.services.contabgen.sabloane.Sablon;
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila;
+import org.open.erp.services.contabgen.tranzactii.OperatiuneContabila;
+import org.open.erp.services.contabgen.tranzactii.Tranzactie;
+
+@Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class ContabilitateGeneralaImpl implements ContabilitateGeneralaLocalSrv, ContabilitateGeneralaSrv {
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
 			.getLogger(ContabilitateGeneralaImpl.class.getName());
 
+	@PersistenceContext(unitName = "OpenERP_CONTABGEN")
+	private EntityManager em;
+	
 	@Override
 	public boolean adaugaCont(Cont cont, Integer codClasa) {
 

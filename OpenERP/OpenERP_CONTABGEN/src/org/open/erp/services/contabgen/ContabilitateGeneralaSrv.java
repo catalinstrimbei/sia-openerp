@@ -1,17 +1,16 @@
 package org.open.erp.services.contabgen;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import javax.ejb.Remote;
 
 import org.open.erp.exceptii.ExceptieTipContInvalid;
-import org.open.erp.services.conturi.Clasa;
-import org.open.erp.services.conturi.Cont;
-import org.open.erp.services.conturi.Cont.Tip;
-import org.open.erp.services.conturi.PlanConturi;
-import org.open.erp.services.rapoarte.BilantContabil;
-import org.open.erp.services.sabloane.Sablon;
-import org.open.erp.services.tranzactii.OperatiuneContabila;
-import org.open.erp.services.tranzactii.Tranzactie;
+import org.open.erp.services.contabgen.conturi.Cont;
+import org.open.erp.services.contabgen.conturi.Cont.Tip;
+import org.open.erp.services.contabgen.rapoarte.BilantContabil;
+import org.open.erp.services.contabgen.sabloane.Sablon;
+import org.open.erp.services.contabgen.tranzactii.OperatiuneContabila;
+import org.open.erp.services.contabgen.tranzactii.Tranzactie;
 
 /**
  * @author ContaGen
@@ -36,7 +35,7 @@ import org.open.erp.services.tranzactii.Tranzactie;
  * @UseCase("4. Generarea unui raport contabil"):
  * 
  */
-
+@Remote
 public interface ContabilitateGeneralaSrv {
 	
 	/**

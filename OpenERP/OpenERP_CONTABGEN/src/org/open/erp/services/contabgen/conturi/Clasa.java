@@ -1,13 +1,30 @@
-package org.open.erp.services.conturi;
+package org.open.erp.services.contabgen.conturi;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Clasa {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
+public class Clasa implements Serializable{
+	
+	@Id
+	@GeneratedValue
+	private Integer id;
 	private String denumireClasa;
 	private Integer codClasa;
+	
+	@OneToMany(mappedBy="clasa" , cascade=CascadeType.ALL)
 	private List<Cont> conturi = new ArrayList<Cont>();
+
+
+	public Clasa() {
+	}
 
 	public Integer getCodClasa() {
 		return codClasa;
@@ -50,5 +67,19 @@ public class Clasa {
 
 		return null;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setConturi(List<Cont> conturi) {
+		this.conturi = conturi;
+	}
+	
+	
 
 }

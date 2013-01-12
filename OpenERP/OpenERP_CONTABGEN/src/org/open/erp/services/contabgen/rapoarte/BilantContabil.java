@@ -1,13 +1,19 @@
-package org.open.erp.services.rapoarte;
+package org.open.erp.services.contabgen.rapoarte;
 
 import java.util.List;
 
-import org.open.erp.services.conturi.Cont;
-import org.open.erp.services.conturi.ContActiv;
-import org.open.erp.services.conturi.ContPasiv;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
+import org.open.erp.services.contabgen.conturi.Cont;
+import org.open.erp.services.contabgen.conturi.ContActiv;
+import org.open.erp.services.contabgen.conturi.ContPasiv;
+
+@Entity
 public class BilantContabil extends Raport {
 	
+	
+	@ManyToMany
 	private List<Cont> conturi;
 	private int totalActiv;
 	private int totalPasiv;

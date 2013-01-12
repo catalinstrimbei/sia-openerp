@@ -1,9 +1,20 @@
-package org.open.erp.services.rapoarte;
+package org.open.erp.services.contabgen.rapoarte;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Raport {
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Raport implements Serializable{
 	
+	@Id
+	@GeneratedValue
 	Integer idRaport;
 	Date dataInceputRaport;
 	Date dataSfarsitRaport;

@@ -1,18 +1,35 @@
-package org.open.erp.services.tranzactii;
+package org.open.erp.services.contabgen.tranzactii;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.achizitii.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-public class Tranzactie {
+import org.open.erp.services.contabgen.conturi.Document;
+
+
+
+@Entity
+public class Tranzactie implements Serializable{
 	
+	@Id
+	@GeneratedValue
 	Integer idTranzactie;
+	@Temporal(TemporalType.TIMESTAMP)
 	Date dataTranzactie;
 	String tipTranzactie;
 	String descriereTranzactie;
+	
 	List<OperatiuneContabila> operatiuni = new ArrayList<OperatiuneContabila>();
+	
+	@OneToOne
 	Document document;
 	
 	public Integer getIdTranzactie() {
