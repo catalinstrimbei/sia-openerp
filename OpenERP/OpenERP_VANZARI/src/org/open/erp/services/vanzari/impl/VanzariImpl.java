@@ -8,6 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import org.hamcrest.core.Is;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.Angajat;
@@ -30,6 +32,14 @@ import org.open.erp.services.vanzari.VanzariSrv;
  * @ApplicationServiceImplementation
  *
  */
+
+/**
+ * @author Ionela
+ *
+ */
+@Stateless
+
+
 public class VanzariImpl implements VanzariSrv{
 
 	private NomenclatoareSrv nomencaltoareSrv;

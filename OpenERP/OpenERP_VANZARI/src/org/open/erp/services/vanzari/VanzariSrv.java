@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.ejb.Remote;
+
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
@@ -36,6 +38,9 @@ import org.open.erp.services.stocuri.StocuriSrv;
  * @UseCase("5. Facturi livrare"):
  * 
  */
+
+@Remote
+
 public interface VanzariSrv {
 	
 	/**
