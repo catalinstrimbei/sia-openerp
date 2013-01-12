@@ -10,6 +10,7 @@ import javax.ejb.Remote;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.proman.Proiect;
 import org.open.erp.services.stocuri.StocuriSrv;
 
 
@@ -133,5 +134,10 @@ void  setStocuri(StocuriSrv stocuriSrv);
  */
 double getValoareFact(Integer id);
 
+OfertePret salvareOferta(OfertePret oferta) throws Exception;
+
+/* Data Operations */
+OfertePret getOfertaDePret(Integer idOfertaPret);
+List<OfertePret> getOferte();
 }
 

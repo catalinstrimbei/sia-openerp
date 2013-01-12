@@ -4,12 +4,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.TIMESTAMP;
+import javax.persistence.OneToMany;
 
 
+@Entity
 public class Comenzi {
+	
+	@Id @GeneratedValue
 	Integer idComanda;
-	 Date data;
-	 List<ArticolComanda> articole = new ArrayList<ArticolComanda>();
+	
+	 @Temporal(TIMESTAMP)
+	Date data;
+	 
+	 @OneToMany(mappedBy = "comanda", targetEntity = org.open.erp.services.vanzari.ArticolComanda.class)
+	List<ArticolComanda> articole = new ArrayList<ArticolComanda>();
 
 	 
 	 

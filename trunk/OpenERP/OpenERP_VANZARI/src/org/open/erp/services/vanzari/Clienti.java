@@ -1,8 +1,13 @@
 package org.open.erp.services.vanzari;
 
-import org.open.erp.services.nomgen.Persoana;
+import javax.persistence.Entity;
 
+import org.open.erp.services.nomgen.Persoana;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Clienti {
+	@OneToOne(targetEntity = org.open.erp.services.nomgen.Persoana.class)
 	Persoana persoana;
 	String categorie;
 	

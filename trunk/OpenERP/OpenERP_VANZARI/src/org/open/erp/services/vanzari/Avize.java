@@ -4,14 +4,32 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.open.erp.services.personal.Angajat;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 
+import org.open.erp.services.personal.Angajat;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.TIMESTAMP;
+import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Avize {
 
+	@Id @GeneratedValue
 	Integer idAviz;
+	
+	@Temporal(TIMESTAMP)
 	Date data;
+	
+	@OneToOne(targetEntity = org.open.erp.services.personal.Angajat.class)
 	Angajat responsabil;
+	
+	@OneToOne(targetEntity = org.open.erp.services.vanzari.Comenzi.class)
 	Comenzi comanda;
+	
+	@OneToMany(targetEntity = org.open.erp.services.vanzari.LiniiAviz.class, mappedBy = "aviz")
 	List<LiniiAviz> liniiAviz=new ArrayList<LiniiAviz>();
 	
 	

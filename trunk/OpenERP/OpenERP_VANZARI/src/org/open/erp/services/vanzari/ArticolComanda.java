@@ -1,13 +1,25 @@
 package org.open.erp.services.vanzari;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
+@Entity
 public class ArticolComanda {
+	@Id @GeneratedValue
 	Integer nrLinieComanda;
+	
+	@OneToOne(targetEntity = org.open.erp.services.vanzari.OfertePret.class)
 	OfertePret oferta;
+	
 	Double cantitateComandata;
 	Double cantitateAcceptata;
-
+	
+	@ManyToOne(targetEntity = org.open.erp.services.vanzari.Comenzi.class)
+	private Comenzi comanda;
 	
 	
 	public Integer getNrLinieComanda() {

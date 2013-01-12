@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="OpenERP_VANZARI">
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="OpenERP_VANZARI" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
+		
+		<jar-file>OpenERP_NOMMAT.jar</jar-file>
+		<jar-file>OpenERP_PERSONAL.jar</jar-file>
+		<class>org.open.erp.services.vanzari.Produse</class>
+		<class>org.open.erp.services.vanzari.OfertePret</class>
+		<class>org.open.erp.services.vanzari.LiniiFactura</class>
+		<class>org.open.erp.services.vanzari.LiniiDispozitieLivrare</class>
+		<class>org.open.erp.services.vanzari.LiniiAviz</class>
+		<class>org.open.erp.services.vanzari.Facturi</class>
+		<class>org.open.erp.services.vanzari.DispozitiiLivrare</class>
+		<class>org.open.erp.services.vanzari.Comenzi</class>
+		<class>org.open.erp.services.vanzari.Clienti</class>
+		<class>org.open.erp.services.vanzari.Avize</class>
+		<class>org.open.erp.services.vanzari.ArticolComanda</class>
+		<class>org.open.erp.services.nommat.Material</class>
+		<class>org.open.erp.services.personal.Angajat</class>
+		
+
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+		</properties>
 	</persistence-unit>
 </persistence>
+
+

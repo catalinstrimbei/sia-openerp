@@ -2,11 +2,22 @@ package org.open.erp.services.vanzari;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
+@Entity
 public class LiniiAviz {
+	@Id
 	Integer nrLiniiAviz;
+	
+	@OneToOne(targetEntity = org.open.erp.services.vanzari.ArticolComanda.class)
 	ArticolComanda articol;
+	
+	@ManyToOne(targetEntity = org.open.erp.services.vanzari.Avize.class)
+	private Avize aviz;
 	
 	
 	

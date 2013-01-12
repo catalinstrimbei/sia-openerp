@@ -8,7 +8,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.hamcrest.core.Is;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
@@ -26,6 +36,7 @@ import org.open.erp.services.vanzari.LiniiFactura;
 import org.open.erp.services.vanzari.OfertePret;
 import org.open.erp.services.vanzari.Produse;
 import org.open.erp.services.vanzari.VanzariSrv;
+import org.open.erp.services.vanzari.VanzariSrvLocal;
 
 /**
  * 
@@ -38,34 +49,54 @@ import org.open.erp.services.vanzari.VanzariSrv;
  *
  */
 @Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
 
-
-public class VanzariImpl implements VanzariSrv{
-
-	private NomenclatoareSrv nomencaltoareSrv;
-	private StocuriSrv stocuriSrv;
-	private PersonalSrv personalSrv;
+public class VanzariImpl implements VanzariSrv, VanzariSrvLocal{
 	
+
+	//private NomenclatoareSrv nomencaltoareSrv;
+	//private StocuriSrv stocuriSrv;
+	//private PersonalSrv personalSrv;
 	
+	//Dependente resurse proprii
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(VanzariImpl.class.getName());
-
+	private RegistruVanzari registruVanzari;
 	
-
+	//Dependente resurse injectate
+	@PersistenceContext(unitName="OpenERP_VANZARI")
+	private EntityManager em;
 	
-
-	public PersonalSrv getPersonalSrv() {
-		return personalSrv;
-	}
-
-	public void setNomencaltoareSrv(NomenclatoareSrv nomencaltoareSrv) {
-		this.nomencaltoareSrv = nomencaltoareSrv;
-	}
-
-	public void setStocuriSrv(StocuriSrv stocuriSrv) {
-		this.stocuriSrv = stocuriSrv;
+	
+	@Resource
+	private SessionContext sessionContext;
+	
+	@EJB(lookup="java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrvLocal")
+	private NomenclatorMaterialeSrvLocal nommatSrv;
+	
+	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.nomgen.NomenclatoareSrvLocal")
+	private NomenclatoareSrvLocal nomgenSrv;
+	
+	@EJB(lookup="java:global/OpenERP_PERSONAL/PersonalImpl!org.open.erp.services.personal.PersonalSrvLocal")
+	private PersonalSrvLocal personalSrv;
+	
+	@EJB(lookup="java:global/OpenERP_STOCURI/StocuriImpl!org.open.erp.services.stocuri.StocuriSrvLocal")
+	private StocuriSrvLocal stocuriSrv;
+	
+	
+	//Initializare
+	public VanzariImpl(){	}
+	@PostConstruct
+	public void init(){
+		if(this.registruVanzari==null)
+			registruVanzari=new RegistruVanzari(em);
 	}
 	
-
+	
+	
+	//Implementare actiuni serviciu VanzariSRV
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
+	
 	@Override
 	public Comenzi creareComanda(Integer idComanda, Date data,
 			List<ArticolComanda> articole) {
@@ -75,8 +106,6 @@ public class VanzariImpl implements VanzariSrv{
 		
 		return creareComanda;
 	}
-
-
 
 
 	@Override
@@ -102,8 +131,49 @@ public class VanzariImpl implements VanzariSrv{
 	}
 
 	
-	
 
+	@Override
+	public OfertePret getOfertaDePret(Integer idOfertaPret) {
+		// TODO Auto-generated method stub
+		return registruVanzari.getOfertaDePret(idOfertaPret);
+	}
+	
+	
+	
+	@Override
+	public List<OfertePret> getOferte() {
+		List<OfertePret> oferte = registruVanzari.getToateOfertele();
+		if (oferte.isEmpty())
+			logger.debug("Returner 0 oferte!");
+		else
+			logger.debug("Returner " + oferte.size() + " oferte!");
+		return oferte;
+	}
+	
+	
+	
+	@Override
+	public OfertePret salvareOferta(OfertePret oferta) throws Exception {
+		if (oferta.getProdus()== null){
+			logger.debug(">>>>>>>>>>>> Selectare produs: " + nommatSrv);	
+			
+			logger.debug("Produsul pentru care se face oferta este: " + oferta.getProdus());			
+		}
+		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare/salvare proiect - TRANZACTIE ANULATA");
+		}else{
+			oferta = this.registruVanzari.salveazaOferta(oferta);
+			//em.persist(proiectNou);
+		}
+		
+		logger.debug(">>>>>>>>>>>> END salvare oferta");
+		return oferta;
+	}
+	
+	
+	
 	@Override
 	public Facturi creareFactura(Integer idFactura, Date data,
 			Angajat responsabil, Avize aviz, Comenzi comanda,
