@@ -14,18 +14,18 @@ import javax.persistence.Id;
 public class Persoana implements Serializable{
 	@Id
 	@GeneratedValue
-	protected Integer idPersoana;
+	protected Integer IdPersoana;
 	
 	protected String nume;
 	protected String prenume;
 	protected Integer scorAptitudini;
 	
 	public Integer getIdPersoana() {
-		return idPersoana;
+		return IdPersoana;
 	}
 
 	public void setIdPersoana(Integer idPersoana) {
-		this.idPersoana = idPersoana;
+		this.IdPersoana = idPersoana;
 	}
 
 	public String getNume() {

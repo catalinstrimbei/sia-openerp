@@ -17,16 +17,17 @@ import org.open.erp.services.finplati.Persoana;
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class ResponsabilPlata extends Persoana implements Serializable{
-//	@Id @GeneratedValue
-	//private Integer idresponsabil;
+	//@Id @GeneratedValue
+	private Integer idResponsabil;
 	 String obsExperienta;
-	//Integer getidresponsabil() {
-		//return idresponsabil;
-	//}
+	
+	 public Integer getidResponsabil() {
+		return idResponsabil;
+	}
 
-	//public void setId(Integer idresponsabil) {
-		//this.idresponsabil = idresponsabil;
-	//}
+	public void setId(Integer idResponsabil) {
+		this.idResponsabil = idResponsabil;
+	}
 	public String getObsExperienta() {
 		return obsExperienta;
 	}
@@ -35,7 +36,7 @@ public class ResponsabilPlata extends Persoana implements Serializable{
 		this.obsExperienta = obsExperienta;
 	}
 
-	public ResponsabilPlata(Integer idPersoana, String nume, String prenume,
+	public ResponsabilPlata(Integer IdPersoana, String nume, String prenume,
 			String obsExperienta) {
 		this.obsExperienta = obsExperienta;
 	}
@@ -46,7 +47,7 @@ public class ResponsabilPlata extends Persoana implements Serializable{
 	
 	public ResponsabilPlata(Persoana p) {
 		super();
-		this.idPersoana = p.idPersoana;
+		this.IdPersoana = p.IdPersoana;
 		this.nume = p.nume;
 		this.prenume = p.prenume;
 		this.scorAptitudini = p.scorAptitudini;

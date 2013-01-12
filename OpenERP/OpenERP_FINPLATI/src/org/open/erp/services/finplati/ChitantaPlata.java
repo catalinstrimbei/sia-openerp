@@ -8,6 +8,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -19,6 +20,8 @@ import javax.persistence.OneToOne;
  *
  */
 @Entity
+
+@SuppressWarnings("serial")
 public class ChitantaPlata implements Serializable {
 	@Id @GeneratedValue
 protected Integer idChitanta;
@@ -36,8 +39,10 @@ Plata plata;
 	}
 	
 	private static int nextIdChitanta = 1;
-	public ChitantaPlata(Plata plata) {
+    public ChitantaPlata(Plata plata) {
 		idChitanta = nextIdChitanta++;
 		this.plata = plata;
 	}
+
 }
+

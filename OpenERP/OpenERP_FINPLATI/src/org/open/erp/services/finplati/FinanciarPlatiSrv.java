@@ -9,6 +9,7 @@ import javax.ejb.Remote;
 import org.open.erp.services.achizitii.AchizitiiSrv;
 
 import org.open.erp.services.achizitii.Factura;
+import org.open.erp.services.banci.BanciSrv;
 
 
 /**
@@ -228,6 +229,11 @@ public interface FinanciarPlatiSrv {
 
 
 	void setAchizitii(AchizitiiSrv achizitiiSrv);
+
+
+
+
+	void setBanci(BanciSrv banciSrv);
 	
 	
 }

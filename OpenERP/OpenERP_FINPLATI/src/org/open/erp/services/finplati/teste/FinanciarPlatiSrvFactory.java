@@ -23,11 +23,11 @@ private static Logger logger = Logger.getLogger(FinanciarPlatiSrvFactory.class.g
 		FinanciarPlatiSrv financiarSrv = new FinanciarPlatiImpl();
 		
 		AchizitiiSrv achizitiiSrv = FinanciarPlatiSrvFactory.getFactAchizitiiSrv();
-		BanciSrv banciSrv = FinanciarPlatiSrvFactory.getTestBanciSrv();
+		//BanciSrv banciSrv =  FinanciarPlatiSrvFactory.getContBanciSrv();
 		
-		//BanciSrv contabSrv = new BanciImpl();
+		BanciSrv banciSrv = new BanciImpl();
 		financiarSrv.setAchizitii(achizitiiSrv);
-		//financiarSrv.setBanciSrv(bancaSrv);
+		financiarSrv.setBanci(banciSrv);
 		
 				
 		logger.info("Creare FinanciarPlatiSrv instance from FinanciarPlatiSrvFactory!");
@@ -39,7 +39,7 @@ private static Logger logger = Logger.getLogger(FinanciarPlatiSrvFactory.class.g
 		logger.info("Creaza Dummy Achizitii SRV----");
 		return new AchizitiiImpl();
 	}
-	public static BanciSrv getTestBanciSrv(){
+	public static BanciSrv getContBanciSrv(){
 		logger.info("Creaza Dummy Banci SRV----");
 		return new BanciImpl();
 	}

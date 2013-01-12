@@ -22,7 +22,7 @@ public class Contract {
 	@Id @GeneratedValue
 	Integer idContract;
 	
-	//@OneToMany
+	@ManyToOne
 	FurnizorContract furnizor;
 	
 	@Temporal(TemporalType.TIMESTAMP)
