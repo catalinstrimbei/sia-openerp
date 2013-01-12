@@ -19,7 +19,9 @@ import java.util.Map.Entry;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /*
  * 
@@ -31,6 +33,7 @@ public class SituatieFinanciara implements Serializable{
 	@Id
 	@GeneratedValue
 	Integer idSitFit;
+	
 	Double valoarePlatiRestante;
 	Double bugetDatorii;
 	
@@ -39,7 +42,7 @@ public class SituatieFinanciara implements Serializable{
 	Map<Integer,Contract> contracte;
 	Map<Integer,Persoana> personal;
 	
-	//@OneToMany
+	@OneToOne
 	ResponsabilPlata responsabil;
 	
 	public SituatieFinanciara() {
