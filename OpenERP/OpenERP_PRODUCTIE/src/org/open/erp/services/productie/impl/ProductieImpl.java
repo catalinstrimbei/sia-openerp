@@ -3,25 +3,70 @@ package org.open.erp.services.productie.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nommat.Material;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.CriteriuCalitate;
 import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
 import org.open.erp.services.productie.FunctieNecesara;
 import org.open.erp.services.productie.ProductieSrv;
+import org.open.erp.services.productie.ProductieSrvLocal;
 import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.Semifabricat;
 import org.open.erp.services.productie.Utilaj;
 
-public class ProductieImpl implements ProductieSrv {
+@Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class ProductieImpl implements ProductieSrv, ProductieSrvLocal {
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductieImpl.class.getName());
 	
+	private RegistruProductie registru;
 	private static ProductieSrv productie;
+	
+	@PersistenceContext(unitName="OpenERP_PRODUCTIE")
+	private EntityManager em;
+	
+	@Resource
+	private SessionContext sessionContext;
+	
+	@EJB(lookup="java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrvLocal")
+	private NomenclatorMaterialeSrvLocal nommatSrv;
+	
+	@EJB(lookup="java:global/OpenERP_PERSONAL/PersonalImpl!org.open.erp.services.personal.PersonalSrvLocal")
+	private PersonalSrvLocal personalSrv;
+	
+	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.personal.NomenclatoareSrvLocal")
+	private NomenclatoareSrvLocal nomgenSrv;
+	
+	public ProductieImpl(){
+		
+	}
+	
+	@PostConstruct
+	public void init(){
+		logger.debug("EntityManager: " + em);		
+				
+		if (this.registru == null)
+			registru = new RegistruProductie(em);
+	}
 	
 	public void setProductieSrv(ProductieSrv productie) {
 		this.productie = productie;
@@ -36,7 +81,7 @@ public class ProductieImpl implements ProductieSrv {
 	ArrayList<Integer> cantitati;
 	ArrayList<Object> resurse;
 	
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public FluxProductie definireFluxProductie(Integer idFlux, Produs produs)
 			throws Exception {
@@ -45,11 +90,21 @@ public class ProductieImpl implements ProductieSrv {
 		logger.debug(">>>>>>>>>>>> START definire flux");		
 		FluxProductie flux = new FluxProductie(idFlux, produs);
 		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Definire flux - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+		}else{
+			flux = this.registru.salveazaFlux(flux);
+			//em.persist(proiectNou);
+		}
+		
 		logger.debug(">>>>>>>>>>>> END Definire Flux");
 		return flux;
 		
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public FazaProductie definireFazaProductie(String faza, FluxProductie flux,
 			Utilaj utilaj, Double timpFolosire,
@@ -110,12 +165,16 @@ public class ProductieImpl implements ProductieSrv {
 	    	fazaProductie.setSemifabricatDorit(null);
 	    }
 		
+	    this.registru.salveazaFaza(fazaProductie);
+		logger.debug(">>>>>>>>>>>> Faza salvata in flux >>>>>>>>>>>>>>>");
+	    
 		logger.debug(">>>>>>>>>>>> END Creare faza >>>>>>>>>>>>>>>");
 		
 		return fazaProductie;
 		
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public FazaProductie getFazaFlux(FluxProductie flux, Integer nrOrdine) {
 		List<FazaProductie> fzList=new ArrayList<FazaProductie>();
@@ -132,12 +191,14 @@ public class ProductieImpl implements ProductieSrv {
 		return fazaObtinuta;
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Produs lansareComandaProductie(ComandaProductie comanda,
 			Produs produs) throws Exception {
 		return produs;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ArrayList<Object> consumResursa(FazaProductie faza, Produs produs)
 			throws Exception {
@@ -163,6 +224,7 @@ public class ProductieImpl implements ProductieSrv {
 		  return resurse;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ArrayList<Integer> controlCalitate(Produs produs) throws Exception {
 		  Boolean trecut;
@@ -192,12 +254,14 @@ public class ProductieImpl implements ProductieSrv {
 		  return cantitati;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Integer livrareProdus(Integer cantitateProdus, Produs produs)
 			throws Exception {
 		   return 0;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ArrayList<Object> inregistrareGestiuneConsum(FazaProductie faza,
 			Produs produs) throws Exception {
@@ -205,6 +269,7 @@ public class ProductieImpl implements ProductieSrv {
 		return resurse;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public ArrayList<Integer> inregistrareGestiuneProductie(Produs produs)
 			throws Exception {
@@ -212,12 +277,13 @@ public class ProductieImpl implements ProductieSrv {
 		return cantitati;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public FluxProductie getFlux(Integer idFlux) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return registru.getFluxProductie(idFlux);
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void fabricare(Produs produs, Integer idFlux) throws Exception {
 FluxProductie fluxPr = productie.getFlux(idFlux);
@@ -248,25 +314,25 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 
 	@Override
 	public List<FluxProductie> getListaFluxuri() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<FluxProductie> fluxuri=this.registru.getListaFluxuri();
+		return fluxuri;
 	}
 
 	@Override
 	public void stergeFlux(FluxProductie flux) throws Exception {
-		// TODO Auto-generated method stub
+		registru.stergeFlux(flux);
 		
 	}
 
 	@Override
 	public List<Semifabricat> getListaSemifabricate() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Semifabricat> semifabricate=this.registru.getListaSemifabricate();
+		return semifabricate;
 	}
 
 	@Override
 	public void stergeSemifabricat(Semifabricat semifabricat) throws Exception {
-		// TODO Auto-generated method stub
+		registru.stergeSemifabricat(semifabricat);
 		
 	}
 
@@ -276,19 +342,28 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 			Semifabricat semifabricatContinut) throws Exception {
 		Semifabricat semif = new Semifabricat(idSemifabricat, semifabricat, listaMateriale, semifabricatContinut);		
 		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END salvare criteriu - TRANZACTIE ANULATA");
+			
+		}else{
+			semif = this.registru.salveazaSemifabricat(semif);
+			//em.persist(proiectNou);
+		}
+		
 		return semif;
 	}
 
 	@Override
 	public List<CriteriuCalitate> getCriteriiCalitate() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<CriteriuCalitate> criterii = this.registru.getListaCriterii();
+		return criterii;
 	}
 
 	@Override
 	public void stergeCriteriuCalitate(CriteriuCalitate criteriu)
 			throws Exception {
-		// TODO Auto-generated method stub
+		registru.stergeCriteriuCalitate(criteriu);
 		
 	}
 
@@ -297,36 +372,45 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 			String criteriu) throws Exception {
 		CriteriuCalitate criteriuCalitate = new CriteriuCalitate(idCriteriu, criteriu);		
 		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END salvare criteriu - TRANZACTIE ANULATA");
+			
+		}else{
+			criteriuCalitate = this.registru.salveazaCriteriuCalitate(criteriuCalitate);
+			//em.persist(proiectNou);
+		}
+		
 		return criteriuCalitate;
 	}
 
 	@Override
 	public FazaProductie getFazaProductie(String faza) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		FazaProductie fazaP=this.registru.getFazaProductie(faza);
+		return fazaP;
 	}
 
 	@Override
 	public List<FazaProductie> getListaFaze() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<FazaProductie> faze=this.registru.getListaFaze();
+		return faze;
 	}
 
 	@Override
 	public void stergeFaza(FazaProductie faza) throws Exception {
-		// TODO Auto-generated method stub
+		registru.stergeFaza(faza);
 		
 	}
 
 	@Override
 	public List<Utilaj> getUtilaje() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Utilaj> utilaje=this.registru.getUtilaje();
+		return utilaje;
 	}
 
 	@Override
 	public void stergeUtilaj(Utilaj utilaj) throws Exception {
-		// TODO Auto-generated method stub
+		registru.stergeUtilaj(utilaj);
 		
 	}
 
@@ -336,6 +420,12 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 		
 	}
 
-	
+	public void setNommatSrv(NomenclatorMaterialeSrv nommatSrv) {
+		this.nommatSrv = nommatSrv;
+	}
+
+	public void setPersonalSrv(PersonalSrv personalSrv) {
+		this.personalSrv = personalSrv;
+	}
 	
 }
