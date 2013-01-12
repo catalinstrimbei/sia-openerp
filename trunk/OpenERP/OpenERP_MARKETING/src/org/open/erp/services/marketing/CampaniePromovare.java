@@ -29,7 +29,7 @@ public class CampaniePromovare {
 	Angajat promoter;
 	
 	CanalDistributie canalDistributie;
-	int buget;
+	int buget; 
 	
 	@OneToMany // Trebuie vazut daca mai trebuie completat ceva.
 	Set<Promotie> promotiiCampanie = new HashSet<Promotie>();
