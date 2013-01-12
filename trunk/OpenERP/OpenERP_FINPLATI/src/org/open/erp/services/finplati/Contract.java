@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,7 +31,9 @@ public class Contract {
 	Double valoareContract;
 	Double discountContract;
 	
+	@OneToMany
 	Map<Integer, Plata> plati;
+	
 	//@OneToMany
 	StatusContract statusContract;
 	

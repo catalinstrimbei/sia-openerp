@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+//nu se adnoteaza Enum
 //@Entity
 public enum ModPlata {
 	//@Id

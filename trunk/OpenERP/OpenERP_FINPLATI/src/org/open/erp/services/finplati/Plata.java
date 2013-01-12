@@ -20,10 +20,10 @@ public class Plata implements Serializable {
 @Id
 @GeneratedValue
 	Integer idPlata;
-//@OneToMany
+//enum
 	TipPlata tipPlata;
 	
-   // @OneToMany
+   // enum
 	ModPlata modPlata;
 	
 	@Temporal(TemporalType.TIMESTAMP)
