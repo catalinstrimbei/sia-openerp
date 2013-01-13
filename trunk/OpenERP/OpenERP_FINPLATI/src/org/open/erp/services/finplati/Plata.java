@@ -31,6 +31,7 @@ public class Plata implements Serializable {
 	
 	Double valoarePlata;
 	String confirmarePlata;
+	//@ManyToOne
 	Cont contBancar;
 	CompanieBanci banca;
 	

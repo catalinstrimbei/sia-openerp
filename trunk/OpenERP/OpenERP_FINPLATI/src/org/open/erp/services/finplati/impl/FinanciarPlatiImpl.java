@@ -68,17 +68,29 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 	private NomenclatoareSrv nomgenSrv;
 	
 	
-		public void setNomgenSrv(NomenclatoareSrv nomgenSrv) {
+	public void setNomgenSrv(NomenclatoareSrv nomgenSrv) {
 		this.nomgenSrv = nomgenSrv;
-		}
+	}
 	
-      public void setAchizitiiSrv(AchizitiiSrv achizitiiSrv) {
+	public NomenclatoareSrv getNomgenSrv() {
+		return this.nomgenSrv;
+	}
+	
+	public AchizitiiSrv getAchizitiiSrv() {
+		return this.AchizitiiSrv;
+	}
+	
+	public void setAchizitiiSrv(AchizitiiSrv achizitiiSrv) {
 		this.AchizitiiSrv = achizitiiSrv;
-	    }
+    }
       
-      public void setBanciSrv(BanciSrv BanciSrv) {
+  	public void setBanciSrv(BanciSrv banciSrv) {
   		this.banciSrv = banciSrv;
-  	    }
+    }
+  	
+  	public BanciSrv getBanciSrv() {
+  		return this.banciSrv;
+  	}
       
 	SituatieFinanciara sitFit;
 	
