@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import static javax.persistence.FetchType.EAGER;
+
 import static javax.persistence.CascadeType.ALL;
 
 import org.open.erp.services.personal.Angajat;
@@ -26,7 +26,7 @@ public class Gestiune {
 	private String denumireGest;
 	private Depozit depozit;
 	@OneToMany(targetEntity = Articol.class,
-			cascade = ALL, fetch = EAGER)
+			cascade = ALL)
 	private List<Articol>  articole = new ArrayList<Articol>();
 	private Angajat responsabilGestiune;
 	
@@ -46,6 +46,12 @@ public class Gestiune {
 	public Gestiune(Integer idGest, String denumireGest, Depozit depozit) {
 		super();
 		this.idGest = idGest;
+		this.denumireGest = denumireGest;
+		this.depozit = depozit;
+	}
+	public Gestiune(String denumireGest, Depozit depozit) {
+		super();
+		//this.idGest = idGest;
 		this.denumireGest = denumireGest;
 		this.depozit = depozit;
 	}

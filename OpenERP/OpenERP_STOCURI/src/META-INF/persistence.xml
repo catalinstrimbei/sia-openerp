@@ -6,13 +6,15 @@
 	<persistence-unit name="OpenERP_STOCURI" transaction-type ="JTA">
 		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
 		
-			<jar-file>OpenERP_NOMMAT.jar</jar-file>
-			
-			<class>org.open.erp.services.stocuri.Loturi</class>
-			<class>org.open.erp.services.stocuri.Gestiune</class>
-			<class>org.open.erp.services.stocuri.Depozit</class>
-			<class>org.open.erp.services.stocuri.BonTransfer</class>
-			<class>org.open.erp.services.stocuri.Articol</class>
+		<jar-file>OpenERP_NOMMAT.jar</jar-file>
+		<class>org.open.erp.services.nommat.Material</class>
+		
+		
+		<class>org.open.erp.services.stocuri.Loturi</class>
+		<class>org.open.erp.services.stocuri.Gestiune</class>
+		<class>org.open.erp.services.stocuri.Depozit</class>
+		<class>org.open.erp.services.stocuri.BonTransfer</class>
+		<class>org.open.erp.services.stocuri.Articol</class>
 	
 	</persistence-unit>
 </persistence>
