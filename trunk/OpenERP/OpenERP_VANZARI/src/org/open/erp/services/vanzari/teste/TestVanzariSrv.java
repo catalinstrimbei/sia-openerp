@@ -4,12 +4,18 @@ package org.open.erp.services.vanzari.teste;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import javax.sound.midi.MidiDevice.Info;
+
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.nomgen.Adresa;
+import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
+import org.open.erp.services.nomgen.impl.NomenclatoareImpl;
 import org.open.erp.services.nommat.ListaCaracteristici;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.personal.Angajat;
