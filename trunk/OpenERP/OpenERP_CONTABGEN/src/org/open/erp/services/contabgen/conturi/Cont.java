@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -48,7 +49,7 @@ public class Cont implements Serializable{
 	protected double sold;
 	protected Tip tip;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Clasa clasa;
 	/**
 	 * flag care indica daca soldul acestui cont poate fi modificat in cadrul
@@ -143,6 +144,7 @@ public class Cont implements Serializable{
 
 	public void setClasa(Clasa clasa) {
 		this.clasa = clasa;
+		this.clasa.getConturi().add(this);
 	}
 
 	public Cont(Integer idCont, Integer codCont, String denumireCont,
@@ -324,5 +326,32 @@ public class Cont implements Serializable{
 		return gasesteIndexulPrimeiIntrariMaiMariDecat(intrare.getInregistrare()
 				.getDataOperatiune());
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idCont == null) ? 0 : idCont.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cont other = (Cont) obj;
+		if (idCont == null) {
+			if (other.idCont != null)
+				return false;
+		} else if (!idCont.equals(other.idCont))
+			return false;
+		return true;
+	}
+	
+	
 
 }

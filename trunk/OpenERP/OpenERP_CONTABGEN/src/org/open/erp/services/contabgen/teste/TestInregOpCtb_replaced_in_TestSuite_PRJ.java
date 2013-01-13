@@ -18,22 +18,22 @@ import org.open.erp.exceptii.ExceptieContNetranzactionabil;
 import org.open.erp.services.contabgen.conturi.Cont;
 import org.open.erp.services.contabgen.conturi.ContActiv;
 import org.open.erp.services.contabgen.conturi.ContPasiv;
-import org.open.erp.services.contabgen.conturi.Factura;
+import org.open.erp.services.contabgen.conturi.Factura_ContabGen;
 import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
 import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila;
 
-public class TestInregistrareOperatiuneContabila {
+public class TestInregOpCtb_replaced_in_TestSuite_PRJ {
 
 	private static Logger logger;
 
 	private InregistrareOperatiuneContabila inregOpCtb;
 
-	public TestInregistrareOperatiuneContabila() {
+	public TestInregOpCtb_replaced_in_TestSuite_PRJ() {
 	}
 
 	@BeforeClass
 	public static void setUpClass() throws Exception {
-		logger = Logger.getLogger(TestInregistrareOperatiuneContabila.class
+		logger = Logger.getLogger(TestInregOpCtb_replaced_in_TestSuite_PRJ.class
 				.getName());
 	}
 
@@ -51,7 +51,7 @@ public class TestInregistrareOperatiuneContabila {
 		InregistrareOperatiune ce = new InregistrareOperatiune(null, null,
 				InregistrareOperatiune.Tip.CREDIT, 0.0);
 		inregOpCtb = new InregistrareOperatiuneContabilaMock(new Date(),
-				new Factura(), "Descriere", 0.0, de, ce);
+				new Factura_ContabGen(), "Descriere", 0.0, de, ce);
 		ce.setInregistrare(inregOpCtb);
 		de.setInregistrare(inregOpCtb);
 		Cont creditCont = new ContActiv(201, "Cheltuieli de constituire", "",
@@ -74,7 +74,7 @@ public class TestInregistrareOperatiuneContabila {
 		logger.info("rulez testul cu exceptii");
 		
 		Date data = new Date();
-		Factura document = new Factura();
+		Factura_ContabGen document = new Factura_ContabGen();
 		String descriere = "Descriere";
 		double suma = -1500;
 		Cont creditCont = new ContActiv(201, "Cheltuieli de constituire", "",
@@ -97,7 +97,7 @@ public class TestInregistrareOperatiuneContabila {
 		logger.info("rulez testul fara exceptii");
 		
 		Date data = new Date();
-		Factura document = new Factura();
+		Factura_ContabGen document = new Factura_ContabGen();
 		String descriere = "Descriere";
 		double suma = 1600;
 		Cont creditCont = new ContActiv(201, "Cheltuieli de constituire", "Inregistrarea 1 din cadrul operatiunii 2",
@@ -121,7 +121,7 @@ public class TestInregistrareOperatiuneContabila {
 			InregistrareOperatiuneContabila {
 
 		public InregistrareOperatiuneContabilaMock(Date data,
-				Factura document, String descriere, double suma,
+				Factura_ContabGen document, String descriere, double suma,
 				InregistrareOperatiune intrareDebit,
 				InregistrareOperatiune intrareCredit) {
 			super(data, document, descriere, suma, intrareDebit, intrareCredit);

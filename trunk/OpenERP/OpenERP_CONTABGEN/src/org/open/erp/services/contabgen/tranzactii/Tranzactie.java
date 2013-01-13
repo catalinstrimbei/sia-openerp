@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.open.erp.services.contabgen.conturi.Document;
+import org.open.erp.services.contabgen.conturi.Document_ContabGen;
 
 
 
@@ -27,10 +29,11 @@ public class Tranzactie implements Serializable{
 	String tipTranzactie;
 	String descriereTranzactie;
 	
+	@OneToMany(cascade=CascadeType.ALL)
 	List<OperatiuneContabila> operatiuni = new ArrayList<OperatiuneContabila>();
 	
 	@OneToOne
-	Document document;
+	Document_ContabGen document;
 	
 	public Integer getIdTranzactie() {
 		return idTranzactie;
@@ -65,11 +68,37 @@ public class Tranzactie implements Serializable{
 	public void removeOperatiune(OperatiuneContabila operatiune) {
 		this.operatiuni.remove(operatiune);
 	}
-	public Document getDocument() {
+	public Document_ContabGen getDocument() {
 		return document;
 	}
-	public void setDocument(Document document) {
+	public void setDocument(Document_ContabGen document) {
 		this.document = document;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idTranzactie == null) ? 0 : idTranzactie.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tranzactie other = (Tranzactie) obj;
+		if (idTranzactie == null) {
+			if (other.idTranzactie != null)
+				return false;
+		} else if (!idTranzactie.equals(other.idTranzactie))
+			return false;
+		return true;
+	}
+	
+	
 		
 }

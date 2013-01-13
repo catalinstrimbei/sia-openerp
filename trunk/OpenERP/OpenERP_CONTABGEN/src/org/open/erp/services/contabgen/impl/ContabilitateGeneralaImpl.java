@@ -1,9 +1,11 @@
 package org.open.erp.services.contabgen.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
@@ -34,37 +36,42 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaLocalSrv,
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
 			.getLogger(ContabilitateGeneralaImpl.class.getName());
 
+	ContabilitateGeneralaRegistru registru;
+	
 	@PersistenceContext(unitName = "OpenERP_CONTABGEN")
 	private EntityManager em;
+	
+	@PostConstruct
+	public void init(){		
+		if (this.registru == null)
+			registru = new ContabilitateGeneralaRegistru(em);
+	}	
 	
 	@Override
 	public boolean adaugaCont(Cont cont, Integer codClasa) {
 
-		logger.info("1.1 Creare cont: " + cont.getDenumireCont());
-
-		PlanConturi plan = new PlanConturi();
-
-		logger.info("1.2 Verificare existenta clasa de conturi cu codul: "
-				+ codClasa);
-
-		Clasa clasa = plan.getClasaByCod(codClasa);
-
-		if (clasa == null)
+		logger.info("Adaugare cont: " + cont.getDenumireCont() + "in clasa de conturi: "+ codClasa);
+		
+		try{
+			Clasa cls = registru.getClasaDeConturi(codClasa); 
+			
+			if (cls==null){
+				cls= new Clasa();
+				cls.setCodClasa(codClasa);
+				cls = em.merge(cls);
+			}
+			
+			if (registru.getContDinClasaDeConturi(cont.getIdCont())==null){
+				cont.setClasa(cls);
+			}else{
+				em.merge(cont);
+			}
+				
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** "+ex.getMessage());
 			return false;
-
-		logger.info("1.3 Verific daca exista contul: " + cont.getDenumireCont()
-				+ ", codul: " + cont.getCodCont());
-
-		if (clasa.getContByCod(cont.getCodCont()) != null) {
-			logger.info("1.3.1 Contul exista, nu este nevoie sa-l adaugam");
-		} else {
-			logger.info("1.4 Contul nu exista. Il adaugam");
-			clasa.addCont(cont);
-
-			return true;
 		}
-
-		return false;
+		return true;	
 	}
 
 	@Override
@@ -75,45 +82,62 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaLocalSrv,
 
 	@Override
 	public Sablon creareSablon(String denumire, OperatiuneContabila opCont) {
-		logger.info("3.1 Creare sablon: " + denumire);	
-		logger.info("3.2. Selectare operatiune contabila: " + opCont.getDescriereOperatiune());
-		
-		logger.info("3.3. Specificare inregistrari: ");
+		logger.info("Creare sablon: " + denumire + "pentru operatiunea contabila: "+ opCont.getDescriereOperatiune());	
 		
 		for(InregistrareOperatiuneContabila op : opCont.getInregistrari())
 		{
-			logger.info("3.3.1 Cont debitor: " + op.getDebitCont().getDenumireCont());
-			logger.info("3.3.2 Cont creditor: " + op.getContCredit().getDenumireCont());
+			logger.info("Cont debitor: " + op.getDebitCont().getDenumireCont());
+			logger.info("Cont creditor: " + op.getContCredit().getDenumireCont());
 		}
 		
-		logger.info("3.4 Salvare sablon");
-		return new Sablon(denumire, opCont);
+		logger.info("Salvare sablon");
+		return em.merge(new Sablon(denumire, opCont));
+	
 	}
 
 	@Override
-	public BilantContabil creareBilantContabil(ArrayList<Cont> conturi) {
-		BilantContabil bilant = new BilantContabil(conturi);
-		return bilant;
+	public BilantContabil creareBilantContabil() {
+		logger.info("Creare bilant contabil: ");	
+		BilantContabil bilant = new BilantContabil();
+		List<Cont> conturi = registru.getConturiDinClaseleDeConturi();
+		if(conturi == null)
+			return null;
+		
+		bilant.setConturi(conturi);
+
+		logger.info("Salvare bilant");
+		return em.merge(bilant);
 	}
 
 	@Override
-	public Cont creazaCont(Tip tip) throws ExceptieTipContInvalid {
+	public Cont creazaCont(Tip tip,int codCont, String denumire, String descriere,
+			double sold, boolean tranzactionabil) throws ExceptieTipContInvalid {
+		Cont cont;
 		switch (tip) {
 		case ACTIV:
-			return (Cont) new ContActiv();
+			cont = registru.getContDinClasaDeConturi(ContActiv.class, codCont);
+			return (cont!=null)? cont : (Cont) new ContActiv(codCont,  denumire,  descriere,
+					 sold,  tranzactionabil);
 		case CHELTUIELI:
-			return (Cont) new ContCheltuieli();
+			cont = registru.getContDinClasaDeConturi(ContCheltuieli.class, codCont);
+			return (cont!=null)? cont : (Cont) new ContCheltuieli(codCont,  denumire,  descriere,
+					 sold,  tranzactionabil);
 		case VENITURI:
-			return (Cont) new ContVenituri();
+			cont = registru.getContDinClasaDeConturi(ContVenituri.class, codCont);
+			return (cont!=null)? cont : (Cont) new ContVenituri(codCont,  denumire,  descriere,
+					 sold,  tranzactionabil);
 		case PASIV:
-			return (Cont) new ContPasiv();
+			cont = registru.getContDinClasaDeConturi(ContPasiv.class, codCont);
+			return (cont!=null)? cont : (Cont) new ContPasiv(codCont,  denumire,  descriere,
+					 sold,  tranzactionabil);
 		default:
 			throw new ExceptieTipContInvalid();
 		}
 
 	}
 
-	public static Cont creazaCont(int codCont, String denumireCont,
+	@Override
+	public Cont creazaCont(int codCont, String denumireCont,
 			String descriere, double sold, Tip tip,
 			List<InregistrareOperatiune> intrari, boolean tranzactionabil)
 			throws ExceptieTipContInvalid {
@@ -142,6 +166,33 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaLocalSrv,
 				tranzactionabil, intrari);
 
 		return (Cont) cont;
+	}
+
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public PlanConturi creazaPlanConturi() {
+		PlanConturi plan = registru.getPlanConturiConturi();
+		if(plan == null){
+			plan = new PlanConturi();
+		}
+		return plan;
+	}
+	
+	@Override
+	@TransactionAttribute(TransactionAttributeType.MANDATORY)
+	public boolean salveazaPlanConturi(PlanConturi plan) {
+		try{
+			em.merge(plan);
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** "+ex.getMessage());
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public ContabilitateGeneralaRegistru getRegistru() {
+		return this.registru;
 	}
 
 }

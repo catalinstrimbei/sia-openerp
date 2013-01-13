@@ -46,6 +46,30 @@ public class Sablon implements Serializable{
 	}
 	public void setDenumireSablon(String denumireSablon) {
 		this.denumireSablon = denumireSablon;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idSablon == null) ? 0 : idSablon.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sablon other = (Sablon) obj;
+		if (idSablon == null) {
+			if (other.idSablon != null)
+				return false;
+		} else if (!idSablon.equals(other.idSablon))
+			return false;
+		return true;
 	}	
 	
 }

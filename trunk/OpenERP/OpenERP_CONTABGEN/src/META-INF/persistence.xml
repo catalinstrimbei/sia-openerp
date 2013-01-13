@@ -5,22 +5,23 @@
 	<persistence-unit name="OpenERP_CONTABGEN"
 		transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:/ORCLLocalOpenERP</jta-data-source>
-		<class>org.open.erp.services.contabgen.conturi.Clasa</class>
-		<class>org.open.erp.services.contabgen.conturi.Cont</class>
-		<class>org.open.erp.services.contabgen.conturi.ContActiv</class>
-		<class>org.open.erp.services.contabgen.conturi.ContCheltuieli</class>
-		<class>org.open.erp.services.contabgen.conturi.ContPasiv</class>
-		<class>org.open.erp.services.contabgen.conturi.ContVenituri</class>
-		<class>org.open.erp.services.contabgen.conturi.Document</class>
-		<class>org.open.erp.services.contabgen.conturi.PlanConturi</class>
-		<class>org.open.erp.services.contabgen.rapoarte.BilantContabil</class>
-		<class>org.open.erp.services.contabgen.rapoarte.Raport</class>
-		<class>org.open.erp.services.contabgen.sabloane.Sablon</class>
-		<class>org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune</class>
-		<class>org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila</class>
-		<class>org.open.erp.services.contabgen.tranzactii.OperatiuneContabila</class>
+		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
 		<class>org.open.erp.services.contabgen.tranzactii.Tranzactie</class>
+		<class>org.open.erp.services.contabgen.tranzactii.OperatiuneContabila</class>
+		<class>org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila</class>
+		<class>org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune</class>
+		<class>org.open.erp.services.contabgen.sabloane.Sablon</class>
+		<class>org.open.erp.services.contabgen.rapoarte.Raport</class>
+		<class>org.open.erp.services.contabgen.rapoarte.BilantContabil</class>
+		<class>org.open.erp.services.contabgen.conturi.PlanConturi</class>
+		<class>org.open.erp.services.contabgen.conturi.ContVenituri</class>
+		<class>org.open.erp.services.contabgen.conturi.ContPasiv</class>
+		<class>org.open.erp.services.contabgen.conturi.ContCheltuieli</class>
+		<class>org.open.erp.services.contabgen.conturi.ContActiv</class>
+		<class>org.open.erp.services.contabgen.conturi.Cont</class>
+		<class>org.open.erp.services.contabgen.conturi.Clasa</class>
+		<class>org.open.erp.services.contabgen.conturi.Document_ContabGen</class>
+		<class>org.open.erp.services.contabgen.conturi.Factura_ContabGen</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
