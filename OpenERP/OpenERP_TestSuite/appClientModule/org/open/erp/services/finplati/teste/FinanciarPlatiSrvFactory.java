@@ -27,7 +27,7 @@ private static Logger logger = Logger.getLogger(FinanciarPlatiSrvFactory.class.g
 	        logger.info(Context.URL_PKG_PREFIXES);
 	        final Context context = new InitialContext(jndiProperties);
 	        logger.info("LOOKUP FOR OpenERP_FINPLATI/FinanciarPlatiImpl!org.open.erp.services.finplati.FinanciarPlatiSrv");
-	        return (T) context.lookup("ejb:/OpenERP_FINPLATI/MarketingSrvImpl!org.open.erp.services.finplati.FinanciarPlatiSrv");
+	        return (T) context.lookup("ejb:/OpenERP_FINPLATI/FinanciarPlatiImpl!org.open.erp.services.finplati.FinanciarPlatiSrv");
 	    }	
 	
 		
