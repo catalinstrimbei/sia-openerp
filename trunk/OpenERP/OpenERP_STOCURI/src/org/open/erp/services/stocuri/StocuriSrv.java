@@ -1,5 +1,8 @@
 package org.open.erp.services.stocuri;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.ejb.Remote;
 
 import org.open.erp.services.nommat.Material;
@@ -52,13 +55,15 @@ public interface StocuriSrv {
 	 * 
 	 */
 	
-	void intrareStoc(Material material, Double cantitate, Double Pret, Gestiune gestiunea);
+	void intrareStoc(Material material, Double cantitate, Double Pret, Gestiune gestiunea) throws Exception;
 	
-	void intrareStoc(BonTransfer bonTransfer, Double pret);
+	void intrareStoc(BonTransfer bonTransfer, Double pret) throws Exception;
 	
-	public void intrareStoc(Material material, Gestiune gestiune, Double cantitate);
+	public void intrareStoc(Material material, Gestiune gestiune, Double cantitate) throws Exception;
 	
-	public void creareLot(Material material, Double cantitate, Double pret , Gestiune gestiune);
+	public void adaugareArtLot(Material material, Double cantitate, Double pret, Gestiune gestiune) throws Exception;
+	
+	
 	
 	
 	/** 2. Verificare stoc
@@ -89,7 +94,7 @@ public interface StocuriSrv {
 	 */
 	
 	
-	void iesireStoc(Material material,  Double cantitate, Gestiune gestiune);
+	void iesireStoc(Material material,  Double cantitate, Gestiune gestiune) throws Exception;
 	
 	/** 4. Transfer intre getsiuni
 	 * Returneaza void
@@ -104,14 +109,26 @@ public interface StocuriSrv {
 	 * 
 	 */
 	
-	void transfer(BonTransfer bonTransfer);
+	void transfer(BonTransfer bonTransfer) throws Exception;
 	
 	void alertaStoc(Articol articol);
 	
 	public Articol getArticolByGestiune(Material produs, Gestiune gestiune);
 	
 	public ListaGestiuni GestiuniDisponibile ();
-		
+	
+	
+	//constrct
+	public Depozit creareDepozit(String locatie) throws Exception;
+	
+	public Articol creareArticol(Double cantPeGestiune,
+			Gestiune gestiune, Material material, List<Loturi> loturiArticole) throws Exception;
+	
+	public Loturi creareLot(Double cantitate, Double pretIntrare, Date dataIntrare, Articol articol) throws Exception;
+	
+	public Gestiune creareGestiune(String denumire, Depozit depozit) throws Exception;
+
+	public BonTransfer creareBonTransfer(Material material, Double cantitate, Gestiune gestiuneIntrare, Gestiune gestiuneIesire) throws Exception;
 	
 	// verifica daca exista un lot pentru un produs si o gestiune, folosit la instrare in stoc
 	//boolean existaArticol(Produs produs, Gestiune gestiune);

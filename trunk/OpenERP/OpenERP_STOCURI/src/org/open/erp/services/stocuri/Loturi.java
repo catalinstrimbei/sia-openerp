@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.DATE;
 
@@ -22,7 +23,8 @@ public class Loturi {
 	private Double pretIntrare;
 	@Temporal(DATE)
 	private Date dataIntrare;
-	//private Articol articol;
+	@ManyToOne
+	private Articol articol;
 	
 	public Loturi() {
 		super();
@@ -30,22 +32,22 @@ public class Loturi {
 	}
 
 	public Loturi(Integer idLot, Double cantitate, Double pretIntrare,
-			Date dataIntrare/*, Articol articol*/) {
+			Date dataIntrare, Articol articol) {
 		super();
 		this.idLot = idLot;
 		this.cantitate = cantitate;
 		this.pretIntrare = pretIntrare;
 		this.dataIntrare = dataIntrare;
-		//this.articol = articol;
+		this.articol = articol;
 	}
 	public Loturi(Double cantitate, Double pretIntrare,
-			Date dataIntrare/*, Articol articol*/) {
+			Date dataIntrare, Articol articol) {
 		super();
 		//this.idLot = idLot;
 		this.cantitate = cantitate;
 		this.pretIntrare = pretIntrare;
 		this.dataIntrare = dataIntrare;
-		//this.articol = articol;
+		this.articol = articol;
 	}
 	
 	public void scadeCantitatea(Double cantitate){
@@ -90,13 +92,13 @@ public class Loturi {
 		this.dataIntrare = dataIntrare;
 	}
 
-	/*public Articol getArticol() {
+	public Articol getArticol() {
 		return articol;
 	}
 
 	public void setArticol(Articol articol) {
 		this.articol = articol;
-	}*/
+	}
 
 	@Override
 	public int hashCode() {
