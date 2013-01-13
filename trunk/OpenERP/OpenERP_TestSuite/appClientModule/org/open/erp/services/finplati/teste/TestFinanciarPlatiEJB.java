@@ -28,8 +28,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.finplati.ChitantaPlata;
 import org.open.erp.services.finplati.Contract;
-//import org.open.erp.services.finplati.FacturaStatus;
-//import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FinanciarPlatiSrv;
 import org.open.erp.services.finplati.FurnizorContract;
@@ -41,9 +39,9 @@ import org.open.erp.services.finplati.SituatieFinanciara;
 import org.open.erp.services.finplati.TipPlata;
 //import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.achizitii.teste.AchizitiiSrvFactory;
-//import org.open.erp.services.banci.CompanieBanci;
-//import org.open.erp.services.banci.Cont;
-
+import org.open.erp.services.banci.CompanieBanci;
+import org.open.erp.services.banci.Cont;
+import org.open.erp.services.achizitii.Factura;
 public class TestFinanciarPlatiEJB {
 	/* Resurse test*/
 	private static Logger logger;
@@ -99,20 +97,20 @@ public class TestFinanciarPlatiEJB {
 		dataFact.setDate(25);
 		dataFact.setMonth(10);
 		dataFact.setYear(2012);
-		//factura1.setDataFactura(dataFact);
-		//factura1.setValoareTotala(1000.0);
+		factura1.setDataFactura(dataFact);
+		factura1.setValoareTotala(1000.0);
 		sitFit.adaugareFactura(factura1);
 		 
-		//Cont contBancar = new Cont();
-		//contBancar.setId(1);
-		//contBancar.setNume("Dummy name");
-		//contBancar.setTipCard(2);
-		//contBancar.setTipCont("Dummy account type");
+		Cont contBancar = new Cont();
+		contBancar.setId(1);
+		contBancar.setNume("Dummy name");
+		contBancar.setTipCard(2);
+		contBancar.setTipCont("Dummy account type");
 		
-		//CompanieBanci banca = new CompanieBanci();
-		//banca.setCont(contBancar);
-		////banca.setNumeBanca("Dummy Bank name");
-		//banca.setNumeCompanie("Dummy Company name");
+		CompanieBanci banca = new CompanieBanci();
+		banca.setCont(contBancar);
+		banca.setNumeBanca("Dummy Bank name");
+		banca.setNumeCompanie("Dummy Company name");
 		
 		Plata plata1 = new Plata();
 		Date dataPlata = new Date();
@@ -121,8 +119,8 @@ public class TestFinanciarPlatiEJB {
 		plata1.setValoarePlata(120.0);
 		plata1.setTipPlata(TipPlata.DATORIE);
 		plata1.setModPlata(ModPlata.VIRAMENTBANCAR);
-	//	plata1.setCont(contBancar);
-	//	plata1.setBanca(banca);
+		plata1.setCont(contBancar);
+		plata1.setBanca(banca);
 		plata1.setConfirmarePlata(null);
 		
 		Plata plata2 = new Plata();
