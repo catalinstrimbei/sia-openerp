@@ -17,6 +17,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.open.erp.services.achizitii.Factura;
 
@@ -58,17 +59,17 @@ public class FacturaStatus extends Factura implements Serializable{
 			plati = new HashMap<Integer, Plata>();
 	}
 	
-	//public void setIdFactura(Integer idFactura) {
-		//this.idFactura = idFactura;
-	//}
-	//public Integer getIdFactura() {
-		//return this.idFactura;
-	//}
-	//public void setDataFactura(Date dataFactura) {
-	//	this.dataFactura = dataFactura;
-	//}
-	//public Date getDataFactura() {
-		//return this.dataFactura;
+//	public void setIdFactura(Integer idFactura) {
+//		this.idFactura = idFactura;
+//	}
+//	public Integer getIdFactura() {
+//		return this.idFactura;
+//	}
+//	public void setDataFactura(Date dataFactura) {
+//		this.dataFactura = dataFactura;
+//	}
+//	public Date getDataFactura() {
+//		return this.dataFactura;
 //	}
 	public void setNumeFurnizor(String numeFurnizor) {
 		this.numeFurnizor = numeFurnizor;

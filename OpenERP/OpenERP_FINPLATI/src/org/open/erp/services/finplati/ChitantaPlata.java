@@ -21,12 +21,15 @@ import javax.persistence.OneToOne;
  */
 @Entity
 
-@SuppressWarnings("serial")
 public class ChitantaPlata implements Serializable {
 	@Id @GeneratedValue
 protected Integer idChitanta;
 
-@OneToOne
+	public ChitantaPlata() {
+		
+	}
+	
+@ManyToOne
 Plata plata;
 
 	
