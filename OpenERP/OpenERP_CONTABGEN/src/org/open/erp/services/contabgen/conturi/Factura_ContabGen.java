@@ -4,12 +4,14 @@ package org.open.erp.services.contabgen.conturi;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
-public class Factura extends Document{
+@Entity
+public class Factura_ContabGen extends Document_ContabGen{
 	//in Document de la modulul NOMGEN trebuie adaugata 
 		//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)  inainte de clasa
 	//Update (Echipa 9) - nu intotdeauna trebuie sa folosim TABLE_PER_CLASS
@@ -56,12 +58,12 @@ public class Factura extends Document{
 		this.valoareTotala = valoareTotala;
 	}
 	
-	public Factura() {
+	public Factura_ContabGen() {
 		//super();
 	}
 	
 	
-	public Factura(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala) {
+	public Factura_ContabGen(Integer nrFactura, Date dataFactura, Date dataScadenta, Double valoareTotala) {
 		super();
 		this.nrFactura = nrFactura;
 		this.dataFactura = dataFactura;

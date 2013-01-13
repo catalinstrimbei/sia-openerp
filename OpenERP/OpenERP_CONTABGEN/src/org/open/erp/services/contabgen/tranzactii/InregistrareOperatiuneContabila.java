@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,9 +18,10 @@ import org.apache.log4j.Logger;
 import org.open.erp.exceptii.CodEroare;
 import org.open.erp.exceptii.ExceptieContNetranzactionabil;
 import org.open.erp.services.contabgen.conturi.Cont;
-import org.open.erp.services.contabgen.conturi.Document;
+import org.open.erp.services.contabgen.conturi.Document_ContabGen;
 
 @Entity
+@Table(name="INREG_OP_CONTAB")
 public class InregistrareOperatiuneContabila implements Serializable{
 
 	private static Logger logger = Logger
@@ -35,7 +37,7 @@ public class InregistrareOperatiuneContabila implements Serializable{
 	String descriereOperatiune;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	Document document;
+	Document_ContabGen document;
 
 	protected double suma;
 
@@ -77,11 +79,11 @@ public class InregistrareOperatiuneContabila implements Serializable{
 		this.descriereOperatiune = descriereOperatiune;
 	}
 
-	public Document getDocument() {
+	public Document_ContabGen getDocument() {
 		return document;
 	}
 
-	public void setDocument(Document document) {
+	public void setDocument(Document_ContabGen document) {
 		this.document = document;
 	}
 
@@ -113,7 +115,7 @@ public class InregistrareOperatiuneContabila implements Serializable{
 		this(new Date(), null, "", 0.0);
 	}
 
-	public InregistrareOperatiuneContabila(Date data, Document document,
+	public InregistrareOperatiuneContabila(Date data, Document_ContabGen document,
 			String descriere, double suma) {
 		this(data, document, descriere, suma, new InregistrareOperatiune(null,
 				null, InregistrareOperatiune.Tip.DEBIT, 0.0),
@@ -121,7 +123,7 @@ public class InregistrareOperatiuneContabila implements Serializable{
 						InregistrareOperatiune.Tip.CREDIT, 0.0));
 	}
 
-	public InregistrareOperatiuneContabila(Date data, Document document,
+	public InregistrareOperatiuneContabila(Date data, Document_ContabGen document,
 			String descriere, double suma, InregistrareOperatiune intrareDebit,
 			InregistrareOperatiune intrareCredit) {
 		adaugaProprietati(data, document, descriere, suma, intrareDebit,
@@ -137,7 +139,7 @@ public class InregistrareOperatiuneContabila implements Serializable{
 	}
 
 	public static InregistrareOperatiuneContabila creazaOperatiune(Date data,
-			Document document, String descriere, double suma,
+			Document_ContabGen document, String descriere, double suma,
 			InregistrareOperatiune intrareDebit,
 			InregistrareOperatiune intrareCredit) {
 		InregistrareOperatiuneContabila tran = new InregistrareOperatiuneContabila(
@@ -156,7 +158,7 @@ public class InregistrareOperatiuneContabila implements Serializable{
 		return credit.getTransferCont();
 	}
 
-	protected void adaugaProprietati(Date data, Document document,
+	protected void adaugaProprietati(Date data, Document_ContabGen document,
 			String descriere, double suma, InregistrareOperatiune intrareDebit,
 			InregistrareOperatiune intrareCredit) {
 		this.dataOperatiune = data;
@@ -167,7 +169,7 @@ public class InregistrareOperatiuneContabila implements Serializable{
 		this.credit = intrareCredit;
 	}
 
-	protected void adaugaProprietati(Date data, Document document,
+	protected void adaugaProprietati(Date data, Document_ContabGen document,
 			String descriere, double suma) {
 		this.dataOperatiune = data;
 		this.document = document;
@@ -196,7 +198,7 @@ public class InregistrareOperatiuneContabila implements Serializable{
 	}
 
 	public Map<String, CodEroare> modificaInregOpCtb(Date data,
-			Document document, String descriere, double suma, Cont debitCont,
+			Document_ContabGen document, String descriere, double suma, Cont debitCont,
 			Cont creditCont) {
 		Map<String, CodEroare> rErrors = valideazaInregistrareOpCtb(suma,
 				debitCont, creditCont);
@@ -252,6 +254,32 @@ public class InregistrareOperatiuneContabila implements Serializable{
 	protected void adaugaIntrari() throws ExceptieContNetranzactionabil {
 		getDebitCont().adaugaIntrare(debit);
 		getContCredit().adaugaIntrare(credit);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idOperatiune == null) ? 0 : idOperatiune.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		InregistrareOperatiuneContabila other = (InregistrareOperatiuneContabila) obj;
+		if (idOperatiune == null) {
+			if (other.idOperatiune != null)
+				return false;
+		} else if (!idOperatiune.equals(other.idOperatiune))
+			return false;
+		return true;
 	}
 
 }

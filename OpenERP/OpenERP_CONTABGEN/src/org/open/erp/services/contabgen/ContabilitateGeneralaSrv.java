@@ -1,14 +1,18 @@
 package org.open.erp.services.contabgen;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.Remote;
 
 import org.open.erp.exceptii.ExceptieTipContInvalid;
 import org.open.erp.services.contabgen.conturi.Cont;
 import org.open.erp.services.contabgen.conturi.Cont.Tip;
+import org.open.erp.services.contabgen.conturi.PlanConturi;
+import org.open.erp.services.contabgen.impl.ContabilitateGeneralaRegistru;
 import org.open.erp.services.contabgen.rapoarte.BilantContabil;
 import org.open.erp.services.contabgen.sabloane.Sablon;
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
 import org.open.erp.services.contabgen.tranzactii.OperatiuneContabila;
 import org.open.erp.services.contabgen.tranzactii.Tranzactie;
 
@@ -72,8 +76,19 @@ public interface ContabilitateGeneralaSrv {
 	 * @return instanta bilant contabil 
 	 * 
 	 */
-	BilantContabil creareBilantContabil(ArrayList<Cont> conturi);
+	BilantContabil creareBilantContabil();
 	
-	Cont creazaCont(Tip tip) throws ExceptieTipContInvalid;
+	Cont creazaCont(Tip tip,int codCont, String denumire, String descriere,
+			double sold, boolean tranzactionabil) throws ExceptieTipContInvalid;
+
+	Cont creazaCont(int codCont, String denumireCont, String descriere,
+			double sold, Tip tip, List<InregistrareOperatiune> intrari,
+			boolean tranzactionabil) throws ExceptieTipContInvalid;
+	
+	PlanConturi creazaPlanConturi();
+
+	boolean salveazaPlanConturi(PlanConturi plan);
+	
+	ContabilitateGeneralaRegistru getRegistru();
 
 }

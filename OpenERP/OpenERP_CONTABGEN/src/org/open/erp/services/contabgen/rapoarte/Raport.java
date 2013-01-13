@@ -38,5 +38,30 @@ public class Raport implements Serializable{
 	public void setDataSfarsitRaport(Date dataSfarsitRaport) {
 		this.dataSfarsitRaport = dataSfarsitRaport;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idRaport == null) ? 0 : idRaport.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Raport other = (Raport) obj;
+		if (idRaport == null) {
+			if (other.idRaport != null)
+				return false;
+		} else if (!idRaport.equals(other.idRaport))
+			return false;
+		return true;
+	}
 
+	
 }
