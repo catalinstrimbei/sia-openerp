@@ -1,16 +1,11 @@
 package org.open.erp.services.vanzari;
 
-import java.io.ObjectInputStream.GetField;
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
-
 import javax.ejb.Remote;
-
-import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
-import org.open.erp.services.proman.Proiect;
 import org.open.erp.services.stocuri.StocuriSrv;
 
 

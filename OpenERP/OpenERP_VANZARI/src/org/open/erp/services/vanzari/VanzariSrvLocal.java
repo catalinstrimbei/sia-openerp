@@ -2,7 +2,7 @@ package org.open.erp.services.vanzari;
 
 import javax.ejb.Local;
 
-//import javax.ejb.Remote;
+import javax.ejb.Remote;
 
 @Local
 public interface VanzariSrvLocal 
