@@ -1,9 +1,12 @@
 package org.open.erp.services.personal;
 
+import javax.persistence.Entity;
+
 import org.open.erp.services.nomgen.Adresa;
 import org.open.erp.services.nomgen.PersoanaFizica;
 
-public class Angajat extends PersoanaFizica {
+@Entity
+public class Angajat extends PersoanaFizica{
 	ContractMunca cm;
 	public Angajat(Integer id, String nume, String sex, String mail,
 			String statutInCompanie, String stareCivila, String dataNastere,
@@ -21,6 +24,7 @@ public class Angajat extends PersoanaFizica {
 	public Angajat() {
 		super();
 	}
+	
 	
 	
 	
