@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import org.open.erp.exceptii.ExceptieTipContInvalid;
+import org.open.erp.services.contabgen.conturi.Clasa;
 import org.open.erp.services.contabgen.conturi.Cont;
 import org.open.erp.services.contabgen.conturi.Cont.Tip;
 import org.open.erp.services.contabgen.conturi.PlanConturi;
@@ -13,6 +14,7 @@ import org.open.erp.services.contabgen.impl.ContabilitateGeneralaRegistru;
 import org.open.erp.services.contabgen.rapoarte.BilantContabil;
 import org.open.erp.services.contabgen.sabloane.Sablon;
 import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila;
 import org.open.erp.services.contabgen.tranzactii.OperatiuneContabila;
 import org.open.erp.services.contabgen.tranzactii.Tranzactie;
 
@@ -51,7 +53,7 @@ public interface ContabilitateGeneralaSrv {
 	 * @return boolean
 	 * 
 	 */
-	boolean adaugaCont(Cont cont, Integer codClasa);
+	Cont adaugaCont(Cont cont, Integer codClasa);
 	
 	/**
 	 * Returneaza o tranzactie
@@ -87,8 +89,15 @@ public interface ContabilitateGeneralaSrv {
 	
 	PlanConturi creazaPlanConturi();
 
-	boolean salveazaPlanConturi(PlanConturi plan);
+	PlanConturi salveazaPlanConturi(PlanConturi plan);
 	
-	ContabilitateGeneralaRegistru getRegistru();
+	InregistrareOperatiuneContabila salveazaOperatiuneContabila(InregistrareOperatiuneContabila operatiune);
+
+	Cont salveazaCont(Cont cont);
+
+	Clasa salveazaClasa(Clasa cls);
+
+	List<Cont> getConturiDinClaseleDeConturi();
+
 
 }

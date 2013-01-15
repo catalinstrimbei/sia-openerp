@@ -6,6 +6,10 @@
 		transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
+		<jar-file>OpenERP_NOMGEN.jar</jar-file>
+		<jar-file>OpenERP_ACHIZITII.jar</jar-file>
+		<class>org.open.erp.services.nomgen.Document</class>
+		<class>org.open.erp.services.achizitii.Factura</class>		
 		<class>org.open.erp.services.contabgen.tranzactii.Tranzactie</class>
 		<class>org.open.erp.services.contabgen.tranzactii.OperatiuneContabila</class>
 		<class>org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila</class>
@@ -20,8 +24,6 @@
 		<class>org.open.erp.services.contabgen.conturi.ContActiv</class>
 		<class>org.open.erp.services.contabgen.conturi.Cont</class>
 		<class>org.open.erp.services.contabgen.conturi.Clasa</class>
-		<class>org.open.erp.services.contabgen.conturi.Document_ContabGen</class>
-		<class>org.open.erp.services.contabgen.conturi.Factura_ContabGen</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

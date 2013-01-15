@@ -14,7 +14,7 @@ public class ExceptieGenerica extends Exception {
 
 	public ExceptieGenerica(CodEroare cod) {
 		super();
-		cod = cod;
+		this.cod = cod;
 	}
 
 	public ExceptieGenerica(String message) {
@@ -24,7 +24,7 @@ public class ExceptieGenerica extends Exception {
 
 	@Override
 	public String getMessage() {
-		return cod.mesaj();
+		return "Eroare!!!!!!!!"+cod;
 	}
 
 }

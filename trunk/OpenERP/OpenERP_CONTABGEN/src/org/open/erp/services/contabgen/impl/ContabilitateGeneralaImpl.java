@@ -48,7 +48,7 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaLocalSrv,
 	}	
 	
 	@Override
-	public boolean adaugaCont(Cont cont, Integer codClasa) {
+	public Cont adaugaCont(Cont cont, Integer codClasa) {
 
 		logger.info("Adaugare cont: " + cont.getDenumireCont() + "in clasa de conturi: "+ codClasa);
 		
@@ -58,22 +58,33 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaLocalSrv,
 			if (cls==null){
 				cls= new Clasa();
 				cls.setCodClasa(codClasa);
-				cls = em.merge(cls);
+				cls=salveazaClasa(cls);
 			}
-			
-			if (registru.getContDinClasaDeConturi(cont.getIdCont())==null){
-				cont.setClasa(cls);
-			}else{
-				em.merge(cont);
-			}
-				
+			cont.setClasa(cls);
+			cont=salveazaCont(cont);
 		}catch(Exception ex){
-			logger.info("EROARE PERSISTENTA ***** "+ex.getMessage());
-			return false;
+			logger.info("EROARE PERSISTENTA ***adaugaCont** "+ex.getMessage());
+			return null;
 		}
-		return true;	
+		return cont;	
 	}
 
+	@Override
+	public Cont salveazaCont(Cont cont){	
+		if (cont != null){
+			cont = em.merge(cont);
+		}
+		return cont;
+	}
+	
+	@Override
+	public Clasa salveazaClasa(Clasa cls){
+		if (cls != null){
+			cls = em.merge(cls);
+		}
+		return cls;
+	}
+	
 	@Override
 	public Tranzactie creareTranzactie() {
 		Tranzactie tran = new Tranzactie();
@@ -179,20 +190,33 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaLocalSrv,
 	}
 	
 	@Override
-	@TransactionAttribute(TransactionAttributeType.MANDATORY)
-	public boolean salveazaPlanConturi(PlanConturi plan) {
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public PlanConturi salveazaPlanConturi(PlanConturi plan) {
 		try{
-			em.merge(plan);
+			plan = em.merge(plan);
 		}catch(Exception ex){
 			logger.info("EROARE PERSISTENTA ***** "+ex.getMessage());
-			return false;
+			return null;
 		}
-		return true;
+		return plan;
 	}
 
+	
 	@Override
-	public ContabilitateGeneralaRegistru getRegistru() {
-		return this.registru;
+	public InregistrareOperatiuneContabila salveazaOperatiuneContabila(
+			InregistrareOperatiuneContabila operatiune) {
+		logger.info("Adaugare operatiune contabila");		
+		try{
+			operatiune = em.merge(operatiune);			
+		}catch(Exception ex){
+			logger.info("EROARE PERSISTENTA ***** "+ex.getMessage());
+			return null;
+		}
+		return operatiune;	
+	}
+	
+	public List<Cont> getConturiDinClaseleDeConturi(){
+		return this.registru.getConturiDinClaseleDeConturi();
 	}
 
 }
