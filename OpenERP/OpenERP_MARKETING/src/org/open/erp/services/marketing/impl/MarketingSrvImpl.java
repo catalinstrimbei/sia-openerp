@@ -71,6 +71,7 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		promotieNoua.setProdusPromotie(produsNou);
 
 ///////////////////////////////////// trebuie reverificat.
+		entityManager.persist(produsNou);
 		entityManager.persist(promotieNoua);
 		return promotieNoua;
 	}
@@ -82,13 +83,20 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		CampaniePromovare campaniePromovareNoua = new CampaniePromovare(1, tipPromovare, data, canalDistributie, buget);
 
 		Angajat angajatPromoter = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
+		entityManager.persist(angajatPromoter);
 		campaniePromovareNoua.setPromoter(angajatPromoter);
 
 		Material produs = nommatSrv.introducereMaterial(null, null, null, null, null, null, null, null);
+		entityManager.persist(produs);
+		
 		Promotie promotie = crearePromotie(11, data, data);
+		entityManager.persist(promotie);
+		
 		promotie.setProdusPromotie(produs);
 		campaniePromovareNoua.adaugaPromotie(promotie);
-
+		
+		entityManager.persist(campaniePromovareNoua);
+		
 		return campaniePromovareNoua;
 	}
 
@@ -97,6 +105,8 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		logger.debug("2.3 Initiere/Creare raspuns nou");
 
 		RaspunsIntrebare raspunsIntrebare = new RaspunsIntrebare(1, textRaspuns);
+		
+		entityManager.persist(raspunsIntrebare);
 
 		return raspunsIntrebare;
 	}
@@ -108,7 +118,10 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		Intrebare intrebareNoua = new Intrebare(1, textIntrebare);
 		String textRaspuns = "";
 		RaspunsIntrebare raspuns = creareRaspunsIntrebare(textRaspuns);
+		entityManager.persist(raspuns);
+		
 		intrebareNoua.adaugaRaspuns(raspuns);
+		entityManager.persist(intrebareNoua);
 
 		return intrebareNoua;
 	}
@@ -120,7 +133,10 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		Chestionar chestionarNou = new Chestionar(1, data, titlu, persoanaChestionata);
 		String textIntrebare = "";
 		Intrebare intrebareNoua = creareIntrebare(textIntrebare);
+		entityManager.persist(intrebareNoua);
+		
 		chestionarNou.adaugaIntrebare(intrebareNoua);
+		entityManager.persist(chestionarNou);
 
 		return chestionarNou;
 	}
@@ -130,12 +146,19 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		logger.debug("1.1 Initiere/Creare cercetare de piata noua");
 
 		Angajat responsabilCercetarePiata = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
+		entityManager.persist(responsabilCercetarePiata);
+		
 		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart, dataFinal, buget, responsabilCercetarePiata);
 
 		String titlu = "";
 		Persoana persoanaChestionata = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
+		entityManager.persist(persoanaChestionata);
+		
 		Chestionar chestionarNou = creareChestionar(dataStart, titlu, persoanaChestionata);
+		entityManager.persist(chestionarNou);
+		
 		cercetarePiataNoua.adaugaChestionar(chestionarNou);
+		entityManager.persist(cercetarePiataNoua);
 
 		return cercetarePiataNoua;
 	}
@@ -145,7 +168,10 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		logger.debug("5.1 Initiere/Creare reclamatie noua");
 
 		Persoana persoanaReclamanta = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
+		entityManager.persist(persoanaReclamanta);
+		
 		Reclamatie reclamatieNoua = new Reclamatie(1, persoanaReclamanta, data, text, raspuns, status);
+		entityManager.persist(reclamatieNoua);
 
 		return reclamatieNoua;
 	}
