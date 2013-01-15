@@ -1,5 +1,6 @@
 package org.open.erp.services.contabgen.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,8 +9,10 @@ import org.apache.log4j.Logger;
 import org.open.erp.services.contabgen.conturi.Clasa;
 import org.open.erp.services.contabgen.conturi.Cont;
 import org.open.erp.services.contabgen.conturi.PlanConturi;
+import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila;
+import org.open.erp.services.contabgen.tranzactii.OperatiuneContabila;
 
-public class ContabilitateGeneralaRegistru {
+public class ContabilitateGeneralaRegistru implements Serializable{
 	private static Logger logger = Logger.getLogger(ContabilitateGeneralaRegistru.class.getName());	
 	
 	private EntityManager entityManager;
@@ -25,6 +28,10 @@ public class ContabilitateGeneralaRegistru {
 		return entityManager.find(Cont.class, id);
 	}
 	
+	public InregistrareOperatiuneContabila getOperatiuneContabila(Integer id){
+		return entityManager.find(InregistrareOperatiuneContabila.class, id);
+	}
+	
 	public <T> T getContDinClasaDeConturi(Class<T> meta, Integer id){
 		return entityManager.find(meta, id);
 	}
@@ -35,6 +42,9 @@ public class ContabilitateGeneralaRegistru {
 	
 	public PlanConturi getPlanConturiConturi(){
 		List<PlanConturi> planuri = entityManager.createQuery("SELECT pc FROM PlanConturi pc").getResultList();
-		return (planuri != null) ? planuri.get(0):null;
+		if (planuri != null && planuri.size()>0)
+			return planuri.get(0);
+		else
+			return null;
 	}
 }

@@ -6,7 +6,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import org.open.erp.services.contabgen.conturi.Cont;
 
@@ -17,6 +19,7 @@ public class InregistrareOperatiune implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer id;
+	
 	public static enum Tip {
 		DEBIT, CREDIT
 	};
@@ -24,11 +27,11 @@ public class InregistrareOperatiune implements Serializable{
 	/**
 	 * celalalt cont folosit in cadrul operatiunii
 	 */
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.MERGE)
 	private Cont transferCont;
 
-	@OneToOne(cascade=CascadeType.ALL)
-	private InregistrareOperatiuneContabila Inregistrare;
+	@OneToOne(cascade=CascadeType.MERGE)
+	private InregistrareOperatiuneContabila inregistrare;
 
 	private Tip tip;
 
@@ -40,13 +43,13 @@ public class InregistrareOperatiune implements Serializable{
 	public InregistrareOperatiune(Cont transferCont, InregistrareOperatiuneContabila Inregistrare,
 			Tip tip, double soldCont) {
 		this.transferCont = transferCont;
-		this.Inregistrare = Inregistrare;
+		this.inregistrare = Inregistrare;
 		this.tip = tip;
 		this.soldCont = soldCont;
 	}
 
 	public InregistrareOperatiuneContabila getInregistrare() {
-		return Inregistrare;
+		return inregistrare;
 	}
 
 	public Cont getTransferCont() {
@@ -62,11 +65,13 @@ public class InregistrareOperatiune implements Serializable{
 	}
 
 	public void setInregistrare(InregistrareOperatiuneContabila Inregistrare) {
-		this.Inregistrare = Inregistrare;
+		this.inregistrare = Inregistrare;
+		soldCont = inregistrare.getSuma();
 	}
 
 	public void setTransferCont(Cont transferCont) {
 		this.transferCont = transferCont;
+		this.transferCont.setSold(this.getSoldCont());
 	}
 
 	public void setSoldCont(double soldCont) {

@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.open.erp.services.contabgen.conturi.Document_ContabGen;
+import org.open.erp.services.nomgen.Document;
 
 
 
@@ -33,7 +33,7 @@ public class Tranzactie implements Serializable{
 	List<OperatiuneContabila> operatiuni = new ArrayList<OperatiuneContabila>();
 	
 	@OneToOne
-	Document_ContabGen document;
+	Document doc;
 	
 	public Integer getIdTranzactie() {
 		return idTranzactie;
@@ -68,11 +68,15 @@ public class Tranzactie implements Serializable{
 	public void removeOperatiune(OperatiuneContabila operatiune) {
 		this.operatiuni.remove(operatiune);
 	}
-	public Document_ContabGen getDocument() {
-		return document;
+
+	public Document getDoc() {
+		return doc;
 	}
-	public void setDocument(Document_ContabGen document) {
-		this.document = document;
+	public void setDoc(Document doc) {
+		this.doc = doc;
+	}
+	public void setOperatiuni(List<OperatiuneContabila> operatiuni) {
+		this.operatiuni = operatiuni;
 	}
 	@Override
 	public int hashCode() {

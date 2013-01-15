@@ -2,11 +2,14 @@ package org.open.erp.services.contabgen.sabloane;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.open.erp.services.contabgen.tranzactii.OperatiuneContabila;
 
 @Entity
@@ -15,9 +18,12 @@ public class Sablon implements Serializable{
 	@Id
 	@GeneratedValue
 	Integer idSablon;
+	
+	@NotEmpty
 	String denumireSablon;
 	
-	@OneToOne
+	@JoinColumn(name="id_operatiune")
+	@OneToOne(cascade=CascadeType.ALL)
 	OperatiuneContabila opCont;
 	
 	public Sablon() {

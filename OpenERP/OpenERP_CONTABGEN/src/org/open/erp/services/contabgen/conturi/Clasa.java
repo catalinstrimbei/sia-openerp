@@ -14,10 +14,8 @@ import javax.persistence.OneToMany;
 public class Clasa implements Serializable{
 	
 	@Id
-	@GeneratedValue
-	private Integer id;
-	private String denumireClasa;
 	private Integer codClasa;
+	private String denumireClasa;
 	
 	@OneToMany(mappedBy="clasa" , cascade=CascadeType.ALL)
 	private List<Cont> conturi = new ArrayList<Cont>();
@@ -48,6 +46,7 @@ public class Clasa implements Serializable{
 
 	public void addCont(Cont cont) {
 		this.conturi.add(cont);
+		cont.setClasa(this);
 	}
 
 	public void removeCont(Cont cont) {
@@ -68,14 +67,6 @@ public class Clasa implements Serializable{
 		return null;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public void setConturi(List<Cont> conturi) {
 		this.conturi = conturi;
 	}
@@ -84,7 +75,8 @@ public class Clasa implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((codClasa == null) ? 0 : codClasa.hashCode());
 		return result;
 	}
 
@@ -97,13 +89,15 @@ public class Clasa implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Clasa other = (Clasa) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (codClasa == null) {
+			if (other.codClasa != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!codClasa.equals(other.codClasa))
 			return false;
 		return true;
 	}
+
+	
 	
 	
 

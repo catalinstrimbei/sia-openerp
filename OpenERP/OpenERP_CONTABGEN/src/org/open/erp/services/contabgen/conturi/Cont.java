@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -17,6 +18,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.apache.log4j.Logger;
 import org.open.erp.exceptii.CodEroare;
@@ -39,17 +41,15 @@ public class Cont implements Serializable{
 	}
 
 	@Id
-	@GeneratedValue
-	private Integer idCont;
 	private Integer codCont;
 	private String denumireCont;
-	private String tipCont;
 
 	protected String descriere;
 	protected double sold;
+	@Transient
 	protected Tip tip;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	private Clasa clasa;
 	/**
 	 * flag care indica daca soldul acestui cont poate fi modificat in cadrul
@@ -57,19 +57,11 @@ public class Cont implements Serializable{
 	 */
 	protected boolean tranzactionabil;
 
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.MERGE,fetch=FetchType.EAGER)
 	protected List<InregistrareOperatiune> intrari=new ArrayList<InregistrareOperatiune>();
 
 	protected Cont() {
 		this(-1, "", "", 0.0, true);
-	}
-
-	public Integer getIdCont() {
-		return idCont;
-	}
-
-	public void setIdCont(Integer idCont) {
-		this.idCont = idCont;
 	}
 
 	public Integer getCodCont() {
@@ -86,14 +78,6 @@ public class Cont implements Serializable{
 
 	public void setDenumireCont(String denumireCont) {
 		this.denumireCont = denumireCont;
-	}
-
-	public String getTipCont() {
-		return tipCont;
-	}
-
-	public void setTipCont(String tipCont) {
-		this.tipCont = tipCont;
 	}
 
 	public String getDescriere() {
@@ -144,16 +128,12 @@ public class Cont implements Serializable{
 
 	public void setClasa(Clasa clasa) {
 		this.clasa = clasa;
-		this.clasa.getConturi().add(this);
 	}
 
-	public Cont(Integer idCont, Integer codCont, String denumireCont,
-			String tipCont) {
+	public Cont(Integer codCont, String denumireCont) {
 		super();
-		this.idCont = idCont;
 		this.codCont = codCont;
 		this.denumireCont = denumireCont;
-		this.tipCont = tipCont;
 	}
 
 	public Cont(Integer codCont, String denumireCont, String descriere,
@@ -331,7 +311,7 @@ public class Cont implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idCont == null) ? 0 : idCont.hashCode());
+		result = prime * result + ((codCont == null) ? 0 : codCont.hashCode());
 		return result;
 	}
 
@@ -344,13 +324,15 @@ public class Cont implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cont other = (Cont) obj;
-		if (idCont == null) {
-			if (other.idCont != null)
+		if (codCont == null) {
+			if (other.codCont != null)
 				return false;
-		} else if (!idCont.equals(other.idCont))
+		} else if (!codCont.equals(other.codCont))
 			return false;
 		return true;
 	}
+
+	
 	
 	
 
