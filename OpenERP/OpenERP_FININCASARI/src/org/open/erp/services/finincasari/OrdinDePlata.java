@@ -3,10 +3,15 @@ package org.open.erp.services.finincasari;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 /**
  * @author Isabela
  *
  */
+
+
+@Entity
 public class OrdinDePlata extends FinanciarIncasari implements Serializable {
 
 	/**
@@ -42,6 +47,10 @@ public class OrdinDePlata extends FinanciarIncasari implements Serializable {
 			String moneda, String sumaLitere) {
 		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public OrdinDePlata(){
+		super();
 	}
 	
 	

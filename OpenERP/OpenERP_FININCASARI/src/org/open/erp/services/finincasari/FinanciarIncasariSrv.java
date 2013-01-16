@@ -3,6 +3,8 @@ package org.open.erp.services.finincasari;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.ejb.Remote;
+
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.vanzari.Facturi;
@@ -12,7 +14,7 @@ import org.open.erp.services.vanzari.Facturi;
  * @author Isabela
  *
  */
-
+@Remote
 public interface FinanciarIncasariSrv {
 
 double getSuma (String moneda, Double suma, Double cursValutar);

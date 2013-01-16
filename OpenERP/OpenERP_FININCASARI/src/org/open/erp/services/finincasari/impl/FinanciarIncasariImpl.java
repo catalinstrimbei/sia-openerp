@@ -3,6 +3,16 @@ package org.open.erp.services.finincasari.impl;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 
 
 import org.open.erp.services.finincasari.TipIncasare;
@@ -12,33 +22,61 @@ import org.open.erp.services.finincasari.Chitanta;
 import org.open.erp.services.finincasari.ExtrasDeCont;
 import org.open.erp.services.finincasari.FinanciarIncasariSrv;
 import org.open.erp.services.finincasari.OrdinDePlata;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.vanzari.Facturi;
 //import org.open.erp.services.vanzari.VanzariSrv;
+import org.open.erp.services.vanzari.VanzariSrvLocal;
 
 
 /**
  * @author Isabela
  *
  */
+@Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
+
 public  class FinanciarIncasariImpl implements FinanciarIncasariSrv {
-	
-	
 
-
-
-	@SuppressWarnings("unused")
-	private FinanciarIncasariSrv financiarIncasariSrv;
-
-
-	private boolean avans;
-
+	/* Dependente resurse proprii */
 	
 	@SuppressWarnings("unused")
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(FinanciarIncasariImpl.class.getName());
+	@SuppressWarnings("unused")
+	private RegistruIncasari registruIncasari;
+	
+	/* Dependente resurse injectate */
+	
+	@PersistenceContext(unitName = "OpenERP_FININCASARI")
+	private EntityManager em;
+
+	@Resource
+	private SessionContext sessionContext;
 	
 
+	@EJB(lookup="java:global/OpenERP_PERSONAL/PersonalImpl!org.open.erp.services.personal.PersonalSrvLocal")
+	private PersonalSrvLocal personalSrv;
+	
+
+	@EJB(lookup="java:global/OpenERP_VANZARI/VanzariImpl!org.open.erp.services.vanzari.VanzariSrvLocal")
+	private VanzariSrvLocal vanzariSrv;
+	
+	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.nomgen.NomenclatoareSrvLocal")
+	private NomenclatoareSrvLocal nomgenSrv;
+	
+	@PostConstruct
+	public void init() {
+		if (this.registruIncasari == null)
+			registruIncasari = new RegistruIncasari(em);
+	}
+	
+	
+	@SuppressWarnings("unused")
+	private FinanciarIncasariSrv financiarIncasariSrv;
+	private boolean avans;
+
+	
 	public void setFinanciarIncasariSrv(FinanciarIncasariSrv financiarIncasariSrv) {
 		this.financiarIncasariSrv = financiarIncasariSrv;
 	}

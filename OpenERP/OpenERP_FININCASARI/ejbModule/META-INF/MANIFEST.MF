@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Dependencies: deployment.OpenERP_NOMGEN.jar,deployment.OpenERP_PERSONAL.jar,deployment.OpenERP_VANZARI.jar

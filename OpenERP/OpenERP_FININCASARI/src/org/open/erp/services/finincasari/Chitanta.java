@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.vanzari.Facturi;
 
@@ -11,22 +14,20 @@ import org.open.erp.services.vanzari.Facturi;
  * @author Isabela
  *
  */
+
+
+@Entity
 public class Chitanta extends FinanciarIncasari implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	//@ManyToOne
+	private Angajat angajat;
+
 	
-	public Angajat angajat;
-
-	public Angajat getAngajat() {
-		return angajat;
-	}
-
-	public void setAngajat(Angajat angajat) {
-		this.angajat = angajat;
-	}
 
 	public Chitanta(String localitate, Date dataEmiterii, Double suma,
 			String moneda, String sumaLitere, Angajat angajat) {
