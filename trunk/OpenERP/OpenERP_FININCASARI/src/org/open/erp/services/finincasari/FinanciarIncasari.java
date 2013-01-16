@@ -3,19 +3,44 @@ package org.open.erp.services.finincasari;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
 /**
  * @author Isabela
  *
  */
-public class FinanciarIncasari implements Serializable{
+
+
+@Entity
+@Table(name = "FinanciarIncasari")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
+
+public abstract class FinanciarIncasari implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue
+	private Integer idIncasare;
 	private String Localitate;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataEmiterii;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataInregistrarii;
+	
 	private Double suma;
 	private String moneda;
 	private String sumaLitere;
@@ -140,6 +165,18 @@ public class FinanciarIncasari implements Serializable{
 		} else if (!sumaLitere.equals(other.sumaLitere))
 			return false;
 		return true;
+	}
+	public Integer getIdIncasare() {
+		return idIncasare;
+	}
+	public void setIdIncasare(Integer idIncasare) {
+		this.idIncasare = idIncasare;
+	}
+	public Date getDataInregistrarii() {
+		return dataInregistrarii;
+	}
+	public void setDataInregistrarii(Date dataInregistrarii) {
+		this.dataInregistrarii = dataInregistrarii;
 	}
 	
 	

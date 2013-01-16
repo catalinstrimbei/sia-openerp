@@ -3,22 +3,33 @@ package org.open.erp.services.finincasari;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
+
+import com.oracle.jrockit.jfr.DataType;
 
 
 /**
  * @author Isabela
  *
  */
+
+
+@Entity
 public class BiletOrdine extends FinanciarIncasari implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
-	
-
+    
 	private String seriaBilet;
+	
 	private Integer numarBilet;
+	
+    @Temporal(TemporalType.TIMESTAMP)
 	private Date dataScadenta;
 	
 	
@@ -42,13 +53,13 @@ public class BiletOrdine extends FinanciarIncasari implements Serializable {
 	}
 	public BiletOrdine(String localitate, Date dataEmiterii, Double suma,
 			String moneda, String sumaLitere,
-			String seriaBilet, Integer numarBilet, Date dataScadenta) {
+		String seriaBilet, Integer numarBilet, Date dataScadenta) {
 		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		this.seriaBilet = seriaBilet;
 		this.numarBilet = numarBilet;
-		this.dataScadenta = dataScadenta;
+	this.dataScadenta = dataScadenta;
 	}
-	public BiletOrdine(String localitate, Date dataEmiterii, Double suma, String moneda, String sumaLitere, Angajat angajat, Persoana persoana) {
+	public BiletOrdine() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

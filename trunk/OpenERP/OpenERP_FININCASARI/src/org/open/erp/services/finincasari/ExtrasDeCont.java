@@ -3,10 +3,15 @@ package org.open.erp.services.finincasari;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 /**
  * @author Isabela
  *
  */
+
+
+@Entity
 public class ExtrasDeCont extends FinanciarIncasari implements Serializable {
 
 	/**
