@@ -1,5 +1,8 @@
 package org.open.erp.services.marketing;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +21,7 @@ import org.open.erp.services.nomgen.Persoana;
 public class Chestionar {
 	
 	@Id @GeneratedValue
+	@ManyToOne
 	long id;
 	
 	@Temporal(TemporalType.DATE)
@@ -28,7 +32,7 @@ public class Chestionar {
 	@ManyToOne
 	Persoana persoanaChestionata;
 	
-	@OneToMany // Trebuie vazut daca mai trebuie completat ceva.
+	@OneToMany(mappedBy = "id", targetEntity = Intrebare.class, cascade = ALL, fetch = EAGER)
 	Set<Intrebare> intrebariChestionar = new HashSet<Intrebare>();
 
 	public long getId() {

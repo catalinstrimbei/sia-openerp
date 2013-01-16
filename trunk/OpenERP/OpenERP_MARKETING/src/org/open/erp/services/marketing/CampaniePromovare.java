@@ -1,5 +1,8 @@
 package org.open.erp.services.marketing;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,22 +19,26 @@ import org.open.erp.services.personal.Angajat;
 
 @Entity
 public class CampaniePromovare {
-	
-	@Id @GeneratedValue
+
+	@Id
+	@GeneratedValue
 	Long id;
 
 	TipPromovare tipPromovare;
-	
+
 	@Temporal(TemporalType.DATE)
 	Date data;
-	
-	@ManyToOne //da eroare deocamdata pentru ca modulul din care face parte entitatea nu a facut adnotarile deocamdata.
+
+	@ManyToOne
+	// da eroare deocamdata pentru ca modulul din care face parte entitatea nu a
+	// facut adnotarile deocamdata.
 	Angajat promoter;
-	
+
 	CanalDistributie canalDistributie;
 	int buget; 
-	
-	@OneToMany // Trebuie vazut daca mai trebuie completat ceva.
+
+	@OneToMany(mappedBy = "produsPromotie", targetEntity = Promotie.class, cascade = ALL, fetch = EAGER)
+	// Trebuie vazut daca mai trebuie completat ceva.
 	Set<Promotie> promotiiCampanie = new HashSet<Promotie>();
 
 	public long getId() {
