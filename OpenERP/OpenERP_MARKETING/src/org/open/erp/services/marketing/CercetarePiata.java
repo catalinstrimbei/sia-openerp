@@ -1,5 +1,8 @@
 package org.open.erp.services.marketing;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,7 +34,7 @@ public class CercetarePiata {
 	@ManyToOne
 	Angajat responsabilCercetarePiata;
 	
-	@OneToMany // Trebuie vazut daca mai trebuie completat ceva.
+	@OneToMany(mappedBy = "id", targetEntity = Chestionar.class, cascade = ALL, fetch = EAGER)
 	Set<Chestionar> chestionareCercetarePiata = new HashSet<Chestionar>();
 
 	public long getId() {

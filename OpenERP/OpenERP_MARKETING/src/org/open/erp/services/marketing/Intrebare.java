@@ -1,22 +1,27 @@
 package org.open.erp.services.marketing;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Intrebare {
 	
 	@Id @GeneratedValue
+	@ManyToOne
 	long id;
 	
 	String text;
 	
-	@OneToMany // Trebuie vazut daca mai trebuie completat ceva.
+	@OneToMany(mappedBy = "id", targetEntity = RaspunsIntrebare.class, cascade = ALL, fetch = EAGER)
 	Set<RaspunsIntrebare> raspunsuriIntrebare = new HashSet<RaspunsIntrebare>();
 
 	public long getId() {
