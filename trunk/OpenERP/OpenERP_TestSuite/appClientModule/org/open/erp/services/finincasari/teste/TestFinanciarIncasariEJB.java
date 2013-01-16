@@ -110,7 +110,7 @@ public class TestFinanciarIncasariEJB {
     	 dataEmiterii = dataFormat.parse("12-05-2012");
     	 dataScadenta = dataFormat.parse("30-08-2012");
     	 
-    	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+    	 Angajat angajat = new Angajat();
     	// angajat.setIDangajat(1);
     	// angajat.setNumeAngajat("Ion");
     	 
@@ -146,7 +146,7 @@ public class TestFinanciarIncasariEJB {
     	 dataEmiterii = dataFormat.parse("05-04-2012");
     	 dataScadenta = dataFormat.parse("30-08-2012");
 
-    	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+    	 Angajat angajat = new Angajat();
     	// angajat.setIDangajat(1);
     	// angajat.setNumeAngajat("Ion");
     	 
@@ -177,7 +177,7 @@ public class TestFinanciarIncasariEJB {
    	 dataEmiterii = dataFormat.parse("05-04-2012");
    	 dataScadenta = dataFormat.parse("30-08-2012");
 
-   	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+   	 Angajat angajat = new Angajat();
    	// angajat.setIDangajat(1);
    	// angajat.setNumeAngajat("Ion");
    	 
@@ -216,7 +216,7 @@ public class TestFinanciarIncasariEJB {
 	   	 Date dataEmiterii = new Date(System.currentTimeMillis());
 	   	 dataEmiterii = dataFormat.parse("05-04-2012");
 	   
-	   	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+	   	 Angajat angajat = new Angajat();
 	   	 //angajat.setIDangajat(1);
 	   	// angajat.setNumeAngajat("Ion");
 	   	 
@@ -244,7 +244,7 @@ public class TestFinanciarIncasariEJB {
    
    	 dataEmiterii = dataFormat.parse("05-04-2012");
    	
-   	 Angajat angajat = new Angajat(null, null, null, null, null, null, null, null, null, null);
+   	 Angajat angajat = new Angajat();
    	// angajat.setIDangajat(1);
    	// angajat.setNumeAngajat("Ion");
    	 
