@@ -4,6 +4,8 @@ import javax.ejb.EJB;
 
 import org.open.erp.services.marketing.MarketingSrv;
 
+//@ManagedBean(name="appEJBProvider", eager=true)
+//@ApplicationScoped
 public class AppEJBProvider {
 	
 	@EJB(lookup="java:global/OpenERP_MARKETING/MarketingSrvImpl!org.open.erp.services.marketing.MarketingSrv")
