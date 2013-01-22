@@ -25,14 +25,14 @@ public class ChitantaPlata implements Serializable {
 	@Id @GeneratedValue
 protected Integer idChitanta;
 
-	public ChitantaPlata() {
-		
-	}
+	
 	
 @ManyToOne
 Plata plata;
 
+public ChitantaPlata() {
 	
+}
 	
 	public Integer getidChitanta() {
 		return idChitanta;
