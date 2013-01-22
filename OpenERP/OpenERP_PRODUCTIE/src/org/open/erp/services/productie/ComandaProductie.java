@@ -3,9 +3,14 @@ package org.open.erp.services.productie;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+
 import org.open.erp.services.nomgen.Document;
 
-
+@Entity
 public class ComandaProductie extends Document implements Serializable{
 
 	/**
@@ -13,9 +18,17 @@ public class ComandaProductie extends Document implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@ManyToOne (targetEntity=Document.class)
+	@JoinColumn(name = "nrDocument", insertable=false, updatable=false)
 	private Document idComanda;
+	
+	@ManyToOne (targetEntity=Produs.class)
+	@JoinColumn (name="id")
 	Produs produs;
+	
 	Integer cantitate;
+	
+	@Temporal(javax.persistence.TemporalType.DATE)
 	Date dataComanda;
 	
 	public ComandaProductie(Produs produs,

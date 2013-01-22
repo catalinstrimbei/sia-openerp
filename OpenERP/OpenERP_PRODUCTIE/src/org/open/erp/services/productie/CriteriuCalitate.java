@@ -2,6 +2,11 @@ package org.open.erp.services.productie;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class CriteriuCalitate implements Serializable {
 
 	/**
@@ -9,7 +14,9 @@ public class CriteriuCalitate implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id @GeneratedValue
 	Integer idCriteriu;
+	
 	String criteriu;
 	
 	public Integer getIdCriteriu() {
@@ -45,6 +52,7 @@ public class CriteriuCalitate implements Serializable {
 				+ ((idCriteriu == null) ? 0 : idCriteriu.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

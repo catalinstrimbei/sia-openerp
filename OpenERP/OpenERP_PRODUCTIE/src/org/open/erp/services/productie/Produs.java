@@ -5,8 +5,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import static javax.persistence.CascadeType.ALL;
+
 import org.open.erp.services.nomgen.LinieDocument;
 
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Produs implements Serializable {
 
 	/**
@@ -14,7 +24,9 @@ public class Produs implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id @GeneratedValue
 	protected Integer idProdus; 
+	
 	protected String denumire; 
 	protected String categorie;  
 	private String  unitateMasura;
@@ -22,7 +34,9 @@ public class Produs implements Serializable {
 	private Integer termenValabilitate;
 	private Double pretVanzare= 0.0;
 	private Float procentTVA;
-	private List<LinieDocument> liniiDocumente=new ArrayList<LinieDocument>();
+	
+	//@OneToMany(mappedBy="material",targetEntity=LinieDocument.class, cascade = ALL)
+	//private List<LinieDocument> liniiDocumente=new ArrayList<LinieDocument>();
 	
 	public Integer getIdProdus() {
 		return idProdus;
@@ -72,12 +86,12 @@ public class Produs implements Serializable {
 	public void setProcentTVA(Float procentTVA) {
 		this.procentTVA = procentTVA;
 	}
-	public List<LinieDocument> getLiniiDocumente() {
-		return liniiDocumente;
-	}
-	public void setLiniiDocumente(List<LinieDocument> liniiDocumente) {
-		this.liniiDocumente = liniiDocumente;
-	}
+	//public List<LinieDocument> getLiniiDocumente() {
+	//	return liniiDocumente;
+	//}
+	//public void setLiniiDocumente(List<LinieDocument> liniiDocumente) {
+	//	this.liniiDocumente = liniiDocumente;
+	//}
 	
 	public Produs(Integer idProdus, String denumire, String categorie,
 			String unitateMasura, Date dataFabricatiei,
@@ -92,7 +106,7 @@ public class Produs implements Serializable {
 		this.termenValabilitate = termenValabilitate;
 		this.pretVanzare = pretVanzare;
 		this.procentTVA = procentTVA;
-		this.liniiDocumente = liniiDocumente;
+	//	this.liniiDocumente = liniiDocumente;
 	}
 	public Produs() {
 		super();
@@ -111,8 +125,8 @@ public class Produs implements Serializable {
 				+ ((denumire == null) ? 0 : denumire.hashCode());
 		result = prime * result
 				+ ((idProdus == null) ? 0 : idProdus.hashCode());
-		result = prime * result
-				+ ((liniiDocumente == null) ? 0 : liniiDocumente.hashCode());
+	//	result = prime * result
+	//			+ ((liniiDocumente == null) ? 0 : liniiDocumente.hashCode());
 		result = prime * result
 				+ ((pretVanzare == null) ? 0 : pretVanzare.hashCode());
 		result = prime * result
@@ -154,11 +168,11 @@ public class Produs implements Serializable {
 				return false;
 		} else if (!idProdus.equals(other.idProdus))
 			return false;
-		if (liniiDocumente == null) {
-			if (other.liniiDocumente != null)
-				return false;
-		} else if (!liniiDocumente.equals(other.liniiDocumente))
-			return false;
+	//	if (liniiDocumente == null) {
+	//		if (other.liniiDocumente != null)
+	//			return false;
+	//	} else if (!liniiDocumente.equals(other.liniiDocumente))
+	//		return false;
 		if (pretVanzare == null) {
 			if (other.pretVanzare != null)
 				return false;
