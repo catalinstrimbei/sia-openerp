@@ -2,19 +2,33 @@ package org.open.erp.services.nomgen;
 
 import java.io.Serializable;
 
-import org.open.erp.services.nommat.Material;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+//import org.open.erp.services.nommat.Material;
 
 
 
-
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class LinieDocument implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
 	protected Integer linieDoc; 
-	protected Material material; 
-	protected Document documentParinte; 
+	
+	//@ManyToOne @JoinColumn(name = "material_id")
+	//protected Material material;
+	
+	@ManyToOne @JoinColumn(name = "documentParinte_nrDocument")
+	Document documentParinte; 
 	
 	protected Double cantitate = 0.0;  
 	protected Double pret = 0.0;  
@@ -26,12 +40,12 @@ public class LinieDocument implements Serializable {
 	public void setLinieDoc(Integer linieDoc) {
 		this.linieDoc = linieDoc;
 	}
-	public Material getMaterial() {
-		return material;
-	}
-	public void setMaterial(Material material) {
-		this.material = material;
-	}
+	//public Material getMaterial() {
+	//	return material;
+	//}
+	//public void setMaterial(Material material) {
+	//	this.material = material;
+	//}
 	public Document getDocumentParinte() {
 		return documentParinte;
 	}
@@ -57,11 +71,10 @@ public class LinieDocument implements Serializable {
 		TVA = tVA;
 	}
 	
-	public LinieDocument(Integer linieDoc, Material material,
-			Document documentParinte, Double cantitate, Double pret, Double tVA) {
+	public LinieDocument(Integer linieDoc, Document documentParinte, Double cantitate, Double pret, Double tVA) {
 		super();
 		this.linieDoc = linieDoc;
-		this.material = material;
+		//this.material = material;
 		this.documentParinte = documentParinte;
 		this.cantitate = cantitate;
 		this.pret = pret;
@@ -83,8 +96,8 @@ public class LinieDocument implements Serializable {
 				+ ((documentParinte == null) ? 0 : documentParinte.hashCode());
 		result = prime * result
 				+ ((linieDoc == null) ? 0 : linieDoc.hashCode());
-		result = prime * result
-				+ ((material == null) ? 0 : material.hashCode());
+		//result = prime * result
+		//		+ ((material == null) ? 0 : material.hashCode());
 		result = prime * result + ((pret == null) ? 0 : pret.hashCode());
 		return result;
 	}
@@ -117,11 +130,11 @@ public class LinieDocument implements Serializable {
 				return false;
 		} else if (!linieDoc.equals(other.linieDoc))
 			return false;
-		if (material == null) {
-			if (other.material != null)
-				return false;
-		} else if (!material.equals(other.material))
-			return false;
+	//	if (material == null) {
+	//		if (other.material != null)
+	//			return false;
+	//	} else if (!material.equals(other.material))
+	//		return false;
 		if (pret == null) {
 			if (other.pret != null)
 				return false;

@@ -8,10 +8,19 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public  class Document implements Serializable{
 	/**
 	 * 
@@ -25,8 +34,13 @@ public  class Document implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
 	private Date dataDocument;
     
-	private Persoana persoana;    
+    @OneToOne @JoinColumn(name= "idPersoana")
+	private Persoana persoana;
+    
 	private String observatie;   
+	
+	//@JoinColumn(name="documentParinte")
+	@OneToMany(mappedBy = "documentParinte", targetEntity = LinieDocument.class, cascade = ALL, fetch = EAGER)
 	private List<LinieDocument> liniiDocument  = new ArrayList<LinieDocument>();
 	
 	public int getNrDocument() {
