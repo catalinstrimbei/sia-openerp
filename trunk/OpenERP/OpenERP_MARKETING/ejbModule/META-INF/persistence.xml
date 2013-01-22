@@ -17,7 +17,8 @@
 		<class>org.open.erp.services.marketing.Reclamatie</class>
 		
 		<class>org.open.erp.services.nommat.Material</class>
-		<class>org.open.erp.services.momgen.Persoana</class>
+		<class>org.open.erp.services.nomgen.Persoana</class>
+		<class>org.open.erp.services.personal.Angajat</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
