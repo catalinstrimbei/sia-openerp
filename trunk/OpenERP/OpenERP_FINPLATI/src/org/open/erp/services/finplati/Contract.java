@@ -34,7 +34,7 @@ public class Contract {
 	@OneToMany
 	Map<Integer, Plata> plati;
 	
-	//@OneToMany
+	//@OneToMany - enum status contract
 	StatusContract statusContract;
 	
 	private static int nextIdContract = 1;

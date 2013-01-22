@@ -37,6 +37,7 @@ public class SituatieFinanciara implements Serializable{
 	Double valoarePlatiRestante;
 	Double bugetDatorii;
 	
+	//@OneToOne
 	@OneToMany
 	Map<Integer,Plata> plati;
 	@OneToMany
