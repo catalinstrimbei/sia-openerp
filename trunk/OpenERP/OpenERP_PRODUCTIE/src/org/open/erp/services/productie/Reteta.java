@@ -1,13 +1,26 @@
 package org.open.erp.services.productie;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import org.open.erp.services.nommat.Material;
 
-
+@Entity
 public class Reteta {
+	@Id @GeneratedValue
 	private Integer IdReteta;
+	
+	@ManyToOne
 	private Produs produs;
+	
+	@ManyToOne
 	private Material material;
+	
+	@ManyToOne
 	private Semifabricat semifabricat;
+	
 	private Double cantitateM;
 	private Double cantitateS;
 	

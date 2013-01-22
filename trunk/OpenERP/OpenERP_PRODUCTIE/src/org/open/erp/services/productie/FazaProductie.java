@@ -4,11 +4,25 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.CascadeType.ALL;
+
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nommat.Material;
 
 import org.open.erp.services.personal.Angajat;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class FazaProductie implements Serializable {
 
 	/**
@@ -16,31 +30,54 @@ public class FazaProductie implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id @GeneratedValue
 	String faza;
+	
+	@ManyToOne
 	FluxProductie flux;
+	
+	@ManyToOne
 	Utilaj utilaj;
+	
 	Double timpFolosire;
-		
+	
+	@OneToMany(mappedBy="faza",targetEntity=FunctieNecesara.class, cascade = ALL, fetch = EAGER)
 	private List<FunctieNecesara> functiiNecesare = new ArrayList<FunctieNecesara>();
 	
+	@OneToMany(mappedBy="faza",targetEntity=Angajat.class, cascade = ALL, fetch = EAGER)
 	private List<Angajat> angajati = new ArrayList<Angajat>();
 	
+	@OneToMany(mappedBy="faza",targetEntity=Material.class, cascade = ALL, fetch = EAGER)
 	private List<Material> materialeReteta= new ArrayList<Material>();
 	
+	@ManyToOne 
+	@JoinColumn(name = "idSemReteta")
 	Semifabricat semifabricatReteta;
 	
+	@ManyToOne
+	@JoinColumn(name = "idSemDorit")
 	Semifabricat semifabricatDorit;
 	
+	@ManyToOne (targetEntity=Produs.class)
+	@JoinColumn(name = "idDorit")
 	Produs produsDorit;
 	
+	@ManyToOne
+	@JoinColumn(name = "idSemObtinut")
 	Semifabricat semifabricatObtinut;
 	
+	@ManyToOne (targetEntity=Produs.class)
+	@JoinColumn(name = "idObtinut")
 	Produs produsObtinut;
 	
+	@ManyToOne  (targetEntity=Divizie.class)
+	@JoinColumn(name = "idDivizie")
 	Divizie sectie;
 	
+	@OneToOne
 	FunctieNecesara functieNecesare;
 	
+	@OneToOne
 	Material materialReteta;
 	
 	Integer nrOrdine;

@@ -2,8 +2,15 @@ package org.open.erp.services.productie;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import org.open.erp.services.nomgen.MijlocFix;
 
+@Entity
 public class Utilaj implements Serializable {
 
 	/**
@@ -11,8 +18,10 @@ public class Utilaj implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id @GeneratedValue
 	Integer idUtilaj;
 	
+	@OneToOne
 	private MijlocFix utilaj;
 	
 	String status;

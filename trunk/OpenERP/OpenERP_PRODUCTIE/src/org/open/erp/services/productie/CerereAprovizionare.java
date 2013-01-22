@@ -4,16 +4,22 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+
 import org.open.erp.services.nomgen.Document;
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nomgen.Persoana;
 
+@Entity
 public class CerereAprovizionare extends Document implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Temporal(javax.persistence.TemporalType.DATE)
 	Date dataCerere;
 	
 	public Date getDataCerere() {

@@ -2,8 +2,13 @@ package org.open.erp.services.productie;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import org.open.erp.services.personal.Functie;
 
+@Entity
 public class FunctieNecesara extends Functie implements Serializable {
 
 	/**
@@ -11,10 +16,13 @@ public class FunctieNecesara extends Functie implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@ManyToOne (targetEntity=Functie.class)
+	@JoinColumn(name = "idFunctie", insertable=false, updatable=false)
 	private Functie id;
 	
 	Integer nrAngajatiFunctie;
 	
+	@ManyToOne
 	private FazaProductie faza;
 
 	public Functie getId() {

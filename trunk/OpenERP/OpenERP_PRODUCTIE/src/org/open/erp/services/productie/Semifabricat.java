@@ -1,14 +1,21 @@
 package org.open.erp.services.productie;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.OneToMany;
+
 import org.open.erp.services.nomgen.LinieDocument;
 import org.open.erp.services.nommat.Material;
 
-
+@Entity
 public class Semifabricat extends Produs implements Serializable {
 
 	/**
@@ -16,10 +23,12 @@ public class Semifabricat extends Produs implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@GeneratedValue
 	Integer idSemifabricat;
 	
 	String semifabricat;
 	
+	@OneToMany(mappedBy = "id", targetEntity = Material.class, cascade = ALL, fetch = EAGER)
 	private List<Material> listaMateriale = new ArrayList<Material>();
 	
 	Semifabricat semifabricatContinut;
