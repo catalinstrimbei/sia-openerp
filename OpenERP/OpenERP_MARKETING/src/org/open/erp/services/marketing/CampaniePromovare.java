@@ -34,7 +34,7 @@ public class CampaniePromovare {
 	CanalDistributie canalDistributie;
 	int buget; 
 
-	@OneToMany(mappedBy = "produsPromotie", targetEntity = Promotie.class, cascade = ALL, fetch = EAGER)
+	@OneToMany(mappedBy = "campaniePromovare", targetEntity = Promotie.class, cascade = ALL, fetch = EAGER)
 	// Trebuie vazut daca mai trebuie completat ceva.
 	Set<Promotie> promotiiCampanie = new HashSet<Promotie>();
 
