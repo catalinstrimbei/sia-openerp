@@ -40,7 +40,7 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 	/*@EJB(lookup="java:global/OpenERP_PERSONAL/PersonalImpl!org.open.erp.services.personal.PersonalSrv")
 	private PersonalSrv personalSrv;*/
 	
-	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.personal.NomenclatoareSrv")
+	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.nomgen.NomenclatoareSrv")
 	private NomenclatoareSrv nomgenSrv;
 
 	public void setNommatSrv(NomenclatorMaterialeSrv nommatSrv) {
