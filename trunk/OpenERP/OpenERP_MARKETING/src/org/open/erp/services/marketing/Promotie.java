@@ -20,6 +20,9 @@ public class Promotie {
 	@ManyToOne
 	Material produsPromotie;
 	
+	@ManyToOne
+	CampaniePromovare campaniePromovare;
+	
 	int pretPromotional;
 	
 	@Temporal(TemporalType.DATE)
@@ -42,6 +45,14 @@ public class Promotie {
 
 	public void setProdusPromotie(Material produsPromotie) {
 		this.produsPromotie = produsPromotie;
+	}
+
+	public CampaniePromovare getCampaniePromovare() {
+		return campaniePromovare;
+	}
+
+	public void setCampaniePromovare(CampaniePromovare campaniePromovare) {
+		this.campaniePromovare = campaniePromovare;
 	}
 
 	public int getPretPromotional() {
