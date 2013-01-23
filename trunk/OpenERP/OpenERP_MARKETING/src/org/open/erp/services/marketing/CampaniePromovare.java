@@ -10,12 +10,9 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.open.erp.services.personal.Angajat;
 
 @Entity
 public class CampaniePromovare {
@@ -29,10 +26,10 @@ public class CampaniePromovare {
 	@Temporal(TemporalType.DATE)
 	Date data;
 
-	@ManyToOne
+	/*@ManyToOne
 	// da eroare deocamdata pentru ca modulul din care face parte entitatea nu a
 	// facut adnotarile deocamdata.
-	Angajat promoter;
+	Angajat promoter;*/
 
 	CanalDistributie canalDistributie;
 	int buget; 
@@ -65,13 +62,13 @@ public class CampaniePromovare {
 		this.data = data;
 	}
 
-	public Angajat getPromoter() {
+/*	public Angajat getPromoter() {
 		return promoter;
 	}
 
 	public void setPromoter(Angajat promoter) {
 		this.promoter = promoter;
-	}
+	}*/
 
 	public CanalDistributie getCanalDistributie() {
 		return canalDistributie;

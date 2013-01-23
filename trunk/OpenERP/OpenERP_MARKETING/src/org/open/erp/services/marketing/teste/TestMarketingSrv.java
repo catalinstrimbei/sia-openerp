@@ -23,7 +23,6 @@ import org.open.erp.services.marketing.TipPromovare;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
-import org.open.erp.services.personal.PersonalSrv;
 
 public class TestMarketingSrv {
 
@@ -31,7 +30,7 @@ public class TestMarketingSrv {
 	MarketingSrv marketingInstance;
 
 	NomenclatorMaterialeSrv nommatSrv;
-	PersonalSrv personalSrv;
+//	PersonalSrv personalSrv;
 	NomenclatoareSrv nomgenSrv;
 
 	@BeforeClass
@@ -43,7 +42,7 @@ public class TestMarketingSrv {
 	public void initServices() {
 		marketingInstance = MarketingSrvFactory.getMarketingSrv();
 		nommatSrv = MarketingSrvFactory.getProjectNommatSrv();
-		personalSrv = MarketingSrvFactory.getProjectPersonalSrv();
+//		personalSrv = MarketingSrvFactory.getProjectPersonalSrv();
 		nomgenSrv = MarketingSrvFactory.getProjectNomgenSrv();
 
 		logger.info("Marketing Service intiated for Test!");
