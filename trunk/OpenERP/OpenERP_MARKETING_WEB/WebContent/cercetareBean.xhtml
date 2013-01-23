@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head>
+	<title>Creare cercetare piata noua</title>
+</h:head>
+<h:body>
+	<h:form>
+		<table>
+		<tr>
+			<td>
+				<h:outputText value="Introduceti data de start:"></h:outputText>
+				<h:inputText value="#{cercetareBean.dataStart}"></h:inputText>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h:outputText value="Introduceti data de final"></h:outputText>
+				<h:inputText value="#{cercetareBean.dataFinal}"></h:inputText>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h:outputText value="Buget alocat"></h:outputText>
+				<h:inputText value="#{cercetareBean.buget}"></h:inputText>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h:commandButton action="#{cercetareBean.creareCercetare" value="Creare cercetare noua"></h:commandButton>
+			</td>
+		</tr>
+
+
+		</table>
+
+
+	</h:form>
+
+</h:body>
+</html>

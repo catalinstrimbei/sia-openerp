@@ -1,4 +1,4 @@
-package org.open.erp.ui.marketing.reports;
+/*package org.open.erp.ui.marketing.reports;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,19 +8,21 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
-import org.open.erp.ui.proman.reports.EngineConfig;
-import org.open.erp.ui.proman.reports.IPlatformContext;
-import org.open.erp.ui.proman.reports.IReportEngine;
-import org.open.erp.ui.proman.reports.IReportEngineFactory;
-import org.open.erp.ui.proman.reports.IReportRunnable;
-import org.open.erp.ui.proman.reports.IRunAndRenderTask;
-import org.open.erp.ui.proman.reports.PlatformServletContext;
-import org.open.erp.ui.proman.reports.RenderOption;
+import org.eclipse.birt.core.framework.IPlatformContext;
+import org.eclipse.birt.core.framework.Platform;
+import org.eclipse.birt.core.framework.PlatformServletContext;
+import org.eclipse.birt.report.engine.api.EngineConfig;
+import org.eclipse.birt.report.engine.api.EngineException;
+import org.eclipse.birt.report.engine.api.IReportEngine;
+import org.eclipse.birt.report.engine.api.IReportEngineFactory;
+import org.eclipse.birt.report.engine.api.IReportRunnable;
+import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
+import org.eclipse.birt.report.engine.api.RenderOption;
 
 public class WebReportRunner {
 	
 	public static void runReport(String reportName) {
-		/* Classpath */
+		 Classpath 
 		//String reportPath = "./";
 		FacesContext faces = FacesContext.getCurrentInstance();
 		ServletContext servletContext = (ServletContext) 
@@ -30,11 +32,11 @@ public class WebReportRunner {
 		System.out.println("servletContext.getRealPath()=" + servletContext.getRealPath(""));
 		String reportPath = servletContext.getRealPath("") + "/";
 		
-		/* Create an EngineConfig object. */
+		 Create an EngineConfig object. 
 		EngineConfig config = new EngineConfig();
 		// Start the platform for a non-RCP application.
 		try {
-			/* Start Report Engine */
+			 Start Report Engine 
 			config.setBIRTHome("");
 			//config.setBIRTHome("E:/Professional/Programare_OO/Projects/Exemple_WKS/libraries/BIRTReportEngine");
 			IPlatformContext context = new PlatformServletContext(servletContext);
@@ -44,11 +46,11 @@ public class WebReportRunner {
 					.createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
 			IReportEngine engine = factory.createReportEngine(config);
 			
-			/* Open report design */
+			 Open report design 
 			String designName = reportPath + reportName;
 			IReportRunnable runnable = engine.openReportDesign(designName);
 
-			/* Generate report from design */
+			 Generate report from design 
 			// Create a run and render task object.
 			IRunAndRenderTask task = engine.createRunAndRenderTask(runnable);
 			// Set PDF Format
@@ -64,7 +66,7 @@ public class WebReportRunner {
 			System.out.println("Created Report " + outputName + ".");
 			task.close();
 
-			/* Render as PDF */
+			 Render as PDF 
 			// read PDF generate
 			File pdfFile = new File(outputName);
 			FileInputStream doc = new FileInputStream(pdfFile);
@@ -84,3 +86,4 @@ public class WebReportRunner {
 		}
 
 }
+*/
