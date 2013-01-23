@@ -23,8 +23,6 @@ import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
-import org.open.erp.services.personal.Angajat;
-import org.open.erp.services.personal.PersonalSrv;
 
 @Stateless
 public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
@@ -39,8 +37,8 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 	@EJB(lookup="java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrv")
 	private NomenclatorMaterialeSrv nommatSrv;
 	
-	@EJB(lookup="java:global/OpenERP_PERSONAL/PersonalImpl!org.open.erp.services.personal.PersonalSrv")
-	private PersonalSrv personalSrv;
+	/*@EJB(lookup="java:global/OpenERP_PERSONAL/PersonalImpl!org.open.erp.services.personal.PersonalSrv")
+	private PersonalSrv personalSrv;*/
 	
 	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.personal.NomenclatoareSrv")
 	private NomenclatoareSrv nomgenSrv;
@@ -55,9 +53,9 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		
 	}
 
-	public void setPersonalSrv(PersonalSrv personalSrv) {
+/*	public void setPersonalSrv(PersonalSrv personalSrv) {
 		this.personalSrv = personalSrv;
-	}
+	}*/
 
 	public MarketingSrvImpl() {
 	}
@@ -82,9 +80,9 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 
 		CampaniePromovare campaniePromovareNoua = new CampaniePromovare(1, tipPromovare, data, canalDistributie, buget);
 
-		Angajat angajatPromoter = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
+		/*Angajat angajatPromoter = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
 		entityManager.persist(angajatPromoter);
-		campaniePromovareNoua.setPromoter(angajatPromoter);
+		campaniePromovareNoua.setPromoter(angajatPromoter);*/
 
 		Material produs = nommatSrv.introducereMaterial(null, null, null, null, null, null, null, null);
 		entityManager.persist(produs);
@@ -145,10 +143,10 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 	public CercetarePiata creareCercetarePiata(Date dataStart, Date dataFinal, int buget) {
 		logger.debug("1.1 Initiere/Creare cercetare de piata noua");
 
-		Angajat responsabilCercetarePiata = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
-		entityManager.persist(responsabilCercetarePiata);
+		/*Angajat responsabilCercetarePiata = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
+		entityManager.persist(responsabilCercetarePiata);*/
 		
-		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart, dataFinal, buget, responsabilCercetarePiata);
+		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart, dataFinal, buget);//, responsabilCercetarePiata);
 
 		String titlu = "";
 		Persoana persoanaChestionata = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);

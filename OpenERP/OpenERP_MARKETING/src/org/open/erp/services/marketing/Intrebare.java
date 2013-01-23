@@ -16,12 +16,14 @@ import javax.persistence.OneToMany;
 public class Intrebare {
 	
 	@Id @GeneratedValue
-	@ManyToOne
 	long id;
 	
 	String text;
 	
-	@OneToMany(mappedBy = "id", targetEntity = RaspunsIntrebare.class, cascade = ALL, fetch = EAGER)
+	@ManyToOne
+	Chestionar chestionar;
+	
+	@OneToMany(mappedBy = "intrebare", targetEntity = RaspunsIntrebare.class, cascade = ALL, fetch = EAGER)
 	Set<RaspunsIntrebare> raspunsuriIntrebare = new HashSet<RaspunsIntrebare>();
 
 	public long getId() {
@@ -38,6 +40,14 @@ public class Intrebare {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public Chestionar getChestionar() {
+		return chestionar;
+	}
+
+	public void setChestionar(Chestionar chestionar) {
+		this.chestionar = chestionar;
 	}
 
 	public Set<RaspunsIntrebare> getRaspunsuriIntrebare() {

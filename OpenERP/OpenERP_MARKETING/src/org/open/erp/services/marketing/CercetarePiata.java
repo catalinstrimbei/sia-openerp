@@ -10,12 +10,9 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.open.erp.services.personal.Angajat;
 
 @Entity
 public class CercetarePiata {
@@ -31,10 +28,10 @@ public class CercetarePiata {
 	
 	int buget;
 	
-	@ManyToOne
-	Angajat responsabilCercetarePiata;
+/*	@ManyToOne
+	Angajat responsabilCercetarePiata;*/
 	
-	@OneToMany(mappedBy = "id", targetEntity = Chestionar.class, cascade = ALL, fetch = EAGER)
+	@OneToMany(mappedBy = "cercetarePiata", targetEntity = Chestionar.class, cascade = ALL, fetch = EAGER)
 	Set<Chestionar> chestionareCercetarePiata = new HashSet<Chestionar>();
 
 	public long getId() {
@@ -69,14 +66,14 @@ public class CercetarePiata {
 		this.buget = buget;
 	}
 
-	public Angajat getResponsabilCercetarePiata() {
+/*	public Angajat getResponsabilCercetarePiata() {
 		return responsabilCercetarePiata;
 	}
 
 	public void setResponsabilCercetarePiata(Angajat responsabilCercetarePiata) {
 		this.responsabilCercetarePiata = responsabilCercetarePiata;
 	}
-
+*/
 	public Set<Chestionar> getChestionareCercetarePiata() {
 		return chestionareCercetarePiata;
 	}
@@ -93,13 +90,13 @@ public class CercetarePiata {
 
 	}
 
-	public CercetarePiata(long id, Date dataStart, Date dataFinal, int buget, Angajat responsabilCercetarePiata) {
+	public CercetarePiata(long id, Date dataStart, Date dataFinal, int buget){//, Angajat responsabilCercetarePiata) {
 		super();
 		this.id = id;
 		this.dataStart = dataStart;
 		this.dataFinal = dataFinal;
 		this.buget = buget;
-		this.responsabilCercetarePiata = responsabilCercetarePiata;
+		//this.responsabilCercetarePiata = responsabilCercetarePiata;
 	}
 
 	@Override

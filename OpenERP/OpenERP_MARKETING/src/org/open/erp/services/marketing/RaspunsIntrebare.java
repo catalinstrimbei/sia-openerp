@@ -9,10 +9,12 @@ import javax.persistence.ManyToOne;
 public class RaspunsIntrebare {
 	
 	@Id @GeneratedValue
-	@ManyToOne
 	long id;
 	
 	String text;
+	
+	@ManyToOne
+	Intrebare intrebare;
 
 	public long getId() {
 		return id;
@@ -28,6 +30,14 @@ public class RaspunsIntrebare {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public Intrebare getIntrebare() {
+		return intrebare;
+	}
+
+	public void setIntrebare(Intrebare intrebare) {
+		this.intrebare = intrebare;
 	}
 
 	public RaspunsIntrebare() {

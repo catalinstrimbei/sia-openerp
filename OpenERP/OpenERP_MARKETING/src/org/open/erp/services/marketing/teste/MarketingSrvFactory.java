@@ -7,8 +7,6 @@ import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.impl.NomenclatoareImpl;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.nommat.impl.NomenclatorMaterialeImpl;
-import org.open.erp.services.personal.PersonalSrv;
-import org.open.erp.services.personal.impl.PersonalImpl;
 
 public class MarketingSrvFactory {
 
@@ -19,11 +17,11 @@ public class MarketingSrvFactory {
 		MarketingSrv marketingSrv = new MarketingSrvImpl();
 
 		NomenclatorMaterialeSrv nommatSrv 	= MarketingSrvFactory.getProjectNommatSrv();
-		PersonalSrv 			personalSrv = MarketingSrvFactory.getProjectPersonalSrv();
+		//PersonalSrv 			personalSrv = MarketingSrvFactory.getProjectPersonalSrv();
 		NomenclatoareSrv		nomgenSrv	= MarketingSrvFactory.getProjectNomgenSrv();
 
 		marketingSrv.setNommatSrv(nommatSrv);
-		marketingSrv.setPersonalSrv(personalSrv);
+		//marketingSrv.setPersonalSrv(personalSrv);
 		marketingSrv.setNomgenSrv(nomgenSrv);
 
 		logger.info("Creare MarketingSrv instance from MarketingSrvFactory!");
@@ -37,11 +35,11 @@ public class MarketingSrvFactory {
 		return new NomenclatorMaterialeImpl();
 	}
 
-	public static PersonalSrv getProjectPersonalSrv() {
+	/*public static PersonalSrv getProjectPersonalSrv() {
 		logger.info("Creare dummy instance of AngajatSrv from MarketingSrvFactory!");
 		return new PersonalImpl();
 	}
-
+*/
 	public static NomenclatoareSrv getProjectNomgenSrv() {
 		logger.info("Creare dummy instance of PersoanaSrv from MarketingSrvFactory!");
 		return new NomenclatoareImpl();

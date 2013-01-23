@@ -21,7 +21,6 @@ import org.open.erp.services.nomgen.Persoana;
 public class Chestionar {
 	
 	@Id @GeneratedValue
-	@ManyToOne
 	long id;
 	
 	@Temporal(TemporalType.DATE)
@@ -32,7 +31,10 @@ public class Chestionar {
 	@ManyToOne
 	Persoana persoanaChestionata;
 	
-	@OneToMany(mappedBy = "id", targetEntity = Intrebare.class, cascade = ALL, fetch = EAGER)
+	@ManyToOne
+	CercetarePiata cercetarePiata;
+	
+	@OneToMany(mappedBy = "chestionar", targetEntity = Intrebare.class, cascade = ALL, fetch = EAGER)
 	Set<Intrebare> intrebariChestionar = new HashSet<Intrebare>();
 
 	public long getId() {
@@ -57,6 +59,14 @@ public class Chestionar {
 
 	public void setTitlu(String titlu) {
 		this.titlu = titlu;
+	}
+
+	public CercetarePiata getCercetarePiata() {
+		return cercetarePiata;
+	}
+
+	public void setCercetarePiata(CercetarePiata cercetarePiata) {
+		this.cercetarePiata = cercetarePiata;
 	}
 
 	public Persoana getPersoanaChestionata() {
