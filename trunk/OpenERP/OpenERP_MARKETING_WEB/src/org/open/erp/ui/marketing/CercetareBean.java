@@ -15,7 +15,7 @@ public class CercetareBean {
 
 	private CercetarePiata cercetarePiata;
 
-	@EJB(lookup="java:global/OpenERP_MARKETING/MarketingSrvImpl!org.open.erp.services.marketing.MarketingSrvImpl")
+	@EJB(lookup="java:global/OpenERP_MARKETING/MarketingSrvImpl!org.open.erp.services.marketing.MarketingSrv")
 	private MarketingSrv marketingSrv;
 	
 	private int buget;
@@ -64,9 +64,10 @@ public class CercetareBean {
 		this.dataFinal = dataFinal;
 	}
 
-	public void creareCercetare(){
+	public String creareCercetare(){
 		
 		marketingSrv.creareCercetarePiata(dataStart, dataFinal, buget);
+		return "success";
 	}
 	
 }
