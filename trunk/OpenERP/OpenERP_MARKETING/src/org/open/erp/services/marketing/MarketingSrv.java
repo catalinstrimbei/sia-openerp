@@ -17,9 +17,9 @@ public interface MarketingSrv {
 
 	//public void setPersonalSrv(PersonalSrv personalSrv);
 
-	public Promotie crearePromotie(int pretPromotional, Date dataStart, Date dataFinal);
+	public Promotie crearePromotie(Promotie promotie);
 
-	public CampaniePromovare creareCampaniePromovare(TipPromovare tipPromovare, Date data, CanalDistributie canalDistributie, int buget);
+	public CampaniePromovare creareCampaniePromovare(CampaniePromovare campaniePromovare);
 
 	public RaspunsIntrebare creareRaspunsIntrebare(String textRaspuns);
 
@@ -27,7 +27,9 @@ public interface MarketingSrv {
 
 	public Chestionar creareChestionar(Date data, String titlu, Persoana persoanaChestionata);
 
-	public CercetarePiata creareCercetarePiata(Date dataStart, Date dataFinal, int buget);
+	public CercetarePiata creareCercetarePiata(CercetarePiata cercetarePiata);
 
 	public Reclamatie creareReclamatie(Date data, String text, String raspuns, StatusReclamatie status);
+	
+	public CampaniePromovare findCampanieById(long id);
 }
