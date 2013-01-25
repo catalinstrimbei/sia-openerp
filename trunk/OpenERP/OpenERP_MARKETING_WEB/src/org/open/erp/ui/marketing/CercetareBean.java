@@ -17,9 +17,7 @@ public class CercetareBean implements Serializable{
 	private MarketingSrv marketingSrv;
 	
 	private int buget;
-	
 	private Date dataStart;
-	
 	private Date dataFinal;
 	
 	public CercetareBean(){
@@ -60,7 +58,6 @@ public class CercetareBean implements Serializable{
 	public String creareCercetare() throws Exception{
 		
 		CercetarePiata cercetareNoua = new CercetarePiata();
-		//DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		cercetareNoua.setDataStart(dataStart);
 		cercetareNoua.setDataFinal(dataFinal);
 		cercetareNoua.setBuget(buget);
