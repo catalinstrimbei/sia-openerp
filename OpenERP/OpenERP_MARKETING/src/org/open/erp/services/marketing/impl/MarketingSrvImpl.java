@@ -18,7 +18,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.metamodel.Metamodel;
 
 import org.open.erp.services.marketing.CampaniePromovare;
-import org.open.erp.services.marketing.CanalDistributie;
 import org.open.erp.services.marketing.CercetarePiata;
 import org.open.erp.services.marketing.Chestionar;
 import org.open.erp.services.marketing.Intrebare;
@@ -28,11 +27,8 @@ import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.marketing.RaspunsIntrebare;
 import org.open.erp.services.marketing.Reclamatie;
 import org.open.erp.services.marketing.StatusReclamatie;
-import org.open.erp.services.marketing.TipPromovare;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.nommat.ListaCaracteristici;
-import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 
 @Stateless
@@ -315,46 +311,21 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 
 
 	@Override
-	public Promotie crearePromotie(int pretPromotional, Date dataStart, Date dataFinal) {
+	public Promotie crearePromotie(Promotie promotie) {
 		logger.info("5.1 Initiere/Creare promotie noua");
 
-		Promotie promotieNoua = new Promotie(1, null, pretPromotional, dataStart, dataFinal);
-		ListaCaracteristici listaCaracteristici = new ListaCaracteristici();
-		listaCaracteristici.setId("1");
-		listaCaracteristici.setListaCaracteristici("lista");
-		entityManager.persist(listaCaracteristici);
+		entityManager.persist(promotie);
 		
-		Material produsNou = nommatSrv.introducereMaterial("1", "lapte", "1", "5", "lactate", "24", "lipsa", listaCaracteristici);
-		promotieNoua.setProdusPromotie(produsNou);
-
-///////////////////////////////////// trebuie reverificat.
-		entityManager.persist(produsNou);
-		entityManager.persist(promotieNoua);
-		return promotieNoua;
+		return promotie;
 	}
 
 	@Override
-	public CampaniePromovare creareCampaniePromovare(TipPromovare tipPromovare, Date data, CanalDistributie canalDistributie, int buget) {
+	public CampaniePromovare creareCampaniePromovare(CampaniePromovare campaniePromovare) {
 		logger.debug("3.1 Initiere/Creare campanie promovare noua");
 
-		CampaniePromovare campaniePromovareNoua = new CampaniePromovare(1, tipPromovare, data, canalDistributie, buget);
-
-		/*Angajat angajatPromoter = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
-		entityManager.persist(angajatPromoter);
-		campaniePromovareNoua.setPromoter(angajatPromoter);*/
-
-		Material produs = nommatSrv.introducereMaterial(null, null, null, null, null, null, null, null);
-		entityManager.persist(produs);
+		entityManager.persist(campaniePromovare);
 		
-		Promotie promotie = crearePromotie(11, data, data);
-		entityManager.persist(promotie);
-		
-		promotie.setProdusPromotie(produs);
-		campaniePromovareNoua.adaugaPromotie(promotie);
-		
-		entityManager.persist(campaniePromovareNoua);
-		
-		return campaniePromovareNoua;
+		return campaniePromovare;
 	}
 
 	@Override
@@ -399,25 +370,12 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 	}
 
 	@Override
-	public CercetarePiata creareCercetarePiata(Date dataStart, Date dataFinal, int buget) {
+	public CercetarePiata creareCercetarePiata(CercetarePiata cercetarePiata) {
 		logger.debug("1.1 Initiere/Creare cercetare de piata noua");
 
-		/*Angajat responsabilCercetarePiata = personalSrv.creareAngajat(null, null, null, null, null, null, null, null, null, null);
-		entityManager.persist(responsabilCercetarePiata);*/
+		entityManager.persist(cercetarePiata);
 		
-		CercetarePiata cercetarePiataNoua = new CercetarePiata(1, dataStart, dataFinal, buget);//, responsabilCercetarePiata);
-
-		String titlu = "";
-		Persoana persoanaChestionata = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
-		entityManager.persist(persoanaChestionata);
-		
-		Chestionar chestionarNou = creareChestionar(dataStart, titlu, persoanaChestionata);
-		entityManager.persist(chestionarNou);
-		
-		cercetarePiataNoua.adaugaChestionar(chestionarNou);
-		entityManager.persist(cercetarePiataNoua);
-
-		return cercetarePiataNoua;
+		return cercetarePiata;
 	}
 
 	@Override
@@ -431,5 +389,13 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		entityManager.persist(reclamatieNoua);
 
 		return reclamatieNoua;
+	}
+
+	@Override
+	public CampaniePromovare findCampanieById(long id) {
+
+		CampaniePromovare campaniePromovare = entityManager.find(CampaniePromovare.class, id);
+		
+		return campaniePromovare;
 	}
 }
