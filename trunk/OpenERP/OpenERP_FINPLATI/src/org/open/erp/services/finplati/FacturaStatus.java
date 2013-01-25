@@ -15,11 +15,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import org.open.erp.services.achizitii.Factura;
+//import org.open.erp.services.achizitii.Factura;
 
 
 
@@ -28,17 +31,21 @@ import org.open.erp.services.achizitii.Factura;
  *
  */
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class FacturaStatus extends Factura implements Serializable{
-	//@Id @GeneratedValue
+//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+ public class FacturaStatus implements Serializable{
+//public class FacturaStatus extends Factura implements Serializable{
+	@Id @GeneratedValue
 	//Factura factura;
-	//private Integer idFactura;
-   // private Date dataFactura;
+	private Integer NrFactura;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+    private Date dataFactura;
+	
 	private String numeFurnizor;
 	
 	Double valoareTotala;
 	
-	@OneToMany
+	@ManyToMany
 	Map<Integer, Plata> plati;
 	
 	//exemplu pt mapare
@@ -47,11 +54,11 @@ public class FacturaStatus extends Factura implements Serializable{
  //   private Set<Student> students = new HashSet<Student>(
 	
 	
-	//public Factura getFactura() {
-		//return factura;
+	//public FacturaStatus getFacturaStatus() {
+		//return FacturaStatus;
 	//}
-	//public void setFactura(Factura factura) {
-		//this.factura = factura;
+	//public void setFacturaStatus(Factura factura) {
+		//this.FacturaStatus = factura;
 	//}
 	
 	public FacturaStatus() {
@@ -59,30 +66,30 @@ public class FacturaStatus extends Factura implements Serializable{
 			plati = new HashMap<Integer, Plata>();
 	}
 	
-//	public void setIdFactura(Integer idFactura) {
-//		this.idFactura = idFactura;
-//	}
-//	public Integer getIdFactura() {
-//		return this.idFactura;
-//	}
-//	public void setDataFactura(Date dataFactura) {
-//		this.dataFactura = dataFactura;
-//	}
-//	public Date getDataFactura() {
-//		return this.dataFactura;
-//	}
+	public void setIdFactura(Integer idFactura) {
+		this.NrFactura = idFactura;
+	}
+	public Integer getNrFactura() {
+		return this.NrFactura;
+	}
+	public void setDataFactura(Date dataFactura) {
+		this.dataFactura = dataFactura;
+	}
+	public Date getDataFactura() {
+		return this.dataFactura;
+   }
 	public void setNumeFurnizor(String numeFurnizor) {
 		this.numeFurnizor = numeFurnizor;
 	}
 	public String getNumeFurnizor() {
 	return this.numeFurnizor;
 	}
-	//public void setValoareTotala(Double valoareTotala) {
-		//this.valoareTotala = valoareTotala;
-	//}
-	//public Double getValoareTotala() {
-		//return this.valoareTotala;
-	//}
+	public void setValoareTotala(Double valoareTotala) {
+		this.valoareTotala = valoareTotala;
+	}
+	public Double getValoareTotala() {
+		return this.valoareTotala;
+	}
 	public Double getValoareAchitata() {
 		Double sumTotal = 0.0;
 		Iterator<Entry<Integer,Plata>> plataIter = plati.entrySet().iterator();

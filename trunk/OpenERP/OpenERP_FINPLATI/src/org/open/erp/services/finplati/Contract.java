@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -16,6 +17,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Entity;
 
 import org.open.erp.services.finplati.FurnizorContract;
+
 
 @Entity
 public class Contract {
@@ -31,7 +33,7 @@ public class Contract {
 	Double valoareContract;
 	Double discountContract;
 	
-	@OneToMany
+	@ManyToMany
 	Map<Integer, Plata> plati;
 	
 	//@OneToMany - enum status contract, nu se adnoteaza

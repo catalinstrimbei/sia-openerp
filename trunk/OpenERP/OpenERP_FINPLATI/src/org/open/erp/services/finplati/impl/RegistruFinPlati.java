@@ -7,8 +7,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.achizitii.Factura;
-import org.open.erp.services.achizitii.PlanAprov;
+//import org.open.erp.services.achizitii.Factura;
+// org.open.erp.services.achizitii.PlanAprov;
 import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.Persoana;
 import org.open.erp.services.finplati.ResponsabilPlata;

@@ -6,10 +6,10 @@ import java.util.Map;
 
 import javax.ejb.Remote;
 
-import org.open.erp.services.achizitii.AchizitiiSrv;
+//import org.open.erp.services.achizitii.AchizitiiSrv;
 
-import org.open.erp.services.achizitii.Factura;
-import org.open.erp.services.banci.BanciSrv;
+//import org.open.erp.services.achizitii.Factura;
+//import org.open.erp.services.banci.BanciSrv;
 
 
 /**
@@ -228,12 +228,12 @@ public interface FinanciarPlatiSrv {
 	Contract cautaContractFurnizor(Integer idContract);
 
 
-	void setAchizitii(AchizitiiSrv achizitiiSrv);
+	//void setAchizitii(AchizitiiSrv achizitiiSrv);
 
 
 
 
-	void setBanci(BanciSrv banciSrv);
+	//void setBanci(BanciSrv banciSrv);
 	
 	
 }
