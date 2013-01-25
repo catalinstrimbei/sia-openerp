@@ -2,8 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://java.sun.com/jsf/core"
-	xmlns:rich="http://richfaces.org/rich">
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Creare cercetare piata noua</title>
 </h:head>
@@ -13,13 +14,17 @@
 		<tr>
 			<td>
 				<h:outputText value="Introduceti data de start:"></h:outputText>
-				<h:inputText value="#{cercetareBean.dataStart}"></h:inputText>
+				<h:inputText value="#{cercetareBean.dataStart}">
+					<f:convertDateTime  pattern="dd-MM-yyyy"></f:convertDateTime>
+				</h:inputText>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<h:outputText value="Introduceti data de final:"></h:outputText>
-				<h:inputText value="#{cercetareBean.dataFinal}"></h:inputText>
+				<h:inputText value="#{cercetareBean.dataFinal}">
+					<f:convertDateTime pattern="d-M-yyyy" />
+				</h:inputText>
 			</td>
 		</tr>
 		<tr>

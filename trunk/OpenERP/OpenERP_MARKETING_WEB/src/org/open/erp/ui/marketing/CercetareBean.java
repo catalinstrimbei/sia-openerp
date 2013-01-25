@@ -1,8 +1,7 @@
 package org.open.erp.ui.marketing;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -14,33 +13,16 @@ import org.open.erp.services.marketing.MarketingSrv;
 @javax.faces.bean.RequestScoped
 public class CercetareBean implements Serializable{
 
-	public String getDataStart() {
-		return dataStart;
-	}
-
-	public void setDataStart(String dataStart) {
-		this.dataStart = dataStart;
-	}
-
-	public String getDataFinal() {
-		return dataFinal;
-	}
-
-	public void setDataFinal(String dataFinal) {
-		this.dataFinal = dataFinal;
-	}
-
 	@EJB(lookup="java:global/OpenERP_MARKETING/MarketingSrvImpl!org.open.erp.services.marketing.MarketingSrv")
 	private MarketingSrv marketingSrv;
 	
 	private int buget;
 	
-	private String dataStart;
+	private Date dataStart;
 	
-	private String dataFinal;
+	private Date dataFinal;
 	
 	public CercetareBean(){
-		
 	}
 	
 	public MarketingSrv getMarketingSrv() {
@@ -59,14 +41,28 @@ public class CercetareBean implements Serializable{
 		this.buget = buget;
 	}
 
+	public Date getDataStart() {
+		return dataStart;
+	}
 
+	public void setDataStart(Date dataStart) {
+		this.dataStart = dataStart;
+	}
+
+	public Date getDataFinal() {
+		return dataFinal;
+	}
+
+	public void setDataFinal(Date dataFinal) {
+		this.dataFinal = dataFinal;
+	}
 
 	public String creareCercetare() throws Exception{
 		
 		CercetarePiata cercetareNoua = new CercetarePiata();
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		cercetareNoua.setDataStart(dateFormat.parse(dataStart));
-		cercetareNoua.setDataFinal(dateFormat.parse(dataFinal));
+		//DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		cercetareNoua.setDataStart(dataStart);
+		cercetareNoua.setDataFinal(dataFinal);
 		cercetareNoua.setBuget(buget);
 		
 		marketingSrv.creareCercetarePiata(cercetareNoua);
