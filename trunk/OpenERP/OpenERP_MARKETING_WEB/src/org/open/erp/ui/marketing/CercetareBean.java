@@ -1,5 +1,6 @@
 package org.open.erp.ui.marketing;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.ejb.EJB;
@@ -11,7 +12,7 @@ import org.open.erp.services.marketing.MarketingSrv;
 
 @ManagedBean(name = "cercetareBean")
 @SessionScoped
-public class CercetareBean {
+public class CercetareBean implements Serializable{
 
 	private CercetarePiata cercetarePiata;
 
@@ -64,10 +65,34 @@ public class CercetareBean {
 		this.dataFinal = dataFinal;
 	}
 
-	public String creareCercetare(){
+	public CercetarePiata creareCercetare(){
 		
-		marketingSrv.creareCercetarePiata(dataStart, dataFinal, buget);
-		return "success";
+		CercetarePiata cercetareNoua = new CercetarePiata();
+		
+		cercetareNoua.setDataStart(dataStart);
+		cercetareNoua.setDataFinal(dataFinal);
+		cercetareNoua.setBuget(buget);
+		
+		
+		
+		marketingSrv.creareCercetarePiata(cercetareNoua);
+		
+		return cercetareNoua;
 	}
 	
+/*	public String getAsString(FacesContext context, UIComponent component, Object value) {
+      if(value == null)
+      {
+          return null;
+      }
+
+      if(!(value instanceof MarketingSrv))
+      {
+          throw new ConverterException("The value is not a User: " + value);            
+      }
+
+      String id = ((MarketingSrv) value).getEmail();
+      return (id != null) ? id.toString() : null;
+  }*/
+
 }
