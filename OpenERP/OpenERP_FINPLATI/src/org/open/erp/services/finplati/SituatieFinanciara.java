@@ -3,7 +3,7 @@
 package org.open.erp.services.finplati;
 
 
-import org.open.erp.services.achizitii.Factura;
+//import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FurnizorContract;
 
@@ -19,6 +19,8 @@ import java.util.Map.Entry;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -38,17 +40,19 @@ public class SituatieFinanciara implements Serializable{
 	Double bugetDatorii;
 	
 	//@OneToOne
-	@OneToMany
+	@ManyToMany @JoinTable(name="sitf_plata")
 	Map<Integer,Plata> plati;
-	@OneToMany
+	
+	@ManyToMany @JoinTable(name="sitf_fac")
 	Map<Integer,FacturaStatus> factura;
-	@OneToMany
+	
+	@ManyToMany @JoinTable(name="sitf_contr")
 	Map<Integer,Contract> contracte;
 
-	@OneToMany
+	@ManyToMany @JoinTable(name="sitf_pers")
 	Map<Integer,Persoana> personal;
 	
-	@ManyToOne
+	@OneToOne @JoinTable(name="sitf_resp")
 	ResponsabilPlata responsabil;
 	
 	public SituatieFinanciara() {

@@ -16,9 +16,11 @@ import org.open.erp.services.finplati.Persoana;
  */
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class ResponsabilPlata extends Persoana implements Serializable{
-	//@Id @GeneratedValue
-	private Integer idResponsabil;
+public class ResponsabilPlata extends Persoana {
+//@Id 
+	//@GeneratedValue
+	 Integer idResponsabil;
+	
 	 String obsExperienta;
 	
 	 public Integer getidResponsabil() {

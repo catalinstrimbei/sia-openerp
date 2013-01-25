@@ -2,9 +2,9 @@
 
 package org.open.erp.services.finplati.impl;
 
-import org.open.erp.services.achizitii.AchizitiiSrv;
-import org.open.erp.services.achizitii.impl.RegistruAchizitii;
-import org.open.erp.services.banci.BanciSrv;
+//import org.open.erp.services.achizitii.AchizitiiSrv;
+//import org.open.erp.services.achizitii.impl.RegistruAchizitii;
+//import org.open.erp.services.banci.BanciSrv;
 import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FurnizorContract;
 
@@ -26,7 +26,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.open.erp.services.finplati.*;
-import org.open.erp.services.nomgen.NomenclatoareSrv;
+//import org.open.erp.services.nomgen.NomenclatoareSrv;
 
 
 /**
@@ -58,39 +58,39 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 					registruFinPlati = new RegistruFinPlati(em);
 			}
 	
-	@EJB(lookup="java:global/OpenERP_ACHIZITII/AchizitiiImpl!org.open.erp.services.achizitii.AchizitiiSrv")
-	private AchizitiiSrv AchizitiiSrv;
+	//@EJB(lookup="java:global/OpenERP_ACHIZITII/AchizitiiImpl!org.open.erp.services.achizitii.AchizitiiSrv")
+	//private AchizitiiSrv AchizitiiSrv;
 	
-	@EJB(lookup="java:global/OpenERP_BANCI/BanciImpl!org.open.erp.services.banci.BanciSrv")
-	private BanciSrv banciSrv;
+	//@EJB(lookup="java:global/OpenERP_BANCI/BanciImpl!org.open.erp.services.banci.BanciSrv")
+	//private BanciSrv banciSrv;
 	
-	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.personal.NomenclatoareSrv")
-	private NomenclatoareSrv nomgenSrv;
+	//@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.personal.NomenclatoareSrv")
+	//private NomenclatoareSrv nomgenSrv;
 	
 	
-	public void setNomgenSrv(NomenclatoareSrv nomgenSrv) {
-		this.nomgenSrv = nomgenSrv;
-	}
+	//public void setNomgenSrv(NomenclatoareSrv nomgenSrv) {
+		//this.nomgenSrv = nomgenSrv;
+	//}
 	
-	public NomenclatoareSrv getNomgenSrv() {
-		return this.nomgenSrv;
-	}
+	// NomenclatoareSrv getNomgenSrv() {
+	//	return this.nomgenSrv;
+	//}
 	
-	public AchizitiiSrv getAchizitiiSrv() {
-		return this.AchizitiiSrv;
-	}
+	//public AchizitiiSrv getAchizitiiSrv() {
+		//return this.AchizitiiSrv;
+	//}
 	
-	public void setAchizitiiSrv(AchizitiiSrv achizitiiSrv) {
-		this.AchizitiiSrv = achizitiiSrv;
-    }
+	//public void setAchizitiiSrv(AchizitiiSrv achizitiiSrv) {
+		//this.AchizitiiSrv = achizitiiSrv;
+    //}
       
-  	public void setBanciSrv(BanciSrv banciSrv) {
-  		this.banciSrv = banciSrv;
-    }
+  	//public void setBanciSrv(BanciSrv banciSrv) {
+  		//this.banciSrv = banciSrv;
+   // }
   	
-  	public BanciSrv getBanciSrv() {
-  		return this.banciSrv;
-  	}
+  	//public BanciSrv getBanciSrv() {
+  	//	return this.banciSrv;
+  	//}
       
 	SituatieFinanciara sitFit;
 	
@@ -103,9 +103,9 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 	/* implementare actiuni serviciu ProjectManagementSrv */
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	//@Override
-	public void setAchizitii(AchizitiiSrv achizitiiSrv) {
+	//public void setAchizitii(AchizitiiSrv achizitiiSrv) {
 		
-	}
+	//}
 
 	@Override
 	public SituatieFinanciara getSituatieFinanciara() {
@@ -337,9 +337,9 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 		return this.sitFit.getBugetDatorii();
 	}
 
-	@Override
-	public void setBanci(BanciSrv banciSrv) {
+	//@Override
+	//public void setBanci(BanciSrv banciSrv) {
 		// TODO Auto-generated method stub
 		
-	}
+//	}
 }

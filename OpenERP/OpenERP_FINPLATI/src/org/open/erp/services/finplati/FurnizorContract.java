@@ -7,10 +7,11 @@ import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.open.erp.services.achizitii.Furnizori;
+//import org.open.erp.services.achizitii.Furnizori;
 
 @Entity
 public class FurnizorContract implements Serializable {
@@ -21,7 +22,7 @@ public class FurnizorContract implements Serializable {
 	String adresaFurnizor;
 	String cuiFurnizor;
 	
-	@OneToMany
+	@ManyToMany
 	Map<Integer,Plata> plati;
 	
 	public FurnizorContract() {

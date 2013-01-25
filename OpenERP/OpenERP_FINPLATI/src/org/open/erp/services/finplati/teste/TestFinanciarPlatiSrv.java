@@ -39,9 +39,9 @@ import org.open.erp.services.finplati.Plata;
 import org.open.erp.services.finplati.ResponsabilPlata;
 import org.open.erp.services.finplati.SituatieFinanciara;
 import org.open.erp.services.finplati.TipPlata;
-import org.open.erp.services.achizitii.Factura;
-import org.open.erp.services.banci.CompanieBanci;
-import org.open.erp.services.banci.Cont;
+//import org.open.erp.services.achizitii.Factura;
+//import org.open.erp.services.banci.CompanieBanci;
+//import org.open.erp.services.banci.Cont;
 
 public class TestFinanciarPlatiSrv {
 	private static Logger logger;
@@ -93,16 +93,16 @@ public class TestFinanciarPlatiSrv {
 		factura1.setValoareTotala(1000.0);
 		sitFit.adaugareFactura(factura1);
 		 
-		Cont contBancar = new Cont();
-		contBancar.setId(1);
-		contBancar.setNume("Dummy name");
-		contBancar.setTipCard(2);
-		contBancar.setTipCont("Dummy account type");
+		//Cont contBancar = new Cont();
+		//contBancar.setId(1);
+		//contBancar.setNume("Dummy name");
+		//contBancar.setTipCard(2);
+		//contBancar.setTipCont("Dummy account type");
 		
-		CompanieBanci banca = new CompanieBanci();
-		banca.setCont(contBancar);
-		banca.setNumeBanca("Dummy Bank name");
-		banca.setNumeCompanie("Dummy Company name");
+		//CompanieBanci banca = new CompanieBanci();
+		//banca.setCont(contBancar);
+		//banca.setNumeBanca("Dummy Bank name");
+		//banca.setNumeCompanie("Dummy Company name");
 		
 		Plata plata1 = new Plata();
 		Date dataPlata = new Date();
@@ -111,8 +111,8 @@ public class TestFinanciarPlatiSrv {
 		plata1.setValoarePlata(120.0);
 		plata1.setTipPlata(TipPlata.DATORIE);
 		plata1.setModPlata(ModPlata.VIRAMENTBANCAR);
-		plata1.setCont(contBancar);
-		plata1.setBanca(banca);
+		//plata1.setCont(contBancar);
+		//plata1.setBanca(banca);
 		plata1.setConfirmarePlata(null);
 		
 		Plata plata2 = new Plata();

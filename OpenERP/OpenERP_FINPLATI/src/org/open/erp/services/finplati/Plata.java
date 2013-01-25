@@ -12,8 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.open.erp.services.banci.CompanieBanci;
-import org.open.erp.services.banci.Cont;
+//import org.open.erp.services.banci.CompanieBanci;
+//import org.open.erp.services.banci.Cont;
 
 @Entity
 public class Plata implements Serializable {
@@ -32,8 +32,10 @@ public class Plata implements Serializable {
 	Double valoarePlata;
 	String confirmarePlata;
 	//@ManyToOne
-	Cont contBancar;
-	CompanieBanci banca;
+	//Cont contBancar;
+	//CompanieBanci banca;
+	//Integer contBancar;
+	//Integer banca;
 	
 	private static int nextIdPlata = 1;
 	
@@ -41,21 +43,21 @@ public class Plata implements Serializable {
 		idPlata = nextIdPlata++;
 	}
 	
-	public Cont getCont() {
-		return this.contBancar;
-	}
+	//public Cont getCont() {
+		//return this.contBancar;
+	//}
 	
-	public void setCont(Cont contBancar) {
-		this.contBancar = contBancar;
-	}
+	//public void setCont(Cont contBancar) {
+		//this.contBancar = contBancar;
+	//}
 	
-	public CompanieBanci getBanca() {
-		return this.banca;
-	}
+//	public CompanieBanci getBanca() {
+		//return this.banca;
+	//}
 	
-	public void setBanca(CompanieBanci banca) {
-		this.banca = banca;
-	}
+	//public void setBanca(CompanieBanci banca) {
+		//this.banca = banca;
+	//}
 	
 	public Double getValoarePlata() {
 		return valoarePlata;

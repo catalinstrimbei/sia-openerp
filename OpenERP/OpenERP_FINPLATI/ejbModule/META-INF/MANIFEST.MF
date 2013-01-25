@@ -1,4 +1,1 @@
 Manifest-Version: 1.0
-Class-Path: 
-Dependencies: deployment.OpenERP_NOMGEN.jar, deployment.OpenERP_BANCI.jar, deployment.OpenERP_ACHIZITII.jar
-
