@@ -20,7 +20,7 @@ import org.open.erp.services.nommat.Material;
  * 
  */
 @Entity
-public class Articol extends Material{
+public class Articol{ 
 	@Id @GeneratedValue
 	private Integer idArticol;
 	private Double cantPeGestiune;

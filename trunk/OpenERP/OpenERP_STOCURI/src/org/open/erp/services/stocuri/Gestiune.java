@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 
 import static javax.persistence.CascadeType.ALL;
 
-import org.open.erp.services.personal.Angajat;
+//import org.open.erp.services.personal.Angajat;
 
 /**
  * 
@@ -28,15 +28,15 @@ public class Gestiune {
 	@OneToMany(targetEntity = Articol.class,
 			cascade = ALL)
 	private List<Articol>  articole = new ArrayList<Articol>();
-	private Angajat responsabilGestiune;
+	//private Angajat responsabilGestiune;
 	
-	public Angajat getResponsabilGestiune() {
-		return responsabilGestiune;
-	}
+	//public Angajat getResponsabilGestiune() {
+	//	return responsabilGestiune;
+	//}
 
-	public void setResponsabilGestiune(Angajat responsabilGestiune) {
-		this.responsabilGestiune = responsabilGestiune;
-	}
+	//public void setResponsabilGestiune(Angajat responsabilGestiune) {
+	//	this.responsabilGestiune = responsabilGestiune;
+	//}
 
 	public Gestiune() {
 		super();

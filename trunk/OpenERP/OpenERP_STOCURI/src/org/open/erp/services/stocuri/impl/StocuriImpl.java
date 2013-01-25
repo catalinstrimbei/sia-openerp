@@ -10,6 +10,8 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -29,6 +31,7 @@ import org.open.erp.services.stocuri.StocuriSrvLocal;
  * 
  */
 @Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 
 	// private AchizitiiSrv achizitiiSrv;

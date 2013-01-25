@@ -5,8 +5,8 @@ import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 import org.open.erp.services.nommat.impl.NomenclatorMaterialeImpl;
-import org.open.erp.services.personal.impl.PersonalImpl;
-import org.open.erp.services.personal.PersonalSrv;
+//import org.open.erp.services.personal.impl.PersonalImpl;
+//import org.open.erp.services.personal.PersonalSrv;
 /*
 import java.util.Date;
 import java.util.List;
@@ -50,10 +50,10 @@ public class StocuriSrvFactory {
 	}
 
 
-	public static PersonalSrv getPersonalSrv(){
-		logger.info("Creaza Dummy NOMMAT SRV----");
-		return new PersonalImpl();
-	}
+	//public static PersonalSrv getPersonalSrv(){
+	//	logger.info("Creaza Dummy NOMMAT SRV----");
+	//	return new PersonalImpl();
+	//}
 	
 	
 }
