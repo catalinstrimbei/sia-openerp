@@ -1,4 +1,4 @@
-/*package org.open.erp.ui.marketing;
+package org.open.erp.ui.marketing;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,6 +11,7 @@ import org.open.erp.services.marketing.CampaniePromovare;
 import org.open.erp.services.marketing.MarketingSrv;
 import org.open.erp.services.marketing.Promotie;
 import org.open.erp.services.nommat.Material;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 
 @ManagedBean(name = "promotieBean")
 @RequestScoped
@@ -18,6 +19,10 @@ public class PromotieBean implements Serializable {
 	
 	@EJB(lookup="java:global/OpenERP_MARKETING/MarketingSrvImpl!org.open.erp.services.marketing.MarketingSrv")
 	private MarketingSrv marketingSrv;
+	
+	@EJB(lookup="java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrv")
+	private NomenclatorMaterialeSrv nomMatSrv;
+	
 	
 	private Material produsPromotie;
 	private CampaniePromovare campaniePromovare;
@@ -82,4 +87,3 @@ public class PromotieBean implements Serializable {
 	
 
 }
-*/
