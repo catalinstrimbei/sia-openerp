@@ -8,7 +8,7 @@ import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.proman.ProjectManagementSrv;
-import org.open.erp.services.proman.impl.ProjectManagementImpl;
+//import org.open.erp.services.proman.impl.ProjectManagementImpl;
 
 public class ProjectManagementSrvFactory {
 	private static Logger logger = Logger.getLogger(ProjectManagementSrvFactory.class.getName());

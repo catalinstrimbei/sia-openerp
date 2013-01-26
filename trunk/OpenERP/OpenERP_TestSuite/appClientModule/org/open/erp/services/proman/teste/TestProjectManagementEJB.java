@@ -21,8 +21,10 @@ public class TestProjectManagementEJB {
 	/* Resurse test*/
 	private static Logger logger = Logger.getLogger(TestProjectManagementEJB.class.getName());
 	
+	
 	/* Unitatea de test sursa/gazda unitatii de test */
 	private static ProjectManagementSrv promanInstance;
+	
 	
 	/* Set up */
 	@BeforeClass
