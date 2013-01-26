@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+}
+
+#wrap {
+    width: 755px;
+    margin: auto;
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 3em;
+}
+
+#header {
+    margin-bottom: 10px;
+}
+
+#main {
+    padding: 10px;
+}
+
+#footer {
+    clear: both;
+    width: 755px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1em;
+    height: 3em;
+    z-index: -10;
+
+}
+
+td.skin-chooser {
+    vertical-align: top;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+
+td.skin-chooser select {
+    width: 120px;
+}
+
+.app-title {
+    padding-left: 10px;
+    padding-top: 20px;
+    text-shadow: gray 2px -2px 1px;
+}
+
+.app-title a {
+    font-size: 50px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.text-footer {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.calendar {
+    width: 235px;
+}
+
+.disabled-day {
+    color: gray !important;
+}
+
+div.flags {
+    float: right;
+}
+
+div.flags table {
+    border: none;
+}
+
+div.flags td {
+    border: none;
+    width: 54px;
+}
+
+div.flags input {
+    width: 48px;
+    z-index: 1;
+}
+
+.rf-dt {
+    background-color: transparent;
+}
+div.right-image {
+	float:right;
+}
+div.right-image-footer {
+	float:right;
+}
+
+div.left-image {
+	float:left;
+}
+#content{
+	text-align: center;
+}
+
+.panelGrid, .dataTable {
+	background-color: #FFF4EA; 
+	border-bottom-width: medium;
+	 border-top-style: solid; 
+	 border-right-style: solid; 
+	 border-bottom-color: #804000; 
+	 border-top-width: medium; 
+	 border-bottom-style: solid; 
+	 border-top-color: #804000;
+	  border-left-color: #804000; 
+	  border-left-style: solid; 
+	  border-right-color: #804000; 
+	  border-right-width: medium; 
+	  border-left-width: medium;
+	   width: 731px; height: 51;
+}
+
+.center{
+	background-position: center center;
+}
+
+.outputTxt{
+	font-style: italic;
+	 font-size: 16px; 
+	 font-weight: bolder;
+}
+
+.btn{
+	width: 119px;
+	 color: #FFFFFF; 
+	 font-size: 16px;
+	  background-color: #FF8040;
+	 font-weight: bold;
+}
