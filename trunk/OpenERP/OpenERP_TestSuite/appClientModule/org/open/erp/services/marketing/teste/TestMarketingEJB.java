@@ -50,7 +50,8 @@ public class TestMarketingEJB {
 		Date dataFinal = new Date();
 		// Promotie promotieNoua = new Promotie(1, produs1, pretPromotional,
 		// dataStart, dataFinal);
-		Promotie promotieNoua = marketingInstance.crearePromotie(10, new Date(), new Date());
+		Promotie promotieNoua = new Promotie();
+		marketingInstance.crearePromotie(promotieNoua);
 		assertNotNull("Nu exista promotie!", promotieNoua);
 
 		// //////////////////////
@@ -58,11 +59,13 @@ public class TestMarketingEJB {
 		Date data = new Date();
 		CanalDistributie canalDistributie = CanalDistributie.PRESA_SCRISA;
 		int buget = 11;
-		CampaniePromovare campanieNoua = marketingInstance.creareCampaniePromovare(tipPromovare, data, canalDistributie, buget);
+		CampaniePromovare campanieNoua = new CampaniePromovare();
+		marketingInstance.creareCampaniePromovare(campanieNoua);
 		campanieNoua.getPromotiiCampanie().add(promotieNoua);
 		
 		// //////////////////////
-		CercetarePiata cercetarePiataNoua = marketingInstance.creareCercetarePiata(dataStart, dataFinal, buget);
+		CercetarePiata cercetarePiataNoua = new CercetarePiata();
+		marketingInstance.creareCercetarePiata(cercetarePiataNoua);
 		// //////////////////////
 		StatusReclamatie status = StatusReclamatie.NOU;
 		Reclamatie reclamatieNoua = marketingInstance.creareReclamatie(data, "reclamatie", "raspuns", status);
