@@ -58,7 +58,8 @@ public class TestMarketingSrv {
 		Date dataFinal = new Date();
 		// Promotie promotieNoua = new Promotie(1, produs1, pretPromotional,
 		// dataStart, dataFinal);
-		Promotie promotieNoua = marketingInstance.crearePromotie(promotieNoua);
+		Promotie promotieNoua = new Promotie();
+		marketingInstance.crearePromotie(promotieNoua);
 		assertNotNull("Nu exista promotie!", promotieNoua);
 
 		// //////////////////////
@@ -66,11 +67,13 @@ public class TestMarketingSrv {
 		Date data = new Date();
 		CanalDistributie canalDistributie = CanalDistributie.PRESA_SCRISA;
 		int buget = 11;
-		CampaniePromovare campanieNoua = marketingInstance.creareCampaniePromovare(campanieNoua);
+		CampaniePromovare campanieNoua = new CampaniePromovare();
+		marketingInstance.creareCampaniePromovare(campanieNoua);
 		campanieNoua.getPromotiiCampanie().add(promotieNoua);
 		
 		// //////////////////////
-		CercetarePiata cercetarePiataNoua = marketingInstance.creareCercetarePiata(cercetarePiataNoua);
+		CercetarePiata cercetarePiataNoua = new CercetarePiata();
+		marketingInstance.creareCercetarePiata(cercetarePiataNoua);
 		// //////////////////////
 		StatusReclamatie status = StatusReclamatie.NOU;
 		Reclamatie reclamatieNoua = marketingInstance.creareReclamatie(data, "reclamatie", "raspuns", status);
