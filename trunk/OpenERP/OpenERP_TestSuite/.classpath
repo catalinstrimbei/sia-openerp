@@ -34,5 +34,6 @@
 	<classpathentry kind="src" path="/OpenERP_BANCI"/>
 	<classpathentry kind="src" path="/OpenERP_ACHIZITII"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PRODUCTIE"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

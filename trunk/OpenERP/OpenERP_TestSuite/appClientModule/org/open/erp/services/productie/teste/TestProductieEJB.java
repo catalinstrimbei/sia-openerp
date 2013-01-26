@@ -24,16 +24,36 @@ import org.open.erp.services.productie.Semifabricat;
 import org.open.erp.services.productie.Utilaj;
 
 
-public class TestProductieSrv {
-	private static Logger logger;
+public class TestProductieEJB {
 	
-	ProductieSrv productie;
+	/* Resurse test*/
+	//private static Logger logger = Logger.getLogger(TestProductieEJB.class.getName());
+	
+	/* Unitatea de test sursa/gazda unitatii de test */
+	//private static ProjectManagementSrv promanInstance;
+	
+	/* Set up */
+	//@BeforeClass
+	//public static void setUpBeforeClass() throws Exception {
+	//	promanInstance = 
+	//		ProjectManagementSrvFactory.getProjectManagementSrv();
+	//	logger.info("initTest " + promanInstance);
+	//}	
+	
+	/* Resurse test*/
+	private static Logger logger = Logger.getLogger(TestProductieEJB.class.getName());
+	//private static Logger logger;
+	
+	/* Unitatea de test sursa/gazda unitatii de test */
+	private static ProductieSrv productie;
+		//ProductieSrv productie;
 	//NomenclatoareSrv nomgeneral;
 	//NomenclatorMaterialeSrv nommat;
 	
+	/* Set up */
 	@BeforeClass
 	public static void initLocalJavaLogger(){
-		logger =  Logger.getLogger(TestProductieSrv.class.getName());	
+		logger =  Logger.getLogger(TestProductieEJB.class.getName());	
 	}
 	
 	@Before public void initServices(){	
