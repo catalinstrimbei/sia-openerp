@@ -66,8 +66,8 @@ import javax.persistence.TemporalType;
 			plati = new HashMap<Integer, Plata>();
 	}
 	
-	public void setIdFactura(Integer idFactura) {
-		this.NrFactura = idFactura;
+	public void setNrFactura(Integer nrFactura) {
+		this.NrFactura = nrFactura;
 	}
 	public Integer getNrFactura() {
 		return this.NrFactura;

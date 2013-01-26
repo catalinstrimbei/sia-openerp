@@ -228,6 +228,27 @@ public interface FinanciarPlatiSrv {
 	Contract cautaContractFurnizor(Integer idContract);
 
 
+
+
+
+
+
+
+
+
+	void adaugarePlata(Plata plataNoua);
+
+
+
+
+	void adaugaPersoana(Persoana persoanaNoua);
+
+
+
+
+	
+
+
 	//void setAchizitii(AchizitiiSrv achizitiiSrv);
 
 

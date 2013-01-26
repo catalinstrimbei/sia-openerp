@@ -7,6 +7,8 @@ package org.open.erp.services.finplati.impl;
 //import org.open.erp.services.banci.BanciSrv;
 import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FurnizorContract;
+import org.open.erp.services.finplati.Persoana;
+import org.open.erp.services.finplati.Plata;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -335,6 +337,20 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 	@Override
 	public double getBugetDatorii() {
 		return this.sitFit.getBugetDatorii();
+	}
+
+
+	@Override
+	public void adaugarePlata(Plata plataNoua) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void adaugaPersoana(Persoana persoanaNoua) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	//@Override
