@@ -3,6 +3,27 @@
 	<persistence-unit name="OpenERP_PRODUCTIE" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
-	
+			<jar-file>OpenERP_NOMGEN.jar</jar-file>
+			<class>org.open.erp.services.nomgen.MijlocFix</class>
+			<class>org.open.erp.services.nomgen.LinieDocument</class>
+			<class>org.open.erp.services.nomgen.Document</class>
+			<jar-file>OpenERP_NOMMAT.jar</jar-file>
+			<class>org.open.erp.services.nommat.Material</class>
+			<jar-file>OpenERP_PERSONAL.jar</jar-file>
+			<class>org.open.erp.services.personal.Functie</class>
+			<class>org.open.erp.services.productie.Utilaj</class>
+			<class>org.open.erp.services.productie.Semifabricat</class>
+			<class>org.open.erp.services.productie.Reteta</class>
+			<class>org.open.erp.services.productie.Produs</class>
+			<class>org.open.erp.services.productie.FunctieNecesara</class>
+			<class>org.open.erp.services.productie.FluxProductie</class>
+			<class>org.open.erp.services.productie.FazaProductie</class>
+			<class>org.open.erp.services.productie.CriteriuCalitate</class>
+			<class>org.open.erp.services.productie.ComandaProductie</class>
+			<class>org.open.erp.services.productie.CerereAprovizionare</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+		</properties>
 	</persistence-unit>
 </persistence>
