@@ -1,15 +1,21 @@
 package org.open.erp.services.personal;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import java.io.Serializable;
 
+@Entity
 public class Functie implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Integer 		idFunctie;
-	private String 			numeFunctie;
+	@Id @GeneratedValue
+	private Integer idFunctie;
+	private String	numeFunctie;
 	
 	public Integer getIdFunctie() {
 		return idFunctie;
