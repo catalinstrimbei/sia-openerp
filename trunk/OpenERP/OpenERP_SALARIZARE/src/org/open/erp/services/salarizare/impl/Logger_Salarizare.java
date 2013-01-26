@@ -1,7 +1,6 @@
 package org.open.erp.services.salarizare.impl;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -147,7 +146,7 @@ public class Logger_Salarizare {
 		 {
 			 level = Level.DEBUG;			 
 		 }
-		 logger= Logger.getLogger(SalarizareLogger.class.getName());
+		 logger= Logger.getLogger(Logger_Salarizare.class.getName());
 		 logger.setLevel(Level.ALL);
 		 /*
 		 if(logger.getAppender("fileAppender") == null)
