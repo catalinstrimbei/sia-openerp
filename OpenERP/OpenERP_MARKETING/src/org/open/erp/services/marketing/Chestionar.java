@@ -3,6 +3,7 @@ package org.open.erp.services.marketing;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +19,7 @@ import javax.persistence.TemporalType;
 import org.open.erp.services.nomgen.Persoana;
 
 @Entity
-public class Chestionar {
+public class Chestionar implements Serializable{
 	
 	@Id @GeneratedValue
 	long id;

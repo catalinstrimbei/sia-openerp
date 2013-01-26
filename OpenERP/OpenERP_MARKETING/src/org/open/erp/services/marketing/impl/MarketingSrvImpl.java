@@ -329,44 +329,30 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 	}
 
 	@Override
-	public RaspunsIntrebare creareRaspunsIntrebare(String textRaspuns) {
+	public RaspunsIntrebare creareRaspunsIntrebare(RaspunsIntrebare raspunsIntrebare) {
 		logger.debug("2.3 Initiere/Creare raspuns nou");
 
-		RaspunsIntrebare raspunsIntrebare = new RaspunsIntrebare(1, textRaspuns);
-		
 		entityManager.persist(raspunsIntrebare);
 
 		return raspunsIntrebare;
 	}
 
 	@Override
-	public Intrebare creareIntrebare(String textIntrebare) {
+	public Intrebare creareIntrebare(Intrebare intrebare) {
 		logger.debug("2.2 Initiere/Creare intrebare noua");
 
-		Intrebare intrebareNoua = new Intrebare(1, textIntrebare);
-		String textRaspuns = "";
-		RaspunsIntrebare raspuns = creareRaspunsIntrebare(textRaspuns);
-		entityManager.persist(raspuns);
-		
-		intrebareNoua.adaugaRaspuns(raspuns);
-		entityManager.persist(intrebareNoua);
+		entityManager.persist(intrebare);
 
-		return intrebareNoua;
+		return intrebare;
 	}
 
 	@Override
-	public Chestionar creareChestionar(Date data, String titlu, Persoana persoanaChestionata) {
+	public Chestionar creareChestionar(Chestionar chestionar) {
 		logger.debug("2.1 Initiere/Creare chestionar nou");
 
-		Chestionar chestionarNou = new Chestionar(1, data, titlu, persoanaChestionata);
-		String textIntrebare = "";
-		Intrebare intrebareNoua = creareIntrebare(textIntrebare);
-		entityManager.persist(intrebareNoua);
-		
-		chestionarNou.adaugaIntrebare(intrebareNoua);
-		entityManager.persist(chestionarNou);
+		entityManager.persist(chestionar);
 
-		return chestionarNou;
+		return chestionar;
 	}
 
 	@Override
