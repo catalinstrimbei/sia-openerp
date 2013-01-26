@@ -1,5 +1,8 @@
 package org.open.erp.services.achizitii;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -15,10 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.open.erp.services.nomgen.Document;
 
 @Entity
-public class NIR extends Document implements Serializable{
+public class NIR implements Serializable{
 	//in Document de la modulul NOMGEN trebuie adaugata 
 	//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)  inainte de clasa
 	@Id @GeneratedValue
@@ -30,7 +32,9 @@ public class NIR extends Document implements Serializable{
 	@ManyToOne
 	private Furnizori furnizor;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "nir", 
+			targetEntity = LiniiNIR.class, 
+			cascade = ALL)
 	private List<LiniiNIR> linieNir;
 	private Double valoareTotala;
 		

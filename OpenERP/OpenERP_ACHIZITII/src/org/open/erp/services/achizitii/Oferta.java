@@ -1,5 +1,8 @@
 package org.open.erp.services.achizitii;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +30,9 @@ public class Oferta implements Serializable{
 	@ManyToOne
 	private Furnizori funrizor;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "oferta", 
+			targetEntity = LiniiOferta.class, 
+			cascade = ALL)
 	private List<LiniiOferta> linieOferta;
 	
 	private Double valoareTotala;

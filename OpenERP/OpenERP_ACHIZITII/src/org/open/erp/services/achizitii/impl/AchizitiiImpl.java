@@ -20,7 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.nomgen.NomenclatoareSrv;
+//import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.stocuri.*;
 import org.open.erp.services.achizitii.AchizitiiSrv;
@@ -41,11 +41,12 @@ import org.open.erp.services.achizitii.NIR;
 import org.open.erp.services.achizitii.Oferta;
 import org.open.erp.services.achizitii.PlanAprov;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
-import org.open.erp.services.stocuri.Articol;
-import org.open.erp.services.stocuri.Gestiune;
-import org.open.erp.services.stocuri.Loturi;
-import org.open.erp.services.stocuri.StocuriSrv;
-import org.open.erp.services.stocuri.impl.StocuriImpl;
+//import org.open.erp.services.stocuri.Articol;
+//import org.open.erp.services.stocuri.Gestiune;
+//import org.open.erp.services.stocuri.Loturi;
+//import org.open.erp.services.stocuri.StocuriSrv;
+//import org.open.erp.services.stocuri.impl.StocuriImpl;
+
 
 /**
  * 
@@ -70,16 +71,16 @@ public class AchizitiiImpl implements AchizitiiSrv, AchizitiiSrvLocal {
 	@EJB(lookup="java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrv")
 	private NomenclatorMaterialeSrv materialeSrv;
 	
-	@EJB(lookup="java:global/OpenERP_STOCURI/StocuriImpl!org.open.erp.services.stocuri.StocuriSrv")
-	private StocuriSrv stocuriSrv;
+	//@EJB(lookup="java:global/OpenERP_STOCURI/StocuriImpl!org.open.erp.services.stocuri.StocuriSrv")
+	//private StocuriSrv stocuriSrv;
 	
 	public void setMaterialSrv(NomenclatorMaterialeSrv matSrv){
 		this.materialeSrv = matSrv;
 	}
 	
-	public void setStocuriSrv(StocuriSrv stocSrv){
-		this.stocuriSrv = stocSrv;
-	}
+//	public void setStocuriSrv(StocuriSrv stocSrv){
+//		this.stocuriSrv = stocSrv;
+//	}
 
 	/* Initializare */
 	public AchizitiiImpl(){
@@ -100,10 +101,53 @@ public class AchizitiiImpl implements AchizitiiSrv, AchizitiiSrvLocal {
 		{
 		logger.debug("1.1 Initiere/Creare cerere de aprovizionare noua");
 		CerereAprov cerereNoua = new CerereAprov(nr, data, material);
+		
 		cerereNoua.setMaterial(material);
 		return cerereNoua;
 		
 		}
+	
+	
+	@Override
+	public CerereAprov creareCerereAprov(CerereAprov cerereAprovNoua) throws Exception {
+		logger.debug(">>>>>>>>>>>> Cerere material: " + materialeSrv);		
+		Material material = materialeSrv.creareMaterial(cerereAprovNoua.getNrCerereAprov().toString());
+		cerereAprovNoua.setMaterial(material);
+		logger.debug("Material pentru Cerere Aprov: " + material.getDenumireMaterial());
+		
+		salvareCerereAprov(cerereAprovNoua);
+		
+		logger.debug(">>>>>>>>>>>> END Creare CerereAprov");
+		return cerereAprovNoua;
+	}
+	
+	@Override
+	public CerereAprov salvareCerereAprov(CerereAprov cerereAprov) throws Exception {
+		if (cerereAprov.getNrCerereAprov() == null){
+			logger.debug(">>>>>>>>>>>> Cerere material: " + materialeSrv);		
+			Material material = materialeSrv.creareMaterial(cerereAprov.getNrCerereAprov().toString());
+			cerereAprov.setMaterial(material);
+			logger.debug("Material pentru Cerere Aprov: " + material.getDenumireMaterial());			
+		}
+		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare/salvare proiect - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+		}else{
+			cerereAprov = this.registruAchizitii.salveazaCerereAprov(cerereAprov);
+			//em.persist(proiectNou);
+		}
+		
+		logger.debug(">>>>>>>>>>>> END salvare CerereAprov");
+		return cerereAprov;
+	}
+	
+//	@Override
+//	public CerereAprov getCerereAprov(Integer idCerereAprov) {
+//		return registruAchizitii.getCerereAprov(idCerereAprov);
+////		return null;
+//	}
 	
 	@Override
 	public LiniiCerereAprov creareLinieCerereAprov(CerereAprov cerere, Integer nrLinie, Material material, Double cantitate){
@@ -116,23 +160,81 @@ public class AchizitiiImpl implements AchizitiiSrv, AchizitiiSrvLocal {
 		
 	}
 	
+	//PLAN APROV
 	@Override
-	public PlanAprov crearePlanAprov(Integer nrPlan, Integer an, Integer luna, Integer saptamana)
+	public PlanAprov crearePlanAprov(String denumirePlanAprov, Integer an, Integer luna, Integer saptamana) throws Exception
 	{
 		logger.debug(" 1.3.1 Creare plan nou");
-		PlanAprov planNou=new PlanAprov(nrPlan, an, luna, saptamana);
+		PlanAprov planNou=new PlanAprov(denumirePlanAprov, an, luna, saptamana);
+		crearePlanAprov(planNou);
 		return planNou;
 	}
 	
 	@Override
-	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Material material, Double cantitate){
+	public PlanAprov crearePlanAprov(PlanAprov planNou) throws Exception {
+
+		salvarePlanAprov(planNou);
+		
+		logger.debug(">>>>>>>>>>>> END Creare planAprov");
+		return planNou;
+	}
+	
+	@Override
+	public PlanAprov salvarePlanAprov(PlanAprov planAprov) throws Exception {
+		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare/salvare planAprov - TRANZACTIE ANULATA");
+			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+		}else{
+			planAprov = this.registruAchizitii.salveazaPlanAprov(planAprov);
+			//em.persist(proiectNou);
+		}
+		
+		logger.debug(">>>>>>>>>>>> END salvare planAprov");
+		return planAprov;
+	}	
+	
+	@Override
+	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Material material, Double cantitate) throws Exception{
 		logger.debug("1.3.2 Adaugare linie plan");
 		LiniiPlanAprov liniePlan=new LiniiPlanAprov(nrLiniePlanAprov, planAprov, material, cantitate);
 		planAprov.adaugaLinie(liniePlan);
 		liniePlan.setPlanAProv(planAprov);
+		/* 2. Mod agregat - cascadare @OneoMany */
+		this.registruAchizitii.salveazaPlanAprov(planAprov);
+		logger.debug(">>>>>>>>>>>> Linie PlanAprov salvata in agregat PlanAprov >>>>>>>>>>>>>>>");
+		
+		logger.debug(">>>>>>>>>>>> END Creare linie >>>>>>>>>>>>>>>");
+		
 		return liniePlan;
 	}
 	
+	@Override
+	public void startPlanAprov(PlanAprov planAprov) {
+		System.out.println("To start planAprov ....");
+		// Schimba status proiect in started, schimba status prima activitate in started
+		LiniiPlanAprov primaLiniePlanAprov = planAprov.getLiniiPlanAprov().iterator().next();
+		System.out.println("linie started ....");
+		System.out.println("Finish starting planAprov ....");
+	}
+	
+	@Override
+	public PlanAprov getPlanAprov(Integer idPlanAprov) {
+		return registruAchizitii.getPlanAprov(idPlanAprov);
+//		return null;
+	}
+	@Override
+	public List<PlanAprov> getPlanuriAprov() {
+		List<PlanAprov> planuriAprov = registruAchizitii.getToatePlanurileAprov();
+		if (planuriAprov.isEmpty())
+			logger.debug("Returner 000 planAprov!");
+		else
+			logger.debug("Returner " + planuriAprov.size() + " planuriAprov!");
+		return planuriAprov;
+	}
+	
+	//CERERE OFERTA
 	@Override
 	public CerereOferta creareCerereOferta(Integer nrCerereOferta, Date dataCerereOferta)
 	{
@@ -284,7 +386,9 @@ public class AchizitiiImpl implements AchizitiiSrv, AchizitiiSrvLocal {
 
 	//crestere cantitate in Stoc in cazul receptiei Materiallor
 	@Override
-	public Double crestereStoc(Material material, Gestiune gestiune, NIR nir, LiniiNIR lNIR){
+	//public Double crestereStoc(Material material, Gestiune gestiune, NIR nir, LiniiNIR lNIR){
+	public Double crestereStoc(Material material, NIR nir, LiniiNIR lNIR){
+
 		Double cantitateStoc = 0.00;
 		//for(LiniiNIR lNIR : nir.getLinieNir()){
 			if(lNIR.getMaterial() == material){
@@ -319,16 +423,16 @@ public class AchizitiiImpl implements AchizitiiSrv, AchizitiiSrvLocal {
 		
 	//LiniiNIR
 	@Override
-	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie, Gestiune gest){  
+	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie){//, Gestiune gest){  
 		logger.debug("5.3.2 Adaugare linie " + nrLInie + " in NIR " + nir.getNrNIR());
 		LiniiNIR linieNIr = new LiniiNIR(nir, nrLInie, material, cantitate, pret, valoareLinie, tvaLinie);
 		
-		 if (stocuriSrv != null) {
-			 stocuriSrv.intrareStoc(material, cantitate, pret, gest);
-			 } 
-		 else{
-			        System.out.println("StocuriSrv este null");
-			 }		
+//		 if (stocuriSrv != null) {
+//			 stocuriSrv.intrareStoc(material, cantitate, pret, gest);
+//			 } 
+//		 else{
+//			        System.out.println("StocuriSrv este null");
+//			 }		
 		logger.debug("Cantitatea materialului a crescut cu " + cantitate);
 		//this.intrareStoc(material, gestiune);
 		logger.debug("Materialul " + material.getDenumireMaterial() + " a intrat in stoc.");
@@ -352,11 +456,11 @@ public class AchizitiiImpl implements AchizitiiSrv, AchizitiiSrvLocal {
 //
 //		}
 		
-	@Override
-	public void trimitereMaterialLaStoc2( Material material, Double cantitate, Double pret, Gestiune gestiune) {
-			stocuriSrv.intrareStoc(material, cantitate, pret, gestiune);
-			logger.debug("S-a trimis materialul  " + material.getDenumireMaterial() + "in stoc");	
-	}
+//	@Override
+//	public void trimitereMaterialLaStoc2( Material material, Double cantitate, Double pret, Gestiune gestiune) {
+//			stocuriSrv.intrareStoc(material, cantitate, pret, gestiune);
+//			logger.debug("S-a trimis materialul  " + material.getDenumireMaterial() + "in stoc");	
+//	}
 	
 }	
 	

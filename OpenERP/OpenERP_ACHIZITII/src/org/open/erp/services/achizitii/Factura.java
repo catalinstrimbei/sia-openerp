@@ -3,13 +3,12 @@
 
 package org.open.erp.services.achizitii;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,14 +20,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.open.erp.services.nomgen.Document;
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class Factura extends Document implements Serializable{
+public class Factura implements Serializable{
 	//in Document de la modulul NOMGEN trebuie adaugata 
 		//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)  inainte de clasa
-	
+	 
 	@Id @GeneratedValue
 	private Integer nrFactura;   /* public din private@LAR*/
 	
@@ -41,7 +38,9 @@ public class Factura extends Document implements Serializable{
 	@ManyToOne
 	private Furnizori funrizor;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "factura", 
+			targetEntity = LiniiFactura.class, 
+			cascade = ALL)
 	private List<LiniiFactura> linieFactura;
 	private Double valoareTotala; /* public din private@LAR*/
 
