@@ -65,7 +65,7 @@ public class TestMarketingEJB {
 		logger.setLevel(Level.DEBUG);
 		logger.info("Begin test testChestionar!");
 		
-		RaspunsIntrebare raspunsIntrebareNou = new RaspunsIntrebare(1, "text");
+		RaspunsIntrebare raspunsIntrebareNou = new RaspunsIntrebare();
 		marketingInstance.creareRaspunsIntrebare(raspunsIntrebareNou);
 		
 		/////////////////////////
