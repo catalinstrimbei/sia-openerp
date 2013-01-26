@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import static javax.persistence.CascadeType.ALL;
 
@@ -24,6 +25,7 @@ public class Gestiune {
 	@Id @ GeneratedValue
 	private Integer idGest;
 	private String denumireGest;
+	@OneToOne
 	private Depozit depozit;
 	@OneToMany(targetEntity = Articol.class,
 			cascade = ALL)
