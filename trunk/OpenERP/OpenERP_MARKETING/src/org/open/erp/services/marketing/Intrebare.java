@@ -3,6 +3,7 @@ package org.open.erp.services.marketing;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Intrebare {
+public class Intrebare implements Serializable {
 	
 	@Id @GeneratedValue
 	long id;

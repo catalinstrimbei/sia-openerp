@@ -88,14 +88,16 @@ public class TestMarketingSrv {
 		logger.setLevel(Level.DEBUG);
 		logger.info("Begin test testChestionar!");
 		
-		RaspunsIntrebare raspunsIntrebareNou = marketingInstance.creareRaspunsIntrebare("raspuns corect");
+		RaspunsIntrebare raspunsIntrebareNou = new RaspunsIntrebare();
+		marketingInstance.creareRaspunsIntrebare(raspunsIntrebareNou);
 		// //////////////////////
-		Intrebare intrebareNoua = marketingInstance.creareIntrebare("intrebare");
-		intrebareNoua.getRaspunsuriIntrebare().add(raspunsIntrebareNou);
+		Intrebare intrebareNoua = new Intrebare();
+		marketingInstance.creareIntrebare(intrebareNoua);
 		// //////////////////////
 		Persoana persoanaChestionata = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
-		Chestionar chestionarNou = marketingInstance.creareChestionar(null, "Chestionar1", persoanaChestionata);
-		chestionarNou.getIntrebariChestionar().add(intrebareNoua);
+		
+		Chestionar chestionarNou = new Chestionar();
+		marketingInstance.creareChestionar(chestionarNou);
 		
 		logger.info("End test testChestionar");
 	}

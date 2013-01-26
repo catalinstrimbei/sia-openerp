@@ -21,11 +21,11 @@ public interface MarketingSrv {
 
 	public CampaniePromovare creareCampaniePromovare(CampaniePromovare campaniePromovare);
 
-	public RaspunsIntrebare creareRaspunsIntrebare(String textRaspuns);
+	public RaspunsIntrebare creareRaspunsIntrebare(RaspunsIntrebare raspunsIntrebare);
 
-	public Intrebare creareIntrebare(String textIntrebare);
+	public Intrebare creareIntrebare(Intrebare intrebare);
 
-	public Chestionar creareChestionar(Date data, String titlu, Persoana persoanaChestionata);
+	public Chestionar creareChestionar(Chestionar chestionar);
 
 	public CercetarePiata creareCercetarePiata(CercetarePiata cercetarePiata);
 
