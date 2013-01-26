@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<h:head>
+	<title>Adaugare plata</title>
+</h:head>
+<h:body>
+	<h:form>
+		<table>
+		<tr>
+			<td>
+				<h:outputText value="Introduceti data platii:"></h:outputText>
+				<h:inputText value="#{plataBean.dataPlata}">
+					<f:convertDateTime  pattern="dd/MM/yyyy"></f:convertDateTime>
+				</h:inputText>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h:outputText value="Introduceti valoarea platii:"></h:outputText>
+				<h:inputText value="#{plataBean.valoarePlata}">
+				</h:inputText>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h:outputText value="Introduceti modul de plata:"></h:outputText>
+				<h:inputText value="#{plataBean.modPlata}">
+				</h:inputText>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h:outputText value="Introduceti tipul platii:"></h:outputText>
+				<h:inputText value="#{plataBean.tipPlata}">
+				</h:inputText>
+			</td>
+		</tr>
+        <tr>
+			<td>
+				<h:commandButton type="submit" action="#{plataBean.adaugaPlata}" value="adauga noua!"></h:commandButton>
+			</td>
+		</tr>
+
+		</table>
+
+
+	</h:form>
+
+</h:body>
+</html>

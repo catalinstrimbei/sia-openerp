@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Adaugare furnizor contract</title>
+</h:head>
+<h:body>
+	<h:form>
+		<table>
+		<tr>
+			<td>
+				<h:outputText value="Introduceti numele furnizorului:"></h:outputText>
+				<h:inputText value="#{FurnizorContractBean.numeFurnizor}">
+				</h:inputText>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h:outputText value="Introduceti adresa furnizorului:"></h:outputText>
+				<h:inputText value="#{FurnizorContractBean.adresaFurnizor}">
+				</h:inputText>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h:outputText value="Introduceti CUI furnizor:"></h:outputText>
+				<h:inputText value="#{FurnizorContractBean.cuiFurnizor}">
+				</h:inputText>
+			</td>
+		</tr>
+	
+ <!--	<tr>
+			<td>
+				<h:outputText value="Introduceti plata:"></h:outputText>
+				<h:inputText value="#{plataBean.tipPlata}">
+				</h:inputText>
+			</td>
+		</tr>  
+-->
+  
+        <tr>
+			<td>
+				<h:commandButton type="submit" action="#{furnizorContractBean.adaugaFurnizorContract}" value="adauga furnizor contract nou"></h:commandButton>
+			</td>
+		</tr>
+
+		</table>
+
+
+	</h:form>
+
+</h:body>
+</html>
