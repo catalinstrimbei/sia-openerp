@@ -15,12 +15,16 @@ import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.apache.log4j.Logger;
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrvLocal;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.personal.PersonalSrvLocal;
 import org.open.erp.services.productie.ComandaProductie;
 import org.open.erp.services.productie.CriteriuCalitate;
 import org.open.erp.services.productie.FazaProductie;
@@ -36,11 +40,16 @@ import org.open.erp.services.productie.Utilaj;
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class ProductieImpl implements ProductieSrv, ProductieSrvLocal {
 
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductieImpl.class.getName());
+	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductieImpl.class.getName());
 	
-	private RegistruProductie registru;
+	//private RegistruProductie registru;
 	private static ProductieSrv productie;
 	
+	/* Dependente resurse proprii */
+	private static Logger logger = Logger.getLogger(ProductieImpl.class.getName());	
+	private RegistruProductie registruProductie;
+
+	/* Dependente resurse injectate */
 	@PersistenceContext(unitName="OpenERP_PRODUCTIE")
 	private EntityManager em;
 	
@@ -64,8 +73,8 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal {
 	public void init(){
 		logger.debug("EntityManager: " + em);		
 				
-		if (this.registru == null)
-			registru = new RegistruProductie(em);
+		if (this.registruProductie == null)
+			registruProductie = new RegistruProductie(em);
 	}
 	
 	public void setProductieSrv(ProductieSrv productie) {
@@ -95,7 +104,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal {
 			logger.debug(">>>>>>>>>>>> END Definire flux - TRANZACTIE ANULATA");
 			//throw new RuntimeException("Creare proiect - TRANZACTIE ANULATA");
 		}else{
-			flux = this.registru.salveazaFlux(flux);
+			flux = this.registruProductie.salveazaFlux(flux);
 			//em.persist(proiectNou);
 		}
 		
@@ -165,7 +174,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal {
 	    	fazaProductie.setSemifabricatDorit(null);
 	    }
 		
-	    this.registru.salveazaFaza(fazaProductie);
+	    this.registruProductie.salveazaFaza(fazaProductie);
 		logger.debug(">>>>>>>>>>>> Faza salvata in flux >>>>>>>>>>>>>>>");
 	    
 		logger.debug(">>>>>>>>>>>> END Creare faza >>>>>>>>>>>>>>>");
@@ -280,7 +289,7 @@ public class ProductieImpl implements ProductieSrv, ProductieSrvLocal {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public FluxProductie getFlux(Integer idFlux) throws Exception {
-		return registru.getFluxProductie(idFlux);
+		return registruProductie.getFluxProductie(idFlux);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -314,25 +323,25 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 
 	@Override
 	public List<FluxProductie> getListaFluxuri() throws Exception {
-		List<FluxProductie> fluxuri=this.registru.getListaFluxuri();
+		List<FluxProductie> fluxuri=this.registruProductie.getListaFluxuri();
 		return fluxuri;
 	}
 
 	@Override
 	public void stergeFlux(FluxProductie flux) throws Exception {
-		registru.stergeFlux(flux);
+		registruProductie.stergeFlux(flux);
 		
 	}
 
 	@Override
 	public List<Semifabricat> getListaSemifabricate() throws Exception {
-		List<Semifabricat> semifabricate=this.registru.getListaSemifabricate();
+		List<Semifabricat> semifabricate=this.registruProductie.getListaSemifabricate();
 		return semifabricate;
 	}
 
 	@Override
 	public void stergeSemifabricat(Semifabricat semifabricat) throws Exception {
-		registru.stergeSemifabricat(semifabricat);
+		registruProductie.stergeSemifabricat(semifabricat);
 		
 	}
 
@@ -347,7 +356,7 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 			logger.debug(">>>>>>>>>>>> END salvare criteriu - TRANZACTIE ANULATA");
 			
 		}else{
-			semif = this.registru.salveazaSemifabricat(semif);
+			semif = this.registruProductie.salveazaSemifabricat(semif);
 			//em.persist(proiectNou);
 		}
 		
@@ -356,14 +365,14 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 
 	@Override
 	public List<CriteriuCalitate> getCriteriiCalitate() throws Exception {
-		List<CriteriuCalitate> criterii = this.registru.getListaCriterii();
+		List<CriteriuCalitate> criterii = this.registruProductie.getListaCriterii();
 		return criterii;
 	}
 
 	@Override
 	public void stergeCriteriuCalitate(CriteriuCalitate criteriu)
 			throws Exception {
-		registru.stergeCriteriuCalitate(criteriu);
+		registruProductie.stergeCriteriuCalitate(criteriu);
 		
 	}
 
@@ -377,7 +386,7 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 			logger.debug(">>>>>>>>>>>> END salvare criteriu - TRANZACTIE ANULATA");
 			
 		}else{
-			criteriuCalitate = this.registru.salveazaCriteriuCalitate(criteriuCalitate);
+			criteriuCalitate = this.registruProductie.salveazaCriteriuCalitate(criteriuCalitate);
 			//em.persist(proiectNou);
 		}
 		
@@ -386,31 +395,31 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 
 	@Override
 	public FazaProductie getFazaProductie(String faza) throws Exception {
-		FazaProductie fazaP=this.registru.getFazaProductie(faza);
+		FazaProductie fazaP=this.registruProductie.getFazaProductie(faza);
 		return fazaP;
 	}
 
 	@Override
 	public List<FazaProductie> getListaFaze() throws Exception {
-		List<FazaProductie> faze=this.registru.getListaFaze();
+		List<FazaProductie> faze=this.registruProductie.getListaFaze();
 		return faze;
 	}
 
 	@Override
 	public void stergeFaza(FazaProductie faza) throws Exception {
-		registru.stergeFaza(faza);
+		registruProductie.stergeFaza(faza);
 		
 	}
 
 	@Override
 	public List<Utilaj> getUtilaje() throws Exception {
-		List<Utilaj> utilaje=this.registru.getUtilaje();
+		List<Utilaj> utilaje=this.registruProductie.getUtilaje();
 		return utilaje;
 	}
 
 	@Override
 	public void stergeUtilaj(Utilaj utilaj) throws Exception {
-		registru.stergeUtilaj(utilaj);
+		registruProductie.stergeUtilaj(utilaj);
 		
 	}
 
@@ -421,11 +430,11 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 	}
 
 	public void setNommatSrv(NomenclatorMaterialeSrv nommatSrv) {
-		this.nommatSrv = nommatSrv;
+		//this.nommatSrv = nommatSrv;
 	}
 
 	public void setPersonalSrv(PersonalSrv personalSrv) {
-		this.personalSrv = personalSrv;
+		//this.personalSrv = personalSrv;
 	}
 	
 }
