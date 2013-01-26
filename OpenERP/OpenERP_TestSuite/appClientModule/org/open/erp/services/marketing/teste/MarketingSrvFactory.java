@@ -8,11 +8,10 @@ import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.marketing.MarketingSrv;
-import org.open.erp.services.proman.teste.ProjectManagementSrvFactory;
 
 public class MarketingSrvFactory {
 	
-private static Logger logger = Logger.getLogger(ProjectManagementSrvFactory.class.getName());
+private static Logger logger = Logger.getLogger(MarketingSrvFactory.class.getName());
 	
 	public static MarketingSrv getMarketingSrv() throws Exception{
 		return (MarketingSrv) lookupEJBService();
