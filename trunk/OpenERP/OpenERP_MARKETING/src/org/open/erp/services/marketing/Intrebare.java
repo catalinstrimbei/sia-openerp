@@ -15,15 +15,16 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Intrebare implements Serializable {
-	
-	@Id @GeneratedValue
+
+	@Id
+	@GeneratedValue
 	long id;
-	
+
 	String text;
-	
+
 	@ManyToOne
 	Chestionar chestionar;
-	
+
 	@OneToMany(mappedBy = "intrebare", targetEntity = RaspunsIntrebare.class, cascade = ALL, fetch = EAGER)
 	Set<RaspunsIntrebare> raspunsuriIntrebare = new HashSet<RaspunsIntrebare>();
 

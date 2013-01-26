@@ -8,13 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class RaspunsIntrebare implements Serializable{
-	
-	@Id @GeneratedValue
+public class RaspunsIntrebare implements Serializable {
+
+	@Id
+	@GeneratedValue
 	long id;
-	
+
 	String text;
-	
+
 	@ManyToOne
 	Intrebare intrebare;
 
