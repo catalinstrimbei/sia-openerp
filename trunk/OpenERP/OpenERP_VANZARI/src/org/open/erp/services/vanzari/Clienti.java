@@ -7,12 +7,13 @@ import org.open.erp.services.nomgen.Persoana;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToOne;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Clienti {
 	@Id @GeneratedValue
 	Integer idClient;
-	@OneToOne(targetEntity = org.open.erp.services.nomgen.Persoana.class)
+	
 	Persoana persoana;
 	String categorie;
 	

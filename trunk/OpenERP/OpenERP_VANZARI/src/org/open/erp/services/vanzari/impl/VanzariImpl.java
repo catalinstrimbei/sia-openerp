@@ -22,9 +22,11 @@ import javax.persistence.PersistenceContext;
 
 import org.hamcrest.core.Is;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.stocuri.StocuriSrv;
+import org.open.erp.services.stocuri.StocuriSrvLocal;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
 import org.open.erp.services.vanzari.Comenzi;
@@ -70,14 +72,6 @@ public class VanzariImpl implements VanzariSrv, VanzariSrvLocal{
 	@Resource
 	private SessionContext sessionContext;
 	
-	@EJB(lookup="java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrvLocal")
-	private NomenclatorMaterialeSrvLocal nommatSrv;
-	
-	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.nomgen.NomenclatoareSrvLocal")
-	private NomenclatoareSrvLocal nomgenSrv;
-	
-	@EJB(lookup="java:global/OpenERP_PERSONAL/PersonalImpl!org.open.erp.services.personal.PersonalSrvLocal")
-	private PersonalSrvLocal personalSrv;
 	
 	@EJB(lookup="java:global/OpenERP_STOCURI/StocuriImpl!org.open.erp.services.stocuri.StocuriSrvLocal")
 	private StocuriSrvLocal stocuriSrv;
