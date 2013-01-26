@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Creare reclamatie noua</title>
+</h:head>
+<h:body>
+	<h:form>
+		<table>
+			<tr>
+				<td>
+					<h:outputText value="Introduceti data:"></h:outputText>
+					<h:inputText value="#{reclamatieBean.data}"></h:inputText>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputText value="Introduceti persoana reclamanta:"></h:outputText>
+					<h:inputText value="#{reclamatieBean.persoanaReclamanta}"></h:inputText>
+				</td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Textul reclamatiei"></h:outputText> <h:inputText
+						value="#{reclamatieBean.text}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Raspunsul reclamatiei"></h:outputText> <h:inputText
+						value="#{reclamatieBean.raspuns}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Status reclamatiei"></h:outputText> <h:inputText
+						value="#{reclamatieBean.status}"></h:inputText></td>
+			</tr>
+			<tr>
+			<td>
+				<h:commandButton type="submit" action="#{reclamatieBean.creareReclamatie}" value="Creare reclamatie noua!"></h:commandButton>
+			</td>
+		</tr>
+		</table>
+	</h:form>
+
+</h:body>
+</html>

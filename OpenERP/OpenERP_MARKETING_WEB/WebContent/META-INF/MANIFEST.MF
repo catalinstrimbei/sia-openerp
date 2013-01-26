@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-Dependencies: deployment.OpenERP_MARKETING.jar, deployment.OpenERP_NOMMAT.jar
+Dependencies: deployment.OpenERP_MARKETING.jar, deployment.OpenERP_NOMMAT.jar, deployment.OpenERP_NOMGEN.jar
