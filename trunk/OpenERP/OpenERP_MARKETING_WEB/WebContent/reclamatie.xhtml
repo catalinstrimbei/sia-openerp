@@ -14,14 +14,11 @@
 	<h:form>
 		<table>
 			<tr>
-				<td>
-					<h:outputText value="Introduceti data:"></h:outputText>
-					<h:inputText value="#{reclamatieBean.data}"></h:inputText>
-				</td>
+				<td><h:outputText value="Introduceti data:"></h:outputText> <h:inputText
+						value="#{reclamatieBean.data}"></h:inputText></td>
 			</tr>
 			<tr>
-				<td>
-					<h:outputText value="Introduceti persoana reclamanta:"></h:outputText>
+				<td><h:outputText value="Introduceti persoana reclamanta:"></h:outputText>
 					<h:inputText value="#{reclamatieBean.persoanaReclamanta}"></h:inputText>
 				</td>
 			</tr>
@@ -30,18 +27,18 @@
 						value="#{reclamatieBean.text}"></h:inputText></td>
 			</tr>
 			<tr>
-				<td><h:outputText value="Raspunsul reclamatiei"></h:outputText> <h:inputText
-						value="#{reclamatieBean.raspuns}"></h:inputText></td>
+				<td><h:outputText value="Raspunsul reclamatiei"></h:outputText>
+					<h:inputText value="#{reclamatieBean.raspuns}"></h:inputText></td>
 			</tr>
 			<tr>
 				<td><h:outputText value="Status reclamatiei"></h:outputText> <h:inputText
 						value="#{reclamatieBean.status}"></h:inputText></td>
 			</tr>
 			<tr>
-			<td>
-				<h:commandButton type="submit" action="#{reclamatieBean.creareReclamatie}" value="Creare reclamatie noua!"></h:commandButton>
-			</td>
-		</tr>
+				<td><h:commandButton type="submit"
+						action="#{reclamatieBean.creareReclamatie}"
+						value="Creare reclamatie noua!"></h:commandButton></td>
+			</tr>
 		</table>
 	</h:form>
 
