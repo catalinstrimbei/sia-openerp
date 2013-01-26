@@ -8,6 +8,13 @@ import org.open.erp.services.nomgen.PersoanaFizica;
 @Entity
 public class Angajat extends PersoanaFizica{
 	ContractMunca cm;
+	private Integer	numarCopii;
+	public Integer getNumarCopii() {
+		return numarCopii;
+	}
+	public void setNumarCopii(Integer numarCopii) {
+		this.numarCopii = numarCopii;
+	}
 	public Angajat(Integer id, String nume, String sex, String mail,
 			String statutInCompanie, String stareCivila, String dataNastere,
 			String telefon, Adresa adresa, ContractMunca cm) {
@@ -24,8 +31,7 @@ public class Angajat extends PersoanaFizica{
 	public Angajat() {
 		super();
 	}
-	
-	
+
 	
 	
 }
