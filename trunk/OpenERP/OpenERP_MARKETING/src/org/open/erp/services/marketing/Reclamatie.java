@@ -1,5 +1,6 @@
 package org.open.erp.services.marketing;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.TemporalType;
 import org.open.erp.services.nomgen.Persoana;
 
 @Entity
-public class Reclamatie {
+public class Reclamatie implements Serializable{
 	
 	@Id @GeneratedValue
 	long id;
