@@ -379,16 +379,12 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 	}
 
 	@Override
-	public Reclamatie creareReclamatie(Date data, String text, String raspuns, StatusReclamatie status) {
+	public Reclamatie creareReclamatie(Reclamatie reclamatie) {
 		logger.debug("5.1 Initiere/Creare reclamatie noua");
 
-		Persoana persoanaReclamanta = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
-		entityManager.persist(persoanaReclamanta);
-		
-		Reclamatie reclamatieNoua = new Reclamatie(1, persoanaReclamanta, data, text, raspuns, status);
-		entityManager.persist(reclamatieNoua);
+		entityManager.persist(reclamatie);
 
-		return reclamatieNoua;
+		return reclamatie;
 	}
 
 	@Override

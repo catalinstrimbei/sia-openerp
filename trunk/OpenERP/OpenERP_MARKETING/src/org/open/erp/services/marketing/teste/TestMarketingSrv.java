@@ -76,7 +76,8 @@ public class TestMarketingSrv {
 		marketingInstance.creareCercetarePiata(cercetarePiataNoua);
 		// //////////////////////
 		StatusReclamatie status = StatusReclamatie.NOU;
-		Reclamatie reclamatieNoua = marketingInstance.creareReclamatie(data, "reclamatie", "raspuns", status);
+		Reclamatie reclamatieNoua = new Reclamatie();
+		marketingInstance.creareReclamatie(reclamatieNoua);
 		// //////////////////////
 		System.out.println("aaaaa");
 		logger.info("End test TestMarketingSrv");

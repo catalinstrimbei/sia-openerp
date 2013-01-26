@@ -29,7 +29,7 @@ public interface MarketingSrv {
 
 	public CercetarePiata creareCercetarePiata(CercetarePiata cercetarePiata);
 
-	public Reclamatie creareReclamatie(Date data, String text, String raspuns, StatusReclamatie status);
+	public Reclamatie creareReclamatie(Reclamatie reclamatie);
 	
 	public CampaniePromovare findCampanieById(long id);
 }
