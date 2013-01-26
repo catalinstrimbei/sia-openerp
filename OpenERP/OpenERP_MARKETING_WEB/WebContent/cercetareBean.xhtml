@@ -11,39 +11,28 @@
 <h:body>
 	<h:form>
 		<table>
-		<tr>
-			<td>
-				<h:outputText value="Introduceti data de start:"></h:outputText>
-				<h:inputText value="#{cercetareBean.dataStart}">
-					<f:convertDateTime  pattern="dd-MM-yyyy"></f:convertDateTime>
-				</h:inputText>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h:outputText value="Introduceti data de final:"></h:outputText>
-				<h:inputText value="#{cercetareBean.dataFinal}">
-					<f:convertDateTime pattern="dd-MM-yyyy" />
-				</h:inputText>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h:outputText value="Buget alocat:"></h:outputText>
-				<h:inputText value="#{cercetareBean.buget}"></h:inputText>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h:commandButton type="submit" action="#{cercetareBean.creareCercetare}" value="Creare cercetare noua!"></h:commandButton>
-			</td>
-		</tr>
-
-
+			<tr>
+				<td><h:outputText value="Introduceti data de start:"></h:outputText>
+					<h:inputText value="#{cercetareBean.dataStart}">
+						<f:convertDateTime pattern="dd-MM-yyyy"></f:convertDateTime>
+					</h:inputText></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Introduceti data de final:"></h:outputText>
+					<h:inputText value="#{cercetareBean.dataFinal}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:inputText></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Buget alocat:"></h:outputText> <h:inputText
+						value="#{cercetareBean.buget}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td><h:commandButton type="submit"
+						action="#{cercetareBean.creareCercetare}"
+						value="Creare cercetare noua!"></h:commandButton></td>
+			</tr>
 		</table>
-
-
 	</h:form>
-
 </h:body>
 </html>
