@@ -211,4 +211,14 @@ public interface PersonalSrv {
 	 * 
 	 */
 	CerereEveniment creareCerereEveniment (CerereEveniment CerereEvenimentNou);
+	
+	/**
+	 * Scop  Returneaza o Lista cu toti angajatii
+	 * 
+	 * 
+	 * @return o lista cu toti Angajatii
+	 * 
+	 */
+	 List<Angajat> getListaAngajati() throws Exception;
 }
+   
