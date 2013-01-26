@@ -11,14 +11,8 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.nomgen.Adresa;
-import org.open.erp.services.nomgen.NomenclatoareSrv;
-import org.open.erp.services.nomgen.Persoana;
-import org.open.erp.services.nomgen.PersoanaFizica;
-import org.open.erp.services.nomgen.impl.NomenclatoareImpl;
 import org.open.erp.services.nommat.ListaCaracteristici;
 import org.open.erp.services.nommat.Material;
-import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
@@ -30,6 +24,7 @@ import org.open.erp.services.vanzari.LiniiAviz;
 import org.open.erp.services.vanzari.LiniiDispozitieLivrare;
 import org.open.erp.services.vanzari.LiniiFactura;
 import org.open.erp.services.vanzari.OfertePret;
+import org.open.erp.services.vanzari.Persoana;
 import org.open.erp.services.vanzari.Produse;
 import org.open.erp.services.vanzari.VanzariSrv;
 
@@ -77,9 +72,9 @@ public class TestVanzariSrv {
 		//NomenclatoareImpl nomenclatoareSrv;
 		//idCl=nomenclatoareSrv.cautaPersoana("Test");
 		
-		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
-		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
-		Clienti client1= new Clienti(pers, "PF");
+		//Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
+		Persoana pers = new Persoana(1, "Test", "Ion","sofer" );
+		Clienti client1= new Clienti(1,pers, "PF");
 		
 		logger.info("1.2 START creare oferta de pret ");
 	
@@ -107,9 +102,9 @@ public class TestVanzariSrv {
 		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
 		
 		logger.info("2.2 START creare clienti");
-		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
-		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
-		Clienti client1= new Clienti(pers, "PF");
+		//Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
+		Persoana pers = new Persoana(3, "Test", "Vasile","sofer" );
+		Clienti client1= new Clienti(2,pers, "PF");
 		
 		logger.info("1.1 Start creare oferta de pret");
 		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
@@ -142,7 +137,7 @@ public class TestVanzariSrv {
 		logger.info("3.1 Dispozitie de livrare--->>>>");
 		
 		logger.info("3.4 START creare responsabil ");
-		Angajat responsabil = new Angajat(1, "Popescu Mihai", "M","popescuMihai@yahoo.com" ,"sofer","vaduv","23/12/1976", "0756890098",null,null );
+		Persoana responsabil = new Persoana(2, "Popescu"," Mihai","sofer" );
 	
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
@@ -156,9 +151,8 @@ public class TestVanzariSrv {
 		
 		logger.info("3.2 START creare clienti");
 		
-		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
-		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
-		Clienti client1= new Clienti(pers, "PF");
+		Persoana pers = new Persoana(4, "Test", "Vasile","sofer" );
+		Clienti client1= new Clienti(3,pers, "PF");
 		
 		
 		logger.info("1.1START creare oferta de pret");
@@ -222,7 +216,7 @@ public class TestVanzariSrv {
 		
 		
 		logger.info("4.5 START creare responsabil ");
-		Angajat responsabil = new Angajat(1, "Popescu Mihai", "M","popescuMihai@yahoo.com" ,"sofer","vaduv","23/12/1976", "0756890098",null,null );
+		Persoana responsabil = new Persoana(7, "Popesc","Mihai", "casier" );
 				
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
@@ -231,9 +225,8 @@ public class TestVanzariSrv {
 		Produse produs1 = new Produse(1, "Produs 1", 67890, 10.00, 13.00 );
 		
 		logger.info("2.2 START creare clienti");
-		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
-		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
-		Clienti client1= new Clienti(pers, "PF");
+		Persoana pers = new Persoana(8, "Test", "Vasile","sofer" );
+		Clienti client1= new Clienti(6,pers, "PF");
 		
 		logger.info("1.1 START creare oferta de pret");
 		OfertePret ofertaPret1=vanzariInstance.creareOfertePret(100, produs1,dateFormat.parse("31/11/2012"), dataEmitere,"ceva");
@@ -266,7 +259,7 @@ public class TestVanzariSrv {
 			if(articol.getCantitateAcceptata()> 0){
 				
 				LiniiAviz linieAviz = new LiniiAviz(i, articol);
-				aviz.adaugaLinieAviz(linieAviz);
+				aviz.adaugalinieAviz(linieAviz);
 				i=i+1;
 			}
 		}
@@ -292,7 +285,7 @@ public class TestVanzariSrv {
 		logger.info("5.1 Facturi--->>>>");
 		
 		logger.info("5.4 START creare responsabil ");
-		Angajat responsabil = new Angajat(1, "Popescu Mihai", "M","popescuMihai@yahoo.com" ,"sofer","vaduv","23/12/1976", "0756890098",null,null );
+		Persoana responsabil = new Persoana(1, "Popescu"," Mihai", "sofer" );
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
@@ -302,9 +295,8 @@ public class TestVanzariSrv {
 		Produse produs2 = new Produse(2, "Produs 2", 67892, 2.00, 122.00 );
 		
 		logger.info("2.2 START creare clienti");
-		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
-		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
-		Clienti client1= new Clienti(pers, "PF");
+		Persoana pers = new Persoana(9, "Test", "Vasile","sofer" );
+		Clienti client1= new Clienti(7,pers, "PF");
 		logger.debug("_)_)_)_)_)_)_)_" + client1.getPersoana().getNume());
 		
 		logger.info("1.1 START creare oferta de pret");
@@ -344,7 +336,7 @@ public class TestVanzariSrv {
 			if(articol.getCantitateAcceptata()> 0){
 				
 				LiniiAviz linieAviz = new LiniiAviz(i, articol);
-				aviz.adaugaLinieAviz(linieAviz);
+				aviz.adaugalinieAviz(linieAviz);
 				i=i+1;
 			}
 		}
@@ -396,7 +388,7 @@ public class TestVanzariSrv {
 		logger.info("5.1 Facturi--->>>>");
 		
 		logger.info("5.4 START creare responsabil ");
-		Angajat responsabil = new Angajat(1, "Popescu Mihai", "M","popescuMihai@yahoo.com" ,"sofer","vaduv","23/12/1976", "0756890098",null,null );
+		Persoana responsabil = new Persoana(10, "Popescu"," Mihai", "contabil" );
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
@@ -406,9 +398,8 @@ public class TestVanzariSrv {
 		Produse produs2 = new Produse(2, "Produs 2", 67892, 2.00, 122.00 );
 		
 		logger.info("2.2 START creare clienti");
-		Adresa adr = new Adresa ("1", "Iasi", "Iasi", "Ro", "St", "700358");
-		PersoanaFizica pers = new PersoanaFizica(1, "Test", "M", "ics@yahoo.co","Anngajat", null, "12-03-1988", "074444445", adr );
-		Clienti client1= new Clienti(pers, "PF");
+		Persoana pers = new Persoana(11, "Test", "Vasile","sofer" );
+		Clienti client1= new Clienti(9,pers, "PF");
 		logger.debug("_)_)_)_)_)_)_)_" + client1.getPersoana().getNume());
 		
 		logger.info("1.1 START creare oferta de pret");
@@ -448,7 +439,7 @@ public class TestVanzariSrv {
 			if(articol.getCantitateAcceptata()> 0){
 				
 				LiniiAviz linieAviz = new LiniiAviz(i, articol);
-				aviz.adaugaLinieAviz(linieAviz);
+				aviz.adaugalinieAviz(linieAviz);
 				i=i+1;
 			}
 		}

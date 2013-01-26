@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-
-import org.open.erp.services.personal.Angajat;
 import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToMany;
 import javax.persistence.Id;
@@ -23,8 +21,9 @@ public class DispozitiiLivrare {
 	@Temporal(TIMESTAMP)
 	Date data;
 	
-	@OneToOne(targetEntity = org.open.erp.services.personal.Angajat.class)
-	Angajat responsabil;
+	
+	@OneToOne(targetEntity = org.open.erp.services.vanzari.Persoana.class)
+	Persoana responsabil;
 	
 	@OneToOne(targetEntity = org.open.erp.services.vanzari.Comenzi.class)
 	Comenzi comanda;
@@ -43,16 +42,6 @@ public DispozitiiLivrare() {
 
 
 
-public DispozitiiLivrare(Integer idDispozitieLivrare, Date data,
-			Angajat responsabil, Comenzi comanda,
-			List<LiniiDispozitieLivrare> liniiDispozitieLivare) {
-		super();
-		this.idDispozitieLivrare = idDispozitieLivrare;
-		this.data = data;
-		this.responsabil = responsabil;
-		this.comanda = comanda;
-		this.liniiDispozitieLivare = liniiDispozitieLivare;
-	}
 
 
 
@@ -62,9 +51,15 @@ public Integer getIdDispozitieLivrare() {
 
 
 
+
+
+
 public void setIdDispozitieLivrare(Integer idDispozitieLivrare) {
 	this.idDispozitieLivrare = idDispozitieLivrare;
 }
+
+
+
 
 
 
@@ -74,21 +69,33 @@ public Date getData() {
 
 
 
+
+
+
 public void setData(Date data) {
 	this.data = data;
 }
 
 
 
-public Angajat getAngajat() {
+
+
+
+public Persoana getResponsabil() {
 	return responsabil;
 }
 
 
 
-public void setAngajat(Angajat responsabil) {
+
+
+
+public void setResponsabil(Persoana responsabil) {
 	this.responsabil = responsabil;
 }
+
+
+
 
 
 
@@ -98,9 +105,15 @@ public Comenzi getComanda() {
 
 
 
+
+
+
 public void setComanda(Comenzi comanda) {
 	this.comanda = comanda;
 }
+
+
+
 
 
 
@@ -110,10 +123,32 @@ public List<LiniiDispozitieLivrare> getLiniiDispozitieLivare() {
 
 
 
+
+
+
 public void setLiniiDispozitieLivare(
 		List<LiniiDispozitieLivrare> liniiDispozitieLivare) {
 	this.liniiDispozitieLivare = liniiDispozitieLivare;
 }
+
+
+
+
+
+
+public DispozitiiLivrare(Integer idDispozitieLivrare, Date data,
+		Persoana responsabil, Comenzi comanda,
+		List<LiniiDispozitieLivrare> liniiDispozitieLivare) {
+	super();
+	this.idDispozitieLivrare = idDispozitieLivrare;
+	this.data = data;
+	this.responsabil = responsabil;
+	this.comanda = comanda;
+	this.liniiDispozitieLivare = liniiDispozitieLivare;
+}
+
+
+
 
 
 
