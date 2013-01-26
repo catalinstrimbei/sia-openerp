@@ -7,14 +7,16 @@ import org.open.erp.services.nommat.Material;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.TableGenerator;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 @Entity
 public class Produse {
 	
-	Material material;
-	
 	@Id @GeneratedValue
 	Integer idProdus;
-	
+
+	@OneToOne(targetEntity = org.open.erp.services.nommat.Material.class)
+	Material material;	
 	String denumire;
 	Integer codProdus;
 	Double cost;
