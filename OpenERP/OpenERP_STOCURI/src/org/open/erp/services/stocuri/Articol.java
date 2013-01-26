@@ -6,7 +6,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.CascadeType.ALL;
 
@@ -24,7 +27,9 @@ public class Articol{
 	@Id @GeneratedValue
 	private Integer idArticol;
 	private Double cantPeGestiune;
+	@ManyToOne
 	private Gestiune gestiune;
+	@OneToOne
 	private Material material;
 	@OneToMany(targetEntity = Loturi.class,
 			cascade = ALL, fetch = EAGER)

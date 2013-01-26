@@ -3,6 +3,7 @@ package org.open.erp.services.stocuri;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.open.erp.services.nommat.Material;
 
@@ -17,9 +18,12 @@ import org.open.erp.services.nommat.Material;
 public class BonTransfer {
 	@Id @ GeneratedValue
 	Integer idBonTransfer;
+	@OneToOne
 	Material material;
 	Double cantitate;
+	@OneToOne
 	Gestiune gestiuneIntrare;
+	@OneToOne
 	Gestiune gestiuneIesire;
 	
 	public Integer getIdBonTransfer() {
