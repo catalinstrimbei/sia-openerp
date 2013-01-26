@@ -1,5 +1,8 @@
 package org.open.erp.services.achizitii;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +27,9 @@ public class CerereOferta implements Serializable{
 	@ManyToOne
 	private Furnizori furnizor;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "cerereOferta", 
+			targetEntity = LiniiCerereOferta.class, 
+			cascade = ALL)
 	private List<LiniiCerereOferta> linieCerereOferta= new ArrayList<LiniiCerereOferta>();
 	
 	public void adaugaLinie(LiniiCerereOferta linie){

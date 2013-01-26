@@ -1,5 +1,8 @@
 package org.open.erp.services.achizitii;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +29,9 @@ public class Comanda implements Serializable{
 	@ManyToOne
 	private Furnizori funrizor;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "comanda", 
+			targetEntity = LiniiComanda.class, 
+			cascade = ALL)
 	private List<LiniiComanda> linieComanda;
 	private Double valoareTotala;
 	

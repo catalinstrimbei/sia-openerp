@@ -1,5 +1,8 @@
 package org.open.erp.services.achizitii;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +27,9 @@ public class CerereAprov implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCerereAprov;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "cerereAprov", 
+			targetEntity = LiniiCerereAprov.class, 
+			cascade = ALL)
 	private List<LiniiCerereAprov> liniiCerereAprov = new ArrayList<LiniiCerereAprov>();
 	
 	@OneToOne

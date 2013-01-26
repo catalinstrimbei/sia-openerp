@@ -6,9 +6,8 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
 		
-		<jar-file>OpenERP_NOMGEN.jar</jar-file>
+		
 		<jar-file>OpenERP_NOMMAT.jar</jar-file>
-		<jar-file>OpenERP_STOCURI.jar</jar-file>
 		
 		<class>org.open.erp.services.achizitii.PlanAprov</class>
 		<class>org.open.erp.services.achizitii.Oferta</class>
@@ -26,8 +25,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 		<class>org.open.erp.services.achizitii.CerereOferta</class>
 		<class>org.open.erp.services.achizitii.CerereAprov</class>
 		
-		<class>org.open.erp.services.nomgen.Document</class>
-		<class>org.open.erp.services.nomgen.PersoanaJuridica</class>
+		
 		<class>org.open.erp.services.nommat.Material</class>
 	
 		

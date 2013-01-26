@@ -23,14 +23,14 @@ import javax.persistence.OneToMany;
 public class PlanAprov implements Serializable{
 	@Id @GeneratedValue
 	private Integer nrPlanAprov;
-	
+	private String denumirePlanAprov;
 	private Integer an;
 	private Integer luna;
 	private Integer saptamana;
 	
 	@OneToMany(mappedBy = "planAProv", 
 			targetEntity = LiniiPlanAprov.class, 
-			cascade = ALL, fetch = EAGER)
+			cascade = ALL)
 	private List<LiniiPlanAprov> liniiPlanAprov = new ArrayList<LiniiPlanAprov>();
 	
 	
@@ -42,6 +42,12 @@ public class PlanAprov implements Serializable{
 	}
 	public void setNrPlanAprov(Integer nrPlanAprov) {
 		this.nrPlanAprov = nrPlanAprov;
+	}
+	public String getDenumirePlanAprov() {
+		return denumirePlanAprov;
+	}
+	public void setDenumirePlanAprov(String denumirePlanAprov) {
+		this.denumirePlanAprov = denumirePlanAprov;
 	}
 	public Integer getAn() {
 		return an;
@@ -76,6 +82,14 @@ public class PlanAprov implements Serializable{
 		this.luna = luna;
 		this.saptamana = saptamana;
 		//this.liniiPlanAprov = liniiPlanAprov;
+	}
+	public PlanAprov(String denumirePlanAprov, Integer an, Integer luna,
+			Integer saptamana) {
+		super();
+		this.denumirePlanAprov = denumirePlanAprov;
+		this.an = an;
+		this.luna = luna;
+		this.saptamana = saptamana;
 	}
 	public PlanAprov() {
 		super();

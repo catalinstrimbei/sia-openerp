@@ -8,12 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.open.erp.services.nomgen.PersoanaJuridica;
 
 @Entity
- public class Furnizori extends PersoanaJuridica implements Serializable{
+ public class Furnizori implements Serializable{
 	//in PersoanaJuridica de la modulul NOMGEN trebuie adaugata 
-		//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)  inainte de clasa
+	//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)  inainte de clasa
 	private String denumire;
 	private String persoanaContact;
 	

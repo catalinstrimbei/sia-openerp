@@ -2,18 +2,19 @@ package org.open.erp.services.achizitii;
 
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.Remote;
 
 import org.open.erp.services.nommat.Material;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
-import org.open.erp.services.stocuri.Articol;
-import org.open.erp.services.stocuri.Gestiune;
-import org.open.erp.services.nomgen.NomenclatoareSrv;
-import org.open.erp.services.nommat.Material;
-import org.open.erp.services.stocuri.Gestiune;
+//import org.open.erp.services.stocuri.Articol;
+//import org.open.erp.services.stocuri.Gestiune;
+//import org.open.erp.services.nomgen.NomenclatoareSrv;
+//import org.open.erp.services.nommat.Material;
+//import org.open.erp.services.stocuri.Gestiune;
 
-import org.open.erp.services.stocuri.StocuriSrv;
+//import org.open.erp.services.stocuri.StocuriSrv;
 
 
 /**
@@ -51,6 +52,9 @@ public interface AchizitiiSrv {
 	
 		
 	CerereAprov creareCerereAprov(Integer nr, Date data, Material material);
+	public CerereAprov creareCerereAprov(CerereAprov cerereAprovNoua) throws Exception;
+	public CerereAprov salvareCerereAprov(CerereAprov cerereAprov) throws Exception;
+//	public CerereAprov getCerereAprov(Integer idCerereAprov);
 	/**
 	 * Scop					Creeaza Cerere de Aprovizionare care va fi inclusa intr-un plan de aprovizionare
 	 * 
@@ -152,8 +156,7 @@ public interface AchizitiiSrv {
 
 	public void setMaterialSrv(NomenclatorMaterialeSrv matSrv);
 
-	LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov, Material material, Double cantitate);
-	
+	public LiniiPlanAprov creareLiniePlan(Integer nrLiniePlanAprov, PlanAprov planAprov,Material material, Double cantitate) throws Exception;	
 	/**
 	 * Scop					Asociere de  linii in planul de aprovizionare
 	 * @param nrLiniePlanAprov	
@@ -165,8 +168,7 @@ public interface AchizitiiSrv {
 	 * 
 	 */
 	
-	PlanAprov crearePlanAprov(Integer nrPlan, Integer an, Integer luna, Integer saptamana);
-	
+	public PlanAprov crearePlanAprov(String denumirePlanAprov, Integer an, Integer luna, Integer saptamana) throws Exception;	
 	/**
 	 * Scop					Crearea unui plan de aprovizionare
 	 * @param nr		
@@ -177,6 +179,11 @@ public interface AchizitiiSrv {
 	 * @return Plan  de Aprov nou creat
 	 * 
 	 */	
+	public PlanAprov crearePlanAprov(PlanAprov planNou) throws Exception;
+	public PlanAprov salvarePlanAprov(PlanAprov planAprov) throws Exception;
+	public void startPlanAprov(PlanAprov planAprov) ;
+	public PlanAprov getPlanAprov(Integer idPlanAprov);
+	public List<PlanAprov> getPlanuriAprov();
 	
 	public Comanda creareComanda(Integer nrComanda, Date dataComanda, Furnizori furnizor, Oferta oferta, Double valoareTotalaComanda);	
 	
@@ -249,9 +256,7 @@ public interface AchizitiiSrv {
 	 */	
 	  	
 	 
-	 LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie,
-			Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie, Gestiune gest);
-	 
+	public LiniiNIR  creareLiniiNIR(NIR nir, Integer nrLInie, Material material, Double cantitate, Double pret, Double valoareLinie, Double tvaLinie);	 
 	 /**
 	 * Scop				 Aociere Linie Notei de receptie
 	 * @param nrNIR	
@@ -263,10 +268,9 @@ public interface AchizitiiSrv {
 	 * 
 	 */	
 	     
-	public void trimitereMaterialLaStoc2( Material material, Double cantitate, Double pret, Gestiune gestiune);
+	//public void trimitereMaterialLaStoc2( Material material, Double cantitate, Double pret, Gestiune gestiune);
 		
-	public Double crestereStoc(Material material, Gestiune gestiune, NIR nir, LiniiNIR lNIR);
-	
+	public Double crestereStoc(Material material, NIR nir, LiniiNIR lNIR);	
 //	public void intrareStoc(LiniiNIR linie, Gestiune gestiune);
 //	
 //	public Articol getArticolByGestiune(Material material, Gestiune gestiune);
