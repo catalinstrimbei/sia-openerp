@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
-import org.open.erp.services.personal.Angajat;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.TIMESTAMP;
@@ -24,8 +22,9 @@ public class Facturi {
 	@Temporal(TIMESTAMP)
 	Date data;
 	
-	@OneToOne(targetEntity = org.open.erp.services.personal.Angajat.class)
-	Angajat responsabil;
+	
+	@OneToOne(targetEntity = org.open.erp.services.vanzari.Persoana.class)
+	Persoana responsabil;
 	
 	@OneToOne(targetEntity = org.open.erp.services.vanzari.Avize.class)
 	Avize avizCorespondent;
@@ -45,8 +44,7 @@ public class Facturi {
 
 
 
-
-	public Facturi(Integer idFactura, Date data, Angajat responsabil,
+	public Facturi(Integer idFactura, Date data, Persoana responsabil,
 			Avize avizCorespondent, Comenzi comanda,
 			List<LiniiFactura> liniiFactura) {
 		super();
@@ -58,13 +56,11 @@ public class Facturi {
 		this.liniiFactura = liniiFactura;
 	}
 
-	
-	
+
 
 	public Integer getIdFactura() {
 		return idFactura;
 	}
-
 
 
 
@@ -74,11 +70,9 @@ public class Facturi {
 
 
 
-
 	public Date getData() {
 		return data;
 	}
-
 
 
 
@@ -88,18 +82,15 @@ public class Facturi {
 
 
 
-
-	public Angajat getAngajat() {
+	public Persoana getResponsabil() {
 		return responsabil;
 	}
 
 
 
-
-	public void setAngajat(Angajat responsabil) {
+	public void setResponsabil(Persoana responsabil) {
 		this.responsabil = responsabil;
 	}
-
 
 
 
@@ -109,11 +100,9 @@ public class Facturi {
 
 
 
-
 	public void setAvizCorespondent(Avize avizCorespondent) {
 		this.avizCorespondent = avizCorespondent;
 	}
-
 
 
 
@@ -123,11 +112,9 @@ public class Facturi {
 
 
 
-
 	public void setComanda(Comenzi comanda) {
 		this.comanda = comanda;
 	}
-
 
 
 
@@ -137,11 +124,9 @@ public class Facturi {
 
 
 
-
 	public void setLiniiFactura(List<LiniiFactura> liniiFactura) {
 		this.liniiFactura = liniiFactura;
 	}
-
 
 
 
