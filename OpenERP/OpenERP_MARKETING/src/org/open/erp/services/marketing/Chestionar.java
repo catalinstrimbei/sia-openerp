@@ -19,22 +19,23 @@ import javax.persistence.TemporalType;
 import org.open.erp.services.nomgen.Persoana;
 
 @Entity
-public class Chestionar implements Serializable{
-	
-	@Id @GeneratedValue
+public class Chestionar implements Serializable {
+
+	@Id
+	@GeneratedValue
 	long id;
-	
+
 	@Temporal(TemporalType.DATE)
 	Date data;
-	
+
 	String titlu;
-	
+
 	@ManyToOne
 	Persoana persoanaChestionata;
-	
+
 	@ManyToOne
 	CercetarePiata cercetarePiata;
-	
+
 	@OneToMany(mappedBy = "chestionar", targetEntity = Intrebare.class, cascade = ALL, fetch = EAGER)
 	Set<Intrebare> intrebariChestionar = new HashSet<Intrebare>();
 

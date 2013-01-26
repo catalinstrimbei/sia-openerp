@@ -15,7 +15,7 @@ public interface MarketingSrv {
 
 	public void setNomgenSrv(NomenclatoareSrv nomgenSrv);
 
-	//public void setPersonalSrv(PersonalSrv personalSrv);
+	// public void setPersonalSrv(PersonalSrv personalSrv);
 
 	public Promotie crearePromotie(Promotie promotie);
 
@@ -30,6 +30,6 @@ public interface MarketingSrv {
 	public CercetarePiata creareCercetarePiata(CercetarePiata cercetarePiata);
 
 	public Reclamatie creareReclamatie(Reclamatie reclamatie);
-	
+
 	public CampaniePromovare findCampanieById(long id);
 }
