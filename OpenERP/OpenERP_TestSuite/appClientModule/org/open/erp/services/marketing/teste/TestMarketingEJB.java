@@ -37,7 +37,7 @@ public class TestMarketingEJB {
 	public static void setUpBeforeClass() throws Exception {
 		marketingInstance = 
 			MarketingSrvFactory.getMarketingSrv();
-		logger.info("initTest " + marketingInstance);
+		//logger.info("initTest " + marketingInstance);
 	}
 
 	@Test
@@ -80,14 +80,15 @@ public class TestMarketingEJB {
 		logger.setLevel(Level.DEBUG);
 		logger.info("Begin test testChestionar!");
 		
-		RaspunsIntrebare raspunsIntrebareNou = marketingInstance.creareRaspunsIntrebare("raspuns corect");
+		RaspunsIntrebare raspunsIntrebareNou = new RaspunsIntrebare(1, "text");
+		marketingInstance.creareRaspunsIntrebare(raspunsIntrebareNou);
 		// //////////////////////
-		Intrebare intrebareNoua = marketingInstance.creareIntrebare("intrebare");
-		intrebareNoua.getRaspunsuriIntrebare().add(raspunsIntrebareNou);
-		// //////////////////////
-		Persoana persoanaChestionata = nomgenSrv.crearePF(null, null, null, null, null, null, null, null, null);
-		Chestionar chestionarNou = marketingInstance.creareChestionar(null, "Chestionar1", persoanaChestionata);
-		chestionarNou.getIntrebariChestionar().add(intrebareNoua);
+		Intrebare intrebareNoua = new Intrebare();
+		marketingInstance.creareIntrebare(intrebareNoua);
+		/////////////////////////
+		
+		Chestionar chestionarNou = new Chestionar();
+		marketingInstance.creareChestionar(chestionarNou);
 		
 		logger.info("End test testChestionar");
 	}

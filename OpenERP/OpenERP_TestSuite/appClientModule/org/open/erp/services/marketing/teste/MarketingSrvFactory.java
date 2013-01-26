@@ -8,6 +8,9 @@ import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.marketing.MarketingSrv;
+import org.open.erp.services.marketing.impl.MarketingSrvImpl;
+import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
+import org.open.erp.services.nommat.impl.NomenclatorMaterialeImpl;
 
 public class MarketingSrvFactory {
 	
@@ -15,6 +18,14 @@ private static Logger logger = Logger.getLogger(MarketingSrvFactory.class.getNam
 	
 	public static MarketingSrv getMarketingSrv() throws Exception{
 		return (MarketingSrv) lookupEJBService();
+	}
+	
+	public static MarketingSrv getMrktSrv(){
+		MarketingSrv mrktSrv = new MarketingSrvImpl();
+				
+		logger.info("Creare MarketingSrv instance from MarketingSrvFactory!");
+		
+		return mrktSrv;
 	}
 	
     private static <T> T lookupEJBService() throws NamingException {
