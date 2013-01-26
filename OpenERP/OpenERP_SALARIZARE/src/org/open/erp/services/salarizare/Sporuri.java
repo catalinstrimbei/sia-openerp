@@ -1,14 +1,28 @@
 package org.open.erp.services.salarizare;
 
+
 import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.ManyToOne;
+
+import static javax.persistence.GenerationType.AUTO;
 import org.open.erp.services.personal.Angajat;
+
+@Entity
 public class Sporuri implements Serializable{
 
+	
+	@Id
+	@GeneratedValue(strategy = AUTO)
 	private Integer cod_Spor;
 	private String denumire_Spor;
 	private Integer tip_Spor;
 	private Integer an;
 	private Integer luna;
+	@ManyToOne
 	private Angajat angajat;
 	private Integer modCalcul;
 	private Double  valoare;

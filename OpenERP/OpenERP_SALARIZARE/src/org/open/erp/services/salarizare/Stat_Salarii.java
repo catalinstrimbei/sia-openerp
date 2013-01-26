@@ -1,16 +1,29 @@
 package org.open.erp.services.salarizare;
 
 import java.io.Serializable;
+import javax.persistence.JoinColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-
+@Entity
 public class Stat_Salarii implements Serializable{
 	
+	
+	/**
+	 * 
+	 */
+	@Id
+	@GeneratedValue
 	private Integer Cod_Stat_Salarii;
 	private Double Salariu_Brut;
 	private Double Impozit;
 	private Double Alte_Retineri;
 	private Double Alte_Sporuri;
 	private Double Salariu_Net;
+	@OneToOne
+	@JoinColumn(name = "pontaj_cod_Pontaj", referencedColumnName = "cod_Pontaj")
 	private Pontaje Pontaje;
 	private Double CAS;
 	private Double CASS;

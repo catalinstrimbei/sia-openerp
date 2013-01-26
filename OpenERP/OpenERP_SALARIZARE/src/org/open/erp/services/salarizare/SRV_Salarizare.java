@@ -2,20 +2,35 @@ package org.open.erp.services.salarizare;
 import java.util.List;
 import org.open.erp.services.personal.Angajat;
 public interface SRV_Salarizare {
+	
+	
 	/**
-	 * @ApplicationServiceFacade(ServiceAPI)
-	 * 
+	 * @EntitatiLocale: Pontaje, Retineri, Sporuri, Config, Stat_Salarii, Centralizare_Stat_Plata
 	 * @Dependente:  NomenclatoareSrv, PersonalSrv,
-	 * 
-	 * @EntitatiNomenclatoare: Departament,Persoana
-	 * 
 	 * @EntitatiPersonalSrv: Angajat
-	 * 
-	 * @EntitatiLocale: Pontaj, Retinere, Spor, Configurare, StatSalarii, CentralizatorStatSalarii 
 	 * 
 
 	 * 
-	 * @UseCase("Adaugare ore suplimentare si de concediu"):
+
+	 * 
+	 * 	 * @UseCase("Inregistrarea unui pontaj"):
+	 * 1. Creaza instanta pontajului
+	 * 2. Inregistrarea pontajul pentru un anume angajat
+	 * *. Returneaza pontaj initializat pentru un angajat
+	 * 
+	 * @UseCase("inregistrare pontaj la nivel de luna"):
+	 * 1. Creaza instanta pontaj pe fiecare angajat
+	 * 2. Incarcare angajati cu contract activ
+	 * 3. Inregistrare pontaj pe angajat pentru o anumita luna 
+	 * 
+	 * @UseCase("Generare centralizator stat salarii")
+	 *  1.Incarcare calcule luna
+	 *  2.Agregare sume
+	 *  3.Generare totaluri pentru contabilitate
+	 * 
+	 *  
+	 * 
+	 * @UseCase("Adaugare ore suplimentare sau concediu"):
 	 * 1.Incarcare pontaj angajat
 	 * 2.Editare manuala a pontajului 
 	 * 3.Adaugare ore suplimentare si de concediu
@@ -29,35 +44,18 @@ public interface SRV_Salarizare {
 	 * 5.Calcul Impozit
 	 * 6.Calcul Venit Net
 	 * 7.Generare stat plata
-	 * 
-	 * 	 * @UseCase("inregistrare pontaj"):
-	 * 1. Creaza instanta pontaj
-	 * 2. Inregistrare pontaj pe angajat
-	 * *. Returneata pontaj initializat pentru un angajat
-	 * 
-	 * @UseCase("inregistrare pontaj la nivel de luna"):
-	 * 1. Creaza instanta pontaj pe fiecare angajat
-	 * 2. Incarcare angajati cu contract activ
-	 * 3. Inregistrare pontaj pe angajat pentru o anumita luna 
-	 * 
-	 * @UseCase("Generare centralizator stat salarii")
-	 *  1.Incarcare calcule luna
-	 *  2.Agregare sume
-	 *  3.Generare totaluri pentru contabilitate
-	 * 
-	 *  
 	 */
 	
 	/**
 	 * Inregistreaza un pontaj pentru un anumit Angajat
 	 * 
-	 * @param idPontaj			id-ul pontajului
-	 * @param angajat			Angajatul pentru care se creeaza pontajul
-	 * @param an 				Anul pentru care se realizeaza pontajul
-	 * @param luna 				Luna pentru care se realizeaza pontajul
-	 * @param oreLucrate 		Numarul de ore lucrate 
-	 * @param oreSupliemntare 	Numarul de ore suplimentare lucrate
-	 * @param oreConcediu 		Numarul de ore concediu 
+	 * @param cod_Pontaj			Cod-ul pontajului
+	 * @param angajat			        Angajatul pentru care se creeaza pontajul
+	 * @param Pontaj_an 				Anul pentru care se realizeaza pontajul
+	 * @param Pontaj_luna 				Luna pentru care se realizeaza pontajul
+	 * @param Pontaj_oreLucrate 		Numarul de ore lucrate 
+	 * @param pontaj_oreSuplimentare 	Numarul de ore suplimentare lucrate
+	 * @param Pontaj_oreConcediu 		Numarul de ore concediu 
 	 * 
 	 * @return instanta Pontaj nou creata. 
 	 * @throws Exception 
@@ -67,35 +65,34 @@ public interface SRV_Salarizare {
 	/**
 	 * Inregistreaza pontajele tuturor angajatilor pornind de la numarul de ore lucratoare din luna
 	 * 
-	 * @param an 				Anul pentru care se realizeaza pontajul
-	 * @param luna 				Luna pentru care se realizeaza pontajul
+	 * @param Pontaj_an 				Anul pentru care se realizeaza pontajul
+	 * @param Pontaj_luna 				Luna pentru care se realizeaza pontajul
+	 * 
+	 * @return  
+	 * @throws Pontaj_oreConcediu 
+	 * 
+	 */
+
+	void adaugaOreConcediu(Pontaje pontaje, Double oreConcediu) throws Exception;
+	
+	/**
+	 * Adauga ore suplimentare pt un anumit pontaj (insemnand un angajat/luna/an)
+	 * 
+	 * @param pontaj 			        pontaj pe un angajat/an/luna
+	 * @param pontaj_oreSuplimentare 	Numarul de ore suplimentare
 	 * 
 	 * @return  
 	 * @throws Exception 
 	 * 
 	 */
 	void inregistrarePontajLuna(Integer an, Integer luna) throws Exception;
-	//List<Pontaj> inregistrarePontajLuna(Integer an, Integer Luna); //o sa declare un array de angajati o sa-l ia din personal srv si pt fiecare o sa apeleze inregistrare Pontaj, si o sa puna in array de pontaje pe care il returneaza
-	//void inregistrarePontajLunaAngajati(Integer an, Integer Luna, List<Angajat> angajat);
 	
 	
 	/**
 	 * Adauga ore concediu pt un anumit pontaj (insemnand un angajat/luna/an)
-	 * 
-	 * @param pontaj 			pontaj pe un angajat/an/luna
-	 * @param oreConcediu 		Numarul de ore concediu
-	 * 
-	 * @return  
-	 * @throws Exception 
-	 * 
-	 */
-	void adaugaOreConcediu(Pontaje pontaje, Double oreConcediu) throws Exception;
-	
-	/**
-	 * Adauga ore suplimentare pt un anumit pontaj (insemnand un angajat/luna/an)
-	 * 
-	 * @param pontaj 			pontaj pe un angajat/an/luna
-	 * @param oreSuplimentare 	Numarul de ore suplimentare
+	 *  
+	 * @param pontaj 			         pontaj pe un angajat/an/luna
+	 * @param Pontaj_oreConcediu 		Numarul de ore concediu
 	 * 
 	 * @return  
 	 * @throws Exception 
@@ -106,13 +103,14 @@ public interface SRV_Salarizare {
 	/**
 	 * Adauga spor pentru un angajat sau pt toti angajatii (practic e un create din CRUD)
 	 * 
-	 * @param id				Id-ul Sporului
-	 * @param denumire			Denumirea Sporului
-	 * @param tip				1=>La nivel de angajat, 2=>pt toti angajatii (angajat va fi trimis null)
 	 * @param an 				Anul pentru care se adauga sporul
 	 * @param luna 				Luna pentru care se adauga sporul
 	 * @param angajat			Angajatul pentru care adauga sporul
 	 * @param modCalcul			1=>suma fixa, 2=>procent din salarul de baza (obtinut de undeva din PersonalSrv)
+
+	 * @param cod_Spor				Cod-ul Sporului
+	 * @param denumire_Spor			Denumirea Sporului
+	 * @param tip_Spor				1=>La nivel de angajat, 2=>pt toti angajatii (angajat va fi trimis null)
 	 * 
 	 * @return  Spor
 	 * @throws Exception 
@@ -149,13 +147,13 @@ public interface SRV_Salarizare {
 	/**
 	 * Adauga o retinere pentru un angajat sau pt toti angajatii (practic e un create din CRUD)
 	 * 
-	 * @param denumire			id retinere
-	 * @param denumire			Denumirea retinerii
-	 * @param tip				1=>La nivel de angajat, 2=>pt toti angajatii (angajat va fi trimis null)
+	 * @param cod_Retinere			Cod retinere
+	 * @param denumire_Retinere			Denumirea retinerii
+	 * @param tip_Retinere				1=>La nivel de angajat, 2=>pt toti angajatii (angajat va fi trimis null)
 	 * @param an 				Anul pentru care se adauga sporul
 	 * @param luna 				Luna pentru care se adauga sporul
 	 * @param angajat			Angajatul pentru care adauga sporul
-	 * @param modCalcul			1=>suma fixa, 2=>procent din salarul de baza (obtinut de undeva din PersonalSrv)
+	 * @param mod_Calcul			1=>suma fixa, 2=>procent din salarul de baza (obtinut de undeva din PersonalSrv)
 	 * 
 	 * @return  Retinere
 	 * @throws Exception 
@@ -226,13 +224,13 @@ public interface SRV_Salarizare {
 	 * @param an 				Anul pentru care se calculeaza salarul net
 	 * @param luna 				Luna pentru care se calculeaza salarul net
 	 * @param angajat			Angajatul pentru care se calculeaza salarul net
-	 * @venitBrut				venitul brut al angajatului (vezi metoda calculVenitBrut)
-	 * @cas						cas angajat (vezi metoda calculRetineriObligatorii)
-	 * @cass					cass angajat (vezi metoda calculRetineriObligatorii)
-	 * @somaj					somaj angajat (vezi metoda calculRetineriObligatorii)
-	 * @impozit					impozit angajat (vezi metoda calculImpozit)
-	 * @retineriAlte			alte retineri angajat (vezi metoda calculRetineriAngajat)
-	 * @deduceri				deduceri angajat (vezi metoda calculDeduceri)
+	 * @param Salariu_Brut				venitul brut al angajatului (vezi metoda calculVenitBrut)
+	 * @param CAS						cas angajat (vezi metoda calculRetineriObligatorii)
+	 * @param CASS					cass angajat (vezi metoda calculRetineriObligatorii)
+	 * @param Somaj					somaj angajat (vezi metoda calculRetineriObligatorii)
+	 * @param Impozit					impozit angajat (vezi metoda calculImpozit)
+	 * @param Alte_Retineri			alte retineri angajat (vezi metoda calculRetineriAngajat)
+	 * @param Deduceri				deduceri angajat (vezi metoda calculDeduceri)
 	 * 
 	 * @return  Double - valoarea salarului net
 	 * 
@@ -276,8 +274,8 @@ public interface SRV_Salarizare {
 	
 	/**
 	 * returneaza pontajul pentru un anumit angajat si o luna  
-	 * @param an 				Anul pentru care se returneaza pontajul
-	 * @param luna 				Luna pentru care se returneaza pontajul
+	 * @param Pontaj_an 				Anul pentru care se returneaza pontajul
+	 * @param Pontaj_luna 				Luna pentru care se returneaza pontajul
 	 * @param angajat			Angajatul pentru care se returneaza pontajul 
 	 * 
 	 * @return  Pontaj
@@ -288,10 +286,10 @@ public interface SRV_Salarizare {
 	
 	/**
 	 * returneaza pontajele pentru un an si o luna  
-	 * @param an 				Anul pentru care se returneaza pontajele
-	 * @param luna 				Luna pentru care se returneaza pontajele
+	 * @param Pontaj_an 				Anul pentru care se returneaza pontajele
+	 * @param Pontaj_luna 				Luna pentru care se returneaza pontajele
 	 * 
-	 * @return  List<Pontaj>
+	 * @return  List<Pontaje>
 	 * @throws Exception 
 	 * 
 	 */
@@ -303,7 +301,7 @@ public interface SRV_Salarizare {
 	 * @param luna 				Luna pentru care se returneaza sporurile
 	 * @param angajat			Angajatul pentru care se returneaza sporurile
 	 * 
-	 * @return  List<Spor>
+	 * @return  List<Sporuri>
 	 * @throws Exception 
 	 * 
 	 */
@@ -315,7 +313,7 @@ public interface SRV_Salarizare {
 	 * @param luna 				Luna pentru care se returneaza retinerile
 	 * @param angajat			Angajatul pentru care se returneaza retinerile
 	 * 
-	 * @return  List<Retinere>
+	 * @return  List<Retineri>
 	 * @throws Exception 
 	 * 
 	 */
@@ -326,7 +324,7 @@ public interface SRV_Salarizare {
 	 * @param an 				Anul pentru care se returneaza salariile
 	 * @param luna 				Luna pentru care se returneaza salariile
 	 * 
-	 * @return  List<StatSalarii>
+	 * @return  List<Stat_Salarii>
 	 * @throws Exception 
 	 * 
 	 */
@@ -337,7 +335,7 @@ public interface SRV_Salarizare {
 	 * @param an 				Anul pentru care se returneaza statul de salarii
 	 * @param luna 				Luna pentru care se returneaza statul de salarii
 	 * 
-	 * @return CentralizatorStatSalarii 
+	 * @return Centralizare_Stat_lata 
 	 * @throws Exception 
 	 * 
 	 */
@@ -345,7 +343,7 @@ public interface SRV_Salarizare {
 	
 	/**
 	 * sterge un centralizator de salarii pornind de la id 
-	 * @param idCentralizator   id-ul centralizatorului care se doreste a fi sters 				I
+	 * @param cod_Centralizator   cod-ul centralizatorului care se doreste a fi sters 				I
 	 * 
 	 * @return  
 	 * @throws Exception 
@@ -355,7 +353,7 @@ public interface SRV_Salarizare {
 	
 	/**
 	 * returneaza sporurile generale care nu sunt legate de un angajat   
-	 * @return  List<Spor>
+	 * @return  List<Sporuri>
 	 * @throws Exception 
 	 * 
 	 */
@@ -364,7 +362,7 @@ public interface SRV_Salarizare {
 
 	/**
 	 * sterge un spor pornind de la id 
-	 * @param idSpor   id-ul sporului care se doreste a fi sters 				I
+	 * @param Cod_Spor   id-ul sporului care se doreste a fi sters 				I
 	 * 
 	 * @return  
 	 * @throws Exception 
@@ -374,7 +372,7 @@ public interface SRV_Salarizare {
 
 	/**
 	 * sterge o retinere 
-	 * @param Retinere
+	 * @param Retineri
 	 * 
 	 * @return  
 	 * @throws Exception 
@@ -384,7 +382,7 @@ public interface SRV_Salarizare {
 	
 	/**
 	 * sterge un pontaj  
-	 * @param Pontaj   
+	 * @param Pontaje   
 	 * 
 	 * @return  
 	 * @throws Exception 
@@ -394,7 +392,7 @@ public interface SRV_Salarizare {
 	
 	/**
 	 * sterge un stat salarii  
-	 * @param StatSalarii   
+	 * @param Stat_Salarii   
 	 * 
 	 * @return  
 	 * @throws Exception 
@@ -404,9 +402,9 @@ public interface SRV_Salarizare {
 
 	/**
 	 * salveaza un stat salarii  
-	 * @param StatSalarii   
+	 * @param Stat_Salarii   
 	 * 
-	 * @return StatSalarii 
+	 * @return Stat_Salarii 
 	 * @throws Exception 
 	 * 
 	 */
@@ -414,7 +412,7 @@ public interface SRV_Salarizare {
 
 	/**
 	 * returneaza retinerile generale care nu sunt legate de un angajat   
-	 * @return  List<Retinere>
+	 * @return  List<Retinerei>
 	 * @throws Exception 
 	 * 
 	 */
@@ -424,7 +422,7 @@ public interface SRV_Salarizare {
 	 * returneaza pontajul pentru un anumit angajat   
 	 * @param angajat			Angajatul pentru care se returneaza pontajul 
 	 * 
-	 * @return  List<Pontaj>
+	 * @return  List<Pontaje>
 	 * @throws Exception 
 	 * 
 	 */

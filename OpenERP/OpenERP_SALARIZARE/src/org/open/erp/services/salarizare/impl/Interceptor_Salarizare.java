@@ -6,7 +6,7 @@ import javax.interceptor.InvocationContext;
 
 public class Interceptor_Salarizare {
 	
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Implement_Salarizare.class.getName());
 
 	//validare parametri metode
 		@AroundInvoke
@@ -14,16 +14,16 @@ public class Interceptor_Salarizare {
 			// Decodifica informatii privind contextul de invocare
 			Class targetBeanClass = ctx.getTarget().getClass();
 			String invokedMethodName = ctx.getMethod().getName();
-			SalarizareImpl ejbean = (SalarizareImpl) ctx.getTarget();
+			Implement_Salarizare ejbean = (Implement_Salarizare) ctx.getTarget();
 			
 			logger.info("#### call of logValidationResult: " + targetBeanClass.getName() + "." + invokedMethodName);
 			// Executa logica de interceptare
 			if (
-					("inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))||
-					("calculSporuriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
-					("calculVenitBrut".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
-					("calculRetineriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
-					("inregistrarStatSalariiLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))
+					("inregistrarePontajLuna".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))||
+					("calculSporuriAngajat".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   ||
+					("calculVenitBrut".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   ||
+					("calculRetineriAngajat".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   ||
+					("inregistrarStatSalariiLuna".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))
 					)
 			{
 				//verifica parametri An/Luna sa aiba valori intre 2000 si 2050, respectiv 1 si 12
@@ -50,12 +50,12 @@ public class Interceptor_Salarizare {
 			// Decodifica informatii privind contextul de invocare
 			Class targetBeanClass = ctx.getTarget().getClass();
 			String invokedMethodName = ctx.getMethod().getName();
-			SalarizareImpl ejbean = (SalarizareImpl) ctx.getTarget();
+			Implement_Salarizare ejbean = (Implement_Salarizare) ctx.getTarget();
 			
 			logger.info("#### call of logValidationSalar: " + targetBeanClass.getName() + "." + invokedMethodName);
 			// Executa logica de interceptare
 			if (
-					("calculSalarNet".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))
+					("calculSalarNet".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))
 					)
 			{
 				//verifica salarul calculat sa nu fie ngativ
@@ -90,16 +90,16 @@ public class Interceptor_Salarizare {
 		// Decodifica informatii privind contextul de invocare
 		Class<? extends Object> targetBeanClass = ctx.getTarget().getClass();
 		String invokedMethodName = ctx.getMethod().getName();
-		SalarizareImpl ejbean = (SalarizareImpl) ctx.getTarget();
+		Implement_Salarizare ejbean = (Implement_Salarizare) ctx.getTarget();
 		
 		logger.info("#### call of logEJBInjection: " + targetBeanClass.getName() + "." + invokedMethodName);
 		// Executa logica de interceptare pt fiecare metoda care foloseste personalSrv
 		if (
-				("inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass)) ||
-				("calculSporuriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
-				("calculVenitBrut".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
-				("calculRetineriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
-				("inregistrarStatSalariiLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   
+				("inregistrarePontajLuna".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass)) ||
+				("calculSporuriAngajat".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   ||
+				("calculVenitBrut".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   ||
+				("calculRetineriAngajat".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   ||
+				("inregistrarStatSalariiLuna".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   
 				)
 		{
 			logger.info("#### personalSrv: " + (ejbean.getPersonalSrv()!=null? " is injected, ":" isn't injected, ") 
@@ -116,16 +116,16 @@ public class Interceptor_Salarizare {
 		// Decodifica informatii privind contextul de invocare
 		Class targetBeanClass = ctx.getTarget().getClass();
 		String invokedMethodName = ctx.getMethod().getName();
-		SalarizareImpl ejbean = (SalarizareImpl) ctx.getTarget();
+		Implement_Salarizare ejbean = (Implement_Salarizare) ctx.getTarget();
 		
 		logger.info("#### call of logInvocationResult: " + targetBeanClass.getName() + "." + invokedMethodName);
 		// Executa logica de interceptare
 		if (
-				("inregistrarePontajLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))||
-				("calculSporuriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
-				("calculVenitBrut".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
-				("calculRetineriAngajat".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))   ||
-				("inregistrarStatSalariiLuna".equals(invokedMethodName) && SalarizareImpl.class.equals(targetBeanClass))
+				("inregistrarePontajLuna".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))||
+				("calculSporuriAngajat".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   ||
+				("calculVenitBrut".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   ||
+				("calculRetineriAngajat".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))   ||
+				("inregistrarStatSalariiLuna".equals(invokedMethodName) && Implement_Salarizare.class.equals(targetBeanClass))
 				)
 		{
 			Object invocationResult = ctx.proceed();

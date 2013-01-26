@@ -1,14 +1,24 @@
 package org.open.erp.services.salarizare;
 
 import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.AUTO;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import org.open.erp.services.personal.Angajat;
 
+
+@Entity
 public class Pontaje implements Serializable{
 
-	
+	@Id
+	@GeneratedValue(strategy = AUTO)
 	private Integer cod_Pontaj;
 	private Integer Pontaj_an;
 	private Integer Pontaj_luna;
+	@ManyToOne
 	private Angajat angajat;
 	private Double Pontaj_oreLucrate;
 	private Double pontaj_oreSuplimentare;

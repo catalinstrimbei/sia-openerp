@@ -1,15 +1,30 @@
 package org.open.erp.services.salarizare;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.Transient;
+
+import static javax.persistence.TemporalType.DATE;
+
+
+@Entity
 public class Centralizare_Stat_Plata implements Serializable {
 
-	
+	@Id
+	@GeneratedValue
 	private Integer Cod;
 	private Integer An;
 	private Integer Luna;
+	
+	@Transient
 	private List<Stat_Salarii> centralizator = new ArrayList<Stat_Salarii>();
 	private Double total_Salar_Brut;
 	private Double total_Impozit;
@@ -20,6 +35,37 @@ public class Centralizare_Stat_Plata implements Serializable {
 	private Double total_CASS;
 	private Double total_Somaj;
 	
+	public Centralizare_Stat_Plata(Integer cod, Integer an, Integer luna,
+			List<Stat_Salarii> centralizator, Double total_Salar_Brut,
+			Double total_Impozit, Double total_Alte_Retineri,
+			Double total_Alte_Sporuri, Double total_Salar_Net,
+			Double total_CAS, Double total_CASS, Double total_Somaj,
+			Date data_Centralizator) {
+		super();
+		Cod = cod;
+		An = an;
+		Luna = luna;
+		this.centralizator = centralizator;
+		this.total_Salar_Brut = total_Salar_Brut;
+		this.total_Impozit = total_Impozit;
+		this.total_Alte_Retineri = total_Alte_Retineri;
+		this.total_Alte_Sporuri = total_Alte_Sporuri;
+		this.total_Salar_Net = total_Salar_Net;
+		this.total_CAS = total_CAS;
+		this.total_CASS = total_CASS;
+		this.total_Somaj = total_Somaj;
+		this.data_Centralizator = data_Centralizator;
+	}
+	public Date getdata_Centralizator() {
+		return data_Centralizator;
+	}
+
+	public void addStat_Salarii(Stat_Salarii s){
+		this.centralizator.add(s);
+	}
+	
+	@Temporal(DATE)
+	private Date data_Centralizator;
 	public Integer getCod() {
 		return Cod;
 	}
@@ -68,10 +114,10 @@ public class Centralizare_Stat_Plata implements Serializable {
 	public void setTotal_Alte_Sporuri(Double total_Alte_Sporuri) {
 		this.total_Alte_Sporuri = total_Alte_Sporuri;
 	}
-	public Double getTotal_Sala_Net() {
+	public Double getTotal_Salar_Net() {
 		return total_Salar_Net;
 	}
-	public void setTotal_Sala_Net(Double total_Sala_Net, Double total_Salar_Net) {
+	public void setTotal_Salar_Net(Double total_Salar_Net) {
 		this.total_Salar_Net = total_Salar_Net;
 	}
 	public Double getTotal_CAS() {
@@ -92,6 +138,12 @@ public class Centralizare_Stat_Plata implements Serializable {
 	public void setTotal_Somaj(Double total_Somaj) {
 		this.total_Somaj = total_Somaj;
 	}
+	public Date getData_Centralizator() {
+		return data_Centralizator;
+	}
+	public void setData_Centralizator(Date data_Centralizator) {
+		this.data_Centralizator = data_Centralizator;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,6 +153,10 @@ public class Centralizare_Stat_Plata implements Serializable {
 		result = prime * result + ((Luna == null) ? 0 : Luna.hashCode());
 		result = prime * result
 				+ ((centralizator == null) ? 0 : centralizator.hashCode());
+		result = prime
+				* result
+				+ ((data_Centralizator == null) ? 0 : data_Centralizator
+						.hashCode());
 		result = prime
 				* result
 				+ ((total_Alte_Retineri == null) ? 0 : total_Alte_Retineri
@@ -115,11 +171,11 @@ public class Centralizare_Stat_Plata implements Serializable {
 				+ ((total_CASS == null) ? 0 : total_CASS.hashCode());
 		result = prime * result
 				+ ((total_Impozit == null) ? 0 : total_Impozit.hashCode());
-		result = prime * result
-				+ ((total_Salar_Net == null) ? 0 : total_Salar_Net.hashCode());
 		result = prime
 				* result
 				+ ((total_Salar_Brut == null) ? 0 : total_Salar_Brut.hashCode());
+		result = prime * result
+				+ ((total_Salar_Net == null) ? 0 : total_Salar_Net.hashCode());
 		result = prime * result
 				+ ((total_Somaj == null) ? 0 : total_Somaj.hashCode());
 		return result;
@@ -153,6 +209,11 @@ public class Centralizare_Stat_Plata implements Serializable {
 				return false;
 		} else if (!centralizator.equals(other.centralizator))
 			return false;
+		if (data_Centralizator == null) {
+			if (other.data_Centralizator != null)
+				return false;
+		} else if (!data_Centralizator.equals(other.data_Centralizator))
+			return false;
 		if (total_Alte_Retineri == null) {
 			if (other.total_Alte_Retineri != null)
 				return false;
@@ -178,15 +239,15 @@ public class Centralizare_Stat_Plata implements Serializable {
 				return false;
 		} else if (!total_Impozit.equals(other.total_Impozit))
 			return false;
-		if (total_Salar_Net == null) {
-			if (other.total_Salar_Net != null)
-				return false;
-		} else if (!total_Salar_Net.equals(other.total_Salar_Net))
-			return false;
 		if (total_Salar_Brut == null) {
 			if (other.total_Salar_Brut != null)
 				return false;
 		} else if (!total_Salar_Brut.equals(other.total_Salar_Brut))
+			return false;
+		if (total_Salar_Net == null) {
+			if (other.total_Salar_Net != null)
+				return false;
+		} else if (!total_Salar_Net.equals(other.total_Salar_Net))
 			return false;
 		if (total_Somaj == null) {
 			if (other.total_Somaj != null)
@@ -195,29 +256,14 @@ public class Centralizare_Stat_Plata implements Serializable {
 			return false;
 		return true;
 	}
-	public Centralizare_Stat_Plata(Integer cod, Integer an, Integer luna,
-			List<Stat_Salarii> centralizator, Double total_Salar_Brut,
-			Double total_Impozit, Double total_Alte_Retineri,
-			Double total_Alte_Sporuri, Double total_Sala_Net, Double total_CAS,
-			Double total_CASS, Double total_Somaj, Double total_Salar_Net) {
-		super();
-		Cod = cod;
-		An = an;
-		Luna = luna;
-		this.centralizator = centralizator;
-		this.total_Salar_Brut = total_Salar_Brut;
-		this.total_Impozit = total_Impozit;
-		this.total_Alte_Retineri = total_Alte_Retineri;
-		this.total_Alte_Sporuri = total_Alte_Sporuri;
-		this.total_Salar_Net = total_Salar_Net;
-		this.total_CAS = total_CAS;
-		this.total_CASS = total_CASS;
-		this.total_Somaj = total_Somaj;
-	}
-	
 
 	
 	
 	
 	
-}
+	
+	}
+
+	
+	
+

@@ -15,7 +15,7 @@ public abstract class Config {
 	public static final Double deducere_III = 200.0;
 	public static final Double deducere_IV = 250.0;
 	
-	public static final Double luna_ore_LUCRATOARE = 160.0;
+	public static final Double luna_ore_lucratoare = 160.0;
 	
 	public static final Double cas_angajat = 9.5; 
 	public static final Double cass_angajat = 6.5;

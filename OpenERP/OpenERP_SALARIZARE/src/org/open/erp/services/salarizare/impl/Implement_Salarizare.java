@@ -1,20 +1,24 @@
 package org.open.erp.services.salarizare.impl;
 
-//import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrv;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
+import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagementType;
+import javax.ejb.TransactionManagement;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.PersonalSrv;
+import org.open.erp.services.nomgen.NomenclatoareSrv;
 //import org.open.erp.services.personal.PersonalSrvLocal;
 //import org.open.erp.services.personal.logger.PersonalLogger;
 import org.open.erp.services.salarizare.Centralizare_Stat_Plata;
@@ -27,22 +31,21 @@ import org.open.erp.services.salarizare.Remote_Salarizare;
 import org.open.erp.services.salarizare.Sporuri;
 import org.open.erp.services.salarizare.Stat_Salarii;
 
+
+@Stateful
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public abstract class Implement_Salarizare implements Local_Salarizare, Remote_Salarizare {
 
 	
-	//private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(SalarizareImpl.class.getName());
 		private static Logger_Salarizare logger;
 		private Registru_Salarizare registru ;
-		//variabila de instanþa de tip EntityManager care sa fie injectata prin adnotarea @PersistenceContext(unitName="OpenERP_ModulPU");
 		@PersistenceContext(unitName="OpenERP_SALARIZARE")
 		private EntityManager em;
 
-		//variabila de instanþã adonatatã @Resource care sã pãstreze referinþa SessionContext;
 		@Resource
 		private SessionContext sessionContext;
 		
 		public Implement_Salarizare() { }
-		//metodã callback - @PostConstruct – în care registrul sau registrele din proiect sã primeascã referinþa EntityManagerului care va fi injectat.
 		@PostConstruct
 		public void init(){
 			logger = new Logger_Salarizare();
@@ -54,12 +57,10 @@ public abstract class Implement_Salarizare implements Local_Salarizare, Remote_S
 		}
 		
 		//TO DO - de schimbar cand se va comite in modulul Personal sa foloseasca interfata locala
-		@EJB(mappedName="PersonalSrv/local") 
+		@EJB(mappedName="PersonalSrv") 
 		private PersonalSrv personalSrv;
 		
-		//private NomenclatoareSrv nomenclatoareSrv;
-
-		
+	
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
 		@Override
@@ -92,13 +93,13 @@ public abstract class Implement_Salarizare implements Local_Salarizare, Remote_S
 			angajati.addAll(this.personalSrv.getListaAngajati());
 			
 			logger.logINFO("Creare pontaj pentru toti angajatii");
-			Integer idPontaj = 999999999;
+			Integer cod_Pontaj = 999999999;
 			//parcurgem si setam pontajul (adica salvam in DB)
 			for (Angajat angajat:angajati){
-				this.inregistrarePontaj(null, angajat, an, luna, Config.luna_ore_LUCRATOARE, 0.0, 0.0);
+				this.inregistrarePontaj(null, angajat, an, luna, Config.luna_ore_lucratoare, 0.0, 0.0);
 			}
 			if (sessionContext.getRollbackOnly() == true){
-				logger.logINFO("END creare pontaj luna - FAILED TRANSACTION");
+				logger.logINFO("END creare pontaj luna - tranzactie esuata");
 			}
 			
 			logger.logINFO("END Creare pontaj luna");
@@ -394,7 +395,7 @@ public abstract class Implement_Salarizare implements Local_Salarizare, Remote_S
 				totalSalarNet += salar.getSalariu_Net();
 				totalSalarBrut += salar.getSalariu_Brut();
 				
-				centralizator.addStat_Salarii(salarii);
+				centralizator.addStat_Salarii(salar);
 			}
 			if(sessionContext.getRollbackOnly()==true){
 				logger.logINFO("END generare centralizator - TRANZACTIE ESUATA!");
@@ -412,7 +413,7 @@ public abstract class Implement_Salarizare implements Local_Salarizare, Remote_S
 		}
 
 		public void setPersonalSrv(PersonalSrv personalSrv) {
-			this.personalSrv = (PersonalSrvLocal) personalSrv;
+			this.personalSrv = (PersonalSrv) personalSrv;
 		}
 
 		public Registru_Salarizare getRegistru() {
@@ -431,7 +432,6 @@ public abstract class Implement_Salarizare implements Local_Salarizare, Remote_S
 				//angajat.setId(id);
 				angajat.setNume("Gigel");
 				angajat.setNumarCopii(2);
-		
 				 angajat = personalSrv.salveazaAngajat(angajat);
 				
 			}
@@ -516,5 +516,7 @@ public abstract class Implement_Salarizare implements Local_Salarizare, Remote_S
 		public Stat_Salarii salveazaStatSalarii(Stat_Salarii statSalarii) throws Exception{
 			return registru.salveazaStatSalarii(statSalarii);
 		}
+
+		
 	
 }
