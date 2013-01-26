@@ -59,7 +59,7 @@ public class Salarizare_Impl_Test {
 
 	public void testInregistrarePontajLuna() throws Exception {
 		logger.info("Start test: inregistrarePontaj");
-		salarizareSrvInstance.inregistrarePontajLuna(2011, 11);
+		salarizareSrvInstance.inregistrarePontajLuna(2013, 11);
 		logger.info("Sfarsit test: inregistrarePontaj");
 	}
 	
@@ -71,7 +71,7 @@ public class Salarizare_Impl_Test {
 		
 		//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 		for (Angajat angajat:angajati){
-		salarizareSrvInstance.calculSporuriAngajat(2011, 11, angajat);
+		salarizareSrvInstance.calculSporuriAngajat(2013, 11, angajat);
 		}
 		logger.info("Sfarsit test: calculSporuriAngajat");
 	}
@@ -145,7 +145,7 @@ public class Salarizare_Impl_Test {
 		
 		//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 		for (Angajat angajat:angajati){
-		salarizareSrvInstance.calculDeduceri(2011, 11, angajat);
+		salarizareSrvInstance.calculDeduceri(2013, 11, angajat);
 		}
 		logger.info("Sfarsit test: calculDeduceriAngajat");
 	}
@@ -153,7 +153,7 @@ public class Salarizare_Impl_Test {
 
 	public void testinregistrarStatSalariiLuna() throws Exception {
 		logger.info("Start test: inregistrareStatSalariiLuna");
-		salarizareSrvInstance.inregistrarStatSalariiLuna(2011, 11);
+		salarizareSrvInstance.inregistrarStatSalariiLuna(2013, 11);
 		logger.info("Sfarsit test: inregistrareStatSalariiLuna");
 	}
 	
@@ -161,7 +161,7 @@ public class Salarizare_Impl_Test {
 	public void testInregistrareSpor() throws Exception {
 		logger.info("Start test: inregistrareSpor");
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
-		Sporuri spor = salarizareSrvInstance.inregistrareSpor(555,"Bonus", 1, 2011, 11, angajat, 1, 100.0);
+		Sporuri spor = salarizareSrvInstance.inregistrareSpor(555,"Bonus", 1, 2013, 11, angajat, 1, 100.0);
 		assertNotNull("Metoda de creare a sporului nu a functionat!", spor);
 		
 		logger.info("V test: inregistrareSpor");
@@ -171,7 +171,7 @@ public class Salarizare_Impl_Test {
 	public void testInregistrareRetinere() throws Exception {
 		logger.info("Start test: inregistrareRetinere");
 		Angajat angajat = personalSrvInstance.getAngajatById(1);
-		Retineri retinere = salarizareSrvInstance.inregistrareRetinere(555,"Penalizare", 1, 2011, 11, angajat, 1, 100.0);
+		Retineri retinere = salarizareSrvInstance.inregistrareRetinere(555,"Penalizare", 1, 2013, 11, angajat, 1, 100.0);
 		assertNotNull("Metoda de creare a retinerii nu a functionat!", retinere);
 		
 		logger.info("Sfarsit test: inregistrareRetinere");

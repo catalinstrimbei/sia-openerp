@@ -220,5 +220,14 @@ public interface PersonalSrv {
 	 * 
 	 */
 	 List<Angajat> getListaAngajati() throws Exception;
+
+	 Angajat	getAngajatById(Integer idAngajat_) throws Exception;
+/**
+ * Scop  Returneaza datele despre un angajat dupa precizarea id-ului
+ * 
+ * @param idAngajat_  id-ul persoanei, element unic de identificare pentru o persoana din cadrul firmei, dupa care se face cautarea
+ * 
+ * @return Obiectul de tip Angajat 
+ * 
+ */
 }
-   
