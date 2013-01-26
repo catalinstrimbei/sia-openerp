@@ -20,14 +20,6 @@ private static Logger logger = Logger.getLogger(MarketingSrvFactory.class.getNam
 		return (MarketingSrv) lookupEJBService();
 	}
 	
-	public static MarketingSrv getMrktSrv(){
-		MarketingSrv mrktSrv = new MarketingSrvImpl();
-				
-		logger.info("Creare MarketingSrv instance from MarketingSrvFactory!");
-		
-		return mrktSrv;
-	}
-	
     private static <T> T lookupEJBService() throws NamingException {
         final Hashtable jndiProperties = new Hashtable();
         jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
