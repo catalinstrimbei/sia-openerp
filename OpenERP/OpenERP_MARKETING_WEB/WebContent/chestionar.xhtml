@@ -14,7 +14,9 @@
 		<table>
 			<tr>
 				<td><h:outputText value="Introduceti data:"></h:outputText> <h:inputText
-						value="#{chestionarBean.data}"></h:inputText></td>
+						value="#{chestionarBean.data}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:inputText></td>
 			</tr>
 			<tr>
 				<td><h:outputText value="Introduceti titlul chestionarului:"></h:outputText>

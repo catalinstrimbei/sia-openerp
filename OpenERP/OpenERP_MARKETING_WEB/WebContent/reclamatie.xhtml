@@ -15,7 +15,9 @@
 		<table>
 			<tr>
 				<td><h:outputText value="Introduceti data:"></h:outputText> <h:inputText
-						value="#{reclamatieBean.data}"></h:inputText></td>
+						value="#{reclamatieBean.data}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:inputText></td>
 			</tr>
 			<tr>
 				<td><h:outputText value="Introduceti persoana reclamanta:"></h:outputText>
