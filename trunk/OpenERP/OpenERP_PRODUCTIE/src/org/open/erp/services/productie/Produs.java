@@ -33,7 +33,8 @@ public class Produs implements Serializable {
 	private Date    dataFabricatiei;
 	private Integer termenValabilitate;
 	private Double pretVanzare= 0.0;
-	private Float procentTVA;
+	private Double procentTVA= 0.24;
+	//private Float procentTVA;
 	
 	//@OneToMany(mappedBy="material",targetEntity=LinieDocument.class, cascade = ALL)
 	//private List<LinieDocument> liniiDocumente=new ArrayList<LinieDocument>();
@@ -80,10 +81,10 @@ public class Produs implements Serializable {
 	public void setPretVanzare(Double pretVanzare) {
 		this.pretVanzare = pretVanzare;
 	}
-	public Float getProcentTVA() {
+	public Double getProcentTVA() {
 		return procentTVA;
 	}
-	public void setProcentTVA(Float procentTVA) {
+	public void setProcentTVA(Double procentTVA) {
 		this.procentTVA = procentTVA;
 	}
 	//public List<LinieDocument> getLiniiDocumente() {
@@ -95,7 +96,7 @@ public class Produs implements Serializable {
 	
 	public Produs(Integer idProdus, String denumire, String categorie,
 			String unitateMasura, Date dataFabricatiei,
-			Integer termenValabilitate, Double pretVanzare, Float procentTVA,
+			Integer termenValabilitate, Double pretVanzare, Double procentTVA,
 			List<LinieDocument> liniiDocumente) {
 		super();
 		this.idProdus = idProdus;
