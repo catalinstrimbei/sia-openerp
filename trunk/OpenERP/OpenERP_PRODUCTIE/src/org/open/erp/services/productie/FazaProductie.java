@@ -381,6 +381,13 @@ public Semifabricat procesareSemifabricat(){
 			return false;
 		return true;
 	}
+	public void adaugaFunctieNecesara(FunctieNecesara functieNecesara) {
+		this.functieNecesare=functieNecesare;
+		
+	}
+	public void addMaterialeReteta(Material materialReteta2) {
+		this.materialReteta=materialReteta;
+	}
 	
 	
 }

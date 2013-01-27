@@ -28,7 +28,7 @@ public class Semifabricat extends Produs implements Serializable {
 	
 	String semifabricat;
 	
-	@OneToMany(mappedBy = "id", targetEntity = Material.class, cascade = ALL, fetch = EAGER)
+	@OneToMany(mappedBy = "semifabricat", targetEntity = Material.class, cascade = ALL, fetch = EAGER)
 	private List<Material> listaMateriale = new ArrayList<Material>();
 	
 	Semifabricat semifabricatContinut;
@@ -82,7 +82,7 @@ public class Semifabricat extends Produs implements Serializable {
 
 	public Semifabricat(Integer idProdus, String denumire, String categorie,
 			String unitateMasura, Date dataFabricatiei,
-			Integer termenValabilitate, Double pretVanzare, Float procentTVA,
+			Integer termenValabilitate, Double pretVanzare, Double procentTVA,
 			List<LinieDocument> liniiDocumente) {
 		super(idProdus, denumire, categorie, unitateMasura, dataFabricatiei,
 				termenValabilitate, pretVanzare, procentTVA, liniiDocumente);
