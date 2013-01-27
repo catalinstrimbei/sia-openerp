@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<title>Form Raport</title>
+</h:head>
+
+<h:body>
+
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">
+		Form_Raport
+	</div>
+		
+	<h:form id="FormRaport">
+		<rich:calendar datePattern="dd/MM/yyyy hh:mm:ss" />
+		
+	<h:commandLink id="Raport" actionListener="#{formMenu.showRaport}" value="Print Raport">
+			<p:attribute name="srcRaport" value="Raport" />
+		</h:commandLink></h:form>
+
+</h:body>
+
+</html>
