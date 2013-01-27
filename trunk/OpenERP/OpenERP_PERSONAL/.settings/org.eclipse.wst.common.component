@@ -2,9 +2,6 @@
     <wb-module deploy-name="OpenERP_PERSONAL">
         <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/src"/>
-        <dependent-module archiveName="OpenERP_NOMGEN.jar" deploy-path="/" handle="module:/resource/OpenERP_NOMGEN/OpenERP_NOMGEN">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="java-output-path" value="/OpenERP_PERSONAL/bin"/>
     </wb-module>
 </project-modules>

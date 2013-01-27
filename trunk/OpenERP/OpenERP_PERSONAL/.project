@@ -3,7 +3,6 @@
 	<name>OpenERP_PERSONAL</name>
 	<comment></comment>
 	<projects>
-		<project>OpenERP_NOMGEN</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
