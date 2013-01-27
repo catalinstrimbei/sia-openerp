@@ -13,7 +13,7 @@ import org.open.erp.services.finplati.FinanciarPlatiSrv;
 @javax.faces.bean.RequestScoped
 public class PersoanaBean implements Serializable{
 
-	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiSrvImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
+	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
 	private FinanciarPlatiSrv financiarPlatiSrv;
 	
 	protected String nume;

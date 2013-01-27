@@ -15,7 +15,7 @@ import org.open.erp.services.finplati.TipPlata;
 @javax.faces.bean.RequestScoped
 public class PlataBean implements Serializable{
 
-	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiSrvImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
+	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
 	private FinanciarPlatiSrv financiarPlatiSrv;
 	
 	//private int buget; ??

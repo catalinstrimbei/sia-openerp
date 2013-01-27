@@ -14,7 +14,7 @@ import org.open.erp.services.finplati.FinanciarPlatiSrv;
 
 public class FacturaStatusBean implements Serializable{
  
-	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiSrvImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
+	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
 	private FinanciarPlatiSrv financiarPlatiSrv;
 
 	private Integer NrFactura;
