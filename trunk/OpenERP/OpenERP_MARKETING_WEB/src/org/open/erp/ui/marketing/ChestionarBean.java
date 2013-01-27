@@ -92,14 +92,12 @@ public class ChestionarBean implements Serializable{
 		
 		Chestionar chestionarNou= new Chestionar();
 		
+		CercetarePiata cercetarePiataNoua=marketingSrv.findCercetarePiataById(idCercetarePiata);
+		cercetarePiata=cercetarePiataNoua;
+		
 		chestionarNou.setData(data);
 		chestionarNou.setTitlu(titlu);
 		chestionarNou.setPersoanaChestionata(persoanaChestionata);
-		
-		CercetarePiata cercetarePiataNoua=marketingSrv.findCercetarePiataById(idCercetarePiata);
-		
-		cercetarePiata=cercetarePiataNoua;
-		
 		chestionarNou.setCercetarePiata(cercetarePiata);
 		
 		marketingSrv.creareChestionar(chestionarNou);
