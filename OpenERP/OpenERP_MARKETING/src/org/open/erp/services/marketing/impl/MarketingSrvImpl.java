@@ -233,6 +233,7 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 			return null;
 		}
 
+		@SuppressWarnings("rawtypes")
 		@Override
 		public Query createNativeQuery(String arg0, Class arg1) {
 			// TODO Auto-generated method stub
@@ -376,5 +377,29 @@ public class MarketingSrvImpl implements MarketingSrv, MarketingSrvLocal {
 		CampaniePromovare campaniePromovare = entityManager.find(CampaniePromovare.class, id);
 
 		return campaniePromovare;
+	}
+
+	@Override
+	public CercetarePiata findCercetarePiataById(long id) {
+
+		CercetarePiata cercetarePiata = entityManager.find(CercetarePiata.class, id);
+
+		return cercetarePiata;
+	}
+
+	@Override
+	public Chestionar findChestionarById(long id) {
+
+		Chestionar chestionar = entityManager.find(Chestionar.class, id);
+
+		return chestionar;
+	}
+
+	@Override
+	public Intrebare findIntrebareById(long id) {
+
+		Intrebare intrebare = entityManager.find(Intrebare.class, id);
+
+		return intrebare;
 	}
 }
