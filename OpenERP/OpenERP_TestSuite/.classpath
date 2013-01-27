@@ -25,15 +25,6 @@
 	<classpathentry kind="lib" path="lib/xnio-api-3.0.3.GA.jar"/>
 	<classpathentry kind="lib" path="lib/xnio-nio-3.0.3.GA.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PROMAN"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_MARKETING"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_STOCURI"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_NOMMAT"/>
-	<classpathentry kind="src" path="/OpenERP_CONTABGEN"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_FINPLATI"/>
-	<classpathentry kind="src" path="/OpenERP_NOMGEN"/>
-	<classpathentry kind="src" path="/OpenERP_BANCI"/>
-	<classpathentry kind="src" path="/OpenERP_ACHIZITII"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PRODUCTIE"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/OpenERP_PERSONAL"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
