@@ -17,7 +17,7 @@ import org.open.erp.services.finplati.Plata;
 @javax.faces.bean.RequestScoped
 public class FurnizorContractBean implements Serializable{
 
-	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiSrvImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
+	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
 	private FinanciarPlatiSrv financiarPlatiSrv;
 
 	private String numeFurnizor;

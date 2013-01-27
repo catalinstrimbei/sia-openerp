@@ -12,7 +12,7 @@ import org.open.erp.services.finplati.ResponsabilPlata;
 @javax.faces.bean.RequestScoped
 
 public class ResponsabilPlataBean implements Serializable {
-	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiSrvImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
+	@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
 	private FinanciarPlatiSrv financiarPlatiSrv;
 
 	private String obsExperienta;
