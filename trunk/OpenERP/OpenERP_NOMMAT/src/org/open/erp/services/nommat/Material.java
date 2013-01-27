@@ -70,7 +70,7 @@ public void setObservatii(String observatii) {
 public String getReteta() {
 	return reteta;
 }
-public void setReteta(String reteta) { //aici trebuie Reteta reteta ...nu String reteta
+public void setReteta(String reteta) { 
 	this.reteta = reteta;
 }
 
