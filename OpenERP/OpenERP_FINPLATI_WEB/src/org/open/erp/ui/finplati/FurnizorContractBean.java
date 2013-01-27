@@ -74,7 +74,7 @@ public class FurnizorContractBean implements Serializable{
 		furnizorContractNou.setCuiFurnizor(cuiFurnizor);
 	
 		
-	  //  financiarPlatiSrv.adaugaFurnizorContract(furnizorContractNou);
+	   financiarPlatiSrv.adaugaFurnizorContract(furnizorContractNou);
 		
 		return "furnizorContractNou";
 	}
