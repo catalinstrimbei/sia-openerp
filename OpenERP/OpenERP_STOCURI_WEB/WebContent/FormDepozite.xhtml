@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head></h:head>
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">
+		Depozite</div>
+	<h:form id="formDepozite">
+		<h:panelGrid columns="2" border="0">
+
+
+			<h:selectOneMenu id="cboDepozite" value="#{formDepozite.depozit}"
+				converter="#{formDepozite}">
+				<p:selectItems value="#{formDepozite.depozite}"></p:selectItems>
+				<p:ajax render="locatie"></p:ajax>
+			</h:selectOneMenu>
+
+			<h:panelGrid columns="3" border="0">
+				<h:commandButton id="cmdPrevious" value="&lt;&lt;"
+					actionListener="#{formDepozite.previousDepozit}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+				<h:commandButton id="cmdNext" value="&gt;&gt;"
+					disabled="#{formDepozite.disableNext}"
+					actionListener="#{formDepozite.nextDepozit}">
+					<p:ajax render="@form"></p:ajax>
+				</h:commandButton>
+
+			</h:panelGrid>
+
+			<!-- Schimba la validator omule  -->
+
+			<h:outputText value="Locatie:"></h:outputText>
+			<h:inputText id="locatie" value="#{formDepozite.depozit.locatie}"></h:inputText>
+
+
+
+
+			<!-- Nu ai action pe butoanele de stergere si abandon omule ! -->
+
+			<p:facet name="footer">
+				<h:panelGrid columns="4" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare"
+						action="#{formDepozite.adaugareDepozit}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere"
+					action="#{formDepozite.stergeDepozit}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Modificare"
+						action="#{formDepozite.salvareDepozit}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						action="#{formDepozite.salvareDepozit}">
+						<p:ajax render="@form" execute="@form"></p:ajax>
+					</h:commandButton>
+				</h:panelGrid>
+			</p:facet>
+
+		</h:panelGrid>
+	</h:form>
+
+</body>
+
+</html>
