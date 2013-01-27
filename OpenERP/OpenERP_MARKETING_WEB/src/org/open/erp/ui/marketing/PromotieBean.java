@@ -23,13 +23,22 @@ public class PromotieBean implements Serializable {
 	@EJB(lookup = "java:global/OpenERP_NOMMAT/NomenclatorMaterialeImpl!org.open.erp.services.nommat.NomenclatorMaterialeSrv")
 	private NomenclatorMaterialeSrv nomMatSrv;
 
-	private CampaniePromovare campaniePromovare = new CampaniePromovare();
-	private Material produsPromotie = new Material();
+	private long idCampanie;
+	private CampaniePromovare campaniePromovare;
+	private Material produsPromotie;
 	private int pretPromotional;
 	private Date dataStart;
 	private Date dataFinal;
 
 	public PromotieBean() {
+	}
+
+	public long getIdCampanie() {
+		return idCampanie;
+	}
+
+	public void setIdCampanie(long idCampanie) {
+		this.idCampanie = idCampanie;
 	}
 
 	public MarketingSrv getMarketingSrv() {
@@ -47,7 +56,7 @@ public class PromotieBean implements Serializable {
 	public void setCampaniePromovare(CampaniePromovare campaniePromovare) {
 		this.campaniePromovare = campaniePromovare;
 	}
-	
+
 	public Material getProdusPromotie() {
 		return produsPromotie;
 	}
@@ -55,7 +64,6 @@ public class PromotieBean implements Serializable {
 	public void setProdusPromotie(Material produsPromotie) {
 		this.produsPromotie = produsPromotie;
 	}
-
 
 	public NomenclatorMaterialeSrv getNomMatSrv() {
 		return nomMatSrv;
@@ -65,13 +73,12 @@ public class PromotieBean implements Serializable {
 		this.nomMatSrv = nomMatSrv;
 	}
 
-/*	public Material getProdusPromotie() {
-		return produsPromotie;
-	}
-
-	public void setProdusPromotie(Material produsPromotie) {
-		this.produsPromotie = produsPromotie;
-	}*/
+	/*
+	 * public Material getProdusPromotie() { return produsPromotie; }
+	 * 
+	 * public void setProdusPromotie(Material produsPromotie) {
+	 * this.produsPromotie = produsPromotie; }
+	 */
 
 	public int getPretPromotional() {
 		return pretPromotional;
@@ -100,6 +107,10 @@ public class PromotieBean implements Serializable {
 	public String crearePromotie() {
 
 		Promotie promotie = new Promotie();
+
+		CampaniePromovare campanieGasita = marketingSrv.findCampanieById(idCampanie);
+
+		campaniePromovare = campanieGasita;
 
 		promotie.setCampaniePromovare(campaniePromovare);
 		promotie.setProdusPromotie(produsPromotie);
