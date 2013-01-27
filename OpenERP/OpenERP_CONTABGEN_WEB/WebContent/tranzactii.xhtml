@@ -18,12 +18,12 @@
 					<h:outputText value="Navigare" styleClass="outputTxt"></h:outputText>
 					<h:panelGrid columns="2" border="1">
 						<h:commandButton id="btnPrevious"
-							actionListener="#{formularTranzactii.previousOpCtb()}"
+							actionListener="#{formularTranzactii.previousOpCtb}"
 							value="&lt;" styleClass="btn">
 							<p:ajax render="@form"></p:ajax>
 						</h:commandButton>
 						<h:commandButton id="btnNext"
-							actionListener="#{formularTranzactii.nextOpCtb()}" value="&gt;"
+							actionListener="#{formularTranzactii.nextOpCtb}" value="&gt;"
 							styleClass="btn">
 							<p:ajax render="@form"></p:ajax>
 						</h:commandButton>
