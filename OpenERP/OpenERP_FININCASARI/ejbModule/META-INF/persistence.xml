@@ -6,6 +6,11 @@
 	
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
+		<!-- <jta-data-source>java:/PGLocalDS</jta-data-source> -->
+		
+		<jar-file>OpenERP_PERSONAL.jar</jar-file>
+		<jar-file>OpenERP_VANZARI.jar</jar-file>
+		<jar-file>OpenERP_NOMGEN.jar</jar-file>
 		
 		<class>org.open.erp.services.finincasari.BiletOrdine</class>
 		<class>org.open.erp.services.finincasari.CEC</class>
