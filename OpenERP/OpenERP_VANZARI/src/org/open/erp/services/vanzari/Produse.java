@@ -2,8 +2,6 @@ package org.open.erp.services.vanzari;
 
 import javax.persistence.Entity;
 
-import org.open.erp.services.nommat.Material;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.TableGenerator;
@@ -15,7 +13,7 @@ public class Produse {
 	@Id @GeneratedValue
 	Integer idProdus;
 
-	@OneToOne(targetEntity = org.open.erp.services.nommat.Material.class)
+	@OneToOne(targetEntity = org.open.erp.services.vanzari.Material.class)
 	Material material;	
 	String denumire;
 	Integer codProdus;
@@ -120,6 +118,9 @@ public class Produse {
 	}
 	
 	
-
-
+	public void scadeCantitate (double  cantitate){
+		this.cantitate-=cantitate;
+	}
+	
+	
 }
