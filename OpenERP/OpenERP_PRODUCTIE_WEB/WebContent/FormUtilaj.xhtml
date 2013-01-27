@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head></h:head>
+<body>
+	<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Utilaje</div>
+	<h:form id="formUtilaj">
+		<h:panelGrid columns="3" border="1">
+			<p:facet name="header">
+				<h:outputText value="Navigare:"></h:outputText>
+			</p:facet>
+			<h:selectOneMenu id="cboUtilaj" value="#{formUtilaj.utilajC}" converter="#{formUtilaj}" disabled="false">
+				<p:selectItems value="#{formUtilaj.utilaje}"></p:selectItems>
+				
+			</h:selectOneMenu>
+			<h:panelGrid columns="2" border="1">
+				<h:commandButton id="cmdPrev"
+					actionListener="#{formUtilaj.previousUtilaj}" value="Back"></h:commandButton>
+				<h:commandButton id="cmdNext" actionListener="#{formUtilaj.nextUtilaj}"
+					value="Next"></h:commandButton>
+			</h:panelGrid>
+			
+			<h:message></h:message>
+			<h:outputText value="Id Utilaj:"></h:outputText>
+			<h:inputText id="idUtilaj" value="#{formUtilaj.utilaC.idUtilaj}">
+
+			</h:inputText>
+			<h:message for="idUtilaj"></h:message>
+					
+			
+			
+			<h:outputText value="Mijloc Fix"></h:outputText>
+			<h:inputText id="utilaj" value="#{formUtilaj.utilajC.utilaj}">
+
+			</h:inputText>
+			<h:message for="utilaj"></h:message>
+			
+	
+			<h:outputText value="Status"></h:outputText>
+			<h:inputText id="status" value="#{formUtilaj.utilajC.status}">
+
+			</h:inputText>
+			<h:message for="status"></h:message>
+			
+					
+				
+			<h:panelGrid columns="3" border="1"> 
+				<h:commandButton id="cmdAdd"
+					actionListener="#{formUtilaj.adaugareUtilaj}" value="Add"> 
+					<p:ajax render="@form" execute="@form"></p:ajax>
+				</h:commandButton>
+				<h:commandButton id="cmdSterg"
+					actionListener="#{formUtilaj.stergereUtilaj}" value="Delete">
+					<p:ajax render="@form" execute="@form"></p:ajax>
+				</h:commandButton>
+				<h:commandButton id="cmdSave"
+					actionListener="#{formUtilaj.salvareUtilaj}" value="Save">
+					<p:ajax render="@form" execute="@form"></p:ajax>
+				</h:commandButton>
+			</h:panelGrid>
+		</h:panelGrid>
+		<h:messages layout="list" style="color: red" />
+	</h:form>
+</body>
+</html>
