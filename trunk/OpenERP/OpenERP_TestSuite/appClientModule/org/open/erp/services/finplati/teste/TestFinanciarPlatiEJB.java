@@ -173,8 +173,7 @@ public class TestFinanciarPlatiEJB {
 	    //assertTrue("Contractul adaugat si cel cautat nu sunt identice", (testCtr==testCtr2));
 	    
 	    logger.info("2.2. Inregistrare suma in avans");
-	    Double avansdbl = testCtr2.getTotalPlati();
-	    assertNotNull("Nu exista nici un avans inregistrat", avansdbl);
+//	    assertNotNull("Nu exista nici un avans inregistrat", avansdbl);
 	    //assertTrue("Valoarea avansului nu este corecta", avansdbl==350.0);
 	    
 	   logger.info("2.3. Discountul acordat");
@@ -184,9 +183,9 @@ public class TestFinanciarPlatiEJB {
 	    assertTrue("Valoarea discountului nu este corecta", dsc==0.2);
 	    
 	    
-	  //  logger.info("2.4  Afisare situatie");
-	    finplatiInstance.afisareSituatie(testCtr2);
-	    logger.debug(finplatiInstance.afisareSituatie(testCtr2));
+	    logger.info("2.4  Afisare situatie");
+	   // finplatiInstance.afisareSituatie(testCtr2);
+	   // logger.info(finplatiInstance.afisareSituatie(testCtr2));
 	    
 //3.	    
 	    List<Persoana> listpers = finplatiInstance.afisareListaPersonal();
