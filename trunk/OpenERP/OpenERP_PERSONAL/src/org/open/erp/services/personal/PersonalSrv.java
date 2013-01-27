@@ -231,5 +231,7 @@ public interface PersonalSrv {
  * 
  */
 
-	 Angajat salveazaAngajat(Angajat angajat_) throws Exception;
+	 Angajat salveazaAngajat(Angajat angajat) throws Exception;
+
+
 }
