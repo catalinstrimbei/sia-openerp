@@ -5,11 +5,8 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 	<persistence-unit name="OpenERP_VANZARI" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/ORCLLocalOpenERP</jta-data-source>
-		
-		<jar-file>OpenERP_NOMMAT.jar</jar-file>
-		<jar-file>OpenERP_STOCURI.jar</jar-file>
-		<class>org.open.erp.services.nommat.Material</class>
 		<class>org.open.erp.services.vanzari.Produse</class>
+		<class>org.open.erp.services.vanzari.Persoana</class>
 		<class>org.open.erp.services.vanzari.OfertePret</class>
 		<class>org.open.erp.services.vanzari.LiniiFactura</class>
 		<class>org.open.erp.services.vanzari.LiniiDispozitieLivrare</class>
@@ -20,9 +17,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 		<class>org.open.erp.services.vanzari.Clienti</class>
 		<class>org.open.erp.services.vanzari.Avize</class>
 		<class>org.open.erp.services.vanzari.ArticolComanda</class>
-		
-		
-
+		<class>org.open.erp.services.vanzari.Material</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
 			<property name="hibernate.hbm2ddl.auto" value="update"/>

@@ -4,7 +4,8 @@ package org.open.erp.services.vanzari;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Remote;
-import org.open.erp.services.stocuri.StocuriSrv;
+
+//import org.open.erp.services.stocuri.StocuriSrv;
 
 
 /**
@@ -116,7 +117,7 @@ DispozitiiLivrare creareDispozitieLivrare(Integer idDispozitieLivrare,Date data,
  * 
  * @param stocuriSrv
  */
-void  setStocuri(StocuriSrv stocuriSrv);
+//void  setStocuri(StocuriSrv stocuriSrv);
 /**
  * 
  * @param id						Id-ul facturii pentru care se calculeaza valoarea facturii
@@ -129,5 +130,12 @@ OfertePret salvareOferta(OfertePret oferta) throws Exception;
 /* Data Operations */
 OfertePret getOfertaDePret(Integer idOfertaPret);
 List<OfertePret> getOferte();
-}
+
+
+
+
+//void iesireStoc(Material material, Double cantitate
+		// ) throws Exception;
+
+}	 
 

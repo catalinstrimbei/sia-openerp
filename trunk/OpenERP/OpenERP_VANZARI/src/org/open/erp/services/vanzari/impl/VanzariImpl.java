@@ -21,8 +21,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hamcrest.core.Is;
-import org.open.erp.services.stocuri.StocuriSrv;
-import org.open.erp.services.stocuri.StocuriSrvLocal;
+//import org.open.erp.services.stocuri.StocuriSrv;
+//import org.open.erp.services.stocuri.StocuriSrvLocal;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
 import org.open.erp.services.vanzari.Comenzi;
@@ -70,8 +70,8 @@ public class VanzariImpl implements VanzariSrv, VanzariSrvLocal{
 	private SessionContext sessionContext;
 	
 	
-	@EJB(lookup="java:global/OpenERP_STOCURI/StocuriImpl!org.open.erp.services.stocuri.StocuriSrvLocal")
-	private StocuriSrvLocal stocuriSrv;
+	//@EJB(lookup="java:global/OpenERP_STOCURI/StocuriImpl!org.open.erp.services.stocuri.StocuriSrvLocal")
+	//private StocuriSrvLocal stocuriSrv;
 	
 	
 	//Initializare
@@ -101,11 +101,11 @@ public class VanzariImpl implements VanzariSrv, VanzariSrvLocal{
 
 	
 
-	@Override
-	public void setStocuri(StocuriSrv stocuriSrv) {
+	//@Override
+	//public void setStocuri(StocuriSrv stocuriSrv) {
 		// TODO Auto-generated method stub
 		
-	}
+	//}
 
 	@Override
 	public OfertePret creareOfertePret(Integer idOfertaPret, Produse produs,

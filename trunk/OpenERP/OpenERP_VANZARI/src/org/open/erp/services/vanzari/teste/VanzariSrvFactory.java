@@ -5,8 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import org.open.erp.services.nommat.Material;
-import org.open.erp.services.stocuri.StocuriSrv;
+
 import org.open.erp.services.vanzari.VanzariSrv;
 import org.open.erp.services.vanzari.impl.VanzariImpl;
 

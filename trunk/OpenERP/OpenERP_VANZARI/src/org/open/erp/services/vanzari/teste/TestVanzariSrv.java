@@ -11,9 +11,6 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.open.erp.services.nommat.ListaCaracteristici;
-import org.open.erp.services.nommat.Material;
-import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
 import org.open.erp.services.vanzari.Clienti;
@@ -23,6 +20,7 @@ import org.open.erp.services.vanzari.Facturi;
 import org.open.erp.services.vanzari.LiniiAviz;
 import org.open.erp.services.vanzari.LiniiDispozitieLivrare;
 import org.open.erp.services.vanzari.LiniiFactura;
+import org.open.erp.services.vanzari.Material;
 import org.open.erp.services.vanzari.OfertePret;
 import org.open.erp.services.vanzari.Persoana;
 import org.open.erp.services.vanzari.Produse;
@@ -32,7 +30,7 @@ import org.open.erp.services.vanzari.VanzariSrv;
 public class TestVanzariSrv {
 	private static Logger logger;
 	VanzariSrv vanzariInstance;
-	StocuriSrv stocuriInstance;
+	//StocuriSrv stocuriInstance;
 	
 	
 	
@@ -142,7 +140,6 @@ public class TestVanzariSrv {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
 		Date dataEmitere=new Date(System.currentTimeMillis());
 
-		ListaCaracteristici caract = new ListaCaracteristici("1", "Material Dur");
 		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		logger.debug("++++++ Afisare Material: " + mat.getDenumireMaterial() + "; "+ "Detalii: " + mat.getPretStandard() + ", " + mat.getCantitateStandard());
 		
@@ -190,7 +187,7 @@ public class TestVanzariSrv {
 				i=i+1;
 				//apelare iesire din stoc a articolului
 				logger.debug("*****************************" );
-				stocuriInstance.iesireStoc(articol.getOferta().getProdus().getMaterial(), articol.getCantitateAcceptata(),null);
+				//stocuriInstance.iesireStoc(articol.getOferta().getProdus().getMaterial(), articol.getCantitateAcceptata(),null);
 				logger.debug("*****************************" +  articol.getOferta().getProdus().getMaterial().getDenumireMaterial());
 			}
 		}
