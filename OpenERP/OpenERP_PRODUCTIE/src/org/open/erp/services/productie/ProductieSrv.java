@@ -73,8 +73,8 @@ public interface ProductieSrv {
 	 * 
 	 */
 	public FazaProductie definireFazaProductie(String faza, FluxProductie flux,
-			Utilaj utilaj, Double timpFolosire, ArrayList<FunctieNecesara> functiiNecesare,
-			ArrayList<Material> materialeReteta,
+			Utilaj utilaj, Double timpFolosire, List<FunctieNecesara> functiiNecesare,
+			List<Material> materialeReteta,
 			Semifabricat semifabricatDorit, Produs produsDorit,
 			Divizie sectie, Integer nrOrdine, Boolean isFinal) throws Exception; 
 	
@@ -213,7 +213,7 @@ public interface ProductieSrv {
 	 * @throws Exception
 	 */
 	public Semifabricat salveazaSemifabricat(Integer idSemifabricat, String semifabricat,
-			ArrayList<Material> listaMateriale,
+		List<Material> listaMateriale,
 			Semifabricat semifabricatContinut) throws Exception;
 	
 	/**
