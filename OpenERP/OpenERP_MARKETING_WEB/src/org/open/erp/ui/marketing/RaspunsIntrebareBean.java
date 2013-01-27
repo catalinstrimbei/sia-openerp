@@ -18,6 +18,7 @@ public class RaspunsIntrebareBean implements Serializable {
 	private MarketingSrv marketingSrv;
 
 	private String text;
+	private long idIntrebare;
 	private Intrebare intrebare;
 
 	public RaspunsIntrebareBean() {
@@ -39,6 +40,14 @@ public class RaspunsIntrebareBean implements Serializable {
 		this.text = text;
 	}
 
+	public long getIdIntrebare() {
+		return idIntrebare;
+	}
+
+	public void setIdIntrebare(long idIntrebare) {
+		this.idIntrebare = idIntrebare;
+	}
+
 	public Intrebare getIntrebare() {
 		return intrebare;
 	}
@@ -48,6 +57,9 @@ public class RaspunsIntrebareBean implements Serializable {
 	}
 
 	public String creareRaspunsIntrebare() {
+		
+		Intrebare intrebareGasita = marketingSrv.findIntrebareById(idIntrebare);
+		intrebare = intrebareGasita;
 
 		RaspunsIntrebare raspunsIntrebare = new RaspunsIntrebare();
 

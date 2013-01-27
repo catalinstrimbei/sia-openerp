@@ -18,6 +18,7 @@ public class IntrebareBean implements Serializable {
 	private MarketingSrv marketingSrv;
 
 	private String text;
+	private long idChestionar;
 	private Chestionar chestionar;
 
 	public IntrebareBean() {
@@ -39,6 +40,14 @@ public class IntrebareBean implements Serializable {
 		this.text = text;
 	}
 
+	public long getIdChestionar() {
+		return idChestionar;
+	}
+
+	public void setIdChestionar(long idChestionar) {
+		this.idChestionar = idChestionar;
+	}
+
 	public Chestionar getChestionar() {
 		return chestionar;
 	}
@@ -48,6 +57,9 @@ public class IntrebareBean implements Serializable {
 	}
 
 	public String creareIntrebare() {
+
+		Chestionar chestionarGasit = marketingSrv.findChestionarById(idChestionar);
+		chestionar = chestionarGasit;
 
 		Intrebare intrebare = new Intrebare();
 
