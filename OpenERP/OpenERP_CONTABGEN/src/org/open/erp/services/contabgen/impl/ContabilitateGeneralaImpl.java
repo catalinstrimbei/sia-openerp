@@ -3,6 +3,9 @@ package org.open.erp.services.contabgen.impl;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.ejb.Local;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -29,8 +32,10 @@ import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabil
 import org.open.erp.services.contabgen.tranzactii.OperatiuneContabila;
 import org.open.erp.services.contabgen.tranzactii.Tranzactie;
 
-@Stateless
+@Stateless(mappedName="ContabilitateGeneralaImpl")
 @TransactionManagement(TransactionManagementType.CONTAINER)
+@Local(ContabilitateGeneralaLocalSrv.class)
+@Remote(ContabilitateGeneralaSrv.class)
 public class ContabilitateGeneralaImpl implements ContabilitateGeneralaLocalSrv, ContabilitateGeneralaSrv {
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
@@ -219,4 +224,13 @@ public class ContabilitateGeneralaImpl implements ContabilitateGeneralaLocalSrv,
 		return this.registru.getConturiDinClaseleDeConturi();
 	}
 
+	@Override
+	public ContabilitateGeneralaRegistru getRegistru() {
+		return registru;
+	}
+	
+	public void stergeClasa(Clasa cls){
+		em.remove(cls);
+	}
+	
 }

@@ -15,12 +15,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.exceptii.CodEroare;
 import org.open.erp.exceptii.ExceptieContNetranzactionabil;
-import org.open.erp.services.achizitii.Factura;
 import org.open.erp.services.contabgen.conturi.Cont;
 import org.open.erp.services.contabgen.conturi.ContActiv;
 import org.open.erp.services.contabgen.conturi.ContPasiv;
 import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
 import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila;
+import org.open.erp.services.nomgen.Document;
 
 public class TestInregOpCtb_replaced_in_TestSuite_PRJ {
 
@@ -51,7 +51,7 @@ public class TestInregOpCtb_replaced_in_TestSuite_PRJ {
 		InregistrareOperatiune ce = new InregistrareOperatiune(null, null,
 				InregistrareOperatiune.Tip.CREDIT, 0.0);
 		inregOpCtb = new InregistrareOperatiuneContabilaMock(new Date(),
-				new org.open.erp.services.achizitii.Factura(), "Descriere", 0.0, de, ce);
+				new Document(), "Descriere", 0.0, de, ce);
 		ce.setInregistrare(inregOpCtb);
 		de.setInregistrare(inregOpCtb);
 		Cont creditCont = new ContActiv(201, "Cheltuieli de constituire", "",
@@ -74,7 +74,7 @@ public class TestInregOpCtb_replaced_in_TestSuite_PRJ {
 		logger.info("rulez testul cu exceptii");
 		
 		Date data = new Date();
-		Factura document = new Factura();
+		Document document = new Document();
 		String descriere = "Descriere";
 		double suma = -1500;
 		Cont creditCont = new ContActiv(201, "Cheltuieli de constituire", "",
@@ -97,7 +97,7 @@ public class TestInregOpCtb_replaced_in_TestSuite_PRJ {
 		logger.info("rulez testul fara exceptii");
 		
 		Date data = new Date();
-		Factura document = new Factura();
+		Document document = new Document();
 		String descriere = "Descriere";
 		double suma = 1600;
 		Cont creditCont = new ContActiv(201, "Cheltuieli de constituire", "Inregistrarea 1 din cadrul operatiunii 2",
@@ -121,7 +121,7 @@ public class TestInregOpCtb_replaced_in_TestSuite_PRJ {
 			InregistrareOperatiuneContabila {
 
 		public InregistrareOperatiuneContabilaMock(Date data,
-				org.open.erp.services.achizitii.Factura document, String descriere, double suma,
+				Document document, String descriere, double suma,
 				InregistrareOperatiune intrareDebit,
 				InregistrareOperatiune intrareCredit) {
 			super(data, document, descriere, suma, intrareDebit, intrareCredit);

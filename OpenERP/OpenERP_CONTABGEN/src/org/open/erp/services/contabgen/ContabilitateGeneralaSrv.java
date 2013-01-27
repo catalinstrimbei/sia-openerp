@@ -1,5 +1,6 @@
 package org.open.erp.services.contabgen;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +42,7 @@ import org.open.erp.services.contabgen.tranzactii.Tranzactie;
  * @UseCase("4. Generarea unui raport contabil"):
  * 
  */
-@Remote
-public interface ContabilitateGeneralaSrv {
+public interface ContabilitateGeneralaSrv extends Serializable{
 	
 	/**
 	 * Returneaza TRUE/FALSE
@@ -99,5 +99,5 @@ public interface ContabilitateGeneralaSrv {
 
 	List<Cont> getConturiDinClaseleDeConturi();
 
-
+	ContabilitateGeneralaRegistru getRegistru();
 }

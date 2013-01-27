@@ -10,7 +10,6 @@ import org.open.erp.services.contabgen.conturi.Clasa;
 import org.open.erp.services.contabgen.conturi.Cont;
 import org.open.erp.services.contabgen.conturi.PlanConturi;
 import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila;
-import org.open.erp.services.contabgen.tranzactii.OperatiuneContabila;
 
 public class ContabilitateGeneralaRegistru implements Serializable{
 	private static Logger logger = Logger.getLogger(ContabilitateGeneralaRegistru.class.getName());	
@@ -38,6 +37,14 @@ public class ContabilitateGeneralaRegistru implements Serializable{
 	
 	public List<Cont> getConturiDinClaseleDeConturi(){
 		return entityManager.createQuery("SELECT c FROM Cont c").getResultList();
+	}
+	
+	public List<Clasa> getClaseleDeConturi(){
+		return entityManager.createQuery("SELECT c FROM Clasa c left join fetch c.conturi").getResultList();
+	}
+	
+	public List<InregistrareOperatiuneContabila> getInregistrariOperatiuneContabila(){
+		return entityManager.createQuery("SELECT c FROM InregistrareOperatiuneContabila c").getResultList();
 	}
 	
 	public PlanConturi getPlanConturiConturi(){

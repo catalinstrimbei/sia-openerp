@@ -130,6 +130,12 @@ public class InregistrareOperatiuneContabila implements Serializable{
 				intrareCredit);
 	}
 
+	public InregistrareOperatiuneContabila(Date data, String descriere, double suma, InregistrareOperatiune intrareDebit,
+			InregistrareOperatiune intrareCredit) {
+		adaugaProprietati(data, descriere, suma, intrareDebit,
+				intrareCredit);
+	}
+	
 	public static InregistrareOperatiuneContabila creazaOperatiune() {
 		InregistrareOperatiuneContabila tran = new InregistrareOperatiuneContabila();
 		tran.debit.setInregistrare(tran);
@@ -163,6 +169,15 @@ public class InregistrareOperatiuneContabila implements Serializable{
 			InregistrareOperatiune intrareCredit) {
 		this.dataOperatiune = data;
 		this.document = document;
+		this.descriereOperatiune = descriere;
+		this.suma = suma;
+		this.debit = intrareDebit;
+		this.credit = intrareCredit;
+	}
+	
+	protected void adaugaProprietati(Date data, String descriere, double suma, InregistrareOperatiune intrareDebit,
+			InregistrareOperatiune intrareCredit) {
+		this.dataOperatiune = data;
 		this.descriereOperatiune = descriere;
 		this.suma = suma;
 		this.debit = intrareDebit;
