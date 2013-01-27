@@ -153,6 +153,8 @@ public interface StocuriSrv {
 	
 	public Gestiune salvareGestiune(Gestiune gestiune) throws Exception;
 	
+	public Depozit getDepozit(int i) throws Exception;
+	
 	
 	// verifica daca exista un lot pentru un produs si o gestiune, folosit la instrare in stoc
 	//boolean existaArticol(Produs produs, Gestiune gestiune);
