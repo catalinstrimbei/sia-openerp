@@ -11,5 +11,5 @@ public interface NomenclatoareSrv {
 	Departament creareDepart (String id, String denumire);
 	Subdepartament creareSubDep (String id, String denumire, String descriere, Departament parinte);
 		Divizie creareDivizie (String id,String denumire, String descriere, Departament parinte,String dataInfiintarii, Subdepartament parinte2);
-	
+	Persoana findPersoanaById(Integer idPersoana);
 }

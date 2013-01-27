@@ -12,6 +12,7 @@ import org.open.erp.services.nomgen.Adresa;
 import org.open.erp.services.nomgen.Departament;
 import org.open.erp.services.nomgen.Divizie;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
+import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nomgen.PersoanaFizica;
 import org.open.erp.services.nomgen.PersoanaJuridica;
 import org.open.erp.services.nomgen.Subdepartament;
@@ -97,6 +98,15 @@ public class NomenclatoareImpl implements NomenclatoareSrv {
 		logger.debug("1. Cautare Persoana in baza de date");
 		return -1;
 	
+	}
+
+
+	@Override
+	public Persoana findPersoanaById(Integer idPersoana) {
+		
+		Persoana persoana = em.find(Persoana.class, idPersoana);
+		
+		return persoana;
 	}
 
 
