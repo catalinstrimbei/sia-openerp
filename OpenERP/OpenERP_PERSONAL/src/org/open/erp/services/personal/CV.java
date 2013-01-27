@@ -4,14 +4,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+@Entity
 public class CV {
+	@OneToOne
 	Candidat titularCV;
 	List<Tuple<String,Date,Date>> studiileAbsolvite;
 	List<Tuple<String,Date,Date>> functiiOcupate;
 	List<DoubleParam<String, String>> limbiStraine;
 	String aptitudini;
+	@Id
+	Integer id;
 	
-	public CV (Candidat titular,List<Tuple<String,Date,Date>> studiiAbs,List<Tuple<String,Date,Date>>functiiOcp, List<DoubleParam<String,String>>limbiStr, String apt){
+	public CV (Integer id,Candidat titular,List<Tuple<String,Date,Date>> studiiAbs,List<Tuple<String,Date,Date>>functiiOcp, List<DoubleParam<String,String>>limbiStr, String apt){
+		this.id=id;
 		titularCV = titular;
 		studiileAbsolvite = new ArrayList<Tuple<String,Date,Date>>();
 		for (Tuple<String,Date,Date> t: studiiAbs){
@@ -26,6 +34,10 @@ public class CV {
 			limbiStraine.add(d);
 		}
 		aptitudini = apt;
+	}
+	
+	public CV(){
+		
 	}
 	
 	public Candidat getTitularCV() {

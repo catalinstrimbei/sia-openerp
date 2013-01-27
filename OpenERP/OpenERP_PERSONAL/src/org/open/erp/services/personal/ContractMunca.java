@@ -2,13 +2,23 @@ package org.open.erp.services.personal;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
 public class ContractMunca {
- private int salar;
+ 
+private int salar;
+ @Id
  private int idContract;
  private Date dataAngajare;
  private String perioadaContract;
  private int numarLuniContractuale=0;
  private int normaZilnica;
+ @ManyToOne
  private Post functie;
  private int tarifOreSuplimentare;
  

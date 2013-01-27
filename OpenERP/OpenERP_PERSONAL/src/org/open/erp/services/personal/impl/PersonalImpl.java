@@ -4,35 +4,76 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.apache.log4j.Logger;
 import org.open.erp.services.nomgen.Adresa;
 import org.open.erp.services.nomgen.Departament;
+import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.personal.Angajat;
 import org.open.erp.services.personal.Anunt;
 import org.open.erp.services.personal.CV;
 import org.open.erp.services.personal.Candidat;
 import org.open.erp.services.personal.CerereConcediu;
 import org.open.erp.services.personal.CerereEveniment;
+import org.open.erp.services.personal.Concedii;
 import org.open.erp.services.personal.ContractMunca;
 import org.open.erp.services.personal.DoubleParam;
+import org.open.erp.services.personal.PersonalSrvLocal;
 import org.open.erp.services.personal.Post;
 import org.open.erp.services.personal.Interviu;
 import org.open.erp.services.personal.PersonalSrv;
 import org.open.erp.services.personal.ProbaEvaluare;
 import org.open.erp.services.personal.Tuple;
 
-public class PersonalImpl implements PersonalSrv{
 
+@Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class PersonalImpl implements PersonalSrv, PersonalSrvLocal{
+
+	/* Dependente resurse proprii */
+	private static Logger logger = Logger.getLogger(PersonalImpl.class.getName());	
+	private RegistruConcedii registruConcedii;
+
+	/* Dependente resurse injectate */
+	@PersistenceContext(unitName="OpenERP_PERSONAL")
+	private EntityManager em;
+	
+	@Resource
+	private SessionContext sessionContext;
+	
+	@EJB(lookup="java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.nomgen.NomenclatoareSrvLocal")
+	private NomenclatoareSrvLocal nomSrvLocal;
+	
+	/* Initializare */
+	public PersonalImpl() { }	
+	@PostConstruct
+	public void init(){		
+		if (this.registruConcedii == null)
+			registruConcedii = new RegistruConcedii(em);
+		
+	}	
+	
+	
 	@Override
-	public Post crearePost(String nivelStudii, int salarMinim, Departament dep){
-		Post postLiber = new Post(nivelStudii, salarMinim, dep);
+	public Post crearePost(Integer id,String nivelStudii, int salarMinim, Departament dep){
+		Post postLiber = new Post(id, nivelStudii, salarMinim, dep);
 		return postLiber;
 	}
 	
 	@Override
-	public Anunt creareAnunt(String denumirePost, Integer indexCOR,
+	public Anunt creareAnunt(Integer id, String denumirePost, Integer indexCOR,
 			Date dataEmitere, Date dataExpirare, String cerintePost, Post postLiber) {
 			
-		Anunt anuntNou = new Anunt(denumirePost, indexCOR,dataEmitere, dataExpirare, cerintePost, postLiber);
+		Anunt anuntNou = new Anunt(id, denumirePost, indexCOR,dataEmitere, dataExpirare, cerintePost, postLiber);
 		return anuntNou;
 		
 	}
@@ -50,12 +91,12 @@ public class PersonalImpl implements PersonalSrv{
 	}
 	
 	@Override
-	public CV creareCV(Candidat titular,
+	public CV creareCV(Integer id, Candidat titular,
 			List<Tuple<String, Date, Date>> studiiAbsolvite,
 			List<Tuple<String, Date, Date>> functiiOcupate,
 			List<DoubleParam<String, String>> limbiStraine, String aptitudini) {
 	
-		CV cvNouAdaugat = new CV(titular,studiiAbsolvite,functiiOcupate,limbiStraine,aptitudini);
+		CV cvNouAdaugat = new CV(id, titular,studiiAbsolvite,functiiOcupate,limbiStraine,aptitudini);
 		return cvNouAdaugat;
 	}
 
@@ -73,11 +114,11 @@ public class PersonalImpl implements PersonalSrv{
 	}
 
 	@Override
-	public Interviu creareInterviu(Anunt titluAnunt,
+	public Interviu creareInterviu(Integer id, Anunt titluAnunt,
 			List<Angajat> numeEvaluatori, List<ProbaEvaluare> probeInterviu,
 			Date dataInterviu) {
 		
-		Interviu interviuNou = new Interviu(titluAnunt, numeEvaluatori, probeInterviu,dataInterviu);
+		Interviu interviuNou = new Interviu(id, titluAnunt, numeEvaluatori, probeInterviu,dataInterviu);
 		return interviuNou;
 	}
 	
@@ -118,8 +159,8 @@ public class PersonalImpl implements PersonalSrv{
 	}
 
 	@Override
-	public ProbaEvaluare creareProbaEvaluare(String numeProba) {
-		 ProbaEvaluare proba = new ProbaEvaluare(numeProba);
+	public ProbaEvaluare creareProbaEvaluare(Integer id, String numeProba) {
+		 ProbaEvaluare proba = new ProbaEvaluare(id, numeProba);
 		return proba;
 	}
 
@@ -130,5 +171,29 @@ public class PersonalImpl implements PersonalSrv{
 		Angajat angajatNou = new Angajat(id, nume, sex, mail, statutInCompanie, stareCivila, dataNastere, telefon, adresa, cm);
 		return angajatNou;
 	}
+	@Override
+	public Post salvarePost(Post post) {
+
+		
+		/* Actiune tranzactionala ... */
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare/salvare post- TRANZACTIE ANULATA");
+			
+		}else{
+			//post = post.salveazaPost(post);
+			
+		}
+		
+
+		return post;		
+		}
+
+	@Override
+	public Angajat getAngajatById(Integer idAngajat_) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	
 }

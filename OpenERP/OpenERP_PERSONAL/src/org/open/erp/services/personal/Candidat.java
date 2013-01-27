@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+
 import org.open.erp.services.nomgen.Adresa;
 import org.open.erp.services.nomgen.PersoanaFizica;
 
+@Entity
 public class Candidat extends PersoanaFizica{
 
-	
-	List<ProbaEvaluare> testeEfectuate = null;
+	@ManyToMany
+	List<ProbaEvaluare> testeEfectuate = null;	
 	HashMap<ProbaEvaluare,Integer> rezultatLaTeste = null;
 	
 	
@@ -31,6 +35,10 @@ public class Candidat extends PersoanaFizica{
 				telefon, adresa);
 		testeEfectuate = new ArrayList<ProbaEvaluare>();
 		rezultatLaTeste = new HashMap<ProbaEvaluare,Integer>();
+		
+	}
+	
+	public Candidat(){
 		
 	}
 	
