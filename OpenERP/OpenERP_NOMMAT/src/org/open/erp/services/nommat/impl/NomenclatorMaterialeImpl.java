@@ -9,11 +9,36 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
+	
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(NomenclatorMaterialeImpl.class.getName());
+	
 	private List<Material> lista_materiale=new ArrayList<Material>();
+	
+	private RegistruMateriale registruMateriale;
+
+	@PersistenceContext(unitName="OpenERP_NOMGEN")
+	private EntityManager em;
+	
+
+	public NomenclatorMaterialeImpl() {
+		super();
+	}
+
+
+	public void init(){		
+		if (this.registruMateriale == null)
+			registruMateriale = new RegistruMateriale(em);
+		
+	}	
+	
 	
 	@Override
 	public  Material introducereMaterial(String codMaterial, String denumireMaterial, String cantitateStandard, String pretStandard,
@@ -118,6 +143,14 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
             	
             	}	
 		return "Deleted";
+	}
+	
+	@Override
+	public Material cautareMaterialDupaCod(String codMaterial) {
+		
+		Material persoana = em.find(Material.class, codMaterial);
+		
+		return persoana;
 	}
 
    
