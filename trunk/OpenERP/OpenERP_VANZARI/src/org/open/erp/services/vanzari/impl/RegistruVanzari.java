@@ -5,6 +5,8 @@ import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
 import org.open.erp.services.vanzari.OfertePret;
+import org.open.erp.services.vanzari.Persoana;
+
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
@@ -63,6 +65,27 @@ private static Logger logger = Logger.getLogger(RegistruVanzari.class.getName())
 	public void refreshOferta(OfertePret oferta){
 		entityManager.refresh(oferta);
 	}
+	
+	//persistenta
+		public Persoana salveazaPersoana(Persoana persoana) throws Exception{
+			logger.debug("a intrat in salveaza persoana din registru");
+			try{
+				
+				//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+				
+				if (persoana.getIdPersoana() == null || 
+					entityManager.find(persoana.getClass(), persoana.getIdPersoana()) == null)
+					entityManager.persist(persoana);
+				else
+					entityManager.merge(persoana);
+				
+			}catch(Exception ex){
+				logger.info("EROARE PERSISTENTA ***** ");
+				ex.printStackTrace();
+				throw ex;
+			}
+			return persoana;
+		}
 }
 
 

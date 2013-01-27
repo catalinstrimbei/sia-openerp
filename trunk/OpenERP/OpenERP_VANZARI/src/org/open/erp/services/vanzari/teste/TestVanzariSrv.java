@@ -486,4 +486,7 @@ public class TestVanzariSrv {
 		logger.debug("!!!!TEST TOTAL!!!!!!" );
 		logger.info(factura.getValoareFactura(1));
 	}
+	
+	
+	
 	}
