@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -18,6 +20,7 @@ import javax.naming.NamingException;
 
 import org.open.erp.exceptii.ExceptieTipContInvalid;
 import org.open.erp.services.contabgen.ContabilitateGeneralaLocalSrv;
+import org.open.erp.services.contabgen.ContabilitateGeneralaSrv;
 import org.open.erp.services.contabgen.conturi.Clasa;
 import org.open.erp.services.contabgen.conturi.Cont;
 import org.open.erp.services.contabgen.conturi.Cont.Tip;
@@ -28,9 +31,8 @@ public class FormularPlanConturi implements Converter,Serializable {
 
 	
 	
-	private static String lookupServiceName="java:global/OpenERP_CONTABGEN/ContabilitateGeneralaImpl!org.open.erp.services.contabgen.ContabilitateGeneralaLocalSrv";
-	
-	private ContabilitateGeneralaLocalSrv serviciu;
+	@EJB(lookup="java:global/OpenERP_CONTABGEN/ContabilitateGeneralaImpl!org.open.erp.services.contabgen.ContabilitateGeneralaSrv")
+	private ContabilitateGeneralaSrv serviciu;
 
 	private List<Clasa> clase;
 	private Clasa clasa;
@@ -87,21 +89,15 @@ public class FormularPlanConturi implements Converter,Serializable {
 	}
 
 	public FormularPlanConturi() {
-		if(serviciu == null){
-			InitialContext ic = null;
-			try {
-				ic = new InitialContext();
-				serviciu = (ContabilitateGeneralaLocalSrv )ic.lookup(lookupServiceName);
-			} catch (NamingException e) {
-				e.printStackTrace();
-			}
-		}
-	
+	}
+
+	@PostConstruct
+	public void init(){
 		for (Clasa clasa : getClaseList()) {
 			selectList.add(new SelectItem(clasa, clasa.getDenumireClasa()));
 		}
 	}
-
+	
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2)
 			throws ConverterException {

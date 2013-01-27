@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -18,6 +20,7 @@ import javax.naming.NamingException;
 
 import org.open.erp.exceptii.ExceptieContNetranzactionabil;
 import org.open.erp.services.contabgen.ContabilitateGeneralaLocalSrv;
+import org.open.erp.services.contabgen.ContabilitateGeneralaSrv;
 import org.open.erp.services.contabgen.conturi.Cont;
 import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiune;
 import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabila;
@@ -27,10 +30,8 @@ import org.open.erp.services.contabgen.tranzactii.InregistrareOperatiuneContabil
 public class FormularTranzactii implements Converter,Serializable {
 
 	
-	
-	private static String lookupServiceName="java:global/OpenERP_CONTABGEN/ContabilitateGeneralaImpl!org.open.erp.services.contabgen.ContabilitateGeneralaLocalSrv";
-	
-	private ContabilitateGeneralaLocalSrv serviciu;
+	@EJB(lookup="java:global/OpenERP_CONTABGEN/ContabilitateGeneralaImpl!org.open.erp.services.contabgen.ContabilitateGeneralaSrv")
+	private ContabilitateGeneralaSrv serviciu;
 
 	private List<InregistrareOperatiuneContabila> operatiuniCtb;
 	private InregistrareOperatiuneContabila opCtb;
@@ -104,15 +105,11 @@ public class FormularTranzactii implements Converter,Serializable {
 	}
 
 	public FormularTranzactii() {
-		if(serviciu == null){
-			InitialContext ic = null;
-			try {
-				ic = new InitialContext();
-				serviciu = (ContabilitateGeneralaLocalSrv )ic.lookup(lookupServiceName);
-			} catch (NamingException e) {
-				e.printStackTrace();	
-			}
-		}
+	
+	}
+	
+	@PostConstruct
+	public void init(){
 		getOperatiuniCtbList();
 		for (Cont cont : serviciu.getRegistru().getConturiDinClaseleDeConturi()) {
 			selectList.add(new SelectItem(cont, cont.getCodCont()+" "+cont.getDenumireCont()));

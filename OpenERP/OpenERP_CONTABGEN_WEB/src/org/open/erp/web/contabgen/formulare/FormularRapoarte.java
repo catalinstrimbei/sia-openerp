@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
@@ -19,6 +21,7 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.open.erp.services.contabgen.ContabilitateGeneralaLocalSrv;
+import org.open.erp.services.contabgen.ContabilitateGeneralaSrv;
 import org.open.erp.services.contabgen.rapoarte.BilantContabil;
 import org.open.erp.web.contabgen.util.GeneratorRaport;
 
@@ -26,9 +29,8 @@ import org.open.erp.web.contabgen.util.GeneratorRaport;
 @javax.faces.bean.SessionScoped
 public class FormularRapoarte implements Converter, Serializable {
 
-	private static String lookupServiceName="java:global/OpenERP_CONTABGEN/ContabilitateGeneralaImpl!org.open.erp.services.contabgen.ContabilitateGeneralaLocalSrv";
-
-	private ContabilitateGeneralaLocalSrv serviciu;
+	@EJB(lookup="java:global/OpenERP_CONTABGEN/ContabilitateGeneralaImpl!org.open.erp.services.contabgen.ContabilitateGeneralaSrv")
+	private ContabilitateGeneralaSrv serviciu;
 
 	private List<SelectItem> selectList = new ArrayList<SelectItem>();
 
@@ -63,18 +65,12 @@ public class FormularRapoarte implements Converter, Serializable {
 	}
 
 	public FormularRapoarte() {
-		if(serviciu == null){
-			InitialContext ic = null;
-			try {
-				ic = new InitialContext();
-				serviciu = (ContabilitateGeneralaLocalSrv )ic.lookup(lookupServiceName);
-			} catch (NamingException e) {
-				e.printStackTrace();
-			}
-		}
-		selectList.add(new SelectItem(bilant, "Bilant Contabil"));
 	}
 
+	@PostConstruct
+	public void init(){
+		selectList.add(new SelectItem(bilant, "Bilant Contabil"));
+	}
 	public List<SelectItem> getSelectList() {
 		return selectList;
 	}
