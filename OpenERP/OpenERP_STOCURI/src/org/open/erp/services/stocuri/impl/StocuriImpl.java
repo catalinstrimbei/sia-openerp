@@ -508,6 +508,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	 * loturi return true; } } return false; }
 	 */
 
+	@Override
 	public Articol creareArticol(Double cantPeGestiune, Gestiune gestiune,
 			Material material, List<Loturi> loturiArticole) throws Exception {
 		Articol articol = new Articol(cantPeGestiune, gestiune, material,
@@ -518,6 +519,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		return articol;
 	}
 
+	@Override
 	public Articol salvareArticol(Articol articol) throws Exception {
 
 		/* Actiune tranzactionala ... */
@@ -557,6 +559,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		return lot;
 	}
 
+	@Override
 	public Depozit creareDepozit(String locatie) throws Exception {
 
 		Depozit depozit = new Depozit(locatie);
@@ -567,6 +570,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		return depozit;
 	}
 
+	@Override
 	public Depozit salvareDepozit(Depozit depozit) throws Exception {
 
 		logger.debug("salvare depozit");
@@ -595,6 +599,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		return gestiune;
 	}
 
+	@Override
 	public Gestiune salvareGestiune(Gestiune gestiune) throws Exception {
 
 		/* Actiune tranzactionala ... */
@@ -620,6 +625,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		return bonTransfer;
 	}
 
+	@Override
 	public BonTransfer salvareBonTransfer(BonTransfer bonTransfer)
 			throws Exception {
 
@@ -636,24 +642,59 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		return bonTransfer;
 	}
 
+	//Material
 	public Material creareMaterial(Material mat) throws Exception {
-
 		// Material material = new Material();
-
 		em.persist(mat);
 		return mat;
 	}
 
 	public Material getMaterial(String i) throws Exception {
-
 		Material mat = registruStocuri.getMaterial(i);
-
 		return mat;
-
 	}
 
+	@Override
+	public List<Material> getMateriale() throws Exception{
+		List<Material> materiale = registruStocuri.getToateMaterialele();
+		if (materiale.isEmpty())
+			logger.debug("Returner 000 depozite!");
+		else
+			logger.debug("Returner " + materiale.size() + " depozite!");
+		return materiale;
+	}
+	
+	//Gestiune
+	@Override
 	public Gestiune getGestiune(int IdGestiune) throws Exception {
 		Gestiune gestiune = registruStocuri.getGestiune(IdGestiune);
 		return gestiune;
 	}
+	
+	@Override
+	public List<Gestiune> getGestiuni() throws Exception{
+		List<Gestiune> gestiuni = registruStocuri.getToateGestiunile();
+		if (gestiuni.isEmpty())
+			logger.debug("Returner 000 depozite!");
+		else
+			logger.debug("Returner " + gestiuni.size() + " depozite!");
+		return gestiuni;
+	}
+	
+	//Depozit
+	@Override
+	public List<Depozit> getDepozite() throws Exception{
+		List<Depozit> depozite = registruStocuri.getToateDepozitele();
+		if (depozite.isEmpty())
+			logger.debug("Returner 000 depozite!");
+		else
+			logger.debug("Returner " + depozite.size() + " depozite!");
+		return depozite;
+	}
+	
+	@Override
+	public void stergereDepozit(Depozit depozit) throws Exception{
+		registruStocuri.stergeDepozit(depozit);
+	}
+	
 }

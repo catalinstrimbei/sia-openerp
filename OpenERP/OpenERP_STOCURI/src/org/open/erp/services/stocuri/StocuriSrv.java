@@ -136,6 +136,24 @@ public interface StocuriSrv {
 
 	public Gestiune getGestiune(int IdGestiune) throws Exception;
 	
+	public List<Material> getMateriale() throws Exception;
+	
+	public List<Gestiune> getGestiuni() throws Exception;
+	
+	public List<Depozit> getDepozite() throws Exception;
+	
+	public Depozit salvareDepozit(Depozit depozit) throws Exception;
+	
+	public Articol salvareArticol(Articol articol) throws Exception;
+	
+	public void stergereDepozit(Depozit depozit) throws Exception;
+	
+	public BonTransfer salvareBonTransfer(BonTransfer bonTransfer)
+			throws Exception ;
+	
+	public Gestiune salvareGestiune(Gestiune gestiune) throws Exception;
+	
+	
 	// verifica daca exista un lot pentru un produs si o gestiune, folosit la instrare in stoc
 	//boolean existaArticol(Produs produs, Gestiune gestiune);
 	//void casareLot();
