@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/core">
+
+<body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="title">Plan conturi</ui:define>
+
+		<ui:define name="main">
+
+			<h:form id="planConturiForm">
+				<h:panelGrid columns="3" border="1" styleClass="panelGrid">
+					<p:facet name="header">
+						<h:outputText value="Gestiune Plan Conturi" styleClass="center"></h:outputText>
+					</p:facet>
+					<h:outputText value="Navigare" styleClass="outputTxt"></h:outputText>
+					<h:panelGrid columns="2" border="1">
+						<h:commandButton id="btnPrevious"
+							actionListener="#{formularPlanConturi.previousClasa}"
+							value="&lt;" styleClass="btn">
+							<p:ajax render="@form"></p:ajax>
+						</h:commandButton>
+						<h:commandButton id="btnNext"
+							actionListener="#{formularPlanConturi.nextClasa}" value="&gt;"
+							styleClass="btn">
+							<p:ajax render="@form"></p:ajax>
+						</h:commandButton>
+					</h:panelGrid>
+					<h:message></h:message>
+					<h:outputText value="Cod clasa:" styleClass="outputTxt"></h:outputText>
+					<h:inputText id="cod_clasa"
+						value="#{formularPlanConturi.clasa.codClasa}"
+						style="width: 247px; "></h:inputText>
+					<h:message for="cod_clasa"></h:message>
+					<h:outputText value="Denumire clasa:" styleClass="outputTxt"></h:outputText>
+					<h:inputText id="den_clasa"
+						value="#{formularPlanConturi.clasa.denumireClasa}"
+						style="width: 247px; "></h:inputText>
+					<h:message for="den_clasa"></h:message>
+					<h:panelGrid columns="2" border="1">
+						<h:commandButton id="cmdAdauga" value="Adauga"
+							actionListener="#{formularPlanConturi.adaugareClasa}" styleClass="btn"></h:commandButton>
+						<h:commandButton id="cmdStergere" value="Sterge" styleClass="btn"
+							actionListener="#{formularPlanConturi.stergereClasa}"></h:commandButton>
+					</h:panelGrid>
+					<h:panelGrid columns="2" border="1">
+						<h:commandButton id="cmdSalvare" value="Salveaza"
+							actionListener="#{formularPlanConturi.salvareClasa}" styleClass="btn"></h:commandButton>
+						<h:commandButton id="cmdAbandon" value="Abandoneaza" styleClass="btn"
+							actionListener="#{formularPlanConturi.abandonClasa}"></h:commandButton>
+					</h:panelGrid>
+					<h:message></h:message>
+				</h:panelGrid>
+				<h:dataTable var="cont" value="#{formularPlanConturi.clasa.conturi}"
+					styleClass="dataTable" border="1">
+					<h:column>
+						<p:facet name="header">
+							<h:outputText value="Cod" styleClass="outputTxt"></h:outputText>
+						</p:facet>
+						<h:inputText id="id" value="#{cont.codCont}"></h:inputText>
+					</h:column>
+					<h:column>
+						<h:inputText id="txtDenCont" value="#{cont.denumireCont}">
+						</h:inputText>
+						<p:facet name="header">
+							<h:outputText value="Denumire" styleClass="outputTxt"></h:outputText>
+						</p:facet>
+					</h:column>
+					<h:column>
+						<h:commandButton id="cmdStergeCont"
+							actionListener="#{formularPlanConturi.stergeCont}" value="Sterge"
+							styleClass="btn">
+							<p:attribute name="selectedId" value="#{cont.codCont}"></p:attribute>
+						</h:commandButton>
+						<p:facet name="header">
+							<h:outputText value="Stergere"></h:outputText>
+						</p:facet>
+					</h:column>
+				</h:dataTable>
+				<h:commandButton id="cmdAdaugaCont"
+					actionListener="#{formularPlanConturi.adaugaCont}"
+					value="Adauga cont" styleClass="btn"></h:commandButton>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
