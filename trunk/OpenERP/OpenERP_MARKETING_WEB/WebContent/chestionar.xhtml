@@ -10,6 +10,15 @@
 	<title>Creare cercetare piata noua</title>
 </h:head>
 <h:body>
+	<h:panelGrid columns="7">
+		<a href="campaniePromovare.xhtml">Campanie Promovare</a>
+		<a href="cercetare.xhtml">Cercetare de piata</a>
+		<a href="promotie.xhtml">Promotie</a>
+		<a href="chestionar.xhtml">Chestionar</a>
+		<a href="intrebare.xhtml">Intrebare</a>
+		<a href="raspunsIntrebare.xhtml">Raspuns Intrebare</a>
+		<a href="reclamatie.xhtml">Reclamatie</a>
+	</h:panelGrid>
 	<h:form>
 		<table>
 			<tr>
@@ -24,8 +33,7 @@
 			</tr>
 			<tr>
 				<td><h:outputText value="Introduceti persoana chestionata:"></h:outputText>
-					<h:inputText value="#{chestionarBean.idPersoana}"></h:inputText>
-				</td>
+					<h:inputText value="#{chestionarBean.idPersoana}"></h:inputText></td>
 			</tr>
 			<tr>
 				<td><h:outputText value="Introduceti cercetarea de piata:"></h:outputText>
