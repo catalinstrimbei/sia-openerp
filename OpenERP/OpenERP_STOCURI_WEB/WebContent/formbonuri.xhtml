@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich">
+	<h:head>
+		<title>BON TRANSFER</title> 
+	</h:head>
+	<h:body>
+	<h:panelGrid columns="2">
+		<a href="FormDepozite.xhtml">Formular Depozite</a>
+		<a href="formbonuri.xhtml">Bonuri Transfer</a>
+	</h:panelGrid>	
+	
+	<div style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">
+		FORM BONURI TRANSFER</div>
+	
+	
+	<h:form id="formbonuri">
+		<h:panelGrid columns="2" border="0">
+		<h:outputText value="Materiale :"></h:outputText>	
+		<h:selectOneMenu id="cboBonuri" value="#{formbonuri.material}"
+				converter="#{formbonuri}">
+				<p:selectItems value="#{formbonuri.materiale}"></p:selectItems>
+		</h:selectOneMenu>
+		
+		<h:outputText value="Cantitate:"></h:outputText>
+		<h:inputText id="cant" value=""></h:inputText>
+		
+		<h:outputText value="Gestiune Iesire:"></h:outputText>
+		<h:selectOneMenu id="cbogestiesire" value="#{formbonuri.gestiuneIes}"
+				converter="#{formbonuri}">
+				<p:selectItems value="#{formbonuri.gestiuniIes}"></p:selectItems>
+		</h:selectOneMenu>
+		
+		<h:outputText value="Gestiune Intrare:"></h:outputText>
+		<h:selectOneMenu id="cbogestintrare" value="#{formbonuri.gestiuneIntr}"
+				converter="#{formbonuri}">
+				<p:selectItems value="#{formbonuri.gestiuniIntr}"></p:selectItems>
+		</h:selectOneMenu>
+		
+		<p:facet name="footer">
+				<h:panelGrid columns="4" border="0">
+					<h:commandButton id="cmdAdaugare" value="Adaugare"
+						action="#{formbonuri.adaugareBon}">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdStergere" value="Stergere">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdAbandon" value="Abandon">
+						<p:ajax render="@form" execute="@none"></p:ajax>
+					</h:commandButton>
+					<h:commandButton id="cmdSalvare" value="Salvare"
+						action="#{formbonuri.salvarBon}">
+						<p:ajax render="@form" execute="@form"></p:ajax>
+					</h:commandButton>
+				</h:panelGrid>
+		</p:facet>
+		</h:panelGrid>
+	</h:form>	
+	</h:body>
+
+</html>
