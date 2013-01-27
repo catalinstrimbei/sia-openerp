@@ -11,13 +11,17 @@ import org.open.erp.services.nommat.teste.NomenclatorMaterialeSrvFactory;
 import org.open.erp.services.nommat.teste.TestNomenclatorMaterialeSrv;
 
 
+
 public class TestNomenclatorMaterialeEJB {
-	private static Logger logger;
+	private static Logger logger= Logger.getLogger(TestNomenclatorMaterialeEJB.class.getName());
 	NomenclatorMaterialeSrv nomenInstance;
+
+	private static NomenclatorMaterialeSrv nommatInstance;
 	
 	@BeforeClass
-	public static void initLocalJavaLogger(){
-		logger =  Logger.getLogger(TestNomenclatorMaterialeSrv.class.getName());	
+	public static void setUpBeforeClass() throws Exception {
+		nommatInstance = NomenclatorMaterialeSrvFactory.getNomenclatorMaterialeSrv();
+		logger.info("initTest " + nommatInstance);
 	}
 	
 	
