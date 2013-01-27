@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 
 import org.open.erp.services.personal.Angajat;
 
-
 @Entity
 public class Pontaje implements Serializable{
 

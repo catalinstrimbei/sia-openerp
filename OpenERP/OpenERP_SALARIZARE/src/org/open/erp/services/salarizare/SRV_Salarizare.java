@@ -1,5 +1,6 @@
 package org.open.erp.services.salarizare;
 import java.util.List;
+
 import org.open.erp.services.personal.Angajat;
 public interface SRV_Salarizare {
 	

@@ -34,7 +34,7 @@ import org.open.erp.services.salarizare.Stat_Salarii;
 
 @Stateful
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public abstract class Implement_Salarizare implements Local_Salarizare, Remote_Salarizare {
+public abstract  class Implement_Salarizare implements Local_Salarizare, Remote_Salarizare {
 
 	
 		private static Logger_Salarizare logger;
@@ -361,53 +361,53 @@ public abstract class Implement_Salarizare implements Local_Salarizare, Remote_S
 			logger.logINFO("END inregistrare stat plata");
 		}
 
-		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		@Override
-		public Centralizare_Stat_Plata inregistreazaCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception {
-			
-			logger.logINFO("Generare centralizator salarii");
-			Double totalCAS=0.0;
-			Double totalCASS=0.0;
-			Double totalSomaj=0.0;
-			Double totalImpozit=0.0;
-			Double totalSalarNet=0.0;
-			Double totalSporuri=0.0;
-			Double totalAlteRetineri=0.0;
-			Double totalSalarBrut = 0.0;
-			//insumam sume pentru toti angajatii
-			Centralizare_Stat_Plata centralizator = new Centralizare_Stat_Plata();
-			centralizator.setAn(an);
-			centralizator.setLuna(luna);
-			
-			List<Stat_Salarii> salarii= new ArrayList<Stat_Salarii>();
-			salarii.addAll(registru.getStatAnLuna(an, luna));
-			
-			//inlocuit cu metodata getSalariiByLuna care returneaza salarii
-			//performance wise ar trebui facut in DB cu proceduri stocate
-			for (Stat_Salarii salar:salarii){
-				
-				totalSporuri += salar.getAlte_Sporuri();
-				totalAlteRetineri += salar.getAlte_Retineri();
-				totalCAS += salar.getCAS();
-				totalCASS += salar.getCASS();
-				totalSomaj += salar.getSomaj();
-				totalImpozit += salar.getImpozit();
-				totalSalarNet += salar.getSalariu_Net();
-				totalSalarBrut += salar.getSalariu_Brut();
-				
-				centralizator.addStat_Salarii(salar);
-			}
-			if(sessionContext.getRollbackOnly()==true){
-				logger.logINFO("END generare centralizator - TRANZACTIE ESUATA!");
-			}
-			else{
-				centralizator = registru.salveazaCentralizator(centralizator);
-			}
-			
-			logger.logINFO("END generare centralizator");
-			return centralizator;
-		}
-		 
+//		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+//		@Override
+//		public Centralizare_Stat_Plata inregistreazaCentralizatorStatSalariiLuna(Integer an, Integer luna) throws Exception {
+//			
+//			logger.logINFO("Generare centralizator salarii");
+//			Double totalCAS=0.0;
+//			Double totalCASS=0.0;
+//			Double totalSomaj=0.0;
+//			Double totalImpozit=0.0;
+//			Double totalSalarNet=0.0;
+//			Double totalSporuri=0.0;
+//			Double totalAlteRetineri=0.0;
+//			Double totalSalarBrut = 0.0;
+//			//insumam sume pentru toti angajatii
+//			Centralizare_Stat_Plata centralizator = new Centralizare_Stat_Plata();
+//			centralizator.setAn(an);
+//			centralizator.setLuna(luna);
+//			
+//			List<Stat_Salarii> salarii= new ArrayList<Stat_Salarii>();
+//			salarii.addAll(registru.getStatAnLuna(an, luna));
+//			
+//			//inlocuit cu metodata getSalariiByLuna care returneaza salarii
+//			//performance wise ar trebui facut in DB cu proceduri stocate
+//			for (Stat_Salarii salar:salarii){
+//				
+//				totalSporuri += salar.getAlte_Sporuri();
+//				totalAlteRetineri += salar.getAlte_Retineri();
+//				totalCAS += salar.getCAS();
+//				totalCASS += salar.getCASS();
+//				totalSomaj += salar.getSomaj();
+//				totalImpozit += salar.getImpozit();
+//				totalSalarNet += salar.getSalariu_Net();
+//				totalSalarBrut += salar.getSalariu_Brut();
+//				
+//				centralizator.addStat_Salarii(salar);
+//			}
+//			if(sessionContext.getRollbackOnly()==true){
+//				logger.logINFO("END generare centralizator - TRANZACTIE ESUATA!");
+//			}
+//			else{
+//				centralizator = registru.salveazaCentralizator(centralizator);
+//			}
+//			
+//			logger.logINFO("END generare centralizator");
+//			return centralizator;
+//		}
+//		 
 		public PersonalSrv getPersonalSrv() {
 			return personalSrv;
 		}

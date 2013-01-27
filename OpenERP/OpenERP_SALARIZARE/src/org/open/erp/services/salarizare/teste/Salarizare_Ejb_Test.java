@@ -185,19 +185,19 @@ public class Salarizare_Ejb_Test {
 		logger.info("Sfarsit test: inregistrareSpor");
 	}
 	
-//	@Test
-//	public void testInregistrareRetinere() throws Exception {
-//		logger.info("Begin test: inregistrareRetinere");
-//		Angajat angajat = personalSrvInstance.getAngajatById(1);
-//		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
-//		
-//		Retineri retinere = salarizareSrvInstance.inregistrareRetinere(null,"Penalizare", 1, 2013, 11, angajat, 1, 100.0);
-//		logger.info("A fost creat sporul cu id-ul: "+retinere.getCod_Retinere());
-//		assertNotNull("Metoda de creare a retinerii nu a functionat!", retinere);
-//		
-//		logger.info("End test: inregistrareRetinere");
-//	}
-//	
+	@Test
+	public void testInregistrareRetinere() throws Exception {
+		logger.info("Begin test: inregistrareRetinere");
+		Angajat angajat = personalSrvInstance.getAngajatById(1);
+		logger.info("A fost incarcat angajatul cu numele: "+angajat.getNume());
+		
+		Retineri retinere = salarizareSrvInstance.inregistrareRetinere(null,"Penalizare", 1, 2013, 11, angajat, 1, 100.0);
+		logger.info("A fost creat sporul cu id-ul: "+retinere.getCod_Retinere());
+		assertNotNull("Metoda de creare a retinerii nu a functionat!", retinere);
+		
+		logger.info("End test: inregistrareRetinere");
+	}
+	
 	@Test
 	public void testAdaugaOreConcediu() throws Exception {
 		logger.info("Start test: adaugaOreConcediu");
@@ -305,7 +305,7 @@ public class Salarizare_Ejb_Test {
 		logger.info("Sfarsit test: testStergeCentralizator");
 	}
 	
-	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
+//	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
         props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");		
