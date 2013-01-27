@@ -16,7 +16,7 @@ public class NomenclatorMaterialeSrvFactory {
 
 	private static Logger logger = Logger.getLogger(NomenclatorMaterialeSrvFactory.class.getName());
 	
-	public static NomenclatorMaterialeSrv getProjectManagementSrv() throws Exception{
+	public static NomenclatorMaterialeSrv getNomenclatorMaterialeSrv() throws Exception{
 		return (NomenclatorMaterialeSrv) lookupEJBService();
 	}
 	
