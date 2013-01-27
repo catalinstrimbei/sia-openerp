@@ -1,11 +1,8 @@
 package org.open.erp.services.marketing;
 
-import java.util.Date;
-
 import javax.ejb.Remote;
 
 import org.open.erp.services.nomgen.NomenclatoareSrv;
-import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.nommat.NomenclatorMaterialeSrv;
 
 @Remote
@@ -32,4 +29,10 @@ public interface MarketingSrv {
 	public Reclamatie creareReclamatie(Reclamatie reclamatie);
 
 	public CampaniePromovare findCampanieById(long id);
+	
+	public CercetarePiata findCercetarePiataById(long id);
+	
+	public Chestionar findChestionarById(long id);
+	
+	public Intrebare findIntrebareById(long id);
 }
