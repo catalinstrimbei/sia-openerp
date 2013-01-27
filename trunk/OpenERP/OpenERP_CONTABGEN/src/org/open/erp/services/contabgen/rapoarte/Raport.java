@@ -16,6 +16,7 @@ public class Raport implements Serializable{
 	@Id
 	@GeneratedValue
 	Integer idRaport;
+	String denumire;
 	Date dataInceputRaport;
 	Date dataSfarsitRaport;
 	
@@ -37,6 +38,13 @@ public class Raport implements Serializable{
 	}
 	public void setDataSfarsitRaport(Date dataSfarsitRaport) {
 		this.dataSfarsitRaport = dataSfarsitRaport;
+	}
+	
+	public String getDenumire() {
+		return denumire;
+	}
+	public void setDenumire(String denumire) {
+		this.denumire = denumire;
 	}
 	@Override
 	public int hashCode() {
