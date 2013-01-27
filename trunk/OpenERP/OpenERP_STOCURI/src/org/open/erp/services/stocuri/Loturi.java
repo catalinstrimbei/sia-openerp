@@ -6,6 +6,7 @@ package org.open.erp.services.stocuri;
  * @BusinessObject(Entity)
  * 
  */
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.DATE;
 
 @Entity
-public class Loturi {
+public class Loturi implements Serializable{
 	@Id @GeneratedValue
 	private	Integer idLot;
 	private Double cantitate;

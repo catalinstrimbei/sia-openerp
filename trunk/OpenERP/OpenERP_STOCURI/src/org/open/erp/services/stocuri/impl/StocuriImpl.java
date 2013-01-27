@@ -1,21 +1,43 @@
 package org.open.erp.services.stocuri.impl;
 
+
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.EJBHome;
+import javax.ejb.EJBLocalHome;
+import javax.ejb.EJBLocalObject;
+import javax.ejb.EJBObject;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.ejb.TimerService;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.FlushModeType;
+import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.metamodel.Metamodel;
+import javax.transaction.UserTransaction;
+import javax.xml.rpc.handler.MessageContext;
 
+import org.apache.log4j.Logger;
 import org.open.erp.services.nommat.Material;
+
 
 import org.open.erp.services.stocuri.Articol;
 import org.open.erp.services.stocuri.BonTransfer;
@@ -36,23 +58,21 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 
 	// private AchizitiiSrv achizitiiSrv;
 	// private NomenclatorMaterialeSrv nomenclatorMaterialeSrv;
+	
+	// Dependente resurse proprii
+	private static Logger logger = Logger.getLogger(StocuriImpl.class.getName());
 	private RegistruStocuri registruStocuri;
 
-	// Dependente resurse proprii
-	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger
-			.getLogger(StocuriImpl.class.getName());
 
 	// Dependente resurse injectate
 	@PersistenceContext(unitName = "OpenERP_STOCURI")
 	private EntityManager em;
 
 	@Resource
-	private SessionContext sessionContext;
+	private SessionContext sessionContext ;
 
 	// Initializare
-	public StocuriImpl() {
-	}
-
+	public StocuriImpl() { }
 	@PostConstruct
 	public void init() {
 		if (this.registruStocuri == null)
@@ -61,14 +81,10 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	}
 
 	// intrarea in stoc pentru modulul achizitii
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void intrareStoc(Material material, Double cantitate, Double pret,
-			Gestiune gestiune) throws Exception{
-		// for(LiniiNIR linie: nir.getLinieNir())
-		// {
-		// Cei de la achizitii acum obiectul MATERIALE declarat local, cand o sa
-		// implementeze clasa MATERIAL de la nom materiale atunci nu o sa mai
-		// dea eroare
+			Gestiune gestiune) throws Exception {
 		logger.info("2.1. Preluare date specifice produsului: id-ul produsul: "
 				+ material.getCodMaterial() + ", cantitatea produsului: "
 				+ cantitate + ", pretul de intrare: " + pret);
@@ -88,9 +104,9 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 			// Loturi lot = creareLot(cantitate, pret, new Date(), art);
 			art.addLot(creareLot(cantitate, pret, new Date(), art));
 
-			//updateaza articolul, metoda addLot modifica cantitate pe gestiune
+			// updateaza articolul, metoda addLot modifica cantitate pe gestiune
 			this.salvareArticol(art);
-			
+
 			// art.cresteCantitateArticolPeGestiune(produs.getCantitate());
 			logger.info("2.4. Confirmare/Modificare stoc curent, cantitatea dupa modificare este: "
 					+ art.getCantPeGestiune());
@@ -103,9 +119,11 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 
 	}
 
+	
 	// intrarea in stoc pentru transferul intre gestiuni
 	@Override
-	public void intrareStoc(BonTransfer bonTransfer, Double pret) throws Exception{
+	public void intrareStoc(BonTransfer bonTransfer, Double pret)
+			throws Exception {
 		// logger.info("2.1. Preluare date specifice produsului: id-ul produsul: "
 		// + bonTransfer.getMaterial().getCodMaterial()+
 		// ", cantitatea produsului: " + bonTransfer.getCantitate());
@@ -128,7 +146,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 			Loturi lot = creareLot(bonTransfer.getCantitate(), pret,
 					new Date(), art);
 			art.addLot(lot);
-			//update
+			// update
 			this.salvareArticol(art);
 			// art.cresteCantitateArticolPeGestiune(produs.getCantitate());
 			// logger.info("2.4. Confirmare/Modificare stoc curent, cantitatea dupa modificare este: "+
@@ -158,7 +176,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 			// logger.info("1.3. Adaugare date specifice produsului in noul lot");
 			artNou.addLot(creareLot(bonTransfer.getCantitate(), pret,
 					new Date(), artNou));
-			//update
+			// update
 			this.salvareArticol(artNou);
 
 			// logger.info("1.4 Confirmare/Adaugare lot nou " + lot.getIdLot());
@@ -171,7 +189,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	// intrarea in stoc pentru modulul productie
 	@Override
 	public void intrareStoc(Material material, Gestiune gestiune,
-			Double cantitate) throws Exception{
+			Double cantitate) throws Exception {
 		logger.info("2.1. Preluare date specifice produsului: id-ul produsul: "
 				+ material.getCodMaterial() + ", cantitatea produsului: "
 				+ cantitate);
@@ -195,8 +213,8 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 																		// de la
 																		// modulul
 																		// ContabilitateGestiune
-			
-			//update
+
+			// update
 			this.salvareArticol(art);
 			// art.cresteCantitateArticolPeGestiune(produs.getCantitate());
 			logger.info("2.4. Confirmare/Modificare stoc curent, cantitatea dupa modificare este: "
@@ -218,7 +236,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 			logger.info("1.3. Adaugare date specifice produsului in noul lot");
 			Loturi lotNou = creareLot(cantitate, null, new Date(), artNou);
 			artNou.addLot(lotNou);
-			//update
+			// update
 			this.salvareArticol(artNou);
 
 			logger.info("1.4 Confirmare/Adaugare lot nou " + lotNou.getIdLot());
@@ -226,19 +244,17 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 
 	}
 
+	
 	// crearea unui art si lot nou la intrarea in gestiune
 	@Override
 	public void adaugareArtLot(Material material, Double cantitate,
-			Double pret, Gestiune gestiune) throws Exception{
+			Double pret, Gestiune gestiune) throws Exception {
 		Double cantitateinitiala;
 		logger.info("1.1. Se creeaza un lot nou pentru produsul "
 				+ material.getCodMaterial());
 		Articol art = creareArticol(0.00, gestiune, material,
 				new ArrayList<Loturi>());
 		gestiune.addArticole(art);
-
-		// gestiune.addArticole(new Articol(1, 0.00, gestiune, material, new
-		// ArrayList<Loturi>()));
 
 		// Articol art = this.getArticolByGestiune(material, gestiune);
 		logger.info("1.2. Preluare date specifice produsului: id-ul produsului: "
@@ -252,7 +268,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		logger.info("1.3. Adaugare date specifice produsului in noul lot");
 		cantitateinitiala = art.getCantPeGestiune();
 		art.addLot(lot);
-		//modifica cantitatea pe gestiune
+		// modifica cantitatea pe gestiune
 		this.salvareArticol(art);
 
 		logger.info("1.4 Confirmare/Adaugare lot nou " + lot.getIdLot());
@@ -295,6 +311,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		return null;
 	}
 
+	
 	// crearea si returnarea unei liste cu gestiunile existente in toata
 	// aplicatie si pe care le pot folosii cei care au nevoie
 	@Override
@@ -341,8 +358,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		return -1.00;
 	}
 
-	
-	//AM RAMAS
+	// AM RAMAS
 	// iesire din gestiune pentru vanzari si productie
 	@Override
 	public void iesireStoc(Material material, Double cantitate,
@@ -368,16 +384,16 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 					// logger.info("3.3. Scaderea lotului avand cantitatea:" +
 					// l.getCantitate() + "cu cantitate " + cantitate);
 					l.scadeCantitatea(cantitate);
-					//update lot
+					// update lot
 					this.salvareLot(l);
-					
+
 					// logger.info("3.4. Actualizarea stocului pentru gestiune: "
 					// + gestiune.getIdGest() + " cu cantitatea " + cantitate);
 					art.scadeCantitateArticolPeGestiune(cantitate);
-					
-					//update
+
+					// update
 					this.salvareArticol(art);
-					
+
 					break;
 				} else if (l.getCantitate() == cantitate) {
 					// logger.info("Se scade cantitatea din gestiune a articolului "
@@ -401,8 +417,8 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 			}
 			for (Loturi lot : listaLoturiDeSters) {
 				art.removeLot(lot);
-				
-				//romove lot din registru
+
+				// romove lot din registru
 				this.registruStocuri.stergeLot(lot);
 			}
 		}
@@ -572,7 +588,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	 */
 
 	public Articol creareArticol(Double cantPeGestiune, Gestiune gestiune,
-			Material material, List<Loturi> loturiArticole) throws Exception{
+			Material material, List<Loturi> loturiArticole) throws Exception {
 		Articol articol = new Articol(cantPeGestiune, gestiune, material,
 				loturiArticole);
 
@@ -580,9 +596,8 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		salvareArticol(articol);
 		return articol;
 	}
-	
-	public Articol salvareArticol(Articol articol)
-			throws Exception {
+
+	public Articol salvareArticol(Articol articol) throws Exception {
 
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true) {
@@ -606,8 +621,7 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		return lot;
 	}
 
-	public Loturi salvareLot(Loturi lot)
-			throws Exception {
+	public Loturi salvareLot(Loturi lot) throws Exception {
 
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true) {
@@ -621,28 +635,33 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 
 		return lot;
 	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Depozit creareDepozit(String locatie) throws Exception {
-		Depozit depozit = new Depozit(locatie);
 
+	
+	public Depozit creareDepozit(String locatie) throws Exception {
+		
+		Depozit depozit = new Depozit(locatie);
+		
+		logger.debug("crearedepozit");
 		salvareDepozit(depozit);
+		logger.debug("iese din creare depozit");
 		return depozit;
 	}
 
 	public Depozit salvareDepozit(Depozit depozit) throws Exception {
-		// aici ar trebui sa initializez depozitul care il init in test
-
+		
+		logger.debug("salvare depozit");
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true) {
 			logger.debug(">>>>>>>>>>>> END Creare/salvare depozit - TRANZACTIE ANULATA");
 			// throw new
 			// RuntimeException("Creare proiect - TRANZACTIE ANULATA");
 		} else {
+			logger.debug("ajunge pe else pentru metoda din registru si intra in registru");
 			depozit = this.registruStocuri.salveazaDepozit(depozit);
 			// em.persist(proiectNou);
+			logger.debug("iese din registru");
 		}
-
+		logger.debug("iese din salvare");
 		return depozit;
 	}
 
@@ -672,10 +691,10 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	}
 
 	public BonTransfer creareBonTransfer(Material material, Double cantitate,
-			Gestiune gestiuneIntrare, Gestiune gestiuneIesire) throws Exception{
+			Gestiune gestiuneIntrare, Gestiune gestiuneIesire) throws Exception {
 		BonTransfer bonTransfer = new BonTransfer(material, cantitate,
 				gestiuneIntrare, gestiuneIesire);
-		
+
 		salvareBonTransfer(bonTransfer);
 
 		return bonTransfer;
@@ -696,4 +715,21 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 
 		return bonTransfer;
 	}
+	
+	public Material creareMaterial(Material mat) throws Exception{
+		 
+		//Material material = new Material();
+		
+		em.persist(mat);
+		return mat;
+	}
+	
+	public Material getMaterial(String i) throws Exception{
+		
+		Material mat = registruStocuri.getMaterial(i);
+		
+		return mat;
+		
+	}
+
 }

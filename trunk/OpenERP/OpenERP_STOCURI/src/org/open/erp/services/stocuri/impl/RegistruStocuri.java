@@ -1,24 +1,34 @@
 package org.open.erp.services.stocuri.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+
+import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
+
+
+import org.open.erp.services.nommat.Material;
 import org.open.erp.services.stocuri.Articol;
 import org.open.erp.services.stocuri.BonTransfer;
 import org.open.erp.services.stocuri.Depozit;
 import org.open.erp.services.stocuri.Gestiune;
 import org.open.erp.services.stocuri.Loturi;
 
-
+/**
+ * 
+ * @BusinessObject(Repository)
+ * 
+ */
 public class RegistruStocuri {
-
-private static Logger logger = Logger.getLogger(RegistruStocuri.class.getName());	
+	private static Logger logger = Logger.getLogger(RegistruStocuri.class.getName());	
 	
 	/* set up */
-	private EntityManager entityManager;
-	
+	private EntityManager entityManager ;
 	public RegistruStocuri(EntityManager em) {
 		entityManager = em;
 	}
@@ -51,13 +61,17 @@ private static Logger logger = Logger.getLogger(RegistruStocuri.class.getName())
 				.getResultList();
 	}
 	
+	public Material getMaterial(String i) {
+		return entityManager.find(Material.class, i);
+	}
 	
 	//persistenta
 	public Depozit salveazaDepozit(Depozit depozit) throws Exception{
+		logger.debug("a intrat in salveaza depozit din registru");
 		try{
 			
 			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
-			/* proiect.getIdProiect() pentru proiect cu id generat*/
+			
 			if (depozit.getIdDepozit() == null || 
 				entityManager.find(depozit.getClass(), depozit.getIdDepozit()) == null)
 				entityManager.persist(depozit);
@@ -71,6 +85,7 @@ private static Logger logger = Logger.getLogger(RegistruStocuri.class.getName())
 		}
 		return depozit;
 	}
+	
 	public void stergeDepozit(Depozit depozit){
 		entityManager.remove(depozit);
 	}
@@ -80,6 +95,8 @@ private static Logger logger = Logger.getLogger(RegistruStocuri.class.getName())
 	
 	public Gestiune salveazaGestiune(Gestiune gestiune) throws Exception{
 		try{
+			
+			entityManager.merge(gestiune.getDepozit());
 			
 			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
 			/* proiect.getIdProiect() pentru proiect cu id generat*/
@@ -105,6 +122,7 @@ private static Logger logger = Logger.getLogger(RegistruStocuri.class.getName())
 	
 	public Articol salveazaArticol(Articol articol) throws Exception{
 		try{
+			entityManager.merge(articol.getGestiune());
 			
 			//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
 			/* proiect.getIdProiect() pentru proiect cu id generat*/
@@ -177,5 +195,8 @@ private static Logger logger = Logger.getLogger(RegistruStocuri.class.getName())
 	public void refreshLot(Loturi lot){
 		entityManager.refresh(lot);
 	}
+
+
+	
 	
 }

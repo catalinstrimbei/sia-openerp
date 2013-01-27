@@ -1,5 +1,6 @@
 package org.open.erp.services.stocuri;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import org.open.erp.services.nommat.Material;
  * 
  */
 @Entity
-public class Articol{ 
+public class Articol implements Serializable{ 
 	@Id @GeneratedValue
 	private Integer idArticol;
 	private Double cantPeGestiune;
