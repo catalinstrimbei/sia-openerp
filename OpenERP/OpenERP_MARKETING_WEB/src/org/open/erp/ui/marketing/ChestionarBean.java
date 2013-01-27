@@ -13,23 +13,24 @@ import org.open.erp.services.marketing.MarketingSrv;
 import org.open.erp.services.nomgen.NomenclatoareSrv;
 import org.open.erp.services.nomgen.Persoana;
 
-@ManagedBean(name="chestionarBean")
+@ManagedBean(name = "chestionarBean")
 @RequestScoped
-public class ChestionarBean implements Serializable{
-	
+public class ChestionarBean implements Serializable {
+
 	@EJB(lookup = "java:global/OpenERP_MARKETING/MarketingSrvImpl!org.open.erp.services.marketing.MarketingSrv")
 	private MarketingSrv marketingSrv;
-	
+
 	@EJB(lookup = "java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.nomgen.NomenclatoareSrv")
 	private NomenclatoareSrv nomGenSrv;
-	
+
 	private Date data;
 	private String titlu;
+	private Integer idPersoana;
 	private Persoana persoanaChestionata;
 	private long idCercetarePiata;
 	private CercetarePiata cercetarePiata;
-	
-	public ChestionarBean(){
+
+	public ChestionarBean() {
 	}
 
 	public MarketingSrv getMarketingSrv() {
@@ -64,6 +65,14 @@ public class ChestionarBean implements Serializable{
 		this.titlu = titlu;
 	}
 
+	public Integer getIdPersoana() {
+		return idPersoana;
+	}
+
+	public void setIdPersoana(Integer idPersoana) {
+		this.idPersoana = idPersoana;
+	}
+
 	public Persoana getPersoanaChestionata() {
 		return persoanaChestionata;
 	}
@@ -87,23 +96,27 @@ public class ChestionarBean implements Serializable{
 	public void setCercetarePiata(CercetarePiata cercetarePiata) {
 		this.cercetarePiata = cercetarePiata;
 	}
-	
-	public String creareChestionar(){
-		
-		Chestionar chestionarNou= new Chestionar();
-		
-		CercetarePiata cercetarePiataNoua=marketingSrv.findCercetarePiataById(idCercetarePiata);
-		cercetarePiata=cercetarePiataNoua;
-		
+
+	public String creareChestionar() {
+
+		Persoana persoanaGasita = nomGenSrv.findPersoanaById(idPersoana);
+
+		persoanaChestionata = persoanaGasita;
+
+		Chestionar chestionarNou = new Chestionar();
+
+		CercetarePiata cercetarePiataNoua = marketingSrv.findCercetarePiataById(idCercetarePiata);
+		cercetarePiata = cercetarePiataNoua;
+
 		chestionarNou.setData(data);
 		chestionarNou.setTitlu(titlu);
 		chestionarNou.setPersoanaChestionata(persoanaChestionata);
 		chestionarNou.setCercetarePiata(cercetarePiata);
-		
+
 		marketingSrv.creareChestionar(chestionarNou);
-		
+
 		return "chestionarNou";
-		
+
 	}
 
 }
