@@ -7,8 +7,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
-import org.open.erp.services.proman.ProjectManagementSrv;
-import org.open.erp.services.proman.teste.ProjectManagementSrvFactory;
 import org.open.erp.services.stocuri.StocuriSrv;
 import org.open.erp.services.stocuri.impl.StocuriImpl;
 
