@@ -230,4 +230,6 @@ public interface PersonalSrv {
  * @return Obiectul de tip Angajat 
  * 
  */
+
+	 Angajat salveazaAngajat(Angajat angajat_) throws Exception;
 }
