@@ -113,7 +113,7 @@ public interface StocuriSrv {
 	
 	void alertaStoc(Articol articol);
 	
-	public Articol getArticolByGestiune(Material produs, Gestiune gestiune);
+	//public List<Articol> getArticolByGestiune(Material produs, Gestiune gestiune);
 	
 	public ListaGestiuni GestiuniDisponibile ();
 	
@@ -133,6 +133,8 @@ public interface StocuriSrv {
 	public Material creareMaterial(Material mat) throws Exception;
 
 	public Material getMaterial(String i) throws Exception;
+
+	public Gestiune getGestiune(int IdGestiune) throws Exception;
 	
 	// verifica daca exista un lot pentru un produs si o gestiune, folosit la instrare in stoc
 	//boolean existaArticol(Produs produs, Gestiune gestiune);
