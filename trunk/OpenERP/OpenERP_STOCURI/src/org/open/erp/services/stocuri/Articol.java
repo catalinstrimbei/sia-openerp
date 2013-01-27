@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.CascadeType.ALL;
 
 import org.open.erp.services.nommat.Material;
@@ -33,7 +33,7 @@ public class Articol implements Serializable{
 	@OneToOne
 	private Material material;
 	@OneToMany(targetEntity = Loturi.class,
-			cascade = ALL, fetch = EAGER)
+			cascade = ALL, fetch = LAZY)
 	private List<Loturi> loturiArticole = new ArrayList<Loturi>();
 	
 	public void addLot(Loturi lot){

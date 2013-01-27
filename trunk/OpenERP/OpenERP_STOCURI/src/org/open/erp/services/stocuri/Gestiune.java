@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
 
 //import org.open.erp.services.personal.Angajat;
 
@@ -29,7 +30,7 @@ public class Gestiune implements Serializable{
 	@OneToOne
 	private Depozit depozit;
 	@OneToMany(targetEntity = Articol.class,
-			cascade = ALL)
+			cascade = ALL, fetch = EAGER)
 	private List<Articol>  articole = new ArrayList<Articol>();
 	//private Angajat responsabilGestiune;
 	

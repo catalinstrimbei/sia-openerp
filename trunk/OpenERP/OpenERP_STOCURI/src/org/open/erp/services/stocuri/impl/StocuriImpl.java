@@ -697,4 +697,10 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		registruStocuri.stergeDepozit(depozit);
 	}
 	
+	@Override
+	public Depozit getDepozit(int i) throws Exception{
+		Depozit depozit = registruStocuri.getDepozit(i);
+		return depozit;
+	}
+	
 }
