@@ -7,9 +7,6 @@
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/ORCLOpenERP</jta-data-source>
 		
-		<jar-file>OpenERP_VANZARI.jar</jar-file>
-		<jar-file>OpenERP_PERSONAL.jar</jar-file>
-		<jar-file>OpenERP_NOMGEM.jar</jar-file>
 		<class>org.open.erp.services.finincasari.BiletOrdine</class>
 		<class>org.open.erp.services.finincasari.CEC</class>
 		<class>org.open.erp.services.finincasari.Chitanta</class>
