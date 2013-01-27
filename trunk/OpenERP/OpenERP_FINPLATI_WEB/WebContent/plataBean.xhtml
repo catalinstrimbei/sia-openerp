@@ -2,8 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://java.sun.com/jsf/core"
-	xmlns:rich="http://richfaces.org/rich">
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head></h:head>
 <h:head>
 	<title>Adaugare plata</title>
@@ -14,9 +15,12 @@
 		<tr>
 			<td>
 				<h:outputText value="Introduceti data platii:"></h:outputText>
+				<!-- 
 				<h:inputText value="#{plataBean.dataPlata}">
-					<f:convertDateTime  pattern="dd/MM/yyyy"></f:convertDateTime>
-				</h:inputText>
+					<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+	                </h:inputText>
+	                -->
+				<rich:calendar value="#{plataBean.dataPlata}" datePattern="dd/MM/yyyy hh:mm:ss" />
 			</td>
 		</tr>
 		
@@ -31,15 +35,25 @@
 		<tr>
 			<td>
 				<h:outputText value="Introduceti modul de plata:"></h:outputText>
+				<!-- 
 				<h:inputText value="#{plataBean.modPlata}">
 				</h:inputText>
+				-->
+				<h:selectOneMenu id="modPlataSel" value="#{plataBean.modPlata}" converter="#{plataBean}">
+				  <f:selectItems value="#{plataBean.modPlataList}" />
+				</h:selectOneMenu> 
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<h:outputText value="Introduceti tipul platii:"></h:outputText>
+				<!-- 
 				<h:inputText value="#{plataBean.tipPlata}">
 				</h:inputText>
+				-->
+				<h:selectOneMenu id="tipPlataSel" value="#{plataBean.tipPlata}" converter="#{plataBean}">
+				  <f:selectItems value="#{plataBean.tipPlataList}" />
+				</h:selectOneMenu> 
 			</td>
 		</tr>
         <tr>
