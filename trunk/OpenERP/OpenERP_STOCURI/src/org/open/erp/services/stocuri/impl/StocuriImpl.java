@@ -85,86 +85,48 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	@Override
 	public void intrareStoc(Material material, Double cantitate, Double pret,
 			Gestiune gestiune) throws Exception {
-
-		// Articol art = this.getArticolByGestiune(material, gestiune);
 		List<Articol> lista = this.getArticolByGestiune(material, gestiune);
 		if (lista.isEmpty()) {
-			logger.info("Produsul nu este inregistrat in stoc, deci se creeaza un lot nou.");
+			logger.info("Produsul nu este inregistrat in stoc, se creeaza un lot nou.");
 			this.adaugareArtLot(material, cantitate, pret, gestiune);
 		} else {
 			for (Articol art : lista) {
 				if (art != null) {
 					logger.info("Produsul este deja inregistrat in stocuri.");
-
 					art.addLot(creareLot(cantitate, pret, new Date(), art));
-					// updateaza articolul, metoda addLot modifica cantitate pe
-					// gestiune
+					// update articol
 					this.salvareArticol(art);
-
-					// art.cresteCantitateArticolPeGestiune(produs.getCantitate());
 				}
 			}
 		}
 	}
 
-	// intrarea in stoc pentru transferul intre gestiuni 
-	//TREBUIE SA O MODIFIC PENTRU TRANSFERUL INTRE GESTIUNI
+	// intrarea in stoc pentru transferul intre gestiuni
 	@Override
-	public void intrareStoc(BonTransfer bonTransfer, Double pret) throws Exception {
-		logger.info("2.1. Preluare date specifice produsului: id-ul produsul: " + bonTransfer.getMaterial().getCodMaterial()+ ", cantitatea produsului: " + bonTransfer.getCantitate());
-		logger.info("2.2. Verifica daca exista produsul " + bonTransfer.getMaterial().getCodMaterial() + " in stoc"); 
-		List<Articol> artLista = this.getArticolByGestiune(bonTransfer.getMaterial(), bonTransfer.getGestiuneIntrare()); 
-		if(artLista.isEmpty())
-		{
-			//Articol artNou = creareArticol(0.00, bonTransfer.getGestiuneIntrare(), bonTransfer.getMaterial(), new ArrayList<Loturi>());
-			//bonTransfer.getGestiuneIntrare().addArticole(artNou);
-			//Articol artNou = this.getArticolByGestiune(bonTransfer.getMaterial(),bonTransfer.getGestiuneIntrare());
-			//artNou.addLot(creareLot(bonTransfer.getCantitate(), pret, new Date(),artNou)); 
-			// update 
-			//this.salvareArticol(artNou);
-			
-			this.adaugareArtLot(bonTransfer.getMaterial(),bonTransfer.getCantitate(), pret, bonTransfer.getGestiuneIntrare());
-			
-			//Articol art = creareArticol(0.00, gestiune, material,new ArrayList<Loturi>());
-			//gestiune.addArticole(art);
-			// Articol art = this.getArticolByGestiune(material, gestiune);
-			//Loturi lot = creareLot(cantitate, pret, new Date(), art);
-			//art.addLot(lot);
-			// modifica cantitatea pe gestiune
-			//this.salvareArticol(art);
-		}
-		else{
-			for(Articol art:artLista)
-			{
-				if(art != null)
-				{
-					Loturi lot = creareLot(bonTransfer.getCantitate(), pret, new Date(),art); 
-					art.addLot(lot); 
-					// update 
-					this.salvareArticol(art); 
-					//art.cresteCantitateArticolPeGestiune(produs.getCantitate());
+	public void intrareStoc(BonTransfer bonTransfer, Double pret)
+			throws Exception {
+		logger.info("2.1. Preluare date specifice produsului: id-ul produsul: "
+				+ bonTransfer.getMaterial().getCodMaterial()
+				+ ", cantitatea produsului: " + bonTransfer.getCantitate());
+		logger.info("2.2. Verifica daca exista produsul "
+				+ bonTransfer.getMaterial().getCodMaterial() + " in stoc");
+		List<Articol> artLista = this.getArticolByGestiune(
+				bonTransfer.getMaterial(), bonTransfer.getGestiuneIntrare());
+		if (artLista.isEmpty()) {
+			this.adaugareArtLot(bonTransfer.getMaterial(),
+					bonTransfer.getCantitate(), pret,
+					bonTransfer.getGestiuneIntrare());
+		} else {
+			for (Articol art : artLista) {
+				if (art != null) {
+					Loturi lot = creareLot(bonTransfer.getCantitate(), pret,
+							new Date(), art);
+					art.addLot(lot);
+					// update
+					this.salvareArticol(art);
 				}
 			}
 		}
-			
-		/*if (art != null) 
-			{ 
-			Loturi lot = creareLot(bonTransfer.getCantitate(), pret, new Date(),art); 
-			art.addLot(lot); 
-			// update 
-			this.salvareArticol(art); 
-			//art.cresteCantitateArticolPeGestiune(produs.getCantitate()); 
-			} 
-		else 
-			{ 
-			Articol artNou = creareArticol(0.00, bonTransfer.getGestiuneIntrare(),bonTransfer.getMaterial(), new ArrayList<Loturi>());
-			bonTransfer.getGestiuneIntrare().addArticole(artNou);
-			//Articol artNou = this.getArticolByGestiune(bonTransfer.getMaterial(),bonTransfer.getGestiuneIntrare());
-			artNou.addLot(creareLot(bonTransfer.getCantitate(), pret, new Date(),artNou)); 
-			// update 
-			this.salvareArticol(artNou);
-			}
-			*/
 	}
 
 	// intrarea in stoc pentru modulul productie
@@ -219,9 +181,9 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	@Override
 	public void adaugareArtLot(Material material, Double cantitate,
 			Double pret, Gestiune gestiune) throws Exception {
-		Articol art = creareArticol(0.00, gestiune, material,new ArrayList<Loturi>());
+		Articol art = creareArticol(0.00, gestiune, material,
+				new ArrayList<Loturi>());
 		gestiune.addArticole(art);
-		// Articol art = this.getArticolByGestiune(material, gestiune);
 		Loturi lot = creareLot(cantitate, pret, new Date(), art);
 		art.addLot(lot);
 		// modifica cantitatea pe gestiune
@@ -233,14 +195,8 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	// @Override
 	public List<Articol> getArticolByGestiune(Material material,
 			Gestiune gestiune) {
-
 		List<Articol> artLista = registruStocuri.getArticolByGestiune(
 				material.getCodMaterial(), gestiune.getIdGest());
-		// for (Articol art : gestiune.getArticole()) {
-		// if (art.getMaterial().equals(material)) {
-		// return art;
-		// }
-		// }
 		return artLista;
 	}
 
@@ -263,13 +219,6 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 			for (Articol art : artLista) {
 				return art.getCantPeGestiune();
 			}
-
-		// for (Articol art : gestiune.getArticole()) {
-		// if (art.getMaterial().equals(material)) {
-		// return art.getCantPeGestiune();
-
-		// }
-		// }
 		return null;
 	}
 
@@ -325,13 +274,10 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 			Gestiune gestiune) throws Exception {
 		logger.info("3.1. Preluare date specifice produsului: id-ul produsul: "
 				+ material.getCodMaterial() + ", cantitatea: " + cantitate);
-		// Articol art;
 		Double cantitateDeIesit, cantitateInitialaStoc;
 		List<Loturi> listaLoturiDeSters = new ArrayList<Loturi>();
 		List<Articol> artLista = this.getArticolByGestiune(material, gestiune);
 		cantitateDeIesit = cantitate;
-		// cantitateInitialaStoc = art.getCantPeGestiune();
-
 		if (artLista.isEmpty())
 			logger.info("Nu exista produsul in stoc");
 		else {
@@ -375,109 +321,71 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 				}
 			}
 		}
-		// logger.info("3.3. Scaderea stocului avand cantitatea initiala: "
-		// + cantitateInitialaStoc + " cu cantitatea " + cantitateDeIesit);
-		// logger.info("Cantitatea ramasa in gestiunea: " + gestiune.getIdGest()
-		// + " este " + art.getCantPeGestiune());
-
-		// this.alertaStoc(art);
-		// if (this.verificareStoc(material, gestiune) == 0.0) {
-		// logger.info("Articolul " + art.getIdArticol()
-		// + " are cantitatea egala cu 0 si este sters.");
-		// gestiune.removeArticole(art);
-		// logger.info("Articolul s-a sters.");
-		// }
-
 	}
 
 	// transferul unui material cu o anumita cantitate dintr-o gestiune in alta
 	@Override
 	public void transfer(BonTransfer bonTransfer) throws Exception {
 		Double cantitateDeIesit;
-		List<Loturi> listaLoturiDeSters = new ArrayList<Loturi>(); 
-		List<Articol> artLista = this.getArticolByGestiune(bonTransfer.getMaterial(), bonTransfer.getGestiuneIesire()); 
-		//art = artLista.get(0);
-		cantitateDeIesit = bonTransfer.getCantitate(); 
-		//cantitateInitialaStoc = art.getCantPeGestiune(); 
+		List<Loturi> listaLoturiDeSters = new ArrayList<Loturi>();
+		List<Articol> artLista = this.getArticolByGestiune(
+				bonTransfer.getMaterial(), bonTransfer.getGestiuneIesire());
+		cantitateDeIesit = bonTransfer.getCantitate();
 		
-		if(artLista.isEmpty())
+		if (artLista.isEmpty())
 			logger.info("Nu exista articol pentru materialul de transferat");
-		else
-		{
-			for(Articol art : artLista)
-			{
-				if (this.verificareStoc(bonTransfer.getMaterial(), bonTransfer.getGestiuneIesire()) < cantitateDeIesit) 
-				{
-					logger.info("Nu exista in gestiunea " +bonTransfer.getGestiuneIesire().getDenumireGest() + "suficienta cantitate pentru produsul " +bonTransfer.getMaterial().getCodMaterial()); 
-				} 
-				else 
-				{ 
-					for (Loturi l :art.getLoturiArticole()) 
-						{ 
-						if (l.getCantitate() > cantitateDeIesit) 
-							{ 
+		else {
+			for (Articol art : artLista) {
+				if (this.verificareStoc(bonTransfer.getMaterial(),
+						bonTransfer.getGestiuneIesire()) < cantitateDeIesit) {
+					logger.info("Nu exista in gestiunea "
+							+ bonTransfer.getGestiuneIesire().getDenumireGest()
+							+ "suficienta cantitate pentru produsul "
+							+ bonTransfer.getMaterial().getCodMaterial());
+				} else {
+					for (Loturi l : art.getLoturiArticole()) {
+						if (l.getCantitate() > cantitateDeIesit) {
 							l.scadeCantitatea(cantitateDeIesit);
 							logger.debug("Imi afiseaza info-uri");
-							//update lot
+							// update lot
 							this.salvareLot(l);
-							art.scadeCantitateArticolPeGestiune(cantitateDeIesit); 
-							//update articol
+							art.scadeCantitateArticolPeGestiune(cantitateDeIesit);
+							// update articol
 							this.salvareArticol(art);
-							//BonTransfer bonIntermediar = creareBonTransfer( bonTransfer.getMaterial(),cantitateDeIesit, bonTransfer.getGestiuneIntrare(), null); 
-							//this.intrareStoc(bonTra, l.getPretIntrare()); 
-							this.intrareStoc(bonTransfer.getMaterial(), cantitateDeIesit, l.getPretIntrare(), bonTransfer.getGestiuneIntrare());
-							break; 
-							} else
-								if (l.getCantitate() == cantitateDeIesit) 
-								{ 
-									logger.info("Se scade cantitatea din gestiune a articolului " +art.getIdArticol()); 
-									// art.removeLot(l); 
-									listaLoturiDeSters.add(l);
-									//BonTransfer bonIntermediar = creareBonTransfer(bonTransfer.getMaterial(), cantitateDeIesit, bonTransfer.getGestiuneIntrare(), null); 
-									//this.intrareStoc(bonIntermediar,l.getPretIntrare()); 
-									this.intrareStoc(bonTransfer.getMaterial(), cantitateDeIesit, l.getPretIntrare(), bonTransfer.getGestiuneIntrare());
+							this.intrareStoc(bonTransfer.getMaterial(),
+									cantitateDeIesit, l.getPretIntrare(),
+									bonTransfer.getGestiuneIntrare());
+							break;
+						} else if (l.getCantitate() == cantitateDeIesit) {
+							logger.info("Se scade cantitatea din gestiune a articolului "
+									+ art.getIdArticol());
+							// art.removeLot(l);
+							listaLoturiDeSters.add(l);
+							this.intrareStoc(bonTransfer.getMaterial(),
+									cantitateDeIesit, l.getPretIntrare(),
+									bonTransfer.getGestiuneIntrare());
 
-									break; 
-								} 
-								else 
-						 			{ 
-									cantitateDeIesit = cantitateDeIesit -l.getCantitate(); 
-									listaLoturiDeSters.add(l);
-									//BonTransfer bonIntermediar = creareBonTransfer(bonTransfer.getMaterial(), l.getCantitate(),bonTransfer.getGestiuneIntrare(), null); 
-									//this.intrareStoc(bonIntermediar,l.getPretIntrare()); 
-									this.intrareStoc(bonTransfer.getMaterial(), l.getCantitate(), l.getPretIntrare(), bonTransfer.getGestiuneIntrare());
+							break;
+						} else {
+							cantitateDeIesit = cantitateDeIesit
+									- l.getCantitate();
+							listaLoturiDeSters.add(l);
+							this.intrareStoc(bonTransfer.getMaterial(),
+									l.getCantitate(), l.getPretIntrare(),
+									bonTransfer.getGestiuneIntrare());
 
-						 			} 
 						}
-					for (Loturi lot : listaLoturiDeSters) 
-					{ 
-					art.removeLot(lot); 
-					//sterge loturile care au cantitatea 0
-					this.registruStocuri.stergeLot(lot);
-					} 
+					}
+					for (Loturi lot : listaLoturiDeSters) {
+						art.removeLot(lot);
+						// sterge loturile care au cantitatea 0
+						this.registruStocuri.stergeLot(lot);
+					}
 				}
 			}
 
 		}
-	
-		  
-		  //this.alertaStoc(art); 
-		  //if(this.verificareStoc(bonTransfer.getMaterial(),bonTransfer.getGestiuneIesire()) == 0.0) 
-		  //{ 
-		//	  logger.info("Articolul " + art.getIdArticol() + " are cantitatea egala cu 0 si este sters.");
-	//		  bonTransfer.getGestiuneIesire().removeArticole(art);
-	//		  logger.info("Articolul s-a sters."); 
-//		  }
-//		  logger.info(">>>>>>>>Se finalizeaza iesire din gestiunea: " + bonTransfer.getGestiuneIesire().getIdGest());
-		  
-		  // logger.info(">>>>>>>>Se declanseaza intrarea in gestiunea: " + bonTransfer.getGestiuneIntrare().getIdGest() + "<<<<<<<<"); 
-		  //intrare specifica transferului 
-		  //logger.info(">>>>>>>>Se finalizeaza intrarea in gestiunea: " + 
-		  //bonTransfer.getGestiuneIntrare().getIdGest() + "<<<<<<<<");
-		  
-		 // logger.info("A intrat in gestiune " +bonTransfer.getGestiuneIntrare().getIdGest() + " produsul " +bonTransfer.getMaterial().getCodMaterial() + " cu cantitatea " + bonTransfer.getCantitate()); 
-		 // logger.info("5.5. Confirmare/Salvare transfer. S-a transferat din gestiunea: " + bonTransfer.getGestiuneIesire().getIdGest() + " in gestiunea " + bonTransfer.getGestiuneIntrare().getIdGest() + " produsul " +bonTransfer.getMaterial().getCodMaterial() + " in cantitatea de " + bonTransfer.getCantitate());
-		
+
 	}
 
 	// alerta stoc cand valoarea acestuia ajunge sa fie egala sau mai mica cu un
@@ -513,7 +421,6 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 			Material material, List<Loturi> loturiArticole) throws Exception {
 		Articol articol = new Articol(cantPeGestiune, gestiune, material,
 				loturiArticole);
-
 		// salvare in baza de date
 		salvareArticol(articol);
 		return articol;
@@ -524,14 +431,10 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true) {
-			logger.debug(">>>>>>>>>>>> END Creare/salvare articol - TRANZACTIE ANULATA");
-			// throw new
-			// RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+			logger.debug("END Creare/salvare articol - TRANZACTIE ANULATA");
 		} else {
 			articol = this.registruStocuri.salveazaArticol(articol);
-			// em.persist(proiectNou);
 		}
-
 		return articol;
 	}
 
@@ -549,13 +452,9 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true) {
 			logger.debug(">>>>>>>>>>>> END Creare/salvare lot - TRANZACTIE ANULATA");
-			// throw new
-			// RuntimeException("Creare proiect - TRANZACTIE ANULATA");
 		} else {
 			lot = this.registruStocuri.salveazaLot(lot);
-			// em.persist(proiectNou);
 		}
-
 		return lot;
 	}
 
@@ -563,10 +462,8 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	public Depozit creareDepozit(String locatie) throws Exception {
 
 		Depozit depozit = new Depozit(locatie);
-
-		logger.debug("crearedepozit");
 		salvareDepozit(depozit);
-		logger.debug("iese din creare depozit");
+
 		return depozit;
 	}
 
@@ -577,15 +474,10 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true) {
 			logger.debug(">>>>>>>>>>>> END Creare/salvare depozit - TRANZACTIE ANULATA");
-			// throw new
-			// RuntimeException("Creare proiect - TRANZACTIE ANULATA");
+
 		} else {
-			logger.debug("ajunge pe else pentru metoda din registru si intra in registru");
 			depozit = this.registruStocuri.salveazaDepozit(depozit);
-			// em.persist(proiectNou);
-			logger.debug("iese din registru");
 		}
-		logger.debug("iese din salvare");
 		return depozit;
 	}
 
@@ -595,7 +487,6 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 
 		// salvare in baza de date
 		salvareGestiune(gestiune);
-
 		return gestiune;
 	}
 
@@ -605,13 +496,10 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true) {
 			logger.debug(">>>>>>>>>>>> END Creare/salvare gestiune - TRANZACTIE ANULATA");
-			// throw new
-			// RuntimeException("Creare proiect - TRANZACTIE ANULATA");
 		} else {
 			gestiune = this.registruStocuri.salveazaGestiune(gestiune);
-			// em.persist(proiectNou);
-		}
 
+		}
 		return gestiune;
 	}
 
@@ -621,7 +509,6 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 				gestiuneIntrare, gestiuneIesire);
 
 		salvareBonTransfer(bonTransfer);
-
 		return bonTransfer;
 	}
 
@@ -632,17 +519,14 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 		/* Actiune tranzactionala ... */
 		if (sessionContext.getRollbackOnly() == true) {
 			logger.debug(">>>>>>>>>>>> END Creare/salvare bon transfer - TRANZACTIE ANULATA");
-			// throw new
-			// RuntimeException("Creare proiect - TRANZACTIE ANULATA");
 		} else {
 			bonTransfer = this.registruStocuri.salveazaBonTransfer(bonTransfer);
-			// em.persist(proiectNou);
 		}
 
 		return bonTransfer;
 	}
 
-	//Material
+	// Material
 	public Material creareMaterial(Material mat) throws Exception {
 		// Material material = new Material();
 		em.persist(mat);
@@ -655,35 +539,35 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 	}
 
 	@Override
-	public List<Material> getMateriale() throws Exception{
+	public List<Material> getMateriale() throws Exception {
 		List<Material> materiale = registruStocuri.getToateMaterialele();
 		if (materiale.isEmpty())
-			logger.debug("Returner 000 depozite!");
+			logger.debug("Returner 000 material!");
 		else
-			logger.debug("Returner " + materiale.size() + " depozite!");
+			logger.debug("Returner " + materiale.size() + " materiale!");
 		return materiale;
 	}
-	
-	//Gestiune
+
+	// Gestiune
 	@Override
 	public Gestiune getGestiune(int IdGestiune) throws Exception {
 		Gestiune gestiune = registruStocuri.getGestiune(IdGestiune);
 		return gestiune;
 	}
-	
+
 	@Override
-	public List<Gestiune> getGestiuni() throws Exception{
+	public List<Gestiune> getGestiuni() throws Exception {
 		List<Gestiune> gestiuni = registruStocuri.getToateGestiunile();
 		if (gestiuni.isEmpty())
-			logger.debug("Returner 000 depozite!");
+			logger.debug("Returner 000 gestiuni!");
 		else
-			logger.debug("Returner " + gestiuni.size() + " depozite!");
+			logger.debug("Returner " + gestiuni.size() + " gestiuni!");
 		return gestiuni;
 	}
-	
-	//Depozit
+
+	// Depozit
 	@Override
-	public List<Depozit> getDepozite() throws Exception{
+	public List<Depozit> getDepozite() throws Exception {
 		List<Depozit> depozite = registruStocuri.getToateDepozitele();
 		if (depozite.isEmpty())
 			logger.debug("Returner 000 depozite!");
@@ -691,16 +575,16 @@ public class StocuriImpl implements StocuriSrv, StocuriSrvLocal {
 			logger.debug("Returner " + depozite.size() + " depozite!");
 		return depozite;
 	}
-	
+
 	@Override
-	public void stergereDepozit(Depozit depozit) throws Exception{
+	public void stergereDepozit(Depozit depozit) throws Exception {
 		registruStocuri.stergeDepozit(depozit);
 	}
-	
+
 	@Override
-	public Depozit getDepozit(int i) throws Exception{
+	public Depozit getDepozit(int i) throws Exception {
 		Depozit depozit = registruStocuri.getDepozit(i);
 		return depozit;
 	}
-	
+
 }
