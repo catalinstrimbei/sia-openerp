@@ -298,6 +298,8 @@ public class RegistruFinPlati {
 					entityManager.refresh(responsabil);
 				}
 	
+	
+				
 	//chitantaplata 
 				
 	public ChitantaPlata salveazaChitantaPlata(ChitantaPlata chitantaplata) throws Exception{
@@ -324,6 +326,34 @@ public class RegistruFinPlati {
 						public void refreshChitantaPlata(ChitantaPlata chitantaplata){
 							entityManager.refresh(chitantaplata);
 						}
+	
+			//chitantaplata 
+			
+			public Plata salveazaPlata(Plata plata) throws Exception{
+							try{
+										
+							//if (!entityManager.contains(proiect)) /* o posibilitate de verificare */
+					if (plata.getId() == null || /* proiect.getIdProiect() pentru proiect cu id generat*/
+								entityManager.find(plata.getClass(), plata.getId()) == null)
+									entityManager.persist(plata);
+										else
+											entityManager.merge(plata);
+										
+									}catch(Exception ex){
+										logger.info("EROARE PERSISTENTA ***** ");
+										ex.printStackTrace();
+										throw ex;
+									}
+									return plata;
+								}
+								
+								public void stergePlata(Plata plata){
+									entityManager.remove(plata);
+								}
+								public void refreshPlata(Plata plata){
+									entityManager.refresh(plata);
+								}
+						
 						
 	//SituatieFinanciara
 	public SituatieFinanciara salveazaSituatieFinanciara(SituatieFinanciara SitFit) throws Exception{

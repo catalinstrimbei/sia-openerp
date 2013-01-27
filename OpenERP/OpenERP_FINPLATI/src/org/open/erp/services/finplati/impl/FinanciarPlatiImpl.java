@@ -9,6 +9,7 @@ import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FurnizorContract;
 import org.open.erp.services.finplati.Persoana;
 import org.open.erp.services.finplati.Plata;
+import org.open.erp.services.finplati.ResponsabilPlata;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,7 +104,9 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 	
 	
 	/* implementare actiuni serviciu ProjectManagementSrv */
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
 	//@Override
 	//public void setAchizitii(AchizitiiSrv achizitiiSrv) {
 		
@@ -116,20 +119,41 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 	
 	@Override
 	public void setSituatieFinanciara(SituatieFinanciara sitFit) {
-		this.sitFit = sitFit;
+		//this.sitFit = sitFit;
+		try {
+			registruFinPlati.salveazaSituatieFinanciara(sitFit);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	//@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public Double getSumePlatite(Date cDate) {
 		logger.debug("1.1. Gestionare sume platite prin banca");
-		return sitFit.getTotalPlati(cDate);
+		//return sitFit.getTotalPlati(cDate);
+		List<Plata> plati = registruFinPlati.getToatePlatile();
+		Double sum = 0.0;
+		
+		for (Plata p : plati) {
+			if (p.getDataPlatii().compareTo(cDate) <= 0)
+				sum += p.getValoarePlata();
+		}
+		
+		return sum;
 	}
 
 	@Override
 	public void setBugetDatorii(Double buget) {
 		logger.debug("1.2. Alocare buget pentru datorii");
 		sitFit.setBugetDatorii(buget);
+		try {
+			registruFinPlati.salveazaSituatieFinanciara(sitFit);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -152,12 +176,21 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 		
 		sitFit.adaugareContract(contract);
 		
+		try {
+			registruFinPlati.salveazaContract(contract);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return contract;
 	}
 	@Override
 	public Contract cautaContractFurnizor(Integer idContract) {
-		if (sitFit.getContracte().containsKey(idContract))
-			return sitFit.getContracte().get(idContract);
+		if (sitFit.getContracte().containsKey(idContract)) {
+			return registruFinPlati.getContract(idContract);
+		}
+		//return sitFit.getContracte().get(idContract);
 		else	
 			return null;
 	}
@@ -166,6 +199,14 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 	public void inregistrarePlataAvans(Contract contract, Plata plata) {
 		logger.debug("2.2. Inregistrare suma in avans");
 		contract.adaugaPlata(plata);
+		try {
+			registruFinPlati.salveazaPlata(plata);
+			registruFinPlati.salveazaContract(contract);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@Override 
@@ -188,22 +229,36 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 	@Override
 	public List<Persoana> afisareListaPersonal() {
 		logger.debug("3.1. Initiere efectuare plata");
-		return sitFit.getListaPersonal();
+		return registruFinPlati.getToatePersoanele();
+		
+		//return sitFit.getListaPersonal();
 	}
 	
 	@Override
 	public void stabilireResponsabilPlata() {
 		logger.debug("3.2. Stabilire responsabil plata");
-		List<Persoana> listaPersonal =  this.afisareListaPersonal();
-		int scorMax = 0;
-		int position = 0;
-		for (int i=0; i<listaPersonal.size(); i++) {
-			if (listaPersonal.get(i).getScorAptitudini() > scorMax) {
-				position = i;
-				scorMax = listaPersonal.get(i).getScorAptitudini();
-			}
-		}
-		sitFit.setResponsabil(listaPersonal.get(position));	
+		return;
+		
+//		List<Persoana> listaPersonal =  this.afisareListaPersonal();
+//		int scorMax = 0;
+//		int position = 0;
+//		
+//		if (listaPersonal == null || listaPersonal.size() == 0)
+//			return;
+//		
+//		for (int i=0; i<listaPersonal.size(); i++) {
+//			if (listaPersonal.get(i).getScorAptitudini() > scorMax) {
+//				position = i;
+//				scorMax = listaPersonal.get(i).getScorAptitudini();
+//			}
+//		}
+//		//sitFit.setResponsabil(listaPersonal.get(position));	
+//		try {
+//			registruFinPlati.salveazaResponsabilPlata((ResponsabilPlata) listaPersonal.get(position));
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	@Override
@@ -266,6 +321,12 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 		plata.setModPlata(ModPlata.CASH); // demonstrativ
 		
 		sitFit.adaugarePlata(plata);
+		try {
+			registruFinPlati.salveazaPlata(plata);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -277,7 +338,23 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 		plata.setTipPlata(TipPlata.ALTTIP);
 		plata.setModPlata(ModPlata.CASH); // demonstrativ
 		
-		return sitFit.adaugarePlata(plata);
+		try {
+			registruFinPlati.salveazaPlata(plata);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ChitantaPlata cp = sitFit.adaugarePlata(plata);
+		
+		try {
+			registruFinPlati.salveazaChitantaPlata(cp);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return cp;
 	}
 	
 	@Override
@@ -343,15 +420,53 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 	@Override
 	public void adaugarePlata(Plata plataNoua) {
 		// TODO Auto-generated method stub
+		ChitantaPlata cp = sitFit.adaugarePlata(plataNoua);
 		
+		try {
+			registruFinPlati.salveazaPlata(plataNoua);
+			registruFinPlati.salveazaSituatieFinanciara(sitFit);
+			registruFinPlati.salveazaChitantaPlata(cp);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
 	@Override
 	public void adaugaPersoana(Persoana persoanaNoua) {
 		// TODO Auto-generated method stub
+		try {
+			registruFinPlati.salveazaPersoana(persoanaNoua);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+	@Override
+	public void adaugaFurnizorContract(FurnizorContract furnizorContractNou) {
+		// TODO Auto-generated method stub
 		
 	}
+	 public Integer cautaPersona(String nume)
+     {
+             logger.debug("1. Cautare Persoana in baza de date");
+             return -1;
+     
+     }
+
+
+     @Override
+     public Persoana findPersoanaById(Integer idPersoana) {
+             
+             Persoana persoana = em.find(Persoana.class, idPersoana);
+             
+             return persoana;
+     }
+
+
 
 	//@Override
 	//public void setBanci(BanciSrv banciSrv) {

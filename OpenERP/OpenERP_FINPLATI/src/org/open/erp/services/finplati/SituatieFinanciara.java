@@ -49,6 +49,18 @@ public class SituatieFinanciara implements Serializable{
 	@ManyToMany @JoinTable(name="sitf_contr")
 	Map<Integer,Contract> contracte;
 
+	public Map<Integer, FacturaStatus> getFactura() {
+		return factura;
+	}
+
+	public void setFactura(Map<Integer, FacturaStatus> factura) {
+		this.factura = factura;
+	}
+
+	public void setResponsabil(ResponsabilPlata responsabil) {
+		this.responsabil = responsabil;
+	}
+
 	@ManyToMany @JoinTable(name="sitf_pers")
 	Map<Integer,Persoana> personal;
 	

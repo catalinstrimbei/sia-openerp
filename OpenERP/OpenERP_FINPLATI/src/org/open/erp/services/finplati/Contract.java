@@ -1,5 +1,6 @@
 package org.open.erp.services.finplati;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,7 +21,12 @@ import org.open.erp.services.finplati.FurnizorContract;
 
 
 @Entity
-public class Contract {
+public class Contract implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id @GeneratedValue
 	Integer idContract;
 	
