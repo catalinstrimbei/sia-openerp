@@ -26,6 +26,7 @@ public class ChestionarBean implements Serializable{
 	private Date data;
 	private String titlu;
 	private Persoana persoanaChestionata;
+	private long idCercetarePiata;
 	private CercetarePiata cercetarePiata;
 	
 	public ChestionarBean(){
@@ -71,6 +72,14 @@ public class ChestionarBean implements Serializable{
 		this.persoanaChestionata = persoanaChestionata;
 	}
 
+	public long getIdCercetarePiata() {
+		return idCercetarePiata;
+	}
+
+	public void setIdCercetarePiata(long idCercetarePiata) {
+		this.idCercetarePiata = idCercetarePiata;
+	}
+
 	public CercetarePiata getCercetarePiata() {
 		return cercetarePiata;
 	}
@@ -86,6 +95,11 @@ public class ChestionarBean implements Serializable{
 		chestionarNou.setData(data);
 		chestionarNou.setTitlu(titlu);
 		chestionarNou.setPersoanaChestionata(persoanaChestionata);
+		
+		CercetarePiata cercetarePiataNoua=marketingSrv.findCercetarePiataById(idCercetarePiata);
+		
+		cercetarePiata=cercetarePiataNoua;
+		
 		chestionarNou.setCercetarePiata(cercetarePiata);
 		
 		marketingSrv.creareChestionar(chestionarNou);
