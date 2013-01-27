@@ -59,8 +59,8 @@ public class TestPersonalSrv {
 		Date dataExpirare = cal.getTime();
 		
 		
-		Post postLiber = instantaPersonal.crearePost("Medii", 2000, new Departament("1","Finante"));
-		Anunt anuntNou = instantaPersonal.creareAnunt("Responsabil resurse umane", 122025, dataEmitere, dataExpirare, "Organizat, bune abilitati de comunicare", postLiber);
+		Post postLiber = instantaPersonal.crearePost(1, "Medii", 2000, new Departament("1","Finante"));
+		Anunt anuntNou = instantaPersonal.creareAnunt(1, "Responsabil resurse umane", 122025, dataEmitere, dataExpirare, "Organizat, bune abilitati de comunicare", postLiber);
 		assertNotNull("Nu exista un anunt nou!", anuntNou);
 		
 		Candidat candidatNou = instantaPersonal.creareCandidat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Candidat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"));
@@ -98,12 +98,12 @@ public class TestPersonalSrv {
 		List<DoubleParam<String,String>> lStraine = new ArrayList<DoubleParam<String,String>>();
 		lStraine.add(limbiStraine);
 		
-		CV cvCandidat = instantaPersonal.creareCV(candidatNou, studiiAbs, functiiOcup, lStraine, "organizat");
+		CV cvCandidat = instantaPersonal.creareCV(1, candidatNou, studiiAbs, functiiOcup, lStraine, "organizat");
 		assertNotNull("Nu exista un CV nou!", cvCandidat);
 		
 				
-		ProbaEvaluare proba1 = instantaPersonal.creareProbaEvaluare("Proba1");
-		ProbaEvaluare proba2 = instantaPersonal.creareProbaEvaluare("Proba2");
+		ProbaEvaluare proba1 = instantaPersonal.creareProbaEvaluare(1, "Proba1");
+		ProbaEvaluare proba2 = instantaPersonal.creareProbaEvaluare(2, "Proba2");
 		
 		Angajat evaluator = instantaPersonal.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
 		
@@ -114,7 +114,7 @@ public class TestPersonalSrv {
 		probeInterviu.add(proba1);
 		probeInterviu.add(proba2);
 		
-		Interviu interviuCandidati = instantaPersonal.creareInterviu(anuntNou, evaluatori, probeInterviu, new Date());
+		Interviu interviuCandidati = instantaPersonal.creareInterviu(1, anuntNou, evaluatori, probeInterviu, new Date());
 		interviuCandidati.adaugareCandidat(candidatNou);
 		interviuCandidati.stabilireRezultateInterviu(candidatNou, proba1, 8);
 		interviuCandidati.stabilireRezultateInterviu(candidatNou, proba2, 6);
@@ -126,7 +126,7 @@ public class TestPersonalSrv {
 		Candidat candidatNou2 = instantaPersonal.creareCandidat(1235,"Ionescu Florin", "M", "danielIon@yahoo.com", "Candidat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"));
 		assertNotNull("Nu exista un candidat nou!", candidatNou2);
 		
-		Interviu interviuCandidati2 = instantaPersonal.creareInterviu(anuntNou, evaluatori, probeInterviu, new Date());
+		Interviu interviuCandidati2 = instantaPersonal.creareInterviu(2, anuntNou, evaluatori, probeInterviu, new Date());
 		interviuCandidati2.adaugareCandidat(candidatNou2);
 		interviuCandidati2.stabilireRezultateInterviu(candidatNou2, proba1, 3);
 		interviuCandidati2.stabilireRezultateInterviu(candidatNou2, proba2, 4);

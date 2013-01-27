@@ -4,23 +4,39 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+@Entity
 public class Interviu {
+	@ManyToOne
 	Anunt anuntPostat = null;
+	@OneToMany
 	List<Angajat> evaluatori = null;
+	@ManyToMany
 	List<ProbaEvaluare> probeEval =null;
 	Date dataInterviu = null;
+	@ManyToMany
 	List<Candidat> candidatiEvaluati = null;
+	@Id
+	Integer id;
 	
-	
-	public Interviu (Anunt titluAnunt,
+	public Interviu (Integer id, Anunt titluAnunt,
 			List<Angajat> numeEvaluatori, List<ProbaEvaluare> probeInterviu,
 			Date dataInterviu){
+		this.id = id;
 		this.anuntPostat = titluAnunt;
 		this.evaluatori = numeEvaluatori;
 		this.probeEval = probeInterviu;
 		this.dataInterviu = dataInterviu;
 		candidatiEvaluati = new ArrayList<Candidat>();
 		probeEval = new ArrayList<ProbaEvaluare>();
+		
+	}
+	
+	public Interviu(){
 		
 	}
 	

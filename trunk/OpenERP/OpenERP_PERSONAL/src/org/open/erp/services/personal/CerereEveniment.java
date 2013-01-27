@@ -3,16 +3,20 @@ package org.open.erp.services.personal;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
+@Entity
 public class CerereEveniment implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	@Id
 	private  Integer  		nrInregistrare;
-	
+	@ManyToOne
 	private	 Angajat 	contract;
 	
 	private  Date       	dataCerere;

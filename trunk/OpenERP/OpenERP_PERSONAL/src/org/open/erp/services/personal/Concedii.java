@@ -3,15 +3,20 @@ package org.open.erp.services.personal;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
+@Entity
 public class Concedii implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	@Id
 	private  Integer  		nrInregistrare;
+	@ManyToOne
 	private	 Angajat 		idAngajat;
 	private  Date       	dataInceputConcediu;	
 	private  Date       	dataSfarsitConcediu;	
@@ -58,6 +63,11 @@ public class Concedii implements Serializable{
 		dataSfarsitConcediu = new Date();
 		idAngajat = ang;
 	}
+	
+	public Concedii(){
+		
+	}
+	
 	public Angajat getIdAngajat() {
 		return idAngajat;
 	}

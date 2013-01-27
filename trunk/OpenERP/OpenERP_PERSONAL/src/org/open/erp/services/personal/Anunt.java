@@ -1,16 +1,22 @@
 package org.open.erp.services.personal;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Anunt {
 	String denPost = null;
+	@Id
+	Integer id;
 	Integer indexCOR = 0;
 	Date dataPostareAnunt = null;
 	Date dataExpirareAnunt = null;
 	String cerintePost = null;
 	Post postDisponibil = null;
 	
-	public Anunt(String titlu, Integer codPost, Date dataPostare, Date dataExpirare, String cerinte, Post postLiber){
+	public Anunt(Integer id, String titlu, Integer codPost, Date dataPostare, Date dataExpirare, String cerinte, Post postLiber){
+		this.id = id;
 		denPost = titlu;
 		indexCOR = codPost;
 		dataPostareAnunt = dataPostare;
@@ -20,6 +26,7 @@ public class Anunt {
 	}
 	
 	public Anunt(Anunt anuntAnterior){
+		this.id = anuntAnterior.id;
 		this.denPost = anuntAnterior.denPost;
 		this.indexCOR = anuntAnterior.indexCOR;
 		this.dataPostareAnunt = anuntAnterior.dataPostareAnunt;
@@ -27,6 +34,10 @@ public class Anunt {
 		this.cerintePost = anuntAnterior.cerintePost;
 	}
 
+	public Anunt(){
+		
+	}
+	
 	public String getDenumirePost() {
 		return denPost;
 	}
