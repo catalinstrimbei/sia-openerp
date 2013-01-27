@@ -4,6 +4,9 @@ import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.nommat.Material;
+import org.open.erp.services.proman.ProjectManagementSrv;
+import org.open.erp.services.proman.teste.ProjectManagementSrvFactory;
+import org.open.erp.services.proman.teste.TestProjectManagementEJB;
 import org.open.erp.services.stocuri.BonTransfer;
 import org.open.erp.services.stocuri.Depozit;
 import org.open.erp.services.stocuri.Gestiune;
@@ -11,7 +14,7 @@ import org.open.erp.services.stocuri.StocuriSrv;
 
 public class TestStocuriEJB {
 	// Resurse test
-	private static Logger logger = Logger.getLogger(TestStocuriSrv.class.getName());
+	private static Logger logger = Logger.getLogger(TestStocuriEJB.class.getName());
 	
 	// Unitatea de test sursa/gazda unitatii de test 
 	public static StocuriSrv stocuriInstance;
@@ -22,28 +25,44 @@ public class TestStocuriEJB {
 		stocuriInstance = StocuriSrvFactory.getStocuriSrv();
 		logger.info("initTest " + stocuriInstance);
 	}
+	/* Test creare proiect: 
+	 * - invocare EJB, 
+	 * - procesare EJB compus, 
+	 * - procesare tranzactie compusa, 
+	 * - procesare persistenta cu 2JPA-PU,
+	 * - definire BO local cu asociaţie către BO din alt modul.
+	 * */
 	
+	
+	@Test
+	public void testCreareDepozit() throws Exception{
+		logger.info("-----START creare depozit----- ");
+		
+		Depozit depozit = stocuriInstance.creareDepozit("Iasi");
+		
+		Gestiune gestiune = stocuriInstance.creareGestiune("Gestiune 1", depozit);
+		
+		logger.info("-----SFARSIT creare depzoit----- " + depozit.getLocatie() + gestiune.getDenumireGest());
+		
+	}
 	
 	@Test
 	public void testIntrareStoc() throws Exception {
 		
 		logger.info("-----START creare date de test Intrare in stoc------ ");
 		
-		Gestiune gest1 = new Gestiune(1, "Gestiune 1", new Depozit(1, "Iasi"));		
-				
-		//Post postLiber = personalSrv.crearePost("Medii", 2000, new Departament("1","Finante"));
-		//Angajat responsabilGestiune = personalSrv.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
-		//gest1.setResponsabilGestiune(responsabilGestiune);
+		Depozit depozit = stocuriInstance.creareDepozit("Iasi");
+		Gestiune gestiune = stocuriInstance.creareGestiune("Gestiune 1", depozit);
 		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		//Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
+		logger.info("-----SFARSIT creare depzoit----- " + depozit.getLocatie() + gestiune.getDenumireGest());	
 		
 		logger.info("-----FINAL creare date de test Intrare in stoc------ ");
 
 		logger.info("-----START caz de utilizare Intrare in stoc----- ");
+		Material mat = stocuriInstance.getMaterial("1");
+		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gestiune);
 		
-		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
-		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
+		logger.info("-----SFARSIT caz de utilizare Intrare in stoc----- ");
 
 	}
 	
@@ -97,10 +116,6 @@ public class TestStocuriEJB {
 		Depozit depozit2 = stocuriInstance.creareDepozit("Bacau");
 		Gestiune gest2 = stocuriInstance.creareGestiune("Gestiune 2", depozit2);
 		
-		//Post postLiber = personalSrv.crearePost("Medii", 2000, new Departament("1","Finante"));
-		//Angajat responsabilGestiune = personalSrv.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
-		//gest1.setResponsabilGestiune(responsabilGestiune);
-		
 		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		
@@ -129,10 +144,6 @@ public class TestStocuriEJB {
 		Depozit depozit2 = stocuriInstance.creareDepozit("Bacau");
 		Gestiune gest2 = stocuriInstance.creareGestiune("Gestiune 2", depozit2);
 		
-		//Post postLiber = personalSrv.crearePost("Medii", 2000, new Departament("1","Finante"));
-		//Angajat responsabilGestiune = personalSrv.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
-		//gest1.setResponsabilGestiune(responsabilGestiune);
-		
 		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		
@@ -158,10 +169,6 @@ public class TestStocuriEJB {
 		Gestiune gest1 = stocuriInstance.creareGestiune("Gestiune 1", depozit1);
 		Depozit depozit2 = stocuriInstance.creareDepozit("Bacau");
 		Gestiune gest2 = stocuriInstance.creareGestiune("Gestiune 2", depozit2);
-		
-		//Post postLiber = personalSrv.crearePost("Medii", 2000, new Departament("1","Finante"));
-		//Angajat responsabilGestiune = personalSrv.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
-		//gest1.setResponsabilGestiune(responsabilGestiune);
 		
 		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
 		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
