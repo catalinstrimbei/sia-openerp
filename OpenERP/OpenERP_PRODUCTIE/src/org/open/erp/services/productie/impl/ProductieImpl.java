@@ -1,6 +1,7 @@
 package org.open.erp.services.productie.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -422,19 +423,97 @@ FluxProductie fluxPr = productie.getFlux(idFlux);
 		registruProductie.stergeUtilaj(utilaj);
 		
 	}
-
+	
 	@Override
 	public void setNomenclatoareSrv(NomenclatoareSrv nomenclatoareSrv) {
+		this.nomgenSrv = (NomenclatoareSrvLocal) nomenclatoareSrv;
+		
+	}
+
+	public NomenclatoareSrv getNomenclatoareSrv() {
+		return nomgenSrv;
+	}
+	
+	public void setNommatSrv(NomenclatorMaterialeSrv nommatSrv) {
+		this.nommatSrv = (NomenclatorMaterialeSrvLocal)nommatSrv;
+	}
+	public NomenclatorMaterialeSrv getNomenclatorMaterialeSrv() {
+		return nommatSrv;
+	}
+
+	public PersonalSrv getPersonalSrv() {
+		return personalSrv;
+	}
+	
+	public void setPersonalSrv(PersonalSrv personalSrv) {
+		this.personalSrv = (PersonalSrvLocal) personalSrv;
+	}
+
+	@Override
+	public Produs creareProdus(Integer idProdus, String denumire)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Produs CautareProdusDupaDenumire(String denumire) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Produs> getProduse() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setProduse(List<Produs> produse) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void setNommatSrv(NomenclatorMaterialeSrv nommatSrv) {
-		//this.nommatSrv = nommatSrv;
+	@Override
+	public void generateRandomProduse(Integer nrProduse) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void setPersonalSrv(PersonalSrv personalSrv) {
-		//this.personalSrv = personalSrv;
+	@Override
+	public Collection<Produs> getProduseOrdonateDupaId() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Produs getProdusDupaCod(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Produs addProdus(Produs p) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeProdus(Produs p) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void refreshProdus(Produs p) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Produs getProdus(Integer idProdus) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
