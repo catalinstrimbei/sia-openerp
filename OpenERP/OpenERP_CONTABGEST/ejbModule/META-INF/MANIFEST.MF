@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Dependencies: deployment.OpenERP_NOMMAT.jar
+Dependencies: deployment.OpenERP_PRODUCTIE.jar
+Dependencies: deployment.OpenERP_PERSONAL.jar
