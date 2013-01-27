@@ -64,8 +64,13 @@ public class RegistruStocuri {
 				.setParameter("locatie", locatie).getResultList();
 	}
 
+	//Material
 	public Material getMaterial(String i) {
 		return entityManager.find(Material.class, i);
+	}
+	public List<Material> getToateMaterialele(){
+		return entityManager.createQuery("SELECT m FROM Material m")
+				.getResultList();
 	}
 
 	// Articol
