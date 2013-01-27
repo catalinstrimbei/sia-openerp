@@ -24,7 +24,7 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	
 	private RegistruMateriale registruMateriale;
 
-	@PersistenceContext(unitName="OpenERP_NOMGEN")
+	@PersistenceContext(unitName="OpenERP_NOMMAT")
 	private EntityManager em;
 	
 
