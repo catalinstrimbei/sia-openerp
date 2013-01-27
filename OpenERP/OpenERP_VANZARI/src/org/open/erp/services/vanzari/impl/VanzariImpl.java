@@ -20,6 +20,7 @@ import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.apache.log4j.Logger;
 import org.hamcrest.core.Is;
 //import org.open.erp.services.stocuri.StocuriSrv;
 //import org.open.erp.services.stocuri.StocuriSrvLocal;
@@ -201,6 +202,36 @@ public class VanzariImpl implements VanzariSrv, VanzariSrvLocal{
 		
 		return valoare;
 	}
+
+	
+public Persoana crearePersoana(Integer idPersoana, String nume, String prenume, String functie) throws Exception {
+		logger.info("incepe crearea!!!!!!!!______________========");
+		Persoana persoana = new Persoana( idPersoana,  nume,  prenume,  functie);
+		
+		logger.debug("crearePersoana");
+		salvarePersoana(persoana);
+		logger.debug("iese din creare persoana");
+		return persoana;
+	}
+
+public Persoana salvarePersoana(Persoana persoana) throws Exception {
+	
+	logger.debug("salvare persoana");
+	/* Actiune tranzactionala ... */
+	if (sessionContext.getRollbackOnly() == true) {
+		logger.debug(">>>>>>>>>>>> END Creare/salvare persoana - TRANZACTIE ANULATA");
+		// throw new
+		// RuntimeException("Creare persoana - TRANZACTIE ANULATA");
+	} else {
+		logger.debug("ajunge pe else pentru metoda din registru si intra in registru");
+		persoana = this.registruVanzari.salveazaPersoana(persoana);
+		// em.persist(proiectNou);
+		logger.debug("iese din registru");
+	}
+	logger.debug("iese din salvare");
+	return persoana;
+}
+
 
 		
 }

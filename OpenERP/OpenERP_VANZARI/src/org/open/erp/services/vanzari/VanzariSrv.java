@@ -4,7 +4,6 @@ package org.open.erp.services.vanzari;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Remote;
-
 //import org.open.erp.services.stocuri.StocuriSrv;
 
 
@@ -72,6 +71,7 @@ public interface VanzariSrv {
 	 * @param cantitateComandata		Cantitatea pe care o comanda clientul.
 	 * @param cantitateAcceptata		Cantitatea care a fost acceptata de producator.
 	 * @return	comanda nou creata.
+	 * 
 	 */
 	
 	Comenzi creareComanda(Integer idComanda, Date data, List<ArticolComanda> articole);
@@ -136,6 +136,7 @@ List<OfertePret> getOferte();
 
 //void iesireStoc(Material material, Double cantitate
 		// ) throws Exception;
+ Persoana crearePersoana(Integer idPersoana,String nume, String prenume, String functie) throws Exception;
 
 }	 
 
