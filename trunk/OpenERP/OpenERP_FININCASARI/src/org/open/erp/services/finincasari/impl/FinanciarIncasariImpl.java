@@ -25,6 +25,7 @@ import org.open.erp.services.finincasari.OrdinDePlata;
 import org.open.erp.services.nomgen.NomenclatoareSrvLocal;
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
+import org.open.erp.services.personal.PersonalSrvLocal;
 import org.open.erp.services.vanzari.Facturi;
 //import org.open.erp.services.vanzari.VanzariSrv;
 import org.open.erp.services.vanzari.VanzariSrvLocal;
@@ -111,7 +112,7 @@ public  class FinanciarIncasariImpl implements FinanciarIncasariSrv {
 			suma = getSuma(moneda, suma,cursValutar);
 		}
 		
-		BiletOrdine BO = new BiletOrdine(localitate, dataEmiterii,suma,  moneda,  sumaLitere, angajat, persoana);
+		BiletOrdine BO = new BiletOrdine(localitate, dataEmiterii,suma,  moneda,  sumaLitere, sumaLitere, angajat, persoana);
 		return BO;
 		
 	}

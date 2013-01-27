@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.open.erp.services.nomgen.Persoana;
 import org.open.erp.services.personal.Angajat;
-
-import com.oracle.jrockit.jfr.DataType;
 
 
 /**
@@ -32,6 +31,12 @@ public class BiletOrdine extends FinanciarIncasari implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
 	private Date dataScadenta;
 	
+    @ManyToOne
+	private Angajat angajat;
+    
+    @ManyToOne
+    private Persoana persoana;
+    
 	
 	public String getSeriaBilet() {
 		return seriaBilet;
@@ -67,6 +72,12 @@ public class BiletOrdine extends FinanciarIncasari implements Serializable {
 			String moneda, String sumaLitere, String contBancar, Angajat angajat, Persoana persoana) {
 		super(localitate, dataEmiterii, suma, moneda, sumaLitere);
 		// TODO Auto-generated constructor stub
+	}
+	public Angajat getCasier() {
+		return angajat;
+	}
+	public void setCasier(Angajat angajat) {
+		this.angajat = angajat;
 	}
 	
 	

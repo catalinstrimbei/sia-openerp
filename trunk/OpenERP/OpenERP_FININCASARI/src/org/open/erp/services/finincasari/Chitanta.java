@@ -24,7 +24,7 @@ public class Chitanta extends FinanciarIncasari implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	//@ManyToOne
+	@ManyToOne
 	private Angajat angajat;
 
 	
