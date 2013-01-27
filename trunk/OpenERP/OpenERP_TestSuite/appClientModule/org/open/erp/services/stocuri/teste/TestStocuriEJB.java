@@ -4,9 +4,6 @@ import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.nommat.Material;
-import org.open.erp.services.proman.ProjectManagementSrv;
-import org.open.erp.services.proman.teste.ProjectManagementSrvFactory;
-import org.open.erp.services.proman.teste.TestProjectManagementEJB;
 import org.open.erp.services.stocuri.BonTransfer;
 import org.open.erp.services.stocuri.Depozit;
 import org.open.erp.services.stocuri.Gestiune;
@@ -51,16 +48,16 @@ public class TestStocuriEJB {
 		
 		logger.info("-----START creare date de test Intrare in stoc------ ");
 		
-		Depozit depozit = stocuriInstance.creareDepozit("Iasi");
-		Gestiune gestiune = stocuriInstance.creareGestiune("Gestiune 1", depozit);
-		
-		logger.info("-----SFARSIT creare depzoit----- " + depozit.getLocatie() + gestiune.getDenumireGest());	
+		//Depozit depozit = stocuriInstance.creareDepozit("Iasi");
+		//Gestiune gestiune = stocuriInstance.creareGestiune("Gestiune 1", depozit);
 		
 		logger.info("-----FINAL creare date de test Intrare in stoc------ ");
 
 		logger.info("-----START caz de utilizare Intrare in stoc----- ");
 		Material mat = stocuriInstance.getMaterial("1");
-		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gestiune);
+		Gestiune gestiune = stocuriInstance.getGestiune(81);
+		
+		stocuriInstance.intrareStoc(mat, 15.00, 10.00, gestiune);
 		
 		logger.info("-----SFARSIT caz de utilizare Intrare in stoc----- ");
 
@@ -69,38 +66,19 @@ public class TestStocuriEJB {
 	@Test
 	public void testVerificareStocCurent() throws Exception {
 		logger.info("-----START creare date de test Verificare Stoc Curent------ ");
-		
-		Depozit depozit1 = stocuriInstance.creareDepozit("Iasi");
-		Gestiune gest1 = stocuriInstance.creareGestiune("Gestiune 1", depozit1);
-		Depozit depozit2 = stocuriInstance.creareDepozit("Bacau");
-		Gestiune gest2 = stocuriInstance.creareGestiune("Gestiune 2", depozit2);
-		
-		//Post postLiber = personalSrv.crearePost("Medii", 2000, new Departament("1","Finante"));
-		//Angajat responsabilGestiune = personalSrv.creareAngajat(1234,"Ionescu Daniel", "M", "danielIon@yahoo.com", "Angajat","necasatorit", "01/06/1980","0232/115874", new Adresa("1","Iasi","Iasi","Romania","x","007891"),  new ContractMunca (1500, 23, new Date(), "nedeterminata", 0, 8, postLiber, 200));
-		//gest1.setResponsabilGestiune(responsabilGestiune);
-		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		
-		logger.info("-----START creare date de test Verificare Stoc Curent------ ");
-		
-		logger.info("-----FINAL creare date de test Intrare in stoc------ ");
 
-		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
+		Material material = stocuriInstance.getMaterial("1");
+		Gestiune gestiune = stocuriInstance.getGestiune(81);
 		
-		logger.info("-----FINAL creare date de test Verificare Stoc Curent------ ");
-
-		logger.info("-----START caz de utilizare Verificare stoc curent----- ");
-
-		logger.info("4.1. Introducere date specifice produsului cautat: id-ul produsul: "+ mat1.getCodMaterial());
+		logger.info("4.1. Introducere date specifice produsului cautat: id-ul produsul: "+ material.getCodMaterial());
 		logger.info("4.2. Verificare disponibilitate produs in gestiune.");
-		Double val = stocuriInstance.verificareStoc(mat, gest1);
+		Double val = stocuriInstance.verificareStoc(material, gestiune);
 		if (val != null) {
-			logger.info("4.3.Returnare valoare cantitate produs in gestiunea dorita. Stocul produsul: " + mat1.getCodMaterial() + " este: " + val);
+			logger.info("4.3.Returnare valoare cantitate produs in gestiunea dorita. Stocul produsul: " + material.getCodMaterial() + " este: " + val);
 		} 
 		else 
 		{
-			logger.info("4.3.Returnare valoare cantitate produs in gestiunea dorita. Produsul: "+ mat1.getCodMaterial() + " nu exista in stoc: " + val);
+			logger.info("4.3.Returnare valoare cantitate produs in gestiunea dorita. Produsul: "+ material.getCodMaterial() + " nu exista in stoc: " + val);
 		}
 		
 		logger.info("-----FINAL caz de utilizare Verificare stoc curent----- ");
@@ -110,81 +88,40 @@ public class TestStocuriEJB {
 	@Test
 	public void testIesireStoc() throws Exception {
 		logger.info("-----START creare date de test Iesire din stoc------ ");
-	
-		Depozit depozit1 = stocuriInstance.creareDepozit("Iasi");
-		Gestiune gest1 = stocuriInstance.creareGestiune("Gestiune 1", depozit1);
-		Depozit depozit2 = stocuriInstance.creareDepozit("Bacau");
-		Gestiune gest2 = stocuriInstance.creareGestiune("Gestiune 2", depozit2);
-		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		
-		logger.info("-----FINAL creare date de test Intrare in stoc------ ");
 
-		logger.info("-----START caz de utilizare Intrare in stoc----- ");
+		Material material = stocuriInstance.getMaterial("1");
+		Gestiune gestiune = stocuriInstance.getGestiune(81);
 		
-		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
-		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
-		
-		logger.info("-----FINAL creare date de test Iesire din stoc------ ");
-		
-		logger.info("-----START caz de utilizare Iesire din stoc----- ");
-		stocuriInstance.iesireStoc(mat, 8.00, gest1);
+		stocuriInstance.iesireStoc(material, 5.00, gestiune);
 		logger.info("-----FINAL caz de utilizare Iesire din stoc----- ");
 	}
 
 	
 	@Test
 	public void testTransfer() throws Exception {
-		//logger.info("-----START creare date de test Iesire din stoc------ ");
-		//INCEPUT intrare in stoc
-		
-		Depozit depozit1 = stocuriInstance.creareDepozit("Iasi");
-		Gestiune gest1 = stocuriInstance.creareGestiune("Gestiune 1", depozit1);
-		Depozit depozit2 = stocuriInstance.creareDepozit("Bacau");
-		Gestiune gest2 = stocuriInstance.creareGestiune("Gestiune 2", depozit2);
-		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		
-		//logger.info("-----FINAL creare date de test Intrare in stoc------ ");
 
-		//logger.info("-----START caz de utilizare Intrare in stoc----- ");
 		
 		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou pt transfer <<<<<<<<<<<<");
-		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
-		
-		BonTransfer bonTransfer = stocuriInstance.creareBonTransfer(mat, 2.00, gest2, gest1);
-		
+		//stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
+		Material material = stocuriInstance.getMaterial("1");
+		Gestiune gestiuneOut = stocuriInstance.getGestiune(81);
+		Gestiune gestiuneIn = stocuriInstance.getGestiune(122);
+		//Depozit depozit = stocuriInstance.creareDepozit("Bacau");
+		//Gestiune gestiuneIn = stocuriInstance.creareGestiune("Gestiune 2", depozit);
 		logger.info("-----START caz de utilizare Transfer intre gestiuni----- ");
+		
+		BonTransfer bonTransfer = stocuriInstance.creareBonTransfer(material, 2.00, gestiuneIn, gestiuneOut);
 		stocuriInstance.transfer(bonTransfer);
+		
 		logger.info("-----FINAL caz de utilizare Transfer intre gestiuni----- ");
 	}
 
 	@Test
 	public void testAlertaStoc() throws Exception {
 		logger.info("-----START creare date de test Alerta stoc------ ");
-		
-		Depozit depozit1 = stocuriInstance.creareDepozit("Iasi");
-		Gestiune gest1 = stocuriInstance.creareGestiune("Gestiune 1", depozit1);
-		Depozit depozit2 = stocuriInstance.creareDepozit("Bacau");
-		Gestiune gest2 = stocuriInstance.creareGestiune("Gestiune 2", depozit2);
-		
-		Material mat = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		Material mat1 = new Material("1", "fier", "20", "5"," 1.2", null, null, null);
-		
-	
-		logger.info("-----FINAL creare date de test Intrare in stoc------ ");
-
-		logger.info("-----START caz de utilizare Intrare in stoc----- ");
-		
-		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
-		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
-	
-		logger.info("-----FINAL creare date de test Alerta stoc------ ");
-		
-		logger.info("-----START caz de utilizare Alerta stoc----- ");
-		stocuriInstance.iesireStoc(mat, 10.00, gest1);
+		Material material = stocuriInstance.getMaterial("1");
+		Gestiune gestiune = stocuriInstance.getGestiune(81);
+		stocuriInstance.iesireStoc(material, 10.00, gestiune);
 		logger.info("-----FINAL caz de utilizare Alerta stoc----- ");
 	}
 }
