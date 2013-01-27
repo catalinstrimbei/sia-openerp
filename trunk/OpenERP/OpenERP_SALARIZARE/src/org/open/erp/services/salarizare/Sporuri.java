@@ -8,8 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToOne;
 
-import static javax.persistence.GenerationType.AUTO;
 import org.open.erp.services.personal.Angajat;
+
+import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 public class Sporuri implements Serializable{
