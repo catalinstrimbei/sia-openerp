@@ -5,9 +5,14 @@ package org.open.erp.services.finincasari.teste;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Hashtable;
+import java.util.Properties;
+
+import javax.naming.NamingException;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.jboss.as.naming.InitialContext;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -261,7 +266,7 @@ public class TestFinanciarIncasariEJB {
    	 
    	 logger.debug("End Test TestFinanciarIncasariSrv!");
     }
-	 	
+
 		
 	}
 	
