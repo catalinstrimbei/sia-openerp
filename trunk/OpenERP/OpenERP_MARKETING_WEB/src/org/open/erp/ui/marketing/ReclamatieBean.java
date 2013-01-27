@@ -23,6 +23,7 @@ public class ReclamatieBean implements Serializable{
 	@EJB(lookup = "java:global/OpenERP_NOMGEN/NomenclatoareImpl!org.open.erp.services.nomgen.NomenclatoareSrv")
 	private NomenclatoareSrv nomGenSrv;
 	
+	private Integer idPersoanaReclamanta;
 	private Persoana persoanaReclamanta;
 	private Date data;
 	private String text;
@@ -30,6 +31,14 @@ public class ReclamatieBean implements Serializable{
 	private StatusReclamatie status;
 	
 	public ReclamatieBean(){
+	}
+
+	public Integer getIdPersoanaReclamanta() {
+		return idPersoanaReclamanta;
+	}
+
+	public void setIdPersoanaReclamanta(Integer idPersoanaReclamanta) {
+		this.idPersoanaReclamanta = idPersoanaReclamanta;
 	}
 
 	public MarketingSrv getMarketingSrv() {
@@ -89,6 +98,9 @@ public class ReclamatieBean implements Serializable{
 	}
 	
 	public String creareReclamatie(){
+		
+		Persoana persoanaGasita = nomGenSrv.findPersoanaById(idPersoanaReclamanta);
+		persoanaReclamanta = persoanaGasita;
 		
 		Reclamatie reclamatie = new Reclamatie();
 		
