@@ -129,6 +129,10 @@ public interface StocuriSrv {
 	public Gestiune creareGestiune(String denumire, Depozit depozit) throws Exception;
 
 	public BonTransfer creareBonTransfer(Material material, Double cantitate, Gestiune gestiuneIntrare, Gestiune gestiuneIesire) throws Exception;
+
+	public Material creareMaterial(Material mat) throws Exception;
+
+	public Material getMaterial(String i) throws Exception;
 	
 	// verifica daca exista un lot pentru un produs si o gestiune, folosit la instrare in stoc
 	//boolean existaArticol(Produs produs, Gestiune gestiune);

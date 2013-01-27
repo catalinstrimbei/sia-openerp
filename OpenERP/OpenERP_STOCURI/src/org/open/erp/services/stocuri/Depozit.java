@@ -1,5 +1,7 @@
 package org.open.erp.services.stocuri;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,7 +14,7 @@ import javax.persistence.Id;
  * 
  */
 @Entity
-public class Depozit {
+public class Depozit implements Serializable{
 	@Id @ GeneratedValue
 	private Integer idDepozit;
 	private String locatie;

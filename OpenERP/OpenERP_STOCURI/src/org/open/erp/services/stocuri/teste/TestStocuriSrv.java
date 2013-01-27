@@ -56,7 +56,7 @@ public class TestStocuriSrv {
 		logger.info("-----START caz de utilizare Intrare in stoc----- ");
 		
 		logger.info(">>>>>>>>>>>>1. Intrare in stoc a unui produs nou <<<<<<<<<<<<");
-		stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
+		//stocuriInstance.intrareStoc(mat, 12.00, 10.00, gest1);
 
 	}
 

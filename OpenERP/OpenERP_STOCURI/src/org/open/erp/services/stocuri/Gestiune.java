@@ -1,5 +1,6 @@
 package org.open.erp.services.stocuri;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import static javax.persistence.CascadeType.ALL;
  * 
  */
 @Entity
-public class Gestiune {
+public class Gestiune implements Serializable{
 	@Id @ GeneratedValue
 	private Integer idGest;
 	private String denumireGest;

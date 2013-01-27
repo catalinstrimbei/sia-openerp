@@ -1,5 +1,7 @@
 package org.open.erp.services.stocuri;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +17,7 @@ import org.open.erp.services.nommat.Material;
  * 
  */
 @Entity
-public class BonTransfer {
+public class BonTransfer implements Serializable{
 	@Id @ GeneratedValue
 	Integer idBonTransfer;
 	@OneToOne
