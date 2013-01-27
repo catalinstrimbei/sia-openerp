@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://java.sun.com/jsf/core">
+
+<body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="title">Rapoarte</ui:define>
+		<ui:define name="main">
+
+			<h:form id="rapoarteForm">
+				<h:panelGrid columns="2" border="1" class="panelGrid">
+					<p:facet name="header">
+						<h:outputText value="Gestiune Rapoarte" styleClass="outputTxt"></h:outputText>
+					</p:facet>
+					<h:outputText value="Selecteaza tipul de raport"
+						styleClass="outputTxt"></h:outputText>
+						
+					<h:selectOneMenu id="cboTipRaport"
+						value="#{formularRapoarte.bilant}" converter="#{formularRapoarte}"
+						style="width: 168px; ">
+						<p:selectItems value="#{formularRapoarte.selectList}"></p:selectItems>
+						<p:ajax render="@form"></p:ajax>
+					</h:selectOneMenu >
+					
+					<h:outputText value="De la: " styleClass="outputTxt"></h:outputText>
+					<rich:calendar value="#{formularRapoarte.deLa}"/>
+					<h:outputText value="Pana la:" styleClass="outputTxt"></h:outputText>
+					<rich:calendar value="#{formularRapoarte.panaLa}"/>
+					<h:panelGrid columns="1" border="1">
+						<h:commandButton id="cmdGenereaza" value="Genereaza"
+							actionListener="#{formularRapoarte.genereazaRaport()}"
+							styleClass="btn"></h:commandButton>
+					</h:panelGrid>
+					<h:message></h:message>
+				</h:panelGrid>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
