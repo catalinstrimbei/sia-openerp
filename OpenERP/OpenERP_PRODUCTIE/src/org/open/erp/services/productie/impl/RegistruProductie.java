@@ -1,12 +1,17 @@
 package org.open.erp.services.productie.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Random;
+import java.util.TreeSet;
 
 import javax.persistence.EntityManager;
 
 import org.open.erp.services.productie.CriteriuCalitate;
 import org.open.erp.services.productie.FazaProductie;
 import org.open.erp.services.productie.FluxProductie;
+import org.open.erp.services.productie.Produs;
 import org.open.erp.services.productie.Semifabricat;
 import org.open.erp.services.productie.Utilaj;
 
@@ -153,4 +158,110 @@ public class RegistruProductie {
 			entityManager.remove(semifabricat);
 		}
 	
+	
+	/* 
+	 * 
+	 * 
+	 * PRODUS
+	 * 
+	 *  
+	 *  */
+	
+	List<Produs> produse = new ArrayList<Produs>();
+	
+	private String sqlProdusDefaultText = "SELECT o FROM Produs o";
+	
+	public List<Produs> getProduse() {
+		return produse;
+	}
+
+	public void setProduse(List<Produs> produse) {
+		this.produse = produse;
+	}
+
+	public void generateRandomProduse(Integer nrProduse) {
+		Random randomPret = new Random();
+		@SuppressWarnings("unused")
+		Integer pret;
+		for (int i = 1; i <= nrProduse; i++) {
+			pret = 50 + randomPret.nextInt(1450);
+			produse.add(new Produs(i, "Produs_" + i, null, null, null, null, null, null, null));
+		}
+	}
+
+	public RegistruProductie() {
+		generateRandomProduse(20);
+		
+	}
+
+	public RegistruProductie(Integer nrProduse) {
+		generateRandomProduse(nrProduse);
+		
+	}
+	
+	public Collection<Produs> getProduseOrdonateDupaId() {
+		 @SuppressWarnings("unchecked")
+		List<Produs> result = this.entityManager.createQuery(this.sqlProdusDefaultText).getResultList();
+		TreeSet<Produs> produseOrdonate = new TreeSet<Produs>();
+		
+		produseOrdonate.addAll(result);
+		return produseOrdonate;
+	}
+	
+	 public Produs getProdusDupaCod(Integer id){
+    	 Produs p = this.entityManager.find(Produs.class, id);
+     	this.entityManager.refresh(p);
+     	return p;
+     }
+	
+	 public void addProdus(Produs p){
+	     	try{
+	     		entityManager.getTransaction().begin();
+	             if (this.entityManager.contains(p))
+	                 this.entityManager.merge(p);
+	             else
+	                 this.entityManager.persist(p);
+	             entityManager.getTransaction().commit();
+	     	}catch(Exception ex){
+	     		if (entityManager.getTransaction().isActive())
+	     			entityManager.getTransaction().rollback();
+	     		throw new RuntimeException(ex.getMessage());
+	     	}        
+	     }
+
+	     public void removeProdus(Produs p){
+	     	try{
+	     		entityManager.getTransaction().begin();
+	             if (this.entityManager.contains(p))
+	                 this.entityManager.remove(p);
+	             entityManager.getTransaction().commit();
+	     	}catch(Exception ex){
+	     		if (entityManager.getTransaction().isActive())
+	     			entityManager.getTransaction().rollback();
+	     		throw new RuntimeException(ex.getMessage());
+	     	} 
+	     }
+
+
+	     public void refreshProdus(Produs p){
+	     	this.entityManager.refresh(p);
+	     }
+	     
+	     public Produs getProdus(Integer idProdus) throws Exception {
+	 		Produs p = new Produs();
+	 		p.setIdProdus(idProdus);
+	 		Integer pIndex = produse.indexOf(p);
+	 		if (pIndex >= 0)
+	 			return this.produse.get(pIndex);
+	 		else
+	 			throw new Exception("No data found: Produs inexistent!");
+	 	}
+	     
+	     public Produs  CautareProdusDupaDenumire(String denumire){
+	 		
+	 		return (Produs) this.entityManager
+	                 .createQuery(sqlProdusDefaultText + " WHERE o.denumire = :denumire")
+	                 .setParameter("denumire", denumire)
+	                 .getSingleResult();
+	     }
 }

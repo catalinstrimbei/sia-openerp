@@ -1,6 +1,7 @@
 package org.open.erp.services.productie;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -284,4 +285,19 @@ public interface ProductieSrv {
 
 
 	public void setNomenclatoareSrv(NomenclatoareSrv nomenclatoareSrv);
+	
+	public Produs creareProdus(Integer idProdus, String denumire) throws Exception;
+		
+	public Produs  CautareProdusDupaDenumire(String denumire) throws Exception;
+	public List<Produs> getProduse() throws Exception;
+	public void setProduse(List<Produs> produse) throws Exception;
+	public void generateRandomProduse(Integer nrProduse) throws Exception;
+	public Collection<Produs> getProduseOrdonateDupaId() throws Exception;
+	public Produs getProdusDupaCod(Integer id) throws Exception;
+	public Produs addProdus(Produs p) throws Exception;
+	public void removeProdus(Produs p) throws Exception;
+	public void refreshProdus(Produs p) throws Exception;
+	public Produs getProdus(Integer idProdus) throws Exception;
+
+
 }

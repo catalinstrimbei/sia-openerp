@@ -104,7 +104,7 @@ public class Produs implements Serializable {
 		this.unitateMasura = unitateMasura;
 		this.dataFabricatiei = dataFabricatiei;
 		this.termenValabilitate = termenValabilitate;
-		this.pretVanzare = pretVanzare;
+		this.pretVanzare = pretVanzare=0.0;
 		this.procentTVA = procentTVA;
 	//	this.liniiDocumente = liniiDocumente;
 	}
