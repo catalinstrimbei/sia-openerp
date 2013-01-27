@@ -118,7 +118,7 @@ public class formbonuri implements Converter {
 	@PostConstruct // Referinta EJB injectata este disponibila numai abua in handlerul PostConstruct, si nu la nivelul constructorului
 	private void initForm() throws Exception{
 		logger.debug("PostConstruct FORM Materiale local-stoc: ..." + this.stocuriInstance);
-		List<Material> materiale = stocuriInstance.getMateriale();		
+		this.materiale = stocuriInstance.getMateriale();		
 		//Material mat = stocuriInstance.getMaterial("2");
 		//this.materiale.add(mat);
 		if (!materiale.isEmpty())
@@ -130,7 +130,7 @@ public class formbonuri implements Converter {
 		}
 		
 		logger.debug("PostConstruct FORM Gestiuni local-stoc: ..." + this.stocuriInstance);
-		List<Gestiune> gestiuniies = stocuriInstance.getGestiuni();
+		this.gestiuniies = stocuriInstance.getGestiuni();
 		if (!gestiuniies.isEmpty())
 			this.gestiuneies = gestiuniies.get(0);
 		else{
@@ -140,7 +140,7 @@ public class formbonuri implements Converter {
 		}
 		
 		logger.debug("PostConstruct FORM Gestiuni local-stoc: ..." + this.stocuriInstance);
-		List<Gestiune> gestiuniintr = stocuriInstance.getGestiuni();
+		this.gestiuniintr = stocuriInstance.getGestiuni();
 		if (!gestiuniintr.isEmpty())
 			this.gestiuneintr = gestiuniintr.get(0);
 		else{
