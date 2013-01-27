@@ -25,6 +25,7 @@ public class PromotieBean implements Serializable {
 
 	private long idCampanie;
 	private CampaniePromovare campaniePromovare;
+	private String idProdusPromotie;
 	private Material produsPromotie;
 	private int pretPromotional;
 	private Date dataStart;
@@ -55,6 +56,14 @@ public class PromotieBean implements Serializable {
 
 	public void setCampaniePromovare(CampaniePromovare campaniePromovare) {
 		this.campaniePromovare = campaniePromovare;
+	}
+
+	public String getIdProdusPromotie() {
+		return idProdusPromotie;
+	}
+
+	public void setIdProdusPromotie(String idProdusPromotie) {
+		this.idProdusPromotie = idProdusPromotie;
 	}
 
 	public Material getProdusPromotie() {
@@ -106,11 +115,13 @@ public class PromotieBean implements Serializable {
 
 	public String crearePromotie() {
 
-		Promotie promotie = new Promotie();
-
 		CampaniePromovare campanieGasita = marketingSrv.findCampanieById(idCampanie);
-
 		campaniePromovare = campanieGasita;
+		
+		Material produsPromotieGasit = nomMatSrv.findMaterialById(idProdusPromotie);
+		produsPromotie = produsPromotieGasit;
+	
+		Promotie promotie = new Promotie();
 
 		promotie.setCampaniePromovare(campaniePromovare);
 		promotie.setProdusPromotie(produsPromotie);
