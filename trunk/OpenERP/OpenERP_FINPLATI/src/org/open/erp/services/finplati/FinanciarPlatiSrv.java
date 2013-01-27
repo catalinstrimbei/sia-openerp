@@ -35,6 +35,7 @@ import javax.ejb.Remote;
  * @UseCase("5. Urmarire plati si datorii ramase"):
  *
  */
+
 @Remote
 public interface FinanciarPlatiSrv {
 	
@@ -242,6 +243,16 @@ public interface FinanciarPlatiSrv {
 
 
 	void adaugaPersoana(Persoana persoanaNoua);
+
+
+
+
+	void adaugaFurnizorContract(FurnizorContract furnizorContractNou);
+
+
+
+
+	Persoana findPersoanaById(Integer idPersoana);
 
 
 

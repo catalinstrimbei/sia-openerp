@@ -19,6 +19,7 @@ import javax.persistence.OneToOne;
  * @DummyObject
  *
  */
+
 @Entity
 
 public class ChitantaPlata implements Serializable {
