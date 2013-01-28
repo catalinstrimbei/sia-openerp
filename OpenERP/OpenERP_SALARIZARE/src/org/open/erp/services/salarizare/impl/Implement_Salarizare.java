@@ -1,6 +1,4 @@
 package org.open.erp.services.salarizare.impl;
-
-import org.open.erp.services.nomgen.NomenclatoareSrv;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -56,7 +54,6 @@ public abstract  class Implement_Salarizare implements Local_Salarizare, Remote_
 				registru = new Registru_Salarizare(em);
 		}
 		
-		//TO DO - de schimbar cand se va comite in modulul Personal sa foloseasca interfata locala
 		@EJB(mappedName="PersonalSrv") 
 		private PersonalSrv personalSrv;
 		
@@ -153,107 +150,6 @@ public abstract  class Implement_Salarizare implements Local_Salarizare, Remote_
 			
 			return spor;
 		}
-
-		@Interceptors({Interceptor_Salarizare.class})
-		@Override
-		public Double calculSporuriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception {
-			// pentru fiecare angajat calculam sporurile (pot fi mai multe) si insumam
-			Double valoareTotala=0.0;
-			ArrayList<Sporuri> sporuri= new ArrayList<Sporuri>();
-			ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
-			//de inlocuit aici cu metoda getContractActivAngajat
-			//daca prin absurd un angajat are mai multe contracte active la un moment data
-			//atunci o sa iteram prin lista de contracte si o sa facem calculul
-			if (contract != null){
-			
-				sporuri.addAll(registru.getSporuriAngajat(an, luna, angajat));
-				
-				logger.logINFO("Calcul sporuri angajat");
-				for (Sporuri spor:sporuri){
-					if(spor.getModCalcul()==1){ 
-						//valoare
-						valoareTotala = valoareTotala + spor.getValoare();
-					}
-					else{
-						//valoare
-						valoareTotala = valoareTotala + spor.getValoare()*contract.getSalar();
-					}
-				}
-			}
-			else{
-				valoareTotala = 0.0;
-			}
-			
-			return valoareTotala;
-		}
-
-		@Override
-		public Double calculVenitBrut(Integer an, Integer luna, Angajat angajat) throws Exception {
-			Pontaje p = registru.getPontajByAngajat(angajat, an, luna);
-			logger.logINFO("Am incarcat pontajul");
-			ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
-			
-			logger.logINFO("Calcul venit brut angajat");
-			Double venitBrut = 0.0;
-			if (contract != null){
-				Double venitOreLucrate = (p.getPontaj_oreLucrate()-p.getPontaj_oreConcediu())*contract.getNormaZilnica();
-				Double venitOreSuplimentare = p.getPontaj_oreSuplimentare()*contract.getNormaZilnica();
-				venitBrut = venitOreLucrate+venitOreSuplimentare;
-			}
-			else{
-				venitBrut = 0.0;
-			}
-			//venitul brut este format din nrorelucrate*tariforar+sporuri
-			return venitBrut;
-		}
-
-		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		@Override
-		public Retineri inregistrareRetinere(Integer cod_Retinere, String denumire_Retinere, Integer tip_Retinere, Integer an, Integer luna, Angajat angajat, Integer modCalcul, Double valoare) throws Exception {
-			logger.logINFO("Start creare retinere angajat");
-			Retineri retinere = new Retineri(cod_Retinere, denumire_Retinere, tip_Retinere, an, luna, angajat, modCalcul, valoare);
-			
-			if (sessionContext.getRollbackOnly() == true){
-				logger.logINFO("END creare retinere angajat - FAILED TRANSACTION");
-			}else{
-				retinere = this.registru.salveazaRetinere(retinere);
-			}
-			
-			logger.logINFO("END Creare retinere angajat");
-			
-			return retinere;
-		}
-
-		@Interceptors({Interceptor_Salarizare.class})
-		@Override
-		public Double calculRetineriAngajat(Integer an, Integer luna,
-				Angajat angajat) throws Exception {
-			// pentru fiecare angajat calculam retinerile (pot fi mai multe) si insumam
-			ContractMunca contract = personalSrv.getContractAngajatActiv(angajat);
-		
-			logger.logINFO("Calcul retineri angajat");
-			Double valoareTotala=0.0;
-			ArrayList<Retineri> retineri= new ArrayList<Retineri>();
-			if (contract != null){
-				retineri.addAll(registru.getRetineriAngajat(an, luna, angajat));
-			
-				for (Retineri retinere:retineri){
-					if(retinere.getMod_Calcul()==1){ 
-						//valoare
-						valoareTotala = valoareTotala + retinere.getValoare();
-					}
-					else{
-						//valoare
-						valoareTotala = valoareTotala + retinere.getValoare()*contract.getSalar();
-					}
-				}
-			}
-			else{
-				valoareTotala=0.0;
-			}
-			return valoareTotala;
-		}
-
 		
 		@Override
 		public Double calculRetineriObligatorii(Integer an, Integer luna,
@@ -321,13 +217,7 @@ public abstract  class Implement_Salarizare implements Local_Salarizare, Remote_
 			
 			//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 			for (Angajat angajat:angajati){
-				/*
-				 * Pontaj p = new Pontaj();
-				
-				p.setAn(an);
-				p.setLuna(luna);
-				p.setAngajat(angajat);
-				 */
+	
 				Pontaje p = registru.getPontajByAngajat(angajat, an, luna);
 				Double venitBrut = this.calculVenitBrut(an, luna, angajat);
 				Double retineriAlte = calculRetineriAngajat(an, luna, angajat);

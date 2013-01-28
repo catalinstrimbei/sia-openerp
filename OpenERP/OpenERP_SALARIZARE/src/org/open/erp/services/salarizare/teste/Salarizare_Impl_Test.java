@@ -23,7 +23,7 @@ public class Salarizare_Impl_Test {
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Salarizare_Impl_Test.class.getName());
 	private static SRV_Salarizare salarizareSrvInstance;
 	private static PersonalSrv personalSrvInstance;
-//	private static RegistruSalarizare registruSalarizare;
+
 	
 
 	public static void setUpBeforeClass() throws Exception {
@@ -40,16 +40,12 @@ public class Salarizare_Impl_Test {
 
 	public void setUp() throws Exception {
 	
-	//	salarizareSrvInstance= SalarizareFactory.getSalarizareSrv();
-	//	personalSrvInstance = SalarizareFactory.getPersonalSrv();
-	//	registruSalarizare = SalarizareFactory.getRegistruSalarizare();
 		logger.info("initTest");		
 	}
 
 	public void testInregistrarePontaj() throws Exception {
 		Angajat angajat = salarizareSrvInstance.getAngajatById(10001);
-//		Angajat angajat = new Angajat();
-//		angajat.setId(10001);
+
 		Pontaje pontaj = salarizareSrvInstance.inregistrarePontaj(null, angajat, 2013, 11, 160.0, 0.0, 0.0);
 		assertNotNull("Metoda de creere a pontajului nu a functionat!", pontaj);
 		
@@ -124,7 +120,6 @@ public class Salarizare_Impl_Test {
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(personalSrvInstance.getListaAngajati());
 		
-		//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 		for (Angajat angajat:angajati){
 			Double venitBrut = salarizareSrvInstance.calculVenitBrut(2013, 13, angajat);
 			Double retineriAlte = salarizareSrvInstance.calculRetineriAngajat(2013, 11, angajat);
@@ -143,7 +138,6 @@ public class Salarizare_Impl_Test {
 		ArrayList<Angajat> angajati= new ArrayList<Angajat>();
 		angajati.addAll(personalSrvInstance.getListaAngajati());
 		
-		//parcurgem si apelam calculele pt fiecare angajat dupa care salvam in DB
 		for (Angajat angajat:angajati){
 		salarizareSrvInstance.calculDeduceri(2013, 11, angajat);
 		}
@@ -177,7 +171,6 @@ public class Salarizare_Impl_Test {
 		logger.info("Sfarsit test: inregistrareRetinere");
 	}
 	
-	/*--- Utils: InitialContext Client EJB-JDNI ----------------------------------------------------*/
 	private static InitialContext initJBossJNDICtx() throws NamingException{
 		Properties props = new Properties();
         props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");		
