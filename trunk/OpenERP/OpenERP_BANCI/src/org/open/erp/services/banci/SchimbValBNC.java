@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.open.erp.services.nomgen.Companie;
 
@@ -15,7 +17,10 @@ public class SchimbValBNC implements Serializable {
 	@Id @GeneratedValue
 	private Integer Idschimb;
 	private Companie client;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date datatranz;
+	
 	private Integer monedacurenta;
 	private Double valmoncurenta;
 	private Integer monedaschimb;

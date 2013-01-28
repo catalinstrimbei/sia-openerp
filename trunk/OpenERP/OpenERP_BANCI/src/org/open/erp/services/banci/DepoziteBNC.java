@@ -10,6 +10,8 @@ import java.util.Vector;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.open.erp.services.nomgen.Companie;
 
@@ -43,9 +45,16 @@ public class DepoziteBNC implements Serializable {
 	private Integer tip_cont;
 	private	Double suma_depusa_initial;
 	private	Integer perioada_depozitului;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private	Date data_deschidere_depozit;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private	Date data_expirarii_depozitului;
+	
+	//@Temporal(TemporalType.TIMESTAMP)
 	private	Integer data_depunerii_lunare;
+	
 	private	Double suma_depusa_lunar;
 	private	Double rata_dobanzii_anuale;
 	private	Vector<LiniiDepuneri> sume_intermediare;

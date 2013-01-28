@@ -35,4 +35,7 @@ public interface BanciSrv {
 			Double comisionscb,List<LiniiPlati> liniePlata);
 	public LiniiPlati creareLiniiPlati(Date datacurenta, Double sumaplatita, String denumireplata);
 	public Double soldcontcard(CarduriBNC card);
+	public void adaugareCont(Cont contNou);
+	public void adaugaDepozit(DepoziteBNC depozitNou);
+	public void creareCrediteBnc(CrediteBNC creditNou);
 }

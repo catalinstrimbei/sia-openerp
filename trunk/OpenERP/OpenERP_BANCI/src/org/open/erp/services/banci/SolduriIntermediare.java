@@ -6,12 +6,17 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class SolduriIntermediare implements Serializable{
 	@Id @GeneratedValue
 	private Integer idsoldintermediar;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_operatie;
+	
 	private Integer tip_operatie; //+1 depunere, -1 retragere
 	private Double suma_operatie;
 	

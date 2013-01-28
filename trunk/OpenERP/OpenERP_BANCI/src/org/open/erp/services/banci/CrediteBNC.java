@@ -7,6 +7,8 @@ import java.util.Vector;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class CrediteBNC implements Serializable {
@@ -40,10 +42,19 @@ public class CrediteBNC implements Serializable {
 	private String numeCont;
 	private Double sumaContractata;
 	private Double sumaramasadeplata;
+	
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Integer perioadaContractare; //zile
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date datacontractare;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date datascadenteicontractului;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date datascadenteilunare;
+	
 	private Double	sumaplatalunara;
 	private Double	ratadobanziianuale;
 	private Vector<LiniiPlati> platiintermediare = new Vector<LiniiPlati>();
