@@ -1,9 +1,11 @@
 package org.open.erp.services.vanzari;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
-public class Persoana {
+public class Persoana implements Serializable{
 	
 	
 	@Id
@@ -22,6 +24,7 @@ public class Persoana {
 	public Persoana() {
 		super();
 	}
+	
 	public Integer getIdPersoana() {
 		return idPersoana;
 	}
@@ -45,6 +48,30 @@ public class Persoana {
 	}
 	public void setFunctie(String functie) {
 		this.functie = functie;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idPersoana == null) ? 0 : idPersoana.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Persoana other = (Persoana) obj;
+		if (idPersoana == null) {
+			if (other.idPersoana != null)
+				return false;
+		} else if (!idPersoana.equals(other.idPersoana))
+			return false;
+		return true;
 	}
 	
 	

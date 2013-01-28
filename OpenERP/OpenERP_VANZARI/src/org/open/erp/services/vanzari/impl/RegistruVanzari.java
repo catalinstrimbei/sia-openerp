@@ -86,6 +86,10 @@ private static Logger logger = Logger.getLogger(RegistruVanzari.class.getName())
 			}
 			return persoana;
 		}
+		
+		public List<Persoana> getToatePersoanele(){
+			return entityManager.createQuery("SELECT p FROM Persoana p").getResultList();
+		}
 }
 
 

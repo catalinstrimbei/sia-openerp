@@ -23,7 +23,6 @@ import javax.persistence.PersistenceContext;
 import org.apache.log4j.Logger;
 import org.hamcrest.core.Is;
 //import org.open.erp.services.stocuri.StocuriSrv;
-//import org.open.erp.services.stocuri.StocuriSrvLocal;
 import org.open.erp.services.vanzari.ArticolComanda;
 import org.open.erp.services.vanzari.Avize;
 import org.open.erp.services.vanzari.Comenzi;
@@ -32,6 +31,7 @@ import org.open.erp.services.vanzari.Facturi;
 import org.open.erp.services.vanzari.LiniiAviz;
 import org.open.erp.services.vanzari.LiniiDispozitieLivrare;
 import org.open.erp.services.vanzari.LiniiFactura;
+import org.open.erp.services.vanzari.Material;
 import org.open.erp.services.vanzari.OfertePret;
 import org.open.erp.services.vanzari.Persoana;
 import org.open.erp.services.vanzari.Produse;
@@ -214,6 +214,7 @@ public Persoana crearePersoana(Integer idPersoana, String nume, String prenume, 
 		return persoana;
 	}
 
+@Override
 public Persoana salvarePersoana(Persoana persoana) throws Exception {
 	
 	logger.debug("salvare persoana");
@@ -231,6 +232,28 @@ public Persoana salvarePersoana(Persoana persoana) throws Exception {
 	logger.debug("iese din salvare");
 	return persoana;
 }
+@Override
+public Persoana crearePersoana(Persoana persoana) {
+	logger.debug("Creare persoana noua");
+	em.persist(persoana);
+	return persoana;
+}
+@Override
+public Material creareMaterial(Material material) {
+	logger.debug("Creare material nou");
+	em.persist(material);
+	return material;
+}
+@Override
+public List<Persoana> getPersoane() {
+	List<Persoana> persoane = registruVanzari.getToatePersoanele();
+	if (persoane.isEmpty())
+		logger.debug("Returner 000 proiecte!");
+	else
+		logger.debug("Returner " + persoane.size() + " persoane!");
+	return persoane;
+}
+
 
 
 		
