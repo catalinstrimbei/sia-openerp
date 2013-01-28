@@ -5,15 +5,10 @@ package org.open.erp.services.finincasari.teste;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Hashtable;
-import java.util.Properties;
-
-import javax.naming.NamingException;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.jboss.as.naming.InitialContext;
-import org.junit.Before;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.open.erp.services.finincasari.BiletOrdine;
@@ -182,7 +177,7 @@ public class TestFinanciarIncasariEJB {
    	 dataEmiterii = dataFormat.parse("05-04-2012");
    	 dataScadenta = dataFormat.parse("30-08-2012");
 
-   	 Angajat angajat = new Angajat();
+   	Angajat angajat = new Angajat();
    	// angajat.setIDangajat(1);
    	// angajat.setNumeAngajat("Ion");
    	 
