@@ -137,4 +137,22 @@ public class BanciImpl implements BanciSrv, BanciSrvLocal {
 		credit.actualizarecredit();
 	}
 
+	@Override
+	public void adaugareCont(Cont contNou) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void adaugaDepozit(DepoziteBNC depozitNou) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void creareCrediteBnc(CrediteBNC creditNou) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

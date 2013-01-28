@@ -6,13 +6,17 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class LiniiDepuneri implements Serializable {
 	@Id @GeneratedValue
 	private Integer idliniedepunere;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_curenta;
+	
 	private Double suma_depusa;
 	private String denumire_depunere;
 	private Double sold_final;

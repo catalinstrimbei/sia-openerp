@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.open.erp.services.nomgen.Companie;
 
@@ -34,7 +36,10 @@ public class SituatieConturi implements Serializable {
 	private Cont cont;
 	
 	private Companie banca;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date datadeschiderii; //cand se preda clientului
+	
 	private Vector<SolduriIntermediare> solduriintermediare;
 	private Double valsoldinitial;
 	private Double valsoldfinal;
