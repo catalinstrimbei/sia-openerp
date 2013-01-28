@@ -467,6 +467,13 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
      }
 
 
+	@Override
+	public void adaugaFactura(FacturaStatus factura1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 	//@Override
 	//public void setBanci(BanciSrv banciSrv) {
