@@ -10,6 +10,8 @@
 	<title>Adaugare status factura</title>
 </h:head>
 <h:body>
+<div
+		style="width: 100%; font-size: 36px; line-height: 48px; background-color: navy; color: white">Modul Financiar Plati</div>
 	<h:form>
 		<table>
 		<tr>
@@ -23,9 +25,12 @@
 		<tr>
 			<td>
 				<h:outputText value="Introduceti data facturii:"></h:outputText>
+				<!-- 
 				<h:inputText value="#{FacturaStatusBean.dataFactura}">
 				<f:convertDateTime  pattern="dd/MM/yyyy"></f:convertDateTime>
 				</h:inputText>
+				 -->
+				<rich:calendar value="#{FacturaStatusBean.dataFactura}" datePattern="dd/MM/yyyy hh:mm:ss" />
 			</td>
 		</tr>
 				<tr>

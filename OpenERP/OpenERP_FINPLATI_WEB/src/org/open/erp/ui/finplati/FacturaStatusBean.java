@@ -69,7 +69,7 @@ public Integer getNrFactura() {
 	facturaStatusNou.setNumeFurnizor(numeFurnizor);
 	facturaStatusNou.setValoareTotala(valoareTotala);
 		
-	 //   financiarPlatiSrv.adaugaFacturaStatus(facturaStatusNou);
+	   financiarPlatiSrv.adaugaFactura(facturaStatusNou);
 		
 		return "facturaStatusNou";
 	}
