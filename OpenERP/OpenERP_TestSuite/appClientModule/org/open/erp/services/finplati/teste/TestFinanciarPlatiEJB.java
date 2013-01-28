@@ -137,10 +137,13 @@ public class TestFinanciarPlatiEJB {
 		 
 		sitFit.adaugarePlata(plata1);
 		sitFit.adaugarePlata(plata2);
+		finplatiInstance.adaugarePlata(plata1);
+		
+		finplatiInstance.adaugarePlata(plata2);
 		 
 	    FurnizorContract furnizor1 = new FurnizorContract();
 	    furnizor1.adaugarePlata(plata1);
-	    
+	    finplatiInstance.adaugaFurnizorContract(furnizor1);
 	    
 		
 	    logger.info("1.1. Gestionare sume platite prin banca");
@@ -193,7 +196,7 @@ public class TestFinanciarPlatiEJB {
 	    //assertTrue("Prima persoana nu e Ionescu", listpers.get(0)==ionescu);
 	    //assertTrue("A doua persoana nu e Popescu", listpers.get(1)==popescu);
 	    
-	  //  logger.info("3.2. Stabilire responsabilPlata plata");
+	     logger.info("3.2. Stabilire responsabilPlata plata");
 	    //finplatiInstance.stabilireResponsabilPlata();
 	    //ResponsabilPlata resp = finplatiInstance.getSituatieFinanciara().getResponsabil();
 	    //assertNotNull("Nu exista nici un responsabilPlata inregistrat", resp);
