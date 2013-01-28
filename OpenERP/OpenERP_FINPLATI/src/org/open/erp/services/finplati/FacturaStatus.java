@@ -33,7 +33,12 @@ import javax.persistence.TemporalType;
 @Entity
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
  public class FacturaStatus implements Serializable{
-//public class FacturaStatus extends Factura implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	//public class FacturaStatus extends Factura implements Serializable{
 	@Id @GeneratedValue
 	//Factura factura;
 	private Integer NrFactura;

@@ -14,7 +14,12 @@ import javax.persistence.InheritanceType;
  */
 @Entity
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class Persoana implements Serializable{
+public class  Persoana implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	protected Integer IdPersoana;
