@@ -15,4 +15,5 @@ public interface NomenclatorMaterialeSrv {
 	 UnitateDeMasura incarcareUnitate(String id, String unitateDeMasura);
 	 ListaCaracteristici incarcareLista(String id, String listaCaracteristici);
 	 Material cautareMaterialDupaCod(String codMaterial);
+	Material salvareMaterial(Material material) throws Exception;
 	}
