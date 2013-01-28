@@ -11,7 +11,7 @@ public class AppEJBProvider {
 	//@ManagedBean(name="appEJBProvider", eager=true)
 	//@ApplicationScoped
 		/* Inject EJB: chiar daca membrul este static initializarea are loc dupa instantierea clasei (dupa apelul constructorului ...) */
-		@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiImpl!org.open.erp.services.proman.FinanciarPlatiSrv")
+		@EJB(lookup="java:global/OpenERP_FINPLATI/FinanciarPlatiImpl!org.open.erp.services.finplati.FinanciarPlatiSrv")
 		private static FinanciarPlatiSrv finplati;
 		
 		public static FinanciarPlatiSrv getFinanciarPlatiSrv(){
