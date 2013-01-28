@@ -1,8 +1,17 @@
 package org.open.erp.services.banci;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class LiniiDepuneri {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class LiniiDepuneri implements Serializable {
+	@Id @GeneratedValue
+	private Integer idliniedepunere;
+	
 	private Date data_curenta;
 	private Double suma_depusa;
 	private String denumire_depunere;
@@ -44,5 +53,11 @@ public class LiniiDepuneri {
 	}
 	public LiniiDepuneri(){
 		super();
+	}
+	public Integer getIdliniedepunere() {
+		return idliniedepunere;
+	}
+	public void setIdliniedepunere(Integer idliniedepunere) {
+		this.idliniedepunere = idliniedepunere;
 	}
 }

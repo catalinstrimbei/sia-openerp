@@ -1,8 +1,17 @@
 package org.open.erp.services.banci;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class LiniiPlati {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class LiniiPlati implements Serializable {
+	@Id @GeneratedValue
+	private Integer idlinieplata;
+	
 	private Date datacurenta;
 	private Double sumaplatita;
 	private String denumireplata;
@@ -36,5 +45,11 @@ public class LiniiPlati {
 	}
 	public LiniiPlati(){
 		super();
+	}
+	public Integer getIdlinieplata() {
+		return idlinieplata;
+	}
+	public void setIdlinieplata(Integer idlinieplata) {
+		this.idlinieplata = idlinieplata;
 	}
 }

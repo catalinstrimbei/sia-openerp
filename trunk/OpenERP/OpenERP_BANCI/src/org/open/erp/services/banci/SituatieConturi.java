@@ -1,11 +1,19 @@
 package org.open.erp.services.banci;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Vector;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import org.open.erp.services.nomgen.Companie;
 
-public class SituatieConturi {
+@Entity
+public class SituatieConturi implements Serializable {
+	@Id @GeneratedValue
 	/*
 	•	nume banca
 	•	Nume companie
@@ -20,9 +28,11 @@ public class SituatieConturi {
 		o	Sumele depuse
 	•	Sold final
 	*/
-
+ private Integer idsitcont;
 	private Companie firma;
+	@ManyToOne
 	private Cont cont;
+	
 	private Companie banca;
 	private Date datadeschiderii; //cand se preda clientului
 	private Vector<SolduriIntermediare> solduriintermediare;
@@ -92,5 +102,11 @@ public class SituatieConturi {
 	
 	public SituatieConturi() {
 		super();
+	}
+	public Integer getIdsitcont() {
+		return idsitcont;
+	}
+	public void setIdsitcont(Integer idsitcont) {
+		this.idsitcont = idsitcont;
 	}
 }

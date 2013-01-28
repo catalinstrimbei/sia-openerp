@@ -1,13 +1,20 @@
 package org.open.erp.services.banci;
 
 
+
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.open.erp.services.nomgen.Companie;
 
-public class DepoziteBNC {
+@Entity
+public class DepoziteBNC implements Serializable {
 	
 	/*
 	Nume companie
@@ -27,7 +34,9 @@ public class DepoziteBNC {
 	•	Sold actual( valoare depozitului dupa ultima depunere)
 
 	 */
-	
+	 @Id @GeneratedValue
+	private Integer iddepozit;
+	 
 	private String nume_firma;
 	private	String nume_banca;
 	private	String nume_cont;
@@ -139,6 +148,12 @@ public class DepoziteBNC {
 	
 	public DepoziteBNC() {
 		super();
+	}
+	public Integer getIddepozit() {
+		return iddepozit;
+	}
+	public void setIddepozit(Integer iddepozit) {
+		this.iddepozit = iddepozit;
 	}
 
 	
