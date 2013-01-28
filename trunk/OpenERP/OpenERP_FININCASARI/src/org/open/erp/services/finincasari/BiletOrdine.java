@@ -31,10 +31,10 @@ public class BiletOrdine extends FinanciarIncasari implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
 	private Date dataScadenta;
 	
-    @ManyToOne
+  //  @ManyToOne
 	private Angajat angajat;
     
-    @ManyToOne
+    //@ManyToOne
     private Persoana persoana;
     
 	
@@ -78,6 +78,12 @@ public class BiletOrdine extends FinanciarIncasari implements Serializable {
 	}
 	public void setCasier(Angajat angajat) {
 		this.angajat = angajat;
+	}
+	public Persoana getPersoana() {
+		return persoana;
+	}
+	public void setPersoana(Persoana persoana) {
+		this.persoana = persoana;
 	}
 	
 	
