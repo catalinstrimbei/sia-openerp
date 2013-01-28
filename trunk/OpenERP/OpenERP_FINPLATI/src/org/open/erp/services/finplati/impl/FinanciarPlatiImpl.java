@@ -5,6 +5,7 @@ package org.open.erp.services.finplati.impl;
 //import org.open.erp.services.achizitii.AchizitiiSrv;
 //import org.open.erp.services.achizitii.impl.RegistruAchizitii;
 //import org.open.erp.services.banci.BanciSrv;
+import org.open.erp.services.finplati.Contract;
 import org.open.erp.services.finplati.FacturaStatus;
 import org.open.erp.services.finplati.FurnizorContract;
 import org.open.erp.services.finplati.Persoana;
@@ -468,10 +469,39 @@ public class FinanciarPlatiImpl implements FinanciarPlatiSrv, FinanciarPlatiSrvL
 
 
 	@Override
-	public void adaugaFactura(FacturaStatus factura1) {
+	public void adaugaFactura(FacturaStatus facturaNoua) {
 		// TODO Auto-generated method stub
+		FacturaStatus fac = sitFit.adaugaFactura(facturaNoua);
 		
+		try {
+			registruFinPlati.salveazaFacturaStatus(facturaNoua);
+			registruFinPlati.salveazaSituatieFinanciara(sitFit);
+			registruFinPlati.salveazaFacturaStatus(fac);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+	
+
+
+	@Override
+	public void adaugaContract(Contract contractNou) {
+		// TODO Auto-generated method stub
+	//Contract cont = sitFit.adaugareContract(contractNou);
+		
+		try {
+			registruFinPlati.salveazaContract(contractNou);
+			registruFinPlati.salveazaSituatieFinanciara(sitFit);
+			//registruFinPlati.salveazaContract(cont);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+		
 
 
 

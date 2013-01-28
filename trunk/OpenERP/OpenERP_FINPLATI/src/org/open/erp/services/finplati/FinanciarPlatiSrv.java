@@ -262,6 +262,11 @@ public interface FinanciarPlatiSrv {
 
 
 
+	void adaugaContract(Contract contractNou);
+
+
+
+
 	
 
 

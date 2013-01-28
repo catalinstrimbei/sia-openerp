@@ -98,8 +98,8 @@ public class SituatieFinanciara implements Serializable{
 	public void setContracte(Map<Integer,Contract> contracte) {
 		this.contracte = contracte;
 	}
-	public void adaugareContract(Contract contract) {
-		this.contracte.put(contract.getIdContract(), contract);
+	public Contract adaugareContract(Contract contract) {
+		return this.contracte.put(contract.getIdContract(), contract);
 	}
 	public void setPersonal(Map<Integer,Persoana> personal) {
 		this.personal = personal;
@@ -177,5 +177,10 @@ public class SituatieFinanciara implements Serializable{
 			listaPersonal.add(p);
 		}
 		return listaPersonal;
+	}
+
+	public FacturaStatus adaugaFactura(FacturaStatus facturaNoua) {
+		// TODO Auto-generated method stub
+		return facturaNoua;
 	}
 }
