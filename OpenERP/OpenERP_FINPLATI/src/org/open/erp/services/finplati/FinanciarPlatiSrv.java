@@ -257,6 +257,11 @@ public interface FinanciarPlatiSrv {
 
 
 
+	void adaugaFactura(FacturaStatus factura1);
+
+
+
+
 	
 
 
