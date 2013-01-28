@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="OpenERP_SALARIZARE" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/ORCLOpenERP</jta-data-source> 
+		<!-- <jta-data-source>java:/PGLocalDS</jta-data-source> -->
+		
+		<jar-file>OpenERP_SALARIZARE.jar</jar-file>
+		<class>org.open.erp.services.salarizare.Centralizare_Stat_Plata</class>
+		<class>org.open.erp.services.salarizare.Centralizare_Stat_Plata</class>	
+		<class>org.open.erp.services.salarizare.Pontaje</class>
+		<class>org.open.erp.services.salarizare.Remote_Salarizare</class>
+		<class>org.open.erp.services.salarizare.Retineri</class>
+		<class>org.open.erp.services.salarizare.Soruri</class>
+		<class>org.open.erp.services.salarizare.SRV_Salarizare</class>
+		<class>org.open.erp.services.salarizare.Stat_Salarii</class>
+		<class>org.open.erp.services.personal.Angajat</class>
+		
+      <properties>
+      	 <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/> 
+        <!--  <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
+         <property name="hibernate.hbm2ddl.auto" value="none"/>
+      </properties>		
+	</persistence-unit>
+</persistence>

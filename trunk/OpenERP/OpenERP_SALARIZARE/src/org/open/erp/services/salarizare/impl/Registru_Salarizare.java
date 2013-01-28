@@ -18,7 +18,6 @@ import org.open.erp.services.salarizare.teste.Salarizare_Impl_Test;
 public class Registru_Salarizare {
 
 	
-//	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Salarizare_Impl_Test.class.getName());	
 		private EntityManager entityManager ;
 		
 		private static Logger_Salarizare logger =  new Logger_Salarizare();
@@ -76,14 +75,7 @@ public class Registru_Salarizare {
 				logger.logINFO("Eroare incarcare pontaj pt angajatul cu id-ul:"+angajat.getId());
 				return null;
 			}
-			/*
-			p.setAngajat(angajat);
-			p.setAn(an);
-			p.setLuna(luna);
-			p.setOreLucrate(168.0);
-			p.setOreSuplimentare(12.0);
-			p.setOreConcediu(24.0);
-			*/
+
 			return p;
 		}
 
@@ -110,9 +102,7 @@ public class Registru_Salarizare {
 
 		public List<Retineri> getRetineriAngajat(Integer an, Integer luna, Angajat angajat) throws Exception{
 			List<Retineri> retineri= new ArrayList<Retineri>();
-			//aici apelam ceva din DB care incarca sporurile
-			//retineri.add(new Retinere("Pensie alimentara", 1, angajat, 2011, 11, 1, 100.0));
-			//retineri.add(new Retinere("CAR", 2, angajat, 2011, 11, 2, 5.0));
+
 			try{
 			retineri = entityManager.createQuery("SELECT r FROM Retineri r " +
 					"WHERE r.angajat.id=:id AND r.an=:an AND r.luna=:luna")
