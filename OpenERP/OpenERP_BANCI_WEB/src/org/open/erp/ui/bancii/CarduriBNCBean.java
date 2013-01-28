@@ -14,7 +14,7 @@ public class CarduriBNCBean implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2577929799400568953L;
+	private static final long serialVersionUID = 1L;
 	
 	@EJB(lookup="java:global/OpenERP_BANCI/BanciImpl!org.open.erp.services.banci.BanciSrv")
 	private BanciSrv banciSrv;
