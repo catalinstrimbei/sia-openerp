@@ -138,5 +138,12 @@ List<OfertePret> getOferte();
 		// ) throws Exception;
  Persoana crearePersoana(Integer idPersoana,String nume, String prenume, String functie) throws Exception;
 
+
+public Persoana crearePersoana(Persoana persoana);
+
+public Material creareMaterial (Material material);
+ Persoana salvarePersoana(Persoana persoana) throws Exception;
+List<Persoana> getPersoane();
+
 }	 
 
