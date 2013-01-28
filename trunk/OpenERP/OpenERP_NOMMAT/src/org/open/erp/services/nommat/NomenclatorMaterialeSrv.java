@@ -1,5 +1,7 @@
 package org.open.erp.services.nommat;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 
 import org.open.erp.services.nommat.Material;
@@ -16,4 +18,8 @@ public interface NomenclatorMaterialeSrv {
 	 ListaCaracteristici incarcareLista(String id, String listaCaracteristici);
 	 Material cautareMaterialDupaCod(String codMaterial);
 	Material salvareMaterial(Material material) throws Exception;
+	
+	/* Data Operations */
+	Material getMaterial(String codMaterial);
+	List<Material> getMateriale();
 	}
