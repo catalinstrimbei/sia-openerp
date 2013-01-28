@@ -147,7 +147,7 @@ public class PlataBean implements Converter{
 		this.dataFinal = dataFinal;
 	}
 */
-	public String  adaugaPlata() throws Exception{
+	public String adaugaPlata() throws Exception{
 		
 		Plata plataNoua = new Plata();
 		plataNoua.setValoarePlata(valoarePlata);
