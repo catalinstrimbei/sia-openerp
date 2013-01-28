@@ -3,8 +3,15 @@ package org.open.erp.services.banci;
 import java.util.Date;
 import java.util.Vector;
 
-import org.open.erp.services.nomgen.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import org.open.erp.services.nomgen.*;
+ @Entity
 public class CarduriBNC {
 	/*
 	•	Nume companie
@@ -18,18 +25,35 @@ public class CarduriBNC {
 	o	Sumele retrase cu cardul  
 	o	Sold final cont dupa ultima retragere cu cardul
 	*/
-	
+	 @Id @GeneratedValue
+	private Integer idCard;
+	 
 	private Companie firma;
+	@ManyToOne
 	private Cont cont;
+	
 	private Companie banca;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataeliberarii; //cand se preda clientului
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataexpirarii;
+	
 	private Vector<LiniiPlati> linieretragere = new Vector<LiniiPlati>();
 	private Vector<LiniiPlati> liniealimentare = new Vector<LiniiPlati>();
 	private Double valsoldinitial;
 	private Double valsoldfinal;
 	
 	//setter
+	public Integer getidCard() {
+		return idCard;
+	}
+	public void setidCard(Integer idCard) {
+		this.idCard = idCard;
+	}
+
+	
 	public void setFirma(Companie comp){
 		this.firma = comp;
 	}

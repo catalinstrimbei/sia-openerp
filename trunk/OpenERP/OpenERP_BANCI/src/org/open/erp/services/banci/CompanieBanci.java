@@ -2,7 +2,15 @@ package org.open.erp.services.banci;
 
 import java.util.Vector;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+
 public class CompanieBanci{
+	@Id @GeneratedValue
+	private Integer idCompanie;
 	private String numeCompanie;
 	private Vector<String> numeBanca = new Vector<String>();
 	private Vector<Cont> numeConturi = new Vector<Cont>(); 
