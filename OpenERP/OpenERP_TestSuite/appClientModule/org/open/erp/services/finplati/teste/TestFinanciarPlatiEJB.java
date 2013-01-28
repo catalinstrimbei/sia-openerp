@@ -152,7 +152,7 @@ public class TestFinanciarPlatiEJB {
 
 		
 		logger.info("1.2. Alocare buget pentru datorii");
-		finplatiInstance.setBugetDatorii(20000.0);
+		//finplatiInstance.setBugetDatorii(20000.0);
 		double buget = finplatiInstance.getBugetDatorii();
 		assertNotNull("Bugetul setat nu exista", buget);
 		assertTrue("Bugetul setat nu este corect", (buget==20000.0));
@@ -187,7 +187,7 @@ public class TestFinanciarPlatiEJB {
 	    
 	    
 	    logger.info("2.4  Afisare situatie");
-	   // finplatiInstance.afisareSituatie(testCtr2);
+	   //finplatiInstance.afisareSituatie(testCtr2);
 	   // logger.info(finplatiInstance.afisareSituatie(testCtr2));
 	    
 //3.	    
@@ -197,8 +197,8 @@ public class TestFinanciarPlatiEJB {
 	    //assertTrue("A doua persoana nu e Popescu", listpers.get(1)==popescu);
 	    
 	     logger.info("3.2. Stabilire responsabilPlata plata");
-	    //finplatiInstance.stabilireResponsabilPlata();
-	    //ResponsabilPlata resp = finplatiInstance.getSituatieFinanciara().getResponsabil();
+	    finplatiInstance.stabilireResponsabilPlata();
+	    ResponsabilPlata resp = finplatiInstance.getSituatieFinanciara().getResponsabil();
 	    //assertNotNull("Nu exista nici un responsabilPlata inregistrat", resp);
 	    //assertTrue("Prima persoana nu e Ionescu", resp.getIdPersoana()==ionescu.getIdPersoana());
 	    
