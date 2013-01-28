@@ -21,24 +21,24 @@
 	<h:form>
 		<table>
 			<tr>
-				<td><h:outputText value="Selectatie tipul de promovare:"></h:outputText>
-					<h:inputText value="#{campaniePromovareBean.tipPromovare}"></h:inputText>
+				<td><h:outputText value="Selectatie tipul de promovare:"></h:outputText></td>
+				<td><h:inputText value="#{campaniePromovareBean.tipPromovare}"></h:inputText>
 				</td>
 			</tr>
 			<tr>
-				<td><h:outputText value="Selectatie canalul de distributie:"></h:outputText>
-					<h:inputText value="#{campaniePromovareBean.canalDistributie}"></h:inputText>
-				</td>
+				<td><h:outputText value="Selectatie canalul de distributie:"></h:outputText></td>
+				<td><h:inputText
+						value="#{campaniePromovareBean.canalDistributie}"></h:inputText></td>
 			</tr>
 			<tr>
-				<td><h:outputText value="Introduceti data:"></h:outputText> <h:inputText
-						value="#{campaniePromovareBean.data}">
+				<td><h:outputText value="Introduceti data:"></h:outputText></td>
+				<td><h:inputText value="#{campaniePromovareBean.data}">
 						<f:convertDateTime pattern="dd-MM-yyyy" />
 					</h:inputText></td>
 			</tr>
 			<tr>
-				<td><h:outputText value="Buget alocat:"></h:outputText> <h:inputText
-						value="#{campaniePromovareBean.buget}"></h:inputText></td>
+				<td><h:outputText value="Buget alocat:"></h:outputText></td>
+				<td><h:inputText value="#{campaniePromovareBean.buget}"></h:inputText></td>
 			</tr>
 			<tr>
 				<td><h:commandButton type="submit"
