@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
@@ -27,6 +29,8 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 	@PersistenceContext(unitName="OpenERP_NOMMAT")
 	private EntityManager em;
 	
+	@Resource
+	private SessionContext sessionContext;	
 
 	public NomenclatorMaterialeImpl() {
 		super();
@@ -82,6 +86,18 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 		return null;
 	}
 	
+	@Override
+	public Material salvareMaterial(Material material) throws Exception {
+		if (sessionContext.getRollbackOnly() == true){
+			logger.debug(">>>>>>>>>>>> END Creare/salvare material - TRANZACTIE ANULATA");
+		}else{
+			material = this.registruMateriale.salveazaMaterial(material);
+			//em.persist(proiectNou);
+		}
+		
+		logger.debug(">>>>>>>>>>>> END salvare material");
+		return material;
+	}	
 
 	@Override
 	public Material modificareMaterial(String codMaterial,
