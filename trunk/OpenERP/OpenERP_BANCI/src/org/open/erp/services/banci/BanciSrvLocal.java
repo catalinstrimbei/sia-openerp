@@ -6,3 +6,6 @@ import javax.ejb.Local;
 public interface BanciSrvLocal extends BanciSrv {
 
 }
+
+
+/// coment
