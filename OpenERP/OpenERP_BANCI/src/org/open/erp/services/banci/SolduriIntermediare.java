@@ -1,8 +1,16 @@
 package org.open.erp.services.banci;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SolduriIntermediare {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class SolduriIntermediare implements Serializable{
+	@Id @GeneratedValue
+	private Integer idsoldintermediar;
 	private Date data_operatie;
 	private Integer tip_operatie; //+1 depunere, -1 retragere
 	private Double suma_operatie;
@@ -36,5 +44,11 @@ public class SolduriIntermediare {
 		this.data_operatie = data_operatie;
 		this.suma_operatie = suma_operatie;
 		this.tip_operatie = tip_operatie;
+	}
+	public Integer getIdsoldintermediar() {
+		return idsoldintermediar;
+	}
+	public void setIdsoldintermediar(Integer idsoldintermediar) {
+		this.idsoldintermediar = idsoldintermediar;
 	}
 }

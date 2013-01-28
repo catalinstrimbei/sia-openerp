@@ -47,4 +47,12 @@ public class CompanieBanci{
 	public CompanieBanci(){
 		super();
 	}
+
+	public Integer getIdCompanie() {
+		return idCompanie;
+	}
+
+	public void setIdCompanie(Integer idCompanie) {
+		this.idCompanie = idCompanie;
+	}
 }

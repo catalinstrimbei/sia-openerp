@@ -1,9 +1,20 @@
 package org.open.erp.services.banci;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Vector;
 
-public class CrediteBNC {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class CrediteBNC implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9129588260884110612L;
+
 	/*
 	•	Nume companie
 	•	Nume banca/ Banci la care are contractat credite
@@ -21,6 +32,9 @@ public class CrediteBNC {
 		o	Suma ramasa de plata
 
 	*/
+	@Id @GeneratedValue
+	private Integer idcreditbnc;
+	
 	private String numeCompanie;
 	private Vector<String> numeBanca = new Vector<String>();;
 	private String numeCont;
@@ -135,6 +149,12 @@ public class CrediteBNC {
 	
 	public CrediteBNC() {
 		super();
+	}
+	public Integer getIdcreditbnc() {
+		return idcreditbnc;
+	}
+	public void setIdcreditbnc(Integer idcreditbnc) {
+		this.idcreditbnc = idcreditbnc;
 	}	
 }
 		

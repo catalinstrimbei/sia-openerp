@@ -1,11 +1,19 @@
 package org.open.erp.services.banci;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.open.erp.services.nomgen.Companie;
 
-public class SchimbValBNC {
+@Entity
+public class SchimbValBNC implements Serializable {
+	@Id @GeneratedValue
+	private Integer Idschimb;
 	private Companie client;
 	private Date datatranz;
 	private Integer monedacurenta;
@@ -91,6 +99,12 @@ public class SchimbValBNC {
 	
 	public SchimbValBNC() {
 		super();
+	}
+	public Integer getIdschimb() {
+		return Idschimb;
+	}
+	public void setIdschimb(Integer idschimb) {
+		Idschimb = idschimb;
 	}
 	
 }

@@ -4,6 +4,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
+import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+
+import org.open.erp.services.banci.BanciSrvLocal;
 import org.open.erp.services.banci.CarduriBNC;
 import org.open.erp.services.banci.BanciSrv;
 import org.open.erp.services.banci.CompanieBanci;
@@ -14,8 +19,11 @@ import org.open.erp.services.banci.LiniiPlati;
 import org.open.erp.services.banci.SchimbValBNC;
 import org.open.erp.services.nomgen.Companie;
 
+@Stateless
 
-public class BanciImpl implements BanciSrv {
+@TransactionManagement(TransactionManagementType.CONTAINER)
+
+public class BanciImpl implements BanciSrv, BanciSrvLocal {
 
 	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(BanciImpl.class.getName());
 	
