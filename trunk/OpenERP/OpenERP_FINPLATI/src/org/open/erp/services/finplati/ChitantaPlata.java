@@ -23,6 +23,13 @@ import javax.persistence.OneToOne;
 @Entity
 
 public class ChitantaPlata implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+
 	@Id @GeneratedValue
 protected Integer idChitanta;
 
