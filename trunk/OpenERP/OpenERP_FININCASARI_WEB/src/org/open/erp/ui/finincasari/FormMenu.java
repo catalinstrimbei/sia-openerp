@@ -55,9 +55,9 @@ public class FormMenu {
 	/* menu versiunea 3*/
 	private Map<String, String> formulare = new HashMap<String, String>();
 	public FormMenu(){
-		formulare.put("Editare Form1", "Form1");
+		formulare.put("Editare Form", "Form");
 		formulare.put("Editare Form2", "Form2");
-		formulare.put("Lista Raport1", "FormRaport");		
+		formulare.put("Lista Raport", "FormRaport");		
 	}
 	public List<String> getFormulare() {
 		logger.debug("V3: Get Formulare");
