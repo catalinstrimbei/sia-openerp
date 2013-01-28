@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://java.sun.com/jsf/core">
+<body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Formular persoana</div>
+<h:panelGrid columns="2">
+	<h:selectOneMenu converter="#{formularPersoana}" id="cboPersoane" value="#{formularPersoana.persoana}" style=" width : 220px;">
+	
+</h:selectOneMenu>
+<h:panelGrid columns="3">
+	<h:commandButton id="cmdPrevious" value="&lt;&lt;" actionListener="#{formularPersoana.previousPersoana}"></h:commandButton>
+	
+	<h:commandButton actionListener="#{formularPersoana.nextPersoana}" disabled="#{formularPersoana.disableNext}" id="cmdNext" value="&gt;&gt;"></h:commandButton>
+		
+</h:panelGrid>
+
+<h:outputText value="Nume"></h:outputText>
+<h:inputText id="nume" value="#{formularPersoana.persoana.nume}"></h:inputText>
+<h:outputText value="Prenume"></h:outputText>
+<h:inputText id="prenume" value="#{formularPersoana.persoana.prenume}"></h:inputText>
+<h:outputText value="Functie"></h:outputText>
+<h:inputText id="functie" value="#{formularPersoana.persoana.functie}"></h:inputText>
+
+
+<p:facet name="footer">
+
+		<h:panelGrid columns="4">
+			
+			<h:commandButton action="#{formularPersoana.adaugarePersoana}" id="cmdAdaugare" value="Adaugare">
+				<p:ajax render="@form" execute="@none"></p:ajax>
+			
+			</h:commandButton>
+			<h:commandButton id="cmdStergere" value="Stergere" type="reset"><p:ajax render="@form" execute="@none"></p:ajax>
+				
+			</h:commandButton>
+			<h:commandButton id="cmdAbandon" value="Abandon">
+			<p:ajax render="@form" execute="@none"></p:ajax>
+				
+			</h:commandButton>
+			
+			<h:commandButton action="#{formularPersoana.salvarePersoana}" id="cmdSalvare" value="Salvare">
+				<p:ajax render="@form" execute="@none"></p:ajax>
+			</h:commandButton>
+			
+		</h:panelGrid>
+
+</p:facet>
+</h:panelGrid>
+</body>
+
+</html
+>
