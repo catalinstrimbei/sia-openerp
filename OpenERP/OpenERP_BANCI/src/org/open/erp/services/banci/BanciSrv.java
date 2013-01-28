@@ -2,8 +2,11 @@ package org.open.erp.services.banci;
 
 import java.util.Date;
 import java.util.List;
-import org.open.erp.services.nomgen.*;
 
+import javax.ejb.Remote;
+
+import org.open.erp.services.nomgen.*;
+ @Remote
 public interface BanciSrv {
 	
 	public Companie CreareFirma(Integer id, String nume);
