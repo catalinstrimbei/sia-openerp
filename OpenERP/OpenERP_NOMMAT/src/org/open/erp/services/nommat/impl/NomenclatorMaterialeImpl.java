@@ -169,6 +169,21 @@ public class NomenclatorMaterialeImpl implements NomenclatorMaterialeSrv {
 		return persoana;
 	}
 
+
+	@Override
+	public Material getMaterial(String codMaterial) {
+		return registruMateriale.getMaterial(codMaterial);
+//		return null;
+	}
+	@Override
+	public List<Material> getMateriale() {
+		List<Material> materiale = registruMateriale.getToateMateriale();
+		if (materiale.isEmpty())
+			logger.debug("Returner 000 materiale!");
+		else
+			logger.debug("Returner " + materiale.size() + " materiale!");
+		return materiale;
+	}
    
 
 }	
