@@ -44,9 +44,9 @@
 			<h:outputText value="Nume Client:"></h:outputText>
 			<h:inputText value="#{formComenzi.client.client}" id="client"></h:inputText>
 			<h:outputText value="Valoare Comanda:" ></h:outputText>
-			<h:outLabel value="#{formComenzi.comanda.valoareComanda}"></h:outLabel>
-			
-			<f:facet name="footer">
+			<h:outputLabel value="#{formComenzi.comanda.valoareComanda}"></h:outputLabel>
+				
+				<f:facet name="footer">
 			<center>
 				<h:panelGrid columns="4" border="0">
 					<h:commandButton value="Adaugare" actionListener="#{formComenzi.adaugareComanda}"></h:commandButton>
