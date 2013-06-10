@@ -16,7 +16,7 @@
 	  
 	  <center>
 	<h:form>
-	<h:panelGrid columns="4" border="0">
+	<h:panelGrid columns="4" border="0" style="height: 182px; width: 391px; ">
 				<h:selectOneMenu id="cboComenzi" value="#{formComenzi.comanda}" 
 					style="width: 150px; height: 250px; " converter="#{formComenzi}">
 					<f:selectItems value="#{formComenzi.comenziMap}"></f:selectItems>
@@ -35,10 +35,12 @@
 		
 			<h:outputText value="Numar Comanda:" ></h:outputText>
 			<h:inputText value="#{formComenzi.comanda.id}" id="id"></h:inputText>
-
-			<h:outputText value="Data Comanda:"></h:outputText>
+				
+				<h:outputText value="Data Comanda:">
+				<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+				</h:outputText>
 			<h:inputText value="#{formComenzi.comanda.dataComanda}" id="dataComanda">
-			<f:converterDataTime patttern="dd/MM/yyyy"></f:converterDataTime>
+			
 			</h:inputText>
 			
 			<h:outputText value="Nume Client:"></h:outputText>
