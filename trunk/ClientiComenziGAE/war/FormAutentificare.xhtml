@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	 <head><link rel="stylesheet" type="text/css" href="main.css"></link></head>
+<body>
+	<style> h1 {text-align:center} </style>
+	<h1> <font face="Baskerville Old Face"> Autentificare </font> </h1>
+		<center>
+	<h:form>
+	<h:panelGrid columns="2" border="1" style="width: 408px; height: 165px; ">
+			
+			<f:facet name="header">
+				<h:outputText value="Introduceti numele de utilizator si parola."></h:outputText>
+			</f:facet>
+			
+			<h:outputText value="Nume Utilizator:" ></h:outputText>
+			<h:inputText value="#{formAutentificare.utilizator.numeUtilizator}" id="numeUtilizator"></h:inputText>
+			
+		
+
+			<h:outputText value="Parola:"></h:outputText>
+			<h:inputSecret value="#{formAutentificare.utilizator.parola}" id="parola"></h:inputSecret>
+			
+		
+			<f:facet name="footer">
+				<h:panelGrid columns="2" border="0" style="width: 395px; ">
+					<h:commandButton value="Autentificare" action="#{formAutentificare.autentificareUtilizator}" style="width: 184px; "></h:commandButton>
+						
+						<A href="FormUtilizatori.xhtml"> Creare cont nou </A>
+				</h:panelGrid>
+				<h:messages style="color: #FF0000"></h:messages>
+				
+			</f:facet>
+
+		</h:panelGrid> <P align="center" style="width: 921px; "><i></i></P> </h:form> </center>
+
+
+</body>
+</html>
+
