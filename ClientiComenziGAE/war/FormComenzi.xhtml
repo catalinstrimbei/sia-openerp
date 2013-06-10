@@ -16,22 +16,25 @@
 	  
 	  <center>
 	<h:form>
-	<h:panelGrid columns="4" border="0" style="height: 182px; width: 391px; ">
+	<h:panelGrid columns="2" border="0" style="height: 182px; width: 391px; ">
+	
 				<h:selectOneMenu id="cboComenzi" value="#{formComenzi.comanda}" 
 					style="width: 150px; height: 250px; " converter="#{formComenzi}">
 					<f:selectItems value="#{formComenzi.comenziMap}"></f:selectItems>
 					<f:ajax render="@form"></f:ajax>
 				</h:selectOneMenu>			
 
-		<h:commandButton  id= "PreviousComanda" actionListener="#{formComenzi.previousComanda}" value="Inapoi">
-		</h:commandButton>
-		<f:ajax render="@form"></f:ajax>
-		<h:commandButton  id= "NextComanda" actionListener="#{formComenzi.nextComanda}" value="Inainte">
-		</h:commandButton>
-		<f:ajax render="@form"></f:ajax>
-		</h:panelGrid>
+		
+		
 	
 	<h:panelGrid columns="2" border="0" style="width: 300px; height: 120px; ">
+		<h:commandButton  id= "PreviousComanda" actionListener="#{formComenzi.previousComanda}" value="Inapoi">
+		<f:ajax render="@form"></f:ajax>
+		</h:commandButton>
+		
+		<h:commandButton  id= "NextComanda" actionListener="#{formComenzi.nextComanda}" value="Inainte">
+		<f:ajax render="@form"></f:ajax>
+		</h:commandButton>
 		
 			<h:outputText value="Numar Comanda:" ></h:outputText>
 			<h:inputText value="#{formComenzi.comanda.id}" id="id"></h:inputText>
@@ -72,7 +75,7 @@
 	<h:column id="colValoareProdus"> <h:inputText id="Id" value="#{LinieComanda.id}"/> 
 		<f:facet name="header"> Valoare Produs </f:facet> </h:column>
 		
-	 
-	<A href="MainForm.xhtml">Revenire in meniu</A> </center>
+	</h:panelGrid>
+	<a href="MainForm.xhtml">Revenire in meniu</a> </center>
 </body>
 </html>
