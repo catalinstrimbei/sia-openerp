@@ -78,7 +78,7 @@ public class TestStaticPersistenta {
 				System.out.println("Cod: " + p.getCod() + ", nume: " + p.getDenumire());					
 			
 			// Populare comenzi	
-			Comanda c1 = new Comanda(1l, "");
+			Comanda c1 = new Comanda(1l, "", null);
 			c1.adauga(lstProdusePersistente.get(0), 20.0);
 			c1.adauga(lstProdusePersistente.get(1), 15.0);
 			// Create
