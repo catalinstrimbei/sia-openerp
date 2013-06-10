@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<head>
+	<link rel="stylesheet" type="text/css" href="main.css"></link>
+	</head>
+<body>
+	<center>
+<style> h1 {text-align:center} </style>
+	<h1>  <font face="Baskerville Old Face"> Creare cont nou </font>  </h1>
+	<h:form>
+	<h:panelGrid columns="2" border="1" style="width: 419px; height: 178px; ">
+			
+			<f:facet name="header">
+				<h:outputText value="Introduceti datele necesare pentru crearea unui cont nou."></h:outputText>
+			</f:facet>
+			
+			<h:outputText value="Nume Utilizator:" ></h:outputText>
+			<h:inputText value="#{formUtilizatori.utilizator.numeUtilizator}" id="numeUtilizator"></h:inputText>
+			
+			<h:outputText value="Nume si Prenume:" ></h:outputText>
+			<h:inputText value="#{formUtilizatori.utilizator.numeComplet}" id="numeComplet"></h:inputText>
+			
+			<h:outputText value="E-mail:" ></h:outputText>
+			<h:inputText value="#{formUtilizatori.utilizator.email}" id="email"></h:inputText>
+
+			<h:outputText value="Parola:"></h:outputText>
+			<h:inputText value="#{formUtilizatori.utilizator.parola}" id="parola"></h:inputText>
+			
+			
+			<f:facet name="footer">
+				<h:panelGrid columns="2" border="0" style="width: 394px; ">
+						
+						<h:commandButton value="Salvare" action="#{formUtilizatori.salvareUtilizator}" style="width: 127px; "></h:commandButton>
+					
+				</h:panelGrid>
+			</f:facet>
+
+		</h:panelGrid> <P align="center" style="width: 921px; "><i></i></P></h:form>
+
+</center>
+
+</body>
+</html>

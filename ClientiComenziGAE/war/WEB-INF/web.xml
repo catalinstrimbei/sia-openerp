@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<servlet>
+		<servlet-name>ClientiComenziGAE</servlet-name>
+		<servlet-class>org.app.forms.ClientiComenziGAEServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ClientiComenziGAE</servlet-name>
+		<url-pattern>/clienticomenzigae</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>faces/MainForm.xhtml</welcome-file>
+	</welcome-file-list>
+ <servlet>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+  <init-param>
+   <param-name>services</param-name>
+   <param-value/>
+  </init-param>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <url-pattern>/_ah/spi/*</url-pattern>
+ </servlet-mapping>
+ 
+  <!--
+    We need to set annotation lifecycle provider manually as 
+    org.apache.myfaces.config.annotation.NoInjectionAnnotationLifecycleProvider.
+    Other providers use some classes that are restricted on Google App Engine.    
+ --> 
+ <context-param>
+     <param-name>
+       org.apache.myfaces.config.annotation.LifecycleProvider
+     </param-name>
+     <param-value>
+       org.apache.myfaces.config.annotation.NoInjectionAnnotationLifecycleProvider
+     </param-value>
+ </context-param>
+
+ <!--
+     Need to set a secret to avoid javax.crypto.BadPaddingException.
+     "param-value" must be Base64 encoded.
+     More details: http://wiki.apache.org/myfaces/Secure_Your_Application
+  -->
+ <context-param>
+     <param-name>org.apache.myfaces.SECRET</param-name>
+     <param-value>NzY1NDMyMTA=</param-value>
+     </context-param>       
+
+ <!--
+    Facelets configuration fragment
+ -->
+ <context-param>
+   <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+   <param-value>.xhtml</param-value>
+ </context-param>
+
+ <servlet>
+   <servlet-name>Faces Servlet</servlet-name>
+   <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+ </servlet>
+
+ <servlet-mapping>
+   <servlet-name>Faces Servlet</servlet-name>
+   <url-pattern>/faces/*</url-pattern>
+   <url-pattern>*.jsf</url-pattern>
+ </servlet-mapping> 
+ 
+ 
+	 <context-param>
+	    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+	    <param-value>server</param-value>
+	</context-param>
+	<context-param>
+	    <param-name>javax.faces.PROJECT_STAGE</param-name>
+	    <param-value>Development</param-value>
+	</context-param>
+	<context-param>
+	    <param-name>com.sun.faces.expressionFactory</param-name>
+	    <param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+	</context-param>
+	<context-param>
+	    <param-name>com.sun.faces.validateXml</param-name>
+	    <param-value>true</param-value>
+	</context-param>
+	<context-param>
+	    <param-name>com.sun.faces.enableThreading</param-name>
+	    <param-value>false</param-value>
+	</context-param>
+	
+</web-app>

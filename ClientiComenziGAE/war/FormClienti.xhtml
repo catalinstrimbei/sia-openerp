@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+ 
+<h:head>
+	<title>Formular Clienti</title>
+	
+<link rel="stylesheet" type="text/css" href="main.css"></link>
+
+</h:head>
+<h:body>
+<center>
+<style> h1 {text-align:center} </style>
+	<h1> <font face="Baskerville Old Face"> Formular CLIENTI</font> </h1>
+	
+	<h:form>
+		<h:panelGrid columns="2" border="0" style="width: 743px; ">
+			
+			<h:panelGrid columns="1" border="0">
+				<h:outputText value=" Lista clienti:">
+				</h:outputText>
+				<h:selectOneListbox id="cboClienti" value="#{formClienti.client}" 
+					style="width: 255px; height: 352px; " converter="#{formClienti}">
+					<f:selectItems value="#{formClienti.clientiMap}"></f:selectItems>
+					<f:ajax render="id denumire"></f:ajax>
+				</h:selectOneListbox>			
+			
+			</h:panelGrid>
+
+			<h:panelGrid columns="2" border="0" style="width: 300px; ">
+			
+				<h:outputText value="Informatii client:"></h:outputText>
+				<h:outputText></h:outputText>
+				
+				<h:outputText value="ID Client:" ></h:outputText>
+				<h:inputText value="#{formClienti.client.idClient}" id="id"></h:inputText>
+	
+				<h:outputText value="Denumire Client:"></h:outputText>
+				<h:inputText value="#{formClienti.client.denumireClient}" id="denumire"></h:inputText>
+				
+				<h:outputText value="Cod Fiscal:"></h:outputText>
+				<h:inputText value="#{formClienti.client.codFiscal}" id="codFiscal"></h:inputText>
+				
+				<h:outputText value="Judet:"></h:outputText>
+				<h:inputText value="#{formClienti.client.numeJudet}" id="numeJudet"></h:inputText>
+				
+				<h:outputText value="Localitate:"></h:outputText>
+				<h:inputText value="#{formClienti.client.numeLocalitate}" id="numeLocalitate"></h:inputText>
+				
+				<h:outputText value="Strada:"></h:outputText>
+				<h:inputText value="#{formClienti.client.strada}" id="strada"></h:inputText>
+				
+				<h:outputText value="Cod Postal:"></h:outputText>
+				<h:inputText value="#{formClienti.client.codPostal}" id="codPostal"></h:inputText>
+				
+				<h:outputText value="Telefon:"></h:outputText>
+				<h:inputText value="#{formClienti.client.telefon}" id="telefon"></h:inputText>
+				
+				<h:outputText value="Fax:"></h:outputText>
+				<h:inputText value="#{formClienti.client.fax}" id="fax"></h:inputText>
+				
+				<h:outputText value="email:"></h:outputText>
+				<h:inputText value="#{formClienti.client.email}" id="email"></h:inputText>		
+				
+			<f:facet name="footer">
+				<h:panelGrid columns="12" border="0" >
+
+					<h:commandButton value="Adaugare" actionListener="#{formClienti.adaugareClient}"></h:commandButton>
+					<h:commandButton value="Stergere" actionListener="#{formClienti.stergeClient}"></h:commandButton>
+					<h:commandButton value="Salveaza" actionListener="#{formClienti.salvareClient}"></h:commandButton>
+					<h:commandButton value="Abandon" actionListener="#{formClienti.abandonClient}"></h:commandButton>
+				</h:panelGrid>
+			</f:facet>					
+			</h:panelGrid>
+			
+		</h:panelGrid>
+	</h:form>
+	<A href="MainForm.xhtml"> Revenire in meniu </A> 
+	
+	</center>
+</h:body>
+</html>
