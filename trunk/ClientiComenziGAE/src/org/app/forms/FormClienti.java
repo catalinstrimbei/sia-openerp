@@ -33,7 +33,7 @@ public class FormClienti implements Serializable, Converter{
 	private static final long serialVersionUID = 5607669850754251085l;
 	
 	private List<Client> clienti = new ArrayList<>();
-	private Client client = new Client("", "","", "", "", "", "", "", "", "");
+	private Client client = new Client("990", "Client Nou","", "", "", "", "", "", "", "");
 	
 	public List<Client> getClienti() {
 		return clienti;
@@ -42,6 +42,7 @@ public class FormClienti implements Serializable, Converter{
 		this.clienti = clienti;
 	}
 	public Client getClient() {
+		//System.out.println("Get Client: " + client);
 		return client;
 	}
 	public void setClient(Client client) {
@@ -55,8 +56,9 @@ public class FormClienti implements Serializable, Converter{
 	
 	/* Implementare operatii CRUD */
 	public void adaugareClient(ActionEvent evt) {
-		this.client = new Client("990", "Client","", "", "", "", "", "", "", "");
+		this.client = new Client("990", "Client Nou","", "", "", "", "", "", "", "");
 		this.clienti.add(this.client);
+		System.out.println("NEW Client: " + this.client);
 	}
 
 	public void stergereClient(ActionEvent evt) {
@@ -76,12 +78,15 @@ public class FormClienti implements Serializable, Converter{
 	public void salvareClient(ActionEvent evt) {
 		System.out.println("Salvare");
 		try{
-			EMF.getEntityManager().getTransaction().begin();
+			if (!EMF.getEntityManager().getTransaction().isActive())
+				EMF.getEntityManager().getTransaction().begin();
 			EMF.getEntityManager().merge(this.client);
 			EMF.getEntityManager().getTransaction().commit();
 			System.out.println("Success Salvare client: " + EMF.getEntityManager().contains(this.client));
 		}catch(Exception ex){
 			ex.printStackTrace();
+			if (EMF.getEntityManager().getTransaction().isActive())
+				EMF.getEntityManager().getTransaction().rollback();
 		}
 	}
 
@@ -91,11 +96,11 @@ public class FormClienti implements Serializable, Converter{
 	}	 
 	
 	private void init(){
-		clienti = new ArrayList(EMF.getEntityManager().createQuery("SELECT o FROM Client o").getResultList());
+		this.clienti = new ArrayList(EMF.getEntityManager().createQuery("SELECT o FROM Client o").getResultList());
 		if (!clienti.isEmpty()){
-			client = clienti.get(0);
+			this.client = clienti.get(0);
 		}else{
-			clienti.add(client);
+			this.clienti.add(this.client);
 		}
 	}
 	

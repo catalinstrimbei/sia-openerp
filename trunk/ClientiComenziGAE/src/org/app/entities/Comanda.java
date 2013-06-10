@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
@@ -13,27 +16,36 @@ import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.DATE;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.google.appengine.api.datastore.Key;
+
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class Comanda implements Serializable{
-	// Atribute private
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Key key;
+	
+	
+	// Atribute private
+	//@Id
 	private Long id;
 	
 	@Temporal(DATE)
 	private String dataComanda;
 
-	@OneToMany(mappedBy = "comanda", cascade = ALL)
+	@OneToMany(mappedBy = "comanda", cascade = CascadeType.ALL)
 	private List<LinieComanda> comenzi = new ArrayList<LinieComanda>();
 	
-    @ManyToOne
-   private Client client;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Client client;
 	
 	// Constructori
-	public Comanda(Long id, String dataComanda) {
+	public Comanda(Long id, String dataComanda, Client client) {
 		this.id = id;
 		this.dataComanda = dataComanda;
+		this.client = client;
 	}	
 	public Comanda(Long id, String dataComanda, List<LinieComanda> comenzi,
 			Client client) {

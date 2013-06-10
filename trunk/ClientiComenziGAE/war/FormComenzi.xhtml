@@ -26,7 +26,7 @@ h1 {
 
 				<h:selectOneMenu id="cboComenzi" value="#{formComenzi.comanda}"
 					style="width: 150px; height: 250px; " converter="#{formComenzi}">
-					<f:selectItems value="#{formComenzi.comenziMap}"></f:selectItems>
+					<f:selectItems value="#{formComenzi.comenzi}"></f:selectItems>
 					<f:ajax render="@form"></f:ajax>
 				</h:selectOneMenu>
 
@@ -49,15 +49,16 @@ h1 {
 					<h:inputText value="#{formComenzi.comanda.id}" id="id"></h:inputText>
 
 					<h:outputText value="Data Comanda:">
-						<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
 					</h:outputText>
 					<h:inputText value="#{formComenzi.comanda.dataComanda}"
 						id="dataComanda">
-
+						<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
 					</h:inputText>
 
 					<h:outputText value="Nume Client:"></h:outputText>
-					<h:inputText value="#{formComenzi.client.client}" id="client"></h:inputText>
+					<h:outputLabel value="#{formComenzi.comanda.client.denumireClient}"
+						id="client"></h:outputLabel>
+
 					<h:outputText value="Valoare Comanda:"></h:outputText>
 					<h:outputLabel value="#{formComenzi.comanda.valoareComanda}"></h:outputLabel>
 
@@ -77,31 +78,10 @@ h1 {
 					</f:facet>
 
 
-					<h:column id="colId">
-						<h:inputText id="Id" value="#{LinieComanda.id}" />
-						<f:facet name="header"> Numar comanda </f:facet>
-					</h:column>
-
-					<h:column id="colProduse">
-						<h:selectOneMenu id="cboProduse" value="#{linieComanda.produs}"
-							converter="#{formComenzi}">
-							<f:selectItems value="#{formComenzi.produs}" />
-						</h:selectOneMenu>
-						<f:facet name="header">Produs</f:facet>
-					</h:column>
-
-					<h:column id="colCantitate">
-						<h:inputText id="Id" value="#{LinieComanda.cantitate}" />
-						<f:facet name="header"> Cantitate </f:facet>
-					</h:column>
-
-					<h:column id="colValoareProdus">
-						<h:inputText id="Id" value="#{LinieComanda.id}" />
-						<f:facet name="header"> Valoare Produs </f:facet>
-					</h:column>
-
 				</h:panelGrid>
 			</h:panelGrid>
+
+			
 		</h:form>
 		<a href="MainForm.xhtml">Revenire in meniu</a>
 	</center>
