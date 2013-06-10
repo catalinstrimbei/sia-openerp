@@ -4,78 +4,107 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-	
-	<head>
+
+<head>
 <link rel="stylesheet" type="text/css" href="main.css"></link>
 </head>
 
 <body>
-<style> h1 {text-align:center} </style>
- <h1> <font face="Baskerville Old Face"> Formular COMENZI</font>
+	<style>
+h1 {
+	text-align: center
+}
+</style>
+	<h1>
+		<font face="Baskerville Old Face"> Formular COMENZI</font>
 	</h1>
-	  
-	  <center>
-	<h:form>
-	<h:panelGrid columns="2" border="0" style="height: 182px; width: 391px; ">
-	
-				<h:selectOneMenu id="cboComenzi" value="#{formComenzi.comanda}" 
+
+	<center>
+		<h:form>
+			<h:panelGrid columns="2" border="0"
+				style="height: 182px; width: 391px; ">
+
+				<h:selectOneMenu id="cboComenzi" value="#{formComenzi.comanda}"
 					style="width: 150px; height: 250px; " converter="#{formComenzi}">
 					<f:selectItems value="#{formComenzi.comenziMap}"></f:selectItems>
 					<f:ajax render="@form"></f:ajax>
-				</h:selectOneMenu>			
+				</h:selectOneMenu>
 
-		
-		
-	
-	<h:panelGrid columns="2" border="0" style="width: 300px; height: 120px; ">
-		<h:commandButton  id= "PreviousComanda" actionListener="#{formComenzi.previousComanda}" value="Inapoi">
-		<f:ajax render="@form"></f:ajax>
-		</h:commandButton>
-		
-		<h:commandButton  id= "NextComanda" actionListener="#{formComenzi.nextComanda}" value="Inainte">
-		<f:ajax render="@form"></f:ajax>
-		</h:commandButton>
-		
-			<h:outputText value="Numar Comanda:" ></h:outputText>
-			<h:inputText value="#{formComenzi.comanda.id}" id="id"></h:inputText>
-				
-				<h:outputText value="Data Comanda:">
-				<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
-				</h:outputText>
-			<h:inputText value="#{formComenzi.comanda.dataComanda}" id="dataComanda">
-			
-			</h:inputText>
-			
-			<h:outputText value="Nume Client:"></h:outputText>
-			<h:inputText value="#{formComenzi.client.client}" id="client"></h:inputText>
-			<h:outputText value="Valoare Comanda:" ></h:outputText>
-			<h:outputLabel value="#{formComenzi.comanda.valoareComanda}"></h:outputLabel>
-				
-				<f:facet name="footer">
-			<center>
-				<h:panelGrid columns="4" border="0">
-					<h:commandButton value="Adaugare" actionListener="#{formComenzi.adaugareComanda}"></h:commandButton>
-					<h:commandButton value="Salveaza" actionListener="#{formComenzi.salvareComanda}"></h:commandButton>	
-					<h:commandButton value="Stergere" actionListener="#{formComenzi.stergereComanda}"></h:commandButton>
-					<h:commandButton value="Abandon" actionListener="#{formComenzi.abandonComanda}"></h:commandButton>
+
+
+
+				<h:panelGrid columns="2" border="0"
+					style="width: 300px; height: 120px; ">
+					<h:commandButton id="PreviousComanda"
+						actionListener="#{formComenzi.previousComanda}" value="Inapoi">
+						<f:ajax render="@form"></f:ajax>
+					</h:commandButton>
+
+					<h:commandButton id="NextComanda"
+						actionListener="#{formComenzi.nextComanda}" value="Inainte">
+						<f:ajax render="@form"></f:ajax>
+					</h:commandButton>
+
+					<h:outputText value="Numar Comanda:"></h:outputText>
+					<h:inputText value="#{formComenzi.comanda.id}" id="id"></h:inputText>
+
+					<h:outputText value="Data Comanda:">
+						<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+					</h:outputText>
+					<h:inputText value="#{formComenzi.comanda.dataComanda}"
+						id="dataComanda">
+
+					</h:inputText>
+
+					<h:outputText value="Nume Client:"></h:outputText>
+					<h:inputText value="#{formComenzi.client.client}" id="client"></h:inputText>
+					<h:outputText value="Valoare Comanda:"></h:outputText>
+					<h:outputLabel value="#{formComenzi.comanda.valoareComanda}"></h:outputLabel>
+
+					<f:facet name="footer">
+						<center>
+							<h:panelGrid columns="4" border="0">
+								<h:commandButton value="Adaugare"
+									actionListener="#{formComenzi.adaugareComanda}"></h:commandButton>
+								<h:commandButton value="Salveaza"
+									actionListener="#{formComenzi.salvareComanda}"></h:commandButton>
+								<h:commandButton value="Stergere"
+									actionListener="#{formComenzi.stergereComanda}"></h:commandButton>
+								<h:commandButton value="Abandon"
+									actionListener="#{formComenzi.abandonComanda}"></h:commandButton>
+							</h:panelGrid>
+						</center>
+					</f:facet>
+
+
+					<h:column id="colId">
+						<h:inputText id="Id" value="#{LinieComanda.id}" />
+						<f:facet name="header"> Numar comanda </f:facet>
+					</h:column>
+
+					<h:column id="colProduse">
+						<h:selectOneMenu id="cboProduse" value="#{linieComanda.produs}"
+							converter="#{formComenzi}">
+							<f:selectItems value="#{formComenzi.produs}" />
+						</h:selectOneMenu>
+						<f:facet name="header">Produs</f:facet>
+					</h:column>
+
+					<h:column id="colCantitate">
+						<h:inputText id="Id" value="#{LinieComanda.cantitate}" />
+						<f:facet name="header"> Cantitate </f:facet>
+					</h:column>
+
+					<h:column id="colValoareProdus">
+						<h:inputText id="Id" value="#{LinieComanda.id}" />
+						<f:facet name="header"> Valoare Produs </f:facet>
+					</h:column>
+
 				</h:panelGrid>
-				</center>
-			</f:facet>			
+			</h:panelGrid>
+		</h:form>
+		<a href="MainForm.xhtml">Revenire in meniu</a>
+	</center>
 
-		
-		<h:column id="colId"> <h:inputText id="Id" value="#{LinieComanda.id}"/> 
-		<f:facet name="header"> Numar comanda </f:facet> </h:column>
-		
-	 <h:column id="colProduse"> <h:selectOneMenu id="cboProduse" value="#{linieComanda.produs}" converter="#{formComenzi}"> 
-	 <f:selectItems value="#{formComenzi.produs}" /> </h:selectOneMenu> <f:facet name="header">Produs</f:facet> </h:column>
-	 
-	 <h:column id="colCantitate"> <h:inputText id="Id" value="#{LinieComanda.cantitate}"/> 
-		<f:facet name="header"> Cantitate </f:facet> </h:column>
-		
-	<h:column id="colValoareProdus"> <h:inputText id="Id" value="#{LinieComanda.id}"/> 
-		<f:facet name="header"> Valoare Produs </f:facet> </h:column>
-		
-	</h:panelGrid>
-	<a href="MainForm.xhtml">Revenire in meniu</a> </center>
 </body>
 </html>
