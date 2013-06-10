@@ -21,21 +21,15 @@ h1 {
 
 	<center>
 		<h:form>
-			<h:panelGrid columns="2" border="0"
-				style="height: 182px; width: 391px; ">
+			<h:panelGrid columns="3" border="0" style="width: 336px; height: 212px; ">
 
 				<h:selectOneMenu id="cboComenzi" value="#{formComenzi.comanda}"
-					style="width: 150px; height: 250px; " converter="#{formComenzi}">
+					style="width: 116px; " converter="#{formComenzi}">
 					<f:selectItems value="#{formComenzi.comenzi}"></f:selectItems>
 					<f:ajax render="@form"></f:ajax>
 				</h:selectOneMenu>
 
-
-
-
-				<h:panelGrid columns="2" border="0"
-					style="width: 300px; height: 120px; ">
-					<h:commandButton id="PreviousComanda"
+				<h:panelGrid columns="2" border="0"><h:commandButton id="PreviousComanda"
 						actionListener="#{formComenzi.previousComanda}" value="Inapoi">
 						<f:ajax render="@form"></f:ajax>
 					</h:commandButton>
@@ -44,47 +38,87 @@ h1 {
 						actionListener="#{formComenzi.nextComanda}" value="Inainte">
 						<f:ajax render="@form"></f:ajax>
 					</h:commandButton>
+				</h:panelGrid>
 
+				<h:message></h:message>
 					<h:outputText value="Numar Comanda:"></h:outputText>
 					<h:inputText value="#{formComenzi.comanda.id}" id="id"></h:inputText>
 
-					<h:outputText value="Data Comanda:">
-					</h:outputText>
+				<h:message></h:message>
+				<h:outputText value="Data Comanda:"> </h:outputText>
 					<h:inputText value="#{formComenzi.comanda.dataComanda}"
 						id="dataComanda">
 						<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
 					</h:inputText>
+				
+                    <h:message></h:message><h:outputText value="Cod Client:"></h:outputText>
+					       <h:inputText value="#{formComenzi.comanda.client.idClient}"
+					       id="idClient"></h:inputText>
+				<h:message></h:message>
+				<h:outputText value="Nume Client:"></h:outputText>
+					<h:inputText value="#{formComenzi.comanda.client.denumireClient}"
+						id="denumireClient"></h:inputText>
 
-					<h:outputText value="Nume Client:"></h:outputText>
-					<h:outputLabel value="#{formComenzi.comanda.client.denumireClient}"
-						id="client"></h:outputLabel>
-
-					<h:outputText value="Valoare Comanda:"></h:outputText>
-					<h:outputLabel value="#{formComenzi.comanda.valoareComanda}"></h:outputLabel>
-
-					<f:facet name="footer">
-						<center>
-							<h:panelGrid columns="4" border="0">
-								<h:commandButton value="Adaugare"
-									actionListener="#{formComenzi.adaugareComanda}"></h:commandButton>
-								<h:commandButton value="Salveaza"
-									actionListener="#{formComenzi.salvareComanda}"></h:commandButton>
-								<h:commandButton value="Stergere"
-									actionListener="#{formComenzi.stergereComanda}"></h:commandButton>
-								<h:commandButton value="Abandon"
-									actionListener="#{formComenzi.abandonComanda}"></h:commandButton>
-							</h:panelGrid>
-						</center>
-					</f:facet>
+				<h:message></h:message>
+				<h:outputText value="Valoare Comanda:"></h:outputText>
+				
+				<h:inputText value="#{formComenzi.comanda.valoareComanda}" id="valoareComanda"></h:inputText>
 
 
+				<h:message></h:message>
 				</h:panelGrid>
-			</h:panelGrid>
+				<center>
+							<h:panelGrid columns="4" border="0" style="height: 41px; width: 492px; ">
+								<h:commandButton value="Adaugare Comanda"
+									actionListener="#{formComenzi.adaugareComanda}" style="width: 137px; "></h:commandButton>
+								<h:commandButton value="Salveaza"
+									actionListener="#{formComenzi.salvareComanda}" style="width: 78px; "></h:commandButton>
+								<h:commandButton value="Stergere Comanda"
+									actionListener="#{formComenzi.stergereComanda}" style="width: 125px; "></h:commandButton>
+								<h:commandButton value="Abandon"
+									actionListener="#{formComenzi.abandonComanda}" style="width: 68px; "></h:commandButton>
+							</h:panelGrid></center>
+						
+		 <h:dataTable> 
+				<h:column>
+					<h:inputText id="Id" value="#{linieComanda.id}"> </h:inputText>
+					<f:facet name="header"> 
+					<h:outputText value="Numar Comanda"> </h:outputText>
+					</f:facet>
+				</h:column>
 
-			
-		</h:form>
-		<a href="MainForm.xhtml">Revenire in meniu</a>
-	</center>
+				<h:column>
+					<h:selectOneMenu id="cboProduse" value="#{linieComanda.produs}"
+						converter="#{formComenzi}" style="width: 96px; ">
+						<f:selectItems value="#{formComenzi.produse}"> </f:selectItems>
+					</h:selectOneMenu>
+					<f:facet name="header"> 
+					<h:outputText value="Produs"> </h:outputText>
+					</f:facet>
+				</h:column>
 
+				<h:column>
+					<h:inputText id="Cantitate" value="#{linieComanda.cantitate}"> </h:inputText>
+					<f:facet name="header"> 
+					<h:outputText value="Cantitate"> </h:outputText>
+					</f:facet>
+				</h:column>
+
+				<h:column>
+				<f:facet name="header">
+				<h:outputText value="Valoare Produs"> </h:outputText></f:facet>
+				
+					<h:outputText id="Valoare Produs" value="#{linieComanda.valoareProdus}"> </h:outputText>
+					<f:facet name="header"> Valoare Produs </f:facet>
+				</h:column>
+			</h:dataTable> 
+	
+</h:form>
+</center>
 </body>
+							
+<center> <a href="MainForm.xhtml"> Revenire in meniu </a> </center>
+				
 </html>
+				
+			
