@@ -51,7 +51,7 @@ h1 {
 				</h:outputText>
 				<h:inputText value="#{formComenzi.comanda.dataComanda}"
 					id="dataComanda">
-					<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+					
 				</h:inputText>
 
 				<h:message></h:message>
@@ -61,7 +61,7 @@ h1 {
 				<h:message></h:message>
 				<h:outputText value="Nume Client:"></h:outputText>
 				<h:inputText value="#{formComenzi.comanda.client.denumireClient}"
-					id="denumireClient"></h:inputText>
+					id="denumireClient"> </h:inputText>
 
 				<h:message></h:message>
 				<h:outputText value="Valoare Comanda:"></h:outputText>
@@ -90,49 +90,7 @@ h1 {
 				</h:panelGrid>
 			</center>
 
-			<h:dataTable>
-				<h:column>
-					<h:inputText id="Id" value="#{linieComanda.id}">
-					</h:inputText>
-					<f:facet name="header">
-						<h:outputText value="Numar Comanda">
-						</h:outputText>
-					</f:facet>
-				</h:column>
-
-				<h:column>
-					<h:selectOneMenu id="cboProduse" value="#{linieComanda.produs}"
-						converter="#{formComenzi}" style="width: 96px; ">
-						<f:selectItems value="#{formComenzi.produse}">
-						</f:selectItems>
-					</h:selectOneMenu>
-					<f:facet name="header">
-						<h:outputText value="Produs">
-						</h:outputText>
-					</f:facet>
-				</h:column>
-
-				<h:column>
-					<h:inputText id="Cantitate" value="#{linieComanda.cantitate}">
-					</h:inputText>
-					<f:facet name="header">
-						<h:outputText value="Cantitate">
-						</h:outputText>
-					</f:facet>
-				</h:column>
-
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Valoare Produs">
-						</h:outputText>
-					</f:facet>
-
-					<h:outputText id="ValoareProdus"
-						value="#{linieComanda.valoareProdus}">
-					</h:outputText>
-					<f:facet name="header"> Valoare Produs </f:facet>
-				</h:column>
-			</h:dataTable>
+		
 
 		</h:form>
 	</center>
