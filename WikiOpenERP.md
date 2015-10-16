@@ -1,0 +1,33 @@
+# Introduction #
+
+OpenERP
+SIA 2011
+FEAA
+
+# Details #
+
+**Module ERP propuse**
+
+Modul-[NOMGEN](NOMGEN.md)
+
+Modul-[CONTABGEN](CONTABGEN.md)
+
+Modul-[CONTABGEST](CONTABGEST.md)
+
+Modul-[ACHIZITII](ACHIZITII.md)
+
+Modul-VANZARI
+
+Modul-PRODUCTIE
+
+Modul-[STOCURI](STOCURI.md)
+
+Modul-[PERSONAL](PERSONAL.md)
+
+Modul-SALARIZARE
+
+Modul-MARKETING
+
+Modul-FINPLATI
+
+Modul-FININCASARI

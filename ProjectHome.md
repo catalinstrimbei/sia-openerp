@@ -1,0 +1,6 @@
+Open
+Enterprise Resource Planning
+
+UAIC-FEAA-SIA-2012
+
+APLICATII CLIENT/SERVER SI WEB
